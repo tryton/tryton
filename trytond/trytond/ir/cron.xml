@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Scheduler" parent="menu_administration"
+            id="menu_scheduler"/>
+
+        <record model="ir.ui.view" id="cron_view_tree">
+            <field name="model">ir.cron</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Scheduled Actions">
+                    <field name="next_call"/>
+                    <field name="name"/>
+                    <field name="user"/>
+                    <field name="request_user"/>
+                    <field name="interval_number"/>
+                    <field name="interval_type"/>
+                    <field name="number_calls"/>
+                    <field name="active"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cron_view_form">
+            <field name="model">ir.cron</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Scheduled Action">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="user"/>
+                    <field name="user"/>
+                    <label name="request_user"/>
+                    <field name="request_user"/>
+                    <label name="interval_number"/>
+                    <field name="interval_number"/>
+                    <label name="interval_type"/>
+                    <field name="interval_type"/>
+                    <label name="number_calls"/>
+                    <field name="number_calls"/>
+                    <label name="next_call"/>
+                    <field name="next_call"/>
+                    <label name="repeat_missed"/>
+                    <field name="repeat_missed"/>
+                    <separator string="Action to trigger" colspan="4"
+                        id="action_trigger"/>
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="function"/>
+                    <field name="function"/>
+                    <label name="args"/>
+                    <field name="args" colspan="3" widget="char"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_cron_form">
+            <field name="name">Scheduled Actions</field>
+            <field name="res_model">ir.cron</field>
+            <field name="context"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="cron_view_tree"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="cron_view_form"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <menuitem parent="ir.menu_scheduler"
+            action="act_cron_form" id="menu_cron_form"/>
+    </data>
+</tryton>

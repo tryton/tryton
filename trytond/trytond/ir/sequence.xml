@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Sequences" parent="menu_administration"
+            id="menu_sequences"/>
+
+        <record model="ir.ui.view" id="sequence_view_form">
+            <field name="model">ir.sequence</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Sequences">
+                    <label name="name"/>
+                    <field name="name" colspan="3"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="prefix"/>
+                    <field name="prefix"/>
+                    <label name="suffix"/>
+                    <field name="suffix"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <group string="Incremental" id="incremental" colspan="4"
+                        states="{'invisible': Not(In(Eval('type'), ['incremental']))}">
+                        <label name="padding"/>
+                        <field name="padding" />
+                        <label name="number_increment"/>
+                        <field name="number_increment"/>
+                        <label name="number_next"/>
+                        <field name="number_next"/>
+                    </group>
+                    <group string="Timestamp" id="timestamp" colspan="4"
+                        states="{'invisible': Not(In(Eval('type'), ['decimal timestamp', 'hexadecimal timestamp']))}">
+                        <label name="timestamp_rounding"/>
+                        <field name="timestamp_rounding"/>
+                        <label name="timestamp_offset"/>
+                        <field name="timestamp_offset"/>
+                        <field name="last_timestamp"/>
+                    </group>
+                    <separator string="Legend (Placeholders for prefix, suffix)" colspan="4"
+                        id="legend"/>
+                    <label string="Year:" id="label_year"/>
+                    <label string="${year}" colspan="3" xalign="0.0" xexpand="1" id="year"/>
+                    <label string="Month:" id="label_month"/>
+                    <label string="${month}" colspan="3" xalign="0.0" xexpand="1" id="month"/>
+                    <label string="Day:" id="label_day"/>
+                    <label string="${day}" colspan="3" xalign="0.0" xexpand="1" id="day"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sequence_view_tree">
+            <field name="model">ir.sequence</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Sequences">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                    <field name="active"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_sequence_form">
+            <field name="name">Sequences</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence</field>
+            <field name="context">{'active_test': False}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_view_tree"/>
+            <field name="act_window" ref="act_sequence_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_view_form"/>
+            <field name="act_window" ref="act_sequence_form"/>
+        </record>
+        <menuitem parent="menu_sequences"
+            action="act_sequence_form" id="menu_sequence_form"/>
+
+        <record model="ir.ui.view" id="sequence_strict_view_form">
+            <field name="model">ir.sequence.strict</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="sequence_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sequence_strict_view_tree">
+            <field name="model">ir.sequence.strict</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="sequence_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_sequence_strict_form">
+            <field name="name">Sequences Strict</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence.strict</field>
+            <field name="context">{'active_test': False}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_strict_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_strict_view_tree"/>
+            <field name="act_window" ref="act_sequence_strict_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_strict_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_strict_view_form"/>
+            <field name="act_window" ref="act_sequence_strict_form"/>
+        </record>
+        <menuitem parent="menu_sequences"
+            action="act_sequence_strict_form" id="menu_sequence_strict_form"/>
+
+        <record model="ir.ui.view" id="sequence_type_view_form">
+            <field name="model">ir.sequence.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Sequence Type">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code" readonly="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sequence_type_view_tree">
+            <field name="model">ir.sequence.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Sequence Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window"
+            id="act_sequence_type_form">
+            <field name="name">Sequence Types</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.sequence.type</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_type_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sequence_type_view_tree"/>
+            <field name="act_window" ref="act_sequence_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sequence_type_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="sequence_type_view_form"/>
+            <field name="act_window" ref="act_sequence_type_form"/>
+        </record>
+        <menuitem parent="menu_sequences"
+            action="act_sequence_type_form" id="menu_ir_sequence_type"/>
+    </data>
+</tryton>

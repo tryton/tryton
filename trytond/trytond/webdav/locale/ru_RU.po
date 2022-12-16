@@ -1,0 +1,88 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:0"
+msgid ""
+"You can not create an attachment\n"
+"in a collection with the name\n"
+"of an existing child collection!"
+msgstr ""
+"Вы не можете создавать вложение\n"
+"в каталоге с именем\n"
+" существующующего подкаталога!"
+
+msgctxt "error:webdav.collection:0"
+msgid "The collection name must be unique inside a collection!"
+msgstr "Имя каталога должно быть уникальным внутри каталога!"
+
+msgctxt "error:webdav.collection:0"
+msgid ""
+"You can not create a collection\n"
+"in a collection with the name of an existing file!"
+msgstr ""
+"Вы не можете создавать каталог\n"
+"в каталоге с именем существующего файла!"
+
+msgctxt "error:webdav.collection:0"
+msgid "You can not create recursive collections!"
+msgstr "Вы не можете создавать рекурсивные категории!"
+
+msgctxt "field:webdav.collection,childs:0"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "field:webdav.collection,domain:0"
+msgid "Domain"
+msgstr "Область"
+
+msgctxt "field:webdav.collection,model:0"
+msgid "Model"
+msgstr "Шаблон"
+
+msgctxt "field:webdav.collection,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:webdav.collection,parent:0"
+msgid "Parent"
+msgstr "Основной"
+
+msgctxt "field:webdav.collection,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Каталоги"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Каталоги"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Каталоги"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:0"
+msgid "Collection"
+msgstr "Каталог"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collection"
+msgstr "Каталог"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collections"
+msgstr "Каталоги"

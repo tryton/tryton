@@ -1,0 +1,819 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.group:0"
+msgid "The name of the group must be unique!"
+msgstr "Der Name der Gruppe kann nicht mehrfach vergeben werden!"
+
+msgctxt "error:res.user:0"
+msgid "Wrong password!"
+msgstr "Ungültiges Passwort!"
+
+msgctxt "error:res.user:0"
+msgid "You can not have two users with the same login!"
+msgstr "Der Anmeldename für einen Benutzer kann nur einmal vergeben werden!"
+
+msgctxt "error:res.user:0"
+msgid ""
+"You can not remove the root user\n"
+"as it is used internally for resources\n"
+"created by the system (updates, module installation, ...)"
+msgstr ""
+"Der Benutzer root kann nicht gelöscht werden, da er für interne Systemverwaltungsaufgaben\n"
+"(Updates, Modulinstallation, ...) benötigt wird!"
+
+msgctxt "field:ir.action-res.group,action:0"
+msgid "Action"
+msgstr "Aktion"
+
+msgctxt "field:ir.action-res.group,group:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "field:ir.action-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.model.field-res.group,field_id:0"
+msgid "Model Field"
+msgstr "Modell Feld"
+
+msgctxt "field:ir.model.field-res.group,group_id:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "field:ir.model.field-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.rule.group-res.group,group:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "field:ir.rule.group-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:0"
+msgid "Rule Group"
+msgstr "Regel Gruppe"
+
+msgctxt "field:ir.rule.group-res.user,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.rule.group-res.user,rule_group:0"
+msgid "Rule Group"
+msgstr "Regel Gruppe"
+
+msgctxt "field:ir.rule.group-res.user,user:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "field:ir.sequence,groups:0"
+msgid "User Groups"
+msgstr "Benutzergruppen"
+
+msgctxt "field:ir.sequence.strict,groups:0"
+msgid "User Groups"
+msgstr "Benutzergruppen"
+
+msgctxt "field:ir.sequence.type,groups:0"
+msgid "User Groups"
+msgstr "Benutzergruppen"
+
+msgctxt "field:ir.sequence.type-res.group,group:0"
+msgid "User Groups"
+msgstr "Benutzergruppen"
+
+msgctxt "field:ir.sequence.type-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name Staat"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:0"
+msgid "Sequence Type"
+msgstr "Typ Strikter Nummernkreis"
+
+msgctxt "field:ir.ui.menu-res.group,group:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "field:ir.ui.menu-res.group,menu:0"
+msgid "Menu"
+msgstr "Menü"
+
+msgctxt "field:ir.ui.menu-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.group,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:res.group,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:res.group,field_access:0"
+msgid "Access Field"
+msgstr "Zugriffsberechtigung Feld"
+
+msgctxt "field:res.group,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.group,menu_access:0"
+msgid "Access Menu"
+msgstr "Menü Berechtigungen"
+
+msgctxt "field:res.group,model_access:0"
+msgid "Access Model"
+msgstr "Rechteverwaltung"
+
+msgctxt "field:res.group,name:0"
+msgid "Name"
+msgstr "Gruppenname"
+
+msgctxt "field:res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.group,rule_groups:0"
+msgid "Rules"
+msgstr "Datensatzregeln"
+
+msgctxt "field:res.group,users:0"
+msgid "Users"
+msgstr "Benutzer"
+
+msgctxt "field:res.group,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:res.group,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:res.request,act_from:0"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:res.request,act_to:0"
+msgid "To"
+msgstr "An"
+
+msgctxt "field:res.request,active:0"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:res.request,body:0"
+msgid "Body"
+msgstr "Anfrage"
+
+msgctxt "field:res.request,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:res.request,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:res.request,date_sent:0"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:res.request,history:0"
+msgid "History"
+msgstr "Bisherige Anfragen"
+
+msgctxt "field:res.request,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.request,name:0"
+msgid "Subject"
+msgstr "Betreff"
+
+msgctxt "field:res.request,number_references:0"
+msgid "Number of References"
+msgstr "Anzahl Verweise"
+
+msgctxt "field:res.request,priority:0"
+msgid "Priority"
+msgstr "Dringlichkeit"
+
+msgctxt "field:res.request,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.request,references:0"
+msgid "References"
+msgstr "Verweise"
+
+msgctxt "field:res.request,state:0"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:res.request,trigger_date:0"
+msgid "Trigger Date"
+msgstr "Gültig ab"
+
+msgctxt "field:res.request,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:res.request,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:res.request.history,act_from:0"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:res.request.history,act_to:0"
+msgid "To"
+msgstr "An"
+
+msgctxt "field:res.request.history,body:0"
+msgid "Body"
+msgstr "Nachricht"
+
+msgctxt "field:res.request.history,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:res.request.history,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:res.request.history,date_sent:0"
+msgid "Date sent"
+msgstr "Gesendet am"
+
+msgctxt "field:res.request.history,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.request.history,name:0"
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+msgctxt "field:res.request.history,number_references:0"
+msgid "References"
+msgstr "Verweise"
+
+msgctxt "field:res.request.history,priority:0"
+msgid "Priority"
+msgstr "Priorität"
+
+msgctxt "field:res.request.history,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.request.history,request:0"
+msgid "Request"
+msgstr "Anfrage"
+
+msgctxt "field:res.request.history,state:0"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:res.request.history,subject:0"
+msgid "Subject"
+msgstr "Betreff"
+
+msgctxt "field:res.request.history,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:res.request.history,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:res.request.link,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:res.request.link,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:res.request.link,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.request.link,model:0"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:res.request.link,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.request.link,priority:0"
+msgid "Priority"
+msgstr "Dringlichkeit"
+
+msgctxt "field:res.request.link,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.request.link,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:res.request.link,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:res.request.reference,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.request.reference,reference:0"
+msgid "Reference"
+msgstr "Verweis"
+
+msgctxt "field:res.request.reference,request:0"
+msgid "Request"
+msgstr "Anfrage"
+
+msgctxt "field:res.user,action:0"
+msgid "Home Action"
+msgstr "Aktion für Startseite"
+
+msgctxt "field:res.user,active:0"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:res.user,connections:0"
+msgid "Connections"
+msgstr "Verbindungen"
+
+msgctxt "field:res.user,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:res.user,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:res.user,email:0"
+msgid "Email"
+msgstr "E-Mail"
+
+msgctxt "field:res.user,groups:0"
+msgid "Groups"
+msgstr "Gruppenzugehörigkeit"
+
+msgctxt "field:res.user,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user,language:0"
+msgid "Language"
+msgstr "Sprache"
+
+msgctxt "field:res.user,language_direction:0"
+msgid "Language Direction"
+msgstr "Sprache Richtung"
+
+msgctxt "field:res.user,login:0"
+msgid "Login"
+msgstr "Anmeldename"
+
+msgctxt "field:res.user,menu:0"
+msgid "Menu Action"
+msgstr "Menüaktion"
+
+msgctxt "field:res.user,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.user,password:0"
+msgid "Password"
+msgstr "Passwort"
+
+msgctxt "field:res.user,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.user,rule_groups:0"
+msgid "Rules"
+msgstr "Datensatzregeln"
+
+msgctxt "field:res.user,salt:0"
+msgid "Salt"
+msgstr "Salt"
+
+msgctxt "field:res.user,signature:0"
+msgid "Signature"
+msgstr "Signatur"
+
+msgctxt "field:res.user,status_bar:0"
+msgid "Status Bar"
+msgstr "Status Anzeige"
+
+msgctxt "field:res.user,timezone:0"
+msgid "Timezone"
+msgstr "Zeitzone"
+
+msgctxt "field:res.user,warnings:0"
+msgid "Warnings"
+msgstr "Warnungen"
+
+msgctxt "field:res.user,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:res.user,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:res.user-res.group,group:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "field:res.user-res.group,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.user-res.group,user:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "field:res.user.warning,always:0"
+msgid "Always"
+msgstr "Immer"
+
+msgctxt "field:res.user.warning,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.user.warning,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:res.user.warning,user:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "help:ir.sequence.type,groups:0"
+msgid "Groups allowed to edit the sequences of this type"
+msgstr ""
+"Gruppen mit der Berechtigung zur Bearbeitung von Nummernkreisen dieses Typs"
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "model:ir.action,name:act_request_form"
+msgid "Requests"
+msgstr "Anfragen"
+
+msgctxt "model:ir.action,name:act_request_link_form"
+msgid "Request Links"
+msgstr "Anfrageverknüpfungen"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Benutzer"
+
+msgctxt "model:ir.action-res.group,name:0"
+msgid "Action - Group"
+msgstr "Aktion - Gruppe"
+
+msgctxt "model:ir.cron,name:cron_trigger_time"
+msgid "Run On Time Triggers"
+msgstr "Ausführung zeitgesteuerter Trigger"
+
+msgctxt "model:ir.model.field-res.group,name:0"
+msgid "Model Field Group Rel"
+msgstr "Modellfeld - Gruppe"
+
+msgctxt "model:ir.rule.group-res.group,name:0"
+msgid "Rule Group - Group"
+msgstr "Gruppenregel - Gruppe"
+
+msgctxt "model:ir.rule.group-res.user,name:0"
+msgid "Rule Group - User"
+msgstr "Gruppenregel - Benutzer"
+
+msgctxt "model:ir.sequence.type-res.group,name:0"
+msgid "Sequence Type - Group"
+msgstr "Typ Nummernkreis - Gruppe"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "model:ir.ui.menu,name:menu_request_form"
+msgid "Requests"
+msgstr "Anfragen"
+
+msgctxt "model:ir.ui.menu,name:menu_request_link_form"
+msgid "Request Links"
+msgstr "Anfrageverknüpfungen"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Benutzer"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Benutzer"
+
+msgctxt "model:ir.ui.menu-res.group,name:0"
+msgid "UI Menu - Group"
+msgstr "Oberfläche Menü - Gruppe"
+
+msgctxt "model:res.group,name:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "Interne Administration"
+
+msgctxt "model:res.request,name:0"
+msgid "Request"
+msgstr "Anfrage"
+
+msgctxt "model:res.request.history,name:0"
+msgid "Request history"
+msgstr "Bisherige Anfragen"
+
+msgctxt "model:res.request.link,name:0"
+msgid "Request link"
+msgstr "Anfrage Verknüpfung"
+
+msgctxt "model:res.request.link,name:request_link_cron"
+msgid "Scheduler"
+msgstr "Zeitplaner"
+
+msgctxt "model:res.request.reference,name:0"
+msgid "Request Reference"
+msgstr "Anfrage Verweis"
+
+msgctxt "model:res.user,name:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "model:res.user,name:user_admin"
+msgid "Administrator"
+msgstr "Administrator"
+
+msgctxt "model:res.user,name:user_trigger"
+msgid "Cron Trigger"
+msgstr "Zeitplaner Trigger"
+
+msgctxt "model:res.user-res.group,name:0"
+msgid "User - Group"
+msgstr "Benutzer - Gruppe"
+
+msgctxt "model:res.user.config.init,name:0"
+msgid "User Config Init"
+msgstr "Benutzerkonfiguration Init"
+
+msgctxt "model:res.user.warning,name:0"
+msgid "User Warning"
+msgstr "Benutzer Warnung"
+
+msgctxt "selection:res.request,priority:0"
+msgid "High"
+msgstr "Hoch"
+
+msgctxt "selection:res.request,priority:0"
+msgid "Low"
+msgstr "Niedrig"
+
+msgctxt "selection:res.request,priority:0"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:res.request,state:0"
+msgid "Chatting"
+msgstr "Schreibt gerade..."
+
+msgctxt "selection:res.request,state:0"
+msgid "Closed"
+msgstr "Geschlossen"
+
+msgctxt "selection:res.request,state:0"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:res.request,state:0"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "High"
+msgstr "Hoch"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "Low"
+msgstr "Niedrig"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Chatting"
+msgstr "Schreibt gerade..."
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Closed"
+msgstr "Geschlossen"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Installation"
+msgstr "Vormerkung für Installation / Aktualisierung aufheben"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Uninstallation"
+msgstr "Deinstallation abbrechen"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Upgrade"
+msgstr "Vormerkung für Installation / Aktualisierung aufheben"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Installation"
+msgstr "Für die Installation vormerken"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Uninstallation (beta)"
+msgstr "Für die Deinstallation (beta) vormerken"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Upgrade"
+msgstr "Für die Aktualisierung vormerken"
+
+msgctxt "view:res.group:0"
+msgid "Access Permissions"
+msgstr "Zugriffsberechtigungen"
+
+msgctxt "view:res.group:0"
+msgid "Group"
+msgstr "Gruppe"
+
+msgctxt "view:res.group:0"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "view:res.group:0"
+msgid "Members"
+msgstr "Mitglieder"
+
+msgctxt "view:res.group:0"
+msgid "Security"
+msgstr "Sicherheit"
+
+msgctxt "view:res.group:0"
+msgid "_Group"
+msgstr "_Gruppe"
+
+msgctxt "view:res.group:0"
+msgid "_Security"
+msgstr "_Sicherheit"
+
+msgctxt "view:res.request.history:0"
+msgid "Request History"
+msgstr "bisherige Anfragen"
+
+msgctxt "view:res.request.link:0"
+msgid "Request Link"
+msgstr "Anfrage Verknüpfung"
+
+msgctxt "view:res.request.reference:0"
+msgid "Request Reference"
+msgstr "Anfrageverweis"
+
+msgctxt "view:res.request.reference:0"
+msgid "Request References"
+msgstr "Verweise"
+
+msgctxt "view:res.request:0"
+msgid "Close"
+msgstr "Schließen"
+
+msgctxt "view:res.request:0"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "view:res.request:0"
+msgid "History"
+msgstr "Geschichte"
+
+msgctxt "view:res.request:0"
+msgid "References"
+msgstr "Verweise"
+
+msgctxt "view:res.request:0"
+msgid "Reply"
+msgstr "Antworten"
+
+msgctxt "view:res.request:0"
+msgid "Request"
+msgstr "Anfrage"
+
+msgctxt "view:res.request:0"
+msgid "Requests"
+msgstr "Anfragen"
+
+msgctxt "view:res.request:0"
+msgid "Send"
+msgstr "Senden"
+
+msgctxt "view:res.request:0"
+msgid "_References"
+msgstr "_Verweise"
+
+msgctxt "view:res.request:0"
+msgid "_Request"
+msgstr "_Anfrage"
+
+msgctxt "view:res.user.config.init:0"
+msgid "Add Users"
+msgstr "Benutzer hinzufügen"
+
+msgctxt "view:res.user.config.init:0"
+msgid "Be careful that the login must be unique!"
+msgstr ""
+"Achten Sie darauf, dass ein Anmeldename nicht mehrfach vergeben werden kann!\n"
+"(Der Anmeldename admin wird automatisch angelegt.)"
+
+msgctxt "view:res.user.config.init:0"
+msgid "You can now add some users into the system."
+msgstr "Sie können nun neue Benutzer zu dem System hinzufügen."
+
+msgctxt "view:res.user.warning:0"
+msgid "Warning"
+msgstr "Warnung"
+
+msgctxt "view:res.user.warning:0"
+msgid "Warnings"
+msgstr "Warnungen"
+
+msgctxt "view:res.user:0"
+msgid "Access Permissions"
+msgstr "Zugriffsberechtigungen"
+
+msgctxt "view:res.user:0"
+msgid "Group Membership"
+msgstr "Gruppenzugehörigkeit"
+
+msgctxt "view:res.user:0"
+msgid "Preferences"
+msgstr "Einstellungen"
+
+msgctxt "view:res.user:0"
+msgid "Security"
+msgstr "Sicherheit"
+
+msgctxt "view:res.user:0"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "view:res.user:0"
+msgid "Users"
+msgstr "Benutzer"
+
+msgctxt "view:res.user:0"
+msgid "_Preferences"
+msgstr "_Einstellungen"
+
+msgctxt "view:res.user:0"
+msgid "_Security"
+msgstr "_Sicherheit"
+
+msgctxt "view:res.user:0"
+msgid "_User"
+msgstr "_Benutzer"
+
+msgctxt "wizard_button:res.user.config,init,end:0"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:res.user.config,init,user:0"
+msgid "Ok"
+msgstr "OK"
+
+msgctxt "wizard_button:res.user.config,user,add:0"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "wizard_button:res.user.config,user,end:0"
+msgid "End"
+msgstr "Ende"

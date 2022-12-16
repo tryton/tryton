@@ -1,0 +1,339 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:workflow.instance:0"
+msgid "No workflow instance defined!"
+msgstr ""
+
+msgctxt "error:workflow:0"
+msgid "No workflow defined!"
+msgstr ""
+
+msgctxt "field:workflow,activities:0"
+msgid "Activities"
+msgstr ""
+
+msgctxt "field:workflow,model:0"
+msgid "Resource Model"
+msgstr ""
+
+msgctxt "field:workflow,name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow,on_create:0"
+msgid "On Create"
+msgstr ""
+
+msgctxt "field:workflow,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.activity,flow_start:0"
+msgid "Flow Start"
+msgstr ""
+
+msgctxt "field:workflow.activity,flow_stop:0"
+msgid "Flow Stop"
+msgstr ""
+
+msgctxt "field:workflow.activity,in_transitions:0"
+msgid "Incoming transitions"
+msgstr ""
+
+msgctxt "field:workflow.activity,join_mode:0"
+msgid "Join Mode"
+msgstr ""
+
+msgctxt "field:workflow.activity,method:0"
+msgid "Method"
+msgstr ""
+
+msgctxt "field:workflow.activity,name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.activity,out_transitions:0"
+msgid "Outgoing transitions"
+msgstr ""
+
+msgctxt "field:workflow.activity,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.activity,signal_send:0"
+msgid "Signal (subflow.*)"
+msgstr ""
+
+msgctxt "field:workflow.activity,split_mode:0"
+msgid "Split Mode"
+msgstr ""
+
+msgctxt "field:workflow.activity,stop_other:0"
+msgid "Stop Other"
+msgstr ""
+
+msgctxt "field:workflow.activity,subflow:0"
+msgid "Subflow"
+msgstr ""
+
+msgctxt "field:workflow.activity,workflow:0"
+msgid "Workflow"
+msgstr ""
+
+msgctxt "field:workflow.instance,overflows:0"
+msgid "Overflow"
+msgstr ""
+
+msgctxt "field:workflow.instance,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.instance,res_id:0"
+msgid "Resource ID"
+msgstr ""
+
+msgctxt "field:workflow.instance,res_type:0"
+msgid "Resource Model"
+msgstr ""
+
+msgctxt "field:workflow.instance,state:0"
+msgid "State"
+msgstr ""
+
+msgctxt "field:workflow.instance,transitions:0"
+msgid "Transitions"
+msgstr ""
+
+msgctxt "field:workflow.instance,uid:0"
+msgid "User ID"
+msgstr ""
+
+msgctxt "field:workflow.instance,workflow:0"
+msgid "Workflow"
+msgstr ""
+
+msgctxt "field:workflow.instance,workitems:0"
+msgid "Workitems"
+msgstr ""
+
+msgctxt "field:workflow.transition,act_from:0"
+msgid "Source Activity"
+msgstr ""
+
+msgctxt "field:workflow.transition,act_to:0"
+msgid "Destination Activity"
+msgstr ""
+
+msgctxt "field:workflow.transition,condition:0"
+msgid "Condition"
+msgstr ""
+
+msgctxt "field:workflow.transition,group:0"
+msgid "Group Required"
+msgstr ""
+
+msgctxt "field:workflow.transition,instances:0"
+msgid "Instances"
+msgstr ""
+
+msgctxt "field:workflow.transition,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.transition,signal:0"
+msgid "Signal (button Name)"
+msgstr ""
+
+msgctxt "field:workflow.transition,trigger_ids:0"
+msgid "Trigger Expr ID"
+msgstr ""
+
+msgctxt "field:workflow.transition,trigger_model:0"
+msgid "Trigger Type"
+msgstr ""
+
+msgctxt "field:workflow.transition-workflow.instance,inst_id:0"
+msgid "Instance"
+msgstr ""
+
+msgctxt "field:workflow.transition-workflow.instance,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.transition-workflow.instance,trans_id:0"
+msgid "Transition"
+msgstr ""
+
+msgctxt "field:workflow.trigger,instance:0"
+msgid "Destination Instance"
+msgstr ""
+
+msgctxt "field:workflow.trigger,model:0"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:workflow.trigger,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.trigger,res_id:0"
+msgid "Resource ID"
+msgstr ""
+
+msgctxt "field:workflow.trigger,workitem:0"
+msgid "Workitem"
+msgstr ""
+
+msgctxt "field:workflow.workitem,activity:0"
+msgid "Activity"
+msgstr ""
+
+msgctxt "field:workflow.workitem,instance:0"
+msgid "Instance"
+msgstr ""
+
+msgctxt "field:workflow.workitem,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:workflow.workitem,state:0"
+msgid "State"
+msgstr ""
+
+msgctxt "field:workflow.workitem,subflow:0"
+msgid "Subflow"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_activity_form"
+msgid "Activities"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_instance_form"
+msgid "Instances"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_transition_form"
+msgid "Transitions"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_workflow_form"
+msgid "Workflows"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_workitem_form"
+msgid "Workitems"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_activity_form"
+msgid "Activities"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_instance_form"
+msgid "Instances"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_transition_form"
+msgid "Transitions"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_workflow"
+msgid "Workflow"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_workflow_form"
+msgid "Workflows"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_workitem_form"
+msgid "Workitems"
+msgstr ""
+
+msgctxt "model:workflow,name:0"
+msgid "Workflow"
+msgstr ""
+
+msgctxt "model:workflow.activity,name:0"
+msgid "Workflow activity"
+msgstr ""
+
+msgctxt "model:workflow.instance,name:0"
+msgid "Workflow instance"
+msgstr ""
+
+msgctxt "model:workflow.transition,name:0"
+msgid "Workflow transition"
+msgstr ""
+
+msgctxt "model:workflow.transition-workflow.instance,name:0"
+msgid "Workflow Transition - Instance"
+msgstr ""
+
+msgctxt "model:workflow.trigger,name:0"
+msgid "Workflow trigger"
+msgstr ""
+
+msgctxt "model:workflow.workitem,name:0"
+msgid "Workflow workitem"
+msgstr ""
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "And"
+msgstr ""
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "Xor"
+msgstr ""
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "And"
+msgstr ""
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Or"
+msgstr ""
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Xor"
+msgstr ""
+
+msgctxt "view:workflow.activity:0"
+msgid "Activity"
+msgstr ""
+
+msgctxt "view:workflow.activity:0"
+msgid "Transition"
+msgstr ""
+
+msgctxt "view:workflow.activity:0"
+msgid "Transitions"
+msgstr ""
+
+msgctxt "view:workflow.instance:0"
+msgid "Instance"
+msgstr ""
+
+msgctxt "view:workflow.instance:0"
+msgid "Instances"
+msgstr ""
+
+msgctxt "view:workflow.transition:0"
+msgid "Transition"
+msgstr ""
+
+msgctxt "view:workflow.transition:0"
+msgid "Transitions"
+msgstr ""
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitem"
+msgstr ""
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitems"
+msgstr ""
+
+msgctxt "view:workflow:0"
+msgid "Workflow"
+msgstr ""

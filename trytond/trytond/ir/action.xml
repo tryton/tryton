@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Actions" id="menu_action" parent="menu_ui"/>
+        <record model="ir.ui.view" id="action_view_form">
+            <field name="model">ir.action</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Action">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="usage"/>
+                            <field name="usage"/>
+                            <label name="icon"/>
+                            <field name="icon"/>
+                        </page>
+                        <page name="keywords">
+                            <field name="keywords" colspan="4">
+                                <tree string="Keywords">
+                                    <field name="keyword"/>
+                                </tree>
+                                <form string="Keyword">
+                                    <field name="keyword"/>
+                                    <field name="model"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="groups">
+                            <field name="groups" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="action_view_tree">
+            <field name="model">ir.action</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Action">
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_form">
+            <field name="name">Actions</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_view_tree"/>
+            <field name="act_window" ref="act_action_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_view_form"/>
+            <field name="act_window" ref="act_action_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_form" id="menu_act_action"/>
+
+        <record model="ir.ui.view" id="action_report_view_form">
+            <field name="model">ir.action.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Report">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="model"/>
+                            <field name="model"/>
+                            <label name="report_name"/>
+                            <field name="report_name"/>
+                            <label name="icon"/>
+                            <field name="icon"/>
+                            <newline/>
+                            <label name="report"/>
+                            <field name="report"/>
+                            <label name="report_content"/>
+                            <field name="report_content"/>
+                            <label name="template_extension"/>
+                            <field name="template_extension"/>
+                            <label name="extension"/>
+                            <field name="extension"/>
+                            <label name="style"/>
+                            <field name="style"/>
+                            <label name="direct_print"/>
+                            <field name="direct_print"/>
+                            <label name="email"/>
+                            <field name="email" colspan="3"/>
+                        </page>
+                        <page name="keywords">
+                            <field name="keywords" colspan="4">
+                                <tree string="Keywords">
+                                    <field name="keyword"/>
+                                </tree>
+                                <form string="Keyword">
+                                    <label name="keyword"/>
+                                    <field name="keyword"/>
+                                    <label name="model"/>
+                                    <field name="model"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="groups">
+                            <field name="groups" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="action_report_view_tree">
+            <field name="model">ir.action.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Report xml">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="model"/>
+                    <field name="report_name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_report_form">
+            <field name="name">Reports</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.report</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_report_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_report_view_tree"/>
+            <field name="act_window" ref="act_action_report_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_report_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_report_view_form"/>
+            <field name="act_window" ref="act_action_report_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_report_form" id="menu_action_report_form"/>
+
+        <record model="ir.ui.view" id="action_act_window_view_form">
+            <field name="model">ir.action.act_window</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Open a Window">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general" col="6">
+                            <label name="res_model"/>
+                            <field name="res_model"/>
+                            <label name="usage"/>
+                            <field name="usage"/>
+                            <label name="icon"/>
+                            <field name="icon"/>
+                            <field name="act_window_views" colspan="6">
+                                <form string="Views">
+                                    <label name="sequence"/>
+                                    <field name="sequence" colspan="4"/>
+                                    <label name="view"/>
+                                    <field name="view"/>
+                                </form>
+                                <tree string="Views" sequence="sequence" fill="1">
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="view"/>
+                                </tree>
+                            </field>
+                            <label name="domain"/>
+                            <field name="domain" colspan="5"/>
+                            <label name="context"/>
+                            <field name="context" colspan="5"/>
+                            <label name="search_value"/>
+                            <field name="search_value" colspan="5"/>
+                            <label name="limit"/>
+                            <field name="limit"/>
+                            <label name="auto_refresh"/>
+                            <field name="auto_refresh"/>
+                            <label name="window_name"/>
+                            <field name="window_name"/>
+                        </page>
+                        <page name="keywords">
+                            <field name="keywords" colspan="4">
+                                <tree string="Keywords">
+                                    <field name="keyword"/>
+                                </tree>
+                                <form string="Keyword">
+                                    <label name="keyword"/>
+                                    <field name="keyword"/>
+                                    <label name="model"/>
+                                    <field name="model"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="groups">
+                            <field name="groups" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="action_act_window_view_tree">
+            <field name="model">ir.action.act_window</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Open Window">
+                    <field name="name"/>
+                    <field name="res_model"/>
+                    <field name="domain"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_act_window_form">
+            <field name="name">Window Actions</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.act_window</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_action_act_window_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_act_window_view_tree"/>
+            <field name="act_window" ref="act_action_act_window_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_action_act_window_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_act_window_view_form"/>
+            <field name="act_window" ref="act_action_act_window_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_act_window_form" id="menu_action_act_window"/>
+        <record model="ir.ui.view" id="action_wizard_view_form">
+            <field name="model">ir.action.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Wizard">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="wiz_name"/>
+                            <field name="wiz_name"/>
+                            <label name="model"/>
+                            <field name="model"/>
+                            <label name="icon"/>
+                            <field name="icon"/>
+                            <newline/>
+                            <label name="email"/>
+                            <field name="email" colspan="3"/>
+                            <label name="window"/>
+                            <field name="window"/>
+                        </page>
+                        <page name="keywords">
+                            <field name="keywords" colspan="4">
+                                <tree string="Keywords">
+                                    <field name="keyword"/>
+                                </tree>
+                                <form string="Keyword">
+                                    <label name="keyword"/>
+                                    <field name="keyword"/>
+                                    <label name="model"/>
+                                    <field name="model"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="groups">
+                            <field name="groups" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="action_wizard_view_tree">
+            <field name="model">ir.action.wizard</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Wizard">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="wiz_name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_wizard_form">
+            <field name="name">Wizards</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.wizard</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_wizard_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_wizard_view_tree"/>
+            <field name="act_window" ref="act_action_wizard_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_wizard_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_wizard_view_form"/>
+            <field name="act_window" ref="act_action_wizard_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_wizard_form" id="menu_action_wizard"/>
+
+        <record model="ir.ui.view" id="action_url_view_form">
+            <field name="model">ir.action.url</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="URL">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="url"/>
+                            <field name="url"/>
+                            <label name="icon"/>
+                            <field name="icon"/>
+                        </page>
+                        <page name="keywords">
+                            <field name="keywords" colspan="4">
+                                <tree string="Keywords">
+                                    <field name="keyword"/>
+                                </tree>
+                                <form string="Keyword">
+                                    <label name="keyword"/>
+                                    <field name="keyword"/>
+                                    <label name="model"/>
+                                    <field name="model"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="groups">
+                            <field name="groups" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="action_url_view_tree">
+            <field name="model">ir.action.url</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="URL">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="url"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_url_form">
+            <field name="name">URLs</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.url</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_url_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_url_view_tree"/>
+            <field name="act_window" ref="act_action_url_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_url_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_url_view_form"/>
+            <field name="act_window" ref="act_action_url_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_url_form" id="menu_action_url"/>
+    </data>
+</tryton>
