@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.statement.origin.information"
+            id="information_bank_reference">
+            <field name="name">coda_bank_reference</field>
+            <field name="string">Bank Reference</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_customer_reference">
+            <field name="name">coda_customer_reference</field>
+            <field name="string">Customer Reference</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_counterparty_bic">
+            <field name="name">coda_counterparty_bic</field>
+            <field name="string">Counterparty BIC</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_counterparty_account">
+            <field name="name">coda_counterparty_account</field>
+            <field name="string">Counterparty Account</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_counterparty_name">
+            <field name="name">coda_counterparty_name</field>
+            <field name="string">Counterparty Name</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_r_transaction">
+            <field name="name">coda_r_transaction</field>
+            <field name="string">Return Type</field>
+            <field name="type_">selection</field>
+            <field name="selection">0: Paid
+                1: Reject
+                2: Return
+                3: Refund
+                4: Reversal
+                5: Cancellation</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_r_reason">
+            <field name="name">coda_r_reason</field>
+            <field name="string">Return Reason</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_category_purpose">
+            <field name="name">coda_category_purpose</field>
+            <field name="string">Category Purpose</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_purpose">
+            <field name="name">coda_purpose</field>
+            <field name="string">Purpose</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_transaction_family">
+            <field name="name">coda_transaction_family</field>
+            <field name="string">Transaction Family</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_transaction_transaction">
+            <field name="name">coda_transaction_transaction</field>
+            <field name="string">Transaction</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_transaction_category">
+            <field name="name">coda_transaction_category</field>
+            <field name="string">Transaction Category</field>
+            <field name="type_">char</field>
+            <!-- TODO change to selection -->
+        </record>
+    </data>
+</tryton>
