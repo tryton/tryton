@@ -1,0 +1,42 @@
+Version 4.0.1 - 2016-05-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add account stock method on fiscal year
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Remove account_move
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Updating cost price must update stock accounting
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Create move also from supplier to customer
+* Define "Stock Journal" on "Account Configuration"
+* Use cost price instead of unit price when cost method is "fixed"
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Initial release
