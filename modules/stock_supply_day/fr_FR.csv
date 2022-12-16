@@ -1,0 +1,15 @@
+type,name,res_id,src,value,fuzzy
+field,"purchase.product_supplier,weekdays",0,Week Days,Jours de la semaine,0
+field,"purchase.product_supplier.day,product_supplier",0,Supplier,Fournisseur,0
+field,"purchase.product_supplier.day,rec_name",0,Name,Nom,0
+field,"purchase.product_supplier.day,weekday",0,Week Day,Jour de la semaine,0
+model,"purchase.product_supplier.day,name",0,Product Supplier Day,Journée du fournisseur de produit,0
+selection,"purchase.product_supplier.day,weekday",0,Friday,Vendredi,0
+selection,"purchase.product_supplier.day,weekday",0,Monday,Lundi,0
+selection,"purchase.product_supplier.day,weekday",0,Saturday,Samedi,0
+selection,"purchase.product_supplier.day,weekday",0,Sunday,Dimanche,0
+selection,"purchase.product_supplier.day,weekday",0,Thursday,Jeudi,0
+selection,"purchase.product_supplier.day,weekday",0,Tuesday,Mardi,0
+selection,"purchase.product_supplier.day,weekday",0,Wednesday,Mercredi,0
+view,purchase.product_supplier,0,Week Days,Jours de la semaine,0
+view,purchase.product_supplier.day,0,Week Day,Jour de la semaine,0

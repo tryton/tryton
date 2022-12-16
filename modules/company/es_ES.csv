@@ -1,0 +1,61 @@
+type,name,res_id,src,value,fuzzy
+error,company.company,0,You can not create recursive companies!,No puede crear empresas recursivas,0
+error,res.user,0,You can not set a company that is not a child of your main company!,No puede establecer una empresa que no es hija de su empresa principal,0
+field,"company.company,childs",0,Children,Hijos,0
+field,"company.company,currency",0,Currency,Divisa,0
+field,"company.company,employees",0,Employees,Empleados,0
+field,"company.company,footer",0,Footer,Pie de página,0
+field,"company.company,header",0,Header,Encabezado,0
+field,"company.company,parent",0,Parent,Padre,0
+field,"company.company,party",0,Party,Tercero,0
+field,"company.company,rec_name",0,Name,Nombre,0
+field,"company.employee,company",0,Company,Empresa,0
+field,"company.employee,party",0,Party,Tercero,0
+field,"company.employee,rec_name",0,Name,Nombre,0
+field,"ir.cron,companies",0,Companies,Empresas,0
+field,"ir.cron-company.company,company",0,Company,Empresa,0
+field,"ir.cron-company.company,cron",0,Cron,Programador de tareas,0
+field,"ir.cron-company.company,rec_name",0,Name,Nombre,0
+field,"ir.property,company",0,Company,Empresa,0
+field,"ir.sequence,company",0,Company,Empresa,0
+field,"ir.sequence.strict,company",0,Company,Empresa,0
+field,"res.user,companies",0,Current Companies,Empresas actuales,0
+field,"res.user,company",0,Current Company,Empresa actual,0
+field,"res.user,employee",0,Employee,Empleado,0
+field,"res.user,main_company",0,Main Company,Empresa principal,0
+help,"ir.cron,companies",0,Companies registered for this cron,Empresas registradas en este programador de tareas,0
+model,"company.company.config.init,name",0,Company Config Init,Inicialización de la configuración de la empresa,0
+model,"company.company,name",0,Company,Empresa,0
+model,"company.employee,name",0,Employee,Empleado,0
+model,"ir.action,name",act_company_tree,Companies,Empresas,0
+model,"ir.action,name",act_company_form,Companies,Empresas,0
+model,"ir.action,name",act_company_form2,Companies,Empresas,0
+model,"ir.action,name",act_employee_form,Employees,Empleados,0
+model,"ir.action,name",report_letter,Letter,Carta,0
+model,"ir.cron-company.company,name",0,ir.cron-company.company,ir.cron-company.company,0
+model,"ir.ui.menu,name",menu_company_tree,Companies,Empresas,0
+model,"ir.ui.menu,name",menu_company_form,Edit Companies,Editar empresas,0
+model,"ir.ui.menu,name",menu_employee_form,Employees,Empleados,0
+model,"ir.ui.menu,name",menu_company_form2,New Company,Nueva empresa,0
+odt,party.letter,0,"Best Regards,","Atentamente,",0
+odt,party.letter,0,Date:,Fecha:,0
+odt,party.letter,0,"Dear Madams and Sirs,","Estimados señores y señoras,",0
+odt,party.letter,0,E-Mail:,Correo electrónico:,0
+odt,party.letter,0,Phone:,Teléfono:,0
+odt,party.letter,0,Subject:,Asunto:,0
+view,company.company,0,Addresses,Direcciones,0
+view,company.company,0,Companies,Empresas,0
+view,company.company,0,Company,Empresa,0
+view,company.company,0,Employees,Empleados,0
+view,company.company,0,General,General,0
+view,company.company,0,Reports,Informes,0
+view,company.company.config.init,0,Create Company,Crear empresa,0
+view,company.company.config.init,0,You can now add your company into the system.,Ahora puede añadir su empresa al sistema.,0
+view,company.employee,0,Addresses,Direcciones,0
+view,company.employee,0,Employee,Empleado,0
+view,company.employee,0,Employees,Empleados,0
+view,company.employee,0,General,General,0
+wizard_button,"company.company.config,company,add",0,Add,Añadir,0
+wizard_button,"company.company.config,company,end",0,Cancel,Cancelar,0
+wizard_button,"company.company.config,init,company",0,Ok,Aceptar,0
+wizard_button,"company.company.config,init,end",0,Cancel,Cancelar,0
