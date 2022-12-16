@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree editable="1">
+    <field name="move"/>
+    <field name="account" expand="1"/>
+    <field name="party" expand="1"/>
+    <field name="debit" sum="Debit"/>
+    <field name="credit" sum="Credit"/>
+    <field name="tax_lines"/>
+    <field name="description" expand="1"/>
+    <field name="reconciliation"/>
+</tree>

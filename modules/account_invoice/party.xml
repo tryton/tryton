@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree"/>
+            <field name="name">address_tree</field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
+            <field name="name">address_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree_sequence"/>
+            <field name="name">address_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_tree"/>
+            <field name="name">contact_mechanism_tree</field>
+        </record>
+        <record model="ir.ui.view" id="contact_mechanism_view_form">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_form"/>
+            <field name="name">contact_mechanism_form</field>
+        </record>
+        <record model="ir.ui.view" id="contact_mechanism_view_tree_sequence">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_tree_sequence"/>
+            <field name="name">contact_mechanism_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_form2">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['paid', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_invoice_form2"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_invoice_form2-group_sale">
+            <field name="action" ref="act_invoice_form2"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+    </data>
+</tryton>
