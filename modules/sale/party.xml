@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_sale_form2">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_sale_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_sale_form2"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_sale_form2-group_sale">
+            <field name="action" ref="act_sale_form2"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_sale_invoice_method">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_sale_invoice_method_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_invoice_method')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_sale_shipment_method">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_sale_shipment_method_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_method')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_customer_currency">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_currency')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_customer_currency_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_currency')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+</tryton>
