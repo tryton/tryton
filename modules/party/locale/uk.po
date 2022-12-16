@@ -1,0 +1,1299 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Контактний механізм"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Місто"
+
+#, fuzzy
+msgctxt "field:party.address,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Контактні механізми"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Повна адреса"
+
+msgctxt "field:party.address,identifiers:"
+msgid "Identifiers"
+msgstr "Ідентифікатори"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "Найменування будівлі"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "Найменування особи"
+
+msgctxt "field:party.address,postal_code:"
+msgid "Postal Code"
+msgstr "Поштовий індекс"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Вулиця"
+
+msgctxt "field:party.address,street_single_line:"
+msgid "Street"
+msgstr "Вулиця"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Адмін.поділ"
+
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Типи адмін.поділів"
+
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Код країни"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Формат"
+
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Код мови"
+
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Код країни"
+
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Типи адмін.поділів"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Діти"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Батько"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Не вдалося перевірити осіб"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Перевірка осіб пройшла успішно"
+
+msgctxt "field:party.configuration,identifier_types:"
+msgid "Identifier Types"
+msgstr "Типи ідентифікаторів"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Мова особи"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Послідовність особи"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Мова особи"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Послідовність особи"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,address:"
+msgid "Address"
+msgstr "Адреса"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Коментар"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "Ел.пошта"
+
+msgctxt "field:party.contact_mechanism,language:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:party.contact_mechanism,languages:"
+msgid "Languages"
+msgstr "Мови"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Значення"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Скайп"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Значення"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Компактне значення"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Веб-сайт"
+
+msgctxt "field:party.contact_mechanism.language,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Контактний механізм"
+
+msgctxt "field:party.contact_mechanism.language,language:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.identifier,address:"
+msgid "Address"
+msgstr "Адреса"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:party.identifier,type_address:"
+msgid "Type of Address"
+msgstr "Тип адреси"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Адреси"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Категорії"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Код лише для читання"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Контактні механізми"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr "Відстань"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "Ел.пошта"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Факс"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Повне найменування"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Ідентифікатори"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Мови"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Мобільний"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Телефон"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Замінено на"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Податковий ідентифікатор"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Веб-сайт"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Категорія"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Призначення"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Джерело"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Визначте, яку адресу ел.пошти використовувати з контактних механізмів особи."
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr "Якщо заповнено, замінює найменування особи для форматування адреси"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${postal_code}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Доступні змінні (також у верхньому регістрі):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${postal_code}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Додайте дітей до категорії."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "Головний ідентифікатор категорії."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Додайте категорію до батька."
+
+msgctxt "help:party.configuration,identifier_types:"
+msgid ""
+"Defines which identifier types are available.\n"
+"Leave empty for all of them."
+msgstr ""
+"Визначає, які типи ідентифікаторів є доступними.\n"
+"Залиште порожнім для всіх них."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "Мова за замовчуванням для нових осіб."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Використовується для створення коду особи."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "Мова за замовчуванням для нових осіб."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Використовується для створення коду особи."
+
+msgctxt "help:party.contact_mechanism,language:"
+msgid ""
+"Used to translate communication made using the contact mechanism.\n"
+"Leave empty for the party language."
+msgstr ""
+"Вживається для перекладу зв'язку за допомогою контактного механізму.\n"
+"Залиште порожнім для мови особи."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "Особа, яку потрібно видалити."
+
+msgctxt "help:party.identifier,address:"
+msgid "The address identified by this record."
+msgstr "Адреса, яка визначена цим записом."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "Особа, яка визначена цим записом."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Категорії, до яких належить особа."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "Унікальний ідентифікатор особи."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Додайте інші ідентифікатори особи."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Використовується для перекладу зв'язку з особою."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "Головний ідентифікатор особи."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "Особа, яка замінює цю особу."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "Ідентифікатор, що використовується для податкової звітності."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "Особа, яка замінює."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "Особа, яку буде замінено."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Адреси"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Формати адрес"
+
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Типи адмін.поділів"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Категорії"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Категорії"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Контактні механізми"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Особи за категорією"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Configuration"
+msgstr "Налаштування"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Особи"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Етикетки"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Перевірити VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Видалити"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Замінити"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "Ви не можете змінити адресу особи \"%(address)s\"."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "Код країни для типу адмін.поділу має бути унікальним."
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "Найменування категорії особи має бути унікальним для батька."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr "Ви не можете змінити особу контактного механізму \"%(contact)s\"."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+"Особи мають різні найменування: \"%(source_name)s\" та "
+"\"%(destination_name)s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"Особи мають різні податкові ідентифікатори: \"%(source_code)s\" та "
+"\"%(destination_code)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "Особу \"%(party)s\" не можна видалити, тому що вона все ще активна."
+
+msgctxt "model:ir.message,text:msg_identifier_type_remove"
+msgid ""
+"To remove the identifier type \"%(type)s\" from the configuration, you must "
+"change it on \"%(identifier)s\"."
+msgstr ""
+"Щоб вилучити з конфігурації тип ідентифікатора \"%(type)s\", вам слід "
+"змінити його у \"%(identifier)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "Код %(type)s \"%(code)s\" для особи \"%(party)s\" не є коректним."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Некоректний формат \"%(format)s\" з винятком \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "Номер телефону \"%(phone)s\" для особи \"%(party)s\" не є коректним."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "Код особи має бути унікальним."
+
+msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
+msgid ""
+"To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
+"contact mechanisms."
+msgstr ""
+"Щоб змінити \"%(field)s\" для особи \"%(party)s\", вам слід змінити її "
+"контактні механізми."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "Служба VIES недоступна, спробуйте пізніше."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Адреси"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Формати адрес"
+
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Типи адмін.поділів"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Категорії"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Категорії"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Налаштування"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Контактні механізми"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Parties"
+msgstr "Особи"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Configuration"
+msgstr "Налаштування"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Особи"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Адреса"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Формат адреси"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Тип адмін.поділу"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Категорія"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Перевірити VIES"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Налаштування осіб"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Мова налаштування осіб"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Послідовність налаштування осіб"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Контактний механізм"
+
+msgctxt "model:party.contact_mechanism.language,name:"
+msgid "Contact Mechanism Language"
+msgstr "Мова контактного механізму"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Видалити особу"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Ідентифікатор особи"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Особа - Категорія"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Мова особи"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Замінити особу"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Адміністрування осіб"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Albanian VAT Number"
+msgstr "Албанський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Andorra Tax Number"
+msgstr "Андорра, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian National Identity Number"
+msgstr "Аргентинський національний ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian Tax Number"
+msgstr "Аргентинський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Business Number"
+msgstr "Австралійський бізнес-номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Company Number"
+msgstr "Австралійський номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Tax File Number"
+msgstr "Австралійський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Company Register"
+msgstr "Австрійський реєстр компаній"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Social Security Number"
+msgstr "Австрійський номер соціального страхування"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Tax Identification"
+msgstr "Австрійський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Umsatzsteuer-Identifikationsnummer"
+msgstr "Австрійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belarus VAT Number"
+msgstr "Білоруський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Enterprise Number"
+msgstr "Бельгійський номер підприємства"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian Company Identifier"
+msgstr "Бразильський ідентифікатор компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian National Identifier"
+msgstr "Бразильський національний ідентифікатор"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr "Болгарський номер іноземця"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr "Болгарські особисті ідентифікаційні коди"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian VAT Number"
+msgstr "Болгарський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Business Number"
+msgstr "Канадський бізнес-номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Social Insurance Number"
+msgstr "Канадський номер соціального страхування"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chilean National Tax Number"
+msgstr "Чилійський національний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Resident Identity Card Number"
+msgstr "Китайський номер посвідчення особи резидента"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Unified Social Credit Code"
+msgstr "Китайський єдиний код соціального кредиту"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Business Tax Number"
+msgstr "Колумбійський податковий номер для бізнесу"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Identity Code"
+msgstr "Колумбійський ідентифікаційний код"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Коста-Ріка, ідентифікаційний номер іноземця"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Коста-Ріка, ідентифікаційний номер фізичної особи"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Tax Number"
+msgstr "Коста-Ріка, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Croatian Identification Number"
+msgstr "Хорватський ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cuban Identity Card Number"
+msgstr "Кубинський номер посвідчення особи"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cypriot VAT Number"
+msgstr "Кіпрський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech National Identifier"
+msgstr "Чеський національний ідентифікатор"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech VAT Number"
+msgstr "Чеський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish Citizen Number"
+msgstr "Датський номер громадянина"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish VAT Number"
+msgstr "Датський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic National Identification Number"
+msgstr "Домініканська Республіка, національний ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic Tax"
+msgstr "Домініканська Республіка, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Citizen Identification Number"
+msgstr "Голландський ідентифікаційний номер громадянина"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch School Identification Number"
+msgstr "Голландський шкільний ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Student Identification Number"
+msgstr "Голландський студентський ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch VAT Number"
+msgstr "Голландський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr "Еквадорський особистий ідентифікаційний код"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Tax Identification"
+msgstr "Еквадорський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "English Unique Pupil Number"
+msgstr "Англійський унікальний номер учня"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Organisation Registration Code"
+msgstr "Естонський реєстраційний код організації"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Personal ID Number"
+msgstr "Естонський особистий ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian VAT Number"
+msgstr "Естонський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European VAT Number"
+msgstr "Європейський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Association Identifier"
+msgstr "Фінський ідентифікатор асоціації"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Business Identifier"
+msgstr "Фінський бізнес-ідентифікатор"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Individual Tax Number"
+msgstr "Фінський індивідуальний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Personal Identity Code"
+msgstr "Фінський особистий ідентифікаційний код"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish VAT Number"
+msgstr "Фінський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Establishment Identification Number"
+msgstr "Французький ідентифікаційний номер установи компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Company Identification Number"
+msgstr "Французький ідентифікаційний номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Personal Identification Number"
+msgstr "Французький особистий ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Tax Identification Number"
+msgstr "Французький ідентифікаційний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French VAT Number"
+msgstr "Французький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Company Register Number"
+msgstr "Німецький реєстраційний номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Personal Tax Number"
+msgstr "Німецький особистий податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Tax Number"
+msgstr "Німецький податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German VAT Number"
+msgstr "Німецький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek Social Security Number"
+msgstr "Грецький номер соціального страхування"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek VAT Number"
+msgstr "Грецький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Guatemala Tax Number"
+msgstr "Гватемала, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Hungarian VAT Number"
+msgstr "Угорський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr "Ісландський ідентифікаційний код осіб та організацій"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic VAT Number"
+msgstr "Ісландський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr "Індійський цифровий ідентифікаційний номер резидента"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Income Tax Identifier"
+msgstr "Індійський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indonesian VAT Number"
+msgstr "Індонезійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish Personal Number"
+msgstr "Ірландський особистий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish VAT Number"
+msgstr "Ірландський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Company Number"
+msgstr "Ізраїльський номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Identity Number"
+msgstr "Ізраїльський ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian Tax Code for Individuals"
+msgstr "Італійський податковий код для фізичних осіб"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian VAT Number"
+msgstr "Італійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Japanese Corporate Number"
+msgstr "Японський номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Latvian VAT Number"
+msgstr "Латвійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Personal Number"
+msgstr "Литовський особистий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian VAT Number"
+msgstr "Литовський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Luxembourgian VAT Number"
+msgstr "Люксембурзький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr "Номер посвідчення особи національного реєстру Малайзії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Maltese VAT Number"
+msgstr "Мальтійський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mauritian National Identifier"
+msgstr "Маврикійський національний ідентифікатор"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mexican Tax Number"
+msgstr "Мексиканський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Moldavian Company Identification Number"
+msgstr "Молдавський ідентифікаційний номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Monacan VAT Number"
+msgstr "Монаканський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Нова Зеландія, номер Департаменту внутрішніх доходів"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Birth Number, the National Identity Number"
+msgstr "Норвезький номер народження, національний ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Organisation Number"
+msgstr "Норвезький номер організації"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian VAT Number"
+msgstr "Норвезький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Paraguay Tax Number"
+msgstr "Парагвай, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Company Tax Number"
+msgstr "Перуанський податковий номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Identity Number"
+msgstr "Перуанський ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish National Identification Number"
+msgstr "Польський національний ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish Register of Economic Units"
+msgstr "Польський реєстр економічних одиниць"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish VAT Number"
+msgstr "Польський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Portuguese VAT Number"
+msgstr "Португальський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian Numerical Personal Code"
+msgstr "Румунський числовий особистий код"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian ONRC Number"
+msgstr "Румунський номер Національного торгового реєстру"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian VAT Number"
+msgstr "Румунський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Tax identifier"
+msgstr "Російський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr "SEPA-ідентифікатор кредитора (AT-02)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "San Marino National Tax Number"
+msgstr "Сан-Марино, національний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Serbian Tax Identification"
+msgstr "Сербський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak Birth Number"
+msgstr "Словацький номер народження"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak VAT Number"
+msgstr "Словацький номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovenian VAT Number"
+msgstr "Словенський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Identity Document Number"
+msgstr "Південноафриканський ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Tax Identification Number"
+msgstr "Південноафриканський податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korea Business Registration Number"
+msgstr "Південна Корея, реєстраційний номер для бізнесу"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korean Resident Registration Number"
+msgstr "Південна Корея, реєстраційний номер резидента"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Company Tax"
+msgstr "Іспанський податковий номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Foreigner Number"
+msgstr "Іспанський номер іноземця"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Personal Identity Codes"
+msgstr "Іспанські особисті ідентифікаційні коди"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish VAT Number"
+msgstr "Іспанський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Company Number"
+msgstr "Шведський номер компанії"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Personal Number"
+msgstr "Шведський особистий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish VAT Number"
+msgstr "Шведський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Business Identifier"
+msgstr "Швейцарський бізнес-ідентифікатор"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Social Security Number"
+msgstr "Швейцарський номер соціального страхування"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss VAT Number"
+msgstr "Швейцарський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Personal Identification Number"
+msgstr "Турецький особистий ідентифікаційний номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr "США, ідентифікаційний податковий номер на усиновлення"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Employer Identification Number"
+msgstr "США, ідентифікаційний номер роботодавця"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr "США, індивідуальний ідентифікаційний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr "США, ідентифікаційний податковий номер реєстратора"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Social Security Number"
+msgstr "США, номер соціального страхування"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr "США, ідентифікаційний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Identifier for Enterprises and Organizations"
+msgstr "Український ідентифікатор підприємств та організацій"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ukrainian Individual Taxpayer Registration Number"
+msgstr "Український індивідуальний податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr "Великобританія (та острів Мен), номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr ""
+"Великобританія, ідентифікатор пацієнта Національної служби охорони здоров'я"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Uruguay Tax Number"
+msgstr "Уругвай, податковий номер"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Venezuelan VAT Number"
+msgstr "Венесуельський номер платника ПДВ"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Vietnam Tax Number"
+msgstr "В'єтнам, податковий номер"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "Ел.пошта"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Факс"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Мобільний"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Інший"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Телефон"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Скайп"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Веб-сайт"
+
+msgctxt "view:party.address:"
+msgid "General"
+msgstr "Загальна"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Загальна"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Замінити на"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Видалити"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Замінити"

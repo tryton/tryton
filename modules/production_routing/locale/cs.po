@@ -1,0 +1,89 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "Routings"
+
+#, fuzzy
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "Routings"
+
+#, fuzzy
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Routings"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr ""
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "Routings"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operations"
+
+#, fuzzy
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Operations"
+
+#, fuzzy
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "Routings"
+
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Operations"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "Routings"
+
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Operations"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "Routings"
+
+#, fuzzy
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "Routings"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operations"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr ""
