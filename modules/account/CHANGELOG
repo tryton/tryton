@@ -1,0 +1,53 @@
+Version 1.8.8 - 2013-05-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.7 - 2012-12-23
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.6 - 2012-09-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.5 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.4 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.3 - 2011-09-10
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.2 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.1 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
+* Add description field on account.tax.code.template and account.tax.code
+* Add tax field on account.tax.line
+* Remove unique constraint on tax group code column
+* Add default search value on account move
+* Remove egenix-mx-base and replace it by python-dateutil
+* Improve General Ledger to compute lines for each accounts at once
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add origin_tax field on account.tax.rule
+* Change get_receivable_payable on party.party to work with a list of name
+* Remove blocked field on account.move.line
+* Fix digits of amount on tax and tax line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add tax rule to replace vat and supplier_vat on party
+  Previous vat configuration will be lost
+* Allow to update chart of account from template
+* Change sequence on Journal into Property for multi-company
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

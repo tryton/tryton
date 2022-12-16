@@ -1,0 +1,17 @@
+type,name,res_id,src,value,fuzzy
+model,"ir.action,name",act_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Ligne de note de crédit fournisseur,0
+model,"ir.action,name",act_invoice_line_in_credit_note_form2,Supplier Credit Note Lines,Ligne de note de crédit fournisseur,0
+model,"ir.action,name",act_invoice_line_in_invoice_form,Supplier Invoice Lines,Ligne de facture fournisseur,0
+model,"ir.action,name",act_invoice_line_in_invoice_form2,Supplier Invoice Lines,Ligne de facture fournisseur,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form,Credit Note Lines,Lignes de note de crédit,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form2,Credit Note Lines,Lignes de note de crédit,0
+model,"ir.action,name",act_invoice_line_out_invoice_form,Invoice Lines,Lignes de factures,0
+model,"ir.action,name",act_invoice_line_out_invoice_form2,Invoice Lines,Lignes de factures,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Lignes de note de crédit fournisseur,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form2,New Supplier Credit Note Line,Nouvelle ligne de note de crédit fournisseur,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form,Supplier Invoice Lines,Lignes de facture fournisseur,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form2,New Supplier Invoice Line,Nouvelle ligne de facture fournisseur,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form,Credit Note Lines,Lignes de note de crédit,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form2,New Credit Note Line,Nouvelle ligne de note de crédit,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form,Invoice Lines,Lignes de factures,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form2,New Invoice Line,Nouvelle ligne de facture,0

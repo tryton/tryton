@@ -1,0 +1,1034 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Payment Terms" parent="account.menu_account_configuration"
+            id="menu_payment_terms_configuration"/>
+        <menuitem name="Invoices" parent="account.menu_account"
+            id="menu_invoices" sequence="20"/>
+
+        <record model="ir.action.wizard" id="wizard_pay_invoice">
+            <field name="name">Pay Invoice</field>
+            <field name="wiz_name">account.invoice.pay_invoice</field>
+            <field name="model">account.invoice</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice" col="6" cursor="party">
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="number"/>
+                    <field name="number"/>
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="invoice_address"/>
+                    <field name="invoice_address"/>
+                    <newline/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <notebook colspan="6">
+                        <page string="Invoice" id="invoice" col="6">
+                            <label name="invoice_date"/>
+                            <field name="invoice_date"/>
+                            <label name="payment_term"/>
+                            <field name="payment_term"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <field name="lines" colspan="6">
+                                <tree string="Lines" sequence="sequence" fill="1">
+                                    <field name="type"/>
+                                    <field name="product" select="1"/>
+                                    <field name="account" tree_invisible="1"/>
+                                    <field name="description"/>
+                                    <field name="quantity" select="1"/>
+                                    <field name="unit" select="2"/>
+                                    <field name="unit_price" select="2"/>
+                                    <field name="taxes"/>
+                                    <field name="amount"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                            <group col="2" colspan="6" id="taxes_amount_state_buttons">
+                                <group col="1" colspan="1" id="taxes">
+                                    <field name="taxes">
+                                        <tree string="Taxes" sequence="sequence" fill="1">
+                                            <field name="description"/>
+                                            <field name="base"/>
+                                            <field name="amount"/>
+                                            <field name="sequence" tree_invisible="1"/>
+                                            <field name="manual" tree_invisible="1"/>
+                                            <field name="base_code" tree_invisible="1"/>
+                                            <field name="base_sign" tree_invisible="1"/>
+                                            <field name="tax_code" tree_invisible="1"/>
+                                            <field name="tax_sign" tree_invisible="1"/>
+                                            <field name="account" tree_invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group col="2" colspan="1" id="amount_state_buttons">
+                                    <label name="untaxed_amount"/>
+                                    <field name="untaxed_amount"/>
+                                    <label name="tax_amount"/>
+                                    <field name="tax_amount"/>
+                                    <label name="total_amount"/>
+                                    <field name="total_amount"/>
+                                    <group col="4" colspan="2" id="reconciled_state">
+                                        <label name="reconciled"/>
+                                        <field name="reconciled" xexpand="0"/>
+                                        <label name="state"/>
+                                        <field name="state"/>
+                                    </group>
+                                    <group col="5" colspan="2" id="buttons">
+                                        <button name="cancel" string="_Cancel"
+                                            states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
+                                            icon="tryton-cancel"/>
+                                        <button name="button_draft" string="_Reset to Draft"
+                                            type="object"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"
+                                            icon="tryton-clear"/>
+                                        <button name="draft" string="_Draft"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'proforma'))}"
+                                            icon="tryton-go-previous"/>
+                                        <button name="proforma" string="Pro For_ma"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"
+                                            icon="tryton-go-next"/>
+                                        <button name="open" string="_Open"
+                                            states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
+                                            icon="tryton-ok"/>
+                                        <button name="%(wizard_pay_invoice)d" string="_Pay"
+                                            type="action"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'open')), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
+                                            icon="tryton-go-next"/>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info" id="info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <label name="account"/>
+                            <field name="account"/>
+                            <label name="accounting_date"/>
+                            <field name="accounting_date"/>
+                            <label name="move"/>
+                            <field name="move"/>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4"
+                                spell="Eval('party_lang')"/>
+                        </page>
+                        <page string="Payment" id="payment">
+                            <label name="amount_to_pay_today"/>
+                            <field name="amount_to_pay_today"/>
+                            <label name="amount_to_pay"/>
+                            <field name="amount_to_pay"/>
+                            <separator name="payment_lines" colspan="4"/>
+                            <field name="payment_lines" colspan="4">
+                                <tree string="Payment Lines">
+                                    <field name="date"/>
+                                    <field name="debit" sum="Debit"/>
+                                    <field name="credit" sum="Credit"/>
+                                    <field name="amount_second_currency"
+                                        sum="Amount Second Currency"/>
+                                    <field name="second_currency"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
+                                    <field name="second_currency_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="currency_digits" invisible="1" colspan="6"/>
+                    <field name="party_lang" invisible="1" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">account.invoice</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoices">
+                    <field name="type" select="2"/>
+                    <field name="number" select="1"/>
+                    <field name="reference" select="1"/>
+                    <field name="invoice_date" select="2"/>
+                    <field name="party" select="1"/>
+                    <field name="currency" select="2"/>
+                    <field name="untaxed_amount" select="2"/>
+                    <field name="tax_amount" select="2"/>
+                    <field name="total_amount" select="2"/>
+                    <field name="state" select="2"/>
+                    <field name="amount_to_pay_today"/>
+                    <field name="description" select="2"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                    <field name="create_date" tree_invisible="1" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">All Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_form"
+            id="menu_invoice_form" sequence="5"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_invoice')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_out_invoice_form"
+            id="menu_invoice_out_invoice_form" sequence="1"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_invoice_form2">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_invoice')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form2"/>
+        </record>
+        <menuitem name="New Invoice" parent="menu_invoice_out_invoice_form"
+            action="act_invoice_out_invoice_form2"
+            id="menu_invoice_out_invoice_form2" sequence="1"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_invoice_form3">
+            <field name="name">Draft Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'draft')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form3"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form3_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form3"/>
+        </record>
+        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form3"
+            id="menu_invoice_out_invoice_form3" sequence="2"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_invoice_form4">
+            <field name="name">Pro Forma Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'proforma')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form4_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form4"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form4_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form4"/>
+        </record>
+        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form4"
+            id="menu_invoice_out_invoice_form4" sequence="3"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_invoice_form5">
+            <field name="name">Opened Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'open')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form5_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form5"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form5_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_invoice_form5"/>
+        </record>
+        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form5"
+            id="menu_invoice_out_invoice_form5" sequence="4"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_credit_note')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_out_credit_note_form"
+            id="menu_invoice_out_credit_note_form" sequence="2"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form2">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_credit_note')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form2"/>
+        </record>
+        <menuitem name="New Credit Note" parent="menu_invoice_out_credit_note_form"
+            action="act_invoice_out_credit_note_form2"
+            id="menu_invoice_out_credit_note_form2" sequence="1"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form3">
+            <field name="name">Draft Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'draft')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form3"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form3_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form3"/>
+        </record>
+        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form3"
+            id="menu_invoice_out_credit_note_form3" sequence="2"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form4">
+            <field name="name">Pro Forma Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'proforma')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form4_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form4"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form4_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form4"/>
+        </record>
+        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form4"
+            id="menu_invoice_out_credit_note_form4" sequence="3"/>
+
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form5">
+            <field name="name">Opened Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'open')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form5_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form5"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form5_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form5"/>
+        </record>
+        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form5"
+            id="menu_invoice_out_credit_note_form5" sequence="4"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
+            <field name="name">Supplier Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_invoice')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_in_invoice_form"
+            id="menu_invoice_in_invoice_form" sequence="3"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_invoice_form2">
+            <field name="name">Supplier Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_invoice')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form2"/>
+        </record>
+        <menuitem name="New Supplier Invoice" parent="menu_invoice_in_invoice_form"
+            action="act_invoice_in_invoice_form2"
+            id="menu_invoice_in_invoice_form2" sequence="1"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_invoice_form3">
+            <field name="name">Draft Supplier Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'draft')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form3"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form3_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form3"/>
+        </record>
+        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form3"
+            id="menu_invoice_in_invoice_form3" sequence="2"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_invoice_form4">
+            <field name="name">Pro Forma Supplier Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'proforma')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form4_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form4"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form4_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form4"/>
+        </record>
+        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form4"
+            id="menu_invoice_in_invoice_form4" sequence="3"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_invoice_form5">
+            <field name="name">Opened Supplier Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'open')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form5_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form5"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form5_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_invoice_form5"/>
+        </record>
+        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form5"
+            id="menu_invoice_in_invoice_form5" sequence="4"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form">
+            <field name="name">Supplier Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_credit_note')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_in_credit_note_form"
+            id="menu_invoice_in_credit_note_form" sequence="4"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form2">
+            <field name="name">Supplier Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_credit_note')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form2"/>
+        </record>
+        <menuitem name="New Supplier Credit Note" parent="menu_invoice_in_credit_note_form"
+            action="act_invoice_in_credit_note_form2"
+            id="menu_invoice_in_credit_note_form2" sequence="1"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form3">
+            <field name="name">Draft Supplier Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'draft')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form3"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form3_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form3"/>
+        </record>
+        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form3"
+            id="menu_invoice_in_credit_note_form3" sequence="2"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form4">
+            <field name="name">Pro Forma Supplier Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'proforma')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form4_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form4"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form4_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form4"/>
+        </record>
+        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form4"
+            id="menu_invoice_in_credit_note_form4" sequence="3"/>
+
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form5">
+            <field name="name">Opened Supplier Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'open')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form5_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form5"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form5_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form5"/>
+        </record>
+        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form5"
+            id="menu_invoice_in_credit_note_form5" sequence="4"/>
+
+        <record model="ir.model.access" id="access_invoice">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_account">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.action.report" id="report_invoice">
+            <field name="name">Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice</field>
+            <field name="report">account_invoice/invoice.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice">
+            <field name="name">Invoice</field>
+            <field name="code">account.invoice</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('account.group_account_admin'))]"/>
+        </record>
+        <record model="workflow" id="invoice_workflow">
+            <field name="name">Invoice workflow</field>
+            <field name="model">account.invoice</field>
+            <field name="on_create" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_draft">
+            <field name="name">Draft</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+            <field name="flow_start" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_proforma">
+            <field name="name">Pro forma</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'proforma'})</field>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_open">
+            <field name="name">Open</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">set_number()&#10;create_move()&#10;write({'state': 'open'})&#10;print_invoice()</field>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_paid">
+            <field name="name">Paid</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'paid'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_cancel">
+            <field name="name">Canceled</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_proforma">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_proforma"/>
+            <field name="signal">proforma</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_draft">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_draft"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_open">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_open"/>
+            <field name="signal">open</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_open">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_open"/>
+            <field name="signal">open</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_open_paid">
+            <field name="act_from" ref="invoice_activity_open"/>
+            <field name="act_to" ref="invoice_activity_paid"/>
+            <field name="trigger_model">account.move.line</field>
+            <field name="trigger_expr_id">[x.id for x in lines_to_pay]</field>
+            <field name="condition">reconciled</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_cancel">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_cancel">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_line_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice Line" cursor="product">
+                    <label name="invoice"/>
+                    <field name="invoice" colspan="3"/>
+                    <notebook colspan="4">
+                        <page string="General" id="general">
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="sequence"/>
+                            <field name="sequence"/>
+                            <label name="product"/>
+                            <field name="product">
+                                <tree string="Products">
+                                    <field name="name" select="1"/>
+                                    <field name="code" select="1"/>
+                                    <field name="list_price_uom" select="2"/>
+                                    <field name="cost_price_uom" select="2"/>
+                                    <field name="default_uom" select="2"/>
+                                    <field name="active" select="2"/>
+                                </tree>
+                            </field>
+                            <label name="account"/>
+                            <field name="account"/>
+                            <newline/>
+                            <label name="description"/>
+                            <field name="description" colspan="3"
+                                spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
+                            <label name="quantity"/>
+                            <field name="quantity"/>
+                            <label name="unit"/>
+                            <field name="unit"/>
+                            <label name="unit_price"/>
+                            <field name="unit_price"/>
+                            <label name="amount"/>
+                            <field name="amount"/>
+                            <separator name="taxes" colspan="4"/>
+                            <field name="taxes" colspan="4"/>
+                        </page>
+                        <page string="Notes" id="notes">
+                            <separator name="note" colspan="4"/>
+                            <field name="note" colspan="4"
+                                spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
+                        </page>
+                    </notebook>
+                    <field name="unit_digits" invisible="1" colspan="4"/>
+                    <field name="currency_digits" invisible="1" colspan="4"/>
+                    <field name="party_lang" invisible="1" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_line_view_tree">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Lines">
+                    <field name="invoice" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="product" select="1"/>
+                    <field name="account" select="2"/>
+                    <field name="description" select="1"/>
+                    <field name="quantity" select="2"/>
+                    <field name="unit" select="2"/>
+                    <field name="unit_price" select="2"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.model.access" id="access_invoice_line">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_line_account">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_tax_view_form">
+            <field name="model">account.invoice.tax</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice Tax">
+                    <label name="invoice"/>
+                    <field name="invoice" colspan="3"/>
+                    <label name="description"/>
+                    <field name="description"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="manual"/>
+                    <field name="manual"/>
+                    <group col="6" colspan="4" string="Tax Code" id="tax_code">
+                        <label name="amount"/>
+                        <field name="amount"/>
+                        <label name="tax_code"/>
+                        <field name="tax_code"/>
+                        <label name="tax_sign"/>
+                        <field name="tax_sign"/>
+                        <label name="base"/>
+                        <field name="base"/>
+                        <label name="base_code"/>
+                        <field name="base_code"/>
+                        <label name="base_sign"/>
+                        <field name="base_sign"/>
+                    </group>
+                    <field name="tax" colspan="4" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_tax_view_tree">
+            <field name="model">account.invoice.tax</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Taxes">
+                    <field name="invoice" select="1"/>
+                    <field name="description" select="1"/>
+                    <field name="account" select="1"/>
+                    <field name="manual" select="2"/>
+                    <field name="base"/>
+                    <field name="amount"/>
+                    <field name="tax" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.model.access" id="access_invoice_tax">
+            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_tax_account">
+            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="pay_invoice_init_view_form">
+            <field name="model">account.invoice.pay_invoice.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Pay Invoice">
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pay_invoice_ask_view_form">
+            <field name="model">account.invoice.pay_invoice.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Pay Invoice">
+                    <label name="type"/>
+                    <field name="type" colspan="3"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <label name="amount_writeoff"/>
+                    <field name="amount_writeoff"/>
+                    <label name="currency_writeoff"/>
+                    <field name="currency_writeoff"/>
+                    <label name="account_writeoff"/>
+                    <field name="account_writeoff"/>
+                    <label name="journal_writeoff"/>
+                    <field name="journal_writeoff"/>
+                    <separator name="lines" colspan="4"/>
+                    <field name="lines" colspan="4">
+                        <tree string="Lines to Pay" fill="1">
+                            <field name="maturity_date"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
+                            <field name="amount_second_currency" sum="Amount Second Currency"/>
+                            <field name="second_currency"/>
+                            <field name="currency_digits" tree_invisible="1"/>
+                            <field name="second_currency_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
+                    <separator name="payment_lines" colspan="4"/>
+                    <field name="payment_lines" colspan="4">
+                        <tree string="Payment Lines" fill="1">
+                            <field name="date"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
+                            <field name="amount_second_currency" sum="Amount Second Currency"/>
+                            <field name="second_currency"/>
+                            <field name="currency_digits" tree_invisible="1"/>
+                            <field name="second_currency_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
+                    <field name="description" colspan="4" invisible="1"/>
+                    <field name="journal" colspan="4" invisible="1"/>
+                    <field name="date" colspan="4" invisible="1"/>
+                    <field name="company" colspan="4" invisible="1"/>
+                    <field name="invoice" colspan="4" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="print_invoice_report_warning_view_form">
+            <field name="model">account.invoice.print_invoice_report.warning</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print Invoice" col="2">
+                    <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2"
+                        align="0.5" id="warning"/>
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <label string="You have selected more than one invoice to print."
+                            align="0.0" id="selected"/>
+                        <label string="The invoices will be sent &lt;i&gt;directly&lt;/i&gt; to the printer."
+                            align="0.0" id="printer"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="print_invoice_report">
+            <field name="name">Invoice</field>
+            <field name="wiz_name">account.invoice.print_invoice_report</field>
+            <field name="model">account.invoice</field>
+        </record>
+        <record model="ir.action.keyword" id="print_invoice_report_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,0</field>
+            <field name="action" ref="print_invoice_report"/>
+        </record>
+
+        <record model="ir.ui.view" id="credit_invoice_init_view_form">
+            <field name="model">account.invoice.credit_invoice.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Credit Invoice" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="2" id="credit_refund">
+                        <label string="Are you sure to credit those/this invoice(s)?"
+                            align="0.0" id="credit" colspan="2"/>
+                        <label name="with_refund"/>
+                        <field name="with_refund"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="credit_invoice">
+            <field name="name">Credit</field>
+            <field name="wiz_name">account.invoice.credit_invoice</field>
+            <field name="model">account.invoice</field>
+        </record>
+        <record model="ir.action.keyword" id="credit_invoice_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice,0</field>
+            <field name="action" ref="credit_invoice"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_invoice">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_invoice1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_invoice"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_invoice_line">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_invoice_line1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice.line')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_invoice_line"/>
+        </record>
+    </data>
+</tryton>
