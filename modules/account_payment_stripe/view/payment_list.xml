@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/tree/button[@name='approve']" position="after">
+        <button string="Stripe Checkout" name="stripe_checkout"/>
+        <field name="stripe_checkout_needed" tree_invisible="1"/>
+        <button string="Stripe Capture" name="stripe_capture_"/>
+        <field name="stripe_capture_needed" tree_invisible="1"/>
+    </xpath>
+</data>

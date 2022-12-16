@@ -1,0 +1,57 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr ""
+"Il conto \"%(account)s\" per la controparte \"%(party)s\" non ha abbastanza "
+"deposito."
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "Conto"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "Descrizione"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "Deposito"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "Richiama il deposito in fattura"
+
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "Richiama il deposito"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "Deposito"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "Deposito"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "Richiama Deposito"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "Annulla"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "Richiama"
