@@ -1,0 +1,4887 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.account.deferral:"
+msgid "Deferral must be unique by account and fiscal year"
+msgstr "Отложеното плащане трябва да е уникално по сметка и финансова година"
+
+msgctxt "error:account.account.deferral:"
+msgid "You can not modify Account Deferral records"
+msgstr "Не може да променяте записи от Сметка с отложено плащане"
+
+msgctxt "error:account.account:"
+msgid "You can not delete account \"%s\" because it has move lines."
+msgstr ""
+
+msgctxt "error:account.account:"
+msgid "You can not delete accounts that have children."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "No fiscal year defined for \"%s\"."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "The balance of the account \"%s\" must be zero."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "You can not change the post move sequence in fiscal year \"%s\"."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid ""
+"You can not close fiscal year \"%s\" until you close all previous fiscal "
+"years."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid ""
+"You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
+"years."
+msgstr ""
+
+msgctxt "error:account.journal.period:"
+msgid "You can not create a journal - period on closed period \"%s\"."
+msgstr ""
+
+msgctxt "error:account.journal.period:"
+msgid "You can not modify/delete journal - period \"%s\" because it has moves."
+msgstr ""
+
+msgctxt "error:account.journal.period:"
+msgid ""
+"You can not open journal - period \"%(journal_period)s\" because period "
+"\"%(period)s\" is closed."
+msgstr ""
+
+msgctxt "error:account.journal.period:"
+msgid "You can only open one journal per period."
+msgstr ""
+
+msgctxt "error:account.journal.type:"
+msgid "The code must be unique."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Line \"%s\" (%d) already reconciled."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Move line cannot be created because there is no journal defined."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Party is required on line \"%s\""
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Party must not be set on line \"%s\""
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Wrong credit/debit values."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Wrong second currency sign."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "You can not add/modify lines in closed journal period \"%s\"."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid ""
+"You can not create a move line with account \"%s\" because it is a view "
+"account."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "You can not create a move line with account \"%s\" because it is inactive."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "You can not modify line \"%s\" because it is reconciled."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "You can not modify lines of move \"%s\" because it is already posted."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "wrong_second_currency_sign"
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not create a reconciliation where debit \"%(debit)s\" and credit "
+"\"%(credit)s\" differ."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid "You can not modify a reconciliation."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's account \"%(account)s\""
+" is configured as not reconcilable."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's party \"%(party1)s\" is"
+" different from \"%(party2)s\"."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid "You can not reconcile line \"%s\" because it is not in valid state."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid ""
+"The period of move \"%s\" is closed.\n"
+"Use the current period?"
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid ""
+"You can not create move \"%(move)s\" because it's date is outside its "
+"period."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not modify move \"%s\" because it is already posted."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not post move \"%s\" because it is an unbalanced."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not post move \"%s\" because it is empty."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid ""
+"You can not set to draft move \"%(move)s\" because period \"%(period)s\" is "
+"closed."
+msgstr ""
+
+msgctxt "error:account.open_aged_balance:"
+msgid "Warning"
+msgstr "Предупреждение"
+
+msgctxt "error:account.open_aged_balance:"
+msgid "You cannot define overlapping terms"
+msgstr "Не може да задавате припокриващи се срокове"
+
+msgctxt "error:account.period:"
+msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "No period defined for date \"%s\"."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not change the post move sequence of period \"%s\" because there are"
+" already posted moves in the period."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not close period \"%(period)s\" because there are non posted moves "
+"\"%(move)s\" in this period."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "You can not create a period on fiscal year \"%s\" because it is closed."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "You can not modify/delete period \"%s\" because it has moves."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not open period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+
+msgctxt "error:account.tax.template:"
+msgid ""
+"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
+"parent."
+msgstr ""
+
+msgctxt "error:account.tax:"
+msgid ""
+"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
+"parent."
+msgstr ""
+
+msgctxt "field:account.account,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.account,balance:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "field:account.account,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.account,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.account,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "field:account.account,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.account,debit:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "field:account.account,deferral:"
+msgid "Deferral"
+msgstr "С отложено плащане"
+
+msgctxt "field:account.account,deferrals:"
+msgid "Deferrals"
+msgstr "Отложени плащания"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr ""
+
+msgctxt "field:account.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account,kind:"
+msgid "Kind"
+msgstr "Вид"
+
+msgctxt "field:account.account,left:"
+msgid "Left"
+msgstr "Ляв"
+
+msgctxt "field:account.account,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account,note:"
+msgid "Note"
+msgstr "Бележка"
+
+msgctxt "field:account.account,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr ""
+
+msgctxt "field:account.account,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account,reconcile:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+msgctxt "field:account.account,right:"
+msgid "Right"
+msgstr "Десен"
+
+msgctxt "field:account.account,second_currency:"
+msgid "Secondary Currency"
+msgstr "Втора валута"
+
+msgctxt "field:account.account,taxes:"
+msgid "Default Taxes"
+msgstr "Данъци по подразбиране"
+
+msgctxt "field:account.account,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.account,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.account,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account-account.tax,account:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "field:account.account-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:account.account-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account.deferral,account:"
+msgid "Account"
+msgstr "Сметка"
+
+#, fuzzy
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "field:account.account.deferral,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account.deferral,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account.deferral,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "field:account.account.deferral,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.account.deferral,debit:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "field:account.account.deferral,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.account.deferral,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account.deferral,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.deferral,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account.deferral,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account.template,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.account.template,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.account.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account.template,deferral:"
+msgid "Deferral"
+msgstr "С отложено плащане"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr ""
+
+msgctxt "field:account.account.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account.template,kind:"
+msgid "Kind"
+msgstr "Вид"
+
+msgctxt "field:account.account.template,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.template,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr ""
+
+msgctxt "field:account.account.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.template,reconcile:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+msgctxt "field:account.account.template,taxes:"
+msgid "Default Taxes"
+msgstr "Данъци по подразбиране"
+
+msgctxt "field:account.account.template,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.account.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account.template-account.tax.template,account:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "field:account.account.template-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account.template-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account.template-account.tax.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account.template-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.template-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Шаблон за данък"
+
+msgctxt "field:account.account.template-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account.template-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account.type,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.account.type,balance_sheet:"
+msgid "Balance Sheet"
+msgstr "Дата на баланс"
+
+msgctxt "field:account.account.type,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.account.type,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.account.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account.type,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.account.type,display_balance:"
+msgid "Display Balance"
+msgstr "Показване на баланс"
+
+msgctxt "field:account.account.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account.type,income_statement:"
+msgid "Income Statement"
+msgstr "Отчет за приходи"
+
+msgctxt "field:account.account.type,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.type,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.account.type,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.type,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.account.type,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.account.type,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account.type,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.account.type.template,balance_sheet:"
+msgid "Balance Sheet"
+msgstr "Дата на баланс"
+
+msgctxt "field:account.account.type.template,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.account.type.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.account.type.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.account.type.template,display_balance:"
+msgid "Display Balance"
+msgstr "Показване на баланс"
+
+msgctxt "field:account.account.type.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.account.type.template,income_statement:"
+msgid "Income Statement"
+msgstr "Отчет за приходи"
+
+msgctxt "field:account.account.type.template,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.type.template,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.account.type.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.account.type.template,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.account.type.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.account.type.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.configuration,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.configuration,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.configuration,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "Разнодна сметка по подразбиране"
+
+msgctxt "field:account.configuration,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "Приходна сметка по подразбиране"
+
+msgctxt "field:account.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+msgctxt "field:account.configuration,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.configuration,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.create_chart.account,account_template:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "field:account.create_chart.account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.create_chart.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.create_chart.properties,account_payable:"
+msgid "Default Payable Account"
+msgstr "Разходна сметка по подразбиране"
+
+msgctxt "field:account.create_chart.properties,account_receivable:"
+msgid "Default Receivable Account"
+msgstr "Приходна сметка по подразбиране"
+
+msgctxt "field:account.create_chart.properties,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.create_chart.properties,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.create_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear,close_lines:"
+msgid "Close Lines"
+msgstr "Затваряне на редове"
+
+msgctxt "field:account.fiscalyear,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.fiscalyear,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.fiscalyear,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.fiscalyear,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.fiscalyear,end_date:"
+msgid "Ending Date"
+msgstr "Крайна дата"
+
+msgctxt "field:account.fiscalyear,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.fiscalyear,periods:"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "field:account.fiscalyear,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "Последователност за след движение"
+
+msgctxt "field:account.fiscalyear,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.fiscalyear,start_date:"
+msgid "Starting Date"
+msgstr "Начална дата"
+
+msgctxt "field:account.fiscalyear,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.fiscalyear,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.fiscalyear,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.fiscalyear-account.move.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.fiscalyear-account.move.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.fiscalyear-account.move.line,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.fiscalyear-account.move.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear-account.move.line,line:"
+msgid "Line"
+msgstr "Ред"
+
+msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.fiscalyear-account.move.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
+msgid "Fiscal Year to close"
+msgstr "Финансова година за затваряне"
+
+msgctxt "field:account.fiscalyear.close.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.journal,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.journal,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.journal,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.journal,credit_account:"
+msgid "Default Credit Account"
+msgstr "Кредитна сметка по подразбиране"
+
+msgctxt "field:account.journal,debit_account:"
+msgid "Default Debit Account"
+msgstr "Дебитна сметка по подразбиране"
+
+msgctxt "field:account.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.journal,type:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:account.journal,update_posted:"
+msgid "Allow updating posted moves"
+msgstr "Позволяване на отмяна на движение"
+
+msgctxt "field:account.journal,view:"
+msgid "View"
+msgstr "Изглед"
+
+msgctxt "field:account.journal,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.journal,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.journal.period,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.journal.period,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.journal.period,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.journal.period,icon:"
+msgid "Icon"
+msgstr "Икона"
+
+msgctxt "field:account.journal.period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal.period,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.journal.period,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.period,period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "field:account.journal.period,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.period,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.journal.period,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.journal.period,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.journal.type,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.journal.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.journal.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.journal.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal.type,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.type,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.type,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.journal.type,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.journal.view,columns:"
+msgid "Columns"
+msgstr "Колони"
+
+msgctxt "field:account.journal.view,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.journal.view,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.journal.view,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal.view,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.view,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.view,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.journal.view,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.journal.view.column,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.journal.view.column,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.journal.view.column,field:"
+msgid "Field"
+msgstr "Поле"
+
+msgctxt "field:account.journal.view.column,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.journal.view.column,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.view.column,readonly:"
+msgid "Readonly"
+msgstr "Само за четене"
+
+msgctxt "field:account.journal.view.column,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.journal.view.column,required:"
+msgid "Required"
+msgstr "Задължителен"
+
+msgctxt "field:account.journal.view.column,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.journal.view.column,view:"
+msgid "View"
+msgstr "Изглед"
+
+msgctxt "field:account.journal.view.column,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.journal.view.column,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.move,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.move,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.move,date:"
+msgid "Effective Date"
+msgstr "Ефективна дата"
+
+#, fuzzy
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.move,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+#, fuzzy
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "Номер"
+
+#, fuzzy
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "Източник"
+
+msgctxt "field:account.move,period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "field:account.move,post_date:"
+msgid "Post Date"
+msgstr "Дата на публикуване"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr ""
+
+msgctxt "field:account.move,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.move,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.move,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.move,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.move.cancel.default,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line,account:"
+msgid "Account"
+msgstr "Сметка"
+
+#, fuzzy
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr ""
+
+msgctxt "field:account.move.line,amount_currency_digits:"
+msgid "Amount Currency Digits"
+msgstr ""
+
+msgctxt "field:account.move.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Сума в допълнителна валута"
+
+msgctxt "field:account.move.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.move.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.move.line,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "field:account.move.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.move.line,date:"
+msgid "Effective Date"
+msgstr "Ефективна дата"
+
+msgctxt "field:account.move.line,debit:"
+msgid "Debit"
+msgstr "Дебит"
+
+#, fuzzy
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.move.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.move.line,maturity_date:"
+msgid "Maturity Date"
+msgstr "Дата на падеж"
+
+msgctxt "field:account.move.line,move:"
+msgid "Move"
+msgstr "Движение"
+
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr ""
+
+msgctxt "field:account.move.line,move_state:"
+msgid "Move State"
+msgstr "Състояние на движение"
+
+#, fuzzy
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "Източник"
+
+msgctxt "field:account.move.line,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr ""
+
+msgctxt "field:account.move.line,period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "field:account.move.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.move.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "Съгласуване"
+
+msgctxt "field:account.move.line,second_currency:"
+msgid "Second Currency"
+msgstr "Втора валута"
+
+msgctxt "field:account.move.line,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Цифри за втора валута"
+
+msgctxt "field:account.move.line,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.move.line,tax_lines:"
+msgid "Tax Lines"
+msgstr "Ред на данъци"
+
+msgctxt "field:account.move.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.move.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "Движение"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "Управление на партньор"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.template,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "Данъци"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.move.line.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.move.open_journal.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.open_journal.ask,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.move.open_journal.ask,period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "field:account.move.print_general_journal.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.move.print_general_journal.start,from_date:"
+msgid "From Date"
+msgstr "От дата"
+
+msgctxt "field:account.move.print_general_journal.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.print_general_journal.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.move.print_general_journal.start,to_date:"
+msgid "To Date"
+msgstr "До дата"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.move.reconciliation,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.move.reconciliation,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.move.reconciliation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.reconciliation,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.move.reconciliation,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.move.reconciliation,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.move.reconciliation,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.move.reconciliation,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.move.template,active:"
+msgid "Active"
+msgstr "Активен"
+
+#, fuzzy
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.move.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.move.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.move.template,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "Ключови думи"
+
+#, fuzzy
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "Транзакции"
+
+#, fuzzy
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.move.template,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.move.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.move.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.keywords,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "Период"
+
+#, fuzzy
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "Движение"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "Задължителен"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.move.template.keyword,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.open_aged_balance.start,balance_type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.open_aged_balance.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.open_aged_balance.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.open_aged_balance.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.open_aged_balance.start,term1:"
+msgid "First Term"
+msgstr "Пъври период"
+
+msgctxt "field:account.open_aged_balance.start,term2:"
+msgid "Second Term"
+msgstr "Втори период"
+
+msgctxt "field:account.open_aged_balance.start,term3:"
+msgid "Third Term"
+msgstr "Трети период"
+
+msgctxt "field:account.open_aged_balance.start,unit:"
+msgid "Unit"
+msgstr "Единица"
+
+msgctxt "field:account.open_balance_sheet.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.open_balance_sheet.start,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.open_balance_sheet.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.open_balance_sheet.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.open_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.open_chart.start,posted:"
+msgid "Posted Moves"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.open_income_statement.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.open_income_statement.start,end_period:"
+msgid "End Period"
+msgstr "Край на период"
+
+msgctxt "field:account.open_income_statement.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.open_income_statement.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.open_income_statement.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.open_income_statement.start,start_period:"
+msgid "Start Period"
+msgstr "Начален период"
+
+msgctxt "field:account.open_third_party_balance.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.open_third_party_balance.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.open_third_party_balance.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.open_third_party_balance.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.period,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.period,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.period,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.period,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.period,end_date:"
+msgid "Ending Date"
+msgstr "Крайна дата"
+
+msgctxt "field:account.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.period,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.period,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "Последователност за след движение"
+
+msgctxt "field:account.period,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.period,start_date:"
+msgid "Starting Date"
+msgstr "Начална дата"
+
+msgctxt "field:account.period,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.period,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.period,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.period,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.print_general_ledger.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.print_general_ledger.start,empty_account:"
+msgid "Empty Account"
+msgstr "Празна сметка"
+
+msgctxt "field:account.print_general_ledger.start,end_period:"
+msgid "End Period"
+msgstr "Край на период"
+
+msgctxt "field:account.print_general_ledger.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.print_general_ledger.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.print_general_ledger.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.print_general_ledger.start,start_period:"
+msgid "Start Period"
+msgstr "Начален период"
+
+msgctxt "field:account.print_trial_balance.start,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.print_trial_balance.start,empty_account:"
+msgid "Empty Account"
+msgstr "Празна сметка"
+
+msgctxt "field:account.print_trial_balance.start,end_period:"
+msgid "End Period"
+msgstr "Край на период"
+
+msgctxt "field:account.print_trial_balance.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.print_trial_balance.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.print_trial_balance.start,posted:"
+msgid "Posted Move"
+msgstr "Публикувано движение"
+
+msgctxt "field:account.print_trial_balance.start,start_period:"
+msgid "Start Period"
+msgstr "Начален период"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "Транзакции"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "Партньори"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "Управление на партньор"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write-Off"
+msgstr "Анулиран"
+
+msgctxt "field:account.tax,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.tax,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.tax,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.tax,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "Сметка на кредитно известие"
+
+msgctxt "field:account.tax,credit_note_base_code:"
+msgid "Credit Note Base Code"
+msgstr "Основен код на кредитно известие"
+
+msgctxt "field:account.tax,credit_note_base_sign:"
+msgid "Credit Note Base Sign"
+msgstr "Знак на кредитно известие"
+
+msgctxt "field:account.tax,credit_note_tax_code:"
+msgid "Credit Note Tax Code"
+msgstr "Код на данък на кредитно известие"
+
+msgctxt "field:account.tax,credit_note_tax_sign:"
+msgid "Credit Note Tax Sign"
+msgstr "Знак на данък на кредитно известие"
+
+msgctxt "field:account.tax,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.tax,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Крайна дата"
+
+msgctxt "field:account.tax,group:"
+msgid "Group"
+msgstr "Група"
+
+msgctxt "field:account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax,invoice_account:"
+msgid "Invoice Account"
+msgstr "Сметка за фактура"
+
+msgctxt "field:account.tax,invoice_base_code:"
+msgid "Invoice Base Code"
+msgstr "Основен код на фактура"
+
+msgctxt "field:account.tax,invoice_base_sign:"
+msgid "Invoice Base Sign"
+msgstr "Основен знак на фактура"
+
+msgctxt "field:account.tax,invoice_tax_code:"
+msgid "Invoice Tax Code"
+msgstr "Код на данък на фактура"
+
+msgctxt "field:account.tax,invoice_tax_sign:"
+msgid "Invoice Tax Sign"
+msgstr "Знак на данък на фактура"
+
+msgctxt "field:account.tax,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+#, fuzzy
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "Отношение"
+
+msgctxt "field:account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+#, fuzzy
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Начална дата"
+
+msgctxt "field:account.tax,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.tax,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr ""
+
+msgctxt "field:account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.code,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.tax.code,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.tax.code,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.tax.code,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.tax.code,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.code,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.code,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.tax.code,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.tax.code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.code,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.code,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.tax.code,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.code,sum:"
+msgid "Sum"
+msgstr "Сума"
+
+msgctxt "field:account.tax.code,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.tax.code,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.code,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "field:account.tax.code.open_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.code.open_chart.start,method:"
+msgid "Method"
+msgstr "Метод"
+
+msgctxt "field:account.tax.code.open_chart.start,periods:"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "field:account.tax.code.template,account:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "field:account.tax.code.template,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.tax.code.template,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.tax.code.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.code.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.code.template,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.tax.code.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.code.template,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.code.template,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:account.tax.code.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.code.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.code.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.group,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:account.tax.group,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.group,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.group,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "Вид"
+
+msgctxt "field:account.tax.group,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.group,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.group,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.group,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.line,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.tax.line,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.tax.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.tax.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.line,move_line:"
+msgid "Move Line"
+msgstr "Ред от движение"
+
+msgctxt "field:account.tax.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.line,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:account.tax.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "Ред"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.rule,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.tax.rule,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.rule,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "Вид"
+
+msgctxt "field:account.tax.rule,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.tax.rule,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.tax.rule,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.rule,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.rule.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.rule.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.rule.line,group:"
+msgid "Tax Group"
+msgstr "Данъчна група"
+
+msgctxt "field:account.tax.rule.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.rule.line,origin_tax:"
+msgid "Original Tax"
+msgstr "Оригинален данък"
+
+msgctxt "field:account.tax.rule.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule.line,rule:"
+msgid "Rule"
+msgstr "Правило"
+
+msgctxt "field:account.tax.rule.line,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.tax.rule.line,tax:"
+msgid "Substitution Tax"
+msgstr "Заместващ данък"
+
+msgctxt "field:account.tax.rule.line,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.tax.rule.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.rule.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.rule.line.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.rule.line.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.rule.line.template,group:"
+msgid "Tax Group"
+msgstr "Данъчна група"
+
+msgctxt "field:account.tax.rule.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.rule.line.template,origin_tax:"
+msgid "Original Tax"
+msgstr "Оригинален данък"
+
+msgctxt "field:account.tax.rule.line.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule.line.template,rule:"
+msgid "Rule"
+msgstr "Правило"
+
+msgctxt "field:account.tax.rule.line.template,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.tax.rule.line.template,tax:"
+msgid "Substitution Tax"
+msgstr "Заместващ данък"
+
+msgctxt "field:account.tax.rule.line.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.rule.line.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.rule.template,account:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "field:account.tax.rule.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.rule.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.rule.template,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "Вид"
+
+msgctxt "field:account.tax.rule.template,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.tax.rule.template,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.rule.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.rule.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.tax.template,account:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "field:account.tax.template,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.tax.template,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.tax.template,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "Сметка на кредитно известие"
+
+msgctxt "field:account.tax.template,credit_note_base_code:"
+msgid "Credit Note Base Code"
+msgstr "Основен код на кредитно известие"
+
+msgctxt "field:account.tax.template,credit_note_base_sign:"
+msgid "Credit Note Base Sign"
+msgstr "Знак на кредитно известие"
+
+msgctxt "field:account.tax.template,credit_note_tax_code:"
+msgid "Credit Note Tax Code"
+msgstr "Код на данък на кредитно известие"
+
+msgctxt "field:account.tax.template,credit_note_tax_sign:"
+msgid "Credit Note Tax Sign"
+msgstr "Знак на данък на кредитно известие"
+
+msgctxt "field:account.tax.template,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Крайна дата"
+
+msgctxt "field:account.tax.template,group:"
+msgid "Group"
+msgstr "Група"
+
+msgctxt "field:account.tax.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.template,invoice_account:"
+msgid "Invoice Account"
+msgstr "Сметка за фактура"
+
+msgctxt "field:account.tax.template,invoice_base_code:"
+msgid "Invoice Base Code"
+msgstr "Основен код на фактура"
+
+msgctxt "field:account.tax.template,invoice_base_sign:"
+msgid "Invoice Base Sign"
+msgstr "Основен знак на фактура"
+
+msgctxt "field:account.tax.template,invoice_tax_code:"
+msgid "Invoice Tax Code"
+msgstr "Код на данък на фактура"
+
+msgctxt "field:account.tax.template,invoice_tax_sign:"
+msgid "Invoice Tax Sign"
+msgstr "Знак на данък на фактура"
+
+msgctxt "field:account.tax.template,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.template,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+#, fuzzy
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "Отношение"
+
+msgctxt "field:account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.tax.template,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+#, fuzzy
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Начална дата"
+
+msgctxt "field:account.tax.template,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr ""
+
+msgctxt "field:account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.update_chart.start,account:"
+msgid "Root Account"
+msgstr "Основна сметка"
+
+msgctxt "field:account.update_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.update_chart.succeed,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,account_payable:"
+msgid "Account Payable"
+msgstr "Разходна сметка"
+
+msgctxt "field:party.party,account_receivable:"
+msgid "Account Receivable"
+msgstr "Приходна сметка"
+
+msgctxt "field:party.party,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "Правило за данък на клиент"
+
+msgctxt "field:party.party,payable:"
+msgid "Payable"
+msgstr "Разходен"
+
+msgctxt "field:party.party,payable_today:"
+msgid "Payable Today"
+msgstr "За плащане днес"
+
+msgctxt "field:party.party,receivable:"
+msgid "Receivable"
+msgstr "За получаване"
+
+msgctxt "field:party.party,receivable_today:"
+msgid "Receivable Today"
+msgstr "За получаване днес"
+
+msgctxt "field:party.party,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "Правило за данък на доставчик"
+
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report"
+msgstr ""
+
+msgctxt "help:account.account,reconcile:"
+msgid ""
+"Allow move lines of this account \n"
+"to be reconciled."
+msgstr ""
+"Позволява редове от тази сметка\n"
+"да бъдат съгласувани"
+
+msgctxt "help:account.account,second_currency:"
+msgid ""
+"Force all moves for this account \n"
+"to have this secondary currency."
+msgstr ""
+"Всички движение по тази сметка\n"
+"задължително да имат втора валута"
+
+msgctxt "help:account.account,taxes:"
+msgid ""
+"Default tax for manual encoding of move lines \n"
+"for journal types: \"expense\" and \"revenue\""
+msgstr ""
+"Данък по подразбиране за ръчно кодиране на редове за движение\n"
+"за видове дневници: \"разход\" и \"приход\""
+
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report"
+msgstr ""
+
+msgctxt "help:account.account.type,sequence:"
+msgid "Use to order the account type"
+msgstr "За подреждане на вида на сметка"
+
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number"
+msgstr ""
+
+msgctxt "help:account.move.line,amount_second_currency:"
+msgid "The amount expressed in a second currency"
+msgstr "Сумата изразена във втора валута"
+
+msgctxt "help:account.move.line,maturity_date:"
+msgid ""
+"This field is used for payable and receivable lines. \n"
+"You can put the limit date for the payment."
+msgstr ""
+"Полето се използва за редове за разходни и приходи.\n"
+"Може да зададете крайна дата за плащането."
+
+msgctxt "help:account.move.line,second_currency:"
+msgid "The second currency"
+msgstr "Втората валута"
+
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')"
+msgstr ""
+
+msgctxt "help:account.move.print_general_journal.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today"
+msgstr ""
+
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')"
+msgstr ""
+
+msgctxt "help:account.open_aged_balance.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.open_balance_sheet.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year"
+msgstr "Оставете празно за всички отворени финансови години"
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,posted:"
+msgid "Show posted moves only"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.open_income_statement.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.open_third_party_balance.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.print_general_ledger.start,empty_account:"
+msgid "With account without move"
+msgstr "Със сметка без движение"
+
+msgctxt "help:account.print_general_ledger.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.print_trial_balance.start,empty_account:"
+msgid "With account without move"
+msgstr "Със сметка без движение"
+
+msgctxt "help:account.print_trial_balance.start,posted:"
+msgid "Show only posted move"
+msgstr "Показване само на публикувани движения"
+
+msgctxt "help:account.tax,amount:"
+msgid "In company's currency"
+msgstr "Във валута на фирмата"
+
+msgctxt "help:account.tax,credit_note_base_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обикновенно 1 или -1"
+
+msgctxt "help:account.tax,credit_note_tax_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обикновенно 1 или -1"
+
+msgctxt "help:account.tax,description:"
+msgid "The name that will be used in reports"
+msgstr "Името което ще се използва в справките"
+
+msgctxt "help:account.tax,invoice_base_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обикновенно 1 или -1"
+
+msgctxt "help:account.tax,invoice_tax_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обикновенно 1 или -1"
+
+msgctxt "help:account.tax,sequence:"
+msgid "Use to order the taxes"
+msgstr "За подреждане на данъците"
+
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation willbe modified "
+"by this tax"
+msgstr ""
+
+msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year"
+msgstr "Оставете празно за всички отворени финансови години"
+
+msgctxt "help:account.tax.code.open_chart.start,periods:"
+msgid "Leave empty for all periods of all open fiscal year"
+msgstr "Оствете празно за всички периоди за всички финансови години"
+
+msgctxt "help:account.tax.rule.line,origin_tax:"
+msgid ""
+"If the original tax is filled, the rule will be applied only for this tax."
+msgstr ""
+"Ако е попълнен оригиналния данък правилото ще бъде изпълено само за този "
+"данък."
+
+msgctxt "help:account.tax.rule.line.template,origin_tax:"
+msgid ""
+"If the original tax template is filled, the rule will be applied only for "
+"this tax template."
+msgstr ""
+"Ако е попълнен шаблона на орифиналния данък правилото ще се приложи само за "
+"този шаблон на данък"
+
+msgctxt "help:party.party,customer_tax_rule:"
+msgid "Apply this rule on taxes when party is customer."
+msgstr "Приложи това правило върху данъци ако партньора е клиент"
+
+msgctxt "help:party.party,supplier_tax_rule:"
+msgid "Apply this rule on taxes when party is supplier."
+msgstr "Прилагане на това правило за данъци ако партньора е доставчик."
+
+msgctxt "model:account.account,name:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "model:account.account-account.tax,name:"
+msgid "Account - Tax"
+msgstr "Сметка - Данък"
+
+msgctxt "model:account.account.deferral,name:"
+msgid "Account Deferral"
+msgstr "Сметка с отложено плащане"
+
+msgctxt "model:account.account.template,name:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "model:account.account.template,name:account_template_cash"
+msgid "Main Cash"
+msgstr "Основна наличност"
+
+msgctxt "model:account.account.template,name:account_template_expense"
+msgid "Main Expense"
+msgstr "Основена разходи"
+
+msgctxt "model:account.account.template,name:account_template_payable"
+msgid "Main Payable"
+msgstr "Основна разходна сметка"
+
+msgctxt "model:account.account.template,name:account_template_receivable"
+msgid "Main Receivable"
+msgstr "Основна приходна сметка"
+
+msgctxt "model:account.account.template,name:account_template_revenue"
+msgid "Main Revenue"
+msgstr "Основна приходи"
+
+msgctxt "model:account.account.template,name:account_template_root"
+msgid "Minimal Account Chart"
+msgstr "Минимална графика на сметката"
+
+msgctxt "model:account.account.template,name:account_template_tax"
+msgid "Main Tax"
+msgstr "Основна данъци"
+
+msgctxt "model:account.account.template-account.tax.template,name:"
+msgid "Account Template - Tax Template"
+msgstr "Шаблон на сметка - Шаблон на данък"
+
+msgctxt "model:account.account.type,name:"
+msgid "Account Type"
+msgstr "Вид сметка"
+
+msgctxt "model:account.account.type.template,name:"
+msgid "Account Type Template"
+msgstr "Шаблон на вид сметка"
+
+msgctxt "model:account.account.type.template,name:account_type_template_asset"
+msgid "Asset"
+msgstr "Притежание"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current"
+msgid "Current"
+msgstr "Текущ"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_cash"
+msgid "Cash"
+msgstr "В брой"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_receivable"
+msgid "Receivable"
+msgstr "За получаване"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_long_term"
+msgid "Long-term"
+msgstr "Дългосрочен"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_equity"
+msgid "Equity"
+msgstr "Капитал"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_expense"
+msgid "Expense"
+msgstr "Разход"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_income"
+msgid "Income"
+msgstr "Приход"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_liability"
+msgid "Liability"
+msgstr "Дълг"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_liability_current"
+msgid "Current"
+msgstr "Текущ"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_liability_current_payable"
+msgid "Payable"
+msgstr "Разходен"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_liability_current_tax"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_liability_long_term"
+msgid "Long-term"
+msgstr "Дългосрочен"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_minimal"
+msgid "Minimal Account Type Chart"
+msgstr "Минимален сметкоплан"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_off_balance"
+msgid "Off-Balance"
+msgstr "Неутрално салдо"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_revenue"
+msgid "Revenue"
+msgstr "Приход"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "Настройване на сметка"
+
+msgctxt "model:account.create_chart.account,name:"
+msgid "Create Chart"
+msgstr "Създаване на графика"
+
+msgctxt "model:account.create_chart.properties,name:"
+msgid "Create Chart"
+msgstr "Създаване на графика"
+
+msgctxt "model:account.create_chart.start,name:"
+msgid "Create Chart"
+msgstr "Създаване на графика"
+
+msgctxt "model:account.fiscalyear,name:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "model:account.fiscalyear-account.move.line,name:"
+msgid "Fiscal Year - Move Line"
+msgstr "Финансова година - Ред от движение"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr ""
+
+msgctxt "model:account.fiscalyear.close.start,name:"
+msgid "Close Fiscal Year"
+msgstr "Затваряне на финансова година"
+
+msgctxt "model:account.journal,name:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "В брой"
+
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "Разход"
+
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "Приход"
+
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "Наличност"
+
+msgctxt "model:account.journal.period,name:"
+msgid "Journal - Period"
+msgstr "Дневник - Период"
+
+msgctxt "model:account.journal.type,name:"
+msgid "Journal Type"
+msgstr "Вид дневник"
+
+msgctxt "model:account.journal.type,name:journal_type_cash"
+msgid "Cash"
+msgstr "В брой"
+
+msgctxt "model:account.journal.type,name:journal_type_expense"
+msgid "Expense"
+msgstr "Разход"
+
+msgctxt "model:account.journal.type,name:journal_type_general"
+msgid "General"
+msgstr "Основен"
+
+msgctxt "model:account.journal.type,name:journal_type_revenue"
+msgid "Revenue"
+msgstr "Приход"
+
+msgctxt "model:account.journal.type,name:journal_type_situation"
+msgid "Situation"
+msgstr "Положение"
+
+#, fuzzy
+msgctxt "model:account.journal.type,name:journal_type_write_off"
+msgid "Write-Off"
+msgstr "Анулиран"
+
+msgctxt "model:account.journal.view,name:"
+msgid "Journal View"
+msgstr "Изглед на дневник"
+
+msgctxt "model:account.journal.view.column,name:"
+msgid "Journal View Column"
+msgstr "Колона от изглед на дневник"
+
+msgctxt "model:account.move,name:"
+msgid "Account Move"
+msgstr "Движение по сметка"
+
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr ""
+
+msgctxt "model:account.move.line,name:"
+msgid "Account Move Line"
+msgstr "Ред от движение по сметка"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr ""
+
+msgctxt "model:account.move.open_journal.ask,name:"
+msgid "Open Journal Ask"
+msgstr "Запитване за отваряне на дневник"
+
+msgctxt "model:account.move.print_general_journal.start,name:"
+msgid "Print General Journal"
+msgstr "Отпечатване на основен дневник"
+
+msgctxt "model:account.move.reconcile_lines.writeoff,name:"
+msgid "Reconcile Lines Write-Off"
+msgstr "Съгласуване на редове на отписване"
+
+msgctxt "model:account.move.reconciliation,name:"
+msgid "Account Move Reconciliation Lines"
+msgstr "Редове от съгласуване на движение по сметка"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr ""
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr ""
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr ""
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr ""
+
+msgctxt "model:account.open_aged_balance.start,name:"
+msgid "Open Aged Balance"
+msgstr "Отваряне на хронологичен баланс"
+
+msgctxt "model:account.open_balance_sheet.start,name:"
+msgid "Open Balance Sheet"
+msgstr "Отваряне на баланс"
+
+msgctxt "model:account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Отваряне на сметкоплан"
+
+msgctxt "model:account.open_income_statement.start,name:"
+msgid "Open Income Statement"
+msgstr "Отваряне на отчет за приходи"
+
+msgctxt "model:account.open_third_party_balance.start,name:"
+msgid "Open Third Party Balance"
+msgstr "Баланс на друг партньор"
+
+msgctxt "model:account.period,name:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "model:account.print_general_ledger.start,name:"
+msgid "Print General Ledger"
+msgstr "Отпечатване на главна книга"
+
+msgctxt "model:account.print_trial_balance.start,name:"
+msgid "Print Trial Balance"
+msgstr "Отпечатване на пробен баланс"
+
+#, fuzzy
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+msgctxt "model:account.tax,name:"
+msgid "Account Tax"
+msgstr "Данък на сметка"
+
+msgctxt "model:account.tax.code,name:"
+msgid "Tax Code"
+msgstr "Код на данък"
+
+msgctxt "model:account.tax.code.open_chart.start,name:"
+msgid "Open Chart of Tax Codes"
+msgstr "Отваряне на таблица с кодове на данъци"
+
+msgctxt "model:account.tax.code.template,name:"
+msgid "Tax Code Template"
+msgstr "Шаблони за кодове на данъци"
+
+msgctxt "model:account.tax.group,name:"
+msgid "Tax Group"
+msgstr "Данъчна група"
+
+msgctxt "model:account.tax.line,name:"
+msgid "Tax Line"
+msgstr "Ред на данък"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr ""
+
+msgctxt "model:account.tax.rule,name:"
+msgid "Tax Rule"
+msgstr "Правило за данък"
+
+msgctxt "model:account.tax.rule.line,name:"
+msgid "Tax Rule Line"
+msgstr "Ред от правило на данък"
+
+msgctxt "model:account.tax.rule.line.template,name:"
+msgid "Tax Rule Line Template"
+msgstr "Шаблон на ред от правило на данък"
+
+msgctxt "model:account.tax.rule.template,name:"
+msgid "Tax Rule Template"
+msgstr "Шаблон на правило за данък"
+
+msgctxt "model:account.tax.template,name:"
+msgid "Account Tax Template"
+msgstr "Шаблон на данък на сметка"
+
+msgctxt "model:account.update_chart.start,name:"
+msgid "Update Chart"
+msgstr "Обновяване на графика"
+
+msgctxt "model:account.update_chart.succeed,name:"
+msgid "Update Chart"
+msgstr "Обновяване на графика"
+
+msgctxt "model:ir.action,name:"
+msgid "Payable Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
+msgid "Balance Sheet"
+msgstr "Дата на баланс"
+
+msgctxt "model:ir.action,name:act_account_income_statement_tree"
+msgid "Income Statement"
+msgstr "Отчет за приходи"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "Сметки"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list2"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "model:ir.action,name:act_account_template_tree"
+msgid "Account Templates"
+msgstr "Шаблони на сметка"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "Видове сметки"
+
+msgctxt "model:ir.action,name:act_account_type_template_tree"
+msgid "Account Type Templates"
+msgstr "Шаблони на вид сметка"
+
+msgctxt "model:ir.action,name:act_account_type_tree"
+msgid "Account Types"
+msgstr "Видове сметки"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_close_fiscalyear"
+msgid "Close Fiscal Year"
+msgstr "Затваряне на финансова година"
+
+msgctxt "model:ir.action,name:act_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Отваряне на таблица с кодове на данъци"
+
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Account Configuration"
+msgstr "Настройване на сметка"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Финансови години"
+
+msgctxt "model:ir.action,name:act_journal_form"
+msgid "Journals"
+msgstr "Дневници"
+
+msgctxt "model:ir.action,name:act_journal_period_close"
+msgid "Close Journals - Periods"
+msgstr "Затваряне на дневници - Периоди"
+
+msgctxt "model:ir.action,name:act_journal_period_form"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "model:ir.action,name:act_journal_period_reopen"
+msgid "Re-Open Journals - Periods"
+msgstr "Наново отваряне на дневници - периоди"
+
+msgctxt "model:ir.action,name:act_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "model:ir.action,name:act_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "model:ir.action,name:act_journal_type_form"
+msgid "Journal Types"
+msgstr "Видове дневници"
+
+msgctxt "model:ir.action,name:act_journal_view_form"
+msgid "Journal Views"
+msgstr "Изгледи на дневник"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Account Moves"
+msgstr "Движения по сметка"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Account Move Lines"
+msgstr "Редове от движение на сметка"
+
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Account Move Template"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account"
+msgstr "Отваряне на сметка на движение"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Отваряне на сметкоплан"
+
+msgctxt "model:ir.action,name:act_open_journal"
+msgid "Open Journal"
+msgstr "Достъп до меню"
+
+msgctxt "model:ir.action,name:act_open_tax_code"
+msgid "Open Tax Code"
+msgstr "Отваряне код на данък"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_period_close"
+msgid "Close Periods"
+msgstr "Затваряне на периоди"
+
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "model:ir.action,name:act_period_form2"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "model:ir.action,name:act_period_reopen"
+msgid "Re-Open Periods"
+msgstr "Повторно отваряне на периоди"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_reconcile_lines"
+msgid "Reconcile Lines"
+msgstr "Съгласуване на редове"
+
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "model:ir.action,name:act_tax_code_template_tree"
+msgid "Tax Codes Templates"
+msgstr "Шаблони на кодове на данъци"
+
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "model:ir.action,name:act_tax_code_tree2"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "model:ir.action,name:act_tax_group_form"
+msgid "Tax Groups"
+msgstr "Група данъци"
+
+msgctxt "model:ir.action,name:act_tax_line_form"
+msgid "Tax Lines"
+msgstr "Ред на данъци"
+
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "model:ir.action,name:act_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Правила за данък"
+
+msgctxt "model:ir.action,name:act_tax_rule_template_form"
+msgid "Tax Rule Templates"
+msgstr "Шаблони за правило на данък"
+
+msgctxt "model:ir.action,name:act_tax_template_tree"
+msgid "Taxes Templates"
+msgstr "Шаблони на данъци"
+
+msgctxt "model:ir.action,name:act_tax_tree"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "model:ir.action,name:act_unreconcile_lines"
+msgid "Unreconcile Lines"
+msgstr "Разсъгласуване на редове"
+
+msgctxt "model:ir.action,name:report_aged_balance"
+msgid "Aged Balance"
+msgstr "Хронологичен баланс"
+
+msgctxt "model:ir.action,name:report_general_journal"
+msgid "General Journal"
+msgstr "Общ дневник"
+
+msgctxt "model:ir.action,name:report_general_ledger"
+msgid "General Ledger"
+msgstr "Основен дневник"
+
+msgctxt "model:ir.action,name:report_third_party_balance"
+msgid "Third Party Balance"
+msgstr "Баланс на външен партньор"
+
+msgctxt "model:ir.action,name:report_trial_balance"
+msgid "Trial Balance"
+msgstr "Временен баланс"
+
+msgctxt "model:ir.action,name:wizard_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Създаване на сметкопланове от шаблон"
+
+msgctxt "model:ir.action,name:wizard_open_aged_balance"
+msgid "Open Aged Balance"
+msgstr "Отваряне на хронологичен баланс"
+
+msgctxt "model:ir.action,name:wizard_open_balance_sheet"
+msgid "Open Balance Sheet"
+msgstr "Отваряне на баланс"
+
+msgctxt "model:ir.action,name:wizard_open_income_statement"
+msgid "Open Income Statement"
+msgstr "Отваряне на отчет за приходи"
+
+msgctxt "model:ir.action,name:wizard_open_third_party_balance"
+msgid "Open Third Party Balance"
+msgstr "Баланс на друг партньор"
+
+msgctxt "model:ir.action,name:wizard_print_general_journal"
+msgid "Print General Journal"
+msgstr "Отпечатване на основен дневник"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_print_general_ledger"
+msgid "Print General Legder"
+msgstr "Отпечатване на основен дневник"
+
+msgctxt "model:ir.action,name:wizard_print_trial_balance"
+msgid "Print Trial Balance"
+msgstr "Отпечатване на пробен баланс"
+
+msgctxt "model:ir.action,name:wizard_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Обновяване на сметкпланове от шаблон"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "Разходен"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "За получаване"
+
+msgctxt "model:ir.sequence,name:sequence_account_journal"
+msgid "Default Account Journal"
+msgstr "Дневник на сметка по подрабиране"
+
+msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
+msgid "Default Account Move Reconciliation"
+msgstr "Съгласуване на движение на сметката по подразбиране"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
+msgid "Account Journal"
+msgstr "Дневник на сметка"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
+msgid "Account Move"
+msgstr "Движение по сметка"
+
+msgctxt ""
+"model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
+msgid "Account Move Reconciliation"
+msgstr "Съгласуване на движение по сметка"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "Reconcile Lines"
+msgstr "Съгласуване на редове"
+
+msgctxt "model:ir.ui.menu,name:menu_account"
+msgid "Financial"
+msgstr "Управление на финанси"
+
+msgctxt "model:ir.ui.menu,name:menu_account_configuration"
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
+msgid "Account Templates"
+msgstr "Шаблони на сметка"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "Видове сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
+msgid "Account Type Templates"
+msgstr "Шаблони на вид сметка"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
+msgid "Account Types"
+msgstr "Видове сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_aged_balance"
+msgid "Aged Balance"
+msgstr "Хронологичен баланс"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_charts"
+msgid "Charts"
+msgstr "Графики"
+
+msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
+msgid "Close Fiscal Year"
+msgstr "Затваряне на финансова година"
+
+msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Отваряне на таблица с кодове на данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Създаване на сметкоплан по шаблон"
+
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "Записи"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
+msgid "Fiscal Years"
+msgstr "Финансови години"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Финансови години"
+
+msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
+msgid "General Account"
+msgstr "Основна сметка"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
+msgid "Journals"
+msgstr "Дневници"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_form"
+msgid "Journals"
+msgstr "Дневници"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
+msgid "Close Journals - Periods"
+msgstr "Затваряне на дневници - Периоди"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
+msgid "Journal Types"
+msgstr "Видове дневници"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
+msgid "Journal Views"
+msgstr "Изгледи на дневник"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Account Moves"
+msgstr "Движения по сметка"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Account Move Template"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
+msgid "Balance Sheet"
+msgstr "Дата на баланс"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Отваряне на сметкоплан"
+
+msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
+msgid "Income Statement"
+msgstr "Отчет за приходи"
+
+msgctxt "model:ir.ui.menu,name:menu_open_journal"
+msgid "Open Journal"
+msgstr "Достъп до меню"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form2"
+msgid "Close Periods"
+msgstr "Затваряне на периоди"
+
+msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
+msgid "Print General Journal"
+msgstr "Отпечатване на основен дневник"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
+msgid "Print General Legder"
+msgstr "Отпечатване на основен дневник"
+
+msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
+msgid "Print Trial Balance"
+msgstr "Отпечатване на пробен баланс"
+
+msgctxt "model:ir.ui.menu,name:menu_processing"
+msgid "Processing"
+msgstr "Обработване"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Справки"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
+msgid "Tax Codes Templates"
+msgstr "Шаблони на кодове на данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
+msgid "Tax Groups"
+msgstr "Група данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Правила за данък"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
+msgid "Tax Rule Templates"
+msgstr "Шаблони за правило на данък"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_template_tree"
+msgid "Taxes Templates"
+msgstr "Шаблони на данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_tree"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_taxes"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "model:ir.ui.menu,name:menu_third_party_balance"
+msgid "Third Party Balance"
+msgstr "Баланс на външен партньор"
+
+msgctxt "model:ir.ui.menu,name:menu_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Обновяване на сметкпланове от шаблон"
+
+msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
+msgid "Account Configuration"
+msgstr "Настройване на сметка"
+
+msgctxt "model:res.group,name:group_account"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "model:res.group,name:group_account_admin"
+msgid "Account Administration"
+msgstr "Управление на счетоводство"
+
+msgctxt "odt:account.aged_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Aged Balance for Customers"
+msgstr "Хронологичен баланс за клиенти"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Aged Balance for Suppliers"
+msgstr "Хронологичен баланс за доставчици"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Aged Balance for Suppliers and Customers"
+msgstr "Хронологични баланси за доставчици и клиенти"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Company:"
+msgstr "Фирма:"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Day"
+msgstr "Ден"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Days"
+msgstr "Дни"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Month"
+msgstr "Месец"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Months"
+msgstr "Месеци"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Print Date:"
+msgstr "Дата на отпечатване:"
+
+msgctxt "odt:account.aged_balance:"
+msgid "Total"
+msgstr "Общо"
+
+msgctxt "odt:account.aged_balance:"
+msgid "User:"
+msgstr "Потребител:"
+
+msgctxt "odt:account.aged_balance:"
+msgid "at"
+msgstr "на"
+
+msgctxt "odt:account.general_ledger:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Company:"
+msgstr "Фирма:"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Descr."
+msgstr ""
+
+msgctxt "odt:account.general_ledger:"
+msgid "From Period:"
+msgstr "От период:"
+
+msgctxt "odt:account.general_ledger:"
+msgid "General Ledger"
+msgstr "Основен дневник"
+
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Move"
+msgstr "Движение"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Origin"
+msgstr "Източник"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Print Date:"
+msgstr "Дата на отпечатване:"
+
+msgctxt "odt:account.general_ledger:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "odt:account.general_ledger:"
+msgid "To Period:"
+msgstr "До период:"
+
+msgctxt "odt:account.general_ledger:"
+msgid "Total"
+msgstr "Общо"
+
+msgctxt "odt:account.general_ledger:"
+msgid "User:"
+msgstr "Потребител:"
+
+msgctxt "odt:account.general_ledger:"
+msgid "at"
+msgstr "на"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Company:"
+msgstr "Фирма"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Debit"
+msgstr "Дебит"
+
+#, fuzzy
+msgctxt "odt:account.move.general_journal:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "From Date:"
+msgstr "От дата:"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "General Journal"
+msgstr "Общ дневник"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Journal Entry:"
+msgstr "Запис от дневник"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Origin:"
+msgstr ""
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Posted"
+msgstr "Публикуван"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Print Date:"
+msgstr "Дата на отпечатване:"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "To Date:"
+msgstr "Към дата:"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "User:"
+msgstr "Потребител:"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "at"
+msgstr "на"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Company:"
+msgstr "Фирма:"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Print Date:"
+msgstr "Дата на отпечатване:"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Third Party Balance"
+msgstr "Баланс на външен партньор"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "Total"
+msgstr "Общо"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "User:"
+msgstr "Потребител:"
+
+msgctxt "odt:account.third_party_balance:"
+msgid "at"
+msgstr "на"
+
+msgctxt "odt:account.trial_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Company:"
+msgstr "Фирма:"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Debit"
+msgstr "Дебит"
+
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "End Balance"
+msgstr "Краен баланс"
+
+msgctxt "odt:account.trial_balance:"
+msgid "From Period:"
+msgstr "От период:"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Print Date:"
+msgstr "Дата на отпечатване:"
+
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "Start Balance"
+msgstr "Начален баланс"
+
+msgctxt "odt:account.trial_balance:"
+msgid "To Period:"
+msgstr "До период:"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Total"
+msgstr "Общо"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Trial Balance"
+msgstr "Временен баланс"
+
+msgctxt "odt:account.trial_balance:"
+msgid "User:"
+msgstr "Потребител:"
+
+msgctxt "odt:account.trial_balance:"
+msgid "at"
+msgstr "на"
+
+msgctxt "selection:account.account,kind:"
+msgid "Expense"
+msgstr "Разход"
+
+msgctxt "selection:account.account,kind:"
+msgid "Other"
+msgstr "Друг"
+
+msgctxt "selection:account.account,kind:"
+msgid "Payable"
+msgstr "Разходен"
+
+msgctxt "selection:account.account,kind:"
+msgid "Receivable"
+msgstr "За получаване"
+
+msgctxt "selection:account.account,kind:"
+msgid "Revenue"
+msgstr "Приход"
+
+msgctxt "selection:account.account,kind:"
+msgid "Stock"
+msgstr "Наличност"
+
+msgctxt "selection:account.account,kind:"
+msgid "View"
+msgstr "Изглед"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Expense"
+msgstr "Разход"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Other"
+msgstr "Друг"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Payable"
+msgstr "Разходен"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Receivable"
+msgstr "За получаване"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Revenue"
+msgstr "Приход"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Stock"
+msgstr "Наличност"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "View"
+msgstr "Изглед"
+
+msgctxt "selection:account.account.type,display_balance:"
+msgid "Credit - Debit"
+msgstr "Кредит - дебит"
+
+msgctxt "selection:account.account.type,display_balance:"
+msgid "Debit - Credit"
+msgstr "Дебит - кредит"
+
+msgctxt "selection:account.account.type.template,display_balance:"
+msgid "Credit - Debit"
+msgstr "Кредит - дебит"
+
+msgctxt "selection:account.account.type.template,display_balance:"
+msgid "Debit - Credit"
+msgstr "Дебит - кредит"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "selection:account.move,state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.move,state:"
+msgid "Posted"
+msgstr "Публикуван"
+
+msgctxt "selection:account.move.line,move_state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.move.line,move_state:"
+msgid "Posted"
+msgstr "Публикуван"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Valid"
+msgstr "Валиден"
+
+#, fuzzy
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "Кредит"
+
+#, fuzzy
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "Управление на партньор"
+
+msgctxt "selection:account.open_aged_balance.start,balance_type:"
+msgid "Both"
+msgstr "И двата"
+
+msgctxt "selection:account.open_aged_balance.start,balance_type:"
+msgid "Customer"
+msgstr "Клиент"
+
+msgctxt "selection:account.open_aged_balance.start,balance_type:"
+msgid "Supplier"
+msgstr "Доставчик"
+
+msgctxt "selection:account.open_aged_balance.start,unit:"
+msgid "Day"
+msgstr "Ден"
+
+msgctxt "selection:account.open_aged_balance.start,unit:"
+msgid "Month"
+msgstr "Месец"
+
+msgctxt "selection:account.period,state:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "selection:account.period,state:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "selection:account.period,type:"
+msgid "Adjustment"
+msgstr "Проверка"
+
+msgctxt "selection:account.period,type:"
+msgid "Standard"
+msgstr "Стандартен"
+
+msgctxt "selection:account.tax,type:"
+msgid "Fixed"
+msgstr "Фиксиран"
+
+msgctxt "selection:account.tax,type:"
+msgid "None"
+msgstr "Няма"
+
+msgctxt "selection:account.tax,type:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Fiscal Year"
+msgstr "По финансова година"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Periods"
+msgstr "По периоди"
+
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Fixed"
+msgstr "Фиксиран"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "None"
+msgstr "Няма"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "view:account.account.deferral:"
+msgid "Account Deferral"
+msgstr "Сметка с отложено плащане"
+
+msgctxt "view:account.account.deferral:"
+msgid "Account Deferrals"
+msgstr "Сметки с отложено плащане"
+
+msgctxt "view:account.account.template:"
+msgid "Account Template"
+msgstr "Шаблон на сметка"
+
+msgctxt "view:account.account.template:"
+msgid "Account Templates"
+msgstr "Шаблони на сметка"
+
+msgctxt "view:account.account.type.template:"
+msgid "Account Type Template"
+msgstr "Шаблон на вид сметка"
+
+msgctxt "view:account.account.type.template:"
+msgid "Account Types Templates"
+msgstr "Шаблони за видове сметки"
+
+msgctxt "view:account.account.type:"
+msgid "Account Type"
+msgstr "Вид сметка"
+
+msgctxt "view:account.account.type:"
+msgid "Account Types"
+msgstr "Видове сметки"
+
+msgctxt "view:account.account.type:"
+msgid "Balance Sheet"
+msgstr "Дата на баланс"
+
+msgctxt "view:account.account.type:"
+msgid "Income Statement"
+msgstr "Отчет за приходи"
+
+msgctxt "view:account.account:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "view:account.account:"
+msgid "Accounts"
+msgstr "Сметки"
+
+#, fuzzy
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "view:account.account:"
+msgid "Deferrals"
+msgstr "Отложени плащания"
+
+msgctxt "view:account.account:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:account.account:"
+msgid "Notes"
+msgstr "Бележки"
+
+msgctxt "view:account.configuration:"
+msgid "Account Configuration"
+msgstr "Настройване на сметка"
+
+msgctxt "view:account.create_chart.account:"
+msgid "Create Chart of Accounts"
+msgstr "Създаване на сметкопланове"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Create Default Properties"
+msgstr "Създаване на свойства по подразбиране"
+
+msgctxt "view:account.create_chart.start:"
+msgid "Create Chart of Accounts"
+msgstr "Създаване на сметкоплан"
+
+msgctxt "view:account.create_chart.start:"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+"Вече може да създадете сметкоплан за вашата фирма избирайки сметкоплан от "
+"шаблон"
+
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr ""
+
+msgctxt "view:account.fiscalyear.close.start:"
+msgid "Close Fiscal Year"
+msgstr "Затваряне на финансова година"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Are you sure to close fiscal year?"
+msgstr "Сигурни ли сте че искате да затворите финансовата година?"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Close Fiscal Year"
+msgstr "Затваряне на финансова година"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Create 3 Months Periods"
+msgstr "Създаване на тримесечни периоди"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Create Monthly Periods"
+msgstr "Създаване на месечни периоди"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Fiscal Years"
+msgstr "Финансови години"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Re-Open Fiscal Year"
+msgstr "Отваряне наново на финансова година"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Sequences"
+msgstr "Последователности"
+
+msgctxt "view:account.journal.period:"
+msgid "Journal - Period"
+msgstr "Дневник - Период"
+
+msgctxt "view:account.journal.period:"
+msgid "Journals - Periods"
+msgstr "Дневници - Периоди"
+
+msgctxt "view:account.journal.type:"
+msgid "Journal Type"
+msgstr "Вид дневник"
+
+msgctxt "view:account.journal.type:"
+msgid "Journal Types"
+msgstr "Видове дневници"
+
+msgctxt "view:account.journal.view.column:"
+msgid "View Column"
+msgstr "Колона на изглед"
+
+msgctxt "view:account.journal.view.column:"
+msgid "View Columns"
+msgstr "Колони на изглед"
+
+msgctxt "view:account.journal.view:"
+msgid "Journal View"
+msgstr "Изглед на дневник"
+
+msgctxt "view:account.journal.view:"
+msgid "Journal Views"
+msgstr "Изгледи на дневник"
+
+msgctxt "view:account.journal:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:account.journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "view:account.journal:"
+msgid "Journals"
+msgstr "Дневници"
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Line"
+msgstr "Ред от движение по сметка"
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Lines"
+msgstr "Редове от движение на сметка"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Дебит"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "Друга информация"
+
+msgctxt "view:account.move.open_journal.ask:"
+msgid "Open Journal"
+msgstr "Достъп до меню"
+
+msgctxt "view:account.move.print_general_journal.start:"
+msgid "Print General Journal"
+msgstr "Отпечатване на основен дневник"
+
+msgctxt "view:account.move.reconcile_lines.writeoff:"
+msgid "Write-Off"
+msgstr "Анулиран"
+
+msgctxt "view:account.move.reconciliation:"
+msgid "Reconciliation"
+msgstr "Съгласуване"
+
+msgctxt "view:account.move.reconciliation:"
+msgid "Reconciliations"
+msgstr "Съгласувания"
+
+msgctxt "view:account.move:"
+msgid "Account Move"
+msgstr "Движение по сметка"
+
+msgctxt "view:account.move:"
+msgid "Account Moves"
+msgstr "Движения по сметка"
+
+msgctxt "view:account.move:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "view:account.move:"
+msgid "Post"
+msgstr "Публикуван"
+
+msgctxt "view:account.open_aged_balance.start:"
+msgid "Open Aged Balance"
+msgstr "Отваряне на хронологичен баланс"
+
+msgctxt "view:account.open_aged_balance.start:"
+msgid "Terms"
+msgstr "Условия"
+
+msgctxt "view:account.open_balance_sheet.start:"
+msgid "Open Balance Sheet"
+msgstr "Отваряне на баланс"
+
+msgctxt "view:account.open_chart.start:"
+msgid "Open Chart of Accounts"
+msgstr "Отваряне на сметкоплан"
+
+msgctxt "view:account.open_income_statement.start:"
+msgid "Open Income Statement"
+msgstr "Отваряне на отчет за приходи"
+
+msgctxt "view:account.open_third_party_balance.start:"
+msgid "Open Third Party Balance"
+msgstr "Баланс на друг партньор"
+
+msgctxt "view:account.period:"
+msgid "Period"
+msgstr "Период"
+
+msgctxt "view:account.period:"
+msgid "Periods"
+msgstr "Периоди"
+
+msgctxt "view:account.print_general_ledger.start:"
+msgid "Print General Ledger"
+msgstr "Отпечатване на главна книга"
+
+msgctxt "view:account.print_trial_balance.start:"
+msgid "Print Trial Balance"
+msgstr "Отпечатване на пробен баланс"
+
+#, fuzzy
+msgctxt "view:account.reconcile.show:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "view:account.reconcile.show:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+msgctxt "view:account.tax.code.open_chart.start:"
+msgid "Open Chart of Tax Codes"
+msgstr "Отваряне на таблица с кодове на данъци"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Tax Code Template"
+msgstr "Шаблони за кодове на данъци"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Tax Codes Templates"
+msgstr "Шаблони на кодове на данъци"
+
+msgctxt "view:account.tax.code:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "view:account.tax.code:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "view:account.tax.code:"
+msgid "Tax Code"
+msgstr "Код на данък"
+
+msgctxt "view:account.tax.code:"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
+msgctxt "view:account.tax.group:"
+msgid "Tax Group"
+msgstr "Данъчна група"
+
+msgctxt "view:account.tax.group:"
+msgid "Tax Groups"
+msgstr "Група данъци"
+
+msgctxt "view:account.tax.line:"
+msgid "Account Tax Line"
+msgstr "Ред от данък на сметка"
+
+msgctxt "view:account.tax.line:"
+msgid "Account Tax Lines"
+msgstr "Редове от данък на сметка"
+
+msgctxt "view:account.tax.rule.line.template:"
+msgid "Tax Rule Line Template"
+msgstr "Шаблон на ред от правило на данък"
+
+msgctxt "view:account.tax.rule.line.template:"
+msgid "Tax Rule Line Templates"
+msgstr "Шаблони за редове от правило на данък"
+
+msgctxt "view:account.tax.rule.line:"
+msgid "Tax Rule Line"
+msgstr "Ред от правило на данък"
+
+msgctxt "view:account.tax.rule.line:"
+msgid "Tax Rule Lines"
+msgstr "Редове от правило на данък"
+
+msgctxt "view:account.tax.rule.template:"
+msgid "Tax Rule Template"
+msgstr "Шаблон на правило за данък"
+
+msgctxt "view:account.tax.rule.template:"
+msgid "Tax Rules"
+msgstr "Правила за данък"
+
+msgctxt "view:account.tax.rule:"
+msgid "Tax Rule"
+msgstr "Правило за данък"
+
+msgctxt "view:account.tax.rule:"
+msgid "Tax Rules"
+msgstr "Правила за данък"
+
+msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:account.tax.template:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "view:account.tax.template:"
+msgid "Credit Note"
+msgstr "Кредитно известие"
+
+msgctxt "view:account.tax.template:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:account.tax.template:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "view:account.tax.template:"
+msgid "Tax Template"
+msgstr "Шаблон за данък"
+
+msgctxt "view:account.tax.template:"
+msgid "Taxes Templates"
+msgstr "Шаблони на данъци"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:account.tax:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "view:account.tax:"
+msgid "Credit Note"
+msgstr "Кредитно известие"
+
+msgctxt "view:account.tax:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:account.tax:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "view:account.tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "view:account.tax:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "view:account.update_chart.start:"
+msgid "Update Chart of Accounts"
+msgstr "Обновяване на сметкопланове"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Update Chart of Accounts"
+msgstr "Обновяване на сметкпланове"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Update Chart of Accounts Succeed!"
+msgstr "Обновяване на сметколпан успешно!"
+
+msgctxt "view:party.party:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "view:party.party:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "wizard_button:account.create_chart,account,create_account:"
+msgid "Create"
+msgstr "Създаване"
+
+msgctxt "wizard_button:account.create_chart,account,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.create_chart,properties,create_properties:"
+msgid "Create"
+msgstr "Създаване"
+
+msgctxt "wizard_button:account.create_chart,properties,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.create_chart,start,account:"
+msgid "OK"
+msgstr "Добре"
+
+msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "OK"
+msgstr "Добре"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:account.fiscalyear.close,start,close:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "wizard_button:account.fiscalyear.close,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "Добре"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:account.move.open_journal,ask,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.move.open_journal,ask,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:account.move.print_general_journal,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
+msgid "Print"
+msgstr "Печат"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "Създаване"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "Напред"
+
+msgctxt "wizard_button:account.open_aged_balance,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.open_aged_balance,start,print_:"
+msgid "Print"
+msgstr "Печат"
+
+msgctxt "wizard_button:account.open_balance_sheet,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.open_balance_sheet,start,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:account.open_income_statement,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.open_income_statement,start,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:account.open_third_party_balance,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.open_third_party_balance,start,print_:"
+msgid "Print"
+msgstr "Печат"
+
+msgctxt "wizard_button:account.print_general_ledger,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.print_general_ledger,start,print_:"
+msgid "Print"
+msgstr "Печат"
+
+msgctxt "wizard_button:account.print_trial_balance,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.print_trial_balance,start,print_:"
+msgid "Print"
+msgstr "Печат"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "Съгласуване"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:account.update_chart,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.update_chart,start,update:"
+msgid "Update"
+msgstr "Обновяване"
+
+msgctxt "wizard_button:account.update_chart,succeed,end:"
+msgid "OK"
+msgstr "Добре"
