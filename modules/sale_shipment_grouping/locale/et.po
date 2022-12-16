@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Lähetuste grupeerimise meetod"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Lähetuse grupeerimise meetodid"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Lähetuse grupeerimise meetod"
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Lähetuse grupeerimise meetod"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Lähetuse grupeerimise meetod"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "Vaikimisi lähetuse grupeerimise meetod uutele klientidele."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "Vaikimisi lähetuse grupeerimise meetod uutele klientidele."
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Osapoole lähetuse grupeerimise meetod"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr "Mitte"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr "Standard"
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Lähetused"
