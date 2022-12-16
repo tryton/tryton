@@ -1,0 +1,72 @@
+Version 4.2.2 - 2017-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.1 - 2017-01-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add relate from Template to Products
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Replace category by categories on Template
+* Add Python3 support
+* Add configuration for default cost price method
+* Change Uom.round into an instance method
+* Add Function fields on Product from Template
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Be more strict on unit of measure conversion
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Ensure that uom rouding is always greather than zero
+* Add price_digits
+* Add parameter price_decimal
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Remove special uom search clause
+* New product types: Goods, Assets and Service
+* Category is no more required on product
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-09
+* Bug fixes (see mercurial logs for details)
+* Improve computation precision of UOM convertion
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
