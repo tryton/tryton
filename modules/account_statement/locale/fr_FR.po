@@ -1,0 +1,421 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr "Le montant (%s) est plus grand que le montant à payer de la facture !"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr "Le montant (%s) est plus grand que le montant à payer de la facture !"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value!"
+msgstr "Le montant doit être une valeur positive ou négative"
+
+msgctxt "error:account.statement.line:"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+"Le compte de crédit ou débit sur le journal est le même que celui de la "
+"ligne de relevé !"
+
+msgctxt "error:account.statement.line:"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+"Le compte de crédit ou débit sur le journal est le même que celui de la "
+"ligne de relevé !"
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal."
+msgstr ""
+"Veuillez fournir un compte de débit et de crédit pour le journal de relevés."
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal."
+msgstr ""
+"Veuillez fournir un compte de débit et de crédit pour le journal de relevés."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be %s!"
+msgstr "Le solde final doit être %s !"
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be %s!"
+msgstr "Le solde final doit être %s !"
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion!"
+msgstr "Le relevé \"%s\" doit être annulé avant suppression"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Solde final"
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement,lines:"
+msgid "Transactions"
+msgstr "Transactions"
+
+msgctxt "field:account.statement,move_lines:"
+msgid "Move Lines"
+msgstr "Lignes de mouvement comptable"
+
+msgctxt "field:account.statement,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Solde initial"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.journal,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Facture"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Mouvement comptable"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Relevé comptable"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Journal de relevés"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Ligne de relevé comptable"
+
+msgctxt "model:ir.action,name:act_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Relevés brouillons"
+
+msgctxt "model:ir.action,name:act_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Relevés postés"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "All Statement"
+msgstr "Tous les relevés"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.action,name:act_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Relevés validés"
+
+msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Relevés brouillons"
+
+msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Relevés postés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "All Statement"
+msgstr "Tous les relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Relevés validés"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Annulé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Annulé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validé"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr "Journal de relevés"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr "Journal de relevés"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr "Ligne de relevé"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr "Ligne de relevé"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "view:account.statement:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:account.statement:"
+msgid "Move Lines"
+msgstr "Lignes de mouvement comptable"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Poster"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Poster"
+
+msgctxt "view:account.statement:"
+msgid "Reset to Draft"
+msgstr "Remetter en brouillon"
+
+msgctxt "view:account.statement:"
+msgid "Reset to Draft"
+msgstr "Remetter en brouillon"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Valider"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Valider"

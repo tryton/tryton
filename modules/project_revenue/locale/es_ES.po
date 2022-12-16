@@ -1,0 +1,115 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:company.employee_cost_price:"
+msgid "A employee can only have one cost price by date!"
+msgstr "Un empleado sólo puede tener un precio de coste por fecha."
+
+msgctxt "field:company.employee,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:company.employee,cost_prices:"
+msgid "Cost Prices"
+msgstr "Precios de coste"
+
+msgctxt "field:company.employee,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:company.employee_cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:company.employee_cost_price,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:company.employee_cost_price,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:company.employee_cost_price,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:company.employee_cost_price,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:company.employee_cost_price,employee:"
+msgid "Employee"
+msgstr "Empleado"
+
+msgctxt "field:company.employee_cost_price,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.employee_cost_price,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:company.employee_cost_price,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:company.employee_cost_price,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "Ingresos"
+
+msgctxt "help:company.employee,cost_price:"
+msgid "Hourly cost price for this Employee"
+msgstr "Precio de coste por hora para este empleado."
+
+msgctxt "help:company.employee,cost_prices:"
+msgid "List of hourly cost price over time"
+msgstr "Lista de precio de coste por hora a lo largo del tiempo."
+
+msgctxt "help:company.employee_cost_price,cost_price:"
+msgid "Hourly cost price"
+msgstr "Precio de coste por hora."
+
+msgctxt "model:company.employee_cost_price,name:"
+msgid "Employee Cost Price"
+msgstr "Precio de coste del empleado"
+
+msgctxt "view:company.employee:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "view:company.employee:"
+msgid "Services"
+msgstr "Servicios"
+
+msgctxt "view:company.employee_cost_price:"
+msgid "Cost Prices"
+msgstr "Precios de coste"
+
+msgctxt "view:project.work:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "view:project.work:"
+msgid "Revenue"
+msgstr "Ingresos"
