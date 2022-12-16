@@ -1,0 +1,385 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "ເດືອນ"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "ປີ"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "ອາທິດ"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "ອາທິດ"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "ປີ"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr ""
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "ເຮັດວຽກ"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "ສູນການແພດ"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "ກຳນົດເວລາຂອງຕາຕະລາງເວລາ"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "ໜ້າວຽກເດີມ"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "ຕາຕະລາງເຮັດວຽກຈົບເວລາ"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "ລາຍການຕາຕະລາງເຮັດວຽກ"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "ຕາຕະລາງເຮັດວຽກເລີ້ມເວລາ"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "ວຽກ"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "ແຕ່ວັນທີ"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "ເຖິງວັນທີ"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr ""
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr "ເວລາທັງໝົດທີ່ໃຊ້ໃນໜ້າວຽກນີ້"
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr ""
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Hours per Employee"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Hours per Employee per Month"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Hours per Employee per Week"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Enter Timesheet"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Timesheet Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Timesheet Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "ກຳນົດເວລາຂອງ \"%(line)s\" ຕ້ອງເປັນບວກ"
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "ສຳນັກງານເດີມຕ້ອງບໍ່ຊໍ້າກັນ."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Hours per Employee"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Hours per Employee per Month"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Hours per Employee per Week"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Enter Timesheet"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Timesheet Lines"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Timesheet"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Timesheet Administration"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງ"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "ຕົວຈິງຊົ່ວໂມງຕໍ່ພະນັກງານ"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງຕໍ່ເດືອນ"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງຕໍ່ອາທິດ"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "ຖັນແຖນຕາຕະລາງເຮັດວຽກ"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "ເຂົ້າແຖວຕາຕະລາງ"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "ເຮັດວຽກ"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "ວຽກຕົວຈິງ"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "ຕາຕະລາງເຮັດວຽກ"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "ກຳນົດເວລາ"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "ເຂົ້າໄປ"

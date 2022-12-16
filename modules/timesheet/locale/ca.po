@@ -1,0 +1,365 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Setmana"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Setmana"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Temps del full de treball"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Final del full de treball"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inici del full de treball"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "L'empresa on s'ha invertit el temps."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Quan s'ha realitzat el treball."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Descripció addicional del treball realitzat."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "El empleat que realitzat el treball."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "El treball en que s'ha invertit el temps."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Quan s'han realitzat els treballs."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "L'empleat que ha realitzat els treballs."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Feu que el treball pertanyi a l'empresa."
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr "Temps total dedicat en aquest treball."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "El identificador principal del treball."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Utilitzeu-ho per relacionar el temps invertit amb altres registres."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Restringeix afegir línies desprès de la data."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Inverteix temps en aquest treball."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Restringeix afegir línies abans de la data."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "No tinguis en compte les línies abans de la data."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "No tinguis en compte les línies desprès de la data."
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Hores per empleat i mes"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Hores per empleat i setmana"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Afegeix full de treball"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "La duració de la línia \"%(line)s\" ha de ser positiva."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "El UUID de la línia del full de treball ha de ser únic."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+"Les empreses associades amb el treball \"%(work)s\" i les del seu origen "
+"difereixen."
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "L'origen ha de ser únic per empresa."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr "Hores del propi empleat"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr "Qualsevol hora d'empleat"
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr "Línies del full de treball pròpies"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr "Qualsevol línia del full de treball"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr "Qualsevol treball"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Hores per empleat i mes"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Hores per empleat i setmana"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Afegeix full de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Informes"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Full de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Administració de fulls de treball"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "Context hores per empleat"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Hores per empleat i mes"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Hores per empleat i setmana"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Línia de full de treball"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Afegir línies"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "Context treball"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Full de treball"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Afegeix"

@@ -1,0 +1,363 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "ماه"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "هفته"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "هفته"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "شناسه کاربری"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "طول مدت جدول زمانی"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "پایان جدول زمانی"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "شروع جدول زمانی"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "شرکتی که مدت زمان در آن صرف شده است."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "هنگامی که زمان صرف شد."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "توضیحات اضافی کارانجام شده."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "کارمندی که زمان را صرف می کند."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "کاری که زمان صرف آن شده است."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "هنگامی که زمان صرف شد."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "کارمندی که زمان را صرف می کند."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "کار متعلق به شرکت را بسازید."
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr "کل زمان صرف شده در این کار."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "شناسه اصلی کار."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "استفاده از مرتبط کردن زمان صرف شده برای پرونده های دیگر."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "محدودیت افزودن سطرهای بعد از تاریخ."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "زمان صرف شده روی این کار."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "محدودیت افزودن سطرهای قبل از تاریخ."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "سطرهای قبل از تاریخ را حساب نکنید."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "سطرهای بعد از تاریخ را حساب نکنید."
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "ساعات در هر کارمند"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "ساعات در هر کارمند در هر ماه"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "ساعات در هر کارمند در هر هفته"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "جدول زمانی را وارد کنید"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "کارها"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "کارها"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "طول مدت سطر : \"%s\" باید مثبت باشد."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "شناسه کاربر در جدول زمانی باید منحصربفرد باشد."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr "شرکت های مرتبط با کار:\"%(work)s\" و منشاء آنها متفاوت است."
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "منشا باید در هر شرکتی منحصر به فرد باشد."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "ساعات در هر کارمند"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "ساعات در هر کارمند در هر ماه"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "ساعات در هر کارمند در هر هفته"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "جدول زمانی را وارد کنید"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "گزارش گیری"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "جدول زمانی"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "کارها"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "کارها"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "مدیریت جدول زمانی"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "ساعات در هر کارمند"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "مفاد ساعات در هر کارمند"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "ساعات در هر کارمند در هر ماه"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "ساعات در هر کارمند در هر هفته"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "سطر جدول زمانی"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "واردکردن سطرها"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "مفاد کار"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "جدول زمانی"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "وارد کردن"

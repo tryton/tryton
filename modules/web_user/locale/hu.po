@@ -1,0 +1,172 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr ""
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr ""
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Partner"
+
+#, fuzzy
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "Jelszó"
+
+#, fuzzy
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "Jelszó Hash"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr ""
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr ""
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Partner"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#, fuzzy
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "Kulcs"
+
+#, fuzzy
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+#, fuzzy
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Web Users"
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr ""
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr ""
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#, fuzzy
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
