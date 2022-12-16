@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Dipòsit"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Contrasenya"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Servidor"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "Identificador usuari"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "Credencial DPD"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Crea enviaments DPD per paquets"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Credencials DPD"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr "La identificació DPD ha fallat amb les credencials \"%(credential)s\"."
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"La crida al servei web DPD ha fallat amb el següent missatge d'error:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+"No podeu crear el enviament per l'albarà \"%(shipment)s\" perquè ja té un "
+"número de referència."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
+"Per validar l'albarà \"%(shipment)s\" heu d'establir una direcció al "
+"magatzem \"%(warehouse)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Credencials DPD"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "Proves"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Information"
+msgstr "Informació de les credencials"
