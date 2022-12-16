@@ -1,0 +1,102 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Mètode de cost enviament"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Mètode de cost de l'enviament"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr "Import amb costos d'enviament inclosos"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr "Transportistes disponibles"
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Mètode de cost enviament"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:stock.shipment.out,cost_edit:"
+msgid "Edit Cost"
+msgstr "Edita cost"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Cost de la línia de factura"
+
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Cost de la venda"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Moneda de cost de la venda"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Moneda de cost de la venda"
+
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Cost de la venda"
+
+msgctxt "field:stock.shipment.out,cost_used:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "help:stock.shipment.out,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Marcar per editar el cost."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+"Per confirmar la venda \"%(sale)s\" heu de canviar el transportista "
+"\"%(carrier)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+"Per facturar el cost de l'enviament \"%(shipment)s\" heu de definir un "
+"compte d'ingressos pel producte \"%(product)s\"."
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "Al processar"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "Al enviar-ho"
+
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr "Cost d'enviament inclos"
