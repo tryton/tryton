@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_shipment_not_packed">
+            <field name="text">To create shipping labels for shipment "%(shipment)s", you must pack it.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_without_carrier">
+            <field name="text">The shipment "%(shipment)s" does not have a carrier set.</field>
+        </record>
+    </data>
+</tryton>
