@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_warehouse_address_required">
+            <field name="text">To validate shipment "%(shipment)s" you must set an address on warehouse "%(warehouse)s".</field>
+        </record>
+        <record model="ir.message" id="msg_warehouse_address_country_code_required">
+            <field name="text">To validate shipment "%(shipment)s" you must set a country code to the address of warehouse "%(warehouse)s".</field>
+        </record>
+        <record model="ir.message" id="msg_shipping_to_address_country_code_required">
+            <field name="text">To validate shipment "%(shipment)s" you must set a country code to the destination address.</field>
+        </record>
+        <record model="ir.message" id="msg_phone_mobile_required">
+            <field name="text">To validate shipment "%(shipment)s" you must add a phone or mobile number to party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_required">
+            <field name="text">To validate shipment "%(shipment)s" you must add an email to party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_mobile_required">
+            <field name="text">To validate shipment "%(shipment)s" you must add a mobile number to party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_has_reference_number">
+            <field name="text">You cannot create a shipping label for shipment "%(shipment)s" because it already has a reference number.</field>
+        </record>
+        <record model="ir.message" id="msg_mygls_api_error">
+            <field name="text">MyGLS API call failed with the following error message:
+%(message)s</field>
+        </record>
+    </data>
+</tryton>
