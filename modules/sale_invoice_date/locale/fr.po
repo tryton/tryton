@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Condition de facturation de vente"
+
+msgctxt "field:party.party.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Condition de facturation de vente"
+
+msgctxt "field:sale.configuration,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Condition de facturation de vente"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Condition de facturation de vente"
+
+msgctxt "field:sale.invoice.term,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.invoice.term,relative_deltas:"
+msgid "Deltas"
+msgstr "Deltas"
+
+msgctxt "field:sale.invoice.term.relative_delta,day:"
+msgid "Day of Month"
+msgstr "Jour du mois"
+
+msgctxt "field:sale.invoice.term.relative_delta,days:"
+msgid "Number of Days"
+msgstr "Nombre de jours"
+
+msgctxt "field:sale.invoice.term.relative_delta,month:"
+msgid "Month"
+msgstr "Mois"
+
+msgctxt "field:sale.invoice.term.relative_delta,months:"
+msgid "Number of Months"
+msgstr "Nombre de mois"
+
+msgctxt "field:sale.invoice.term.relative_delta,term:"
+msgid "Invoice Term"
+msgstr "Condition de facturation"
+
+msgctxt "field:sale.invoice.term.relative_delta,weekday:"
+msgid "Day of Week"
+msgstr "Jour de la semaine"
+
+msgctxt "field:sale.invoice.term.relative_delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Nombre de semaines"
+
+msgctxt "field:sale.sale,invoice_term:"
+msgid "Invoice Term"
+msgstr "Condition de facturation"
+
+msgctxt "help:party.party,sale_invoice_term:"
+msgid ""
+"The default sale invoice term for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"La condition de facturation de vente par défaut pour le client.\n"
+"Laissez vide pour utiliser la valeur par défaut de la configuration."
+
+msgctxt "help:sale.invoice.term,name:"
+msgid "The main identifier of the invoice term."
+msgstr "L'identifiant principal de la condition de facturation."
+
+msgctxt "model:ir.action,name:act_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Conditions de facturation"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Conditions de facturation"
+
+msgctxt "model:sale.invoice.term,name:"
+msgid "Invoice Term"
+msgstr "Condition de facturation"
+
+msgctxt "model:sale.invoice.term.relative_delta,name:"
+msgid "Invoice Term Delta"
+msgstr "Delta de condition de facturation"

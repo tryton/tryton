@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='measurements']" position="inside">
+        <label name="length"/>
+        <field name="length"/>
+        <field name="length_uom"/>
+
+        <label name="height"/>
+        <field name="height"/>
+        <field name="height_uom"/>
+
+        <label name="width"/>
+        <field name="width"/>
+        <field name="width_uom"/>
+    </xpath>
+</data>
