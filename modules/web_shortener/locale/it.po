@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.shortened_url,count:"
+msgid "Click Count"
+msgstr "Conteggio dei click"
+
+msgctxt "field:web.shortened_url,create_date:"
+msgid "Create Date"
+msgstr "Creato il"
+
+msgctxt "field:web.shortened_url,create_uid:"
+msgid "Create User"
+msgstr "Creato da"
+
+msgctxt "field:web.shortened_url,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.shortened_url,method:"
+msgid "Method"
+msgstr "Metodo"
+
+msgctxt "field:web.shortened_url,rec_name:"
+msgid "Record Name"
+msgstr "Nome del record"
+
+msgctxt "field:web.shortened_url,record:"
+msgid "Record"
+msgstr "Record"
+
+msgctxt "field:web.shortened_url,redirect_url:"
+msgid "Redirect URL"
+msgstr "URL di rendirizzamento"
+
+msgctxt "field:web.shortened_url,shortened_url:"
+msgid "Shortened URL"
+msgstr "URL abbreviato"
+
+msgctxt "field:web.shortened_url,write_date:"
+msgid "Write Date"
+msgstr "Modificato il"
+
+msgctxt "field:web.shortened_url,write_uid:"
+msgid "Write User"
+msgstr "Modificato da"
+
+msgctxt "field:web.shortened_url.access,create_date:"
+msgid "Create Date"
+msgstr "Creato il"
+
+msgctxt "field:web.shortened_url.access,create_uid:"
+msgid "Create User"
+msgstr "Creato da"
+
+msgctxt "field:web.shortened_url.access,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.shortened_url.access,rec_name:"
+msgid "Record Name"
+msgstr "Nome del record"
+
+msgctxt "field:web.shortened_url.access,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:web.shortened_url.access,write_date:"
+msgid "Write Date"
+msgstr "Modificato il"
+
+msgctxt "field:web.shortened_url.access,write_uid:"
+msgid "Write User"
+msgstr "Modificato da"
+
+msgctxt "model:ir.action,name:act_shortened_url"
+msgid "Shortened URLs"
+msgstr "URL abbreviati"
+
+msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
+msgid "Shortened URLs"
+msgstr "URL abbreviati"
+
+msgctxt "model:web.shortened_url,name:"
+msgid "Short URL"
+msgstr "URL breve"
+
+msgctxt "model:web.shortened_url.access,name:"
+msgid "URL Access"
+msgstr "Accesso URL"
