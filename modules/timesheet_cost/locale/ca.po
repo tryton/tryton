@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.employee,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:company.employee,cost_prices:"
+msgid "Cost Prices"
+msgstr "Preus de cost"
+
+msgctxt "field:company.employee_cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:company.employee_cost_price,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:company.employee_cost_price,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.line,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "help:company.employee,cost_price:"
+msgid "Hourly cost price for this Employee."
+msgstr "Preu de cost per hora per a aquest empleat."
+
+msgctxt "help:company.employee,cost_prices:"
+msgid "List of hourly cost price over time."
+msgstr "Llista de preus de cost per hora a través del temps."
+
+msgctxt "help:company.employee_cost_price,cost_price:"
+msgid "Hourly cost price."
+msgstr "Preu de cost per hora."
+
+msgctxt "model:company.employee_cost_price,name:"
+msgid "Employee Cost Price"
+msgstr "Preu de cost de l'empleat"
+
+msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"
+msgid "An employee can only have one cost price by date."
+msgstr "Un empleat només pot tenir un preu de cost per data."
+
+msgctxt "view:company.employee:"
+msgid "Cost"
+msgstr "Cost"
