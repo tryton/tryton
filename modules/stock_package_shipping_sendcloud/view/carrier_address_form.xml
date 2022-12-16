@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="warehouse">
+    <label name="sendcloud"/>
+    <field name="sendcloud"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="address"/>
+    <field name="address"/>
+</form>

@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "Nombre d'utilisation"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "Numéros"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "Par tiers"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "Promotion"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "Coupon"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "Vente"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+"Combien de fois un numéro de coupon peut être utilisé.\n"
+"0 ou moins pour aucune limite."
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr "Cocher pour compter l'utilisation par tiers."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "Les coupons numérotés « %(numbers)s » sont en double."
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "Coupon de promotion"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "Numéro de coupon de promotion"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "Vente - Numéro de coupon de promotion"
