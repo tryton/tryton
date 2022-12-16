@@ -1,0 +1,115 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr "Número"
+
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Categoria de la UdM"
+
+msgctxt "field:stock.shipment.split.start,domain_moves:"
+msgid "Domain Moves"
+msgstr "Moviments del domini"
+
+msgctxt "field:stock.shipment.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.shipment.split.start,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr "El número màxim de moviments."
+
+msgctxt "help:stock.shipment.split.start,moves:"
+msgid "The selected moves will be sent in the new shipment."
+msgstr "Els moviments seleccionats s'enviaran en un albarà nou."
+
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr "Divideix moviments"
+
+msgctxt "model:ir.action,name:wizard_split_shipment"
+msgid "Split Shipment"
+msgstr "Divideix albarà"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "Divisió de moviments"
+
+msgctxt "model:stock.shipment.split.start,name:"
+msgid "Split Shipment"
+msgstr "Divideix albarà"
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.split.start:"
+msgid "Choose move to send in new shipment"
+msgstr "Trieu els moviments a enviar en un albarà nou."
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "wizard_button:stock.shipment.split,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Split"
+msgstr "Divideix"
