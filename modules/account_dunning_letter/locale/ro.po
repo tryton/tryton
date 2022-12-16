@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Tipărire pe Scrisoare"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Scrisoare Dunning"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Data scadentă"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Tarife:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Încasări Primite În Aşteptare"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referinţă"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Notificare"

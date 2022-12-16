@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page id="ec_sales_list" string="EC Sales List">
+            <label name="ec_sales_list_code"/>
+            <field name="ec_sales_list_code"/>
+        </page>
+    </xpath>
+</data>

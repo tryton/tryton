@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_purchase">
+            <field name="name">Purchase</field>
+        </record>
+        <record model="res.group" id="group_purchase_admin">
+            <field name="name">Purchase Administrator</field>
+            <field name="parent" ref="group_purchase"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_purchase">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_purchase_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="purchase_icon">
+            <field name="name">tryton-purchase</field>
+            <field name="path">icons/tryton-purchase.svg</field>
+        </record>
+
+        <menuitem
+            name="Purchases"
+            sequence="70"
+            id="menu_purchase"
+            icon="tryton-purchase"/>
+        <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase">
+            <field name="menu" ref="menu_purchase"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
+            <field name="name">Handle Shipment Exception</field>
+            <field name="wiz_name">purchase.handle.shipment.exception</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_invoice_handle_exception">
+            <field name="name">Handle Invoice Exception</field>
+            <field name="wiz_name">purchase.handle.invoice.exception</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="type">form</field>
+            <field name="name">purchase_form</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_view_tree">
+            <field name="model">purchase.purchase</field>
+            <field name="type">tree</field>
+            <field name="name">purchase_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_form">
+            <field name="name">Shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.purchase', '=', Eval('active_id')), ('moves.purchase', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_shipment_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_shipment_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_return_form">
+            <field name="name">Returns</field>
+            <field name="res_model">stock.shipment.in.return</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.purchase', '=', Eval('active_id')), ('moves.purchase', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_open_shipment_return_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_return_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="context"></field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lines.origin.purchase.id', '=', Eval('active_id'), 'purchase.line'), ('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_invoice_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="handle_shipment_exception_ask_view_form">
+            <field name="model">purchase.handle.shipment.exception.ask</field>
+            <field name="type">form</field>
+            <field name="name">handle_shipment_exception_ask_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_invoice_exception_ask_view_form">
+            <field name="model">purchase.handle.invoice.exception.ask</field>
+            <field name="type">form</field>
+            <field name="name">handle_invoice_exception_ask_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_form">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_quotation">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_confirmed">
+            <field name="name">Confirmed</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'confirmed')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_exception">
+            <field name="name">Exception</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain"
+                eval="['OR', ('invoice_state', '=', 'exception'), ('shipment_state', '=', 'exception')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <menuitem
+            parent="menu_purchase"
+            action="act_purchase_form"
+            sequence="10"
+            id="menu_purchase_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_purchase_form_group_purchase">
+            <field name="menu" ref="menu_purchase_form"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_invoice_relate">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('invoices', '=', Eval('active_id')), ('invoices', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_invoice_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_invoice_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_invoice_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_invoice_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_purchase_invoice_relate"/>
+        </record>
+
+        <menuitem
+            name="Reporting"
+            parent="menu_purchase"
+            sequence="100"
+            id="menu_reporting"
+            active="0"/>
+
+        <record model="ir.model.access" id="access_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_account">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_cancel_button_group_purchase">
+            <field name="button" ref="purchase_cancel_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_draft_button_group_purchase">
+            <field name="button" ref="purchase_draft_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_quote_button">
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_quote_button_group_purchase">
+            <field name="button" ref="purchase_quote_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_confirm_button">
+            <field name="name">confirm</field>
+            <field name="string">Confirm</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_confirm_button_group_purchase">
+            <field name="button" ref="purchase_confirm_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="purchase_process_button_group_purchase_admin">
+            <field name="button" ref="purchase_process_button"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_modify_header_button">
+            <field name="name">modify_header</field>
+            <field name="string">Modify Header</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_modify_header_button_group_purchase">
+            <field name="button" ref="purchase_modify_header_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="purchase_hande_invoice_exception_button">
+            <field name="name">handle_invoice_exception</field>
+            <field name="string">Handle Invoice Exception</field>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="purchase_hande_invoice_exception_button_group_purchase">
+            <field name="button" ref="purchase_hande_invoice_exception_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="ir.model.button"
+                id="purchase_hande_shipment_exception_button">
+            <field name="name">handle_shipment_exception</field>
+            <field name="string">Handle Shipment Exception</field>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="purchase_hande_shipment_exception_button_group_purchase">
+            <field
+                name="button" ref="purchase_hande_shipment_exception_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_purchase">
+            <field name="name">Purchase</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_purchase_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_purchase">
+            <field name="name">Purchase</field>
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+        </record>
+
+        <record model="ir.action.report" id="report_purchase">
+            <field name="name">Purchase</field>
+            <field name="model">purchase.purchase</field>
+            <field name="report_name">purchase.purchase</field>
+            <field name="report">purchase/purchase.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_purchase_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="report_purchase"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_view_form">
+            <field name="model">purchase.line</field>
+            <field name="type">form</field>
+            <field name="name">purchase_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_view_tree">
+            <field name="model">purchase.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">purchase_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_view_tree_sequence">
+            <field name="model">purchase.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">purchase_line_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_view_form">
+            <field name="model">purchase.product_supplier</field>
+            <field name="type">form</field>
+            <field name="name">product_supplier_form</field>
+        </record>
+        <record model="ir.ui.view" id="product_supplier_view_tree">
+            <field name="model">purchase.product_supplier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">product_supplier_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_view_tree_sequence">
+            <field name="model">purchase.product_supplier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_supplier_tree_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_supplier_form">
+            <field name="name">Suppliers</field>
+            <field name="res_model">purchase.product_supplier</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_supplier_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_supplier_view_tree"/>
+            <field name="act_window" ref="act_product_supplier_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_supplier_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_supplier_view_form"/>
+            <field name="act_window" ref="act_product_supplier_form"/>
+        </record>
+
+        <menuitem
+            parent="product.menu_template"
+            sequence="20"
+            action="act_product_supplier_form"
+            id="menu_product_supplier"/>
+
+        <record model="ir.model.access" id="access_product_supplier">
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_supplier_purchase">
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_product_supplier_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_supplier_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_product_supplier_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_price_view_form">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">form</field>
+            <field name="name">product_supplier_price_form</field>
+        </record>
+        <record model="ir.ui.view" id="product_supplier_price_view_tree">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">tree</field>
+            <field name="name">product_supplier_price_tree</field>
+        </record>
+        <record model="ir.ui.view" id="product_supplier_price_view_list_sequence">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">tree</field>
+            <field name="name">product_supplier_price_list_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_product_supplier_price_form">
+            <field name="name">Prices</field>
+            <field name="res_model">purchase.product_supplier.price</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('product_supplier', '=', Eval('active_id')), ('product_supplier', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_product_supplier_price_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.product_supplier,-1</field>
+            <field name="action" ref="act_product_supplier_price_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">template_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="return_purchase_start_view_form">
+            <field name="model">purchase.return_purchase.start</field>
+            <field name="type">form</field>
+            <field name="name">return_purchase_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_return_purchase">
+            <field name="name">Return Purchase</field>
+            <field name="wiz_name">purchase.return_purchase</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+        <record model="ir.action.keyword" id="act_wizard_return_purchase_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="wizard_return_purchase"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_supplier">
+            <field name="name">Parties associated to Purchases</field>
+            <field name="wiz_name">purchase.open_supplier</field>
+        </record>
+        <menuitem
+            name="Associated to Purchases"
+            parent="party.menu_party_form"
+            action="act_open_supplier"
+            sequence="50"
+            icon="tryton-list"
+            id="menu_supplier"/>
+
+        <record model="ir.action.wizard" id="wizard_modify_header">
+            <field name="name">Modify Header</field>
+            <field name="wiz_name">purchase.modify_header</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+        <record model="ir.ui.view" id="modify_header_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="name">modify_header_form</field>
+            <field name="domain"
+                eval="Eval('context', {}).get('modify_header', False)"
+                pyson="1"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_purchase_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_purchase_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_purchase">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_line_purchase">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_group_purchase">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in_group_purchase">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in_return_group_purchase">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="group" ref="group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>

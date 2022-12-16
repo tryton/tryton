@@ -1,0 +1,119 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "Utente di ripiego"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Sollecito"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Livello"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinatari"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinatari nascosti"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinatari secondari"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Meccanismi di contatto"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "Da"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Modello di E-mail"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Invia Email"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+"Utente notificato quando non viene trovata alcuna e-mail per inviare il "
+"sollecito"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+"Definire quale e-mail utilizzare fra i meccanismi di contatto della "
+"controparte"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Lasciare vuoto per il valore definito nel file di configurazione."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Log E-mail di sollecito"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Log E-mail"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Email di sollecito"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Importo"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descrizione"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Data Scadenza"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Tariffe:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagamenti in attesa ricevuti"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Riferimento"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avviso di promemoria"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Orario"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "E-mail"

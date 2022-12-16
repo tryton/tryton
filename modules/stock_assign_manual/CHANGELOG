@@ -1,0 +1,9 @@
+Version 6.0.1 - 2021-10-15
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Add manual unassign wizard on shipment
+
+Version 5.8.0 - 2020-11-02
+* Initial release

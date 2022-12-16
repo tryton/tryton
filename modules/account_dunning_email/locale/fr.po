@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "Utilisateur de repli"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Relance"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Niveau"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinataires"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataires cachés"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataires secondaires"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Moyen de contact"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Modèle d'e-mail"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Envoyer e-mail"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+"Utilisateur notifié lorsque aucun e-mail n'a été trouvé pour envoyer la "
+"relance"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr "Définit quel e-mail utiliser des mécanismes de contact du tiers"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Laisser vide pour la valeur définie dans le fichier de configuration."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Journal de relance d'e-mail"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Logs e-mail"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "E-mail de relance"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Date d'échéance"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Frais :"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Paiements en attente reçus"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avis de rappel"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Heure"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "E-mail"

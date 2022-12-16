@@ -1,0 +1,94 @@
+Version 6.0.4 - 2022-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.3 - 2022-04-15
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.2 - 2022-01-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.1 - 2021-06-17
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Allow productions to be automatically assigned
+* Default to ordering productions by date
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Add production picking and output locations
+* Add cron task to reschedule past productions
+* Allow lost_found as output of production
+* Keep cost of unused input products
+* Use the shipment assign wizard for production
+* Rename production state from cancel to cancelled
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add origin to production
+* Delete cancelled moves when a production is reset to draft
+* Add employee on productions for some states
+* Convert set_moves into dualmethod
+* Add reference to production record name
+* Add cron task to update production cost
+* Allocate cost based on list price of each product
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+* Set output cost in done transition
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Ceil input and floor output quantities
+* Add producible to product template
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add Lead Time of Production
+* Add Start Dates on Production
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Production code into number
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Allow to define effective date of productions
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Add calendar view
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-08-15
+* Initial release

@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="payment_journal_view_form">
+            <field name="model">account.payment.journal</field>
+            <field name="inherit" ref="account_payment.payment_journal_view_form"/>
+            <field name="name">payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_form"/>
+            <field name="name">payment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_list"/>
+            <field name="name">payment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="refund_view_form">
+            <field name="model">account.payment.stripe.refund</field>
+            <field name="type">form</field>
+            <field name="name">refund_form</field>
+        </record>
+        <record model="ir.ui.view" id="refund_view_list">
+            <field name="model">account.payment.stripe.refund</field>
+            <field name="type">tree</field>
+            <field name="name">refund_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_refund_form">
+            <field name="name">Stripe Refunds</field>
+            <field name="res_model">account.payment.stripe.refund</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_refund_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="refund_view_list"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_refund_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="refund_view_form"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_approved">
+            <field name="name">Approved</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_suceeded">
+            <field name="name">Succeeded</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_failed">
+            <field name="name">Failed</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_refund_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_refund_form"/>
+        </record>
+
+        <menuitem
+            parent="account_payment.menu_payments"
+            sequence="50"
+            action="act_refund_form"
+            id="menu_refund_form"/>
+
+        <record model="ir.model.button" id="refund_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.refund')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="refund_draft_button_group_payment">
+            <field name="button" ref="refund_draft_button"/>
+            <field name="group" ref="account_payment.group_payment"/>
+        </record>
+
+        <record model="ir.model.button" id="refund_approve_button">
+            <field name="name">approve</field>
+            <field name="string">Approve</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.refund')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="refund_approve_button_group_payment_approval">
+            <field name="button" ref="refund_approve_button"/>
+            <field name="group" ref="account_payment.group_payment_approval"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">account.payment.stripe.account</field>
+            <field name="type">form</field>
+            <field name="name">account_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_view_list">
+            <field name="model">account.payment.stripe.account</field>
+            <field name="type">tree</field>
+            <field name="name">account_list</field>
+        </record>
+
+        <record model="ir.model.button" id="account_new_identifier_button">
+            <field name="name">new_identifier</field>
+            <field name="string">New URL</field>
+            <field name="confirm">This action will make the previous URL unusable. Do you want to continue?</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.account')]"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_form">
+            <field name="name">Stripe Accounts</field>
+            <field name="res_model">account.payment.stripe.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <menuitem
+            parent="account_payment.menu_payment_configuration"
+            action="act_account_form"
+            sequence="20"
+            id="menu_account_form"/>
+
+        <record model="ir.model.access" id="access_account">
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.account')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment.stripe.account')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_account_payment">
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.account')]"/>
+            <field name="group" ref="account_payment.group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_secret_key">
+            <field name="field"
+                search="[('name', '=', 'secret_key'), ('model.model', '=', 'account.payment.stripe.account')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_account_secret_key_account_admin">
+            <field name="field"
+                search="[('name', '=', 'secret_key'), ('model.model', '=', 'account.payment.stripe.account')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_stripe_checkout_button">
+            <field name="name">stripe_checkout</field>
+            <field name="string">Stripe Checkout</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_stripe_capture_button">
+            <field name="name">stripe_do_capture</field>
+            <field name="string">Stripe Capture</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="customer_view_form">
+            <field name="model">account.payment.stripe.customer</field>
+            <field name="type">form</field>
+            <field name="name">customer_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="customer_view_list">
+            <field name="model">account.payment.stripe.customer</field>
+            <field name="type">tree</field>
+            <field name="name">customer_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_customer_form">
+            <field name="name">Stripe Customers</field>
+            <field name="res_model">account.payment.stripe.customer</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customer_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="customer_view_list"/>
+            <field name="act_window" ref="act_customer_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customer_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="customer_view_form"/>
+            <field name="act_window" ref="act_customer_form"/>
+        </record>
+        <menuitem
+            parent="account_payment.menu_payments"
+            action="act_customer_form"
+            sequence="50"
+            id="menu_customer_form"/>
+
+        <record model="ir.model.access" id="access_customer">
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.customer')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_customer_payment">
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.customer')]"/>
+            <field name="group" ref="account_payment.group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="customer_stripe_checkout_button">
+            <field name="name">stripe_checkout</field>
+            <field name="string">Add Card</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.customer')]"/>
+        </record>
+        <record model="ir.model.button" id="customer_source_detach_button">
+            <field name="name">detach_source</field>
+            <field name="string">Detach Source</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.customer')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_checkout">
+            <field name="name">Stripe Checkout</field>
+            <field name="wiz_name">account.payment.stripe.checkout</field>
+            <field name="model" eval="None"/>
+        </record>
+
+        <record model="ir.action.report" id="report_checkout">
+            <field name="name">Stripe Checkout</field>
+            <field name="model"></field>
+            <field name="report_name">account.payment.stripe.checkout</field>
+            <field name="report">account_payment_stripe/checkout.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.action.report" id="report_email_checkout">
+            <field name="name">Checkout</field>
+            <field name="model">account.payment</field>
+            <field name="report_name">account.payment.stripe.email_checkout</field>
+            <field name="report">account_payment_stripe/email_checkout.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_customer_source_detach">
+            <field name="name">Detach Source</field>
+            <field name="wiz_name">account.payment.stripe.customer.source.detach</field>
+            <field name="model">account.payment.stripe.customer</field>
+        </record>
+
+        <record model="ir.ui.view" id="customer_source_detach_ask_view_form">
+            <field name="model">account.payment.stripe.customer.source.detach.ask</field>
+            <field name="type">form</field>
+            <field name="name">customer_source_detach_ask_form</field>
+        </record>
+
+        <record model="ir.cron" id="cron_charge">
+            <field name="method">account.payment|stripe_charge</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_capture">
+            <field name="method">account.payment|stripe_capture_</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_refund">
+            <field name="method">account.payment.stripe.refund|stripe_create</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_create_customer">
+            <field name="method">account.payment.stripe.customer|stripe_create</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+
+        <record model="ir.cron" id="cron_update_customer">
+            <field name="method">account.payment.stripe.customer|stripe_intent_update</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_delete_customer">
+            <field name="method">account.payment.stripe.customer|stripe_delete</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+
+        <record model="ir.cron" id="cron_fetch_events">
+            <field name="method">account.payment.stripe.account|fetch_events</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.action.url" id="url_checkout">
+            <field name="name">Stripe Checkout</field>
+            <field name="url">%(http_host)s/%(database)s/account_payment_stripe/checkout/%(model)s/%(id)s</field>
+        </record>
+    </data>
+</tryton>

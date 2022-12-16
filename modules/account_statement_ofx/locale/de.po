@@ -1,0 +1,28 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_checknum"
+msgid "Check Number"
+msgstr "Scheck-Nummer"
+
+msgctxt "model:account.statement.origin.information,string:information_mcc"
+msgid "Merchant Category Code (MCC)"
+msgstr "Code der Händler-Kategorie (MCC)"
+
+msgctxt "model:account.statement.origin.information,string:information_sic"
+msgid "Standard Industry Code (SIC)"
+msgstr "Branchen-Code (SIC)"
+
+msgctxt "model:account.statement.origin.information,string:information_type"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "model:ir.message,text:msg_import_no_statement"
+msgid "The OFX file is not a statement."
+msgstr "Die OFX-Datei ist kein Auszug."
+
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid "OFX"
+msgstr "OFX"

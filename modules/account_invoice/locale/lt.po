@@ -1,0 +1,1296 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
+msgctxt "field:account.fiscalyear,invoice_sequences:"
+msgid "Invoice Sequences"
+msgstr "Sąskaitų faktūrų numeruotės"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Finansiniai metai"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Tiekėjo kreditinių sąskaitų numeruotė"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Tiekėjo sąskaitų numeruotė"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Kreditinių sąskaitų pirkėjui numeruotė"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Sąskaitų pirkėjams numeruotė"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,period:"
+msgid "Period"
+msgstr "Periodas"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "Apskaitos data"
+
+#, fuzzy
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Anuliuoti sąskaitą faktūrą"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "Mokėtina suma"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "Mokėtina šiandien suma"
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
+msgstr "Anuliuoti operaciją"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "Komentaras"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr "Organizacijos rekvizitai"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "Valiutos kurso data"
+
+msgctxt "field:account.invoice,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "Juridinis adresas"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "Sąskaitos faktūros data"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Sąskaitos faktūros ataskaita"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "Sąskaitos faktūros ataskaitos ID"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Sąskaitos faktūros ataskaitos formatas"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "Eilutės"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Eilutės apmokėjimui"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "Operacija"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "Numeris"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Šaltiniai"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr "Kontrahento kalba"
+
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Kontrahento mokesčių mokėtojo identifikatorius"
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "Mokėjimo eilutės"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlygos"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr "Sudengta"
+
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "Mokėjimo eilutės"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "Nuoroda"
+
+#, fuzzy
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "Numeruotė"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "Būsena"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Mokesčių mokėtojo identifikatorius"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "Mokesčių eilutės"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "Viso su PVM"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Viso"
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr "Sąskaitos faktūros koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "Sąskaitos faktūros kontrahentas"
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "Mokėjimo eilutė"
+
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Sąskaitos faktūros data"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr "Su grąžinimu"
+
+msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
+msgid "With Refund Allowed"
+msgstr "Leistinas grąžinimas"
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "Sąskaitos faktūros būsena"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr "Sąskaitos faktūros mokesčiai"
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr "Sąskaitos faktūros tipas"
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "Pastaba"
+
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
+msgstr "Šaltinis"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr "Kontrahento kalba"
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Prekės mato vieneto kategorija"
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "Mokesčiai"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "Mokesčiai"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
+msgstr "Mokesčiai"
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Mato vienetas"
+
+msgctxt "field:account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Mato vieneto skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Kaina"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "Sąskaitos faktūros eilutė"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr "Mokėjimo suma"
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr "Nurašoma suma"
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "Mokėjimo valiuta"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits:"
+msgid "Payment Currency Digits"
+msgstr "Mokėjimo valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
+msgid "Write-Off Currency Digits"
+msgstr "Nurašymo valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr "Nurašymo valiuta"
+
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "Eilutės"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Mokėtinos eilutės"
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "Mokėjimo eilutės"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "Nurašymas"
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.pay.start,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "Sąskaitos faktūros koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "Mokėjimo būdas"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "Kreditinė koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "Debetinė koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice.payment.method,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "Eilutės"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.payment_term.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr "Daliklis"
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr "Dalis procentais"
+
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr "Delta"
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
+msgid "Day of Month"
+msgstr "Mėnesio diena"
+
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
+msgid "Number of Days"
+msgstr "Dienų skaičius"
+
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
+msgid "Payment Term Line"
+msgstr "Mokėjimo sąlygų eilutė"
+
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
+msgid "Month"
+msgstr "Mėnuo"
+
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
+msgid "Number of Months"
+msgstr "Mėnesių skaičius"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
+msgid "Day of Week"
+msgstr "Savaitės diena"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Savaičių skaičius"
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.payment_term.test,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "Rezultatas"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr "Bazė"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "Sąskaitos faktūros būsena"
+
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "Teisinė informacija"
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr "Rankiniu būdu"
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "Numeruotės numeris"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr "Sąskaitos faktūros apmokėjimas"
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr "Sąskaitų faktūrų apmokėjimai"
+
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "Anuliuoti sąskaitą pirkėjui"
+
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:party.contact_mechanism,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
+msgctxt "field:party.party,payment_terms:"
+msgid "Payment Terms"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Tiekėjo mokėjimo sąlygos"
+
+msgctxt "field:party.party.payment_term,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Mokėjimo sąlygos pirkėjui"
+
+msgctxt "field:party.party.payment_term,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:party.party.payment_term,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Tiekėjo mokėjimo sąlygos"
+
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be cancelled."
+msgstr "Jei teisinga, ši sąskaita faktūra bus anuliuota."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
+
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
+msgstr "Leisti sąskaitų faktūrų pirkėjams anuliavimą."
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr ""
+
+msgctxt "model:account.fiscalyear.invoice_sequence,name:"
+msgid "Invoice Sequence"
+msgstr "Sąskaitų faktūrų numeruotė"
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "Sąskaitos faktūros apmokėjimo eilutė"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice"
+msgstr "Kreditinė sąskaita faktūra"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "Sąskaitos faktūros eilutė"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "Sąskaitos faktūros mokesčiai"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr "Apmokėti sąskaitą faktūrą"
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr "Apmokėti sąskaitą faktūrą"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "Mokėjimo būdas"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "Mokėjimo sąlygų eilutė"
+
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr "Mokėjimo sąlygų eilutės santykinis skirtumas"
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr "Sąskaitos faktūros mokesčiai"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Sąskaitos faktūros"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Sąskaitos faktūros"
+
+msgctxt "model:ir.action,name:act_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Tiekėjų sąskaitos"
+
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Sąskaitos pirkėjams"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Sąskaitų faktūrų apmokėjimo būdai"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "Kreditas"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr "Apmokėti sąskaitą faktūrą"
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
+msgid "All"
+msgstr "All"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
+msgid "Posted"
+msgstr "Įtraukta į apskaitą"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
+msgid "Validated"
+msgstr "Patvirtinta"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
+msgid "All"
+msgstr "All"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
+msgid "Posted"
+msgstr "Įtraukta į apskaitą"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
+msgid "Validated"
+msgstr "Patvirtinta"
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(lines)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "Ar tikrai norite anuliuoti šią sąskaitą faktūrą?"
+
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
+msgstr "Ar tikrai norite šią sąskaitą faktūrą įtraukti į apskaitą?"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Anuliuoti sąskaitą faktūrą"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr "Dar žinoma kaip proforma"
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Anuliuoti"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Taisyti"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Mokėti"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Įtraukti į apskaitą"
+
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Patvirtinti"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Tiekėjų sąskaitos"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Sąskaitos pirkėjams"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Sąskaitos faktūros"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Sąskaitų faktūrų apmokėjimo būdai"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "model:party.party.payment_term,name:"
+msgid "Party Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
+
+msgctxt "report:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.invoice:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "report:account.invoice:"
+msgid "Base"
+msgstr "Bazė"
+
+msgctxt "report:account.invoice:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.invoice:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.invoice:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "report:account.invoice:"
+msgid "Description:"
+msgstr "Aprašymas:"
+
+msgctxt "report:account.invoice:"
+msgid "Draft Invoice"
+msgstr "Sąskaitos faktūros juodraštis"
+
+msgctxt "report:account.invoice:"
+msgid "Invoice N°:"
+msgstr "Sąskaita faktūra Nr.:"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "report:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr "Išankstinė sąskaita"
+
+msgctxt "report:account.invoice:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "report:account.invoice:"
+msgid "Reference"
+msgstr "Nuoroda"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "Tiekėjo sąskaita faktūra Nr.:"
+
+msgctxt "report:account.invoice:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes"
+msgstr "PVM"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes:"
+msgstr "Mokesčiai:"
+
+msgctxt "report:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "Viso:"
+
+msgctxt "report:account.invoice:"
+msgid "Total:"
+msgstr "Viso su PVM:"
+
+msgctxt "report:account.invoice:"
+msgid "Unit Price"
+msgstr "Kaina"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Cancelled"
+msgstr "Anuliuota"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "Apmokėta"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Posted"
+msgstr "Įtraukta į apskaitą"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
+msgstr "Patvirtinta"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Customer"
+msgstr "Pirkėjas"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier"
+msgstr "Tiekėjas"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "Komentaras"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr "Eilutė"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr "Tarpinė suma"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr "Antraštė"
+
+#, fuzzy
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Mokėjimas"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr "Dalinis mokėjimas"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr "Nurašymas"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr "Fiksuota"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr "Procentai nuo likučio"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr "Procentai nuo visos sumos"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr "Likutis"
+
+#, fuzzy
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit these/this invoice(s)?"
+msgstr "Ar tikrai norite anuliuoti šią sąskaitą faktūrą?"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "Pagrindinis"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr "Pastabos"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "Kita informacija"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "Mokėjimas"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier:"
+msgstr "Mokesčių mokėtojo identifikatorius:"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr "Suma antrąja valiuta"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Kreditas"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debetas"
+
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr "Mokėjimo sąlygos"
+
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "Kreditas"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "Anuliuoti"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "Anuliuoti"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "Anuliuoti"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "Užverti"
