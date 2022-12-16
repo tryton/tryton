@@ -1,0 +1,225 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr ""
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr ""
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing,active:"
+msgid "Active"
+msgstr "Attivo"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing,create_date:"
+msgid "Create Date"
+msgstr "Data di creazione"
+
+#, fuzzy
+msgctxt "field:production.routing,create_uid:"
+msgid "Create User"
+msgstr "Utente creazione"
+
+#, fuzzy
+msgctxt "field:production.routing,id:"
+msgid "ID"
+msgstr "Movimento contabile"
+
+#, fuzzy
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:production.routing,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing,write_date:"
+msgid "Write Date"
+msgstr "Utente scrittura"
+
+#, fuzzy
+msgctxt "field:production.routing,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,create_date:"
+msgid "Create Date"
+msgstr "Data di creazione"
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,create_uid:"
+msgid "Create User"
+msgstr "Utente creazione"
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,id:"
+msgid "ID"
+msgstr "Movimento contabile"
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,write_date:"
+msgid "Write Date"
+msgstr "Utente scrittura"
+
+#, fuzzy
+msgctxt "field:production.routing-production.bom,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,active:"
+msgid "Active"
+msgstr "Attivo"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,create_date:"
+msgid "Create Date"
+msgstr "Data di creazione"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,create_uid:"
+msgid "Create User"
+msgstr "Utente creazione"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,id:"
+msgid "ID"
+msgstr "Movimento contabile"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operazione"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,write_date:"
+msgid "Write Date"
+msgstr "Utente scrittura"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+#, fuzzy
+msgctxt "field:production.routing.step,create_date:"
+msgid "Create Date"
+msgstr "Data di creazione"
+
+#, fuzzy
+msgctxt "field:production.routing.step,create_uid:"
+msgid "Create User"
+msgstr "Utente creazione"
+
+#, fuzzy
+msgctxt "field:production.routing.step,id:"
+msgid "ID"
+msgstr "Movimento contabile"
+
+#, fuzzy
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Operazione"
+
+#, fuzzy
+msgctxt "field:production.routing.step,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.routing.step,sequence:"
+msgid "Sequence"
+msgstr "Sequenza"
+
+#, fuzzy
+msgctxt "field:production.routing.step,write_date:"
+msgid "Write Date"
+msgstr "Utente scrittura"
+
+#, fuzzy
+msgctxt "field:production.routing.step,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Operazione"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Operazione"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr ""
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr ""
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operazione"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:production.routing.operation:"
+msgid "Operation"
+msgstr "Operazione"
