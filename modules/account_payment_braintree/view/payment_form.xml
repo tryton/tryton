@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='buttons']" position="inside">
+        <button name="braintree_checkout"/>
+        <button name="braintree_do_settle_payment"/>
+        <button name="braintree_do_pull"/>
+    </xpath>
+    <xpath expr="//field[@name='date']" position="after">
+        <group id="braintree" string="Braintree" colspan="4">
+            <label name="braintree_transaction_id" string="Transaction ID:"/>
+            <field name="braintree_transaction_id" colspan="3"/>
+
+            <label name="braintree_customer" string="Customer:"/>
+            <field name="braintree_customer" colspan="3"/>
+
+            <field name="braintree_customer_method" colspan="4" invisible="1"/>
+
+            <label name="braintree_customer_method_selection" string="Payment Method:"/>
+            <field name="braintree_customer_method_selection" colspan="3"/>
+
+            <label name="braintree_client_token" string="Client Token:"/>
+            <field name="braintree_client_token" colspan="3"/>
+
+            <label name="braintree_nonce" string="Nonce:"/>
+            <field name="braintree_nonce"/>
+            <label name="braintree_device_data" string="Device Data:"/>
+            <field name="braintree_device_data"/>
+
+            <label name="braintree_settle_payment" string="Settle:"/>
+            <field name="braintree_settle_payment"/>
+            <label name="braintree_payment_settled" string="Settled:"/>
+            <field name="braintree_payment_settled"/>
+        </group>
+    </xpath>
+    <xpath expr="//field[@name='description']" position="after">
+        <label name="braintree_error_message"/>
+        <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
+
+        <label name="braintree_dispute_reason"/>
+        <field name="braintree_dispute_reason"/>
+        <label name="braintree_dispute_status"/>
+        <field name="braintree_dispute_status"/>
+    </xpath>
+    <xpath expr="//page[@id='description']" position="after">
+        <page name="braintree_refunds" col="1">
+            <field name="braintree_refunds"/>
+        </page>
+    </xpath>
+</data>

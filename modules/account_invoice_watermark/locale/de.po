@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:report_invoice_watermark_draft"
+msgid "Invoice Watermark Draft"
+msgstr "Rechnung Wasserzeichen Entwurf"
+
+msgctxt "model:ir.action,name:report_invoice_watermark_paid"
+msgid "Invoice Watermark Paid"
+msgstr "Rechnung Wasserzeichen Bezahlt"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "DRAFT"
+msgstr "ENTWURF"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "BEZAHLT"

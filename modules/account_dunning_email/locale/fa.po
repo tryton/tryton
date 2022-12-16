@@ -1,0 +1,115 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "کاربر عقب افتاده"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "دانینگ"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "سطح"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "گیرندگان"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "گیرنده گان پنهان"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "گیرندگان ثانویه"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "مکانیزم تماس"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "از"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "ایمیل الگو"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "ارسال ایمیل"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr "ابلاغ شده به کاربر هنگامی که هیچ ایمیلی برای بازپرداخت ارسال نشده"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr "تعریف کدام ایمیل را از مکانیسم های تماس حزب استفاده کنید"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "برای مقدار تعریف شده در فایل پیکربندی خالی بگذارید."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "گزارش ایمیل دانینگ"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "گزارشات ایمیل"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "ایمیل دانینگ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "تاریخ تحویل"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "هزینه ها:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "پرداخت های دریافت شده در انتظار"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "متن یادآوری"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "زمان"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "ایمیل"

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="line"/>
+    <field name="line"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="months"/>
+    <field name="months"/>
+    <label name="month"/>
+    <field name="month" widget="selection"/>
+    <label name="weeks"/>
+    <field name="weeks"/>
+    <label name="weekday"/>
+    <field name="weekday" widget="selection"/>
+    <label name="days"/>
+    <field name="days"/>
+    <label name="day"/>
+    <field name="day"/>
+</form>

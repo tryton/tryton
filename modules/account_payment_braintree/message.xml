@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_no_braintree_nonce">
+            <field name="text">To process payment "%(payment)s" you must set a Braintree nonce or customer.</field>
+        </record>
+        <record model="ir.message" id="msg_braintree_receivable">
+            <field name="text">To pay "%(payment)s", you cannot use a Braintree journal "%(journal)s".</field>
+        </record>
+    </data>
+</tryton>

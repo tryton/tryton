@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='create_uid']" position="after">
+        <field name="groups"/>
+        <field name="write_groups"/>
+    </xpath>
+</data>
