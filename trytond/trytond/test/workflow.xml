@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this
+     repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="workflow" id="test_workflow">
+            <field name="name">Test workflow</field>
+            <field name="model">test.workflowed</field>
+            <field name="on_create" eval="True" />
+        </record>
+        <record model="workflow.activity" id="test_activity_start">
+            <field name="name">Start</field>
+            <field name="method">workflow_start</field>
+            <field name="workflow" ref="test_workflow" />
+            <field name="flow_start" eval="True" />
+        </record>
+        <record model="workflow.activity" id="test_activity_middle">
+            <field name="name">Middle</field>
+            <field name="method">workflow_middle</field>
+            <field name="workflow" ref="test_workflow" />
+        </record>
+        <record model="workflow.activity" id="test_activity_end">
+            <field name="name">End</field>
+            <field name="method">workflow_end</field>
+            <field name="workflow" ref="test_workflow" />
+            <field name="flow_stop" eval="True" />
+        </record>
+        <record model="workflow.transition"
+            id="test_transition_start_middle">
+            <field name="act_from" ref="test_activity_start" />
+            <field name="act_to" ref="test_activity_middle" />
+            <field name="condition">start_middle_ok</field>
+        </record>
+        <record model="workflow.transition"
+            id="tes_transition_middle_end">
+            <field name="act_from" ref="test_activity_middle" />
+            <field name="act_to" ref="test_activity_end" />
+            <field name="condition">middle_end_ok</field>
+        </record>
+    </data>
+</tryton>

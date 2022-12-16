@@ -1,0 +1,86 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:0"
+msgid ""
+"You can not create an attachment\n"
+"in a collection with the name\n"
+"of an existing child collection!"
+msgstr ""
+"No puede crear un adjunto en una colección con el nombre de una colección "
+"hija con tal nombre!"
+
+msgctxt "error:webdav.collection:0"
+msgid "The collection name must be unique inside a collection!"
+msgstr "El nombre de la colección dentro de una colección debe ser único!"
+
+msgctxt "error:webdav.collection:0"
+msgid ""
+"You can not create a collection\n"
+"in a collection with the name of an existing file!"
+msgstr ""
+"¡No puede crear una colección en una colección cuyo nombre ya lo tiene un "
+"fichero!"
+
+msgctxt "error:webdav.collection:0"
+msgid "You can not create recursive collections!"
+msgstr "No puede crear colecciones recursivas!"
+
+msgctxt "field:webdav.collection,childs:0"
+msgid "Children"
+msgstr "Hij@s"
+
+msgctxt "field:webdav.collection,domain:0"
+msgid "Domain"
+msgstr "Dominio"
+
+msgctxt "field:webdav.collection,model:0"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:webdav.collection,name:0"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:webdav.collection,parent:0"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:webdav.collection,rec_name:0"
+msgid "Name"
+msgstr "Nombre"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Colecciones"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Colecciones"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Colecciones"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Colecciones"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:0"
+msgid "Collection"
+msgstr "Colección"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collection"
+msgstr "Colección"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collections"
+msgstr "Colecciones"

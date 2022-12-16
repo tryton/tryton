@@ -1,0 +1,88 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:0"
+msgid ""
+"You can not create an attachment\n"
+"in a collection with the name\n"
+"of an existing child collection!"
+msgstr ""
+"Не може да създадете \n"
+"прикачен файл в колекция\n"
+"с име като на съществуваща\n"
+"подчинена колекция!"
+
+msgctxt "error:webdav.collection:0"
+msgid "The collection name must be unique inside a collection!"
+msgstr "Името на колекцията трябва да уникално вътре в колекцията!"
+
+msgctxt "error:webdav.collection:0"
+msgid ""
+"You can not create a collection\n"
+"in a collection with the name of an existing file!"
+msgstr ""
+"Не може да създадете колекция\n"
+"в колекция с име на съществуващ файл!"
+
+msgctxt "error:webdav.collection:0"
+msgid "You can not create recursive collections!"
+msgstr "Не може да създавате взаимно вложени колекции!"
+
+msgctxt "field:webdav.collection,childs:0"
+msgid "Children"
+msgstr "Деца"
+
+msgctxt "field:webdav.collection,domain:0"
+msgid "Domain"
+msgstr "Домейн"
+
+msgctxt "field:webdav.collection,model:0"
+msgid "Model"
+msgstr "Модел"
+
+msgctxt "field:webdav.collection,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:webdav.collection,parent:0"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:webdav.collection,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Колекции"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:0"
+msgid "Collection"
+msgstr "Колекция"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collection"
+msgstr "Колекция"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collections"
+msgstr "Колекции"

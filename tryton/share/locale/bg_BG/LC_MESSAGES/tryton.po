@@ -1,0 +1,1913 @@
+# Bulgarian (Bulgaria) translations for tryton.
+# Copyright (C) 2010 B2CK
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tryton 1.5.0\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2010-04-07 11:34+0200\n"
+"PO-Revision-Date: 2011-10-24 01:01+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: bg_BG <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.4\n"
+
+#: tryton/config.py:110
+msgid "specify alternate config file"
+msgstr "укажете друг конфигурационен файл"
+
+#: tryton/config.py:113
+msgid "logging everything at INFO level"
+msgstr "записване на всичко на ниво INFO "
+
+#: tryton/config.py:115
+msgid "specify channels to log"
+msgstr "указване на канали за записване"
+
+#: tryton/config.py:117
+msgid "specify the log level: INFO, DEBUG, WARNING, ERROR, CRITICAL"
+msgstr "указване на ниво на запис: INFO, DEBUG, WARNING, ERROR, CRITICAL"
+
+#: tryton/config.py:120
+msgid "specify the login user"
+msgstr "укажете потребителското име"
+
+#: tryton/config.py:122
+msgid "specify the server port"
+msgstr "укажете порт на сървъра"
+
+#: tryton/config.py:124
+msgid "specify the server hostname"
+msgstr "укажете адреса на сървъра"
+
+#: tryton/config.py:128
+msgid "Too much arguments"
+msgstr ""
+
+#: tryton/config.py:131
+#, python-format
+msgid "File \"%s\" not found"
+msgstr "Файла \"%s\" не е намерен"
+
+#: tryton/config.py:158
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr "Не може да запише конфигурационен файл %s!"
+
+#: tryton/translate.py:184
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Не може да зададе локални настройки %s"
+
+#: tryton/action/main.py:44
+msgid "Nothing to print!"
+msgstr "Няма нищо за печат!"
+
+#: tryton/action/main.py:191
+msgid "Select your action"
+msgstr "Изберете действие"
+
+#: tryton/action/main.py:197
+msgid "No action defined!"
+msgstr "Не е зададено действие!"
+
+#: tryton/common/common.py:186
+msgid "Tryton Connection"
+msgstr "Tryton връзка"
+
+#: tryton/common/common.py:197
+msgid "Server:"
+msgstr "Сървър:"
+
+#: tryton/common/common.py:215 tryton/gui/window/dblogin.py:82
+msgid "Port:"
+msgstr "Порт:"
+
+#: tryton/common/common.py:280
+msgid "Selection"
+msgstr "Избор:"
+
+#: tryton/common/common.py:289
+msgid "Your selection:"
+msgstr "Вашия избор"
+
+#: tryton/common/common.py:413 tryton/common/common.py:448
+#: tryton/gui/main.py:1401 tryton/gui/window/win_export.py:401
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:73
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:141
+#: tryton/gui/window/view_form/view/form_gtk/image.py:72
+#: tryton/gui/window/view_form/view/form_gtk/image.py:155
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:104
+msgid "Save As..."
+msgstr "Запис като ..."
+
+#: tryton/common/common.py:595
+msgid "Always ignore this warning."
+msgstr "Винаги игнорирай това предупреждение."
+
+#: tryton/common/common.py:616
+msgid "Confirmation"
+msgstr "Потвърждение"
+
+#: tryton/common/common.py:722 tryton/common/common.py:1021
+msgid "Concurrency Exception"
+msgstr "Грешка при достъп"
+
+#: tryton/common/common.py:736
+#, fuzzy
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Предупреждение при достъп за писане:</b>\n"
+"\n"
+"Записът беше променен докато го редактирахте.\n"
+"  Изберет:\n"
+"   - \"Отказ\" за да откажете запис;\n"
+"   - \"Сравняване\" за да видите променената версия;\n"
+"   - \"Запис \" за да запишете вашата текуща версия."
+
+#: tryton/common/common.py:745
+msgid "Compare"
+msgstr "Сравняване"
+
+#: tryton/common/common.py:750
+msgid "Write Anyway"
+msgstr "Запис"
+
+#: tryton/common/common.py:776 tryton/gui/window/win_export.py:435
+#: tryton/gui/window/win_import.py:262 tryton/gui/window/win_import.py:292
+msgid "Error"
+msgstr "Грешка"
+
+#: tryton/common/common.py:780
+msgid "Report Bug"
+msgstr "Съобщаване за грешка"
+
+#: tryton/common/common.py:787
+msgid "Application Error!"
+msgstr "Грешка в приложението!"
+
+#: tryton/common/common.py:810
+msgid "Error: "
+msgstr "Грешка: "
+
+#: tryton/common/common.py:830
+#, fuzzy, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "За да съобщите за грешка трябва да имате сметка на "
+
+#: tryton/common/common.py:859
+msgid "Bug Tracker"
+msgstr ""
+
+#: tryton/common/common.py:877
+msgid "User:"
+msgstr "Потребител: "
+
+#: tryton/common/common.py:885 tryton/common/common.py:1031
+#: tryton/gui/window/dblogin.py:468
+msgid "Password:"
+msgstr "Парола:"
+
+#: tryton/common/common.py:939
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"Тази грешка е вече съобщена от друг потребител..\n"
+"За да бъдете информирани потребителя ви е добавен списъка за този проблем"
+
+#: tryton/common/common.py:950
+msgid "Created new bug with ID "
+msgstr "Създадена е нова грешка с ID"
+
+#: tryton/common/common.py:957 tryton/gui/main.py:955
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"Грешка при свтрзване!\n"
+"Грешно потребителско име или парола!"
+
+#: tryton/common/common.py:962
+msgid "Exception:"
+msgstr "Грешка:"
+
+#: tryton/common/common.py:974
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+"Идентификатора на сървъра е променен след последната връзка!\n"
+"Приложението ще спре да се връзва към сървъра докато не бъде оправен "
+"идентификатора му."
+
+#: tryton/common/common.py:976
+msgid "Security risk!"
+msgstr "Риск за сигурността"
+
+#: tryton/common/common.py:982 tryton/common/common.py:1039
+#: tryton/gui/main.py:952
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"Грешка при свързване!\n"
+"Невъзможност да се свърже със сървъра!"
+
+#: tryton/common/common.py:1053
+msgid "Network Error!"
+msgstr "Мрежова грешка!"
+
+#: tryton/common/common.py:1224
+msgid "Operation in progress"
+msgstr "Операцията се изпълнява"
+
+#: tryton/common/common.py:1228
+msgid ""
+"Please wait,\n"
+"this operation may take a while..."
+msgstr ""
+"Моля изчакайте,\n"
+"тази операция може да отнеме време..."
+
+#: tryton/common/common.py:1308 tryton/common/tdp.py:251
+msgid "Y"
+msgstr "Г"
+
+#: tryton/common/common.py:1309
+msgid "M"
+msgstr "М"
+
+#: tryton/common/common.py:1310
+msgid "w"
+msgstr "с"
+
+#: tryton/common/common.py:1311
+msgid "d"
+msgstr "д"
+
+#: tryton/common/common.py:1312
+msgid "h"
+msgstr "ч"
+
+#: tryton/common/common.py:1313
+msgid "m"
+msgstr "м"
+
+#: tryton/common/tdp.py:46
+msgid "y"
+msgstr ""
+
+#: tryton/common/tdp.py:47
+#, fuzzy
+msgid "yes"
+msgstr "байта"
+
+#: tryton/common/tdp.py:47
+#, fuzzy
+msgid "true"
+msgstr "Истина"
+
+#: tryton/common/tdp.py:251
+msgid "Yes"
+msgstr "Да"
+
+#: tryton/common/tdp.py:251 tryton/common/tdp.py:620 tryton/common/tdp.py:764
+msgid "True"
+msgstr "Истина"
+
+#: tryton/common/tdp.py:251
+msgid "N"
+msgstr ""
+
+#: tryton/common/tdp.py:252
+msgid "No"
+msgstr "Не"
+
+#: tryton/common/tdp.py:252 tryton/common/tdp.py:620 tryton/common/tdp.py:764
+msgid "False"
+msgstr "Лъжа"
+
+#: tryton/gui/main.py:208
+msgid "_File"
+msgstr "Файл"
+
+#: tryton/gui/main.py:216
+msgid "_User"
+msgstr "Потребител"
+
+#: tryton/gui/main.py:230
+msgid "_Options"
+msgstr "Настройки"
+
+#: tryton/gui/main.py:238
+msgid "_Plugins"
+msgstr "Добавки"
+
+#: tryton/gui/main.py:252
+msgid "_Shortcuts"
+msgstr "Бързи клавиши"
+
+#: tryton/gui/main.py:267
+msgid "_Help"
+msgstr "Помощ"
+
+#: tryton/gui/main.py:319
+msgid "_Connect..."
+msgstr "Свързване..."
+
+#: tryton/gui/main.py:327
+msgid "_Disconnect"
+msgstr "Изключване"
+
+#: tryton/gui/main.py:337
+msgid "Data_base"
+msgstr "База данни"
+
+#: tryton/gui/main.py:348
+msgid "_New Database..."
+msgstr "Нова база данни"
+
+#: tryton/gui/main.py:356
+msgid "_Restore Database..."
+msgstr "Възтановяване на база данни..."
+
+#: tryton/gui/main.py:364
+msgid "_Backup Database..."
+msgstr "Архивиране на база данни..."
+
+#: tryton/gui/main.py:372
+msgid "Dro_p Database..."
+msgstr "Изтриване на база данни..."
+
+#: tryton/gui/main.py:381
+msgid "_Quit..."
+msgstr "Изход..."
+
+#: tryton/gui/main.py:395
+msgid "_Preferences..."
+msgstr "Предпочитания..."
+
+#: tryton/gui/main.py:406
+#, fuzzy
+msgid "_Menu Reload"
+msgstr "Презареждане"
+
+#: tryton/gui/main.py:414
+msgid "_Menu Toggle"
+msgstr ""
+
+#: tryton/gui/main.py:421
+msgid "_Home"
+msgstr "Начало"
+
+#: tryton/gui/main.py:431
+msgid "_Send a Request"
+msgstr "Изпращане на заявка"
+
+#: tryton/gui/main.py:439
+msgid "_Read my Requests"
+msgstr "Прочитане на моите заявки"
+
+#: tryton/gui/main.py:451
+msgid "_Toolbar"
+msgstr "Лента с инструменти"
+
+#: tryton/gui/main.py:459
+msgid "_Default"
+msgstr "По подразбиране"
+
+#: tryton/gui/main.py:468
+msgid "_Text and Icons"
+msgstr "Текс и икони"
+
+#: tryton/gui/main.py:478
+msgid "_Icons"
+msgstr "Икони"
+
+#: tryton/gui/main.py:487
+msgid "_Text"
+msgstr "Текст"
+
+#: tryton/gui/main.py:496
+msgid "_Menubar"
+msgstr "Лента с меню"
+
+#: tryton/gui/main.py:504
+msgid "Change Accelerators"
+msgstr "Смяна на бързи клавиши"
+
+#: tryton/gui/main.py:512
+msgid "_Mode"
+msgstr "Режим"
+
+#: tryton/gui/main.py:520
+msgid "_Normal"
+msgstr "Нормален"
+
+#: tryton/gui/main.py:528
+msgid "_PDA"
+msgstr "PDA"
+
+#: tryton/gui/main.py:535
+msgid "_Form"
+msgstr "Форма"
+
+#: tryton/gui/main.py:543
+msgid "Statusbar"
+msgstr "Лента със състояние"
+
+#: tryton/gui/main.py:551
+msgid "Save Width/Height"
+msgstr "Запазване на ширина/височина"
+
+#: tryton/gui/main.py:562
+msgid "Save Tree Expanded State"
+msgstr ""
+
+#: tryton/gui/main.py:574
+msgid "Spell Checking"
+msgstr "Проверка на правопис"
+
+#: tryton/gui/main.py:584
+msgid "Tabs Position"
+msgstr "Позиции на табове"
+
+#: tryton/gui/main.py:592
+msgid "Top"
+msgstr "Отгоре"
+
+#: tryton/gui/main.py:601
+msgid "Left"
+msgstr "Отляво"
+
+#: tryton/gui/main.py:610
+msgid "Right"
+msgstr "Отдясно"
+
+#: tryton/gui/main.py:619
+msgid "Bottom"
+msgstr "Отдолу"
+
+#: tryton/gui/main.py:627
+msgid "Search Limit..."
+msgstr ""
+
+#: tryton/gui/main.py:633
+msgid "File _Actions..."
+msgstr "Действия с файлове"
+
+#: tryton/gui/main.py:639
+msgid "_Email..."
+msgstr "Email..."
+
+#: tryton/gui/main.py:647
+msgid "_Save Options"
+msgstr "Запазване на опции"
+
+#: tryton/gui/main.py:659
+msgid "_Execute a Plugin"
+msgstr "Изпълнаване на добавка"
+
+#: tryton/gui/main.py:672
+msgid "_Tips..."
+msgstr "Подсказки..."
+
+#: tryton/gui/main.py:680
+msgid "_Keyboard Shortcuts..."
+msgstr "Бързи клавиши..."
+
+#: tryton/gui/main.py:689
+msgid "_About..."
+msgstr "Относно..."
+
+#: tryton/gui/main.py:757
+#, fuzzy
+msgid "Add Shortcut"
+msgstr "Бързи клавиши"
+
+#: tryton/gui/main.py:760
+msgid "Manage Shortcut"
+msgstr ""
+
+#: tryton/gui/main.py:899
+#, python-format
+msgid "Requests (%s/%s)"
+msgstr "Заявки (%s/%s)"
+
+#: tryton/gui/main.py:900
+#, python-format
+msgid "Waiting requests: %s received - %s sent"
+msgstr "Очакващи заявки: %s получени - %s изпратени"
+
+#: tryton/gui/main.py:970
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+
+#: tryton/gui/main.py:1008
+msgid "SSL connection"
+msgstr "SSL връзка"
+
+#: tryton/gui/main.py:1069
+msgid ""
+"You can not log into the system!\n"
+"Verify if you have a menu defined on your user."
+msgstr ""
+"Не може да влезете в системата!\n"
+"Проверете дали имате меню за вашия потребител."
+
+#: tryton/gui/main.py:1183
+msgid "Close Tab"
+msgstr "Затваряне на таб"
+
+#: tryton/gui/main.py:1300
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Ще изтерете Tryton база данни.\n"
+"Сигурни ли сте че искате да продължите?"
+
+#: tryton/gui/main.py:1311
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"Грешна парола за Tryton сървъра\n"
+"Моля опитайте отново."
+
+#: tryton/gui/main.py:1313 tryton/gui/main.py:1351 tryton/gui/main.py:1389
+#: tryton/gui/window/dbcreate.py:377
+msgid "Access denied!"
+msgstr "Достъпа отказан!"
+
+#: tryton/gui/main.py:1316
+msgid "Database drop failed with error message:\n"
+msgstr "Изтриването на базата данни неуспя с грешка:\n"
+
+#: tryton/gui/main.py:1317
+msgid "Database drop failed!"
+msgstr "Изтриването на базата данни неуспешно!"
+
+#: tryton/gui/main.py:1320
+msgid "Database dropped successfully!"
+msgstr "Базата данни изтрита успешно!"
+
+#: tryton/gui/main.py:1325
+msgid "Open Backup File to Restore..."
+msgstr "Отваряне на архивиран файл за възтановяване..."
+
+#: tryton/gui/main.py:1343
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Не може да се възтановяви база данни защитена с парола.\n"
+"Архивирането и възтановяването трябва да стане ръчно."
+
+#: tryton/gui/main.py:1347 tryton/gui/main.py:1385
+msgid "Database is password protected!"
+msgstr "Базата данни е защитена с парола!"
+
+#: tryton/gui/main.py:1349 tryton/gui/main.py:1387
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"Грешна парола за Tryton сървъра.\n"
+"Моля опитайте отново."
+
+#: tryton/gui/main.py:1354
+msgid "Database restore failed with error message:\n"
+msgstr "Възтановяването на базата данни неуспя с грешка:\n"
+
+#: tryton/gui/main.py:1356 tryton/gui/main.py:1362
+msgid "Database restore failed!"
+msgstr "Възтановяването на базата неуспешно"
+
+#: tryton/gui/main.py:1360
+msgid "Database restored successfully!"
+msgstr "Възтановяването на базата данни неуспешно"
+
+#: tryton/gui/main.py:1382
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Не е възможно да се извлече база данни защитена с парола.\n"
+"Архивирането и възтановяването трябва да стане ръчно."
+
+#: tryton/gui/main.py:1392
+msgid "Database dump failed with error message:\n"
+msgstr "Извличането на базата данни неуспя с грешка:\n"
+
+#: tryton/gui/main.py:1394
+msgid "Database dump failed!"
+msgstr "Извличането на базата данни неуспешно!"
+
+#: tryton/gui/main.py:1408
+msgid "Database backuped successfully!"
+msgstr "Базата данни архивирана успешно!"
+
+#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:36
+msgid "New"
+msgstr ""
+
+#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:36
+#: tryton/gui/window/win_form.py:120
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:65
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:69
+#: tryton/gui/window/view_form/view/form_gtk/reference.py:73
+msgid "Create a new record"
+msgstr "Създаване на нов запис"
+
+#: tryton/gui/window/board.py:24 tryton/gui/window/form.py:38
+#: tryton/gui/window/win_export.py:142
+msgid "Save"
+msgstr "Запис"
+
+#: tryton/gui/window/board.py:24 tryton/gui/window/form.py:38
+msgid "Save this record"
+msgstr "Запис на този запис"
+
+#: tryton/gui/window/board.py:25 tryton/gui/window/form.py:40
+#: tryton/gui/window/win_form.py:167 tryton/gui/window/view_board/action.py:129
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:136
+msgid "Switch"
+msgstr "Превключване"
+
+#: tryton/gui/window/board.py:25 tryton/gui/window/form.py:40
+msgid "Switch view"
+msgstr "Превключване на изглед"
+
+#: tryton/gui/window/board.py:27 tryton/gui/window/form.py:42
+msgid "_Reload"
+msgstr "Презареждане"
+
+#: tryton/gui/window/board.py:27 tryton/gui/window/form.py:42
+msgid "Reload"
+msgstr "Презареждане"
+
+#: tryton/gui/window/board.py:32 tryton/gui/window/form.py:54
+msgid "_New"
+msgstr "Нов"
+
+#: tryton/gui/window/board.py:33 tryton/gui/window/form.py:55
+msgid "_Save"
+msgstr "Запис"
+
+#: tryton/gui/window/board.py:34 tryton/gui/window/form.py:64
+msgid "_Switch View"
+msgstr "Превключване на изглед"
+
+#: tryton/gui/window/board.py:36 tryton/gui/window/form.py:73
+msgid "_Reload/Undo"
+msgstr "Презареждане/Обратно"
+
+#: tryton/gui/window/board.py:38 tryton/gui/window/form.py:58
+msgid "_Delete..."
+msgstr "Изтриване..."
+
+#: tryton/gui/window/board.py:39 tryton/gui/window/form.py:67
+msgid "_Close Tab"
+msgstr "Затваряне на таб"
+
+#: tryton/gui/window/dbcreate.py:31
+#, fuzzy
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+"Това е URL адреса на Tryton сървъра. Използвайте за сървър 'localhost' и "
+"порт'8070' ако сървъра е инсталиран на този компютър. Натиснете 'Промяна'"
+" за да промените адреса."
+
+#: tryton/gui/window/dbcreate.py:44
+msgid "No connection!"
+msgstr "Няма връзка!"
+
+#: tryton/gui/window/dbcreate.py:47
+#, fuzzy
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"Не може да се свърже със сървъра!\n"
+"1. Проверете дали сървъра е пуснат.\n"
+"2. Проверете на кой адрес и порт приема връзки.\n"
+"3. Ако има защитна  стена между сървъра и този клиент уверете се че "
+"адреса на сървъра и порта(обикновенно 8070) не са блокирани.\n"
+"Натиснете на 'Промяна' за да смените адреса."
+
+#: tryton/gui/window/dbcreate.py:137
+msgid "Create new database"
+msgstr "Създаване на нова база данни"
+
+#: tryton/gui/window/dbcreate.py:148
+msgid "C_reate"
+msgstr "Създаване"
+
+#: tryton/gui/window/dbcreate.py:155
+msgid "Create the new database."
+msgstr "Създай новата база данни"
+
+#: tryton/gui/window/dbcreate.py:166
+msgid "Server Setup:"
+msgstr "Настройка на сървър"
+
+#: tryton/gui/window/dbcreate.py:171
+msgid "Server connection:"
+msgstr "Връзка към сървъра:"
+
+#: tryton/gui/window/dbcreate.py:179 tryton/gui/window/dbdumpdrop.py:139
+#: tryton/gui/window/dbrestore.py:85
+#, fuzzy
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+"Това е URL адреса на Tryton сървъра. Използвайте за сървър 'localhost' и "
+"порт'8070' ако сървъра е инсталиран на този компютър. Натиснете 'Промяна'"
+" за да промените адреса."
+
+#: tryton/gui/window/dbcreate.py:183 tryton/gui/window/dbdumpdrop.py:146
+#: tryton/gui/window/dbrestore.py:90
+msgid "C_hange"
+msgstr "Промяна"
+
+#: tryton/gui/window/dbcreate.py:190 tryton/gui/window/dbrestore.py:96
+msgid "Setup the server connection..."
+msgstr "Настройка на връзката със сървъра..."
+
+#: tryton/gui/window/dbcreate.py:194 tryton/gui/window/dbdumpdrop.py:183
+#: tryton/gui/window/dbrestore.py:99
+msgid "Tryton Server Password:"
+msgstr "Парола за Tryton сървъра"
+
+#: tryton/gui/window/dbcreate.py:204 tryton/gui/window/dbdumpdrop.py:193
+#: tryton/gui/window/dbrestore.py:108
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+"Това е паролата на Tryton сървъра. Тя не е на никой потребител. Тя "
+"обикновенно се задава по време на конфигурирането на trytond."
+
+#: tryton/gui/window/dbcreate.py:215
+msgid "New database setup:"
+msgstr "Настройка на нова база данни:"
+
+#: tryton/gui/window/dbcreate.py:221
+msgid "Database name:"
+msgstr "Име:"
+
+#: tryton/gui/window/dbcreate.py:232
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+"Изберете име на новата база данни.\n"
+"Позволени символи за букви, цифри и _ (под черта)\n"
+"Избягвайте акценти, празен символ или специални символи! Пример: tryton"
+
+#: tryton/gui/window/dbcreate.py:240
+msgid "Default language:"
+msgstr "Език по подразбиране"
+
+#: tryton/gui/window/dbcreate.py:250
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Изберете езика по подразбиране за тази база данни. Може да добавите след "
+"инсталацията друг език през менюто за администрация."
+
+#: tryton/gui/window/dbcreate.py:254
+msgid "Admin password:"
+msgstr "Парола на администратор:"
+
+#: tryton/gui/window/dbcreate.py:263
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Изберете парола за потребителя-администратор на новата база данни. С тези"
+" данни по-късно ще може да влезете в базата данни:\n"
+"Потребителско име: admin\n"
+"Парола: <Паролата която сте избрали>"
+
+#: tryton/gui/window/dbcreate.py:271
+msgid "Confirm admin password:"
+msgstr "Потвърждаване на паролата:"
+
+#: tryton/gui/window/dbcreate.py:280
+msgid "Type the Admin password again"
+msgstr "Напишете отново паролата на администратора"
+
+#: tryton/gui/window/dbcreate.py:328
+msgid ""
+"The database name is restricted to alpha-nummerical characters and \"_\" "
+"(underscore). Avoid all accents, space and any other special characters."
+msgstr ""
+"Името на базата данни е ограничено до латински букви, цифри и \"_\" (под "
+"черта). Избягвайте акценти, празен символ или специални символи."
+
+#: tryton/gui/window/dbcreate.py:332
+msgid "Wrong characters in database name!"
+msgstr "Грешни символи в името на базата данни!"
+
+#: tryton/gui/window/dbcreate.py:336
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr ""
+"Новата парола на администратора не съвпада с тази в полето за "
+"потвърждение.\n"
+
+#: tryton/gui/window/dbcreate.py:338
+msgid "Passwords doesn't match!"
+msgstr "Паролата не съвпада!"
+
+#: tryton/gui/window/dbcreate.py:341
+msgid "Admin password and confirmation are required to create a new database."
+msgstr ""
+"За зъздаване на нова база данни са необходими парола за администратор и "
+"парола за потвърждение."
+
+#: tryton/gui/window/dbcreate.py:343
+msgid "Missing admin password!"
+msgstr "Липсва парола за администратор!"
+
+#: tryton/gui/window/dbcreate.py:358
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Вече съществува база данни с това име.\n"
+"Опитайте с друго име на базата данни."
+
+#: tryton/gui/window/dbcreate.py:361
+msgid "This database name already exist!"
+msgstr "Вече съществува база данни с такова име!"
+
+#: tryton/gui/window/dbcreate.py:375
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr "Грешна парола за Tryton сървъра. Моля опитайте отново."
+
+#: tryton/gui/window/dbcreate.py:382
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"По неизвестна причина не базата данни не може да бъде създадена.\n"
+"Ако има така създадена база данни вероятно е с грешки. Може да изтерете "
+"тази база данни! За повече информация вижте съобщинието за грешка.\n"
+"Съобщение за грешка:\n"
+
+#: tryton/gui/window/dbcreate.py:390
+msgid "Error creating database!"
+msgstr "Грешка при създаване на база данни!"
+
+#: tryton/gui/window/dbdumpdrop.py:27
+msgid "Could not connect to server!"
+msgstr "Не може да се свърже със сървъра!"
+
+#: tryton/gui/window/dbdumpdrop.py:30
+msgid "This client version is not compatible with the server!"
+msgstr "Версията на клиента не е съвместима с тази на сървъра!"
+
+#: tryton/gui/window/dbdumpdrop.py:36
+msgid "No database found, you must create one!"
+msgstr "Не е намерена нито една база данни, трябва да създете нова!"
+
+#: tryton/gui/window/dbdumpdrop.py:77
+msgid "Backup a database"
+msgstr "Архивиране на база данни"
+
+#: tryton/gui/window/dbdumpdrop.py:78
+msgid "Backup"
+msgstr "Архивиране"
+
+#: tryton/gui/window/dbdumpdrop.py:79
+msgid "Backup the choosen database."
+msgstr "Архивиране на избраната база данни."
+
+#: tryton/gui/window/dbdumpdrop.py:81
+msgid "Choose a Tryton database to backup:"
+msgstr "Изберете Tryton база данни за архивиране."
+
+#: tryton/gui/window/dbdumpdrop.py:83
+msgid "Delete a database"
+msgstr "Изтриване на база данни."
+
+#: tryton/gui/window/dbdumpdrop.py:84
+msgid "Delete"
+msgstr "Изтриване"
+
+#: tryton/gui/window/dbdumpdrop.py:85
+msgid "Delete the choosen database."
+msgstr "Изтриване на избраната база данни."
+
+#: tryton/gui/window/dbdumpdrop.py:87
+msgid "Choose a Tryton database to delete:"
+msgstr "Избор на Tryton база данни за изтриване:"
+
+#: tryton/gui/window/dbdumpdrop.py:129 tryton/gui/window/dbrestore.py:74
+msgid "Server Connection:"
+msgstr "Връзка със сървъра:"
+
+#: tryton/gui/window/dbdumpdrop.py:155 tryton/gui/window/dblogin.py:92
+#: tryton/gui/window/dblogin.py:451
+msgid "Database:"
+msgstr "База данни:"
+
+#: tryton/gui/window/dblogin.py:33
+msgid "Profile Editor"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:49
+msgid "Profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:55 tryton/gui/window/win_export.py:65
+#: tryton/gui/window/win_import.py:47
+msgid "_Add"
+msgstr "Добавяне"
+
+#: tryton/gui/window/dblogin.py:60 tryton/gui/window/win_export.py:73
+#: tryton/gui/window/win_import.py:55
+msgid "_Remove"
+msgstr "Изтриване"
+
+#: tryton/gui/window/dblogin.py:73
+#, fuzzy
+msgid "Hostname:"
+msgstr "Потребителско име:"
+
+#: tryton/gui/window/dblogin.py:109
+#, fuzzy
+msgid "Create"
+msgstr "Създаване"
+
+#: tryton/gui/window/dblogin.py:112
+#, fuzzy
+msgid "Fetching databases list"
+msgstr "Настройка на нова база данни:"
+
+#: tryton/gui/window/dblogin.py:130
+#, fuzzy
+msgid "Username:"
+msgstr "Потребителско име:"
+
+#: tryton/gui/window/dblogin.py:315
+#, fuzzy
+msgid "Could not connect to the server"
+msgstr "Не може да се свърже със сървъра!"
+
+#: tryton/gui/window/dblogin.py:317 tryton/gui/window/dblogin.py:640
+#, fuzzy
+msgid "Incompatible version of the server"
+msgstr "Несъвместима версия на сървъра!"
+
+#: tryton/gui/window/dblogin.py:377
+msgid "Login"
+msgstr "Потребителско име"
+
+#: tryton/gui/window/dblogin.py:384
+msgid "_Cancel"
+msgstr "Отказ"
+
+#: tryton/gui/window/dblogin.py:389
+msgid "Cancel connection to the Tryton server"
+msgstr "Отказ от свръзване с Tryton сървъра"
+
+#: tryton/gui/window/dblogin.py:391
+msgid "C_onnect"
+msgstr "Свързване"
+
+#: tryton/gui/window/dblogin.py:396
+msgid "Connect the Tryton server"
+msgstr "Свързване с Tryton сървъра"
+
+#: tryton/gui/window/dblogin.py:425
+msgid "Profile:"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:429
+msgid "_Manage profiles"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:439
+msgid "Host / Database information"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:442
+#, fuzzy
+msgid "Host:"
+msgstr "Порт:"
+
+#: tryton/gui/window/dblogin.py:473
+msgid "User name:"
+msgstr "Потребителско име:"
+
+#: tryton/gui/window/dbrestore.py:63
+msgid "Restore Database"
+msgstr "Възтановяване на база данни"
+
+#: tryton/gui/window/dbrestore.py:116
+msgid "File to Restore:"
+msgstr "Файл за възтановяването"
+
+#: tryton/gui/window/dbrestore.py:130
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Избор на името на базата данни която да бъде възтановена.\n"
+"Позволени символи са букви, цифри или – (под черта)\n"
+"Не може да използвате акценти, празен символ или специални символи! \n"
+"Пример: tryton"
+
+#: tryton/gui/window/dbrestore.py:136
+msgid "New Database Name:"
+msgstr "Име на нова база данни:"
+
+#: tryton/gui/window/dbrestore.py:139
+msgid "Update Database:"
+msgstr "Обновяване на база данни:"
+
+#: tryton/gui/window/dbrestore.py:143
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+"Проверка за автоматични обновявания след възтановяване на база данни от "
+"предишна Tryton версия."
+
+#: tryton/gui/window/dbrestore.py:153
+msgid "Restore"
+msgstr "Възтановяване"
+
+#: tryton/gui/window/dbrestore.py:161
+msgid "Restore the database from file."
+msgstr "Възтановяване на база данни от файл."
+
+#: tryton/gui/window/email.py:16
+msgid "Email"
+msgstr "Email"
+
+#: tryton/gui/window/email.py:25
+msgid "Email Program Settings"
+msgstr "Настройки на програма за email"
+
+#: tryton/gui/window/email.py:28
+msgid "Command Line:"
+msgstr "Команден ред:"
+
+#: tryton/gui/window/email.py:37
+msgid "Legend of Available Placeholders:"
+msgstr "Лагенда за налични контейнери:"
+
+#: tryton/gui/window/email.py:44
+msgid "To:"
+msgstr "До"
+
+#: tryton/gui/window/email.py:48
+msgid "CC:"
+msgstr "CC:"
+
+#: tryton/gui/window/email.py:52
+msgid "Subject:"
+msgstr "Относно:"
+
+#: tryton/gui/window/email.py:56
+msgid "Body:"
+msgstr "Тяло:"
+
+#: tryton/gui/window/email.py:60
+msgid "Attachment:"
+msgstr "Прикачен файл:"
+
+#: tryton/gui/window/fileactions.py:17
+msgid "File Actions"
+msgstr "Действия на файл"
+
+#: tryton/gui/window/fileactions.py:25
+msgid "Edit Files Actions"
+msgstr "Редактиране на действия на файл"
+
+#: tryton/gui/window/fileactions.py:32
+msgid "File Type"
+msgstr "Вид файл"
+
+#: tryton/gui/window/fileactions.py:32 tryton/gui/window/win_export.py:141
+#: tryton/gui/window/view_board/action.py:89
+msgid "Open"
+msgstr "Отваряне"
+
+#: tryton/gui/window/fileactions.py:32 tryton/gui/window/form.py:557
+msgid "Print"
+msgstr "Печат"
+
+#: tryton/gui/window/fileactions.py:49
+#, python-format
+msgid "%s file"
+msgstr "%s файла"
+
+#: tryton/gui/window/fileactions.py:62
+#, python-format
+msgid "Use \"%s\" as a placeholder for the file name"
+msgstr "Ползвайте \"%s\" като контейнер за името на файла"
+
+#: tryton/gui/window/form.py:45 tryton/gui/window/tips.py:74
+#: tryton/gui/window/win_form.py:142 tryton/gui/window/view_board/action.py:102
+#: tryton/gui/window/view_form/view/screen_container.py:54
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:111
+msgid "Previous"
+msgstr "Предишен"
+
+#: tryton/gui/window/form.py:46
+msgid "Previous Record"
+msgstr "Предишен запис"
+
+#: tryton/gui/window/form.py:47 tryton/gui/window/tips.py:81
+#: tryton/gui/window/win_form.py:155 tryton/gui/window/view_board/action.py:116
+#: tryton/gui/window/view_form/view/screen_container.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:124
+msgid "Next"
+msgstr "Следващ"
+
+#: tryton/gui/window/form.py:47
+msgid "Next Record"
+msgstr "Следващ запис"
+
+#: tryton/gui/window/form.py:50
+msgid "Attachment(0)"
+msgstr "Прикачен файл(0)"
+
+#: tryton/gui/window/form.py:51
+msgid "Add an attachment to the record"
+msgstr "Добавяне на прикачен файл към записа"
+
+#: tryton/gui/window/form.py:56
+msgid "_Duplicate"
+msgstr "Дублиране"
+
+#: tryton/gui/window/form.py:61
+msgid "_Next"
+msgstr "Следващ"
+
+#: tryton/gui/window/form.py:62
+msgid "_Previous"
+msgstr "Предишен"
+
+#: tryton/gui/window/form.py:70
+msgid "View _Logs..."
+msgstr "Преглед на логове"
+
+#: tryton/gui/window/form.py:71
+msgid "_Go to Record ID..."
+msgstr "Отиване на запис ID"
+
+#: tryton/gui/window/form.py:76
+msgid "_Actions..."
+msgstr "Действия..."
+
+#: tryton/gui/window/form.py:78
+#, fuzzy
+msgid "_Relate..."
+msgstr "Изтриване..."
+
+#: tryton/gui/window/form.py:80
+#, fuzzy
+msgid "_Report..."
+msgstr "Вмъкване на данни..."
+
+#: tryton/gui/window/form.py:82
+#, fuzzy
+msgid "_E-Mail..."
+msgstr "Email..."
+
+#: tryton/gui/window/form.py:84
+msgid "_Print..."
+msgstr "Печат..."
+
+#: tryton/gui/window/form.py:87
+msgid "_Export Data..."
+msgstr "Извличане на данни..."
+
+#: tryton/gui/window/form.py:89
+msgid "_Import Data..."
+msgstr "Вмъкване на данни..."
+
+#: tryton/gui/window/form.py:184
+msgid "Go to ID"
+msgstr "Отиване на ID"
+
+#: tryton/gui/window/form.py:193
+msgid "Go to ID:"
+msgstr "Отиване на ID:"
+
+#: tryton/gui/window/form.py:244
+msgid "No record selected!"
+msgstr "Не са избрани записи!"
+
+#: tryton/gui/window/form.py:257
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Прикачен файл(%d)"
+
+#: tryton/gui/window/form.py:272
+msgid "You have to select one record!"
+msgstr "Трябва да изберете един запис!"
+
+#: tryton/gui/window/form.py:276
+msgid "ID:"
+msgstr "ID:"
+
+#: tryton/gui/window/form.py:277
+msgid "Creation User:"
+msgstr "Потребител създал:"
+
+#: tryton/gui/window/form.py:278
+msgid "Creation Date:"
+msgstr "Дата на създаване:"
+
+#: tryton/gui/window/form.py:279
+msgid "Latest Modification by:"
+msgstr "Последно променен от:"
+
+#: tryton/gui/window/form.py:280
+msgid "Latest Modification Date:"
+msgstr "Дата на последна промяна:"
+
+#: tryton/gui/window/form.py:303
+msgid "Model:"
+msgstr "Модел:"
+
+#: tryton/gui/window/form.py:309
+msgid "Are you sure to remove this record?"
+msgstr "Наистина ли искате да изтриете този запис?"
+
+#: tryton/gui/window/form.py:311
+msgid "Are you sure to remove those records?"
+msgstr "Наистина ли искате да изтриете тези записи?"
+
+#: tryton/gui/window/form.py:314
+msgid "Records not removed!"
+msgstr "Записа не е изтрит!"
+
+#: tryton/gui/window/form.py:316
+msgid "Records removed!"
+msgstr "Записите изтрити!"
+
+#: tryton/gui/window/form.py:358
+msgid "Working now on the duplicated record(s)!"
+msgstr "Работите върху дублиран(и) запис(и)!"
+
+#: tryton/gui/window/form.py:363
+msgid "Record saved!"
+msgstr "Записа съхранен!"
+
+#: tryton/gui/window/form.py:366
+msgid "Invalid form!"
+msgstr "Невалидна форма!"
+
+#: tryton/gui/window/form.py:385 tryton/gui/window/form.py:481
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Този запис е променен\n"
+"искате ли да го запишете ?"
+
+#: tryton/gui/window/form.py:466
+msgid " of "
+msgstr " от"
+
+#: tryton/gui/window/form.py:552
+msgid "Action"
+msgstr "Действие"
+
+#: tryton/gui/window/form.py:552
+msgid "Launch action"
+msgstr ""
+
+#: tryton/gui/window/form.py:553
+#, fuzzy
+msgid "Relate"
+msgstr "Създаване"
+
+#: tryton/gui/window/form.py:553
+#, fuzzy
+msgid "Open related records"
+msgstr "Отваряне на запис"
+
+#: tryton/gui/window/form.py:555
+#, fuzzy
+msgid "Report"
+msgstr "Справки"
+
+#: tryton/gui/window/form.py:555
+#, fuzzy
+msgid "Open report"
+msgstr "Отваряне на запис"
+
+#: tryton/gui/window/form.py:556
+#, fuzzy
+msgid "E-Mail"
+msgstr "Email"
+
+#: tryton/gui/window/form.py:556
+msgid "E-Mail report"
+msgstr ""
+
+#: tryton/gui/window/form.py:557
+msgid "Print report"
+msgstr ""
+
+#: tryton/gui/window/limit.py:17
+#, fuzzy
+msgid "Limit"
+msgstr "Ограничение:"
+
+#: tryton/gui/window/limit.py:26
+msgid "Search Limit Settings"
+msgstr ""
+
+#: tryton/gui/window/limit.py:29
+msgid "Limit:"
+msgstr "Ограничение:"
+
+#: tryton/gui/window/preference.py:21
+msgid "Preferences"
+msgstr "Настройки"
+
+#: tryton/gui/window/preference.py:49
+msgid "Edit User Preferences"
+msgstr "Редактиране на потребителски настройки"
+
+#: tryton/gui/window/preference.py:71
+msgid "Preference"
+msgstr "Настройки"
+
+#: tryton/gui/window/preference.py:88
+msgid "Current Password:"
+msgstr "Текуща парола"
+
+#: tryton/gui/window/shortcuts.py:17
+msgid "Keyboard Shortcuts"
+msgstr "Бързи клавиши"
+
+#: tryton/gui/window/shortcuts.py:28
+msgid "Text Entries Shortcuts"
+msgstr "Текстови бързи клавиши"
+
+#: tryton/gui/window/shortcuts.py:29
+msgid "Cut selected text"
+msgstr "Изрязване на избрания текст"
+
+#: tryton/gui/window/shortcuts.py:30
+msgid "Copy selected text"
+msgstr "Копиране на избрания текст"
+
+#: tryton/gui/window/shortcuts.py:31
+msgid "Paste copied text"
+msgstr "Поставяне на копирания текст"
+
+#: tryton/gui/window/shortcuts.py:32
+msgid "Next widget"
+msgstr "Следваща джаджа"
+
+#: tryton/gui/window/shortcuts.py:33
+msgid "Previous widget"
+msgstr "Предишенна джаджа"
+
+#: tryton/gui/window/shortcuts.py:34
+msgid "Relation Entries Shortcuts"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Create new relation"
+msgstr "Създаване на нова връзка"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Open/Search relation"
+msgstr "Отваряне/Търсене на връзка"
+
+#: tryton/gui/window/shortcuts.py:37
+#, fuzzy
+msgid "List Entries Shortcuts"
+msgstr "Текстови бързи клавиши"
+
+#: tryton/gui/window/shortcuts.py:38
+#, fuzzy
+msgid "Create new line"
+msgstr "Създаване на нова връзка"
+
+#: tryton/gui/window/shortcuts.py:39
+#, fuzzy
+msgid "Open relation"
+msgstr "Отваряне/Търсене на връзка"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Mark line for deletion"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Unmark line for deletion"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:42
+msgid "Date/Datetime Entries Shortcuts"
+msgstr "Бързи клавиши на записи за дата/време"
+
+#: tryton/gui/window/shortcuts.py:43
+msgid ""
+"You can use special operators:\n"
+"* + to increase the date\n"
+"* - to decrease the date or clear\n"
+"* = to set the date or the current date\n"
+"\n"
+"Available variables are:\n"
+"h for hours\n"
+"d for days\n"
+"w for weeks (only with +/-)\n"
+"m for months\n"
+"y for years\n"
+"\n"
+"Examples:\n"
+"\"+21d\" increase of 21 days the date\n"
+"\"=11m\" set the date to the 11th month of the year\n"
+"\"-2w\" decrease of 2 weeks the date"
+msgstr ""
+"Може да ползвате специални оператори:\n"
+"* + за увеличаване на датата\n"
+"* - за намаляване на датата или изчистване\n"
+"* = за задаване на дата или текущата дата\n"
+"\n"
+"Възможни променли:\n"
+"h за часове\n"
+"d за дни\n"
+"w за седмици (само с +/-)\n"
+"m за месеци\n"
+"y за години\n"
+"\n"
+"Пример:\n"
+"\"+21d\" увеличава датата с 21 дена\n"
+"\"=11m\" поставя датата на 11-я месец от годината\n"
+"\"-2w\" намалява датата с 2 седмици"
+
+#: tryton/gui/window/shortcuts.py:61
+msgid "Edition Widgets"
+msgstr ""
+
+#: tryton/gui/window/tips.py:17
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Добре дошли при Tryton</b>\n"
+"\n"
+"\n"
+
+#: tryton/gui/window/tips.py:21
+#, fuzzy
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>Познавате Triton, един от псевдонимите на нашия проект?</b>\n"
+"\n"
+"Triton (изрича се /ËtraÉªtÉn/ TRYE-tÉn, на гръцки Î¤ÏÎ¯ÏÏÎ½) е\n"
+"най-голямата луна на планетата Нептун, открита на 10 Октомври 1846\n"
+"от Уилям Ласел. В Слънчевата система тя е най-голямата луна\n"
+"с ретроградна орбита, това е орбита с противоположна посока\n"
+"на въртенето на планетата и. С 2,700 км в диаметър тя е седмата по "
+"големина\n"
+"луна в Слънчевата система. Тритон съсредоточава 99.5 % от цялата маса\n"
+"в орбитара на Нептун, включително пръстените на планетата и другите\n"
+"12 познати луни. Тя има повече маса от всички 159 познати луни в\n"
+"в Слънчевата система.\n"
+
+#: tryton/gui/window/tips.py:33
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Извличане на списък записи</b>\n"
+"\n"
+"Може да копирате записи от всеки списък с Ctrl + C\n"
+"и да ги поставите във всяка програма с Ctrl + V\n"
+
+#: tryton/gui/window/tips.py:38
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+
+#: tryton/gui/window/tips.py:46
+msgid "Tips"
+msgstr "Подсказки"
+
+#: tryton/gui/window/tips.py:66
+msgid "_Display a new tip next time"
+msgstr "Показвай нова подсказка следващия път"
+
+#: tryton/gui/window/win_export.py:24
+msgid "Export to CSV"
+msgstr "Извличане в CSV"
+
+#: tryton/gui/window/win_export.py:39
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Предварително зададени извличания</b>"
+
+#: tryton/gui/window/win_export.py:51 tryton/gui/window/win_import.py:38
+msgid "<b>All fields</b>"
+msgstr "<b>Всички полета</b>"
+
+#: tryton/gui/window/win_export.py:82 tryton/gui/window/win_import.py:64
+#: tryton/gui/window/view_form/view/screen_container.py:87
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:82
+#: tryton/gui/window/view_form/view/form_gtk/image.py:81
+msgid "Clear"
+msgstr "Изчистване"
+
+#: tryton/gui/window/win_export.py:94
+msgid "Save Export"
+msgstr "Запис на извличане"
+
+#: tryton/gui/window/win_export.py:103
+msgid "Delete Export"
+msgstr "Изтриване на извличане"
+
+#: tryton/gui/window/win_export.py:114
+msgid "<b>Fields to export</b>"
+msgstr "<b>Полета за извличане</b>"
+
+#: tryton/gui/window/win_export.py:131
+msgid "<b>Options</b>"
+msgstr "<b>Настройки</b>"
+
+#: tryton/gui/window/win_export.py:146
+msgid "Add _field names"
+msgstr "Добавяне на имена на полета"
+
+#: tryton/gui/window/win_export.py:204
+msgid "Name"
+msgstr "Име"
+
+#: tryton/gui/window/win_export.py:311
+msgid "What is the name of this export?"
+msgstr "Какво е името на това извличане?"
+
+#: tryton/gui/window/win_export.py:429
+#, python-format
+msgid "%d record saved!"
+msgstr "%d заспис съхранен!"
+
+#: tryton/gui/window/win_export.py:431
+#, python-format
+msgid "%d records saved!"
+msgstr "%d записа съхранени!"
+
+#: tryton/gui/window/win_export.py:434
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Операцията неуспешна!\n"
+"Съобщение за грешка:\n"
+"%s"
+
+#: tryton/gui/window/win_form.py:36
+msgid "Link"
+msgstr "Връзка"
+
+#: tryton/gui/window/win_form.py:130
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:89
+msgid "Delete selected record"
+msgstr "Изтриване на избрания запис"
+
+#: tryton/gui/window/win_import.py:21
+msgid "Import from CSV"
+msgstr "Вмъкване от CSV"
+
+#: tryton/gui/window/win_import.py:76
+msgid "Auto-Detect"
+msgstr "Автоматично разпознаване"
+
+#: tryton/gui/window/win_import.py:93
+msgid "<b>Fields to import</b>"
+msgstr "<b>Полета за вмъкване</b>"
+
+#: tryton/gui/window/win_import.py:109
+msgid "File to Import:"
+msgstr "Файл за вмъкване:"
+
+#: tryton/gui/window/win_import.py:111
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:61
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:115
+#: tryton/gui/window/view_form/view/form_gtk/image.py:61
+#: tryton/gui/window/view_form/view/form_gtk/image.py:128
+msgid "Open..."
+msgstr "Отваряне..."
+
+#: tryton/gui/window/win_import.py:117
+msgid "CSV Parameters"
+msgstr "CSV параметри"
+
+#: tryton/gui/window/win_import.py:125
+#, fuzzy
+msgid "Field Separator:"
+msgstr "Разделител на полета"
+
+#: tryton/gui/window/win_import.py:134
+msgid "Text Delimiter:"
+msgstr "Разделител на думи:"
+
+#: tryton/gui/window/win_import.py:142
+msgid "Encoding:"
+msgstr "Кодиране:"
+
+#: tryton/gui/window/win_import.py:153
+msgid "Lines to Skip:"
+msgstr "Редове за пропускане:"
+
+#: tryton/gui/window/win_import.py:188 tryton/gui/window/win_import.py:193
+msgid "Field name"
+msgstr "Име на поле"
+
+#: tryton/gui/window/win_import.py:248
+msgid "You must select an import file first!"
+msgstr "Първо трябва да изберете файл за вмъкване!"
+
+#: tryton/gui/window/win_import.py:261
+msgid "Error opening CSV file"
+msgstr "Грешка при отваряне на CSV файл"
+
+#: tryton/gui/window/win_import.py:291
+#, fuzzy, python-format
+msgid "Error processing the file at field %s."
+msgstr "Грешка при обработка на файл при поле %s"
+
+#: tryton/gui/window/win_import.py:363
+#, python-format
+msgid "%d record imported!"
+msgstr "%d запис вмъкнат!"
+
+#: tryton/gui/window/win_import.py:365
+#, python-format
+msgid "%d records imported!"
+msgstr "%d записи вмъкнати!"
+
+#: tryton/gui/window/win_import.py:370
+msgid "Importation Error!"
+msgstr "Грешка при вмъкване!"
+
+#: tryton/gui/window/win_import.py:371
+#, python-format
+msgid ""
+"Error trying to import this record:\n"
+"%s\n"
+"Error Message:\n"
+"%s\n"
+"\n"
+"%s"
+msgstr ""
+"Грешка при вмъкване на следния запис:\n"
+"%s\n"
+"Съобшение за грешка:\n"
+"%s\n"
+"\n"
+"%s"
+
+#: tryton/gui/window/win_search.py:27 tryton/gui/window/view_board/action.py:78
+#: tryton/gui/window/view_form/view/screen_container.py:36
+msgid "Search"
+msgstr "Търсене"
+
+#: tryton/gui/window/wizard.py:303
+msgid "Wizard"
+msgstr "Помощник"
+
+#: tryton/gui/window/view_board/parser.py:76
+#: tryton/gui/window/view_board/parser.py:78
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:387
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:391
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:779
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:781
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/list.py:558
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:282
+msgid "Actions"
+msgstr "Действия"
+
+#: tryton/gui/window/view_form/view/list.py:561
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:284
+msgid "Reports"
+msgstr "Справки"
+
+#: tryton/gui/window/view_form/view/list.py:595
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:311
+msgid "You must select a record to use the relation!"
+msgstr "Трябва за изберете запис за използвате връзката! "
+
+#: tryton/gui/window/view_form/view/screen_container.py:77
+msgid "Find"
+msgstr "Търсене"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:51
+#, fuzzy
+msgid "Select a File..."
+msgstr "Избор на файл"
+
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:45
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:163
+msgid "Open the calendar"
+msgstr "Отваряне на календара"
+
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:103
+msgid "Date Selection"
+msgstr "Избор на дата"
+
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:222
+msgid "Date Time Selection"
+msgstr "Избор на дата и време"
+
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:231
+msgid "Hour:"
+msgstr "Час:"
+
+#: tryton/gui/window/view_form/view/form_gtk/calendar.py:234
+msgid "Minute:"
+msgstr "Минута:"
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:104
+msgid "Show plain text"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:51
+#, fuzzy
+msgid "Select an Image..."
+msgstr "Избор на файл"
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:118
+msgid "All files"
+msgstr "Всички файлове"
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:122
+msgid "Images"
+msgstr "Изображения"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:43
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:47
+msgid "Add"
+msgstr "Добавяне"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:55
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:57
+msgid "Remove"
+msgstr "Премахване"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:66
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:263
+msgid "Open a record"
+msgstr "Отваряне на запис"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:266
+msgid "Search a record"
+msgstr "Тъсене на запис"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:79
+msgid "Edit selected record"
+msgstr "Редактиране на избрания запис"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:99
+#, fuzzy
+msgid "Undelete selected record"
+msgstr "Изтриване на избрания запис"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:24
+#: tryton/gui/window/view_form/view/list_gtk/parser.py:222
+#: tryton/gui/window/view_form/view/list_gtk/parser.py:912
+msgid "Unknown"
+msgstr "Неисвестен"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:38
+msgid "Wrong icon for the button!"
+msgstr "Грешна икона за бутона!"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:489
+msgid "No String Attr."
+msgstr "Няма атрибут низ"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:664
+msgid "You need to save the record before adding translations!"
+msgstr "Трябва да съхраните записа преди да добавите преводи!"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:677
+msgid "No other language available!"
+msgstr "Няма наличен друг език!"
+
+#: tryton/gui/window/view_form/view/form_gtk/parser.py:741
+msgid "Add Translation"
+msgstr "Добавяне на превод"
+
+#: tryton/gui/window/view_form/view/form_gtk/reference.py:72
+msgid "Search / Open a record"
+msgstr "Търсене / Отваряне на запис"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:25
+msgid "Save As"
+msgstr "Запис като"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:36
+msgid "Image Size"
+msgstr "Размер на изображение"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:45
+msgid "Width:"
+msgstr "Ширина:"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:52
+msgid "Height:"
+msgstr "Височина:"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:64
+msgid "PNG image (*.png)"
+msgstr "PNG изображение (*.png)"
+
+#: tryton/gui/window/view_form/view/graph_gtk/parser.py:93
+msgid "Image size too large!"
+msgstr "Размера на изображението е много голям!"
+
+#: tryton/gui/window/view_form/view/list_gtk/parser.py:209
+msgid ": "
+msgstr ": "
+
+#: tryton/plugins/__init__.py:36
+msgid "No available plugin for this resource!"
+msgstr "Няма налична добавка за този ресурс!"
+
+#: tryton/plugins/__init__.py:38
+msgid "Choose a Plugin"
+msgstr "Избор на добавка"
+
+#: tryton/plugins/translation/__init__.py:16
+msgid "Translate view"
+msgstr "Превод на изглед"
+
+#: tryton/plugins/workflow/__init__.py:22
+msgid "Print Workflow"
+msgstr "Печат на работен процес"
+
+#: tryton/plugins/workflow/__init__.py:23
+msgid "Print Workflow (Complex)"
+msgstr "Печат на работен процес (Пълно)"

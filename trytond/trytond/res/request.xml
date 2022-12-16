@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="request_view_tree">
+            <field name="model">res.request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Requests">
+                    <field name="create_date"/>
+                    <field name="act_from"/>
+                    <field name="act_to"/>
+                    <field name="name"/>
+                    <field name="priority"/>
+                    <field name="trigger_date"/>
+                    <field name="number_references"/>
+                    <field name="state"/>
+                    <field name="active"/>
+                    <field name="body" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="request_view_form">
+            <field name="model">res.request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Requests" col="6" cursor="act_to">
+                    <label name="act_from"/>
+                    <field name="act_from"/>
+                    <label name="act_to"/>
+                    <field name="act_to"/>
+                    <group colspan="2" col="4" id="active_ref">
+                        <label name="active"/>
+                        <field name="active"/>
+                        <label name="references"/>
+                        <field name="number_references"/>
+                    </group>
+                    <label name="name"/>
+                    <field name="name" colspan="3"/>
+                    <label name="priority"/>
+                    <field name="priority"/>
+                    <notebook colspan="6">
+                        <page string="Request" id="request">
+                            <separator name="body" colspan="4"/>
+                            <field name="body" colspan="4"/>
+                            <field name="history" colspan="4"/>
+                            <label name="trigger_date"/>
+                            <field name="trigger_date"/>
+                            <group col="2" colspan="2" id="buttons">
+                                <button name="request_send"
+                                    states="{'invisible': Not(In(Eval('state'), ['draft', 'chatting'])), 'readonly': Not(Equal(Eval('act_from'), Eval('_user')))}"
+                                    string="Send" type="object"/>
+                                <button name="request_reply"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(Equal(Eval('act_to'), Eval('_user')))}"
+                                    string="Reply" type="object"/>
+                            </group>
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="3" colspan="2" id="button">
+                                <button name="request_close"
+                                    states="{'invisible': Not(In(Eval('state'), ['waiting', 'draft', 'chatting']))}"
+                                    string="Close" type="object"/>
+                            </group>
+                        </page>
+                        <page string="References" col="1" id="references">
+                            <field name="references"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_request_form">
+            <field name="name">Requests</field>
+            <field name="res_model">res.request</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="request_view_tree"/>
+            <field name="act_window" ref="act_request_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="request_view_form"/>
+            <field name="act_window" ref="act_request_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_request_form" id="menu_request_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_request_form_group_admin">
+            <field name="menu" ref="menu_request_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="request_link_view_form">
+            <field name="model">res.request.link</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Request Link" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="priority"/>
+                    <field name="priority"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="request_link_view_tree">
+            <field name="model">res.request.link</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Request Link">
+                    <field name="name"/>
+                    <field name="model"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_request_link_form">
+            <field name="name">Request Links</field>
+            <field name="res_model">res.request.link</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_link_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="request_link_view_tree"/>
+            <field name="act_window" ref="act_request_link_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_link_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="request_link_view_form"/>
+            <field name="act_window" ref="act_request_link_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_request_link_form" id="menu_request_link_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_request_link_form_group_admin">
+            <field name="menu" ref="menu_request_link_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="request_history_view_tree">
+            <field name="model">res.request.history</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Request History">
+                    <field name="act_from"/>
+                    <field name="act_to"/>
+                    <field name="name"/>
+                    <field name="number_references"/>
+                    <field name="date_sent"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="request_history_view_form">
+            <field name="model">res.request.history</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Request History" col="6">
+                    <label name="act_from"/>
+                    <field name="act_from"/>
+                    <label name="act_to"/>
+                    <field name="act_to"/>
+                    <label name="number_references"/>
+                    <field name="number_references"/>
+                    <label name="subject"/>
+                    <field name="subject" colspan="3"/>
+                    <label name="priority"/>
+                    <field name="priority"/>
+                    <field name="body" colspan="6"/>
+                    <label name="date_sent"/>
+                    <field name="date_sent" colspan="3"/>
+                    <newline/>
+                    <label name="state"/>
+                    <field name="state" colspan="3"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="request_reference_view_tree">
+            <field name="model">res.request.reference</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Request References">
+                    <field name="request"/>
+                    <field name="reference"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="request_reference_view_form">
+            <field name="model">res.request.reference</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Request Reference" col="2">
+                    <label name="request"/>
+                    <field name="request"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
