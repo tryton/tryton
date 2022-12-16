@@ -1,0 +1,970 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.address.format:"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "error:party.address:"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "ເຈົ້າບໍ່ສາມາດປ່ຽນທີ່ຢູ່ຂອງພາກສ່ວນ \"%s\" ນີ້ໄດ້."
+
+msgctxt "error:party.category:"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr "ຊື່ປະເພດ \"%s\" ນີ້ບໍ່ຖືກ : ທ່ານບໍ່ສາມາດໃຊ້ \" / \" ໄດ້ ໃນຫ້ອງຊື່ຄົນ"
+
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent."
+msgstr "ຊື່ປະເພດຂອງພາກສ່ວນຕ້ອງບໍ່ຊໍ້າກັນ"
+
+msgctxt "error:party.check_vies:"
+msgid "The VIES service is unavailable, try again later."
+msgstr "ການບໍລິການລະບົບຂໍ້ມູນແລກປ່ຽນອາກອນບໍ່ທັນມີ, ລອງໃໝ່ອີກນໍາຫຼັງ."
+
+msgctxt "error:party.contact_mechanism:"
+msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
+msgstr "ເລກໂທລະສັບ \"%(phone)s\" ຂອງພາກສ່ວນ \"%(party)s\" ບໍ່ຖືກຕ້ອງ ."
+
+msgctxt "error:party.contact_mechanism:"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "ທ່ານບໍ່ສາມາດປັບປຸງແກ້ໄຂພາກສ່ວນຂອງກົນໄກການຕິດຕໍ່ \"%s\" ນີ້ໄດ້."
+
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "ເລກ ອມພ \"%(code)s\" ໃນພາກສ່ວນ \"%(party)s\" ບໍ່ຖືກຕ້ອງ."
+
+msgctxt "error:party.party:"
+msgid "The code of the party must be unique."
+msgstr "ລະຫັດຂອງພາກສ່ວນຕ້ອງບໍ່ຊໍ້າກັນ"
+
+msgctxt "error:party.replace:"
+msgid ""
+"Parties have different Tax Identifier: %(source_code)s vs "
+"%(destination_code)s."
+msgstr ""
+"ບັນດາພາກສ່ວນມີເລກລະບຸບັນຊີຕ່າງກັນ: %(source_code)s ກັບ %(destination_code)s."
+
+msgctxt "error:party.replace:"
+msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
+msgstr "ບັນດາພາກສ່ວນມີ ຊື່ຕ່າງກັນ:  %(source_name)s ກັບ %(destination_name)s."
+
+msgctxt "field:party.address,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "ບ້ານ"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "ປະເທດ"
+
+msgctxt "field:party.address,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.address,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "ທີ່ຢູ່ເຕັມ"
+
+msgctxt "field:party.address,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "ຊື່ອາຄານ"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.address,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.address,sequence:"
+msgid "Sequence"
+msgstr "ລຳດັບ"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "ຖະໜົນຫຼັກ"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "ແຂວງ"
+
+msgctxt "field:party.address,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.address,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "ລະຫັດປະເທດ"
+
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "ປະເທດ"
+
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "ກຳນົດຮູບແບບ"
+
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "ພາສາ"
+
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.category,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "ໝວດຍ່ອຍ"
+
+msgctxt "field:party.category,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.category,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.category,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "ຂຶ້ນກັບ"
+
+msgctxt "field:party.category,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.category,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.category,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.check_vies.result,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "ພາກສ່ວນລົ້ມເຫຼວ"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "ພາກສ່ວນສຳເລັດຜົນ"
+
+msgctxt "field:party.configuration,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.configuration,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.configuration,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr ""
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "ລໍາດັບພາກສ່ວນ"
+
+msgctxt "field:party.configuration,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.configuration,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "ລໍາດັບພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.configuration.party_sequence,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.contact_mechanism,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "ຄໍາເຫັນ"
+
+msgctxt "field:party.contact_mechanism,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.contact_mechanism,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "ອີເມວລ໌"
+
+msgctxt "field:party.contact_mechanism,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "ໝາຍເລກ"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.contact_mechanism,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.contact_mechanism,sequence:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "ຕິດຕໍ່ທາງສື່ອິນເຕີເນັດ"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "ສະກາຍປີ (Skype)"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "ທີ່ຢູ່ເວັບໄຊຕ໌"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "ໝາຍເລກ"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "ຄ່າທີ່ຫຍໍ້ເຂົ້າ"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "ເວັບໄຊຕ໌"
+
+msgctxt "field:party.contact_mechanism,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.contact_mechanism,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.identifier,sequence:"
+msgid "Sequence"
+msgstr "ລຳດັບ"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.party,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "ທີ່ຢູ່"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "ໝວດ"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "ລະຫັດອ່ານໄດ້ຢ່າງດຽວ"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "field:party.party,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.party,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "ອີເມວລ໌"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "ໂທລະສານ"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "ຊື່ເຕັມ"
+
+msgctxt "field:party.party,id:"
+msgid "ID"
+msgstr "ເລກປະຈໍາໂຕ"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "ລະບຸຕົວຕົນ"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "ພາສາ"
+
+#, fuzzy
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "ພາສາ"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "ໂທລະສັບມືຖື"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "ໂທລະສັບ"
+
+msgctxt "field:party.party,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "ປ່ຽນແທນໂດຍ"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "ໂຕລະບຸອາກອນ"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "ເວັບໄຊຕ໌"
+
+msgctxt "field:party.party,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.party,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "ປະເພດ"
+
+msgctxt "field:party.party-party.category,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.party-party.category,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.party-party.category,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.party-party.category,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.party-party.category,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:party.party-party.category,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "ພາສາ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:party.party.lang,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:party.party.lang,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "ປາຍທາງ"
+
+msgctxt "field:party.replace.ask,id:"
+msgid "ID"
+msgstr "ເລກລະຫັດ"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "ຕົ້ນທາງ"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr ""
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr ""
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"ໂຕປ່ຽນທີ່ມີຢູ່ (ລວມທັງໂຕພິມໃຫຍ່):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr ""
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr ""
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr ""
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr ""
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr ""
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr ""
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr ""
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr ""
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr ""
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr ""
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr ""
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr ""
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr ""
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr ""
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr ""
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr ""
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr ""
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr ""
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr ""
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "ທີ່ຢູ່"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "ຮູບແບບທີ່ຢູ່"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "ປະເພດ"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "ປະເພດ"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "ພາກສ່ວນລຽງຕາມປະເພດ"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "ການກຳນົດຄ່າພາກສ່ວນ"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "ປ້າຍຊື່"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "ກວດເລກພາສີ"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "ປ່ຽນແທນ"
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "ທີ່ຢູ່"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "ຮູບແບບທີ່ຢູ່"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "ໝວດ"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "ໝວດ"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "ການກຳນົດຄ່າ"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "ການກຳນົດຄ່າພາກສ່ວນ"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "ທີ່ຢູ່"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "ຮູບແບບທີ່ຢູ່"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "ປະເພດ"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "ກວດເລກພາສີ"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "ການຕັ້ງຄ່າພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "ການກຳນົດຄ່າພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "ການກຳນົດຄ່າພາກສ່ວນ"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "ພາກສ່ວນ-ປະເພດ"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr ""
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "ປ່ຽນແທນພາກສ່ວນ"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "ການບໍລິຫານພາກສ່ວນ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "ອີເມວລ໌"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "ໂທລະສານ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "ສື່ທາງອິນເຕີເນັດ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "ສົ່ງສັນຍານຄຳເວົ້າ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "ມືຖື"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "ອື່ນໆ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "ໂທລະສັບຕັ້ງໂຕະ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "ໂທລະສັບວິດິໂອ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "ສະກາຍປີ (Skype)"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "ເວັບໄຊຕ໌"
+
+msgctxt "selection:party.identifier,type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "VAT"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "ທົ່ວໄປ"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "ປ່ຽນແທນໂດຍ"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "ປ່ຽນແທນ"
+
+msgctxt "view:party.address:"
+msgid "Addresses"
+msgstr "ທີ່ຢູ່"
+
+msgctxt "view:party.category:"
+msgid "Categories"
+msgstr "ປະເພດ"
+
+msgctxt "view:party.category:"
+msgid "Category"
+msgstr "ປະເພດ"
+
+msgctxt "view:party.check_vies.result:"
+msgid "VAT Information Exchange System Results"
+msgstr "ຜົນລະບົບແລກປ່ຽນຂໍ້ມູນອາກອນ"
+
+msgctxt "view:party.configuration:"
+msgid "Party Configuration"
+msgstr "ການກຳນົດຄ່າພາກສ່ວນ"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanisms"
+msgstr "ກົນໄກການຕິດຕໍ່"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr "ລະບຸຕົວຕົນພາກສ່ວນ"

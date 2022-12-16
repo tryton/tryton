@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
+msgstr "Anzahl (Angelsächsische Bewertung) kann nicht größer als Anzahl sein."
+
+msgctxt "field:product.category,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:product.category,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Verwendetes Konto Kosten verkaufte Waren"
+
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:product.product,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:product.product,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Verwendetes Konto Kosten verkaufte Waren"
+
+msgctxt "field:product.template,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:product.template,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Verwendetes Konto Kosten verkaufte Waren"
+
+msgctxt "field:product.template.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "Eingang (Angelsächsische Bewertung)"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "Ausgang (Angelsächsische Bewertung)"
+
+msgctxt "help:product.product,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "Angelsächsisch"
