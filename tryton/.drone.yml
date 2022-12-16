@@ -1,0 +1,36 @@
+clone:
+    hg:
+        image: plugins/hg
+        environment:
+            - HG_SHARE_POOL=/root/.cache/hg
+        volumes:
+            - cache:/root/.cache
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        environment:
+            - CFLAGS=-O0
+            - TOX_TESTENV_PASSENV=CFLAGS CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID
+        commands:
+            - pip install tox
+            - tox -e "${TOXENV}"
+        volumes:
+             - cache:/root/.cache
+    check_dist:
+        image: ${IMAGE}
+        commands:
+            - pip install twine
+            - python setup.py sdist
+            - twine check dist/*
+
+matrix:
+    include:
+        - IMAGE: tryton/tryton-test:3.6
+          TOXENV: py36
+        - IMAGE: tryton/tryton-test:3.7
+          TOXENV: py37
+        - IMAGE: tryton/tryton-test:3.8
+          TOXENV: py38
+        - IMAGE: tryton/tryton-test:3.9
+          TOXENV: py39
