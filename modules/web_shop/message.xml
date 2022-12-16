@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_shop_name_unique">
+            <field name="text">The web shop name must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_sale_invalid_party">
+            <field name="text">To process the sale "%(sale)s" you must select another party instead of the guest "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_sale_web_id_unique">
+            <field name="text">The web ID on the sale must be unique.</field>
+        </record>
+    </data>
+</tryton>
