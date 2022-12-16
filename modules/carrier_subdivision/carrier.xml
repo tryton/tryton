@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="carrier_selection_view_form">
+            <field name="model">carrier.selection</field>
+            <field name="inherit" ref="carrier.carrier_selection_view_form"/>
+            <field name="name">carrier_selection_form</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list">
+            <field name="model">carrier.selection</field>
+            <field name="inherit" ref="carrier.carrier_selection_view_list"/>
+            <field name="name">carrier_selection_list</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list_sequence">
+            <field name="model">carrier.selection</field>
+            <field name="inherit" ref="carrier.carrier_selection_view_list_sequence"/>
+            <field name="name">carrier_selection_list</field>
+        </record>
+    </data>
+</tryton>
