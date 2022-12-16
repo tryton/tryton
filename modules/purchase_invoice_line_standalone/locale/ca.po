@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr "Línies de factura ignorades"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Compra - Línia de factura ignorada"
