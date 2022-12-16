@@ -1,0 +1,12 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice.line,0,You can not delete invoice lines that comes from a purchase!,Aus einem Einkauf stammende Rechnungspositionen können nicht gelöscht werden!,0
+field,"purchase.purchase,invoice_lines",0,Invoice Lines,Rechnungspositionen Kunden,0
+field,"purchase.purchase,invoice_lines_ignored",0,Invoice Lines Ignored,Ignorierte Rechnungspositionen,0
+field,"purchase.purchase-account.invoice.line,line",0,Invoice Line,Rechnungsposition Kunde,0
+field,"purchase.purchase-account.invoice.line,purchase",0,Purchase,Einkauf,0
+field,"purchase.purchase-account.invoice.line,rec_name",0,Name,Name,0
+field,"purchase.purchase-ignored-account.invoice.line,invoice",0,Invoice Line,Rechnungsposition Kunde,0
+field,"purchase.purchase-ignored-account.invoice.line,purchase",0,Purchase,Einkauf,0
+field,"purchase.purchase-ignored-account.invoice.line,rec_name",0,Name,Name,0
+model,"purchase.purchase-account.invoice.line,name",0,Purchase - Invoice Line,Einkauf - Rechnungsposition,0
+model,"purchase.purchase-ignored-account.invoice.line,name",0,Purchase - Ignored Invoice Line,Einkauf - Ignorierte Rechnungsposition,0

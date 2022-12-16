@@ -1,0 +1,608 @@
+type,name,res_id,src,value,fuzzy
+error,access_error,0,"You try to bypass an access rule!
+(Document type: %s)","Вы пытаетесь нарушить правила доступа!
+(Модель: %s)",0
+error,delete_workflow_record,0,You cannot delete a record with a running workflow.,Вы не можете удалять записи с запущенным рабочим процессом.,0
+error,delete_xml_record,0,You are not allowed to delete this record.,Вы не можете удалить эту запись.,0
+error,domain_validation_record,0,"The value of the field ""%s"" on ""%s"" is not valid according to its domain.","Значение поля ""%s"" в таблице ""%s"" не действует в соответствии с его домена.",0
+error,foreign_model_exist,0,"Could not delete ""%s"" records because they are used on field ""%s"" of ""%s"".","Не могу удалить ""%s"" записей, поскольку они используются в поле ""%s"" из таблицы ""%s"".",0
+error,foreign_model_missing,0,"The value of field ""%s"" on ""%s"" doesn't exist.","Значение поля ""%s"" в таблице ""%s"" отсутствует.",0
+error,ir.action.keyword,0,Wrong wizard model!,Неправильный шаблон мастера,0
+error,ir.action.report,0,The internal name must be unique by module!,Наименование модуля должно быть уникальным!,0
+error,ir.attachment,0,The names of attachments must be unique by record!,Имена вложений должны быть уникальными!,0
+error,ir.cron,0,Scheduled action failed,Запланированное действие не удалось выполнить,0
+error,ir.cron,0,"The following action failed to execute properly: ""%s""
+ Traceback: 
+
+%s
+","Следующие действия не возможно выполнить должным образом: ""%s""
+ Отладочное сообщение:
+
+%s
+",0
+error,ir.lang,0,decimal_point and thousands_sep must be different!,Десятичный разделитель и Разделитель тысяч должны быть разными!,0
+error,ir.lang,0,Invalid Grouping!,Неверное Группировка!,0
+error,ir.lang,0,The date format is not valid!,Неправильный формат даты!,0
+error,ir.model,0,The model must be unique!,Модель должна быть уникальным!,0
+error,ir.model.access,0,Only one record by model and group is allowed!,Разрешается только одна запись от модели и группы!,0
+error,ir.model.access,0,You can not create this kind of document! (%s),Вы не можете создать такой документ! (%s),0
+error,ir.model.access,0,You can not delete this document! (%s),Вы не можете удалить этот документ! (%s),0
+error,ir.model.access,0,You can not read this document! (%s),Вы не можете прочитать этот документ! (%s),0
+error,ir.model.access,0,You can not write in this document! (%s),Вы не можете сохранить этот документ! (%s),0
+error,ir.model.data,0,"The triple (fs_id, module, model) must be unique!","(fs_id, модуль, модель) должен быть уникальным!",0
+error,ir.model.field,0,The field name in model must be unique!,Наименование поля в шаблоне должно быть уникальным!,0
+error,ir.module.module,0,"Missing dependencies %s for module ""%s""","Отсутствует(ют) модуль(и) %s для модуля ""%s""",0
+error,ir.module.module,0,The modules you are trying to uninstall depends on installed modules:,"От модулей, которые вы пытаетесь удалить, зависят установленные модули:",0
+error,ir.module.module,0,The name of the module must be unique!,Наименование модуля должно быть уникальным,0
+error,ir.module.module,0,You can not remove a module that is installed or will be installed,"Вы не можете удалить модуль, который установлен или будет установлен",0
+error,ir.module.module.dependency,0,Dependency must be unique by module!,Зависимость должно быть уникальным модулем!,0
+error,ir.rule.group,0,Global and Default are mutually exclusive!,Глобальные и по умолчанию являются взаимоисключающими!,0
+error,ir.sequence,0,Invalid prefix/suffix!,Ошибка в префиксе/суффиксе!,0
+error,ir.sequence,0,Missing sequence!,Ошибка в нумерации,0
+error,ir.sequence.strict,0,Invalid prefix/suffix!,Ошибка в префиксе/суффиксе!,0
+error,ir.sequence.strict,0,Missing sequence!,Ошибка в нумерации,0
+error,ir.translation,0,Translation must be unique,Перевод должен быть уникальным,0
+error,ir.ui.view,0,Invalid XML for View!,Ошибка в XML просмотре,0
+error,read_error,0,"You try to read records that don't exist anymore!
+(Document type: %s)","Вы пытаетесь прочитать записи, которые не существуют!
+(Модель:%s)",0
+error,required_field,0,"The field ""%s"" on ""%s"" is required.","Поле ""%s"" на ""%s"" необходимо.",0
+error,required_validation_record,0,"The field ""%s"" on ""%s"" is required.","Поле ""%s"" на ""%s"" необходимо.",0
+error,size_validation_record,0,"The field ""%s"" on ""%s"" is too long.","Поле ""%s"" в таблице ""%s"" слишком длинное.",0
+error,write_error,0,"You try to write on records that don't exist anymore!
+(Document type: %s)","Вы пытаетесь записать данные, которые больше не существуют!
+(Модель:%s)",0
+error,write_xml_record,0,You are not allowed to modify this record.,Вы не можете изменить эту запись.,0
+error,xml_record_desc,0,This record is part of the base configuration.,Эта запись является частью базовой конфигурации.,0
+field,"ir.action,active",0,Active,Действительнный,0
+field,"ir.action.act_window,action",0,Action,Действие,0
+field,"ir.action.act_window,act_window_views",0,Views,Виды,0
+field,"ir.action.act_window,auto_refresh",0,Auto-Refresh,Авто-Обновление,0
+field,"ir.action.act_window,context",0,Context Value,Значение контекста,0
+field,"ir.action.act_window,domain",0,Domain Value,Значение обслати выборки,0
+field,"ir.action.act_window,limit",0,Limit,Лимит,0
+field,"ir.action.act_window,rec_name",0,Name,Наименование,0
+field,"ir.action.act_window,res_model",0,Model,Шаблон,0
+field,"ir.action.act_window,search_value",0,Search Criteria,Критерии поиска,0
+field,"ir.action.act_window.view,act_window",0,Action,Действие,0
+field,"ir.action.act_window.view,rec_name",0,Name,Наименование,0
+field,"ir.action.act_window,views",0,Views,Виды,0
+field,"ir.action.act_window.view,sequence",0,Sequence,Последовательность,0
+field,"ir.action.act_window,view_type",0,Type of view,Тип вида,0
+field,"ir.action.act_window.view,view",0,View,Просмотр,0
+field,"ir.action.act_window,window_name",0,Window Name,Наименование окна,0
+field,"ir.action,groups",0,Groups,Группы,0
+field,"ir.action.keyword,action",0,Action,Действие,0
+field,"ir.action.keyword,keyword",0,Keyword,Ключевое слово,0
+field,"ir.action.keyword,model",0,Model,Шаблон,0
+field,"ir.action.keyword,rec_name",0,Name,Наименование,0
+field,"ir.action,keywords",0,Keywords,Ключевые слова,0
+field,"ir.action,name",0,Name,Наименование,0
+field,"ir.action,rec_name",0,Name,Наименование,0
+field,"ir.action.report,action",0,Action,Действие,0
+field,"ir.action.report,direct_print",0,Direct Print,прямая печать,0
+field,"ir.action.report,email",0,Email,Эл.почта,0
+field,"ir.action.report,extension",0,Extension,Расширение,0
+field,"ir.action.report,model",0,Model,Шаблон,0
+field,"ir.action.report,module",0,Module,Модуль,0
+field,"ir.action.report,rec_name",0,Name,Наименование,0
+field,"ir.action.report,report",0,Path,Путь,0
+field,"ir.action.report,report_content",0,Content,Содержание,0
+field,"ir.action.report,report_content_data",0,Content,Содержание,0
+field,"ir.action.report,report_name",0,Internal Name,Внутреннее наименование,0
+field,"ir.action.report,style",0,Style,Стиль,0
+field,"ir.action.report,style_content",0,Style,Стиль,0
+field,"ir.action,type",0,Type,Тип,0
+field,"ir.action.url,action",0,Action,Действие,0
+field,"ir.action.url,rec_name",0,Name,Наименование,0
+field,"ir.action.url,url",0,Action Url,Действие URL,0
+field,"ir.action,usage",0,Usage,Использования,0
+field,"ir.action.wizard,action",0,Action,Действие,0
+field,"ir.action.wizard,email",0,Email,Эл.почта,0
+field,"ir.action.wizard,model",0,Model,Шаблон,0
+field,"ir.action.wizard,rec_name",0,Name,Наименование,0
+field,"ir.action.wizard_size,height",0,Height,Высота,0
+field,"ir.action.wizard_size,model",0,Model,Шаблон,0
+field,"ir.action.wizard_size,rec_name",0,Name,Наименование,0
+field,"ir.action.wizard_size,user",0,User,Пользователь,0
+field,"ir.action.wizard_size,width",0,Width,Ширина,0
+field,"ir.action.wizard_size,wizard",0,Wizard,Мастер,0
+field,"ir.action.wizard,window",0,Window,Окно,0
+field,"ir.action.wizard,wiz_name",0,Wizard name,Наименование мастера,0
+field,"ir.attachment,collision",0,Collision,Колизия,0
+field,"ir.attachment,datas",0,Datas,Данные,0
+field,"ir.attachment,datas_size",0,Datas size,Размер данных,0
+field,"ir.attachment,description",0,Description,Описание,0
+field,"ir.attachment,digest",0,Digest,Резюме,0
+field,"ir.attachment,link",0,Link,Ссылка,0
+field,"ir.attachment,name",0,Attachment Name,Имя вложения,0
+field,"ir.attachment,rec_name",0,Name,Наименование,0
+field,"ir.attachment,res_id",0,Resource ID,Ресурс ID,0
+field,"ir.attachment,res_model",0,Resource Model,Ресурс Шаблон,0
+field,"ir.cache,name",0,Name,Наименование,0
+field,"ir.cache,rec_name",0,Name,Наименование,0
+field,"ir.cache,timestamp",0,Timestamp,Время,0
+field,"ir.cron,active",0,Active,Действительнный,0
+field,"ir.cron,args",0,Arguments,Аргументы,0
+field,"ir.cron,doall",0,Repeat missed,Повторить пропущенные,0
+field,"ir.cron,function",0,Function,Функция,0
+field,"ir.cron,interval_number",0,Interval Number,Внутренний номер,0
+field,"ir.cron,interval_type",0,Interval Unit,Внутренния единица,0
+field,"ir.cron,model",0,Model,Шаблон,0
+field,"ir.cron,name",0,Name,Наименование,0
+field,"ir.cron,nextcall",0,Next call date,Дата следующего вызова,0
+field,"ir.cron,numbercall",0,Number of calls,Количество звонков,0
+field,"ir.cron,priority",0,Priority,Приоритет,0
+field,"ir.cron,rec_name",0,Name,Наименование,0
+field,"ir.cron,request_user",0,Request User,Запрос пользователя,0
+field,"ir.cron,running",0,Running,Выполняющиеся,0
+field,"ir.cron,user",0,Execution User,От имени пользователя,0
+field,"ir.default,clause",0,Clause,Пункт,0
+field,"ir.default,field",0,Field,Поле,0
+field,"ir.default,model",0,Model,Шаблон,0
+field,"ir.default,rec_name",0,Name,Наименование,0
+field,"ir.default,user",0,User,Пользователь,0
+field,"ir.default,value",0,Value,Значение,0
+field,"ir.export,export_fields",0,Fields,Поля,0
+field,"ir.export.line,export",0,Export,Экспорт,0
+field,"ir.export.line,name",0,Name,Наименование,0
+field,"ir.export.line,rec_name",0,Name,Наименование,0
+field,"ir.export,name",0,Name,Наименование,0
+field,"ir.export,rec_name",0,Name,Наименование,0
+field,"ir.export,resource",0,Resource,Ресурс,0
+field,"ir.lang,active",0,Active,Действительнный,0
+field,"ir.lang,code",0,Code,Код отгрузки,0
+field,"ir.lang,date",0,Date,Дата,0
+field,"ir.lang,decimal_point",0,Decimal Separator,Разделитель десятичных чисел,0
+field,"ir.lang,direction",0,Direction,Направление,0
+field,"ir.lang,grouping",0,Grouping,Группировка,0
+field,"ir.lang,name",0,Name,Наименование,0
+field,"ir.lang,rec_name",0,Name,Наименование,0
+field,"ir.lang,thousands_sep",0,Thousands Separator,Разделитель тысяч,0
+field,"ir.lang,translatable",0,Translatable,Переводимый,0
+field,"ir.model.access,description",0,Description,Описание,0
+field,"ir.model.access,group",0,Group,Группа,0
+field,"ir.model.access,model",0,Model,Шаблон,0
+field,"ir.model.access,perm_create",0,Create Access,Добавление,0
+field,"ir.model.access,perm_delete",0,Delete Access,Удаление,0
+field,"ir.model.access,perm_read",0,Read Access,Чтение,0
+field,"ir.model.access,perm_write",0,Write Access,Запись,0
+field,"ir.model.access,rec_name",0,Name,Наименование,0
+field,"ir.model.data,date_init",0,Init Date,Дата уставки,0
+field,"ir.model.data,date_update",0,Update Date,Дата обновления,0
+field,"ir.model.data,db_id",0,Resource ID,Ресурс ID,0
+field,"ir.model.data,fs_id",0,Identifier on File System,Идентификатор в файловой системе,0
+field,"ir.model.data,inherit",0,Inherit,Наследование,0
+field,"ir.model.data,model",0,Model,Шаблон,0
+field,"ir.model.data,module",0,Module,Модуль,0
+field,"ir.model.data,rec_name",0,Name,Наименование,0
+field,"ir.model.data,values",0,Values,Значения,0
+field,"ir.model.field,field_description",0,Field Description,Описание поля,0
+field,"ir.model.field,groups",0,Groups,Группы,0
+field,"ir.model.field,help",0,Help,Помощь,0
+field,"ir.model.field,model",0,Model,Шаблон,0
+field,"ir.model.field,module",0,Module,Модуль,0
+field,"ir.model.field,name",0,Name,Наименование,0
+field,"ir.model.field,rec_name",0,Name,Наименование,0
+field,"ir.model.field,relation",0,Model Relation,Связь шаблона,0
+field,"ir.model,fields",0,Fields,Поля,0
+field,"ir.model.field,ttype",0,Field Type,Тип поля,0
+field,"ir.model,info",0,Information,Информация,0
+field,"ir.model,model",0,Model Name,Наименование шаблона,0
+field,"ir.model,module",0,Module,Модуль,0
+field,"ir.model,name",0,Model Description,Описание шаблона,0
+field,"ir.model.print_model_graph.init,level",0,Level,Уровень,0
+field,"ir.model,rec_name",0,Name,Наименование,0
+field,"ir.module.module,author",0,Author,Автор,0
+field,"ir.module.module.config_wizard.item,name",0,Name,Наименование,0
+field,"ir.module.module.config_wizard.item,rec_name",0,Name,Наименование,0
+field,"ir.module.module.config_wizard.item,sequence",0,Sequence,Последовательность,0
+field,"ir.module.module.config_wizard.item,state",0,State,Состояние,0
+field,"ir.module.module,dependencies",0,Dependencies,Зависимые,0
+field,"ir.module.module.dependency,module",0,Module,Модуль,0
+field,"ir.module.module.dependency,name",0,Name,Наименование,0
+field,"ir.module.module.dependency,rec_name",0,Name,Наименование,0
+field,"ir.module.module.dependency,state",0,State,Состояние,0
+field,"ir.module.module,description",0,Description,Описание,0
+field,"ir.module.module.install_upgrade.init,module_info",0,Modules to update,Модули для обновления,0
+field,"ir.module.module,name",0,Name,Наименование,0
+field,"ir.module.module,rec_name",0,Name,Наименование,0
+field,"ir.module.module,shortdesc",0,Short description,Краткое описание,0
+field,"ir.module.module,state",0,State,Состояние,0
+field,"ir.module.module,version",0,Version,Версия,0
+field,"ir.module.module,website",0,Website,Сайт,0
+field,"ir.property,field",0,Field,Поле,0
+field,"ir.property,name",0,Name,Наименование,0
+field,"ir.property,rec_name",0,Name,Наименование,0
+field,"ir.property,res",0,Resource,Ресурс,0
+field,"ir.property,value",0,Value,Значение,0
+field,"ir.rule,field",0,Field,Поле,0
+field,"ir.rule.group,default_p",0,Default,По умолчанию,0
+field,"ir.rule.group,global_p",0,Global,Общий,0
+field,"ir.rule.group,groups",0,Groups,Группы,0
+field,"ir.rule.group,model",0,Model,Шаблон,0
+field,"ir.rule.group,name",0,Name,Наименование,0
+field,"ir.rule.group,perm_create",0,Create Access,Добавление,0
+field,"ir.rule.group,perm_delete",0,Delete Access,Удаление,0
+field,"ir.rule.group,perm_read",0,Read Access,Чтение,0
+field,"ir.rule.group,perm_write",0,Write Access,Запись,0
+field,"ir.rule.group,rec_name",0,Name,Наименование,0
+field,"ir.rule.group,rules",0,Tests,Тесты,0
+field,"ir.rule.group,users",0,Users,Пользователи,0
+field,"ir.rule,operand",0,Operand,Операнд,0
+field,"ir.rule,operator",0,Operator,Оператор,0
+field,"ir.rule,rec_name",0,Name,Наименование,0
+field,"ir.rule,rule_group",0,Group,Группа,0
+field,"ir.sequence,active",0,Active,Действительнный,0
+field,"ir.sequence,code",0,Sequence Type,Тип последовательности,0
+field,"ir.sequence,name",0,Sequence Name,Наименование последовательности,0
+field,"ir.sequence,number_increment",0,Increment Number,Коэфициент увеличения,0
+field,"ir.sequence,number_next",0,Next Number,Следующий номер,0
+field,"ir.sequence,padding",0,Number padding,Кол-во дополнения,0
+field,"ir.sequence,prefix",0,Prefix,Префикс,0
+field,"ir.sequence,rec_name",0,Name,Наименование,0
+field,"ir.sequence.strict,active",0,Active,Действительнный,0
+field,"ir.sequence.strict,code",0,Sequence Type,Тип последовательности,0
+field,"ir.sequence.strict,name",0,Sequence Name,Наименование последовательности,0
+field,"ir.sequence.strict,number_increment",0,Increment Number,Коэфициент увеличения,0
+field,"ir.sequence.strict,number_next",0,Next Number,Следующий номер,0
+field,"ir.sequence.strict,padding",0,Number padding,Кол-во дополнения,0
+field,"ir.sequence.strict,prefix",0,Prefix,Префикс,0
+field,"ir.sequence.strict,rec_name",0,Name,Наименование,0
+field,"ir.sequence.strict,suffix",0,Suffix,Суффикс,0
+field,"ir.sequence,suffix",0,Suffix,Суффикс,0
+field,"ir.sequence.type,code",0,Sequence Code,Код последовательности,0
+field,"ir.sequence.type,name",0,Sequence Name,Наименование последовательности,0
+field,"ir.sequence.type,rec_name",0,Name,Наименование,0
+field,"ir.translation.export.init,lang",0,Language,Язык,0
+field,"ir.translation.export.init,module",0,Module,Модуль,0
+field,"ir.translation.export.start,file",0,File,Файл,0
+field,"ir.translation,fuzzy",0,Fuzzy,Нечеткие,0
+field,"ir.translation,lang",0,Language,Язык,0
+field,"ir.translation,model",0,Model,Шаблон,0
+field,"ir.translation,module",0,Module,Модуль,0
+field,"ir.translation,name",0,Field Name,Название поля,0
+field,"ir.translation,rec_name",0,Name,Наименование,0
+field,"ir.translation,res_id",0,Resource ID,Ресурс ID,0
+field,"ir.translation,src",0,Source,Исходный текст,0
+field,"ir.translation,type",0,Type,Тип,0
+field,"ir.translation.update.init,lang",0,Language,Язык,0
+field,"ir.translation,value",0,Translation Value,Значение перевода,0
+field,"ir.ui.menu,action",0,Action,Действие,0
+field,"ir.ui.menu,active",0,Active,Действительнный,0
+field,"ir.ui.menu,childs",0,Children,Подчиненый,0
+field,"ir.ui.menu,complete_name",0,Complete Name,Полное название,0
+field,"ir.ui.menu,groups",0,Groups,Группы,0
+field,"ir.ui.menu,icon",0,Icon,Иконка,0
+field,"ir.ui.menu,name",0,Menu,Меню,0
+field,"ir.ui.menu,parent",0,Parent Menu,Основное меню,0
+field,"ir.ui.menu,rec_name",0,Name,Наименование,0
+field,"ir.ui.menu,sequence",0,Sequence,Последовательность,0
+field,"ir.ui.view,arch",0,View Architecture,Арихитуктура вида,0
+field,"ir.ui.view,domain",0,Domain,Область,0
+field,"ir.ui.view,field_childs",0,Children Field,Подчиненое поле,0
+field,"ir.ui.view,inherit",0,Inherited View,Наследованный вид,0
+field,"ir.ui.view,model",0,Model,Шаблон,0
+field,"ir.ui.view,module",0,Module,Модуль,0
+field,"ir.ui.view,priority",0,Priority,Приоритет,0
+field,"ir.ui.view,rec_name",0,Name,Наименование,0
+field,"ir.ui.view_sc,name",0,Shortcut Name,Краткое наименование,0
+field,"ir.ui.view_sc,rec_name",0,Name,Наименование,0
+field,"ir.ui.view_sc,res_id",0,Resource Ref.,Ссылка на ресурс,0
+field,"ir.ui.view_sc,resource",0,Resource Name,Наименование ресурса,0
+field,"ir.ui.view_sc,sequence",0,Sequence,Последовательность,0
+field,"ir.ui.view_sc,user_id",0,User Ref.,Ссылка на пользователя,0
+field,"ir.ui.view_tree_width,field",0,Field,Поле,0
+field,"ir.ui.view_tree_width,model",0,Model,Шаблон,0
+field,"ir.ui.view_tree_width,rec_name",0,Name,Наименование,0
+field,"ir.ui.view_tree_width,user",0,User,Пользователь,0
+field,"ir.ui.view_tree_width,width",0,Width,Ширина,0
+field,"ir.ui.view,type",0,View Type,Тип вида,0
+help,"ir.action.act_window,auto_refresh",0,Add an auto-refresh on the view,Добавить авто-обновление в просмотр,0
+help,"ir.action.act_window,limit",0,Default limit for the list view,По умолчанию кол-во записей в списке,0
+help,"ir.action.act_window,search_value",0,Default search criteria for the list view,По умолчанию критерии поиска в списке,0
+help,"ir.action.act_window,window_name",0,Use the action name as window name,Использовать наименование действия как наименование окна,0
+help,"ir.action.report,style",0,Define the style to apply on the report.,Определить стиль для применения по этому отчету.,0
+help,"ir.action.wizard,window",0,Run wizard in a new window,Запустить мастера в новом окне,0
+help,"ir.cron,numbercall",0,"Number of times the function is called,
+a negative number indicates that the function will always be called","Количество раз, когда вызывается функция,
+отрицательное значение означает, что функция всегда востребованы",0
+help,"ir.cron,priority",0,"0=Very Urgent
+10=Not urgent","0=Очень срочно
+10=Не актуаден",0
+help,"ir.cron,request_user",0,The user who will receive requests in case of failure,"Пользователь, который будет получать запросы в случае ошибки",0
+help,"ir.cron,user",0,The user used to execute this action,"Пользователь, для выполнения этого действия",0
+help,"ir.lang,code",0,RFC 4646 tag: http://tools.ietf.org/html/rfc4646,,0
+help,"ir.model.data,db_id",0,The id of the record in the database.,Идентификатор записи в базе данных.,0
+help,"ir.model.data,fs_id",0,The id of the record as known on the file system.,"Идентификатор записи как известно, в файловой системе.",0
+help,"ir.model.field,module",0,Module in which this field is defined,"Модуль, в котором это поле определяется",0
+help,"ir.model,module",0,Module in which this model is defined,"Модуль, в котором эти модели определяются",0
+help,"ir.rule.group,default_p",0,Add this rule to all users by default,Добавить это правило для всех пользователей по умолчанию,0
+help,"ir.rule.group,global_p",0,"Make the rule global 
+so every users must follow this rule",Сделать правило общим,0
+help,"ir.rule.group,rules",0,The rule is satisfied if at least one test is True,"Это правило выполняется, если по крайней мере одно правило истинно",0
+model,"ir.action.act_window,name",0,Action act window,Действие окна,0
+model,"ir.action.act_window.view,name",0,Action act window view,Действие окна вида,0
+model,"ir.action.keyword,name",0,Action keyword,Действие ключевых слов,0
+model,"ir.action,name",0,Action,Действие,0
+model,"ir.action,name",act_action_form,Actions,Действия,0
+model,"ir.action,name",act_attachment_form,Attachments,Вложения,0
+model,"ir.action,name",act_translation_clean,Clean Translations,Очистить переводы,0
+model,"ir.action,name",act_config_wizard_item_form,Config Wizard Items,Мастер конфигурации,0
+model,"ir.action,name",act_property_form_default,Default Properties,Свойства по умолчанию,0
+model,"ir.action,name",act_default_form,Defaults,По умолчанию,0
+model,"ir.action,name",act_export_form,Exports,Экспортировать,0
+model,"ir.action,name",act_translation_export,Export Translations,Экспорт переводов,0
+model,"ir.action,name",act_model_fields_form,Fields,Поля,0
+model,"ir.action,name",report_model_graph,Graph,Графика,0
+model,"ir.action,name",print_model_graph,Graph,Графика,0
+model,"ir.action,name",act_lang_form,Languages,Языки,0
+model,"ir.action,name",act_menu_tree,Menu,Меню,0
+model,"ir.action,name",act_menu_form,Menus,Меню,0
+model,"ir.action,name",act_model_form,Models,Шаблоны,0
+model,"ir.action,name",act_model_access_form,Models Access,Шаблон доступа,0
+model,"ir.action,name",act_module_config_wizard,Module Configuration,Конфигурация модуля,0
+model,"ir.action,name",act_module_form,Modules,Модули,0
+model,"ir.action,name",act_module_install_upgrade,Perform Pending Installation/Upgrade,Установить / Обновить,0
+model,"ir.action,name",act_property_form,Properties,Свойства,0
+model,"ir.action,name",act_rule_group_form,Record Rules,Запись правил,0
+model,"ir.action,name",act_action_report_form,Reports,Отчеты,0
+model,"ir.action,name",act_cron_form,Scheduled Actions,Запланированные действия,0
+model,"ir.action,name",act_sequence_form,Sequences,Нумерации,0
+model,"ir.action,name",act_sequence_strict_form,Sequences Strict,Строгая нумерация,0
+model,"ir.action,name",act_sequence_type_form,Sequence Types,Тип нумерации,0
+model,"ir.action,name",act_translation_set_report,Set Report Translations,Установить переводы для отчетов,0
+model,"ir.action,name",act_translation_update,Synchronize Translations,Синхронизация переводов,0
+model,"ir.action,name",act_translation_form,Translations,Переводы,0
+model,"ir.action,name",act_action_url_form,URLs,Ссылки,0
+model,"ir.action,name",act_view_form,Views,Виды,0
+model,"ir.action,name",act_view_sc_form,View Shortcuts,Быстрый доступ к списку,0
+model,"ir.action,name",act_view_tree_width_form,View Tree Width,Ширина просмотра списка,0
+model,"ir.action,name",act_action_act_window_form,Window Actions,Действия окна,0
+model,"ir.action,name",act_action_wizard_form,Wizards,Мастера,0
+model,"ir.action,name",act_action_wizard_size_form,Wizard Sizes,Мастер размеров,0
+model,"ir.action.report,name",0,Action report,Действие отчета,0
+model,"ir.action.url,name",0,Action URL,Действие URL,0
+model,"ir.action.wizard,name",0,Action wizard,Действие мастера,0
+model,"ir.action.wizard_size,name",0,Action Wizard Size,Действие мастера размера,0
+model,"ir.attachment,name",0,Attachment,Вложение,0
+model,"ir.cache,name",0,Cache,Кэш,0
+model,"ir.cron,name",0,Cron,Планировщик,0
+model,"ir.date,name",0,Date,Дата,0
+model,"ir.default,name",0,Default,По умолчанию,0
+model,"ir.export.line,name",0,Export line,Экспорт строки,0
+model,"ir.export,name",0,Export,Экспорт,0
+model,"ir.lang,name",lang_cs,Czech,Чешский,0
+model,"ir.lang,name",lang_en,English,Английский,0
+model,"ir.lang,name",lang_fr,French,Французкий,0
+model,"ir.lang,name",lang_de,German,Немецкий,0
+model,"ir.lang,name",0,Language,Язык,0
+model,"ir.lang,name",lang_es_CO,Spanish (Colombia),Испанский (Колумбия),0
+model,"ir.lang,name",lang_es,Spanish (Spain),Испанский (Испания),0
+model,"ir.model.access,name",0,Model access,Шаблон доступа,0
+model,"ir.model.data,name",0,Model data,Данные шаблона,0
+model,"ir.model.field,name",0,Model field,Шаблон поля,0
+model,"ir.model,name",0,Model,Шаблон,0
+model,"ir.model.print_model_graph.init,name",0,Print Model Graph Init,Печать шаблона графика Init,0
+model,"ir.module.module.config_wizard.first,name",0,Module Config Wizard First,Мастер конфигурации модуля,0
+model,"ir.module.module.config_wizard.item,name",0,Config wizard to run after installing module,Запустить мастер конфигурации после установки модуля,0
+model,"ir.module.module.dependency,name",0,Module dependency,Зависимости,0
+model,"ir.module.module.install_upgrade.init,name",0,Module Install Upgrade Init,Модуль установить (обновить) инициализация,0
+model,"ir.module.module.install_upgrade.start,name",0,Module Install Upgrade Start,Начать установку (обновление) модуля,0
+model,"ir.module.module,name",0,Module,Модуль,0
+model,"ir.property,name",0,Property,Свойства,0
+model,"ir.rule.group,name",0,Rule group,Правило группы,0
+model,"ir.rule,name",0,Rule,Правило,0
+model,"ir.sequence,name",0,Sequence,Последовательность,0
+model,"ir.sequence.strict,name",0,Sequence Strict,Строгая последовательность,0
+model,"ir.sequence.type,name",0,Sequence type,Тип последовательности,0
+model,"ir.translation.clean.init,name",0,Clean translation init,Очистить перевод (инициализация),0
+model,"ir.translation.clean.start,name",0,Clean translation start,Очистить перевод (начала),0
+model,"ir.translation.export.init,name",0,Export translation - language and module,Экспорт перевода - язык и модуль,0
+model,"ir.translation.export.start,name",0,Export translation - file,Экспорт перевода - файл,0
+model,"ir.translation,name",0,Translation,Перевод,0
+model,"ir.translation.set_report.init,name",0,Update Report Translation,Обновить переводы отчетов,0
+model,"ir.translation.set_report.start,name",0,Update Report Translation,Обновить переводы отчетов,0
+model,"ir.translation.update.init,name",0,Update translation - language,Обновить перевод - языка,0
+model,"ir.ui.menu,name",menu_action,Actions,Действия,0
+model,"ir.ui.menu,name",menu_act_action,Actions,Действия,0
+model,"ir.ui.menu,name",menu_administration,Administration,Администрирование,0
+model,"ir.ui.menu,name",menu_attachment_form,Attachments,Вложения,0
+model,"ir.ui.menu,name",menu_translation_clean,Clean Translations,Очистить переводы,0
+model,"ir.ui.menu,name",menu_config_wizard_item_form,Config Wizard Items,Мастер конфигурации,0
+model,"ir.ui.menu,name",menu_property_form_default,Default Properties,Свойства по умолчанию,0
+model,"ir.ui.menu,name",menu_default_form,Defaults,По умолчанию,0
+model,"ir.ui.menu,name",menu_export_form,Exports,Экспортировать,0
+model,"ir.ui.menu,name",menu_translation_export,Export Translations,Экспорт переводов,0
+model,"ir.ui.menu,name",model_model_fields_form,Fields,Поля,0
+model,"ir.ui.menu,name",menu_lang_form,Languages,Языки,0
+model,"ir.ui.menu,name",menu_localization,Localization,Переводы,0
+model,"ir.ui.menu,name",menu_menu_form,Menus,Меню,0
+model,"ir.ui.menu,name",menu_models,Models,Шаблоны,0
+model,"ir.ui.menu,name",menu_model_form,Models,Шаблоны,0
+model,"ir.ui.menu,name",menu_model_access_form,Models Access,Шаблоны доступа,0
+model,"ir.ui.menu,name",menu_modules,Modules,Модули,0
+model,"ir.ui.menu,name",menu_module_form,Modules,Модули,0
+model,"ir.ui.menu,name",menu_module_install_upgrade,Perform Pending Installation/Upgrade,Выполните установки / обновления,0
+model,"ir.ui.menu,name",menu_property_form,Properties,Свойства,0
+model,"ir.ui.menu,name",menu_rule_group_form,Record Rules,Запись правил,0
+model,"ir.ui.menu,name",menu_action_report_form,Reports,Отчеты,0
+model,"ir.ui.menu,name",menu_cron_form,Scheduled Actions,Запланированные действия,0
+model,"ir.ui.menu,name",menu_scheduler,Scheduler,Планировщик,0
+model,"ir.ui.menu,name",menu_sequences,Sequences,Последовательности,0
+model,"ir.ui.menu,name",menu_sequence_form,Sequences,Последовательности,0
+model,"ir.ui.menu,name",menu_sequence_strict_form,Sequences Strict,Строгая нумерация,0
+model,"ir.ui.menu,name",menu_ir_sequence_type,Sequence Types,Тип нумерации,0
+model,"ir.ui.menu,name",menu_translation_set_report,Set Report Translations,Установить переводы для отчетов,0
+model,"ir.ui.menu,name",menu_translation_update,Synchronize Translations,Синхронизация переводов,0
+model,"ir.ui.menu,name",menu_translation_form,Translations,Переводы,0
+model,"ir.ui.menu,name",0,UI menu,Пользовательское меню,0
+model,"ir.ui.menu,name",menu_action_url,URLs,Ссылки,0
+model,"ir.ui.menu,name",menu_ui,User Interface,Пользовательский интерфейс,0
+model,"ir.ui.menu,name",menu_view,Views,Виды,0
+model,"ir.ui.menu,name",menu_view_sc,View Shortcuts,Просмотр быстрого доступа,0
+model,"ir.ui.menu,name",menu_view_tree_width,View Tree Width,Ширина просмотра списка,0
+model,"ir.ui.menu,name",menu_action_act_window,Window Actions,Действия окна,0
+model,"ir.ui.menu,name",menu_action_wizard,Wizards,Мастера,0
+model,"ir.ui.menu,name",menu_action_wizard_size,Wizard Sizes,Мастер размеров,0
+model,"ir.ui.view,name",0,View,Просмотр,0
+model,"ir.ui.view_sc,name",0,View shortcut,Краткое наименование просмотра,0
+model,"ir.ui.view_tree_width,name",0,View Tree Width,Ширина просмотра списка,0
+selection,"ir.action.act_window,view_type",0,Board,Доска,0
+selection,"ir.action.act_window,view_type",0,Form,Форма,0
+selection,"ir.action.act_window,view_type",0,Tree,Вид,0
+selection,"ir.action.keyword,keyword",0,Action form,Действие формы,0
+selection,"ir.action.keyword,keyword",0,Action tree,Действие списка,0
+selection,"ir.action.keyword,keyword",0,Form relate,Форма связана,0
+selection,"ir.action.keyword,keyword",0,Open Graph,Открыть график,0
+selection,"ir.action.keyword,keyword",0,Open tree,Открыть список,0
+selection,"ir.action.keyword,keyword",0,Print form,Печать формы,0
+selection,"ir.action.report,extension",0,ODT Document,ODT Документ,0
+selection,"ir.action.report,extension",0,PDF Document,PDF Документ,0
+selection,"ir.cron,interval_type",0,Days,Дни:,0
+selection,"ir.cron,interval_type",0,Hours,Часы,0
+selection,"ir.cron,interval_type",0,Minutes,Минуты,0
+selection,"ir.cron,interval_type",0,Months,Месяцы:,0
+selection,"ir.cron,interval_type",0,Weeks,Недели,0
+selection,"ir.cron,interval_type",0,Work Days,Рабочие дни,0
+selection,"ir.lang,direction",0,Left-to-right,Слева на право,0
+selection,"ir.lang,direction",0,Right-to-left,Справа на лево,0
+selection,"ir.module.module.config_wizard.item,state",0,Done,Выполнено,0
+selection,"ir.module.module.config_wizard.item,state",0,Open,Открыть,0
+selection,"ir.module.module.dependency,state",0,Installed,Установлен,0
+selection,"ir.module.module.dependency,state",0,Not Installed,Не установлен,0
+selection,"ir.module.module.dependency,state",0,To be installed,Для установки,0
+selection,"ir.module.module.dependency,state",0,To be removed,Для удаления,0
+selection,"ir.module.module.dependency,state",0,To be upgraded,Для обновления,0
+selection,"ir.module.module.dependency,state",0,Unknown,Неизвестно,0
+selection,"ir.module.module,state",0,Installed,Установлен,0
+selection,"ir.module.module,state",0,Not Installed,Не установлен,0
+selection,"ir.module.module,state",0,To be installed,Для установки,0
+selection,"ir.module.module,state",0,To be removed,Для удаления,0
+selection,"ir.module.module,state",0,To be upgraded,Для обновления,0
+selection,"ir.translation,type",0,Error,Ошибка,0
+selection,"ir.translation,type",0,Field,Поле,0
+selection,"ir.translation,type",0,Help,Помощь,0
+selection,"ir.translation,type",0,Model,Шаблон,0
+selection,"ir.translation,type",0,ODT,,0
+selection,"ir.translation,type",0,Selection,Выбор,0
+selection,"ir.translation,type",0,View,Просмотр,0
+selection,"ir.translation,type",0,Wizard Button,Кнопка мастера,0
+selection,"ir.ui.menu,action",0,ir.action.act_window,Действия окна,0
+selection,"ir.ui.menu,action",0,ir.action.report,Действия отчетов,0
+selection,"ir.ui.menu,action",0,ir.action.url,Действия ссылки,0
+selection,"ir.ui.menu,action",0,ir.action.wizard,Действия мастера,0
+selection,"ir.ui.view,type",0,,Резервный счет,0
+selection,"ir.ui.view,type",0,Board,Доска,0
+selection,"ir.ui.view,type",0,Form,Форма,0
+selection,"ir.ui.view,type",0,Graph,Графика,0
+selection,"ir.ui.view,type",0,Tree,Вид,0
+view,ir.action,0,Action,Действие,0
+view,ir.action,0,General,Основной,0
+view,ir.action,0,Keyword,Ключевое слово,0
+view,ir.action,0,Keywords,Ключевые слова,0
+view,ir.action.act_window,0,General,Основной,0
+view,ir.action.act_window,0,Keyword,Ключевое слово,0
+view,ir.action.act_window,0,Keywords,Ключевые слова,0
+view,ir.action.act_window,0,Open a Window,Открыть окно,0
+view,ir.action.act_window,0,Open Window,Открыть окно,0
+view,ir.action.act_window,0,Views,Виды,0
+view,ir.action.report,0,General,Основной,0
+view,ir.action.report,0,Keyword,Ключевое слово,0
+view,ir.action.report,0,Keywords,Ключевые слова,0
+view,ir.action.report,0,Report,Отчет,0
+view,ir.action.report,0,Report xml,Отчет xml,0
+view,ir.action.url,0,General,Основной,0
+view,ir.action.url,0,Keyword,Ключевое слово,0
+view,ir.action.url,0,Keywords,Ключевые слова,0
+view,ir.action.url,0,URL,Ссылка,0
+view,ir.action.wizard,0,General,Основной,0
+view,ir.action.wizard,0,Keyword,Ключевое слово,0
+view,ir.action.wizard,0,Keywords,Ключевые слова,0
+view,ir.action.wizard,0,Wizard,Мастер,0
+view,ir.action.wizard_size,0,Wizard Size,Мастер размера,0
+view,ir.action.wizard_size,0,Wizard Sizes,Мастер размеров,0
+view,ir.attachment,0,Attachments,Вложения,0
+view,ir.cron,0,Action to trigger,Действие триггера,0
+view,ir.cron,0,Scheduled Action,Запланированное действие,0
+view,ir.cron,0,Scheduled Actions,Запланированные действия,0
+view,ir.default,0,Default,По умолчанию,0
+view,ir.default,0,Defaults,По умолчанию,0
+view,ir.export,0,Exports,Экспортировать,0
+view,ir.lang,0,Date Formatting,Формат даты,0
+view,ir.lang,0,Language,Язык,0
+view,ir.lang,0,Languages,Языки,0
+view,ir.lang,0,Numbers Formatting,Формат числа,0
+view,ir.model,0,Fields Description,Описание полей,0
+view,ir.model,0,Model Description,Описание шаблона,0
+view,ir.model.access,0,Access controls,Контроль доступа,0
+view,ir.model.field,0,Fields,Поля,0
+view,ir.model.print_model_graph.init,0,Print Model Graph,Печать шаблона графика,0
+view,ir.module.module,0,Cancel Installation,Отмена установки,0
+view,ir.module.module,0,Cancel Uninstallation,Отмена удаления,0
+view,ir.module.module,0,Cancel Upgrade,Отмена обновления,0
+view,ir.module.module,0,Dependencies,Зависимые,0
+view,ir.module.module,0,Mark for Installation,Установить,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Удалить (бета),0
+view,ir.module.module,0,Mark for Upgrade,Обновить,0
+view,ir.module.module,0,Module,Модуль,0
+view,ir.module.module,0,Modules,Модули,0
+view,ir.module.module.config_wizard.first,0,depending on the modules you have installed.,"в зависимости от модулей, которые вы установили.",0
+view,ir.module.module.config_wizard.first,0,Welcome to the module configuration wizard!,Добро пожаловать в мастер конфигурации модуля!,0
+view,ir.module.module.config_wizard.first,0,You will be able to configure your installation,Вы сможете настроить установки,0
+view,ir.module.module.config_wizard.item,0,Config Wizard Items,Мастер конфигурации,0
+view,ir.module.module.install_upgrade.init,0,Note that this operation my take a few minutes.,"Обратите внимание, что эта операция мой занять несколько минут.",0
+view,ir.module.module.install_upgrade.init,0,System Upgrade,Обновление системы,0
+view,ir.module.module.install_upgrade.init,0,Your system will be upgraded.,Ваша система обновлена,0
+view,ir.module.module.install_upgrade.start,0,System upgrade done,Обновление системы выполнено,0
+view,ir.module.module.install_upgrade.start,0,The modules have been upgraded / installed !,Модули были обновлены / установлен!,0
+view,ir.property,0,Properties,Свойства,0
+view,ir.property,0,Property,Свойства,0
+view,ir.rule,0,Test,Тест,0
+view,ir.rule.group,0,"If there is no test defined, the rule is always satisfied if not global","Если ни одна проверка не определена, правило выполняется всегда, если оно не глобальное",0
+view,ir.rule.group,0,Record rules,Правила записи,0
+view,ir.rule.group,0,The rule is satisfied if at least one test is True,"Это правило выполняется, если по крайней мере одна проверка истинна",0
+view,ir.sequence,0,${day},${day} - День,0
+view,ir.sequence,0,Day:,День:,0
+view,ir.sequence,0,"Legend (Placeholders for prefix, suffix)","Легенда (заполнители для префиксов, суффиксов)",0
+view,ir.sequence,0,${month},${month} - Месяц,0
+view,ir.sequence,0,Month:,Месяц:,0
+view,ir.sequence,0,Sequences,Последовательности,0
+view,ir.sequence,0,${year},${year} - Год,0
+view,ir.sequence,0,Year:,Год:,0
+view,ir.sequence.type,0,Sequence Type,Тип последовательности,0
+view,ir.translation,0,Translations,Переводы,0
+view,ir.translation.clean.init,0,Clean Translations,Очистить переводы,0
+view,ir.translation.clean.init,0,Clean Translations?,Очистить переводы?,0
+view,ir.translation.clean.start,0,Clean Translations,Очистить переводы,0
+view,ir.translation.clean.start,0,Clean Translations Succeed!,Переводы очищены успешно!,0
+view,ir.translation.export.init,0,Export Translation,Экспорт перевода,0
+view,ir.translation.export.start,0,Export Translation,Экспорт перевода,0
+view,ir.translation.set_report.init,0,Set Report Translations,Установить переводы для отчетов,0
+view,ir.translation.set_report.init,0,Synchronize Report Translations?,Синхронизация переводов для отчетов?,0
+view,ir.translation.set_report.start,0,Set Report Translations,Установить переводы для отчетов,0
+view,ir.translation.set_report.start,0,Set Translations Succeed!,Переводы установлены успешно!,0
+view,ir.translation.update.init,0,Synchronize Translations,Синхронизация переводов,0
+view,ir.ui.menu,0,Menu,Меню,0
+view,ir.ui.view,0,View,Просмотр,0
+view,ir.ui.view_sc,0,Shortcut,Краткое наименование,0
+view,ir.ui.view_tree_width,0,Views Tree Width,Ширина вида список,0
+view,ir.ui.view_tree_width,0,View Tree Width,Ширина просмотра списка,0
+wizard_button,"ir.model.print_model_graph,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.model.print_model_graph,init,print",0,Print,Печать,0
+wizard_button,"ir.module.module.config_wizard,first,end",0,Cancel,Отменить,0
+wizard_button,"ir.module.module.config_wizard,first,wizard",0,Ok,Да,0
+wizard_button,"ir.module.module.install_upgrade,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.module.module.install_upgrade,init,start",0,Start Upgrade,Начать обновление,0
+wizard_button,"ir.module.module.install_upgrade,start,menu",0,Ok,Да,0
+wizard_button,"ir.translation.clean,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.translation.clean,init,start",0,Start,Начать,0
+wizard_button,"ir.translation.clean,start,end",0,Ok,Да,0
+wizard_button,"ir.translation.export,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.translation.export,init,start",0,Start Export,Начать экспорт,0
+wizard_button,"ir.translation.export,start,end",0,Close,Закрыть,0
+wizard_button,"ir.translation.set_report,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.translation.set_report,init,start",0,Start Update,Начать обновление,0
+wizard_button,"ir.translation.set_report,start,end",0,Ok,Да,0
+wizard_button,"ir.translation.update,init,end",0,Cancel,Отменить,0
+wizard_button,"ir.translation.update,init,start",0,Start Update,Начать обновление,0
