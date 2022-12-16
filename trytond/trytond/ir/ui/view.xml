@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.action.wizard" id="act_view_show">
+            <field name="name">Show View</field>
+            <field name="wiz_name">ir.ui.view.show</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_view_form">
+            <field name="model">ir.ui.view</field>
+            <field name="type">form</field>
+            <field name="name">ui_view_form</field>
+        </record>
+        <record model="ir.ui.view" id="view_view_tree">
+            <field name="model">ir.ui.view</field>
+            <field name="type">tree</field>
+            <field name="name">ui_view_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_form">
+            <field name="name">Views</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_view_tree"/>
+            <field name="act_window" ref="act_view_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="view_view_form"/>
+            <field name="act_window" ref="act_view_form"/>
+        </record>
+        <menuitem parent="menu_ui"
+            action="act_view_form" id="menu_view"/>
+        <record model="ir.model.button" id="view_show_button">
+            <field name="name">show</field>
+            <field name="string">Show</field>
+            <field name="model" search="[('model', '=', 'ir.ui.view')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="view_tree_width_view_form">
+            <field name="model">ir.ui.view_tree_width</field>
+            <field name="type">form</field>
+            <field name="name">ui_view_tree_width_form</field>
+        </record>
+        <record model="ir.ui.view" id="view_tree_width_view_tree">
+            <field name="model">ir.ui.view_tree_width</field>
+            <field name="type">tree</field>
+            <field name="name">ui_view_tree_width_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_tree_width_form">
+            <field name="name">View Tree Width</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view_tree_width</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_width_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_tree_width_view_tree"/>
+            <field name="act_window" ref="act_view_tree_width_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_width_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="view_tree_width_view_form"/>
+            <field name="act_window" ref="act_view_tree_width_form"/>
+        </record>
+        <menuitem parent="menu_ui"
+            action="act_view_tree_width_form" id="menu_view_tree_width"/>
+
+        <record model="ir.ui.view" id="view_tree_state_form">
+            <field name="model">ir.ui.view_tree_state</field> 
+            <field name="type">form</field>
+            <field name="name">ui_view_tree_state_form</field>
+        </record>
+        <record model="ir.ui.view" id="view_tree_state_tree">
+            <field name="model">ir.ui.view_tree_state</field>
+            <field name="type">tree</field>
+            <field name="name">ui_view_tree_state_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_tree_state">
+            <field name="name">Tree State</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view_tree_state</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_state_tree">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_tree_state_tree"/>
+            <field name="act_window" ref="act_view_tree_state"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_state_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="view_tree_state_form"/>
+            <field name="act_window" ref="act_view_tree_state"/>
+        </record>
+        <menuitem parent="menu_ui" action="act_view_tree_state"
+            id="menu_view_tree_state"/>
+
+        <record model="ir.ui.view" id="view_search_form">
+            <field name="model">ir.ui.view_search</field> 
+            <field name="type">form</field>
+            <field name="name">ui_view_search_form</field>
+        </record>
+        <record model="ir.ui.view" id="view_search_tree">
+            <field name="model">ir.ui.view_search</field>
+            <field name="type">tree</field>
+            <field name="name">ui_view_search_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_search">
+            <field name="name">View Search</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view_search</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_search_tree">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_search_tree"/>
+            <field name="act_window" ref="act_view_search"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_search_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="view_search_form"/>
+            <field name="act_window" ref="act_view_search"/>
+        </record>
+        <menuitem parent="menu_ui" action="act_view_search"
+            id="menu_view_search"/>
+    </data>
+</tryton>

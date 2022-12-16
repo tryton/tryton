@@ -1,0 +1,46 @@
+trytond_stock_package_shipping_ups
+==================================
+
+The stock_pacakge_shipping_ups module of the Tryton application platform.
+
+Installing
+----------
+
+See INSTALL
+
+In order to run the tests, the following environment variables must be
+correctly set:
+
+- UPS_USER_ID: Your UPS User ID
+- UPS_PASSWORD: The password of your UPS account
+- UPS_LICENSE: Your UPS License identifier
+- UPS_ACCOUNT_NUMBER: Your UPS Account Number
+
+Those could be created by registering for the UPS Developer Kit:
+https://www.ups.com/upsdeveloperkit 
+
+Support
+-------
+
+If you encounter any problems with Tryton, please don't hesitate to ask
+questions on the Tryton bug tracker, mailing list, wiki or IRC channel:
+
+  http://bugs.tryton.org/
+  http://groups.tryton.org/
+  http://wiki.tryton.org/
+  irc://irc.freenode.net/tryton
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT
+
+
+For more information please visit the Tryton web site:
+
+  http://www.tryton.org/
