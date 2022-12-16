@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Works Efforts">
+    <field name="rec_name"/>
+    <field name="timesheet_duration"/>
+    <field name="total_effort"/>
+    <field name="type"/>
+    <field name="state"/>
+    <field name="total_progress" widget="progressbar" expand="1"/>
+</tree>

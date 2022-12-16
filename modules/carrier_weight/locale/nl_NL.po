@@ -1,0 +1,79 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr ""
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr ""
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "field:carrier.weight_price_list,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price List"
+msgstr ""
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price Lists"
+msgstr ""
