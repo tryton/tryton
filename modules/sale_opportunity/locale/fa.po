@@ -1,0 +1,529 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "ادامه فرصت"
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "ادامه فرصت"
+
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "آدرس"
+
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr "احتمال تبدیل"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "تبدیل شده"
+
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.opportunity,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr "دلیل شکست"
+
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr "نحوه پرداخت"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "فرصت"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr "وضعیت فرصت"
+
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:sale.opportunity.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:sale.opportunity_employee,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:sale.opportunity_employee,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "نرخ تغییر مبلغ"
+
+msgctxt "field:sale.opportunity_employee,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "نرخ تبدیل"
+
+msgctxt "field:sale.opportunity_employee,converted:"
+msgid "Converted"
+msgstr "تبدیل شده"
+
+msgctxt "field:sale.opportunity_employee,converted_amount:"
+msgid "Converted Amount"
+msgstr "مقدار تبدیل شده"
+
+msgctxt "field:sale.opportunity_employee,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.opportunity_employee,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:sale.opportunity_employee,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:sale.opportunity_employee,lost:"
+msgid "Lost"
+msgstr "گم شده"
+
+msgctxt "field:sale.opportunity_employee,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "نرخ برد مبلغ"
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr "نرخ برد"
+
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "برد"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr "مقدار برد"
+
+msgctxt "field:sale.opportunity_employee.context,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:sale.opportunity_employee.context,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:sale.opportunity_employee_monthly,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:sale.opportunity_employee_monthly,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "نرخ تبدیل مقدار"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "نرخ تبدیل"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted:"
+msgid "Converted"
+msgstr "تبدیل شده"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr "مقدار تبدیل شده"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:sale.opportunity_employee_monthly,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:sale.opportunity_employee_monthly,lost:"
+msgid "Lost"
+msgstr "گم شده"
+
+msgctxt "field:sale.opportunity_employee_monthly,month:"
+msgid "Month"
+msgstr "ماه"
+
+msgctxt "field:sale.opportunity_employee_monthly,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "نرخ برد مبلغ"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "نرخ برد"
+
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "برد"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "مقدار برد"
+
+msgctxt "field:sale.opportunity_employee_monthly,year:"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "field:sale.opportunity_monthly,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:sale.opportunity_monthly,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "نرخ تبدیل مقدار"
+
+msgctxt "field:sale.opportunity_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "نرخ تبدیل"
+
+msgctxt "field:sale.opportunity_monthly,converted:"
+msgid "Converted"
+msgstr "تبدیل شده"
+
+msgctxt "field:sale.opportunity_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr "مقدار تبدیل شده"
+
+msgctxt "field:sale.opportunity_monthly,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.opportunity_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:sale.opportunity_monthly,lost:"
+msgid "Lost"
+msgstr "گم شده"
+
+msgctxt "field:sale.opportunity_monthly,month:"
+msgid "Month"
+msgstr "ماه"
+
+msgctxt "field:sale.opportunity_monthly,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "نرخ برد مبلغ"
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "نرخ برد"
+
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "برد"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "مقدار برد"
+
+msgctxt "field:sale.opportunity_monthly,year:"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "field:sale.opportunity_monthly,year_month:"
+msgid "Year-Month"
+msgstr "سال - ماه"
+
+#, fuzzy
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr "مقدار درآمد تخمینی"
+
+#, fuzzy
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr "درصد بین 0 و 100"
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_form"
+msgid "Opportunities per Employee"
+msgstr "فرصت ها در هر کارمند"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "فرصت های هر کارمند در هر ماه"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "فرصت ها و راهبردها"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "فرصت ها/راهبردهای فروش"
+
+msgctxt "model:ir.action,name:act_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "فرصت ها در هر ماه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "تبدیل شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "راهبردها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "گم شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "فرصت ها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "برد"
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr "برای حذف فرصت :\"%(opportunity)s\" شما باید ابتدا آنرا لغو کنید."
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "فرصت فروش"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "فرصت فروش"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "فرصت های هر کارمند در هر ماه"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "فرصت ها در هر کارمند"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "فرصت ها و راهبردها"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "فرصت ها در هر ماه"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "فرصت فروش"
+
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "فرصت فروش"
+
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "سطر فرصت فروش"
+
+msgctxt "model:sale.opportunity_employee,name:"
+msgid "Sale Opportunity per Employee"
+msgstr "فرصت فروش در هر کارمند"
+
+msgctxt "model:sale.opportunity_employee.context,name:"
+msgid "Sale Opportunity per Employee Context"
+msgstr "مفاد فرصت فروش در هر کارمند"
+
+msgctxt "model:sale.opportunity_employee_monthly,name:"
+msgid "Sale Opportunity per Employee per Month"
+msgstr "فرصت های فروش هر کارمند در هر ماه"
+
+msgctxt "model:sale.opportunity_monthly,name:"
+msgid "Sale Opportunity per Month"
+msgstr "فرصت های فروش در هر ماه"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "تبدیل شده"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "هدایت کردن"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "گم شده"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "فرصت"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "برنده"
+
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr "هدایت / فرصت"
+
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"
