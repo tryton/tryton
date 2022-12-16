@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="dunning_fee_view_form">
+            <field name="model">account.dunning.fee</field>
+            <field name="type">form</field>
+            <field name="name">dunning_fee_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_fee_view_list">
+            <field name="model">account.dunning.fee</field>
+            <field name="type">tree</field>
+            <field name="name">dunning_fee_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_dunning_fee_form">
+            <field name="name">Dunning Fees</field>
+            <field name="res_model">account.dunning.fee</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_dunning_fee_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="dunning_fee_view_list"/>
+            <field name="act_window" ref="act_dunning_fee_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_dunning_fee_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="dunning_fee_view_form"/>
+            <field name="act_window" ref="act_dunning_fee_form"/>
+        </record>
+
+        <menuitem parent="account_dunning.menu_dunning_configuration"
+            sequence="5" action="act_dunning_fee_form"
+            id="menu_dunning_fee_form"/>
+
+        <record model="ir.model.access" id="access_dunning_fee">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.fee')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_dunning_fee_account_admin">
+            <field name="model" search="[('model', '=', 'account.dunning.fee')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_dunning_fee_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning.fee')]"/>
+            <field name="group" ref="account_dunning.group_dunning"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_form">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_form"/>
+            <field name="name">dunning_level_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_list"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list_sequence">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_list_sequence"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_view_form">
+            <field name="model">account.dunning</field>
+            <field name="inherit" ref="account_dunning.dunning_view_form"/>
+            <field name="name">dunning_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_fee_dunning_level_view_form">
+            <field name="model">account.dunning.fee.dunning_level</field>
+            <field name="type">form</field>
+            <field name="name">dunning_fee_dunning_level_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_fee_dunning_level_view_list">
+            <field name="model">account.dunning.fee.dunning_level</field>
+            <field name="type">tree</field>
+            <field name="name">dunning_fee_dunning_level_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_dunning_fee_dunning_level">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.fee.dunning_level')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_dunning_fee_dunning_level_account_admin">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.fee.dunning_level')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_dunning_fee_dunning_level_dunning">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.fee.dunning_level')]"/>
+            <field name="group" ref="account_dunning.group_dunning"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>
