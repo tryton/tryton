@@ -1,0 +1,3971 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.action,keywords:"
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgctxt "field:ir.action,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action,records:"
+msgid "Records"
+msgstr "Записи"
+
+msgctxt "field:ir.action,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.action,usage:"
+msgid "Usage"
+msgstr "Використання"
+
+msgctxt "field:ir.action.act_window,act_window_domains:"
+msgid "Domains"
+msgstr "Домени"
+
+msgctxt "field:ir.action.act_window,act_window_views:"
+msgid "Views"
+msgstr "Перегляди"
+
+msgctxt "field:ir.action.act_window,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.act_window,context:"
+msgid "Context Value"
+msgstr "Значення контексту"
+
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Контекстний домен"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr "Контекстна модель"
+
+msgctxt "field:ir.action.act_window,domain:"
+msgid "Domain Value"
+msgstr "Значення домену"
+
+msgctxt "field:ir.action.act_window,domains:"
+msgid "Domains"
+msgstr "Домени"
+
+msgctxt "field:ir.action.act_window,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.action.act_window,keywords:"
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgctxt "field:ir.action.act_window,limit:"
+msgid "Limit"
+msgstr "Обмеження"
+
+msgctxt "field:ir.action.act_window,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action.act_window,order:"
+msgid "Order Value"
+msgstr "Значення порядку"
+
+msgctxt "field:ir.action.act_window,pyson_context:"
+msgid "PySON Context"
+msgstr "Контекст PySON"
+
+msgctxt "field:ir.action.act_window,pyson_domain:"
+msgid "PySON Domain"
+msgstr "Домен PySON"
+
+msgctxt "field:ir.action.act_window,pyson_order:"
+msgid "PySON Order"
+msgstr "Порядок PySON"
+
+msgctxt "field:ir.action.act_window,pyson_search_value:"
+msgid "PySON Search Criteria"
+msgstr "Критерії пошуку PySON"
+
+msgctxt "field:ir.action.act_window,records:"
+msgid "Records"
+msgstr "Записи"
+
+msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.action.act_window,search_value:"
+msgid "Search Criteria"
+msgstr "Критерії пошуку"
+
+msgctxt "field:ir.action.act_window,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.action.act_window,usage:"
+msgid "Usage"
+msgstr "Використання"
+
+msgctxt "field:ir.action.act_window,views:"
+msgid "Views"
+msgstr "Перегляди"
+
+msgctxt "field:ir.action.act_window.domain,act_window:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "Кількість"
+
+msgctxt "field:ir.action.act_window.domain,domain:"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "field:ir.action.act_window.domain,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action.act_window.view,act_window:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.act_window.view,view:"
+msgid "View"
+msgstr "Перегляд"
+
+msgctxt "field:ir.action.keyword,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.keyword,keyword:"
+msgid "Keyword"
+msgstr "Ключове слово"
+
+msgctxt "field:ir.action.keyword,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.action.report,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.report,direct_print:"
+msgid "Direct Print"
+msgstr "Прямий друк"
+
+msgctxt "field:ir.action.report,extension:"
+msgid "Extension"
+msgstr "Розширення"
+
+msgctxt "field:ir.action.report,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Користувальницький"
+
+msgctxt "field:ir.action.report,keywords:"
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgctxt "field:ir.action.report,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.action.report,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action.report,record_name:"
+msgid "Record Name"
+msgstr "Ім'я запису"
+
+msgctxt "field:ir.action.report,records:"
+msgid "Records"
+msgstr "Записи"
+
+msgctxt "field:ir.action.report,report:"
+msgid "Path"
+msgstr "Шлях"
+
+msgctxt "field:ir.action.report,report_content:"
+msgid "Content"
+msgstr "Вміст"
+
+msgctxt "field:ir.action.report,report_content_custom:"
+msgid "Content"
+msgstr "Вміст"
+
+msgctxt "field:ir.action.report,report_content_html:"
+msgid "Content HTML"
+msgstr "HTML вмісту"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "Ім'я вмісту"
+
+msgctxt "field:ir.action.report,report_name:"
+msgid "Internal Name"
+msgstr "Внутрішнє ім'я"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr "Одиночний"
+
+msgctxt "field:ir.action.report,template_extension:"
+msgid "Template Extension"
+msgstr "Розширення шаблону"
+
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Перекладний"
+
+msgctxt "field:ir.action.report,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.action.report,usage:"
+msgid "Usage"
+msgstr "Використання"
+
+msgctxt "field:ir.action.url,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.url,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.action.url,keywords:"
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action.url,records:"
+msgid "Records"
+msgstr "Записи"
+
+msgctxt "field:ir.action.url,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.action.url,url:"
+msgid "Action Url"
+msgstr "Url-адреса дії"
+
+msgctxt "field:ir.action.url,usage:"
+msgid "Usage"
+msgstr "Використання"
+
+msgctxt "field:ir.action.wizard,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.action.wizard,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.action.wizard,keywords:"
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.action.wizard,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.action.wizard,records:"
+msgid "Records"
+msgstr "Записи"
+
+msgctxt "field:ir.action.wizard,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.action.wizard,usage:"
+msgid "Usage"
+msgstr "Використання"
+
+msgctxt "field:ir.action.wizard,window:"
+msgid "Window"
+msgstr "Вікно"
+
+msgctxt "field:ir.action.wizard,wiz_name:"
+msgid "Wizard name"
+msgstr "Ім'я майстра"
+
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Копіювати до ресурсів"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Копіювати до видимих ресурсів"
+
+msgctxt "field:ir.attachment,data:"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "field:ir.attachment,data_size:"
+msgid "Data size"
+msgstr "Розмір даних"
+
+msgctxt "field:ir.attachment,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr "ID файла"
+
+msgctxt "field:ir.attachment,last_modification:"
+msgid "Last Modification"
+msgstr "Остання зміна"
+
+msgctxt "field:ir.attachment,last_user:"
+msgid "Last User"
+msgstr "Останній користувач"
+
+msgctxt "field:ir.attachment,link:"
+msgid "Link"
+msgstr "Посилання"
+
+msgctxt "field:ir.attachment,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.attachment,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.attachment,summary:"
+msgid "Summary"
+msgstr "Підсумок"
+
+msgctxt "field:ir.attachment,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.avatar,cache:"
+msgid "Cache"
+msgstr "Кеш"
+
+msgctxt "field:ir.avatar,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Копіювати до ресурсів"
+
+msgctxt "field:ir.avatar,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Копіювати до видимих ресурсів"
+
+msgctxt "field:ir.avatar,image:"
+msgid "Image"
+msgstr "Зображення"
+
+msgctxt "field:ir.avatar,image_id:"
+msgid "Image ID"
+msgstr "ID зображення"
+
+msgctxt "field:ir.avatar,last_modification:"
+msgid "Last Modification"
+msgstr "Остання зміна"
+
+msgctxt "field:ir.avatar,last_user:"
+msgid "Last User"
+msgstr "Останній користувач"
+
+msgctxt "field:ir.avatar,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.avatar,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:ir.avatar.cache,avatar:"
+msgid "Avatar"
+msgstr "Аватар"
+
+msgctxt "field:ir.avatar.cache,image:"
+msgid "Image"
+msgstr "Зображення"
+
+msgctxt "field:ir.avatar.cache,image_id:"
+msgid "Image ID"
+msgstr "ID зображення"
+
+msgctxt "field:ir.avatar.cache,size:"
+msgid "Size"
+msgstr "Розмір"
+
+msgctxt "field:ir.cache,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.cache,timestamp:"
+msgid "Timestamp"
+msgstr "Часова позначка"
+
+msgctxt "field:ir.calendar.day,abbreviation:"
+msgid "Abbreviation"
+msgstr "Абревіатура"
+
+msgctxt "field:ir.calendar.day,index:"
+msgid "Index"
+msgstr "Індекс"
+
+msgctxt "field:ir.calendar.day,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.calendar.month,abbreviation:"
+msgid "Abbreviation"
+msgstr "Абревіатура"
+
+msgctxt "field:ir.calendar.month,index:"
+msgid "Index"
+msgstr "Індекс"
+
+msgctxt "field:ir.calendar.month,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Ім'я хоста"
+
+msgctxt "field:ir.configuration,language:"
+msgid "language"
+msgstr "мова"
+
+msgctxt "field:ir.cron,day:"
+msgid "Day"
+msgstr "День"
+
+msgctxt "field:ir.cron,hour:"
+msgid "Hour"
+msgstr "Година"
+
+msgctxt "field:ir.cron,interval_number:"
+msgid "Interval Number"
+msgstr "Номер інтервалу"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Type"
+msgstr "Тип інтервалу"
+
+msgctxt "field:ir.cron,method:"
+msgid "Method"
+msgstr "Метод"
+
+msgctxt "field:ir.cron,minute:"
+msgid "Minute"
+msgstr "Хвилина"
+
+msgctxt "field:ir.cron,next_call:"
+msgid "Next Call"
+msgstr "Наступний виклик"
+
+#, fuzzy
+msgctxt "field:ir.cron,timezone:"
+msgid "Timezone"
+msgstr "Час"
+
+msgctxt "field:ir.cron,weekday:"
+msgid "Day of Week"
+msgstr "День тижня"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr "Адреси"
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "Коли"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr "Тіло"
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr "Одержувачі"
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Приховані одержувачі"
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Вторинні одержувачі"
+
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr "Тема"
+
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr "Адреса"
+
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "Ел.пошта"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr "Тіло"
+
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Ім'я моделі"
+
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr "Одержувачі"
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Приховані одержувачі"
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr "Приховані одержувачі"
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr "Одержувачі"
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Вторинні одержувачі"
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr "Вторинні одержувачі"
+
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Звіти"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr "Тема"
+
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Звіт"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:ir.error,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:ir.error,message:"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "field:ir.error,origin:"
+msgid "Origin"
+msgstr "Походження"
+
+msgctxt "field:ir.error,processed_by:"
+msgid "Processed by"
+msgstr "Ким оброблено"
+
+msgctxt "field:ir.error,solved_by:"
+msgid "Solved by"
+msgstr "Ким вирішено"
+
+msgctxt "field:ir.error,state:"
+msgid "State"
+msgstr "Стан"
+
+msgctxt "field:ir.error,summary:"
+msgid "Summary"
+msgstr "Підсумок"
+
+msgctxt "field:ir.export,export_fields:"
+msgid "Fields"
+msgstr "Поля"
+
+msgctxt "field:ir.export,header:"
+msgid "Header"
+msgstr ""
+
+msgctxt "field:ir.export,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.export,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.export.line,export:"
+msgid "Export"
+msgstr "Експорт"
+
+msgctxt "field:ir.export.line,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.lang,am:"
+msgid "AM"
+msgstr "AM"
+
+msgctxt "field:ir.lang,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:ir.lang,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:ir.lang,decimal_point:"
+msgid "Decimal Separator"
+msgstr "Роздільник десятків"
+
+msgctxt "field:ir.lang,direction:"
+msgid "Direction"
+msgstr "Напрямок"
+
+msgctxt "field:ir.lang,grouping:"
+msgid "Grouping"
+msgstr "Групування"
+
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Роздільник десятків"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Групування"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Роздільник тисяч"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Символ від'ємної валюти передує"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Відокремлення пробілом від'ємного знака"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Позиція від'ємного знака"
+
+msgctxt "field:ir.lang,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "Від'ємний знак"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Символ додатної валюти передує"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Відокремлення пробілом додатного знака"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Позиція додатного знака"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "Батьківський код"
+
+msgctxt "field:ir.lang,pg_text_search:"
+msgid "PostgreSQL Text Search Configuration"
+msgstr "Налаштування текстового пошуку PostgreSQL"
+
+msgctxt "field:ir.lang,pm:"
+msgid "PM"
+msgstr "PM"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "Додатний знак"
+
+msgctxt "field:ir.lang,thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Роздільник тисяч"
+
+msgctxt "field:ir.lang,translatable:"
+msgid "Translatable"
+msgstr "Перекладний"
+
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Мови"
+
+msgctxt "field:ir.message,text:"
+msgid "Text"
+msgstr "Текст"
+
+msgctxt "field:ir.model,fields:"
+msgid "Fields"
+msgstr "Поля"
+
+msgctxt "field:ir.model,global_search_p:"
+msgid "Global Search"
+msgstr "Глобальний пошук"
+
+msgctxt "field:ir.model,info:"
+msgid "Information"
+msgstr "Інформація"
+
+msgctxt "field:ir.model,model:"
+msgid "Model Name"
+msgstr "Ім'я моделі"
+
+msgctxt "field:ir.model,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.model,name:"
+msgid "Model Description"
+msgstr "Опис моделі"
+
+msgctxt "field:ir.model.access,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:ir.model.access,group:"
+msgid "Group"
+msgstr "Група"
+
+msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.model.access,perm_create:"
+msgid "Create Access"
+msgstr "Створення"
+
+msgctxt "field:ir.model.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Видалення"
+
+msgctxt "field:ir.model.access,perm_read:"
+msgid "Read Access"
+msgstr "Читання"
+
+msgctxt "field:ir.model.access,perm_write:"
+msgid "Write Access"
+msgstr "Запис"
+
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "Кліки"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "Підтвердити"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Довідка"
+
+msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.model.button,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "Скинути"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "Ким скинуто"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Правила"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "Мітка"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Кнопка"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "Керована кнопка"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Кнопка"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "ID запису"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Кнопка"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Умова"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "Кількість користувачів"
+
+msgctxt "field:ir.model.data,db_id:"
+msgid "Resource ID"
+msgstr "ID ресурсу"
+
+msgctxt "field:ir.model.data,fs_id:"
+msgid "Identifier on File System"
+msgstr "Ідентифікатор у файловій системі"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Значення у файловій системі"
+
+msgctxt "field:ir.model.data,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.model.data,noupdate:"
+msgid "No Update"
+msgstr "Немає оновлень"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Не вдалося синхронізувати"
+
+msgctxt "field:ir.model.data,values:"
+msgid "Values"
+msgstr "Значення"
+
+msgctxt "field:ir.model.field,access:"
+msgid "Access"
+msgstr "Доступ"
+
+msgctxt "field:ir.model.field,field_description:"
+msgid "Field Description"
+msgstr "Опис поля"
+
+msgctxt "field:ir.model.field,help:"
+msgid "Help"
+msgstr "Довідка"
+
+msgctxt "field:ir.model.field,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.model.field,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.model.field,relation:"
+msgid "Model Relation"
+msgstr "Зв'язок моделі"
+
+msgctxt "field:ir.model.field,ttype:"
+msgid "Field Type"
+msgstr "Тип поля"
+
+msgctxt "field:ir.model.field.access,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:ir.model.field.access,field:"
+msgid "Field"
+msgstr "Поле"
+
+msgctxt "field:ir.model.field.access,group:"
+msgid "Group"
+msgstr "Група"
+
+msgctxt "field:ir.model.field.access,perm_create:"
+msgid "Create Access"
+msgstr "Створення"
+
+msgctxt "field:ir.model.field.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Видалення"
+
+msgctxt "field:ir.model.field.access,perm_read:"
+msgid "Read Access"
+msgstr "Читання"
+
+msgctxt "field:ir.model.field.access,perm_write:"
+msgid "Write Access"
+msgstr "Запис"
+
+msgctxt "field:ir.model.print_model_graph.start,filter:"
+msgid "Filter"
+msgstr "Фільтр"
+
+msgctxt "field:ir.model.print_model_graph.start,level:"
+msgid "Level"
+msgstr "Рівень"
+
+msgctxt "field:ir.module,childs:"
+msgid "Childs"
+msgstr "Діти"
+
+msgctxt "field:ir.module,dependencies:"
+msgid "Dependencies"
+msgstr "Залежності"
+
+msgctxt "field:ir.module,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.module,parents:"
+msgid "Parents"
+msgstr "Батьки"
+
+msgctxt "field:ir.module,state:"
+msgid "State"
+msgstr "Стан"
+
+msgctxt "field:ir.module,version:"
+msgid "Version"
+msgstr "Версія"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Модулі для оновлення"
+
+msgctxt "field:ir.module.config.start,modules:"
+msgid "Modules"
+msgstr "Модулі"
+
+msgctxt "field:ir.module.config_wizard.item,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.module.config_wizard.item,state:"
+msgid "State"
+msgstr "Стан"
+
+msgctxt "field:ir.module.config_wizard.other,percentage:"
+msgid "Percentage"
+msgstr "Відсоток"
+
+msgctxt "field:ir.module.dependency,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.module.dependency,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.module.dependency,state:"
+msgid "State"
+msgstr "Стан"
+
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Копіювати до ресурсів"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Копіювати до видимих ресурсів"
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Остання зміна"
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Останній користувач"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Ресурс"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr "Непрочитана"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr "Примітка"
+
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Коли вилучено з черги"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "Коли поставлено у чергу"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Коли очікувалось"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Коли завершено"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Коли заплановано"
+
+msgctxt "field:ir.rule,domain:"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "field:ir.rule,rule_group:"
+msgid "Group"
+msgstr "Група"
+
+msgctxt "field:ir.rule.group,default_p:"
+msgid "Default"
+msgstr "За замовчуванням"
+
+msgctxt "field:ir.rule.group,global_p:"
+msgid "Global"
+msgstr "Глобальний"
+
+msgctxt "field:ir.rule.group,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.rule.group,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.rule.group,perm_create:"
+msgid "Create Access"
+msgstr "Створення"
+
+msgctxt "field:ir.rule.group,perm_delete:"
+msgid "Delete Access"
+msgstr "Видалення"
+
+msgctxt "field:ir.rule.group,perm_read:"
+msgid "Read Access"
+msgstr "Читання"
+
+msgctxt "field:ir.rule.group,perm_write:"
+msgid "Write Access"
+msgstr "Запис"
+
+msgctxt "field:ir.rule.group,rules:"
+msgid "Tests"
+msgstr "Тести"
+
+msgctxt "field:ir.sequence,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Остання часова позначка"
+
+msgctxt "field:ir.sequence,name:"
+msgid "Sequence Name"
+msgstr "Ім'я послідовності"
+
+msgctxt "field:ir.sequence,number_increment:"
+msgid "Increment Number"
+msgstr "Число збільшення"
+
+msgctxt "field:ir.sequence,number_next:"
+msgid "Next Number"
+msgstr "Наступне число"
+
+msgctxt "field:ir.sequence,number_next_internal:"
+msgid "Next Number"
+msgstr "Наступне число"
+
+msgctxt "field:ir.sequence,padding:"
+msgid "Number padding"
+msgstr "Кількість цифр"
+
+msgctxt "field:ir.sequence,prefix:"
+msgid "Prefix"
+msgstr "Префікс"
+
+msgctxt "field:ir.sequence,sequence_type:"
+msgid "Sequence Type"
+msgstr "Тип послідовності"
+
+msgctxt "field:ir.sequence,suffix:"
+msgid "Suffix"
+msgstr "Суфікс"
+
+msgctxt "field:ir.sequence,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Зміщення часової позначки"
+
+msgctxt "field:ir.sequence,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Округлення часової позначки"
+
+msgctxt "field:ir.sequence,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.sequence.strict,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Остання часова позначка"
+
+msgctxt "field:ir.sequence.strict,name:"
+msgid "Sequence Name"
+msgstr "Ім'я послідовності"
+
+msgctxt "field:ir.sequence.strict,number_increment:"
+msgid "Increment Number"
+msgstr "Число збільшення"
+
+msgctxt "field:ir.sequence.strict,number_next:"
+msgid "Next Number"
+msgstr "Наступне число"
+
+msgctxt "field:ir.sequence.strict,number_next_internal:"
+msgid "Next Number"
+msgstr "Наступне число"
+
+msgctxt "field:ir.sequence.strict,padding:"
+msgid "Number padding"
+msgstr "Кількість цифр"
+
+msgctxt "field:ir.sequence.strict,prefix:"
+msgid "Prefix"
+msgstr "Префікс"
+
+msgctxt "field:ir.sequence.strict,sequence_type:"
+msgid "Sequence Type"
+msgstr "Тип послідовності"
+
+msgctxt "field:ir.sequence.strict,suffix:"
+msgid "Suffix"
+msgstr "Суфікс"
+
+msgctxt "field:ir.sequence.strict,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Зміщення часової позначки"
+
+msgctxt "field:ir.sequence.strict,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Округлення часової позначки"
+
+msgctxt "field:ir.sequence.strict,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.sequence.type,name:"
+msgid "Sequence Name"
+msgstr "Ім'я послідовності"
+
+msgctxt "field:ir.session,key:"
+msgid "Key"
+msgstr "Ключ"
+
+msgctxt "field:ir.session.wizard,data:"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "field:ir.translation,fuzzy:"
+msgid "Fuzzy"
+msgstr "Нечіткий"
+
+msgctxt "field:ir.translation,lang:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:ir.translation,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.translation,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.translation,name:"
+msgid "Field Name"
+msgstr "Ім'я поля"
+
+msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "Перевизначаючий модуль"
+
+msgctxt "field:ir.translation,res_id:"
+msgid "Resource ID"
+msgstr "ID ресурсу"
+
+msgctxt "field:ir.translation,src:"
+msgid "Source"
+msgstr "Джерело"
+
+msgctxt "field:ir.translation,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:ir.translation,value:"
+msgid "Translation Value"
+msgstr "Значення перекладу"
+
+msgctxt "field:ir.translation.export.result,file:"
+msgid "File"
+msgstr "Файл"
+
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Ім'я файла"
+
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.translation.export.start,language:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:ir.translation.export.start,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.translation.update.start,language:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.trigger,condition:"
+msgid "Condition"
+msgstr "Умова"
+
+msgctxt "field:ir.trigger,limit_number:"
+msgid "Limit Number"
+msgstr "Кількість записів"
+
+msgctxt "field:ir.trigger,minimum_time_delay:"
+msgid "Minimum Delay"
+msgstr "Мінімальна затримка"
+
+msgctxt "field:ir.trigger,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.trigger,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.trigger,on_create:"
+msgid "On Create"
+msgstr "При створенні"
+
+msgctxt "field:ir.trigger,on_delete:"
+msgid "On Delete"
+msgstr "При видаленні"
+
+msgctxt "field:ir.trigger,on_time:"
+msgid "On Time"
+msgstr "У час"
+
+msgctxt "field:ir.trigger,on_write:"
+msgid "On Write"
+msgstr "При запису"
+
+msgctxt "field:ir.trigger.log,record_id:"
+msgid "Record ID"
+msgstr "ID запису"
+
+msgctxt "field:ir.trigger.log,trigger:"
+msgid "Trigger"
+msgstr "Тригер"
+
+msgctxt "field:ir.ui.icon,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.ui.icon,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.ui.icon,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.ui.icon,path:"
+msgid "SVG Path"
+msgstr "Шлях до SVG"
+
+msgctxt "field:ir.ui.menu,action:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Ключові слова дії"
+
+msgctxt "field:ir.ui.menu,childs:"
+msgid "Children"
+msgstr "Діти"
+
+msgctxt "field:ir.ui.menu,complete_name:"
+msgid "Complete Name"
+msgstr "Повне ім'я"
+
+msgctxt "field:ir.ui.menu,favorite:"
+msgid "Favorite"
+msgstr "Вибране"
+
+msgctxt "field:ir.ui.menu,icon:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "field:ir.ui.menu,name:"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "field:ir.ui.menu,parent:"
+msgid "Parent Menu"
+msgstr "Батьківське меню"
+
+msgctxt "field:ir.ui.menu.favorite,menu:"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "field:ir.ui.menu.favorite,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.ui.view,arch:"
+msgid "View Architecture"
+msgstr "Перегляд архітектури"
+
+msgctxt "field:ir.ui.view,data:"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "field:ir.ui.view,domain:"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "field:ir.ui.view,field_childs:"
+msgid "Children Field"
+msgstr "Діти"
+
+msgctxt "field:ir.ui.view,inherit:"
+msgid "Inherited View"
+msgstr "Успадкований перегляд"
+
+msgctxt "field:ir.ui.view,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "field:ir.ui.view,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.ui.view,priority:"
+msgid "Priority"
+msgstr "Пріоритет"
+
+msgctxt "field:ir.ui.view,type:"
+msgid "View Type"
+msgstr "Тип перегляду"
+
+msgctxt "field:ir.ui.view_search,domain:"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "field:ir.ui.view_search,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.ui.view_search,name:"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "field:ir.ui.view_search,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.ui.view_tree_optional,field:"
+msgid "Field"
+msgstr "Поле"
+
+msgctxt "field:ir.ui.view_tree_optional,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.ui.view_tree_optional,value:"
+msgid "Value"
+msgstr "Значення"
+
+msgctxt "field:ir.ui.view_tree_optional,view_id:"
+msgid "View ID"
+msgstr "ID перегляду"
+
+msgctxt "field:ir.ui.view_tree_state,child_name:"
+msgid "Child Name"
+msgstr "Ім'я дитини"
+
+msgctxt "field:ir.ui.view_tree_state,domain:"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.ui.view_tree_state,nodes:"
+msgid "Expanded Nodes"
+msgstr "Розширені вузли"
+
+msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
+msgid "Selected Nodes"
+msgstr "Вибрані вузли"
+
+msgctxt "field:ir.ui.view_tree_state,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.ui.view_tree_width,field:"
+msgid "Field"
+msgstr "Поле"
+
+msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "field:ir.ui.view_tree_width,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:ir.ui.view_tree_width,width:"
+msgid "Width"
+msgstr "Ширина"
+
+msgctxt "help:ir.action,records:"
+msgid "The records on which the action runs."
+msgstr "Записи, над якими виконується дія."
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh."
+msgstr "Частина домену, яка буде оцінюватися під час кожного оновлення."
+
+msgctxt "help:ir.action.act_window,limit:"
+msgid "Default limit for the list view."
+msgstr "Обмеження за замовчуванням для перегляду списку."
+
+msgctxt "help:ir.action.act_window,records:"
+msgid "The records on which the action runs."
+msgstr "Записи, над якими виконується дія."
+
+msgctxt "help:ir.action.act_window,search_value:"
+msgid "Default search criteria for the list view."
+msgstr "Критерії пошуку за замовчуванням для перегляду списку."
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see LibreOffice documentation for "
+"compatible format."
+msgstr ""
+"Залиште пустим для того самого розширення, що й у шаблоні. Дивіться "
+"документацію LibreOffice щодо сумісного формату."
+
+msgctxt "help:ir.action.report,record_name:"
+msgid ""
+"A Genshi expression to compute the name using 'record'.\n"
+"Leave empty for the default name."
+msgstr ""
+"Вираз Genshi для обчислення імені за допомогою 'запису'.\n"
+"Залиште пустим для імені за замовчуванням."
+
+msgctxt "help:ir.action.report,records:"
+msgid "The records on which the action runs."
+msgstr "Записи, над якими виконується дія."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr "Позначте, якщо шаблон працює лише для одного запису."
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Зніміть позначку, щоб вимкнути переклади для цього звіту."
+
+msgctxt "help:ir.action.url,records:"
+msgid "The records on which the action runs."
+msgstr "Записи, над якими виконується дія."
+
+msgctxt "help:ir.action.wizard,records:"
+msgid "The records on which the action runs."
+msgstr "Записи, над якими виконується дія."
+
+msgctxt "help:ir.action.wizard,window:"
+msgid "Run wizard in a new window."
+msgstr "Виконати майстер у новому вікні."
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Поле, яке містить одержувачів."
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Поле, яке містить вторинних одержувачів."
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Вираз PYSON, який генерує список прихованих одержувачів із записом, "
+"представленим \"self\"."
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+"Вираз PYSON, який генерує список одержувачів із записом, представленим "
+"\"self\"."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Поле, у якому містяться вторинні одержувачі."
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Вираз PYSON, який генерує список вторинних одержувачів із записом, "
+"представленим \"self\"."
+
+msgctxt "help:ir.export,header:"
+msgid "Check to include field names on the export."
+msgstr ""
+
+msgctxt "help:ir.lang,code:"
+msgid "RFC 4646 tag."
+msgstr ""
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "Код виняткового батька"
+
+msgctxt "help:ir.model,module:"
+msgid "Module in which this model is defined."
+msgstr "Модуль, у якому визначено цю модель."
+
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr "Текст для підтвердження користувача під час натискання кнопки."
+
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules."
+msgstr "Кнопка, яка має скинути правила."
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Оператор PYSON, який оцінюється із записом, представленим \"self\"\n"
+"Правило активується, якщо результат оцінки істинний."
+
+msgctxt "help:ir.model.data,db_id:"
+msgid "The id of the record in the database."
+msgstr "Ідентифікатор запису у базі даних."
+
+msgctxt "help:ir.model.data,fs_id:"
+msgid "The id of the record as known on the file system."
+msgstr "Ідентифікатор запису, відомий у файловій системі."
+
+msgctxt "help:ir.model.field,access:"
+msgid ""
+"If checked, the access right on the model of the field is also tested "
+"against the relation of the field."
+msgstr ""
+"Якщо позначено, доступ до моделі поля також перевіряється на записах, "
+"пов'язаних з цим полем."
+
+msgctxt "help:ir.model.field,module:"
+msgid "Module in which this field is defined."
+msgstr "Модуль, у якому визначено це поле."
+
+msgctxt "help:ir.model.print_model_graph.start,filter:"
+msgid ""
+"Entering a Python Regular Expression will exclude matching models from the "
+"graph."
+msgstr ""
+"Введення регулярного виразу Python виключає відповідні моделі з графіка."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Коли завдання має бути виконано."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Коли завдання можна розпочати."
+
+#, fuzzy
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user\n"
+"- \"groups\" as list of ids from the current user"
+msgstr ""
+"Домен оцінюється за контекстом PYSON, що містить:\n"
+"- \"user\" у якості поточного користувача"
+
+msgctxt "help:ir.rule.group,default_p:"
+msgid "Add this rule to all users by default."
+msgstr "Додати це правило всім користувачам за замовчуванням."
+
+msgctxt "help:ir.rule.group,global_p:"
+msgid ""
+"Make the rule global \n"
+"so every users must follow this rule."
+msgstr ""
+"Зробити правило глобальним, \n"
+"всі користувачі повинні дотримуватися цього правила."
+
+msgctxt "help:ir.rule.group,name:"
+msgid "Displayed to users when access error is raised for this rule."
+msgstr "Відображається, коли виникла помилка доступу для цього правила."
+
+msgctxt "help:ir.rule.group,rules:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr "Правило задовольняється, якщо принаймні один тест істинний."
+
+msgctxt "help:ir.trigger,condition:"
+msgid ""
+"A PYSON statement evaluated with record represented by \"self\"\n"
+"It triggers the action if true."
+msgstr ""
+"Оператор PYSON, який оцінюється із записом, представленим \"self\"\n"
+"Дія виконується, якщо результат оцінки істинний."
+
+msgctxt "help:ir.trigger,limit_number:"
+msgid ""
+"Limit the number of call to \"Action Function\" by records.\n"
+"0 for no limit."
+msgstr ""
+"Обмежити кількість викликів функції дії для записів.\n"
+"Без обмеження, якщо дорівнює 0."
+
+msgctxt "help:ir.trigger,minimum_time_delay:"
+msgid ""
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
+msgstr ""
+"Мінімальна затримка між викликами функція дії для одного запису.\n"
+"Без затримки, якщо не задана."
+
+msgctxt "help:ir.ui.view_search,domain:"
+msgid "The PYSON domain."
+msgstr "Домен PYSON."
+
+msgctxt "model:ir.action,name:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "model:ir.action,name:act_action_act_window_form"
+msgid "Window Actions"
+msgstr "Дії вікна"
+
+msgctxt "model:ir.action,name:act_action_form"
+msgid "Actions"
+msgstr "Дії"
+
+msgctxt "model:ir.action,name:act_action_report_form"
+msgid "Reports"
+msgstr "Звіти"
+
+msgctxt "model:ir.action,name:act_action_url_form"
+msgid "URLs"
+msgstr "URL-адреси"
+
+msgctxt "model:ir.action,name:act_action_wizard_form"
+msgid "Wizards"
+msgstr "Майстри"
+
+msgctxt "model:ir.action,name:act_attachment_form"
+msgid "Attachments"
+msgstr "Вкладення"
+
+msgctxt "model:ir.action,name:act_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Майстри налаштування"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Actions"
+msgstr "Дії"
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "Ел.пошта"
+
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mail Archives"
+msgstr "Архіви ел.пошти"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr "Шаблони ел.пошти"
+
+msgctxt "model:ir.action,name:act_error_form"
+msgid "Errors"
+msgstr "Помилки"
+
+msgctxt "model:ir.action,name:act_export_form"
+msgid "Exports"
+msgstr "Експорти"
+
+msgctxt "model:ir.action,name:act_icon_form"
+msgid "Icons"
+msgstr "Піктограми"
+
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Налаштувати мови"
+
+msgctxt "model:ir.action,name:act_lang_form"
+msgid "Languages"
+msgstr "Мови"
+
+msgctxt "model:ir.action,name:act_menu_list"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "model:ir.action,name:act_menu_tree"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "model:ir.action,name:act_model_access_form"
+msgid "Models Access"
+msgstr "Доступ до моделей"
+
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr "Доступ"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "Кліки"
+
+msgctxt "model:ir.action,name:act_model_button_form"
+msgid "Buttons"
+msgstr "Кнопки"
+
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "model:ir.action,name:act_model_field_access_form"
+msgid "Fields Access"
+msgstr "Доступ до полів"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr "Доступ"
+
+msgctxt "model:ir.action,name:act_model_fields_form"
+msgid "Fields"
+msgstr "Поля"
+
+msgctxt "model:ir.action,name:act_model_form"
+msgid "Models"
+msgstr "Моделі"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Виконати активацію/оновлення"
+
+msgctxt "model:ir.action,name:act_module_config"
+msgid "Configure Modules"
+msgstr "Налаштувати модулі"
+
+msgctxt "model:ir.action,name:act_module_config_wizard"
+msgid "Module Configuration"
+msgstr "Налаштування модуля"
+
+msgctxt "model:ir.action,name:act_module_form"
+msgid "Modules"
+msgstr "Модулі"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr "Примітки"
+
+msgctxt "model:ir.action,name:act_rule_group_form"
+msgid "Record Rules"
+msgstr "Правила записів"
+
+msgctxt "model:ir.action,name:act_sequence_form"
+msgid "Sequences"
+msgstr "Послідовності"
+
+msgctxt "model:ir.action,name:act_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Суворі послідовності"
+
+msgctxt "model:ir.action,name:act_sequence_type_form"
+msgid "Types"
+msgstr "Типи"
+
+msgctxt "model:ir.action,name:act_translation_clean"
+msgid "Clean Translations"
+msgstr "Очистити переклади"
+
+msgctxt "model:ir.action,name:act_translation_export"
+msgid "Export Translations"
+msgstr "Експортувати переклади"
+
+msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Переклади"
+
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "Переклади"
+
+msgctxt "model:ir.action,name:act_translation_set"
+msgid "Set Translations"
+msgstr "Встановити переклади"
+
+msgctxt "model:ir.action,name:act_translation_update"
+msgid "Synchronize Translations"
+msgstr "Синхронізувати переклади"
+
+msgctxt "model:ir.action,name:act_trigger_form"
+msgid "Triggers"
+msgstr "Тригери"
+
+msgctxt "model:ir.action,name:act_view_form"
+msgid "Views"
+msgstr "Перегляди"
+
+msgctxt "model:ir.action,name:act_view_search"
+msgid "View Search"
+msgstr "Пошуки переглядів"
+
+msgctxt "model:ir.action,name:act_view_show"
+msgid "Show View"
+msgstr "Показати перегляд"
+
+msgctxt "model:ir.action,name:act_view_tree_optional_form"
+msgid "View Tree Optional"
+msgstr "Додаткові перегляди"
+
+msgctxt "model:ir.action,name:act_view_tree_state"
+msgid "Tree State"
+msgstr "Стан дерев"
+
+msgctxt "model:ir.action,name:act_view_tree_width_form"
+msgid "View Tree Width"
+msgstr "Ширини колонок"
+
+msgctxt "model:ir.action,name:print_model_graph"
+msgid "Graph"
+msgstr "Графік"
+
+msgctxt "model:ir.action,name:report_model_graph"
+msgid "Graph"
+msgstr "Графік"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr "Графік робочого процесу"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Переклади"
+
+msgctxt "model:ir.action.act_window,name:"
+msgid "Action act window"
+msgstr "Вікно дії"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Action act window domain"
+msgstr "Домен вікна дії"
+
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
+msgid "All"
+msgstr "Всі"
+
+msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_open"
+msgid "Open"
+msgstr "Відкрити"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_error_form_domain_processing"
+msgid "Processing"
+msgstr "Обробка"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Всі"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Не вдалося синхронізувати"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Локальний"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Модулі"
+
+msgctxt "model:ir.action.act_window.view,name:"
+msgid "Action act window view"
+msgstr "Вікно дії"
+
+msgctxt "model:ir.action.keyword,name:"
+msgid "Action keyword"
+msgstr "Ключове слово дії"
+
+msgctxt "model:ir.action.report,name:"
+msgid "Action report"
+msgstr "Звіт дії"
+
+msgctxt "model:ir.action.url,name:"
+msgid "Action URL"
+msgstr "URL-адреса дії"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Action wizard"
+msgstr "Майстер дії"
+
+msgctxt "model:ir.attachment,name:"
+msgid "Attachment"
+msgstr "Вкладення"
+
+msgctxt "model:ir.avatar,name:"
+msgid "Avatar"
+msgstr "Аватар"
+
+msgctxt "model:ir.avatar.cache,name:"
+msgid "Avatar Cache"
+msgstr "Кеш аватара"
+
+msgctxt "model:ir.cache,name:"
+msgid "Cache"
+msgstr "Кеш"
+
+msgctxt "model:ir.calendar.day,abbreviation:Friday"
+msgid "Fri"
+msgstr "Пт"
+
+msgctxt "model:ir.calendar.day,abbreviation:Monday"
+msgid "Mon"
+msgstr "Пн"
+
+msgctxt "model:ir.calendar.day,abbreviation:Saturday"
+msgid "Sat"
+msgstr "Сб"
+
+msgctxt "model:ir.calendar.day,abbreviation:Sunday"
+msgid "Sun"
+msgstr "Нд"
+
+msgctxt "model:ir.calendar.day,abbreviation:Thursday"
+msgid "Thu"
+msgstr "Чт"
+
+msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
+msgid "Tue"
+msgstr "Вт"
+
+msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
+msgid "Wed"
+msgstr "Ср"
+
+msgctxt "model:ir.calendar.day,name:"
+msgid "Day"
+msgstr "День"
+
+msgctxt "model:ir.calendar.day,name:Friday"
+msgid "Friday"
+msgstr "П'ятниця"
+
+msgctxt "model:ir.calendar.day,name:Monday"
+msgid "Monday"
+msgstr "Понеділок"
+
+msgctxt "model:ir.calendar.day,name:Saturday"
+msgid "Saturday"
+msgstr "Субота"
+
+msgctxt "model:ir.calendar.day,name:Sunday"
+msgid "Sunday"
+msgstr "Неділя"
+
+msgctxt "model:ir.calendar.day,name:Thursday"
+msgid "Thursday"
+msgstr "Четвер"
+
+msgctxt "model:ir.calendar.day,name:Tuesday"
+msgid "Tuesday"
+msgstr "Вівторок"
+
+msgctxt "model:ir.calendar.day,name:Wednesday"
+msgid "Wednesday"
+msgstr "Середа"
+
+msgctxt "model:ir.calendar.month,abbreviation:April"
+msgid "Apr"
+msgstr "Кві"
+
+msgctxt "model:ir.calendar.month,abbreviation:August"
+msgid "Aug"
+msgstr "Сер"
+
+msgctxt "model:ir.calendar.month,abbreviation:December"
+msgid "Dec"
+msgstr "Гру"
+
+msgctxt "model:ir.calendar.month,abbreviation:February"
+msgid "Feb"
+msgstr "Лют"
+
+msgctxt "model:ir.calendar.month,abbreviation:January"
+msgid "Jan"
+msgstr "Січ"
+
+msgctxt "model:ir.calendar.month,abbreviation:July"
+msgid "Jul"
+msgstr "Лип"
+
+msgctxt "model:ir.calendar.month,abbreviation:June"
+msgid "Jun"
+msgstr "Чер"
+
+msgctxt "model:ir.calendar.month,abbreviation:March"
+msgid "Mar"
+msgstr "Бер"
+
+msgctxt "model:ir.calendar.month,abbreviation:May"
+msgid "May"
+msgstr "Тра"
+
+msgctxt "model:ir.calendar.month,abbreviation:November"
+msgid "Nov"
+msgstr "Лис"
+
+msgctxt "model:ir.calendar.month,abbreviation:October"
+msgid "Oct"
+msgstr "Жов"
+
+msgctxt "model:ir.calendar.month,abbreviation:September"
+msgid "Sep"
+msgstr "Вер"
+
+msgctxt "model:ir.calendar.month,name:"
+msgid "Month"
+msgstr "Місяць"
+
+msgctxt "model:ir.calendar.month,name:April"
+msgid "April"
+msgstr "Квітень"
+
+msgctxt "model:ir.calendar.month,name:August"
+msgid "August"
+msgstr "Серпень"
+
+msgctxt "model:ir.calendar.month,name:December"
+msgid "December"
+msgstr "Грудень"
+
+msgctxt "model:ir.calendar.month,name:February"
+msgid "February"
+msgstr "Лютий"
+
+msgctxt "model:ir.calendar.month,name:January"
+msgid "January"
+msgstr "Січень"
+
+msgctxt "model:ir.calendar.month,name:July"
+msgid "July"
+msgstr "Липень"
+
+msgctxt "model:ir.calendar.month,name:June"
+msgid "June"
+msgstr "Червень"
+
+msgctxt "model:ir.calendar.month,name:March"
+msgid "March"
+msgstr "Березень"
+
+msgctxt "model:ir.calendar.month,name:May"
+msgid "May"
+msgstr "Травень"
+
+msgctxt "model:ir.calendar.month,name:November"
+msgid "November"
+msgstr "Листопад"
+
+msgctxt "model:ir.calendar.month,name:October"
+msgid "October"
+msgstr "Жовтень"
+
+msgctxt "model:ir.calendar.month,name:September"
+msgid "September"
+msgstr "Вересень"
+
+msgctxt "model:ir.configuration,name:"
+msgid "Configuration"
+msgstr "Налаштування"
+
+msgctxt "model:ir.cron,name:"
+msgid "Cron"
+msgstr "Демон"
+
+msgctxt "model:ir.date,name:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "Ел.пошта"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr "Адреса ел.пошти"
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr "Шаблон ел.пошти"
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr "Шаблон ел.пошти - Звіт"
+
+msgctxt "model:ir.error,name:"
+msgid "Error"
+msgstr "Помилка"
+
+msgctxt "model:ir.export,name:"
+msgid "Export"
+msgstr "Експортувати"
+
+msgctxt "model:ir.export.line,name:"
+msgid "Export line"
+msgstr "Експортувати рядок"
+
+msgctxt "model:ir.lang,name:"
+msgid "Language"
+msgstr "Мова"
+
+msgctxt "model:ir.lang,name:lang_bg"
+msgid "Bulgarian"
+msgstr "Болгарська"
+
+msgctxt "model:ir.lang,name:lang_ca"
+msgid "Català"
+msgstr "Каталонська"
+
+msgctxt "model:ir.lang,name:lang_cs"
+msgid "Czech"
+msgstr "Чеська"
+
+msgctxt "model:ir.lang,name:lang_de"
+msgid "German"
+msgstr "Німецька"
+
+msgctxt "model:ir.lang,name:lang_en"
+msgid "English"
+msgstr "Англійська"
+
+msgctxt "model:ir.lang,name:lang_es"
+msgid "Spanish"
+msgstr "Іспанська"
+
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "Іспанська (латиноамериканська)"
+
+msgctxt "model:ir.lang,name:lang_et"
+msgid "Estonian"
+msgstr "Естонська"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "Перська"
+
+msgctxt "model:ir.lang,name:lang_fi"
+msgid "Finnish"
+msgstr "Фінська"
+
+msgctxt "model:ir.lang,name:lang_fr"
+msgid "French"
+msgstr "Французька"
+
+msgctxt "model:ir.lang,name:lang_hu"
+msgid "Hungarian"
+msgstr "Угорська"
+
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr "Індонезійська"
+
+msgctxt "model:ir.lang,name:lang_it"
+msgid "Italian"
+msgstr "Італійська"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "Лаоська"
+
+msgctxt "model:ir.lang,name:lang_lt"
+msgid "Lithuanian"
+msgstr "Литовська"
+
+msgctxt "model:ir.lang,name:lang_nl"
+msgid "Dutch"
+msgstr "Голландська"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Польська"
+
+msgctxt "model:ir.lang,name:lang_pt"
+msgid "Portuguese"
+msgstr "Португальська"
+
+msgctxt "model:ir.lang,name:lang_ro"
+msgid "Romanian"
+msgstr "Румунська"
+
+msgctxt "model:ir.lang,name:lang_ru"
+msgid "Russian"
+msgstr "Російська"
+
+msgctxt "model:ir.lang,name:lang_sl"
+msgid "Slovenian"
+msgstr "Словенська"
+
+msgctxt "model:ir.lang,name:lang_tr"
+msgid "Turkish"
+msgstr "Турецька"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "Китайська (спрощена)"
+
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Configure languages"
+msgstr "Налаштувати мови"
+
+msgctxt "model:ir.message,name:"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "model:ir.message,text:msg_ID"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:ir.message,text:msg_access_button_error"
+msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
+msgstr "Виклик кнопки \"%(button)s\" на \"%(model)s\" не дозволено."
+
+msgctxt "model:ir.message,text:msg_access_rule_error"
+msgid "You are not allowed to access \"%(model)s\"."
+msgstr "Вам заборонено доступ до \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_access_rule_field_error"
+msgid "You are not allowed to access \"%(model)s.%(field)s\"."
+msgstr "Вам заборонено доступ до \"%(model)s.%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "Вам заборонено виконувати майстер \"%(wizard)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr "Вам заборонено виконувати майстер \"%(wizard)s\" на \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_context"
+msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
+msgstr "Недійсний контекст \"%(context)s\" для дії \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
+msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для дії \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_views"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "Недійсний перегляд \"%(view)s\" для дії \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
+msgid "Wrong wizard model in keyword action \"%(name)s\"."
+msgstr "Неправильна модель майстра в дії ключового слова \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_active"
+msgid "Active"
+msgstr "Активний"
+
+msgctxt "model:ir.message,text:msg_active_help"
+msgid "Uncheck to exclude from future use."
+msgstr "Зніміть позначку, щоб виключити з наступного використання."
+
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Вкладення"
+
+msgctxt "model:ir.message,text:msg_avatar"
+msgid "Avatar"
+msgstr "Аватар"
+
+msgctxt "model:ir.message,text:msg_avatar_resource_unique"
+msgid "Only one avatar is allowed per resource."
+msgstr "На ресурс дозволяється лише один аватар."
+
+msgctxt "model:ir.message,text:msg_avatar_size_unique"
+msgid "The size of an avatar must be unique."
+msgstr "Розмір аватара має бути унікальним."
+
+msgctxt "model:ir.message,text:msg_avatar_url"
+msgid "Avatar URL"
+msgstr "URL-адреса аватара"
+
+msgctxt "model:ir.message,text:msg_avatars"
+msgid "Avatars"
+msgstr "Аватари"
+
+msgctxt "model:ir.message,text:msg_base_config_record"
+msgid "This record is part of the base configuration."
+msgstr "Цей запис є частиною базової конфігурації."
+
+msgctxt "model:ir.message,text:msg_button_name_unique"
+msgid "The name of the button must be unique per model."
+msgstr "Назва кнопки має бути унікальною для кожної моделі."
+
+msgctxt "model:ir.message,text:msg_create_rule_error"
+msgid ""
+"You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Вам заборонено створювати записи \"%(model)s\" через принаймні одне з цих правил:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_created_at"
+msgid "Created at"
+msgstr "Коли створено"
+
+msgctxt "model:ir.message,text:msg_created_by"
+msgid "Created by"
+msgstr "Ким створено"
+
+msgctxt "model:ir.message,text:msg_delete_rule_error"
+msgid ""
+"You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
+"%(rules)s"
+msgstr ""
+"Вам заборонено видаляти записи \"%(ids)s\" із \"%(model)s\" через принаймні одне з цих правил:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_delete_xml_record"
+msgid "You are not allowed to delete this record."
+msgstr "Ви не можете видалити цей запис."
+
+msgctxt "model:ir.message,text:msg_dict_no"
+msgid "No"
+msgstr "Ні"
+
+msgctxt "model:ir.message,text:msg_dict_schema_boolean"
+msgid "Boolean"
+msgstr "Логічний"
+
+msgctxt "model:ir.message,text:msg_dict_schema_char"
+msgid "Char"
+msgstr "Символ"
+
+msgctxt "model:ir.message,text:msg_dict_schema_date"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "model:ir.message,text:msg_dict_schema_datetime"
+msgid "DateTime"
+msgstr "Дата і час"
+
+msgctxt "model:ir.message,text:msg_dict_schema_digits"
+msgid "Digits"
+msgstr "Цифри"
+
+msgctxt "model:ir.message,text:msg_dict_schema_domain"
+msgid "Domain"
+msgstr "Домен"
+
+msgctxt "model:ir.message,text:msg_dict_schema_float"
+msgid "Float"
+msgstr "Число з плав.точкою"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Довідка"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
+msgid "Help Selection"
+msgstr "Вибір довідки"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
+msgid "The key followed by the help text separated by a \":\", one per line."
+msgstr "Ключ, за яким слідує текст довідки, розділений \":\", по одному на рядок."
+
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
+msgid "Help Selection JSON"
+msgstr "JSON для вибору довідки"
+
+msgctxt "model:ir.message,text:msg_dict_schema_integer"
+msgid "Integer"
+msgstr "Ціле число"
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Недійсний домен у схемі \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
+msgid "Invalid help selection in schema \"%(schema)s\"."
+msgstr "Недійсний вибір довідки в схемі \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
+msgid "Invalid selection in schema \"%(schema)s\"."
+msgstr "Недійсний вибір у схемі \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Мультивибір"
+
+msgctxt "model:ir.message,text:msg_dict_schema_name"
+msgid "Name"
+msgstr "Найменування"
+
+msgctxt "model:ir.message,text:msg_dict_schema_numeric"
+msgid "Numeric"
+msgstr "Число"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection"
+msgid "Selection"
+msgstr "Вибір"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
+msgid "A couple of key and label separated by \":\" per line."
+msgstr "Пара ключів і міток, розділених \":\", по одному на рядок."
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
+msgid "Selection JSON"
+msgstr "Вибір JSON"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
+msgid "Selection Sorted"
+msgstr "Впорядкований вибір"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
+msgid "If the selection must be sorted on label."
+msgstr "Якщо вибір слід впорядкувати за міткою."
+
+msgctxt "model:ir.message,text:msg_dict_schema_string"
+msgid "String"
+msgstr "Рядок"
+
+msgctxt "model:ir.message,text:msg_dict_schema_type"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "model:ir.message,text:msg_dict_yes"
+msgid "Yes"
+msgstr "Так"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_digits_validation_record"
+msgid ""
+"The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
+"\"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+msgstr ""
+"Кількість цифр у значенні \"%(value)s\" для поля \"%(field)s\" у "
+"\"%(model)s\" перевищує ліміт \"%(digits)i\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_domain_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid according to its domain."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" недійсне відповідно дойого "
+"домену."
+
+msgctxt "model:ir.message,text:msg_edited_at"
+msgid "Edited at"
+msgstr "Коли змінено"
+
+msgctxt "model:ir.message,text:msg_edited_by"
+msgid "Edited by"
+msgstr "Ким змінено"
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Недійсний текст у шаблоні ел.листа \"%(template)s\" з винятком "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Недійсне поле PYSON %(field)s в шаблоні ел.листа \"%(template)s\" з винятком"
+" \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr ""
+"Поле PYSON %(field)s у шаблоні ел.листа \"%(template)s\" має генерувати "
+"список."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Недійсна тема в шаблоні ел.листа \"%(template)s\" з винятком "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_field_model_name"
+msgid "%(field)s (model name)"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_field_string"
+msgid "%(field)s (string)"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" contains some invalid chars \"%(chars)s\"."
+msgstr ""
+"Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" містить деякі "
+"недійсні символи \"%(chars)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_exist"
+msgid ""
+"The records could not be deleted because they are used by field "
+"\"%(field)s\" of \"%(model)s\"."
+msgstr ""
+"Записи неможливо видалити, оскільки вони використовуються полем "
+"\"%(field)s\" моделі \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_missing"
+msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
+msgstr "Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" не існує."
+
+msgctxt "model:ir.message,text:msg_html_editor_save_fail"
+msgid "Failed to save, please retry."
+msgstr "Не вдалося зберегти, будь ласка, повторіть спробу."
+
+msgctxt "model:ir.message,text:msg_id_positive"
+msgid "ID must be positive."
+msgstr "Ідентифікатор має бути позитивним."
+
+msgctxt "model:ir.message,text:msg_language_code_unique"
+msgid "The code on language must be unique."
+msgstr "Код мови має бути унікальним."
+
+msgctxt "model:ir.message,text:msg_language_default_translatable"
+msgid "The default language \"%(language)s\" must be translatable."
+msgstr "Мова за замовчуванням \"%(language)s\" має перекладатися."
+
+msgctxt "model:ir.message,text:msg_language_delete_default"
+msgid "The default language \"%(language)s\" can not be deleted."
+msgstr "Мова за замовчуванням \"%(language)s\" не може бути видалена."
+
+msgctxt "model:ir.message,text:msg_language_invalid_date"
+msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
+msgstr "Недійсний формат дати \"%(format)s\" для мови \"%(language)s\"."
+
+msgctxt "model:ir.message,text:msg_language_invalid_grouping"
+msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
+msgstr "Недійсне групування \"%(grouping)s\" для мови \"%(language)s\"."
+
+msgctxt "model:ir.message,text:msg_model_invalid_condition"
+msgid ""
+"The condition \"%(condition)s\" is not a valid PYSON expression for button "
+"rule \"%(rule)s\"."
+msgstr ""
+"Умова \"%(condition)s\" не є дійсним виразом PYSON для правила кнопки "
+"\"%(rule)s\"."
+
+msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Деякі активовані модулі залежать від тих, які ви намагаєтеся деактивувати:"
+
+msgctxt "model:ir.message,text:msg_module_delete_state"
+msgid ""
+"You can not remove a module that is activated or that is about to be "
+"activated."
+msgstr ""
+"Ви не можете видалити модуль, який активований або який ви збираєтесь "
+"активувати."
+
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Примітки"
+
+msgctxt "model:ir.message,text:msg_read_error"
+msgid ""
+"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
+" anymore."
+msgstr ""
+"Ви намагаєтеся прочитати записи \"%(ids)s\" із \"%(model)s\", які більше не "
+"існують."
+
+msgctxt "model:ir.message,text:msg_read_rule_error"
+msgid ""
+"You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Вам заборонено читати записи \"%(ids)s\" з \"%(model)s\" через принаймні одне з цих правил:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_record_name"
+msgid "Record Name"
+msgstr "Ім'я запису"
+
+msgctxt "model:ir.message,text:msg_recursion_error"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"Помилка рекурсії: запис \"%(rec_name)s\" з батьком \"%(parent_rec_name)s\" "
+"був налаштований як предок самого себе."
+
+msgctxt "model:ir.message,text:msg_reference_syntax_error"
+msgid ""
+"Syntax error for reference: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Синтаксична помилка для посилання: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
+
+msgctxt "model:ir.message,text:msg_relation_not_found"
+msgid "Relation not found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Не знайдено зв'язку: %(value)r в моделі \"%(model)s\" (%(column)s)."
+
+msgctxt "model:ir.message,text:msg_report_invalid_email"
+msgid "Invalid email definition for report \"%(name)s\"."
+msgstr "Недійсне визначення ел.пошти для звіту \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_report_invalid_record_name"
+msgid ""
+"Invalid record name definition for report \"%(report)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Недійсне визначення ім'я запису для звіту \"%(report)s\" з винятком "
+"\"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation"
+msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(record)s\" of \"%(model)s\"."
+msgstr "Потрібно значення для поля \"%(field)s\" в \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
+msgstr "Ресурси, на які потрібно скопіювати цей запис."
+
+msgctxt "model:ir.message,text:msg_rule_invalid_domain"
+msgid "Invalid domain in rule \"%(name)s\"."
+msgstr "Недійсний домен у правилі \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_search_function_missing"
+msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Відсутня функція пошуку для поля \"%(field)s\" в \"%(model)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_selection_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not one of the allowed options."
+msgstr ""
+"Значення \"%(value)s\" для поля \"%(field)s\" в \"%(model)s\" не є одним із "
+"дозволених параметрів."
+
+msgctxt "model:ir.message,text:msg_sequence"
+msgid "Sequence"
+msgstr "Послідовність"
+
+msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
+msgid ""
+"You cannot change the sequence type of a sequence instead create a new "
+"sequence."
+msgstr ""
+"Ви не можете змінити тип послідовності, замість цього створіть нову "
+"послідовність."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_number_increment_next"
+msgid ""
+"Invalid \"Increment Number\" (%(number_increment)s) or \"Next Number\" "
+"(%(number_next)s) with exception \"%(exception)s\"."
+msgstr ""
+"Недійсне \"Число збільшення\" (%(number_increment)s) або \"Наступний номер\""
+" (%(number_next)s) з винятком \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
+msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "Недійсний префікс \"%(affix)s\" для послідовності \"%(sequence)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
+msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "Недійсний суфікс \"%(affix)s\" для послідовності \"%(sequence)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
+msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
+msgstr ""
+"\"Остання часова позначка\" не може бути в майбутньому для послідовності "
+"\"%s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_missing"
+msgid "Missing sequence."
+msgstr "Відсутня послідовність."
+
+msgctxt "model:ir.message,text:msg_setter_function_missing"
+msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Відсутня функція setter для поля \"%(field)s\" в \"%(model)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is too long"
+" (%(size)i > %(max_size)i)."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" задовге (%(size)i > "
+"%(max_size)i)."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is too long (%(size)i > %(max_size)i)."
+msgstr ""
+"Значення поля \"%(field)s\" в \"%(model)s\" задовге (%(size)i > "
+"%(max_size)i)."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_time_format_validation_record"
+msgid ""
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(record)s\" of "
+"\"%(model)s\" is not valid."
+msgstr "Недійсне значення часу \"%(value)s\" поля \"%(field)s\" в \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_timedelta_M"
+msgid "M"
+msgstr "M"
+
+msgctxt "model:ir.message,text:msg_timedelta_Y"
+msgid "Y"
+msgstr "Р"
+
+msgctxt "model:ir.message,text:msg_timedelta_d"
+msgid "d"
+msgstr "д"
+
+msgctxt "model:ir.message,text:msg_timedelta_h"
+msgid "h"
+msgstr "г"
+
+msgctxt "model:ir.message,text:msg_timedelta_m"
+msgid "m"
+msgstr "х"
+
+msgctxt "model:ir.message,text:msg_timedelta_s"
+msgid "s"
+msgstr "с"
+
+msgctxt "model:ir.message,text:msg_timedelta_w"
+msgid "w"
+msgstr "т"
+
+msgctxt "model:ir.message,text:msg_too_many_relations_found"
+msgid "Too many relations found: %(value)r in \"%(model)s\" (%(column)s)."
+msgstr "Знайдено забагато зв'язків: %(value)r в \"%(model)s\" (%(column)s)."
+
+msgctxt "model:ir.message,text:msg_translation_overridden"
+msgid ""
+"You can not export translation \"%(name)s\" because it has been overridden "
+"by module \"%(overriding_module)s\"."
+msgstr ""
+"Ви не можете експортувати переклад \"%(name)s\", оскільки він був "
+"перевизначений модулем \"%(overriding_module)s\"."
+
+msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
+"\"%(trigger)s\"."
+msgstr ""
+"Умова \"%(condition)s\" не є дійсним виразом PYSON для тригера "
+"\"%(trigger)s\"."
+
+msgctxt "model:ir.message,text:msg_value_syntax_error"
+msgid ""
+"Syntax error for value: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Синтаксична помилка для значення: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
+
+msgctxt "model:ir.message,text:msg_view_invalid_xml"
+msgid "Invalid XML for view \"%(name)s\"."
+msgstr "Недійсний XML для перегляду \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
+msgstr "Недійсний домен або критерії пошуку \"%(domain)s\" для пошуку \"%(search)s\"."
+
+msgctxt "model:ir.message,text:msg_write_error"
+msgid ""
+"You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
+"exist anymore."
+msgstr ""
+"Ви намагаєтеся записати в записи \"%(ids)s\" із \"%(model)s\", які більше не"
+" існують."
+
+msgctxt "model:ir.message,text:msg_write_rule_error"
+msgid ""
+"You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Вам заборонено писати в записи \"%(ids)s\" з \"%(model)s\" через принаймні одне з цих правил:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_write_xml_record"
+msgid "You are not allowed to modify this record."
+msgstr "Вам заборонено змінювати цей запис."
+
+msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
+msgid ""
+"Syntax error for XML id: %(value)r in \"%(field)s\" of \"%(model)s\" "
+"(%(column)s)."
+msgstr ""
+"Синтаксична помилка для XML id: %(value)r в полі \"%(field)s\" моделі "
+"\"%(model)s\" (%(column)s)."
+
+msgctxt "model:ir.model,name:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "model:ir.model.access,name:"
+msgid "Model access"
+msgstr "Доступ до моделі"
+
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr "Ви впевнені, що хочете завантажити переклади мов?"
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr "Ви впевнені, що хочете видалити переклади мов?"
+
+msgctxt "model:ir.model.button,name:"
+msgid "Model Button"
+msgstr "Кнопка моделі"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Виконати одноразово"
+
+msgctxt "model:ir.model.button,string:error_open_button"
+msgid "Open"
+msgstr "Відкрити"
+
+msgctxt "model:ir.model.button,string:error_process_button"
+msgid "Process"
+msgstr "Процес"
+
+msgctxt "model:ir.model.button,string:error_solve_button"
+msgid "Solve"
+msgstr "Вирішити"
+
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Завантажити переклади"
+
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Вивантажити переклади"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Синхронізувати"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Позначити для активації"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Скасувати активацію"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Позначити для деактивації (бета)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Скасувати деактивацію"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Позначити для оновлення"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Скасувати оновлення"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Показати"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "Скидання кнопки моделі"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "Натиснення кнопки моделі"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "Правило кнопки моделі"
+
+msgctxt "model:ir.model.data,name:"
+msgid "Model data"
+msgstr "Дані моделі"
+
+msgctxt "model:ir.model.field,name:"
+msgid "Model field"
+msgstr "Поле моделі"
+
+msgctxt "model:ir.model.field.access,name:"
+msgid "Model Field Access"
+msgstr "Доступ до поля моделі"
+
+msgctxt "model:ir.model.print_model_graph.start,name:"
+msgid "Print Model Graph"
+msgstr "Друкувати графік моделі"
+
+msgctxt "model:ir.module,name:"
+msgid "Module"
+msgstr "Модуль"
+
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Оновлення/активування модуля завершено"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Початок активування/оновлення модуля"
+
+msgctxt "model:ir.module.config.start,name:"
+msgid "Configure Modules"
+msgstr "Налаштувати модулі"
+
+msgctxt "model:ir.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "Майстер налаштування модуля завершено"
+
+msgctxt "model:ir.module.config_wizard.first,name:"
+msgid "Module Config Wizard First"
+msgstr "Початковий майстер налаштування модуля"
+
+msgctxt "model:ir.module.config_wizard.item,name:"
+msgid "Config wizard to run after activating a module"
+msgstr "Майстер налаштування для виконання після активації модуля"
+
+msgctxt "model:ir.module.config_wizard.other,name:"
+msgid "Module Config Wizard Other"
+msgstr "Інший майстер налаштування модуля"
+
+msgctxt "model:ir.module.dependency,name:"
+msgid "Module dependency"
+msgstr "Залежність модуля"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr "Примітка"
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr "Прочитана примітка"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "Черга"
+
+msgctxt "model:ir.rule,name:"
+msgid "Rule"
+msgstr "Правило"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "Rule group"
+msgstr "Група правил"
+
+msgctxt "model:ir.sequence,name:"
+msgid "Sequence"
+msgstr "Послідовність"
+
+msgctxt "model:ir.sequence.strict,name:"
+msgid "Sequence Strict"
+msgstr "Сувора послідовність"
+
+msgctxt "model:ir.sequence.type,name:"
+msgid "Sequence type"
+msgstr "Тип послідовності"
+
+msgctxt "model:ir.session,name:"
+msgid "Session"
+msgstr "Сеанс"
+
+msgctxt "model:ir.session.wizard,name:"
+msgid "Session Wizard"
+msgstr "Майстер сеансів"
+
+msgctxt "model:ir.translation,name:"
+msgid "Translation"
+msgstr "Переклад"
+
+msgctxt "model:ir.translation.clean.start,name:"
+msgid "Clean translation"
+msgstr "Очистити переклад"
+
+msgctxt "model:ir.translation.clean.succeed,name:"
+msgid "Clean translation"
+msgstr "Очистити переклад"
+
+msgctxt "model:ir.translation.export.result,name:"
+msgid "Export translation"
+msgstr "Експортувати переклад"
+
+msgctxt "model:ir.translation.export.start,name:"
+msgid "Export translation"
+msgstr "Експортувати переклад"
+
+msgctxt "model:ir.translation.set.start,name:"
+msgid "Set Translation"
+msgstr "Встановити переклад"
+
+msgctxt "model:ir.translation.set.succeed,name:"
+msgid "Set Translation"
+msgstr "Встановити переклад"
+
+msgctxt "model:ir.translation.update.start,name:"
+msgid "Update translation"
+msgstr "Оновити переклад"
+
+msgctxt "model:ir.trigger,name:"
+msgid "Trigger"
+msgstr "Тригер"
+
+msgctxt "model:ir.trigger.log,name:"
+msgid "Trigger Log"
+msgstr "Журнал тригерів"
+
+msgctxt "model:ir.ui.icon,name:"
+msgid "Icon"
+msgstr "Піктограма"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "UI menu"
+msgstr "Меню користувача"
+
+msgctxt "model:ir.ui.menu,name:menu_act_action"
+msgid "Actions"
+msgstr "Дії"
+
+msgctxt "model:ir.ui.menu,name:menu_action"
+msgid "Actions"
+msgstr "Дії"
+
+msgctxt "model:ir.ui.menu,name:menu_action_act_window"
+msgid "Window Actions"
+msgstr "Дії вікна"
+
+msgctxt "model:ir.ui.menu,name:menu_action_report_form"
+msgid "Reports"
+msgstr "Звіти"
+
+msgctxt "model:ir.ui.menu,name:menu_action_url"
+msgid "URLs"
+msgstr "URL-адреси"
+
+msgctxt "model:ir.ui.menu,name:menu_action_wizard"
+msgid "Wizards"
+msgstr "Майстри"
+
+msgctxt "model:ir.ui.menu,name:menu_administration"
+msgid "Administration"
+msgstr "Адміністрування"
+
+msgctxt "model:ir.ui.menu,name:menu_attachment_form"
+msgid "Attachments"
+msgstr "Вкладення"
+
+msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Майстри налаштування"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Actions"
+msgstr "Дії"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "Ел.листи"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "Шаблони ел.листів"
+
+msgctxt "model:ir.ui.menu,name:menu_error_form"
+msgid "Errors"
+msgstr "Помилки"
+
+msgctxt "model:ir.ui.menu,name:menu_export_form"
+msgid "Exports"
+msgstr "Експорти"
+
+msgctxt "model:ir.ui.menu,name:menu_icon_form"
+msgid "Icons"
+msgstr "Піктограми"
+
+msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
+msgid "Types"
+msgstr "Типи"
+
+msgctxt "model:ir.ui.menu,name:menu_lang_form"
+msgid "Languages"
+msgstr "Мови"
+
+msgctxt "model:ir.ui.menu,name:menu_localization"
+msgid "Localization"
+msgstr "Локалізація"
+
+msgctxt "model:ir.ui.menu,name:menu_menu_list"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "Message"
+msgstr "Повідомлення"
+
+msgctxt "model:ir.ui.menu,name:menu_model_access_form"
+msgid "Models Access"
+msgstr "Доступ до моделей"
+
+msgctxt "model:ir.ui.menu,name:menu_model_button_form"
+msgid "Buttons"
+msgstr "Кнопки"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
+msgid "Fields Access"
+msgstr "Доступ до полів"
+
+msgctxt "model:ir.ui.menu,name:menu_model_form"
+msgid "Models"
+msgstr "Моделі"
+
+msgctxt "model:ir.ui.menu,name:menu_models"
+msgid "Models"
+msgstr "Моделі"
+
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Виконати активацію/оновлення"
+
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
+msgstr "Модулі"
+
+msgctxt "model:ir.ui.menu,name:menu_modules"
+msgid "Modules"
+msgstr "Модулі"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr "Примітки"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
+msgid "Record Rules"
+msgstr "Правила записів"
+
+msgctxt "model:ir.ui.menu,name:menu_scheduler"
+msgid "Scheduler"
+msgstr "Планувальник"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_form"
+msgid "Sequences"
+msgstr "Послідовності"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Суворі послідовності"
+
+msgctxt "model:ir.ui.menu,name:menu_sequences"
+msgid "Sequences"
+msgstr "Послідовності"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_clean"
+msgid "Clean Translations"
+msgstr "Очистити переклади"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_export"
+msgid "Export Translations"
+msgstr "Експортувати переклади"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_form"
+msgid "Translations"
+msgstr "Переклади"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_set"
+msgid "Set Translations"
+msgstr "Встановити переклади"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_update"
+msgid "Synchronize Translations"
+msgstr "Синхронізувати переклади"
+
+msgctxt "model:ir.ui.menu,name:menu_trigger_form"
+msgid "Triggers"
+msgstr "Тригери"
+
+msgctxt "model:ir.ui.menu,name:menu_ui"
+msgid "User Interface"
+msgstr "Інтерфейс користувача"
+
+msgctxt "model:ir.ui.menu,name:menu_view"
+msgid "Views"
+msgstr "Перегляди"
+
+msgctxt "model:ir.ui.menu,name:menu_view_search"
+msgid "View Search"
+msgstr "Пошуки переглядів"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_optional"
+msgid "View Tree Optional"
+msgstr "Додаткові перегляди"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
+msgid "Tree State"
+msgstr "Стан дерев"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
+msgid "View Tree Width"
+msgstr "Ширини колонок"
+
+msgctxt "model:ir.ui.menu,name:model_model_fields_form"
+msgid "Fields"
+msgstr "Поля"
+
+msgctxt "model:ir.ui.menu.favorite,name:"
+msgid "Menu Favorite"
+msgstr "Вибране меню"
+
+msgctxt "model:ir.ui.view,name:"
+msgid "View"
+msgstr "Перегляд"
+
+msgctxt "model:ir.ui.view.show.start,name:"
+msgid "Show view"
+msgstr "Показати перегляд"
+
+msgctxt "model:ir.ui.view_search,name:"
+msgid "View Search"
+msgstr "Пошуки переглядів"
+
+msgctxt "model:ir.ui.view_tree_optional,name:"
+msgid "View Tree Optional"
+msgstr "Додаткові перегляди"
+
+msgctxt "model:ir.ui.view_tree_state,name:"
+msgid "View Tree State"
+msgstr "Стан дерев"
+
+msgctxt "model:ir.ui.view_tree_width,name:"
+msgid "View Tree Width"
+msgstr "Ширини колонок"
+
+msgctxt "selection:ir.action,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+msgctxt "selection:ir.action,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Action form"
+msgstr "Форма дії"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Form relate"
+msgstr "Пов'язана форма"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open Graph"
+msgstr "Відкрити графік"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open tree"
+msgstr "Відкрити дерево"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Print form"
+msgstr "Друк форми"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Listed"
+msgstr "Перераховані"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Selected"
+msgstr "Вибрані"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Data"
+msgstr "Дані"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Link"
+msgstr "Посилання"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Days"
+msgstr "Дні"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Hours"
+msgstr "Години"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Minutes"
+msgstr "Хвилини"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Months"
+msgstr "Місяці"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Weeks"
+msgstr "Тижні"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Errors"
+msgstr "Очистити помилки"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "Очистити чергу завдань"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Run On Time Triggers"
+msgstr "Виконати тригери у час"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Action"
+msgstr "Дія"
+
+msgctxt "selection:ir.error,origin:"
+msgid "Task"
+msgstr "Завдання"
+
+msgctxt "selection:ir.error,state:"
+msgid "Open"
+msgstr "Відкрити"
+
+msgctxt "selection:ir.error,state:"
+msgid "Processing"
+msgstr "Обробка"
+
+msgctxt "selection:ir.error,state:"
+msgid "Solved"
+msgstr "Вирішено"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Left-to-right"
+msgstr "Зліва-направо"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Right-to-left"
+msgstr "Справа-наліво"
+
+msgctxt "selection:ir.module,state:"
+msgid "Activated"
+msgstr "Активовано"
+
+msgctxt "selection:ir.module,state:"
+msgid "Not Activated"
+msgstr "Не активовано"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be activated"
+msgstr "Підлягає активації"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be removed"
+msgstr "Підлягає видаленню"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be upgraded"
+msgstr "Підлягає оновленню"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Done"
+msgstr "Завершено"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Open"
+msgstr "Відкрити"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Activated"
+msgstr "Активовано"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Not Activated"
+msgstr "Не активовано"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be activated"
+msgstr "Підлягає активації"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be removed"
+msgstr "Підлягає видаленню"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be upgraded"
+msgstr "Підлягає оновленню"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Unknown"
+msgstr "Невідомий"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Decimal Timestamp"
+msgstr "Десяткова часова позначка"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Шістнадцяткова часова позначка"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Incremental"
+msgstr "Інкрементальний"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Decimal Timestamp"
+msgstr "Десяткова часова позначка"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Шістнадцяткова часова позначка"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Incremental"
+msgstr "Інкрементальний"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Field"
+msgstr "Поле"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Help"
+msgstr "Довідка"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Report"
+msgstr "Звіт"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Selection"
+msgstr "Вибір"
+
+msgctxt "selection:ir.translation,type:"
+msgid "View"
+msgstr "Перегляд"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Wizard Button"
+msgstr "Кнопка майстра"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Board"
+msgstr "Дошка"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Calendar"
+msgstr "Календар"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Form"
+msgstr "Форма"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Graph"
+msgstr "Графік"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "List Form"
+msgstr "Форма списку"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Tree"
+msgstr "Дерево"
+
+msgctxt "view:ir.action.act_window:"
+msgid "General"
+msgstr "Загальний"
+
+msgctxt "view:ir.action.report:"
+msgid "Edit"
+msgstr "Редагувати"
+
+msgctxt "view:ir.action.report:"
+msgid "General"
+msgstr "Загальний"
+
+msgctxt "view:ir.action.url:"
+msgid "General"
+msgstr "Загальний"
+
+msgctxt "view:ir.action.wizard:"
+msgid "General"
+msgstr "Загальний"
+
+msgctxt "view:ir.action:"
+msgid "General"
+msgstr "Загальний"
+
+msgctxt "view:ir.attachment:"
+msgid "Document"
+msgstr "Документ"
+
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr "Час останньої модифікації"
+
+msgctxt "view:ir.cron:"
+msgid "At"
+msgstr "Коли"
+
+msgctxt "view:ir.cron:"
+msgid "Every"
+msgstr "Кожні"
+
+msgctxt "view:ir.cron:"
+msgid "Next Call Date"
+msgstr "Дата наступного виклику"
+
+msgctxt "view:ir.cron:"
+msgid "Next Call Time"
+msgstr "Час наступного виклику"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "Виконати одноразово"
+
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr "Приховані одержувачі:"
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr "Одержувачі:"
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr "Вторинні одержувачі:"
+
+msgctxt "view:ir.error:"
+msgid "Origin"
+msgstr "Походження"
+
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load additional translations to the system."
+msgstr "Тепер ви можете завантажувати додаткові переклади в систему."
+
+msgctxt "view:ir.lang:"
+msgid "Date Formatting"
+msgstr "Форматування дат"
+
+msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "Форматування грошей"
+
+msgctxt "view:ir.lang:"
+msgid "Numbers Formatting"
+msgstr "Форматування чисел"
+
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "Модулі оновлено/активовано."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Зверніть увагу, що ця операція може тривати декілька хвилин."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "Ваша система буде оновлена."
+
+msgctxt "view:ir.module.config.start:"
+msgid "You can now activate additional modules to the system."
+msgstr "Тепер ви можете активувати додаткові модулі системи."
+
+msgctxt "view:ir.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "Налаштування виконано."
+
+msgctxt "view:ir.module.config_wizard.first:"
+msgid ""
+"You will be able to configure your installation depending on the modules you"
+" have installed."
+msgstr ""
+"Ви зможете налаштувати свою інсталяцію залежно від встановлених модулів."
+
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "Скасувати активацію"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Deactivation"
+msgstr "Скасувати деактивацію"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Upgrade"
+msgstr "Скасувати оновлення"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Activation"
+msgstr "Позначити для активації"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Deactivation (beta)"
+msgstr "Позначити для деактивації (бета)"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Upgrade"
+msgstr "Позначити для оновлення"
+
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr "Час"
+
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "view:ir.rule.group:"
+msgid ""
+"If there is no test defined, the rule is always satisfied if not global."
+msgstr ""
+"Якщо тест не визначено, правило завжди задовольняється, якщо воно не "
+"глобально."
+
+msgctxt "view:ir.rule.group:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr "Правило задовольняється, якщо принаймні один тест істинний."
+
+msgctxt "view:ir.sequence:"
+msgid "${day}"
+msgstr "${day}"
+
+msgctxt "view:ir.sequence:"
+msgid "${month}"
+msgstr "${month}"
+
+msgctxt "view:ir.sequence:"
+msgid "${year}"
+msgstr "${year}"
+
+msgctxt "view:ir.sequence:"
+msgid "Day:"
+msgstr "День:"
+
+msgctxt "view:ir.sequence:"
+msgid "Incremental"
+msgstr "Інкрементальний"
+
+msgctxt "view:ir.sequence:"
+msgid "Legend (Placeholders for prefix, suffix)"
+msgstr "Легенда (заповнювачі для префікса, суфікса)"
+
+msgctxt "view:ir.sequence:"
+msgid "Month:"
+msgstr "Місяць:"
+
+msgctxt "view:ir.sequence:"
+msgid "Timestamp"
+msgstr "Часова позначка"
+
+msgctxt "view:ir.sequence:"
+msgid "Year:"
+msgstr "Рік:"
+
+msgctxt "view:ir.translation.clean.start:"
+msgid "Clean Translations?"
+msgstr "Очистити переклади?"
+
+msgctxt "view:ir.translation.clean.succeed:"
+msgid "Translations cleaned successfully."
+msgstr "Переклади успішно очищено."
+
+msgctxt "view:ir.translation.set.start:"
+msgid "Synchronize Translations?"
+msgstr "Синхронізувати переклади?"
+
+msgctxt "view:ir.translation.set.succeed:"
+msgid "Translations set successfully."
+msgstr "Переклади успішно встановлено."
+
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr "Завантажити"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
+msgid "Print"
+msgstr "Друк"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,next_:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Почати оновлення"
+
+msgctxt "wizard_button:ir.module.config,start,activate:"
+msgid "Activate"
+msgstr "Активувати"
+
+msgctxt "wizard_button:ir.module.config,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
+msgid "Next"
+msgstr "Далі"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.translation.clean,start,clean:"
+msgid "Clean"
+msgstr "Очистити"
+
+msgctxt "wizard_button:ir.translation.clean,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.translation.clean,succeed,end:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:ir.translation.export,result,end:"
+msgid "Close"
+msgstr "Закрити"
+
+msgctxt "wizard_button:ir.translation.export,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.translation.export,start,export:"
+msgid "Export"
+msgstr "Експортувати"
+
+msgctxt "wizard_button:ir.translation.set,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.translation.set,start,set_:"
+msgid "Set"
+msgstr "Встановити"
+
+msgctxt "wizard_button:ir.translation.set,succeed,end:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:ir.translation.update,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:ir.translation.update,start,update:"
+msgid "Update"
+msgstr "Оновити"
+
+msgctxt "wizard_button:ir.ui.view.show,start,end:"
+msgid "Close"
+msgstr "Закрити"
