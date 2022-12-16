@@ -1,0 +1,171 @@
+type,name,res_id,src,value,fuzzy
+error,res.group,0,The name of the group must be unique!,Името на групата трябва да е уникално!,0
+error,res.user,0,Wrong password!,Грешна парола!,0
+error,res.user,0,You can not have two users with the same login!,Не може да имате двама потребители с еднакво потребителско име,0
+error,res.user,0,"You can not remove the root user
+as it is used internally for resources
+created by the system (updates, module installation, ...)","Не може да премахнете потребител root
+тъй като вътрешно се използва за ресурси
+създадени от системата (обновяване, инсталиране на модули, ....)",0
+field,"ir.action-res.group,action_id",0,Action,Действие,0
+field,"ir.action-res.group,gid",0,Group,Група,0
+field,"ir.action-res.group,rec_name",0,Name,Име,0
+field,"ir.model.field-res.group,field_id",0,Model Field,Поле от модел,0
+field,"ir.model.field-res.group,group_id",0,Group,Група,0
+field,"ir.model.field-res.group,rec_name",0,Name,Име,0
+field,"ir.rule.group-res.group,group_id",0,Group,Група,0
+field,"ir.rule.group-res.group,rec_name",0,Name,Име,0
+field,"ir.rule.group-res.group,rule_group_id",0,Rule Group,Правила на група,0
+field,"ir.rule.group-res.user,rec_name",0,Name,Име,0
+field,"ir.rule.group-res.user,rule_group_id",0,Rule Group,Правила на група,0
+field,"ir.rule.group-res.user,user_id",0,User,Потребител,0
+field,"ir.sequence,groups",0,User Groups,Групи потребители,0
+field,"ir.sequence.strict,groups",0,User Groups,Групи потребители,0
+field,"ir.sequence.type,groups",0,User Groups,Групи потребители,0
+field,"ir.sequence.type-res.group,group",0,User Groups,Групи потребители,0
+field,"ir.sequence.type-res.group,rec_name",0,Name,Име,0
+field,"ir.sequence.type-res.group,sequence_type",0,Sequence Type,Вид последователност,0
+field,"ir.ui.menu-res.group,gid",0,Group,Група,0
+field,"ir.ui.menu-res.group,menu_id",0,Menu,Меню,0
+field,"ir.ui.menu-res.group,rec_name",0,Name,Име,0
+field,"res.group,field_access",0,Access Field,Достъп до поле,0
+field,"res.group,menu_access",0,Access Menu,Достъп до меню,0
+field,"res.group,model_access",0,Access Model,Модел на достъпа,0
+field,"res.group,name",0,Name,Име,0
+field,"res.group,rec_name",0,Name,Име,0
+field,"res.group,rule_groups",0,Rules,Правила,0
+field,"res.group,users",0,Users,Потребители,0
+field,"res.request,act_from",0,From,От,0
+field,"res.request,act_to",0,To,До,0
+field,"res.request,active",0,Active,Активен,0
+field,"res.request,body",0,Body,Тяло,0
+field,"res.request,date_sent",0,Date,Дата,0
+field,"res.request,history",0,History,Изтория,0
+field,"res.request,name",0,Subject,Относно,0
+field,"res.request,number_references",0,Number of References,Брой препратки,0
+field,"res.request,priority",0,Priority,Важност,0
+field,"res.request,rec_name",0,Name,Име,0
+field,"res.request,references",0,References,Отпратки,0
+field,"res.request,state",0,State,Състояние,0
+field,"res.request,trigger_date",0,Trigger Date,Дата на активиране,0
+field,"res.request.history,act_from",0,From,От,0
+field,"res.request.history,act_to",0,To,До,0
+field,"res.request.history,body",0,Body,Тяло,0
+field,"res.request.history,date_sent",0,Date sent,Дата на изпращане,0
+field,"res.request.history,name",0,Summary,Обобщено,0
+field,"res.request.history,number_references",0,References,Отпратки,0
+field,"res.request.history,priority",0,Priority,Важност,0
+field,"res.request.history,rec_name",0,Name,Име,0
+field,"res.request.history,request",0,Request,Заявка,0
+field,"res.request.history,state",0,State,Състояние,0
+field,"res.request.history,subject",0,Subject,Относно,0
+field,"res.request.link,model",0,Model,Модел,0
+field,"res.request.link,name",0,Name,Име,0
+field,"res.request.link,priority",0,Priority,Важност,0
+field,"res.request.link,rec_name",0,Name,Име,0
+field,"res.request.reference,rec_name",0,Name,Име,0
+field,"res.request.reference,reference",0,Reference,Отпратка,0
+field,"res.request.reference,request",0,Request,Заявка,0
+field,"res.user,action",0,Home Action,Начално действие,0
+field,"res.user,active",0,Active,Активен,0
+field,"res.user,connections",0,Connections,Връзки,0
+field,"res.user,email",0,Email,Email,0
+field,"res.user,groups",0,Groups,Групи,0
+field,"res.user,language",0,Language,Език,0
+field,"res.user,language_direction",0,Language Direction,Посока на езика,0
+field,"res.user,login",0,Login,Потребителско име,0
+field,"res.user,menu",0,Menu Action,Действие на меню,0
+field,"res.user,name",0,Name,Име,0
+field,"res.user,password",0,Password,Парола,0
+field,"res.user,rec_name",0,Name,Име,0
+field,"res.user,rule_groups",0,Rules,Правила,0
+field,"res.user,salt",0,Salt,Ключ,0
+field,"res.user,signature",0,Signature,Подпис,0
+field,"res.user,status_bar",0,Status Bar,Лента със статус,0
+field,"res.user,timezone",0,Timezone,Времева зона,0
+field,"res.user,warnings",0,Warnings,Предупреждения,0
+field,"res.user-res.group,gid",0,Group,Група,0
+field,"res.user-res.group,rec_name",0,Name,Име,0
+field,"res.user-res.group,uid",0,User,Потребител,0
+field,"res.user.warning,always",0,Always,Винаги,0
+field,"res.user.warning,name",0,Name,Име,0
+field,"res.user.warning,rec_name",0,Name,Име,0
+field,"res.user.warning,user",0,User,Потребител,0
+help,"ir.sequence.type,groups",0,Groups allowed to edit the sequences of this type,Групите на които е позволено да редактират този вид последователност,0
+model,"ir.action,name",act_group_form,Groups,Групи,0
+model,"ir.action,name",act_request_form,Requests,Заявки,0
+model,"ir.action,name",act_request_link_form,Request Links,Връзки към заявка,0
+model,"ir.action,name",act_user_form,Users,Потребители,0
+model,"ir.action-res.group,name",0,Action - Group,Действие - група,0
+model,"ir.cron,name",cron_trigger_time,Run On Time Triggers,Стартиране при настъпване на време,0
+model,"ir.model.field-res.group,name",0,Model Field Group Rel,Връзка на група за модел на поле,0
+model,"ir.rule.group-res.group,name",0,Rule Group - Group,Група правила - Група,0
+model,"ir.rule.group-res.user,name",0,Rule Group - User,Правило на група - Потребител,0
+model,"ir.sequence.type-res.group,name",0,Sequence Type - Group,Вид последователност - Група,0
+model,"ir.ui.menu,name",menu_group_form,Groups,Групи,0
+model,"ir.ui.menu,name",menu_request_form,Requests,Заявки,0
+model,"ir.ui.menu,name",menu_request_link_form,Request Links,Връзки към заявки,0
+model,"ir.ui.menu,name",menu_res,Users,Потребители,0
+model,"ir.ui.menu,name",menu_user_form,Users,Потребители,0
+model,"ir.ui.menu-res.group,name",0,UI Menu - Group,Потребителско меню - група,0
+model,"res.group,name",0,Group,Група,0
+model,"res.group,name",group_admin,Administration,Администрация,0
+model,"res.request,name",0,Request,Заявка,0
+model,"res.request.history,name",0,Request history,Изтория на заявка,0
+model,"res.request.link,name",0,Request link,Връзка към заявка,0
+model,"res.request.link,name",request_link_cron,Scheduler,Планировщик,0
+model,"res.request.reference,name",0,Request Reference,Отпратка към заявка,0
+model,"res.user,name",0,User,Потребител,0
+model,"res.user,name",user_admin,Administrator,Администратор,0
+model,"res.user,name",user_trigger,Cron Trigger,Превключвател на планировщик,0
+model,"res.user-res.group,name",0,User - Group,Потребител - група,0
+model,"res.user.config.init,name",0,User Config Init,Начално конфигуриране на потребител,0
+model,"res.user.warning,name",0,User Warning,Потребителско предупреждение,0
+selection,"res.request,priority",0,High,Висок,0
+selection,"res.request,priority",0,Low,Ниска,0
+selection,"res.request,priority",0,Normal,Нормален,0
+selection,"res.request,state",0,Chatting,Преговори,0
+selection,"res.request,state",0,Closed,Приключен,0
+selection,"res.request,state",0,Draft,Проект,0
+selection,"res.request,state",0,Waiting,Изчакващ,0
+selection,"res.request.history,priority",0,High,Висок,0
+selection,"res.request.history,priority",0,Low,Ниска,0
+selection,"res.request.history,priority",0,Normal,Нормален,0
+selection,"res.request.history,state",0,Chatting,Преговори,0
+selection,"res.request.history,state",0,Closed,Приключен,0
+selection,"res.request.history,state",0,Draft,Проект,0
+selection,"res.request.history,state",0,Waiting,Изчакващ,0
+view,ir.module.module,0,Cancel Installation,Отказ от инсталалиране,0
+view,ir.module.module,0,Cancel Uninstallation,Отказ от деинсталиране,0
+view,ir.module.module,0,Cancel Upgrade,Отказ от обновяване,0
+view,ir.module.module,0,Mark for Installation,Отбелязване за инсталиране,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Маркиране за деинсталиране (beta),0
+view,ir.module.module,0,Mark for Upgrade,Отбелязване за обновяване,0
+view,res.group,0,Access Permissions,Фактура,0
+view,res.group,0,Group,Група,0
+view,res.group,0,Groups,Групи,0
+view,res.group,0,Members,Членове,0
+view,res.request,0,Close,Затваряне,0
+view,res.request,0,References,Отпратки,0
+view,res.request,0,Reply,Отговор,0
+view,res.request,0,Request,Заявка,0
+view,res.request,0,Requests,Заявки,0
+view,res.request,0,Send,Изпратен,0
+view,res.request.history,0,Request History,Истоярия на заявка,0
+view,res.request.link,0,Request Link,Връзка към заявка,0
+view,res.request.reference,0,Request Reference,Отпратка към заявка,0
+view,res.request.reference,0,Request References,Отпратки към заявка,0
+view,res.user,0,Access Permissions,Права за достъп,0
+view,res.user,0,Group Membership,Членство към група,0
+view,res.user,0,Preferences,Предпочитания,0
+view,res.user,0,User,Потребител,0
+view,res.user,0,Users,Потребители,0
+view,res.user.config.init,0,Add Users,Добавяне на потребители,0
+view,res.user.config.init,0,Be careful that the login must be unique!,Вмимавайте потребителско име да е уникално,0
+view,res.user.config.init,0,You can now add some users into the system.,Сега може да добавите потребители към системата.,0
+view,res.user.warning,0,Warning,Предупреждение,0
+view,res.user.warning,0,Warnings,Предупреждения,0
+wizard_button,"res.user.config,init,end",0,Cancel,Отказ,0
+wizard_button,"res.user.config,init,user",0,Ok,Добре,0
+wizard_button,"res.user.config,user,add",0,Add,Добавяне,0
+wizard_button,"res.user.config,user,end",0,End,Край,0

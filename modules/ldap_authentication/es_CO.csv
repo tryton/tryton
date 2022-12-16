@@ -1,0 +1,14 @@
+type,name,res_id,src,value,fuzzy
+error,res.user,0,You can not set a password to a ldap user!,¡No puede establecer la contraseña de un usuario LDAP,0
+field,"ldap.connection,auth_base_dn",0,Base DN,DN base,0
+field,"ldap.connection,auth_create_user",0,Create User,Crear usuario,0
+field,"ldap.connection,auth_require_filter",0,Require Filter,Filtro requerido,0
+field,"ldap.connection,auth_scope",0,Scope,Ámbito,0
+field,"ldap.connection,auth_uid",0,UID,UID,0
+help,"ldap.connection,auth_base_dn",0,Base DN for authentication,DN base para la autenticación,0
+help,"ldap.connection,auth_create_user",0,Create user if not in database,Crea el usuario si no existe en la base de datos,0
+help,"ldap.connection,auth_uid",0,UID Attribute for authentication,Atributo UID para la autenticación,0
+selection,"ldap.connection,auth_scope",0,Base,Base,0
+selection,"ldap.connection,auth_scope",0,OneLevel,UnNivel,0
+selection,"ldap.connection,auth_scope",0,Subtree,Subárbol,0
+view,ldap.connection,0,Authentication,Autenticación,0

@@ -1,0 +1,44 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,There should be only one timesheet work by task/project!,Задача/проект може да имат само един график за дейност!,0
+field,"project.work,children",0,Children,Деца,0
+field,"project.work,comment",0,Comment,Коментар,0
+field,"project.work,effort",0,Effort,Услие,0
+field,"project.work,parent",0,Parent,Родител,0
+field,"project.work,party",0,Party,Партньор,0
+field,"project.work,party_address",0,Contact Address,Адрес за контакт,0
+field,"project.work,rec_name",0,Name,Име,0
+field,"project.work,state",0,State,Състояние,0
+field,"project.work,total_effort",0,Total Effort,Общо усилия,0
+field,"project.work,type",0,Type,Вид,0
+field,"project.work,work",0,Work,Задача,0
+field,"timesheet.work,sequence",0,Sequence,Последователност,0
+field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Редове от график,0
+help,"project.work,effort",0,Estimated Effort for this work,Оценка на усилията за тази работа,0
+help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Предполагаеми общо усилия за тази задача и подзадачите,0
+model,"ir.action,name",act_open_child_work,Tasks,Задачи,0
+model,"ir.action,name",act_project_form,Projects,Проекти,0
+model,"ir.action,name",act_task_form,Tasks,Задачи,0
+model,"ir.action,name",act_work_form,Works,Дейности,0
+model,"ir.action,name",act_work_form_new,Works Efforts,Задачи,0
+model,"ir.action,name",act_work_tree,Works Efforts,Задачи,0
+model,"ir.ui.menu,name",,Works Efforts,Дейности,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Конфигурация,0
+model,"ir.ui.menu,name",menu_project,Project Management,Управление на проекти,0
+model,"ir.ui.menu,name",menu_project_form,Projects,Проекти,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Проекти,0
+model,"ir.ui.menu,name",menu_task_form,Tasks,Задачи,0
+model,"ir.ui.menu,name",menu_work_form_new,New Work Effort,Нова дейност,0
+model,"ir.ui.menu,name",menu_work_tree,Works Efforts,Задачи,0
+model,"project.work,name",0,Work Effort,Дейност,0
+model,"res.group,name",group_project_admin,Project Administration,Управление на проекти,0
+selection,"project.work,state",0,Done,Приключен,0
+selection,"project.work,state",0,Opened,Отворен,0
+selection,"project.work,type",0,Project,Проект,0
+selection,"project.work,type",0,Task,Задача,0
+view,project.work,0,Children,Деца,0
+view,project.work,0,General,Основен,0
+view,project.work,0,Projects,Проекти,0
+view,project.work,0,Tasks,Задачи,0
+view,project.work,0,Timesheet,График,0
+view,project.work,0,Work Efforts,Дейности,0
+view,project.work,0,Works Efforts,Дейности,0
