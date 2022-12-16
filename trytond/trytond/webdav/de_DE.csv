@@ -1,0 +1,104 @@
+type,name,res_id,src,value,fuzzy
+error,ir.attachment,0,"You can not create an attachment
+in a collection with the name
+of an existing child collection!","Ein Anhang kann nicht den selben Namen
+wie eine untergeordnete Sammlung haben!",0
+error,webdav.collection,0,The collection name must be unique inside a collection!,"Der Name ein untergeordneten Sammlung kann nur
+einmal in einer Sammlung vergeben werden!",0
+error,webdav.collection,0,"You can not create a collection
+in a collection with the name of an existing file!","Eine Sammlung kann nicht den selben Namen
+wie eine bestehende Datei haben!",0
+error,webdav.collection,0,You can not create recursive collections!,Sammlungen können nicht rekursiv angelegt werden!,0
+error,workflow,0,No workflow defined!,Kein Workflow definiert!,0
+error,workflow.instance,0,No workflow instance defined!,Keine Workflowinstanz definiert!,0
+field,"webdav.collection,childs",0,Children,Untergeordnet (Sammlungen),0
+field,"webdav.collection,domain",0,Domain,Wertebereich (Domain),0
+field,"webdav.collection,model",0,Model,Modell,0
+field,"webdav.collection,name",0,Name,Name,0
+field,"webdav.collection,parent",0,Parent,Übergeordnet (Sammlung),0
+field,"webdav.collection,rec_name",0,Name,Name,0
+field,"workflow,activities",0,Activities,Aktivitäten,0
+field,"workflow,model",0,Resource Model,Modell Ressource,0
+field,"workflow,name",0,Name,Name,0
+field,"workflow,on_create",0,On Create,Bei der Erstellung,0
+field,"workflow,rec_name",0,Name,Name,0
+field,"workflow.activity,action",0,Action,Aktion,0
+field,"workflow.activity,flow_start",0,Flow Start,Flow Start,0
+field,"workflow.activity,flow_stop",0,Flow Stop,Flow Stop,0
+field,"workflow.activity,in_transitions",0,Incoming transitions,Eingehende Übergänge,0
+field,"workflow.activity,join_mode",0,Join Mode,Verbindungsmodus,0
+field,"workflow.activity,kind",0,Kind,Art,0
+field,"workflow.activity,name",0,Name,Name,0
+field,"workflow.activity,out_transitions",0,Outgoing transitions,Ausgehende Übergänge,0
+field,"workflow.activity,rec_name",0,Name,Name,0
+field,"workflow.activity,signal_send",0,Signal (subflow.*),Signal (subflow.*),0
+field,"workflow.activity,split_mode",0,Split Mode,Geteilter Modus,0
+field,"workflow.activity,subflow",0,Subflow,Unterflow,0
+field,"workflow.activity,workflow",0,Workflow,Workflow,0
+field,"workflow.instance,overflows",0,Overflow,Überlauf,0
+field,"workflow.instance,rec_name",0,Name,Name,0
+field,"workflow.instance,res_id",0,Resource ID,ID Ressource,0
+field,"workflow.instance,res_type",0,Resource Model,Modell Ressource,0
+field,"workflow.instance,state",0,State,Status,0
+field,"workflow.instance,transitions",0,Transitions,Übergänge,0
+field,"workflow.instance,uid",0,User ID,Benutzer ID,0
+field,"workflow.instance,workflow",0,Workflow,Workflow,0
+field,"workflow.instance,workitems",0,Workitems,Elemente,0
+field,"workflow.transition,act_from",0,Source Activity,Quelle der Aktivität,0
+field,"workflow.transition,act_to",0,Destination Activity,Bestimmung der Aktivität,0
+field,"workflow.transition,condition",0,Condition,Bedingung,0
+field,"workflow.transition,group",0,Group Required,Erforderliche Gruppe,0
+field,"workflow.transition,instances",0,Instances,Instanzen,0
+field,"workflow.transition,rec_name",0,Name,Name,0
+field,"workflow.transition,signal",0,Signal (button Name),Signal (Name des Knopfes),0
+field,"workflow.transition,trigger_expr_id",0,Trigger Expr ID,ID des Auslöseausdrucks,0
+field,"workflow.transition,trigger_model",0,Trigger Type,Typ Auslöser,0
+field,"workflow.transition-workflow.instance,inst_id",0,Instance,Instanz,0
+field,"workflow.transition-workflow.instance,rec_name",0,Name,Name,0
+field,"workflow.transition-workflow.instance,trans_id",0,Transition,Übergang,0
+field,"workflow.trigger,instance",0,Destination Instance,Bestimmungsinstanz,0
+field,"workflow.trigger,model",0,Model,Modell,0
+field,"workflow.trigger,rec_name",0,Name,Name,0
+field,"workflow.trigger,res_id",0,Resource ID,ID Ressource,0
+field,"workflow.trigger,workitem",0,Workitem,Element,0
+field,"workflow.workitem,activity",0,Activity,Aktivität,0
+field,"workflow.workitem,instance",0,Instance,Instanz,0
+field,"workflow.workitem,rec_name",0,Name,Name,0
+field,"workflow.workitem,state",0,State,Status,0
+field,"workflow.workitem,subflow",0,Subflow,Unterflow,0
+model,"ir.action,name",act_collection_form,Collections,Sammlungen,0
+model,"ir.action,name",act_collection_form2,Collections,Sammlungen,0
+model,"ir.action,name",act_collection_tree,Collections,Sammlungen,0
+model,"ir.ui.menu,name",menu_collection_form,Edit Collections,Sammlungen bearbeiten,0
+model,"ir.ui.menu,name",menu_collection_form2,New Collection,Neue Sammlung,0
+model,"ir.ui.menu,name",menu_collection_tree,Collections,Sammlungen,0
+model,"ir.ui.menu,name",menu_webdav,WebDAV,WebDAV,0
+model,"webdav.collection,name",0,Collection,Sammlung,0
+model,"workflow,name",0,Workflow,Workflow,0
+model,"workflow.activity,name",0,Workflow activity,Workflow Aktivität,0
+model,"workflow.instance,name",0,Workflow instance,Workflow Instanz,0
+model,"workflow.transition,name",0,Workflow transition,Workflow Übergang,0
+model,"workflow.transition-workflow.instance,name",0,Workflow Transition - Instance,Workflow Übergang - Instanz,0
+model,"workflow.trigger,name",0,Workflow trigger,Workflow Trigger,0
+model,"workflow.workitem,name",0,Workflow workitem,Workflow Element,0
+selection,"workflow.activity,join_mode",0,And,Und,0
+selection,"workflow.activity,join_mode",0,Xor,Oder (exklusiv),0
+selection,"workflow.activity,kind",0,Dummy,Dummy,0
+selection,"workflow.activity,kind",0,Function,Funktion,0
+selection,"workflow.activity,kind",0,Stop All,Alles anhalten,0
+selection,"workflow.activity,kind",0,Subflow,Unterflow,0
+selection,"workflow.activity,split_mode",0,And,Und,0
+selection,"workflow.activity,split_mode",0,Or,Oder,0
+selection,"workflow.activity,split_mode",0,Xor,Oder (exklusiv),0
+view,webdav.collection,0,Collection,Sammlung,0
+view,webdav.collection,0,Collections,Sammlungen,0
+view,workflow,0,Workflow,Workflow,0
+view,workflow.activity,0,Activity,Aktivität,0
+view,workflow.activity,0,Transition,Übergang,0
+view,workflow.activity,0,Transitions,Übergänge,0
+view,workflow.instance,0,Instance,Instanz,0
+view,workflow.instance,0,Instances,Instanzen,0
+view,workflow.transition,0,Transition,Übergang,0
+view,workflow.transition,0,Transitions,Übergänge,0
+view,workflow.workitem,0,Workitem,Element,0
+view,workflow.workitem,0,Workitems,Elemente,0
