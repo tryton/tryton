@@ -1,0 +1,211 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "حساب درآمد پیش فرض"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "استفاده از حساب های منبع"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "مالیات های مشتری"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "مالیات های مشتری استفاده شده"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "مالیات های تامین کننده"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "مالیات های تامین کننده استفاده شده"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "مرجع مالیات های استفاده شده"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr "دسته بندی حساب"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr "دسته بندی حساب"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "استفاده از حساب های تعریف شده دردسته بندی مرجع."
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr "برای تبدیل به طبقه بندی حسابداری کادر را تیک بزنید."
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr "مالیات هایی که در هنگام فروش محصولات این زیرمجموعه اعمال می شود."
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr "مالیات هایی که در هنگام خرید محصولات این زیرمجموعه اعمال می شود."
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "استفاده از مالیات های تعریف شده در دسته بندی مرجع."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "هیچ فیلدی: \"%s\" تعریف شده برای : \"%s\" وجود ندارد."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr "هیچ دسته حسابی بر روی محصول تعریف نشده است \"%(نام)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "دسته بندی - مالیات مشتری"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "دسته بندی - مالیات تامین کننده"
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr "دسته بندی حساب"
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr "الگوی - دسته بندی حساب"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "حسابداری"

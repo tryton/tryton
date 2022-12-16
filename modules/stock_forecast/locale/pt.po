@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Ativo"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Destino"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Data de Início"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Linhas"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Até a Data"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Localização"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Desde a Data"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Até a Data"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Produtos"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Previsão"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr "Estado da Previsão"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Qtd Mínima"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Movimentações"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categoria da UDM do Produto"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Quantidade Executada"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos da unidade"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "UM"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Linha de Previsão"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Movimentação"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Forecasts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr "O produto deve ser único por previsão"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Forecasts"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Previsão do Estoque"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Pedir a Previsão Completa"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Escolher a Previsão Completa"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Linha da Previsão de Estoque"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Linha de Previsão - Movimentação"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancelled"
+msgstr "Cancelar"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Feito"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr "Adicionar linha de previsão com base em dados históricos."
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Completar a Previsão"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Escolher os Produtos"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Completar"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Escolher Datas"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Concluída"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Cancelar"

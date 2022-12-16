@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='recipients_hidden']" position="after">
+        <label name="contact_mechanism"/>
+        <field name="contact_mechanism" colspan="3"/>
+    </xpath>
+</data>

@@ -1,0 +1,32 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "جابجایی موجودی"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "جابجایی موجودی"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
+
+#, fuzzy
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "خطوط صورتحساب"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "خط صورتحساب - جابجایی موجودی"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "موجودی"

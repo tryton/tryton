@@ -1,0 +1,93 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grups d'impostos amb criteri de caixa"
+
+msgctxt "field:account.invoice,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grups d'impostos amb criteri de caixa"
+
+msgctxt "field:account.invoice.tax.group.cash,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Grup d'impost"
+
+msgctxt "field:account.period,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grups d'impostos amb criteri de caixa"
+
+msgctxt "field:account.tax.group.cash,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Exercici fiscal"
+
+msgctxt "field:account.tax.group.cash,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.tax.group.cash,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:account.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Grup d'impost"
+
+msgctxt "field:account.tax.line,on_cash_basis:"
+msgid "On Cash Basis"
+msgstr "Criteri de caixa"
+
+msgctxt "field:account.tax.line,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
+msgid "Supplier Tax Group On Cash Basis"
+msgstr "Grups d'impostos del proveïdor amb criteri de caixa"
+
+msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this fiscal year."
+msgstr ""
+"Els grups d'impost que es reporten amb criteri de caixa per aquest exercici "
+"fiscal."
+
+msgctxt "help:account.invoice,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this invoice."
+msgstr ""
+"Els grups d'impost que es reporten amb criteri de caixa per aquesta factura."
+
+msgctxt "help:account.period,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this period."
+msgstr ""
+"Els grups d'impost que es reporten amb criteri de caixa per aquest període."
+
+msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this supplier."
+msgstr ""
+"Els grups d'impost que es reporten amb criteri de caixa per aquest "
+"proveïdor."
+
+msgctxt "model:account.invoice.tax.group.cash,name:"
+msgid "Tax Group on Cash Basis per Invoice"
+msgstr "Grups d'impostos amb criteri de caixa per factura"
+
+msgctxt "model:account.tax.group.cash,name:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grup d'imposts amb criteri de caixa"
+
+msgctxt "model:ir.message,text:msg_close_period_line_payment"
+msgid ""
+"To close period \"%(period)s\" you must link all payable/receivable lines to"
+" invoices."
+msgstr ""
+"Per tancar el període \"%(period)s\" heu de vincular totes els apunts a "
+"cobrar/pagar amb alguna factura."
+
+msgctxt "view:account.fiscalyear:"
+msgid "Taxes"
+msgstr "Impostos"
