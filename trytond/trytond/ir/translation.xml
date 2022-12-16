@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="translation_view_form">
+            <field name="model">ir.translation</field>
+            <field name="type">form</field>
+            <field name="name">translation_form</field>
+        </record>
+        <record model="ir.ui.view" id="translation_view_tree">
+            <field name="model">ir.translation</field>
+            <field name="type">tree</field>
+            <field name="name">translation_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_translation_form">
+            <field name="name">Translations</field>
+            <field name="res_model">ir.translation</field>
+            <field name="domain" eval="None"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_module">
+            <field name="name">Modules</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('module', '!=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_translation_form_domain_local">
+            <field name="name">Local</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('module', '=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_translation_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="translation_view_tree"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_translation_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="translation_view_form"/>
+            <field name="act_window" ref="act_translation_form"/>
+        </record>
+        <menuitem name="Translations" parent="menu_localization"
+            action="act_translation_form" id="menu_translation_form"/>
+
+        <record model="ir.action.wizard" id="wizard_translation_report">
+            <field name="name">Translations</field>
+            <field name="wiz_name">ir.translation.report</field>
+            <field name="model">ir.action.report</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_translation_report_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="wizard_translation_report"/>
+        </record>
+        <record model="ir.action.act_window" id="act_translation_report">
+            <field name="name">Translations</field>
+            <field name="res_model">ir.translation</field>
+        </record>
+
+        <record model="ir.translation" id="translation_delete_xml_record">
+            <field name="name">delete_xml_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">You are not allowed to delete this record.</field>
+            <field name="value">You are not allowed to delete this record.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_xml_record_desc">
+            <field name="name">xml_record_desc</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">This record is part of the base configuration.</field>
+            <field name="value">This record is part of the base configuration.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_write_xml_record">
+            <field name="name">write_xml_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">You are not allowed to modify this record.</field>
+            <field name="value">You are not allowed to modify this record.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_relation_not_found">
+            <field name="name">relation_not_found</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Relation not found: %r in %s</field>
+            <field name="value">Relation not found: %r in %s</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_too_many_relations_found">
+            <field name="name">too_many_relations_found</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Too many relations found: %r in %s</field>
+            <field name="value">Too many relations found: %r in %s</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_xml_id_syntax_error">
+            <field name="name">xml_id_syntax_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Syntax error for XML id %r in %s</field>
+            <field name="value">Syntax error for XML id %r in %s</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_reference_syntax_error">
+            <field name="name">reference_syntax_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Syntax error for reference %r in %s</field>
+            <field name="value">Syntax error for reference %r in %s</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_domain_validation_record">
+            <field name="name">domain_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The value of the field "%(field)s" on "%(model)s" is not valid according to its domain.</field>
+            <field name="value">The value of the field "%(field)s" on "%(model)s" is not valid according to its domain.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_required_validation_record">
+            <field name="name">required_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The field "%(field)s" on "%(model)s" is required.</field>
+            <field name="value">The field "%(field)s" on "%(model)s" is required.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_size_validation_record">
+            <field name="name">size_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The size "%(size)s" of the field "%(field)s" on "%(model)s" is too long.</field>
+            <field name="value">The size "%(size)s" of the field "%(field)s" on "(model)%s" is too long.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_digits_validation_record">
+            <field name="name">digits_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The value "%(value)s" of field "%(field)s" on "%(model)s" exceeds the digits limit of "%(digits)s".</field>
+            <field name="value">The value "%(value)s" of field "%(field)s" on "%(model)s" exceeds the digits limit of "%(digits)s".</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation"
+            id="translation_selection_validation_record">
+            <field name="name">selection_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The value "%(value)s" of field "%(field)s" on "%(model)s" is not in the selection.</field>
+            <field name="value">The value "%(value)s" of field "%(field)s" on "%(model)s" is not in the selection.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_time_format_validation_record">
+            <field name="name">time_format_validation_record</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The time value "%(value)s" of field "%(field)s" on "%(model)s" is not valid.</field>
+            <field name="value">The time value "%(value)s" of field "%(field)s" on "%(model)s" is not valid.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_access_error">
+            <field name="name">access_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">You try to bypass an access rule.
+(Document type: %s)</field>
+            <field name="value">You try to bypass an access rule.
+(Document type: %s)</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_read_error">
+            <field name="name">read_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">You try to read records that don't exist anymore.
+(Document type: %s)</field>
+            <field name="value">You try to read records that don't exist anymore.
+(Document type: %s)</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_write_error">
+            <field name="name">write_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">You try to write on records that don't exist anymore.
+(Document type: %s)</field>
+            <field name="value">You try to write on records that don't exist anymore.
+(Document type: %s)</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_required_field">
+            <field name="name">required_field</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The field "%(field)s" on "%(model)s" is required.</field>
+            <field name="value">The field "%(field)s" on "%(model)s" is required.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_foreign_model_missing">
+            <field name="name">foreign_model_missing</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">The value "%(value)s" of field "%(field)s" on "%(model)s" doesn't exist.</field>
+            <field name="value">The value "%(value)s" of field "%(field)s" on "%(model)s" doesn't exist.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_foreign_model_exist">
+            <field name="name">foreign_model_exist</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Could not delete the records because they are used on field "%(field)s" of "%(model)s".</field>
+            <field name="value">Could not delete the records because they are used on field "%(field)s" of "%(model)s".</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="translation_search_function_missing">
+            <field name="name">search_function_missing</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Missing search function on field "%s".</field>
+            <field name="value">Missing search function on field "%s".</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation"
+            id="translation_selection_value_notfound">
+            <field name="name">selection_value_notfound</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Value not in the selection for field "%s".</field>
+            <field name="value">Value not in the selection for field "%s".</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+        <record model="ir.translation" id="model_recursion_error">
+            <field name="name">recursion_error</field>
+            <field name="lang">en</field>
+            <field name="type">error</field>
+            <field name="src">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
+            <field name="value">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
+            <field name="module">ir</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="translation_set_start_view_form">
+            <field name="model">ir.translation.set.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_set_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_set_succeed_view_form">
+            <field name="model">ir.translation.set.succeed</field>
+            <field name="type">form</field>
+            <field name="name">translation_set_succeed_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_set">
+            <field name="name">Set Translations</field>
+            <field name="wiz_name">ir.translation.set</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_set_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_set"/>
+        </record>
+        <menuitem name="Set Translations"
+            parent="menu_localization"
+            action="act_translation_set"
+            id="menu_translation_set"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="translation_clean_start_view_form">
+            <field name="model">ir.translation.clean.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_clean_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_clean_succeed_view_form">
+            <field name="model">ir.translation.clean.succeed</field>
+            <field name="type">form</field>
+            <field name="name">translation_clean_succeed_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_clean">
+            <field name="name">Clean Translations</field>
+            <field name="wiz_name">ir.translation.clean</field>
+        </record>
+        <menuitem name="Clean Translations"
+            parent="menu_localization"
+            action="act_translation_clean"
+            id="menu_translation_clean"
+            sequence="20"/>
+
+        <record model="ir.ui.view" id="translation_update_start_view_form">
+            <field name="model">ir.translation.update.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_update_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_update">
+            <field name="name">Synchronize Translations</field>
+            <field name="wiz_name">ir.translation.update</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_report">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.action.report,-1</field>
+            <field name="action" ref="act_translation_update"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_translation_update_keyword_view">
+            <field name="keyword">form_action</field>
+            <field name="model">ir.ui.view,-1</field>
+            <field name="action" ref="act_translation_update"/>
+        </record>
+        <menuitem name="Synchronize Translations"
+            parent="menu_localization"
+            action="act_translation_update"
+            id="menu_translation_update"
+            sequence="30"/>
+
+        <record model="ir.ui.view" id="translation_export_start_view_form">
+            <field name="model">ir.translation.export.start</field>
+            <field name="type">form</field>
+            <field name="name">translation_export_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="translation_export_result_view_form">
+            <field name="model">ir.translation.export.result</field>
+            <field name="type">form</field>
+            <field name="name">translation_export_result_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_translation_export">
+            <field name="name">Export Translations</field>
+            <field name="wiz_name">ir.translation.export</field>
+        </record>
+        <menuitem name="Export Translations"
+            parent="menu_localization"
+            action="act_translation_export"
+            id="menu_translation_export"
+            sequence="40"/>
+    </data>
+</tryton>
