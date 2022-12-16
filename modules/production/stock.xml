@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="inherit" ref="stock.location_view_form"/>
+            <field name="name">location_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_move_group_production">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_production"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+    <data noupdate="1">
+
+        <!-- Default locations -->
+        <record model="stock.location" id="location_production">
+            <field name="name">Production</field>
+            <field name="code">PROD</field>
+            <field name="type">production</field>
+        </record>
+
+        <record model="stock.location" id="stock.location_warehouse">
+            <field name="production_location" ref="location_production"/>
+        </record>
+
+    </data>
+</tryton>
