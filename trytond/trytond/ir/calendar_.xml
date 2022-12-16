@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.calendar.month" id="January">
+            <field name="index" eval="1"/>
+            <field name="name">January</field>
+            <field name="abbreviation">Jan</field>
+        </record>
+        <record model="ir.calendar.month" id="February">
+            <field name="index" eval="2"/>
+            <field name="name">February</field>
+            <field name="abbreviation">Feb</field>
+        </record>
+        <record model="ir.calendar.month" id="March">
+            <field name="index" eval="3"/>
+            <field name="name">March</field>
+            <field name="abbreviation">Mar</field>
+        </record>
+        <record model="ir.calendar.month" id="April">
+            <field name="index" eval="4"/>
+            <field name="name">April</field>
+            <field name="abbreviation">Apr</field>
+        </record>
+        <record model="ir.calendar.month" id="May">
+            <field name="index" eval="5"/>
+            <field name="name">May</field>
+            <field name="abbreviation">May</field>
+        </record>
+        <record model="ir.calendar.month" id="June">
+            <field name="index" eval="6"/>
+            <field name="name">June</field>
+            <field name="abbreviation">Jun</field>
+        </record>
+        <record model="ir.calendar.month" id="July">
+            <field name="index" eval="7"/>
+            <field name="name">July</field>
+            <field name="abbreviation">Jul</field>
+        </record>
+        <record model="ir.calendar.month" id="August">
+            <field name="index" eval="8"/>
+            <field name="name">August</field>
+            <field name="abbreviation">Aug</field>
+        </record>
+        <record model="ir.calendar.month" id="September">
+            <field name="index" eval="9"/>
+            <field name="name">September</field>
+            <field name="abbreviation">Sep</field>
+        </record>
+        <record model="ir.calendar.month" id="October">
+            <field name="index" eval="10"/>
+            <field name="name">October</field>
+            <field name="abbreviation">Oct</field>
+        </record>
+        <record model="ir.calendar.month" id="November">
+            <field name="index" eval="11"/>
+            <field name="name">November</field>
+            <field name="abbreviation">Nov</field>
+        </record>
+        <record model="ir.calendar.month" id="December">
+            <field name="index" eval="12"/>
+            <field name="name">December</field>
+            <field name="abbreviation">Dec</field>
+        </record>
+
+        <record model="ir.calendar.day" id="Monday">
+            <field name="index" eval="0"/>
+            <field name="name">Monday</field>
+            <field name="abbreviation">Mon</field>
+        </record>
+        <record model="ir.calendar.day" id="Tuesday">
+            <field name="index" eval="1"/>
+            <field name="name">Tuesday</field>
+            <field name="abbreviation">Tue</field>
+        </record>
+        <record model="ir.calendar.day" id="Wednesday">
+            <field name="index" eval="2"/>
+            <field name="name">Wednesday</field>
+            <field name="abbreviation">Wed</field>
+        </record>
+        <record model="ir.calendar.day" id="Thursday">
+            <field name="index" eval="3"/>
+            <field name="name">Thursday</field>
+            <field name="abbreviation">Thu</field>
+        </record>
+        <record model="ir.calendar.day" id="Friday">
+            <field name="index" eval="4"/>
+            <field name="name">Friday</field>
+            <field name="abbreviation">Fri</field>
+        </record>
+        <record model="ir.calendar.day" id="Saturday">
+            <field name="index" eval="5"/>
+            <field name="name">Saturday</field>
+            <field name="abbreviation">Sat</field>
+        </record>
+        <record model="ir.calendar.day" id="Sunday">
+            <field name="index" eval="6"/>
+            <field name="name">Sunday</field>
+            <field name="abbreviation">Sun</field>
+        </record>
+    </data>
+</tryton>
