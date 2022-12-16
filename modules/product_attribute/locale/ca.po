@@ -1,0 +1,243 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "Decimals"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Selecció"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "Selecció JSON"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Selecció ordenada"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Grups d'atributs"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "Etiqueta"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Atribut"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Grup d'atributs"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Grup d'atributs"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Grup d'atributs"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Clau i valor separats per \":\" a cada línia."
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Si cal ordenar la selecció a l'etiqueta."
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Afegeix grups al atribut."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Afegeix atributs al grup."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "El identificador principal del grup d'atribut de productes."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecciona un grup d'atributs per aplicar a les variants."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Afegeix atributs a la variant."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecciona un grup d'atributs per aplicar a les variants."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Grups d'atributs"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Grups d'atributs"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Atributs de producte"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Atribut de producte - Grup"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Grup atribut de producte"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr "Booleà"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "Text"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "Data/Hora"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr "Numèric coma flotant"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "Enter"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "Numèric"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Selecció"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "view:product.attribute.set:"
+msgid "Attribute Sets"
+msgstr "Grups d'atributs"
+
+msgctxt "view:product.attribute:"
+msgid "Attribute"
+msgstr "Atribut"
+
+msgctxt "view:product.attribute:"
+msgid "Attributes"
+msgstr "Atributs"
