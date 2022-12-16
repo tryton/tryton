@@ -1,0 +1,347 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.requisition:"
+msgid "A warehouse must be defined for requisition: \"%(requisition)s\"."
+msgstr "Za naročilnico: \"%(requisition)s\" mora biti predpisano skladišče."
+
+msgctxt "error:purchase.requisition:"
+msgid "Requisition \"%s\" must be cancelled before deletion."
+msgstr "Pred brisanjem mora biti naročilnica \"%s\" preklicana."
+
+msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Štetje naročilnic"
+
+msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Štetje naročilnic"
+
+msgctxt "field:purchase.requisition,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:purchase.requisition,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.requisition,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.requisition,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:purchase.requisition,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:purchase.requisition,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:purchase.requisition,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:purchase.requisition,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.requisition,lines:"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "field:purchase.requisition,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:purchase.requisition,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.requisition,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:purchase.requisition,supply_date:"
+msgid "Supply Date"
+msgstr "Datum dobave"
+
+msgctxt "field:purchase.requisition,total_amount:"
+msgid "Total"
+msgstr "Skupaj"
+
+msgctxt "field:purchase.requisition,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Skupaj predpomnjeno"
+
+msgctxt "field:purchase.requisition,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
+msgctxt "field:purchase.requisition,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.requisition,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:purchase.requisition.line,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:purchase.requisition.line,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.requisition.line,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.requisition.line,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:purchase.requisition.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.requisition.line,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:purchase.requisition.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Katerogija ME izdelka"
+
+msgctxt "field:purchase.requisition.line,purchase_requests:"
+msgid "Purchase Request"
+msgstr "Nabavni zahtevek"
+
+msgctxt "field:purchase.requisition.line,purchase_requisition_state:"
+msgid "Purchase Requisition State"
+msgstr "Stanje naročilnice"
+
+msgctxt "field:purchase.requisition.line,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:purchase.requisition.line,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.requisition.line,requisition:"
+msgid "Requisition"
+msgstr "Naročilnica"
+
+msgctxt "field:purchase.requisition.line,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:purchase.requisition.line,supplier:"
+msgid "Supplier"
+msgstr "Dobavitelj"
+
+msgctxt "field:purchase.requisition.line,unit:"
+msgid "Unit"
+msgstr "Enota"
+
+msgctxt "field:purchase.requisition.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+msgctxt "field:purchase.requisition.line,unit_price:"
+msgid "Unit Price"
+msgstr "Cena"
+
+msgctxt "field:purchase.requisition.line,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.requisition.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_purchase_request_form"
+msgid "Requests"
+msgstr "Requests"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_purchase_request_form2"
+msgid "Requests"
+msgstr "Requests"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_requisition_form"
+msgid "Purchase Requisitions"
+msgstr "Purchase Requisitions"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_open"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_sent"
+msgid "Processing"
+msgstr "Processing"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_validated"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Purchase Requisition"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Purchase Requisition"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
+msgid "Purchase Requisitions"
+msgstr "Purchase Requisitions"
+
+msgctxt "model:purchase.requisition,name:"
+msgid "Purchase Requisition"
+msgstr "Naročilnica"
+
+msgctxt "model:purchase.requisition.line,name:"
+msgid "Purchase Requisition Line"
+msgstr "Postavka naročilnice"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Purchase Requisition"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_purchase_requisition_approval"
+msgid "Purchase Requisition Approval"
+msgstr "Purchase Requisition Approval"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Rejected"
+msgstr "Zavrnjeno"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Rejected"
+msgstr "Zavrnjeno"
+
+msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+msgctxt "view:purchase.requisition.line:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Drugo"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr "Naročilnica"
+
+msgctxt "view:purchase.requisition:"
+msgid "Approve"
+msgstr "Odobritev"
+
+msgctxt "view:purchase.requisition:"
+msgid "Cancel"
+msgstr "Preklic"
+
+msgctxt "view:purchase.requisition:"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt "view:purchase.requisition:"
+msgid "Reject"
+msgstr "Zavrnitev"
+
+msgctxt "view:purchase.requisition:"
+msgid "Wait"
+msgstr "Čakanje"
