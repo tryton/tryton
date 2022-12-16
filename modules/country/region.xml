@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="country.region" id="region_world">
+            <field name="name">World</field>
+            <field name="code_numeric">001</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="country.region" id="region_africa">
+            <field name="name">Africa</field>
+            <field name="code_numeric">002</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+
+        <record model="country.region" id="region_antarctica">
+            <field name="name">Antarctica</field>
+            <field name="code_numeric">010</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+
+        <record model="country.region" id="region_americas">
+            <field name="name">Americas</field>
+            <field name="code_numeric">019</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+
+        <record model="country.region" id="region_asia">
+            <field name="name">Asia</field>
+            <field name="code_numeric">142</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+
+        <record model="country.region" id="region_europe">
+            <field name="name">Europe</field>
+            <field name="code_numeric">150</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+
+        <record model="country.region" id="region_oceania">
+            <field name="name">Oceania</field>
+            <field name="code_numeric">009</field>
+            <field name="parent" ref="region_world"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="country.region" id="region_northern_africa">
+            <field name="name">Northern Africa</field>
+            <field name="code_numeric">015</field>
+            <field name="parent" ref="region_africa"/>
+        </record>
+
+        <record model="country.region" id="region_sub-saharan_africa">
+            <field name="name">Sub-Saharan Africa</field>
+            <field name="code_numeric">202</field>
+            <field name="parent" ref="region_africa"/>
+        </record>
+
+        <record model="country.region" id="region_north_america">
+            <field name="name">North America</field>
+            <field name="code_numeric">003</field>
+            <field name="parent" ref="region_americas"/>
+        </record>
+
+        <record model="country.region" id="region_latin_america_caribbean">
+            <field name="name">Latin America and the Caribbean</field>
+            <field name="code_numeric">419</field>
+            <field name="parent" ref="region_americas"/>
+        </record>
+
+        <record model="country.region" id="region_eastern_asia">
+            <field name="name">Eastern Asia</field>
+            <field name="code_numeric">030</field>
+            <field name="parent" ref="region_asia"/>
+        </record>
+
+        <record model="country.region" id="region_southern_asia">
+            <field name="name">Southern Asia</field>
+            <field name="code_numeric">034</field>
+            <field name="parent" ref="region_asia"/>
+        </record>
+
+        <record model="country.region" id="region_south-eastern_asia">
+            <field name="name">South-eastern Asia</field>
+            <field name="code_numeric">035</field>
+            <field name="parent" ref="region_asia"/>
+        </record>
+
+        <record model="country.region" id="region_central_asia">
+            <field name="name">Central Asia</field>
+            <field name="code_numeric">143</field>
+            <field name="parent" ref="region_asia"/>
+        </record>
+
+        <record model="country.region" id="region_western_asia">
+            <field name="name">Western Asia</field>
+            <field name="code_numeric">145</field>
+            <field name="parent" ref="region_asia"/>
+        </record>
+
+        <record model="country.region" id="region_southern_europe">
+            <field name="name">Southern Europe</field>
+            <field name="code_numeric">039</field>
+            <field name="parent" ref="region_europe"/>
+        </record>
+
+        <record model="country.region" id="region_eastern_europe">
+            <field name="name">Eastern Europe</field>
+            <field name="code_numeric">151</field>
+            <field name="parent" ref="region_europe"/>
+        </record>
+
+        <record model="country.region" id="region_northern_europe">
+            <field name="name">Northern Europe</field>
+            <field name="code_numeric">154</field>
+            <field name="parent" ref="region_europe"/>
+        </record>
+
+        <record model="country.region" id="region_western_europe">
+            <field name="name">Western Europe</field>
+            <field name="code_numeric">155</field>
+            <field name="parent" ref="region_europe"/>
+        </record>
+
+        <record model="country.region" id="region_australia_new_zealand">
+            <field name="name">Australia and New Zealand</field>
+            <field name="code_numeric">053</field>
+            <field name="parent" ref="region_oceania"/>
+        </record>
+
+        <record model="country.region" id="region_melanesia">
+            <field name="name">Melanesia</field>
+            <field name="code_numeric">054</field>
+            <field name="parent" ref="region_oceania"/>
+        </record>
+
+        <record model="country.region" id="region_micronesia">
+            <field name="name">Micronesia</field>
+            <field name="code_numeric">057</field>
+            <field name="parent" ref="region_oceania"/>
+        </record>
+
+        <record model="country.region" id="region_polynesia">
+            <field name="name">Polynesia</field>
+            <field name="code_numeric">061</field>
+            <field name="parent" ref="region_oceania"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="country.region" id="region_western_africa">
+            <field name="name">Western Africa</field>
+            <field name="code_numeric">011</field>
+            <field name="parent" ref="region_sub-saharan_africa"/>
+        </record>
+
+        <record model="country.region" id="region_eastern_africa">
+            <field name="name">Eastern Africa</field>
+            <field name="code_numeric">014</field>
+            <field name="parent" ref="region_sub-saharan_africa"/>
+        </record>
+
+        <record model="country.region" id="region_middle_africa">
+            <field name="name">Middle Africa</field>
+            <field name="code_numeric">017</field>
+            <field name="parent" ref="region_sub-saharan_africa"/>
+        </record>
+
+        <record model="country.region" id="region_southern_africa">
+            <field name="name">Southern Africa</field>
+            <field name="code_numeric">018</field>
+            <field name="parent" ref="region_sub-saharan_africa"/>
+        </record>
+
+        <record model="country.region" id="region_northern_america">
+            <field name="name">Northern America</field>
+            <field name="code_numeric">021</field>
+            <field name="parent" ref="region_north_america"/>
+        </record>
+
+        <record model="country.region" id="region_south_america">
+            <field name="name">South America</field>
+            <field name="code_numeric">005</field>
+            <field name="parent" ref="region_latin_america_caribbean"/>
+        </record>
+
+        <record model="country.region" id="region_central_america">
+            <field name="name">Central America</field>
+            <field name="code_numeric">013</field>
+            <field name="parent" ref="region_latin_america_caribbean"/>
+        </record>
+
+        <record model="country.region" id="region_caribbean">
+            <field name="name">Caribbean</field>
+            <field name="code_numeric">029</field>
+            <field name="parent" ref="region_latin_america_caribbean"/>
+        </record>
+
+        <record model="country.region" id="region_channel_islands">
+            <field name="name">Channel Islands</field>
+            <field name="code_numeric">830</field>
+            <field name="parent" ref="region_northern_europe"/>
+        </record>
+    </data>
+</tryton>
