@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.split.start,count:"
+msgid "Count"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:production.split.start,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+#, fuzzy
+msgctxt "field:production.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző utáni számjegy"
+
+#, fuzzy
+msgctxt "field:production.split.start,uom:"
+msgid "Uom"
+msgstr "Egység"
+
+#, fuzzy
+msgctxt "field:production.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Egység kategória"
+
+msgctxt "help:production.split.start,count:"
+msgid "The limit number of productions"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_split_production"
+msgid "Split Production"
+msgstr ""
+
+msgctxt "model:production.split.start,name:"
+msgid "Split Production"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:production:"
+msgid "Split"
+msgstr "Beosztás"
+
+#, fuzzy
+msgctxt "wizard_button:production.split,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "Beosztás"
