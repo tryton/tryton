@@ -1,0 +1,231 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Séquence de coût de débarquement"
+
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.configuration.landed_cost_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Séquence de coût de débarquement"
+
+msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.invoice.line,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "field:account.landed_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Méthode d'allocation"
+
+msgctxt "field:account.landed_cost,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.landed_cost,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.landed_cost,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.landed_cost,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.landed_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.landed_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Date de postage"
+
+msgctxt "field:account.landed_cost,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.landed_cost,shipments:"
+msgid "Shipments"
+msgstr "Expéditions"
+
+msgctxt "field:account.landed_cost,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.landed_cost,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.landed_cost,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
+msgid "Shipment"
+msgstr "Expédition"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "field:product.template,landed_cost:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "field:stock.move,unit_landed_cost:"
+msgid "Unit Landed Cost"
+msgstr "Unité de coût de débarquement"
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Configuration comptable séquence de coût de débarquement"
+
+msgctxt "model:account.landed_cost,name:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "model:account.landed_cost-stock.shipment.in,name:"
+msgid "Landed Cost - Shipment"
+msgstr "Coût de débarquement - Expédition"
+
+msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Coût de débarquement"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.sequence,name:sequence_landed_cost"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "model:ir.ui.menu,name:menu_landed_cost"
+msgid "Landed Costs"
+msgstr "Coût de débarquement"
+
+msgctxt "selection:account.landed_cost,allocation_method:"
+msgid "By Value"
+msgstr "Par valeur"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Canceled"
+msgstr "Annulé"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Coût de débarquement"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "view:account.landed_cost:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:account.landed_cost:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.landed_cost:"
+msgid "Post"
+msgstr "Poster"
