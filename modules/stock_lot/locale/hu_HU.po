@@ -1,0 +1,253 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"."
+msgstr "Chargen szám szükséges a \"%s\" variációs raktármozgatáshoz"
+
+#, fuzzy
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Charge szükséges a raktárhelyhez "
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Charge szükséges a raktárhelyhez "
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Űrlap adószámlához"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Előrelátható mennyiség"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Szám"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Caches Charge"
+
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Belső mennyiség"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Hely"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Raktár időszak"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Raktárhely típusa, melyhez szükséges Charge szám"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Raktárhely típusa, melyhez szükséges Charge szám"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Charge"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Raktár mozgás"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Űrlap- Raktár Charge típus"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Raktár Charge"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Raktár Charge típus"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Vevő"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Készlet különbség"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Termelés"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Raktár"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Beszállító"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Raktár Cache időszak Chargenként"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Cache"
+msgstr "Raktár időszak Charge Cache"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Caches"
+msgstr "Raktár időszak Charge Cache"
