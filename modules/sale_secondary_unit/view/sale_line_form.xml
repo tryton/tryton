@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='amount']" position="after">
+        <separator name="secondary_unit" colspan="4"/>
+        <label name="secondary_quantity" string="Quantity:"/>
+        <field name="secondary_quantity"/>
+        <label name="secondary_unit" string="Unit:"/>
+        <field name="secondary_unit"/>
+        <label name="secondary_unit_price" string="Unit Price:"/>
+        <field name="secondary_unit_price" symbol="currency"/>
+        <newline/>
+    </xpath>
+</data>

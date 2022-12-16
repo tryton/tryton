@@ -1,0 +1,282 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Vaikimisi meenutuse protseduur"
+
+msgctxt ""
+"field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Vaikimisi meenutuse protseduur"
+
+msgctxt "field:account.dunning,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:account.dunning,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.dunning,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Sekundaarse valuuta väärtus"
+
+msgctxt "field:account.dunning,blocked:"
+msgid "Blocked"
+msgstr "Blokeeritud"
+
+msgctxt "field:account.dunning,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.dunning,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.dunning,level:"
+msgid "Level"
+msgstr "Tase"
+
+msgctxt "field:account.dunning,line:"
+msgid "Line"
+msgstr "Rida"
+
+msgctxt "field:account.dunning,maturity_date:"
+msgid "Maturity Date"
+msgstr "Aegumise kuupäev"
+
+msgctxt "field:account.dunning,party:"
+msgid "Party"
+msgstr "Ospaool"
+
+msgctxt "field:account.dunning,procedure:"
+msgid "Procedure"
+msgstr "Protseduur"
+
+msgctxt "field:account.dunning,second_currency:"
+msgid "Second Currency"
+msgstr "Teisene valuuta"
+
+msgctxt "field:account.dunning,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Teisese valuuta numbriväärtuse arv"
+
+msgctxt "field:account.dunning,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.dunning.create.start,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr "Üle tähtaja"
+
+msgctxt "field:account.dunning.level,procedure:"
+msgid "Procedure"
+msgstr "Protseduur"
+
+msgctxt "field:account.dunning.procedure,levels:"
+msgid "Levels"
+msgstr "Tasemed"
+
+msgctxt "field:account.dunning.procedure,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.move.line,dunnings:"
+msgid "Dunnings"
+msgstr "Meenutus"
+
+msgctxt "field:party.party,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Meenutuse protseduur"
+
+msgctxt "field:party.party,dunning_procedures:"
+msgid "Dunning Procedures"
+msgstr "Meenutuse protseduurid"
+
+msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Meenutuse protseduur"
+
+msgctxt "field:party.party.dunning_procedure,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "Uue kliendi vaikimisi meenutuse protseduur"
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "Uue kliendi vaikimisi meenutuse protseduur"
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr "Märgista, et blokeerida protseduuri edasised tasemed"
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr "Määra meenutus ettevõttele"
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr "Nõude rida mida meenutada"
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr "Koosta meenutus kuni selle kuupäevani"
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr "Kui tase läheb rakendamisele"
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr "Meenutuse protseduuri peamine eristaja"
+
+msgctxt "model:account.configuration.default_dunning_procedure,name:"
+msgid "Account Configuration Default Dunning Procedure"
+msgstr "Konto seaded, vaikimisi meenutuse protseduur"
+
+msgctxt "model:account.dunning,name:"
+msgid "Account Dunning"
+msgstr "Meenutuse konto"
+
+msgctxt "model:account.dunning.create.start,name:"
+msgid "Create Account Dunning"
+msgstr "Loo meenutuse konto"
+
+msgctxt "model:account.dunning.level,name:"
+msgid "Account Dunning Level"
+msgstr "Meenutuse konto tase"
+
+msgctxt "model:account.dunning.procedure,name:"
+msgid "Account Dunning Procedure"
+msgstr "Meenutuse konto protseduur"
+
+msgctxt "model:account.dunning.process.start,name:"
+msgid "Create Account Dunning"
+msgstr "Loo meenutuse konto"
+
+msgctxt "model:ir.action,name:act_dunning_form"
+msgid "Dunnings"
+msgstr "Meenutused"
+
+msgctxt "model:ir.action,name:act_dunning_party"
+msgid "Dunnings"
+msgstr "Meenutused"
+
+msgctxt "model:ir.action,name:act_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Meenutuse protseduur"
+
+msgctxt "model:ir.action,name:wizard_dunning_create"
+msgid "Create Dunnings"
+msgstr "Loo meenutused"
+
+msgctxt "model:ir.action,name:wizard_dunning_process"
+msgid "Process Dunning"
+msgstr "Meenutuse protsess"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr "Lõplik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr "Rida saab meenutusel kasutada ainult üks kord"
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
+msgid "Dunnings"
+msgstr "Meenutused"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_create"
+msgid "Create Dunnings"
+msgstr "Loo meenutused"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_form"
+msgid "Dunnings"
+msgstr "Meenutused"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Meenutuse protseduur"
+
+msgctxt "model:ir.ui.menu,name:menu_dunnings"
+msgid "Dunnings"
+msgstr "Meenutused"
+
+msgctxt "model:party.party.dunning_procedure,name:"
+msgid "Party Dunning Procedure"
+msgstr "Osapool meenutuse protsessis"
+
+msgctxt "model:res.group,name:group_dunning"
+msgid "Dunning"
+msgstr "Meenutus"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr "Lõpp"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Meenutus"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning for date"
+msgstr "Loo kuupäeva kohta meeldetuletus"
+
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning?"
+msgstr "Protsessi meenutust?"
+
+msgctxt "view:party.party:"
+msgid "Dunning"
+msgstr "Meenutus"
+
+msgctxt "wizard_button:account.dunning.create,start,create_:"
+msgid "Create"
+msgstr "Loo"
+
+msgctxt "wizard_button:account.dunning.create,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Protsessi"

@@ -1,0 +1,94 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "ຄ່າທຳນຽມ"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "ວິທີການຄິດໄລ່"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "ການຕິດຕາມໜີ້"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "ຂັ້ນ"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "ເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "ຄ່າທຳນຽມ"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "ວິທີການຄິດໄລ່ມູນຄ່າ ຄ່າທຳນຽມ"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "ຄ່າທຳນຽມບັນຊີຕິດຕາມໜີ້"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "ຂັ້ນການທວງໜີ້ ຄ່າທຳນຽມບັນຊີຕິດຕາມໜີ້"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "ຄ່າທຳນຽມຕໍ່ແຕ່ລະການທວງໜີ້ແລະຂັ້ນທວງໜີ້ຕ້ອງບໍ່ຊໍ້າກັນ."
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "ລາຍການລາຄາ"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"
