@@ -1,0 +1,35 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product.cost_history,cost_price:0"
+msgid "Cost Price"
+msgstr "Фабрична цена"
+
+msgctxt "field:product.product.cost_history,date:0"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:product.product.cost_history,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.product.cost_history,template:0"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "model:ir.action,name:act_product_cost_history_form"
+msgid "Product Cost History"
+msgstr "История на цена на продукт"
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "История на цена"
+
+msgctxt "model:product.product.cost_history,name:0"
+msgid "History of Product Cost"
+msgstr "История на цена на продукт"
+
+msgctxt "view:product.product.cost_history:0"
+msgid "Product Cost History"
+msgstr "История на цена на продукт"

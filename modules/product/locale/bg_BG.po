@@ -1,0 +1,591 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "Не може да създавате взаимно вложени категории!"
+
+msgctxt "error:product.uom:0"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Ако мер. ед. все още не се ползват може да я изтриете, в противен случай "
+"може да я декативирате и създадете нова."
+
+msgctxt "error:product.uom:0"
+msgid "Invalid Factor and Rate values!"
+msgstr "Невалиден стойности за фактор и отношение!"
+
+msgctxt "error:product.uom:0"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Курса и коефициента не може едновременно да са нула."
+
+msgctxt "error:product.uom:0"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
+msgstr ""
+"За мерна единица не може да променате отношение, коефициент или категория."
+
+msgctxt "field:product.category,childs:0"
+msgid "Children"
+msgstr "Деца"
+
+msgctxt "field:product.category,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.category,parent:0"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:product.category,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.product,code:0"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:product.product,description:0"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:product.product,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.product,template:0"
+msgid "Product Template"
+msgstr "Щаблон за продукт"
+
+msgctxt "field:product.template,active:0"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:product.template,category:0"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.template,cost_price:0"
+msgid "Cost Price"
+msgstr "Фабрична цена"
+
+msgctxt "field:product.template,cost_price_method:0"
+msgid "Cost Method"
+msgstr "Начин на остойностяване"
+
+msgctxt "field:product.template,cost_price_uom:0"
+msgid "Cost Price"
+msgstr "Фабрична цена"
+
+msgctxt "field:product.template,default_uom:0"
+msgid "Default UOM"
+msgstr "Мер. ед. по подрабиране"
+
+msgctxt "field:product.template,list_price:0"
+msgid "List Price"
+msgstr "Каталожна цена"
+
+msgctxt "field:product.template,list_price_uom:0"
+msgid "List Price"
+msgstr "Каталожна цена"
+
+msgctxt "field:product.template,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template,products:0"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "field:product.template,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template,type:0"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:product.uom,active:0"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:product.uom,category:0"
+msgid "UOM Category"
+msgstr "Категория мер. ед."
+
+msgctxt "field:product.uom,digits:0"
+msgid "Display Digits"
+msgstr "Цифри за показване"
+
+msgctxt "field:product.uom,factor:0"
+msgid "Factor"
+msgstr "Коефициент"
+
+msgctxt "field:product.uom,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.uom,rate:0"
+msgid "Rate"
+msgstr "Отношение"
+
+msgctxt "field:product.uom,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.uom,rounding:0"
+msgid "Rounding Precision"
+msgstr "Точност на закръгление"
+
+msgctxt "field:product.uom,symbol:0"
+msgid "Symbol"
+msgstr "Символ"
+
+msgctxt "field:product.uom.category,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.uom.category,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.uom.category,uoms:0"
+msgid "Unit of Measures"
+msgstr "Мерни единици"
+
+msgctxt "help:product.uom,factor:0"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"Коефициент в тази формула:\n"
+"1 (баз. единица) = коеф. (тази единица)"
+
+msgctxt "help:product.uom,rate:0"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"Коефициент в тази формула:\n"
+"1 (баз. единица) = коеф. (тази единица)"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Категории"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Категории"
+
+msgctxt "model:ir.action,name:act_product_by_category"
+msgid "Product by Category"
+msgstr "Продукт по категория"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Категории мер. ед."
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Мерни едниници"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Категории"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Категории"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Категории"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Мерни едниници"
+
+msgctxt "model:product.category,name:0"
+msgid "Product Category"
+msgstr "Категория на продукт"
+
+msgctxt "model:product.product,name:0"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "model:product.template,name:0"
+msgid "Product Template"
+msgstr "Щаблон за продукт"
+
+msgctxt "model:product.uom,name:0"
+msgid "Unit of measure"
+msgstr "Мерна единица"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Хектар"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Карат"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "сантиметър"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "Кубичен сантиметър"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "Кубичен фут"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "Кубичен инч"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Кубичен метър"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Ден"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Фут"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "Галон"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Грам"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Хектар"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Час"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "Инч"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Килограм"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Километър"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Литър"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Метър"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Миля"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Милиметър"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Минута"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Унция"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Лира"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Секунда"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "Квадратен сантиметър"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "Квадратен фут"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "Квадратен инч"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Квадратен метър"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "Квадратен ярд"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Единица"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Работен ден"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "Ярд"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "ft³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "in³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "ft"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "in"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lbs"
+msgstr "lbs"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "ft²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "in²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "u"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "wd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:0"
+msgid "Product uom category"
+msgstr "Категория мер. ед. на продукт"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Дължина"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Повърхност"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Време"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Единици"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Обем"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Тегло"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Управление на продукти"
+
+msgctxt "selection:product.template,cost_price_method:0"
+msgid "Average"
+msgstr "Средна"
+
+msgctxt "selection:product.template,cost_price_method:0"
+msgid "Fixed"
+msgstr "Фиксирана"
+
+msgctxt "selection:product.template,type:0"
+msgid "Consumable"
+msgstr "Консуматив"
+
+msgctxt "selection:product.template,type:0"
+msgid "Service"
+msgstr "Услуга"
+
+msgctxt "selection:product.template,type:0"
+msgid "Stockable"
+msgstr "Складируем"
+
+msgctxt "view:product.category:0"
+msgid "Children"
+msgstr "Деца"
+
+msgctxt "view:product.category:0"
+msgid "Product Categories"
+msgstr "Категории продукти"
+
+msgctxt "view:product.category:0"
+msgid "Product Category"
+msgstr "Категория на продукт"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "view:product.template:0"
+msgid "General"
+msgstr "Основен"
+
+msgctxt "view:product.template:0"
+msgid "Product Template"
+msgstr "Щаблон за продукт"
+
+msgctxt "view:product.template:0"
+msgid "Product Templates"
+msgstr "Шаблони на продукти"
+
+msgctxt "view:product.uom.category:0"
+msgid "Categories of Unit of Measure"
+msgstr "Категории мер. ед."
+
+msgctxt "view:product.uom.category:0"
+msgid "Category of Unit of Measure"
+msgstr "Категория мерни единици"
+
+msgctxt "view:product.uom:0"
+msgid "Unit of Measure"
+msgstr "Мерни единици"
+
+msgctxt "view:product.uom:0"
+msgid "Units of Measure"
+msgstr "Мерни едниници"
