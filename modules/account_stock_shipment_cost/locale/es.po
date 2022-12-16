@@ -1,0 +1,255 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,shipment_cost_sequence:"
+msgid "Shipment Cost Sequence"
+msgstr "Secuencia de costes de envío"
+
+msgctxt "field:account.configuration.shipment_cost_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.shipment_cost_sequence,shipment_cost_sequence:"
+msgid "Shipment Cost Sequence"
+msgstr "Secuencia de costes de envío"
+
+msgctxt "field:account.invoice.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste albarán"
+
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Método de asignación"
+
+msgctxt "field:account.shipment_cost,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Factores"
+
+msgctxt "field:account.shipment_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:account.shipment_cost,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.shipment_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Fecha contabilización"
+
+msgctxt "field:account.shipment_cost,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Albaranes de devolución"
+
+msgctxt "field:account.shipment_cost,shipments:"
+msgid "Shipments"
+msgstr "Albaranes"
+
+msgctxt "field:account.shipment_cost,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "field:account.shipment_cost.show,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:account.shipment_cost.show,shipments:"
+msgid "Shipments"
+msgstr "Albaranes"
+
+msgctxt "field:account.shipment_cost.show.shipment,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipments"
+msgstr "Albaranes"
+
+msgctxt "field:product.product,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "field:product.template,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "field:stock.shipment.out,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "field:stock.shipment.out.return,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "help:account.shipment_cost,company:"
+msgid "The company the shipment cost is associated with."
+msgstr "La empresa a la que el coste de albarán está asociado."
+
+msgctxt "help:account.shipment_cost,number:"
+msgid "The main identifier for the shipment cost."
+msgstr "El identificador principal del coste de envío."
+
+msgctxt "model:account.configuration.shipment_cost_sequence,name:"
+msgid "Account Configuration Shipment Cost Sequence"
+msgstr "Configuración de cuenta de secuencia de costes de envío"
+
+msgctxt "model:account.shipment_cost,name:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "model:account.shipment_cost-stock.shipment.out,name:"
+msgid "Shipment Cost - Shipment"
+msgstr "Coste de envío - Albarán"
+
+msgctxt "model:account.shipment_cost-stock.shipment.out.return,name:"
+msgid "Shipment Cost - Shipment Return"
+msgstr "Coste de envío - Devolución de albarán"
+
+msgctxt "model:account.shipment_cost.show,name:"
+msgid "Shipment Cost Show"
+msgstr "Mostrar coste envío"
+
+msgctxt "model:account.shipment_cost.show.shipment,name:"
+msgid "Post Shipment Cost"
+msgstr "Contabilizar coste envío"
+
+msgctxt "model:ir.action,name:act_shipment_cost_form"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "model:ir.action,name:act_shipment_cost_form_shipment"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_post"
+msgid "Post Shipment Cost"
+msgstr "Contabilizar coste envío"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_show"
+msgid "Show Shipment Cost"
+msgstr "Mostrar coste envío"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "El coste de envío \"%(shipment_cost)s\" no tiene albarán."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"El albarán \"%(shipment)s\" del coste de envío \"%(shipment_cost)s\" ya "
+"tiene coste de envío del mismo tercero \"%(other)s\"."
+
+msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:shipment_cost_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:shipment_cost_post_button"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "model:ir.model.button,string:shipment_cost_show_button"
+msgid "Show"
+msgstr "Mostrar"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_cost_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_cost"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_cost"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
+msgid "Shipment Costs"
+msgstr "Costes de envío"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Por albarán"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment Return"
+msgstr "Albaran de devolución"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "view:account.configuration:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,post:"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "wizard_button:account.shipment_cost.show,show,end:"
+msgid "Close"
+msgstr "Cerrar"

@@ -1,0 +1,263 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,cost_shipment_carriages:"
+msgid "Cost of Shipment Carriages"
+msgstr "Costes de transporte"
+
+msgctxt "field:incoterm.incoterm,after_carrier:"
+msgid "After Carrier"
+msgstr "Después del transportista"
+
+msgctxt "field:incoterm.incoterm,before_carrier:"
+msgid "Before Carrier"
+msgstr "Antes del transportista"
+
+msgctxt "field:sale.carriage,available_carriers:"
+msgid "Available Carriers"
+msgstr "Transportistas disponibles"
+
+msgctxt "field:sale.carriage,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:sale.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:sale.carriage,from_:"
+msgid "From"
+msgstr "Desde"
+
+msgctxt "field:sale.carriage,sale:"
+msgid "Sale"
+msgstr "Venta"
+
+msgctxt "field:sale.carriage,sale_state:"
+msgid "Sale State"
+msgstr "Estado de la venta"
+
+msgctxt "field:sale.carriage,to:"
+msgid "To"
+msgstr "Hasta"
+
+msgctxt "field:sale.carriage,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:sale.sale,after_carriages:"
+msgid "After Carriages"
+msgstr "Transportes siguientes"
+
+msgctxt "field:sale.sale,before_carriages:"
+msgid "Before Carriages"
+msgstr "Transportes anteriores"
+
+msgctxt "field:sale.sale,carriages:"
+msgid "Carriages"
+msgstr "Transportes"
+
+msgctxt "field:stock.shipment.carriage,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.carriage,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.shipment.carriage,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:stock.shipment.carriage,cost_currency:"
+msgid "Cost Currency"
+msgstr "Moneda coste"
+
+msgctxt "field:stock.shipment.carriage,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Moneda coste"
+
+msgctxt "field:stock.shipment.carriage,cost_edit:"
+msgid "Edit Cost"
+msgstr "Editar coste"
+
+msgctxt "field:stock.shipment.carriage,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Linea de factura del coste"
+
+msgctxt "field:stock.shipment.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:stock.shipment.carriage,cost_sale:"
+msgid "Cost Sale"
+msgstr "Coste de la venta"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Moneda del coste de la venta"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Moneda del coste de la venta"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Coste de la venta"
+
+msgctxt "field:stock.shipment.carriage,cost_used:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:stock.shipment.carriage,from_:"
+msgid "From"
+msgstr "Desde"
+
+msgctxt "field:stock.shipment.carriage,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Coste envío solo lectura"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr "Coste envío de la venta solo lectura"
+
+msgctxt "field:stock.shipment.carriage,to:"
+msgid "To"
+msgstr "Hasta"
+
+msgctxt "field:stock.shipment.carriage,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:stock.shipment.in,after_carriages:"
+msgid "After Carriages"
+msgstr "Transportes siguientes"
+
+msgctxt "field:stock.shipment.in,before_carriages:"
+msgid "Before Carriages"
+msgstr "Transportes anteriores"
+
+msgctxt "field:stock.shipment.in,carriages:"
+msgid "Carriages"
+msgstr "Transportes"
+
+msgctxt "field:stock.shipment.out,after_carriages:"
+msgid "After Carriages"
+msgstr "Trasportes siguientes"
+
+msgctxt "field:stock.shipment.out,before_carriages:"
+msgid "Before Carriages"
+msgstr "Transportes anteriores"
+
+msgctxt "field:stock.shipment.out,carriages:"
+msgid "Carriages"
+msgstr "Transportes"
+
+msgctxt "field:stock.shipment.out.return,after_carriages:"
+msgid "After Carriages"
+msgstr "Transportes siguientes"
+
+msgctxt "field:stock.shipment.out.return,before_carriages:"
+msgid "Before Carriages"
+msgstr "Transportes anteriores"
+
+msgctxt "field:stock.shipment.out.return,carriages:"
+msgid "Carriages"
+msgstr "Transportes"
+
+msgctxt "help:incoterm.incoterm,after_carrier:"
+msgid "Who contracts carriages after main carriage."
+msgstr "Quien contrata los transportes siguientes al transporte principal."
+
+msgctxt "help:incoterm.incoterm,before_carrier:"
+msgid "Who contracts carriages before main carriage."
+msgstr "Quien contrata los transportes anteriores al transporte principal."
+
+msgctxt "help:sale.sale,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transportes siguientes al transportista principal."
+
+msgctxt "help:sale.sale,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transportes anteriores al transporte principal."
+
+msgctxt "help:stock.shipment.carriage,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Marcar para editar el coste."
+
+msgctxt "help:stock.shipment.in,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transportes siguientes al transportista principal."
+
+msgctxt "help:stock.shipment.in,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transportes anteriores al transportista principal."
+
+msgctxt "help:stock.shipment.out,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transportes siguientes al transportista principal."
+
+msgctxt "help:stock.shipment.out,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transportes anteriores al transportista principal."
+
+msgctxt "help:stock.shipment.out.return,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transportes siguientes al transportista principal."
+
+msgctxt "help:stock.shipment.out.return,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transportes anteriores al transportista principal."
+
+msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
+msgid "You cannot delete the carriage \"%(carriage)s\"."
+msgstr "No se puede eliminar el transporte \"%(carriage)s\"."
+
+msgctxt "model:sale.carriage,name:"
+msgid "Sale Carriage"
+msgstr "Transporte de venta"
+
+msgctxt "model:stock.shipment.carriage,name:"
+msgid "Shipment Carriage"
+msgstr "Transporte del albaran"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Buyer"
+msgstr "Comprador"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Seller"
+msgstr "Vendedor"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Buyer"
+msgstr "Comprador"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Seller"
+msgstr "Vendedor"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "After"
+msgstr "Siguiente"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "Before"
+msgstr "Anterior"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "After"
+msgstr "Siguiente"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "Before"
+msgstr "Anterior"
+
+msgctxt "view:sale.sale:"
+msgid "Carriages"
+msgstr "Transportes"

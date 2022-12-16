@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <title>Request to Unsubscribe</title>
+    </head>
+    <body>
+        <py:for each="record in records">
+        <div style="display: block; text-align: center">
+            <div>
+                <h1>Just one more step...</h1>
+                <py:choose>
+                    <py:when test="record.party and record.party.name">
+                    <p>${record.party.name}</p>
+                    </py:when>
+                    <py:otherwise>
+                    <p>${record.email}</p>
+                    </py:otherwise>
+                </py:choose>
+                <form action="${record.get_email_unsubscribe_url()}">
+                    <py:for each="name, value in extract_params(record.get_email_unsubscribe_url())">
+                    <input type="hidden" name="${name}" value="${value}"/>
+                    </py:for>
+                    <button type="submit"
+                            style="cursor: pointer
+                            padding: 0.5em 1em; font-size: 2em;
+                            border: 1px solid #2E6DA4; border-radius: 4px;
+                            color: #FFF; background-color: #337AB7;">
+                        Unsubscribe from ${record.list_.name}
+                    </button>
+                </form>
+            </div>
+            <hr style="margin-top: 20px;
+                border-style: solid none none; border-color: #EEE"></hr>
+            <div style="font-size: 80%; color: #777">
+                <p>Button is not working? Paste this into your browser:</p>
+                <p>${record.get_email_unsubscribe_url()}</p>
+                <p>If you received this email by mistake, just ignore it.</p>
+            </div>
+        </div>
+        </py:for>
+    </body>
+</html>
