@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Líneas de compra"
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr "Servicio"
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr "Servicio del proveedor"
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr "Las líneas a añadir al coste de la producción."
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr "El proveedor al que subcontratar la producción."
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr "La cantidad a comprar par producir la cantidad de la LdM."
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr "El servicio a comprar al proveedor para la producción."
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr "El servicio del proveedor a comprar para la producción."
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr "Añade coste a la producción."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"Las producciones \"%(productions)s\" no se pueden procesar porqué tienen "
+"compras pendientes."
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr "Producción"
