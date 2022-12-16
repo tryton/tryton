@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="planned_date">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="planned_start_date"/>
+    <field name="planned_start_date"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="bom"/>
+    <field name="bom"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="uom"/>
+    <field name="uom"/>
+    <notebook>
+        <page string="Lines" id="lines">
+            <field name="inputs" colspan="2" view_ids="stock.move_view_list_shipment"/>
+            <field name="outputs" colspan="2" view_ids="stock.move_view_list_shipment"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="origin"/>
+            <field name="origin"/>
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="location"/>
+            <field name="location"/>
+            <label name="effective_date"/>
+            <field name="effective_date"/>
+            <label name="effective_start_date"/>
+            <field name="effective_start_date"/>
+            <label name="cost"/>
+            <field name="cost"/>
+            <newline/>
+            <label name="assigned_by"/>
+            <field name="assigned_by"/>
+            <label name="run_by"/>
+            <field name="run_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft"/>
+        <button name="reset_bom" icon="tryton-clear"/>
+        <button name="wait"/>
+        <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="run" icon="tryton-forward"/>
+        <button name="done" icon="tryton-forward"/>
+    </group>
+</form>
