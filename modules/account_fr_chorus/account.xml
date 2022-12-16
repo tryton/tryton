@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_chorus_view_form">
+            <field name="model">account.invoice.chorus</field>
+            <field name="type">form</field>
+            <field name="name">invoice_chorus_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_chorus_view_list">
+            <field name="model">account.invoice.chorus</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_chorus_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_chorus_form">
+            <field name="name">Chorus</field>
+            <field name="res_model">account.invoice.chorus</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_chorus_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_chorus_view_list"/>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_chorus_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_chorus_view_form"/>
+            <field name="act_window" ref="act_invoice_chorus_form"/>
+        </record>
+        <menuitem
+            parent="account_invoice.menu_invoice_out_form"
+            action="act_invoice_chorus_form"
+            id="menu_invoice_chorus_form"/>
+
+        <record model="ir.model.access" id="access_invoice_chorus">
+            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_account_chorus">
+            <field name="model" search="[('model', '=', 'account.invoice.chorus')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="res.user" id="user_chorus">
+            <field name="login">user_cron_chorus</field>
+            <field name="name">Cron Chorus</field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group" id="user_chorus-group_account">
+            <field name="user" ref="user_chorus"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.cron" id="cron_invoice_send">
+            <field name="name">Send invoices to Chorus</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_chorus"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">account.invoice.chorus</field>
+            <field name="function">send</field>
+        </record>
+    </data>
+</tryton>
