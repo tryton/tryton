@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Cilj"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Od"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Do"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Lokacija"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Od"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Do"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Izdelki"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Napoved"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr "Stanje napovedi"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Minimalna količina"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Promet"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Katerogija ME izdelka"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Izvedena količina"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "ME"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Postavka napovedi"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Promet"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Forecasts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr "Izdelek mora biti edinstven po napovedih"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Forecasts"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Napoved zaloge"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Izpolnitev napovedi"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Izpolnitev napovedi"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Postavka napovedi zaloge"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Postavka napovedi - Promet"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancelled"
+msgstr "Preklic"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr "Dodaj postavko napovedi na osnovi preteklih podatkov."
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Izpolnitev napovedi"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Izberi izdelke"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Zaključi"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Izberi datume"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Zaključi"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Prekliči"
