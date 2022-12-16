@@ -1,0 +1,585 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr ""
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "Cím"
+
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "Megjegyzés"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "Leírás"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "Sor"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Szám"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr ""
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "Állapot"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "Opportunities"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "Termék"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "Egység"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.context,from_date:"
+msgid "From Date"
+msgstr "utolsó módosítás dátuma"
+
+msgctxt "field:sale.opportunity.reporting.context,period:"
+msgid "Period"
+msgstr ""
+
+msgctxt "field:sale.opportunity.reporting.context,to_date:"
+msgid "To Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+#, fuzzy
+msgctxt ""
+"field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr ""
+
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Leads and Opportunities"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "Sales Leads/Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion"
+msgid "Opportunity Conversions"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_employee"
+msgid "Opportunity Conversions per Employee"
+msgstr "Opportunities per Employee"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_employee_time_series"
+msgid "Opportunity Conversions per Employee"
+msgstr "Opportunities per Employee"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_conversion_time_series"
+msgid "Opportunity Conversions"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Opportunities"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Opportunities"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Összes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Cancelled"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Converted"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Leads"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Lost"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "von"
+
+msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
+msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount"
+msgid "Amount"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount_trend"
+msgid "Amount Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
+msgid "Conversion Rate"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_conversion_trend"
+msgid "Conversion Trend"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_converted"
+msgid "Converted"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount"
+msgid "Converted Amount"
+msgstr "Converted"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount_trend"
+msgid "Converted Amount Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_lost"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_help"
+msgid "Number of opportunities"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_trend"
+msgid "Number Trend"
+msgstr "Szám"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_rate"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_trend"
+msgid "Winning Trend"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won"
+msgid "Won"
+msgstr "von"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won_amount"
+msgid "Won Amount"
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_won_amount_trend"
+msgid "Won Amount Trend"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_conversion_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Leads and Opportunities"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_opportunity"
+msgid "Opportunities"
+msgstr "Opportunities"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.context,name:"
+msgid "Sale Opportunity Reporting Context"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt ""
+"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "Leads"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "von"
+
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Day"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Month"
+msgstr "Hónap"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Year"
+msgstr "Év"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won"
+msgstr "von"
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won"
+msgstr "von"
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won"
+msgstr "von"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won Amount"
+msgstr ""
+
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted Amount"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Number"
+msgstr "Szám"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted Amount"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Number"
+msgstr "Szám"
+
+#, fuzzy
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr ""
