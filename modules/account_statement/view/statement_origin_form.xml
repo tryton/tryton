@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="statement"/>
+    <field name="statement"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="amount"/>
+    <field name="amount" symbol="currency"/>
+    <label name="pending_amount"/>
+    <field name="pending_amount" symbol="currency"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="account"/>
+    <field name="account"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <field name="information" colspan="4"/>
+    <field name="lines" colspan="4"/>
+</form>

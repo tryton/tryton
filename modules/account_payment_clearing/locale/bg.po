@@ -1,0 +1,77 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr ""
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr ""
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr ""
+
+msgctxt "field:account.payment.journal,clearing_posting_delay:"
+msgid "Clearing Posting Delay"
+msgstr ""
+
+msgctxt "field:account.payment.succeed.start,date:"
+msgid "Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line,payment:"
+msgid "Payment"
+msgstr "Плащане"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr ""
+
+msgctxt "help:account.payment,account:"
+msgid "Define the account to use for clearing move."
+msgstr ""
+
+msgctxt "help:account.payment.journal,clearing_posting_delay:"
+msgid ""
+"Post automatically the clearing moves after the delay.\n"
+"Leave empty for no posting."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.payment.succeed.start,name:"
+msgid "Succeed Payment"
+msgstr "Succeed Payments"
+
+msgctxt "model:ir.action,name:wizard_succeed"
+msgid "Succeed Payments"
+msgstr "Succeed Payments"
+
+msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Succeed"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Post Clearing Moves"
+msgstr "Post Clearing Moves"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr ""
+
+msgctxt "wizard_button:account.payment.succeed,start,end:"
+msgid "Cancel"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.payment.succeed,start,succeed:"
+msgid "Succeed"
+msgstr "Succeed"

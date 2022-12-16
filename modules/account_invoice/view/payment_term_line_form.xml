@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="ratio"/>
+    <group col="2" id="ratio">
+        <field name="ratio" factor="100" xexpand="0"/>
+        <label name="ratio" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+    <label name="divisor"/>
+    <field name="divisor"/>
+    <field name="relativedeltas" mode="form,tree" colspan="4"
+        view_ids="account_invoice.payment_term_line_relativedelta_view_form,account_invoice.payment_term_line_relativedelta_view_list_sequence"/>
+</form>
