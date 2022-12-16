@@ -1,0 +1,1717 @@
+<?xml version='1.0'?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="account.tax.template" id="iva_rep_21">
+            <field name="name">IVA 21%</field>
+            <field name="description">IVA 21%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_10">
+            <field name="name">IVA 10%</field>
+            <field name="description">IVA 10%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_4">
+            <field name="name">IVA 4%</field>
+            <field name="description">IVA 4%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.04')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_ex">
+            <field name="name">IVA Exento</field>
+            <field name="description">IVA Exento</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_re_52">
+            <field name="name">Recargo equivalencia 5.2%</field>
+            <field name="description">Recargo equivalencia 5.2%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.052')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_re_14">
+            <field name="name">Recargo Equivalencia 1.4%</field>
+            <field name="description">Recargo Equivalencia 1.4%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.014')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_re_05">
+            <field name="name">Recargo Equivalencia 0.5%</field>
+            <field name="description">Recargo Equivalencia 0.5%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.005')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_exportaciones">
+            <field name="name">IVA Exportaciones</field>
+            <field name="description">IVA Exportaciones</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="legal_notice">Factura exenta en virtud del artículo 21 de la ley 37/1992 del impuesto Sobre el Valor Añadido.</field>
+        </record>
+        <record model="account.tax.template" id="iva_rep_intracomunitario_bienes">
+            <field name="name">IVA Intracomunitario (Bienes)</field>
+            <field name="description">IVA Intracomunitario</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="legal_notice">Operación intracomunitaria sujeta al artículo 25 de la Ley 37/1992 del Impuesto sobre el Valor Añadido.</field>
+            <field name="ec_sales_list_code">E</field>
+        </record>
+        <record model="account.tax.template" id="iva_rep_intracomunitario_servicios">
+            <field name="name">IVA Intracomunitario (Servicios)</field>
+            <field name="description">IVA Intracomunitario</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="legal_notice">Operación intracomunitaria sujeta al artículo 69 de la Ley 37/1992 del Impuesto sobre el Valor Añadido.</field>
+            <field name="ec_sales_list_code">S</field>
+        </record>
+        <record model="account.tax.template" id="iva_sop_21">
+            <field name="name">IVA 21% (operaciones corrientes)</field>
+            <field name="description">IVA 21%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_10">
+            <field name="name">IVA 10% (operaciones corrientes)</field>
+            <field name="description">IVA 10%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_4">
+            <field name="name">IVA 4% (operaciones corrientes)</field>
+            <field name="description">IVA 4%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.04')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_ex">
+            <field name="name">IVA Exento (operaciones corrientes)</field>
+            <field name="description">IVA Exento</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_21_inv">
+            <field name="name">IVA 21% (bienes de inversión)</field>
+            <field name="description">IVA 21%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_10_inv">
+            <field name="name">IVA 10% (bienes de inversión)</field>
+            <field name="description">IVA 10%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_4_inv">
+            <field name="name">IVA 4% (bienes de inversión)</field>
+            <field name="description">IVA 4%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.04')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_ex_inv">
+            <field name="name">IVA Exento (bienes de inversión)</field>
+            <field name="description">IVA Exento</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_importacion">
+            <field name="name">IVA Importaciones (operaciones corrientes)</field>
+            <field name="description">Importaciones</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_importacion_inv">
+            <field name="name">IVA Importaciones (bienes de inversión)</field>
+            <field name="description">IVA Importaciones</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_intracomunitario">
+            <field name="name">IVA Intracomunitario (operaciones corrientes)</field>
+            <field name="description">>IVA Intracomunitario</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">none</field>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_intracomunitario_inv">
+            <field name="name">IVA Intracomunitario (bienes de inversión)</field>
+            <field name="description">IVA Intracomunitario</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">none</field>
+            <field name="invoice_account" ref="pgc_4700"/>
+            <field name="credit_note_account" ref="pgc_4700"/>
+        </record>
+        <record model="account.tax.template" id="irpf_1_purchase">
+            <field name="name">Retención IRPF 1%</field>
+            <field name="description">Retención IRPF 1%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.01')"/>
+            <field name="invoice_account" ref="pgc_4751"/>
+            <field name="credit_note_account" ref="pgc_4751"/>
+        </record>
+        <record model="account.tax.template" id="irpf_2_purchase">
+            <field name="name">Retención IRPF 2%</field>
+            <field name="description">Retención IRPF 2%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.02')"/>
+            <field name="invoice_account" ref="pgc_4751"/>
+            <field name="credit_note_account" ref="pgc_4751"/>
+        </record>
+        <record model="account.tax.template" id="irpf_7_purchase">
+            <field name="name">Retención IRPF 7%</field>
+            <field name="description">Retención IRPF 7%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.07')"/>
+            <field name="invoice_account" ref="pgc_4751"/>
+            <field name="credit_note_account" ref="pgc_4751"/>
+        </record>
+        <record model="account.tax.template" id="irpf_15_purchase">
+            <field name="name">Retención IRPF 15%</field>
+            <field name="description">Retención IRPF 15%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.15')"/>
+            <field name="invoice_account" ref="pgc_4751"/>
+            <field name="credit_note_account" ref="pgc_4751"/>
+        </record>
+        <record model="account.tax.template" id="irpf_19_purchase_rent">
+            <field name="name">Retenciones IRPF Arrendamientos 19%</field>
+            <field name="description">Retenciones IRPF 19%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.19')"/>
+            <field name="invoice_account" ref="pgc_4751"/>
+            <field name="credit_note_account" ref="pgc_4751"/>
+        </record>
+        <record model="account.tax.template" id="irpf_1_sale">
+            <field name="name">Retenciones a cuenta IRPF 1%</field>
+            <field name="description">Retención IRPF 1%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.01')"/>
+            <field name="invoice_account" ref="pgc_473"/>
+            <field name="credit_note_account" ref="pgc_473"/>
+        </record>
+        <record model="account.tax.template" id="irpf_2_sale">
+            <field name="name">Retenciones a cuenta IRPF 2%</field>
+            <field name="description">Retención IRPF 2%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.02')"/>
+            <field name="invoice_account" ref="pgc_473"/>
+            <field name="credit_note_account" ref="pgc_473"/>
+        </record>
+        <record model="account.tax.template" id="irpf_7_sale">
+            <field name="name">Retenciones a cuenta IRPF 7%</field>
+            <field name="description">Retención IRPF 7%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.07')"/>
+            <field name="invoice_account" ref="pgc_473"/>
+            <field name="credit_note_account" ref="pgc_473"/>
+        </record>
+        <record model="account.tax.template" id="irpf_15_sale">
+            <field name="name">Retenciones a cuenta IRPF 15%</field>
+            <field name="description">Retención IRPF 15%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.15')"/>
+            <field name="invoice_account" ref="pgc_473"/>
+            <field name="credit_note_account" ref="pgc_473"/>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.tax.template" id="iva_sop_intracomunitario_1">
+            <field name="name">IVA Intracomunitario. Operaciones corrientes (1)</field>
+            <field name="description">IVA Intracomunitario (1)</field>
+            <field name="parent" ref="iva_sop_intracomunitario"/>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_intracomunitario_2">
+            <field name="name">IVA Intracomunitario. Operaciones corrientes (2)</field>
+            <field name="description">IVA Intracomunitario (2)</field>
+            <field name="parent" ref="iva_sop_intracomunitario"/>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.21')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_intracomunitario_inv_1">
+            <field name="name">IVA Intracomunitario. Bienes inversión (1)</field>
+            <field name="description">IVA Intracomunitario (1)</field>
+            <field name="parent" ref="iva_sop_intracomunitario_inv"/>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+        </record>
+        <record model="account.tax.template" id="iva_sop_intracomunitario_inv_2">
+            <field name="name">IVA Intracomunitario. Bienes inversión (2)</field>
+            <field name="description">IVA Intracomunitario (2)</field>
+            <field name="parent" ref="iva_sop_intracomunitario_inv"/>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.21')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+        </record>
+    </data>
+    <data>
+        <record model="account.tax.code.template" id="vat_code_iva">
+            <field name="name">Impuesto sobre el Valor Añadido - Autoliquidación</field>
+            <field name="code">AEAT303</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_devengado">
+            <field name="name">IVA devengado</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base">
+            <field name="name">Base imponible</field>
+            <field name="parent" ref="vat_code_iva_devengado"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_superred">
+            <field name="name">IVA superreducido</field>
+            <field name="code">01</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_superred-iva_rep_4-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_superred"/>
+            <field name="tax" ref="iva_rep_4"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_superred-iva_rep_4-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_superred"/>
+            <field name="tax" ref="iva_rep_4"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_red">
+            <field name="name">IVA reducido</field>
+            <field name="code">04</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_red-iva_rep_10-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_red"/>
+            <field name="tax" ref="iva_rep_10"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_red-iva_rep_10-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_red"/>
+            <field name="tax" ref="iva_rep_10"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_normal">
+            <field name="name">IVA normal</field>
+            <field name="code">07</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_normal-iva_rep_21-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_normal"/>
+            <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_normal-iva_rep_21-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_normal"/>
+            <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_intracomunitario">
+            <field name="name">Adquisiciones intracomunitarias de bienes y servicios</field>
+            <field name="code">10</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario_inv-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario_inv-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_sujeto_pasivo">
+            <field name="name">Otras operaciones con inversión del sujeto pasivo</field>
+            <field name="code">12</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_bases">
+            <field name="name">Modificación bases</field>
+            <field name="code">14</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_normal">
+            <field name="name">Recargo equivalencia normal</field>
+            <field name="code">16</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_normal-iva_rep_re_52-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_re_normal"/>
+            <field name="tax" ref="iva_rep_re_52"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_normal-iva_rep_re_52-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_re_normal"/>
+            <field name="tax" ref="iva_rep_re_52"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_red">
+            <field name="name">Recargo equivalencia reducido</field>
+            <field name="code">19</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_red-iva_rep_re_14-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_re_red"/>
+            <field name="tax" ref="iva_rep_re_14"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_red-iva_rep_re_14-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_re_red"/>
+            <field name="tax" ref="iva_rep_re_14"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_superred">
+            <field name="name">Recargo equivalencia superreducido</field>
+            <field name="code">22</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_superred-iva_rep_re_05-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_re_superred"/>
+            <field name="tax" ref="iva_rep_re_05"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_re_superred-iva_rep_re_05-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_re_superred"/>
+            <field name="tax" ref="iva_rep_re_05"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_bases_re">
+            <field name="name">Modificación bases del recargo de equivalencia</field>
+            <field name="code">25</field>
+            <field name="parent" ref="vat_code_iva_devengado_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax">
+            <field name="name">Total cuota devengada</field>
+            <field name="code">27</field>
+            <field name="parent" ref="vat_code_iva_devengado"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_superred">
+            <field name="name">IVA superreducido</field>
+            <field name="code">03</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_superred-iva_rep_4-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_superred"/>
+            <field name="tax" ref="iva_rep_4"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_superred-iva_rep_4-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_superred"/>
+            <field name="tax" ref="iva_rep_4"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_red">
+            <field name="name">IVA reducido</field>
+            <field name="code">06</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_red-iva_rep_10-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_red"/>
+            <field name="tax" ref="iva_rep_10"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_red-iva_rep_10-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_red"/>
+            <field name="tax" ref="iva_rep_10"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_normal">
+            <field name="name">IVA normal</field>
+            <field name="code">09</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_normal-iva_rep_21-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_normal"/>
+            <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_normal-iva_rep_21-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_normal"/>
+            <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_intracomunitario">
+            <field name="name">Adquisiciones intracomunitarias de bienes y servicios</field>
+            <field name="code">11</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_sujeto_pasivo">
+            <field name="name">Otras operaciones con inversión del sujeto pasivo</field>
+            <field name="code">13</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_taxes">
+            <field name="name">Modificación cuotas</field>
+            <field name="code">15</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_normal">
+            <field name="name">Recargo equivalencia normal</field>
+            <field name="code">18</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_normal-iva_rep_re_52-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_normal"/>
+            <field name="tax" ref="iva_rep_re_52"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_normal-iva_rep_re_52-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_normal"/>
+            <field name="tax" ref="iva_rep_re_52"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_red">
+            <field name="name">Recargo equivalencia reducido</field>
+            <field name="code">21</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_red-iva_rep_re_14-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_red"/>
+            <field name="tax" ref="iva_rep_re_14"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_red-iva_rep_re_14-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_red"/>
+            <field name="tax" ref="iva_rep_re_14"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_superred">
+            <field name="name">Recargo equivalencia superreducido</field>
+            <field name="code">24</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_superred-iva_rep_re_05-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_superred"/>
+            <field name="tax" ref="iva_rep_re_05"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_re_superred-iva_rep_re_05-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_re_superred"/>
+            <field name="tax" ref="iva_rep_re_05"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_taxes_re">
+            <field name="name">Modificación cuotas del recargo equivalencia</field>
+            <field name="code">26</field>
+            <field name="parent" ref="vat_code_iva_devengado_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible">
+            <field name="name">IVA deducible</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base">
+            <field name="name">Base imponible</field>
+            <field name="parent" ref="vat_code_iva_deducible"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_corrientes">
+            <field name="name">Operaciones interiores corrientes</field>
+            <field name="code">28</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_21-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_21"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_21-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_21"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_10-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_10"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_10-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_10"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_4-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_4"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_4-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_4"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_ex-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_ex"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_corrientes-iva_sop_ex-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes"/>
+            <field name="tax" ref="iva_sop_ex"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_inversion">
+            <field name="name">Operaciones interiores con bienes inversión</field>
+            <field name="code">30</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_21_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_21_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_21_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_21_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_10_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_10_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_10_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_10_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_4_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_4_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_inversion-iva_sop_4_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_inversion"/>
+            <field name="tax" ref="iva_sop_4_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_importacion">
+            <field name="name">Importaciones de bienes corrientes</field>
+            <field name="code">30</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_importacion-iva_sop_importacion-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion"/>
+            <field name="tax" ref="iva_sop_importacion"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_importacion-iva_sop_importacion-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion"/>
+            <field name="tax" ref="iva_sop_importacion"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_importacion_inversion">
+            <field name="name">Importaciones de bienes de inversión</field>
+            <field name="code">34</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_importacion_inversion-iva_sop_importacion_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion_inversion"/>
+            <field name="tax" ref="iva_sop_importacion_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_importacion-iva_sop_importacion_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion_inversion"/>
+            <field name="tax" ref="iva_sop_importacion_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_intracomunitario">
+            <field name="name">Adquisiciones intracomunitarios de bienes y servicios corrientes</field>
+            <field name="code">36</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_intracomunitario-iva_sop_intracomunitario-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_intracomunitario-iva_sop_intracomunitario-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_intracomunitario_inv">
+            <field name="name">Adquisiciones intracomunitario de bienes de inversión</field>
+            <field name="code">38</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_intracomunitario_inv-iva_sop_intracomunitario_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_base_intracomunitario_inv-iva_sop_intracomunitario_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_base_rectification_deductions">
+            <field name="name">Rectificación de deducciones</field>
+            <field name="code">40</field>
+            <field name="parent" ref="vat_code_iva_deducible_base"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax">
+            <field name="name">Total a deducir</field>
+            <field name="code">46</field>
+            <field name="parent" ref="vat_code_iva_deducible"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_corrientes">
+            <field name="name">Por cuotas soportadas en operaciones interiores corrientes</field>
+            <field name="code">29</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_21-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_21"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_21-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_21"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_10"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_10"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_4-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_4"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_4-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_4"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_inversion">
+            <field name="name">Por cuotas soportadas en operaciones interiores con bienes inversión</field>
+            <field name="code">31</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_21_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_21_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_21_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_21_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_10_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_10_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_10_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_10_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_4_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_4_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_4_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_4_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_ex_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_ex_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_ex_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
+            <field name="tax" ref="iva_sop_ex_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_importacion">
+            <field name="name">Por cuotas soportadas en las importaciones de bienes corrientes</field>
+            <field name="code">33</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion-iva_sop_importacion-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion"/>
+            <field name="tax" ref="iva_sop_importacion"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion-iva_sop_importacion-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion"/>
+            <field name="tax" ref="iva_sop_importacion"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_importacion_inversion">
+            <field name="name">Por cuotas soportadas en las importaciones de bienes de inversión</field>
+            <field name="code">35</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion_inversion-iva_sop_importacion_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion_inversion"/>
+            <field name="tax" ref="iva_sop_importacion_inv"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion_inversion-iva_sop_importacion_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion_inversion"/>
+            <field name="tax" ref="iva_sop_importacion_inv"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_intracomunitario">
+            <field name="name">En adquisiciones intracomunitarios de bienes y servicios corrientes</field>
+            <field name="code">37</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario-iva_sop_intracomunitario-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario-iva_sop_intracomunitario-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_intracomunitario_inv">
+            <field name="name">En adquisiciones intracomunitario de bienes de inversión</field>
+            <field name="code">39</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario_inv"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_rectification_deductions">
+            <field name="name">Rectificación de deducciones</field>
+            <field name="code">41</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_reagp">
+            <field name="name">Compensaciones Reǵimen Especial A.G y P.</field>
+            <field name="code">42</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_regularization_inv">
+            <field name="name">Regularización bienes de inversión</field>
+            <field name="code">43</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_regularization_prorrata">
+            <field name="name">Regularización por aplicación del porcentaje definitio de prorrata</field>
+            <field name="code">44</field>
+            <field name="parent" ref="vat_code_iva_deducible_tax"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_rep_intracomunitario">
+            <field name="name">Entregas intracomunitarias de bienes y servicios</field>
+            <field name="code">59</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.line.template" id="vat_code_iva_rep_intracomunitario-iva_rep_intracomunitario_bienes-invoice">
+            <field name="code" ref="vat_code_iva_rep_intracomunitario"/>
+            <field name="tax" ref="iva_rep_intracomunitario_bienes"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_rep_intracomunitario_bienes-iva_rep_intracomunitario_bienes-credit">
+            <field name="code" ref="vat_code_iva_rep_intracomunitario"/>
+            <field name="tax" ref="iva_rep_intracomunitario_bienes"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_rep_intracomunitario-iva_rep_intracomunitario_servicios-invoice">
+            <field name="code" ref="vat_code_iva_rep_intracomunitario"/>
+            <field name="tax" ref="iva_rep_intracomunitario_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_rep_intracomunitario_servicios-iva_rep_intracomunitario_servicios-credit">
+            <field name="code" ref="vat_code_iva_rep_intracomunitario"/>
+            <field name="tax" ref="iva_rep_intracomunitario_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_iva_exportaciones">
+            <field name="name">Exportaciones y operaciones asimiladas</field>
+            <field name="code">60</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_exportaciones-iva_rep_exportaciones-invoice">
+            <field name="code" ref="vat_code_iva_exportaciones"/>
+            <field name="tax" ref="iva_rep_exportaciones"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_exportaciones-iva_rep_exportaciones-credit">
+            <field name="code" ref="vat_code_iva_exportaciones"/>
+            <field name="tax" ref="iva_rep_exportaciones"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_iva_no_sujetas">
+            <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originn derecho a deducción</field>
+            <field name="code">61</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_irpf_purchase">
+            <field name="name">Retenciones e ingresos a cuentra sobre actividades económicas - Autoliquidación Empresas</field>
+            <field name="code">AEAT111</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_irpf_purchase_base">
+            <field name="name">Importe percepeciones actividades economicas</field>
+            <field name="parent" ref="vat_code_irpf_purchase"/>
+            <field name="code">08</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_1_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_1_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_1_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_1_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_2_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_2_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_7_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_7_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_7_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_7_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_15_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_15_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_15_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_base"/>
+            <field name="tax" ref="irpf_15_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_irpf_purchase_tax">
+            <field name="name">Importe retenciones actividades economicas</field>
+            <field name="code">09</field>
+            <field name="parent" ref="vat_code_irpf_purchase"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_1_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_1_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_1_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_1_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_2_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_2_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_7_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_7_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_7_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_7_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_15_purchase-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_15_purchase"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_15_purchase-credit">
+            <field name="code" ref="vat_code_irpf_purchase_tax"/>
+            <field name="tax" ref="irpf_15_purchase"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_irpf_19_purchase_rent">
+            <field name="name">Retenciones e ingresos a cuentra sobre rendimientos procedentes del arrendamiento de inmuebles urbanos - Autoliquidación</field>
+            <field name="code">AEAT115</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_irpf_purchase_rent_base">
+            <field name="name">Base de las retenciones e ingresos a cuenta</field>
+            <field name="parent" ref="vat_code_irpf_19_purchase_rent"/>
+            <field name="code">02</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_base-irpf_19_purchase_rent-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_rent_base"/>
+            <field name="tax" ref="irpf_19_purchase_rent"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_base-irpf_19_purchase_rent-credit">
+            <field name="code" ref="vat_code_irpf_purchase_rent_base"/>
+            <field name="tax" ref="irpf_19_purchase_rent"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_irpf_purchase_rent_tax">
+            <field name="name">Retenciones e ingresos a cuenta</field>
+            <field name="parent" ref="vat_code_irpf_19_purchase_rent"/>
+            <field name="code">03</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_tax-irpf_19_purchase_rent-invoice">
+            <field name="code" ref="vat_code_irpf_purchase_rent_tax"/>
+            <field name="tax" ref="irpf_19_purchase_rent"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_tax-irpf_19_purchase_rent-credit">
+            <field name="code" ref="vat_code_irpf_purchase_rent_tax"/>
+            <field name="tax" ref="irpf_19_purchase_rent"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_irpf_sale">
+            <field name="name">Retenciones practicadas</field>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.template" id="vat_code_irpf_sale_base">
+            <field name="name">Base Imponible</field>
+            <field name="parent" ref="vat_code_irpf_sale"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_1_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_1_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_1_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_1_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_2_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_2_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_2_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_2_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_7_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_7_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_7_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_7_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_15_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_15_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_base-irpf_15_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_base"/>
+            <field name="tax" ref="irpf_15_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template" id="vat_code_irpf_sale_tax">
+            <field name="name">Importe</field>
+            <field name="parent" ref="vat_code_irpf_sale"/>
+            <field name="account" ref="pgc_0"/>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_1_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_1_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_1_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_1_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_2_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_2_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_2_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_2_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_7_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_7_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_7_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_7_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_15_sale-invoice">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_15_sale"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_irpf_sale_tax-irpf_15_sale-credit">
+            <field name="code" ref="vat_code_irpf_sale_tax"/>
+            <field name="tax" ref="irpf_15_sale"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.tax.rule.template" id="fp_recargo">
+            <field name="name">Recargo de Equivalencia</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_exento">
+            <field name="name">IVA Exento</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">both</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf_purchase_rent">
+            <field name="name">Retención IRPF Arrendamientos</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf15_purchase">
+            <field name="name">Retención IRPF 15%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf7_purchase">
+            <field name="name">Retención IRPF 7%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf2_purchase">
+            <field name="name">Retención IRPF 2%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf1_purchase">
+            <field name="name">Retención IRPF 1%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_intra_purchase">
+            <field name="name">Compras Intracomunitarias</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_extra_purchase">
+            <field name="name">Compras Extracomunitarias</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf15_sale">
+            <field name="name">Retención IRPF 15%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf7_sale">
+            <field name="name">Retención IRPF 7%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf2_sale">
+            <field name="name">Retención IRPF 2%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_irpf1_sale">
+            <field name="name">Retención IRPF 1%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_extra_sale">
+            <field name="name">Ventas Extracomunitarias</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record model="account.tax.rule.line.template" id="fptt_recargo_4_2">
+            <field name="rule" ref="fp_recargo"/>
+            <field name="origin_tax" ref="iva_rep_4"/>
+            <field name="tax" ref="iva_rep_re_05"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="keep_origin" eval="True"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fptt_recargo_10_2">
+            <field name="rule" ref="fp_recargo"/>
+            <field name="origin_tax" ref="iva_rep_10"/>
+            <field name="tax" ref="iva_rep_re_14"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="keep_origin" eval="True"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fptt_recargo_21_2">
+            <field name="rule" ref="fp_recargo"/>
+            <field name="origin_tax" ref="iva_rep_21"/>
+            <field name="tax" ref="iva_rep_re_52"/>
+            <field name="group" ref="tax_group_sale"/>
+            <field name="keep_origin" eval="True"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_exento_purchase">
+            <field name="rule" ref="fp_exento"/>
+            <field name="tax" ref="iva_sop_ex"/>
+            <field name="group" ref="tax_group_purchase"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fptt_exento_purchase_investment">
+            <field name="rule" ref="fp_exento"/>
+            <field name="tax" ref="iva_sop_ex_inv"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fptt_exento_sale">
+            <field name="rule" ref="fp_exento"/>
+            <field name="tax" ref="iva_rep_ex"/>
+            <field name="group" ref="tax_group_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf_19_purchase_rent">
+            <field name="rule" ref="fp_irpf_purchase_rent"/>
+            <field name="tax" ref="irpf_19_purchase_rent"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf15_purchase">
+            <field name="rule" ref="fp_irpf15_purchase"/>
+            <field name="tax" ref="irpf_15_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf7_purchase">
+            <field name="rule" ref="fp_irpf7_purchase"/>
+            <field name="tax" ref="irpf_7_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf2_purchase">
+            <field name="rule" ref="fp_irpf2_purchase"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf1_purchase">
+            <field name="rule" ref="fp_irpf1_purchase"/>
+            <field name="tax" ref="irpf_1_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf15_sale">
+            <field name="rule" ref="fp_irpf15_sale"/>
+            <field name="tax" ref="irpf_15_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_normal">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="tax" ref="iva_sop_intracomunitario"/>
+            <field name="group" ref="tax_group_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_purchase_investment">
+            <field name="rule" ref="fp_intra_purchase"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_extra_purchase_normal">
+            <field name="rule" ref="fp_extra_purchase"/>
+            <field name="tax" ref="iva_sop_importacion"/>
+            <field name="group" ref="tax_group_purchase"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_extra_purchase_investment">
+            <field name="rule" ref="fp_extra_purchase"/>
+            <field name="tax" ref="iva_sop_importacion_inv"/>
+            <field name="group" ref="tax_group_purchase_investment"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf7_sale">
+            <field name="rule" ref="fp_irpf7_sale"/>
+            <field name="tax" ref="irpf_7_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_line_irpf2_sale">
+            <field name="rule" ref="fp_irpf2_sale"/>
+            <field name="tax" ref="irpf_2_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template"
+                id="fp_line_irpf1_sale">
+            <field name="rule" ref="fp_irpf1_sale"/>
+            <field name="tax" ref="irpf_1_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_extra_sale">
+            <field name="rule" ref="fp_extra_sale"/>
+            <field name="tax" ref="iva_rep_exportaciones"/>
+            <field name="group" ref="tax_group_sale"/>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,40 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.import:"
+msgid "No journal found for the bank account \"%(account)s\"."
+msgstr "Kein Journal für das Bankkonto \"%(account)s\" gefunden."
+
+msgctxt "error:account.statement.import:"
+msgid "The OFX file is not a statement."
+msgstr "Die OFX-Datei ist kein Auszug."
+
+msgctxt "error:account.statement.import:"
+msgid ""
+"The journal \"%(journal)s\" must have the currency \"%(ofx_currency)s\" "
+"instead of \"%(currency)s\"."
+msgstr ""
+"Das Journal \"%(journal)s\" muss in der Währung \"%(ofx_currency)s\" und "
+"nicht in \"%(currency)s\" sein."
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_checknum"
+msgid "Check Number"
+msgstr "Check Number"
+
+msgctxt "model:account.statement.origin.information,string:information_mcc"
+msgid "Merchant Category Code (MCC)"
+msgstr "Merchant Category Code (MCC)"
+
+msgctxt "model:account.statement.origin.information,string:information_sic"
+msgid "Standard Industry Code (SIC)"
+msgstr "Standard Industry Code (SIC)"
+
+msgctxt "model:account.statement.origin.information,string:information_type"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid "OFX"
+msgstr "OFX"

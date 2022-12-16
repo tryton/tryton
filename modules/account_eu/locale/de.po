@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Umsatzsteuer-ID des Unternehmens"
+
+msgctxt "field:account.ec_sales_list,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.ec_sales_list,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:account.ec_sales_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Steueridentifikator Partei"
+
+msgctxt "field:account.ec_sales_list,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.ec_sales_list,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.ec_sales_list,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Geschäftsjahr"
+
+msgctxt "field:account.ec_sales_list.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "Buchungszeitraum"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Code der EU-Verkaufsliste"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Code der EU-Verkaufsliste"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "EU-Verkaufsliste"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "Kontext der EU-Verkaufsliste"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "Zusammenfassende Meldung"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "Zusammenfassende Meldung"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "EU-Verkaufsliste"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "EU-Verkaufsliste"

@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user.login.sms_code:"
+msgid "%(name)s code %(code)s"
+msgstr "%(name)s ລະຫັດ %(code)s"
+
+msgctxt "error:res.user:"
+msgid "Wrong mobile."
+msgstr "ໂທລະສັບມືຖືບໍ່ຖືກ"
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "ໂທລະສັບມືຖື"
+
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:res.user.login.sms_code,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:res.user.login.sms_code,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:res.user.login.sms_code,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:res.user.login.sms_code,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr "ລະຫັດຜູ້ໃຊ້"
+
+msgctxt "field:res.user.login.sms_code,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:res.user.login.sms_code,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS"
+msgstr "ເລກໂທລະສັບ ທີ່ຮອງຮັບ ການຮັບຂໍ້ຄວາມສັ້ນ"
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr "ລະຫັດຂໍ້ຄວາມສັ້ນ"
