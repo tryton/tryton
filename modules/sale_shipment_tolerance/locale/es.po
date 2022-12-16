@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Tolerancia de envío excesivo de venta"
+
+msgctxt "field:sale.configuration,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Tolerancia de falta de envío de venta"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Tolerancia de envío excesivo de venta"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Tolerancia de falta de envío de venta"
+
+msgctxt "help:sale.configuration,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "El porcentaje de cantidad excesiva que se acepta."
+
+msgctxt "help:sale.configuration,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "El porcentaje de cantidad mínima a aceptar como enviado."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "El porcentaje de cantidad excesiva que se acepta."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "El porcentaje de cantidad mínima a aceptar como enviado."
+
+msgctxt "model:ir.message,text:msg_over_shipment"
+msgid ""
+"The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "
+"shipped > %(maximal)s )."
+msgstr ""
+"La línea de venta \"%(line)s\" excede la tolerancia de envío (%(shipped)s "
+"enviado > %(maximal)s )."
+
+msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgid "Sale Configuration Shipment Tolerance"
+msgstr "Configuración de la tolerancia de envío de venta"
+
+msgctxt "view:sale.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.configuration:"
+msgid "Sale Shipment Tolerance"
+msgstr "Tolerancia de envío de venta"

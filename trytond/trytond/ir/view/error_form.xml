@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="origin"/>
+    <field name="rec_name" colspan="3"/>
+
+    <separator name="message" colspan="4"/>
+    <field name="message" colspan="4"/>
+
+    <separator name="description" colspan="4"/>
+    <field name="description" colspan="4"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="open" icon="tryton-back"/>
+        <button name="process" icon="tryton-forward"/>
+        <button name="solve" icon="tryton-close"/>
+    </group>
+</form>

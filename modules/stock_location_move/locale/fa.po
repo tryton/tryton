@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr "اختصاص داده شده توسط"
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr "قابل جابجایی"
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "model:ir.message,text:msg_location_already_assigned"
+msgid ""
+"The location \"%(location)s\" has already been assigned by "
+"\"%(assigned_by)s\"."
+msgstr "مکان : \"%s\" در حال حاضر توسط : \"%s\" اختصاص داده شده است."
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable"
+msgid "Movable location"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
+msgid "Any location"
+msgstr ""
+
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "مکان موجودی قابل جابجایی"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr "مکان - محموله داخلی"
