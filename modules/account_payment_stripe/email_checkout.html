@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <py:for each="payment in records">
+        <div style="display: block; text-align: center">
+            <div>
+                <h1>Authorization needed</h1>
+                <p>You need to authorize the payment ${payment.rec_name}.</p>
+                <a href="${payment.stripe_checkout_url}"
+                   style="display: block; text-decoration: none;
+                          width: max-content; margin: 0 auto;
+                          padding: 0.5em 1em; font-size:2em;
+                          border: 1px solid #2E6DA4; border-radius: 4px;
+                          color: #FFF; background-color: #337AB7;">
+                    Checkout
+                </a>
+            </div>
+            <hr style="margin-top: 20px;
+            border-style: solid none none; border-color: #EEE"></hr>
+            <div style="font-size: 80%; color: #777">
+                <p>Button is not working? Paste this into your browser:</p>
+                <p>${payment.stripe_checkout_url}</p>
+                <p>If you didn't make this request, you can ignore this email.</p>
+            </div>
+        </div>
+        </py:for>
+    </body>
+</html>

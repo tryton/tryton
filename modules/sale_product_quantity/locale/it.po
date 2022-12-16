@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr "Decimali della quantià di vendita"
+
+msgctxt "field:product.product,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr "Quantità minima di vendita"
+
+msgctxt "field:product.product,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr "Quantità di arrotondamento vendita"
+
+msgctxt "field:product.template,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr "Decimali della quantià di vendita"
+
+msgctxt "field:product.template,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr "Quantità minima di vendita"
+
+msgctxt "field:product.template,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr "Quantità di arrotondamento vendita"
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_minimal"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is too small, you must set at "
+"least %(minimum)s."
+msgstr ""
+"La quantità %(quantity)s della riga %(line)s è troppo piccola, devi "
+"impostare almeno %(minimum)s."
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_rounding"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is not valid, you must set "
+"multiple of %(rounding)s."
+msgstr ""
+"La quantità %(quantity)s della riga %(line)s non è valida, è necessario "
+"impostare multipli di %(rounding)s."

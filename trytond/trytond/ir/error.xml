@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="error_view_list">
+            <field name="model">ir.error</field>
+            <field name="type">tree</field>
+            <field name="name">error_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="error_view_form">
+            <field name="model">ir.error</field>
+            <field name="type">form</field>
+            <field name="name">error_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_error_form">
+            <field name="name">Errors</field>
+            <field name="res_model">ir.error</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_error_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="error_view_list"/>
+            <field name="act_window" ref="act_error_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_error_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="error_view_form"/>
+            <field name="act_window" ref="act_error_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_error_form_domain_open">
+            <field name="name">Open</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_error_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_error_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_error_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_error_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_error_form"/>
+        </record>
+
+        <menuitem
+            parent="ir.menu_scheduler"
+            action="act_error_form"
+            sequence="50"
+            id="menu_error_form"/>
+
+        <record model="ir.model.button" id="error_open_button">
+            <field name="name">open</field>
+            <field name="string">Open</field>
+            <field name="model" search="[('model', '=', 'ir.error')]"/>
+        </record>
+
+        <record model="ir.model.button" id="error_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'ir.error')]"/>
+        </record>
+
+        <record model="ir.model.button" id="error_solve_button">
+            <field name="name">solve</field>
+            <field name="string">Solve</field>
+            <field name="model" search="[('model', '=', 'ir.error')]"/>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_error_clean">
+            <field name="method">ir.error|clean</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">months</field>
+        </record>
+    </data>
+</tryton>

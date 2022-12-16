@@ -1,0 +1,65 @@
+Version 6.4.2 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.1 - 2022-10-17
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Add approving employee on refunds
+* Add setup intent expire delay
+* Add support for Python 3.10
+* Remove support for Python 3.6
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Remove unused zip code
+* Update Stripe Customer
+* Add preferred locales to Customer
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Add wizard to delete customer source
+* Add webhook for payment intent canceled
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add configuration for max_network_retries
+* Add refund of payment
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* New identifier button toggles webhook
+* Add fetch events cron task
+* Update checkout.html to use Stripe.js and Intent
+* Manage Setup Intent and Payment Intent for SCA
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add cache for sources
+* Use queue to charge and capture
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Support all charge events
+* Support dispute
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add webhook for charge and source
+* Allow to select customer source on payment
+* Allow to create customer with ID
+* Allow to create manual payment
+* Add capture
+
+Version 4.4.0 - 2017-05-01
+* Initial release
