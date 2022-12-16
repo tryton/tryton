@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="type"/>
+    <field name="type" colspan="3"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="amount_writeoff"/>
+    <field name="amount_writeoff"/>
+    <label name="currency_writeoff"/>
+    <field name="currency_writeoff"/>
+    <label name="journal_writeoff"/>
+    <field name="journal_writeoff"/>
+    <field name="lines" colspan="4"
+        view_ids="account_invoice.move_line_view_list_to_pay"/>
+    <field name="payment_lines" colspan="4"
+        view_ids="account_invoice.move_line_view_list_payment"/>
+    <field name="company" colspan="4" invisible="1"/>
+    <field name="invoice" colspan="4" invisible="1"/>
+    <field name="date" colspan="4" invisible="1"/>
+</form>

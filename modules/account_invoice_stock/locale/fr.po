@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
+
+msgctxt "field:account.invoice.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.invoice.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.invoice.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Ligne de facture"
+
+msgctxt "field:account.invoice.line-stock.move,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Mouvement de stock"
+
+msgctxt "field:account.invoice.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.invoice.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Ligne de facture - Mouvement de stock"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Stock"
