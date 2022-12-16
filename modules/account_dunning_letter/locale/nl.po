@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Herinnering afdrukken"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Herinneringsbrief"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Vervaldag"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Kosten:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Openstaande betalingen ontvangen"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Herinnering"

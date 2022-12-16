@@ -1,0 +1,104 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Limite de crédito total padrão"
+
+msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Montante Padrão Limite de Crédito"
+
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos Decimais da Moeda"
+
+msgctxt "field:account.dunning.level,credit_limit:"
+msgid "Credit Limit"
+msgstr "Limite de crédito"
+
+msgctxt "field:party.party,credit_amount:"
+msgid "Credit Amount"
+msgstr "Montante de Crédito"
+
+msgctxt "field:party.party,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "Montante limite de crédito"
+
+msgctxt "field:party.party,credit_limit_amounts:"
+msgid "Credit Limit Amounts"
+msgstr "Montante do Limite de Crédito"
+
+msgctxt "field:party.party,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos decimais da moeda"
+
+msgctxt "field:party.party.credit_limit_amount,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "Montante do Limite de Crédito"
+
+msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos Decimais da moeda"
+
+msgctxt "field:party.party.credit_limit_amount,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "O limite de crédito padrão para novos clientes."
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "O limite de crédito padrão para novos clientes."
+
+#, fuzzy
+msgctxt "help:account.dunning.level,credit_limit:"
+msgid "Has reached the credit limit."
+msgstr "Atingiu o limite de crédito"
+
+msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+msgid "Account Configuration Default Credit Limit Amount"
+msgstr "Configuração de Conta Montante Padrão Limite de Crédito"
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr "A pessoa \"%(party)s\" atingiu o limite de crédito de %(limit)s."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr ""
+"A pessoa \"%(party)s\" atingiu o nível de limite de crédito de %(dunning)s."
+
+msgctxt "model:party.party.credit_limit_amount,name:"
+msgid "Party Credit Limit Amount"
+msgstr "Montante Limite de Crédito da Pessoa"
+
+msgctxt "model:res.group,name:group_credit_limit"
+msgid "Account Credit Limit"
+msgstr "Conta de Limite de Crédito"
+
+msgctxt "view:account.configuration:"
+msgid "Credit Limit"
+msgstr "Limite de crédito"
+
+msgctxt "view:party.party:"
+msgid "Credit Limit"
+msgstr "Limite de crédito"

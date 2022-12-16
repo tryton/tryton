@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Organizacijos mokesčių mokėtojo identifikatorius"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Kontrahento mokesčių mokėtojo identifikatorius"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Finansiniai metai"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "Periodas"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "ES pardavimų sąrašo kodas"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "ES pardavimų sąrašo kodas"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "ES pardavimų sąrašas"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "ES pardavimų sąrašo kontekstas"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "ES pardavimų sąrašas"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "ES pardavimų sąrašas"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "ES pardavimų sąrašas"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "ES pardavimų sąrašas"

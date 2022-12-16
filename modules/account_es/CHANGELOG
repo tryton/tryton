@@ -1,0 +1,52 @@
+Version 6.0.3 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.2 - 2021-09-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.1 - 2021-05-11
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Add VAT book report
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Report credit note on modification tax codes
+* Remove support for Python 3.5
+* Compute ES VAT List and EC Operation List in company currency
+* Link recargo tax with its related VAT taxes
+* Add purchase service tax group
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add sale service tax group
+* Use date filter in Spanish EC Operation list
+* Add Regimen especial agricultura, ganaderia y pesca tax rules
+* Allow requests for advancements on SEPA payments
+* Exclude taxes from other reports on Spanish VAT List
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Include Income Statement as part of Balance Sheet
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add Spanish VAT list and EC Operation List
+* Add amount to compensate from previous periods in 303 report
+* Update model 303 to new format
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Allow to export tax reports as file
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+* Remove unnecesary account and account types
+* Simplify tax and tax code definition
+
+Version 4.6.0 - 2017-10-30
+* Initial release

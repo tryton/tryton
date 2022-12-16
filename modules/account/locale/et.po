@@ -1,0 +1,4697 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Valuutasumma"
+
+msgctxt "field:account.account,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.account,childs:"
+msgid "Children"
+msgstr "Alamkontod"
+
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "Suletud"
+
+msgctxt "field:account.account,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.account,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "field:account.account,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Numbrikohtade arv"
+
+msgctxt "field:account.account,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.account,debit_type:"
+msgid "Debit Type"
+msgstr "Deebet"
+
+msgctxt "field:account.account,deferral:"
+msgid "Deferral"
+msgstr "Viivitus"
+
+msgctxt "field:account.account,deferrals:"
+msgid "Deferrals"
+msgstr "Viivitused"
+
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Pearaamatu saldod"
+
+msgctxt "field:account.account,left:"
+msgid "Left"
+msgstr "Vasak"
+
+msgctxt "field:account.account,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.account,note:"
+msgid "Note"
+msgstr "Märkus"
+
+msgctxt "field:account.account,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr "Vastaspool vajalik"
+
+msgctxt "field:account.account,reconcile:"
+msgid "Reconcile"
+msgstr "Saldeeri"
+
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr "Asendatud"
+
+msgctxt "field:account.account,right:"
+msgid "Right"
+msgstr "Parem"
+
+msgctxt "field:account.account,second_currency:"
+msgid "Secondary Currency"
+msgstr "Teine valuuta"
+
+msgctxt "field:account.account,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Sekundaarse valuuta numbrikohtade arv"
+
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.account,taxes:"
+msgid "Default Taxes"
+msgstr "Vaikimisi maksud"
+
+msgctxt "field:account.account,template:"
+msgid "Template"
+msgstr "Mall"
+
+msgctxt "field:account.account,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta mall üle"
+
+msgctxt "field:account.account,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.account-account.tax,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.account-account.tax,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.account.deferral,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Sekundaarse valuuta väärtus"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.account.deferral,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.account.deferral,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbrikohtade arv"
+
+msgctxt "field:account.account.deferral,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:account.account.deferral,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr "Sekundaarne Valuuta"
+
+msgctxt "field:account.account.deferral,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Sekundaarse valuuta numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Valuutasumma"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Suletud"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "Osapool"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "Teine valuuta"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Sekundaarse valuuta numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.account.template,childs:"
+msgid "Children"
+msgstr "Alamkontod"
+
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "Suletud"
+
+msgctxt "field:account.account.template,code:"
+msgid "Code"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "field:account.account.template,debit_type:"
+msgid "Debit Type"
+msgstr "Deebet"
+
+msgctxt "field:account.account.template,deferral:"
+msgid "Deferral"
+msgstr "Viivitus"
+
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Pearaamatu saldod"
+
+msgctxt "field:account.account.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.account.template,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr "Osapool nõutud"
+
+msgctxt "field:account.account.template,reconcile:"
+msgid "Reconcile"
+msgstr "Ühtlusta"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr "Asenda"
+
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.account.template,taxes:"
+msgid "Default Taxes"
+msgstr "Maksud"
+
+msgctxt "field:account.account.template,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.account.template-account.tax.template,account:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "field:account.account.template-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Maksuvorm"
+
+msgctxt "field:account.account.type,amount:"
+msgid "Amount"
+msgstr "Summa"
+
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "Summa"
+
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr "Varad"
+
+msgctxt "field:account.account.type,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.account.type,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.account.type,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuste arv"
+
+msgctxt "field:account.account.type,debt:"
+msgid "Debt"
+msgstr ""
+
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "Kulu"
+
+msgctxt "field:account.account.type,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.account.type,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "Tasumine"
+
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "Laekumine"
+
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "Müügitulu"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr "Aruanne"
+
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "Ladu"
+
+msgctxt "field:account.account.type,template:"
+msgid "Template"
+msgstr "Mall"
+
+msgctxt "field:account.account.type,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr "Varad"
+
+msgctxt "field:account.account.type.template,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.account.type.template,debt:"
+msgid "Debt"
+msgstr ""
+
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "Kulu"
+
+msgctxt "field:account.account.type.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.account.type.template,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "Tasumine"
+
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "Laekumine"
+
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "Müügitulu"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr "Aruanne"
+
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "Ladu"
+
+msgctxt "field:account.aged_balance,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.aged_balance,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.aged_balance,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.aged_balance,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.aged_balance,term0:"
+msgid "Now"
+msgstr "Kohe"
+
+msgctxt "field:account.aged_balance,term1:"
+msgid "First Term"
+msgstr "Esimene tähtaeg"
+
+msgctxt "field:account.aged_balance,term2:"
+msgid "Second Term"
+msgstr "Teine tähtaeg"
+
+msgctxt "field:account.aged_balance,term3:"
+msgid "Third Term"
+msgstr "Kolmas tähtaeg"
+
+msgctxt "field:account.aged_balance.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.aged_balance.context,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.aged_balance.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.aged_balance.context,term1:"
+msgid "First Term"
+msgstr "Esimene tähtaeg"
+
+msgctxt "field:account.aged_balance.context,term2:"
+msgid "Second Term"
+msgstr "Teine tähtaeg"
+
+msgctxt "field:account.aged_balance.context,term3:"
+msgid "Third Term"
+msgstr "Kolmas tähtaeg"
+
+msgctxt "field:account.aged_balance.context,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.aged_balance.context,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgid "Comparison"
+msgstr "Ettevõte"
+
+msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.balance_sheet.context,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.configuration,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "Vaikimisi võlgade konto"
+
+msgctxt "field:account.configuration,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "Vaikimisi nõuete konto"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "Kliendi maksu reegel"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "Hankija maksu reegel"
+
+#, fuzzy
+msgctxt "field:account.configuration,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Saldeeri read"
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "Maksu ümardus"
+
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "Vaikimisi võlgade konto"
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "Vaikimisi nõuete konto"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_tax_rule,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "Kliendi maksu reegel"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "Hankija maksu reegel"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Saldeeri read"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "Meetod"
+
+msgctxt "field:account.create_chart.account,account_template:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "field:account.create_chart.account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.create_chart.properties,account_payable:"
+msgid "Default Payable Account"
+msgstr "Võlgade konto"
+
+msgctxt "field:account.create_chart.properties,account_receivable:"
+msgid "Default Receivable Account"
+msgstr "Nõuete konto"
+
+msgctxt "field:account.create_chart.properties,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.fiscalyear,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.fiscalyear,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
+
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "Ikoon"
+
+msgctxt "field:account.fiscalyear,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.fiscalyear,periods:"
+msgid "Periods"
+msgstr "Perioodid"
+
+msgctxt "field:account.fiscalyear,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "Postita kande jada"
+
+msgctxt "field:account.fiscalyear,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.fiscalyear,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "Kreeditkonto"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "Deebetkonto"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Periood"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
+msgid "End Day"
+msgstr "Lõppkuupäev"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
+msgid "Frequency"
+msgstr "Jada"
+
+msgctxt "field:account.fiscalyear.create_periods.start,interval:"
+msgid "Interval"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.renew.start,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.fiscalyear.renew.start,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.fiscalyear.renew.start,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Previous Fiscalyear"
+msgstr "Eelmine majandusaasta"
+
+msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
+msgid "Reset Sequences"
+msgstr "Käesolev majandusaasta"
+
+msgctxt "field:account.fiscalyear.renew.start,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.general_ledger.account,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:account.general_ledger.account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.general_ledger.account,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.general_ledger.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.general_ledger.account,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,debit_type:"
+msgid "Debit Type"
+msgstr "Deebet"
+
+msgctxt "field:account.general_ledger.account,end_balance:"
+msgid "End Balance"
+msgstr "Lõppsaldo"
+
+msgctxt "field:account.general_ledger.account,end_credit:"
+msgid "End Credit"
+msgstr "Kreeditsaldo"
+
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.general_ledger.account,end_debit:"
+msgid "End Debit"
+msgstr "Deebetsaldo"
+
+msgctxt "field:account.general_ledger.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "Pearaamatu kontode saldod"
+
+msgctxt "field:account.general_ledger.account,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.general_ledger.account,start_balance:"
+msgid "Start Balance"
+msgstr "Algsaldo"
+
+msgctxt "field:account.general_ledger.account,start_credit:"
+msgid "Start Credit"
+msgstr "Kreedit algsaldo"
+
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.general_ledger.account,start_debit:"
+msgid "Start Debit"
+msgstr "Deebet algsaldo"
+
+msgctxt "field:account.general_ledger.account,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.general_ledger.account.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.general_ledger.account.context,end_period:"
+msgid "End Period"
+msgstr "Lõpp-periood"
+
+msgctxt "field:account.general_ledger.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.general_ledger.account.context,from_date:"
+msgid "From Date"
+msgstr "Alates kuupäevast"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.general_ledger.account.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.general_ledger.account.context,start_period:"
+msgid "Start Period"
+msgstr "Algus-periood"
+
+msgctxt "field:account.general_ledger.account.context,to_date:"
+msgid "To Date"
+msgstr "Kuni kuupäevani"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "Lõppsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "Kreeditsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "Deebetsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "Osapool"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "Algsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "Kreedit algsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "Deebet algsaldo"
+
+msgctxt "field:account.general_ledger.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account_party:"
+msgid "Account Party"
+msgstr "Võlgade konto"
+
+msgctxt "field:account.general_ledger.line,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.general_ledger.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.general_ledger.line,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.general_ledger.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.general_ledger.line,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.general_ledger.line,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:account.general_ledger.line,description:"
+msgid "Description"
+msgstr "Kulum"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,internal_balance:"
+msgid "Internal Balance"
+msgstr "Proovibilanss"
+
+msgctxt "field:account.general_ledger.line,move:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "field:account.general_ledger.line,move_description:"
+msgid "Move Description"
+msgstr "Kande kirjeldus"
+
+msgctxt "field:account.general_ledger.line,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:account.general_ledger.line,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.general_ledger.line,party_required:"
+msgid "Party Required"
+msgstr "Osapool vajalik"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "Kontroll"
+
+msgctxt "field:account.general_ledger.line,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.general_ledger.line.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.general_ledger.line.context,end_period:"
+msgid "End Period"
+msgstr "Lõpp-periood"
+
+msgctxt "field:account.general_ledger.line.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.general_ledger.line.context,from_date:"
+msgid "From Date"
+msgstr "Alates kuupäevast"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.general_ledger.line.context,party_cumulate:"
+msgid "Cumulate per Party"
+msgstr "Kumulatiivselt osapoolte kaupa"
+
+msgctxt "field:account.general_ledger.line.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.general_ledger.line.context,start_period:"
+msgid "Start Period"
+msgstr "Algus-periood"
+
+msgctxt "field:account.general_ledger.line.context,to_date:"
+msgid "To Date"
+msgstr "Kuni kuupäevani"
+
+msgctxt "field:account.income_statement.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "Võrdlus"
+
+msgctxt "field:account.income_statement.context,end_period:"
+msgid "End Period"
+msgstr "Lõpp-periood"
+
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "Lõpp-periood"
+
+msgctxt "field:account.income_statement.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "Alates kuupäevast"
+
+msgctxt "field:account.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "Alates kuupäevast"
+
+msgctxt "field:account.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "Postitatud kanne"
+
+msgctxt "field:account.income_statement.context,start_period:"
+msgid "Start Period"
+msgstr "Algus-periood"
+
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "Algus-periood"
+
+msgctxt "field:account.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "Kuni kuupäevani"
+
+msgctxt "field:account.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "Kuni kuupäevani"
+
+msgctxt "field:account.journal,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.journal,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.journal,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "field:account.journal,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.journal,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:account.journal,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.journal,sequence:"
+msgid "Sequence"
+msgstr "Jada"
+
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "Jada"
+
+msgctxt "field:account.journal,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.journal.open_cash.context,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.journal.open_cash.context,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.journal.period,icon:"
+msgid "Icon"
+msgstr "Ikoon"
+
+msgctxt "field:account.journal.period,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.journal.period,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:account.journal.period,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "Jada"
+
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move,date:"
+msgid "Effective Date"
+msgstr "Kehtiv alates"
+
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "Kulum"
+
+msgctxt "field:account.move,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:account.move,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:account.move,post_date:"
+msgid "Post Date"
+msgstr "Postituse kuupäev"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr "Postituse number"
+
+msgctxt "field:account.move,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.move.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr "Valuuta väärtus"
+
+msgctxt "field:account.move.line,amount_currency_digits:"
+msgid "Amount Currency Digits"
+msgstr "Väärtuse numbriline arv"
+
+msgctxt "field:account.move.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Sekundaarse valuuta väärtus"
+
+#, fuzzy
+msgctxt "field:account.move.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move.line,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.move.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.move.line,date:"
+msgid "Effective Date"
+msgstr "Kehtiv alates"
+
+msgctxt "field:account.move.line,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.move.line,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move.line,maturity_date:"
+msgid "Maturity Date"
+msgstr "Aegumise kuupäev"
+
+msgctxt "field:account.move.line,move:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "Kande selgitus"
+
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr "Kande alus"
+
+msgctxt "field:account.move.line,move_state:"
+msgid "Move State"
+msgstr "Kande staatus"
+
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:account.move.line,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr "Osapool vajalik"
+
+msgctxt "field:account.move.line,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:account.move.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "Kontroll"
+
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr "Nettimine delegeeritud"
+
+msgctxt "field:account.move.line,second_currency:"
+msgid "Second Currency"
+msgstr "Sekundaarne valuuta"
+
+msgctxt "field:account.move.line,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Sekundaarse valuuta numbriväärtuse arv"
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
+msgstr "Sekundaarne valuuta vajalik"
+
+msgctxt "field:account.move.line,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.move.line,tax_lines:"
+msgid "Tax Lines"
+msgstr "Maksu read"
+
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "Kulum"
+
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr "Operatsioon"
+
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr "Osapool vajalik"
+
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "field:account.move.open_journal.ask,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move.open_journal.ask,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "Kreeditkonto"
+
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "Deebetkonto"
+
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "Maha kandmine"
+
+#, fuzzy
+msgctxt "field:account.move.reconciliation,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move.reconciliation,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr "Delegeeritud"
+
+msgctxt "field:account.move.reconciliation,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.move.reconciliation,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "Võtmesõna"
+
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr "Numbrivääruse arv"
+
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "Vajalik"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr "Rida"
+
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.open_chart.start,posted:"
+msgid "Posted Moves"
+msgstr "Postittaud kanded"
+
+msgctxt "field:account.period,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.period,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
+
+msgctxt "field:account.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "Ikoon"
+
+msgctxt "field:account.period,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.period,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "Postitatud kande jada"
+
+msgctxt "field:account.period,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.period,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:account.period,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.reconcile.show,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "Osapooled"
+
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write Off"
+msgstr "Maha kandmine"
+
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.tax,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.tax,credit_base_amount:"
+msgid "Credit Base Amount"
+msgstr "Kreedit baasväärtus"
+
+msgctxt "field:account.tax,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "Kreeditarve konto"
+
+msgctxt "field:account.tax,credit_tax_amount:"
+msgid "Credit Tax Amount"
+msgstr "Kreedit maksukonto"
+
+msgctxt "field:account.tax,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.tax,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.tax,group:"
+msgid "Group"
+msgstr "Grupp"
+
+msgctxt "field:account.tax,invoice_account:"
+msgid "Invoice Account"
+msgstr "Arve konto"
+
+msgctxt "field:account.tax,invoice_base_amount:"
+msgid "Invoice Base Amount"
+msgstr "Arve baasväärtus"
+
+msgctxt "field:account.tax,invoice_tax_amount:"
+msgid "Invoice Tax Amount"
+msgstr "Arve maksukonto"
+
+msgctxt "field:account.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "Õiguslik märge"
+
+msgctxt "field:account.tax,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "Määr"
+
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.tax,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+msgctxt "field:account.tax,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "Uuenda ühiku hind"
+
+msgctxt "field:account.tax.code,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:account.tax.code,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.code,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.tax.code,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.tax.code,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.tax.code,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.tax.code,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.tax.code,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.tax.code,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.code,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax.code,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.tax.code,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+msgctxt "field:account.tax.code.line,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.code.line,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.tax.code.line,operator:"
+msgid "Operator"
+msgstr "Käitleja"
+
+msgctxt "field:account.tax.code.line,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.tax.code.line,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.tax.code.line,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+msgctxt "field:account.tax.code.line,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax.code.line.template,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.code.line.template,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.tax.code.line.template,operator:"
+msgid "Operator"
+msgstr "Käitleja"
+
+msgctxt "field:account.tax.code.line.template,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.tax.code.line.template,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "field:account.tax.code.open_chart.start,method:"
+msgid "Method"
+msgstr "Meetod"
+
+msgctxt "field:account.tax.code.open_chart.start,periods:"
+msgid "Periods"
+msgstr "Perioodid"
+
+msgctxt "field:account.tax.code.template,account:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "field:account.tax.code.template,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.tax.code.template,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.tax.code.template,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.tax.code.template,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.tax.code.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.code.template,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax.group,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "Liik"
+
+msgctxt "field:account.tax.group,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.line,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.tax.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:account.tax.line,move_line:"
+msgid "Move Line"
+msgstr "Kande rida"
+
+msgctxt "field:account.tax.line,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.tax.line,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "Rida"
+
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.tax.line.template,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax.rule,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "Liik"
+
+msgctxt "field:account.tax.rule,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.tax.rule,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.rule,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
+
+msgctxt "field:account.tax.rule.line,group:"
+msgid "Tax Group"
+msgstr "Maksugrupp"
+
+msgctxt "field:account.tax.rule.line,keep_origin:"
+msgid "Keep Origin"
+msgstr "Jäta algne"
+
+msgctxt "field:account.tax.rule.line,origin_tax:"
+msgid "Original Tax"
+msgstr "Algne maks"
+
+msgctxt "field:account.tax.rule.line,rule:"
+msgid "Rule"
+msgstr "Reegel"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax.rule.line,tax:"
+msgid "Substitution Tax"
+msgstr "Asendusmaks"
+
+msgctxt "field:account.tax.rule.line,template:"
+msgid "Template"
+msgstr "Vorm"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "Kirjuta vorm üle"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
+
+msgctxt "field:account.tax.rule.line.template,group:"
+msgid "Tax Group"
+msgstr "Maksugrupp"
+
+msgctxt "field:account.tax.rule.line.template,keep_origin:"
+msgid "Keep Origin"
+msgstr "Säilita algne"
+
+msgctxt "field:account.tax.rule.line.template,origin_tax:"
+msgid "Original Tax"
+msgstr "Algne maks"
+
+msgctxt "field:account.tax.rule.line.template,rule:"
+msgid "Rule"
+msgstr "Reegel"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax.rule.line.template,tax:"
+msgid "Substitution Tax"
+msgstr "Asendusmaks"
+
+msgctxt "field:account.tax.rule.template,account:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "Liik"
+
+msgctxt "field:account.tax.rule.template,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.tax.rule.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.template,account:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "field:account.tax.template,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.template,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:account.tax.template,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "Kreeditarve konto"
+
+msgctxt "field:account.tax.template,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:account.tax.template,group:"
+msgid "Group"
+msgstr "Grupp"
+
+msgctxt "field:account.tax.template,invoice_account:"
+msgid "Invoice Account"
+msgstr "Arve konto"
+
+msgctxt "field:account.tax.template,legal_notice:"
+msgid "Legal Notice"
+msgstr "Õiguslik märge"
+
+msgctxt "field:account.tax.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.tax.template,parent:"
+msgid "Parent"
+msgstr "Ülemjaous"
+
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "Määr"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:account.tax.template,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "Uuenda ühiku hind"
+
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr "Tulemus"
+
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr "Taksud"
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
+
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr "Baas"
+
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr "Õiguslik märge"
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "field:account.update_chart.start,account:"
+msgid "Root Account"
+msgstr "Aluskonto"
+
+msgctxt "field:party.party,account_payable:"
+msgid "Account Payable"
+msgstr "Võlgade konto"
+
+msgctxt "field:party.party,account_receivable:"
+msgid "Account Receivable"
+msgstr "Nõuete konto"
+
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "field:party.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
+msgctxt "field:party.party,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "Kliendi maksu reegel"
+
+msgctxt "field:party.party,payable:"
+msgid "Payable"
+msgstr "Tasumine"
+
+msgctxt "field:party.party,payable_today:"
+msgid "Payable Today"
+msgstr "Tasumine täna"
+
+msgctxt "field:party.party,receivable:"
+msgid "Receivable"
+msgstr "Laekumine"
+
+msgctxt "field:party.party,receivable_today:"
+msgid "Receivable Today"
+msgstr "Laekumine täna"
+
+msgctxt "field:party.party,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "Hankija maksu reegel"
+
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "Võlgade konto"
+
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "Nõuete konto"
+
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "Kliendi maksu reegel"
+
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "Ospaool"
+
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "Hankija maksu reegel"
+
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr "Märgi, vältimaks kande postitamist kontole."
+
+msgctxt "help:account.account,debit_type:"
+msgid "The type used if not empty and debit > credit."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "Näita ainult pearaamatu aruande saldot."
+
+msgctxt "help:account.account,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr "Luba selle konto kande ridade kontroll."
+
+msgctxt "help:account.account,second_currency:"
+msgid ""
+"Force all moves for this account \n"
+"to have this secondary currency."
+msgstr ""
+"Sunni kõigile selle konto kannetele \n"
+"see sekundaarne valuuta."
+
+#, fuzzy
+msgctxt "help:account.account,taxes:"
+msgid ""
+"Default tax for manual encoding of move lines\n"
+"for journal types: \"expense\" and \"revenue\"."
+msgstr ""
+"Vaikimisi maks käsikodeerimiseks kande ridadel \n"
+"registri tüüpidele: \"kulu\" ja \"müügitulu\"."
+
+msgctxt "help:account.account,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgi et kirjutada üle vormi definitsioon."
+
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr "Märgista et vältida kontole kande postitamist."
+
+#, fuzzy
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "Näita ainult pearaamatu aruande saldot"
+
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr "Luba selle konto kande ridu saldeerida."
+
+msgctxt "help:account.account.type,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+msgctxt "help:account.account.type,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista et kirjutada üle vormi määratlus"
+
+msgctxt "help:account.account.type.template,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.aged_balance.context,posted:"
+msgid "Only include posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgid "Only include posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+msgctxt "help:account.configuration,default_customer_tax_rule:"
+msgid "Default customer tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.configuration,default_supplier_tax_rule:"
+msgid "Default supplier tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
+msgid ""
+"The day of the month on which periods end.\n"
+"Months with fewer days will end on the last day."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Used as reference for fiscalyear configuration."
+msgstr "Kasutatakse viitena majandusaasta seadistamisel."
+
+msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
+msgid "If checked, new sequences will be created."
+msgstr "Kui märgistatud, luuakse uued jadad."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,journal:"
+msgid "Only included moves from the journal."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,posted:"
+msgid "Only included posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,journal:"
+msgid "Only included moves from the journal."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,posted:"
+msgid "Only included posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number."
+msgstr "Kasutusel ka kui on Folio number"
+
+#, fuzzy
+msgctxt "help:account.move.line,amount_second_currency:"
+msgid "The amount expressed in a second currency."
+msgstr "Väärtus väljendatud sekundaarses valuutas."
+
+msgctxt "help:account.move.line,maturity_date:"
+msgid ""
+"This field is used for payable and receivable lines. \n"
+"You can put the limit date for the payment."
+msgstr ""
+"Seda välja kasutatakse nõuete ja kohustuste ridade puhul. \n"
+"Sa võid määrata maksele piirkuupäeva."
+
+#, fuzzy
+msgctxt "help:account.move.line,second_currency:"
+msgid "The second currency."
+msgstr "Sekundaarne valuuta"
+
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "Pythoni tunnus, mis määratakse võtmetunnuseks."
+
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgstr ""
+"Võtme tunnuste väärtuste asendused defineerida sümbolite vahel ('{' ja '}')"
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
+msgstr "'Osapool' võtmesõna nimetus."
+
+#, fuzzy
+msgctxt "help:account.move.reconciliation,date:"
+msgid "Highest date of the reconciled lines."
+msgstr "Saldeeritud ridade kõrgeim kuupäev."
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr "Rida millele nettimise staatus on delegeeritud"
+
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today."
+msgstr "Tänase kuupäeva puhul jäta tühjaks"
+
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgstr ""
+"Võtme tunnuste väärtuste asendused defineerida sümbolite vahel ('{' ja '}')"
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "Kõigi lahtiste majandusaastate puhul tühjaks jätta."
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,posted:"
+msgid "Only include posted moves."
+msgstr "Näita ainult postitatud kannet"
+
+#, fuzzy
+msgctxt "help:account.tax,amount:"
+msgid "In company's currency."
+msgstr "Ettevõtte valuutas"
+
+#, fuzzy
+msgctxt "help:account.tax,description:"
+msgid "The name that will be used in reports."
+msgstr "Nimetus mida kasutatakse aruannetes"
+
+msgctxt "help:account.tax,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista, et kirjutada üle vormi määratlus"
+
+#, fuzzy
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation will be modified "
+"by this tax."
+msgstr ""
+"Kui märgistatud, siis täiendatakse edasise maksustamise puhul ühiku hinda "
+"selle maksumääraga"
+
+msgctxt "help:account.tax.code,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista, et kirjutada üle vormi määratlus"
+
+msgctxt "help:account.tax.code.line,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista, et kirjutada üle vormi määratlus"
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "Jäta kõigi avatud majandusaastate puhul tühjaks"
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,periods:"
+msgid "Leave empty for all periods of all open fiscal year."
+msgstr "Jäta kõigi avatud majandusaastate perioodide puhul tühjaks"
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "Python tunnus, mis määratletakse antud võtmetunnusega."
+
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista, et kirjutada üle vormi määratlus"
+
+msgctxt "help:account.tax.rule.line,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "Märgista et asendada esmane maks asendatava maksuga"
+
+msgctxt "help:account.tax.rule.line,origin_tax:"
+msgid ""
+"If the original tax is filled, the rule will be applied only for this tax."
+msgstr ""
+"Juhul, kui esmane maks on täidetud, rakendub reegel ainult selle maksu puhul"
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "Märgista, et kirjutada üle vormi määratlus"
+
+msgctxt "help:account.tax.rule.line.template,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "Märgista et asendada esmane maks asendatava maksuga"
+
+msgctxt "help:account.tax.rule.line.template,origin_tax:"
+msgid ""
+"If the original tax template is filled, the rule will be applied only for "
+"this tax template."
+msgstr ""
+"Juhul, kui esmane maks on täidetud, rakendub reegel ainult selle maksu puhul"
+
+msgctxt "help:party.party,customer_tax_rule:"
+msgid "Apply this rule on taxes when party is customer."
+msgstr "Rakenda seda reeglit maksudele kui osapool on klient."
+
+msgctxt "help:party.party,supplier_tax_rule:"
+msgid "Apply this rule on taxes when party is supplier."
+msgstr "Rakenda seda reeglit maksudele kui osapool on hankija."
+
+msgctxt "model:account.account,name:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "model:account.account-account.tax,name:"
+msgid "Account - Tax"
+msgstr "Konto - Maks"
+
+msgctxt "model:account.account.deferral,name:"
+msgid "Account Deferral"
+msgstr "Konto viivitus"
+
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "Võlgade konto"
+
+msgctxt "model:account.account.template,name:"
+msgid "Account Template"
+msgstr "Konto mall"
+
+msgctxt "model:account.account.template-account.tax.template,name:"
+msgid "Account Template - Tax Template"
+msgstr "Konto mall - Maksu mall"
+
+msgctxt "model:account.account.type,name:"
+msgid "Account Type"
+msgstr "Konto tüüp"
+
+msgctxt "model:account.account.type.template,name:"
+msgid "Account Type Template"
+msgstr "Konto tüübi mall"
+
+msgctxt "model:account.aged_balance,name:"
+msgid "Aged Balance"
+msgstr "Aegunud saldo"
+
+msgctxt "model:account.aged_balance.context,name:"
+msgid "Aged Balance Context"
+msgstr "Aegunud saldo sisu"
+
+msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgid "Balance Sheet Context"
+msgstr "Aegunud saldo sisu"
+
+msgctxt "model:account.balance_sheet.context,name:"
+msgid "Balance Sheet Context"
+msgstr "Aegunud saldo sisu"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "Konto seadistus"
+
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr "Konto seadistus vaikimisi konto"
+
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,name:"
+msgid "Account Configuration Default Tax Rule"
+msgstr "Konto seadistus vaikimisi konto"
+
+#, fuzzy
+msgctxt "model:account.configuration.sequence,name:"
+msgid "Account Configuration Sequence"
+msgstr "Konto seadistus"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Konto seadistus maksu ümardus"
+
+msgctxt "model:account.create_chart.account,name:"
+msgid "Create Chart"
+msgstr "Loo graafik"
+
+msgctxt "model:account.create_chart.properties,name:"
+msgid "Create Chart"
+msgstr "Loo graafik"
+
+msgctxt "model:account.create_chart.start,name:"
+msgid "Create Chart"
+msgstr "Loo graafik"
+
+msgctxt "model:account.fiscalyear,name:"
+msgid "Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "Saldo, mitteviivituv"
+
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,name:"
+msgid "Create Periods Start"
+msgstr "Loo kuu pikkused perioodid"
+
+msgctxt "model:account.fiscalyear.renew.start,name:"
+msgid "Renew Fiscal Year Start"
+msgstr "Uuenda majandusaasta algus"
+
+msgctxt "model:account.general_ledger.account,name:"
+msgid "General Ledger Account"
+msgstr "Pearaamatukonto"
+
+msgctxt "model:account.general_ledger.account.context,name:"
+msgid "General Ledger Account Context"
+msgstr "Pearaamatu konto sisu"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "Pearaamatukonto"
+
+msgctxt "model:account.general_ledger.line,name:"
+msgid "General Ledger Line"
+msgstr "Pearaamatu rida"
+
+msgctxt "model:account.general_ledger.line.context,name:"
+msgid "General Ledger Line Context"
+msgstr "Pearaamatu rea sisu"
+
+msgctxt "model:account.income_statement.context,name:"
+msgid "Income Statement Context"
+msgstr "Kasumiaruande sisu"
+
+msgctxt "model:account.journal,name:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "Raha"
+
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "Kulu"
+
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "Müügitulu"
+
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "Ladu"
+
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
+msgstr "Andmik raha sisu"
+
+msgctxt "model:account.journal.period,name:"
+msgid "Journal - Period"
+msgstr "Andmiku periood"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr "Andmiku jada"
+
+msgctxt "model:account.move,name:"
+msgid "Account Move"
+msgstr "Konto kanne"
+
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr "Tühista liikumised"
+
+msgctxt "model:account.move.line,name:"
+msgid "Account Move Line"
+msgstr "Konto kande rida"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr "Grupeeri read"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr "Konto kande rea vorm"
+
+msgctxt "model:account.move.open_journal.ask,name:"
+msgid "Open Journal Ask"
+msgstr "Ava andmik - küsi"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr "Saldeeri mahakandmine"
+
+msgctxt "model:account.move.reconcile_lines.writeoff,name:"
+msgid "Reconcile Lines Write-Off"
+msgstr "Saldeeri mahakande read"
+
+msgctxt "model:account.move.reconciliation,name:"
+msgid "Account Move Reconciliation Lines"
+msgstr "Konto kannete saldeerimise read"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr "Konto kande vorm"
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr "Koosta kanne vormi pealt"
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr "Koosta kanne vormi pealt"
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr "Konto kande vormi võtmetunnus"
+
+msgctxt "model:account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Ava kontoplaan"
+
+msgctxt "model:account.period,name:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "Saldeeri"
+
+msgctxt "model:account.tax,name:"
+msgid "Account Tax"
+msgstr "Konto maks"
+
+msgctxt "model:account.tax.code,name:"
+msgid "Tax Code"
+msgstr "Maksu kood"
+
+msgctxt "model:account.tax.code.line,name:"
+msgid "Tax Code Line"
+msgstr "Maksu koodi rida"
+
+msgctxt "model:account.tax.code.line.template,name:"
+msgid "Tax Code Line Template"
+msgstr "Maksu koodi rea vorm"
+
+msgctxt "model:account.tax.code.open_chart.start,name:"
+msgid "Open Chart of Tax Codes"
+msgstr "Ava maksu koodide loend"
+
+msgctxt "model:account.tax.code.template,name:"
+msgid "Tax Code Template"
+msgstr "Maksu koodi vorm"
+
+msgctxt "model:account.tax.group,name:"
+msgid "Tax Group"
+msgstr "Maksu grupp"
+
+msgctxt "model:account.tax.line,name:"
+msgid "Tax Line"
+msgstr "Maksu rida"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr "Konto maksu rea vorm"
+
+msgctxt "model:account.tax.rule,name:"
+msgid "Tax Rule"
+msgstr "Maksu reegel"
+
+msgctxt "model:account.tax.rule.line,name:"
+msgid "Tax Rule Line"
+msgstr "Maksu reegli rida"
+
+msgctxt "model:account.tax.rule.line.template,name:"
+msgid "Tax Rule Line Template"
+msgstr "Maksu reegli rea vorm"
+
+msgctxt "model:account.tax.rule.template,name:"
+msgid "Tax Rule Template"
+msgstr "Maksu reegli vorm"
+
+msgctxt "model:account.tax.template,name:"
+msgid "Account Tax Template"
+msgstr "Konto maksu vorm"
+
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr "Testi maksu"
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr "Testi maksu"
+
+msgctxt "model:account.update_chart.start,name:"
+msgid "Update Chart"
+msgstr "Uuenda graafikut"
+
+msgctxt "model:account.update_chart.succeed,name:"
+msgid "Update Chart"
+msgstr "Uuenda graafikut"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
+msgid "Balance Sheet"
+msgstr "Bilanss"
+
+msgctxt "model:ir.action,name:act_account_general_ledger"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_account_income_statement_tree"
+msgid "Income Statement"
+msgstr "Kasumiaruanne"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "Kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_template_tree"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "Kontotüübid"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_template_tree"
+msgid "Types"
+msgstr "Tüüp"
+
+msgctxt "model:ir.action,name:act_account_type_tree"
+msgid "Account Types"
+msgstr "Kontotüübid"
+
+msgctxt "model:ir.action,name:act_aged_balance_list"
+msgid "Aged Balance"
+msgstr "Aegunud saldo"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Viivituseta saldo"
+
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
+msgstr "Tühista liikumised"
+
+msgctxt "model:ir.action,name:act_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Ava maksu koodide loend"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Configuration"
+msgstr "Seadistus"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_periods"
+msgid "Create Periods"
+msgstr "Loo kuu pikkused perioodid"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Majandusaastad"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "Sule majandusaasta"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_form"
+msgid "General Ledger - Accounts"
+msgstr "Pearaamat - kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "Pearaamat - kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
+msgid "Accounts"
+msgstr "Kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "Pearaamatukonto"
+
+msgctxt "model:ir.action,name:act_general_ledger_line_form"
+msgid "General Ledger - Lines"
+msgstr "Pearaamatu read"
+
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr "Grupeeri read"
+
+msgctxt "model:ir.action,name:act_journal_form"
+msgid "Journals"
+msgstr "Andmikud"
+
+msgctxt "model:ir.action,name:act_journal_open_cash"
+msgid "Journals Cash"
+msgstr "Andmik raha"
+
+msgctxt "model:ir.action,name:act_journal_period_form_close"
+msgid "Close Journals - Periods"
+msgstr "Sulge andmiku- perioodid"
+
+msgctxt "model:ir.action,name:act_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Andmikud- perioodid"
+
+msgctxt "model:ir.action,name:act_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Andmikud- perioodid"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Account Moves"
+msgstr "Kanded"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_grouping"
+msgid "Grouped Account Move"
+msgstr "Konto kanne"
+
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "Konto kanne"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Account Move Lines"
+msgstr "Konto kande rida"
+
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr "Kohustuste/nõuete read"
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "Saldeeri read"
+
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr "Koosta kanne vormilt"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Moves"
+msgstr "Kanne"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account"
+msgstr "Ava kande konto"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Ava kontoplaan"
+
+msgctxt "model:ir.action,name:act_open_journal"
+msgid "Open Journal"
+msgstr "Ava reskontro"
+
+msgctxt "model:ir.action,name:act_open_tax_code"
+msgid "Open Tax Code"
+msgstr "Ava maksu kood"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "Ava tüüp"
+
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "Perioodid"
+
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "Sulge perioodid"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr "Saldeeri kontos"
+
+msgctxt "model:ir.action,name:act_reconcile_lines"
+msgid "Reconcile Lines"
+msgstr "Saldeeri read"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Mahakandmise meetodid"
+
+msgctxt "model:ir.action,name:act_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "Loo uus majandusaasta"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Codes"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "Maksu kood"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Codes"
+msgstr "Kood"
+
+msgctxt "model:ir.action,name:act_tax_code_tree2"
+msgid "Tax Codes"
+msgstr "Maksu kood"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_group_form"
+msgid "Groups"
+msgstr "Grupp"
+
+msgctxt "model:ir.action,name:act_tax_line_form"
+msgid "Tax Lines"
+msgstr "Maksu read"
+
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "model:ir.action,name:act_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Maksu reeglid"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_template_form"
+msgid "Rules"
+msgstr "Reegel"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_template_list"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "model:ir.action,name:act_unreconcile_lines"
+msgid "Unreconcile Lines"
+msgstr "De-saldeeri read"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_account_type_statement"
+msgid "Statement"
+msgstr "Aruanne"
+
+msgctxt "model:ir.action,name:report_aged_balance"
+msgid "Aged Balance"
+msgstr "Aegunud saldod"
+
+msgctxt "model:ir.action,name:report_general_journal"
+msgid "General Journal"
+msgstr "Peamine andmik"
+
+msgctxt "model:ir.action,name:report_general_ledger"
+msgid "General Ledger"
+msgstr "Pearaamat"
+
+msgctxt "model:ir.action,name:report_trial_balance"
+msgid "Trial Balance"
+msgstr "Proovibilanss"
+
+msgctxt "model:ir.action,name:wizard_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Koosta kontoplaan vormi pealt"
+
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
+msgstr "Testi maksu"
+
+msgctxt "model:ir.action,name:wizard_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Uuenda kontoplaani vormi pealt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "Tasumine"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "Laekumine"
+
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr "\"%(company)s\" jaoks on kontoplaan juba loodud."
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+"Selleks et määrata kontole \"%(konto)dele\" sekundaarne valuuta, peab see "
+"olema viivitusega."
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+"Sellesk et määrata kontole \"%(konto)dele\" sekundaarne valuuta, ei tohi "
+"konto tüüp olla \"kohustus\", \"müügitulu\", \"nõue\" ega \"kulu\"."
+
+msgctxt "model:ir.message,text:msg_cancel_line_delegated"
+msgid ""
+"The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
+"the lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+"Ei saa muuta majandusaasta \"%(majandusaasta)te\" postituse kande jada, kuna"
+" see sisaldab postitatud kandeid."
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+"Ei saa muuta perioodis\"%(periood)ides\" postituse kande jada, kuna see "
+"sisaldab postitatud kandeid."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr "Majandusaasta sulgemiseks peaavad konto \"%(konto)de\" saldod olema null."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+"Majandusaasta \"%(majandusaasta)te\" sulgemiseks tuleb sulgeda kõik "
+"varasemad majandusaastad."
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr "Perioodi \"%(periood)ide\" sulgemiseks tuleb postitada kõik kanded."
+
+msgctxt "model:ir.message,text:msg_company_change_currency"
+msgid ""
+"You cannot change the currency of a company which is associated with account"
+" moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "Ei saa luua reskontro-perioodi suletud perioodi \"%(perioodi)desse\"."
+
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+"Ei saa luua perioodi majandusaastasse \"%(majandusaasta)tesse\" kuna see on "
+"suletud."
+
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "Viivitus peab olema unikaalne konto ja majandusaasta puhul"
+
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "Ei saa kustutada kontot \"%(konto)sid\" kuna selle on kande read."
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+"Ei saa kustutada osapoolt \"%(osapool)i\" kuniks neil on lahtised "
+"nõuded/kohustused ettevõtte \"%(ettevõtete)\" ees."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+"Majandusaasta \"%(esmane)\" ja \"%(teisene)\" ei saa omada samu kande "
+"jadasid, määra erinevad jadad."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+"Majandusaasta \"%(esmane)\" ja \"%(teisene)\" kattub, kausta teisi kuupäevi."
+" Show"
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr "Rida \"&(ridu)\" ei saa gruppeerida."
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr "Erinevate osapoolte ridu ei saa gruppeerida."
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr "Ei saa gruppeerida enama kui kahe erineva konto ridu."
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr "Ei saa gruppeerida erinevate ettevõtete ridu"
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr "Ei saa gruppeerida erineva sekundaarse valuuta ridu"
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr "Üksikut rida ei saa gruppeerida"
+
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "Ühes perioodis saab luua ainult ühe andmiku."
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr "Ei saa saldeerida juba saldeeritud lida \"%(ridu)."
+
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr "Kontole \"%(kontodele)\" rea lisamiseks tuleb määrata tüüp või see avada."
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr "Ei sa määrata reale nii deebetit kui ka kreeditit."
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+"Kontole \"%(kontodele)\" rea lisamiseks tuleb määrata reale \"%(ridade)le\" "
+"osapool."
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+"Kontole \"%(kontodele)\" rea lisamiseks tuleb osapool rea \"%(ridade)\" "
+"pealt eemaldada"
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+"Pead määrama sekundaarsele valuutale märgi nii, et see ühtiks deebeti-"
+"kreediti märgiga."
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+"Ei saa muuta vi kustutada andmiku-perioodi \"%(andmiku-periood)e\" kuna "
+"selles on kandeid"
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+"Ei saa muuta või kustutada perioodi \"%(periood)e\" kuna sellel on kandeid."
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+"Ei saa lisada/muuta/kustutada ridu suletud andmiku-perioodis \"%(andmiku-"
+"periood)ides\""
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr "Ei saa muuta postitatud kande \"%(kannete)\" rida \"%(ridu)\"."
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr "Ei saa muuta saldeeritud rida \"%(ridu)\"."
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr "Ei saa muuta postitatud kannet \"%(kandeid\")"
+
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr ""
+"Ei saa luua/muuta/kustutada maksuridu suletud perioodis \"%(periood)ides\"."
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+"Kande \"%(kannete)\" periood on lukus.\n"
+"Kasuta käesolevat perioodi kande tühistamiseks?"
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+"Kande \"%(kannete) kuupäev on perioodist väljaspool, muuda kuupäeva või "
+"perioodi."
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks majandusaasta."
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr "Jätkamiseks, loo kuupäeva \"%(kuupäeva)de\" jaoks periood."
+
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+"Ei saa taa-avada andmiku-perioodi \"%(andmiku-periood)e\" suletud perioodis "
+"\"%(periood)ides\"."
+
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+"Ei saa taasavada perioodi \"%(perioode)\" kuna selle majandusaasta "
+"\"%(majandusaastad)\" on suletud."
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr "Jätkamiseks määra osapoolele \"%(osapooltele)\" kohustuse konto."
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr "Jätkamiseks määra osapoolele \"%(osapooltele)\" nõude konto."
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+"Perioodi \"%(perioodide) kuupäevad peavad olema majandusaasta "
+"\"%(majandusaastate)\" kuupäevade vahemikus"
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr "Majandusaasta \"%(esmane)\" ja \"%(teisene)\" kattub, kausta teisi kuupäevi."
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+"Ei saa kasutada sama kande jada perioodi \"%(esmasele)\" ja \"%(teisesele), "
+"kuna need on erinevatest majandusaastatest."
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr "Kande \"%(kannete)\" postitamiseks, täida selle read."
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+"Kande \"%(kannete)\" postitamiseks, vii ridade deebetid ja kreeditid "
+"tasakalu."
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr "Rea \"%(ridade)\" nettimiseks tuleb konto \"%(kontod)\" määrata netitavaks."
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+"Majandusaasta \"%(fiscalyear)s\" avamiseks tuleb avada kõik varasemad "
+"majandusaastad."
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
+msgid "Are you sure you want to lock the fiscal year?"
+msgstr "Kas soovid sulgeda majandusaasta?"
+
+msgctxt "model:ir.model.button,confirm:period_lock_button"
+msgid "Are you sure you want to lock the period?"
+msgstr "Kas soovid sulgeda perioodi?"
+
+msgctxt "model:ir.model.button,string:fiscalyear_close_button"
+msgid "Close"
+msgstr "Sulge"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
+msgid "Create Periods"
+msgstr "Loo kuu pikkused perioodid"
+
+msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
+msgid "Lock"
+msgstr "Lukusta"
+
+msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
+msgid "Re-Open"
+msgstr "Ava uuesti"
+
+msgctxt "model:ir.model.button,string:move_post_button"
+msgid "Post"
+msgstr "Postita"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "model:ir.model.button,string:period_lock_button"
+msgid "Lock"
+msgstr "Lukusta"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "Ava uuesti"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.sequence,name:sequence_account_journal"
+msgid "Default Account Journal"
+msgstr "Vaikimisi konto andmik"
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
+msgid "Default Account Move Reconciliation"
+msgstr "Konto kannete saldeerimise read"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
+msgid "Account Journal"
+msgstr "Konto andmik"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
+msgid "Account Move"
+msgstr "Kanne"
+
+#, fuzzy
+msgctxt ""
+"model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
+msgid "Account Move Reconciliation"
+msgstr "Konto kannete saldeerimise read"
+
+msgctxt "model:ir.ui.menu,name:menu_account"
+msgid "Financial"
+msgstr "Finants"
+
+msgctxt "model:ir.ui.menu,name:menu_account_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "Kontod"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "Kontotüübid"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
+msgid "Types"
+msgstr "Tüüp"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
+msgid "Account Types"
+msgstr "Kontotüübid"
+
+msgctxt "model:ir.ui.menu,name:menu_aged_balance"
+msgid "Aged Balance"
+msgstr "Aegunud saldo"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Saldo, mitteviivituv"
+
+msgctxt "model:ir.ui.menu,name:menu_charts"
+msgid "Charts"
+msgstr "Graafik"
+
+msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
+msgid "Close Fiscal Years"
+msgstr "Sulge majandusaasta"
+
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "Sule andmikud - perioodid"
+
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "Sulge perioodid"
+
+msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Ava maksu koodide loend"
+
+msgctxt "model:ir.ui.menu,name:menu_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Koosta kontoplaan mallist"
+
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "Kanded"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
+msgid "Fiscal Years"
+msgstr "Majandusaastad"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Majandusaastad"
+
+msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
+msgid "General Account"
+msgstr "Peakonto"
+
+msgctxt "model:ir.ui.menu,name:menu_general_ledger"
+msgid "General Ledger"
+msgstr "Pearaamat"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
+msgid "Journals"
+msgstr "Andmikud"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_form"
+msgid "Journals"
+msgstr "Andmikud"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
+msgid "Journals Cash"
+msgstr "Andmik raha"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Andmikud - perioodid"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Andmikud - perioodid"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Account Moves"
+msgstr "Kanded"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr "Koosta kanne mallist"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Moves"
+msgstr "Kanne"
+
+msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
+msgid "Balance Sheet"
+msgstr "Bilanss"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Ava kontoplaan"
+
+msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
+msgid "Income Statement"
+msgstr "Kasumiaruannd"
+
+msgctxt "model:ir.ui.menu,name:menu_open_journal"
+msgid "Open Journal"
+msgstr "Ava andmik"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "Perioodid"
+
+msgctxt "model:ir.ui.menu,name:menu_processing"
+msgid "Processing"
+msgstr "Töötluses"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr "Saldeeri kontos"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Mahakandmise meetodid"
+
+msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "Loo uus majandusaasta"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Aruandlus"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Codes"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "Maksu kood"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Codes"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
+msgid "Groups"
+msgstr "Grupp"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Maksu reeglid"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
+msgid "Rules"
+msgstr "Reegel"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr "Testi maksu"
+
+msgctxt "model:ir.ui.menu,name:menu_taxes"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
+msgstr "Mallid"
+
+msgctxt "model:ir.ui.menu,name:menu_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Uuenda kontoplaani mallist"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr "Osapoole konto"
+
+msgctxt "model:res.group,name:group_account"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "model:res.group,name:group_account_admin"
+msgid "Account Administration"
+msgstr "Konto administreerimine"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Balance Sheet"
+msgstr "Bilanss"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Fiscal Year:"
+msgstr "Majandusaasta:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Date:"
+msgstr "Kuupäevast:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Period"
+msgstr "Perioodist"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Income Statement"
+msgstr "Kasumiaruanne"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Print Date:"
+msgstr "Printimise kuupäev:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Statement"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "To"
+msgstr "Kuni"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "at"
+msgstr "@"
+
+msgctxt "report:account.aged_balance:"
+msgid "+"
+msgstr "+"
+
+msgctxt "report:account.aged_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.aged_balance:"
+msgid "Aged Balance for"
+msgstr "Aegunud saldo"
+
+msgctxt "report:account.aged_balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "report:account.aged_balance:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "report:account.aged_balance:"
+msgid "Print Date:"
+msgstr "Printimise kuupäev:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Total"
+msgstr "Kokku"
+
+msgctxt "report:account.aged_balance:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+msgctxt "report:account.aged_balance:"
+msgid "at"
+msgstr "@"
+
+msgctxt "report:account.general_ledger:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.general_ledger:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.general_ledger:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "report:account.general_ledger:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+msgctxt "report:account.general_ledger:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "report:account.general_ledger:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "report:account.general_ledger:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "report:account.general_ledger:"
+msgid "Descr."
+msgstr "Kirjeldus"
+
+msgctxt "report:account.general_ledger:"
+msgid "Fiscal Year:"
+msgstr "Majandusaasta:"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Date:"
+msgstr "Kuupäevast:"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Period"
+msgstr "Perioodist"
+
+msgctxt "report:account.general_ledger:"
+msgid "General Ledger"
+msgstr "Pearaamat"
+
+msgctxt "report:account.general_ledger:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "report:account.general_ledger:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "report:account.general_ledger:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "report:account.general_ledger:"
+msgid "Print Date:"
+msgstr "Printimise kuupäev:"
+
+msgctxt "report:account.general_ledger:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "report:account.general_ledger:"
+msgid "To"
+msgstr "Kuni"
+
+msgctxt "report:account.general_ledger:"
+msgid "Total"
+msgstr "Kokku"
+
+msgctxt "report:account.general_ledger:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+msgctxt "report:account.general_ledger:"
+msgid "at"
+msgstr "@"
+
+msgctxt "report:account.move.general_journal:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "report:account.move.general_journal:"
+msgid "General Journal"
+msgstr "Peamine andmik"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Journal Entry:"
+msgstr "Andmiku sisestus:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Origin:"
+msgstr "Päritolu:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Posted"
+msgstr "Postitatud"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Print Date:"
+msgstr "Prindi kuupäev:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "at"
+msgstr "@"
+
+msgctxt "report:account.trial_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.trial_balance:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "report:account.trial_balance:"
+msgid "Company:"
+msgstr "Ettevõte:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "report:account.trial_balance:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "report:account.trial_balance:"
+msgid "End Balance"
+msgstr "Lõppsaldo"
+
+msgctxt "report:account.trial_balance:"
+msgid "Fiscal Year:"
+msgstr "Majandusaasta:"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Date:"
+msgstr "Kuupäevast:"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Period:"
+msgstr "Perioodist:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Print Date:"
+msgstr "Printimise kuupäev:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Start Balance"
+msgstr "Algsaldo"
+
+msgctxt "report:account.trial_balance:"
+msgid "To"
+msgstr "Kuni"
+
+msgctxt "report:account.trial_balance:"
+msgid "Total"
+msgstr "Kokku"
+
+msgctxt "report:account.trial_balance:"
+msgid "Trial Balance"
+msgstr "Proovibilanss"
+
+msgctxt "report:account.trial_balance:"
+msgid "User:"
+msgstr "Kaustaja:"
+
+msgctxt "report:account.trial_balance:"
+msgid "at"
+msgstr "@"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr "Müügitulu"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr "Bilansiväline"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr "Müügitulu"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr "Bilansiväline"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers"
+msgstr "Kliendid"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers and Suppliers"
+msgstr "Kliendid ja hankijad"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Suppliers"
+msgstr "Hankijad"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Days"
+msgstr "Päevad"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Months"
+msgstr "Kuud"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Weeks"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Years"
+msgstr ""
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "Dokumendi kohta"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "Rea kohta"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Document"
+msgstr "Dokumendi kohta"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Line"
+msgstr "Rea kohta"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr "Lukustatud"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Open"
+msgstr "Ava"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Monthly"
+msgstr "Kuud"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Other"
+msgstr "Muu info"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Posted"
+msgstr "Postitatud"
+
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "Valuuta"
+
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "Kulu"
+
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "Üldine"
+
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "Müügitulu"
+
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "Olukord"
+
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "Maha kandmine"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "selection:account.move,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:account.move,state:"
+msgid "Posted"
+msgstr "Postitatud"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Valid"
+msgstr "Kehtiv"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr ""
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr "Numbriline"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "selection:account.period,state:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr "Lukustatud"
+
+msgctxt "selection:account.period,state:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "selection:account.period,type:"
+msgid "Adjustment"
+msgstr "Parandus"
+
+msgctxt "selection:account.period,type:"
+msgid "Standard"
+msgstr "Standard"
+
+msgctxt "selection:account.tax,type:"
+msgid "Fixed"
+msgstr "Fikseeritud"
+
+msgctxt "selection:account.tax,type:"
+msgid "None"
+msgstr "Mitte"
+
+msgctxt "selection:account.tax,type:"
+msgid "Percentage"
+msgstr "Protsent"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "Baas"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "Baas"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Fiscal Year"
+msgstr "Majandusaasta"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Periods"
+msgstr "Perioodide kaup"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "Mõlemad"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "Ost"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "Müük"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Base"
+msgstr "Baas"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Base"
+msgstr "Baas"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Tax"
+msgstr "Maks"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "Mõlemad"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "Ost"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "Müük"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "Mõlemad"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "Ost"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "Müük"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Fixed"
+msgstr "Fikseeritud"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "None"
+msgstr "Mitte"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Percentage"
+msgstr "Protsent"
+
+msgctxt "view:account.account.type:"
+msgid "Comparison"
+msgstr "Võrdlus"
+
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "Alamkontod"
+
+msgctxt "view:account.account:"
+msgid "General Information"
+msgstr "Üldinformatsioon"
+
+msgctxt "view:account.aged_balance.context:"
+msgid "Terms"
+msgstr "Tingimused"
+
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "Arve"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Move"
+msgstr "Kanne"
+
+msgctxt "view:account.configuration:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "view:account.create_chart.start:"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "months"
+msgstr "Kuud"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Periods"
+msgstr "Perioodid"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Sequences"
+msgstr "Järjestused"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "End Balance"
+msgstr "Lõppsaldo"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Start Balance"
+msgstr "Algsaldo"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr "Taas-ava"
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr "Muu info"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "Muu info"
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr "Mall"
+
+msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
+msgid "General Information"
+msgstr "Üldinformatsioon"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax:"
+msgid "General Information"
+msgstr "Üldinformatsioon"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Chart of accounts updated successfully."
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr "Raamatupidamine"
+
+msgctxt "view:party.party:"
+msgid "Taxes"
+msgstr "Maksud"
+
+msgctxt "wizard_button:account.create_chart,account,create_account:"
+msgid "Create"
+msgstr "Loo"
+
+msgctxt "wizard_button:account.create_chart,account,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.create_chart,properties,create_properties:"
+msgid "Create"
+msgstr "Loo"
+
+msgctxt "wizard_button:account.create_chart,properties,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.create_chart,start,account:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+#, fuzzy
+msgctxt ""
+"wizard_button:account.fiscalyear.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "Loo"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
+msgid "Create"
+msgstr "Loo"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "Grupp"
+
+msgctxt "wizard_button:account.move.open_journal,ask,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.open_journal,ask,open_:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
+msgid "Reconcile"
+msgstr "Saldeeri"
+
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "Loo"
+
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "Järgmine"
+
+msgctxt "wizard_button:account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr "Jäta vahele"
+
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "Saldeeri"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
+msgid "Open"
+msgstr "Ava"
+
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "wizard_button:account.update_chart,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:account.update_chart,start,update:"
+msgid "Update"
+msgstr "Uuenda"
+
+msgctxt "wizard_button:account.update_chart,succeed,end:"
+msgid "OK"
+msgstr "OK"

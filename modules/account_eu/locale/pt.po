@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Identificador de Tributos da Empresa"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos Decimais da moeda"
+
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identificador de Tributos da Pessoa"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ano Fiscal"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Código da Lista de Vendas Intracomunitárias"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Código da Lista de Vendas Intracomunitárias"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "Código da Lista de Vendas Intracomunitárias"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "Contexto do Código da Lista de Vendas Intracomunitárias"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "Lista de Vendas EC"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "Lista de Vendas EC"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "Código da Lista de Vendas Intracomunitárias"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "Código da Lista de Vendas Intracomunitárias"
