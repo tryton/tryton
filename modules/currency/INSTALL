@@ -1,0 +1,29 @@
+Installing trytond_currency
+===========================
+
+Prerequisites
+-------------
+
+ * Python 2.4 or later (http://www.python.org/)
+ * trytond 0.0.x (http://www.tryton.org/)
+
+Installation
+------------
+
+Once you've downloaded and unpacked a trytond_currency source release, enter the
+directory where the archive was unpacked, and run:
+
+    python setup.py install
+
+Note that you may need administrator/root privileges for this step, as
+this command will by default attempt to install module to the Python
+site-packages directory on your system.
+
+For advanced options, please refer to the easy_install and/or the distutils
+documentation:
+
+  http://peak.telecommunity.com/DevCenter/EasyInstall
+  http://docs.python.org/inst/inst.html
+
+To use without installation, extract the archive into ``trytond/modules`` with
+the directory name currency.
