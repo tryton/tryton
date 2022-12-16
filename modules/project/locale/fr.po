@@ -1,0 +1,283 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+"Le tiers « %(party)s » ne peut pas être effacé car il a des projets ouverts "
+"pour la société « %(company)s »."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done."
+msgstr ""
+"Le travail « %(child)s » ne peut pas être ouvert parce que son travail "
+"parent « %(parent)s » est déjà fait."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened."
+msgstr ""
+"Le travail « %(parent)s » ne peut pas étre dans l'état « Fait » parce que "
+"son travail enfant « %(child)s » est toujours ouvert."
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Commentaire"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Effort"
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Gauche"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Adresse"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Progression"
+
+msgctxt "field:project.work,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Droite"
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible sur les feuilles de présence"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Durée"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de feuille de présence"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Début de feuille de présence"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Feuille de présence des travaux"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Effort total"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Progression totale"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work"
+msgstr "Effort estimé pour ce travail"
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr "Progression estimée pour ce travail"
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr "Temps total passé sur ce travail et ses sous-travaux"
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Effort total estimé pour ce travail et ses sous-travaux"
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "Progression total estimée pour ce travail et ses sous-travaux"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Lignes de feuille de présence"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Terminés"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Ouverts"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Terminés"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Ouverts"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Terminées"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Ouvertes"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Projet"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Effort de travail"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administration des projets"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Terminé"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Ouvert"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projet"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tâche"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fin :"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Début :"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Feuilles de présence :"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Enfants"

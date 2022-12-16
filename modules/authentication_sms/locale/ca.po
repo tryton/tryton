@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user.login.sms_code:"
+msgid "%(name)s code %(code)s"
+msgstr "%(name)s codi %(code)s"
+
+msgctxt "error:res.user:"
+msgid "Wrong mobile."
+msgstr "Número mòbil incorrecte."
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "Mòbil"
+
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:res.user.login.sms_code,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:res.user.login.sms_code,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:res.user.login.sms_code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.sms_code,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.sms_code,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:res.user.login.sms_code,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS"
+msgstr "Número de telèfon que suporta rebre SMS."
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr "Codi SMS"
