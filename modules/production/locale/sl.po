@@ -1,0 +1,599 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,boms:"
+msgid "BOMs"
+msgstr "Kosovnice"
+
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Dobavni roki"
+
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr "Se proizvaja"
+
+msgctxt "field:product.product-production.bom,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:product.product-production.bom,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:product.template,producible:"
+msgid "Producible"
+msgstr "Se proizvaja"
+
+#, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Assigned"
+
+msgctxt "field:production,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:production,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:production,cost:"
+msgid "Cost"
+msgstr "Strošek"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
+
+msgctxt "field:production,effective_date:"
+msgid "Effective Date"
+msgstr "Dejanski datum"
+
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr "Dejanski začetek"
+
+msgctxt "field:production,inputs:"
+msgid "Inputs"
+msgstr "Vhodi"
+
+msgctxt "field:production,location:"
+msgid "Location"
+msgstr "Lokacija"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:production,outputs:"
+msgid "Outputs"
+msgstr "Izhodi"
+
+#, fuzzy
+msgctxt "field:production,partially_assigned:"
+msgid "Partially Assigned"
+msgstr "Assigned"
+
+msgctxt "field:production,planned_date:"
+msgid "Planned Date"
+msgstr "Načrtovan datum"
+
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr "Planirano od"
+
+msgctxt "field:production,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:production,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:production,reference:"
+msgid "Reference"
+msgstr "Sklic"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
+
+msgctxt "field:production,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:production,uom:"
+msgid "Uom"
+msgstr "ME"
+
+msgctxt "field:production,uom_category:"
+msgid "Uom Category"
+msgstr "Kategorija ME"
+
+msgctxt "field:production,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
+msgctxt "field:production.bom,inputs:"
+msgid "Inputs"
+msgstr "Vhodi"
+
+msgctxt "field:production.bom,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:production.bom,output_products:"
+msgid "Output Products"
+msgstr "Izhodni izdelki"
+
+msgctxt "field:production.bom,outputs:"
+msgid "Outputs"
+msgstr "Izhodi"
+
+msgctxt "field:production.bom.input,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:production.bom.input,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:production.bom.input,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:production.bom.input,uom:"
+msgid "Uom"
+msgstr "ME"
+
+msgctxt "field:production.bom.input,uom_category:"
+msgid "Uom Category"
+msgstr "Kategorija ME"
+
+msgctxt "field:production.bom.output,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:production.bom.output,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:production.bom.output,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:production.bom.output,uom:"
+msgid "Uom"
+msgstr "ME"
+
+msgctxt "field:production.bom.output,uom_category:"
+msgid "Uom Category"
+msgstr "Kategorija ME"
+
+msgctxt "field:production.bom.tree,childs:"
+msgid "Childs"
+msgstr "Podrejeni"
+
+msgctxt "field:production.bom.tree,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:production.bom.tree,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:production.bom.tree,uom:"
+msgid "Uom"
+msgstr "ME"
+
+msgctxt "field:production.bom.tree.open.start,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:production.bom.tree.open.start,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:production.bom.tree.open.start,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:production.bom.tree.open.start,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:production.bom.tree.open.start,uom:"
+msgid "Unit"
+msgstr "enota"
+
+msgctxt "field:production.bom.tree.open.tree,bom_tree:"
+msgid "BOM Tree"
+msgstr "Drevo kosovnice"
+
+msgctxt "field:production.configuration,production_sequence:"
+msgid "Production Sequence"
+msgstr "Proizvodni nalog"
+
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr "Štetje proizvodnih nalogov"
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr "Kosovnica"
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Dobavni rok"
+
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.location,production_location:"
+msgid "Production"
+msgstr "Proizvodnja"
+
+#, fuzzy
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Izhod proizvodnega naloga"
+
+#, fuzzy
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Proizvodnja"
+
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
+msgctxt "field:stock.move,production_input:"
+msgid "Production Input"
+msgstr "Vhod proizvodnega naloga"
+
+msgctxt "field:stock.move,production_output:"
+msgid "Production Output"
+msgstr "Izhod proizvodnega naloga"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bom_form"
+msgid "BOM"
+msgstr "BOM"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bom_list"
+msgid "BOMs"
+msgstr "BOMs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "BOMs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Productions"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_configuration_form"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_list"
+msgid "Productions"
+msgstr "Productions"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_bom_tree_open"
+msgid "BOM Tree"
+msgstr "BOM Tree"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Assign Production"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr "As Inputs"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr "As Outputs"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr "Assigned"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_available"
+msgid "Partially Assigned"
+msgstr "Assigned"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr "Requests"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr "Running"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_missing_product_list_price"
+msgid ""
+"The product \"%(product)s\" on production \"%(production)s\" does not have "
+"any list price defined."
+msgstr ""
+"Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
+"ujemajo s proizvodnimi stroški (%(costs)s)."
+
+msgctxt "model:ir.message,text:msg_recursive_bom"
+msgid "You cannot create a recursive BOM for product \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:production_done_button"
+msgid "Are you sure you want to complete the production?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Reset to BOM"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_bom_list"
+msgid "BOMs"
+msgstr "BOMs"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Productions"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production_list"
+msgid "Productions"
+msgstr "Productions"
+
+msgctxt "model:product.product-production.bom,name:"
+msgid "Product - BOM"
+msgstr "Izdelek - Kosovnica"
+
+msgctxt "model:production,name:"
+msgid "Production"
+msgstr "Proizvodni nalog"
+
+msgctxt "model:production.bom,name:"
+msgid "Bill of Material"
+msgstr "Kosovnica"
+
+msgctxt "model:production.bom.input,name:"
+msgid "Bill of Material Input"
+msgstr "Vhod kosovnice"
+
+msgctxt "model:production.bom.output,name:"
+msgid "Bill of Material Output"
+msgstr "Izhod kosovnice"
+
+msgctxt "model:production.bom.tree,name:"
+msgid "BOM Tree"
+msgstr "Drevo kosovnice"
+
+msgctxt "model:production.bom.tree.open.start,name:"
+msgid "Open BOM Tree"
+msgstr "Odpri drevo kosovnice"
+
+msgctxt "model:production.bom.tree.open.tree,name:"
+msgid "Open BOM Tree"
+msgstr "Odpri drevo kosovnice"
+
+msgctxt "model:production.configuration,name:"
+msgid "Production Configuration"
+msgstr "Proizvodna konfiguracija"
+
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr "Konfiguracija štetja proizvodnih nalogov"
+
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr "Proizvodni dobavni rok"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_production_admin"
+msgid "Production Administration"
+msgstr "Production Administration"
+
+#, fuzzy
+msgctxt "model:stock.location,name:location_production"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Assign Productions"
+msgstr "Assign Production"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Productions"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
+msgctxt "selection:production,state:"
+msgid "Assigned"
+msgstr "Dodeljeno"
+
+#, fuzzy
+msgctxt "selection:production,state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+msgctxt "selection:production,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:production,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:production,state:"
+msgid "Request"
+msgstr "Zahtevek"
+
+msgctxt "selection:production,state:"
+msgid "Running"
+msgstr "Tekoče"
+
+msgctxt "selection:production,state:"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Production"
+msgstr "Proizvodnja"
+
+msgctxt "view:production.bom:"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "view:production:"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "view:production:"
+msgid "Other Info"
+msgstr "Drugo"
+
+msgctxt "wizard_button:production.bom.tree.open,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:production.bom.tree.open,start,tree:"
+msgid "OK"
+msgstr "V redu"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,end:"
+msgid "Close"
+msgstr "Zapri"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,start:"
+msgid "Change"
+msgstr "Spremeni"
