@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Request History" col="6">
+    <label name="act_from"/>
+    <field name="act_from"/>
+    <label name="act_to"/>
+    <field name="act_to"/>
+    <label name="number_references"/>
+    <field name="number_references"/>
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
+    <label name="priority"/>
+    <field name="priority"/>
+    <field name="body" colspan="6" widget="richtext"/>
+    <label name="date_sent"/>
+    <field name="date_sent" colspan="3"/>
+    <newline/>
+    <label name="state"/>
+    <field name="state" colspan="3"/>
+</form>
