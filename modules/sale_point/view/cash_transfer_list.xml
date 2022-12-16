@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="point" expand="1"/>
+    <field name="session" expand="1"/>
+    <field name="date"/>
+    <field name="type"/>
+    <field name="amount"/>
+    <field name="state"/>
+    <button name="post"/>
+</tree>

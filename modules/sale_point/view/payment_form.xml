@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="sale"/>
+    <field name="sale" colspan="3"/>
+    <label name="method"/>
+    <field name="method" widget="selection"/>
+    <label name="session"/>
+    <field name="session"/>
+    <label name="amount"/>
+    <field name="amount"/>
+</form>
