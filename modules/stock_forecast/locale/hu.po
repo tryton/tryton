@@ -1,0 +1,229 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Cél"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Dátumtól"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Pozíció"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Dátumig"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Hely"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Dátumtól"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Dátumig"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Termékek"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Előrejelzés"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Minimum mennyiség"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Lépések"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Mértékegység kategória"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Mennyiség kész"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző után"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "Mértékegység"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Lépések"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Előrejelzés"
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Összes"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr "Egy variáció csak egyszer írható be ."
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Előrejelzés"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr ""
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancelled"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Kész"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Mégse"

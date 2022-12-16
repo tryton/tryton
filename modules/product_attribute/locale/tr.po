@@ -1,0 +1,95 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Kümeler"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Özellik"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Küme"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Özellikler"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Ad"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Özellik Kümesi"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Özellikler"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Özellik Kümesi"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Ürün Özelliği"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Ürün Özellik - Küme"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Ürün Özellik Kümesi"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Özellikler"
