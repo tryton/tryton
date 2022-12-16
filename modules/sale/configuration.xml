@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Configuration" parent="menu_sale"
+            id="menu_configuration" groups="group_sale_admin"
+            sequence="0" icon="tryton-preferences"/>
+
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Sale Configuration">
+                    <label name="sale_sequence"/>
+                    <field name="sale_sequence"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_sale_configuration_form">
+            <field name="name">Sale Configuration</field>
+            <field name="res_model">sale.configuration</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sale_configuration_view_form"/>
+            <field name="act_window" ref="act_sale_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_sale_configuration_form"
+            id="menu_sale_configuration" icon="tryton-list"/>
+
+        <record model="ir.property" id="property_sale_sequence">
+            <field name="name">sale_sequence</field>
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_sale'))"/>
+        </record>
+    </data>
+</tryton>
