@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.model.field.access"
+            id="model_field_access_timesheet_cost_price">
+            <field name="field"
+                search="[('model.model', '=', 'timesheet.line'), ('name', '=', 'cost_price')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access"
+            id="model_field_access_timesheet_cost_price_admin">
+            <field name="field"
+                search="[('model.model', '=', 'timesheet.line'), ('name', '=', 'cost_price')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+</tryton>
