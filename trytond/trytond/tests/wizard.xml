@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="test_wizard_start_view_form">
+            <field name="model">test.test_wizard.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form>
+                    <label name="name"/>
+                    <field name="name"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="test_wizard">
+            <field name="name">Test Wizard</field>
+            <field name="wiz_name">test.test_wizard</field>
+            <field name="model">test.access</field>
+        </record>
+    </data>
+</tryton>
