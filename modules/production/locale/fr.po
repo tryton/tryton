@@ -1,0 +1,735 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.product:"
+msgid ""
+"You are trying to create a recursive BOM with product \"%s\" which is not "
+"allowed."
+msgstr ""
+"Vous essayez de créer une BOM récursive avec le produit « %s » qui n'est pas"
+" autorisé."
+
+msgctxt "error:production.bom.input:"
+msgid "Product must be unique per BOM."
+msgstr "Le produit par nomenclature doit être unique."
+
+msgctxt "error:production.bom.input:"
+msgid "You can not create recursive BOMs."
+msgstr "Vous ne pouvez créer des nomenclatures récursives."
+
+msgctxt "error:production.bom.input:"
+msgid "product_bom_uniq"
+msgstr "product_bom_uniq"
+
+msgctxt "error:production.bom.output:"
+msgid "Product must be unique per BOM."
+msgstr "Le produit par nomenclature doit être unique."
+
+msgctxt "error:production.bom.output:"
+msgid "You can not create recursive BOMs."
+msgstr "Vous ne pouvez créer des nomenclatures récursives."
+
+msgctxt "error:production.bom.output:"
+msgid "product_bom_uniq"
+msgstr "product_bom_uniq"
+
+msgctxt "error:production:"
+msgid ""
+"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
+"not match the cost of the production (%(costs)s)."
+msgstr ""
+"Le coût des sorties (%(outputs)s) de production « %(production)s » ne "
+"correspond pas au coût de production (%(costs)s)."
+
+msgctxt "field:product.product,boms:"
+msgid "BOMs"
+msgstr "Nomenclatures"
+
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Délai de livraison"
+
+msgctxt "field:product.product-production.bom,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:product.product-production.bom,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:product.product-production.bom,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:product.product-production.bom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.product-production.bom,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:product.product-production.bom,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.product-production.bom,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:product.product-production.bom,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:product.product-production.bom,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:production,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:production,cost:"
+msgid "Cost"
+msgstr "Coût"
+
+msgctxt "field:production,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production,effective_date:"
+msgid "Effective Date"
+msgstr "Date effective"
+
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr "Date de début effective"
+
+msgctxt "field:production,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production,inputs:"
+msgid "Inputs"
+msgstr "Entrées"
+
+msgctxt "field:production,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:production,outputs:"
+msgid "Outputs"
+msgstr "Sorties"
+
+msgctxt "field:production,planned_date:"
+msgid "Planned Date"
+msgstr "Date planifiée"
+
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr "Date de début planifiée"
+
+msgctxt "field:production,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:production,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:production,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:production,uom:"
+msgid "Uom"
+msgstr "Unité de mesure"
+
+msgctxt "field:production,uom_category:"
+msgid "Uom Category"
+msgstr "Catégorie d'unité de mesure"
+
+msgctxt "field:production,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:production,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production.assign.failed,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.assign.failed,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "field:production.bom,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:production.bom,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.bom,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.bom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.bom,inputs:"
+msgid "Inputs"
+msgstr "Entrées"
+
+msgctxt "field:production.bom,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.bom,output_products:"
+msgid "Output Products"
+msgstr "Produits en sortie"
+
+msgctxt "field:production.bom,outputs:"
+msgid "Outputs"
+msgstr "Sorties"
+
+msgctxt "field:production.bom,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.bom,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.bom,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production.bom.input,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:production.bom.input,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.bom.input,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.bom.input,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.bom.input,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production.bom.input,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.bom.input,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.bom.input,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:production.bom.input,uom:"
+msgid "Uom"
+msgstr "Unité de mesure"
+
+msgctxt "field:production.bom.input,uom_category:"
+msgid "Uom Category"
+msgstr "Catégorie d'unité de mesure"
+
+msgctxt "field:production.bom.input,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.bom.input,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production.bom.output,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:production.bom.output,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.bom.output,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.bom.output,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.bom.output,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production.bom.output,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.bom.output,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.bom.output,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:production.bom.output,uom:"
+msgid "Uom"
+msgstr "Unité de mesure"
+
+msgctxt "field:production.bom.output,uom_category:"
+msgid "Uom Category"
+msgstr "Catégorie d'unité de mesure"
+
+msgctxt "field:production.bom.output,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.bom.output,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production.bom.tree,childs:"
+msgid "Childs"
+msgstr "Enfants"
+
+msgctxt "field:production.bom.tree,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.bom.tree,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production.bom.tree,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.bom.tree,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:production.bom.tree,uom:"
+msgid "Uom"
+msgstr "Unité de mesure"
+
+msgctxt "field:production.bom.tree.open.start,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:production.bom.tree.open.start,category:"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:production.bom.tree.open.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.bom.tree.open.start,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production.bom.tree.open.start,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.bom.tree.open.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:production.bom.tree.open.start,uom:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:production.bom.tree.open.tree,bom_tree:"
+msgid "BOM Tree"
+msgstr "Arbre de nomenclature"
+
+msgctxt "field:production.bom.tree.open.tree,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.configuration,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.configuration,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.configuration,production_sequence:"
+msgid "Production Sequence"
+msgstr "Séquence de production"
+
+msgctxt "field:production.configuration,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.configuration,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.configuration,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "field:production.lead_time,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.lead_time,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.lead_time,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Délai de production"
+
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:production.lead_time,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.lead_time,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:production.lead_time,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.lead_time,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:stock.location,production_location:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "field:stock.move,production_input:"
+msgid "Production Input"
+msgstr "Entrée de production"
+
+msgctxt "field:stock.move,production_output:"
+msgid "Production Output"
+msgstr "Sortie de production"
+
+msgctxt "model:ir.action,name:act_bom_form"
+msgid "BOM"
+msgstr "Nomenclature"
+
+msgctxt "model:ir.action,name:act_bom_list"
+msgid "BOMs"
+msgstr "Nomenclatures"
+
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Nomenclatures"
+
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Productions"
+
+msgctxt "model:ir.action,name:act_production_configuration_form"
+msgid "Production Configuration"
+msgstr "Configuration de la production"
+
+msgctxt "model:ir.action,name:act_production_list"
+msgid "Productions"
+msgstr "Productions"
+
+msgctxt "model:ir.action,name:wizard_assign"
+msgid "Assign Production"
+msgstr "Productions assignées"
+
+msgctxt "model:ir.action,name:wizard_bom_tree_open"
+msgid "BOM Tree"
+msgstr "Arbre de nomenclatures"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr "Comme entrées"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr "Comme sorties"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr "Assigné"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr "Demandes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "En attente"
+
+msgctxt "model:ir.sequence,name:sequence_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:ir.ui.menu,name:menu_bom_list"
+msgid "BOMs"
+msgstr "Nomenclatures"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Productions"
+
+msgctxt "model:ir.ui.menu,name:menu_production_configuration"
+msgid "Production Configuration"
+msgstr "Configuration de la production"
+
+msgctxt "model:ir.ui.menu,name:menu_production_list"
+msgid "Productions"
+msgstr "Productions"
+
+msgctxt "model:product.product-production.bom,name:"
+msgid "Product - BOM"
+msgstr "Produit - Nomenclature"
+
+msgctxt "model:production,name:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:production.assign.failed,name:"
+msgid "Assign Production"
+msgstr "Productions assignées"
+
+msgctxt "model:production.bom,name:"
+msgid "Bill of Material"
+msgstr "Nomenclature"
+
+msgctxt "model:production.bom.input,name:"
+msgid "Bill of Material Input"
+msgstr "Entrée nomenclature"
+
+msgctxt "model:production.bom.output,name:"
+msgid "Bill of Material Output"
+msgstr "Sortie nomenclature"
+
+msgctxt "model:production.bom.tree,name:"
+msgid "BOM Tree"
+msgstr "Arbre de nomenclatures"
+
+msgctxt "model:production.bom.tree.open.start,name:"
+msgid "Open BOM Tree"
+msgstr "Ouvrir l'arbre de nomenclatures"
+
+msgctxt "model:production.bom.tree.open.tree,name:"
+msgid "Open BOM Tree"
+msgstr "Ouvrir l'arbre de nomenclatures"
+
+msgctxt "model:production.configuration,name:"
+msgid "Production Configuration"
+msgstr "Configuration de la production"
+
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr "Délai de production"
+
+msgctxt "model:res.group,name:group_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:res.group,name:group_production_admin"
+msgid "Production Administration"
+msgstr "Administration de la production"
+
+msgctxt "model:stock.location,name:location_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "selection:production,state:"
+msgid "Assigned"
+msgstr "Assignée"
+
+msgctxt "selection:production,state:"
+msgid "Canceled"
+msgstr "Annulée"
+
+msgctxt "selection:production,state:"
+msgid "Done"
+msgstr "Terminée"
+
+msgctxt "selection:production,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:production,state:"
+msgid "Request"
+msgstr "Demande"
+
+msgctxt "selection:production,state:"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "selection:production,state:"
+msgid "Waiting"
+msgstr "En attente"
+
+msgctxt "view:product.product:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "view:production.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Impossible d'assigner ces produits :"
+
+msgctxt "view:production.bom:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "view:production:"
+msgid "Assign"
+msgstr "Assigner"
+
+msgctxt "view:production:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:production:"
+msgid "Done"
+msgstr "Terminer"
+
+msgctxt "view:production:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:production:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "view:production:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Réinitialiser à la nomenclature"
+
+msgctxt "view:production:"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "view:production:"
+msgid "Wait"
+msgstr "Attendre"
+
+msgctxt "wizard_button:production.assign,failed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:production.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Forcer l'assignation"
+
+msgctxt "wizard_button:production.bom.tree.open,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:production.bom.tree.open,start,tree:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,end:"
+msgid "Close"
+msgstr "Fermer"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,start:"
+msgid "Change"
+msgstr "Changer"
