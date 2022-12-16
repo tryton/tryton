@@ -1,0 +1,168 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.shipment.assign.manual.show,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
+msgid "Move Quantity"
+msgstr "Quantitat del moviment"
+
+msgctxt "field:stock.shipment.assign.manual.show,place:"
+msgid "Place"
+msgstr "Lloc"
+
+msgctxt "field:stock.shipment.assign.manual.show,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.shipment.assign.manual.show,skipped:"
+msgid "Skipped"
+msgstr "Ignorat"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
+msgid "Assigned Quantity"
+msgstr "Quantitat reservada"
+
+msgctxt "field:stock.shipment.assigned.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:stock.shipment.assigned.move,move_quantity:"
+msgid "Move Quantity"
+msgstr "Quantitat del moviment"
+
+msgctxt "field:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "Unassigned Quantity"
+msgstr "Quantitat sense reservar"
+
+msgctxt "field:stock.shipment.assigned.move,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.shipment.assigned.move,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"
+msgid "Assigned Moves"
+msgstr "Moviments reservats"
+
+msgctxt "field:stock.shipment.unassign.manual.show,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "help:stock.shipment.assign.manual.show,quantity:"
+msgid ""
+"The maximum quantity to assign from the place.\n"
+"Leave empty for the full quantity of the move."
+msgstr ""
+"La quantita màxima reservar de la ubicació.\n"
+"Deixeu-ho en blanc per utilitzar la quantitat total del moviment."
+
+msgctxt "help:stock.shipment.assigned.move,assigned_quantity:"
+msgid "The quantity left assigned"
+msgstr "La quantitat que queda per reservar"
+
+msgctxt "help:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "The quantity to unassign"
+msgstr "La quantitat per desassignar"
+
+msgctxt "help:stock.shipment.unassign.manual.show,moves:"
+msgid "The moves to unassign."
+msgstr "Els moviments a desassignar."
+
+msgctxt "model:ir.action,name:wizard_production_assign_manual"
+msgid "Manual Assign Production"
+msgstr "Reserva manual de producció"
+
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign_manual"
+msgid "Manual Assign Supplier Return Shipment"
+msgstr "Reserva manual de l'albarà de devolució de proveïdor"
+
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign_manual"
+msgid "Manual Assign Internal Shipment"
+msgstr "Reserva manual de l'albarà intern"
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
+msgid "Manual Assign Customer Shipment"
+msgstr "Reserva manual del albarà de client"
+
+msgctxt "model:ir.action,name:wizard_shipment_unassign_manual"
+msgid "Manually Unassign Shipment"
+msgstr "Anul·la la reserva manual de l'albarà"
+
+msgctxt "model:ir.message,text:msg_assign_failed"
+msgid "Failed to assign of %(move)s from %(place)s, please retry."
+msgstr ""
+"No s'ha pogut reservar el moviment %(move)s de %(place)s, si us plau torneu-"
+"ho a provar."
+
+msgctxt "model:ir.message,text:msg_invalid_quantity"
+msgid "The quantity must be between 0 and %(quantity)s."
+msgstr "La quantitat ha d'estar entre 0 i %(quantity)s."
+
+msgctxt "model:ir.model.button,string:production_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Reserva manual"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Reserva manual"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Reserva manual"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_out_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Reserva manual"
+
+msgctxt "model:stock.shipment.assign.manual.show,name:"
+msgid "Manual Assign Shipment"
+msgstr "Reserva manual de l'abarà"
+
+msgctxt "model:stock.shipment.assigned.move,name:"
+msgid "Shipment Assigned Move"
+msgstr "Moviments de l'albarà reservats"
+
+msgctxt "model:stock.shipment.unassign.manual.show,name:"
+msgid "Manually Unassign Shipment"
+msgstr "Desfes la reserva de l'albarà manualment"
+
+msgctxt "view:stock.shipment.unassign.manual.show:"
+msgid "Enter the quantities to unassign:"
+msgstr "Introduïu les quantitats a desfer la reserva:"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
+msgid "Assign"
+msgstr "Reserva"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
+msgid "Skip"
+msgstr "Salta"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,unassign:"
+msgid "Unassign"
+msgstr "Desfes la reserva"
