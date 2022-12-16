@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="origin" expand="1"/>
+    <field name="product" expand="1"/>
+    <field name="from_location" expand="1"/>
+    <field name="to_location" expand="1"/>
+    <field name="quantity" symbol="uom"/>
+    <field name="planned_date"/>
+    <field name="effective_date"/>
+    <field name="state"/>
+    <button name="cancel"/>
+    <button name="draft"/>
+    <button name="do"/>
+</tree>

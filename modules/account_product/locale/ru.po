@@ -1,0 +1,220 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Счет расходов"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Использовать родительский счет"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Счет доходов"
+
+#, fuzzy
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+#, fuzzy
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "Счета"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Налоги заказчика"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Используемые налоги заказчика"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Налоги поставщика"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Используемые налоги поставщика"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Использовать родительские налоги"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+#, fuzzy
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "Счет расходов"
+
+#, fuzzy
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "Счет доходов"
+
+#, fuzzy
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr ""
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "Использовать счета указанные для родительской категории"
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr ""
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr ""
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "Использовать налоги указанные для родительской категории"
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Категория - Налоги заказчика"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Категория - Налоги поставщика"
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr ""
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Счета"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Налоги"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Регистрационные данные"

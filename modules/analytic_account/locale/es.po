@@ -1,0 +1,344 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Líneas analíticas"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "Estado analítico"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Cuenta raíz analítica"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Haber"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Debe"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr "Padres de la distribución"
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr "Distribuciones"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Raíz"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "Porcentaje"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Raíz"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Haber"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Debe"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Apunte contable"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Fecha final"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Cuentas analíticas"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Tercero visible"
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Asiento cuenta analítica"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr "Distribución de contabilidad analítica"
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Abrir plan contable"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Regla analítica"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Líneas analíticas"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Lineas analíticas a completar"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Abrir cuenta"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Abrir plan analítico"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Reglas analíticas"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+"Para grabar la cuenta \"%(account)s\" la suma de sus distribuciones debe ser"
+" 100%%."
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+"Sólo se puede seleccionar una cuenta por cada origen y raíz analítica."
+
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Aplicar reglas analíticas"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr "Usuario en la empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Cuentas analíticas"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Contabilidad analítica"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Lineas analíticas a completar"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Abrir plan analítico"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Reglas analíticas"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Administración de analítica"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "Válido"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Cerrada"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Abierta"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr "Distribución"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Raíz"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Vista"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "Analítica"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Haber"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debe"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Información general"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Notas"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Abrir"
