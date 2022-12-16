@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="symbol"/>
+    <field name="symbol"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="numeric_code"/>
+    <field name="numeric_code"/>
+    <newline/>
+    <label name="rounding"/>
+    <field name="rounding"/>
+    <label name="digits"/>
+    <field name="digits"/>
+    <notebook colspan="6">
+        <page string="Rates" id="rates">
+            <label name="rate"/>
+            <field name="rate"/>
+            <field name="rates" colspan="4" mode="tree,form,graph"/>
+        </page>
+    </notebook>
+</form>

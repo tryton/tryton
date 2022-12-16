@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
+        position="after">
+        <label name="account_stock"/>
+        <field name="account_stock"/>
+        <newline/>
+        <label name="account_stock_customer"/>
+        <field name="account_stock_customer"/>
+        <label name="account_stock_supplier"/>
+        <field name="account_stock_supplier"/>
+        <label name="account_stock_production"/>
+        <field name="account_stock_production"/>
+        <label name="account_stock_lost_found"/>
+        <field name="account_stock_lost_found"/>
+    </xpath>
+</data>
