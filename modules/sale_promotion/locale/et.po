@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr "Ühiku hinna mustand"
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr "Soodustus"
+
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr "Kategooriad"
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr "Valem"
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr "Hinnakiri"
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "Tooted"
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr "Kategooria"
+
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Soodustus"
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr "Soodustus"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr "Soodustused"
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr "Müügisoodustus"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr "Soodustused"
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr "Müüg soodustus"
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr "Müügisoodustus - toote kategooria"
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr "Müügisoodustus - toode"

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_view_list_sale_line">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_list_sale_line</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product">
+            <field name="name">Salable Products</field>
+            <field name="res_model">product.product</field>
+            <field name="domain" eval="[('salable', '=', True)]" pyson="1"/>
+            <field name="context_model">product.sale.context</field>
+            <field name="context" eval="{'stock_skip_warehouse': True}" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_list_sale_line"/>
+            <field name="act_window" ref="act_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product.product_view_form"/>
+            <field name="act_window" ref="act_product"/>
+        </record>
+        <menuitem
+            parent="menu_sale"
+            action="act_product"
+            sequence="50"
+            id="menu_product"/>
+
+        <record model="ir.ui.view" id="product_sale_context_view_form">
+            <field name="model">product.sale.context</field>
+            <field name="type">form</field>
+            <field name="name">product_sale_context_form</field>
+        </record>
+    </data>
+</tryton>

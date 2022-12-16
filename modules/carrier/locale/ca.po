@@ -1,0 +1,103 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Mètode cost del transportista"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Producte del transportista"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Seleccions"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Des del país"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Cap al país"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr "Mètode calcular el cost del transportista."
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "El producte per facturar el servei de transport."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "El tercer que representa el transportista."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "El transportista selecciónat."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica només quan l'enviament bé d'aquest país.\n"
+"Deixeu en blanc per tots els països."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica només quan s'envia a aquest país.\n"
+"Deixeu en blanc per tots els països."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Selecció del transportista"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Transportistes"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Selecció del transportista"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Transportistes"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Selecció del transportista"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Administració de transportistes"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Preu producte"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Criteri"
