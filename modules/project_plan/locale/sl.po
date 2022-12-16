@@ -1,0 +1,187 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Delež"
+
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Predhodnik"
+
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Naslednik"
+
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Dejanski konec"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Dejanski končni čas"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Dejanski začetek"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Dejanski začetni čas"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Razporeditve"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Izravnalna zakasnitev nazaj"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Planiran konec"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Planiran konćni čas"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Planiran začetek"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Planiran začetni čas"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Predčasni konec"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Predčasni končni čas"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Predčasni začetek"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Predčasni začetni čas"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Pozen konec"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Pozen končni čas"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Pozen začetek"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Pozen začetni čas"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Izravnalna zakasnitev"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Predhodniki"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Nasledniki"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Izravnava nalog"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Razporeditev"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Predhodnik - Naslednik"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Razporeditve"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Planiranje"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Razporeditev"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Razporeditve"
