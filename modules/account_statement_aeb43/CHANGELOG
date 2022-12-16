@@ -1,0 +1,12 @@
+Version 5.2.2 - 2020-04-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.1 - 2019-10-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Rename aeb43_informations to aeb43_information
+
+Version 5.0.0 - 2018-10-01
+* Initial release
