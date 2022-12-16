@@ -1,0 +1,1127 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "مکانیسم های تماس"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "شهر"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "آدرس کامل"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "نام ساختمان"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "نام نهاد/سازمان"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "خیابان"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "زیرمجموعه"
+
+#, fuzzy
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "زیرمجموعه"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "کدپستی"
+
+#, fuzzy
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "کشور"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "قالب"
+
+#, fuzzy
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "زبان"
+
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "کشور"
+
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "زیرمجموعه"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "نهادها/سازمان ها ناموفق"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "نهادها/سازمان ها موفق"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "دنباله نهاد/سازمان"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "دنباله نهاد/سازمان"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "ایمیل"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "مقدار"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "تلفن دیجیتالی(SIP)"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "اسکایپ"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "نشانی اینترنتی"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "مقدار"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "مقدار فشرده"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "وب سایت"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "آدرس ها"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "کد فقط خواندنی"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "مکانیسم های تماس"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "ایمیل"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "فکس"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "نام کامل"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "شناسه ها"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "زبان ها"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "تلفن همراه"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "تلفن"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "جایگزین شده توسط"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "شناسه مالیاتی"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "وب سایت"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "مقصد"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "منبع"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr "اگر پر شود، نام نهاد/سازمان را برای قالب بندی آدرس جایگزین کنید"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"متغیر های موجود (همچنین در حروف بزرگ): \n"
+"- ${نام-سازمان}\n"
+"- ${نام}\n"
+"- ${خیابان} \n"
+"- ${کدپستی} \n"
+"- ${شهر} \n"
+"- ${بخش} \n"
+"- ${کد بخش} \n"
+"- ${کشور} \n"
+"- ${کد کشور}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "اضافه کردن زیرمجموعه در دسته بندی."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "شناسه اصلی زیرمجموعه."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "اضافه کردن زیرمجموعه در منبع."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "زبان پیش فرض برای نهادها/سازمان های جدید."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "برای تولید کد نهاد/سازمان استفاده کنید."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "زبان پیش فرض برای نهادها/سازمان های جدید."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "برای تولید کد نهاد/سازمان استفاده کنید."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "نهاد/سازمان باید حذف شود."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "نهاد/سازمان شناسایی شده توسط این پرونده."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "زیرمجموعه های متعلق به نهاد/سازمان."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "شناسه منحصر بفرد نهاد/سازمان."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "اضافه کردن سایر شناسه های نهاد/سازمان."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "برای ارتباط با حزب ترجمه شده است."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "شناسه اصلی نهاد/سازمان."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "نهاد/سازمان جایگزین این یکی."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "شناسه استفاده شده برای گزارش مالیات."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "نهاد/سازمان که جایگزین می شود."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "نهاد/سازمان باید جایگزین شود."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "آدرس ها"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "فرمت آدرس ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "زیرمجموعه"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "مکانیسم های تماس"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "نهاد/سازمان توسط زیرمجموعه"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "پیکربندی نهاد/سازمان"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "نهادها / سازمان ها"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "برچسب ها"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "بررسی VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "جایگزین"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "شما نمی توانید آدرس : \"%(address)s\" نهاد/سازمان را تغییر دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "کد نهاد/سازمان باید منحصربفرد یاشد."
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "نام زیرمجموعه نهاد/سازمان باید توسط منبع منحصربفرد باشد."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr "شما نمی توانید مکانیزم تماس: \"%(address)s\" نهاد/سازمان را تغییر دهید."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr "نهاد ها/سازمان ها اسامی متفاوتی دارند: نام منبع \"%s\" با نام مقصد \"%s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"نهاد ها/سازمان ها شناسه مالیاتی متفاوتی دارند : کد منبع \"%s\" با کد مقصد "
+"\"%s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "نهاد/سازمان: \"%s\" نمی تواند پاک شود زیرا هنوز فعال است."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "کد پیش شماره تلفن \"%s\" نهاد/سازمان \"%s\" معتبر نیست."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "قالب : \"%s\" بااستثناء: \"%s\" نامعتبر است."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "شماره تلفن \"%s\" نهاد/سازمان \"%s\" معتبر نیست."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "کد نهاد/سازمان باید منحصربفرد یاشد."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "سرویس\"سیستم تبادل اطلاعات\" VIES در دسترس نیست، بعدا دوباره امتحان کنید."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "آدرس ها"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "فرمت آدرس ها"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "زیرمجموعه"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "مکانیسم های تماس"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "پیکربندی نهاد/سازمان"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "نهادها / سازمان ها"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "آدرس"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "فرمت آدرس"
+
+#, fuzzy
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "زیرمجموعه"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "بررسی VIES"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "پیکربندی نهاد/سازمان"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "پیکربندی زبان نهاد/سازمان"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "ادامه پیکربندی نهاد/سازمان"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "مکانیسم های تماس"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "پاک کردن نهاد/سازمان"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "شناسه نهاد/سازمان"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "نهاد/سازمان - زیرمجموعه"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "نهاد/سازمان جایگزین"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "مدیریت نهاد/سازمان"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "ایمیل"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "فکس"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "گفتگوی آنلاین"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "گفتگوی آنلاین جابر"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "موبایل"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "سایر"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "تلفن"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "تلفن دیجیتالی(SIP)"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "اسکایپ"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "وب سایت"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Albanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Argentinian Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "جایگزینی با"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "پاک کردن"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "جایگزین"

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name" colspan="5"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="forecast_quantity"/>
+    <field name="forecast_quantity"/>
+    <label name="cost_value"/>
+    <field name="cost_value"/>
+    <field name="childs" colspan="6" view_ids="stock.location_quantity_view_list,stock.location_quantity_view_form"/>
+</form>
