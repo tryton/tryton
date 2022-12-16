@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="promotion_view_form">
+            <field name="model">sale.promotion</field>
+            <field name="type">form</field>
+            <field name="name">promotion_form</field>
+        </record>
+        <record model="ir.ui.view" id="promotion_view_list">
+            <field name="model">sale.promotion</field>
+            <field name="type">tree</field>
+            <field name="name">promotion_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_promotion_form">
+            <field name="name">Promotions</field>
+            <field name="res_model">sale.promotion</field>
+            <field name="search_value"
+                eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_promotion_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="promotion_view_list"/>
+            <field name="act_window" ref="act_promotion_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_promotion_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="promotion_view_form"/>
+            <field name="act_window" ref="act_promotion_form"/>
+        </record>
+        <menuitem parent="sale.menu_configuration" action="act_promotion_form"
+            id="menu_promotion"/>
+
+        <record model="ir.action.act_window" id="act_promotion_relate">
+            <field name="name">Sale Promotions</field>
+            <field name="res_model">sale.promotion</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('price_list', '=', Eval('active_id')), ('price_list', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_promotion_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.price_list,-1</field>
+            <field name="action" ref="act_promotion_relate"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_promotion">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'sale.promotion')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_promotion1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_promotion"/>
+        </record>
+
+        <record model="ir.model.access" id="access_promotion">
+            <field name="model" search="[('model', '=', 'sale.promotion')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_promotion_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.promotion')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

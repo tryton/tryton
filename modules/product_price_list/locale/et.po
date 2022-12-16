@@ -1,0 +1,119 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:product.price_list,tax_included:"
+msgid "Tax Included"
+msgstr "Sisaldab maksu"
+
+msgctxt "field:product.price_list,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Kategooria"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Valem"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Hinnakiri"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr ""
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Märgista kui tulemuse valem sisaldab makse"
+
+msgctxt "help:product.price_list,unit:"
+msgid "The unit in which the quantity is expressed."
+msgstr ""
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr ""
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price\n"
+"- cost_price: the cost price of the product"
+msgstr ""
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr ""
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Rakenda ainult sellele tootele."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Rakenda ainult siis, kui kogus on suurem."
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Hinnakirjad"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Hinnakirjad"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Hinnakiri"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Hinnakirja rida"
+
+#, fuzzy
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Default"
+msgstr "Toode"
