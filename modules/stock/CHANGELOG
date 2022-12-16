@@ -1,0 +1,40 @@
+Version 1.4.6 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.5 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.4 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.3 - 2010-08-31
+* Bug fixes (see mercurial logs for details)
+* Security fix to use safe_eval instead of eval
+
+Version 1.4.2 - 2010-02-17
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.1 - 2009-11-24
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add new group "Stock Force Assignment"
+* Migrate packing* objects and tables to shipment*
+* Return move id in create_move of inventory line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Added return packings and a wizard to create customer return packing.
+* Make assign_try to assign as much possible
+* Move assign_try and pick_product from product.product to stock.move
+* Added stock_skip_warehouse keyword for products_by_location
+  method. The default behaviour is now to compute quantities on all
+  child locations for a warehouse.
+* Handle average price for products return to supplier
+* Added stock_destinations keyword on products_by_location context to
+  filter moves to a set of destinations.
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
