@@ -1,0 +1,22 @@
+Version 4.0.1 - 2016-05-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Payment Group reference into number
+* Add payment group sequence in configuration
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add date to Pay Lines wizard
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add transitions between succeeded and failed
+
+Version 3.2.0 - 2014-04-21
+* Initial release
