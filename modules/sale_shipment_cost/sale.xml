@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_tree_sequence">
+            <field name="model">sale.line</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
+            <field name="name">sale_line_tree_sequence</field>
+        </record>
+    </data>
+    <data depends="sale_promotion">
+        <record model="ir.ui.view" id="promotion_view_form">
+            <field name="model">sale.promotion</field>
+            <field name="inherit" ref="sale_promotion.promotion_view_form"/>
+            <field name="name">promotion_form</field>
+        </record>
+    </data>
+</tryton>
