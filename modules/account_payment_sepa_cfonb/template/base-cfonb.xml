@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/">
+    <!-- CFONB forbid PstlAdr -->
+    <py:def function="PartyIdentification(party, id=True, name=True)">
+        <!-- EPC limits to 70 instead of 140 -->
+        <Nm py:if="name">${party.name[:70]}</Nm>
+        <Id py:if="id and party.sepa_creditor_identifier_used">
+            <PrvtId>
+                <Othr>
+                    <Id>${party.sepa_creditor_identifier_used}</Id>
+                    <SchmeNm>
+                        <Prtry>SEPA</Prtry>
+                    </SchmeNm>
+                    <!-- Issr -->
+                </Othr>
+            </PrvtId>
+        </Id>
+        <!-- CtryOfRes -->
+        <!-- CtctDtls -->
+    </py:def>
+</py:strip>

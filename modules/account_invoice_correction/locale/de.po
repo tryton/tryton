@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.correct.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.correct.start,invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:account.invoice.correct.start,lines:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "model:account.invoice.correct.start,name:"
+msgid "Correct Invoice"
+msgstr "Rechnung korrigieren"
+
+msgctxt "model:ir.action,name:wizard_invoice_correct"
+msgid "Correct"
+msgstr "Korrigieren"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Korrigieren"
+
+msgctxt "view:account.invoice.correct.start:"
+msgid "Choose lines to correct"
+msgstr "Positionen zur Korrektur auswählen"
+
+msgctxt "wizard_button:account.invoice.correct,start,correct:"
+msgid "Correct"
+msgstr "Korrigieren"
+
+msgctxt "wizard_button:account.invoice.correct,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "view:account.invoice:"
+msgid "Correct"
+msgstr "Korrigieren"

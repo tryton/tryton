@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Actions" id="menu_action" parent="menu_ui"/>
+        <record model="ir.ui.view" id="action_view_form">
+            <field name="model">ir.action</field>
+            <field name="type">form</field>
+            <field name="name">action_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_view_tree">
+            <field name="model">ir.action</field>
+            <field name="type">tree</field>
+            <field name="name">action_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_form">
+            <field name="name">Actions</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_view_tree"/>
+            <field name="act_window" ref="act_action_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_view_form"/>
+            <field name="act_window" ref="act_action_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_form" id="menu_act_action"/>
+
+        <record model="ir.ui.view" id="action_keyword_view_list">
+            <field name="model">ir.action.keyword</field>
+            <field name="type">tree</field>
+            <field name="name">action_keyword_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="action_keyword_view_form">
+            <field name="model">ir.action.keyword</field>
+            <field name="type">form</field>
+            <field name="name">action_keyword_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="action_report_view_form">
+            <field name="model">ir.action.report</field>
+            <field name="type">form</field>
+            <field name="name">action_report_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_report_view_tree">
+            <field name="model">ir.action.report</field>
+            <field name="type">tree</field>
+            <field name="name">action_report_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_report_form">
+            <field name="name">Reports</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.report</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_report_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_report_view_tree"/>
+            <field name="act_window" ref="act_action_report_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_report_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_report_view_form"/>
+            <field name="act_window" ref="act_action_report_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_report_form" id="menu_action_report_form"/>
+
+        <record model="ir.ui.view" id="action_act_window_view_form">
+            <field name="model">ir.action.act_window</field>
+            <field name="type">form</field>
+            <field name="name">action_act_window_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_act_window_view_tree">
+            <field name="model">ir.action.act_window</field>
+            <field name="type">tree</field>
+            <field name="name">action_act_window_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_act_window_form">
+            <field name="name">Window Actions</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.act_window</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_action_act_window_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_act_window_view_tree"/>
+            <field name="act_window" ref="act_action_act_window_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_action_act_window_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_act_window_view_form"/>
+            <field name="act_window" ref="act_action_act_window_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_act_window_form" id="menu_action_act_window"/>
+
+        <record model="ir.ui.view" id="act_window_view_view_form">
+            <field name="model">ir.action.act_window.view</field>
+            <field name="type">form</field>
+            <field name="name">action_act_window_view_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="act_window_view_view_list">
+            <field name="model">ir.action.act_window.view</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">action_act_window_view_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="act_window_view_view_list2">
+            <field name="model">ir.action.act_window.view</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">action_act_window_view_list2</field>
+        </record>
+
+        <record model="ir.ui.view" id="act_window_domain_view_form">
+            <field name="model">ir.action.act_window.domain</field>
+            <field name="type">form</field>
+            <field name="name">action_act_window_domain_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="act_window_domain_view_list">
+            <field name="model">ir.action.act_window.domain</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">action_act_window_domain_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="act_window_domain_view_list2">
+            <field name="model">ir.action.act_window.domain</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">action_act_window_domain_list2</field>
+        </record>
+
+        <record model="ir.ui.view" id="action_wizard_view_form">
+            <field name="model">ir.action.wizard</field>
+            <field name="type">form</field>
+            <field name="name">action_wizard_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_wizard_view_tree">
+            <field name="model">ir.action.wizard</field>
+            <field name="type">tree</field>
+            <field name="name">action_wizard_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_wizard_form">
+            <field name="name">Wizards</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.wizard</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_wizard_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_wizard_view_tree"/>
+            <field name="act_window" ref="act_action_wizard_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_wizard_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_wizard_view_form"/>
+            <field name="act_window" ref="act_action_wizard_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_wizard_form" id="menu_action_wizard"/>
+
+        <record model="ir.ui.view" id="action_url_view_form">
+            <field name="model">ir.action.url</field>
+            <field name="type">form</field>
+            <field name="name">action_url_form</field>
+        </record>
+        <record model="ir.ui.view" id="action_url_view_tree">
+            <field name="model">ir.action.url</field>
+            <field name="type">tree</field>
+            <field name="name">action_url_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_action_url_form">
+            <field name="name">URLs</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.action.url</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_url_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="action_url_view_tree"/>
+            <field name="act_window" ref="act_action_url_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_action_url_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="action_url_view_form"/>
+            <field name="act_window" ref="act_action_url_form"/>
+        </record>
+        <menuitem parent="menu_action"
+            action="act_action_url_form" id="menu_action_url"/>
+    </data>
+</tryton>
