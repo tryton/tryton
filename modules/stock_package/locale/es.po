@@ -1,0 +1,113 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Secuencia de paquete"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Secuencia de paquete"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Paquete"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Movimientos"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Albarán"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Paquetes"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Paquetes"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Paquetes"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Paquetes"
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Tipos de paquete"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Etiquetas de paquete"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"Para procesar el albarán \"%(shipment)s\", debe empaquetar todos sus "
+"movimientos."
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Paquete"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Paquete"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Tipos de paquete"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Paquete"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Tipo de paquete"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "Paquete:"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "Albarán:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Cerrado"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Abierto"
