@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+#, fuzzy
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr ""

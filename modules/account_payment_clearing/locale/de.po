@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr "Auszifferungsbuchungssatz"
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr "Auszifferungskonto"
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr "Auszifferungsjournal"
+
+msgctxt "field:account.payment.journal,clearing_posting_delay:"
+msgid "Clearing Posting Delay"
+msgstr "Verzögerung der Auszifferung"
+
+msgctxt "field:account.payment.succeed.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.payment.succeed.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line,payment:"
+msgid "Payment"
+msgstr "Zahlung"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr "Zahlungsgruppe"
+
+msgctxt "help:account.payment,account:"
+msgid "Define the account to use for clearing move."
+msgstr "Definieren des Kontos für die Auszifferung."
+
+msgctxt "help:account.payment.journal,clearing_posting_delay:"
+msgid ""
+"Post automatically the clearing moves after the delay.\n"
+"Leave empty for no posting."
+msgstr ""
+"Automatisches Buchen des Auszifferungsbuchungssatz mit Verzögerung.Leer "
+"lassen um nicht zu buchen."
+
+msgctxt "model:account.payment.succeed.start,name:"
+msgid "Succeed Payment"
+msgstr "Erfolgreiche Zahlung"
+
+msgctxt "model:ir.action,name:wizard_succeed"
+msgid "Succeed Payments"
+msgstr "Erfolgreiche Zahlungen"
+
+msgctxt "model:ir.cron,name:cron_post_clearing_moves"
+msgid "Post Clearing Moves"
+msgstr "Post Clearing Moves"
+
+msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Erfolgreich markieren"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr "Auszifferung"
+
+msgctxt "wizard_button:account.payment.succeed,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.payment.succeed,start,succeed:"
+msgid "Succeed"
+msgstr "Erfolgreich"

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="user"/>
+    <field name="user"/>
+    <label name="request_user"/>
+    <field name="request_user"/>
+    <label name="interval_number"/>
+    <field name="interval_number"/>
+    <label name="interval_type"/>
+    <field name="interval_type"/>
+    <label name="number_calls"/>
+    <field name="number_calls"/>
+    <label name="next_call"/>
+    <field name="next_call"/>
+    <label name="repeat_missed"/>
+    <field name="repeat_missed"/>
+    <button name="run_once" colspan="2"/>
+    <separator string="Action to trigger" colspan="4"
+        id="action_trigger"/>
+    <label name="model"/>
+    <field name="model"/>
+    <label name="function"/>
+    <field name="function"/>
+    <label name="args"/>
+    <field name="args" colspan="3" widget="char"/>
+</form>

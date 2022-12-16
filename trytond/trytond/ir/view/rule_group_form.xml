@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="model"/>
+    <field name="model"/>
+    <label name="global_p"/>
+    <field name="global_p"/>
+    <label name="default_p"/>
+    <field name="default_p"/>
+    <group col="4" colspan="6" id="perm">
+        <label name="perm_read"/>
+        <field name="perm_read"/>
+        <label name="perm_write"/>
+        <field name="perm_write"/>
+        <label name="perm_create"/>
+        <field name="perm_create"/>
+        <label name="perm_delete"/>
+        <field name="perm_delete"/>
+    </group>
+    <label name="name"/>
+    <field name="name" colspan="5"/>
+    <field name="rules" colspan="6"/>
+    <label string="The rule is satisfied if at least one test is True"
+        colspan="6" xalign="0.0" id="satisfied"/>
+    <label string="If there is no test defined, the rule is always satisfied if not global"
+        colspan="6" xalign="0.0" id="no_test"/>
+</form>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <image name="tryton-dialog-information" xexpand="0"
+        xfill="0"/>
+    <group col="2" id="credit_refund">
+        <label string="Are you sure to credit those/this invoice(s)?"
+            id="credit" colspan="2"
+            yalign="0.0" xalign="0.0" xexpand="1"/>
+        <label name="with_refund"/>
+        <field name="with_refund"/>
+    </group>
+</form>

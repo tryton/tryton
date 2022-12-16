@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='address']" position="after">
+        <newline/>
+        <label name="provisioning_location"/>
+        <field name="provisioning_location"/>
+        <label name="overflowing_location"/>
+        <field name="overflowing_location"/>
+    </xpath>
+</data>
