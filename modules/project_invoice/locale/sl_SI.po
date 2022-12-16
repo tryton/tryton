@@ -1,0 +1,151 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "Pri nalogi \"%s\" ni cenika."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "Pri nalogi \"%s\" ni partnerja."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "Pri nalogi \"%s\" ni izdelka."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "Obračunane postavke ni možne brisati."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Obračunane postavke ni možne popraviti."
+
+msgctxt "field:project.work,duration_to_invoice:"
+msgid "Duration to Invoice"
+msgstr "Čas do zaračunanja"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Način obračuna"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Zaračunan znesek"
+
+msgctxt "field:project.work,invoiced_duration:"
+msgid "Invoiced Duration"
+msgstr "Zaračunan porabljen čas"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Zaračunano opravljeno delo"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Način obračuna"
+
+msgctxt "field:project.work.invoiced_progress,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:project.work.invoiced_progress,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:project.work.invoiced_progress,effort_duration:"
+msgid "Effort"
+msgstr "Porabljen čas"
+
+msgctxt "field:project.work.invoiced_progress,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "field:project.work.invoiced_progress,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "field:project.work.invoiced_progress,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:project.work.invoiced_progress,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Evidenca prisotnosti"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Računi"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Zaračunano opravljeno delo"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Projekt - obračun"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Ročno"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Po oceni dela"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Progress"
+msgstr "Po napredku"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Po dejanskem delu"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Ročno"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Po oceni dela"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Po napredku"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Po dejanskem delu"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progress"
+msgstr "Zaračunano opravljeno delo"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progresses"
+msgstr "Zaračunana opravljena dela"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Račun"
