@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "ຄວາມສຳພັນ"
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "ຈາກ"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "ເຖິງ"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "ຈາກ"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "ເຖິງ"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "ຄວາມສຳພັນກັບກັນ"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr ""
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "ຕົວລະບຸຕົວຕົນຫຼັກຂອງປະເພດສາຍພົວພັນ"
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "ສ້າງສາຍພົວພັນຢ້ອນກັບຢ່າງອັດຕະໂນມັດ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Party Relations"
+msgstr "Party Relations"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "Relation Types"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Party Relations"
+msgstr "Party Relations"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "Relation Types"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "ຄວາມສຳພັນຂອງພາກສ່ວນ"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "ຄວາມສຳພັນຂອງພາກສ່ວນ"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "ປະເພດຄວາມສຳພັນ"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "ຄວາມສຳພັນ"

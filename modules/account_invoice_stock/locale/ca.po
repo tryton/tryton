@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Moviments d'existències"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Moviment d'existències"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Tipus de factura"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Línia de factura - Moviment d'existències"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Logística"

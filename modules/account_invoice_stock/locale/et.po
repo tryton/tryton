@@ -1,0 +1,32 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Laoliikumised"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Arve reas"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Lao liikumised"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Arve read"
+
+#, fuzzy
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Arve read"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Arve rida - lao liikumine"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Ladu"
