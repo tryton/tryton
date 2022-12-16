@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="model"/>
+    <field name="model"/>
+    <label id="recipients_label" string="Recipients:"/>
+    <group id="recipients" col="-1" colspan="3">
+        <field name="recipients"/>
+        <field name="recipients_pyson" widget="pyson"/>
+    </group>
+    <label id="recipients_secondary_label" string="Secondary Recipients:"/>
+    <group id="recipients_secondary" col="-1" colspan="3">
+        <field name="recipients_secondary"/>
+        <field name="recipients_secondary_pyson" widget="pyson"/>
+    </group>
+    <label id="recipients_hidden_label" string="Hidden Recipients:"/>
+    <group id="recipients_hidden" col="-1" colspan="3">
+        <field name="recipients_hidden"/>
+        <field name="recipients_hidden_pyson" widget="pyson"/>
+    </group>
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
+    <separator name="body" colspan="4"/>
+    <field name="body" colspan="4" widget="richtext"/>
+    <field name="reports" colspan="4"/>
+</form>
