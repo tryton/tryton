@@ -1,0 +1,103 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:company.employee_cost_price:"
+msgid "A employee can only have one cost price by date!"
+msgstr ""
+
+msgctxt "field:company.employee,cost_price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "field:company.employee,cost_prices:"
+msgid "Cost Prices"
+msgstr ""
+
+msgctxt "field:company.employee,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,cost_price:"
+msgid "Cost Price"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,employee:"
+msgid "Employee"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:company.employee_cost_price,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr ""
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr ""
+
+msgctxt "help:company.employee,cost_price:"
+msgid "Hourly cost price for this Employee"
+msgstr ""
+
+msgctxt "help:company.employee,cost_prices:"
+msgid "List of hourly cost price over time"
+msgstr ""
+
+msgctxt "help:company.employee_cost_price,cost_price:"
+msgid "Hourly cost price"
+msgstr ""
+
+msgctxt "model:company.employee_cost_price,name:"
+msgid "Employee Cost Price"
+msgstr ""
+
+msgctxt "view:company.employee:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "view:company.employee_cost_price:"
+msgid "Cost Prices"
+msgstr ""

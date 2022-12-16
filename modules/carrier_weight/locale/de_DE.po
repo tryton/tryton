@@ -1,0 +1,79 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr "Gewicht Währung Stellen"
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "Gewicht Maßeinheit"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr "Gewicht Maßeinheit Stellen"
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "field:carrier.weight_price_list,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:carrier.weight_price_list,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:carrier.weight_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr "Preis"
+
+msgctxt "field:carrier.weight_price_list,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "field:carrier.weight_price_list,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:carrier.weight_price_list,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr "Frachtgewicht Preisliste"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price List"
+msgstr "Frachtgewicht Preisliste"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price Lists"
+msgstr "Frachtgewicht Preislisten"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Höhe Stellen"
+msgstr "Frachtgewicht Preislisten"
