@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//notebook/page[@id='products']" position="after">
+        <page string="Vue Storefront" id="vsf">
+            <label name="vsf_elasticsearch_url"/>
+            <field name="vsf_elasticsearch_url"/>
+            <label name="vsf_elasticsearch_index"/>
+            <field name="vsf_elasticsearch_index"/>
+        </page>
+    </xpath>
+</data>
