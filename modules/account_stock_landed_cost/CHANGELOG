@@ -1,0 +1,58 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Show cost allocation before and after posting
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Add support for Python 3.10
+* Remove support for Python 3.6
+* Store allocation factors
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Add stock move filter per category and product
+* Allow posted landed cost to be cancelled
+* Add landed cost relate from supplier shipment
+* Rename landed cost state from cancel to cancelled
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Move landed_cost inside checkboxes group
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Landed Cost code into number
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Initial release

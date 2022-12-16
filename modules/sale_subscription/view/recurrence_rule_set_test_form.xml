@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="recurrence">
+    <label name="recurrence"/>
+    <field name="recurrence" colspan="3"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="count"/>
+    <field name="count"/>
+
+    <field name="result" mode="tree" colspan="4"/>
+</form>

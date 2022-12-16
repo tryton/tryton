@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Reporting"
+            parent="menu_commission"
+            sequence="100"
+            id="menu_reporting"/>
+
+        <menuitem
+            name="Commissions"
+            parent="menu_reporting"
+            sequence="10"
+            id="menu_reporting_commission"
+            icon="tryton-graph"/>
+
+        <record model="ir.ui.view" id="reporting_context_view_form">
+            <field name="model">commission.reporting.context</field>
+            <field name="type">form</field>
+            <field name="name">reporting_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_view_list">
+            <field name="model">commission.reporting.agent</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_agent_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_view_graph_amount">
+            <field name="model">commission.reporting.agent</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_agent_graph_amount</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_view_graph_number">
+            <field name="model">commission.reporting.agent</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_agent_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_agent">
+            <field name="name">Commissions per Agent</field>
+            <field name="res_model">commission.reporting.agent</field>
+            <field name="context_model">commission.reporting.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_agent_view_list"/>
+            <field name="act_window" ref="act_reporting_agent"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_agent_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_agent"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_agent_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_agent"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_agent_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="menu_reporting_commission"/>
+            <field name="action" ref="act_reporting_agent"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_agent_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'commission.reporting.agent')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_agent_companies">
+            <field name="domain"
+                eval="[('agent.company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_agent_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_agent">
+            <field name="model" search="[('model', '=', 'commission.reporting.agent')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_agent_commission">
+            <field name="model" search="[('model', '=', 'commission.reporting.agent')]"/>
+            <field name="group" ref="group_commission"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_time_series_view_list">
+            <field name="model">commission.reporting.agent.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_agent_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_time_series_view_graph_amount">
+            <field name="model">commission.reporting.agent.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_agent_time_series_graph_amount</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_agent_time_series_view_graph_number">
+            <field name="model">commission.reporting.agent.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_agent_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_agent_time_series">
+            <field name="name">Commissions per Agent</field>
+            <field name="res_model">commission.reporting.agent.time_series</field>
+            <field name="context_model">commission.reporting.context</field>
+            <field
+                name="domain"
+                eval="[('agent', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_agent_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_agent_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_agent_time_series_view_graph_amount"/>
+            <field name="act_window" ref="act_reporting_agent_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_agent_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_agent_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_agent_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_agent_time_series_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">commission.reporting.agent,-1</field>
+            <field name="action" ref="act_reporting_agent_time_series"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_agent_time_series_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'commission.reporting.agent.time_series')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_agent_time_series_companies">
+            <field name="domain"
+                eval="[('agent.company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_agent_time_series_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_agent_time_series">
+            <field name="model" search="[('model', '=', 'commission.reporting.agent.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_agent_time_series_commission">
+            <field name="model" search="[('model', '=', 'commission.reporting.agent.time_series')]"/>
+            <field name="group" ref="group_commission"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>

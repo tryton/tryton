@@ -1,0 +1,95 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,shipment_cost_allocation_method:"
+msgid "Allocation Method"
+msgstr "Mètode d'assignació"
+
+msgctxt "field:stock.move,shipment_out_cost_price:"
+msgid "Shipment Cost Price"
+msgstr "Preu de cost del enviament"
+
+msgctxt "field:stock.reporting.margin.context,include_shipment_cost:"
+msgid "Include Shipment Cost"
+msgstr "Inclou cost del enviament"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr "Moneda cost"
+
+msgctxt "field:stock.shipment.out,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Moneda cost"
+
+msgctxt "field:stock.shipment.out,cost_edit:"
+msgid "Edit Cost"
+msgstr "Edita cost"
+
+msgctxt "field:stock.shipment.out,cost_used:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:stock.shipment.out,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Cost enviament només lectura"
+
+msgctxt "field:stock.shipment.out.return,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.out.return,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:stock.shipment.out.return,cost_currency:"
+msgid "Cost Currency"
+msgstr "Moneda cost"
+
+msgctxt "field:stock.shipment.out.return,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Moneda cost"
+
+msgctxt "field:stock.shipment.out.return,cost_edit:"
+msgid "Edit Cost"
+msgstr "Edita cost"
+
+msgctxt "field:stock.shipment.out.return,cost_used:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:stock.shipment.out.return,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Cost enviament només lectura"
+
+msgctxt "help:carrier,shipment_cost_allocation_method:"
+msgid "Method to allocate shipment cost."
+msgstr "Mètode per assignar les despeses d'enviament."
+
+msgctxt "help:stock.shipment.out,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Marca per editar el cost."
+
+msgctxt "help:stock.shipment.out.return,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Marca per editar el cost."
+
+msgctxt "selection:carrier,shipment_cost_allocation_method:"
+msgid "By Cost"
+msgstr "Per cost"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Costs"
+msgstr "Costos"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Costs"
+msgstr "Costos"
