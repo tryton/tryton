@@ -1,0 +1,38 @@
+Installing trytond
+==================
+
+Prerequisites
+-------------
+
+ * Python 2.4 or later (http://www.python.org/)
+ * lxml (http://codespeak.net/lxml/)
+ * egenix-mx-base (http://www.egenix.com/products/python/)
+ * relatorio 0.2.0 or later (http://relatorio.openhex.org/)
+ * Optional: psycopg 2 or later (http://www.initd.org/)
+ * Optional: pywebdav 0.9.3 or later (http://code.google.com/p/pywebdav/)
+ * Optional: pydot (http://code.google.com/p/pydot/)
+ * Optional: pytz (http://pytz.sourceforge.net/)
+ * Optional: openoffice-python
+    (http://pypi.python.org/pypi/openoffice-python/)
+ * Optional: sphinx (http://sphinx.pocoo.org/)
+
+Installation
+------------
+
+Once you've downloaded and unpacked a trytond source release, enter the
+directory where the archive was unpacked, and run:
+
+    python setup.py install
+
+Note that you may need administrator/root privileges for this step, as
+this command will by default attempt to install trytond to the Python
+site-packages directory on your system.
+
+For advanced options, please refer to the easy_install and/or the distutils
+documentation:
+
+  http://peak.telecommunity.com/DevCenter/EasyInstall
+  http://docs.python.org/inst/inst.html
+
+To use without installation, run ``bin/trytond`` from where the archive was
+unpacked.

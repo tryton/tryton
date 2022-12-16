@@ -1,0 +1,26 @@
+type,name,res_id,src,value,fuzzy
+error,ir.attachment,0,"You can not create an attachment
+in a collection with the name
+of an existing child collection!","Ein Anhang kann nicht mit dem Namen einer in der Sammlung
+bereits existierenden Untersammlung angelegt werden!",0
+error,webdav.collection,0,The collection name must be unique inside a collection!,Der Name einer Sammlung kann in einer Sammlung nicht mehrfach vergeben werden,0
+error,webdav.collection,0,"You can not create a collection
+in a collection with the name of an existing file!","Eine Sammlung kann nicht mit dem Namen einer in der Sammlung
+bereits existierenden Datei angelegt werden!",0
+error,webdav.collection,0,You can not create recursive collections!,Die Anlage rekursiver Sammlungen ist nicht möglich!,0
+field,"webdav.collection,childs",0,Children,Untergeordnet (WebDAV Sammlungen),0
+field,"webdav.collection,domain",0,Domain,Domain,0
+field,"webdav.collection,model",0,Model,Modell,0
+field,"webdav.collection,name",0,Name,Name,0
+field,"webdav.collection,parent",0,Parent,Übergeordnet (WebDAV Sammlung),0
+field,"webdav.collection,rec_name",0,Name,Name,0
+model,"ir.action,name",act_collection_tree,Collections,Sammlungen,0
+model,"ir.action,name",act_collection_form,Collections,Sammlungen,0
+model,"ir.action,name",act_collection_form2,Collections,Sammlungen,0
+model,"ir.ui.menu,name",menu_collection_tree,Collections,Sammlungen,0
+model,"ir.ui.menu,name",menu_collection_form,Edit Collections,Sammlungen bearbeiten,0
+model,"ir.ui.menu,name",menu_collection_form2,New Collection,Neue Sammlung,0
+model,"ir.ui.menu,name",menu_webdav,WebDAV,WebDAV,0
+model,"webdav.collection,name",0,Collection,Sammlung,0
+view,webdav.collection,0,Collection,Sammlung,0
+view,webdav.collection,0,Collections,Sammlungen,0

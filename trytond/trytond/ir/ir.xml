@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Administration" id="menu_administration"
+            icon="tryton-preferences-system"/>
+
+        <record model="ir.action.url" id="action_tryton">
+            <field name="name">Tryton</field>
+            <field name="url">http://www.tryton.org/</field>
+        </record>
+        <menuitem id="menu_tryton" action="action_tryton"
+            sequence="100"/>
+    </data>
+</tryton>

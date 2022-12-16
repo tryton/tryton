@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="WebDAV" id="menu_webdav"
+            parent="ir.menu_administration"/>
+        <record model="ir.ui.view" id="collection_view_tree">
+            <field name="model">webdav.collection</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Collections">
+                        <field name="name"/>
+                        <field name="model"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="collection_view_form">
+            <field name="model">webdav.collection</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Collection">
+                        <label name="name"/>
+                        <field name="name"/>
+                        <label name="parent"/>
+                        <field name="parent"/>
+                        <label name="model"/>
+                        <field name="model"/>
+                        <label name="domain"/>
+                        <field name="domain"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_collection_tree">
+            <field name="name">Collections</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">webdav.collection</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_tree_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="collection_view_tree"/>
+            <field name="act_window" ref="act_collection_tree"/>
+        </record>
+        <menuitem parent="menu_webdav"
+            action="act_collection_tree" id="menu_collection_tree"/>
+        <record model="ir.action.act_window" id="act_collection_form">
+            <field name="name">Collections</field>
+            <field name="res_model">webdav.collection</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="collection_view_tree"/>
+            <field name="act_window" ref="act_collection_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="collection_view_form"/>
+            <field name="act_window" ref="act_collection_form"/>
+        </record>
+        <menuitem name="Edit Collections" parent="menu_collection_tree"
+            action="act_collection_form" id="menu_collection_form"/>
+        <record model="ir.action.act_window" id="act_collection_form2">
+            <field name="name">Collections</field>
+            <field name="res_model">webdav.collection</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="collection_view_form"/>
+            <field name="act_window" ref="act_collection_form2"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_collection_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="collection_view_tree"/>
+            <field name="act_window" ref="act_collection_form2"/>
+        </record>
+        <menuitem name="New Collection" parent="menu_collection_tree"
+            action="act_collection_form2" id="menu_collection_form2"/>
+    </data>
+</tryton>

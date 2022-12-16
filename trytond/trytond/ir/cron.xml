@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Scheduler" parent="menu_administration"
+            id="menu_scheduler"/>
+
+        <record model="ir.ui.view" id="cron_view_tree">
+            <field name="model">ir.cron</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Scheduled Actions">
+                    <field name="nextcall"/>
+                    <field name="name" select="1"/>
+                    <field name="user" select="1"/>
+                    <field name="request_user" select="2"/>
+                    <field name="priority" select="2"/>
+                    <field name="interval_number"/>
+                    <field name="interval_type"/>
+                    <field name="numbercall" select="2"/>
+                    <field name="active" select="2"/>
+                    <field name="running" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cron_view_form">
+            <field name="model">ir.cron</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Scheduled Action" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="user"/>
+                    <field name="user"/>
+                    <label name="request_user"/>
+                    <field name="request_user"/>
+                    <label name="numbercall"/>
+                    <field name="numbercall"/>
+                    <label name="priority"/>
+                    <field name="priority"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="interval_number"/>
+                    <field name="interval_number"/>
+                    <label name="interval_type"/>
+                    <field name="interval_type"/>
+                    <label name="nextcall"/>
+                    <field name="nextcall"/>
+                    <label name="doall"/>
+                    <field name="doall"/>
+                    <separator string="Action to trigger" colspan="6"
+                        id="action_trigger"/>
+                    <label name="model"/>
+                    <field name="model"  readonly="1"/>
+                    <label name="function"/>
+                    <field name="function" readonly="1"/>
+                    <label name="running"/>
+                    <field name="running"/>
+                    <separator name="args" colspan="6"/>
+                    <field name="args" colspan="6" readonly="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_cron_form">
+            <field name="name">Scheduled Actions</field>
+            <field name="res_model">ir.cron</field>
+            <field name="view_type">form</field>
+            <field name="context">{'active_test': False}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="cron_view_tree"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="cron_view_form"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <menuitem parent="ir.menu_scheduler"
+            action="act_cron_form" id="menu_cron_form"/>
+    </data>
+</tryton>
