@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="move"/>
+    <field name="move" colspan="3"/>
+    <label name="unassigned_quantity"/>
+    <field name="unassigned_quantity" symbol="unit"/>
+    <label name="assigned_quantity"/>
+    <field name="assigned_quantity" symbol="unit"/>
+</form>

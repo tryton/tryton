@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Voorraad dagboek"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Voorraad dagboek"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Voorraadwaarderingsmethode"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Voorraad rekening"
+
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Voorraad rekening IN"
+
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Voorraad rekening UIT"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "rekening voorraad"
+
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Voorraad rekening IN"
+
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Voorraad rekening UIT"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "rekeningconfiguratie Voorraadjournaal"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continentaal"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Voorraad"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Voorraad rekening"

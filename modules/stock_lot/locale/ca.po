@@ -1,0 +1,385 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.configuration,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr "Seqüència de lot per defecte"
+
+msgctxt ""
+"field:product.configuration.default_lot_sequence,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr "Seqüència de lot per defecte"
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Lot obligatori"
+
+msgctxt "field:product.product,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "Seqüència del lot"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Lot obligatori"
+
+msgctxt "field:product.template,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "Seqüència del lot"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.lot,default_uom:"
+msgid "Default UOM"
+msgstr "UdM per defecte"
+
+msgctxt "field:stock.lot,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Dígits de l'unitat per defecte"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Quantitat prevista"
+
+msgctxt "field:stock.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr "Té seqüència"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "A data"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "A data"
+
+msgctxt "field:stock.lots_by_locations,default_uom:"
+msgid "Default UOM"
+msgstr "UdM per defecte"
+
+msgctxt "field:stock.lots_by_locations,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Decimals de la UdM per defecte"
+
+msgctxt "field:stock.lots_by_locations,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Quantitat prevista"
+
+msgctxt "field:stock.lots_by_locations,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.lots_by_locations,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.lots_by_locations,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "A data"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "Ubicacions"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "A data"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "Duplicate Lot Number"
+msgstr "Duplica número de lot"
+
+msgctxt "field:stock.move.add.lots.start,lots:"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "field:stock.move.add.lots.start,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.move.add.lots.start,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.move.add.lots.start,quantity_remaining:"
+msgid "Quantity Remaining"
+msgstr "Quantitat restant"
+
+msgctxt "field:stock.move.add.lots.start,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr "Té seqüència"
+
+msgctxt "field:stock.move.add.lots.start.lot,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.move.add.lots.start.lot,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:stock.move.add.lots.start.lot,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.move.add.lots.start.lot,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Precàlculs de lot"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Quantitat interna"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "El tipus d'ubicació per la qual el lot és obligatori."
+
+msgctxt "help:product.product,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr "La seqüència utilitzada per numerar automàticament els lots."
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "El tipus d'ubicació per la qual el lot és obligatori."
+
+msgctxt "help:product.template,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr "La seqüència utilitzada per numerar automàticament els lots."
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permet calcular les quantitats previstes per a aquesta data.\n"
+"* Un valor buit és un data infinita en el futur.\n"
+"* Una data en el passat proporcionarà valors històrics."
+
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permet calcular les quantitats previstes per a aquesta data.\n"
+"* Un valor buit és un data infinita en el futur.\n"
+"* Una data en el passat proporcionarà valors històrics."
+
+msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "The number of times the lot must be duplicated."
+msgstr "El nombre de vegades que s’ha de duplicar el lot."
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Quantitat per ubicacions (llistat)"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Quantitat per ubicacions"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "model:ir.action,name:act_lots_by_locations_relate"
+msgid "Lots by Locations"
+msgstr "Lots per ubicació"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
+msgid "Lots By Warehouse"
+msgstr "Lots per magatzem"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "model:ir.action,name:wizard_move_add_lots"
+msgid "Add Lots"
+msgstr "Afgeix lots"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr "No podeu canviar el producte d'un lot que te moviments d'existències."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr "Per moure el producte \"%(product)s\" heu d'especificar-n'he el lot."
+
+msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
+msgid ""
+"The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
+"equal to the quantity \"%(move_quantity)s\" of the move."
+msgstr ""
+"La quantitat total \"%(lot_quantity)s\" dels lots ha de ser inferior o igual"
+" a la quantitat \"%(move_quantity)s\" del moviment."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr "Heu de seleccionar un lot en comptes d'un producte per \"%(product)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
+msgid "Duplicate Lot"
+msgstr "Duplica lot"
+
+msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
+msgid "Add Lots"
+msgstr "Afegir lots"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
+msgid "Stock Lot"
+msgstr "Lot"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "model:product.configuration.default_lot_sequence,name:"
+msgid "Product Configuration Default Lot Sequence"
+msgstr "Configuració de les seqüències de lots"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Lot"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "Lot per ubicació"
+
+msgctxt "model:stock.lots_by_locations,name:"
+msgid "Lots by Locations"
+msgstr "Lots per ubicació"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr "Lots per Magatzem"
+
+msgctxt "model:stock.move.add.lots.start,name:"
+msgid "Add Lots"
+msgstr "Afegir lots"
+
+msgctxt "model:stock.move.add.lots.start.lot,name:"
+msgid "Add Lots"
+msgstr "Afegir lots"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Període d'existències precalculat per lot"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdut i trobat"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "Intern"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdut i trobat"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "Intern"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "Remaining:"
+msgstr "Restant:"
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "times"
+msgstr "vegades"
+
+msgctxt "wizard_button:stock.move.add.lots,start,add:"
+msgid "Add"
+msgstr "Afegeix"
+
+msgctxt "wizard_button:stock.move.add.lots,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"

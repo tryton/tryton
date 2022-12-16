@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- set active for 1.4 migration -->
+        <menuitem
+            name="Configuration"
+            parent="menu_purchase"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"
+            active="1"/>
+        <record model="ir.ui.menu-res.group" id="menu_configuration_group_purchase_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_purchase_configuration_form">
+            <field name="name">Configuration</field>
+            <field name="res_model">purchase.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="purchase_configuration_view_form"/>
+            <field name="act_window" ref="act_purchase_configuration_form"/>
+        </record>
+        <menuitem
+            parent="menu_configuration"
+            action="act_purchase_configuration_form"
+            sequence="10"
+            id="menu_purchase_configuration"
+            icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_purchase_configuration">
+            <field name="model" search="[('model', '=', 'purchase.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_configuration_purchase_admin">
+            <field name="model" search="[('model', '=', 'purchase.configuration')]"/>
+            <field name="group" ref="group_purchase_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
