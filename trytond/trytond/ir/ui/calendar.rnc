@@ -1,0 +1,36 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+calendar = element calendar { attlist.calendar, field* }
+attlist.calendar &=
+  attribute dtstart { text }
+attlist.calendar &=
+  attribute dtend { text }?
+attlist.calendar &=
+  attribute mode { "day"
+      | "week"
+      | "month" }?
+attlist.calendar &= [a:defaultValue = "1" ] attribute editable { "0" | "1" }?
+attlist.calendar &= attribute color { text }?
+attlist.calendar &= attribute background_color { text }?
+attlist.calendar &=
+  attribute width { text }?
+attlist.calendar &=
+  attribute height { text }?
+field = element field { attlist.field, empty }
+attlist.field &= attribute name { text }
+data = element data { attlist.data, xpath* }
+attlist.data &= empty
+
+xpath = element xpath {
+    attlist.xpath, (field | calendar)*
+  }
+attlist.xpath &= attribute expr { text }
+attlist.xpath &=
+  [ a:defaultValue = "inside" ]
+  attribute position { "inside"
+      | "replace"
+      | "replace_attributes"
+      | "after"
+      | "before" }?
+
+start = data | calendar

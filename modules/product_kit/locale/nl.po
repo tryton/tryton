@@ -1,0 +1,276 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.component,fixed:"
+msgid "Fixed"
+msgstr "Vast"
+
+msgctxt "field:product.component,parent_product:"
+msgid "Parent Variant"
+msgstr "Bovenliggende variant"
+
+msgctxt "field:product.component,parent_template:"
+msgid "Parent Product"
+msgstr "Bovenliggend product"
+
+msgctxt "field:product.component,parent_type:"
+msgid "Parent Type"
+msgstr "Oudertype"
+
+msgctxt "field:product.component,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:product.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categorie producteenheid"
+
+msgctxt "field:product.component,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:product.component,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:product.product,components:"
+msgid "Components"
+msgstr "Componenten"
+
+msgctxt "field:product.template,components:"
+msgid "Components"
+msgstr "Componenten"
+
+msgctxt "field:purchase.line,component_children:"
+msgid "Component Children"
+msgstr "Onderliggende componenten"
+
+msgctxt "field:purchase.line,component_parent:"
+msgid "Component Parent"
+msgstr "bovenliggende componenten"
+
+msgctxt "field:purchase.line,components:"
+msgid "Components"
+msgstr "Componenten"
+
+msgctxt "field:purchase.line.component,fixed:"
+msgid "Fixed"
+msgstr "Vast"
+
+msgctxt "field:purchase.line.component,line:"
+msgid "Line"
+msgstr "Regel"
+
+msgctxt "field:purchase.line.component,move_done:"
+msgid "Moves Done"
+msgstr "Boekingen klaar"
+
+msgctxt "field:purchase.line.component,move_exception:"
+msgid "Moves Exception"
+msgstr "Boekingen uitzondering"
+
+msgctxt "field:purchase.line.component,moves:"
+msgid "Moves"
+msgstr "beweging"
+
+msgctxt "field:purchase.line.component,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Genegeerde boekingen"
+
+msgctxt "field:purchase.line.component,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Opnieuw aangemaakte boekingen"
+
+msgctxt "field:purchase.line.component,parent_type:"
+msgid "Parent Type"
+msgstr "Oudertype"
+
+msgctxt "field:purchase.line.component,price_ratio:"
+msgid "Price Ratio"
+msgstr "Prijsverhouding"
+
+msgctxt "field:purchase.line.component,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:purchase.line.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categorie producteenheid"
+
+msgctxt "field:purchase.line.component,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:purchase.line.component,quantity_ratio:"
+msgid "Quantity Ratio"
+msgstr "Hoeveelheidsverhouding"
+
+msgctxt "field:purchase.line.component,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:purchase.line.component-ignored-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:purchase.line.component-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Boeking/beweging"
+
+msgctxt "field:purchase.line.component-recreated-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:purchase.line.component-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Boeking/beweging"
+
+msgctxt "field:sale.line,component_children:"
+msgid "Component Children"
+msgstr "Onderliggende componenten"
+
+msgctxt "field:sale.line,component_parent:"
+msgid "Component Parent"
+msgstr "bovenliggende componenten"
+
+msgctxt "field:sale.line,components:"
+msgid "Components"
+msgstr "Componenten"
+
+msgctxt "field:sale.line.component,fixed:"
+msgid "Fixed"
+msgstr "Vast"
+
+msgctxt "field:sale.line.component,line:"
+msgid "Line"
+msgstr "Regels"
+
+msgctxt "field:sale.line.component,move_done:"
+msgid "Moves Done"
+msgstr "Boekingen klaar"
+
+msgctxt "field:sale.line.component,move_exception:"
+msgid "Moves Exception"
+msgstr "Boekingen uitzondering"
+
+msgctxt "field:sale.line.component,moves:"
+msgid "Moves"
+msgstr "Boekingen/bewegingen"
+
+msgctxt "field:sale.line.component,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Genegeerde boekingen"
+
+msgctxt "field:sale.line.component,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Opnieuw aangemaakte boekingen"
+
+msgctxt "field:sale.line.component,parent_type:"
+msgid "Parent Type"
+msgstr "Oudertype"
+
+msgctxt "field:sale.line.component,price_ratio:"
+msgid "Price Ratio"
+msgstr "Prijsverhouding"
+
+msgctxt "field:sale.line.component,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.line.component,product_unit_category:"
+msgid "Product Unit Category"
+msgstr "Categorie producteenheid"
+
+msgctxt "field:sale.line.component,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.line.component,quantity_ratio:"
+msgid "Quantity Ratio"
+msgstr "Hoeveelheidsverhouding"
+
+msgctxt "field:sale.line.component,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.line.component-ignored-stock.move,component:"
+msgid "Component"
+msgstr "Component"
+
+msgctxt "field:sale.line.component-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Boeking/beweging"
+
+msgctxt "field:sale.line.component-recreated-stock.move,component:"
+msgid "Sale Line Component"
+msgstr "Verkooplijncomponent"
+
+msgctxt "field:sale.line.component-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Boeking/beweging"
+
+msgctxt "help:product.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
+
+msgctxt "help:purchase.line.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
+
+msgctxt "help:sale.line.component,fixed:"
+msgid ""
+"Check to make the quantity of the component independent of the kit quantity."
+msgstr ""
+"Vink aan om de hoeveelheid van het onderdeel onafhankelijk te maken van de "
+"hoeveelheid in de kit."
+
+msgctxt "model:product.component,name:"
+msgid "Product Component"
+msgstr "Productcomponent"
+
+msgctxt "model:purchase.line.component,name:"
+msgid "Purchase Line Component"
+msgstr "Component inkoopregel"
+
+msgctxt "model:purchase.line.component-ignored-stock.move,name:"
+msgid "Purchase Line Component - Ignored Move"
+msgstr "Inkoopregelcomponent - Genegeerde verplaatsing"
+
+msgctxt "model:purchase.line.component-recreated-stock.move,name:"
+msgid "Purchase Line Component - Recreated Move"
+msgstr "Inkoopregelcomponent - Opnieuw gemaakte verplaatsing"
+
+msgctxt "model:sale.line.component,name:"
+msgid "Sale Line Component"
+msgstr "Verkooplijncomponent"
+
+msgctxt "model:sale.line.component-ignored-stock.move,name:"
+msgid "Sale Line Component - Ignored Move"
+msgstr "Verkoopregelcomponent - Genegeerde verplaatsing"
+
+msgctxt "model:sale.line.component-recreated-stock.move,name:"
+msgid "Sale Line Component - Recreated Move"
+msgstr "Verkoopregelcomponent - Opnieuw gemaakte verplaatsing"
+
+msgctxt "selection:product.product,type:"
+msgid "Kit"
+msgstr "Kit"
+
+msgctxt "selection:product.template,type:"
+msgid "Kit"
+msgstr "Kit"
+
+msgctxt "view:purchase.line:"
+msgid "Components"
+msgstr "Componenten"
+
+msgctxt "view:sale.line:"
+msgid "Components"
+msgstr "Componenten"
