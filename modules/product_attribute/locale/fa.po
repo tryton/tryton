@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "مجموعه ها"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "ویژگی"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "مجموعه"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "مجموعه ویژگی"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "مجموعه ویژگی"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "اضافه کردن مجموعه ها به ویژگی."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "اضافه کردن ویژگی ها به مجموعه."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "شناسه اصلی مجموعه ویژگی محصول."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "اضافه کردن ویژگی ها به نوع."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "مجموعه ویژگی"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "مجموعه ویژگی"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "ویژگی محصول"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "ویژگی محصول - مجموعه"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "مجموعه ویژگی محصول"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "ویژگی ها"

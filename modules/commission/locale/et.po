@@ -1,0 +1,334 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,agent:"
+msgid "Commission Agent"
+msgstr "Komisjoni agent"
+
+msgctxt "field:account.invoice.line,commissions:"
+msgid "Commissions"
+msgstr "Komisjonid"
+
+msgctxt "field:account.invoice.line,from_commissions:"
+msgid "From Commissions"
+msgstr "Komisjonidelt"
+
+msgctxt "field:account.invoice.line,principal:"
+msgid "Commission Principal"
+msgstr "Komisjoni põhiosa"
+
+msgctxt "field:commission,agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "field:commission,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:commission,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:commission,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:commission,invoice_line:"
+msgid "Invoice Line"
+msgstr "Arve rida"
+
+msgctxt "field:commission,invoice_state:"
+msgid "Invoice State"
+msgstr "Arve olek"
+
+msgctxt "field:commission,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:commission,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:commission,type_:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:commission.agent,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:commission.agent,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:commission.agent,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:commission.agent,pending_amount:"
+msgid "Pending Amount"
+msgstr "Avatud väärtus"
+
+msgctxt "field:commission.agent,plan:"
+msgid "Plan"
+msgstr "Plaan"
+
+msgctxt "field:commission.agent,type_:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:commission.create_invoice.ask,from_:"
+msgid "From"
+msgstr "Kellelt"
+
+msgctxt "field:commission.create_invoice.ask,to:"
+msgid "To"
+msgstr "Kellele"
+
+msgctxt "field:commission.create_invoice.ask,type_:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:commission.plan,commission_method:"
+msgid "Commission Method"
+msgstr "Komisjoni meetod"
+
+msgctxt "field:commission.plan,commission_product:"
+msgid "Commission Product"
+msgstr "Komisjonikaup"
+
+msgctxt "field:commission.plan,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:commission.plan,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Kategooria"
+
+msgctxt "field:commission.plan.line,formula:"
+msgid "Formula"
+msgstr "Valem"
+
+msgctxt "field:commission.plan.line,plan:"
+msgid "Plan"
+msgstr "Plaan"
+
+msgctxt "field:commission.plan.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "Komisjoni põhiosad"
+
+msgctxt "field:product.template,principals:"
+msgid "Commission Principals"
+msgstr "Komisjoni põhiosad"
+
+msgctxt "field:product.template-commission.agent,agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "field:product.template-commission.agent,template:"
+msgid "Template"
+msgstr "Mall"
+
+msgctxt "field:sale.line,principal:"
+msgid "Commission Principal"
+msgstr "Komisjoni põhiosa"
+
+msgctxt "field:sale.sale,agent:"
+msgid "Commission Agent"
+msgstr "Komisjoni agent"
+
+#, fuzzy
+msgctxt "help:commission.plan,commission_method:"
+msgid "When the commission is due."
+msgstr "Loo komisjonitasu arve"
+
+msgctxt "help:commission.plan.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- amount: the original amount"
+msgstr ""
+
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "Komisjonitasu"
+
+msgctxt "model:commission,name:"
+msgid "Commission"
+msgstr "Komisjonitasu"
+
+msgctxt "model:commission.agent,name:"
+msgid "Commission Agent"
+msgstr "Komisjoni agent"
+
+msgctxt "model:commission.create_invoice.ask,name:"
+msgid "Create Commission Invoice"
+msgstr "Loo komisjonitasu arve"
+
+msgctxt "model:commission.plan,name:"
+msgid "Commission Plan"
+msgstr "Komisjonitasu plaan"
+
+msgctxt "model:commission.plan.line,name:"
+msgid "Commission Plan Line"
+msgstr "Komisjonitasu plaani rida"
+
+msgctxt "model:ir.action,name:act_agent_form"
+msgid "Agents"
+msgstr "Agendid"
+
+msgctxt "model:ir.action,name:act_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Loo komisjonitasu arve"
+
+msgctxt "model:ir.action,name:act_commission_form"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "model:ir.action,name:act_commission_form2"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "model:ir.action,name:act_commission_from_relate"
+msgid "From Commissions"
+msgstr "Komisjonitasudelt"
+
+msgctxt "model:ir.action,name:act_commission_relate"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "model:ir.action,name:act_plan_form"
+msgid "Commission Plans"
+msgstr "Komisjonitasu plaan"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "model:ir.ui.menu,name:menu_agent_form"
+msgid "Agents"
+msgstr "Agendid"
+
+msgctxt "model:ir.ui.menu,name:menu_commission"
+msgid "Commission"
+msgstr "Komisjonitasu"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Loo komisjonitasu arve"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_form"
+msgid "Commissions"
+msgstr "Komisjonitasu"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.ui.menu,name:menu_plan_form"
+msgid "Commission Plans"
+msgstr "Komisjonitasu plaanid"
+
+msgctxt "model:product.template-commission.agent,name:"
+msgid "Product Template - Commission Agent"
+msgstr "Toote mall - komisjonimüüja"
+
+msgctxt "model:res.group,name:group_commission"
+msgid "Commission"
+msgstr "Komisjonitasu"
+
+msgctxt "model:res.group,name:group_commission_admin"
+msgid "Commission Administration"
+msgstr "Komisjonitasu juhtimine"
+
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "Komisjonitasu"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Canceled"
+msgstr "Tühistatud"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Invoiced"
+msgstr "Arveldatud"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Paid"
+msgstr "Tasutud"
+
+msgctxt "selection:commission,type_:"
+msgid "Incoming"
+msgstr "Sissetulev"
+
+msgctxt "selection:commission,type_:"
+msgid "Outgoing"
+msgstr "Väljaminev"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Agent Of"
+msgstr "Agent"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Principal Of"
+msgstr "Põhiosa"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Both"
+msgstr "Mõlemad"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Incoming"
+msgstr "Sissetulev"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Outgoing"
+msgstr "Väljaminev"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Payment"
+msgstr "Tasumisel"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Posting"
+msgstr "Postitusel"
+
+msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Komisjonitasud"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Tühista"
