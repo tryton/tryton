@@ -1,0 +1,407 @@
+type,name,res_id,src,value,fuzzy
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,"Вы не можете изменить единицу измерения по умолчанию для продукта, который связан со складом перемещения.",0
+error,stock.inventory.line,0,Line quantity must be positive!,Кол-во должно быть положительным,0
+error,stock.inventory.line,0,Product must be unique by inventory!,ТМЦ должен быть уникальным по инвентаризации!,0
+error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,,0
+error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!","Место ""%s"" должно быть на складе ""%s""!",0
+error,stock.location,0,You can not create recursive locations!,Вы не можете создавать рекурсивные места!,0
+error,stock.move,0,Move can be on only one Shipment,Перемещение может иметь только одну отгрузку,0
+error,stock.move,0,Move quantity must be positive,Кол-во должно быть положительным,0
+error,stock.move,0,Source and destination location must be different,Источник и место назначения должны быть разными,0
+error,stock.move,0,You can not set state to assigned!,Вы не можете установить состояние 'передан'!,0
+error,stock.move,0,You can not set state to done!,Вы не можете установить состояние 'готово'!,0
+error,stock.move,0,You can not set state to draft!,Вы не можете установить состояние 'черновик'!,0
+error,stock.move,0,You can not use service products for a move!,Вы не можете выбрать услугу для перемещения,0
+error,stock.move,0,You can only delete draft or cancelled moves!,Вы можете удалять только отмененные перемещения и черновики,0
+error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,В поступлениях должен быть указан местом назначения товарный склад,0
+error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,,0
+error,stock.shipment.out.return,0,Incoming Moves must have the warehouse input location as destination location!,В возвратах от заказчиков должен быть указан местом назначения товарный склад,0
+error,stock.shipment.out.return,0,Inventory Moves must have the warehouse input location as source location!,,0
+error,stock.shipment.out.return.create,0,The shipment with code %s is not yet sent.,Отгрузка с кодом %s еще не отправлена.,0
+error,stock.shipment.out.return.create,0,You can not create return shipment,Вы не можете создать возврат,0
+field,"party.address,delivery",0,Delivery,Доставка,0
+field,"party.party,customer_location",0,Customer Location,Место хранения заказчика,0
+field,"party.party,supplier_location",0,Supplier Location,Место хранения поставщика,0
+field,"product.product,forecast_quantity",0,Forecast Quantity,Прогноз Количество,0
+field,"product.product,quantity",0,Quantity,Кол-во,0
+field,"product.template,forecast_quantity",0,Forecast Quantity,Прогноз Количество,0
+field,"product.template,quantity",0,Quantity,Кол-во,0
+field,"stock.configuration,rec_name",0,Name,Наименование,0
+field,"stock.configuration,shipment_in_return_sequence",0,Supplier Return Shipment Sequence,Возврат поставщику последовательность,0
+field,"stock.configuration,shipment_in_sequence",0,Supplier Shipment Sequence,Приход от поставщика последовательность,0
+field,"stock.configuration,shipment_internal_sequence",0,Internal Shipment Sequence,Внутренние перемещение последовательность,0
+field,"stock.configuration,shipment_out_return_sequence",0,Customer Return Shipment Sequence,Возврат от заказчика последовательность,0
+field,"stock.configuration,shipment_out_sequence",0,Customer Shipment Sequence,Отгрузка заказчику последовательность,0
+field,"stock.inventory,company",0,Company,Компания,0
+field,"stock.inventory,date",0,Date,Дата,0
+field,"stock.inventory,lines",0,Lines,Строки,0
+field,"stock.inventory,location",0,Location,Место,0
+field,"stock.inventory,lost_found",0,Lost and Found,Утраченный и обретенный,0
+field,"stock.inventory,rec_name",0,Name,Наименование,0
+field,"stock.inventory,state",0,State,Состояние,0
+field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Ожидаемое количество,0
+field,"stock.inventory.line,inventory",0,Inventory,Инвентаризация,0
+field,"stock.inventory.line,move",0,Move,Перемещение,0
+field,"stock.inventory.line,product",0,Product,ТМЦ,0
+field,"stock.inventory.line,quantity",0,Quantity,Кол-во,0
+field,"stock.inventory.line,rec_name",0,Name,Наименование,0
+field,"stock.inventory.line,unit_digits",0,Unit Digits,Группа цифр,0
+field,"stock.inventory.line,uom",0,UOM,Ед.изм.,0
+field,"stock.location,active",0,Active,Действительнный,0
+field,"stock.location,address",0,Address,Адрес,0
+field,"stock.location,childs",0,Children,Подчиненый,0
+field,"stock.location,code",0,Code,Код локации,0
+field,"stock.location,forecast_quantity",0,Forecast Quantity,Прогноз Количество,0
+field,"stock.location,input_location",0,Input,Входящий,0
+field,"stock.location,left",0,Left,Левая сторона,0
+field,"stock.location,name",0,Name,Наименование,0
+field,"stock.location,output_location",0,Output,Исходящий,0
+field,"stock.location,parent",0,Parent,Основной,0
+field,"stock.location,quantity",0,Quantity,Кол-во,0
+field,"stock.location,rec_name",0,Name,Наименование,0
+field,"stock.location,right",0,Right,Правая сторона,0
+field,"stock.location,storage_location",0,Storage,Хранилище,0
+field,"stock.location,type",0,Location type,Тип расположение,0
+field,"stock.location_stock_date.init,forecast_date",0,At Date,По дате,0
+field,"stock.move,company",0,Company,Компания,0
+field,"stock.move,cost_price",0,Cost Price,Себестоимость,0
+field,"stock.move,currency",0,Currency,Валюта,0
+field,"stock.move,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.move,from_location",0,From Location,Из места,0
+field,"stock.move,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.move,product",0,Product,ТМЦ,0
+field,"stock.move,quantity",0,Quantity,Кол-во,0
+field,"stock.move,rec_name",0,Name,Наименование,0
+field,"stock.move,shipment_in",0,Supplier Shipment,Приход от поставщика,0
+field,"stock.move,shipment_in_return",0,Supplier Return Shipment,Возврат поставщику,0
+field,"stock.move,shipment_internal",0,Internal Shipment,Внутреннее перемещение,0
+field,"stock.move,shipment_out",0,Customer Shipment,Отгрузка заказчику,0
+field,"stock.move,shipment_out_return",0,Customer Return Shipment,Возврат от заказчика,0
+field,"stock.move,state",0,State,Состояние,0
+field,"stock.move,to_location",0,To Location,В место,0
+field,"stock.move,unit_digits",0,Unit Digits,Группа цифр,0
+field,"stock.move,unit_price",0,Unit Price,Цена за единицу,0
+field,"stock.move,unit_price_required",0,Unit Price Required,Требуется цена за единицу,0
+field,"stock.move,uom",0,Uom,Ед.изм.,0
+field,"stock.product_stock_date.init,forecast_date",0,At Date,По дате,0
+field,"stock.shipment.in,code",0,Code,Код отгрузки,0
+field,"stock.shipment.in,contact_address",0,Contact Address,Контактный адрес,0
+field,"stock.shipment.in,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.shipment.in,incoming_moves",0,Incoming Moves,Входящая поставка,0
+field,"stock.shipment.in,inventory_moves",0,Inventory Moves,Учет перемещений,0
+field,"stock.shipment.in,moves",0,Moves,Перемещения,0
+field,"stock.shipment.in,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.shipment.in,rec_name",0,Name,Наименование,0
+field,"stock.shipment.in,reference",0,Reference,Ссылка,0
+field,"stock.shipment.in,state",0,State,Состояние,0
+field,"stock.shipment.in,supplier",0,Supplier,Поставщик,0
+field,"stock.shipment.in,warehouse",0,Warehouse,Товарный склад,0
+field,"stock.shipment.in.return,code",0,Code,Код возврата отгрузки,0
+field,"stock.shipment.in.return,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.shipment.in.return,from_location",0,From Location,Из места,0
+field,"stock.shipment.in.return,moves",0,Moves,Перемещения,0
+field,"stock.shipment.in.return,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.shipment.in.return,rec_name",0,Name,Наименование,0
+field,"stock.shipment.in.return,reference",0,Reference,Ссылка,0
+field,"stock.shipment.in.return,state",0,State,Состояние,0
+field,"stock.shipment.in.return,to_location",0,To Location,В место,0
+field,"stock.shipment.in.return.assign.ask_force,moves",0,Moves,Перемещения,0
+field,"stock.shipment.internal,code",0,Code,Код внутренней отгрузки,0
+field,"stock.shipment.internal,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.shipment.internal,from_location",0,From Location,Из места,0
+field,"stock.shipment.internal,moves",0,Moves,Перемещения,0
+field,"stock.shipment.internal,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.shipment.internal,rec_name",0,Name,Наименование,0
+field,"stock.shipment.internal,reference",0,Reference,Ссылка,0
+field,"stock.shipment.internal,state",0,State,Состояние,0
+field,"stock.shipment.internal,to_location",0,To Location,В место,0
+field,"stock.shipment.internal.assign.ask_force,moves",0,Moves,Перемещения,0
+field,"stock.shipment.out,code",0,Code,Код исходящей отгрузки,0
+field,"stock.shipment.out,customer",0,Customer,Заказчик,0
+field,"stock.shipment.out,delivery_address",0,Delivery Address,Адрес доставки,0
+field,"stock.shipment.out,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.shipment.out,inventory_moves",0,Inventory Moves,Учет перемещений,0
+field,"stock.shipment.out,moves",0,Moves,Перемещения,0
+field,"stock.shipment.out,outgoing_moves",0,Outgoing Moves,Внешнее перемещение,0
+field,"stock.shipment.out,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.shipment.out,rec_name",0,Name,Наименование,0
+field,"stock.shipment.out,reference",0,Reference,Ссылка,0
+field,"stock.shipment.out,state",0,State,Состояние,0
+field,"stock.shipment.out,warehouse",0,Warehouse,Товарный склад,0
+field,"stock.shipment.out.assign.ask_force,inventory_moves",0,Inventory Moves,Учет перемещений,0
+field,"stock.shipment.out.return,code",0,Code,Код возврата отгрузки,0
+field,"stock.shipment.out.return,customer",0,Customer,Заказчик,0
+field,"stock.shipment.out.return,delivery_address",0,Delivery Address,Адрес доставки,0
+field,"stock.shipment.out.return,effective_date",0,Effective Date,Учетная дата,0
+field,"stock.shipment.out.return,incoming_moves",0,Incoming Moves,Входящая поставка,0
+field,"stock.shipment.out.return,inventory_moves",0,Inventory Moves,Учет перемещений,0
+field,"stock.shipment.out.return,moves",0,Moves,Перемещения,0
+field,"stock.shipment.out.return,planned_date",0,Planned Date,Плановая дата,0
+field,"stock.shipment.out.return,rec_name",0,Name,Наименование,0
+field,"stock.shipment.out.return,reference",0,Reference,Ссылка,0
+field,"stock.shipment.out.return,state",0,State,Состояние,0
+field,"stock.shipment.out.return,warehouse",0,Warehouse,Товарный склад,0
+help,"party.party,customer_location",0,The default destination location when sending products to the party.,Место назначения по умолчанию при отправке продукции контрагенту.,0
+help,"party.party,supplier_location",0,The default source location when receiving products from the party.,"По умолчанию, местоположение при получении продукции от контрагента.",0
+help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
+* An empty value is an infinite date in the future.
+* A date in the past will provide historical values.",,0
+help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
+* An empty value is an infinite date in the future.
+* A date in the past will provide historical values.",,0
+model,"ir.action,name",act_inventory_form,Inventories,Инвентаризация,0
+model,"ir.action,name",act_location_form,Edit Locations,Изменить места хранения,0
+model,"ir.action,name",act_location_quantity_tree,Product Stock,Хранилище ТМЦ,0
+model,"ir.action,name",act_location_tree,Locations,Места,0
+model,"ir.action,name",act_move_form,Moves,Перемещения,0
+model,"ir.action,name",act_move_form_cust,Moves to Customers,Отгрузка заказчикам,0
+model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Поставки от поставщиков,0
+model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Ожидающийся приход от поставщика,0
+model,"ir.action,name",act_product_by_location,Products by Locations,ТМЦ по местонахождениям,0
+model,"ir.action,name",act_shipment_in_form,Supplier Shipments,Приход от поставщиков,0
+model,"ir.action,name",act_shipment_in_form2,New Supplier Shipment,Новая поставка,0
+model,"ir.action,name",act_shipment_in_form_received,Received Supplier shipments,Поступления от поставщика,0
+model,"ir.action,name",act_shipment_in_return_form,Supplier Return Shipments,Возвраты поставщику,0
+model,"ir.action,name",act_shipment_in_return_new_form,New Supplier Return Shipment,Новый возврат поставщику,0
+model,"ir.action,name",act_shipment_internal_assigned_form,Assigned Internal Shipments,Выполненные внутренние перемещения,0
+model,"ir.action,name",act_shipment_internal_draft_form,Draft Internal Shipments,Черновик внутренних перемещений,0
+model,"ir.action,name",act_shipment_internal_form,Internal Shipments,Внутренние перемещения,0
+model,"ir.action,name",act_shipment_internal_new_form,New Internal Shipment,Новое внутреннее перемещение,0
+model,"ir.action,name",act_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Внутренние перемещения в ожидании,0
+model,"ir.action,name",act_shipment_out_form,Customer Shipments,Отгрузки заказчику,0
+model,"ir.action,name",act_shipment_out_form2,Customer Shipments,Отгрузки заказчику,0
+model,"ir.action,name",act_shipment_out_form3,Supplier Shipments,Приход от поставщиков,0
+model,"ir.action,name",act_shipment_out_form_assigned,Assigned Customer Shipments,Грузы переданные заказчику,0
+model,"ir.action,name",act_shipment_out_form_ready,Customer Shipments Ready for Shipping,Груз заказчика готовый к отгрузке,0
+model,"ir.action,name",act_shipment_out_form_waiting,Customer Shipments Waiting Assignation,Клиентский груз ожидающий назначения,0
+model,"ir.action,name",act_shipment_out_return_form,Customer Return Shipments,Возвраты от заказчика,0
+model,"ir.action,name",act_shipment_out_return_form2,New Customer Return Shipment,Новый возврат от заказчика,0
+model,"ir.action,name",create_shipment_out_return,Create Return Shipment,Создание обратной отправки,0
+model,"ir.action,name",report_shipment_in_restocking_list,Restocking List,Список пополнения,0
+model,"ir.action,name",report_shipment_internal,Internal Shipment,Внутреннее перемещение,0
+model,"ir.action,name",report_shipment_out_delivery_note,Delivery Note,Накладной,0
+model,"ir.action,name",report_shipment_out_picking_list,Picking List,Сбор Список,0
+model,"ir.action,name",report_shipment_out_return_restocking_list,Restocking List,Список пополнения,0
+model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Полная инвентаризация,0
+model,"ir.action,name",wizard_location_open,Product by Location,ТМЦ по местонахождению,0
+model,"ir.action,name",wizard_product_open,Product Quantities,Количества Товара,0
+model,"ir.action,name",wizard_shipment_in_return_assign,Assign Purchase Return Shipment,,0
+model,"ir.action,name",wizard_shipment_internal_assign,Assign Shipment Internal,Внутренние назначение поставки ,0
+model,"ir.action,name",wizard_shipment_out_assign,Assign Shipment Out,Внешнее назначение груза,0
+model,"ir.sequence,name",sequence_shipment_in,Supplier Shipment,Приход от поставщика,0
+model,"ir.sequence,name",sequence_shipment_in_return,Supplier Return Shipment,Возврат поставщику,0
+model,"ir.sequence,name",sequence_shipment_internal,Internal Shipment,Внутреннее перемещение,0
+model,"ir.sequence,name",sequence_shipment_out,Customer Shipment,Отгрузка заказчику,0
+model,"ir.sequence,name",sequence_shipment_out_return,Customer Return Shipment,Возврат от заказчика,0
+model,"ir.sequence.type,name",sequence_type_shipment_in,Supplier Shipment,Приход от поставщика,0
+model,"ir.sequence.type,name",sequence_type_shipment_in_return,Supplier Return Shipment,Возврат поставщику,0
+model,"ir.sequence.type,name",sequence_type_shipment_internal,Internal Shipment,Внутреннее перемещение,0
+model,"ir.sequence.type,name",sequence_type_shipment_out,Customer Shipment,Отгрузка заказчику,0
+model,"ir.sequence.type,name",sequence_type_shipment_out_return,Customer Return Shipment,Возврат от заказчика,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Конфигурация,0
+model,"ir.ui.menu,name",menu_inventory_form,Inventories,Инвентаризации,0
+model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Черновики инвентаризаций,0
+model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Новая инвентаризация,0
+model,"ir.ui.menu,name",menu_location_form,Edit Locations,Изменить места хранения,0
+model,"ir.ui.menu,name",menu_location_tree,Locations,Места хранения,0
+model,"ir.ui.menu,name",menu_move_form,Moves,Перемещения,0
+model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Отгрузки заказчикам,0
+model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Поставки от поставщиков,0
+model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Ожидающийся приход от поставщика,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Отчетность,0
+model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Приход от поставщиков,0
+model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Новая постака,0
+model,"ir.ui.menu,name",menu_shipment_in_received,Received Supplier shipments,Поступления от поставщика,0
+model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,Возвраты поставщику,0
+model,"ir.ui.menu,name",menu_shipment_in_return_new_form,New Supplier Return Shipment,Новый возврат поставщику,0
+model,"ir.ui.menu,name",menu_shipment_internal_assigned_form,Assigned Internal Shipments,Выполненные внутренние перемещения,0
+model,"ir.ui.menu,name",menu_shipment_internal_draft_form,Draft Internal Shipments,Черновик внутренних перемещений,0
+model,"ir.ui.menu,name",menu_shipment_internal_form,Internal Shipments,Внутренние перемещения,0
+model,"ir.ui.menu,name",menu_shipment_internal_new_form,New Internal Shipment,Новое внутреннее перемещение,0
+model,"ir.ui.menu,name",menu_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Внутренние перемещения в ожидании,0
+model,"ir.ui.menu,name",menu_shipment_out_assigned,Assigned Customer Shipments,Подтвержденные отгрузки заказчикам,0
+model,"ir.ui.menu,name",menu_shipment_out_form,Customer Shipments,Отгрузки заказчикам,0
+model,"ir.ui.menu,name",menu_shipment_out_ready,Customer Shipments Ready for Shipping,Отгрузки заказчикам готовые к отправке,0
+model,"ir.ui.menu,name",menu_shipment_out_return_form,Customer Return Shipments,Возвраты от заказчика,0
+model,"ir.ui.menu,name",menu_shipment_out_return_form2,New Customer Return Shipment,Новый возврат от заказчика,0
+model,"ir.ui.menu,name",menu_shipment_out_waiting,Customer Shipments Waiting Assignation,Отгрузки заказчикам в ожидании,0
+model,"ir.ui.menu,name",menu_stock,Inventory Management,Управление складами,0
+model,"ir.ui.menu,name",menu_stock_configuration,Stock Configuration,Конфигурация склада,0
+model,"res.group,name",group_stock,Stock,Хранилище,0
+model,"res.group,name",group_stock_admin,Stock Administration,Хранилище Администрирование,0
+model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Склад ускоренной погрузки,0
+model,"stock.configuration,name",0,Stock Configuration,Конфигурация склада,0
+model,"stock.inventory,name",0,Stock Inventory,Хранилище опись,0
+model,"stock.inventory.line,name",0,Stock Inventory Line,Хранилище строка описи,0
+model,"stock.location,name",0,Stock Location,Местонахождение хранилища,0
+model,"stock.location,name",location_customer,Customer,Заказчик,0
+model,"stock.location,name",location_input,Input Zone,Зона поставки,0
+model,"stock.location,name",location_lost_found,Lost and Found,Утраченный и обретенный,0
+model,"stock.location,name",location_output,Output Zone,Зона отгрузки,0
+model,"stock.location,name",location_storage,Storage Zone,Зона хранения,0
+model,"stock.location,name",location_supplier,Supplier,Поставщик,0
+model,"stock.location,name",location_warehouse,Warehouse,Товарный склад,0
+model,"stock.location_stock_date.init,name",0,Compute stock quantities,Вычисление количество на складе,0
+model,"stock.move,name",0,Stock Move,Хранилище перемещение товара,0
+model,"stock.product_stock_date.init,name",0,Compute stock quantities,Вычисление количество на складе,0
+model,"stock.shipment.in,name",0,Supplier Shipment,Приход от поставщика,0
+model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Возврат поставщику,0
+model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,,0
+model,"stock.shipment.internal,name",0,Internal Shipment,Внутреннее перемещение,0
+model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Внутренние назначение поставки (Ускоренный),0
+model,"stock.shipment.out,name",0,Customer Shipment,Отгрузка заказчику,0
+model,"stock.shipment.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,Внешнее назначение груза (Ускоренный),0
+model,"stock.shipment.out.return,name",0,Customer Return Shipment,Возврат от заказчика,0
+model,"workflow,name",wkf_inventory,Inventory,Инвентаризация,0
+model,"workflow,name",wkf_shipment_in_return,Supplier Return Shipment,Возврат поставщику,0
+model,"workflow,name",wkf_shipment_out_return,Customer Return Shipment,Возврат от заказчика,0
+model,"workflow,name",wkf_shipmentin,Supplier Shipment,Приход от поставщика,0
+model,"workflow,name",wkf_shipmentinternal,Internal Shipment,Внутреннее перемещение,0
+model,"workflow,name",wkf_shipmentout,Customer Shipment,Отгрузка заказчику,0
+model,"workflow.activity,name",inventory_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",inventory_act_done,Done,Выполнено,0
+model,"workflow.activity,name",inventory_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipment_in_return_act_assigned,Assigned,Переданный,0
+model,"workflow.activity,name",shipment_in_return_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",shipment_in_return_act_done,Done,Выполнено,0
+model,"workflow.activity,name",shipment_in_return_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipment_in_return_act_waiting,Waiting,Ожидание,0
+model,"workflow.activity,name",shipment_out_return_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",shipment_out_return_act_done,Done,Выполнено,0
+model,"workflow.activity,name",shipment_out_return_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipment_out_return_act_received,Received,Поступило,0
+model,"workflow.activity,name",shipmentin_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",shipmentin_act_done,Done,Выполнено,0
+model,"workflow.activity,name",shipmentin_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipmentin_act_received,Received,Поступило,0
+model,"workflow.activity,name",shipmentinternal_act_assigned,Assigned,Переданный,0
+model,"workflow.activity,name",shipmentinternal_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",shipmentinternal_act_done,Done,Выполнено,0
+model,"workflow.activity,name",shipmentinternal_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipmentinternal_act_waiting,Waiting,Ожидание,0
+model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Переданный,0
+model,"workflow.activity,name",shipmentout_act_cancel,Canceled,Отменено,0
+model,"workflow.activity,name",shipmentout_act_done,Done,Выполнено,0
+model,"workflow.activity,name",shipmentout_act_draft,Draft,Черновик,0
+model,"workflow.activity,name",shipmentout_act_packed,Packed,Упакованный,0
+model,"workflow.activity,name",shipmentout_act_waiting,Waiting,Ожидание,0
+selection,"stock.inventory,state",0,Canceled,Отменено,0
+selection,"stock.inventory,state",0,Done,Выполнено,0
+selection,"stock.inventory,state",0,Draft,Черновик,0
+selection,"stock.location,type",0,Customer,Заказчик,0
+selection,"stock.location,type",0,Lost and Found,Утраченный и обретенный,0
+selection,"stock.location,type",0,Production,Производство,0
+selection,"stock.location,type",0,Storage,Хранилище,0
+selection,"stock.location,type",0,Supplier,Поставщик,0
+selection,"stock.location,type",0,View,Просмотр,0
+selection,"stock.location,type",0,Warehouse,Товарный склад,0
+selection,"stock.move,state",0,Assigned,Переданный,0
+selection,"stock.move,state",0,Canceled,Отменено,0
+selection,"stock.move,state",0,Done,Выполнено,0
+selection,"stock.move,state",0,Draft,Черновик,0
+selection,"stock.shipment.in,state",0,Canceled,Отменено,0
+selection,"stock.shipment.in,state",0,Done,Выполнено,0
+selection,"stock.shipment.in,state",0,Draft,Черновик,0
+selection,"stock.shipment.in,state",0,Received,Поступило,0
+selection,"stock.shipment.in.return,state",0,Assigned,Переданный,0
+selection,"stock.shipment.in.return,state",0,Canceled,Отменено,0
+selection,"stock.shipment.in.return,state",0,Done,Выполнено,0
+selection,"stock.shipment.in.return,state",0,Draft,Черновик,0
+selection,"stock.shipment.in.return,state",0,Waiting,Ожидание,0
+selection,"stock.shipment.internal,state",0,Assigned,Переданный,0
+selection,"stock.shipment.internal,state",0,Canceled,Отменено,0
+selection,"stock.shipment.internal,state",0,Done,Выполнено,0
+selection,"stock.shipment.internal,state",0,Draft,Черновик,0
+selection,"stock.shipment.internal,state",0,Waiting,Ожидание,0
+selection,"stock.shipment.out,state",0,Assigned,Переданный,0
+selection,"stock.shipment.out,state",0,Canceled,Отменено,0
+selection,"stock.shipment.out,state",0,Done,Выполнено,0
+selection,"stock.shipment.out,state",0,Draft,Черновик,0
+selection,"stock.shipment.out,state",0,Packed,Упакованный,0
+selection,"stock.shipment.out,state",0,Waiting,Ожидание,0
+selection,"stock.shipment.out.return,state",0,Canceled,Отменено,0
+selection,"stock.shipment.out.return,state",0,Done,Выполнено,0
+selection,"stock.shipment.out.return,state",0,Draft,Черновик,0
+selection,"stock.shipment.out.return,state",0,Received,Поступило,0
+view,party.party,0,Stock,Хранилище,0
+view,product.product,0,Products,ТМЦ,0
+view,stock.configuration,0,Stock Configuration,Конфигурация склада,0
+view,stock.inventory,0,Add an inventory line for each missing products,Добавить строку в список для каждого отсутствующего товара,0
+view,stock.inventory,0,Cancel,Отменить,0
+view,stock.inventory,0,Complete Inventory,Полная инвентаризация,0
+view,stock.inventory,0,Confirm,Подтверждать,0
+view,stock.inventory,0,Inventories,Инвентаризация,0
+view,stock.inventory,0,Inventory,Инвентаризация,0
+view,stock.inventory.line,0,Inventory Line,Строка инвентаризации,0
+view,stock.inventory.line,0,Inventory Lines,Строки инвентаризации,0
+view,stock.location,0,Location,Место,0
+view,stock.location,0,Locations,Места хранения,0
+view,stock.location,0,Product Stock,Хранилище ТМЦ,0
+view,stock.location_stock_date.init,0,Product Quantity.,Количество Товаров.,0
+view,stock.move,0,Move,Перемещение,0
+view,stock.move,0,Moves,Перемещения,0
+view,stock.product_stock_date.init,0,Product Quantity.,Количество Товаров.,0
+view,stock.shipment.in,0,Cancel,Отменить,0
+view,stock.shipment.in,0,Done,Выполнено,0
+view,stock.shipment.in,0,Incoming Moves,Входящий груз,0
+view,stock.shipment.in,0,Inventory Moves,Учет перемещений,0
+view,stock.shipment.in,0,Moves,Перемещения,0
+view,stock.shipment.in,0,Received,Поступило,0
+view,stock.shipment.in,0,Reset to Draft,Сброс в черновик,0
+view,stock.shipment.in,0,Supplier Shipment,Приход от поставщика,0
+view,stock.shipment.in,0,Supplier Shipments,Приход от поставщиков,0
+view,stock.shipment.in.return,0,Assign,Назначение,0
+view,stock.shipment.in.return,0,Cancel,Отменить,0
+view,stock.shipment.in.return,0,Done,Выполнено,0
+view,stock.shipment.in.return,0,Draft,Черновик,0
+view,stock.shipment.in.return,0,Reset to Draft,Сброс в черновик,0
+view,stock.shipment.in.return,0,Supplier Return Shipment,Возврат поставщику,0
+view,stock.shipment.in.return,0,Supplier Return Shipments,Возвраты поставщику,0
+view,stock.shipment.in.return,0,Waiting,Ожидание,0
+view,stock.shipment.in.return.assign.ask_force,0,Moves,Перемещения,0
+view,stock.shipment.in.return.assign.ask_force,0,Unable to Assign,Невозможно Назначение,0
+view,stock.shipment.in.return.assign.ask_force,0,Unable to assign those products:,Невозможно назначить эти товары:,0
+view,stock.shipment.internal,0,Assign,Назначение,0
+view,stock.shipment.internal,0,Cancel,Отменить,0
+view,stock.shipment.internal,0,Done,Выполнено,0
+view,stock.shipment.internal,0,Draft,Черновик,0
+view,stock.shipment.internal,0,Internal Shipment,Внутреннее перемещение,0
+view,stock.shipment.internal,0,Internal Shipments,Внутренние перемещения,0
+view,stock.shipment.internal,0,Reset to Draft,Сброс в черновик,0
+view,stock.shipment.internal,0,Waiting,Ожидание,0
+view,stock.shipment.internal.assign.ask_force,0,Moves,Перемещения,0
+view,stock.shipment.internal.assign.ask_force,0,Unable to Assign,Невозможно Назначение,0
+view,stock.shipment.internal.assign.ask_force,0,Unable to assign those products:,Невозможно назначить эти товары:,0
+view,stock.shipment.out,0,Assign,Назначение,0
+view,stock.shipment.out,0,Cancel,Отменить,0
+view,stock.shipment.out,0,Customer Shipment,Отгрузка заказчику,0
+view,stock.shipment.out,0,Customer Shipments,Отгрузки заказчикам,0
+view,stock.shipment.out,0,Done,Выполнено,0
+view,stock.shipment.out,0,Draft,Черновик,0
+view,stock.shipment.out,0,Inventory Moves,Учет перемещений,0
+view,stock.shipment.out,0,Make shipment,Сделать отгрузку,0
+view,stock.shipment.out,0,Outgoing Moves,Внешнее перемещение,0
+view,stock.shipment.out,0,Reset to Draft,Сброс в черновик,0
+view,stock.shipment.out,0,Waiting,Ожидание,0
+view,stock.shipment.out.assign.ask_force,0,Inventory Moves,Учет перемещений,0
+view,stock.shipment.out.assign.ask_force,0,Unable to Assign,Невозможно Назначение,0
+view,stock.shipment.out.assign.ask_force,0,Unable to assign those products:,Невозможно назначить эти товары:,0
+view,stock.shipment.out.return,0,Cancel,Отменить,0
+view,stock.shipment.out.return,0,Customer Return Shipment,Возврат от заказчика,0
+view,stock.shipment.out.return,0,Customer Return Shipments,Возвраты от заказчиков,0
+view,stock.shipment.out.return,0,Done,Выполнено,0
+view,stock.shipment.out.return,0,Incoming Moves,Входящий груз,0
+view,stock.shipment.out.return,0,Inventory Moves,Учет перемещений,0
+view,stock.shipment.out.return,0,Moves,Перемещения,0
+view,stock.shipment.out.return,0,Received,Поступило,0
+view,stock.shipment.out.return,0,Reset to Draft,Сброс в черновики,0
+wizard_button,"stock.location.open,init,end",0,Cancel,Отменить,0
+wizard_button,"stock.location.open,init,open",0,Open,Открыть,0
+wizard_button,"stock.product.open,init,end",0,Cancel,Отменить,0
+wizard_button,"stock.product.open,init,open",0,Open,Открыть,0
+wizard_button,"stock.shipment.in.return.assign,ask_force,end",0,Ok,Да,0
+wizard_button,"stock.shipment.in.return.assign,ask_force,force",0,Force Assign,Ускоренная отгрузка,0
+wizard_button,"stock.shipment.internal.assign,ask_force,end",0,Ok,Да,0
+wizard_button,"stock.shipment.internal.assign,ask_force,force",0,Force Assign,Ускоренная передача,0
+wizard_button,"stock.shipment.out.assign,ask_force,end",0,Ok,Да,0
+wizard_button,"stock.shipment.out.assign,ask_force,force",0,Force Assign,Ускоренная отгрузка,0
