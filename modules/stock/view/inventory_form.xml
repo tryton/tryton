@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="location"/>
+    <field name="location"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="date"/>
+    <field name="date"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="empty_quantity"/>
+    <field name="empty_quantity"/>
+
+    <field name="lines" colspan="4" view_ids="stock.inventory_line_view_list_simple"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group colspan="2" col="-1" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="complete_lines"/>
+        <button name="count"/>
+        <button name="confirm" icon="tryton-ok"/>
+    </group>
+</form>
