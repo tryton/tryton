@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,recommendable:"
+msgid "Recommendable"
+msgstr "Aanbevelen"
+
+msgctxt "field:product.template,recommendable:"
+msgid "Recommendable"
+msgstr "Aanbevelen"
+
+msgctxt "field:sale.configuration,product_recommendation_method:"
+msgid "Method"
+msgstr "Methode"
+
+msgctxt "field:sale.configuration,product_recommendation_size:"
+msgid "Size"
+msgstr "Grootte"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_method:"
+msgid "Product Recommendation Method"
+msgstr "Aanbevelingsmethode Product"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_size:"
+msgid "Size"
+msgstr "Grootte"
+
+msgctxt "field:sale.point.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Aanbevolen producten"
+
+msgctxt "field:sale.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Aanbevolen producten"
+
+msgctxt "model:sale.configuration.product_recommendation,name:"
+msgid "Product Recommendation"
+msgstr "Productaanbeveling"
+
+msgctxt "view:sale.configuration:"
+msgid "Product Recommendation"
+msgstr "Productaanbeveling"
