@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <field name="image" widget="image" height="200" width="200" xexpand="0" colspan="2"/>
+    <group id="product" col="2" colspan="2" yalign="0" yexpand="0">
+        <label name="sequence"/>
+        <field name="sequence"/>
+
+        <group colspan="2" col="-1" id="checkboxes">
+            <!-- Add checkboxes here -->
+        </group>
+
+        <label name="template"/>
+        <field name="template"/>
+
+        <label name="product"/>
+        <field name="product"/>
+    </group>
+</form>
