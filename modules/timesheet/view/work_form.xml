@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <group id="labels" col="1" xexpand="0" yfill="1">
+        <label name="name" xexpand="1" yexpand="1"/>
+        <label name="origin" xexpand="1" yexpand="1"/>
+    </group>
+    <group id="names" col="1">
+        <field name="name"/>
+        <field name="origin"/>
+    </group>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+    <label name="timesheet_start_date"/>
+    <field name="timesheet_start_date"/>
+    <label name="timesheet_end_date"/>
+    <field name="timesheet_end_date"/>
+</form>
