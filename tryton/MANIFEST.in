@@ -1,0 +1,17 @@
+include LICENSE
+include COPYRIGHT
+include README.rst
+include CHANGELOG
+include setup.nsi
+include setup-single.nsi
+include setup-bundle.sh
+include tryton.desktop
+include *.nsh
+include setup-freeze.py
+include make-*-installer.sh
+include */gtk-3.0/*
+include doc/*
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot
+include tryton/data/pixmaps/tryton/LICENSE
