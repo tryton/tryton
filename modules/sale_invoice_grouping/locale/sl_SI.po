@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Združevanje računov"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr "Standardno"
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr "Izdajanje računov"
