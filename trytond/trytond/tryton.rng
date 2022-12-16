@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  <define name="tryton">
+    <element>
+      <name ns="">tryton</name>
+      <ref name="attlist.tryton"/>
+      <zeroOrMore>
+        <ref name="data"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.tryton" combine="interleave">
+    <empty/>
+  </define>
+  <define name="data">
+    <element>
+      <name ns="">data</name>
+      <ref name="attlist.data"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="record"/>
+          <ref name="menuitem"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">noupdate</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">grouped</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">depends</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">language</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="record">
+    <element>
+      <name ns="">record</name>
+      <ref name="attlist.record"/>
+      <zeroOrMore>
+        <ref name="field"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.record" combine="interleave">
+    <attribute>
+      <name ns="">model</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.record" combine="interleave">
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.record" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">update</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="field">
+    <element>
+      <name ns="">field</name>
+      <ref name="attlist.field"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">search</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">ref</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">eval</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">pyson</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">type</name>
+        <value>xml</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">depends</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="menuitem">
+    <element>
+      <name ns="">menuitem</name>
+      <ref name="attlist.menuitem"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">icon</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">sequence</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">parent</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">action</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">groups</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.menuitem" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">active</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <start>
+    <ref name="tryton"/>
+  </start>
+</grammar>
