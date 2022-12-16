@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="type">form</field>
+            <field name="name">move_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">account.move</field>
+            <field name="type">tree</field>
+            <field name="name">move_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Account Moves</field>
+            <field name="res_model">account.move</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_move_form"
+            id="menu_move_form"/>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_account">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_account_admin">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_move">
+            <field name="name">Account Move</field>
+            <field name="code">account.move</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_reconciliation_view_form">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">form</field>
+            <field name="name">move_reconciliation_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_reconciliation_view_tree">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">tree</field>
+            <field name="name">move_reconciliation_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_reconciliation_lines">
+            <field name="name">Reconciliation Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('reconciliation', '=', Eval('active_id')), ('reconciliation', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_reconciliation_lines_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move.reconciliation,-1</field>
+            <field name="action" ref="act_move_reconciliation_lines"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_reconciliation">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_reconciliation_account">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_reconciliation_account_admin">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_move_reconciliation">
+            <field name="name">Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_account_move_reconciliation">
+            <field name="name">Default Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form_move">
+            <field name="model">account.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_form_move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_tree">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_tree_move">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_tree_move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_list_payable_receivable">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="30"/>
+            <field name="name">move_line_list_payable_receivable</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_line_form">
+            <field name="name">Account Move Lines</field>
+            <field name="res_model">account.move.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_tree"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_view_form"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Move Account</field>
+            <field name="wiz_name">account.move.open_account</field>
+            <field name="model">account.account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+
+        <record model="ir.action.act_window"
+                id="act_move_line_payable_receivable">
+            <field name="name">Payable/Receivable Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain"
+                eval="[('account.kind', 'in', ['payable', 'receivable']), If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('reconciliation', '=', None)]" pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_move_line_payable_receivable_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_list_payable_receivable"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_payable">
+            <field name="name">Payable</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"
+                eval="[('account.kind', '=', 'payable')]" pyson="1"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_receivable">
+            <field name="name">Receivable</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain"
+                eval="[('account.kind', '=', 'receivable')]" pyson="1"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_move_line_payable_receivable_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_move_line_payable-group_account">
+            <field name="action" ref="act_move_line_payable_receivable"/>
+            <field name="group" ref="group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_journal_ask_view_form">
+            <field name="model">account.move.open_journal.ask</field>
+            <field name="type">form</field>
+            <field name="name">open_journal_ask_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_journal">
+            <field name="name">Open Journal</field>
+            <field name="wiz_name">account.move.open_journal</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_journal_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.journal.period,-1</field>
+            <field name="action" ref="act_open_journal"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_open_journal"
+            icon="tryton-list" id="menu_open_journal"/>
+        <record model="ir.model.access" id="access_move_line">
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_line_account">
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="reconcile_lines_writeoff_view_form">
+            <field name="model">account.move.reconcile_lines.writeoff</field>
+            <field name="type">form</field>
+            <field name="name">reconcile_lines_writeoff_form</field>
+        </record>
+        <record model="ir.action.wizard" id="act_reconcile_lines">
+            <field name="name">Reconcile Lines</field>
+            <field name="wiz_name">account.move.reconcile_lines</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_reconcile_lines"/>
+        </record>
+        <!-- TODO keyword general ledger -->
+
+        <record model="ir.action.wizard" id="act_unreconcile_lines">
+            <field name="name">Unreconcile Lines</field>
+            <field name="wiz_name">account.move.unreconcile_lines</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_unreconcile_lines"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_reconcile">
+            <field name="name">Reconcile Accounts</field>
+            <field name="wiz_name">account.reconcile</field>
+            <field name="window" eval="True"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_reconcile"
+            id="menu_reconcile"/>
+
+        <record model="ir.ui.view" id="reconcile_show_view_form">
+            <field name="model">account.reconcile.show</field>
+            <field name="type">form</field>
+            <field name="name">reconcile_show_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_cancel_moves">
+            <field name="name">Cancel Moves</field>
+            <field name="wiz_name">account.move.cancel</field>
+        </record>
+        <record model="ir.action.keyword" id="act_cancel_moves_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="act_cancel_moves"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_cancel_default_view_form">
+            <field name="model">account.move.cancel.default</field>
+            <field name="type">form</field>
+            <field name="name">move_cancel_default_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="print_general_journal_start_view_form">
+            <field name="model">account.move.print_general_journal.start</field>
+            <field name="type">form</field>
+            <field name="name">print_general_journal_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_journal">
+            <field name="name">Print General Journal</field>
+            <field name="wiz_name">account.move.print_general_journal</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_journal"
+            id="menu_print_general_journal" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_general_journal">
+            <field name="name">General Journal</field>
+            <field name="model">account.move</field>
+            <field name="report_name">account.move.general_journal</field>
+            <field name="report">account/general_journal.odt</field>
+        </record>
+    </data>
+</tryton>
