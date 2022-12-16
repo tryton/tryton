@@ -1,0 +1,4 @@
+include COPYRIGHT
+include CHANGELOG
+include LICENSE
+include doc/*

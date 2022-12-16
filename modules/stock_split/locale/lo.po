@@ -1,0 +1,123 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr "ນັບ"
+
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "ຈຳນວນ"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "ຫຼັກໜ່ວຍ"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "ຫົວໜ່ວຍ"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "ໝວດຫົວໜ່ວຍ"
+
+msgctxt "field:stock.shipment.split.start,domain_moves:"
+msgid "Domain Moves"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.split.start,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:stock.shipment.split.start,moves:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr "ຕົວເລກຈຳກັດຂອງການເຄື່ອນຍ້າຍ"
+
+msgctxt "help:stock.shipment.split.start,moves:"
+msgid "The selected moves will be sent in the new shipment."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr "Split Move"
+
+msgctxt "model:ir.action,name:wizard_split_shipment"
+msgid "Split Shipment"
+msgstr "Split Shipment"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "ແຍກການເຄື່ອນຍ້າຍ"
+
+#, fuzzy
+msgctxt "model:stock.shipment.split.start,name:"
+msgid "Split Shipment"
+msgstr "Split Shipment"
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr "ແຍກ"
+
+msgctxt "view:stock.shipment.split.start:"
+msgid "Choose move to send in new shipment"
+msgstr ""
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr "ແຍກ"
+
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.split,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "ແຍກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr "ແຍກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr "ແຍກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.out:"
+msgid "Split"
+msgstr "ແຍກ"

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='uom']" position="after">
+        <label name="purchase_quantity"/>
+        <field name="purchase_quantity"/>
+        <label name="purchase_unit"/>
+        <field name="purchase_unit"/>
+    </xpath>
+    <xpath expr="/form/field[@name='currency']" position="after">
+        <label name="purchase_unit_price"/>
+        <field name="purchase_unit_price"/>
+        <label name="purchase_currency"/>
+        <field name="purchase_currency"/>
+    </xpath>
+    <xpath expr="/form/field[@name='effective_date']" position="after">
+        <label name="purchase"/>
+        <field name="purchase"/>
+        <newline/>
+    </xpath>
+    <xpath expr="/form/field[@name='unit_digits']" position="after">
+        <field name="purchase_unit_digits" invisible="1" colspan="4"/>
+    </xpath>
+</data>

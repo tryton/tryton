@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Localizações padrão"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Localização de armazenamento"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Sequência"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Almoxarifado"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Localização do produto"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr "Localização do produto"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr "Localizações do Produto"
