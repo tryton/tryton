@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="wizard_split_move">
+            <field name="name">Split Move</field>
+            <field name="wiz_name">stock.move.split</field>
+            <field name="model">stock.move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name='state']"
+                        position="after">
+                        <button name="%(wizard_split_move)d" string="Split"
+                            type="action" colspan="2"
+                            states="{'readonly': ~Eval('state').in_(['draft', 'assigned'])}"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree"
+                        position="inside">
+                        <button name="%(wizard_split_move)d" string="Split"
+                            type="action"
+                            states="{'readonly': ~Eval('state').in_(['draft', 'assigned'])}"/>
+
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="split_start_view_form">
+            <field name="model">stock.move.split.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Split Move" col="6">
+                    <label name="count"/>
+                    <field name="count"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="uom"/>
+                    <field name="uom"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>

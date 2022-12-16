@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
+                        position="after">
+                        <label name="account_stock"/>
+                        <field name="account_stock"/>
+                        <newline/>
+                        <label name="account_stock_customer"/>
+                        <field name="account_stock_customer"/>
+                        <label name="account_stock_supplier"/>
+                        <field name="account_stock_supplier"/>
+                        <label name="account_stock_lost_found"/>
+                        <field name="account_stock_lost_found"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
+                        position="after">
+                        <label name="account_stock"/>
+                        <field name="account_stock"/>
+                        <newline/>
+                        <label name="account_stock_customer"/>
+                        <field name="account_stock_customer"/>
+                        <label name="account_stock_supplier"/>
+                        <field name="account_stock_supplier"/>
+                        <label name="account_stock_lost_found"/>
+                        <field name="account_stock_lost_found"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
