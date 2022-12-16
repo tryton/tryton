@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Contact Mechanisms">
+                    <field name="party"/>
+                    <field name="type"/>
+                    <field name="value"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree_sequence">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Contact Mechanisms" sequence="sequence">
+                    <field name="type"/>
+                    <field name="value"/>
+                    <field name="comment" expand="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_form">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Contact Mechanism" col="6">
+                    <label name="party"/>
+                    <field name="party" colspan="5"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <group col="2" colspan="2" id="value">
+                        <label name="other_value"/>
+                        <field name="other_value"/>
+                        <label name="website"/>
+                        <field name="website" widget="url"/>
+                        <label name="email"/>
+                        <field name="email" widget="email"/>
+                        <label name="skype"/>
+                        <field name="skype" widget="callto"/>
+                        <label name="sip"/>
+                        <field name="sip" widget="sip"/>
+                    </group>
+                    <group col="20" colspan="2" id="checkboxes">
+                        <label name="active"/>
+                        <field name="active" 
+                            xexpand="0" width="25"/>
+                        <!-- Add here some checkboxes ! -->
+                    </group>
+                    <separator name="comment" colspan="6"/>
+                    <field name="comment" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>

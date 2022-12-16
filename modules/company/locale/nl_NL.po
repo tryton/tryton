@@ -1,0 +1,336 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:company.company:"
+msgid "You can not create recursive companies!"
+msgstr "U kunt geen bedrijven aanmaken die naar zichzelf verwijzen!"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:company.company,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:company.company,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Werknemers"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Werknemers"
+
+msgctxt "field:company.company,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:company.company,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:company.company,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:company.company,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:company.company.config.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:company.employee,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:company.employee,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:company.employee,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:company.employee,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:company.employee,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:company.employee,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:ir.cron-company.company,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.cron-company.company,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Cyclische opdracht"
+
+msgctxt "field:ir.cron-company.company,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.cron-company.company,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:ir.cron-company.company,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.cron-company.company,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.property,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:res.user,companies:"
+msgid "Current Companies"
+msgstr "Huidige bedrijven"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Huidig bedrijf"
+
+#, fuzzy
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Moederbedrijf"
+
+msgctxt "field:res.user-company.employee,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user-company.employee,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:res.user-company.employee,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:res.user-company.employee,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user-company.employee,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron"
+msgstr "Bedrijven aangesloten op deze cyclische opdracht"
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr ""
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Brief"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr ""
+
+msgctxt "odt:party.letter:"
+msgid "Best Regards,"
+msgstr "Met vriendelijke groet,"
+
+msgctxt "odt:party.letter:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "odt:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Geachte heer/mevrouw,"
+
+msgctxt "odt:party.letter:"
+msgid "E-Mail:"
+msgstr "E-mail:"
+
+msgctxt "odt:party.letter:"
+msgid "Phone:"
+msgstr "Telefoon:"
+
+msgctxt "odt:party.letter:"
+msgid "Subject:"
+msgstr "Betreft:"
+
+msgctxt "odt:party.letter:"
+msgid "VAT Number:"
+msgstr "BTW-nummer:"
+
+msgctxt "view:company.company.config.start:"
+msgid "Create Company"
+msgstr ""
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr ""
+
+msgctxt "view:company.company:"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "view:company.company:"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Rapportage"
+
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "view:company.employee:"
+msgid "Employees"
+msgstr "Werknemers"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Toevoegen"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "Ok"
+msgstr "Oké"
+
+#, fuzzy
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
