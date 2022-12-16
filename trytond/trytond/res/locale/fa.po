@@ -1,0 +1,642 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr "اقدام - گروه"
+
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "دکمه"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "گروه قوانین"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "نوع ادامه"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "دکمه ها"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "دسترسی فیلد"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "دسترسی منو"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "مدل دسترسی"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "قوانین"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "برنامه های کاربردی"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "ایمیل"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "جهت زبان"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "منو اقدامات"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "رمز عبور"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "رمز عبور درهم"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "بازنشانی رمز عبور"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "بازنشانی رمز عبور منقضی شده"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "منو PySON"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "جلسات"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "امضاء"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "نوار وضعیت"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "هشدارها"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "برنامه کاربردی"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "کلید"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "آدرس آی پی"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "آی پی شبکه"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "همیشه"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr ""
+
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr "گروه ها مجاز به ویرایش توالی این نوع هستند"
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login."
+msgstr "اقداماتی که در ورود به سیستم باید اجرا شوند"
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "پیکربندی کاربران"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "اقدام - گروه"
+
+#, fuzzy
+msgctxt "model:ir.export-res.group,name:"
+msgid "Export Group"
+msgstr "گروه های کاربر"
+
+msgctxt "model:ir.export-write-res.group,name:"
+msgid "Export Modification Group"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "رمز عبور نمی تواند همان ایمیل کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "کاراکترهای مشابه در رمز عبور چندین بار ظاهر می شوند."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "رمز عبور ممنوع است."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "رمز عبور خیلی کوتاه است."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "رمز عبور نمیتواند همان نام ورود به سیستم کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "رمز عبور نمی تواند مشابه نام کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"برای اهداف ورود به سیستم، کاربران نمی توانند حذف شوند، در عوض آنها را "
+"میتوانید غیرفعال کنید."
+
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr ""
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Send by email a new temporary password to the user"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "مدل دکمه - گروه"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_export_any"
+msgid "Any export"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
+msgid "Any export"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
+msgid "User in groups"
+msgstr "گروه های کاربر"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
+msgid "User in modification groups"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_export_read"
+msgid "User in groups"
+msgstr "گروه های کاربر"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_write"
+msgid "User in modification groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "گروه قانون - گروه"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "نوع ادامه - گروه"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "منوی رابط کاربر - گروه"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "مدیریت"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "کاربر - اقدام"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "کاربر - گروه"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "کاربر برنامه"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "پیکربندی اولیه کاربر"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "تلاش برای ورود"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "هشدار کاربر"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "بازنشانی کلمه عبور"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "کلمه عبور شما منقضی میشود در"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "درخواست شده"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "مجوزهای دسترسی"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "اعضاء"
+
+#, fuzzy
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique."
+msgstr "مراقب باشید ورود به سیستم باید منحصر به فرد باشد!"
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "شما هم اکنون می توانید برخی از کاربران را به سیستم اضافه کنید."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "مجوزهای دسترسی"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "عضویت در گروه"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "ظاهر برنامه"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "افزودن"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "تاریخ پایان"
