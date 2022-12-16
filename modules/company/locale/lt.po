@@ -1,0 +1,322 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Dukterinės"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Darbuotojai"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Puslapio poraštė"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Puslapio antraštė"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Motininė"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Laiko zona"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Pabaigos data"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Pradžios data"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Planuotojas (Cron)"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Dabartinė organizacija"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Dabartinis darbuotojas"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Darbuotojai"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Pagrindinė organizacija"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Darbuotojas"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr ""
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Organizacijos pagrindinė valiuta."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr ""
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr ""
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr ""
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr ""
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr ""
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr ""
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr ""
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr ""
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr ""
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr ""
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr ""
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr ""
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr ""
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr ""
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr ""
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr ""
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Organizacijos nuostatos"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Tarnautojas"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Organizacijos nuostatos"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Darbuotojai"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Laiškas"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Planuotojas (Cron) - Organizacija"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Organizacijos"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Darbuotojai"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Naudotojas - darbuotojas"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "Pagarbiai"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Ponios ir Ponai,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Tema:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr ""
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Raportai"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Pridėti"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
