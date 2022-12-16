@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="account">
+    <label name="company"/>
+    <field name="company"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="account"/>
+    <field name="account"/>
+    <label name="journal"/>
+    <field name="journal"/>
+
+    <label name="priorities"/>
+    <field name="priorities"/>
+    <label name="overflow_account"/>
+    <field name="overflow_account"/>
+
+    <field name="accounts" colspan="4"/>
+
+    <button name="apply" colspan="4"/>
+</form>

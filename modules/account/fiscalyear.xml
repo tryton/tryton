@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Fiscal Years"
+            parent="menu_account_configuration"
+            sequence="30"
+            id="menu_fiscalyear_configuration"/>
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">form</field>
+            <field name="name">fiscalyear_form</field>
+        </record>
+        <record model="ir.ui.view" id="fiscalyear_view_tree">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">tree</field>
+            <field name="name">fiscalyear_tree</field>
+        </record>
+        <record model="ir.ui.view" id="fiscalyear_view_list_close">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">tree</field>
+            <field name="name">fiscalyear_list_close</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_fiscalyear_form">
+            <field name="name">Fiscal Years</field>
+            <field name="res_model">account.fiscalyear</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="fiscalyear_view_tree"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="fiscalyear_view_form"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <menuitem
+            parent="menu_fiscalyear_configuration"
+            action="act_fiscalyear_form"
+            sequence="10"
+            id="menu_fiscalyear_form"/>
+
+        <record model="ir.model.access" id="access_fiscalyear">
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_fiscalyear_account_admin">
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="fiscalyear_create_periods_button">
+            <field name="name">create_periods</field>
+            <field name="string">Create Periods</field>
+            <field name="model"
+                search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+
+        <record model="ir.model.button" id="fiscalyear_reopen_button">
+            <field name="name">reopen</field>
+            <field name="string">Re-Open</field>
+            <field name="model"
+                search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+        <record model="ir.model.button" id="fiscalyear_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+        <record model="ir.model.button" id="fiscalyear_lock_button">
+            <field name="name">lock_</field>
+            <field name="string">Lock</field>
+            <field name="confirm">Are you sure you want to lock the fiscal year?</field>
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_fiscalyear_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_fiscalyear_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_fiscalyear_companies"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_fiscalyear_form_close">
+            <field name="name">Close Fiscal Years</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_fiscalyear_form_close_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="fiscalyear_view_list_close"/>
+            <field name="act_window" ref="act_fiscalyear_form_close"/>
+        </record>
+
+        <menuitem
+            parent="menu_processing"
+            action="act_fiscalyear_form_close"
+            sequence="50"
+            id="menu_close_fiscalyear"/>
+
+        <record model="ir.ui.view" id="fiscalyear_create_periods_start_view_form">
+            <field name="model">account.fiscalyear.create_periods.start</field>
+            <field name="type">form</field>
+            <field name="name">fiscalyear_create_periods_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="act_create_periods">
+            <field name="name">Create Periods</field>
+            <field name="wiz_name">account.fiscalyear.create_periods</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="fiscalyear_balance_non_deferral_start_view_form">
+            <field
+                name="model">account.fiscalyear.balance_non_deferral.start</field>
+            <field name="type">form</field>
+            <field
+                name="name">fiscalyear_balance_non_deferral_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_balance_non_deferral">
+            <field name="name">Balance Non-Deferral</field>
+            <field
+                name="wiz_name">account.fiscalyear.balance_non_deferral</field>
+        </record>
+        <menuitem
+            parent="menu_processing"
+            action="act_balance_non_deferral"
+            sequence="40"
+            id="menu_balance_non_deferral"/>
+
+        <record model="ir.ui.view" id="fiscalyear_renew_start_view_form">
+            <field name="model">account.fiscalyear.renew.start</field>
+            <field name="type">form</field>
+            <field name="name">renew_fiscalyear_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_renew_fiscalyear">
+            <field name="name">Renew Fiscal Year</field>
+            <field name="wiz_name">account.fiscalyear.renew</field>
+        </record>
+        <record model="ir.action-res.group"
+                id="act_renew_fiscalyear_group_admin">
+            <field name="action" ref="act_renew_fiscalyear"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+        <menuitem
+            parent="menu_fiscalyear_configuration"
+            action="act_renew_fiscalyear"
+            sequence="90"
+            id="menu_renew_fiscalyear"/>
+    </data>
+</tryton>

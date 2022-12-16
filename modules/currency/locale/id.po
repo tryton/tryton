@@ -1,0 +1,226 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr ""
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr ""
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr ""
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr ""
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr ""
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Kode"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Digit"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Kode Numerik"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Kurs sekarang"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Kurs"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Faktor pembulatan"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Simbol"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Kurs"
+
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr ""
+
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr ""
+
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr ""
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr ""
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr ""
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr ""
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Mata uang"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr ""
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Kurs sekarang"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currencies"
+msgstr "Mata uang"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr ""
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr ""
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr ""
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr ""
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr ""
+
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Kurs sekarang"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr ""
