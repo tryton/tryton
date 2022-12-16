@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="stock_configuration_view_form">
+            <field name="model">stock.configuration</field>
+            <field name="inherit" ref="stock.stock_configuration_view_form"/>
+            <field name="name">stock_configuration_form</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_shipment_drop">
+            <field name="name">Drop Shipment</field>
+            <field name="code">stock.shipment.drop</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_drop_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_drop"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_drop_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_drop"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_drop">
+            <field name="name">Drop Shipment</field>
+            <field name="code">stock.shipment.drop</field>
+        </record>
+
+        <record model="ir.property" id="property_shipment_drop_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_drop_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_drop'))"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_drop_view_form">
+            <field name="model">stock.shipment.drop</field>
+            <field name="type">form</field>
+            <field name="name">shipment_drop_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_drop_view_tree">
+            <field name="model">stock.shipment.drop</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_drop_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_drop_form">
+            <field name="name">Drop Shipments</field>
+            <field name="res_model">stock.shipment.drop</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_drop_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="shipment_drop_view_tree"/>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_drop_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="shipment_drop_view_form"/>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="35"
+            action="act_shipment_drop_form" id="menu_shipment_drop_form"/>
+
+        <record model="ir.model.access" id="access_shipment_drop">
+            <field name="model" search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_drop_group_stock">
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_shipment_drop_group_stock_admin">
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_drop_group_sale">
+            <field name="model" search="[('model', '=', 'stock.shipment.drop')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_drop_cancel_button_group_stock">
+            <field name="button" ref="shipment_drop_cancel_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_drop_draft_button_group_stock">
+            <field name="button" ref="shipment_drop_draft_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_waiting_button">
+            <field name="name">waiting</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_drop_waiting_button_group_stock">
+            <field name="button" ref="shipment_drop_waiting_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_drop_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.drop')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_drop_done_button_group_stock">
+            <field name="button" ref="shipment_drop_done_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+    </data>
+</tryton>
