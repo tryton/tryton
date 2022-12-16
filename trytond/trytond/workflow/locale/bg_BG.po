@@ -1,0 +1,340 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:workflow.instance:0"
+msgid "No workflow instance defined!"
+msgstr "Не е зададен екземпляр на работен процес!"
+
+msgctxt "error:workflow:0"
+msgid "No workflow defined!"
+msgstr "Не е зададен работен процес!"
+
+msgctxt "field:workflow,activities:0"
+msgid "Activities"
+msgstr "Дейности"
+
+msgctxt "field:workflow,model:0"
+msgid "Resource Model"
+msgstr "Модел на ресурс"
+
+msgctxt "field:workflow,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow,on_create:0"
+msgid "On Create"
+msgstr "При създаване"
+
+msgctxt "field:workflow,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.activity,flow_start:0"
+msgid "Flow Start"
+msgstr "Стартиране на процес"
+
+msgctxt "field:workflow.activity,flow_stop:0"
+msgid "Flow Stop"
+msgstr "Спиране на процес"
+
+msgctxt "field:workflow.activity,in_transitions:0"
+msgid "Incoming transitions"
+msgstr "Входящи преходи"
+
+msgctxt "field:workflow.activity,join_mode:0"
+msgid "Join Mode"
+msgstr "Режим на свързаване"
+
+#, fuzzy
+msgctxt "field:workflow.activity,method:0"
+msgid "Method"
+msgstr "Метод"
+
+msgctxt "field:workflow.activity,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.activity,out_transitions:0"
+msgid "Outgoing transitions"
+msgstr "Изходящи преходи"
+
+msgctxt "field:workflow.activity,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.activity,signal_send:0"
+msgid "Signal (subflow.*)"
+msgstr "Сигнал (subflow.*)"
+
+msgctxt "field:workflow.activity,split_mode:0"
+msgid "Split Mode"
+msgstr "Режим на разделяне"
+
+msgctxt "field:workflow.activity,stop_other:0"
+msgid "Stop Other"
+msgstr ""
+
+msgctxt "field:workflow.activity,subflow:0"
+msgid "Subflow"
+msgstr "Подпоток"
+
+msgctxt "field:workflow.activity,workflow:0"
+msgid "Workflow"
+msgstr "Работен процес"
+
+msgctxt "field:workflow.instance,overflows:0"
+msgid "Overflow"
+msgstr "Препълване"
+
+msgctxt "field:workflow.instance,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.instance,res_id:0"
+msgid "Resource ID"
+msgstr "ID на ресурс"
+
+msgctxt "field:workflow.instance,res_type:0"
+msgid "Resource Model"
+msgstr "Модел на ресурс"
+
+msgctxt "field:workflow.instance,state:0"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:workflow.instance,transitions:0"
+msgid "Transitions"
+msgstr "Преходи"
+
+msgctxt "field:workflow.instance,uid:0"
+msgid "User ID"
+msgstr "Потребителско ID"
+
+msgctxt "field:workflow.instance,workflow:0"
+msgid "Workflow"
+msgstr "Работен процес"
+
+msgctxt "field:workflow.instance,workitems:0"
+msgid "Workitems"
+msgstr "Задачи"
+
+msgctxt "field:workflow.transition,act_from:0"
+msgid "Source Activity"
+msgstr "Източник на действие"
+
+msgctxt "field:workflow.transition,act_to:0"
+msgid "Destination Activity"
+msgstr "Активност на местонахождение-цел"
+
+msgctxt "field:workflow.transition,condition:0"
+msgid "Condition"
+msgstr "Условие"
+
+msgctxt "field:workflow.transition,group:0"
+msgid "Group Required"
+msgstr "Групата е задължителна"
+
+msgctxt "field:workflow.transition,instances:0"
+msgid "Instances"
+msgstr "Екземпляри"
+
+msgctxt "field:workflow.transition,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.transition,signal:0"
+msgid "Signal (button Name)"
+msgstr "Сигнал (име на бутон)"
+
+msgctxt "field:workflow.transition,trigger_ids:0"
+msgid "Trigger Expr ID"
+msgstr ""
+
+msgctxt "field:workflow.transition,trigger_model:0"
+msgid "Trigger Type"
+msgstr "Вид превключвател"
+
+msgctxt "field:workflow.transition-workflow.instance,inst_id:0"
+msgid "Instance"
+msgstr "Екземпляр"
+
+msgctxt "field:workflow.transition-workflow.instance,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.transition-workflow.instance,trans_id:0"
+msgid "Transition"
+msgstr "Преход"
+
+msgctxt "field:workflow.trigger,instance:0"
+msgid "Destination Instance"
+msgstr "Ексемплят на местонахождение-цел"
+
+msgctxt "field:workflow.trigger,model:0"
+msgid "Model"
+msgstr "Модел"
+
+msgctxt "field:workflow.trigger,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.trigger,res_id:0"
+msgid "Resource ID"
+msgstr "ID на ресурс"
+
+msgctxt "field:workflow.trigger,workitem:0"
+msgid "Workitem"
+msgstr "Задача"
+
+msgctxt "field:workflow.workitem,activity:0"
+msgid "Activity"
+msgstr "Дейност"
+
+msgctxt "field:workflow.workitem,instance:0"
+msgid "Instance"
+msgstr "Екземпляр"
+
+msgctxt "field:workflow.workitem,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:workflow.workitem,state:0"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:workflow.workitem,subflow:0"
+msgid "Subflow"
+msgstr "Подпоток"
+
+msgctxt "model:ir.action,name:act_activity_form"
+msgid "Activities"
+msgstr "Дейности"
+
+msgctxt "model:ir.action,name:act_instance_form"
+msgid "Instances"
+msgstr "Екземпляри"
+
+msgctxt "model:ir.action,name:act_transition_form"
+msgid "Transitions"
+msgstr "Преходи"
+
+msgctxt "model:ir.action,name:act_workflow_form"
+msgid "Workflows"
+msgstr "Работни процеси"
+
+msgctxt "model:ir.action,name:act_workitem_form"
+msgid "Workitems"
+msgstr "Задачи"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_form"
+msgid "Activities"
+msgstr "Дейности"
+
+msgctxt "model:ir.ui.menu,name:menu_instance_form"
+msgid "Instances"
+msgstr "Екземпляри"
+
+msgctxt "model:ir.ui.menu,name:menu_transition_form"
+msgid "Transitions"
+msgstr "Преходи"
+
+msgctxt "model:ir.ui.menu,name:menu_workflow"
+msgid "Workflow"
+msgstr "Работен процес"
+
+msgctxt "model:ir.ui.menu,name:menu_workflow_form"
+msgid "Workflows"
+msgstr "Работни процеси"
+
+msgctxt "model:ir.ui.menu,name:menu_workitem_form"
+msgid "Workitems"
+msgstr "Задачи"
+
+msgctxt "model:workflow,name:0"
+msgid "Workflow"
+msgstr "Работен процес"
+
+msgctxt "model:workflow.activity,name:0"
+msgid "Workflow activity"
+msgstr "Дейности"
+
+msgctxt "model:workflow.instance,name:0"
+msgid "Workflow instance"
+msgstr "Екземплят на работен процес"
+
+msgctxt "model:workflow.transition,name:0"
+msgid "Workflow transition"
+msgstr "Преход на работен процес"
+
+msgctxt "model:workflow.transition-workflow.instance,name:0"
+msgid "Workflow Transition - Instance"
+msgstr "Преход на работен процес - екземпляр"
+
+msgctxt "model:workflow.trigger,name:0"
+msgid "Workflow trigger"
+msgstr "Задействане на работен процес"
+
+msgctxt "model:workflow.workitem,name:0"
+msgid "Workflow workitem"
+msgstr "Задачи от работен процес"
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "And"
+msgstr "и"
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "Xor"
+msgstr "Xor"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "And"
+msgstr "и"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Or"
+msgstr "Или"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Xor"
+msgstr "Xor"
+
+msgctxt "view:workflow.activity:0"
+msgid "Activity"
+msgstr "Дейност"
+
+msgctxt "view:workflow.activity:0"
+msgid "Transition"
+msgstr "Преход"
+
+msgctxt "view:workflow.activity:0"
+msgid "Transitions"
+msgstr "Преходи"
+
+msgctxt "view:workflow.instance:0"
+msgid "Instance"
+msgstr "Екземпляр"
+
+msgctxt "view:workflow.instance:0"
+msgid "Instances"
+msgstr "Екземпляри"
+
+msgctxt "view:workflow.transition:0"
+msgid "Transition"
+msgstr "Преход"
+
+msgctxt "view:workflow.transition:0"
+msgid "Transitions"
+msgstr "Преходи"
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitem"
+msgstr "Задача"
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitems"
+msgstr "Задачи"
+
+msgctxt "view:workflow:0"
+msgid "Workflow"
+msgstr "Работен процес"
