@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_gift_card_admin">
+            <field name="name">Gift Card Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_gift_card_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_gift_card_admin"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_gift_card">
+            <field name="name">Gift Card</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_gift_card_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_gift_card"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="gift_card_view_form">
+            <field name="model">sale.gift_card</field>
+            <field name="type">form</field>
+            <field name="name">gift_card_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="gift_card_view_list">
+            <field name="model">sale.gift_card</field>
+            <field name="type">tree</field>
+            <field name="name">gift_card_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_gift_card_form">
+            <field name="name">Gift Cards</field>
+            <field name="res_model">sale.gift_card</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_gift_card_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="gift_card_view_list"/>
+            <field name="act_window" ref="act_gift_card_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_gift_card_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="gift_card_view_form"/>
+            <field name="act_window" ref="act_gift_card_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_gift_card_form_domain_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('origin', '=', None), ('spent_on', '=', None)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_gift_card_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_gift_card_form_domain_sent">
+            <field name="name">Sent</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('origin', '!=', None), ('spent_on', '=', None)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_gift_card_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_gift_card_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_gift_card_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_gift_card_form"
+            sequence="50"
+            id="menu_gift_card_form"/>
+
+        <record model="ir.model.access" id="access_gift_card">
+            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_gift_card_admin">
+            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="group" ref="group_gift_card_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_gift_card_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_gift_card_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_gift_card_companies"/>
+        </record>
+
+        <record model="ir.action.report" id="report_gift_card_email">
+            <field name="name">Gift Card</field>
+            <field name="model">sale.gift_card</field>
+            <field name="report_name">sale.gift_card.email</field>
+            <field name="report">sale_gift_card/email.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_form"/>
+            <field name="name">sale_line_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_gift_card">
+            <field name="name">Gift Cards</field>
+            <field name="report_name">sale.gift_card</field>
+            <field name="report">sale_gift_card/gift_card.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_gift_card_keyword_gift_card">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.gift_card,-1</field>
+            <field name="action" ref="report_gift_card"/>
+        </record>
+        <record model="ir.action.keyword" id="report_gift_card_keyword_sale">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="report_gift_card"/>
+        </record>
+    </data>
+    <data depends="sale_point">
+        <record model="ir.ui.view" id="sale_point_sale_view_form">
+            <field name="model">sale.point.sale</field>
+            <field name="inherit" ref="sale_point.sale_view_form"/>
+            <field name="name">sale_point_sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_point_sale_line_view_form">
+            <field name="model">sale.point.sale.line</field>
+            <field name="inherit" ref="sale_point.sale_line_view_form"/>
+            <field name="name">sale_point_sale_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_point_sale_pay_gift_card_view_form">
+            <field name="model">sale.point.sale.pay.gift_card</field>
+            <field name="type">form</field>
+            <field name="name">sale_point_sale_pay_gift_card_form</field>
+        </record>
+
+        <record model="ir.action.keyword" id="report_gift_card_keyword_sale_point">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.point.sale,-1</field>
+            <field name="action" ref="report_gift_card"/>
+        </record>
+    </data>
+</tryton>
