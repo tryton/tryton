@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/">
+    <py:def function="PartyIdentification(party, id=None)">
+        <!-- EPC limits to 70 instead of 140 -->
+        <Nm>${party.name[:70]}</Nm>
+        <py:with vars="address = party.address_get()">
+            <PstlAdr py:if="address">
+                ${PostalAddress(address)}
+            </PstlAdr>
+        </py:with>
+        <Id py:if="id">
+            <py:with vars="identifier = party.get_sepa_identifier(id)">
+                <OrgId py:if="identifier['Type'] == 'OrgId'">
+                    <BICOrBEI py:if="identifier.get('BICOrBEI')">${identifier['BICOrBEI']}</BICOrBEI>
+                    <Othr py:if="identifier.get('Id')">
+                        <Id>${identifier['Id']}</Id>
+                        <SchmeNm py:if="identifier.get('SchmeNm')">
+                            <Cd py:if="identifier['SchmeNm'].get('Cd')">${identifier['SchmeNm']['Cd']}</Cd>
+                            <Prtry py:if="identifier['SchmeNm'].get('Prtry')">${identifier['SchmeNm']['Cd']}</Prtry>
+                        </SchmeNm>
+                        <Issr py:if="identifier.get('Issr')">${identifier['Issr']}</Issr>
+                    </Othr>
+                </OrgId>
+                <PrvtId py:if="identifier['Type'] == 'PrvtId'">
+                    <DtAndPlcOfBirth py:if="identifier.get('DtAndPlcOfBirth')">
+                        <BirthDt>${identifier['DtAndPlcOfBirth']['BirthDt'].isoformat()}</BirthDt>
+                        <PrvcOfBirth py:if="identifier['DtAndPlcOfBirth'].get('PrvcOfBirth')">${identifier['DtAndPlcOfBirth']['PrvcOfBirth']}</PrvcOfBirth>
+                        <CityOfBirth>${identifier['DtAndPlcOfBirth']['CityOfBirth']}</CityOfBirth>
+                        <CtryOfBirth>${identifier['DtAndPlcOfBirth']['CtryOfBirth']}</CtryOfBirth>
+                    </DtAndPlcOfBirth>
+                    <Othr py:if="identifier.get('Id')">
+                        <Id>${identifier['Id']}</Id>
+                        <SchmeNm py:if="identifier.get('SchmeNm')">
+                            <Cd py:if="identifier['SchmeNm'].get('Cd')">${identifier['SchmeNm']['Cd']}</Cd>
+                            <Prtry py:if="identifier['SchmeNm'].get('Prtry')">${identifier['SchmeNm']['Prtry']}</Prtry>
+                        </SchmeNm>
+                        <Issr py:if="identifier.get('Issr')">${identifier['Issr']}</Issr>
+                    </Othr>
+                </PrvtId>
+            </py:with>
+        </Id>
+        <!-- CtryOfRes -->
+        <!-- CtctDtls -->
+    </py:def>
+    <py:def function="PostalAddress(address)">
+        <!-- AdrTp -->
+        <!-- Dept -->
+        <!-- SubDept -->
+        <StrtNm py:if="address.street">${address.street[:70]}</StrtNm>
+        <!-- BldgNb -->
+        <PstCd py:if="address.postal_code">${address.postal_code[:16]}</PstCd>
+        <TwnNm py:if="address.city">${address.city[:35]}</TwnNm>
+        <CtrySubDvsn py:if="address.subdivision">${address.subdivision.rec_name[:35]}</CtrySubDvsn>
+        <Ctry py:if="address.country">${address.country.code}</Ctry>
+        <!-- AdrLine -->
+    </py:def>
+    <py:def function="Account(account_number, currency=True)">
+        <Id>
+            <!-- EPC only IBAN is allowed -->
+            <IBAN>${account_number.compact_iban}</IBAN>
+        </Id>
+        <!-- Tp -->
+        <Ccy py:if="currency and account_number.account.currency">${account_number.account.currency.code}</Ccy>
+        <!-- Nm -->
+    </py:def>
+    <py:def function="FinancialInstitution(bank, only_bic=False)">
+        <FinInstnId>
+            <BICFI py:if="bank.bic">${bank.bic}</BICFI>
+            <py:if test="not only_bic">
+                <!-- ClrSysMmbId -->
+                <Nm>${bank.party.name[:140]}</Nm>
+                <py:with vars="address = bank.party.address_get()">
+                    <PstlAdr py:if="address">
+                        ${PostalAddress(address)}
+                    </PstlAdr>
+                </py:with>
+            </py:if>
+            <Othr py:if="not bank.bic">
+                <Id>NOTPROVIDED</Id>
+            </Othr>
+        </FinInstnId>
+        <!-- BrnchId -->
+    </py:def>
+</py:strip>

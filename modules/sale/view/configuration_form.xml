@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="sale_sequence"/>
+    <field name="sale_sequence"/>
+    <newline />
+    <label name="sale_invoice_method" />
+    <field name="sale_invoice_method" />
+    <label name="sale_shipment_method" />
+    <field name="sale_shipment_method" />
+    <newline/>
+    <label name="sale_process_after"/>
+    <field name="sale_process_after"/>
+</form>
