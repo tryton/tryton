@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="stock_shipment_shopify_identifier_view_form">
+            <field name="model">stock.shipment.shopify_identifier</field>
+            <field name="type">form</field>
+            <field name="name">stock_shipment_shopify_identifier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_shopify_identifier_view_list">
+            <field name="model">stock.shipment.shopify_identifier</field>
+            <field name="type">tree</field>
+            <field name="name">stock_shipment_shopify_identifier_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_stock_shipment_shopify_identifier_form">
+            <field name="name">Shipment Identifiers</field>
+            <field name="res_model">stock.shipment.shopify_identifier</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipment_shopify_identifier_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="stock_shipment_shopify_identifier_view_list"/>
+            <field name="act_window" ref="act_stock_shipment_shopify_identifier_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipment_shopify_identifier_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="stock_shipment_shopify_identifier_view_form"/>
+            <field name="act_window" ref="act_stock_shipment_shopify_identifier_form"/>
+        </record>
+        <menuitem
+            parent="menu_shop_shopify_identifier_form"
+            action="act_stock_shipment_shopify_identifier_form"
+            sequence="50"
+            id="menu_stock_shipment_shopify_identifier_form"/>
+
+        <record model="ir.model.access" id="access_stock_shipment_shopify_identifier">
+            <field name="model" search="[('model', '=', 'stock.shipment.shopify_identifier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_stock_shipment_shopify_identifier_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.shopify_identifier')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
