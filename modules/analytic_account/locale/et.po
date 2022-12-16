@@ -1,0 +1,342 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Analüütilised read"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "Analüütiline staatus"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr ""
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Märkus"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Juur"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "Tegur"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Juur"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Kande rida"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Analüütilised kontod"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Andmik"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Nähtav osapool"
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Analüütiline kanne"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Analüütiline konto"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr ""
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Analüütiline rida"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Ava kontoplaan"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Analüütiline reegel"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Analüütilised read"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Avatud konto"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Ava analüütiline kontoplaan"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Analüütilised reeglid"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Analüütilised reeglid"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analüütilised kontod"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Analüütiline konto"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Ava analüütiline kontoplaan"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Analüütilised reeglid"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Analüütika administreerimine"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "Kehtiv"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Suletud"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Avatud"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Normaalne"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Juur"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Vaade"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "Analüütiline"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Kreedit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Deebet"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Üldinfo"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Märkused"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Avatud"

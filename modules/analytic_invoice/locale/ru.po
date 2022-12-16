@@ -1,0 +1,26 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.asset,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Счета аналитики"
+
+#, fuzzy
+msgctxt "field:account.asset,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Счета аналитики"
+
+msgctxt "field:account.invoice.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Счета аналитики"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Счета аналитики"
+
+msgctxt "view:account.invoice.line:"
+msgid "Analytic"
+msgstr ""

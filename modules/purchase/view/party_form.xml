@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='links']" position="inside">
+        <link icon="tryton-purchase" name="purchase.act_purchase_form2" empty="hide"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page string="Supplier" id="supplier">
+            <label name="customer_code"/>
+            <field name="customer_code"/>
+        </page>
+    </xpath>
+</data>
