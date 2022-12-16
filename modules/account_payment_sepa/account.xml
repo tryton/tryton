@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.action.act_window.domain"
+            id="act_move_line_form_domain_receivable_mandate">
+            <field name="name">Receivable with Mandate</field>
+            <field name="sequence" eval="25"/>
+            <field name="domain"
+                eval="['AND', ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)], ('party.sepa_mandates', '!=', None)]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="account_payment.act_move_line_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+    </data>
+</tryton>

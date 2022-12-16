@@ -1,0 +1,396 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production.work.center:"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
+
+msgctxt "error:production.work.center:"
+msgid "Invalid work center name \"%s\": You can not use \" / \" in name field."
+msgstr ""
+
+msgctxt "error:production.work:"
+msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
+msgstr ""
+
+msgctxt "error:production:"
+msgid ""
+"Production \"%(production)s\" can not be done because work \"%(work)s\" is "
+"not finished."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production,work_center:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "field:production,works:"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "field:production.work,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:production.work,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:production.work,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:production.work,cycles:"
+msgid "Cycles"
+msgstr "Cykle"
+
+msgctxt "field:production.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.work,operation:"
+msgid "Operation"
+msgstr "Operacja"
+
+msgctxt "field:production.work,production:"
+msgid "Production"
+msgstr "Produkcja"
+
+msgctxt "field:production.work,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:production.work,sequence:"
+msgid "Sequence"
+msgstr "Sekwencja"
+
+msgctxt "field:production.work,state:"
+msgid "State"
+msgstr "Stan"
+
+msgctxt "field:production.work,warehouse:"
+msgid "Warehouse"
+msgstr "Magazyn"
+
+#, fuzzy
+msgctxt "field:production.work,work_center:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "field:production.work,work_center_category:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "field:production.work,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:production.work,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:production.work.center,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:production.work.center,category:"
+msgid "Category"
+msgstr "Kategoria"
+
+msgctxt "field:production.work.center,children:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:production.work.center,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:production.work.center,cost_method:"
+msgid "Cost Method"
+msgstr ""
+
+msgctxt "field:production.work.center,cost_price:"
+msgid "Cost Price"
+msgstr "Cena kosztu"
+
+msgctxt "field:production.work.center,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:production.work.center,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:production.work.center,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.work.center,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:production.work.center,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:production.work.center,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:production.work.center,warehouse:"
+msgid "Warehouse"
+msgstr "Magazyn"
+
+msgctxt "field:production.work.center,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:production.work.center,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:production.work.center.category,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:production.work.center.category,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:production.work.center.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.work.center.category,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:production.work.center.category,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:production.work.center.category,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:production.work.center.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:production.work.cycle,cost:"
+msgid "Cost"
+msgstr "Koszt"
+
+msgctxt "field:production.work.cycle,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:production.work.cycle,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:production.work.cycle,duration:"
+msgid "Duration"
+msgstr "Czas trwania"
+
+msgctxt "field:production.work.cycle,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.work.cycle,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:production.work.cycle,state:"
+msgid "State"
+msgstr "Stan"
+
+#, fuzzy
+msgctxt "field:production.work.cycle,work:"
+msgid "Work"
+msgstr "Works"
+
+msgctxt "field:production.work.cycle,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:production.work.cycle,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Work Center Categories"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_center_list"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_center_tree"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Request"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "Running"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Work Center Categories"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_center_list"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Works"
+
+msgctxt "model:production.work,name:"
+msgid "Production Work"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.work.center,name:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:production.work.center.category,name:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "model:production.work.cycle,name:"
+msgid "Work Cycle"
+msgstr ""
+
+msgctxt "selection:production.work,state:"
+msgid "Done"
+msgstr "Wykonano"
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "selection:production.work,state:"
+msgid "Finished"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "selection:production.work,state:"
+msgid "Running"
+msgstr "Uruchomione"
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Cycle"
+msgstr ""
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Hour"
+msgstr ""
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Cancelled"
+msgstr "Anulowano"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Done"
+msgstr "Wykonano"
+
+#, fuzzy
+msgctxt "selection:production.work.cycle,state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Running"
+msgstr "Uruchomione"
+
+msgctxt "view:production.work.cycle:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "view:production.work.cycle:"
+msgid "Do"
+msgstr "Wykonaj"
+
+msgctxt "view:production.work.cycle:"
+msgid "Run"
+msgstr "Uruchom"

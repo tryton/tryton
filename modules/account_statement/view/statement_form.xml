@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="start_balance"/>
+    <field name="start_balance"/>
+    <label name="end_balance"/>
+    <field name="end_balance"/>
+    <label name="total_amount"/>
+    <field name="total_amount"/>
+    <newline/>
+    <label name="number_of_lines"/>
+    <field name="number_of_lines"/>
+    <newline/>
+    <notebook colspan="4">
+        <page string="Statement Lines" col="4" id="statement_lines">
+            <field name="lines" colspan="4"
+                view_ids="account_statement.statement_line_view_tree_editable"/>
+            <group col="6" colspan="4" id="state_buttons">
+                <label name="balance"/>
+                <field name="balance"/>
+                <label name="state"/>
+                <field name="state"/>
+                <group col="-1" colspan="2" id="buttons">
+                    <button name="cancel" icon="tryton-cancel"/>
+                    <button name="draft" icon="tryton-clear"/>
+                    <button name="validate_statement" icon="tryton-go-next"/>
+                    <button name="reconcile" icon="tryton-find-replace"/>
+                    <button name="post" icon="tryton-ok"/>
+                </group>
+            </group>
+        </page>
+        <page name="origins">
+            <field name="origins" colspan="4"/>
+            <label name="origin_file"/>
+            <field name="origin_file"/>
+        </page>
+        <page string="Other Info" id="info">
+            <label name="company"/>
+            <field name="company"/>
+        </page>
+    </notebook>
+</form>
