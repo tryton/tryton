@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="sl">
+        <record id="account_type_template_minimal_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Minimalni kontni načrt</field>
+            <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
+        </record>
+        <record id="account_type_template_asset_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Sredstvo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_minimal_sl"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_current_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Kratkoročno</field>
+            <field name="parent" ref="account_type_template_asset_sl"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_cash_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Denar</field>
+            <field name="parent" ref="account_type_template_asset_current_sl"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_receivable_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Denar</field>
+            <field name="parent" ref="account_type_template_asset_current_sl"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_long_term_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Dolgoročno</field>
+            <field name="parent" ref="account_type_template_asset_sl"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Obveznosti</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_minimal_sl"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_liability_current_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Kratkoročno</field>
+            <field name="parent" ref="account_type_template_liability_sl"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_liability_current_payable_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Obveznosti</field>
+            <field name="parent" ref="account_type_template_liability_current_sl"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="account_type_template_liability_current_tax_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Davek</field>
+            <field name="parent" ref="account_type_template_liability_current_sl"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_long_term_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Dolgoročno</field>
+            <field name="parent" ref="account_type_template_liability_sl"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_equity_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Kapital</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_minimal_sl"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_income_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Prihodki</field>
+            <field name="parent" ref="account_type_template_equity_sl"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="40"/>
+        </record>
+        <record id="account_type_template_revenue_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Prihodki</field>
+            <field name="parent" ref="account_type_template_income_sl"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_expense_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Odhodki</field>
+            <field name="parent" ref="account_type_template_income_sl"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_off_balance_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Zunaj bilance</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_minimal_sl"/>
+            <field name="statement">off-balance</field>
+        </record>
+
+        <record id="account_template_root_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Minimalni kontni načrt</field>
+            <field name="type" ref="account_type_template_minimal_sl"/>
+            <field name="closed" eval="True"/>
+        </record>
+        <record id="account_template_receivable_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavne terjatve</field>
+            <field name="type" ref="account_type_template_asset_current_receivable_sl"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+        <record id="account_template_payable_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavne obveznosti</field>
+            <field name="type" ref="account_type_template_liability_current_payable_sl"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+        <record id="account_template_revenue_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavni prihodki</field>
+            <field name="type" ref="account_type_template_revenue_sl"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+        <record id="account_template_expense_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavni odhodki</field>
+            <field name="type" ref="account_type_template_expense_sl"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+        <record id="account_template_cash_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavna denarna sredstva</field>
+            <field name="type" ref="account_type_template_asset_current_cash_sl"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+        <record id="account_template_tax_sl" model="account.account.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Glavni davki</field>
+            <field name="type" ref="account_type_template_liability_current_tax_sl"/>
+            <field name="parent" ref="account_template_root_sl"/>
+        </record>
+    </data>
+</tryton>

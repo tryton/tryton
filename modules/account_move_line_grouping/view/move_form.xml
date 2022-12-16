@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@name='lines']" position="before">
+        <page name="grouped_lines">
+            <field
+                name="grouped_lines"
+                colspan="4"
+                view_ids="account_move_line_grouping.move_line_group_view_list_move,account_move_line_grouping.move_line_group_view_form_move"/>
+        </page>
+    </xpath>
+</data>
