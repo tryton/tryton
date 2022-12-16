@@ -1,0 +1,127 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,ups_label_height:"
+msgid "Label Height"
+msgstr "Label hoogte"
+
+msgctxt "field:carrier,ups_label_image_format:"
+msgid "Label Image Format"
+msgstr "Label afbeeldingsformaat"
+
+msgctxt "field:carrier,ups_service_type:"
+msgid "Service Type"
+msgstr "Dienst Type"
+
+msgctxt "field:carrier.credential.ups,account_number:"
+msgid "Account Number"
+msgstr "Rekeningnummer"
+
+msgctxt "field:carrier.credential.ups,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:carrier.credential.ups,license:"
+msgid "License"
+msgstr "Licentie"
+
+msgctxt "field:carrier.credential.ups,password:"
+msgid "Password"
+msgstr "Paswoord"
+
+msgctxt "field:carrier.credential.ups,server:"
+msgid "Server"
+msgstr "Server"
+
+msgctxt "field:carrier.credential.ups,use_metric:"
+msgid "Use Metric"
+msgstr "Gebruik metrische eenheden"
+
+msgctxt "field:carrier.credential.ups,user_id:"
+msgid "User ID"
+msgstr "Gebruiker ID"
+
+msgctxt "field:stock.package.type,ups_code:"
+msgid "UPS Code"
+msgstr "UPS-code"
+
+msgctxt "model:carrier.credential.ups,name:"
+msgid "UPS Credential"
+msgstr "UPS-gegevens"
+
+msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
+msgid "Create UPS Shipping for Packages"
+msgstr "Maak een UPS-verzending voor de pakketten"
+
+msgctxt "model:ir.action,name:act_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS aanmeldgegevens"
+
+msgctxt "model:ir.message,text:msg_phone_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add phone number to party "
+"\"%(party)s\"."
+msgstr ""
+"Om verzending \"%(shipment)s\"\" te valideren, moet u een telefoonnummer "
+"toevoegen aan partij \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+"U kunt geen verzending voor zending \"%(shipment)s\" maken omdat deze al een"
+" referentienummer heeft."
+
+msgctxt "model:ir.message,text:msg_shipping_description_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must fill its shipping "
+"description."
+msgstr ""
+"Om verzending \"%(shipment)s\" te valideren, moet u de verzendbeschrijving "
+"invullen."
+
+msgctxt "model:ir.message,text:msg_ups_webservice_error"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"UPS webservice-oproep is mislukt met het volgende foutbericht:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+"Om zending \"%(shipment)s\" te valideren, moet u een adres in het magazijn "
+"\"%(warehouse)s\" instellen."
+
+msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS aanmeldgegevens"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Testing"
+msgstr "testen"
+
+msgctxt "view:carrier.credential.ups:"
+msgid "Credential Information"
+msgstr "aanmeld gegevens"
+
+msgctxt "view:carrier:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "view:stock.package.type:"
+msgid "UPS"
+msgstr "UPS"
