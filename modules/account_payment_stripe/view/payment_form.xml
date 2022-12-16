@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='buttons']" position="inside">
+        <button name="stripe_checkout"/>
+        <button name="stripe_capture_"/>
+    </xpath>
+    <xpath expr="//field[@name='date']" position="after">
+        <newline/>
+        <label name="stripe_charge_id"/>
+        <field name="stripe_charge_id" colspan="3"/>
+        <label name="stripe_customer"/>
+        <field name="stripe_customer" colspan="3"/>
+        <field name="stripe_customer_source" colspan="4" invisible="1"/>
+        <label name="stripe_customer_source_selection"/>
+        <field name="stripe_customer_source_selection" colspan="3"/>
+        <label name="stripe_token"/>
+        <field name="stripe_token" colspan="3"/>
+        <label name="stripe_capture"/>
+        <field name="stripe_capture"/>
+        <label name="stripe_chargeable"/>
+        <field name="stripe_chargeable"/>
+    </xpath>
+    <xpath expr="//field[@name='description']" position="after">
+        <label name="stripe_error_message"/>
+        <field name="stripe_error_message"/>
+        <newline/>
+        <label name="stripe_error_code"/>
+        <field name="stripe_error_code"/>
+        <label name="stripe_error_param"/>
+        <field name="stripe_error_param"/>
+        <label name="stripe_dispute_status"/>
+        <field name="stripe_dispute_status"/>
+        <label name="stripe_dispute_reason"/>
+        <field name="stripe_dispute_reason"/>
+    </xpath>
+</data>

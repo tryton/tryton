@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="100"/>
+        <label name="template_override"/>
+        <field name="template_override" xexpand="0" width="100"/>
+    </group>
+    <notebook colspan="6">
+        <page string="General Information" id="general">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="parent"/>
+            <field name="parent"/>
+            <label name="kind"/>
+            <field name="kind"/>
+            <label name="type"/>
+            <field name="type"/>
+            <newline/>
+            <label name="start_date"/>
+            <group col="3" colspan="1" id="dates">
+                <field name="start_date"/>
+                <label name="end_date"/>
+                <field name="end_date"/>
+            </group>
+            <label name="replaced_by"/>
+            <field name="replaced_by"/>
+            <label name="deferral"/>
+            <field name="deferral"/>
+            <label name="reconcile"/>
+            <field name="reconcile"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <label name="second_currency"/>
+            <field name="second_currency"/>
+            <label name="party_required"/>
+            <field name="party_required"/>
+            <label name="general_ledger_balance"/>
+            <field name="general_ledger_balance"/>
+            <field name="taxes" colspan="4"/>
+        </page>
+        <page string="Children" id="children">
+            <field name="childs" colspan="4"/>
+        </page>
+        <page name="deferrals">
+            <field name="deferrals"/>
+        </page>
+        <page name="note">
+            <field name="note"/>
+        </page>
+    </notebook>
+</form>

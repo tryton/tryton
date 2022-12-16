@@ -1,0 +1,287 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,active:"
+msgid "Active"
+msgstr "Aktywny"
+
+msgctxt "field:product.cultivar,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.cultivar,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr "Grupy"
+
+msgctxt "field:product.cultivar,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.cultivar,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr "Do wyboru"
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr "Takson"
+
+msgctxt "field:product.cultivar,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.cultivar,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr "Kultywar"
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr "Grupa"
+
+msgctxt "field:product.cultivar-product.cultivar.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.cultivar.group,active:"
+msgid "Active"
+msgstr "Aktywny"
+
+msgctxt "field:product.cultivar.group,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.cultivar.group,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr "Kultywary"
+
+msgctxt "field:product.cultivar.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.cultivar.group,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.cultivar.group,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.cultivar.group,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.taxon,active:"
+msgid "Active"
+msgstr "Aktywny"
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr "Taksony podrzędne"
+
+msgctxt "field:product.taxon,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.taxon,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.taxon,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr "Takson nadrzędny"
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:product.taxon,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr "Do wyboru"
+
+msgctxt "field:product.taxon,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.taxon,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "help:product.cultivar,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.cultivar.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.taxon,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr "Cultivars"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr "Cultivar Groups"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr "Cultivars"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr "Cultivar Groups"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr "Taxons"
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr "Kultywar"
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr "Kultywar - Grupa kultywarów"
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr "Grupy kultywarów"
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr "Takson"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr "Klasa"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr "Podział"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr "Rodzina"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr "Formularz"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr "Genus"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr "Królestwo"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr "Porządek"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr "Gromada"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr "Sekcja"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr "Seria"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr "Gatunek"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr "Szczep"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr "Odmiana"

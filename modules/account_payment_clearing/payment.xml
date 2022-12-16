@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="payment_journal_view_form">
+            <field name="model">account.payment.journal</field>
+            <field name="inherit"
+                ref="account_payment.payment_journal_view_form"/>
+            <field name="name">payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_form"/>
+            <field name="name">payment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_list"/>
+            <field name="name">payment_list</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_succeed">
+            <field name="name">Succeed Payments</field>
+            <field name="wiz_name">account.payment.succeed</field>
+            <field name="model">account.payment</field>
+        </record>
+
+        <record model="ir.ui.view" id="succeed_start_view_form">
+            <field name="model">account.payment.succeed.start</field>
+            <field name="type">form</field>
+            <field name="name">succeed_start_form</field>
+        </record>
+        <record model="ir.model.button" id="payment_succeed_wizard_button">
+            <field name="name">succeed_wizard</field>
+            <field name="string">Succeed</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+
+        <record model="res.user" id="user_post_clearing_moves">
+            <field name="login">user_cron_post_clearing_moves</field>
+            <field name="name">Cron Post Clearing Moves</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_post_clearing_moves_group_account">
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_post_clearing_moves_group_payment">
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="group" ref="account_payment.group_payment"/>
+        </record>
+
+        <record model="ir.cron" id="cron_post_clearing_moves">
+            <field name="name">Post Clearing Moves</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">account.payment.journal</field>
+            <field name="function">cron_post_clearing_moves</field>
+        </record>
+    </data>
+</tryton>
