@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Drop Shipment" cursor="supplier">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="supplier"/>
+    <field name="supplier"/>
+    <label name="contact_address"/>
+    <field name="contact_address"/>
+    <label name="customer"/>
+    <field name="customer"/>
+    <label name="delivery_address"/>
+    <field name="delivery_address"/>
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="effective_date"/>
+    <field name="effective_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <notebook>
+        <page name="supplier_moves">
+            <field name="supplier_moves" colspan="4"/>
+        </page>
+        <page name="customer_moves">
+            <field name="customer_moves" colspan="4"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="5" colspan="2" id="buttons">
+        <button string="Cancel" name="cancel" icon="tryton-cancel"/>
+        <button string="Draft" name="draft"/>
+        <button string="Wait" name="wait" icon="tryton-go-next"/>
+        <button string="Ship" name="ship" icon="tryton-go-next"/>
+        <button string="Done" name="done" icon="tryton-ok"/>
+    </group>
+</form>

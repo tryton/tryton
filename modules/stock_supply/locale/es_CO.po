@@ -1,0 +1,242 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.request.create:"
+msgid "There are some late supplier moves."
+msgstr "Hay pendientes algunos movimientos de proveedor."
+
+msgctxt "error:stock.order_point:"
+msgid "Maximal quantity must be bigger than Minimal quantity"
+msgstr "La cantidad máxima debe ser mayor que la cantidad mínima"
+
+msgctxt "error:stock.order_point:"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Solamente se permite un punto de orden para cada par producto-locación."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define two order points on the same product with opposite "
+"locations."
+msgstr ""
+"No puede definir dos requisiciones del mismo producto con lugares opuestos."
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "field:purchase.request.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Bodega de Almacenamiento"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:stock.order_point,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:stock.order_point,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:stock.order_point,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Bodega"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Cantidad Máxima"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Cantidad Mínima"
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Bodega de Almacenamiento"
+
+msgctxt "field:stock.order_point,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Bodega de Almacenamiento"
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de Unidad"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Bodega"
+
+msgctxt "field:stock.order_point,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:stock.order_point,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:stock.shipment.internal.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr "Dejar vacío para no provisionar por defecto"
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "model:ir.action,name:act_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordenes de Compras"
+
+msgctxt "model:ir.action,name:act_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Crear Envío Interno"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Interna"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Purchase Requests"
+msgstr "Generar Orden de Compra"
+
+msgctxt "model:ir.cron,name:cron_shipment_iternal"
+msgid "Generate Internal Shipments"
+msgstr "Generar Envío Interno"
+
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordenes de Compra"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Crear Envíos Internos"
+
+msgctxt "model:purchase.request.create.start,name:"
+msgid "Create Purchase Request"
+msgstr "Crear Orden de Compra"
+
+msgctxt "model:res.user,name:user_generate_request"
+msgid "Cron Purchase Request"
+msgstr "Cron Orden de Compra"
+
+msgctxt "model:res.user,name:user_generate_shipment_internal"
+msgid "Cron Intenal Shipment"
+msgstr "Cron Envío Interno"
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Requisición"
+
+msgctxt "model:stock.shipment.internal.create.start,name:"
+msgid "Create Shipment Internal"
+msgstr "Crear Envío Interno"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Interna"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordenes de Compras"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Requests?"
+msgstr "Crear Ordenes de Compras?"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point"
+msgstr "Requisición"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Tipo de Requisición"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Points"
+msgstr "Requisiciones"
+
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Información de Producto"
+
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments"
+msgstr "Crear Envíos Internos"
+
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments?"
+msgstr "Crear Envíos Internos?"
+
+msgctxt "wizard_button:purchase.request.create,start,create_:"
+msgid "Create"
+msgstr "Crear"
+
+msgctxt "wizard_button:purchase.request.create,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
+msgid "Create"
+msgstr "Crear"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"

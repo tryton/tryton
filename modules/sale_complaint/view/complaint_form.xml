@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Customer Complaint" cursor="customer">
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="customer"/>
+    <field name="customer"/>
+    <label name="address"/>
+    <field name="address"/>
+    <label name="date"/>
+    <field name="date"/>
+    <notebook>
+        <page string="Complaint" id="complaint">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="employee"/>
+            <field name="employee"/>
+            <label name="type"/>
+            <field name="type" widget="selection"/>
+            <label name="origin"/>
+            <field name="origin"/>
+            <separator name="description" colspan="2"/>
+            <newline/>
+            <field name="description" colspan="2"/>
+            <field name="actions" colspan="2"/>
+            <label name="state"/>
+            <field name="state"/>
+            <group col="6" colspan="2" id="buttons">
+                <button name="cancel" string="Cancel" icon="tryton-cancel"/>
+                <button name="draft" string="Draft"/>
+                <button name="wait" string="Wait" icon="tryton-go-next"/>
+                <button name="approve" string="Approve" icon="tryton-go-next"/>
+                <button name="reject" string="Reject" icon="tryton-close"/>
+                <button name="process" string="Process" icon="tryton-executable"/>
+            </group>
+        </page>
+    </notebook>
+</form>
