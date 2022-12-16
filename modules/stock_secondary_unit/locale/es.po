@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Categoría de UdM secundaria del producto"
+
+msgctxt "field:stock.move,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Cantidad secundaria"
+
+msgctxt "field:stock.move,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Unidad secundaria"
+
+msgctxt "field:stock.move,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "Dígitos unidad secundaria"
+
+msgctxt "field:stock.move,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "Precio unitario secundario"
+
+msgctxt "view:stock.move:"
+msgid "Quantity:"
+msgstr "Cantidad:"
+
+msgctxt "view:stock.move:"
+msgid "Unit Price:"
+msgstr "Precio unitario:"
+
+msgctxt "view:stock.move:"
+msgid "Unit:"
+msgstr "Unidad:"
