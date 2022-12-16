@@ -1,0 +1,887 @@
+type,name,res_id,src,value,fuzzy
+error,account.account,0,You can not create recursive accounts!,Не може да създавате взаимно вложени сметки!,0
+error,account.account,0,You can not delete accounts containing move lines!,Не може да изтривате сметки които съдържат редове от движение!,0
+error,account.account,0,You can not delete accounts that have children!,Не може да изтриете сметки които имат деца!,0
+error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Отложеното плащане трябва да е уникално по сметка и финансова година,0
+error,account.account.deferral,0,You can not modify Account Deferral records,Не може да променяте записи от Сметка с отложено плащане,0
+error,account.account.open_aged_balance,0,Warning,Предупреждение,0
+error,account.account.open_aged_balance,0,You cannot define overlapping terms,Не може да задавате припокриващи се срокове,0
+error,account.account.template,0,You can not create recursive accounts!,Не може да създавате взаимно вложени сметки!,0
+error,account.account.type,0,You can not create recursive types!,Не може да създавате взаимно вложени видове!,0
+error,account.account.type.template,0,You can not create recursive types!,Не може да създавате взаимно вложени видове!,0
+error,account.fiscalyear,0,No fiscal year defined for this date!,За тази дата не е зададена финансова година!,0
+error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","Баланса на сметка ""%s"" трябва да е нула!",0
+error,account.fiscalyear,0,You can not change the post move sequence,Не може да променяте последователността след движение,0
+error,account.fiscalyear,0,You can not close a fiscal year until there is older fiscal year opened!,Не може да затворите финансова година докато има отворена по-стара!,0
+error,account.fiscalyear,0,You can not have 2 fiscal years that overlaps!,Не може да имате 2 припокриващи се финансови години!,0
+error,account.fiscalyear,0,You can not reopen a fiscal year until there is more recent fiscal year closed!,Не може наново да отваряте финансова година докато има по-скорошна затворена финансова година!,0
+error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,За финансова година трябва да имате различни последователности за движение!,0
+error,account.journal.period,0,You can not create a journal - period on a closed period!,Не може да създадете дневник - период за затворен период!,0
+error,account.journal.period,0,You can not modify/delete a journal - period with moves!,Не може да променяте/изтривате дневник-период който има движения! ,0
+error,account.journal.period,0,You can not open a journal - period from a closed period!,Не може да отваряте дневник-период от затворен период!,0
+error,account.journal.period,0,You can only open one journal per period!,Може да отваряте един дневник за период!,0
+error,account.journal.type,0,The code must be unique!,Кода трябва да е уникален!,0
+error,account.move,0,"You can not create lines on accounts
+of different companies in the same move!","В едно движение не може да създавате 
+редове от сметки на различни фирми!
+",0
+error,account.move,0,"You can not create more than one move per period
+in a centralized journal!","Не може да създавате повече от едно движение 
+за период в централизиран дневник!",0
+error,account.move,0,You can not create move with a date outside the period!,Не може да създавате движение с дата извън периода!,0
+error,account.move,0,You can not delete posted moves!,Не може да изтривате публикувани движения!,0
+error,account.move,0,You can not modify a posted move in this journal!,Не може да променяте публикувано движение в този дневник!,0
+error,account.move,0,You can not post an empty move!,Не може да публикувате празно движение!,0
+error,account.move,0,You can not post an unbalanced move!,Не може да публикувате небалансирано движение!,0
+error,account.move.line,0,"Line ""%s"" (%d) already reconciled!","Ред ""%s"" (%d) е вече съгласуван!",0
+error,account.move.line,0,No journal defined!,Не е зададен дневник!,0
+error,account.move.line,0,Wrong credit/debit values!,Грешни стойности за кредит/дебит!,0
+error,account.move.line,0,You can not add/modify lines in a closed journal period!,Не мое да добавяте/променяте редове в затворен период от дневник!,0
+error,account.move.line,0,"You can not create move lines
+on view/inactive accounts!","Не може да създадете редове от движение
+за изглед/неактивни сметки!",0
+error,account.move.line,0,You can not modify lines of a posted move!,Не може да променяте редове от публикувано движение!,0
+error,account.move.line,0,You can not modify reconciled lines!,Не може да променяте съгласувани редове!,0
+error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile, nor from the same party!","Не може да създавате съгласуване където редовете не са балансирани, невалидни,нито в същата сметка, нито в сметка за съгласуване, нито от същия партньор!",0
+error,account.move.reconciliation,0,You can not modify a reconciliation!,Не може да променяте съгласуване!,0
+error,account.period,0,No period defined for this date!,За тази дата не е зададен период!,0
+error,account.period,0,The period dates must be in the fiscal year dates,Датите от периода трябва да са в рамките на датите на финансовата година,0
+error,account.period,0,You can not change the post move sequence if there is already posted moves in the period,Ако вече има публикувани движения за период не може да променяте последователността за след движение,0
+error,account.period,0,You can not close a period with non posted moves!,Не може да затваряте период който няма публикувано движения!,0
+error,account.period,0,You can not create a period on a closed fiscal year!,Не може да създадете период за затворена финансова година!,0
+error,account.period,0,You can not have two overlapping periods!,Не може да имате два припокриващи се периода!,0
+error,account.period,0,You can not modify/delete a period with moves!,Не може да промените/изтриете период който има движения!,0
+error,account.period,0,You can not open a period from a closed fiscal year!,Не може да отваряте наново период от затворена финансова година!,0
+error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,За финансова година и една и съща фирма трябва да имате различни последователности за движение ,0
+error,account.tax.code,0,You can not create recursive tax codes!,Не може да създавате взаимно вложение кодове на данъци!,0
+error,account.tax.code.template,0,You can not create recursive tax codes!,Не може да създавате взаимно вложение кодове на данъци!,0
+field,"account.account,active",0,Active,Активен,0
+field,"account.account,balance",0,Balance,Баланс,0
+field,"account.account,childs",0,Children,Деца,0
+field,"account.account,code",0,Code,Код,0
+field,"account.account,company",0,Company,Фирма,0
+field,"account.account,credit",0,Credit,Кредит,0
+field,"account.account,currency",0,Currency,Валута,0
+field,"account.account,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.account,debit",0,Debit,Дебит,0
+field,"account.account,deferral",0,Deferral,С отложено плащане,0
+field,"account.account,deferrals",0,Deferrals,Отложени плащания,0
+field,"account.account,kind",0,Kind,Вид,0
+field,"account.account,left",0,Left,Ляв,0
+field,"account.account,name",0,Name,Име,0
+field,"account.account,note",0,Note,Бележка,0
+field,"account.account,parent",0,Parent,Родител,0
+field,"account.account,rec_name",0,Name,Име,0
+field,"account.account,reconcile",0,Reconcile,Съгласуване,0
+field,"account.account,right",0,Right,Десен,0
+field,"account.account,second_currency",0,Secondary currency,Втора валута,0
+field,"account.account,taxes",0,Default Taxes,Данъци по подразбиране,0
+field,"account.account,template",0,Template,Шаблон,0
+field,"account.account,type",0,Type,Вид,0
+field,"account.account-account.tax,account",0,Account,Сметка,0
+field,"account.account-account.tax,rec_name",0,Name,Име,0
+field,"account.account-account.tax,tax",0,Tax,Данък,0
+field,"account.account.create_chart_account.account,account_template",0,Account Template,Шаблон на сметка,0
+field,"account.account.create_chart_account.account,company",0,Company,Фирма,0
+field,"account.account.create_chart_account.properties,account_payable",0,Default Payable Account,Разходна сметка по подразбиране,0
+field,"account.account.create_chart_account.properties,account_receivable",0,Default Receivable Account,Приходна сметка по подразбиране,0
+field,"account.account.create_chart_account.properties,company",0,Company,Фирма,0
+field,"account.account.deferral,account",0,Account,Сметка,0
+field,"account.account.deferral,credit",0,Credit,Кредит,0
+field,"account.account.deferral,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.account.deferral,debit",0,Debit,Дебит,0
+field,"account.account.deferral,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.deferral,rec_name",0,Name,Име,0
+field,"account.account.open_aged_balance.init,balance_type",0,Type,Вид,0
+field,"account.account.open_aged_balance.init,company",0,Company,Фирма,0
+field,"account.account.open_aged_balance.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.open_aged_balance.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.open_aged_balance.init,term1",0,First Term,Пъври период,0
+field,"account.account.open_aged_balance.init,term2",0,Second Term,Втори период,0
+field,"account.account.open_aged_balance.init,term3",0,Third Term,Трети период,0
+field,"account.account.open_aged_balance.init,unit",0,Unit,Единица,0
+field,"account.account.open_balance_sheet.init,company",0,Company,Фирма,0
+field,"account.account.open_balance_sheet.init,date",0,Date,Дата,0
+field,"account.account.open_balance_sheet.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.open_chart_account.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.open_chart_account.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.open_income_statement.init,company",0,Company,Фирма,0
+field,"account.account.open_income_statement.init,end_period",0,End Period,Край на период,0
+field,"account.account.open_income_statement.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.open_income_statement.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.open_income_statement.init,start_period",0,Start Period,Начален период,0
+field,"account.account.open_third_party_balance.init,company",0,Company,Фирма,0
+field,"account.account.open_third_party_balance.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.open_third_party_balance.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.print_general_ledger.init,company",0,Company,Фирма,0
+field,"account.account.print_general_ledger.init,empty_account",0,Empty Account,Празна сметка,0
+field,"account.account.print_general_ledger.init,end_period",0,End Period,Край на период,0
+field,"account.account.print_general_ledger.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.print_general_ledger.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.print_general_ledger.init,start_period",0,Start Period,Начален период,0
+field,"account.account.print_trial_balance.init,company",0,Company,Фирма,0
+field,"account.account.print_trial_balance.init,empty_account",0,Empty Account,Празна сметка,0
+field,"account.account.print_trial_balance.init,end_period",0,End Period,Край на период,0
+field,"account.account.print_trial_balance.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.account.print_trial_balance.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.account.print_trial_balance.init,start_period",0,Start Period,Начален период,0
+field,"account.account.template,childs",0,Children,Деца,0
+field,"account.account.template,code",0,Code,Код,0
+field,"account.account.template,deferral",0,Deferral,С отложено плащане,0
+field,"account.account.template,kind",0,Kind,Вид,0
+field,"account.account.template,name",0,Name,Име,0
+field,"account.account.template,parent",0,Parent,Родител,0
+field,"account.account.template,rec_name",0,Name,Име,0
+field,"account.account.template,reconcile",0,Reconcile,Съгласуване,0
+field,"account.account.template,taxes",0,Default Taxes,Данъци по подразбиране,0
+field,"account.account.template,type",0,Type,Вид,0
+field,"account.account.template-account.tax.template,account",0,Account Template,Шаблон на сметка,0
+field,"account.account.template-account.tax.template,rec_name",0,Name,Име,0
+field,"account.account.template-account.tax.template,tax",0,Tax Template,Шаблон за данък,0
+field,"account.account.type,amount",0,Amount,Сума,0
+field,"account.account.type,balance_sheet",0,Balance Sheet,Дата на баланс,0
+field,"account.account.type,childs",0,Children,Деца,0
+field,"account.account.type,company",0,Company,Фирма,0
+field,"account.account.type,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.account.type,display_balance",0,Display Balance,Показване на баланс,0
+field,"account.account.type,income_statement",0,Income Statement,Отчет за приходи,0
+field,"account.account.type,name",0,Name,Име,0
+field,"account.account.type,parent",0,Parent,Родител,0
+field,"account.account.type,rec_name",0,Name,Име,0
+field,"account.account.type,sequence",0,Sequence,Последователност,0
+field,"account.account.type,template",0,Template,Шаблон,0
+field,"account.account.type.template,balance_sheet",0,Balance Sheet,Дата на баланс,0
+field,"account.account.type.template,childs",0,Children,Деца,0
+field,"account.account.type.template,display_balance",0,Display Balance,Показване на баланс,0
+field,"account.account.type.template,income_statement",0,Income Statement,Отчет за приходи,0
+field,"account.account.type.template,name",0,Name,Име,0
+field,"account.account.type.template,parent",0,Parent,Родител,0
+field,"account.account.type.template,rec_name",0,Name,Име,0
+field,"account.account.type.template,sequence",0,Sequence,Последователност,0
+field,"account.account.update_chart_account.init,account",0,Root Account,Основна сметка,0
+field,"account.fiscalyear,close_lines",0,Close Lines,Затваряне на редове,0
+field,"account.fiscalyear,code",0,Code,Код,0
+field,"account.fiscalyear,company",0,Company,Фирма,0
+field,"account.fiscalyear,end_date",0,Ending Date,Крайна дата,0
+field,"account.fiscalyear,name",0,Name,Име,0
+field,"account.fiscalyear,periods",0,Periods,Периоди,0
+field,"account.fiscalyear,post_move_sequence",0,Post Move Sequence,Последователност за след движение,0
+field,"account.fiscalyear,rec_name",0,Name,Име,0
+field,"account.fiscalyear,start_date",0,Starting Date,Начална дата,0
+field,"account.fiscalyear,state",0,State,Състояние,0
+field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.fiscalyear-account.move.line,line",0,Line,Ред,0
+field,"account.fiscalyear-account.move.line,rec_name",0,Name,Име,0
+field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Финансова година за затваряне,0
+field,"account.journal,active",0,Active,Активен,0
+field,"account.journal,centralised",0,Centralised counterpart,Централизирано копие,0
+field,"account.journal,code",0,Code,Код,0
+field,"account.journal,credit_account",0,Default Credit Account,Кредитна сметка по подразбиране,0
+field,"account.journal,debit_account",0,Default Debit Account,Дебитна сметка по подразбиране,0
+field,"account.journal,name",0,Name,Име,0
+field,"account.journal,rec_name",0,Name,Име,0
+field,"account.journal,sequence",0,Sequence,Последователност,0
+field,"account.journal,type",0,Type,Вид,0
+field,"account.journal,update_posted",0,Allow cancelling moves,Позволяване на отмяна на движение,0
+field,"account.journal,view",0,View,Изглед,0
+field,"account.journal.period,active",0,Active,Активен,0
+field,"account.journal.period,icon",0,Icon,Икона,0
+field,"account.journal.period,journal",0,Journal,Дневник,0
+field,"account.journal.period,name",0,Name,Име,0
+field,"account.journal.period,period",0,Period,Период,0
+field,"account.journal.period,rec_name",0,Name,Име,0
+field,"account.journal.period,state",0,State,Състояние,0
+field,"account.journal.type,code",0,Code,Код,0
+field,"account.journal.type,name",0,Name,Име,0
+field,"account.journal.type,rec_name",0,Name,Име,0
+field,"account.journal.view,columns",0,Columns,Колони,0
+field,"account.journal.view,name",0,Name,Име,0
+field,"account.journal.view,rec_name",0,Name,Име,0
+field,"account.journal.view.column,field",0,Field,Поле,0
+field,"account.journal.view.column,name",0,Name,Име,0
+field,"account.journal.view.column,readonly",0,Readonly,Само за четене,0
+field,"account.journal.view.column,rec_name",0,Name,Име,0
+field,"account.journal.view.column,required",0,Required,Задължителен,0
+field,"account.journal.view.column,sequence",0,Sequence,Последователност,0
+field,"account.journal.view.column,view",0,View,Изглед,0
+field,"account.move,centralised_line",0,Centralised Line,Централизиран ред,0
+field,"account.move,date",0,Effective Date,Ефективна дата,0
+field,"account.move,journal",0,Journal,Дневник,0
+field,"account.move,lines",0,Lines,Редове,0
+field,"account.move,name",0,Name,Име,0
+field,"account.move,period",0,Period,Период,0
+field,"account.move,post_date",0,Post Date,Дата на публикуване,0
+field,"account.move,rec_name",0,Name,Име,0
+field,"account.move,reference",0,Reference,Отпратка,0
+field,"account.move,state",0,State,Състояние,0
+field,"account.move.line,account",0,Account,Сметка,0
+field,"account.move.line,active",0,Active,Активен,0
+field,"account.move.line,amount_second_currency",0,Amount Second Currency,Сума в допълнителна валута,0
+field,"account.move.line,credit",0,Credit,Кредит,0
+field,"account.move.line,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.move.line,date",0,Effective Date,Ефективна дата,0
+field,"account.move.line,debit",0,Debit,Дебит,0
+field,"account.move.line,journal",0,Journal,Дневник,0
+field,"account.move.line,maturity_date",0,Maturity Date,Дата на падеж,0
+field,"account.move.line,move",0,Move,Движение,0
+field,"account.move.line,move_state",0,Move State,Състояние на движение,0
+field,"account.move.line,name",0,Name,Име,0
+field,"account.move.line,party",0,Party,Партньор,0
+field,"account.move.line,period",0,Period,Период,0
+field,"account.move.line,rec_name",0,Name,Име,0
+field,"account.move.line,reconciliation",0,Reconciliation,Съгласуване,0
+field,"account.move.line,reference",0,Reference,Отпратка,0
+field,"account.move.line,second_currency",0,Second Currency,Втора валута,0
+field,"account.move.line,second_currency_digits",0,Second Currency Digits,Цифри за втора валута,0
+field,"account.move.line,state",0,State,Състояние,0
+field,"account.move.line,tax_lines",0,Tax Lines,Ред на данъци,0
+field,"account.move.open_journal.ask,journal",0,Journal,Дневник,0
+field,"account.move.open_journal.ask,period",0,Period,Период,0
+field,"account.move.open_reconcile_lines.init,account",0,Account,Сметка,0
+field,"account.move.print_general_journal.init,company",0,Company,Фирма,0
+field,"account.move.print_general_journal.init,from_date",0,From Date,От дата,0
+field,"account.move.print_general_journal.init,posted",0,Posted Move,Публикувано движение,0
+field,"account.move.print_general_journal.init,to_date",0,To Date,До дата,0
+field,"account.move.reconcile_lines.writeoff,account",0,Account,Сметка,0
+field,"account.move.reconcile_lines.writeoff,date",0,Date,Дата,0
+field,"account.move.reconcile_lines.writeoff,journal",0,Journal,Дневник,0
+field,"account.move.reconciliation,lines",0,Lines,Редове,0
+field,"account.move.reconciliation,name",0,Name,Име,0
+field,"account.move.reconciliation,rec_name",0,Name,Име,0
+field,"account.period,code",0,Code,Код,0
+field,"account.period,end_date",0,Ending Date,Крайна дата,0
+field,"account.period,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.period,name",0,Name,Име,0
+field,"account.period,post_move_sequence",0,Post Move Sequence,Последователност за след движение,0
+field,"account.period,rec_name",0,Name,Име,0
+field,"account.period,start_date",0,Starting Date,Начална дата,0
+field,"account.period,state",0,State,Състояние,0
+field,"account.period,type",0,Type,Вид,0
+field,"account.tax,active",0,Active,Активен,0
+field,"account.tax,amount",0,Amount,Сума,0
+field,"account.tax,childs",0,Children,Деца,0
+field,"account.tax,company",0,Company,Фирма,0
+field,"account.tax,credit_note_account",0,Credit Note Account,Сметка на кредитно известие,0
+field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Основен код на кредитно известие,0
+field,"account.tax,credit_note_base_sign",0,Credit Note Base Sign,Знак на кредитно известие,0
+field,"account.tax,credit_note_tax_code",0,Credit Note Tax Code,Код на данък на кредитно известие,0
+field,"account.tax,credit_note_tax_sign",0,Credit Note Tax Sign,Знак на данък на кредитно известие,0
+field,"account.tax,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.tax,description",0,Description,Описание,0
+field,"account.tax,group",0,Group,Група,0
+field,"account.tax,invoice_account",0,Invoice Account,Сметка за фактура,0
+field,"account.tax,invoice_base_code",0,Invoice Base Code,Основен код на фактура,0
+field,"account.tax,invoice_base_sign",0,Invoice Base Sign,Основен знак на фактура,0
+field,"account.tax,invoice_tax_code",0,Invoice Tax Code,Код на данък на фактура,0
+field,"account.tax,invoice_tax_sign",0,Invoice Tax Sign,Знак на данък на фактура,0
+field,"account.tax,name",0,Name,Име,0
+field,"account.tax,parent",0,Parent,Родител,0
+field,"account.tax,percentage",0,Percentage,Процент,0
+field,"account.tax,rec_name",0,Name,Име,0
+field,"account.tax,sequence",0,Sequence,Последователност,0
+field,"account.tax,template",0,Template,Шаблон,0
+field,"account.tax,type",0,Type,Вид,0
+field,"account.tax.code,active",0,Active,Активен,0
+field,"account.tax.code,childs",0,Children,Деца,0
+field,"account.tax.code,code",0,Code,Код,0
+field,"account.tax.code,company",0,Company,Фирма,0
+field,"account.tax.code,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.tax.code,description",0,Description,Описание,0
+field,"account.tax.code,name",0,Name,Име,0
+field,"account.tax.code,parent",0,Parent,Родител,0
+field,"account.tax.code,rec_name",0,Name,Име,0
+field,"account.tax.code,sum",0,Sum,Сума,0
+field,"account.tax.code,template",0,Template,Шаблон,0
+field,"account.tax.code.template,account",0,Account Template,Шаблон на сметка,0
+field,"account.tax.code.template,childs",0,Children,Деца,0
+field,"account.tax.code.template,code",0,Code,Код,0
+field,"account.tax.code.template,description",0,Description,Описание,0
+field,"account.tax.code.template,name",0,Name,Име,0
+field,"account.tax.code.template,parent",0,Parent,Родител,0
+field,"account.tax.code.template,rec_name",0,Name,Име,0
+field,"account.tax.group,code",0,Code,Код,0
+field,"account.tax.group,name",0,Name,Име,0
+field,"account.tax.group,rec_name",0,Name,Име,0
+field,"account.tax.line,amount",0,Amount,Сума,0
+field,"account.tax.line,code",0,Code,Код,0
+field,"account.tax.line,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.tax.line,move_line",0,Move Line,Ред от движение,0
+field,"account.tax.line,rec_name",0,Name,Име,0
+field,"account.tax.line,tax",0,Tax,Данък,0
+field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Финансова година,0
+field,"account.tax.open_chart_code.init,method",0,Method,Метод,0
+field,"account.tax.open_chart_code.init,periods",0,Periods,Периоди,0
+field,"account.tax.rule,company",0,Company,Фирма,0
+field,"account.tax.rule,lines",0,Lines,Редове,0
+field,"account.tax.rule,name",0,Name,Име,0
+field,"account.tax.rule,rec_name",0,Name,Име,0
+field,"account.tax.rule,template",0,Template,Шаблон,0
+field,"account.tax.rule.line,group",0,Tax Group,Данъчна група,0
+field,"account.tax.rule.line,origin_tax",0,Original Tax,Оригинален данък,0
+field,"account.tax.rule.line,rec_name",0,Name,Име,0
+field,"account.tax.rule.line,rule",0,Rule,Правило,0
+field,"account.tax.rule.line,sequence",0,Sequence,Последователност,0
+field,"account.tax.rule.line,tax",0,Substitution Tax,Заместващ данък,0
+field,"account.tax.rule.line,template",0,Template,Шаблон,0
+field,"account.tax.rule.line.template,group",0,Tax Group,Данъчна група,0
+field,"account.tax.rule.line.template,origin_tax",0,Original Tax,Оригинален данък,0
+field,"account.tax.rule.line.template,rec_name",0,Name,Име,0
+field,"account.tax.rule.line.template,rule",0,Rule,Правило,0
+field,"account.tax.rule.line.template,sequence",0,Sequence,Последователност,0
+field,"account.tax.rule.line.template,tax",0,Substitution Tax,Заместващ данък,0
+field,"account.tax.rule.template,account",0,Account Template,Шаблон на сметка,0
+field,"account.tax.rule.template,lines",0,Lines,Редове,0
+field,"account.tax.rule.template,name",0,Name,Име,0
+field,"account.tax.rule.template,rec_name",0,Name,Име,0
+field,"account.tax.template,account",0,Account Template,Шаблон на сметка,0
+field,"account.tax.template,amount",0,Amount,Сума,0
+field,"account.tax.template,childs",0,Children,Деца,0
+field,"account.tax.template,credit_note_account",0,Credit Note Account,Сметка на кредитно известие,0
+field,"account.tax.template,credit_note_base_code",0,Credit Note Base Code,Основен код на кредитно известие,0
+field,"account.tax.template,credit_note_base_sign",0,Credit Note Base Sign,Знак на кредитно известие,0
+field,"account.tax.template,credit_note_tax_code",0,Credit Note Tax Code,Код на данък на кредитно известие,0
+field,"account.tax.template,credit_note_tax_sign",0,Credit Note Tax Sign,Знак на данък на кредитно известие,0
+field,"account.tax.template,description",0,Description,Описание,0
+field,"account.tax.template,group",0,Group,Група,0
+field,"account.tax.template,invoice_account",0,Invoice Account,Сметка за фактура,0
+field,"account.tax.template,invoice_base_code",0,Invoice Base Code,Основен код на фактура,0
+field,"account.tax.template,invoice_base_sign",0,Invoice Base Sign,Основен знак на фактура,0
+field,"account.tax.template,invoice_tax_code",0,Invoice Tax Code,Код на данък на фактура,0
+field,"account.tax.template,invoice_tax_sign",0,Invoice Tax Sign,Знак на данък на фактура,0
+field,"account.tax.template,name",0,Name,Име,0
+field,"account.tax.template,parent",0,Parent,Родител,0
+field,"account.tax.template,percentage",0,Percentage,Процент,0
+field,"account.tax.template,rec_name",0,Name,Име,0
+field,"account.tax.template,sequence",0,Sequence,Последователност,0
+field,"account.tax.template,type",0,Type,Вид,0
+field,"party.party,account_payable",0,Account Payable,Разходна сметка,0
+field,"party.party,account_receivable",0,Account Receivable,Приходна сметка,0
+field,"party.party,customer_tax_rule",0,Customer Tax Rule,Правило за данък на клиент,0
+field,"party.party,payable",0,Payable,Разходен,0
+field,"party.party,payable_today",0,Payable Today,За плащане днес,0
+field,"party.party,receivable",0,Receivable,За получаване,0
+field,"party.party,receivable_today",0,Receivable Today,За получаване днес,0
+field,"party.party,supplier_tax_rule",0,Supplier Tax Rule,Правило за данък на доставчик,0
+help,"account.account,reconcile",0,"Allow move lines of this account 
+to be reconciled.","Позволява редове от тази сметка
+да бъдат съгласувани",0
+help,"account.account,second_currency",0,"Force all moves for this account 
+to have this secondary currency.","Всички движение по тази сметка
+задължително да имат втора валута",0
+help,"account.account,taxes",0,"Default tax for manual encoding of move lines 
+for journal types: ""expense"" and ""revenue""","Данък по подразбиране за ръчно кодиране на редове за движение
+за видове дневници: ""разход"" и ""приход""",0
+help,"account.account.open_aged_balance.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.open_balance_sheet.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.open_chart_account.init,fiscalyear",0,Leave empty for all open fiscal year,Оставете празно за всички отворени финансови години,0
+help,"account.account.open_chart_account.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.open_income_statement.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.open_third_party_balance.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.print_general_ledger.init,empty_account",0,With account without move,Със сметка без движение,0
+help,"account.account.print_general_ledger.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Със сметка без движение,0
+help,"account.account.print_trial_balance.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.account.type,sequence",0,Use to order the account type,За подреждане на вида на сметка,0
+help,"account.move,reference",0,Also known as Folio Number,,0
+help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Сумата изразена във втора валута,0
+help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
+You can put the limit date for the payment.","Полето се използва за редове за разходни и приходи.
+Може да зададете крайна дата за плащането.",0
+help,"account.move.line,second_currency",0,The second currency,Втората валута,0
+help,"account.move.print_general_journal.init,posted",0,Show only posted move,Показване само на публикувани движения,0
+help,"account.tax,amount",0,In company's currency,Във валута на фирмата,0
+help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Обикновенно 1 или -1,0
+help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Обикновенно 1 или -1,0
+help,"account.tax,description",0,The name that will be used in reports,Името което ще се използва в справките,0
+help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Обикновенно 1 или -1,0
+help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Обикновенно 1 или -1,0
+help,"account.tax,percentage",0,In %,В %,0
+help,"account.tax,sequence",0,Use to order the taxes,За подреждане на данъците,0
+help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Оставете празно за всички отворени финансови години,0
+help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Оствете празно за всички периоди за всички финансови години,0
+help,"account.tax.rule.line,origin_tax",0,"If the original tax is filled, the rule will be applied only for this tax.",Ако е попълнен оригиналния данък правилото ще бъде изпълено само за този данък.,0
+help,"account.tax.rule.line.template,origin_tax",0,"If the original tax template is filled, the rule will be applied only for this tax template.",Ако е попълнен шаблона на орифиналния данък правилото ще се приложи само за този шаблон на данък,0
+help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,Приложи това правило върху данъци ако партньора е клиент,0
+help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,Прилагане на това правило за данъци ако партньора е доставчик.,0
+model,"account.account,name",0,Account,Сметка,0
+model,"account.account-account.tax,name",0,Account - Tax,Сметка - Данък,0
+model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Създаване на сметка от сметкоплан,0
+model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Начално създаване на сметкоплан,0
+model,"account.account.create_chart_account.properties,name",0,Create Chart Account Properties,Създаване на свойства на сметкоплан,0
+model,"account.account.deferral,name",0,Account Deferral,Сметка с отложено плащане,0
+model,"account.account.open_aged_balance.init,name",0,Open Aged Balance Init,Начално отваряне на хронологичен баланс,0
+model,"account.account.open_balance_sheet.init,name",0,Open Balance Sheet Init,Начално отваряне на баланс,0
+model,"account.account.open_chart_account.init,name",0,Open Chart Account Init,Начално създаване на сметкоплан,0
+model,"account.account.open_income_statement.init,name",0,Open Income Statement Init,Начално отваряне на финансов отчет,0
+model,"account.account.open_third_party_balance.init,name",0,Open Third Party Balance Init,Начално баланс на външен партньор,0
+model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Отпечатване на главна книга,0
+model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,Начално отпечатване на оборотна ведомост,0
+model,"account.account.template,name",0,Account Template,Шаблон на сметка,0
+model,"account.account.template,name",account_template_cash,Main Cash,Основна наличност,0
+model,"account.account.template,name",account_template_expense,Main Expense,Основена разходи,0
+model,"account.account.template,name",account_template_payable,Main Payable,Основна разходна сметка,0
+model,"account.account.template,name",account_template_receivable,Main Receivable,Основна приходна сметка,0
+model,"account.account.template,name",account_template_revenue,Main Revenue,Основна приходи,0
+model,"account.account.template,name",account_template_root,Minimal Account Chart,Минимална графика на сметката,0
+model,"account.account.template,name",account_template_tax,Main Tax,Основна данъци,0
+model,"account.account.template-account.tax.template,name",0,Account Template - Tax Template,Шаблон на сметка - Шаблон на данък,0
+model,"account.account.type,name",0,Account Type,Вид сметка,0
+model,"account.account.type.template,name",0,Account Type Template,Шаблон на вид сметка,0
+model,"account.account.type.template,name",account_type_template_asset,Asset,Притежание,0
+model,"account.account.type.template,name",account_type_template_asset_current,Current,Текущ,0
+model,"account.account.type.template,name",account_type_template_asset_current_cash,Cash,В брой,0
+model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,За получаване,0
+model,"account.account.type.template,name",account_type_template_asset_long_term,Long-term,Дългосрочен,0
+model,"account.account.type.template,name",account_type_template_equity,Equity,Капитал,0
+model,"account.account.type.template,name",account_type_template_expense,Expense,Разход,0
+model,"account.account.type.template,name",account_type_template_income,Income,Приход,0
+model,"account.account.type.template,name",account_type_template_liability,Liability,Дълг,0
+model,"account.account.type.template,name",account_type_template_liability_current,Current,Текущ,0
+model,"account.account.type.template,name",account_type_template_liability_current_payable,Payable,Разходен,0
+model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Данък,0
+model,"account.account.type.template,name",account_type_template_liability_long_term,Long-term,Дългосрочен,0
+model,"account.account.type.template,name",account_type_template_minimal,Minimal Account Type Chart,Минимален сметкоплан,0
+model,"account.account.type.template,name",account_type_template_off_balance,Off-Balance,Неутрално салдо,0
+model,"account.account.type.template,name",account_type_template_revenue,Revenue,Приход,0
+model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Начално обновяване на сметкоплан от шаблон,0
+model,"account.account.update_chart_account.start,name",0,Update Chart Account from Template Start,Обновяване на сметкоплан от шаблон начало,0
+model,"account.fiscalyear,name",0,Fiscal Year,Финансова година,0
+model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Финансова година - Ред от движение,0
+model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Начално затваряне на финансова година,0
+model,"account.journal,name",0,Journal,Дневник,0
+model,"account.journal,name",journal_cash,Cash,В брой,0
+model,"account.journal,name",journal_expense,Expense,Разход,0
+model,"account.journal,name",journal_revenue,Revenue,Приход,0
+model,"account.journal,name",journal_stock,Stock,Наличност,0
+model,"account.journal.period,name",0,Journal - Period,Дневник - Период,0
+model,"account.journal.type,name",0,Journal Type,Вид дневник,0
+model,"account.journal.type,name",journal_type_cash,Cash,В брой,0
+model,"account.journal.type,name",journal_type_expense,Expense,Разход,0
+model,"account.journal.type,name",journal_type_general,General,Основен,0
+model,"account.journal.type,name",journal_type_revenue,Revenue,Приход,0
+model,"account.journal.type,name",journal_type_situation,Situation,Положение,0
+model,"account.journal.view,name",0,Journal View,Изглед на дневник,0
+model,"account.journal.view.column,name",0,Journal View Column,Колона от изглед на дневник,0
+model,"account.move,name",0,Account Move,Движение по сметка,0
+model,"account.move.line,name",0,Account Move Line,Ред от движение по сметка,0
+model,"account.move.open_journal.ask,name",0,Open Journal Ask,Запитване за отваряне на дневник,0
+model,"account.move.open_reconcile_lines.init,name",0,Open Reconcile Lines Init,Начално отваряне на Съгласуване на редове,0
+model,"account.move.print_general_journal.init,name",0,Print General Journal Init,Начално отпечатване на главен дневник,0
+model,"account.move.reconcile_lines.writeoff,name",0,Reconcile Lines Write-Off,Съгласуване на редове на отписване,0
+model,"account.move.reconciliation,name",0,Account Move Reconciliation Lines,Редове от съгласуване на движение по сметка,0
+model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Начално разсъгласуване на редове,0
+model,"account.period,name",0,Period,Период,0
+model,"account.tax,name",0,Account Tax,Данък на сметка,0
+model,"account.tax.code,name",0,Tax Code,Код на данък,0
+model,"account.tax.code.template,name",0,Tax Code Template,Шаблони за кодове на данъци,0
+model,"account.tax.group,name",0,Tax Group,Данъчна група,0
+model,"account.tax.line,name",0,Tax Line,Ред на данък,0
+model,"account.tax.open_chart_code.init,name",0,Open Chart Code Init,Начално отваряне на сметкоплан,0
+model,"account.tax.rule,name",0,Tax Rule,Правило за данък,0
+model,"account.tax.rule.line,name",0,Tax Rule Line,Ред от правило на данък,0
+model,"account.tax.rule.line.template,name",0,Tax Rule Line Template,Шаблон на ред от правило на данък,0
+model,"account.tax.rule.template,name",0,Tax Rule Template,Шаблон на правило за данък,0
+model,"account.tax.template,name",0,Account Tax Template,Шаблон на данък на сметка,0
+model,"ir.action,name",,Account Types,Видове сметки,0
+model,"ir.action,name",,Accounts,Сметки,0
+model,"ir.action,name",,Tax Codes,Кодове на данъци,0
+model,"ir.action,name",,Taxes,Данъци,0
+model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Дата на баланс,0
+model,"ir.action,name",act_account_form,Accounts,Сметки,0
+model,"ir.action,name",act_account_income_statement_tree,Income Statement,Отчет за приходи,0
+model,"ir.action,name",act_account_template_tree,Account Templates,Шаблони на сметка,0
+model,"ir.action,name",act_account_tree,Accounts,Сметки,0
+model,"ir.action,name",act_account_tree2,Accounts,Сметки,0
+model,"ir.action,name",act_account_type_form,Account Types,Видове сметки,0
+model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Шаблони на вид сметка,0
+model,"ir.action,name",act_account_type_tree,Account Types,Видове сметки,0
+model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Затваряне на финансова година,0
+model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Затваряне на дневници - Периоди,0
+model,"ir.action,name",act_close_period,Close Periods,Затваряне на периоди,0
+model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Финансови години,0
+model,"ir.action,name",act_fiscalyear_form2,Fiscal Years,Финансови години,0
+model,"ir.action,name",act_journal_form,Journals,Дневници,0
+model,"ir.action,name",act_journal_form2,Journals,Дневници,0
+model,"ir.action,name",act_journal_period_form,Journals - Periods,Дневници - Периоди,0
+model,"ir.action,name",act_journal_period_tree,Journals - Periods,Дневници - Периоди,0
+model,"ir.action,name",act_journal_period_tree2,Journals - Periods,Дневници - Периоди,0
+model,"ir.action,name",act_journal_type_form,Journal Types,Видове дневници,0
+model,"ir.action,name",act_journal_type_form2,Journal Types,Видове дневници,0
+model,"ir.action,name",act_journal_view_form,Journal Views,Изгледи на дневник,0
+model,"ir.action,name",act_journal_view_form2,Journal Views,Изгледи на дневник,0
+model,"ir.action,name",act_move_form,Account Moves,Движения по сметка,0
+model,"ir.action,name",act_move_form2,Account Moves,Движения по сметка,0
+model,"ir.action,name",act_move_line_form,Account Move Lines,Редове от движение на сметка,0
+model,"ir.action,name",act_open_account,Open Move Account,Отваряне на сметка на движение,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Accounts,Отваряне на сметкоплан,0
+model,"ir.action,name",act_open_chart_code,Open Chart of Tax Codes,Отваряне на графика с кодове на данъци,0
+model,"ir.action,name",act_open_journal,Open Journal,Достъп до меню,0
+model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Отваряне на Съгласуване на редове,0
+model,"ir.action,name",act_open_tax_code,Open Tax Code,Отваряне код на данък,0
+model,"ir.action,name",act_period_form,Periods,Периоди,0
+model,"ir.action,name",act_period_form2,Periods,Периоди,0
+model,"ir.action,name",act_period_form3,Periods,Периоди,0
+model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Съгласуване на редове,0
+model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Наново отваряне на дневници - Периоди,0
+model,"ir.action,name",act_reopen_period,Re-Open Periods,Наново отваряне на периоди,0
+model,"ir.action,name",act_tax_code_form,Tax Codes,Кодове на данъци,0
+model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Шаблони на кодове на данъци,0
+model,"ir.action,name",act_tax_code_tree,Tax Codes,Кодове на данъци,0
+model,"ir.action,name",act_tax_code_tree2,Tax Codes,Кодове на данъци,0
+model,"ir.action,name",act_tax_form,Taxes,Данъци,0
+model,"ir.action,name",act_tax_group_form,Tax Groups,Група данъци,0
+model,"ir.action,name",act_tax_group_form2,Tax Groups,Група данъци,0
+model,"ir.action,name",act_tax_line_form,Tax Lines,Ред на данъци,0
+model,"ir.action,name",act_tax_rule_form,Tax Rules,Правила за данък,0
+model,"ir.action,name",act_tax_rule_form2,Tax Rules,Правила за данък,0
+model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Шаблони за правило на данък,0
+model,"ir.action,name",act_tax_template_tree,Taxes Templates,Шаблони на данъци,0
+model,"ir.action,name",act_tax_tree,Taxes,Данъци,0
+model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Разсъгласуване на редове,0
+model,"ir.action,name",report_aged_balance,Aged Balance,Хронологичен баланс,0
+model,"ir.action,name",report_general_journal,General Journal,Общ дневник,0
+model,"ir.action,name",report_general_ledger,General Ledger,Основен дневник,0
+model,"ir.action,name",report_third_party_balance,Third Party Balance,Баланс на външен партньор,0
+model,"ir.action,name",report_trial_balance,Trial Balance,Временен баланс,0
+model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Създаване на сметкоплан от шаблон,0
+model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Отваряне на хронологичен баланс,0
+model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Отваряне на баланс,0
+model,"ir.action,name",wizard_open_income_statement,Open Income Statement,Отваряне на отчет за приходи,0
+model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,Баланс на друг партньор,0
+model,"ir.action,name",wizard_print_general_journal,Print General Journal,Отпечатване на основен дневник,0
+model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Отпечатване на основен дневник,0
+model,"ir.action,name",wizard_print_trial_balance,Print Trial Balance,Отпечатване на пробен баланс,0
+model,"ir.action,name",wizard_update_chart_account,Update Chart of Account from Template,Обновяване на сметкоплан от шаблон,0
+model,"ir.sequence,name",sequence_account_journal,Default Account Journal,Дневник на сметка по подрабиране,0
+model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Move Reconciliation,Съгласуване на движение на сметката по подразбиране,0
+model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Дневник на сметка,0
+model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Движение по сметка,0
+model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Съгласуване на движение по сметка,0
+model,"ir.ui.menu,name",,New Account,Нова сметка,0
+model,"ir.ui.menu,name",,New Account Type,Нов вид сметка,0
+model,"ir.ui.menu,name",,New Tax Code,Нов код на данък,0
+model,"ir.ui.menu,name",,Taxes,Данъци,0
+model,"ir.ui.menu,name",menu_account,Financial Management,Управление на финанси,0
+model,"ir.ui.menu,name",menu_account_configuration,Configuration,Конфигурация,0
+model,"ir.ui.menu,name",menu_account_form,New Account,Сметки,1
+model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Шаблони на сметка,0
+model,"ir.ui.menu,name",menu_account_tree,Accounts,Сметки,0
+model,"ir.ui.menu,name",menu_account_type_form,New Account Type,Видове сметки,1
+model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Шаблони на вид сметка,0
+model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Видове сметки,0
+model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Хронологичен баланс,0
+model,"ir.ui.menu,name",menu_charts,Charts,Графики,0
+model,"ir.ui.menu,name",menu_close_fiscalyear,Close Fiscal Year,Затваряне на финансова година,0
+model,"ir.ui.menu,name",menu_create_chart_account,Create Chart of Account from Template,Създаване на сметкоплан от шаблон,0
+model,"ir.ui.menu,name",menu_entries,Entries,Записи,0
+model,"ir.ui.menu,name",menu_fiscalyear_configuration,Fiscal Years,Финансови години,0
+model,"ir.ui.menu,name",menu_fiscalyear_form,Fiscal Years,Финансови години,0
+model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,Нова финансова година,0
+model,"ir.ui.menu,name",menu_general_account_configuration,General Account,Основна сметка,0
+model,"ir.ui.menu,name",menu_journal_configuration,Journals,Дневници,0
+model,"ir.ui.menu,name",menu_journal_form,Journals,Дневници,0
+model,"ir.ui.menu,name",menu_journal_form_new,New Journal,Нов дневник,0
+model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Затваряне на дневници - Периоди,0
+model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Дневници - Периоди,0
+model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Дневници - Периоди,0
+model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Видове дневници,0
+model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,Нов вид дневник,0
+model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Изгледи на дневник,0
+model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,Нов изглед на дневник,0
+model,"ir.ui.menu,name",menu_move_form,Account Moves,Движения по сметка,0
+model,"ir.ui.menu,name",menu_move_form_new,New Account Move,Ново движение по сметка,0
+model,"ir.ui.menu,name",menu_open_balance_sheet,Balance Sheet,Дата на баланс,0
+model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Отваряне на сметкоплан,0
+model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Отваряне на графика с кодове на данъци,0
+model,"ir.ui.menu,name",menu_open_income_statement,Income Statement,Отчет за приходи,0
+model,"ir.ui.menu,name",menu_open_journal,Open Journal,Достъп до меню,0
+model,"ir.ui.menu,name",menu_open_reconcile_lines,Reconcile Lines,Съгласуване на редове,0
+model,"ir.ui.menu,name",menu_period_form,Periods,Периоди,0
+model,"ir.ui.menu,name",menu_period_form2,Close Periods,Затваряне на периоди,0
+model,"ir.ui.menu,name",menu_period_form_new,New Period,Нов период,0
+model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Отпечатване на основен дневник,0
+model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Отпечатване на основен дневник,0
+model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Отпечатване на пробен баланс,0
+model,"ir.ui.menu,name",menu_processing,Processing,Обработване,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Справки,0
+model,"ir.ui.menu,name",menu_tax_code_form,New Tax Code,Кодове на данъци,1
+model,"ir.ui.menu,name",menu_tax_code_template_tree,Tax Codes Templates,Шаблони на кодове на данъци,0
+model,"ir.ui.menu,name",menu_tax_code_tree,Tax Codes,Кодове на данъци,0
+model,"ir.ui.menu,name",menu_tax_form,Taxes,Данъци,0
+model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Нов данък,0
+model,"ir.ui.menu,name",menu_tax_group_form,Tax Groups,Група данъци,0
+model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Нова група данъци,0
+model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Правила за данък,0
+model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Ново правило за данък,0
+model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Шаблони за правило на данък,0
+model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Шаблони на данъци,0
+model,"ir.ui.menu,name",menu_taxes,Taxes,Данъци,0
+model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Баланс на външен партньор,0
+model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Обновяване на сметкоплан от шаблон,0
+model,"res.group,name",group_account,Account,Сметка,0
+model,"res.group,name",group_account_admin,Account Administration,Управление на счетоводство,0
+odt,account.account.aged_balance,0,/,/,0
+odt,account.account.aged_balance,0,Aged Balance for Customers,Хронологичен баланс за клиенти,0
+odt,account.account.aged_balance,0,Aged Balance for Suppliers,Хронологичен баланс за доставчици,0
+odt,account.account.aged_balance,0,Aged Balance for Suppliers and Customers,Хронологични баланси за доставчици и клиенти,0
+odt,account.account.aged_balance,0,Company:,Фирма,0
+odt,account.account.aged_balance,0,Day,Ден,0
+odt,account.account.aged_balance,0,Days,Дни,0
+odt,account.account.aged_balance,0,Month,Месец,0
+odt,account.account.aged_balance,0,Months,Месеци,0
+odt,account.account.aged_balance,0,Party,Партньор,0
+odt,account.account.aged_balance,0,Print Date:,Дата на отпечатване:,0
+odt,account.account.aged_balance,0,Total,Общо,0
+odt,account.account.aged_balance,0,User:,Потребител:,0
+odt,account.account.aged_balance,0,at,на,0
+odt,account.account.general_ledger,0,/,/,0
+odt,account.account.general_ledger,0,Balance,Баланс,0
+odt,account.account.general_ledger,0,Code,Код,0
+odt,account.account.general_ledger,0,Company:,Фирма,0
+odt,account.account.general_ledger,0,Credit,Кредит,0
+odt,account.account.general_ledger,0,Date,Дата,0
+odt,account.account.general_ledger,0,Debit,Дебит,0
+odt,account.account.general_ledger,0,From Period:,От период:,0
+odt,account.account.general_ledger,0,General Ledger,Основен дневник,0
+odt,account.account.general_ledger,0,Name,Име,0
+odt,account.account.general_ledger,0,Print Date:,Дата на отпечатване:,0
+odt,account.account.general_ledger,0,State,Състояние,0
+odt,account.account.general_ledger,0,To Period:,До период:,0
+odt,account.account.general_ledger,0,Total,Общо,0
+odt,account.account.general_ledger,0,User:,Потребител:,0
+odt,account.account.general_ledger,0,at,на,0
+odt,account.account.third_party_balance,0,/,/,0
+odt,account.account.third_party_balance,0,Balance,Баланс,0
+odt,account.account.third_party_balance,0,Company:,Фирма,0
+odt,account.account.third_party_balance,0,Credit,Кредит,0
+odt,account.account.third_party_balance,0,Debit,Дебит,0
+odt,account.account.third_party_balance,0,Party,Партньор,0
+odt,account.account.third_party_balance,0,Print Date:,Дата на отпечатване:,0
+odt,account.account.third_party_balance,0,Third Party Balance,Баланс на външен партньор,0
+odt,account.account.third_party_balance,0,Total,Общо,0
+odt,account.account.third_party_balance,0,User:,Потребител:,0
+odt,account.account.third_party_balance,0,at,на,0
+odt,account.account.trial_balance,0,/,/,0
+odt,account.account.trial_balance,0,Account,Сметка,0
+odt,account.account.trial_balance,0,Company:,Фирма,0
+odt,account.account.trial_balance,0,Credit,Кредит,0
+odt,account.account.trial_balance,0,Debit,Дебит,0
+odt,account.account.trial_balance,0,From Period:,От период:,0
+odt,account.account.trial_balance,0,Print Date:,Дата на отпечатване:,0
+odt,account.account.trial_balance,0,To Period:,До период:,0
+odt,account.account.trial_balance,0,Total,Общо,0
+odt,account.account.trial_balance,0,Trial Balance,Временен баланс,0
+odt,account.account.trial_balance,0,User:,Потребител:,0
+odt,account.account.trial_balance,0,at,на,0
+odt,account.move.general_journal,0,/,/,0
+odt,account.move.general_journal,0,Account,Сметка,0
+odt,account.move.general_journal,0,Company:,Фирма,0
+odt,account.move.general_journal,0,Credit,Кредит,0
+odt,account.move.general_journal,0,Date:,Дата:,0
+odt,account.move.general_journal,0,Debit,Дебит,0
+odt,account.move.general_journal,0,Draft,Проект,0
+odt,account.move.general_journal,0,From Date:,От дата:,0
+odt,account.move.general_journal,0,General Journal,Общ дневник,0
+odt,account.move.general_journal,0,Journal Entry:,Запис от дневник,0
+odt,account.move.general_journal,0,Name,Име,0
+odt,account.move.general_journal,0,Posted,Публикуван,0
+odt,account.move.general_journal,0,Print Date:,Дата на отпечатване:,0
+odt,account.move.general_journal,0,Reference:,Отпратка:,0
+odt,account.move.general_journal,0,To Date:,Към дата:,0
+odt,account.move.general_journal,0,User:,Потребител:,0
+odt,account.move.general_journal,0,at,на,0
+selection,"account.account,kind",0,Expense,Разход,0
+selection,"account.account,kind",0,Other,Друг,0
+selection,"account.account,kind",0,Payable,Разходен,0
+selection,"account.account,kind",0,Receivable,За получаване,0
+selection,"account.account,kind",0,Revenue,Приход,0
+selection,"account.account,kind",0,View,Изглед,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Both,И двата,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Клиент,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Доставчик,0
+selection,"account.account.open_aged_balance.init,unit",0,Day,Ден,0
+selection,"account.account.open_aged_balance.init,unit",0,Month,Месец,0
+selection,"account.account.template,kind",0,Expense,Разход,0
+selection,"account.account.template,kind",0,Other,Друг,0
+selection,"account.account.template,kind",0,Payable,Разходен,0
+selection,"account.account.template,kind",0,Receivable,За получаване,0
+selection,"account.account.template,kind",0,Revenue,Приход,0
+selection,"account.account.template,kind",0,View,Изглед,0
+selection,"account.account.type,display_balance",0,Credit - Debit,Кредит - дебит,0
+selection,"account.account.type,display_balance",0,Debit - Credit,Дебит - кредит,0
+selection,"account.account.type.template,display_balance",0,Credit - Debit,Кредит - дебит,0
+selection,"account.account.type.template,display_balance",0,Debit - Credit,Дебит - кредит,0
+selection,"account.fiscalyear,state",0,Close,Затваряне,0
+selection,"account.fiscalyear,state",0,Open,Отваряне,0
+selection,"account.journal.period,state",0,Close,Затваряне,0
+selection,"account.journal.period,state",0,Open,Отваряне,0
+selection,"account.move,state",0,Draft,Проект,0
+selection,"account.move,state",0,Posted,Публикуван,0
+selection,"account.move.line,move_state",0,Draft,Проект,0
+selection,"account.move.line,move_state",0,Posted,Публикуван,0
+selection,"account.move.line,state",0,Draft,Проект,0
+selection,"account.move.line,state",0,Valid,Валиден,0
+selection,"account.period,state",0,Close,Затваряне,0
+selection,"account.period,state",0,Open,Отваряне,0
+selection,"account.period,type",0,Adjustment,Проверка,0
+selection,"account.period,type",0,Standard,Стандартен,0
+selection,"account.tax,type",0,Fixed,Фиксиран,0
+selection,"account.tax,type",0,None,Няма,0
+selection,"account.tax,type",0,Percentage,Процент,0
+selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,По финансова година,0
+selection,"account.tax.open_chart_code.init,method",0,By Periods,По периоди,0
+selection,"account.tax.template,type",0,Fixed,Фиксиран,0
+selection,"account.tax.template,type",0,None,Няма,0
+selection,"account.tax.template,type",0,Percentage,Процент,0
+view,account.account,0,Account,Сметка,0
+view,account.account,0,Accounts,Сметки,0
+view,account.account,0,Deferrals,Отложени плащания,0
+view,account.account,0,General Information,Обща информация,0
+view,account.account,0,Notes,Бележки,0
+view,account.account.create_chart_account.account,0,Create Chart of Account,Създаване на сметкоплан,0
+view,account.account.create_chart_account.init,0,Create Chart of Account,Създаване на сметкоплан,0
+view,account.account.create_chart_account.init,0,You can now create a chart of account for your company,Не може да създадете сметкоплана за фирмата си,0
+view,account.account.create_chart_account.init,0,by selecting a chart of account template.,като изберете шаблон за сметкоплан.,0
+view,account.account.create_chart_account.properties,0,Create Default Properties,Създаване на свойства по подразбиране,0
+view,account.account.deferral,0,Account Deferral,Сметка с отложено плащане,0
+view,account.account.deferral,0,Account Deferrals,Сметки с отложено плащане,0
+view,account.account.open_aged_balance.init,0,Open Aged Balance,Отваряне на хронологичен баланс,0
+view,account.account.open_aged_balance.init,0,Terms,Условия,0
+view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Отваряне на баланс,0
+view,account.account.open_chart_account.init,0,Open Chart of Accounts,Отваряне на сметкоплан,0
+view,account.account.open_income_statement.init,0,Open Income Statement,Отваряне на отчет за приходи,0
+view,account.account.open_third_party_balance.init,0,Open Third Party Balance,Баланс на външен партньор,0
+view,account.account.print_general_ledger.init,0,Print General Ledger,Отпечатване на главна книга,0
+view,account.account.print_trial_balance.init,0,Print Trial Balance,Отпечатване на пробен баланс,0
+view,account.account.template,0,Account Template,Шаблон на сметка,0
+view,account.account.template,0,Account Templates,Шаблони на сметка,0
+view,account.account.type,0,Account Type,Вид сметка,0
+view,account.account.type,0,Account Types,Видове сметки,0
+view,account.account.type,0,Balance Sheet,Дата на баланс,0
+view,account.account.type,0,Income Statement,Отчет за приходи,0
+view,account.account.type.template,0,Account Type Template,Шаблон на вид сметка,0
+view,account.account.type.template,0,Account Types Templates,Шаблони за видове сметки,0
+view,account.account.update_chart_account.init,0,Update Chart of Account,Обновяване на сметкоплан,0
+view,account.account.update_chart_account.start,0,Update Chart of Account,Обновяване на сметкоплан,0
+view,account.account.update_chart_account.start,0,Update Chart of Account Succeed!,Обновяването на смекоплан успешно!,0
+view,account.fiscalyear,0,Are you sure to close fiscal year?,Сигурни ли сте че искате да затворите финансовата година?,0
+view,account.fiscalyear,0,Close Fiscal Year,Затваряне на финансова година,0
+view,account.fiscalyear,0,Create 3 Months Periods,Създаване на тримесечни периоди,0
+view,account.fiscalyear,0,Create Monthly Periods,Създаване на месечни периоди,0
+view,account.fiscalyear,0,Fiscal Year,Финансова година,0
+view,account.fiscalyear,0,Fiscal Years,Финансови години,0
+view,account.fiscalyear,0,Periods,Периоди,0
+view,account.fiscalyear,0,Re-Open Fiscal Year,Отваряне наново на финансова година,0
+view,account.fiscalyear,0,Sequences,Последователности,0
+view,account.fiscalyear.close_fiscalyear.init,0,Close Fiscal Year,Затваряне на финансова година,0
+view,account.journal,0,General Information,Обща информация,0
+view,account.journal,0,Journal,Дневник,0
+view,account.journal,0,Journals,Дневници,0
+view,account.journal.period,0,Journal - Period,Дневник - Период,0
+view,account.journal.period,0,Journals - Periods,Дневници - Периоди,0
+view,account.journal.type,0,Journal Type,Вид дневник,0
+view,account.journal.type,0,Journal Types,Видове дневници,0
+view,account.journal.view,0,Journal View,Изглед на дневник,0
+view,account.journal.view,0,Journal Views,Изгледи на дневник,0
+view,account.journal.view,0,View Column,Изглед на колона,0
+view,account.journal.view,0,View Columns,Показване на колони,0
+view,account.move,0,Account Move,Движение по сметка,0
+view,account.move,0,Account Move Line,Ред от движение по сметка,1
+view,account.move,0,Account Move Lines,Редове от движение на сметка,1
+view,account.move,0,Account Moves,Движения по сметка,0
+view,account.move,0,Credit,Кредит,1
+view,account.move,0,Debit,Дебит,1
+view,account.move,0,Draft,Проект,0
+view,account.move,0,General Information,Обща информация,1
+view,account.move,0,Optional Information,Незадължителна информация,1
+view,account.move,0,Post,Публикуван,0
+view,account.move.line,0,Account Move Line,Ред от движение по сметка,0
+view,account.move.line,0,Account Move Lines,Редове от движение на сметка,0
+view,account.move.line,0,Credit,Кредит,0
+view,account.move.line,0,Debit,Дебит,0
+view,account.move.line,0,General Information,Обща информация,0
+view,account.move.line,0,Optional Information,Незадължителна информация,0
+view,account.move.open_journal.ask,0,Open Journal,Достъп до меню,0
+view,account.move.open_reconcile_lines.init,0,Open Reconcile Lines,Отваряне на Съгласуване на редове,0
+view,account.move.print_general_journal.init,0,Print General Journal,Отпечатване на основен дневник,0
+view,account.move.reconcile_lines.writeoff,0,Write-Off,Анулиран,0
+view,account.move.reconciliation,0,Reconciliation,Съгласуване,0
+view,account.move.reconciliation,0,Reconciliations,Съгласувания,0
+view,account.move.unreconcile_lines.init,0,"If you unreconcile lines, the workflows, on those lines, will not be canceled.",Ако разсъгласувате редове работните процеси върху тях ще бъдат спрени,0
+view,account.move.unreconcile_lines.init,0,Unreconcile,Разсъгласуване,0
+view,account.period,0,Period,Период,0
+view,account.period,0,Periods,Периоди,0
+view,account.tax,0,Code,Код,0
+view,account.tax,0,Credit Note,Кредитно известие,0
+view,account.tax,0,General Information,Обща информация,0
+view,account.tax,0,Invoice,Фактура,0
+view,account.tax,0,Tax,Данък,0
+view,account.tax,0,Taxes,Данъци,0
+view,account.tax.code,0,Children,Деца,0
+view,account.tax.code,0,Description,Описание,0
+view,account.tax.code,0,Tax Code,Код на данък,0
+view,account.tax.code,0,Tax Codes,Кодове на данъци,0
+view,account.tax.code.template,0,Children,Деца,0
+view,account.tax.code.template,0,Description,Описание,0
+view,account.tax.code.template,0,Tax Code Template,Шаблони за кодове на данъци,0
+view,account.tax.code.template,0,Tax Codes Templates,Шаблони на кодове на данъци,0
+view,account.tax.group,0,Tax Group,Данъчна група,0
+view,account.tax.group,0,Tax Groups,Група данъци,0
+view,account.tax.line,0,Account Tax Line,Ред от данък на сметка,0
+view,account.tax.line,0,Account Tax Lines,Редове от данък на сметка,0
+view,account.tax.open_chart_code.init,0,Open Chart Of Tax Codes,Отваряне на кодове за сметкопланове,0
+view,account.tax.rule,0,Tax Rule,Правило за данък,0
+view,account.tax.rule,0,Tax Rule Line Templates,Шаблони за редове от правило на данък,0
+view,account.tax.rule,0,Tax Rules,Правила за данък,0
+view,account.tax.rule.line,0,Tax Rule Line,Ред от правило на данък,0
+view,account.tax.rule.line,0,Tax Rule Lines,Редове от правило на данък,0
+view,account.tax.rule.line.template,0,Tax Rule Line Template,Шаблон на ред от правило на данък,0
+view,account.tax.rule.line.template,0,Tax Rule Line Templates,Шаблони за редове от правило на данък,0
+view,account.tax.rule.template,0,Tax Rule Template,Шаблон на правило за данък,0
+view,account.tax.rule.template,0,Tax Rules,Правила за данък,0
+view,account.tax.template,0,Code,Код,0
+view,account.tax.template,0,Credit Note,Кредитно известие,0
+view,account.tax.template,0,General Information,Обща информация,0
+view,account.tax.template,0,Invoice,Фактура,0
+view,account.tax.template,0,Tax Template,Шаблон за данък,0
+view,account.tax.template,0,Taxes,Данъци,0
+view,account.tax.template,0,Taxes Templates,Шаблони на данъци,0
+view,party.party,0,Account,Сметка,0
+view,party.party,0,Taxes,Данъци,0
+wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Създаване,0
+wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Отказ,0
+wizard_button,"account.account.create_chart_account,create_account,create_properties",0,Create,Създаване,0
+wizard_button,"account.account.create_chart_account,create_account,end",0,Cancel,Отказ,0
+wizard_button,"account.account.create_chart_account,init,account",0,Ok,Добре,0
+wizard_button,"account.account.create_chart_account,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_aged_balance,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_aged_balance,init,print",0,Print,Печат,0
+wizard_button,"account.account.open_balance_sheet,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_balance_sheet,init,open",0,Open,Отваряне,0
+wizard_button,"account.account.open_chart_account,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_chart_account,init,open",0,Open,Отваряне,0
+wizard_button,"account.account.open_income_statement,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_income_statement,init,open",0,Open,Отваряне,0
+wizard_button,"account.account.open_third_party_balance,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.open_third_party_balance,init,print",0,Print,Печат,0
+wizard_button,"account.account.print_general_ledger,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.print_general_ledger,init,print",0,Print,Печат,0
+wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.print_trial_balance,init,print",0,Print,Печат,0
+wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Отказ,0
+wizard_button,"account.account.update_chart_account,init,start",0,Ok,Добре,0
+wizard_button,"account.account.update_chart_account,start,end",0,Ok,Добре,0
+wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Затваряне,0
+wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Отказ,0
+wizard_button,"account.move.open_journal,ask,end",0,Cancel,Отказ,0
+wizard_button,"account.move.open_journal,ask,open",0,Open,Отваряне,0
+wizard_button,"account.move.open_reconcile_lines,init,end",0,Cancel,Отказ,0
+wizard_button,"account.move.open_reconcile_lines,init,open",0,Open,Отваряне,0
+wizard_button,"account.move.print_general_journal,init,end",0,Cancel,Отказ,0
+wizard_button,"account.move.print_general_journal,init,print",0,Print,Печат,0
+wizard_button,"account.move.reconcile_lines,writeoff,end",0,Cancel,Отказ,0
+wizard_button,"account.move.reconcile_lines,writeoff,reconcile",0,Reconcile,Съгласуване,0
+wizard_button,"account.move.unreconcile_lines,init,end",0,Cancel,Отказ,0
+wizard_button,"account.move.unreconcile_lines,init,unreconcile",0,Unreconcile,Разсъгласуване,0
+wizard_button,"account.tax.open_chart_code,init,end",0,Cancel,Отказ,0
+wizard_button,"account.tax.open_chart_code,init,open",0,Open,Отваряне,0

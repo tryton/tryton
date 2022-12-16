@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;active&quot;]" position="after">
+                        <field name="invoice" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group/field[@name=&quot;active&quot;]"
+                        position="after">
+                        <label name="invoice"/>
+                        <field name="invoice" xexpand="0" width="25"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;accounting&quot;]/field[@name=&quot;vat_number&quot;]"
+                        position="after">
+                        <separator string="Payment Terms" colspan="4" id="payment_terms"/>
+                        <label name="payment_term"/>
+                        <field name="payment_term"/>
+                        <label name="supplier_payment_term"/>
+                        <field name="supplier_payment_term"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_form2">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain">[("party", "=", Eval('active_id'))]</field>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,0</field>
+            <field name="action" ref="act_invoice_form2"/>
+        </record>
+
+    </data>
+</tryton>

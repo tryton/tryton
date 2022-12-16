@@ -1,0 +1,53 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,There should be only one timesheet work by task/project!,Es kann nur ein Zeiterfassungsblatt pro Aufgabe oder Projekt geben!,0
+field,"project.work,children",0,Children,Untergeordnet (Arbeiten),0
+field,"project.work,comment",0,Comment,Kommentar,0
+field,"project.work,create_date",0,Creation date,Erstellungsdatum,0
+field,"project.work,create_uid",0,Creation user,Ersteller,0
+field,"project.work,effort",0,Effort,Aufwand (Personenstunden),0
+field,"project.work,id",0,ID,ID,0
+field,"project.work,parent",0,Parent,Übergeordnet (Arbeit),0
+field,"project.work,party",0,Party,Partei,0
+field,"project.work,party_address",0,Contact Address,Kontaktadresse,0
+field,"project.work,rec_name",0,Name,Name,0
+field,"project.work,state",0,State,Status,0
+field,"project.work,total_effort",0,Total Effort,Gesamtaufwand (Personenstunden),0
+field,"project.work,type",0,Type,Typ,0
+field,"project.work,work",0,Work,Arbeit,0
+field,"project.work,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"project.work,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.work,sequence",0,Sequence,Reihenfolge,0
+field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Zeitpositionen,0
+help,"project.work,effort",0,Estimated Effort for this work,"Geschätzter Aufwand für diese Arbeit in Stunden (Format: Personenstunden, -tage, -wochen)",0
+help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,"Geschätzter Gesamtaufwand für diese Arbeit inkl. aller untergeordneten Arbeiten in Stunden (Format: Personenstunden, -tage, -wochen)",0
+model,"ir.action,name",act_open_child_work,Tasks,Aufgaben,0
+model,"ir.action,name",act_project_form,Projects,Projekte,0
+model,"ir.action,name",act_task_form,Tasks,Aufgaben,0
+model,"ir.action,name",act_work_form,Works,Arbeiten,0
+model,"ir.action,name",act_work_form_new,Works Efforts,Arbeitsaufwände,0
+model,"ir.action,name",act_work_list,Works Efforts,Arbeitsaufwände,0
+model,"ir.action,name",act_work_tree,Works Efforts,Arbeitsaufwände,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
+model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
+model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
+model,"ir.ui.menu,name",menu_task_form,Tasks,Aufgaben,0
+model,"ir.ui.menu,name",menu_work_form_new,New Work Effort,Neuer Arbeitsaufwand,0
+model,"ir.ui.menu,name",menu_work_list,Works Efforts,Arbeitsaufwände,0
+model,"ir.ui.menu,name",menu_work_tree,Works Efforts,Arbeitsaufwände,0
+model,"project.work,name",0,Work Effort,Arbeitsaufwand,0
+model,"res.group,name",group_project_admin,Project Administration,Projekte Administration,0
+selection,"project.work,state",0,Done,Erledigt,0
+selection,"project.work,state",0,Opened,Offen,0
+selection,"project.work,type",0,Project,Projekt,0
+selection,"project.work,type",0,Task,Aufgabe,0
+view,project.work,0,Children,Untergeordnet (Arbeiten),0
+view,project.work,0,General,Allgemein,0
+view,project.work,0,Other Info,Sonstiges,0
+view,project.work,0,Projects,Projekte,0
+view,project.work,0,Tasks,Aufgaben,0
+view,project.work,0,Timesheet,Zeiterfassungsblatt,0
+view,project.work,0,Work,Arbeit,0
+view,project.work,0,Work Efforts,Arbeitsaufwände,0
+view,project.work,0,Works,Arbeiten,0
+view,project.work,0,Works Efforts,Arbeiten Aufwände,0

@@ -1,0 +1,17 @@
+type,name,res_id,src,value,fuzzy
+model,"ir.action,name",act_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Редове от кредитно известие на доставчик,0
+model,"ir.action,name",act_invoice_line_in_credit_note_form2,Supplier Credit Note Lines,Редове от кредитно известие на доставчик,0
+model,"ir.action,name",act_invoice_line_in_invoice_form,Supplier Invoice Lines,Редове от фактура на доставчик,0
+model,"ir.action,name",act_invoice_line_in_invoice_form2,Supplier Invoice Lines,Редове от фактура на доставчик,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form,Credit Note Lines,Редове от кредитно известие,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form2,Credit Note Lines,Редове от кредитно известие,0
+model,"ir.action,name",act_invoice_line_out_invoice_form,Invoice Lines,Редове от фактура,0
+model,"ir.action,name",act_invoice_line_out_invoice_form2,Invoice Lines,Редове от фактура,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Редове от кредитно известие на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form2,New Supplier Credit Note Line,Нов ред от кредитно известие на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form,Supplier Invoice Lines,Редове от фактура на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form2,New Supplier Invoice Line,Нов ред от фактура на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form,Credit Note Lines,Редове от кредитно известие,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form2,New Credit Note Line,Нов ред от кредитно известие,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form,Invoice Lines,Редове от фактура,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form2,New Invoice Line,Нов ред от фактура,0

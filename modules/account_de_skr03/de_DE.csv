@@ -1,0 +1,1398 @@
+type,name,res_id,src,value,fuzzy
+model,"account.account.template,name",account_0001,Ingangsetzungs- und Erweiterungsaufwand,Ingangsetzungs- und Erweiterungsaufwand,0
+model,"account.account.template,name",account_0010,Konzessionen und gewerbl.Schutzrechte,Konzessionen und gewerbl.Schutzrechte,0
+model,"account.account.template,name",account_0015,Konzessionen,Konzessionen,0
+model,"account.account.template,name",account_0020,Gewerbliche Schutzrechte,Gewerbliche Schutzrechte,0
+model,"account.account.template,name",account_0025,Ähnliche Rechte und Werte,Ähnliche Rechte und Werte,0
+model,"account.account.template,name",account_0027,EDV-Software,EDV-Software,0
+model,"account.account.template,name",account_0030,Lizenzen an gewerblichen Schutzrechten,Lizenzen an gewerblichen Schutzrechten,0
+model,"account.account.template,name",account_0035,Geschäfts- oder Firmenwert,Geschäfts- oder Firmenwert,0
+model,"account.account.template,name",account_0038,"Anzahlungen auf Geschäfts-, Firmenwert","Anzahlungen auf Geschäfts-, Firmenwert",0
+model,"account.account.template,name",account_0039,Anzahlungen immaterielle VermG,Anzahlungen immaterielle VermG,0
+model,"account.account.template,name",account_0040,Verschmelzungsmehrwert,Verschmelzungsmehrwert,0
+model,"account.account.template,name",account_0050,"Grundstücke,grndst.Rechte und Bauten","Grundstücke,grndst.Rechte und Bauten",0
+model,"account.account.template,name",account_0059,Grundstücksanteil häusl. Arbeitszimmer,Grundstücksanteil häusl. Arbeitszimmer,0
+model,"account.account.template,name",account_0060,"Grundstücke, grundstücksgl. Rechte","Grundstücke, grundstücksgl. Rechte",0
+model,"account.account.template,name",account_0065,Unbebaute Grundstücke,Unbebaute Grundstücke,0
+model,"account.account.template,name",account_0070,Grundstücksgleiche Rechte,Grundstücksgleiche Rechte,0
+model,"account.account.template,name",account_0075,Grundstücke mit Substanzverzehr,Grundstücke mit Substanzverzehr,0
+model,"account.account.template,name",account_0079,Anzahlungen a.Grundstücke ohne Bauten,Anzahlungen a.Grundstücke ohne Bauten,0
+model,"account.account.template,name",account_0080,Bauten auf eigenen Grundstücken,Bauten auf eigenen Grundstücken,0
+model,"account.account.template,name",account_0085,Grundstückswert bebauter Grundstücke,Grundstückswert bebauter Grundstücke,0
+model,"account.account.template,name",account_0090,Geschäftsbauten,Geschäftsbauten,0
+model,"account.account.template,name",account_0100,Fabrikbauten,Fabrikbauten,0
+model,"account.account.template,name",account_0110,Garagen,Garagen,0
+model,"account.account.template,name",account_0111,Außenanlagen,Außenanlagen,0
+model,"account.account.template,name",account_0112,Hof- und Wegebefestigungen,Hof- und Wegebefestigungen,0
+model,"account.account.template,name",account_0113,Einrichtung Fabrik- und Geschäftsbauten,Einrichtung Fabrik- und Geschäftsbauten,0
+model,"account.account.template,name",account_0115,Andere Bauten,Andere Bauten,0
+model,"account.account.template,name",account_0120,"Geschäfts-,Fabrik-u.and. Bauten im Bau","Geschäfts-,Fabrik-u.and. Bauten im Bau",0
+model,"account.account.template,name",account_0129,Anzahlg. auf Bauten eigen. Grundstücken,Anzahlg. auf Bauten eigen. Grundstücken,0
+model,"account.account.template,name",account_0140,Wohnbauten,Wohnbauten,0
+model,"account.account.template,name",account_0145,Garagen,Garagen,0
+model,"account.account.template,name",account_0146,Außenanlagen,Außenanlagen,0
+model,"account.account.template,name",account_0147,Hof- und Wegebefestigungen,Hof- und Wegebefestigungen,0
+model,"account.account.template,name",account_0148,Einrichtungen für Wohnbauten,Einrichtungen für Wohnbauten,0
+model,"account.account.template,name",account_0149,Gebäudeteil häusliches Arbeitszimmer,Gebäudeteil häusliches Arbeitszimmer,0
+model,"account.account.template,name",account_0150,Wohnbauten im Bau,Wohnbauten im Bau,0
+model,"account.account.template,name",account_0159,Anzahlg. auf Wohnbauten a.eig.Grundst,Anzahlg. auf Wohnbauten a.eig.Grundst,0
+model,"account.account.template,name",account_0160,Bauten auf fremden Grundstücken,Bauten auf fremden Grundstücken,0
+model,"account.account.template,name",account_0165,Geschäftsbauten,Geschäftsbauten,0
+model,"account.account.template,name",account_0170,Fabrikbauten,Fabrikbauten,0
+model,"account.account.template,name",account_0175,Garagen,Garagen,0
+model,"account.account.template,name",account_0176,Außenanlagen,Außenanlagen,0
+model,"account.account.template,name",account_0177,Hof- und Wegebefestigungen,Hof- und Wegebefestigungen,0
+model,"account.account.template,name",account_0178,Einrichtung Fabrik- und Geschäftsbauten,Einrichtung Fabrik- und Geschäftsbauten,0
+model,"account.account.template,name",account_0179,Andere Bauten,Andere Bauten,0
+model,"account.account.template,name",account_0180,"Geschäfts-,Fabrik-u.and. Bauten im Bau","Geschäfts-,Fabrik-u.and. Bauten im Bau",0
+model,"account.account.template,name",account_0189,Anzahlg. auf Bauten fremd. Grundstücken,Anzahlg. auf Bauten fremd. Grundstücken,0
+model,"account.account.template,name",account_0190,Wohnbauten,Wohnbauten,0
+model,"account.account.template,name",account_0191,Garagen,Garagen,0
+model,"account.account.template,name",account_0192,Außenanlagen,Außenanlagen,0
+model,"account.account.template,name",account_0193,Hof- und Wegebefestigungen,Hof- und Wegebefestigungen,0
+model,"account.account.template,name",account_0194,Einrichtungen für Wohnbauten,Einrichtungen für Wohnbauten,0
+model,"account.account.template,name",account_0195,Wohnbauten im Bau,Wohnbauten im Bau,0
+model,"account.account.template,name",account_0199,Anzahlungen a. Wohnbauten a. fremd. Gr.,Anzahlungen a. Wohnbauten a. fremd. Gr.,0
+model,"account.account.template,name",account_0200,Technische Anlagen und Maschinen,Technische Anlagen und Maschinen,0
+model,"account.account.template,name",account_0210,Maschinen,Maschinen,0
+model,"account.account.template,name",account_0220,Maschinengebundene Werkzeuge,Maschinengebundene Werkzeuge,0
+model,"account.account.template,name",account_0240,Maschinelle Anlagen,Maschinelle Anlagen,0
+model,"account.account.template,name",account_0260,Transportanlagen und Ähnliches,Transportanlagen und Ähnliches,0
+model,"account.account.template,name",account_0280,Betriebsvorrichtungen,Betriebsvorrichtungen,0
+model,"account.account.template,name",account_0290,Technische Anlagen und Maschinen im Bau,Technische Anlagen und Maschinen im Bau,0
+model,"account.account.template,name",account_0299,Anzahlungen auf technische Anlagen,Anzahlungen auf technische Anlagen,0
+model,"account.account.template,name",account_0300,Betriebs- und Geschäftsausstattung,Betriebs- und Geschäftsausstattung,0
+model,"account.account.template,name",account_0310,Andere Anlagen,Andere Anlagen,0
+model,"account.account.template,name",account_0320,PKW,PKW,0
+model,"account.account.template,name",account_0350,LKW,LKW,0
+model,"account.account.template,name",account_0380,Sonstige Transportmittel,Sonstige Transportmittel,0
+model,"account.account.template,name",account_0400,Betriebsausstattung,Betriebsausstattung,0
+model,"account.account.template,name",account_0410,Geschäftsausstattung,Geschäftsausstattung,0
+model,"account.account.template,name",account_0420,Büroeinrichtung,Büroeinrichtung,0
+model,"account.account.template,name",account_0430,Ladeneinrichtung,Ladeneinrichtung,0
+model,"account.account.template,name",account_0440,Werkzeuge,Werkzeuge,0
+model,"account.account.template,name",account_0450,Einbauten,Einbauten,0
+model,"account.account.template,name",account_0460,Gerüst- und Schalungsmaterial,Gerüst- und Schalungsmaterial,0
+model,"account.account.template,name",account_0480,Geringwertige Wirtschaftsgüter,Geringwertige Wirtschaftsgüter,0
+model,"account.account.template,name",account_0485,Geringwertige WG Sammelposten,Geringwertige WG Sammelposten,0
+model,"account.account.template,name",account_0490,Sonstige Betriebs-u.Gesch.ausstattung,Sonstige Betriebs-u.Gesch.ausstattung,0
+model,"account.account.template,name",account_0498,Betriebs- u. Gesch.ausstattung im Bau,Betriebs- u. Gesch.ausstattung im Bau,0
+model,"account.account.template,name",account_0499,Anzahlung Betriebs- u. Gesch.ausstattung,Anzahlung Betriebs- u. Gesch.ausstattung,0
+model,"account.account.template,name",account_0500,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.template,name",account_0504,Anteile a.herrschender Gesellschaft,Anteile a.herrschender Gesellschaft,0
+model,"account.account.template,name",account_0505,Ausleihungen an verbundene Unternehmen,Ausleihungen an verbundene Unternehmen,0
+model,"account.account.template,name",account_0510,Beteiligungen,Beteiligungen,0
+model,"account.account.template,name",account_0513,Typisch stille Beteiligungen,Typisch stille Beteiligungen,0
+model,"account.account.template,name",account_0516,Atypische stille Beteiligungen,Atypische stille Beteiligungen,0
+model,"account.account.template,name",account_0517,Andere Beteiligungen an Kapitalges.,Andere Beteiligungen an Kapitalges.,0
+model,"account.account.template,name",account_0518,Andere Beteiligungen an Personenges.,Andere Beteiligungen an Personenges.,0
+model,"account.account.template,name",account_0519,Beteiligung GmbH&Co.an Komplementär GmbH,Beteiligung GmbH&Co.an Komplementär GmbH,0
+model,"account.account.template,name",account_0520,Ausleih. an UN mit Beteiligungsverh.,Ausleih. an UN mit Beteiligungsverh.,0
+model,"account.account.template,name",account_0525,Wertpapiere des Anlagevermögens,Wertpapiere des Anlagevermögens,0
+model,"account.account.template,name",account_0530,Wertpapiere mit Gewinnbeteil.ansprüch.,Wertpapiere mit Gewinnbeteil.ansprüch.,0
+model,"account.account.template,name",account_0535,Festverzinsliche Wertpapiere,Festverzinsliche Wertpapiere,0
+model,"account.account.template,name",account_0540,Sonstige Ausleihungen,Sonstige Ausleihungen,0
+model,"account.account.template,name",account_0550,Darlehen,Darlehen,0
+model,"account.account.template,name",account_0570,Genossenschaftsanteile z.lfr.Verbleib,Genossenschaftsanteile z.lfr.Verbleib,0
+model,"account.account.template,name",account_0580,Ausleihungen an Gesellschafter,Ausleihungen an Gesellschafter,0
+model,"account.account.template,name",account_0590,Ausleihungen an nahe stehende Personen,Ausleihungen an nahe stehende Personen,0
+model,"account.account.template,name",account_0595,LV-Rückdeckungsansprüche z.lfr.Verbl.,LV-Rückdeckungsansprüche z.lfr.Verbl.,0
+model,"account.account.template,name",account_0600,"Anleihen, nicht konvertibel","Anleihen, nicht konvertibel",0
+model,"account.account.template,name",account_0601,"Anleihen, nicht konvertibel (b. 1 Jahr)","Anleihen, nicht konvertibel (b. 1 Jahr)",0
+model,"account.account.template,name",account_0605,"Anleihen, nicht konvertibel (1-5 Jahre)","Anleihen, nicht konvertibel (1-5 Jahre)",0
+model,"account.account.template,name",account_0610,"Anleihen, nicht konvertibel (g.5 Jahre)","Anleihen, nicht konvertibel (g.5 Jahre)",0
+model,"account.account.template,name",account_0615,Anleihen konvertibel,Anleihen konvertibel,0
+model,"account.account.template,name",account_0616,Anleihen konvertibel(bis 1 Jahr),Anleihen konvertibel(bis 1 Jahr),0
+model,"account.account.template,name",account_0620,Anleihen konvertibel(1-5 Jahre),Anleihen konvertibel(1-5 Jahre),0
+model,"account.account.template,name",account_0625,Anleihen konvertibel(größer 5 Jahre),Anleihen konvertibel(größer 5 Jahre),0
+model,"account.account.template,name",account_0630,Verbindlichkeiten gg. Kreditinstituten,Verbindlichkeiten gg. Kreditinstituten,0
+model,"account.account.template,name",account_0631,Verbindlichkeiten Kreditinstitut(b.1J),Verbindlichkeiten Kreditinstitut(b.1J),0
+model,"account.account.template,name",account_0640,Verbindlichkeiten Kreditinstitut(1-5J),Verbindlichkeiten Kreditinstitut(1-5J),0
+model,"account.account.template,name",account_0650,Verbindlichkeiten Kreditinstitut(g.5J),Verbindlichkeiten Kreditinstitut(g.5J),0
+model,"account.account.template,name",account_0660,TZ-Verbindlichkeit. gg. Kreditinstituten,TZ-Verbindlichkeit. gg. Kreditinstituten,0
+model,"account.account.template,name",account_0661,"TZ-Verbindlichkeit. Kreditinstitut,b.1 J","TZ-Verbindlichkeit. Kreditinstitut,b.1 J",0
+model,"account.account.template,name",account_0670,"TZ-Verbindlichkeit. Kreditinstitut,1-5 J","TZ-Verbindlichkeit. Kreditinstitut,1-5 J",0
+model,"account.account.template,name",account_0680,"TZ-Verbindlichkeit. Kreditinstitut,g.5 J","TZ-Verbindlichkeit. Kreditinstitut,g.5 J",0
+model,"account.account.template,name",account_0699,Gegenkonto bei Aufteilung Kto 0690-98,Gegenkonto bei Aufteilung Kto 0690-98,0
+model,"account.account.template,name",account_0700,Verbindlichk.gegenüber verbundenen UN,Verbindlichk.gegenüber verbundenen UN,0
+model,"account.account.template,name",account_0701,Verbindlichkeit. gg.verbundene UN(b.1 J),Verbindlichkeit. gg.verbundene UN(b.1 J),0
+model,"account.account.template,name",account_0705,Verbindlichkeit. gg.verbundene UN(1-5 J),Verbindlichkeit. gg.verbundene UN(1-5 J),0
+model,"account.account.template,name",account_0710,Verbindlichkeit. gg.verbundene UN(g.5 J),Verbindlichkeit. gg.verbundene UN(g.5 J),0
+model,"account.account.template,name",account_0715,Verbindl. gg.UN mit Beteiligungsverh.,Verbindl. gg.UN mit Beteiligungsverh.,0
+model,"account.account.template,name",account_0716,Verbindl. gg.UN mit Beteiligg.verh. b.1J,Verbindl. gg.UN mit Beteiligg.verh. b.1J,0
+model,"account.account.template,name",account_0720,Verbindl. gg.UN mit Beteiligg.verh. 1-5J,Verbindl. gg.UN mit Beteiligg.verh. 1-5J,0
+model,"account.account.template,name",account_0725,Verbindl. gg.UN mit Beteiligg.verh. g.5J,Verbindl. gg.UN mit Beteiligg.verh. g.5J,0
+model,"account.account.template,name",account_0730,Verbindlichkeit.gg. Gesellschaftern,Verbindlichkeit.gg. Gesellschaftern,0
+model,"account.account.template,name",account_0731,Verbindlichkeit.gg. Gesellschaftern b.1J,Verbindlichkeit.gg. Gesellschaftern b.1J,0
+model,"account.account.template,name",account_0740,Verbindlichkeit.gg. Gesellschaftern 1-5J,Verbindlichkeit.gg. Gesellschaftern 1-5J,0
+model,"account.account.template,name",account_0750,Verbindlichkeit.gg. Gesellschaftern g.5J,Verbindlichkeit.gg. Gesellschaftern g.5J,0
+model,"account.account.template,name",account_0755,Verb.gg.Gesellschaftern off.Ausschüttg.,Verb.gg.Gesellschaftern off.Ausschüttg.,0
+model,"account.account.template,name",account_0760,Darlehen typ. stiller Gesellschafter,Darlehen typ. stiller Gesellschafter,0
+model,"account.account.template,name",account_0761,Darlehen typ. stiller Gesellsch.(b.1J),Darlehen typ. stiller Gesellsch.(b.1J),0
+model,"account.account.template,name",account_0764,Darlehen typ. stiller Gesellsch.(1-5J),Darlehen typ. stiller Gesellsch.(1-5J),0
+model,"account.account.template,name",account_0767,Darlehen typ. stiller Gesellsch.(g.5J),Darlehen typ. stiller Gesellsch.(g.5J),0
+model,"account.account.template,name",account_0770,Darlehen atyp. stiller Gesellschafter,Darlehen atyp. stiller Gesellschafter,0
+model,"account.account.template,name",account_0771,Darlehen atyp. stiller Gesellsch.(b.1J),Darlehen atyp. stiller Gesellsch.(b.1J),0
+model,"account.account.template,name",account_0774,Darlehen atyp. stiller Gesellsch.(1-5J),Darlehen atyp. stiller Gesellsch.(1-5J),0
+model,"account.account.template,name",account_0777,Darlehen atyp. stiller Gesellsch.(g.5J),Darlehen atyp. stiller Gesellsch.(g.5J),0
+model,"account.account.template,name",account_0780,Partiarische Darlehen,Partiarische Darlehen,0
+model,"account.account.template,name",account_0781,Partiarische Darlehen(bis 1 Jahr),Partiarische Darlehen(bis 1 Jahr),0
+model,"account.account.template,name",account_0784,Partiarische Darlehen(1-5 Jahre),Partiarische Darlehen(1-5 Jahre),0
+model,"account.account.template,name",account_0787,Partiarische Darlehen(g. 5 Jahre),Partiarische Darlehen(g. 5 Jahre),0
+model,"account.account.template,name",account_0799,Gegenkonto bei Aufteilung Kto 0790-98,Gegenkonto bei Aufteilung Kto 0790-98,0
+model,"account.account.template,name",account_0870,Festkapital (EK),Festkapital (EK),0
+model,"account.account.template,name",account_0880,Variables Kapital (EK),Variables Kapital (EK),0
+model,"account.account.template,name",account_0890,Gesellschafter-Darlehen (FK),Gesellschafter-Darlehen (FK),0
+model,"account.account.template,name",account_0900,Kommandit-Kapital (EK),Kommandit-Kapital (EK),0
+model,"account.account.template,name",account_0910,Verlustausgleich (EK),Verlustausgleich (EK),0
+model,"account.account.template,name",account_0920,Gesellschafter-Darlehen (FK),Gesellschafter-Darlehen (FK),0
+model,"account.account.template,name",account_0930,"SoPo mit Rücklageanteil, stfr. Rücklage","SoPo mit Rücklageanteil, stfr. Rücklage",0
+model,"account.account.template,name",account_0931,SoPo mit Rücklageanteil § 6b EStG,SoPo mit Rücklageanteil § 6b EStG,0
+model,"account.account.template,name",account_0932,SoPo mit Rücklageanteil EStR R 6.6,SoPo mit Rücklageanteil EStR R 6.6,0
+model,"account.account.template,name",account_0939,SoPo mit Rücklageanteil §52 Abs.16 EStG,SoPo mit Rücklageanteil §52 Abs.16 EStG,0
+model,"account.account.template,name",account_0940,"SoPo mit Rücklageanteil, Sonder-AfA","SoPo mit Rücklageanteil, Sonder-AfA",0
+model,"account.account.template,name",account_0943,SoPo mit Rücklageanteil § 7g Abs.2 n.F.,SoPo mit Rücklageanteil § 7g Abs.2 n.F.,0
+model,"account.account.template,name",account_0947,SoPo mit Rücklageanteil Sonder-AfA § 7g,SoPo mit Rücklageanteil Sonder-AfA § 7g,0
+model,"account.account.template,name",account_0948,"SoPo mit Rücklageanteil § 7g /3, 7 a.F.","SoPo mit Rücklageanteil § 7g /3, 7 a.F.",0
+model,"account.account.template,name",account_0949,Sonderposten für Zuschüsse u. Zulagen,Sonderposten für Zuschüsse u. Zulagen,0
+model,"account.account.template,name",account_0950,Pensions-und ähnliche Rückstellungen,Pensions-und ähnliche Rückstellungen,0
+model,"account.account.template,name",account_0955,Steuerrückstellungen,Steuerrückstellungen,0
+model,"account.account.template,name",account_0956,Gewerbesteuerrückstellung § 4 Abs. 5b,Gewerbesteuerrückstellung § 4 Abs. 5b,0
+model,"account.account.template,name",account_0957,Gewerbesteuerrückstellung,Gewerbesteuerrückstellung,0
+model,"account.account.template,name",account_0963,Körperschaftsteuerrückstellung,Körperschaftsteuerrückstellung,0
+model,"account.account.template,name",account_0965,Rückstellungen für Personalkosten,Rückstellungen für Personalkosten,0
+model,"account.account.template,name",account_0966,Rückstellungen für Aufbewahrungspflicht,Rückstellungen für Aufbewahrungspflicht,0
+model,"account.account.template,name",account_0969,Rückstellungen für latente Steuern,Rückstellungen für latente Steuern,0
+model,"account.account.template,name",account_0970,Sonstige Rückstellungen,Sonstige Rückstellungen,0
+model,"account.account.template,name",account_0971,Rückstellungen Instandhaltung bis 3 M,Rückstellungen Instandhaltung bis 3 M,0
+model,"account.account.template,name",account_0972,Rückstellungen Instandhaltung 4-12 M,Rückstellungen Instandhaltung 4-12 M,0
+model,"account.account.template,name",account_0973,Rückstellungen Abraum-/Abfallbeseit.,Rückstellungen Abraum-/Abfallbeseit.,0
+model,"account.account.template,name",account_0974,Rückstellungen f. Gewährleistungen,Rückstellungen f. Gewährleistungen,0
+model,"account.account.template,name",account_0976,Rückstellungen f. drohende Verluste,Rückstellungen f. drohende Verluste,0
+model,"account.account.template,name",account_0977,Rückstellungen für Abschluss u. Prüfung,Rückstellungen für Abschluss u. Prüfung,0
+model,"account.account.template,name",account_0978,Aufwandsrückstellungen § 249 II HGB,Aufwandsrückstellungen § 249 II HGB,0
+model,"account.account.template,name",account_0979,Rückstellungen für Umweltschutz,Rückstellungen für Umweltschutz,0
+model,"account.account.template,name",account_0980,Aktive Rechnungsabgrenzung,Aktive Rechnungsabgrenzung,0
+model,"account.account.template,name",account_0983,Abgrenzung aktive latente Steuern,Abgrenzung aktive latente Steuern,0
+model,"account.account.template,name",account_0984,Aufwand Zölle und Verbrauchsteuern,Aufwand Zölle und Verbrauchsteuern,0
+model,"account.account.template,name",account_0985,Aufwand Umsatzsteuer auf Anzahlungen,Aufwand Umsatzsteuer auf Anzahlungen,0
+model,"account.account.template,name",account_0986,Damnum/Disagio,Damnum/Disagio,0
+model,"account.account.template,name",account_0990,Passive Rechnungsabgrenzung,Passive Rechnungsabgrenzung,0
+model,"account.account.template,name",account_0996,Pauschalwertberichtigung Forderg./b.1J,Pauschalwertberichtigung Forderg./b.1J,0
+model,"account.account.template,name",account_0997,Pauschalwertberichtigung Forderg./g.1J,Pauschalwertberichtigung Forderg./g.1J,0
+model,"account.account.template,name",account_0998,Einzelwertberichtigung Forderung(b.1J),Einzelwertberichtigung Forderung(b.1J),0
+model,"account.account.template,name",account_0999,Einzelwertberichtigung Forderung(g.1J),Einzelwertberichtigung Forderung(g.1J),0
+model,"account.account.template,name",account_1000,Kasse,Kasse,0
+model,"account.account.template,name",account_1010,Nebenkasse 1,Nebenkasse 1,0
+model,"account.account.template,name",account_1020,Nebenkasse 2,Nebenkasse 2,0
+model,"account.account.template,name",account_1100,Postbank,Postbank,0
+model,"account.account.template,name",account_1110,Postbank 1,Postbank 1,0
+model,"account.account.template,name",account_1120,Postbank 2,Postbank 2,0
+model,"account.account.template,name",account_1130,Postbank 3,Postbank 3,0
+model,"account.account.template,name",account_1190,LZB-Guthaben,LZB-Guthaben,0
+model,"account.account.template,name",account_1195,Bundesbankguthaben,Bundesbankguthaben,0
+model,"account.account.template,name",account_1200,Bank,Bank,0
+model,"account.account.template,name",account_1210,Bank 1,Bank 1,0
+model,"account.account.template,name",account_1220,Bank 2,Bank 2,0
+model,"account.account.template,name",account_1230,Bank 3,Bank 3,0
+model,"account.account.template,name",account_1240,Bank 4,Bank 4,0
+model,"account.account.template,name",account_1250,Bank 5,Bank 5,0
+model,"account.account.template,name",account_1290,Finanzmittelanlagen kurzfr. Disposition,Finanzmittelanlagen kurzfr. Disposition,0
+model,"account.account.template,name",account_1295,Verbindlichkeiten gg. Kreditinstituten,Verbindlichkeiten gg. Kreditinstituten,0
+model,"account.account.template,name",account_1300,Wechsel aus Lieferung und Leistung,Wechsel aus Lieferung und Leistung,0
+model,"account.account.template,name",account_1301,Wechsel a. Lieferungen/Leistungen b.1 J,Wechsel a. Lieferungen/Leistungen b.1 J,0
+model,"account.account.template,name",account_1302,Wechsel a. Lieferungen/Leistungen g.1 J,Wechsel a. Lieferungen/Leistungen g.1 J,0
+model,"account.account.template,name",account_1305,Wechsel a. Lieferungen/Leistungen bbf.,Wechsel a. Lieferungen/Leistungen bbf.,0
+model,"account.account.template,name",account_1310,Besitzwechsel gegen verbund. Unternehmen,Besitzwechsel gegen verbund. Unternehmen,0
+model,"account.account.template,name",account_1311,Besitzwechsel gegen verbundene UN (b.1J),Besitzwechsel gegen verbundene UN (b.1J),0
+model,"account.account.template,name",account_1312,Besitzwechsel gegen verbundene UN (g.1J),Besitzwechsel gegen verbundene UN (g.1J),0
+model,"account.account.template,name",account_1315,"Besitzwechs.gg.verb.UN, bundesbankfähig","Besitzwechs.gg.verb.UN, bundesbankfähig",0
+model,"account.account.template,name",account_1320,Besitzwechsel gg.UN m. Beteiligungsverh.,Besitzwechsel gg.UN m. Beteiligungsverh.,0
+model,"account.account.template,name",account_1321,Besitzwechsel gg.UN m.Beteiligg.verh.b1J,Besitzwechsel gg.UN m.Beteiligg.verh.b1J,0
+model,"account.account.template,name",account_1322,Besitzwechsel gg.UN m.Beteiligg.verh.g1J,Besitzwechsel gg.UN m.Beteiligg.verh.g1J,0
+model,"account.account.template,name",account_1325,Besitzwechsel gg.UN m.Beteiligg.verh.bbf,Besitzwechsel gg.UN m.Beteiligg.verh.bbf,0
+model,"account.account.template,name",account_1327,Finanzwechsel,Finanzwechsel,0
+model,"account.account.template,name",account_1329,Wertpap. mit geringen Wertschwankungen,Wertpap. mit geringen Wertschwankungen,0
+model,"account.account.template,name",account_1330,Schecks,Schecks,0
+model,"account.account.template,name",account_1340,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.template,name",account_1344,Anteile a.herrschender Gesellschaft,Anteile a.herrschender Gesellschaft,0
+model,"account.account.template,name",account_1345,Eigene Anteile,Eigene Anteile,0
+model,"account.account.template,name",account_1348,Sonstige Wertpapiere,Sonstige Wertpapiere,0
+model,"account.account.template,name",account_1349,Wertpapieranlagen kurzfr. Disposition,Wertpapieranlagen kurzfr. Disposition,0
+model,"account.account.template,name",account_1350,GmbH-Anteile z.kurzfristigen Verbleib,GmbH-Anteile z.kurzfristigen Verbleib,0
+model,"account.account.template,name",account_1352,Genossenschaftsanteile z.kfr.Verbleib,Genossenschaftsanteile z.kfr.Verbleib,0
+model,"account.account.template,name",account_1355,Ansprüche a. Rückdeckungsversicherung,Ansprüche a. Rückdeckungsversicherung,0
+model,"account.account.template,name",account_1360,Geldtransit,Geldtransit,0
+model,"account.account.template,name",account_1370,Gewinnermittlung §4/3 ergebniswirksam,Gewinnermittlung §4/3 ergebniswirksam,0
+model,"account.account.template,name",account_1371,Gewinnermittlung §4/3 nicht ergebnisw,Gewinnermittlung §4/3 nicht ergebnisw,0
+model,"account.account.template,name",account_1372,Wirtschaftsgüter Umlaufverm. § 4/3 EStG,Wirtschaftsgüter Umlaufverm. § 4/3 EStG,0
+model,"account.account.template,name",account_1380,Überleitung Kostenstellen,Überleitung Kostenstellen,0
+model,"account.account.template,name",account_1390,Verrechnung Ist-Versteuerung,Verrechnung Ist-Versteuerung,0
+model,"account.account.template,name",account_1400,Forderungen aus Lieferungen u.Leistung,Forderungen aus Lieferungen u.Leistung,0
+model,"account.account.template,name",account_1401,Forderungen aus Lieferungen u.Leistung,Forderungen aus Lieferungen u.Leistung,0
+model,"account.account.template,name",account_1410,Forderungen aus Lieferungen u.Leistung,Forderungen aus Lieferungen u.Leistung,0
+model,"account.account.template,name",account_1445,Forderungen aus L+L allgem. Steuersatz,Forderungen aus L+L allgem. Steuersatz,0
+model,"account.account.template,name",account_1446,Forderungen aus L+L ermäßigt. Steuersatz,Forderungen aus L+L ermäßigt. Steuersatz,0
+model,"account.account.template,name",account_1447,"Forderg. aus stfr., n. steuerbaren L+L","Forderg. aus stfr., n. steuerbaren L+L",0
+model,"account.account.template,name",account_1448,Forderungen aus L+L gemäß § 24 UStG,Forderungen aus L+L gemäß § 24 UStG,0
+model,"account.account.template,name",account_1449,Gegenkto Aufteilung der Forderungen L+L,Gegenkto Aufteilung der Forderungen L+L,0
+model,"account.account.template,name",account_1450,Forderungen nach § 11 EStG für § 4/3,Forderungen nach § 11 EStG für § 4/3,0
+model,"account.account.template,name",account_1451,Forderg.a. Lieferungen/Leistungen b.1 J,Forderg.a. Lieferungen/Leistungen b.1 J,0
+model,"account.account.template,name",account_1455,Forderg.a. Lieferungen/Leistungen g.1 J,Forderg.a. Lieferungen/Leistungen g.1 J,0
+model,"account.account.template,name",account_1460,Zweifelhafte Forderungen,Zweifelhafte Forderungen,0
+model,"account.account.template,name",account_1461,Zweifelhafte Forderungen (bis 1 Jahr),Zweifelhafte Forderungen (bis 1 Jahr),0
+model,"account.account.template,name",account_1465,Zweifelhafte Forderungen (g. 1 Jahr),Zweifelhafte Forderungen (g. 1 Jahr),0
+model,"account.account.template,name",account_1470,Forderungen aus L+L gg. verbundenen UN,Forderungen aus L+L gg. verbundenen UN,0
+model,"account.account.template,name",account_1471,Forderungen aus L+L gg. verbund. UN b.1J,Forderungen aus L+L gg. verbund. UN b.1J,0
+model,"account.account.template,name",account_1475,Forderungen aus L+L gg. verbund. UN g.1J,Forderungen aus L+L gg. verbund. UN g.1J,0
+model,"account.account.template,name",account_1478,WB Forderungen gg. verbundene UN (b.1J),WB Forderungen gg. verbundene UN (b.1J),0
+model,"account.account.template,name",account_1479,WB Forderungen gg. verbundene UN (g.1J),WB Forderungen gg. verbundene UN (g.1J),0
+model,"account.account.template,name",account_1480,Forderg. L+L gg.UN m. Beteiligungsverh.,Forderg. L+L gg.UN m. Beteiligungsverh.,0
+model,"account.account.template,name",account_1481,Forderg. L+L gg.UN m.Beteiligg.verh.b1J,Forderg. L+L gg.UN m.Beteiligg.verh.b1J,0
+model,"account.account.template,name",account_1485,Forderg. L+L gg.UN m.Beteiligg.verh.g1J,Forderg. L+L gg.UN m.Beteiligg.verh.g1J,0
+model,"account.account.template,name",account_1488,WB Forderg.gg.UN m.Beteiligg.verh. b.1J,WB Forderg.gg.UN m.Beteiligg.verh. b.1J,0
+model,"account.account.template,name",account_1489,WB Forderg.gg.UN m.Beteiligg.verh. g.1J,WB Forderg.gg.UN m.Beteiligg.verh. g.1J,0
+model,"account.account.template,name",account_1490,Forderungen aus L+L gg. Gesellschafter,Forderungen aus L+L gg. Gesellschafter,0
+model,"account.account.template,name",account_1491,Forderg. aus L+L gg.Gesellschafter b.1 J,Forderg. aus L+L gg.Gesellschafter b.1 J,0
+model,"account.account.template,name",account_1495,Forderg. aus L+L gg.Gesellschafter g.1 J,Forderg. aus L+L gg.Gesellschafter g.1 J,0
+model,"account.account.template,name",account_1498,Gegenkonto sonst.VG bei Buchung Debitor,Gegenkonto sonst.VG bei Buchung Debitor,0
+model,"account.account.template,name",account_1499,Gegenkonto bei Aufteilung Debitoren,Gegenkonto bei Aufteilung Debitoren,0
+model,"account.account.template,name",account_1500,Sonstige Vermögensgegenstände,Sonstige Vermögensgegenstände,0
+model,"account.account.template,name",account_1501,Sonstige Vermögensgegenstände (b.1 J),Sonstige Vermögensgegenstände (b.1 J),0
+model,"account.account.template,name",account_1502,Sonstige Vermögensgegenstände (g.1 J),Sonstige Vermögensgegenstände (g.1 J),0
+model,"account.account.template,name",account_1503,Forderungen gg. Geschäftsf.(b.1J),Forderungen gg. Geschäftsf.(b.1J),0
+model,"account.account.template,name",account_1504,Forderungen gg. Geschäftsf.(g.1J),Forderungen gg. Geschäftsf.(g.1J),0
+model,"account.account.template,name",account_1505,Forderungen gg. Aufsichtsratsm. (b.1 J),Forderungen gg. Aufsichtsratsm. (b.1 J),0
+model,"account.account.template,name",account_1506,Forderungen gg. Aufsichtsratsm. (g.1 J),Forderungen gg. Aufsichtsratsm. (g.1 J),0
+model,"account.account.template,name",account_1507,Forderungen gg. Gesellschafter (b.1J),Forderungen gg. Gesellschafter (b.1J),0
+model,"account.account.template,name",account_1508,Forderungen gg. Gesellschafter (g.1J),Forderungen gg. Gesellschafter (g.1J),0
+model,"account.account.template,name",account_1510,Geleistete Anzahlungen auf Vorräte,Geleistete Anzahlungen auf Vorräte,0
+model,"account.account.template,name",account_1511,Geleistete Anzahlungen 7% Vorsteuer,Geleistete Anzahlungen 7% Vorsteuer,0
+model,"account.account.template,name",account_1516,Geleistete Anzahlungen 15% Vorsteuer,Geleistete Anzahlungen 15% Vorsteuer,0
+model,"account.account.template,name",account_1517,Geleistete Anzahlungen 16% Vorsteuer,Geleistete Anzahlungen 16% Vorsteuer,0
+model,"account.account.template,name",account_1518,Geleistete Anzahlungen 19% Vorsteuer,Geleistete Anzahlungen 19% Vorsteuer,0
+model,"account.account.template,name",account_1521,Agenturwarenabrechnung,Agenturwarenabrechnung,0
+model,"account.account.template,name",account_1525,Kautionen,Kautionen,0
+model,"account.account.template,name",account_1526,Kautionen (bis 1 J),Kautionen (bis 1 J),0
+model,"account.account.template,name",account_1527,Kautionen (g. 1 J),Kautionen (g. 1 J),0
+model,"account.account.template,name",account_1528,Nachträgl. abz. Vorsteuer § 15a Abs. 2,Nachträgl. abz. Vorsteuer § 15a Abs. 2,0
+model,"account.account.template,name",account_1529,Zurückzuzahlende Vorsteuer §15a Abs.2,Zurückzuzahlende Vorsteuer §15a Abs.2,0
+model,"account.account.template,name",account_1530,Forderg. gg. Personal Lohn- u. Gehalt,Forderg. gg. Personal Lohn- u. Gehalt,0
+model,"account.account.template,name",account_1531,Forderungen gegen Personal (bis 1Jahr),Forderungen gegen Personal (bis 1Jahr),0
+model,"account.account.template,name",account_1537,Forderungen gegen Personal (g. 1Jahr),Forderungen gegen Personal (g. 1Jahr),0
+model,"account.account.template,name",account_1538,Körperschaftsteuerguthaben §37 (b.1 J),Körperschaftsteuerguthaben §37 (b.1 J),0
+model,"account.account.template,name",account_1539,Körperschaftsteuerguthaben §37 (g.1 J),Körperschaftsteuerguthaben §37 (g.1 J),0
+model,"account.account.template,name",account_1540,Steuerüberzahlungen,Steuerüberzahlungen,0
+model,"account.account.template,name",account_1542,Steuererst.anspruch gegen ander. EG-Land,Steuererst.anspruch gegen ander. EG-Land,0
+model,"account.account.template,name",account_1543,Forderg. an FA aus abgeführtem Bauabzug,Forderg. an FA aus abgeführtem Bauabzug,0
+model,"account.account.template,name",account_1545,USt-Forderungen,USt-Forderungen,0
+model,"account.account.template,name",account_1547,Forderungen aus Verbrauchsteuern,Forderungen aus Verbrauchsteuern,0
+model,"account.account.template,name",account_1548,Vorsteuer im Folgejahr abziehbar,Vorsteuer im Folgejahr abziehbar,0
+model,"account.account.template,name",account_1549,Körperschaftsteuerrückforderung,Körperschaftsteuerrückforderung,0
+model,"account.account.template,name",account_1550,Darlehen,Darlehen,0
+model,"account.account.template,name",account_1551,Darlehen bis 1 Jahr,Darlehen bis 1 Jahr,0
+model,"account.account.template,name",account_1555,Darlehen g. 1 Jahr,Darlehen g. 1 Jahr,0
+model,"account.account.template,name",account_1556,"Nachträgl. abz. Vorsteuer, bewegl. WG","Nachträgl. abz. Vorsteuer, bewegl. WG",0
+model,"account.account.template,name",account_1557,"Zurückzuzahlende Vorsteuer, bewegl.WG","Zurückzuzahlende Vorsteuer, bewegl.WG",0
+model,"account.account.template,name",account_1558,"Nachträgl. abz. Vorsteuer, unbewegl. WG","Nachträgl. abz. Vorsteuer, unbewegl. WG",0
+model,"account.account.template,name",account_1559,"Zurückzuzahl. Vorsteuer, unbewegl. WG","Zurückzuzahl. Vorsteuer, unbewegl. WG",0
+model,"account.account.template,name",account_1560,Aufzuteilende Vorsteuer,Aufzuteilende Vorsteuer,0
+model,"account.account.template,name",account_1561,Aufzuteilende Vorsteuer 7%,Aufzuteilende Vorsteuer 7%,0
+model,"account.account.template,name",account_1562,Aufzuteilende Vorsteuer aus EG-Erwerb,Aufzuteilende Vorsteuer aus EG-Erwerb,0
+model,"account.account.template,name",account_1563,Aufzuteil. Vorsteuer aus EG-Erwerb 19%,Aufzuteil. Vorsteuer aus EG-Erwerb 19%,0
+model,"account.account.template,name",account_1565,Aufzuteilende Vorsteuer 16%,Aufzuteilende Vorsteuer 16%,0
+model,"account.account.template,name",account_1566,Aufzuteilende Vorsteuer 19%,Aufzuteilende Vorsteuer 19%,0
+model,"account.account.template,name",account_1567,Aufzuteil. Vorsteuer §§ 13a/13b UStG,Aufzuteil. Vorsteuer §§ 13a/13b UStG,0
+model,"account.account.template,name",account_1568,Aufzuteil. Vorsteuer §§13a/13b USt 16%,Aufzuteil. Vorsteuer §§13a/13b USt 16%,0
+model,"account.account.template,name",account_1569,Aufzuteil. Vorsteuer §§13a/13b USt 19%,Aufzuteil. Vorsteuer §§13a/13b USt 19%,0
+model,"account.account.template,name",account_1570,Abziehbare Vorsteuer,Abziehbare Vorsteuer,0
+model,"account.account.template,name",account_1571,Abziehbare Vorsteuer 7%,Abziehbare Vorsteuer 7%,0
+model,"account.account.template,name",account_1572,Abziehbare Vorsteuer aus EG-Erwerb,Abziehbare Vorsteuer aus EG-Erwerb,0
+model,"account.account.template,name",account_1573,Abziehbare Vorsteuer aus EG-Erwerb 16%,Abziehbare Vorsteuer aus EG-Erwerb 16%,0
+model,"account.account.template,name",account_1574,Abziehbare Vorsteuer aus EG-Erwerb 19%,Abziehbare Vorsteuer aus EG-Erwerb 19%,0
+model,"account.account.template,name",account_1575,Abziehbare Vorsteuer 16%,Abziehbare Vorsteuer 16%,0
+model,"account.account.template,name",account_1576,Abziehbare Vorsteuer 19%,Abziehbare Vorsteuer 19%,0
+model,"account.account.template,name",account_1577,Abziehbare Vorsteuer § 13b UStG 19%,Abziehbare Vorsteuer § 13b UStG 19%,0
+model,"account.account.template,name",account_1578,Abziehbare Vorsteuer § 13b UStG,Abziehbare Vorsteuer § 13b UStG,0
+model,"account.account.template,name",account_1579,Abziehbare Vorsteuer § 13b UStG 16%,Abziehbare Vorsteuer § 13b UStG 16%,0
+model,"account.account.template,name",account_1580,Gegenkonto Vorsteuer § 4/3 EStG,Gegenkonto Vorsteuer § 4/3 EStG,0
+model,"account.account.template,name",account_1581,Auflösung Vorsteuer Vorjahr § 4/3 EStG,Auflösung Vorsteuer Vorjahr § 4/3 EStG,0
+model,"account.account.template,name",account_1582,Vorsteuer aus Investitionen § 4/3 EStG,Vorsteuer aus Investitionen § 4/3 EStG,0
+model,"account.account.template,name",account_1583,Gegenkto. Vorsteuer Durchschnittssätze,Gegenkto. Vorsteuer Durchschnittssätze,0
+model,"account.account.template,name",account_1584,Vorsteuer EG-Erwerb neue Kfz ohne UStID,Vorsteuer EG-Erwerb neue Kfz ohne UStID,0
+model,"account.account.template,name",account_1585,Abziehbare Vorsteuer § 13a UStG,Abziehbare Vorsteuer § 13a UStG,0
+model,"account.account.template,name",account_1587,Vorsteuer allgem. Durchschnittssätze,Vorsteuer allgem. Durchschnittssätze,0
+model,"account.account.template,name",account_1588,Einfuhr-Umsatzsteuer,Einfuhr-Umsatzsteuer,0
+model,"account.account.template,name",account_1590,Durchlaufende Posten,Durchlaufende Posten,0
+model,"account.account.template,name",account_1592,Fremdgeld,Fremdgeld,0
+model,"account.account.template,name",account_1593,Verrechnung erhaltene Anzahlungen,Verrechnung erhaltene Anzahlungen,0
+model,"account.account.template,name",account_1594,Forderungen gegen verbund.Unternehmen,Forderungen gegen verbund.Unternehmen,0
+model,"account.account.template,name",account_1595,Forderungen gg. verbundene UN(b. 1 J),Forderungen gg. verbundene UN(b. 1 J),0
+model,"account.account.template,name",account_1596,Forderungen gg. verbundene UN(g. 1 J),Forderungen gg. verbundene UN(g. 1 J),0
+model,"account.account.template,name",account_1597,Forderungen gg. UN m. Beteiligungsverh.,Forderungen gg. UN m. Beteiligungsverh.,0
+model,"account.account.template,name",account_1598,Forderg. gg. UN mit Beteiligg.verh. b.1J,Forderg. gg. UN mit Beteiligg.verh. b.1J,0
+model,"account.account.template,name",account_1599,Forderg. gg. UN mit Beteiligg.verh. g.1J,Forderg. gg. UN mit Beteiligg.verh. g.1J,0
+model,"account.account.template,name",account_1600,Verbindl. aus Lieferungen u. Leistungen,Verbindl. aus Lieferungen u. Leistungen,0
+model,"account.account.template,name",account_1601,Verbindl. aus Lieferungen u. Leistungen,Verbindl. aus Lieferungen u. Leistungen,0
+model,"account.account.template,name",account_1605,Verbindl. aus L+L allgem. Steuersatz,Verbindl. aus L+L allgem. Steuersatz,0
+model,"account.account.template,name",account_1606,Verbindl. aus L+L ermäßigt. Steuersatz,Verbindl. aus L+L ermäßigt. Steuersatz,0
+model,"account.account.template,name",account_1607,Verbindl. aus L+L ohne Vorsteuerabzug,Verbindl. aus L+L ohne Vorsteuerabzug,0
+model,"account.account.template,name",account_1609,Gegenkto Aufteilung Verbindlichk. L+L,Gegenkto Aufteilung Verbindlichk. L+L,0
+model,"account.account.template,name",account_1610,Verbindl. aus Lieferungen u. Leistungen,Verbindl. aus Lieferungen u. Leistungen,0
+model,"account.account.template,name",account_1624,Verbindlichk. Investitionen § 4/3 EStG,Verbindlichk. Investitionen § 4/3 EStG,0
+model,"account.account.template,name",account_1625,Verbindl.a.Lieferungen/Leistungen b.1 J,Verbindl.a.Lieferungen/Leistungen b.1 J,0
+model,"account.account.template,name",account_1626,Verbindl.a.Lieferungen/Leistungen 1-5 J,Verbindl.a.Lieferungen/Leistungen 1-5 J,0
+model,"account.account.template,name",account_1628,Verbindl.a.Lieferungen/Leistungen g.5 J,Verbindl.a.Lieferungen/Leistungen g.5 J,0
+model,"account.account.template,name",account_1630,Verbindl. aus L+L gg. verbundenen UN,Verbindl. aus L+L gg. verbundenen UN,0
+model,"account.account.template,name",account_1631,Verbindl.aus L+L gg.verbundenen UN b. 1J,Verbindl.aus L+L gg.verbundenen UN b. 1J,0
+model,"account.account.template,name",account_1635,Verbindl.aus L+L gg.verbundenen UN 1-5 J,Verbindl.aus L+L gg.verbundenen UN 1-5 J,0
+model,"account.account.template,name",account_1638,Verbindl.aus L+L gg.verbundenen UN g.5 J,Verbindl.aus L+L gg.verbundenen UN g.5 J,0
+model,"account.account.template,name",account_1640,Verbindl.aus L+L gg.UN m.Beteiligg.verh.,Verbindl.aus L+L gg.UN m.Beteiligg.verh.,0
+model,"account.account.template,name",account_1641,Verbindl.aus L+L gg.UN m. Bet.verh. b.1J,Verbindl.aus L+L gg.UN m. Bet.verh. b.1J,0
+model,"account.account.template,name",account_1645,Verbindl.aus L+L gg.UN m. Bet.verh. 1-5J,Verbindl.aus L+L gg.UN m. Bet.verh. 1-5J,0
+model,"account.account.template,name",account_1648,Verbindl.aus L+L gg.UN m. Bet.verh. g.5J,Verbindl.aus L+L gg.UN m. Bet.verh. g.5J,0
+model,"account.account.template,name",account_1650,Verbindl. aus L+L gg. Gesellschaftern,Verbindl. aus L+L gg. Gesellschaftern,0
+model,"account.account.template,name",account_1651,Verbindl. aus L+L gg. Gesellsch. b. 1J,Verbindl. aus L+L gg. Gesellsch. b. 1J,0
+model,"account.account.template,name",account_1655,Verbindl. aus L+L gg. Gesellsch. 1-5 J,Verbindl. aus L+L gg. Gesellsch. 1-5 J,0
+model,"account.account.template,name",account_1658,Verbindl. aus L+L gg. Gesellsch. g. 5J,Verbindl. aus L+L gg. Gesellsch. g. 5J,0
+model,"account.account.template,name",account_1659,Gegenkonto bei Aufteilung Kreditoren,Gegenkonto bei Aufteilung Kreditoren,0
+model,"account.account.template,name",account_1660,Schuldwechsel,Schuldwechsel,0
+model,"account.account.template,name",account_1661,Schuldwechsel (bis 1 Jahr),Schuldwechsel (bis 1 Jahr),0
+model,"account.account.template,name",account_1680,Schuldwechsel (1-5 Jahre),Schuldwechsel (1-5 Jahre),0
+model,"account.account.template,name",account_1690,Schuldwechsel (größer 5 Jahre),Schuldwechsel (größer 5 Jahre),0
+model,"account.account.template,name",account_1700,Sonstige Verbindlichkeiten,Sonstige Verbindlichkeiten,0
+model,"account.account.template,name",account_1701,Sonstige Verbindlichkeiten (bis 1 J),Sonstige Verbindlichkeiten (bis 1 J),0
+model,"account.account.template,name",account_1702,Sonstige Verbindlichkeiten (1-5 J),Sonstige Verbindlichkeiten (1-5 J),0
+model,"account.account.template,name",account_1703,Sonstige Verbindlichkeiten (g. 5 J),Sonstige Verbindlichkeiten (g. 5 J),0
+model,"account.account.template,name",account_1704,Sonst. Verbindlichkeiten nach §11 EStG,Sonst. Verbindlichkeiten nach §11 EStG,0
+model,"account.account.template,name",account_1705,Darlehen,Darlehen,0
+model,"account.account.template,name",account_1706,Darlehen bis 1 Jahr,Darlehen bis 1 Jahr,0
+model,"account.account.template,name",account_1707,Darlehen 1-5 Jahre,Darlehen 1-5 Jahre,0
+model,"account.account.template,name",account_1708,Darlehen g. 5 Jahre,Darlehen g. 5 Jahre,0
+model,"account.account.template,name",account_1709,Gewinnverfügung stille Gesellschaft.,Gewinnverfügung stille Gesellschaft.,0
+model,"account.account.template,name",account_1710,Erhaltene Anzahlungen,Erhaltene Anzahlungen,0
+model,"account.account.template,name",account_1711,Erhaltene Anzahlungen 7% USt,Erhaltene Anzahlungen 7% USt,0
+model,"account.account.template,name",account_1716,Erhaltene Anzahlungen 15% USt,Erhaltene Anzahlungen 15% USt,0
+model,"account.account.template,name",account_1717,Erhaltene Anzahlungen 16% USt,Erhaltene Anzahlungen 16% USt,0
+model,"account.account.template,name",account_1718,Erhaltene Anzahlungen 19% USt,Erhaltene Anzahlungen 19% USt,0
+model,"account.account.template,name",account_1719,Erhaltene Anzahlungen (bis 1 Jahr),Erhaltene Anzahlungen (bis 1 Jahr),0
+model,"account.account.template,name",account_1720,Erhaltene Anzahlungen (1-5 Jahre),Erhaltene Anzahlungen (1-5 Jahre),0
+model,"account.account.template,name",account_1721,Erhaltene Anzahlungen (g. 5 Jahre),Erhaltene Anzahlungen (g. 5 Jahre),0
+model,"account.account.template,name",account_1722,Erhaltene Anzahlungen,Erhaltene Anzahlungen,0
+model,"account.account.template,name",account_1730,Kreditkartenabrechnung,Kreditkartenabrechnung,0
+model,"account.account.template,name",account_1731,Agenturwarenabrechnung,Agenturwarenabrechnung,0
+model,"account.account.template,name",account_1732,Erhaltene Kautionen,Erhaltene Kautionen,0
+model,"account.account.template,name",account_1733,Erhaltene Kautionen (bis 1 Jahr),Erhaltene Kautionen (bis 1 Jahr),0
+model,"account.account.template,name",account_1734,Erhaltene Kautionen (1-5 Jahre),Erhaltene Kautionen (1-5 Jahre),0
+model,"account.account.template,name",account_1735,Erhaltene Kautionen (größer 5 Jahre),Erhaltene Kautionen (größer 5 Jahre),0
+model,"account.account.template,name",account_1736,Verbindl. Steuern und Abgaben,Verbindl. Steuern und Abgaben,0
+model,"account.account.template,name",account_1737,Verbindl. Steuern und Abgaben (b. 1 J),Verbindl. Steuern und Abgaben (b. 1 J),0
+model,"account.account.template,name",account_1738,Verbindl. Steuern und Abgaben (1-5 J),Verbindl. Steuern und Abgaben (1-5 J),0
+model,"account.account.template,name",account_1739,Verbindl. Steuern und Abgaben (g. 5 J),Verbindl. Steuern und Abgaben (g. 5 J),0
+model,"account.account.template,name",account_1740,Verbindlichkeiten aus Lohn und Gehalt,Verbindlichkeiten aus Lohn und Gehalt,0
+model,"account.account.template,name",account_1741,Verbindlichk. Lohn- und Kirchensteuer,Verbindlichk. Lohn- und Kirchensteuer,0
+model,"account.account.template,name",account_1742,Verbindlichkeiten soziale Sicherheit,Verbindlichkeiten soziale Sicherheit,0
+model,"account.account.template,name",account_1743,Verbindlichk. soziale Sicherheit(b.1J),Verbindlichk. soziale Sicherheit(b.1J),0
+model,"account.account.template,name",account_1744,Verbindlichk. soziale Sicherheit(1-5J),Verbindlichk. soziale Sicherheit(1-5J),0
+model,"account.account.template,name",account_1745,Verbindlichk. soziale Sicherheit(g.5J),Verbindlichk. soziale Sicherheit(g.5J),0
+model,"account.account.template,name",account_1746,Verbindlichk. a.Einbehaltung (KapESt),Verbindlichk. a.Einbehaltung (KapESt),0
+model,"account.account.template,name",account_1747,Verbindlichkeiten für Verbrauchsteuern,Verbindlichkeiten für Verbrauchsteuern,0
+model,"account.account.template,name",account_1748,Verbindlichk. Einbehaltung Arbeitnehmer,Verbindlichk. Einbehaltung Arbeitnehmer,0
+model,"account.account.template,name",account_1749,Verbindl. an FA abzuführender Bauabzug,Verbindl. an FA abzuführender Bauabzug,0
+model,"account.account.template,name",account_1750,Verbindlichkeiten a. Vermögensbildung,Verbindlichkeiten a. Vermögensbildung,0
+model,"account.account.template,name",account_1751,Verbindlichk. Vermögensbildung(b.1J),Verbindlichk. Vermögensbildung(b.1J),0
+model,"account.account.template,name",account_1752,Verbindlichk. Vermögensbildung(1-5J),Verbindlichk. Vermögensbildung(1-5J),0
+model,"account.account.template,name",account_1753,Verbindlichk. Vermögensbildung(g.5J),Verbindlichk. Vermögensbildung(g.5J),0
+model,"account.account.template,name",account_1754,Steuerzahlungen an andere EG-Länder,Steuerzahlungen an andere EG-Länder,0
+model,"account.account.template,name",account_1755,Lohn- und Gehaltsverrechnungen,Lohn- und Gehaltsverrechnungen,0
+model,"account.account.template,name",account_1756,Lohn/Gehaltsverrechnung §11 f. 4/3 EStG,Lohn/Gehaltsverrechnung §11 f. 4/3 EStG,0
+model,"account.account.template,name",account_1759,Voraus.Beitrag ggb. Sozialversich.träger,Voraus.Beitrag ggb. Sozialversich.träger,0
+model,"account.account.template,name",account_1760,Umsatzsteuer nicht fällig,Umsatzsteuer nicht fällig,0
+model,"account.account.template,name",account_1761,Umsatzsteuer nicht fällig 7%,Umsatzsteuer nicht fällig 7%,0
+model,"account.account.template,name",account_1762,"USt nicht fällig, EG-Lieferungen","USt nicht fällig, EG-Lieferungen",0
+model,"account.account.template,name",account_1763,"USt nicht fällig, EG-Lieferungen 16%","USt nicht fällig, EG-Lieferungen 16%",0
+model,"account.account.template,name",account_1764,"USt nicht fällig, EG-Lieferungen 19%","USt nicht fällig, EG-Lieferungen 19%",0
+model,"account.account.template,name",account_1765,Umsatzsteuer nicht fällig 16%,Umsatzsteuer nicht fällig 16%,0
+model,"account.account.template,name",account_1766,Umsatzsteuer nicht fällig 19%,Umsatzsteuer nicht fällig 19%,0
+model,"account.account.template,name",account_1767,USt im anderen EG-Land stpfl.Lieferung,USt im anderen EG-Land stpfl.Lieferung,0
+model,"account.account.template,name",account_1768,USt im anderen EG-Land s.Leist./Werkl.,USt im anderen EG-Land s.Leist./Werkl.,0
+model,"account.account.template,name",account_1769,Umsatzsteuer nach § 13a UStG,Umsatzsteuer nach § 13a UStG,0
+model,"account.account.template,name",account_1770,Umsatzsteuer,Umsatzsteuer,0
+model,"account.account.template,name",account_1771,Umsatzsteuer 7%,Umsatzsteuer 7%,0
+model,"account.account.template,name",account_1772,Umsatzsteuer aus EG-Erwerb,Umsatzsteuer aus EG-Erwerb,0
+model,"account.account.template,name",account_1773,Umsatzsteuer aus EG-Erwerb 16%,Umsatzsteuer aus EG-Erwerb 16%,0
+model,"account.account.template,name",account_1774,Umsatzsteuer aus EG-Erwerb 19%,Umsatzsteuer aus EG-Erwerb 19%,0
+model,"account.account.template,name",account_1775,Umsatzsteuer 16%,Umsatzsteuer 16%,0
+model,"account.account.template,name",account_1776,Umsatzsteuer 19%,Umsatzsteuer 19%,0
+model,"account.account.template,name",account_1777,Umsatzsteuer EG-Lieferungen,Umsatzsteuer EG-Lieferungen,0
+model,"account.account.template,name",account_1778,Umsatzsteuer EG-Lieferungen 19%,Umsatzsteuer EG-Lieferungen 19%,0
+model,"account.account.template,name",account_1779,USt aus EG-Erwerb ohne Vorsteuerabzug,USt aus EG-Erwerb ohne Vorsteuerabzug,0
+model,"account.account.template,name",account_1780,Umsatzsteuervorauszahlungen,Umsatzsteuervorauszahlungen,0
+model,"account.account.template,name",account_1781,Umsatzsteuervorauszahlungen 1/11,Umsatzsteuervorauszahlungen 1/11,0
+model,"account.account.template,name",account_1782,Nachsteuer,Nachsteuer,0
+model,"account.account.template,name",account_1783,Unrichtig oder unberechtigt ausgew. USt,Unrichtig oder unberechtigt ausgew. USt,0
+model,"account.account.template,name",account_1784,USt EG-Erwerb Neufahrzeuge ohne UStID,USt EG-Erwerb Neufahrzeuge ohne UStID,0
+model,"account.account.template,name",account_1785,Umsatzsteuer nach § 13b UStG,Umsatzsteuer nach § 13b UStG,0
+model,"account.account.template,name",account_1786,Umsatzsteuer nach § 13b UStG 16%,Umsatzsteuer nach § 13b UStG 16%,0
+model,"account.account.template,name",account_1787,Umsatzsteuer nach § 13b UStG 19%,Umsatzsteuer nach § 13b UStG 19%,0
+model,"account.account.template,name",account_1788,Aufgeschobene Einfuhr-Umsatzsteuer,Aufgeschobene Einfuhr-Umsatzsteuer,0
+model,"account.account.template,name",account_1789,Umsatzsteuer laufendes Jahr,Umsatzsteuer laufendes Jahr,0
+model,"account.account.template,name",account_1790,Umsatzsteuer Vorjahr,Umsatzsteuer Vorjahr,0
+model,"account.account.template,name",account_1791,Umsatzsteuer frühere Jahre,Umsatzsteuer frühere Jahre,0
+model,"account.account.template,name",account_1792,Sonstige Verrechnung,Sonstige Verrechnung,0
+model,"account.account.template,name",account_1793,Verrechnung geleistete Anzahlungen,Verrechnung geleistete Anzahlungen,0
+model,"account.account.template,name",account_1795,Verbindl. soziale Sicherheit §4/3 EStG,Verbindl. soziale Sicherheit §4/3 EStG,0
+model,"account.account.template,name",account_1800,Privatentnahmen allgemein,Privatentnahmen allgemein,0
+model,"account.account.template,name",account_1810,Privatsteuern,Privatsteuern,0
+model,"account.account.template,name",account_1820,Sonderausgaben beschränkt abzugsfähig,Sonderausgaben beschränkt abzugsfähig,0
+model,"account.account.template,name",account_1830,Sonderausgaben unbeschränkt abzugsfähig,Sonderausgaben unbeschränkt abzugsfähig,0
+model,"account.account.template,name",account_1840,"Zuwendungen, Spenden","Zuwendungen, Spenden",0
+model,"account.account.template,name",account_1850,Außergewöhnliche Belastungen,Außergewöhnliche Belastungen,0
+model,"account.account.template,name",account_1860,Grundstücksaufwand,Grundstücksaufwand,0
+model,"account.account.template,name",account_1869,Grundstücksaufwand,Grundstücksaufwand,0
+model,"account.account.template,name",account_1870,Grundstücksertrag,Grundstücksertrag,0
+model,"account.account.template,name",account_1879,Grundstücksertrag,Grundstücksertrag,0
+model,"account.account.template,name",account_1880,Unentgeltliche Wertabgaben,Unentgeltliche Wertabgaben,0
+model,"account.account.template,name",account_1890,Privateinlagen,Privateinlagen,0
+model,"account.account.template,name",account_1900,Privatentnahmen allgemein TH,Privatentnahmen allgemein TH,0
+model,"account.account.template,name",account_1910,Privatsteuern TH,Privatsteuern TH,0
+model,"account.account.template,name",account_1920,Sonderausgaben beschränkt abzugsf. TH,Sonderausgaben beschränkt abzugsf. TH,0
+model,"account.account.template,name",account_1930,Sonderausgaben unbeschränkt abzugsf. TH,Sonderausgaben unbeschränkt abzugsf. TH,0
+model,"account.account.template,name",account_1940,"Zuwendungen, Spenden TH","Zuwendungen, Spenden TH",0
+model,"account.account.template,name",account_1950,Außergewöhnliche Belastungen TH,Außergewöhnliche Belastungen TH,0
+model,"account.account.template,name",account_1960,Grundstücksaufwand TH,Grundstücksaufwand TH,0
+model,"account.account.template,name",account_1970,Grundstücksertrag TH,Grundstücksertrag TH,0
+model,"account.account.template,name",account_1980,Unentgeltliche Wertabgaben TH,Unentgeltliche Wertabgaben TH,0
+model,"account.account.template,name",account_1990,Privateinlagen TH,Privateinlagen TH,0
+model,"account.account.template,name",account_2000,Außerordentliche Aufwendungen,Außerordentliche Aufwendungen,0
+model,"account.account.template,name",account_2001,Ao. Aufwendungen finanzwirksam,Ao. Aufwendungen finanzwirksam,0
+model,"account.account.template,name",account_2005,Ao. Aufwendungen nicht finanzwirksam,Ao. Aufwendungen nicht finanzwirksam,0
+model,"account.account.template,name",account_2010,Betriebsfremde Aufwendungen,Betriebsfremde Aufwendungen,0
+model,"account.account.template,name",account_2020,Periodenfremde Aufwendungen,Periodenfremde Aufwendungen,0
+model,"account.account.template,name",account_2100,Zinsen und ähnliche Aufwendungen,Zinsen und ähnliche Aufwendungen,0
+model,"account.account.template,name",account_2103,Abzugsfäh. and. Nebenleist. zu Steuern,Abzugsfäh. and. Nebenleist. zu Steuern,0
+model,"account.account.template,name",account_2104,Nicht abzugsfäh.and.Nebenleist.z.Steuern,Nicht abzugsfäh.and.Nebenleist.z.Steuern,0
+model,"account.account.template,name",account_2105,"Zinsaufw. § 233a AO,§ 4 Abs. 5b EStG","Zinsaufw. § 233a AO,§ 4 Abs. 5b EStG",0
+model,"account.account.template,name",account_2106,Abzinsung KSt-Erhöhungsbetrag § 38,Abzinsung KSt-Erhöhungsbetrag § 38,0
+model,"account.account.template,name",account_2107,Zinsaufw. § 233a AO betriebliche Steuern,Zinsaufw. § 233a AO betriebliche Steuern,0
+model,"account.account.template,name",account_2108,Zinsaufwendungen §§ 233a bis 237 AO,Zinsaufwendungen §§ 233a bis 237 AO,0
+model,"account.account.template,name",account_2109,Zinsaufwendungen an verb.Unternehmen,Zinsaufwendungen an verb.Unternehmen,0
+model,"account.account.template,name",account_2110,Zinsaufwendungen f.kfr.Verbindlichkeit.,Zinsaufwendungen f.kfr.Verbindlichkeit.,0
+model,"account.account.template,name",account_2113,Nicht abzugsf. Schuldzinsen § 4/4a,Nicht abzugsf. Schuldzinsen § 4/4a,0
+model,"account.account.template,name",account_2115,Zinsen und ähnliche Aufw. z.T. nicht abz,Zinsen und ähnliche Aufw. z.T. nicht abz,0
+model,"account.account.template,name",account_2116,"Zinsen, Aufwendg. verb. UN z.T. n.abz.","Zinsen, Aufwendg. verb. UN z.T. n.abz.",0
+model,"account.account.template,name",account_2118,Zinsen auf Kontokorrentkonten,Zinsen auf Kontokorrentkonten,0
+model,"account.account.template,name",account_2119,Zinsaufwend. f.kfr. Verb.an verbund. UN,Zinsaufwend. f.kfr. Verb.an verbund. UN,0
+model,"account.account.template,name",account_2120,Zinsaufwendungen f.lfr.Verbindlichkeit.,Zinsaufwendungen f.lfr.Verbindlichkeit.,0
+model,"account.account.template,name",account_2125,Zinsen für Gebäude im Betriebsvermögen,Zinsen für Gebäude im Betriebsvermögen,0
+model,"account.account.template,name",account_2126,Zinsen zur Finanzierung Anlagevermögen,Zinsen zur Finanzierung Anlagevermögen,0
+model,"account.account.template,name",account_2127,Renten und dauernde Lasten,Renten und dauernde Lasten,0
+model,"account.account.template,name",account_2128,Zinsen an Mitunternehmer § 15 EStG,Zinsen an Mitunternehmer § 15 EStG,0
+model,"account.account.template,name",account_2129,Zinsaufw. für lfr. Verbindlichk.verb.UN,Zinsaufw. für lfr. Verbindlichk.verb.UN,0
+model,"account.account.template,name",account_2130,Diskontaufwendungen,Diskontaufwendungen,0
+model,"account.account.template,name",account_2139,Diskontaufwendungen an verbundene UN,Diskontaufwendungen an verbundene UN,0
+model,"account.account.template,name",account_2140,Zinsähnliche Aufwendungen,Zinsähnliche Aufwendungen,0
+model,"account.account.template,name",account_2149,Zinsähnliche Aufwendungen an verb.UN,Zinsähnliche Aufwendungen an verb.UN,0
+model,"account.account.template,name",account_2150,Aufwendungen aus Kursdifferenzen,Aufwendungen aus Kursdifferenzen,0
+model,"account.account.template,name",account_2166,Aufwendg. Bewertung Finanzmittelfonds,Aufwendg. Bewertung Finanzmittelfonds,0
+model,"account.account.template,name",account_2170,Nicht abziehbare Vorsteuer,Nicht abziehbare Vorsteuer,0
+model,"account.account.template,name",account_2171,Nicht abziehbare Vorsteuer 7%,Nicht abziehbare Vorsteuer 7%,0
+model,"account.account.template,name",account_2176,Nicht abziehbare Vorsteuer 19%,Nicht abziehbare Vorsteuer 19%,0
+model,"account.account.template,name",account_2200,Körperschaftsteuer,Körperschaftsteuer,0
+model,"account.account.template,name",account_2203,Körperschaftsteuer für Vorjahre,Körperschaftsteuer für Vorjahre,0
+model,"account.account.template,name",account_2204,Körperschaftsteuererstattung Vorjahre,Körperschaftsteuererstattung Vorjahre,0
+model,"account.account.template,name",account_2205,Körperschaftsteuererstattung VJ § 37,Körperschaftsteuererstattung VJ § 37,0
+model,"account.account.template,name",account_2206,Körperschaftsteuer-Erhöhung § 38 Abs. 5,Körperschaftsteuer-Erhöhung § 38 Abs. 5,0
+model,"account.account.template,name",account_2208,Solidaritätszuschlag,Solidaritätszuschlag,0
+model,"account.account.template,name",account_2209,Solidaritätszuschlag für Vorjahre,Solidaritätszuschlag für Vorjahre,0
+model,"account.account.template,name",account_2210,Solidaritätszuschl.-Erstattung Vorjahre,Solidaritätszuschl.-Erstattung Vorjahre,0
+model,"account.account.template,name",account_2212,Kapitalertragsteuer 20%,Kapitalertragsteuer 20%,0
+model,"account.account.template,name",account_2213,Kapitalertragsteuer 25%,Kapitalertragsteuer 25%,0
+model,"account.account.template,name",account_2214,SolZ auf Kapitalertragsteuer 20%,SolZ auf Kapitalertragsteuer 20%,0
+model,"account.account.template,name",account_2215,Zinsabschlagsteuer,Zinsabschlagsteuer,0
+model,"account.account.template,name",account_2216,SolZ auf Kapitalertragsteuer 25%,SolZ auf Kapitalertragsteuer 25%,0
+model,"account.account.template,name",account_2218,Solidaritätszuschl. auf Zinsabschlagst.,Solidaritätszuschl. auf Zinsabschlagst.,0
+model,"account.account.template,name",account_2219,Anzurechn. ausländische Quellensteuer,Anzurechn. ausländische Quellensteuer,0
+model,"account.account.template,name",account_2250,Aufw. Zuführg/Auflösung latente Steuern,Aufw. Zuführg/Auflösung latente Steuern,0
+model,"account.account.template,name",account_2255,Erträge Zuführg/Auflösg latente Steuern,Erträge Zuführg/Auflösg latente Steuern,0
+model,"account.account.template,name",account_2280,GewSt-Nachzahlung Vorjahre,GewSt-Nachzahlung Vorjahre,0
+model,"account.account.template,name",account_2281,GewSt-Nachzahlung/-Erstattung VJ §4/5b,GewSt-Nachzahlung/-Erstattung VJ §4/5b,0
+model,"account.account.template,name",account_2282,GewSt-Erstattung Vorjahre,GewSt-Erstattung Vorjahre,0
+model,"account.account.template,name",account_2283,Auflösung GewSt-Rückstellg. § 4/5b,Auflösung GewSt-Rückstellg. § 4/5b,0
+model,"account.account.template,name",account_2284,Auflösung Gewerbesteuerrückstellung,Auflösung Gewerbesteuerrückstellung,0
+model,"account.account.template,name",account_2285,Steuernachzahlg. VJ sonstige Steuern,Steuernachzahlg. VJ sonstige Steuern,0
+model,"account.account.template,name",account_2287,Erstattung VJ für sonstige Steuern,Erstattung VJ für sonstige Steuern,0
+model,"account.account.template,name",account_2289,Auflösung Rückstellung s. Steuern,Auflösung Rückstellung s. Steuern,0
+model,"account.account.template,name",account_2300,Sonstige Aufwendungen,Sonstige Aufwendungen,0
+model,"account.account.template,name",account_2307,"Sonst.Aufwendungen, betriebsfr.u.regelm.","Sonst.Aufwendungen, betriebsfr.u.regelm.",0
+model,"account.account.template,name",account_2309,Sonstige Aufwendungen unregelmäßig,Sonstige Aufwendungen unregelmäßig,0
+model,"account.account.template,name",account_2310,Abgänge Sachanlagen Restbuchwert,Abgänge Sachanlagen Restbuchwert,0
+model,"account.account.template,name",account_2311,Abgänge immat. Vermögensgegenst. RBW,Abgänge immat. Vermögensgegenst. RBW,0
+model,"account.account.template,name",account_2312,Abgänge Finanzanlagen Restbuchwert,Abgänge Finanzanlagen Restbuchwert,0
+model,"account.account.template,name",account_2313,"Abgang Finanzanlagen z.T. n.abz., RBW","Abgang Finanzanlagen z.T. n.abz., RBW",0
+model,"account.account.template,name",account_2315,Abgänge Sachanlagen Restbuchwert,Abgänge Sachanlagen Restbuchwert,0
+model,"account.account.template,name",account_2316,Abgänge immat. Vermögensgegenst. RBW,Abgänge immat. Vermögensgegenst. RBW,0
+model,"account.account.template,name",account_2317,Abgänge Finanzanlagen Restbuchwert,Abgänge Finanzanlagen Restbuchwert,0
+model,"account.account.template,name",account_2318,"Abgang Finanzanlagen z.T. stfrei, RBW","Abgang Finanzanlagen z.T. stfrei, RBW",0
+model,"account.account.template,name",account_2320,Verluste aus Anlagenabgang,Verluste aus Anlagenabgang,0
+model,"account.account.template,name",account_2323,Verlust Veräuß.Ant. KapGes z.T. n. abz.,Verlust Veräuß.Ant. KapGes z.T. n. abz.,0
+model,"account.account.template,name",account_2325,Verluste aus Abgang von Umlaufvermögen,Verluste aus Abgang von Umlaufvermögen,0
+model,"account.account.template,name",account_2326,Verluste aus Abgang UV z.T. n. abziehbar,Verluste aus Abgang UV z.T. n. abziehbar,0
+model,"account.account.template,name",account_2327,Abgang WG des UV § 4 Abs. 3 EStG,Abgang WG des UV § 4 Abs. 3 EStG,0
+model,"account.account.template,name",account_2328,Abgang WG des UV § 4/3 z.T. nicht abz,Abgang WG des UV § 4/3 z.T. nicht abz,0
+model,"account.account.template,name",account_2340,Einstellungen SoPo mit Rücklage-Anteil,Einstellungen SoPo mit Rücklage-Anteil,0
+model,"account.account.template,name",account_2341,Einstellungen SoPo § 7g Abs.2 EStG n.F.,Einstellungen SoPo § 7g Abs.2 EStG n.F.,0
+model,"account.account.template,name",account_2345,Einstellungen SoPo mit Rücklage-Anteil,Einstellungen SoPo mit Rücklage-Anteil,0
+model,"account.account.template,name",account_2348,Aufwend. Zuschreibung Verbindlichk.,Aufwend. Zuschreibung Verbindlichk.,0
+model,"account.account.template,name",account_2349,Aufwend. Zuschreibung Rückstellungen,Aufwend. Zuschreibung Rückstellungen,0
+model,"account.account.template,name",account_2350,"Grundstücksaufwendungen, neutral","Grundstücksaufwendungen, neutral",0
+model,"account.account.template,name",account_2375,Grundsteuer,Grundsteuer,0
+model,"account.account.template,name",account_2380,"Zuwendungen,Spenden steuerl. n. abziehb.","Zuwendungen,Spenden steuerl. n. abziehb.",0
+model,"account.account.template,name",account_2381,Zuwendg.Spenden wissensch./kult. Zweck,Zuwendg.Spenden wissensch./kult. Zweck,0
+model,"account.account.template,name",account_2382,"Zuwendungen,Spenden mildtätige Zwecke","Zuwendungen,Spenden mildtätige Zwecke",0
+model,"account.account.template,name",account_2383,"Zuwendungen,Spenden kirchl./rel./gemein.","Zuwendungen,Spenden kirchl./rel./gemein.",0
+model,"account.account.template,name",account_2384,"Zuwendungen,Spenden an politische Partei","Zuwendungen,Spenden an politische Partei",0
+model,"account.account.template,name",account_2385,Nicht abziehbare AR-Vergütungen,Nicht abziehbare AR-Vergütungen,0
+model,"account.account.template,name",account_2386,Abziehbare Aufsichtsratsvergütung,Abziehbare Aufsichtsratsvergütung,0
+model,"account.account.template,name",account_2387,Zuwendg. an Stiftg. gem. § 52/2/1-3 AO,Zuwendg. an Stiftg. gem. § 52/2/1-3 AO,0
+model,"account.account.template,name",account_2388,Zuwendg. an Stiftg. gem. § 52/2/4 AO,Zuwendg. an Stiftg. gem. § 52/2/4 AO,0
+model,"account.account.template,name",account_2389,Zuwendg. an Stiftg. kirchl./rel./gemein.,Zuwendg. an Stiftg. kirchl./rel./gemein.,0
+model,"account.account.template,name",account_2390,Zuwendg. an Stiftg. wiss./mildt./kultur.,Zuwendg. an Stiftg. wiss./mildt./kultur.,0
+model,"account.account.template,name",account_2400,Forderungsverluste,Forderungsverluste,0
+model,"account.account.template,name",account_2401,Forderungsverluste 7% USt,Forderungsverluste 7% USt,0
+model,"account.account.template,name",account_2402,Forder.verlust aus stfr. EG-Lieferungen,Forder.verlust aus stfr. EG-Lieferungen,0
+model,"account.account.template,name",account_2403,Forderungsverluste EG-Lieferungen 7%,Forderungsverluste EG-Lieferungen 7%,0
+model,"account.account.template,name",account_2404,Forderungsverlust EG-Lieferung 16% USt,Forderungsverlust EG-Lieferung 16% USt,0
+model,"account.account.template,name",account_2405,Forderungsverluste 16% USt,Forderungsverluste 16% USt,0
+model,"account.account.template,name",account_2406,Forderungsverluste 19% USt,Forderungsverluste 19% USt,0
+model,"account.account.template,name",account_2407,Forderungsverluste 15% USt,Forderungsverluste 15% USt,0
+model,"account.account.template,name",account_2408,Forderungsverluste EG-Lieferung 19% USt,Forderungsverluste EG-Lieferung 19% USt,0
+model,"account.account.template,name",account_2409,Forderungsverluste EG-Lieferung 15% USt,Forderungsverluste EG-Lieferung 15% USt,0
+model,"account.account.template,name",account_2430,Forderungsverluste,Forderungsverluste,0
+model,"account.account.template,name",account_2450,Einstellung in die PWB zu Forderungen,Einstellung in die PWB zu Forderungen,0
+model,"account.account.template,name",account_2451,Einstellung in die EWB zu Forderungen,Einstellung in die EWB zu Forderungen,0
+model,"account.account.template,name",account_2490,Aufwendungen aus Verlustübernahme,Aufwendungen aus Verlustübernahme,0
+model,"account.account.template,name",account_2492,Abgef. Gewinne / Gewinngemeinschaft,Abgef. Gewinne / Gewinngemeinschaft,0
+model,"account.account.template,name",account_2493,Abgef. Gewinne stille Gesellschafter §8,Abgef. Gewinne stille Gesellschafter §8,0
+model,"account.account.template,name",account_2494,Abgef. Gewinne / Gewinn-/Teilgewinnabf.,Abgef. Gewinne / Gewinn-/Teilgewinnabf.,0
+model,"account.account.template,name",account_2500,Außerordentliche Erträge,Außerordentliche Erträge,0
+model,"account.account.template,name",account_2501,Ao. Erträge finanzwirksam,Ao. Erträge finanzwirksam,0
+model,"account.account.template,name",account_2505,Ao. Erträge nicht finanzwirksam,Ao. Erträge nicht finanzwirksam,0
+model,"account.account.template,name",account_2510,Betriebsfremde Erträge,Betriebsfremde Erträge,0
+model,"account.account.template,name",account_2520,Periodenfremde Erträge,Periodenfremde Erträge,0
+model,"account.account.template,name",account_2600,Erträge aus Beteiligungen,Erträge aus Beteiligungen,0
+model,"account.account.template,name",account_2615,Erträge aus Beteiligungen z.T. steuerfr,Erträge aus Beteiligungen z.T. steuerfr,0
+model,"account.account.template,name",account_2616,Erträge a.Beteilig. verb. UN z.T. stfrei,Erträge a.Beteilig. verb. UN z.T. stfrei,0
+model,"account.account.template,name",account_2617,Sonst.GewStfreie Gewinne Anteile KapGes,Sonst.GewStfreie Gewinne Anteile KapGes,0
+model,"account.account.template,name",account_2618,Gewinnant. aus Mituntern.sch.§9 GewStG,Gewinnant. aus Mituntern.sch.§9 GewStG,0
+model,"account.account.template,name",account_2619,Erträge a.Beteilig. an verbundenen UN,Erträge a.Beteilig. an verbundenen UN,0
+model,"account.account.template,name",account_2620,Erträge Wertpapiere/Ausleihungen FAV,Erträge Wertpapiere/Ausleihungen FAV,0
+model,"account.account.template,name",account_2625,Erträge a.Beteilig. FAV z.T. steuerfrei,Erträge a.Beteilig. FAV z.T. steuerfrei,0
+model,"account.account.template,name",account_2626,Erträge a.Beteilig. verb.UN z.T. stfrei,Erträge a.Beteilig. verb.UN z.T. stfrei,0
+model,"account.account.template,name",account_2649,Erträge Wertpapiere/FAV-Ausl.verb.UN,Erträge Wertpapiere/FAV-Ausl.verb.UN,0
+model,"account.account.template,name",account_2650,Sonstige Zinsen und ähnliche Erträge,Sonstige Zinsen und ähnliche Erträge,0
+model,"account.account.template,name",account_2652,stfr Aufzinsung Körperschaftsteuerguth.,stfr Aufzinsung Körperschaftsteuerguth.,0
+model,"account.account.template,name",account_2653,"Zinserträge § 233a AO, § 4 Abs. 5b EStG","Zinserträge § 233a AO, § 4 Abs. 5b EStG",0
+model,"account.account.template,name",account_2654,Erträge Wertpapiere/Ausleihungen UV,Erträge Wertpapiere/Ausleihungen UV,0
+model,"account.account.template,name",account_2655,Erträge a.Beteilig. UV z.T. steuerfrei,Erträge a.Beteilig. UV z.T. steuerfrei,0
+model,"account.account.template,name",account_2656,Erträge a.Beteilig. verb. UN z.T. stfrei,Erträge a.Beteilig. verb. UN z.T. stfrei,0
+model,"account.account.template,name",account_2657,Zinserträge § 233a AO,Zinserträge § 233a AO,0
+model,"account.account.template,name",account_2658,"Zinserträge § 233a AO, Anlage A KSt","Zinserträge § 233a AO, Anlage A KSt",0
+model,"account.account.template,name",account_2659,Sonst. Zinsen u.ä. Erträge aus verb.UN,Sonst. Zinsen u.ä. Erträge aus verb.UN,0
+model,"account.account.template,name",account_2660,Erträge aus Kursdifferenzen,Erträge aus Kursdifferenzen,0
+model,"account.account.template,name",account_2666,Erträge Bewertung Finanzmittelfonds,Erträge Bewertung Finanzmittelfonds,0
+model,"account.account.template,name",account_2670,Diskonterträge,Diskonterträge,0
+model,"account.account.template,name",account_2679,Diskonterträge verbundene Unternehmen,Diskonterträge verbundene Unternehmen,0
+model,"account.account.template,name",account_2680,Zinsähnliche Erträge,Zinsähnliche Erträge,0
+model,"account.account.template,name",account_2688,Zinserträge Rückzahlung KSt-Erhöhg. §38,Zinserträge Rückzahlung KSt-Erhöhg. §38,0
+model,"account.account.template,name",account_2689,Zinsähnliche Erträge verbundene UN,Zinsähnliche Erträge verbundene UN,0
+model,"account.account.template,name",account_2700,Sonstige Erträge,Sonstige Erträge,0
+model,"account.account.template,name",account_2705,Sonstige betriebl. regelm. Erträge,Sonstige betriebl. regelm. Erträge,0
+model,"account.account.template,name",account_2707,Sonstige betriebsfr.regelm. Erträge,Sonstige betriebsfr.regelm. Erträge,0
+model,"account.account.template,name",account_2709,Sonstige Erträge unregelmäßig,Sonstige Erträge unregelmäßig,0
+model,"account.account.template,name",account_2710,Erträge Zuschreibg. Sachanlagevermögen,Erträge Zuschreibg. Sachanlagevermögen,0
+model,"account.account.template,name",account_2711,Erträge Zuschreibg. immat. Anlagevermög.,Erträge Zuschreibg. immat. Anlagevermög.,0
+model,"account.account.template,name",account_2712,Erträge Zuschreibg. Finanzanlagevermögen,Erträge Zuschreibg. Finanzanlagevermögen,0
+model,"account.account.template,name",account_2713,Erträge Zuschreibg. FAV z.T. steuerfrei,Erträge Zuschreibg. FAV z.T. steuerfrei,0
+model,"account.account.template,name",account_2714,Erträge Zuschreibg. anderes AV z.T. stfr,Erträge Zuschreibg. anderes AV z.T. stfr,0
+model,"account.account.template,name",account_2715,Erträge Zuschreibung Umlaufvermögen,Erträge Zuschreibung Umlaufvermögen,0
+model,"account.account.template,name",account_2716,Erträge Zuschreibg. UV z.T. steuerfrei,Erträge Zuschreibg. UV z.T. steuerfrei,0
+model,"account.account.template,name",account_2720,Erträge aus Abgang von AV-Gegenständen,Erträge aus Abgang von AV-Gegenständen,0
+model,"account.account.template,name",account_2723,Erträge Veräuß.Ant. KapGes z.T. stfrei,Erträge Veräuß.Ant. KapGes z.T. stfrei,0
+model,"account.account.template,name",account_2725,Erträge aus Abgang von UV-Gegenständen,Erträge aus Abgang von UV-Gegenständen,0
+model,"account.account.template,name",account_2726,Erträge aus Abgang UV z.T. steuerfrei,Erträge aus Abgang UV z.T. steuerfrei,0
+model,"account.account.template,name",account_2730,Erträge aus Herabsetzung PWB zu Ford.,Erträge aus Herabsetzung PWB zu Ford.,0
+model,"account.account.template,name",account_2731,Erträge aus Herabsetzung EWB zu Ford.,Erträge aus Herabsetzung EWB zu Ford.,0
+model,"account.account.template,name",account_2732,Erträge aus abgeschriebenen Forderg.,Erträge aus abgeschriebenen Forderg.,0
+model,"account.account.template,name",account_2733,Erträge Aufl. SoPo Existenzgründerrückl,Erträge Aufl. SoPo Existenzgründerrückl,0
+model,"account.account.template,name",account_2734,Erträge Bewertung Verbindlichkeiten,Erträge Bewertung Verbindlichkeiten,0
+model,"account.account.template,name",account_2735,Erträge Auflösung von Rückstellungen,Erträge Auflösung von Rückstellungen,0
+model,"account.account.template,name",account_2736,Erträge steuerl. Bewertung Rückstellung,Erträge steuerl. Bewertung Rückstellung,0
+model,"account.account.template,name",account_2738,Ertr. Aufl. SoPo m. Rückl.ant.§52/16EStG,Ertr. Aufl. SoPo m. Rückl.ant.§52/16EStG,0
+model,"account.account.template,name",account_2739,"Erträge Aufl. SoPo § 7g/3 a.F, 7g/2 n.F","Erträge Aufl. SoPo § 7g/3 a.F, 7g/2 n.F",0
+model,"account.account.template,name",account_2740,Erträge Auflösung SoPo m. Rücklageant.,Erträge Auflösung SoPo m. Rücklageant.,0
+model,"account.account.template,name",account_2742,Versicherungsentschädigungen,Versicherungsentschädigungen,0
+model,"account.account.template,name",account_2743,Investitionszuschüsse,Investitionszuschüsse,0
+model,"account.account.template,name",account_2744,Investitionszulage,Investitionszulage,0
+model,"account.account.template,name",account_2746,Steuerfreie Erträge aus Auflösung SoPo,Steuerfreie Erträge aus Auflösung SoPo,0
+model,"account.account.template,name",account_2747,Sonstige steuerfr. Betriebseinnahmen,Sonstige steuerfr. Betriebseinnahmen,0
+model,"account.account.template,name",account_2750,Grundstückserträge,Grundstückserträge,0
+model,"account.account.template,name",account_2790,Erträge aus Verlustübernahme,Erträge aus Verlustübernahme,0
+model,"account.account.template,name",account_2792,Gewinne auf Grund Gewinngemeinschaft,Gewinne auf Grund Gewinngemeinschaft,0
+model,"account.account.template,name",account_2794,Gewinne auf Grund Gewinn/Teilgewinnabf,Gewinne auf Grund Gewinn/Teilgewinnabf,0
+model,"account.account.template,name",account_2890,Verrechneter kalkul.Unternehmerlohn,Verrechneter kalkul.Unternehmerlohn,0
+model,"account.account.template,name",account_2891,Verrechnete kalkul. Miete und Pacht,Verrechnete kalkul. Miete und Pacht,0
+model,"account.account.template,name",account_2892,Verrechnete kalkulatorische Zinsen,Verrechnete kalkulatorische Zinsen,0
+model,"account.account.template,name",account_2893,Verrechnete kalkul. Abschreibungen,Verrechnete kalkul. Abschreibungen,0
+model,"account.account.template,name",account_2894,Verrechnete kalkulatorische Wagnisse,Verrechnete kalkulatorische Wagnisse,0
+model,"account.account.template,name",account_2895,"Verrechneter kalk. Lohn, unentgeltl. AN","Verrechneter kalk. Lohn, unentgeltl. AN",0
+model,"account.account.template,name",account_2990,Aufw./Erträge aus Umrechnungsdifferenz,Aufw./Erträge aus Umrechnungsdifferenz,0
+model,"account.account.template,name",account_3000,"Roh-, Hilfs- und Betriebsstoffe","Roh-, Hilfs- und Betriebsstoffe",0
+model,"account.account.template,name",account_3090,Energiestoffe,Energiestoffe,0
+model,"account.account.template,name",account_3100,Fremdleistungen,Fremdleistungen,0
+model,"account.account.template,name",account_3110,"Bauleistungen § 13b 7% Vorsteuer, 7% USt","Bauleistungen § 13b 7% Vorsteuer, 7% USt",0
+model,"account.account.template,name",account_3115,"Leistungen ausl. UN 7% Vorsteuer, 7% USt","Leistungen ausl. UN 7% Vorsteuer, 7% USt",0
+model,"account.account.template,name",account_3120,"Bauleistungen § 13b 19% Vorst., 19% USt","Bauleistungen § 13b 19% Vorst., 19% USt",0
+model,"account.account.template,name",account_3125,"Leistungen ausl. UN 19% Vorst., 19% USt","Leistungen ausl. UN 19% Vorst., 19% USt",0
+model,"account.account.template,name",account_3130,"Bauleistungen § 13b ohne Vorst., 7% USt","Bauleistungen § 13b ohne Vorst., 7% USt",0
+model,"account.account.template,name",account_3135,"Leistungen ausl. UN ohne Vorst., 7% USt","Leistungen ausl. UN ohne Vorst., 7% USt",0
+model,"account.account.template,name",account_3140,"Bauleistungen § 13b ohne Vorst., 19% USt","Bauleistungen § 13b ohne Vorst., 19% USt",0
+model,"account.account.template,name",account_3145,"Leistungen ausl. UN ohne Vorst., 19% USt","Leistungen ausl. UN ohne Vorst., 19% USt",0
+model,"account.account.template,name",account_3150,Erhaltene Skonti Leistungen §13b UStG,Erhaltene Skonti Leistungen §13b UStG,0
+model,"account.account.template,name",account_3151,Erh. Skonti Leistg. § 13b 19% Vorst/USt,Erh. Skonti Leistg. § 13b 19% Vorst/USt,0
+model,"account.account.template,name",account_3152,Erh. Skonti Leistg. § 13b 16% Vorst/USt,Erh. Skonti Leistg. § 13b 16% Vorst/USt,0
+model,"account.account.template,name",account_3153,Erh. Skonti Leistg. § 13b o.Vorst/m.USt,Erh. Skonti Leistg. § 13b o.Vorst/m.USt,0
+model,"account.account.template,name",account_3154,Erh. Skonti Leistg. § 13b o.Vorst/19%USt,Erh. Skonti Leistg. § 13b o.Vorst/19%USt,0
+model,"account.account.template,name",account_3155,Erh. Skonti Leistg. § 13b o.Vorst/16%USt,Erh. Skonti Leistg. § 13b o.Vorst/16%USt,0
+model,"account.account.template,name",account_3200,Wareneingang,Wareneingang,0
+model,"account.account.template,name",account_3300,Wareneingang 7% Vorsteuer,Wareneingang 7% Vorsteuer,0
+model,"account.account.template,name",account_3400,Wareneingang 19% Vorsteuer,Wareneingang 19% Vorsteuer,0
+model,"account.account.template,name",account_3420,EG-Erwerb 7% Vorsteuer und 7% USt,EG-Erwerb 7% Vorsteuer und 7% USt,0
+model,"account.account.template,name",account_3425,EG-Erwerb 19% Vorsteuer und 19% USt,EG-Erwerb 19% Vorsteuer und 19% USt,0
+model,"account.account.template,name",account_3430,EG-Erwerb ohne Vorsteuer und 7% USt,EG-Erwerb ohne Vorsteuer und 7% USt,0
+model,"account.account.template,name",account_3435,EG-Erwerb ohne Vorsteuer und 19% USt,EG-Erwerb ohne Vorsteuer und 19% USt,0
+model,"account.account.template,name",account_3440,EG-Erw. Nfz o.UStID 19% Vorsteuer/USt,EG-Erw. Nfz o.UStID 19% Vorsteuer/USt,0
+model,"account.account.template,name",account_3505,"Wareneingang 5,5% Vorsteuer","Wareneingang 5,5% Vorsteuer",0
+model,"account.account.template,name",account_3540,"Wareneingang 10,7% Vorsteuer","Wareneingang 10,7% Vorsteuer",0
+model,"account.account.template,name",account_3550,Steuerfreier EG-Erwerb,Steuerfreier EG-Erwerb,0
+model,"account.account.template,name",account_3551,"Wareneingang, im Drittland steuerbar","Wareneingang, im Drittland steuerbar",0
+model,"account.account.template,name",account_3552,Erwerb 1. Abnehmer im Dreiecksgeschäft,Erwerb 1. Abnehmer im Dreiecksgeschäft,0
+model,"account.account.template,name",account_3558,"Wareneingang, im anderen EG-Land stb.","Wareneingang, im anderen EG-Land stb.",0
+model,"account.account.template,name",account_3559,Steuerfreie Einfuhren,Steuerfreie Einfuhren,0
+model,"account.account.template,name",account_3560,"Waren aus USt-Lager 7% Vorsteuer, 7% USt","Waren aus USt-Lager 7% Vorsteuer, 7% USt",0
+model,"account.account.template,name",account_3565,"Waren aus USt-Lager 19% Vorst., 19% USt","Waren aus USt-Lager 19% Vorst., 19% USt",0
+model,"account.account.template,name",account_3600,Nicht abziehbare Vorsteuer,Nicht abziehbare Vorsteuer,0
+model,"account.account.template,name",account_3610,Nicht abziehbare Vorsteuer 7%,Nicht abziehbare Vorsteuer 7%,0
+model,"account.account.template,name",account_3660,Nicht abziehbare Vorsteuer 19%,Nicht abziehbare Vorsteuer 19%,0
+model,"account.account.template,name",account_3700,Nachlässe,Nachlässe,0
+model,"account.account.template,name",account_3710,Nachlässe 7% Vorsteuer,Nachlässe 7% Vorsteuer,0
+model,"account.account.template,name",account_3720,Nachlässe 19% Vorsteuer,Nachlässe 19% Vorsteuer,0
+model,"account.account.template,name",account_3722,Nachlässe 16% Vorsteuer,Nachlässe 16% Vorsteuer,0
+model,"account.account.template,name",account_3723,Nachlässe 15% Vorsteuer,Nachlässe 15% Vorsteuer,0
+model,"account.account.template,name",account_3724,Nachlässe EG-Erwerb 7% Vorsteuer/USt,Nachlässe EG-Erwerb 7% Vorsteuer/USt,0
+model,"account.account.template,name",account_3725,Nachlässe EG-Erwerb 19% Vorsteuer/USt,Nachlässe EG-Erwerb 19% Vorsteuer/USt,0
+model,"account.account.template,name",account_3726,Nachlässe EG-Erwerb 16% Vorsteuer/USt,Nachlässe EG-Erwerb 16% Vorsteuer/USt,0
+model,"account.account.template,name",account_3727,Nachlässe EG-Erwerb 15% Vorsteuer/USt,Nachlässe EG-Erwerb 15% Vorsteuer/USt,0
+model,"account.account.template,name",account_3730,Erhaltene Skonti,Erhaltene Skonti,0
+model,"account.account.template,name",account_3731,Erhaltene Skonti 7% Vorsteuer,Erhaltene Skonti 7% Vorsteuer,0
+model,"account.account.template,name",account_3735,Erhaltene Skonti 16% Vorsteuer,Erhaltene Skonti 16% Vorsteuer,0
+model,"account.account.template,name",account_3736,Erhaltene Skonti 19% Vorsteuer,Erhaltene Skonti 19% Vorsteuer,0
+model,"account.account.template,name",account_3745,Erhaltene Skonti EG-Erwerb,Erhaltene Skonti EG-Erwerb,0
+model,"account.account.template,name",account_3746,Erhalt. Skonti EG-Erwerb 7% Vorst/USt,Erhalt. Skonti EG-Erwerb 7% Vorst/USt,0
+model,"account.account.template,name",account_3748,Erhalt. Skonti EG-Erwerb 19% Vorst/USt,Erhalt. Skonti EG-Erwerb 19% Vorst/USt,0
+model,"account.account.template,name",account_3749,Erhalt. Skonti EG-Erwerb 16% Vorst/USt,Erhalt. Skonti EG-Erwerb 16% Vorst/USt,0
+model,"account.account.template,name",account_3750,Erhaltene Boni 7% Vorsteuer,Erhaltene Boni 7% Vorsteuer,0
+model,"account.account.template,name",account_3760,Erhaltene Boni 19% Vorsteuer,Erhaltene Boni 19% Vorsteuer,0
+model,"account.account.template,name",account_3764,Erhaltene Boni 16% Vorsteuer,Erhaltene Boni 16% Vorsteuer,0
+model,"account.account.template,name",account_3769,Erhaltene Boni,Erhaltene Boni,0
+model,"account.account.template,name",account_3770,Erhaltene Rabatte,Erhaltene Rabatte,0
+model,"account.account.template,name",account_3780,Erhaltene Rabatte 7% Vorsteuer,Erhaltene Rabatte 7% Vorsteuer,0
+model,"account.account.template,name",account_3790,Erhaltene Rabatte 19% Vorsteuer,Erhaltene Rabatte 19% Vorsteuer,0
+model,"account.account.template,name",account_3794,Erhaltene Rabatte 16% Vorsteuer,Erhaltene Rabatte 16% Vorsteuer,0
+model,"account.account.template,name",account_3800,Bezugsnebenkosten,Bezugsnebenkosten,0
+model,"account.account.template,name",account_3830,Leergut,Leergut,0
+model,"account.account.template,name",account_3850,Zölle und Einfuhrabgaben,Zölle und Einfuhrabgaben,0
+model,"account.account.template,name",account_3960,Bestandsveränd.RHB-Stoffe/bezogene Ware,Bestandsveränd.RHB-Stoffe/bezogene Ware,0
+model,"account.account.template,name",account_3970,"Bestand Roh-,Hilfs- und Betriebsstoffe","Bestand Roh-,Hilfs- und Betriebsstoffe",0
+model,"account.account.template,name",account_3980,Bestand Waren,Bestand Waren,0
+model,"account.account.template,name",account_4100,Löhne und Gehälter,Löhne und Gehälter,0
+model,"account.account.template,name",account_4110,Löhne,Löhne,0
+model,"account.account.template,name",account_4120,Gehälter,Gehälter,0
+model,"account.account.template,name",account_4124,Geschäftsführergehälter GmbH-Gesells.,Geschäftsführergehälter GmbH-Gesells.,0
+model,"account.account.template,name",account_4125,Ehegattengehalt,Ehegattengehalt,0
+model,"account.account.template,name",account_4126,Tantiemen,Tantiemen,0
+model,"account.account.template,name",account_4127,Geschäftsführergehälter,Geschäftsführergehälter,0
+model,"account.account.template,name",account_4128,Vergütg. angestellte Mituntern. §15 EStG,Vergütg. angestellte Mituntern. §15 EStG,0
+model,"account.account.template,name",account_4130,Gesetzliche Sozialaufwendungen,Gesetzliche Sozialaufwendungen,0
+model,"account.account.template,name",account_4137,Ges. soz. Aufwendg. Mituntern. §15 EStG,Ges. soz. Aufwendg. Mituntern. §15 EStG,0
+model,"account.account.template,name",account_4138,Beiträge zur Berufsgenossenschaft,Beiträge zur Berufsgenossenschaft,0
+model,"account.account.template,name",account_4139,Ausgleichsabgabe SchwerbehindertenG,Ausgleichsabgabe SchwerbehindertenG,0
+model,"account.account.template,name",account_4140,Freiwillige soziale Aufwendung. LSt-frei,Freiwillige soziale Aufwendung. LSt-frei,0
+model,"account.account.template,name",account_4145,Freiwillige soziale Aufwendung. LSt-pfl.,Freiwillige soziale Aufwendung. LSt-pfl.,0
+model,"account.account.template,name",account_4149,Pauschale Steuer für Zuschüsse,Pauschale Steuer für Zuschüsse,0
+model,"account.account.template,name",account_4150,Krankengeldzuschüsse,Krankengeldzuschüsse,0
+model,"account.account.template,name",account_4152,Sachzuwendungen und Dienstleistg. an AN,Sachzuwendungen und Dienstleistg. an AN,0
+model,"account.account.template,name",account_4155,Zuschüsse Agenturen für Arbeit,Zuschüsse Agenturen für Arbeit,0
+model,"account.account.template,name",account_4160,Versorgungskassen,Versorgungskassen,0
+model,"account.account.template,name",account_4165,Aufwendungen für Altersversorgung,Aufwendungen für Altersversorgung,0
+model,"account.account.template,name",account_4167,Pauschale Steuer für Versicherungen,Pauschale Steuer für Versicherungen,0
+model,"account.account.template,name",account_4168,Aufw. Altersversorg. Mituntern. §15 EStG,Aufw. Altersversorg. Mituntern. §15 EStG,0
+model,"account.account.template,name",account_4169,Aufwendungen für Unterstützung,Aufwendungen für Unterstützung,0
+model,"account.account.template,name",account_4170,Vermögenswirksame Leistungen,Vermögenswirksame Leistungen,0
+model,"account.account.template,name",account_4175,Fahrtkostenerstatt. Whg./Arbeitsstätte,Fahrtkostenerstatt. Whg./Arbeitsstätte,0
+model,"account.account.template,name",account_4180,Bedienungsgelder,Bedienungsgelder,0
+model,"account.account.template,name",account_4190,Aushilfslöhne,Aushilfslöhne,0
+model,"account.account.template,name",account_4198,Pausch. Abgaben für Zuwendungen an AN,Pausch. Abgaben für Zuwendungen an AN,0
+model,"account.account.template,name",account_4199,Pauschale Steuer für Aushilfen,Pauschale Steuer für Aushilfen,0
+model,"account.account.template,name",account_4200,Raumkosten,Raumkosten,0
+model,"account.account.template,name",account_4210,"Miete, unbewegliche Wirtschaftsgüter","Miete, unbewegliche Wirtschaftsgüter",0
+model,"account.account.template,name",account_4215,"Leasing, unbewegliche Wirtschaftsgüter","Leasing, unbewegliche Wirtschaftsgüter",0
+model,"account.account.template,name",account_4219,Vergütung Mituntern. Miete WG § 15 EStG,Vergütung Mituntern. Miete WG § 15 EStG,0
+model,"account.account.template,name",account_4220,"Pacht, unbewegliche Wirtschaftsgüter","Pacht, unbewegliche Wirtschaftsgüter",0
+model,"account.account.template,name",account_4228,Miet- und Pachtnebenkosten,Miet- und Pachtnebenkosten,0
+model,"account.account.template,name",account_4229,Vergütung Mituntern. Pacht WG § 15 EStG,Vergütung Mituntern. Pacht WG § 15 EStG,0
+model,"account.account.template,name",account_4230,Heizung,Heizung,0
+model,"account.account.template,name",account_4240,"Gas, Strom, Wasser","Gas, Strom, Wasser",0
+model,"account.account.template,name",account_4250,Reinigung,Reinigung,0
+model,"account.account.template,name",account_4260,Instandhaltung betrieblicher Räume,Instandhaltung betrieblicher Räume,0
+model,"account.account.template,name",account_4270,Abgaben betrieblich genutzt. Grundbesitz,Abgaben betrieblich genutzt. Grundbesitz,0
+model,"account.account.template,name",account_4280,Sonstige Raumkosten,Sonstige Raumkosten,0
+model,"account.account.template,name",account_4288,"Aufwendung. Arbeitszimmer, abz. Anteil","Aufwendung. Arbeitszimmer, abz. Anteil",0
+model,"account.account.template,name",account_4289,Aufwendung. Arbeitszimmer n.abz. Anteil,Aufwendung. Arbeitszimmer n.abz. Anteil,0
+model,"account.account.template,name",account_4290,"Grundstücksaufwendungen, betrieblich","Grundstücksaufwendungen, betrieblich",0
+model,"account.account.template,name",account_4300,Nicht abziehbare Vorsteuer,Nicht abziehbare Vorsteuer,0
+model,"account.account.template,name",account_4301,Nicht abziehbare Vorsteuer 7%,Nicht abziehbare Vorsteuer 7%,0
+model,"account.account.template,name",account_4306,Nicht abziehbare Vorsteuer 19%,Nicht abziehbare Vorsteuer 19%,0
+model,"account.account.template,name",account_4320,Gewerbesteuer,Gewerbesteuer,0
+model,"account.account.template,name",account_4340,Sonstige Betriebssteuern,Sonstige Betriebssteuern,0
+model,"account.account.template,name",account_4350,Verbrauchsteuer,Verbrauchsteuer,0
+model,"account.account.template,name",account_4355,Ökosteuer,Ökosteuer,0
+model,"account.account.template,name",account_4360,Versicherungen,Versicherungen,0
+model,"account.account.template,name",account_4366,Versicherung für Gebäude,Versicherung für Gebäude,0
+model,"account.account.template,name",account_4370,Prämie Rückdeckung f. Versorgungsleistg,Prämie Rückdeckung f. Versorgungsleistg,0
+model,"account.account.template,name",account_4380,Beiträge,Beiträge,0
+model,"account.account.template,name",account_4390,Sonstige Abgaben,Sonstige Abgaben,0
+model,"account.account.template,name",account_4396,Abzugsf.Verspätungszuschlag/Zwangsgeld,Abzugsf.Verspätungszuschlag/Zwangsgeld,0
+model,"account.account.template,name",account_4397,Nicht abzf.Verspät.zuschlag/Zwangsgeld,Nicht abzf.Verspät.zuschlag/Zwangsgeld,0
+model,"account.account.template,name",account_4500,Fahrzeugkosten,Fahrzeugkosten,0
+model,"account.account.template,name",account_4510,Kfz-Steuern,Kfz-Steuern,0
+model,"account.account.template,name",account_4520,Kfz-Versicherungen,Kfz-Versicherungen,0
+model,"account.account.template,name",account_4530,Laufende Kfz-Betriebskosten,Laufende Kfz-Betriebskosten,0
+model,"account.account.template,name",account_4540,Kfz-Reparaturen,Kfz-Reparaturen,0
+model,"account.account.template,name",account_4550,Garagenmieten,Garagenmieten,0
+model,"account.account.template,name",account_4560,Mautgebühren,Mautgebühren,0
+model,"account.account.template,name",account_4570,Mietleasing Kfz,Mietleasing Kfz,0
+model,"account.account.template,name",account_4580,Sonstige Kfz-Kosten,Sonstige Kfz-Kosten,0
+model,"account.account.template,name",account_4590,Kfz-Kosten betriebl.Nutzung Kfz im PV,Kfz-Kosten betriebl.Nutzung Kfz im PV,0
+model,"account.account.template,name",account_4595,Fremdfahrzeugkosten,Fremdfahrzeugkosten,0
+model,"account.account.template,name",account_4600,Werbekosten,Werbekosten,0
+model,"account.account.template,name",account_4630,Geschenke abzugsfähig,Geschenke abzugsfähig,0
+model,"account.account.template,name",account_4631,Zuwendungen an Dritte abzugsfähig,Zuwendungen an Dritte abzugsfähig,0
+model,"account.account.template,name",account_4632,Pausch. Abgaben für Zuwendungen abzugsf.,Pausch. Abgaben für Zuwendungen abzugsf.,0
+model,"account.account.template,name",account_4635,Geschenke nicht abzugsfähig,Geschenke nicht abzugsfähig,0
+model,"account.account.template,name",account_4636,Zuwendungen an Dritte nicht abzugsf,Zuwendungen an Dritte nicht abzugsf,0
+model,"account.account.template,name",account_4637,Pausch. Abgaben für Zuwendungen n. abz.,Pausch. Abgaben für Zuwendungen n. abz.,0
+model,"account.account.template,name",account_4638,Geschenke ausschl.betrieblich genutzt,Geschenke ausschl.betrieblich genutzt,0
+model,"account.account.template,name",account_4640,Repräsentationskosten,Repräsentationskosten,0
+model,"account.account.template,name",account_4650,Bewirtungskosten,Bewirtungskosten,0
+model,"account.account.template,name",account_4651,"Eingeschr. abziehb.BA, abz. Anteil","Eingeschr. abziehb.BA, abz. Anteil",0
+model,"account.account.template,name",account_4652,"Eingeschr. abziehb.BA, n. abz. Anteil","Eingeschr. abziehb.BA, n. abz. Anteil",0
+model,"account.account.template,name",account_4653,Aufmerksamkeiten,Aufmerksamkeiten,0
+model,"account.account.template,name",account_4654,Nicht abzugsfähige Bewirtungskosten,Nicht abzugsfähige Bewirtungskosten,0
+model,"account.account.template,name",account_4655,Nicht abzugsfähige Betriebsausgaben,Nicht abzugsfähige Betriebsausgaben,0
+model,"account.account.template,name",account_4660,Reisekosten Arbeitnehmer,Reisekosten Arbeitnehmer,0
+model,"account.account.template,name",account_4662,"Reisekosten Arbeitnehmer, n.abz.Anteil","Reisekosten Arbeitnehmer, n.abz.Anteil",0
+model,"account.account.template,name",account_4663,"Reisekosten Arbeitnehmer, Fahrtkosten","Reisekosten Arbeitnehmer, Fahrtkosten",0
+model,"account.account.template,name",account_4664,Reisekosten AN Verpfleg.mehraufwand,Reisekosten AN Verpfleg.mehraufwand,0
+model,"account.account.template,name",account_4666,Reisekosten AN Übernachtungsaufwand,Reisekosten AN Übernachtungsaufwand,0
+model,"account.account.template,name",account_4668,Kilometergelderstattung Arbeitnehmer,Kilometergelderstattung Arbeitnehmer,0
+model,"account.account.template,name",account_4670,Reisekosten Unternehmer,Reisekosten Unternehmer,0
+model,"account.account.template,name",account_4672,"Reisekosten Unternehmer, n.abz.Anteil","Reisekosten Unternehmer, n.abz.Anteil",0
+model,"account.account.template,name",account_4673,"Reisekosten Unternehmer, Fahrtkosten","Reisekosten Unternehmer, Fahrtkosten",0
+model,"account.account.template,name",account_4674,Reisekosten UN Verpfleg.mehraufwand,Reisekosten UN Verpfleg.mehraufwand,0
+model,"account.account.template,name",account_4676,Reisekosten UN Übernachtungsaufwand,Reisekosten UN Übernachtungsaufwand,0
+model,"account.account.template,name",account_4678,"Fahrten Wohnung/Betrieb, abz. Anteil","Fahrten Wohnung/Betrieb, abz. Anteil",0
+model,"account.account.template,name",account_4679,"Fahrten Wohnung/Betrieb, n.abz. Anteil","Fahrten Wohnung/Betrieb, n.abz. Anteil",0
+model,"account.account.template,name",account_4680,Fahrten Wohnung/Betriebsstätte (Haben),Fahrten Wohnung/Betriebsstätte (Haben),0
+model,"account.account.template,name",account_4700,Kosten Warenabgabe,Kosten Warenabgabe,0
+model,"account.account.template,name",account_4710,Verpackungsmaterial,Verpackungsmaterial,0
+model,"account.account.template,name",account_4730,Ausgangsfrachten,Ausgangsfrachten,0
+model,"account.account.template,name",account_4750,Transportversicherungen,Transportversicherungen,0
+model,"account.account.template,name",account_4760,Verkaufsprovisionen,Verkaufsprovisionen,0
+model,"account.account.template,name",account_4780,Fremdarbeiten (Vertrieb),Fremdarbeiten (Vertrieb),0
+model,"account.account.template,name",account_4790,Aufwand für Gewährleistungen,Aufwand für Gewährleistungen,0
+model,"account.account.template,name",account_4800,Reparatur/Instandh. Anlagen u. Maschinen,Reparatur/Instandh. Anlagen u. Maschinen,0
+model,"account.account.template,name",account_4805,Reparatur/Instandh. Betriebs- u. Gesch.,Reparatur/Instandh. Betriebs- u. Gesch.,0
+model,"account.account.template,name",account_4806,Wartungskosten für Hard- und Software,Wartungskosten für Hard- und Software,0
+model,"account.account.template,name",account_4809,Sonst. Reparaturen und Instandhaltungen,Sonst. Reparaturen und Instandhaltungen,0
+model,"account.account.template,name",account_4810,Mietleasing bewegliche Wirtschaftsgüter,Mietleasing bewegliche Wirtschaftsgüter,0
+model,"account.account.template,name",account_4815,Kaufleasing,Kaufleasing,0
+model,"account.account.template,name",account_4820,"Abschreibung Ingangsetzung, Erweiterung","Abschreibung Ingangsetzung, Erweiterung",0
+model,"account.account.template,name",account_4822,Abschreibung immaterielle VermG,Abschreibung immaterielle VermG,0
+model,"account.account.template,name",account_4824,Abschr. Geschäfts- oder Firmenwert,Abschr. Geschäfts- oder Firmenwert,0
+model,"account.account.template,name",account_4826,Apl. Abschreibungen immaterielle VermG,Apl. Abschreibungen immaterielle VermG,0
+model,"account.account.template,name",account_4830,Abschreibungen auf Sachanlagen,Abschreibungen auf Sachanlagen,0
+model,"account.account.template,name",account_4831,Abschreibungen auf Gebäude,Abschreibungen auf Gebäude,0
+model,"account.account.template,name",account_4832,Abschreibungen auf Kfz,Abschreibungen auf Kfz,0
+model,"account.account.template,name",account_4833,Abschreibung Arbeitszimmer,Abschreibung Arbeitszimmer,0
+model,"account.account.template,name",account_4840,Apl. Abschreibungen auf Sachanlagen,Apl. Abschreibungen auf Sachanlagen,0
+model,"account.account.template,name",account_4841,Außergewöhnliche Abschreibung Gebäude,Außergewöhnliche Abschreibung Gebäude,0
+model,"account.account.template,name",account_4842,Außergewöhnliche Abschreibung auf Kfz,Außergewöhnliche Abschreibung auf Kfz,0
+model,"account.account.template,name",account_4843,Außergewöhnliche Abschreibung so. WG,Außergewöhnliche Abschreibung so. WG,0
+model,"account.account.template,name",account_4850,Abschreib.Sachanlagen/stl. So-Vorschr.,Abschreib.Sachanlagen/stl. So-Vorschr.,0
+model,"account.account.template,name",account_4851,"Sonder-AfA § 7g/1, 2 a.F., § 7g/5 n.F.","Sonder-AfA § 7g/1, 2 a.F., § 7g/5 n.F.",0
+model,"account.account.template,name",account_4852,"Sonder-AfA Kfz § 7g/1,2 a.F., §7g/5 n.F.","Sonder-AfA Kfz § 7g/1,2 a.F., §7g/5 n.F.",0
+model,"account.account.template,name",account_4853,Kürzung AHK § 7g Abs. 2 EStG n.F.,Kürzung AHK § 7g Abs. 2 EStG n.F.,0
+model,"account.account.template,name",account_4854,Kürzung AHK für Kfz § 7g Abs. 2 n.F.,Kürzung AHK für Kfz § 7g Abs. 2 n.F.,0
+model,"account.account.template,name",account_4855,Sofortabschreibung GWG,Sofortabschreibung GWG,0
+model,"account.account.template,name",account_4860,Abschreibungen auf aktivierte GWG,Abschreibungen auf aktivierte GWG,0
+model,"account.account.template,name",account_4862,Abschreibung Sammelposten GWG,Abschreibung Sammelposten GWG,0
+model,"account.account.template,name",account_4865,Apl. Abschreibungen auf aktivierte GWG,Apl. Abschreibungen auf aktivierte GWG,0
+model,"account.account.template,name",account_4870,Abschreibungen auf Finanzanlagen,Abschreibungen auf Finanzanlagen,0
+model,"account.account.template,name",account_4871,Abschreibungen Finanzanl. z.T. n.abz.,Abschreibungen Finanzanl. z.T. n.abz.,0
+model,"account.account.template,name",account_4872,Abschr.Verl.Ant.Mituntern.sch.§8 GewStG,Abschr.Verl.Ant.Mituntern.sch.§8 GewStG,0
+model,"account.account.template,name",account_4873,Abschreibungen Finanzanl. z.T. n.abz.,Abschreibungen Finanzanl. z.T. n.abz.,0
+model,"account.account.template,name",account_4874,Abschreib.Finanzanlagen/stl.So-Vorsch.,Abschreib.Finanzanlagen/stl.So-Vorsch.,0
+model,"account.account.template,name",account_4875,Abschreibungen Wertpapiere des UV,Abschreibungen Wertpapiere des UV,0
+model,"account.account.template,name",account_4876,Abschreibungen Wertpap. UV z.T. n.abz.,Abschreibungen Wertpap. UV z.T. n.abz.,0
+model,"account.account.template,name",account_4879,Vorwegn.künft.Wertschwankg. b.Wertp.UV,Vorwegn.künft.Wertschwankg. b.Wertp.UV,0
+model,"account.account.template,name",account_4880,Abschreibungen auf Umlaufvermögen,Abschreibungen auf Umlaufvermögen,0
+model,"account.account.template,name",account_4882,"Abschreibungen auf UV, steuerr. bedingt","Abschreibungen auf UV, steuerr. bedingt",0
+model,"account.account.template,name",account_4885,Vorwegnahme künftiger UV-Wertschwankg.,Vorwegnahme künftiger UV-Wertschwankg.,0
+model,"account.account.template,name",account_4886,Abschreibungen auf Umlaufvermögen,Abschreibungen auf Umlaufvermögen,0
+model,"account.account.template,name",account_4887,"Abschreibungen auf UV, steuerr. bedingt","Abschreibungen auf UV, steuerr. bedingt",0
+model,"account.account.template,name",account_4890,Vorwegnahme künftiger UV-Wertschwankg.,Vorwegnahme künftiger UV-Wertschwankg.,0
+model,"account.account.template,name",account_4900,Sonstige betriebliche Aufwendungen,Sonstige betriebliche Aufwendungen,0
+model,"account.account.template,name",account_4905,Sonstige betriebl.u.regelm.Aufwendungen,Sonstige betriebl.u.regelm.Aufwendungen,0
+model,"account.account.template,name",account_4909,Fremdleistungen und Fremdarbeiten,Fremdleistungen und Fremdarbeiten,0
+model,"account.account.template,name",account_4910,Porto,Porto,0
+model,"account.account.template,name",account_4920,Telefon,Telefon,0
+model,"account.account.template,name",account_4925,Telefax und Internetkosten,Telefax und Internetkosten,0
+model,"account.account.template,name",account_4930,Bürobedarf,Bürobedarf,0
+model,"account.account.template,name",account_4940,"Zeitschriften, Bücher","Zeitschriften, Bücher",0
+model,"account.account.template,name",account_4945,Fortbildungskosten,Fortbildungskosten,0
+model,"account.account.template,name",account_4946,Freiwillige Sozialleistungen,Freiwillige Sozialleistungen,0
+model,"account.account.template,name",account_4948,Vergütungen an Mitunternehmer §15 EStG,Vergütungen an Mitunternehmer §15 EStG,0
+model,"account.account.template,name",account_4949,Haftungsvergütung an Mitunternehmer,Haftungsvergütung an Mitunternehmer,0
+model,"account.account.template,name",account_4950,Rechts- und Beratungskosten,Rechts- und Beratungskosten,0
+model,"account.account.template,name",account_4955,Buchführungskosten,Buchführungskosten,0
+model,"account.account.template,name",account_4957,Abschluss- und Prüfungskosten,Abschluss- und Prüfungskosten,0
+model,"account.account.template,name",account_4960,Mieten für Einrichtungen bewegliche WG,Mieten für Einrichtungen bewegliche WG,0
+model,"account.account.template,name",account_4961,Pacht (bewegliche Wirtschaftsgüter),Pacht (bewegliche Wirtschaftsgüter),0
+model,"account.account.template,name",account_4964,"Aufwendungen für Lizenzen, Konzessionen","Aufwendungen für Lizenzen, Konzessionen",0
+model,"account.account.template,name",account_4965,Mietleasing bewegliche Wirtschaftsgüter,Mietleasing bewegliche Wirtschaftsgüter,0
+model,"account.account.template,name",account_4969,Aufwand Abraum-/Abfallbeseitigung,Aufwand Abraum-/Abfallbeseitigung,0
+model,"account.account.template,name",account_4970,Nebenkosten des Geldverkehrs,Nebenkosten des Geldverkehrs,0
+model,"account.account.template,name",account_4975,Aufwendg. Anteile KapGes z.T. n. abz.,Aufwendg. Anteile KapGes z.T. n. abz.,0
+model,"account.account.template,name",account_4976,Aufw. Veräuß. Ant. KapG z.T. nicht abz.,Aufw. Veräuß. Ant. KapG z.T. nicht abz.,0
+model,"account.account.template,name",account_4980,Betriebsbedarf,Betriebsbedarf,0
+model,"account.account.template,name",account_4985,Werkzeuge und Kleingeräte,Werkzeuge und Kleingeräte,0
+model,"account.account.template,name",account_4990,Kalkulatorischer Unternehmerlohn,Kalkulatorischer Unternehmerlohn,0
+model,"account.account.template,name",account_4991,Kalkulatorische Miete und Pacht,Kalkulatorische Miete und Pacht,0
+model,"account.account.template,name",account_4992,Kalkulatorische Zinsen,Kalkulatorische Zinsen,0
+model,"account.account.template,name",account_4993,Kalkulatorische Abschreibungen,Kalkulatorische Abschreibungen,0
+model,"account.account.template,name",account_4994,Kalkulatorische Wagnisse,Kalkulatorische Wagnisse,0
+model,"account.account.template,name",account_4995,"Kalkulatorischer Lohn, unentgeltl. AN","Kalkulatorischer Lohn, unentgeltl. AN",0
+model,"account.account.template,name",account_4996,Herstellungskosten,Herstellungskosten,0
+model,"account.account.template,name",account_4997,Verwaltungskosten,Verwaltungskosten,0
+model,"account.account.template,name",account_4998,Vertriebskosten,Vertriebskosten,0
+model,"account.account.template,name",account_4999,Gegenkonto zu 4996 bis 4998,Gegenkonto zu 4996 bis 4998,0
+model,"account.account.template,name",account_7000,Unfertige Erzeugnisse und Leistungen,Unfertige Erzeugnisse und Leistungen,0
+model,"account.account.template,name",account_7050,Unfertige Erzeugnisse,Unfertige Erzeugnisse,0
+model,"account.account.template,name",account_7080,Unfertige Leistungen,Unfertige Leistungen,0
+model,"account.account.template,name",account_7090,In Ausführung befindl. Bauaufträge,In Ausführung befindl. Bauaufträge,0
+model,"account.account.template,name",account_7095,In Arbeit befindliche Aufträge,In Arbeit befindliche Aufträge,0
+model,"account.account.template,name",account_7100,Fertige Erzeugnisse und Waren,Fertige Erzeugnisse und Waren,0
+model,"account.account.template,name",account_7110,Fertige Erzeugnisse,Fertige Erzeugnisse,0
+model,"account.account.template,name",account_7140,Waren,Waren,0
+model,"account.account.template,name",account_8100,Steuerfreie Umsätze §4 Nr. 8 ff UStG,Steuerfreie Umsätze §4 Nr. 8 ff UStG,0
+model,"account.account.template,name",account_8105,Stfr. Umsätze aus V&V § 4 Nr. 12 UStG,Stfr. Umsätze aus V&V § 4 Nr. 12 UStG,0
+model,"account.account.template,name",account_8110,Sonstige steuerfr. Umsätze Inland,Sonstige steuerfr. Umsätze Inland,0
+model,"account.account.template,name",account_8120,Steuerfreie Umsätze § 4 Nr. 1a UStG,Steuerfreie Umsätze § 4 Nr. 1a UStG,0
+model,"account.account.template,name",account_8125,"Steuerfreie EG-Lieferungen §4, 1b UStG","Steuerfreie EG-Lieferungen §4, 1b UStG",0
+model,"account.account.template,name",account_8130,Innergemeinschaftl. Dreiecksgeschäft,Innergemeinschaftl. Dreiecksgeschäft,0
+model,"account.account.template,name",account_8135,Steuerfr. EG-Lief.v.Neufahrzg.ohne UStID,Steuerfr. EG-Lief.v.Neufahrzg.ohne UStID,0
+model,"account.account.template,name",account_8140,Steuerfreie Umsätze Offshore usw.,Steuerfreie Umsätze Offshore usw.,0
+model,"account.account.template,name",account_8150,Steuerfreie Umsätze § 4 Nr. 2-7 UStG,Steuerfreie Umsätze § 4 Nr. 2-7 UStG,0
+model,"account.account.template,name",account_8160,Steuerfreie Umsätze ohne Vorsteuerabzug,Steuerfreie Umsätze ohne Vorsteuerabzug,0
+model,"account.account.template,name",account_8190,Erlöse gemäß § 24 UStG,Erlöse gemäß § 24 UStG,0
+model,"account.account.template,name",account_8195,Erlöse Kleinunternehmer § 19 UStG,Erlöse Kleinunternehmer § 19 UStG,0
+model,"account.account.template,name",account_8196,Erlöse Geldspielautomaten 19% USt,Erlöse Geldspielautomaten 19% USt,0
+model,"account.account.template,name",account_8200,Erlöse,Erlöse,0
+model,"account.account.template,name",account_8300,Erlöse 7% USt,Erlöse 7% USt,0
+model,"account.account.template,name",account_8310,Erlöse EG-Lieferungen 7% USt,Erlöse EG-Lieferungen 7% USt,0
+model,"account.account.template,name",account_8315,Erlöse EG-Lieferungen 19% USt,Erlöse EG-Lieferungen 19% USt,0
+model,"account.account.template,name",account_8320,Im anderen EG-Land stpfl. Lieferungen,Im anderen EG-Land stpfl. Lieferungen,0
+model,"account.account.template,name",account_8330,Erlöse EG-Lieferungen 16% USt,Erlöse EG-Lieferungen 16% USt,0
+model,"account.account.template,name",account_8337,Erlöse aus Leistungen nach § 13b UStG,Erlöse aus Leistungen nach § 13b UStG,0
+model,"account.account.template,name",account_8338,Nicht steuerbare Umsätze Drittland,Nicht steuerbare Umsätze Drittland,0
+model,"account.account.template,name",account_8339,Nicht steuerbare Umsätze EG-Land,Nicht steuerbare Umsätze EG-Land,0
+model,"account.account.template,name",account_8340,Erlöse 16% USt,Erlöse 16% USt,0
+model,"account.account.template,name",account_8400,Erlöse 19% USt,Erlöse 19% USt,0
+model,"account.account.template,name",account_8410,Erlöse 19% USt,Erlöse 19% USt,0
+model,"account.account.template,name",account_8510,Provisionsumsätze,Provisionsumsätze,0
+model,"account.account.template,name",account_8514,"Provisionsumsätze, steuerfrei §4 Nr.8ff","Provisionsumsätze, steuerfrei §4 Nr.8ff",0
+model,"account.account.template,name",account_8515,"Provisionsumsätze, steuerfrei § 4 Nr.5","Provisionsumsätze, steuerfrei § 4 Nr.5",0
+model,"account.account.template,name",account_8516,Provisionsumsätze 7% USt,Provisionsumsätze 7% USt,0
+model,"account.account.template,name",account_8518,Provisionsumsätze 16% USt,Provisionsumsätze 16% USt,0
+model,"account.account.template,name",account_8519,Provisionsumsätze 19% USt,Provisionsumsätze 19% USt,0
+model,"account.account.template,name",account_8520,Erlöse Abfallverwertung,Erlöse Abfallverwertung,0
+model,"account.account.template,name",account_8540,Erlöse Leergut,Erlöse Leergut,0
+model,"account.account.template,name",account_8570,"Provision, sonstige Erträge","Provision, sonstige Erträge",0
+model,"account.account.template,name",account_8574,"Provision, sonst.Erträge stfrei §4Nr8ff","Provision, sonst.Erträge stfrei §4Nr8ff",0
+model,"account.account.template,name",account_8575,"Provision, sonst.Erträge stfrei §4 Nr.5","Provision, sonst.Erträge stfrei §4 Nr.5",0
+model,"account.account.template,name",account_8576,"Provision, sonstige Erträge 7% USt","Provision, sonstige Erträge 7% USt",0
+model,"account.account.template,name",account_8579,"Provision, sonstige Erträge 19% USt","Provision, sonstige Erträge 19% USt",0
+model,"account.account.template,name",account_8580,Stat. Konto Erlöse allgemeiner USt-Satz,Stat. Konto Erlöse allgemeiner USt-Satz,0
+model,"account.account.template,name",account_8581,Stat. Konto Erlöse ermäßigter USt-Satz,Stat. Konto Erlöse ermäßigter USt-Satz,0
+model,"account.account.template,name",account_8582,Stat. Konto Erlöse steuerfr./n. stbar,Stat. Konto Erlöse steuerfr./n. stbar,0
+model,"account.account.template,name",account_8589,Gegenkto Aufteilung Erlöse Steuersatz,Gegenkto Aufteilung Erlöse Steuersatz,0
+model,"account.account.template,name",account_8590,Verrechnete sonstige Sachbezüge,Verrechnete sonstige Sachbezüge,0
+model,"account.account.template,name",account_8591,Sachbezüge 7% USt,Sachbezüge 7% USt,0
+model,"account.account.template,name",account_8595,Sachbezüge 19% USt,Sachbezüge 19% USt,0
+model,"account.account.template,name",account_8600,Sonst. Erlöse betr. u. regelmäßig,Sonst. Erlöse betr. u. regelmäßig,0
+model,"account.account.template,name",account_8605,Sonst. Erträge betriebl. und regelm.,Sonst. Erträge betriebl. und regelm.,0
+model,"account.account.template,name",account_8609,Sonst. Erlöse betr. u. regelmäßig stfrei,Sonst. Erlöse betr. u. regelmäßig stfrei,0
+model,"account.account.template,name",account_8610,Verrechnete sonstige Sachbezüge,Verrechnete sonstige Sachbezüge,0
+model,"account.account.template,name",account_8611,Verrechn. sonstige Sachbezüge 19% USt,Verrechn. sonstige Sachbezüge 19% USt,0
+model,"account.account.template,name",account_8614,Verrechn. sonstige Sachbezüge ohne USt,Verrechn. sonstige Sachbezüge ohne USt,0
+model,"account.account.template,name",account_8625,Sonst. Erlöse betr. u. regelmäßig stfr.,Sonst. Erlöse betr. u. regelmäßig stfr.,0
+model,"account.account.template,name",account_8630,Sonst. Erlöse betr. und regelmäßig 7%,Sonst. Erlöse betr. und regelmäßig 7%,0
+model,"account.account.template,name",account_8640,Sonst. Erlöse betr. und regelmäßig 19%,Sonst. Erlöse betr. und regelmäßig 19%,0
+model,"account.account.template,name",account_8648,Sonst. Erlöse betr. und regelmäßig 16%,Sonst. Erlöse betr. und regelmäßig 16%,0
+model,"account.account.template,name",account_8650,Erlöse Zinsen und Diskontspesen,Erlöse Zinsen und Diskontspesen,0
+model,"account.account.template,name",account_8660,Erl.Zinsen /Diskontspesen aus verb.UN,Erl.Zinsen /Diskontspesen aus verb.UN,0
+model,"account.account.template,name",account_8700,Erlösschmälerungen,Erlösschmälerungen,0
+model,"account.account.template,name",account_8705,Erlösschmälerungen steuerfrei §4 Nr. 1a,Erlösschmälerungen steuerfrei §4 Nr. 1a,0
+model,"account.account.template,name",account_8710,Erlösschmälerungen 7% USt,Erlösschmälerungen 7% USt,0
+model,"account.account.template,name",account_8720,Erlösschmälerungen 19% USt,Erlösschmälerungen 19% USt,0
+model,"account.account.template,name",account_8723,Erlösschmälerungen 16% USt,Erlösschmälerungen 16% USt,0
+model,"account.account.template,name",account_8724,Erlösschmälerung EG-Lieferung steuerfrei,Erlösschmälerung EG-Lieferung steuerfrei,0
+model,"account.account.template,name",account_8725,Erlösschmälerung EG-Lieferung 7% USt,Erlösschmälerung EG-Lieferung 7% USt,0
+model,"account.account.template,name",account_8726,Erlösschmälerung EG-Lieferung 19% USt,Erlösschmälerung EG-Lieferung 19% USt,0
+model,"account.account.template,name",account_8727,Erlösschmäl.i.and. EG-Land stpfl. Lief.,Erlösschmäl.i.and. EG-Land stpfl. Lief.,0
+model,"account.account.template,name",account_8729,Erlösschmälerung EG-Lieferung 16% USt,Erlösschmälerung EG-Lieferung 16% USt,0
+model,"account.account.template,name",account_8730,Gewährte Skonti,Gewährte Skonti,0
+model,"account.account.template,name",account_8731,Gewährte Skonti 7% USt,Gewährte Skonti 7% USt,0
+model,"account.account.template,name",account_8735,Gewährte Skonti 16% USt,Gewährte Skonti 16% USt,0
+model,"account.account.template,name",account_8736,Gewährte Skonti 19% USt,Gewährte Skonti 19% USt,0
+model,"account.account.template,name",account_8741,Gewährte Skonti Leistungen §13b UStG,Gewährte Skonti Leistungen §13b UStG,0
+model,"account.account.template,name",account_8743,Gewährte Skonti stfr. EG-Lieferung,Gewährte Skonti stfr. EG-Lieferung,0
+model,"account.account.template,name",account_8745,Gewährte Skonti stpfl. EG-Lieferung,Gewährte Skonti stpfl. EG-Lieferung,0
+model,"account.account.template,name",account_8746,Gewährte Skonti EG-Lieferung 7% USt,Gewährte Skonti EG-Lieferung 7% USt,0
+model,"account.account.template,name",account_8748,Gewährte Skonti EG-Lieferung 19% USt,Gewährte Skonti EG-Lieferung 19% USt,0
+model,"account.account.template,name",account_8749,Gewährte Skonti EG-Lieferung 16% USt,Gewährte Skonti EG-Lieferung 16% USt,0
+model,"account.account.template,name",account_8750,Gewährte Boni 7% USt,Gewährte Boni 7% USt,0
+model,"account.account.template,name",account_8760,Gewährte Boni 19% USt,Gewährte Boni 19% USt,0
+model,"account.account.template,name",account_8764,Gewährte Boni 16% USt,Gewährte Boni 16% USt,0
+model,"account.account.template,name",account_8769,Gewährte Boni,Gewährte Boni,0
+model,"account.account.template,name",account_8770,Gewährte Rabatte,Gewährte Rabatte,0
+model,"account.account.template,name",account_8780,Gewährte Rabatte 7% USt,Gewährte Rabatte 7% USt,0
+model,"account.account.template,name",account_8790,Gewährte Rabatte 19% USt,Gewährte Rabatte 19% USt,0
+model,"account.account.template,name",account_8794,Gewährte Rabatte 16% USt,Gewährte Rabatte 16% USt,0
+model,"account.account.template,name",account_8800,Erlöse Sachanlageverkäufe,Erlöse Sachanlageverkäufe,0
+model,"account.account.template,name",account_8801,Erlöse Sachanlageverkäufe 19% USt,Erlöse Sachanlageverkäufe 19% USt,0
+model,"account.account.template,name",account_8807,Erlöse Sachanlageverkäufe § 4 Nr. 1a,Erlöse Sachanlageverkäufe § 4 Nr. 1a,0
+model,"account.account.template,name",account_8808,Erlöse Sachanlageverkäufe § 4 Nr. 1b,Erlöse Sachanlageverkäufe § 4 Nr. 1b,0
+model,"account.account.template,name",account_8817,Erlöse Verkäufe immat.Vermögensgegenst,Erlöse Verkäufe immat.Vermögensgegenst,0
+model,"account.account.template,name",account_8818,Erlöse a. Verkäufen Finanzanlagen,Erlöse a. Verkäufen Finanzanlagen,0
+model,"account.account.template,name",account_8819,Erlöse Verkauf Finanzanl. z.T. n.abz.,Erlöse Verkauf Finanzanl. z.T. n.abz.,0
+model,"account.account.template,name",account_8820,Erlöse Sachanlageverkäufe 19% USt,Erlöse Sachanlageverkäufe 19% USt,0
+model,"account.account.template,name",account_8827,Erlöse Sachanlageverkäufe § 4 Nr. 1a,Erlöse Sachanlageverkäufe § 4 Nr. 1a,0
+model,"account.account.template,name",account_8828,Erlöse Sachanlageverkäufe § 4 Nr. 1b,Erlöse Sachanlageverkäufe § 4 Nr. 1b,0
+model,"account.account.template,name",account_8829,Erlöse Sachanlageverkäufe,Erlöse Sachanlageverkäufe,0
+model,"account.account.template,name",account_8837,Erlöse Verkäufe immat.Vermögensgegenst,Erlöse Verkäufe immat.Vermögensgegenst,0
+model,"account.account.template,name",account_8838,Erlöse a. Verkäufen Finanzanlagen,Erlöse a. Verkäufen Finanzanlagen,0
+model,"account.account.template,name",account_8839,Erlöse Verkauf Finanzanl. z.T. stfrei,Erlöse Verkauf Finanzanl. z.T. stfrei,0
+model,"account.account.template,name",account_8850,"Erlöse Verkauf WG des UV §4/3, 19% USt","Erlöse Verkauf WG des UV §4/3, 19% USt",0
+model,"account.account.template,name",account_8851,"Erlöse Verkauf WG des UV §4/3, stfrei","Erlöse Verkauf WG des UV §4/3, stfrei",0
+model,"account.account.template,name",account_8852,"Verkauf WG UV § 4/3 ustfrei, z.T. stfrei","Verkauf WG UV § 4/3 ustfrei, z.T. stfrei",0
+model,"account.account.template,name",account_8853,Erlöse Verkauf WG des UV § 4/3 EStG,Erlöse Verkauf WG des UV § 4/3 EStG,0
+model,"account.account.template,name",account_8900,Unentgeltliche Wertabgaben,Unentgeltliche Wertabgaben,0
+model,"account.account.template,name",account_8905,Entnahme von Gegenständen ohne USt,Entnahme von Gegenständen ohne USt,0
+model,"account.account.template,name",account_8906,Verwendung von Gegenständen ohne USt,Verwendung von Gegenständen ohne USt,0
+model,"account.account.template,name",account_8910,Entnahme Unternehmer (Waren) 19% USt,Entnahme Unternehmer (Waren) 19% USt,0
+model,"account.account.template,name",account_8915,Entnahme Unternehmer (Waren) 7% USt,Entnahme Unternehmer (Waren) 7% USt,0
+model,"account.account.template,name",account_8917,Entnahme Unternehmer (Waren) 7% USt,Entnahme Unternehmer (Waren) 7% USt,0
+model,"account.account.template,name",account_8918,Verwendung von Gegenst.(Tel) ohne USt,Verwendung von Gegenst.(Tel) ohne USt,0
+model,"account.account.template,name",account_8919,Entnahme Unternehmer (Waren) ohne USt,Entnahme Unternehmer (Waren) ohne USt,0
+model,"account.account.template,name",account_8920,Verwendung von Gegenständen 19% USt,Verwendung von Gegenständen 19% USt,0
+model,"account.account.template,name",account_8921,Verwendung von Gegenst. (Kfz) 19% USt,Verwendung von Gegenst. (Kfz) 19% USt,0
+model,"account.account.template,name",account_8922,Verwendung von Gegenst. (Tel) 19% USt,Verwendung von Gegenst. (Tel) 19% USt,0
+model,"account.account.template,name",account_8924,Verwendung von Gegenst.(Kfz) ohne USt,Verwendung von Gegenst.(Kfz) ohne USt,0
+model,"account.account.template,name",account_8925,Unentgeltl. Erbringung Leist. 19% USt,Unentgeltl. Erbringung Leist. 19% USt,0
+model,"account.account.template,name",account_8929,Unentgeltl. Erbringung Leist. ohne USt,Unentgeltl. Erbringung Leist. ohne USt,0
+model,"account.account.template,name",account_8930,Verwendung von Gegenständen 7% USt,Verwendung von Gegenständen 7% USt,0
+model,"account.account.template,name",account_8931,Verwendung von Gegenständen 7% USt,Verwendung von Gegenständen 7% USt,0
+model,"account.account.template,name",account_8932,Unentgeltl. Erbringung Leist. 7% USt,Unentgeltl. Erbringung Leist. 7% USt,0
+model,"account.account.template,name",account_8933,Unentgeltl. Erbringung Leist. 7% USt,Unentgeltl. Erbringung Leist. 7% USt,0
+model,"account.account.template,name",account_8935,Unentgeltl. Zuwend. Gegenstände 19% USt,Unentgeltl. Zuwend. Gegenstände 19% USt,0
+model,"account.account.template,name",account_8939,Unentgeltl. Zuwend. Gegenstände ohne USt,Unentgeltl. Zuwend. Gegenstände ohne USt,0
+model,"account.account.template,name",account_8940,Unentgeltl. Zuwend. von Waren 19% USt,Unentgeltl. Zuwend. von Waren 19% USt,0
+model,"account.account.template,name",account_8945,Unentgeltl. Zuwend. von Waren 7% USt,Unentgeltl. Zuwend. von Waren 7% USt,0
+model,"account.account.template,name",account_8947,Unentgeltl. Zuwend. von Waren 7% USt,Unentgeltl. Zuwend. von Waren 7% USt,0
+model,"account.account.template,name",account_8949,Unentgeltl. Zuwend. von Waren ohne USt,Unentgeltl. Zuwend. von Waren ohne USt,0
+model,"account.account.template,name",account_8950,Nicht steuerbare Umsätze,Nicht steuerbare Umsätze,0
+model,"account.account.template,name",account_8955,Umsatzsteuer-Vergütungen,Umsatzsteuer-Vergütungen,0
+model,"account.account.template,name",account_8960,Bestandsveränd.unfertige Erzeugnisse,Bestandsveränd.unfertige Erzeugnisse,0
+model,"account.account.template,name",account_8970,Bestandsveränderung unfertige Leistung,Bestandsveränderung unfertige Leistung,0
+model,"account.account.template,name",account_8975,Bestandsveränderung Bauaufträge,Bestandsveränderung Bauaufträge,0
+model,"account.account.template,name",account_8977,Bestandsveränderung Aufträge in Arbeit,Bestandsveränderung Aufträge in Arbeit,0
+model,"account.account.template,name",account_8980,Bestandsveränderung fertige Erzeugnisse,Bestandsveränderung fertige Erzeugnisse,0
+model,"account.account.template,name",account_8990,Andere aktivierte Eigenleistungen,Andere aktivierte Eigenleistungen,0
+model,"account.account.template,name",balance_root_de,Bilanzkonten,Bilanzkonten,0
+model,"account.account.template,name",root_de,Chart of Accounts SKR03 (Germany),Kontenplan SKR03,0
+model,"account.account.template,name",view_balance_1020,Ausstehende Einlagen,Ausstehende Einlagen,0
+model,"account.account.template,name",view_balance_1025,davon eingefordert,davon eingefordert,0
+model,"account.account.template,name",view_balance_1050,Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,0
+model,"account.account.template,name",view_balance_1060,Aufwendungen für die Währungsumstellung auf den Euro,Aufwendungen für die Währungsumstellung auf den Euro,0
+model,"account.account.template,name",view_balance_1080,Anlagevermögen,Anlagevermögen,0
+model,"account.account.template,name",view_balance_1100,Immaterielle Vermögensgegenstände,Immaterielle Vermögensgegenstände,0
+model,"account.account.template,name",view_balance_1120,"Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten","Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten",0
+model,"account.account.template,name",view_balance_1130,Geschäfts- oder Firmenwert,Geschäfts- oder Firmenwert,0
+model,"account.account.template,name",view_balance_1150,geleistete Anzahlungen,geleistete Anzahlungen,0
+model,"account.account.template,name",view_balance_1180,Sachanlagen,Sachanlagen,0
+model,"account.account.template,name",view_balance_1200,"Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken","Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken",0
+model,"account.account.template,name",view_balance_1210,technische Anlagen und Maschinen,technische Anlagen und Maschinen,0
+model,"account.account.template,name",view_balance_1220,"andere Anlagen, Betriebs- und Geschäftsausstattung","andere Anlagen, Betriebs- und Geschäftsausstattung",0
+model,"account.account.template,name",view_balance_1230,geleistete Anzahlungen und Anlagen im Bau,geleistete Anzahlungen und Anlagen im Bau,0
+model,"account.account.template,name",view_balance_1260,Finanzanlagen,Finanzanlagen,0
+model,"account.account.template,name",view_balance_1280,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.template,name",view_balance_1290,Ausleihungen an verbundene Unternehmen,Ausleihungen an verbundene Unternehmen,0
+model,"account.account.template,name",view_balance_1300,Beteiligungen,Beteiligungen,0
+model,"account.account.template,name",view_balance_1310,"Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.template,name",view_balance_1320,Wertpapiere des Anlagevermögens,Wertpapiere des Anlagevermögens,0
+model,"account.account.template,name",view_balance_1325,sonstige Ausleihungen,sonstige Ausleihungen,0
+model,"account.account.template,name",view_balance_1328,Genossenschaftsanteile,Genossenschaftsanteile,0
+model,"account.account.template,name",view_balance_1330,Rückdeckungsansprüche aus Lebensversicherungen,Rückdeckungsansprüche aus Lebensversicherungen,0
+model,"account.account.template,name",view_balance_1410,Umlaufvermögen,Umlaufvermögen,0
+model,"account.account.template,name",view_balance_1430,Vorräte,Vorräte,0
+model,"account.account.template,name",view_balance_1450,"Roh-, Hilfs- und Betriebsstoffe","Roh-, Hilfs- und Betriebsstoffe",0
+model,"account.account.template,name",view_balance_1460,"unfertige Erzeugnisse, unfertige Leistungen","unfertige Erzeugnisse, unfertige Leistungen",0
+model,"account.account.template,name",view_balance_1465,in Ausführung befindliche Bauaufträge,in Ausführung befindliche Bauaufträge,0
+model,"account.account.template,name",view_balance_1467,in Arbeit befindliche Aufträge,in Arbeit befindliche Aufträge,0
+model,"account.account.template,name",view_balance_1470,fertige Erzeugnisse und Waren,fertige Erzeugnisse und Waren,0
+model,"account.account.template,name",view_balance_1480,geleistete Anzahlungen,geleistete Anzahlungen,0
+model,"account.account.template,name",view_balance_1490,erhaltene Anzahlungen auf Bestellungen,erhaltene Anzahlungen auf Bestellungen,0
+model,"account.account.template,name",view_balance_1510,Forderungen und sonstige Vermögensgegenstände,Forderungen und sonstige Vermögensgegenstände,0
+model,"account.account.template,name",view_balance_1530,Forderungen aus Lieferungen und Leistungen,Forderungen aus Lieferungen und Leistungen,0
+model,"account.account.template,name",view_balance_1535,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.template,name",view_balance_1540,Forderungen gegen verbundene Unternehmen,Forderungen gegen verbundene Unternehmen,0
+model,"account.account.template,name",view_balance_1545,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.template,name",view_balance_1550,"Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.template,name",view_balance_1555,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.template,name",view_balance_1580,sonstige Vermögensgegenstände,sonstige Vermögensgegenstände,0
+model,"account.account.template,name",view_balance_1585,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.template,name",view_balance_1600,Wertpapiere,Wertpapiere,0
+model,"account.account.template,name",view_balance_1620,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.template,name",view_balance_1630,eigene Anteile,eigene Anteile,0
+model,"account.account.template,name",view_balance_1640,sonstige Wertpapiere,sonstige Wertpapiere,0
+model,"account.account.template,name",view_balance_1660,"Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks","Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks",0
+model,"account.account.template,name",view_balance_1680,Rechnungsabgrenzungsposten,Rechnungsabgrenzungsposten,0
+model,"account.account.template,name",view_balance_1700,Abgrenzung latenter Steuern,Abgrenzung latenter Steuern,0
+model,"account.account.template,name",view_balance_1960,Passiva,Passiva,0
+model,"account.account.template,name",view_balance_2020,Kapital,Kapital,0
+model,"account.account.template,name",view_balance_2030,Anfangskapital,Anfangskapital,0
+model,"account.account.template,name",view_balance_2050,Einlagen,Einlagen,0
+model,"account.account.template,name",view_balance_2060,Entnahmen,Entnahmen,0
+model,"account.account.template,name",view_balance_2070,Jahresüberschuss Jahresfehlbetrag,Jahresüberschuss Jahresfehlbetrag,0
+model,"account.account.template,name",view_balance_2310,Einlagen stiller Gesellschafter,Einlagen stiller Gesellschafter,0
+model,"account.account.template,name",view_balance_2330,Sonderposten mit Rücklageanteil,Sonderposten mit Rücklageanteil,0
+model,"account.account.template,name",view_balance_2335,Sonderposten für Zuschüsse und Zulagen,Sonderposten für Zuschüsse und Zulagen,0
+model,"account.account.template,name",view_balance_2340,Sonderposten aus der Währungsumstellung auf den Euro,Sonderposten aus der Währungsumstellung auf den Euro,0
+model,"account.account.template,name",view_balance_2360,Rückstellungen,Rückstellungen,0
+model,"account.account.template,name",view_balance_2380,Rückstellungen für Pensionen und ähnliche Verpflichtungen,Rückstellungen für Pensionen und ähnliche Verpflichtungen,0
+model,"account.account.template,name",view_balance_2390,Steuerrückstellungen,Steuerrückstellungen,0
+model,"account.account.template,name",view_balance_2410,sonstige Rückstellungen,sonstige Rückstellungen,0
+model,"account.account.template,name",view_balance_2440,Verbindlichkeiten,Verbindlichkeiten,0
+model,"account.account.template,name",view_balance_2460,Anleihen,Anleihen,0
+model,"account.account.template,name",view_balance_2465,davon konvertibel,davon konvertibel,0
+model,"account.account.template,name",view_balance_2467,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2470,Verbindlichkeiten gegenüber Kreditinstituten,Verbindlichkeiten gegenüber Kreditinstituten,0
+model,"account.account.template,name",view_balance_2475,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2480,erhaltene Anzahlungen auf Bestellungen,erhaltene Anzahlungen auf Bestellungen,0
+model,"account.account.template,name",view_balance_2485,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2490,Verbindlichkeiten aus Lieferungen und Leistungen,Verbindlichkeiten aus Lieferungen und Leistungen,0
+model,"account.account.template,name",view_balance_2495,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2500,Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel,Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel,0
+model,"account.account.template,name",view_balance_2505,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2510,Verbindlichkeiten gegenüber verbundenen Unternehmen,Verbindlichkeiten gegenüber verbundenen Unternehmen,0
+model,"account.account.template,name",view_balance_2515,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2520,"Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.template,name",view_balance_2525,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2530,sonstige Verbindlichkeiten,sonstige Verbindlichkeiten,0
+model,"account.account.template,name",view_balance_2535,davon aus Steuern,davon aus Steuern,0
+model,"account.account.template,name",view_balance_2537,davon im Rahmen der sozialen Sicherheit,davon im Rahmen der sozialen Sicherheit,0
+model,"account.account.template,name",view_balance_2539,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.template,name",view_balance_2560,Rechnungsabgrenzungsposten,Rechnungsabgrenzungsposten,0
+model,"account.account.template,name",view_balance_2890,Bilanzneutrale Konten,Bilanzneutrale Konten,0
+model,"account.account.template,name",view_balance_2980,"Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten","Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten",0
+model,"account.account.template,name",view_balance_960,Aktiva,Aktiva,0
+model,"account.account.template,name",view_income_1020,Umsatzerlöse,Umsatzerlöse,0
+model,"account.account.template,name",view_income_1040,Best.Verdg. FE/UE,Best.Verdg. FE/UE,0
+model,"account.account.template,name",view_income_1045,Akt.Eigenleistungen,Akt.Eigenleistungen,0
+model,"account.account.template,name",view_income_1051,Gesamtleistung,Gesamtleistung,0
+model,"account.account.template,name",view_income_1060,Mat./Wareneinkauf,Mat./Wareneinkauf,0
+model,"account.account.template,name",view_income_1080,Rohertrag,Rohertrag,0
+model,"account.account.template,name",view_income_1090,So. betr. Erlöse,So. betr. Erlöse,0
+model,"account.account.template,name",view_income_1092,Betriebl. Rohertrag,Betriebl. Rohertrag,0
+model,"account.account.template,name",view_income_1100,Personalkosten,Personalkosten,0
+model,"account.account.template,name",view_income_1120,Raumkosten,Raumkosten,0
+model,"account.account.template,name",view_income_1140,Betriebl. Steuern,Betriebl. Steuern,0
+model,"account.account.template,name",view_income_1150,Versich./Beiträge,Versich./Beiträge,0
+model,"account.account.template,name",view_income_1160,Besondere Kosten,Besondere Kosten,0
+model,"account.account.template,name",view_income_1180,Kfz-Kosten (o. St.),Kfz-Kosten (o. St.),0
+model,"account.account.template,name",view_income_1200,Werbe-/Reisekosten,Werbe-/Reisekosten,0
+model,"account.account.template,name",view_income_1220,Kosten Warenabgabe,Kosten Warenabgabe,0
+model,"account.account.template,name",view_income_1240,Abschreibungen,Abschreibungen,0
+model,"account.account.template,name",view_income_1250,Reparatur/Instandh.,Reparatur/Instandh.,0
+model,"account.account.template,name",view_income_1260,Sonstige Kosten,Sonstige Kosten,0
+model,"account.account.template,name",view_income_1280,Gesamtkosten,Gesamtkosten,0
+model,"account.account.template,name",view_income_1300,Betriebsergebnis,Betriebsergebnis,0
+model,"account.account.template,name",view_income_1310,Zinsaufwand,Zinsaufwand,0
+model,"account.account.template,name",view_income_1312,Sonst. neutr. Aufw,Sonst. neutr. Aufw,0
+model,"account.account.template,name",view_income_1320,Neutraler Aufwand,Neutraler Aufwand,0
+model,"account.account.template,name",view_income_1322,Zinserträge,Zinserträge,0
+model,"account.account.template,name",view_income_1323,Sonst. neutr. Ertr,Sonst. neutr. Ertr,0
+model,"account.account.template,name",view_income_1324,Verr. kalk. Kosten,Verr. kalk. Kosten,0
+model,"account.account.template,name",view_income_1330,Neutraler Ertrag,Neutraler Ertrag,0
+model,"account.account.template,name",view_income_1340,Kontenkl. unbesetzt,Kontenkl. unbesetzt,0
+model,"account.account.template,name",view_income_1345,Ergebnis vor Steuern,Ergebnis vor Steuern,0
+model,"account.account.template,name",view_income_1355,Steuern Eink.u.Ertr,Steuern Eink.u.Ertr,0
+model,"account.account.template,name",view_income_1380,Vorläufiges Ergebnis,Vorläufiges Ergebnis,0
+model,"account.account.type.template,name",type_1020,Ausstehende Einlagen,Ausstehende Einlagen,0
+model,"account.account.type.template,name",type_1025,davon eingefordert,davon eingefordert,0
+model,"account.account.type.template,name",type_1050,Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,0
+model,"account.account.type.template,name",type_1060,Aufwendungen für die Währungsumstellung auf den Euro,Aufwendungen für die Währungsumstellung auf den Euro,0
+model,"account.account.type.template,name",type_1080,Anlagevermögen,Anlagevermögen,0
+model,"account.account.type.template,name",type_1100,Immaterielle Vermögensgegenstände,Immaterielle Vermögensgegenstände,0
+model,"account.account.type.template,name",type_1120,"Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten","Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten",0
+model,"account.account.type.template,name",type_1130,Geschäfts- oder Firmenwert,Geschäfts- oder Firmenwert,0
+model,"account.account.type.template,name",type_1150,geleistete Anzahlungen,geleistete Anzahlungen,0
+model,"account.account.type.template,name",type_1180,Sachanlagen,Sachanlagen,0
+model,"account.account.type.template,name",type_1200,"Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken","Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken",0
+model,"account.account.type.template,name",type_1210,technische Anlagen und Maschinen,technische Anlagen und Maschinen,0
+model,"account.account.type.template,name",type_1220,"andere Anlagen, Betriebs- und Geschäftsausstattung","andere Anlagen, Betriebs- und Geschäftsausstattung",0
+model,"account.account.type.template,name",type_1230,geleistete Anzahlungen und Anlagen im Bau,geleistete Anzahlungen und Anlagen im Bau,0
+model,"account.account.type.template,name",type_1260,Finanzanlagen,Finanzanlagen,0
+model,"account.account.type.template,name",type_1280,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_1290,Ausleihungen an verbundene Unternehmen,Ausleihungen an verbundene Unternehmen,0
+model,"account.account.type.template,name",type_1300,Beteiligungen,Beteiligungen,0
+model,"account.account.type.template,name",type_1310,"Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.type.template,name",type_1320,Wertpapiere des Anlagevermögens,Wertpapiere des Anlagevermögens,0
+model,"account.account.type.template,name",type_1325,sonstige Ausleihungen,sonstige Ausleihungen,0
+model,"account.account.type.template,name",type_1328,Genossenschaftsanteile,Genossenschaftsanteile,0
+model,"account.account.type.template,name",type_1330,Rückdeckungsansprüche aus Lebensversicherungen,Rückdeckungsansprüche aus Lebensversicherungen,0
+model,"account.account.type.template,name",type_1410,Umlaufvermögen,Umlaufvermögen,0
+model,"account.account.type.template,name",type_1430,Vorräte,Vorräte,0
+model,"account.account.type.template,name",type_1450,"Roh-, Hilfs- und Betriebsstoffe","Roh-, Hilfs- und Betriebsstoffe",0
+model,"account.account.type.template,name",type_1460,"unfertige Erzeugnisse, unfertige Leistungen","unfertige Erzeugnisse, unfertige Leistungen",0
+model,"account.account.type.template,name",type_1465,in Ausführung befindliche Bauaufträge,in Ausführung befindliche Bauaufträge,0
+model,"account.account.type.template,name",type_1467,in Arbeit befindliche Aufträge,in Arbeit befindliche Aufträge,0
+model,"account.account.type.template,name",type_1470,fertige Erzeugnisse und Waren,fertige Erzeugnisse und Waren,0
+model,"account.account.type.template,name",type_1480,geleistete Anzahlungen,geleistete Anzahlungen,0
+model,"account.account.type.template,name",type_1490,erhaltene Anzahlungen auf Bestellungen,erhaltene Anzahlungen auf Bestellungen,0
+model,"account.account.type.template,name",type_1510,Forderungen und sonstige Vermögensgegenstände,Forderungen und sonstige Vermögensgegenstände,0
+model,"account.account.type.template,name",type_1530,Forderungen aus Lieferungen und Leistungen,Forderungen aus Lieferungen und Leistungen,0
+model,"account.account.type.template,name",type_1535,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.type.template,name",type_1540,Forderungen gegen verbundene Unternehmen,Forderungen gegen verbundene Unternehmen,0
+model,"account.account.type.template,name",type_1545,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.type.template,name",type_1550,"Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.type.template,name",type_1555,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.type.template,name",type_1580,sonstige Vermögensgegenstände,sonstige Vermögensgegenstände,0
+model,"account.account.type.template,name",type_1585,davon mit einer Restlaufzeit von mehr als einem Jahr,davon mit einer Restlaufzeit von mehr als einem Jahr,0
+model,"account.account.type.template,name",type_1600,Wertpapiere,Wertpapiere,0
+model,"account.account.type.template,name",type_1620,Anteile an verbundenen Unternehmen,Anteile an verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_1630,eigene Anteile,eigene Anteile,0
+model,"account.account.type.template,name",type_1640,sonstige Wertpapiere,sonstige Wertpapiere,0
+model,"account.account.type.template,name",type_1660,"Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks","Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks",0
+model,"account.account.type.template,name",type_1680,Rechnungsabgrenzungsposten,Rechnungsabgrenzungsposten,0
+model,"account.account.type.template,name",type_1700,Abgrenzung latenter Steuern,Abgrenzung latenter Steuern,0
+model,"account.account.type.template,name",type_1960,Passiva,Passiva,0
+model,"account.account.type.template,name",type_2020,Kapital,Kapital,0
+model,"account.account.type.template,name",type_2030,Anfangskapital,Anfangskapital,0
+model,"account.account.type.template,name",type_2050,Einlagen,Einlagen,0
+model,"account.account.type.template,name",type_2060,Entnahmen,Entnahmen,0
+model,"account.account.type.template,name",type_2070,Jahresüberschuss Jahresfehlbetrag,Jahresüberschuss Jahresfehlbetrag,0
+model,"account.account.type.template,name",type_2310,Einlagen stiller Gesellschafter,Einlagen stiller Gesellschafter,0
+model,"account.account.type.template,name",type_2330,Sonderposten mit Rücklageanteil,Sonderposten mit Rücklageanteil,0
+model,"account.account.type.template,name",type_2335,Sonderposten für Zuschüsse und Zulagen,Sonderposten für Zuschüsse und Zulagen,0
+model,"account.account.type.template,name",type_2340,Sonderposten aus der Währungsumstellung auf den Euro,Sonderposten aus der Währungsumstellung auf den Euro,0
+model,"account.account.type.template,name",type_2360,Rückstellungen,Rückstellungen,0
+model,"account.account.type.template,name",type_2380,Rückstellungen für Pensionen und ähnliche Verpflichtungen,Rückstellungen für Pensionen und ähnliche Verpflichtungen,0
+model,"account.account.type.template,name",type_2390,Steuerrückstellungen,Steuerrückstellungen,0
+model,"account.account.type.template,name",type_2410,sonstige Rückstellungen,sonstige Rückstellungen,0
+model,"account.account.type.template,name",type_2440,Verbindlichkeiten,Verbindlichkeiten,0
+model,"account.account.type.template,name",type_2460,Anleihen,Anleihen,0
+model,"account.account.type.template,name",type_2465,davon konvertibel,davon konvertibel,0
+model,"account.account.type.template,name",type_2467,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2470,Verbindlichkeiten gegenüber Kreditinstituten,Verbindlichkeiten gegenüber Kreditinstituten,0
+model,"account.account.type.template,name",type_2475,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2480,erhaltene Anzahlungen auf Bestellungen,erhaltene Anzahlungen auf Bestellungen,0
+model,"account.account.type.template,name",type_2485,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2490,Verbindlichkeiten aus Lieferungen und Leistungen,Verbindlichkeiten aus Lieferungen und Leistungen,0
+model,"account.account.type.template,name",type_2495,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2500,Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel,Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel,0
+model,"account.account.type.template,name",type_2505,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2510,Verbindlichkeiten gegenüber verbundenen Unternehmen,Verbindlichkeiten gegenüber verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_2515,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2520,"Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht","Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht",0
+model,"account.account.type.template,name",type_2525,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2530,sonstige Verbindlichkeiten,sonstige Verbindlichkeiten,0
+model,"account.account.type.template,name",type_2535,davon aus Steuern,davon aus Steuern,0
+model,"account.account.type.template,name",type_2537,davon im Rahmen der sozialen Sicherheit,davon im Rahmen der sozialen Sicherheit,0
+model,"account.account.type.template,name",type_2539,davon mit einer Restlaufzeit bis zu einem Jahr,davon mit einer Restlaufzeit bis zu einem Jahr,0
+model,"account.account.type.template,name",type_2560,Rechnungsabgrenzungsposten,Rechnungsabgrenzungsposten,0
+model,"account.account.type.template,name",type_2890,Bilanzneutrale Konten,Bilanzneutrale Konten,0
+model,"account.account.type.template,name",type_2980,"Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten","Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten",0
+model,"account.account.type.template,name",type_3010x,Ergebnis der gewöhnlichen Geschäftstätigkeit,Ergebnis der gewöhnlichen Geschäftstätigkeit,0
+model,"account.account.type.template,name",type_4020,Umsatzerlöse,Umsatzerlöse,0
+model,"account.account.type.template,name",type_4040,Erhöhung des Bestands an fertigen und unfertigen Erzeugnissen Verminderung des Bestands an fertigen und unfertigen Erzeugnissen,Erhöhung des Bestands an fertigen und unfertigen Erzeugnissen Verminderung des Bestands an fertigen und unfertigen Erzeugnissen,0
+model,"account.account.type.template,name",type_4045,Erhöhung des Bestands in Ausführung befindlicher Bauaufträge Verminderung des Bestands in Ausführung befindlicher Bauaufträge,Erhöhung des Bestands in Ausführung befindlicher Bauaufträge Verminderung des Bestands in Ausführung befindlicher Bauaufträge,0
+model,"account.account.type.template,name",type_4050,Erhöhung des Bestands in Arbeit befindlicher Aufträge Verminderung des Bestands in Arbeit befindlicher Aufträge,Erhöhung des Bestands in Arbeit befindlicher Aufträge Verminderung des Bestands in Arbeit befindlicher Aufträge,0
+model,"account.account.type.template,name",type_4060,andere aktivierte Eigenleistungen,andere aktivierte Eigenleistungen,0
+model,"account.account.type.template,name",type_4080,sonstige betriebliche Erträge,sonstige betriebliche Erträge,0
+model,"account.account.type.template,name",type_4100,Materialaufwand,Materialaufwand,0
+model,"account.account.type.template,name",type_4120,"Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren","Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren",0
+model,"account.account.type.template,name",type_4140,Aufwendungen für bezogene Leistungen,Aufwendungen für bezogene Leistungen,0
+model,"account.account.type.template,name",type_4160,Personalaufwand,Personalaufwand,0
+model,"account.account.type.template,name",type_4180,Löhne und Gehälter,Löhne und Gehälter,0
+model,"account.account.type.template,name",type_4200,soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung,soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung,0
+model,"account.account.type.template,name",type_4205,davon für Altersversorgung,davon für Altersversorgung,0
+model,"account.account.type.template,name",type_4220,Abschreibungen,Abschreibungen,0
+model,"account.account.type.template,name",type_4240,auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen sowie auf aktivierte Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen sowie auf aktivierte Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs,0
+model,"account.account.type.template,name",type_4260,"auf Vermögensgegenstände des Umlaufvermögens, soweit diese die in der Kapitalgesellschaft üblichen Abschreibungen überschreiten","auf Vermögensgegenstände des Umlaufvermögens, soweit diese die in der Kapitalgesellschaft üblichen Abschreibungen überschreiten",0
+model,"account.account.type.template,name",type_4280,sonstige betriebliche Aufwendungen,sonstige betriebliche Aufwendungen,0
+model,"account.account.type.template,name",type_4300,Erträge aus Beteiligungen,Erträge aus Beteiligungen,0
+model,"account.account.type.template,name",type_4305,davon aus verbundenen Unternehmen,davon aus verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_4315,"auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags erhaltene Gewinne","auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags erhaltene Gewinne",0
+model,"account.account.type.template,name",type_4320,Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens,Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens,0
+model,"account.account.type.template,name",type_4325,davon aus verbundenen Unternehmen,davon aus verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_4340,sonstige Zinsen und ähnliche Erträge,sonstige Zinsen und ähnliche Erträge,0
+model,"account.account.type.template,name",type_4345,davon aus verbundenen Unternehmen,davon aus verbundenen Unternehmen,0
+model,"account.account.type.template,name",type_4420,Abschreibungen auf Finanzanlagen und auf Wertpapiere des Umlaufvermögens,Abschreibungen auf Finanzanlagen und auf Wertpapiere des Umlaufvermögens,0
+model,"account.account.type.template,name",type_4440,Zinsen und ähnliche Aufwendungen,Zinsen und ähnliche Aufwendungen,0
+model,"account.account.type.template,name",type_4445,davon an verbundene Unternehmen,davon an verbundene Unternehmen,0
+model,"account.account.type.template,name",type_4460,Aufwendungen aus Verlustübernahme,Aufwendungen aus Verlustübernahme,0
+model,"account.account.type.template,name",type_4540,außerordentliche Erträge,außerordentliche Erträge,0
+model,"account.account.type.template,name",type_4560,außerordentliche Aufwendungen,außerordentliche Aufwendungen,0
+model,"account.account.type.template,name",type_4580,außerordentliches Ergebnis,außerordentliches Ergebnis,0
+model,"account.account.type.template,name",type_4600,Steuern vom Einkommen und vom Ertrag,Steuern vom Einkommen und vom Ertrag,0
+model,"account.account.type.template,name",type_4620,sonstige Steuern,sonstige Steuern,0
+model,"account.account.type.template,name",type_4635,Erträge aus Verlustübernahme,Erträge aus Verlustübernahme,0
+model,"account.account.type.template,name",type_4645,"auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags abgeführte Gewinne","auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags abgeführte Gewinne",0
+model,"account.account.type.template,name",type_960,Aktiva,Aktiva,0
+model,"account.account.type.template,name",type_balance,Chart of Account Types SKR03 (Germany),Kontentypenplan SKR03,0
+model,"account.tax.code.template,name",tax_code_35,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_36,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_39,"Anrechnung (Abzug) der festgesetzten Sondervorauszahlung für Dauerfristverlängerung (nur auszufüllen in der letzten Voranmeldung des Besteuerungszeitraums, in der Regel Dezember)","Anrechnung (Abzug) der festgesetzten Sondervorauszahlung für Dauerfristverlängerung (nur auszufüllen in der letzten Voranmeldung des Besteuerungszeitraums, in der Regel Dezember)",0
+model,"account.tax.code.template,name",tax_code_41,Innergemeinschaftliche Lieferungen (§ 4 Nr. 1 Buchst. b UStG) an Abnehmer mit USt-IdNr,Innergemeinschaftliche Lieferungen (§ 4 Nr. 1 Buchst. b UStG) an Abnehmer mit USt-IdNr,0
+model,"account.tax.code.template,name",tax_code_42,Lieferungen des ersten Abnehmers bei innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 2 UStG),Lieferungen des ersten Abnehmers bei innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 2 UStG),0
+model,"account.tax.code.template,name",tax_code_43,"Weitere steuerfreie Umsätze mit Vorsteuerabzug (z.B. Ausfuhrlieferungen, Umsätze nach § 4 Nr. 2 bis 7 UStG)","Weitere steuerfreie Umsätze mit Vorsteuerabzug (z.B. Ausfuhrlieferungen, Umsätze nach § 4 Nr. 2 bis 7 UStG)",0
+model,"account.tax.code.template,name",tax_code_44,neuer Fahrzeuge an Abnehmer ohne USt-IdNr,neuer Fahrzeuge an Abnehmer ohne USt-IdNr,0
+model,"account.tax.code.template,name",tax_code_45,Nicht steuerbare Umsätze (Leistungsort nicht im Inland),Nicht steuerbare Umsätze (Leistungsort nicht im Inland),0
+model,"account.tax.code.template,name",tax_code_48,Umsätze nach § 4 Nr. 8 bis 28 UStG,Umsätze nach § 4 Nr. 8 bis 28 UStG,0
+model,"account.tax.code.template,name",tax_code_49,neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG),neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG),0
+model,"account.tax.code.template,name",tax_code_52,Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),0
+model,"account.tax.code.template,name",tax_code_53,Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),0
+model,"account.tax.code.template,name",tax_code_59,Vorsteuerabzug für innergemeinschaftliche Lieferungen neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG) sowie von Kleinunternehmern im Sinne des § 19 Abs. 1 UStG (§ 15 Abs. 4a UStG),Vorsteuerabzug für innergemeinschaftliche Lieferungen neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG) sowie von Kleinunternehmern im Sinne des § 19 Abs. 1 UStG (§ 15 Abs. 4a UStG),0
+model,"account.tax.code.template,name",tax_code_60,"Steuerpflichtige Umsätze im Sinne des § 13b Abs. 1 Satz 1 Nr. 1 bis 5 UStG, für die der Leistungsempfänger die Steuer schuldet","Steuerpflichtige Umsätze im Sinne des § 13b Abs. 1 Satz 1 Nr. 1 bis 5 UStG, für die der Leistungsempfänger die Steuer schuldet",0
+model,"account.tax.code.template,name",tax_code_61,Vorsteuerbeträge aus dem innergemeinschaftlichen Erwerb von Gegenständen (§ 15 Abs. 1 Satz 1 Nr. 3 UStG),Vorsteuerbeträge aus dem innergemeinschaftlichen Erwerb von Gegenständen (§ 15 Abs. 1 Satz 1 Nr. 3 UStG),0
+model,"account.tax.code.template,name",tax_code_62,Entrichtete Einfuhrumsatzsteuer (§ 15 Abs. 1 Satz 1 Nr. 2 UStG),Entrichtete Einfuhrumsatzsteuer (§ 15 Abs. 1 Satz 1 Nr. 2 UStG),0
+model,"account.tax.code.template,name",tax_code_63,"Vorsteuerbeträge, die nach allgemeinen Durchschnittssätzen berechnet sind (§§ 23 und 23a UStG)","Vorsteuerbeträge, die nach allgemeinen Durchschnittssätzen berechnet sind (§§ 23 und 23a UStG)",0
+model,"account.tax.code.template,name",tax_code_64,Berichtigung des Vorsteuerabzugs (§ 15a UStG),Berichtigung des Vorsteuerabzugs (§ 15a UStG),0
+model,"account.tax.code.template,name",tax_code_65,Steuer infolge Wechsels der Besteuerungsform sowie Nachsteuer auf versteuerte Anzahlungen u. ä. wegen Steuersatzänderung,Steuer infolge Wechsels der Besteuerungsform sowie Nachsteuer auf versteuerte Anzahlungen u. ä. wegen Steuersatzänderung,0
+model,"account.tax.code.template,name",tax_code_66,"Vorsteuerbeträge aus Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), aus Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und aus innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 5 UStG)","Vorsteuerbeträge aus Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), aus Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und aus innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 5 UStG)",0
+model,"account.tax.code.template,name",tax_code_67,Vorsteuerbeträge aus Leistungen im Sinne des § 13b Abs. 1 UStG (§ 15 Abs. 1 Satz 1 Nr. 4 UStG),Vorsteuerbeträge aus Leistungen im Sinne des § 13b Abs. 1 UStG (§ 15 Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_69,"In Rechnungen unrichtig oder unberechtigt ausgewiesene Steuerbeträge (§ 14c UStG) sowie Steuerbeträge, die nach § 4 Nr. 4a Satz 1 Buchst. a Satz 2, § 6a Abs. 4 Satz 2, § 17 Abs. 1 Satz 6 oder § 25b Abs. 2 UStG geschuldet werden","In Rechnungen unrichtig oder unberechtigt ausgewiesene Steuerbeträge (§ 14c UStG) sowie Steuerbeträge, die nach § 4 Nr. 4a Satz 1 Buchst. a Satz 2, § 6a Abs. 4 Satz 2, § 17 Abs. 1 Satz 6 oder § 25b Abs. 2 UStG geschuldet werden",0
+model,"account.tax.code.template,name",tax_code_73,"Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)","Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)",0
+model,"account.tax.code.template,name",tax_code_74,"Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)","Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)",0
+model,"account.tax.code.template,name",tax_code_76,"Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)","Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)",0
+model,"account.tax.code.template,name",tax_code_77,Lieferungen in das übrige Gemeinschaftsgebiet an Abnehmer mit Ust-IdNr.,Lieferungen in das übrige Gemeinschaftsgebiet an Abnehmer mit Ust-IdNr.,0
+model,"account.tax.code.template,name",tax_code_80,"Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)","Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)",0
+model,"account.tax.code.template,name",tax_code_81,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_811,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_83,Verbleibende Umsatzsteuer-Vorauszahlung / Verbleibender Überschuss - bitte dem Betrag ein Minuszeichen voranstellen,Verbleibende Umsatzsteuer-Vorauszahlung / Verbleibender Überschuss - bitte dem Betrag ein Minuszeichen voranstellen,0
+model,"account.tax.code.template,name",tax_code_84,Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_85,Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_86,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_861,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_89,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_891,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_91,Erwerbe nach § 4b UStG,Erwerbe nach § 4b UStG,0
+model,"account.tax.code.template,name",tax_code_93,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_931,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_94,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,0
+model,"account.tax.code.template,name",tax_code_95,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_96,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,0
+model,"account.tax.code.template,name",tax_code_98,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_AST,Andere Steuerbeträge,Andere Steuerbeträge,0
+model,"account.tax.code.template,name",tax_code_B,Bemessungsgrundlage,Bemessungsgrundlage,0
+model,"account.tax.code.template,name",tax_code_BAUS,Einfuhren,Einfuhren,0
+model,"account.tax.code.template,name",tax_code_BAUS19,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_BAUS7,zum Steuersatz von 7 %,zum Steuersatz von 7 %,0
+model,"account.tax.code.template,name",tax_code_BRV,"Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und innergemeinschaftliche Dreiecksgeschäfte (§ 25b Abs. 5 UStG)","Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und innergemeinschaftliche Dreiecksgeschäfte (§ 25b Abs. 5 UStG)",0
+model,"account.tax.code.template,name",tax_code_BRV19,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_BRV7,zum Steuersatz von 7 %,zum Steuersatz von 7 %,0
+model,"account.tax.code.template,name",tax_code_BU,Umsatzsteuer,Umsatzsteuer,0
+model,"account.tax.code.template,name",tax_code_BV,Vorsteuer (dient lediglich der Verprobung),Vorsteuer (dient lediglich der Verprobung),0
+model,"account.tax.code.template,name",tax_code_BZ19,Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_BZ20,Steuerfreie Umsätze mit Vorsteuerabzug,Steuerfreie Umsätze mit Vorsteuerabzug,0
+model,"account.tax.code.template,name",tax_code_BZ24,Steuerfreie Umsätze ohne Vorsteuerabzug,Steuerfreie Umsätze ohne Vorsteuerabzug,0
+model,"account.tax.code.template,name",tax_code_BZ26,Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_BZ30,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,0
+model,"account.tax.code.template,name",tax_code_BZ33,Innergemeinschaftliche Erwerbe,Innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ34,Steuerfreie innergemeinschaftliche Erwerbe,Steuerfreie innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ35,Steuerpflichtige innergemeinschaftliche Erwerbe,Steuerpflichtige innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ39,Ergänzende Angaben zu Umsätzen,Ergänzende Angaben zu Umsätzen,0
+model,"account.tax.code.template,name",tax_code_BZ46,"Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird","Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird",0
+model,"account.tax.code.template,name",tax_code_U,Umsatzsteuer,Umsatzsteuer,0
+model,"account.tax.code.template,name",tax_code_USTVA,,,0
+model,"account.tax.code.template,name",tax_code_USTVA,Chart of Tax Codes SKR03 (Germany),Steuerkennziffern SKR03,0
+model,"account.tax.code.template,name",tax_code_UZ19,Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_UZ26,Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_UZ30,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,0
+model,"account.tax.code.template,name",tax_code_UZ33,Innergemeinschaftliche Erwerbe,Innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_UZ35,Steuerpflichtige innergemeinschaftliche Erwerbe,Steuerpflichtige innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_UZ39,Ergänzende Angaben zu Umsätzen ,Ergänzende Angaben zu Umsätzen ,0
+model,"account.tax.code.template,name",tax_code_UZ46,"Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird","Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird",0
+model,"account.tax.code.template,name",tax_code_VST,Abziehbare Vorsteuerbeträge,Abziehbare Vorsteuerbeträge,0
+model,"account.tax.group,name",tax_group_ust,Umsatzsteuer,Umsatzsteuer,0
+model,"account.tax.group,name",tax_group_vst,Vorsteuer,Vorsteuer,0
+model,"account.tax.group,name",tax_group_vst_reduced,Vorsteuer ermäßigt,Vorsteuer ermäßigt,0
+model,"account.tax.rule.template,name",tax_rule_eu_no_id_purchase,Lieferant EU (ohne Ust-ID),Lieferant EU (ohne Ust-ID),0
+model,"account.tax.rule.template,name",tax_rule_eu_no_id_sale,Kunde EU (ohne USt-ID),Kunde EU (ohne USt-ID),0
+model,"account.tax.rule.template,name",tax_rule_eu_vat_id_purchase,Lieferant EU Unternehmen (mit USt-ID),Lieferant EU Unternehmen (mit USt-ID),0
+model,"account.tax.rule.template,name",tax_rule_eu_vat_id_sale,Kunde EU Unternehmen (mit USt-ID),Kunde EU Unternehmen (mit USt-ID),0
+model,"account.tax.rule.template,name",tax_rule_non_eu_purchase,Lieferant Ausland,Lieferant Ausland,0
+model,"account.tax.rule.template,name",tax_rule_non_eu_sale,Kunde Ausland,Kunde Ausland,0
+model,"account.tax.template,description",tax_eu_19_purchase,innergem. Erwerb 19%,innergem. Erwerb 19%,0
+model,"account.tax.template,description",tax_eu_19_purchase_ust,19% USt,19% USt,0
+model,"account.tax.template,description",tax_eu_19_purchase_vst,19% VSt,19% VSt,0
+model,"account.tax.template,description",tax_eu_7_purchase,innergem. Erwerb 7%,innergem. Erwerb 7%,0
+model,"account.tax.template,description",tax_eu_7_purchase_ust,7% USt,7% USt,0
+model,"account.tax.template,description",tax_eu_7_purchase_vst,7% VSt,7% VSt,0
+model,"account.tax.template,description",tax_eu_sale,steuerfreie innergem. Lieferung,steuerfreie innergem. Lieferung,0
+model,"account.tax.template,description",tax_export,steuerfreie Ausfuhr,steuerfreie Ausfuhr,0
+model,"account.tax.template,description",tax_import_19,19% EUSt,19% EUSt,0
+model,"account.tax.template,description",tax_import_7,7% EUSt,7% EUSt,0
+model,"account.tax.template,description",tax_not_taxable,nicht steuerbar,nicht steuerbar,0
+model,"account.tax.template,description",tax_ust_19,19% USt,19% USt,0
+model,"account.tax.template,description",tax_ust_7,7% USt,7% USt,0
+model,"account.tax.template,description",tax_vst_19,19% VSt,19% VSt,0
+model,"account.tax.template,description",tax_vst_7,7% VSt,7% VSt,0
+model,"account.tax.template,name",tax_eu_19_purchase,Innergem. Erwerb 19%USt/19%VSt,Innergem. Erwerb 19%USt/19%VSt,0
+model,"account.tax.template,name",tax_eu_19_purchase_ust,19% Umsatzsteuer aus innergem. Erwerb,19% Umsatzsteuer aus innergem. Erwerb,0
+model,"account.tax.template,name",tax_eu_19_purchase_vst,19% Vorsteuer aus innergem. Erwerb,19% Vorsteuer aus innergem. Erwerb,0
+model,"account.tax.template,name",tax_eu_7_purchase,Innergem. Erwerb 7%USt/7%VSt,Innergem. Erwerb 7%USt/7%VSt,0
+model,"account.tax.template,name",tax_eu_7_purchase_ust,7% Umsatzsteuer aus innergem. Erwerb,7% Umsatzsteuer aus innergem. Erwerb,0
+model,"account.tax.template,name",tax_eu_7_purchase_vst,7% Vorsteuer aus innergem. Erwerb,7% Vorsteuer aus innergem. Erwerb,0
+model,"account.tax.template,name",tax_eu_sale,Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG) ,Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG) ,0
+model,"account.tax.template,name",tax_export,Steuerfreie Ausfuhr (§4 Nr. 1a UStG),Steuerfreie Ausfuhr (§4 Nr. 1a UStG),0
+model,"account.tax.template,name",tax_import_19,19% Einfuhrumsatzsteuer,19% Einfuhrumsatzsteuer,0
+model,"account.tax.template,name",tax_import_7,7% Einfuhrumsatzsteuer,7% Einfuhrumsatzsteuer,0
+model,"account.tax.template,name",tax_not_taxable,nicht steuerbar,nicht steuerbar,0
+model,"account.tax.template,name",tax_ust_19,19% Umsatzsteuer,19% Umsatzsteuer,0
+model,"account.tax.template,name",tax_ust_7,7% Umsatzsteuer,7% Umsatzsteuer,0
+model,"account.tax.template,name",tax_vst_19,19% Vorsteuer,19% Vorsteuer,0
+model,"account.tax.template,name",tax_vst_7,7% Vorsteuer,7% Vorsteuer,0
