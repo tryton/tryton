@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<form cursor="file_">
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+    <label name="file_"/>
+    <field name="file_"/>
+    <label name="file_format"/>
+    <field name="file_format"/>
+</form>

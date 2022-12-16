@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <group col="6" colspan="4" id="relation">
+        <label name="from_"/>
+        <field name="from_"/>
+        <label name="type"/>
+        <field name="type" widget="selection"/>
+        <label name="to"/>
+        <field name="to"/>
+    </group>
+
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+</form>

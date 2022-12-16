@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="sale_shipment_cost">
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_carriage_view_form">
+            <field name="model">sale.carriage</field>
+            <field name="type">form</field>
+            <field name="name">sale_carriage_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_carriage_view_list">
+            <field name="model">sale.carriage</field>
+            <field name="type">tree</field>
+            <field name="name">sale_carriage_list</field>
+        </record>
+    </data>
+</tryton>
