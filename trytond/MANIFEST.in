@@ -1,0 +1,31 @@
+include LICENSE
+include COPYRIGHT
+include README
+include INSTALL
+include TODO
+include CHANGELOG
+include doc/*
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot
+include etc/*
+include trytond/backend/*/init.sql
+include trytond/ir/tryton.cfg
+include trytond/ir/*.xml
+include trytond/ir/view/*.xml
+include trytond/ir/locale/*.po
+include trytond/ir/module/*.xml
+include trytond/ir/ui/*.xml
+include trytond/ir/ui/*.rng
+include trytond/ir/ui/*.rnc
+include trytond/ir/ui/icons/*.svg
+include trytond/res/tryton.cfg
+include trytond/res/*.xml
+include trytond/res/view/*.xml
+include trytond/res/locale/*.po
+include trytond/test/tryton.cfg
+include trytond/test/*.xml
+include trytond/webdav/tryton.cfg
+include trytond/webdav/*.xml
+include trytond/webdav/view/*.xml
+include trytond/webdav/locale/*.po
