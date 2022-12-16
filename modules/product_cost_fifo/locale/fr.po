@@ -1,0 +1,21 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "FIFO quantity can not be greater than quantity."
+msgstr "La quantité FIFO ne peut être plus grande que la quantité."
+
+msgctxt "error:stock.move:"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
+msgstr ""
+"Vous ne pouvez supprimer le mouvement « %s » qui est utilisé pour le calcul "
+"FIFO du prix de revient."
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "Quantité FIFO"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"

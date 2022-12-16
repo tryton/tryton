@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="production_configuration_view_form">
+            <field name="model">production.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_production_configuration_form">
+            <field name="name">Production Configuration</field>
+            <field name="res_model">production.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_configuration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_configuration_view_form"/>
+            <field name="act_window" ref="act_production_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_production_configuration_form"
+            id="menu_production_configuration"
+            sequence="0" icon="tryton-list"/>
+
+    </data>
+    <data noupdate="1">
+        <record model="ir.property" id="property_production_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'production.configuration'), ('name', '=', 'production_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_production'))"/>
+        </record>
+    </data>
+</tryton>
