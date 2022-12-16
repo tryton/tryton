@@ -1,0 +1,52 @@
+Version 5.0.11 - 2022-10-17
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.10 - 2021-06-17
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.9 - 2020-08-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.8 - 2020-04-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.7 - 2020-03-09
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.6 - 2019-12-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.5 - 2019-12-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.4 - 2019-08-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.3 - 2019-06-10
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.2 - 2019-03-15
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.1 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Support all charge events
+* Support dispute
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add webhook for charge and source
+* Allow to select customer source on payment
+* Allow to create customer with ID
+* Allow to create manual payment
+* Add capture
+
+Version 4.4.0 - 2017-05-01
+* Initial release

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="tariff_code"/>
+    <field name="tariff_code"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="country"/>
+    <field name="country"/>
+    <!-- TODO country group -->
+    <newline/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <separator string="Computation" id="computation" colspan="4"/>
+    <label name="computation_type"/>
+    <field name="computation_type"/>
+    <newline/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <newline/>
+    <label name="uom"/>
+    <field name="uom"/>
+    <newline/>
+</form>
