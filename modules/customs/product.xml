@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-tariff_code_view_list">
+            <field name="model">product-customs.tariff.code</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">product-tariff_code_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-tariff_code_view_list_sequence">
+            <field name="model">product-customs.tariff.code</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product-tariff_code_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-tariff_code_view_form">
+            <field name="model">product-customs.tariff.code</field>
+            <field name="type">form</field>
+            <field name="name">product-tariff_code_form</field>
+        </record>
+    </data>
+</tryton>
