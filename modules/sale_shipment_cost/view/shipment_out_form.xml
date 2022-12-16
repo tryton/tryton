@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="after">
+        <label name="carrier"/>
+        <field name="carrier"/>
+        <group id="costs" col="-1" colspan="2">
+            <label name="cost"/>
+            <label name="cost_used"/>
+            <field name="cost"/>
+            <field name="cost_used"/>
+            <label name="cost_sale"/>
+            <label name="cost_sale_used"/>
+            <field name="cost_sale"/>
+            <field name="cost_sale_used"/>
+            <field name="cost_sale_currency"/>
+            <field name="cost_sale_currency_used"/>
+            <field name="cost_edit"/>
+        </group>
+    </xpath>
+</data>
