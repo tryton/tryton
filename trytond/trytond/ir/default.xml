@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="default_view_form">
+            <field name="model">ir.default</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Default" col="6">
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="field"/>
+                    <field name="field"/>
+                    <label name="user"/>
+                    <field name="user"/>
+                    <group col="2" colspan="6" expand="1" id="value_clause">
+                        <separator name="value"/>
+                        <separator name="clause"/>
+                        <field name="value"/>
+                        <field name="clause"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="default_view_tree">
+            <field name="model">ir.default</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Defaults">
+                    <field name="model" select="1"/>
+                    <field name="field" select="1"/>
+                    <field name="user" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_default_form">
+            <field name="name">Defaults</field>
+            <field name="res_model">ir.default</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_default_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="default_view_tree"/>
+            <field name="act_window" ref="act_default_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_default_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="default_view_form"/>
+            <field name="act_window" ref="act_default_form"/>
+        </record>
+        <menuitem parent="ir.menu_models"
+            action="act_default_form" id="menu_default_form"/>
+    </data>
+</tryton>
