@@ -1,0 +1,99 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:0"
+msgid "Invalid formula!"
+msgstr "Formule non-valide !"
+
+msgctxt "field:product.price_list,company:0"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:product.price_list,lines:0"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:product.price_list,name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list.line,formula:0"
+msgid "Formula"
+msgstr "Formule"
+
+msgctxt "field:product.price_list.line,price_list:0"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "field:product.price_list.line,product:0"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:product.price_list.line,quantity:0"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:product.price_list.line,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list.line,sequence:0"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:product.price_list.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "help:product.price_list.line,formula:0"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Une expression Python qui sera évaluée avec:\n"
+"- unit_price: le prix unitaire original"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Listes de prix"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Listes de prix"
+
+msgctxt "model:product.price_list,name:0"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "model:product.price_list.line,name:0"
+msgid "Price List Line"
+msgstr "Ligne de liste de prix"
+
+msgctxt "view:party.party:0"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Line"
+msgstr "Ligne de liste de prix"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Lines"
+msgstr "Lignes de liste de prix"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List Lines"
+msgstr "Lignes de liste de prix"
+
+msgctxt "view:product.price_list:0"
+msgid "Price Lists"
+msgstr "Listes de prix"
