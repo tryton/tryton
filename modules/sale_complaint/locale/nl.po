@@ -1,0 +1,370 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Acties"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Adres"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "datum"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "oorsprong id"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Oorsprong Model"
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "klachten"
+
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Klacht status"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Factuurregels"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Resultaat"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Verkooplijnen"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Klacht oorsprong ID"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Klacht status"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Klacht oorsprong ID"
+
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Klacht status"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Verkooplijn"
+
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Klachtenreeks"
+
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Klachtenreeks"
+
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines."
+msgstr "Laat leeg voor alle regels."
+
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity."
+msgstr "Laat leeg voor dezelfde hoeveelheid."
+
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines."
+msgstr "Laat leeg voor alle regels."
+
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Laat leeg voor dezelfde prijs."
+
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Laat leeg voor dezelfde prijs."
+
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Laat leeg voor dezelfde prijs."
+
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "klachten"
+
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Klachten van klanten"
+
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "klachten"
+
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Type"
+
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "In afwachting"
+
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+"U kunt actie \"%(action)s\" niet verwijderen omdat deze een resultaat heeft."
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"Om de klacht \"% (klacht) s\" te verwijderen, moet u deze tergugzetten naar "
+"conceptstatus."
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Goedkeuren"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "afwijzen"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "wachten"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Gebruiker in het bedrijf dat klaagt"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Gebruiker in het bedrijf dat klaagt"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "Gebruiker in het bedrijf dat klaagt"
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Klacht van de klant"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Klacht van de klant"
+
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "klachten"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Klacht van de klant"
+
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Type"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Klacht van de klant"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Klacht van klant actie"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "klachten klant actie - factuurregel"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "klachten klant actie - verkoopregel"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "klacht van klant Type"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Klaar"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Verworpen"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "In afwachting"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Creditnota maken"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "maak retour aan"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "klacht"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Proces"
