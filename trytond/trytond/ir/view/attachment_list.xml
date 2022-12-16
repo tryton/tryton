@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree editable="1">
+    <field name="resource" expand="2"/>
+    <field name="name" expand="2"/>
+    <field name="summary" expand="1"/>
+    <field name="last_user" expand="1"/>
+    <field name="last_modification" widget="date"/>
+    <field name="last_modification" widget="time"
+        string="Last Modification Time"/>
+    <field name="type"/>
+    <field name="data"/>
+    <field name="link" widget="url" expand="1"/>
+    <!-- To allow client to set description field -->
+    <field name="description" tree_invisible="1"/>
+</tree>

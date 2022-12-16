@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr "Reservat per"
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr "Movible"
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr "Ubicacions"
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
+msgctxt "model:ir.message,text:msg_location_already_assigned"
+msgid ""
+"The location \"%(location)s\" has already been assigned by "
+"\"%(assigned_by)s\"."
+msgstr "La ubicació '%(location)s' ja està reservada per '%(assigned_by)s'."
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable"
+msgid "Movable location"
+msgstr "Ubicació movible"
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
+msgid "Any location"
+msgstr "Qualsevol ubicació"
+
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "Ubicacions d'existències movibles"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr "Albarà intern - Ubicació"
