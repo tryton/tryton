@@ -1,0 +1,134 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Служител"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Задача"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Предшественик"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Наследник"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Действително завършване"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Време на действително завършване"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Действително започване"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Време на действително започване"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Разпределения"
+
+#, fuzzy
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Изравняване на закъснение"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Ограничение за край"
+
+#, fuzzy
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Ограничение за време на завършване"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Ограничение за начало"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Ограничение за начално време"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Продължителност"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "По-рано завършване"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Време на по-рано приключване"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "По-рано начало"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "По-ранно време на започване"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "По-късно завършване"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Време на по-късно завършване"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "По-късно начало"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Време на по-късно начало"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Изравняване на закъснение"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Предшественици"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Наследници"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Tasks Leveling"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Разпределние"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Предшественик - Наследник"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Разпределения"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "План"
