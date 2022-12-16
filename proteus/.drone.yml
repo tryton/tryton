@@ -1,0 +1,4 @@
+image: python2.7
+script:
+  - pip install tox pydot
+  - tox -e py27
