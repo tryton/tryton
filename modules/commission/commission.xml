@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_commission_admin">
+            <field name="name">Commission Administration</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_commission_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_commission_admin"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_commission_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_commission_admin"/>
+        </record>
+
+        <record model="res.group" id="group_commission">
+            <field name="name">Commission</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_commission">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_commission"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_commission">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_commission"/>
+        </record>
+
+        <menuitem name="Commission" sequence="5" id="menu_commission"/>
+        <menuitem name="Configuration" parent="menu_commission"
+            id="menu_configuration" sequence="10" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_commission_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_commission_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="agent_view_form">
+            <field name="model">commission.agent</field>
+            <field name="type">form</field>
+            <field name="name">agent_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="agent_view_list">
+            <field name="model">commission.agent</field>
+            <field name="type">tree</field>
+            <field name="name">agent_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_agent_form">
+            <field name="name">Agents</field>
+            <field name="res_model">commission.agent</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_agent_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="agent_view_list"/>
+            <field name="act_window" ref="act_agent_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_agent_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="agent_view_form"/>
+            <field name="act_window" ref="act_agent_form"/>
+        </record>
+        <menuitem parent="menu_commission" action="act_agent_form" sequence="20"
+            id="menu_agent_form"/>
+
+        <record model="ir.model.access" id="access_agent">
+            <field name="model" search="[('model', '=', 'commission.agent')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_agent_commission_admin">
+            <field name="model" search="[('model', '=', 'commission.agent')]"/>
+            <field name="group" ref="group_commission_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="plan_view_form">
+            <field name="model">commission.plan</field>
+            <field name="type">form</field>
+            <field name="name">plan_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="plan_view_list">
+            <field name="model">commission.plan</field>
+            <field name="type">tree</field>
+            <field name="name">plan_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_plan_form">
+            <field name="name">Commission Plans</field>
+            <field name="res_model">commission.plan</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_plan_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="plan_view_list"/>
+            <field name="act_window" ref="act_plan_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_plan_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="plan_view_form"/>
+            <field name="act_window" ref="act_plan_form"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_plan_form" sequence="10"
+            id="menu_plan_form"/>
+
+        <record model="ir.model.access" id="access_plan">
+            <field name="model" search="[('model', '=', 'commission.plan')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_plan_commission_admin">
+            <field name="model" search="[('model', '=', 'commission.plan')]"/>
+            <field name="group" ref="group_commission_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="plan_line_view_form">
+            <field name="model">commission.plan.line</field>
+            <field name="type">form</field>
+            <field name="name">plan_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="plan_line_view_list">
+            <field name="model">commission.plan.line</field>
+            <field name="type">tree</field>
+            <field name="name">plan_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="plan_line_view_list_sequence">
+            <field name="model">commission.plan.line</field>
+            <field name="type">tree</field>
+            <field name="name">plan_line_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_plan_line">
+            <field name="model" search="[('model', '=', 'commission.plan.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_plan_line_commission_admin">
+            <field name="model" search="[('model', '=', 'commission.plan.line')]"/>
+            <field name="group" ref="group_commission_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="commission_view_form">
+            <field name="model">commission</field>
+            <field name="type">form</field>
+            <field name="name">commission_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="commission_view_list">
+            <field name="model">commission</field>
+            <field name="type">tree</field>
+            <field name="name">commission_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_commission_form">
+            <field name="name">Commissions</field>
+            <field name="res_model">commission</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="commission_view_list"/>
+            <field name="act_window" ref="act_commission_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="commission_view_form"/>
+            <field name="act_window" ref="act_commission_form"/>
+        </record>
+        <menuitem parent="menu_commission" action="act_commission_form"
+            sequence="30" id="menu_commission_form"/>
+
+        <record model="ir.action.act_window" id="act_commission_form2">
+            <field name="name">Commissions</field>
+            <field name="res_model">commission</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('agent', '=', Eval('active_id')), ('agent', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_commission_form2_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">commission.agent,-1</field>
+            <field name="action" ref="act_commission_form2"/>
+        </record>
+
+        <record model="ir.model.access" id="access_commission">
+            <field name="model" search="[('model', '=', 'commission')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_commission_commission">
+            <field name="model" search="[('model', '=', 'commission')]"/>
+            <field name="group" ref="group_commission"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="commission_invoice_button">
+            <field name="name">invoice</field>
+            <field name="string">Invoice</field>
+            <field name="model" search="[('model', '=', 'commission')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_commission_create_invoice">
+            <field name="name">Create Commission Invoices</field>
+            <field name="wiz_name">commission.create_invoice</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_commission_create_invoice-group_commission">
+            <field name="action" ref="act_commission_create_invoice"/>
+            <field name="group" ref="group_commission"/>
+        </record>
+
+        <record model="ir.ui.view"
+            id="commission_create_invoice_ask_view_form">
+            <field name="model">commission.create_invoice.ask</field>
+            <field name="type">form</field>
+            <field name="name">commission_create_invoice_ask_form</field>
+        </record>
+
+        <menuitem parent="menu_commission" sequence="40"
+            action="act_commission_create_invoice"
+            id="menu_commission_create_invoice"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_commission_create_invoice_group_commission">
+            <field name="menu" ref="menu_commission_create_invoice"/>
+            <field name="group" ref="group_commission"/>
+        </record>
+    </data>
+</tryton>
