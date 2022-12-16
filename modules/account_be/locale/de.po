@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.be.vat_customer,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Steueridentifikator Unternehmen"
+
+msgctxt "field:account.be.vat_customer,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.be.vat_customer,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:account.be.vat_customer,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Steueridentifikator Partei"
+
+msgctxt "field:account.be.vat_customer,turnover:"
+msgid "Turnover"
+msgstr "Umsatz"
+
+msgctxt "field:account.be.vat_customer,vat:"
+msgid "VAT"
+msgstr "USt."
+
+msgctxt "field:account.be.vat_customer.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.be.vat_customer.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Geschäftsjahr"
+
+msgctxt "model:account.be.vat_customer,name:"
+msgid "Belgium VAT Customer"
+msgstr "Belgischer USt. Kunde"
+
+msgctxt "model:account.be.vat_customer.context,name:"
+msgid "Belgium VAT Customer Context"
+msgstr "Kontext Belgischer USt. Kunde"
+
+msgctxt "model:ir.action,name:act_vat_customer_form"
+msgid "Belgium VAT Customer"
+msgstr "Steuernummer Kunde Belgien VAT"
+
+msgctxt "model:ir.ui.menu,name:menu_vat_customer"
+msgid "Belgium VAT Customer"
+msgstr "Steuernummer Kunde Belgien VAT"

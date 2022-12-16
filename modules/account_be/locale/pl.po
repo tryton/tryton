@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.be.vat_customer,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr ""
+
+msgctxt "field:account.be.vat_customer,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
+msgctxt "field:account.be.vat_customer,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.be.vat_customer,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
+msgctxt "field:account.be.vat_customer,turnover:"
+msgid "Turnover"
+msgstr ""
+
+msgctxt "field:account.be.vat_customer,vat:"
+msgid "VAT"
+msgstr "VAT"
+
+msgctxt "field:account.be.vat_customer.context,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:account.be.vat_customer.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Rok podatkowy"
+
+#, fuzzy
+msgctxt "model:account.be.vat_customer,name:"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"
+
+msgctxt "model:account.be.vat_customer.context,name:"
+msgid "Belgium VAT Customer Context"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_vat_customer_form"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"
+
+msgctxt "model:ir.ui.menu,name:menu_vat_customer"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"

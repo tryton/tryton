@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='posted']" position="after">
+        <label name="comparison"/>
+        <field name="comparison"/>
+        <separator id="comparison" colspan="6"/>
+        <label name="date_cmp"/>
+        <field name="date_cmp"/>
+    </xpath>
+</data>

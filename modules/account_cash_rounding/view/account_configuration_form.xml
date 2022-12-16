@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator name="cash_rounding" colspan="4"/>
+        <label name="cash_rounding"/>
+        <field name="cash_rounding"/>
+        <label name="cash_rounding_debit_account"/>
+        <field name="cash_rounding_debit_account"/>
+        <label name="cash_rounding_credit_account"/>
+        <field name="cash_rounding_credit_account"/>
+    </xpath>
+</data>

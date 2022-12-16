@@ -1,0 +1,2884 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="nl">
+
+        <record id="group_tva_vente_biens_nl" model="account.tax.group">
+            
+            <field name="name">BTW Verkoop van goederen</field>
+            
+            <field name="code">BTW Verkoop van goederen</field>
+            <field name="kind">sale</field>
+        </record>
+
+        <record id="group_tva_vente_services_nl" model="account.tax.group">
+            
+            <field name="name">BTW Verkoop van diensten</field>
+            
+            <field name="code">BTW Verkoop van diensten</field>
+            <field name="kind">sale</field>
+        </record>
+
+        <record id="group_tva_achat_nl" model="account.tax.group">
+            
+            <field name="name">BTW Aankoop</field>
+            
+            <field name="code">BTW Aankoop</field>
+            <field name="kind">purchase</field>
+        </record>
+
+        <record id="tva_vente_biens_coco_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Verkoop van goederen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_intracommunautaires_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Intracommunautaire verkoop van goederen</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="ec_sales_list_code">L</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_hors_communaute_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Extracommunautaire verkoop van goederen</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Bijzondere regeling</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Verkoop van goederen</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Verkoop van goederen</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_biens_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Verkoop van goederen</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_coco_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Verkoop van diensten medecontractanten</field>
+            <field name="description">T.V.A. co-contractants</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_intracommunautaires_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Intracommunautaire verkoop van diensten</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="ec_sales_list_code">S</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_hors_communaute_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Extracommunautaire verkoop van diensten</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Verkoop van diensten</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Verkoop van diensten</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_vente_services_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Verkoop van diensten</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 6% (1)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 6% (2)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 12% (1)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 12% (2)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 21% (1)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_coco_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 21% (2)</field>
+            <field name="parent" ref="tva_achat_marchandises_coco_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (2)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_marchandises_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen (2)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_marchandises_12_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (2)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_marchandises_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen (2)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_marchandises_21_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_marchandises_intracommunautaires_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (2)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_marchandises_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Intracommunautaire aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 6% (1)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 6% (2)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van diverse goederen en diensten medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 12% (1)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van diverse goederen en diensten medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 12% (2)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van diverse goederen en diensten medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 21% (1)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_coco_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van diverse goederen en diensten medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 21% (2)</field>
+            <field name="parent" ref="tva_achat_frais_biens_coco_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van diverse goederen en diensten (2)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten (2)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_frais_biens_intracommunautaires_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten (2)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_0_nl" model="account.tax.template">
+            
+            <field name="name">BTW 0% Intracommunautaire aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 0%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('0')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 6% (1)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 6% (2)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van bedrijfsmiddelen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 12% (1)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van bedrijfsmiddelen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 12% (2)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van bedrijfsmiddelen medecontractanten</field>
+            <field name="description">T.V.A. co-contractants 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
+            <field name="description">T.V.A. co-contractants 21% (1)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_coco_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van bedrijfsmiddelen medecontractanten (2)</field>
+            <field name="description">T.V.A. co-contractants 21% (2)</field>
+            <field name="parent" ref="tva_achat_investissement_coco_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_6_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_6_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen (2)</field>
+            <field name="description">T.V.A. 6%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_6_nl"/>
+            <field name="rate" eval="Decimal('-.06')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_12_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_12_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen (2)</field>
+            <field name="description">T.V.A. 12%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_12_nl"/>
+            <field name="rate" eval="Decimal('-.12')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_21_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="group" ref="group_tva_achat_nl"/>
+            <field name="type">none</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="411_nl"/>
+            <field name="credit_note_account" ref="411_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tva_achat_investissement_intracommunautaires_21_2_nl" model="account.tax.template">
+            
+            <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen (2)</field>
+            <field name="description">T.V.A. 21%</field>
+            <field name="parent" ref="tva_achat_investissement_intracommunautaires_21_nl"/>
+            <field name="rate" eval="Decimal('-.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="451_nl"/>
+            <field name="credit_note_account" ref="451_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_be_nl" model="account.tax.code.template">
+            
+            <field name="name">Belastingen-codes (België)</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_tva_nl" model="account.tax.code.template">
+            
+            <field name="name">BTW</field>
+            <field name="parent" ref="tax_code_be_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_VI_nl" model="account.tax.code.template">
+            
+            <field name="name">VI. SALDO</field>
+            <field name="code">71 - 72</field>
+            <field name="parent" ref="tax_code_tva_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_VII_nl" model="account.tax.code.template">
+            
+            <field name="name">VII. VOORSCHOT</field>
+            <field name="code">91</field>
+            <field name="parent" ref="tax_code_tva_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_II_nl" model="account.tax.code.template">
+            
+            <field name="name">II. UITGAANDE HANDELINGEN</field>
+            <field name="parent" ref="tax_code_VI_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_II_A_00_nl" model="account.tax.code.template">
+            
+            <field name="name">A. Handelingen onderworpen aan een bijzondere regeling</field>
+            <field name="code">00</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_A_00-tva_vente_biens_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_A_00_nl"/>
+            <field name="tax" ref="tva_vente_biens_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_B_nl" model="account.tax.code.template">
+            
+            <field name="name">B. Handelingen waarvoor de btw verschuldigd is door de aangever</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_II_B_01_nl" model="account.tax.code.template">
+            
+            <field name="name">- aan het tarief van 6%</field>
+            <field name="code">01</field>
+            <field name="parent" ref="tax_code_II_B_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_B_01-tva_vente_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_01_nl"/>
+            <field name="tax" ref="tva_vente_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_II_B_01-tva_vente_services_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_01_nl"/>
+            <field name="tax" ref="tva_vente_services_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_B_02_nl" model="account.tax.code.template">
+            
+            <field name="name">- aan het tarief van 12%</field>
+            <field name="code">02</field>
+            <field name="parent" ref="tax_code_II_B_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_B_02-tva_vente_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_02_nl"/>
+            <field name="tax" ref="tva_vente_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_II_B_02-tva_vente_services_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_02_nl"/>
+            <field name="tax" ref="tva_vente_services_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_B_03_nl" model="account.tax.code.template">
+            
+            <field name="name">- aan het tarief van 21%</field>
+            <field name="code">03</field>
+            <field name="parent" ref="tax_code_II_B_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_B_03-tva_vente_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_03_nl"/>
+            <field name="tax" ref="tva_vente_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_II_B_03-tva_vente_services_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_B_03_nl"/>
+            <field name="tax" ref="tva_vente_services_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_44_nl" model="account.tax.code.template">
+            
+            <field name="name">C. Diensten waarvoor de buitenlandse btw verschuldigd is door de medecontractant</field>
+            <field name="code">44</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_44-tva_vente_services_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_44_nl"/>
+            <field name="tax" ref="tva_vente_services_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_C_45_nl" model="account.tax.code.template">
+            
+            <field name="name">D. Handelingen waarvoor de btw verschuldigd is door de medecontractant</field>
+            <field name="code">45</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_C_45-tva_vente_biens_coco_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_C_45_nl"/>
+            <field name="tax" ref="tva_vente_biens_coco_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_II_C_45-tva_vente_services_coco_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_C_45_nl"/>
+            <field name="tax" ref="tva_vente_services_coco_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_D_46_nl" model="account.tax.code.template">
+            
+            <field name="name">E. Vrijgestelde intracommunautaire leveringen verricht in België en ABC-verkopen</field>
+            <field name="code">46</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_D_46-tva_vente_biens_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_D_46_nl"/>
+            <field name="tax" ref="tva_vente_biens_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_E_47_nl" model="account.tax.code.template">
+            
+            <field name="name">F. Andere vrijgestelde handelingen en andere handelingen verricht in het buitenland</field>
+            <field name="code">47</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_E_47-tva_vente_biens_hors_communaute_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_E_47_nl"/>
+            <field name="tax" ref="tva_vente_biens_hors_communaute_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_II_E_47-tva_vente_services_hors_communaute_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_E_47_nl"/>
+            <field name="tax" ref="tva_vente_services_hors_communaute_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_II_F_nl" model="account.tax.code.template">
+            
+            <field name="name">G. Bedrag van de uitgereikte creditnota's en de negatieve verbeteringen</field>
+            <field name="parent" ref="tax_code_II_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_II_F_48_nl" model="account.tax.code.template">
+            
+            <field name="name">- met betrekking tot de handelingen ingeschreven in de roosters 44 en 46</field>
+            <field name="code">48</field>
+            <field name="parent" ref="tax_code_II_F_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_F_48-tva_vente_biens_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_48_nl"/>
+            <field name="tax" ref="tva_vente_biens_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_48-tva_vente_services_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_48_nl"/>
+            <field name="tax" ref="tva_vente_services_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_II_F_49_nl" model="account.tax.code.template">
+            
+            <field name="name">- met betrekking tot de andere handelingen van kader II</field>
+            <field name="code">49</field>
+            <field name="parent" ref="tax_code_II_F_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_coco_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_coco_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_hors_communaute_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_hors_communaute_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_services_coco_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_services_coco_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_services_hors_communaute_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_services_hors_communaute_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_services_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_services_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_services_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_services_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_II_F_49-tva_vente_services_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_II_F_49_nl"/>
+            <field name="tax" ref="tva_vente_services_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_nl" model="account.tax.code.template">
+            
+            <field name="name">III. Inkomende handelingen</field>
+            <field name="parent" ref="tax_code_VI_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_III_A_nl" model="account.tax.code.template">
+            
+            <field name="name">A. Bedrag van de inkomende handelingen rekening houdend met de ontvangen creditnota's en andere verbeteringen :</field>
+            <field name="parent" ref="tax_code_III_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_III_A_81_nl" model="account.tax.code.template">
+            
+            <field name="name">- handelsgoederen, grond- en hulpstoffen</field>
+            <field name="code">81</field>
+            <field name="parent" ref="tax_code_III_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_0_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_0_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_0_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_coco_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_6_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_6_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_81-tva_achat_marchandises_intracommunautaires_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_81_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_A_82_nl" model="account.tax.code.template">
+            
+            <field name="name">- diensten en diverse goederen</field>
+            <field name="code">82</field>
+            <field name="parent" ref="tax_code_III_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_0_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_0_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_0_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_coco_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_6_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_6_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_12_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_12_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_21_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_21_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_82-tva_achat_frais_biens_intracommunautaires_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_82_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_A_83_nl" model="account.tax.code.template">
+            
+            <field name="name">- bedrijfsmiddelen</field>
+            <field name="code">83</field>
+            <field name="parent" ref="tax_code_III_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_0_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_0_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_0_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_coco_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_6_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_6_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_6_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_6_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_12_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_12_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_12_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_12_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_21_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_21_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_21_1_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_A_83-tva_achat_investissement_intracommunautaires_21_1_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_A_83_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_B_nl" model="account.tax.code.template">
+            
+            <field name="name">B. Bedrag van de ontvangen creditnota's en de negatieve verbeteringen</field>
+            <field name="parent" ref="tax_code_III_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_III_B_84_nl" model="account.tax.code.template">
+            
+            <field name="name">- met betrekking tot de handelingen ingeschreven in de roosters 86 en 88</field>
+            <field name="code">84</field>
+            <field name="parent" ref="tax_code_III_B_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_marchandises_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_frais_biens_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_investissement_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_84-tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_84_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_B_85_nl" model="account.tax.code.template">
+            
+            <field name="name">- met betrekking tot de andere handelingen van kader III</field>
+            <field name="code">85</field>
+            <field name="parent" ref="tax_code_III_B_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_marchandises_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_frais_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_III_B_85-tva_achat_investissement_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_B_85_nl"/>
+            <field name="tax" ref="tva_achat_investissement_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_III_C_86_nl" model="account.tax.code.template">
+            
+            <field name="name">C. Intracommunautaire verwervingen verricht in België en ABC-verkopen</field>
+            <field name="code">86</field>
+            <field name="parent" ref="tax_code_III_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_marchandises_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_investissement_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_C_86-tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_C_86_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_III_D_87_nl" model="account.tax.code.template">
+            
+            <field name="name">D. Andere inkomende handelingen waarvoor de btw verschuldigd is door de aangever</field>
+            <field name="code">87</field>
+            <field name="parent" ref="tax_code_III_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_marchandises_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_marchandises_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_marchandises_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_frais_biens_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_frais_biens_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_frais_biens_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_investissement_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_investissement_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_D_87-tva_achat_investissement_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_D_87_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_III_88_nl" model="account.tax.code.template">
+            
+            <field name="name">E. Intracommunautaire diensten met verlegging van heffing</field>
+            <field name="code">88</field>
+            <field name="parent" ref="tax_code_III_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_III_88-tva_achat_frais_biens_intracommunautaires_0_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_88_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_0_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_88-tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_88_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_88-tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_88_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_III_88-tva_achat_frais_biens_intracommunautaires_21_2_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_III_88_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_2_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_IV_nl" model="account.tax.code.template">
+            
+            <field name="name">IV. Taxes dues</field>
+            <field name="code">XX</field>
+            <field name="parent" ref="tax_code_VI_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_IV_A_nl" model="account.tax.code.template">
+            
+            <field name="name">A. Btw op de handelingen aangegeven in :</field>
+            <field name="parent" ref="tax_code_IV_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_IV_A_54_nl" model="account.tax.code.template">
+            
+            <field name="name">- de roosters 01, 02 en 03</field>
+            <field name="code">54</field>
+            <field name="parent" ref="tax_code_IV_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_services_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_services_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_services_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_services_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_54-tva_vente_services_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_54_nl"/>
+            <field name="tax" ref="tva_vente_services_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_IV_A_55_nl" model="account.tax.code.template">
+            
+            <field name="name">- de roosters 86 en 88</field>
+            <field name="code">55</field>
+            <field name="parent" ref="tax_code_IV_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_55-tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_55_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_IV_A_56_nl" model="account.tax.code.template">
+            
+            <field name="name">- rooster 87, met uitzondering van invoeren met verlegging van heffing</field>
+            <field name="code">56</field>
+            <field name="parent" ref="tax_code_IV_A_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_marchandises_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_marchandises_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_marchandises_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_frais_biens_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_frais_biens_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_frais_biens_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_investissement_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_investissement_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_IV_A_56-tva_achat_investissement_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_A_56_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_IV_B_57_nl" model="account.tax.code.template">
+            
+            <field name="name">B. Btw op invoeren met verlegging van heffing</field>
+            <field name="code">57</field>
+            <field name="parent" ref="tax_code_IV_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_IV_C_61_nl" model="account.tax.code.template">
+            
+            <field name="name">C. Diverse btw-regularisaties in het voordeel van de Staat</field>
+            <field name="code">61</field>
+            <field name="parent" ref="tax_code_IV_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_IV_D_63_nl" model="account.tax.code.template">
+            
+            <field name="name">D. Terug te storten btw vermeld op ontvangen creditnota's</field>
+            <field name="code">63</field>
+            <field name="parent" ref="tax_code_IV_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_IV_D_63-tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_IV_D_63_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_V_nl" model="account.tax.code.template">
+            
+            <field name="name">V. Aftrekbare belastingen</field>
+            <field name="code">YY</field>
+            <field name="parent" ref="tax_code_VI_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_V_A_59_nl" model="account.tax.code.template">
+            
+            <field name="name">A. Aftrekbare btw</field>
+            <field name="code">59</field>
+            <field name="parent" ref="tax_code_V_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_coco_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_coco_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_coco_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_coco_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_V_A_59-tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_A_59_nl"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+
+        <record id="tax_code_V_B_62_nl" model="account.tax.code.template">
+            
+            <field name="name">B. Diverse btw-regularisaties in het voordeel van de aangever</field>
+            <field name="code">62</field>
+            <field name="parent" ref="tax_code_V_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_code_V_C_64_nl" model="account.tax.code.template">
+            
+            <field name="name">C. Te recupereren btw vermeld op uitgereikte creditnota's</field>
+            <field name="code">64</field>
+            <field name="parent" ref="tax_code_V_nl"/>
+            <field name="account" ref="root_nl"/>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_biens_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_biens_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_biens_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_biens_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_biens_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_biens_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_services_6_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_services_6_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_services_12_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_services_12_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_C_64-tva_vente_services_21_nl" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_C_64_nl"/>
+            <field name="tax" ref="tva_vente_services_21_nl"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_rule_ventes_coco_nl" model="account.tax.rule.template">
+            
+            <field name="name">Verkopen medecontractanten</field>
+            <field name="kind">sale</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_coco_1_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_coco_nl"/>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="tax" ref="tva_vente_biens_coco_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_coco_2_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_coco_nl"/>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="tax" ref="tva_vente_services_coco_nl"/>
+        </record>
+
+        <record id="tax_rule_ventes_intracommunautaires_nl" model="account.tax.rule.template">
+            
+            <field name="name">Introcummunautaire verkopen</field>
+            <field name="kind">sale</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_intracommunautaires_1_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_intracommunautaires_nl"/>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="tax" ref="tva_vente_biens_intracommunautaires_0_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_intracommunautaires_2_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_intracommunautaires_nl"/>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="tax" ref="tva_vente_services_intracommunautaires_0_nl"/>
+        </record>
+
+        <record id="tax_rule_ventes_hors_communaute_nl" model="account.tax.rule.template">
+            
+            <field name="name">Extracommunautaire verkopen</field>
+            <field name="kind">sale</field>
+            <field name="account" ref="root_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_hors_communaute_1_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_hors_communaute_nl"/>
+            <field name="group" ref="group_tva_vente_biens_nl"/>
+            <field name="tax" ref="tva_vente_biens_hors_communaute_0_nl"/>
+        </record>
+
+        <record id="tax_rule_line_ventes_hors_communaute_2_nl" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_ventes_hors_communaute_nl"/>
+            <field name="group" ref="group_tva_vente_services_nl"/>
+            <field name="tax" ref="tva_vente_services_hors_communaute_0_nl"/>
+        </record>
+
+    </data>
+</tryton>
