@@ -1,0 +1,9 @@
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add transitions between succeeded and failed
+
+Version 3.2.0 - 2014-04-21
+* Initial release

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Currency" col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="symbol"/>
+    <field name="symbol"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="numeric_code"/>
+    <field name="numeric_code"/>
+    <label name="rounding"/>
+    <field name="rounding"/>
+    <notebook colspan="6">
+        <page string="Rates" id="rates">
+            <label name="rate"/>
+            <field name="rate"/>
+            <field name="rates" colspan="4" mode="tree,form,graph"/>
+        </page>
+        <page string="Formatting" col="6" id="formatting">
+            <label name="digits"/>
+            <field name="digits"/>
+            <newline/>
+            <label name="mon_grouping"/>
+            <field name="mon_grouping"/>
+            <label name="mon_thousands_sep"/>
+            <field name="mon_thousands_sep"/>
+            <label name="mon_decimal_point"/>
+            <field name="mon_decimal_point"/>
+            <newline/>
+            <label name="positive_sign"/>
+            <field name="positive_sign"/>
+            <label name="negative_sign"/>
+            <field name="negative_sign"/>
+            <newline/>
+            <label name="p_sign_posn"/>
+            <field name="p_sign_posn"/>
+            <label name="n_sign_posn"/>
+            <field name="n_sign_posn"/>
+            <newline/>
+            <label name="p_cs_precedes"/>
+            <field name="p_cs_precedes"/>
+            <label name="n_cs_precedes"/>
+            <field name="n_cs_precedes"/>
+            <newline/>
+            <label name="p_sep_by_space"/>
+            <field name="p_sep_by_space"/>
+            <label name="n_sep_by_space"/>
+            <field name="n_sep_by_space"/>
+            <newline/>
+        </page>
+    </notebook>
+</form>

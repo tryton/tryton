@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the credit limit amount (%s)"
+msgstr "\"%s\" hat das Kreditlimit (%s) erreicht."
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the dunning credit limit (%s)"
+msgstr "\"%s\" hat das Mahnlimit (%s) erreicht."
+
+msgctxt "field:account.configuration,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Standardkreditlimit"
+
+msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:account.dunning.level,credit_limit:"
+msgid "Credit Limit"
+msgstr "Kreditlimit anwenden"
+
+msgctxt "field:party.party,credit_amount:"
+msgid "Credit Amount"
+msgstr "Aktuell genutzter Kreditbetrag"
+
+msgctxt "field:party.party,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "Kreditlimit"
+
+msgctxt "field:party.party,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "help:account.dunning.level,credit_limit:"
+msgid "Has reached the credit limit"
+msgstr "Kreditlimit ausgeschöpft"
+
+msgctxt "model:res.group,name:group_credit_limit"
+msgid "Account Credit Limit"
+msgstr "Buchhaltung Kreditlimit"
+
+msgctxt "view:account.configuration:"
+msgid "Credit Limit"
+msgstr "Kreditlimit"
+
+msgctxt "view:party.party:"
+msgid "Credit Limit"
+msgstr "Kreditlimit"
