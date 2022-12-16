@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list.line,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:product.price_list.line,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:product.price_list.line.context,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:product.sale.context,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "model:ir.action,name:act_price_list_line_form"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "Open posities"
+
+msgctxt "model:product.price_list.line.context,name:"
+msgid "Price List Line Context"
+msgstr "Prijslijst regelcontext"
