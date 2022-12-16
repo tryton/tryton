@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_purchase_configuration_form">
+            <field name="name">Purchase Configuration</field>
+            <field name="res_model">purchase.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="purchase_configuration_view_form"/>
+            <field name="act_window" ref="act_purchase_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_purchase_configuration_form"
+            id="menu_purchase_configuration" icon="tryton-list"/>
+
+        <record model="ir.property" id="property_purchase_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_purchase'))"/>
+        </record>
+        <record model="ir.property"
+            id="property_purchase_invoice_method">
+            <field name="field"
+               search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_invoice_method')]" />
+           <field name="value">,order</field>
+        </record>
+    </data>
+</tryton>
