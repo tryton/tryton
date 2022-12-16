@@ -1,0 +1,595 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "Štetje SEPA soglasij"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "Štetje SEPA soglasij"
+
+msgctxt "field:account.payment,sepa_end_to_end_id:"
+msgid "SEPA End To End ID"
+msgstr "ID SEPA End-to-End"
+
+msgctxt "field:account.payment,sepa_instruction_id:"
+msgid "SEPA Instruction ID"
+msgstr "ID SEPA navodila"
+
+msgctxt "field:account.payment,sepa_mandate:"
+msgid "Mandate"
+msgstr "Soglasje"
+
+msgctxt "field:account.payment,sepa_mandate_sequence_type:"
+msgid "Mandate Sequence Type"
+msgstr "Vrsta štetja soglasij"
+
+msgctxt "field:account.payment,sepa_return_reason_code:"
+msgid "Return Reason Code"
+msgstr "Šifra razloga zavrnitve"
+
+msgctxt "field:account.payment,sepa_return_reason_information:"
+msgid "Return Reason Information"
+msgstr "Podrobnosti razloga zavrnitve"
+
+msgctxt "field:account.payment.group,sepa_messages:"
+msgid "SEPA Messages"
+msgstr "SEPA sporočilo"
+
+msgctxt "field:account.payment.journal,company_party:"
+msgid "Company Party"
+msgstr "Družba"
+
+msgctxt "field:account.payment.journal,sepa_bank_account_number:"
+msgid "Bank Account Number"
+msgstr "Številka bančnega računa"
+
+msgctxt "field:account.payment.journal,sepa_batch_booking:"
+msgid "Batch Booking"
+msgstr "Paketno knjiženje"
+
+msgctxt "field:account.payment.journal,sepa_charge_bearer:"
+msgid "Charge Bearer"
+msgstr "Nosilec stroškov"
+
+msgctxt "field:account.payment.journal,sepa_payable_flavor:"
+msgid "Payable Flavor"
+msgstr "Vrsta obveznosti"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Payable Initiator Identifier"
+msgstr "Identifikator SEPA upnika"
+
+msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
+msgid "Receivable Flavor"
+msgstr "Vrsta terjatev"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Receivable Initiator Identifier"
+msgstr "Identifikator SEPA upnika"
+
+msgctxt "field:account.payment.sepa.mandate,account_number:"
+msgid "Account Number"
+msgstr "Bančni račun"
+
+msgctxt "field:account.payment.sepa.mandate,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.payment.sepa.mandate,identification:"
+msgid "Identification"
+msgstr "Identifikacija"
+
+msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
+msgid "Identification Readonly"
+msgstr "Identifikacija samo za branje"
+
+msgctxt "field:account.payment.sepa.mandate,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:account.payment.sepa.mandate,payments:"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "field:account.payment.sepa.mandate,scheme:"
+msgid "Scheme"
+msgstr "Shema"
+
+msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
+msgid "Always use RCUR"
+msgstr "Vedno uporabi RCUR"
+
+msgctxt "field:account.payment.sepa.mandate,signature_date:"
+msgid "Signature Date"
+msgstr "Datum podpisa"
+
+msgctxt "field:account.payment.sepa.mandate,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:account.payment.sepa.mandate,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:account.payment.sepa.message,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.payment.sepa.message,filename:"
+msgid "Filename"
+msgstr "Datoteka"
+
+msgctxt "field:account.payment.sepa.message,message:"
+msgid "Message"
+msgstr "Sporočilo"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,message_file_id:"
+msgid "Message File ID"
+msgstr "Sporočilo"
+
+msgctxt "field:account.payment.sepa.message,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:account.payment.sepa.message,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:account.payment.sepa.message,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.identifier,sepa_es_suffix:"
+msgid "SEPA Suffix"
+msgstr ""
+
+msgctxt "field:party.party,sepa_creditor_identifier_used:"
+msgid "SEPA Creditor Identifier Used"
+msgstr "Uporabljena Identifikacija SEPA upnika"
+
+msgctxt "field:party.party,sepa_mandates:"
+msgid "SEPA Mandates"
+msgstr "SEPA soglasja"
+
+msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr "Konfiguracija štetja SEPA soglasij"
+
+msgctxt "model:account.payment.sepa.mandate,name:"
+msgid "SEPA Mandate"
+msgstr "SEPA soglasje"
+
+msgctxt "model:account.payment.sepa.message,name:"
+msgid "SEPA Message"
+msgstr "SEPA sporočilo"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandates"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_mandate_form2"
+msgid "Mandates"
+msgstr "Mandates"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_message_form"
+msgid "SEPA Messages"
+msgstr "SEPA Messages"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_mandate"
+msgid "Mandate"
+msgstr "Mandate"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
+msgid "Requested"
+msgstr "Requested"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
+msgid "Validated"
+msgstr "Validated"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Canceled"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
+msgid "Receivable with Mandate"
+msgstr "Receivable with Mandate"
+
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
+msgid ""
+"To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_mandate_unique_id"
+msgid "SEPA mandate identification must be unique by company."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_no_id"
+msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_process_no_iban"
+msgid "To process payment \"%(payment)s\" you must define IBAN for it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
+msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
+msgid "Are you sure you want to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_cancel_button"
+msgid "Are you sure you want to cancel the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_do_button"
+msgid "Are you sure you want to process the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+msgctxt "model:ir.model.button,string:group_generate_message_button"
+msgid "Generate Message"
+msgstr "Generate Message"
+
+msgctxt "model:ir.model.button,string:mandate_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:mandate_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:mandate_request_button"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:message_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:message_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:message_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_mandate"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_message"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
+msgid "SEPA Mandate"
+msgstr "SEPA Mandate"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandates"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "SEPA Messages"
+msgstr "SEPA Messages"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "."
+msgstr "."
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Account number – IBAN"
+msgstr "Bančni račun"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"As part of your rights, you are entitled to a refund from your bank under "
+"the terms and conditions of your agreement with your bank. A refund must be "
+"claimed within 8 weeks starting from the date on which your account was "
+"debited."
+msgstr ""
+"Kot del vaših pravic ste upravičeni do povračila s strani vaše banke pod "
+"pogoji dogovora z banko. Povračilo morate zahtevati v roku 8 tednov od "
+"datuma bremenitve vašega računa."
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "By signing this mandate form, you authorize"
+msgstr "S podpisom tega obrazca se soglašate"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "City"
+msgstr "Mesto"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Country"
+msgstr "Država"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor identifier"
+msgstr "Identifikator prejemnika plačila"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor name"
+msgstr "Naziv prejemnika plačila"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor's name"
+msgstr "Naziv prejemnika plačila"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Direct Debit MANDATE"
+msgstr "Soglasje direktne bremenitve"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Location"
+msgstr "Lokacija"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Name of the debtor"
+msgstr "Naziv plačnika"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "One-off payment"
+msgstr "Enkratno plačilo"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Postal code"
+msgstr "Pošta"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Recurrent payment"
+msgstr "Periodično plačilo"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signature"
+msgstr "Podpis"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signed at"
+msgstr "Podpisano v/na"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Street name and number"
+msgstr "Ulica"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Type of payment"
+msgstr "Vrsta plačila"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your account number"
+msgstr "Vaš račun"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your address"
+msgstr "Vaš naslov"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your name"
+msgstr "Vaše ime"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"to send instructions to your bank to debit your account and your bank to "
+"debit your account in accordance with the instructions from"
+msgstr ""
+"za pošiljanje navodil vaši banki za bremenitev vašega računa in v skladu z "
+"navodili od"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Creditor"
+msgstr "Prejemnik plačila"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Debtor"
+msgstr "Plačnik"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Service Level"
+msgstr "Nivo storitve"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Shared"
+msgstr "Deljeno"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identifikator SEPA upnika"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identifikator SEPA upnika"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Business to Business"
+msgstr "B2B"
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Core"
+msgstr "Osnovna"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Requested"
+msgstr "Zahtevano"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Validated"
+msgstr "Odobreno"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "One-off"
+msgstr "Enkratno"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "Recurrent"
+msgstr "Periodično"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "IN"
+msgstr "Vhod"
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "OUT"
+msgstr "Izhod"
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "view:account.payment.journal:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "view:account.payment:"
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Information"
+msgstr "Identifikacija"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Return Reason"
+msgstr "Šifra razloga zavrnitve"

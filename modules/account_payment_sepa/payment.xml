@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="journal_form">
+            <field name="model">account.payment.journal</field>
+            <field name="inherit" ref="account_payment.payment_journal_view_form"/>
+            <field name="name">payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="group_form">
+            <field name="model">account.payment.group</field>
+            <field name="inherit" ref="account_payment.payment_group_view_form"/>
+            <field name="name">payment_group_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_form"/>
+            <field name="name">payment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="mandate_view_form">
+            <field name="model">account.payment.sepa.mandate</field>
+            <field name="type">form</field>
+            <field name="name">mandate_form</field>
+        </record>
+        <record model="ir.ui.view" id="mandate_view_list">
+            <field name="model">account.payment.sepa.mandate</field>
+            <field name="type">tree</field>
+            <field name="name">mandate_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_mandate_form">
+            <field name="name">SEPA Mandates</field>
+            <field name="res_model">account.payment.sepa.mandate</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_mandate_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="mandate_view_list"/>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_mandate_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="mandate_view_form"/>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_mandate_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_mandate_form_domain_requested">
+            <field name="name">Requested</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'requested')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_mandate_form_domain_validated">
+            <field name="name">Validated</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'validated')]"
+                pyson="1"/>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_mandate_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_mandate_form"/>
+        </record>
+
+        <menuitem parent="bank.menu_banking" sequence="30"
+            action="act_mandate_form" id="menu_mandate_form"/>
+
+        <record model="ir.rule.group" id="rule_group_mandate">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_payment1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_mandate"/>
+        </record>
+
+        <record model="ir.model.access" id="access_mandate">
+            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_mandate_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_mandate_account_payment">
+            <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+            <field name="group" ref="account_payment.group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="mandate_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the mandate?</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+        </record>
+
+        <record model="ir.model.button" id="mandate_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+        </record>
+
+        <record model="ir.model.button" id="mandate_validate_mandate_button">
+            <field name="name">validate_mandate</field>
+            <field name="string">Validate</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+        </record>
+
+        <record model="ir.model.button" id="mandate_request_button">
+            <field name="name">request</field>
+            <field name="string">Request</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.mandate')]"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_mandate">
+            <field name="name">SEPA Mandate</field>
+            <field name="code">account.payment.sepa.mandate</field>
+        </record>
+
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_mandate_group_admin">
+            <field name="sequence_type" ref="sequence_type_mandate"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_mandate_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_mandate"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="message_view_form">
+            <field name="model">account.payment.sepa.message</field>
+            <field name="type">form</field>
+            <field name="name">message_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="message_view_list">
+            <field name="model">account.payment.sepa.message</field>
+            <field name="type">tree</field>
+            <field name="name">message_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_message_form">
+            <field name="name">SEPA Messages</field>
+            <field name="res_model">account.payment.sepa.message</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="message_view_list"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="message_view_form"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_cancelled">
+            <field name="name">Cancelled</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'cancelled')]" pyson="1"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+
+        <menuitem parent="account_payment.menu_payments" sequence="40"
+            action="act_message_form" id="menu_message_form"/>
+
+        <record model="ir.rule.group" id="rule_group_message">
+            <field name="name">User in company</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_message1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_message"/>
+        </record>
+
+        <record model="ir.model.access" id="access_message">
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_message_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_mmessage_account_payment">
+            <field name="model" search="[('model', '=', 'account.payment.sepa.message')]"/>
+            <field name="group" ref="account_payment.group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="message_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the messages?</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="message_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="message_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="message_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="confirm">Are you sure you want to process the messages?</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.sepa.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="group_generate_message_button">
+            <field name="name">generate_message</field>
+            <field name="string">Generate Message</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.group')]"/>
+        </record>
+
+        <record model="ir.action.report" id="report_mandate">
+            <field name="name">Mandate</field>
+            <field name="model">account.payment.sepa.mandate</field>
+            <field name="report_name">account.payment.sepa.mandate</field>
+            <field name="report">account_payment_sepa/mandate.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_mandate_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.payment.sepa.mandate,-1</field>
+            <field name="action" ref="report_mandate"/>
+        </record>
+    </data>
+</tryton>

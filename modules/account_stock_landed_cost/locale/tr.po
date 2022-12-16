@@ -1,0 +1,220 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.line,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "field:account.landed_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr ""
+
+msgctxt "field:account.landed_cost,categories:"
+msgid "Categories"
+msgstr ""
+
+msgctxt "field:account.landed_cost,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.landed_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:account.landed_cost,posted_date:"
+msgid "Posted Date"
+msgstr ""
+
+msgctxt "field:account.landed_cost,products:"
+msgid "Products"
+msgstr ""
+
+msgctxt "field:account.landed_cost,shipments:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "field:account.landed_cost,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.landed_cost-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.category,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "field:account.landed_cost-product.product,product:"
+msgid "Product"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
+msgid "Shipment"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+#, fuzzy
+msgctxt "field:product.template,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "field:stock.move,unit_landed_cost:"
+msgid "Unit Landed Cost"
+msgstr ""
+
+msgctxt "help:account.landed_cost,categories:"
+msgid "Apply only to products of these categories."
+msgstr ""
+
+msgctxt "help:account.landed_cost,products:"
+msgid "Apply only to these products."
+msgstr ""
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.landed_cost,name:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "model:account.landed_cost-product.category,name:"
+msgid "Landed Cost - Product Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.landed_cost-product.product,name:"
+msgid "Landed Cost - Product"
+msgstr "Landed Cost"
+
+msgctxt "model:account.landed_cost-stock.shipment.in,name:"
+msgid "Landed Cost - Shipment"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Landed Costs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
+msgid "Landed Costs"
+msgstr "Landed Costs"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
+msgid "All"
+msgstr "All"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Posted"
+
+msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
+msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
+msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
+msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_landed_cost"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "model:ir.ui.menu,name:menu_landed_cost"
+msgid "Landed Costs"
+msgstr "Landed Costs"
+
+msgctxt "selection:account.landed_cost,allocation_method:"
+msgid "By Value"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.landed_cost,state:"
+msgid "Cancelled"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "selection:account.landed_cost,state:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "selection:account.landed_cost,state:"
+msgid "Posted"
+msgstr "Posted"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr ""
