@@ -1,0 +1,426 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.complaint.action:"
+msgid "Action \"%s\" must not have result to be deleted."
+msgstr "Za izbris ukrep \"%s\" ne sme imeti rezultata."
+
+msgctxt "error:sale.complaint:"
+msgid "Complaint \"%s\" must be in draft to be deleted."
+msgstr "Za izbris mora biti reklamacija \"%s\" v pripravi."
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Ukrepi"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Naslov"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:sale.complaint,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.complaint,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Kupec"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:sale.complaint,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "ID porekla"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Model porekla"
+
+msgctxt "field:sale.complaint,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Sklic"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "field:sale.complaint,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.complaint,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Ukrep"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "Reklamacija"
+
+msgctxt "field:sale.complaint.action,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.complaint.action,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.complaint.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Postavke računov"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:sale.complaint.action,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Rezultat"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Prodajne postavke"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "enota"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Cena"
+
+msgctxt "field:sale.complaint.action,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.complaint.action,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Ukrep"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Ukrep"
+
+msgctxt "field:sale.complaint.action-sale.line,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.complaint.action-sale.line,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.complaint.action-sale.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Prodajna postavka"
+
+msgctxt "field:sale.complaint.action-sale.line,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.complaint.action-sale.line,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.complaint.action-sale.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.complaint.type,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.complaint.type,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.complaint.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:sale.complaint.type,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.complaint.type,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.complaint.type,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Štetje reklamacij"
+
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines"
+msgstr "Pusti prazno za vse postavke"
+
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity"
+msgstr "Pusti prazno za isto količino"
+
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines"
+msgstr "Pusti prazno za vse postavke"
+
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price"
+msgstr "Pusti prazno za isto ceno"
+
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "Reklamacija"
+
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Reklamacije kupcev"
+
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "Reklamacije"
+
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Vrste"
+
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "Vse"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Reklamacija kupca"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Reklamacija kupca"
+
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "Reklamacije"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Reklamacija kupca"
+
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Vrste"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Reklamacija kupca"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Ukrep reklamacije kupca"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "Ukrep reklamacije kupca - Postavka računa"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "Ukrep reklamacije kupca - Prodajna postavka"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "Vrsta reklamacije kupca"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Preklicano"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Zavrnjeno"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "Čakajoče"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Izdelava dobropisa"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "Izdelava vračilnega naloga"
+
+msgctxt "view:sale.complaint.action:"
+msgid "Customer Complaint Action"
+msgstr "Ukrep reklamacije kupca"
+
+msgctxt "view:sale.complaint.action:"
+msgid "Customer Complaint Actions"
+msgstr "Ukrepi reklamacij kupcev"
+
+msgctxt "view:sale.complaint.type:"
+msgid "Customer Complaint Type"
+msgstr "Vrsta reklamacije kupca"
+
+msgctxt "view:sale.complaint.type:"
+msgid "Customer Complaint Types"
+msgstr "Vrste reklamacij kupcev"
+
+msgctxt "view:sale.complaint:"
+msgid "Approve"
+msgstr "Odobritev"
+
+msgctxt "view:sale.complaint:"
+msgid "Cancel"
+msgstr "Preklic"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reklamacija"
+
+msgctxt "view:sale.complaint:"
+msgid "Customer Complaint"
+msgstr "Reklamacija kupca"
+
+msgctxt "view:sale.complaint:"
+msgid "Customer Complaints"
+msgstr "Reklamacije kupcev"
+
+msgctxt "view:sale.complaint:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Obdelava"
+
+msgctxt "view:sale.complaint:"
+msgid "Reject"
+msgstr "Zavrnitev"
+
+msgctxt "view:sale.complaint:"
+msgid "Wait"
+msgstr "Čakanje"
