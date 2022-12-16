@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='other']" position="before">
+        <page id="carriages" string="Carriages">
+            <field name="before_carriages" colspan="4"/>
+
+            <label name="carrier"/>
+            <field name="carrier"/>
+
+            <field name="after_carriages" colspan="4"/>
+        </page>
+    </xpath>
+</data>
