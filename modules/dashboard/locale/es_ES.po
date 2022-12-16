@@ -1,0 +1,84 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Acciones del escritorio"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Organización del escritorio"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr "dashboard.action"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Ajustado"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "De arriba a abajo"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "De derecha a izquierda"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "De izquierda a derecha"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "De abajo a arriba"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Acción del escritorio"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Acciones del escritorio"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Acción del escritorio"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Acciones del escritorio"

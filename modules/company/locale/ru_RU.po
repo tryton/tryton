@@ -1,0 +1,232 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:company.company:0"
+msgid "You can not create recursive companies!"
+msgstr "Вы не можете создать взаимоподчинённые организации"
+
+msgctxt "error:res.user:0"
+msgid "You can not set a company that is not a child of your main company!"
+msgstr ""
+"вы не можете установить учетную организацию, отсутвуют подразделения вашей "
+"компании"
+
+msgctxt "field:company.company,childs:0"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "field:company.company,currency:0"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:company.company,employees:0"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "field:company.company,footer:0"
+msgid "Footer"
+msgstr "Нижний колонтитул"
+
+msgctxt "field:company.company,header:0"
+msgid "Header"
+msgstr "Верхний колонтитул"
+
+msgctxt "field:company.company,parent:0"
+msgid "Parent"
+msgstr "Основной"
+
+msgctxt "field:company.company,party:0"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "field:company.company,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:company.employee,company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:company.employee,party:0"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "field:company.employee,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.cron,companies:0"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "field:ir.cron-company.company,company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:ir.cron-company.company,cron:0"
+msgid "Cron"
+msgstr "Планировщик"
+
+msgctxt "field:ir.cron-company.company,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.property,company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:ir.sequence,company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:ir.sequence.strict,company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:res.user,companies:0"
+msgid "Current Companies"
+msgstr "Текущие организации"
+
+msgctxt "field:res.user,company:0"
+msgid "Current Company"
+msgstr "Текущая организация"
+
+msgctxt "field:res.user,employee:0"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:res.user,main_company:0"
+msgid "Main Company"
+msgstr "Основная организация"
+
+msgctxt "help:ir.cron,companies:0"
+msgid "Companies registered for this cron"
+msgstr "Организации зарегистрированные для этого планировщика"
+
+msgctxt "model:company.company,name:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "model:company.company.config.init,name:0"
+msgid "Company Config Init"
+msgstr "Конфигурация модуля предприятия"
+
+msgctxt "model:company.employee,name:0"
+msgid "Employee"
+msgstr "Сотрудник"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Письмо"
+
+msgctxt "model:ir.cron-company.company,name:0"
+msgid "ir.cron-company.company"
+msgstr "Планировщик"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "odt:party.letter:0"
+msgid "Best Regards,"
+msgstr "С уважением,"
+
+msgctxt "odt:party.letter:0"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "odt:party.letter:0"
+msgid "Dear Madams and Sirs,"
+msgstr "Уважаемые дамы и годпода,"
+
+msgctxt "odt:party.letter:0"
+msgid "E-Mail:"
+msgstr "E-Mail:"
+
+msgctxt "odt:party.letter:0"
+msgid "Phone:"
+msgstr "Телефон:"
+
+msgctxt "odt:party.letter:0"
+msgid "Subject:"
+msgstr "Тема:"
+
+msgctxt "odt:party.letter:0"
+msgid "VAT Number:"
+msgstr ""
+
+msgctxt "view:company.company.config.init:0"
+msgid "Create Company"
+msgstr "Создать организацию"
+
+msgctxt "view:company.company.config.init:0"
+msgid "You can now add your company into the system."
+msgstr "Теперь вы можете добавить организацию в систему"
+
+msgctxt "view:company.company:0"
+msgid "Companies"
+msgstr "Организация"
+
+msgctxt "view:company.company:0"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "view:company.company:0"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "view:company.company:0"
+msgid "Reports"
+msgstr "Отчеты"
+
+msgctxt "view:company.employee:0"
+msgid "Employee"
+msgstr "Сотрудник"
+
+#, fuzzy
+msgctxt "view:company.employee:0"
+msgid "Employees"
+msgstr "Сотрудники"
+
+msgctxt "view:company.employee:0"
+msgid "Employess"
+msgstr "Сотрудники"
+
+msgctxt "wizard_button:company.company.config,company,add:0"
+msgid "Add"
+msgstr "Добавить"
+
+msgctxt "wizard_button:company.company.config,company,end:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:company.company.config,init,company:0"
+msgid "Ok"
+msgstr "Да"
+
+msgctxt "wizard_button:company.company.config,init,end:0"
+msgid "Cancel"
+msgstr "Отменить"
