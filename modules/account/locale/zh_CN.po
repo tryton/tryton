@@ -1,0 +1,4827 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+msgctxt "field:account.account,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.account,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "已结账"
+
+msgctxt "field:account.account,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.account,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.account,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.account,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.account,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.account,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.account,debit_type:"
+msgid "Debit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.account,deferral:"
+msgid "Deferral"
+msgstr "结转"
+
+msgctxt "field:account.account,deferrals:"
+msgid "Deferrals"
+msgstr "结转"
+
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "总分类帐余额"
+
+msgctxt "field:account.account,left:"
+msgid "Left"
+msgstr "左"
+
+msgctxt "field:account.account,line_count:"
+msgid "Line Count"
+msgstr ""
+
+msgctxt "field:account.account,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.account,note:"
+msgid "Note"
+msgstr "备注"
+
+msgctxt "field:account.account,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
+msgctxt "field:account.account,reconcile:"
+msgid "Reconcile"
+msgstr "允许对账"
+
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr "替换为"
+
+msgctxt "field:account.account,right:"
+msgid "Right"
+msgstr "右边"
+
+msgctxt "field:account.account,second_currency:"
+msgid "Secondary Currency"
+msgstr "第二货币"
+
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:account.account,taxes:"
+msgid "Default Taxes"
+msgstr "默认税"
+
+msgctxt "field:account.account,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.account,template_override:"
+msgid "Override Template"
+msgstr "不理会模版"
+
+msgctxt "field:account.account,type:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "field:account.account-account.tax,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.account-account.tax,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.account.deferral,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.account.deferral,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.account.deferral,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.account.deferral,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.account.deferral,line_count:"
+msgid "Line Count"
+msgstr ""
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr "第二货币"
+
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "已结账"
+
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
+
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "第二货币"
+
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "field:account.account.template,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "已结账"
+
+msgctxt "field:account.account.template,code:"
+msgid "Code"
+msgstr "代码"
+
+#, fuzzy
+msgctxt "field:account.account.template,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.account.template,debit_type:"
+msgid "Debit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.account.template,deferral:"
+msgid "Deferral"
+msgstr "结转"
+
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "总分类帐余额"
+
+msgctxt "field:account.account.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.account.template,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
+msgctxt "field:account.account.template,reconcile:"
+msgid "Reconcile"
+msgstr "允许对账"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr "替换为"
+
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:account.account.template,taxes:"
+msgid "Default Taxes"
+msgstr "默认税"
+
+msgctxt "field:account.account.template,type:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "field:account.account.template-account.tax.template,account:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "field:account.account.template-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "税模板"
+
+msgctxt "field:account.account.type,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr "资产"
+
+msgctxt "field:account.account.type,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.account.type,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.account.type,debt:"
+msgid "Debt"
+msgstr ""
+
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "费用"
+
+msgctxt "field:account.account.type,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.account.type,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "应付账款"
+
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "应收账款"
+
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "收入"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr "利润表"
+
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "库存"
+
+msgctxt "field:account.account.type,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.account.type,template_override:"
+msgid "Override Template"
+msgstr "不理会模板"
+
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr "资产"
+
+msgctxt "field:account.account.type.template,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.account.type.template,debt:"
+msgid "Debt"
+msgstr ""
+
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "费用"
+
+msgctxt "field:account.account.type.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.account.type.template,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "应付账款"
+
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "应收账款"
+
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "收入"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr "利润表"
+
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "库存"
+
+msgctxt "field:account.aged_balance,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.aged_balance,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.aged_balance,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.aged_balance,term0:"
+msgid "Now"
+msgstr "现在"
+
+msgctxt "field:account.aged_balance,term1:"
+msgid "First Term"
+msgstr "第一期"
+
+msgctxt "field:account.aged_balance,term2:"
+msgid "Second Term"
+msgstr "第二期"
+
+msgctxt "field:account.aged_balance,term3:"
+msgid "Third Term"
+msgstr "第三期"
+
+msgctxt "field:account.aged_balance.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.aged_balance.context,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.aged_balance.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.aged_balance.context,term1:"
+msgid "First Term"
+msgstr "第一期"
+
+msgctxt "field:account.aged_balance.context,term2:"
+msgid "Second Term"
+msgstr "第二期"
+
+msgctxt "field:account.aged_balance.context,term3:"
+msgid "Third Term"
+msgstr "第三期"
+
+msgctxt "field:account.aged_balance.context,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.aged_balance.context,unit:"
+msgid "Unit"
+msgstr "单位"
+
+msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgid "Comparison"
+msgstr "比较"
+
+msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.balance_sheet.context,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.configuration,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "默认应付账款账户"
+
+msgctxt "field:account.configuration,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "默认应收账款账户"
+
+msgctxt "field:account.configuration,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "默认客户税规则"
+
+msgctxt "field:account.configuration,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "默认供应商税规则"
+
+#, fuzzy
+msgctxt "field:account.configuration,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "对帐明细"
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "税额四舍五入"
+
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "默认应付账款账户"
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "默认应收账款账户"
+
+msgctxt "field:account.configuration.default_tax_rule,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "默认客户税规则"
+
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "默认供应商税规则"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "对帐明细"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "方法"
+
+msgctxt "field:account.create_chart.account,account_template:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "field:account.create_chart.account,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.create_chart.properties,account_payable:"
+msgid "Default Payable Account"
+msgstr "默认应付账款账户"
+
+msgctxt "field:account.create_chart.properties,account_receivable:"
+msgid "Default Receivable Account"
+msgstr "默认应付账款账户"
+
+msgctxt "field:account.create_chart.properties,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.fiscalyear,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.fiscalyear,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:account.fiscalyear,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.fiscalyear,periods:"
+msgid "Periods"
+msgstr "分期"
+
+msgctxt "field:account.fiscalyear,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "记账凭证入账序列"
+
+msgctxt "field:account.fiscalyear,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.fiscalyear,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "贷方帐户"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "借方帐户"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
+msgid "End Day"
+msgstr "结账日期"
+
+msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
+msgid "Frequency"
+msgstr "频率"
+
+msgctxt "field:account.fiscalyear.create_periods.start,interval:"
+msgid "Interval"
+msgstr "间隔"
+
+msgctxt "field:account.fiscalyear.renew.start,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.fiscalyear.renew.start,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.fiscalyear.renew.start,name:"
+msgid "Name"
+msgstr "姓名"
+
+msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Previous Fiscalyear"
+msgstr "上一会计年度"
+
+msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
+msgid "Reset Sequences"
+msgstr "重置序列"
+
+msgctxt "field:account.fiscalyear.renew.start,start_date:"
+msgid "Start Date"
+msgstr "开始日期"
+
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.general_ledger.account,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:account.general_ledger.account,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.general_ledger.account,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,credit_type:"
+msgid "Credit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.general_ledger.account,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.general_ledger.account,debit_type:"
+msgid "Debit Type"
+msgstr "借方类型"
+
+msgctxt "field:account.general_ledger.account,end_balance:"
+msgid "End Balance"
+msgstr "期末余额"
+
+msgctxt "field:account.general_ledger.account,end_credit:"
+msgid "End Credit"
+msgstr "期末贷方"
+
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "停用日期"
+
+msgctxt "field:account.general_ledger.account,end_debit:"
+msgid "End Debit"
+msgstr "期末借方"
+
+msgctxt "field:account.general_ledger.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "总分类帐余额"
+
+msgctxt "field:account.general_ledger.account,line_count:"
+msgid "Line Count"
+msgstr ""
+
+msgctxt "field:account.general_ledger.account,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.general_ledger.account,start_balance:"
+msgid "Start Balance"
+msgstr "起始余额"
+
+msgctxt "field:account.general_ledger.account,start_credit:"
+msgid "Start Credit"
+msgstr "起始贷方"
+
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "开始日期"
+
+msgctxt "field:account.general_ledger.account,start_debit:"
+msgid "Start Debit"
+msgstr "起始借方"
+
+msgctxt "field:account.general_ledger.account,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.general_ledger.account.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.general_ledger.account.context,end_period:"
+msgid "End Period"
+msgstr "期末"
+
+msgctxt "field:account.general_ledger.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.general_ledger.account.context,from_date:"
+msgid "From Date"
+msgstr "从日期"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.general_ledger.account.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.general_ledger.account.context,start_period:"
+msgid "Start Period"
+msgstr "期初"
+
+msgctxt "field:account.general_ledger.account.context,to_date:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "期末余额"
+
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "期末贷方"
+
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "期末借方"
+
+msgctxt "field:account.general_ledger.account.party,line_count:"
+msgid "Line Count"
+msgstr ""
+
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "起始余额"
+
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "起始贷方"
+
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "起始借方"
+
+msgctxt "field:account.general_ledger.line,account:"
+msgid "Account"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account_party:"
+msgid "Account Party"
+msgstr "账户参与者"
+
+msgctxt "field:account.general_ledger.line,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.general_ledger.line,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.general_ledger.line,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.general_ledger.line,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.general_ledger.line,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.general_ledger.line,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,internal_balance:"
+msgid "Internal Balance"
+msgstr "试算平衡表"
+
+msgctxt "field:account.general_ledger.line,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:account.general_ledger.line,move_description:"
+msgid "Move Description"
+msgstr "记账凭证说明"
+
+msgctxt "field:account.general_ledger.line,origin:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "field:account.general_ledger.line,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.general_ledger.line,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "对账"
+
+msgctxt "field:account.general_ledger.line,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.general_ledger.line.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.general_ledger.line.context,end_period:"
+msgid "End Period"
+msgstr "期末"
+
+msgctxt "field:account.general_ledger.line.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.general_ledger.line.context,from_date:"
+msgid "From Date"
+msgstr "从日期"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.general_ledger.line.context,party_cumulate:"
+msgid "Cumulate per Party"
+msgstr "按参与者累计"
+
+msgctxt "field:account.general_ledger.line.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.general_ledger.line.context,start_period:"
+msgid "Start Period"
+msgstr "期初"
+
+msgctxt "field:account.general_ledger.line.context,to_date:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:account.income_statement.context,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "比较"
+
+msgctxt "field:account.income_statement.context,end_period:"
+msgid "End Period"
+msgstr "期末"
+
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "期末"
+
+msgctxt "field:account.income_statement.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "从日期"
+
+msgctxt "field:account.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "从日期"
+
+msgctxt "field:account.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.income_statement.context,start_period:"
+msgid "Start Period"
+msgstr "期初"
+
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "期初"
+
+msgctxt "field:account.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:account.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:account.journal,balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "field:account.journal,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.journal,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.journal,debit:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "field:account.journal,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.journal,sequence:"
+msgid "Sequence"
+msgstr "序列"
+
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "序列"
+
+msgctxt "field:account.journal,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.journal.open_cash.context,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.journal.open_cash.context,start_date:"
+msgid "Start Date"
+msgstr "开始日期"
+
+msgctxt "field:account.journal.period,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:account.journal.period,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.journal.period,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.journal.period,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "序列"
+
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.move,date:"
+msgid "Effective Date"
+msgstr "生效日期"
+
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.move,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "编号"
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "field:account.move,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.move,post_date:"
+msgid "Post Date"
+msgstr "入账日期"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr "登记入账号"
+
+msgctxt "field:account.move,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move.line,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr "货币金额"
+
+msgctxt "field:account.move.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+#, fuzzy
+msgctxt "field:account.move.line,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.move.line,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.move.line,date:"
+msgid "Effective Date"
+msgstr "生效日期"
+
+msgctxt "field:account.move.line,debit:"
+msgid "Debit"
+msgstr "借方"
+
+#, fuzzy
+msgctxt "field:account.move.line,delegated_amount:"
+msgid "Delegated Amount"
+msgstr "委托人"
+
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.move.line,has_maturity_date:"
+msgid "Has Maturity Date"
+msgstr "到期日"
+
+msgctxt "field:account.move.line,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.move.line,maturity_date:"
+msgid "Maturity Date"
+msgstr "到期日"
+
+msgctxt "field:account.move.line,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "记账凭证说明"
+
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr "记账凭证依据"
+
+msgctxt "field:account.move.line,move_state:"
+msgid "Move State"
+msgstr "记账凭证状态"
+
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "field:account.move.line,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
+msgctxt "field:account.move.line,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.move.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "对账"
+
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr "委托对账"
+
+msgctxt "field:account.move.line,second_currency:"
+msgid "Second Currency"
+msgstr "第二货币"
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
+msgstr "需要有第二货币"
+
+msgctxt "field:account.move.line,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.move.line,tax_lines:"
+msgid "Tax Lines"
+msgstr "税明细"
+
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.preview,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.preview,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.preview,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.preview,terms:"
+msgid "Terms"
+msgstr "条款"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,amount:"
+msgid "Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,frequency:"
+msgid "Frequency"
+msgstr "频率"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,interval:"
+msgid "Interval"
+msgstr "间隔"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,number:"
+msgid "Number"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.start,total_amount:"
+msgid "Total Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.term,amount:"
+msgid "Amount"
+msgstr "数额"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.term,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.move.line.reschedule.term,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr "操作"
+
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "field:account.move.open_journal.ask,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.move.open_journal.ask,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "贷方账户"
+
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "借方账户"
+
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "核销"
+
+#, fuzzy
+msgctxt "field:account.move.reconciliation,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.move.reconciliation,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr "委托人"
+
+msgctxt "field:account.move.reconciliation,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.move.reconciliation,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr "数字"
+
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "必填项"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr "字符串"
+
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.open_chart.start,posted:"
+msgid "Posted Moves"
+msgstr "已入账记账凭证"
+
+msgctxt "field:account.period,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.period,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:account.period,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.period,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "记账凭证入账序列"
+
+msgctxt "field:account.period,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.period,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.period,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.reconcile.show,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "参与者"
+
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write Off"
+msgstr "核销"
+
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.reconcile.start,automatic:"
+msgid "Automatic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reconcile.start,only_balanced:"
+msgid "Only Balanced"
+msgstr "期末余额"
+
+msgctxt "field:account.tax,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.tax,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.tax,credit_base_amount:"
+msgid "Credit Base Amount"
+msgstr "贷方基数金额"
+
+msgctxt "field:account.tax,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "贷方通知帐户"
+
+msgctxt "field:account.tax,credit_tax_amount:"
+msgid "Credit Tax Amount"
+msgstr "贷方税额"
+
+#, fuzzy
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.tax,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:account.tax,invoice_account:"
+msgid "Invoice Account"
+msgstr "原始凭证账户"
+
+msgctxt "field:account.tax,invoice_base_amount:"
+msgid "Invoice Base Amount"
+msgstr "原始凭证基数金额"
+
+msgctxt "field:account.tax,invoice_tax_amount:"
+msgid "Invoice Tax Amount"
+msgstr "原始凭证税额"
+
+msgctxt "field:account.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "法律声明"
+
+msgctxt "field:account.tax,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "率"
+
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.tax,template_override:"
+msgid "Override Template"
+msgstr "不理会模板"
+
+msgctxt "field:account.tax,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "更新单价"
+
+msgctxt "field:account.tax.code,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:account.tax.code,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.code,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.tax.code,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.tax.code,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.tax.code,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax.code,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.tax.code,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.code,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax.code,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.tax.code,template_override:"
+msgid "Override Template"
+msgstr "不理会模版"
+
+msgctxt "field:account.tax.code.line,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.code.line,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.tax.code.line,operator:"
+msgid "Operator"
+msgstr "操作员"
+
+msgctxt "field:account.tax.code.line,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.tax.code.line,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.tax.code.line,template_override:"
+msgid "Override Template"
+msgstr "不理会模版"
+
+msgctxt "field:account.tax.code.line,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax.code.line.template,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.code.line.template,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.tax.code.line.template,operator:"
+msgid "Operator"
+msgstr "操作员"
+
+msgctxt "field:account.tax.code.line.template,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.tax.code.line.template,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.tax.code.open_chart.start,method:"
+msgid "Method"
+msgstr "方法"
+
+msgctxt "field:account.tax.code.open_chart.start,periods:"
+msgid "Periods"
+msgstr "分期"
+
+msgctxt "field:account.tax.code.template,account:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "field:account.tax.code.template,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.tax.code.template,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.tax.code.template,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax.code.template,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.tax.code.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.code.template,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax.group,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "种类"
+
+msgctxt "field:account.tax.group,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.line,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.tax.line,move_line:"
+msgid "Move Line"
+msgstr "记账凭证明细"
+
+msgctxt "field:account.tax.line,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.tax.line,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "明细"
+
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.tax.line.template,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax.rule,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "种类"
+
+msgctxt "field:account.tax.rule,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.tax.rule,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.rule,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "替换模版"
+
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax.rule.line,group:"
+msgid "Tax Group"
+msgstr "税组"
+
+msgctxt "field:account.tax.rule.line,keep_origin:"
+msgid "Keep Origin"
+msgstr "保持原样"
+
+msgctxt "field:account.tax.rule.line,origin_tax:"
+msgid "Original Tax"
+msgstr "原税"
+
+msgctxt "field:account.tax.rule.line,rule:"
+msgid "Rule"
+msgstr "规则"
+
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax.rule.line,tax:"
+msgid "Substitution Tax"
+msgstr "替代税"
+
+msgctxt "field:account.tax.rule.line,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "不理会模版"
+
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax.rule.line.template,group:"
+msgid "Tax Group"
+msgstr "税组"
+
+msgctxt "field:account.tax.rule.line.template,keep_origin:"
+msgid "Keep Origin"
+msgstr "保持原样"
+
+msgctxt "field:account.tax.rule.line.template,origin_tax:"
+msgid "Original Tax"
+msgstr "原税"
+
+msgctxt "field:account.tax.rule.line.template,rule:"
+msgid "Rule"
+msgstr "规则"
+
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax.rule.line.template,tax:"
+msgid "Substitution Tax"
+msgstr "替代税"
+
+msgctxt "field:account.tax.rule.template,account:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "种类"
+
+msgctxt "field:account.tax.rule.template,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.tax.rule.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.template,account:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "field:account.tax.template,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.template,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:account.tax.template,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "贷方通知帐户"
+
+msgctxt "field:account.tax.template,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "结账日期"
+
+msgctxt "field:account.tax.template,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:account.tax.template,invoice_account:"
+msgid "Invoice Account"
+msgstr "原始凭证账户"
+
+msgctxt "field:account.tax.template,legal_notice:"
+msgid "Legal Notice"
+msgstr "法律声明"
+
+msgctxt "field:account.tax.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:account.tax.template,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "率"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
+msgctxt "field:account.tax.template,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "更新单价"
+
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr "结果"
+
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr "单价"
+
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr "法律声明"
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.update_chart.start,account:"
+msgid "Root Account"
+msgstr "根账户"
+
+msgctxt "field:party.party,account_payable:"
+msgid "Account Payable"
+msgstr "应付账款账户"
+
+msgctxt "field:party.party,account_receivable:"
+msgid "Account Receivable"
+msgstr "应收账款账户"
+
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:party.party,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "客户税规则"
+
+msgctxt "field:party.party,payable:"
+msgid "Payable"
+msgstr "应付账款"
+
+msgctxt "field:party.party,payable_today:"
+msgid "Payable Today"
+msgstr "今日应付账款"
+
+msgctxt "field:party.party,receivable:"
+msgid "Receivable"
+msgstr "应收账款"
+
+msgctxt "field:party.party,receivable_today:"
+msgid "Receivable Today"
+msgstr "今日应收账款"
+
+msgctxt "field:party.party,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "供应商税规则"
+
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "应付帐款账户"
+
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "应收账款账户"
+
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "客户税规则"
+
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "供应商税规则"
+
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr "选中后，禁止账户入账."
+
+#, fuzzy
+msgctxt "help:account.account,credit_type:"
+msgid "The type used if not empty and debit < credit."
+msgstr "如果不为空并且借方 > 贷方，则使用此类型。"
+
+msgctxt "help:account.account,debit_type:"
+msgid "The type used if not empty and debit > credit."
+msgstr "如果不为空并且借方 > 贷方，则使用此类型。"
+
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "仅显示总分类帐报表中的余额."
+
+msgctxt "help:account.account,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr "允许对此帐户的记账凭证明细对账。"
+
+msgctxt "help:account.account,second_currency:"
+msgid ""
+"Force all moves for this account \n"
+"to have this secondary currency."
+msgstr ""
+"强制此帐户的所有记账凭证\n"
+"都拥有这种第二货币。"
+
+msgctxt "help:account.account,taxes:"
+msgid ""
+"Default tax for manual encoding of move lines\n"
+"for journal types: \"expense\" and \"revenue\"."
+msgstr ""
+"记账凭证明细手动编码的默认税\n"
+"对于日记帐类型：“费用”和“收入”。"
+
+msgctxt "help:account.account,template_override:"
+msgid "Check to override template definition"
+msgstr "选中后可重写模板定义"
+
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr "选中后，禁止账户入账。"
+
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "仅在总分类帐报表中显示余额。"
+
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr "允许对此帐户的记账凭证明细进行对账."
+
+msgctxt "help:account.account.type,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+msgctxt "help:account.account.type,template_override:"
+msgid "Check to override template definition"
+msgstr "选中后，将不理会模板定义"
+
+msgctxt "help:account.account.type.template,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+msgctxt "help:account.aged_balance.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.configuration,default_customer_tax_rule:"
+msgid "Default customer tax rule for new parties."
+msgstr "新参与者的默认客户税规则."
+
+msgctxt "help:account.configuration,default_supplier_tax_rule:"
+msgid "Default supplier tax rule for new parties."
+msgstr "新参与者的默认供应商税规则."
+
+msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
+msgid ""
+"The day of the month on which periods end.\n"
+"Months with fewer days will end on the last day."
+msgstr ""
+"分期结束月份的某一天.\n"
+"天数较少的月份将在最后一天结束。"
+
+msgctxt "help:account.fiscalyear.create_periods.start,interval:"
+msgid "The length of each period, in months."
+msgstr "每个分期的长度，以月为单位。"
+
+msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Used as reference for fiscalyear configuration."
+msgstr "用作会计年度配置的参考."
+
+msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
+msgid "If checked, new sequences will be created."
+msgstr "如果选中，将创建新序列."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "只包括已入账的记账凭证."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "只包括已入账的记账凭证."
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number."
+msgstr "也称为登记号."
+
+msgctxt "help:account.move.line,amount_second_currency:"
+msgid "The amount expressed in a second currency."
+msgstr "用第二种货币表示的金额."
+
+msgctxt "help:account.move.line,maturity_date:"
+msgid "Set a date to make the line payable or receivable."
+msgstr ""
+
+msgctxt "help:account.move.line,second_currency:"
+msgid "The second currency."
+msgstr "第二货币."
+
+#, fuzzy
+msgctxt "help:account.move.line.reschedule.start,interval:"
+msgid "The length of each period, in months."
+msgstr "每个分期的长度，以月为单位。"
+
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "使用此关键字计算的一个python表达式."
+
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgstr "替换关键字取值用大括号（'{'和'}'）标识."
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
+msgstr "“party”关键字的名称."
+
+msgctxt "help:account.move.reconciliation,date:"
+msgid "Highest date of the reconciled lines."
+msgstr "对账明细的最高日期."
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr "将对帐状态委派给的明细."
+
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today."
+msgstr "日期是今天的话，就空着."
+
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgstr "替换关键字取值用大括号（'{'和'}'）标识."
+
+msgctxt "help:account.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "对于所有未结会计年度，保留为空."
+
+msgctxt "help:account.open_chart.start,posted:"
+msgid "Only include posted moves."
+msgstr "只包括已入账的记账凭证."
+
+msgctxt "help:account.reconcile.start,automatic:"
+msgid "Automatically reconcile suggestions."
+msgstr ""
+
+msgctxt "help:account.reconcile.start,only_balanced:"
+msgid "Skip suggestion with write-off."
+msgstr ""
+
+msgctxt "help:account.tax,amount:"
+msgid "In company's currency."
+msgstr "以公司货币。"
+
+msgctxt "help:account.tax,description:"
+msgid "The name that will be used in reports."
+msgstr "报告中使用的名称."
+
+msgctxt "help:account.tax,template_override:"
+msgid "Check to override template definition"
+msgstr "选中后，将不理会模板定义"
+
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation will be modified "
+"by this tax."
+msgstr "如果勾选，则以后计税的单价将被此税修改."
+
+msgctxt "help:account.tax.code,template_override:"
+msgid "Check to override template definition"
+msgstr "选中可重写模板定义"
+
+msgctxt "help:account.tax.code.line,template_override:"
+msgid "Check to override template definition"
+msgstr "选中可重写模板定义"
+
+msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "对于所有未结会计年度，保留为空."
+
+msgctxt "help:account.tax.code.open_chart.start,periods:"
+msgid "Leave empty for all periods of all open fiscal year."
+msgstr "对于所有未结会计年度的所有分期，保留为空."
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr "将与关键字计算的python表达式."
+
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "选中可重写模板定义"
+
+msgctxt "help:account.tax.rule.line,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "勾选后，原税将追加到替代税."
+
+msgctxt "help:account.tax.rule.line,origin_tax:"
+msgid ""
+"If the original tax is filled, the rule will be applied only for this tax."
+msgstr "如果填写了原税，则该规则仅适用于本税."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "选中后，将不理会模板定义"
+
+msgctxt "help:account.tax.rule.line.template,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr "选中可将原始税附加到替代税."
+
+msgctxt "help:account.tax.rule.line.template,origin_tax:"
+msgid ""
+"If the original tax template is filled, the rule will be applied only for "
+"this tax template."
+msgstr "如果填写了原始税务模板，则该规则将仅适用于此税务模板."
+
+msgctxt "help:party.party,customer_tax_rule:"
+msgid "Apply this rule on taxes when party is customer."
+msgstr "当参与者是客户时，适用此规则。"
+
+msgctxt "help:party.party,supplier_tax_rule:"
+msgid "Apply this rule on taxes when party is supplier."
+msgstr "当参与者是供应商时，适用此规则。"
+
+msgctxt "model:account.account,name:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "model:account.account-account.tax,name:"
+msgid "Account - Tax"
+msgstr "帐户-税"
+
+msgctxt "model:account.account.deferral,name:"
+msgid "Account Deferral"
+msgstr "账户结转"
+
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "账户参与者"
+
+msgctxt "model:account.account.template,name:"
+msgid "Account Template"
+msgstr "账户模板"
+
+msgctxt "model:account.account.template-account.tax.template,name:"
+msgid "Account Template - Tax Template"
+msgstr "账户模板-税模板"
+
+msgctxt "model:account.account.type,name:"
+msgid "Account Type"
+msgstr "会计科目"
+
+msgctxt "model:account.account.type.template,name:"
+msgid "Account Type Template"
+msgstr "会计科目模板"
+
+msgctxt "model:account.aged_balance,name:"
+msgid "Aged Balance"
+msgstr "账龄分析"
+
+msgctxt "model:account.aged_balance.context,name:"
+msgid "Aged Balance Context"
+msgstr "账龄分析内容"
+
+msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgid "Balance Sheet Context"
+msgstr "资产负债表内容"
+
+msgctxt "model:account.balance_sheet.context,name:"
+msgid "Balance Sheet Context"
+msgstr "资产负债表内容"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "账户设置"
+
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr "账户设置-默认账户"
+
+msgctxt "model:account.configuration.default_tax_rule,name:"
+msgid "Account Configuration Default Tax Rule"
+msgstr "账户设置-默认税规则"
+
+#, fuzzy
+msgctxt "model:account.configuration.sequence,name:"
+msgid "Account Configuration Sequence"
+msgstr "账户设置"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "账户设置-税舍入"
+
+msgctxt "model:account.create_chart.account,name:"
+msgid "Create Chart"
+msgstr "创建账户一览表"
+
+msgctxt "model:account.create_chart.properties,name:"
+msgid "Create Chart"
+msgstr "创建账户一览表"
+
+msgctxt "model:account.create_chart.start,name:"
+msgid "Create Chart"
+msgstr "创建账户一览表"
+
+msgctxt "model:account.fiscalyear,name:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "非结转余额"
+
+msgctxt "model:account.fiscalyear.create_periods.start,name:"
+msgid "Create Periods Start"
+msgstr "创建分期开始"
+
+msgctxt "model:account.fiscalyear.renew.start,name:"
+msgid "Renew Fiscal Year Start"
+msgstr "更新会计年度开始"
+
+msgctxt "model:account.general_ledger.account,name:"
+msgid "General Ledger Account"
+msgstr "总分类账账户"
+
+msgctxt "model:account.general_ledger.account.context,name:"
+msgid "General Ledger Account Context"
+msgstr "总分类帐账户内容"
+
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "总分类账账户参与者"
+
+msgctxt "model:account.general_ledger.line,name:"
+msgid "General Ledger Line"
+msgstr "总分类帐明细"
+
+msgctxt "model:account.general_ledger.line.context,name:"
+msgid "General Ledger Line Context"
+msgstr "总分类帐明细内容"
+
+msgctxt "model:account.income_statement.context,name:"
+msgid "Income Statement Context"
+msgstr "利润表内容"
+
+msgctxt "model:account.journal,name:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "现金"
+
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "费用"
+
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "收入"
+
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "库存"
+
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
+msgstr "现金日记账内容"
+
+msgctxt "model:account.journal.period,name:"
+msgid "Journal - Period"
+msgstr "分期日记账"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr "日记账序列"
+
+msgctxt "model:account.move,name:"
+msgid "Account Move"
+msgstr "记账凭证"
+
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr "取消记账凭证"
+
+msgctxt "model:account.move.line,name:"
+msgid "Account Move Line"
+msgstr "记账凭证明细"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr "明细汇总"
+
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.preview,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
+
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.start,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
+
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.term,name:"
+msgid "Reschedule Lines"
+msgstr "对账明细"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr "记账凭证明细模板"
+
+msgctxt "model:account.move.open_journal.ask,name:"
+msgid "Open Journal Ask"
+msgstr "打开日记账询问"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr "对账核销"
+
+msgctxt "model:account.move.reconcile_lines.writeoff,name:"
+msgid "Reconcile Lines Write-Off"
+msgstr "对账明细核销"
+
+msgctxt "model:account.move.reconciliation,name:"
+msgid "Account Move Reconciliation Lines"
+msgstr "记账凭证对帐明细"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr "记账凭证模板"
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr "从模板创建记账凭证"
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr "从模板创建记账凭证"
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr "记账凭证模板关键字"
+
+msgctxt "model:account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "会计账户一览表"
+
+msgctxt "model:account.period,name:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "对帐"
+
+#, fuzzy
+msgctxt "model:account.reconcile.start,name:"
+msgid "Reconcile"
+msgstr "允许对账"
+
+msgctxt "model:account.tax,name:"
+msgid "Account Tax"
+msgstr "帐户税"
+
+msgctxt "model:account.tax.code,name:"
+msgid "Tax Code"
+msgstr "税号"
+
+msgctxt "model:account.tax.code.line,name:"
+msgid "Tax Code Line"
+msgstr "税号明细"
+
+msgctxt "model:account.tax.code.line.template,name:"
+msgid "Tax Code Line Template"
+msgstr "税号明细模板"
+
+msgctxt "model:account.tax.code.open_chart.start,name:"
+msgid "Open Chart of Tax Codes"
+msgstr "打开税号一览表"
+
+msgctxt "model:account.tax.code.template,name:"
+msgid "Tax Code Template"
+msgstr "税号模板"
+
+msgctxt "model:account.tax.group,name:"
+msgid "Tax Group"
+msgstr "税组"
+
+msgctxt "model:account.tax.line,name:"
+msgid "Tax Line"
+msgstr "税目"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr "账户税明细模板"
+
+msgctxt "model:account.tax.rule,name:"
+msgid "Tax Rule"
+msgstr "税规则"
+
+msgctxt "model:account.tax.rule.line,name:"
+msgid "Tax Rule Line"
+msgstr "税规则明细"
+
+msgctxt "model:account.tax.rule.line.template,name:"
+msgid "Tax Rule Line Template"
+msgstr "税规则明细模板"
+
+msgctxt "model:account.tax.rule.template,name:"
+msgid "Tax Rule Template"
+msgstr "税规则模板"
+
+msgctxt "model:account.tax.template,name:"
+msgid "Account Tax Template"
+msgstr "账户税模板"
+
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr "测试税"
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr "测试税"
+
+msgctxt "model:account.update_chart.start,name:"
+msgid "Update Chart"
+msgstr "更新一览表"
+
+msgctxt "model:account.update_chart.succeed,name:"
+msgid "Update Chart"
+msgstr "更新一览表"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
+msgid "Balance Sheet"
+msgstr "资产负债表"
+
+msgctxt "model:ir.action,name:act_account_general_ledger"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_account_income_statement_tree"
+msgid "Income Statement"
+msgstr "利润表"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_template_tree"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "会计科目"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_template_tree"
+msgid "Account Types"
+msgstr "会计科目"
+
+msgctxt "model:ir.action,name:act_account_type_tree"
+msgid "Account Types"
+msgstr "会计科目"
+
+msgctxt "model:ir.action,name:act_aged_balance_list"
+msgid "Aged Balance"
+msgstr "账龄分析"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "非结转余额"
+
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
+msgstr "取消记账凭证"
+
+msgctxt "model:ir.action,name:act_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "打开税号一览表"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.action,name:act_create_periods"
+msgid "Create Periods"
+msgstr "创建分期"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "会计年度"
+
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "年末结账"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_form"
+msgid "General Ledger - Accounts"
+msgstr "总分类账 - 账户"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "总分类帐-账户参与者"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "打开总分类账账户参与者"
+
+msgctxt "model:ir.action,name:act_general_ledger_line_form"
+msgid "General Ledger - Lines"
+msgstr "总分类账 - 明细"
+
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr "明细汇总"
+
+msgctxt "model:ir.action,name:act_journal_form"
+msgid "Journals"
+msgstr "日记账"
+
+msgctxt "model:ir.action,name:act_journal_open_cash"
+msgid "Journals Cash"
+msgstr "现金日记账"
+
+msgctxt "model:ir.action,name:act_journal_period_form_close"
+msgid "Close Journals - Periods"
+msgstr "分期日记账结账"
+
+msgctxt "model:ir.action,name:act_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "分期日记账"
+
+msgctxt "model:ir.action,name:act_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "分期日记账"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Account Moves"
+msgstr "记账凭证"
+
+msgctxt "model:ir.action,name:act_move_form_grouping"
+msgid "Grouped Account Move"
+msgstr "汇总记账凭证"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_rescheduling"
+msgid "Reschedule Account Move"
+msgstr "汇总记账凭证"
+
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "记账凭证"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Account Move Lines"
+msgstr "记账凭证明细"
+
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr "应付账款/应收账款明细"
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "对帐明细"
+
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr "从模板创建记账凭证"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Moves"
+msgstr "记账凭证"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account"
+msgstr "打开记账凭证账户"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "打开账户一览表"
+
+msgctxt "model:ir.action,name:act_open_journal"
+msgid "Open Journal"
+msgstr "打开日记账"
+
+msgctxt "model:ir.action,name:act_open_tax_code"
+msgid "Open Tax Code"
+msgstr "打开税号"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "打开科目"
+
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "分期"
+
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "期末结账"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr "对账"
+
+msgctxt "model:ir.action,name:act_reconcile_lines"
+msgid "Reconcile Lines"
+msgstr "对账明细"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "核销方法"
+
+msgctxt "model:ir.action,name:act_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "更新会计年度"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_wizard"
+msgid "Reschedule Lines"
+msgstr "对账明细"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Codes"
+msgstr "代码"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "税号"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Codes"
+msgstr "代码"
+
+msgctxt "model:ir.action,name:act_tax_code_tree2"
+msgid "Tax Codes"
+msgstr "税号"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_group_form"
+msgid "Groups"
+msgstr "组"
+
+msgctxt "model:ir.action,name:act_tax_line_form"
+msgid "Tax Lines"
+msgstr "税明细"
+
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "税"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_form"
+msgid "Rules"
+msgstr "规则"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_template_form"
+msgid "Tax Rules"
+msgstr "税规则"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_template_list"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "model:ir.action,name:act_unreconcile_lines"
+msgid "Unreconcile Lines"
+msgstr "不可对账明细"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_account_type_statement"
+msgid "Statement"
+msgstr "利润表"
+
+msgctxt "model:ir.action,name:report_aged_balance"
+msgid "Aged Balance"
+msgstr "账龄分析"
+
+msgctxt "model:ir.action,name:report_general_journal"
+msgid "General Journal"
+msgstr "普通日记账"
+
+msgctxt "model:ir.action,name:report_general_ledger"
+msgid "General Ledger"
+msgstr "总分类帐"
+
+msgctxt "model:ir.action,name:report_trial_balance"
+msgid "Trial Balance"
+msgstr "试算平衡表"
+
+msgctxt "model:ir.action,name:wizard_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "从模板中创建账户一览表"
+
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
+msgstr "测试税"
+
+msgctxt "model:ir.action,name:wizard_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "从模板中更新账户一脸表"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "应付账款"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "应收账款"
+
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr "公司 \"%(company)s\" 已经存在一个账户一览表."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_closed_lines"
+msgid "You cannot close account \"%(account)s\" because it has move lines."
+msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr "要为帐户 \"%(account)s\" 设置第二种货币，账户必须结转。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", its lines must have "
+"the same second currency \"%(currency)s\"."
+msgstr "要为帐户 \"%(account)s\" 设置第二种货币，账户必须结转。"
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr "要为帐户\"%(account)s\"设置第二种货币，账户不能有 “应付”、“收入”、“应收款” 或“费用”科目。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_account_no_type_lines"
+msgid ""
+"You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
+
+msgctxt "model:ir.message,text:msg_cancel_line_delegated"
+msgid ""
+"The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
+"the lines."
+msgstr "如果记账凭证 \"%(moves)s\" 包含汇总的明细，取消他们将取消对明细的汇总操作。"
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr "无法更改会计年度 \"%(fiscalyear)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr "无法更改分期 \"%(period)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr "年终结账，账户 \"%(account)s\" 的余额必须为0."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr "要对会计年度 \"%(fiscalyear)s\" 结账, 必须将其之前的所有年度都结账."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
+msgstr "对分期 \"%(period)s\" 进行期末结账之前， 需要将记账凭证 \"%(moves)s\" 登记入账."
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr "对分期 \"%(period)s\" 进行期末结账之前， 需要将记账凭证 \"%(moves)s\" 登记入账."
+
+msgctxt "model:ir.message,text:msg_company_change_currency"
+msgid ""
+"You cannot change the currency of a company which is associated with account"
+" moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "无法创建分期日记账，因为分期 \"%(period)s\" 已经结账."
+
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr "无法为会计年度 \"%(fiscalyear)s\" 创建分期，因为此会计年度已经结账."
+
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "年终结转在账户和会计年度之间不能重复。"
+
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "账户 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr "当参与者 \"%(party)s\" 与公司 \"%(company)s\" 有待处理的应收/应付款项时，不能删除它们。"
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr "会计年度 \"%(first)s\" 和 \"%(second)s\" 不能有相同的记账凭证入账序列，必须使用不同的序列."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr "会计年度 \"%(first)s\" 和 \"%(second)s\" 有重叠，必须使用不同的日期."
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr "明细 \"%(line)s\" 无法汇总."
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr "无法将不同参与者的明细汇总."
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr "不能对两个以上不同帐户的明细进行汇总."
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr "不能对不同公司的明细进行汇总."
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr "不能对有不同的第二货币的明细进行汇总."
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr "不能汇总一条明细."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_journal_account_moves"
+msgid ""
+"You cannot change the type of journal \"%(journal)s\" because it has posted "
+"moves."
+msgstr "无法更改分期 \"%(period)s\" 对应的记账凭证入账序列，因为包含已入账的记账凭证。"
+
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "一个分期只能创建一个日记账."
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr "明细 \"%(line)s\" 已经对账，不能再对账。"
+
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr "若要在帐户 \"%(account)s\"上创建明细，必须为账户设置一个科目或者将其取消结账。"
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr "一条明细不能同时设置借方和贷方。"
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr "要在帐户 \"%(account)s\"上创建明细，必须为明细 \"%(line)s\" 设置一个参与者。"
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr "要在帐户 \"%(account)s\"上创建明细，必须删除明细 \"%(line)s\" 的参与者。"
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr "必须为第二种货币设置记账符号，以匹配借方-贷方这种记账符号。"
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr "无法更改或者删除分期日记账 \"%(journal_period)s\"，因为它已经登记记账凭证."
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr "无法更改或者删除分期 \"%(period)s\"，因为它已经包含记账凭证."
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr "已经结账的分期日记账 \"%(journal_period)s\" 无法添加/编辑/删除明细."
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr "已经入账的记账凭证 \"%(move)s\" 无法更改明细 \"%(line)s\"。"
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr "无法编辑对账明细\"%(line)s\"。"
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr "无法编辑已登记入账的记账凭证 \"%(move)s\"。"
+
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr "已经结账的分期 \"%(period)s\" 无法添加/更改/删除税明细."
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+"记账凭证 \"%(move)s\" 对应的分期已经结账.\n"
+"使用当前分期来取消此记账凭证？"
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr "记账凭证 \"%(move)s\" 的日期不在分期之内，必须改变日期或者分期."
+
+msgctxt "model:ir.message,text:msg_move_template_expession_not_number"
+msgid ""
+"The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
+" is not a number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
+msgid ""
+"Failed to evaluate expression \"%(expression)s\" from template \"%(template)s\" with error:\n"
+"\"%(error)s\""
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr "若要继续，必须为日期 \"%(date)s\" 创建会计年度。"
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr "若要继续，必须为日期 \"%(date)s\" 创建分期。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
+msgid "Account can have only one of the debit or credit type set."
+msgstr "一条明细不能同时设置借方和贷方。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_fiscalyear_earlier"
+msgid ""
+"The open fiscal year \"%(open)s\" can not be before the close fiscal year "
+"\"%(closed)s\"."
+msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
+
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr "分期 \"%(period)s\" 已经结账，所以无法重新开启分期日记账 \"%(journal_period)s\"。"
+
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr "分期 \"%(period)s\" 对应的会计年度 \"%(fiscalyear)s\" 已经结账，所以无法重新将其开启。"
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr "若要继续，必须为参与者 \"%(party)s\" 定义应付账款账户。"
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr "若要继续，必须为参与者 \"%(party)s\" 定义应收账款账户。"
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr "分期 \"%(first)s\" 和 \"%(second)s\" 重叠，必须使用不同的日期."
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr "在分期 \"%(first)s\" 和 \"%(second)s\" 中不能使用相同的记账凭证入账序列，因为它们属于不同的会计年度。"
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr "要入账记账凭证 \"%(move)s\"，必须为其添加明细."
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr "要登记入账记账凭证 \"%(move)s\"，必须平衡明细的贷方和借方."
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr "若要对明细 \"%(line)s\"进行对帐，必须将其帐户\"%(account)s\"设置为可对帐。"
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+"对帐 \"%(reconciliation)s\" 已经委托给明细 \"%(line)s\".\n"
+"您可能需要取消其对应的记账凭证 \"%(move)s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的帐户\"%(account1)s\"与\"%(account2)s\"不同。"
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的参与者\"%(party1)s\" 和\"%(party2)s\" 不同."
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr "无法对无效明细 \"%(line)s\"对账."
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr "若要对明细对帐，它们必须具有相同的借方 \"%(debit)s\" 和贷方 \"%(credit)s\"。"
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr "要重新开启会计年度 \"%(fiscalyear)s\"，在它之后的会计年度必须全部重新开启."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reschedule_line_same_account"
+msgid "You cannot reschedule lines with different accounts."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reschedule_line_same_currency"
+msgid "You cannot reschedule lines with different currencies."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reschedule_line_same_origins"
+msgid "You cannot reschedule lines with different origins."
+msgstr "无法将不同参与者的明细汇总."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reschedule_line_same_party"
+msgid "You cannot reschedule lines with different parties."
+msgstr "无法将不同参与者的明细汇总."
+
+msgctxt "model:ir.message,text:msg_reschedule_line_wrong_amount"
+msgid ""
+"To reschedule the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr "子税 \"%(tax)s\" 无法设置 \"更新单价\"。"
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr "您无法修改任何账户结转。"
+
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr "您不能修改任何对帐。"
+
+msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
+msgid "Are you sure you want to lock the fiscal year?"
+msgstr "确定要锁定会计年度?"
+
+msgctxt "model:ir.model.button,confirm:period_lock_button"
+msgid "Are you sure you want to lock the period?"
+msgstr "确定要锁定分期?"
+
+msgctxt "model:ir.model.button,string:fiscalyear_close_button"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
+msgid "Create Periods"
+msgstr "创建分期"
+
+msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
+msgid "Lock"
+msgstr "锁定"
+
+msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
+msgid "Re-Open"
+msgstr "重新打开"
+
+msgctxt "model:ir.model.button,string:move_post_button"
+msgid "Post"
+msgstr "登记入账"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "model:ir.model.button,string:period_lock_button"
+msgid "Lock"
+msgstr "锁定"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "重新打开"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+msgctxt "model:ir.sequence,name:sequence_account_journal"
+msgid "Default Account Journal"
+msgstr "默认帐户日记帐"
+
+msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
+msgid "Default Account Move Reconciliation"
+msgstr "默认记账凭证对账"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
+msgid "Account Journal"
+msgstr "账户日记账"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
+msgid "Account Move"
+msgstr "记账凭证"
+
+msgctxt ""
+"model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
+msgid "Account Move Reconciliation"
+msgstr "记账凭证对账"
+
+msgctxt "model:ir.ui.menu,name:menu_account"
+msgid "Financial"
+msgstr "财务"
+
+msgctxt "model:ir.ui.menu,name:menu_account_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Accounts"
+msgstr "账户"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "会计科目"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
+msgid "Account Types"
+msgstr "会计科目"
+
+msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
+msgid "Account Types"
+msgstr "会计科目"
+
+msgctxt "model:ir.ui.menu,name:menu_aged_balance"
+msgid "Aged Balance"
+msgstr "账龄分析"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "非结转余额"
+
+msgctxt "model:ir.ui.menu,name:menu_charts"
+msgid "Charts"
+msgstr "一览表"
+
+msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
+msgid "Close Fiscal Years"
+msgstr "年末结账"
+
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "分期日记帐结账"
+
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "期末结账"
+
+msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "打开税号一览表"
+
+msgctxt "model:ir.ui.menu,name:menu_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "从模板创建账户一览表"
+
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "分录"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
+msgid "Fiscal Years"
+msgstr "会计年度"
+
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "会计年度"
+
+msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
+msgid "General Account"
+msgstr "总分类账"
+
+msgctxt "model:ir.ui.menu,name:menu_general_ledger"
+msgid "General Ledger"
+msgstr "总分类帐"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
+msgid "Journals"
+msgstr "日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_form"
+msgid "Journals"
+msgstr "日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
+msgid "Journals Cash"
+msgstr "现金日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "分期日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "分期日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Account Moves"
+msgstr "记账凭证"
+
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr "从模板中创建记账凭证"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Moves"
+msgstr "记账凭证"
+
+msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
+msgid "Balance Sheet"
+msgstr "资产负债表"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "打开账户一览表"
+
+msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
+msgid "Income Statement"
+msgstr "利润表"
+
+msgctxt "model:ir.ui.menu,name:menu_open_journal"
+msgid "Open Journal"
+msgstr "打开日记账"
+
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "分期"
+
+msgctxt "model:ir.ui.menu,name:menu_processing"
+msgid "Processing"
+msgstr "处理"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr "对账"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "核销方法"
+
+msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "更新会计年度"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "报表"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Codes"
+msgstr "代码"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "税号"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Codes"
+msgstr "代码"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
+msgid "Groups"
+msgstr "组"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "税"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
+msgid "Rules"
+msgstr "规则"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
+msgid "Tax Rules"
+msgstr "税规则"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr "测试税"
+
+msgctxt "model:ir.ui.menu,name:menu_taxes"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
+msgstr "模板"
+
+msgctxt "model:ir.ui.menu,name:menu_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "从模板中更新账户一览表"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr "参与者账户"
+
+msgctxt "model:res.group,name:group_account"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "model:res.group,name:group_account_admin"
+msgid "Account Administration"
+msgstr "账户管理"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "账户参与者"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Balance Sheet"
+msgstr "资产负债表"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Company:"
+msgstr "公司:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Date:"
+msgstr "日期:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Fiscal Year:"
+msgstr "会计年度:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Date:"
+msgstr "从日期:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Period"
+msgstr "从分期"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Income Statement"
+msgstr "利润表"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Print Date:"
+msgstr "打印日期:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Statement"
+msgstr "利润表"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "To"
+msgstr "到"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "User:"
+msgstr "用户:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "at"
+msgstr "在"
+
+msgctxt "report:account.aged_balance:"
+msgid "+"
+msgstr "+"
+
+msgctxt "report:account.aged_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.aged_balance:"
+msgid "Aged Balance for"
+msgstr "账龄分析"
+
+msgctxt "report:account.aged_balance:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "report:account.aged_balance:"
+msgid "Company:"
+msgstr "公司:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Date:"
+msgstr "日期:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "report:account.aged_balance:"
+msgid "Print Date:"
+msgstr "打印日期:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Total"
+msgstr "合计"
+
+msgctxt "report:account.aged_balance:"
+msgid "User:"
+msgstr "用户:"
+
+msgctxt "report:account.aged_balance:"
+msgid "at"
+msgstr "在"
+
+msgctxt "report:account.general_ledger:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.general_ledger:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.general_ledger:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "report:account.general_ledger:"
+msgid "Company:"
+msgstr "公司:"
+
+msgctxt "report:account.general_ledger:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "report:account.general_ledger:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "report:account.general_ledger:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "report:account.general_ledger:"
+msgid "Descr."
+msgstr "描述."
+
+msgctxt "report:account.general_ledger:"
+msgid "Fiscal Year:"
+msgstr "会计年度:"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Date:"
+msgstr "从日期:"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Period"
+msgstr "从分期"
+
+msgctxt "report:account.general_ledger:"
+msgid "General Ledger"
+msgstr "总分类帐"
+
+msgctxt "report:account.general_ledger:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "report:account.general_ledger:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "report:account.general_ledger:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "report:account.general_ledger:"
+msgid "Print Date:"
+msgstr "打印日期:"
+
+msgctxt "report:account.general_ledger:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "report:account.general_ledger:"
+msgid "To"
+msgstr "到"
+
+msgctxt "report:account.general_ledger:"
+msgid "Total"
+msgstr "合计"
+
+msgctxt "report:account.general_ledger:"
+msgid "User:"
+msgstr "用户:"
+
+msgctxt "report:account.general_ledger:"
+msgid "at"
+msgstr "在"
+
+msgctxt "report:account.move.general_journal:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Company:"
+msgstr "公司:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Date:"
+msgstr "日期:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "report:account.move.general_journal:"
+msgid "General Journal"
+msgstr "普通日记账"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Journal Entry:"
+msgstr "日记账分录:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Origin:"
+msgstr "依据:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Posted"
+msgstr "已入账"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Print Date:"
+msgstr "打印日期:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "User:"
+msgstr "用户:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "at"
+msgstr "在"
+
+msgctxt "report:account.trial_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.trial_balance:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "report:account.trial_balance:"
+msgid "Company:"
+msgstr "公司:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "report:account.trial_balance:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "report:account.trial_balance:"
+msgid "End Balance"
+msgstr "期末余额"
+
+msgctxt "report:account.trial_balance:"
+msgid "Fiscal Year:"
+msgstr "会计年度:"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Date:"
+msgstr "从日期:"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Period:"
+msgstr "从分期:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Print Date:"
+msgstr "打印日期:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Start Balance"
+msgstr "期初余额"
+
+msgctxt "report:account.trial_balance:"
+msgid "To"
+msgstr "到"
+
+msgctxt "report:account.trial_balance:"
+msgid "Total"
+msgstr "合计"
+
+msgctxt "report:account.trial_balance:"
+msgid "Trial Balance"
+msgstr "试算平衡"
+
+msgctxt "report:account.trial_balance:"
+msgid "User:"
+msgstr "用户:"
+
+msgctxt "report:account.trial_balance:"
+msgid "at"
+msgstr "在"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr "收入"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr "损益"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "余额"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr "收入"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr "损益"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers"
+msgstr "客户"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers and Suppliers"
+msgstr "客户和供应商"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Suppliers"
+msgstr "供应商"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Days"
+msgstr "日"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Months"
+msgstr "月"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Weeks"
+msgstr "周"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Years"
+msgstr "年"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "按文件"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "按明细"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Document"
+msgstr "按文件"
+
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Line"
+msgstr "按明细"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr "已锁定"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Monthly"
+msgstr "每月"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Other"
+msgstr "其它"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Quarterly"
+msgstr "每季度"
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Draft"
+msgstr "草稿"
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Posted"
+msgstr "已入账"
+
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "现金"
+
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "费用"
+
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "普通"
+
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "收入"
+
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "情况"
+
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "核销"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "selection:account.move,state:"
+msgid "Draft"
+msgstr "草稿"
+
+msgctxt "selection:account.move,state:"
+msgid "Posted"
+msgstr "已入账"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Draft"
+msgstr "草稿"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Valid"
+msgstr "有效"
+
+#, fuzzy
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
+msgid "Monthly"
+msgstr "每月"
+
+#, fuzzy
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
+msgid "Other"
+msgstr "其它"
+
+#, fuzzy
+msgctxt "selection:account.move.line.reschedule.start,frequency:"
+msgid "Quarterly"
+msgstr "每季度"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr "字符"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr "数字"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "selection:account.period,state:"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr "已锁定"
+
+msgctxt "selection:account.period,state:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "selection:account.period,type:"
+msgid "Adjustment"
+msgstr "调整"
+
+msgctxt "selection:account.period,type:"
+msgid "Standard"
+msgstr "标准"
+
+msgctxt "selection:account.tax,type:"
+msgid "Fixed"
+msgstr "固定的"
+
+msgctxt "selection:account.tax,type:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:account.tax,type:"
+msgid "Percentage"
+msgstr "百分比"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr "+"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Fiscal Year"
+msgstr "按会计年度"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Periods"
+msgstr "按分期"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "两个都有"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "采购"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "销售"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "两个都有"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "采购"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "销售"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "两个都有"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "采购"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "销售"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Fixed"
+msgstr "固定"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Percentage"
+msgstr "百分比"
+
+msgctxt "view:account.account.type:"
+msgid "Comparison"
+msgstr "比较"
+
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "子账户"
+
+msgctxt "view:account.account:"
+msgid "General Information"
+msgstr "一般信息"
+
+msgctxt "view:account.aged_balance.context:"
+msgid "Terms"
+msgstr "条款"
+
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "view:account.configuration:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "view:account.create_chart.start:"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr "现在可以通过选择一个账户一览表模板来为你的公司创建一个账户一览表。"
+
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "every"
+msgstr "每"
+
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "months"
+msgstr "月"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Periods"
+msgstr "分期"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Sequences"
+msgstr "序列"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "End Balance"
+msgstr "期末余额"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Start Balance"
+msgstr "期初余额"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr "重新打开"
+
+#, fuzzy
+msgctxt "view:account.move.line.reschedule.start:"
+msgid "every"
+msgstr "每"
+
+#, fuzzy
+msgctxt "view:account.move.line.reschedule.start:"
+msgid "months"
+msgstr "月"
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr "其它信息"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "其他信息"
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
+msgid "General Information"
+msgstr "一般信息"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax:"
+msgid "General Information"
+msgstr "一般信息"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Chart of accounts updated successfully."
+msgstr "账户一览表更新成功."
+
+msgctxt "view:party.party:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr "会计"
+
+msgctxt "view:party.party:"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "wizard_button:account.create_chart,account,create_account:"
+msgid "Create"
+msgstr "创建"
+
+msgctxt "wizard_button:account.create_chart,account,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.create_chart,properties,create_properties:"
+msgid "Create"
+msgstr "创建"
+
+msgctxt "wizard_button:account.create_chart,properties,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.create_chart,start,account:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt ""
+"wizard_button:account.fiscalyear.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "创建"
+
+msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
+msgid "Create"
+msgstr "创建"
+
+msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "组"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.reschedule,preview,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.reschedule,preview,reschedule:"
+msgid "Reschedule"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.reschedule,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
+msgid "Preview"
+msgstr ""
+
+msgctxt "wizard_button:account.move.open_journal,ask,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.open_journal,ask,open_:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
+msgid "Reconcile"
+msgstr "对帐"
+
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "创建"
+
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "下一步"
+
+msgctxt "wizard_button:account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.open_chart,start,open_:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr "跳过"
+
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "对帐"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,next_:"
+msgid "Reconcile"
+msgstr "允许对账"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "结账"
+
+msgctxt "wizard_button:account.update_chart,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.update_chart,start,update:"
+msgid "Update"
+msgstr "更新"
+
+msgctxt "wizard_button:account.update_chart,succeed,end:"
+msgid "OK"
+msgstr "确定"

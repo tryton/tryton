@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de Agrupamento de Remessa de Venda"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Método de Agrupamento de Remessa de Venda"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de Agrupamento de Remessa de Venda"
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de Agrupamento de Remessa de Venda"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de Agrupamento de Remessa de Venda"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "O método padrão de agrupamento de remessas para novos clientes."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr "O método padrão de agrupamento de remessas para novos clientes."
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Método de Agrupamento de Remessa de Venda da Pessoa"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr "Nenhum"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr "Padrão"
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Remessas"

@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Хранение Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Хранение Местоположение"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+#, fuzzy
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr ""
