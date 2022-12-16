@@ -1,0 +1,79 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr ""
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr ""
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr ""
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr ""
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr ""
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr ""
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr ""
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr ""
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr ""
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr ""
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr ""
