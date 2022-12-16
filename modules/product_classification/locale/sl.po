@@ -1,0 +1,107 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "Izbirno"
+
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Podklasifikacije"
+
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Nadklasifikacija"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "Izbirno"
+
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Klasifikacija"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Klasifikacija"
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Klasifikacije"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "Navidezna klasifikacija izdelka"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "Navidezno klasifikacijsko drevo izdelka"
+
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Klasifikacija"
