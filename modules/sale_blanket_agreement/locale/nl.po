@@ -1,0 +1,266 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.blanket_agreement,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:sale.blanket_agreement,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.blanket_agreement,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.blanket_agreement,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:sale.blanket_agreement,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:sale.blanket_agreement,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:sale.blanket_agreement,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.blanket_agreement,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.blanket_agreement,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:sale.blanket_agreement,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.blanket_agreement,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:sale.blanket_agreement.create_sale.start,blanket_agreement:"
+msgid "Agreement"
+msgstr "Overeenkomst"
+
+msgctxt "field:sale.blanket_agreement.create_sale.start,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.blanket_agreement.line,agreement_state:"
+msgid "Agreement State"
+msgstr "Status overeenkomst"
+
+msgctxt "field:sale.blanket_agreement.line,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:sale.blanket_agreement.line,blanket_agreement:"
+msgid "Blanket Agreement"
+msgstr "Algemene overeenkomst"
+
+msgctxt "field:sale.blanket_agreement.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.blanket_agreement.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.blanket_agreement.line,processed_quantity:"
+msgid "Processed quantity"
+msgstr "Verwerkte hoeveelheid"
+
+msgctxt "field:sale.blanket_agreement.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.blanket_agreement.line,product_uom_category:"
+msgid "Product UOM Category"
+msgstr "Categorie product maateenheid"
+
+msgctxt "field:sale.blanket_agreement.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.blanket_agreement.line,remaining_quantity:"
+msgid "Remaining quantity"
+msgstr "Resterende hoeveelheid"
+
+msgctxt "field:sale.blanket_agreement.line,sale_lines:"
+msgid "Sale Lines"
+msgstr "Verkoop regels"
+
+msgctxt "field:sale.blanket_agreement.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.blanket_agreement.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.configuration,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Algemene overeenkomst reeks"
+
+msgctxt "field:sale.configuration.sequence,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Algemene overeenkomst reeks"
+
+msgctxt "field:sale.line,blanket_agreement_line:"
+msgid "Blanket Agreement Line"
+msgstr "Algemene overeenkomst regel"
+
+msgctxt "field:sale.sale,blanket_agreements:"
+msgid "Blanket Agreements"
+msgstr "Algemene overeenkomsten"
+
+msgctxt "model:ir.action,name:act_sale_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Algemene overeenkomsten"
+
+msgctxt "model:ir.action,name:act_sale_form_blanket_agreement"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_line_form_blanket_agreement"
+msgid "Sale Lines"
+msgstr "Verkoop Regels"
+
+msgctxt "model:ir.action,name:sale_blanket_agreement_create_sale_wizard"
+msgid "Create a Sale"
+msgstr "Verkooporder maken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_all"
+msgid "All"
+msgstr "Alles"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_running"
+msgid "Running"
+msgstr "In uitvoering"
+
+msgctxt "model:ir.message,text:msg_agreement_closed_remaining_quantity"
+msgid ""
+"The agreement \"%(agreement)s\" to be closed has still remaining quantities."
+msgstr ""
+"De af te ronden overeenkomst \"%(agreement)s\" heeft nog resterende "
+"hoeveelheden."
+
+msgctxt "model:ir.message,text:msg_agreement_line_incompatible_unit"
+msgid ""
+"To change the unit of agreement line \"%(line)s\", you must choose one "
+"compatible with the existing sale lines."
+msgstr ""
+"Om de eenheid van de overeenkomst regel \"%(line)s\" te wijzigen, moet u een"
+" eenheid kiezen die aansluit bij de bestaande verkoop regels."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_remaining"
+msgid ""
+"The quantity of line \"%(line)s\" is greater than the remaining quantity "
+"(%(remaining)s) of agreement \"%(agreement)s\"."
+msgstr ""
+"De hoeveelheid van regel \"%(line)s\" is groter dan de resterende "
+"hoeveelheid (%(remaining)s) van overeenkomst \"%(agreement)s\"."
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_cancel_button"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_close_button"
+msgid "Close"
+msgstr "Afronden"
+
+msgctxt ""
+"model:ir.model.button,string:sale_blanket_agreement_create_sale_button"
+msgid "Create a sale"
+msgstr "Verkooporder maken"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_run_button"
+msgid "Run"
+msgstr "Uitvoeren"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_blanket_agreement_companies"
+msgid "Sales Blanket Agreement"
+msgstr "Algemene verkoopovereenkomsten"
+
+msgctxt "model:ir.sequence,name:sequence_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Algemene verkoopovereenkomst"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Algemene verkoopovereenkomst"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Algemene overeenkomsten"
+
+msgctxt "model:res.group,name:group_sale_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Algemene verkoopovereenkomst"
+
+msgctxt "model:sale.blanket_agreement,name:"
+msgid "Sale Blanket Agreement"
+msgstr "Algemene verkoopovereenkomst"
+
+msgctxt "model:sale.blanket_agreement.create_sale.start,name:"
+msgid "Create Sale"
+msgstr "Verkooporder maken"
+
+msgctxt "model:sale.blanket_agreement.line,name:"
+msgid "Sale Blanket Agreement Line"
+msgstr "Algemene verkoopovereenkomst regel"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Closed"
+msgstr "Afgerond"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Running"
+msgstr "In uitvoering"
+
+msgctxt "view:sale.blanket_agreement.line:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:sale.blanket_agreement:"
+msgid "Agreement"
+msgstr "Overeenkomst"
+
+msgctxt "view:sale.blanket_agreement:"
+msgid "Other Info"
+msgstr "Overige informatie"
+
+msgctxt "wizard_button:sale.blanket_agreement.create_sale,start,create_sale:"
+msgid "Create"
+msgstr "Aanmaken"
+
+msgctxt "wizard_button:sale.blanket_agreement.create_sale,start,end:"
+msgid "Cancel"
+msgstr "Annuleer"
