@@ -1,0 +1,463 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
+msgstr ""
+
+msgctxt "error:analytic_account.account:"
+msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "Wrong credit/debit values."
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using inactive account \"%s\"."
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using view account \"%s\"."
+msgstr ""
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Редове от аналитична сметка"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Източник"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Задължителен"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:analytic_account.account,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:analytic_account.account,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:analytic_account.account,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "field:analytic_account.account,display_balance:"
+msgid "Display Balance"
+msgstr "Показване на баланс"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr ""
+
+msgctxt "field:analytic_account.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.account,mandatory:"
+msgid "Mandatory"
+msgstr "Задължителен"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Бележка"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:analytic_account.account,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Начало"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Щат"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:analytic_account.account,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:analytic_account.account,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Начало"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Фактури"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:analytic_account.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:analytic_account.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "field:analytic_account.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Ред от движение по сметка"
+
+msgctxt "field:analytic_account.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:analytic_account.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:analytic_account.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Крайна дата"
+
+msgctxt "field:analytic_account.open_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Начална дата"
+
+msgctxt "help:analytic_account.account,mandatory:"
+msgid "Make this account mandatory when filling documents"
+msgstr ""
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr ""
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Аналитична сметка"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr ""
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Ред от аналитична сметка"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Отваряне на сметкоплан"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Аналитични сметки"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Аналитични сметки"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Аналитични сметки"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Редове от аналитична сметка"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Отваряне на сметка"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Отваряне на аналитичен сметкоплан"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Аналитични сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Аналитични сметки"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Аналитична сметка"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Отваряне на аналитичен сметкоплан"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Администрация на аналитична сметка"
+
+#, fuzzy
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Credit - Debit"
+msgstr "Кредит - дебит"
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Debit - Credit"
+msgstr "Дебит - кредит"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Приключен"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Отворен"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Нормален"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Начало"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Изглед"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "Задължителен"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Кредит"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Дебит"
+
+#, fuzzy
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Бележки"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "view:analytic_account.line:"
+msgid "General Information"
+msgstr "Обща информация"
+
+msgctxt "view:analytic_account.open_chart.start:"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Отваряне на аналитичен сметкоплан"
