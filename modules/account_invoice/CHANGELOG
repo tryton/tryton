@@ -1,0 +1,83 @@
+Version 3.0.9 - 2016-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.8 - 2016-04-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.7 - 2015-12-22
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.6 - 2015-03-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.5 - 2014-11-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.4 - 2014-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.3 - 2014-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.2 - 2014-03-22
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.1 - 2014-01-18
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Use account move as cache
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Add origin Reference on Invoice Line
+* Prevent refund of supplier invoice/credit note
+* Make period's invoice sequences optional and use fiscal year's ones if empty
+* Cancel state delete or cancel existing move on Invoice
+* Create draft move for Supplier Invoice when validated
+* Rename Invoice Proforma state into Validated
+* Rename Invoice Opened state into Posted
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Add divisor field to Payment Term Lines
+* Allow setting months, weeks, days as well as month, weekday and day in
+  Payment Term Lines
+* Rename field payment_term to customer_payment_term
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+* Add field currency_date to set the date for the rate calculation
+* Change get_move_line on Invoice Line and Tax to return a list of values
+  instead of values
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Add default search value on invoice
+* Remove egenix-mx-base and replace it by python-dateutil
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Set invoice date when invoice is opened
+* Add invoice number to report name
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add accounting date on invoice
+* Use amount_to_pay if amount_to_pay_today is zero in pay invoice wizard
+* Use reference to taxes for invoice line in invoice report
+* Add mechanism for invoice line standalone
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
