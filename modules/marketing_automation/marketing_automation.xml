@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="scenario_view_list">
+            <field name="model">marketing.automation.scenario</field>
+            <field name="type">tree</field>
+            <field name="name">scenario_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="scenario_view_form">
+            <field name="model">marketing.automation.scenario</field>
+            <field name="type">form</field>
+            <field name="name">scenario_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_scenario_form">
+            <field name="name">Scenarios</field>
+            <field name="res_model">marketing.automation.scenario</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_scenario_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="scenario_view_list"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_scenario_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="scenario_view_form"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_scenario_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_scenario_form_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_scenario_form_domain_stopped">
+            <field name="name">Stopped</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'stopped')]" pyson="1"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_scenario_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_scenario_form"/>
+        </record>
+
+        <menuitem parent="marketing.menu_marketing" action="act_scenario_form" id="menu_scenario_form"/>
+
+        <record model="ir.model.access" id="access_scenario">
+            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_scenario_marketing">
+            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="scenario_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+        </record>
+        <record model="ir.model.button" id="scenario_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+        </record>
+        <record model="ir.model.button" id="scenario_stop_button">
+            <field name="name">stop</field>
+            <field name="string">Stop</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="activity_view_list">
+            <field name="model">marketing.automation.activity</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">activity_tree</field>
+        </record>
+        <record model="ir.ui.view" id="activity_view_tree">
+            <field name="model">marketing.automation.activity</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="priority" eval="20"/>
+            <field name="name">activity_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="activity_view_form">
+            <field name="model">marketing.automation.activity</field>
+            <field name="type">form</field>
+            <field name="name">activity_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_activity_tree">
+            <field name="name">Activities</field>
+            <field name="res_model">marketing.automation.activity</field>
+            <field name="domain" eval="[('parent', '=', (Eval('active_model'), Eval('active_id')))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_activity_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="activity_view_tree"/>
+            <field name="act_window" ref="act_activity_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_activity_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="activity_view_form"/>
+            <field name="act_window" ref="act_activity_tree"/>
+        </record>
+        <record model="ir.action.keyword" id="act_activity_tree_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.automation.scenario,-1</field>
+            <field name="action" ref="act_activity_tree"/>
+        </record>
+        <record model="ir.action.keyword" id="act_activity_tree_keyword2">
+            <field name="keyword">tree_open</field>
+            <field name="model">marketing.automation.scenario,-1</field>
+            <field name="action" ref="act_activity_tree"/>
+        </record>
+
+        <record model="ir.model.access" id="access_activity">
+            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_activity_marketing">
+            <field name="model" search="[('model', '=', 'marketing.automation.activity')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="record_view_list">
+            <field name="model">marketing.automation.record</field>
+            <field name="type">tree</field>
+            <field name="name">record_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="record_view_form">
+            <field name="model">marketing.automation.record</field>
+            <field name="type">form</field>
+            <field name="name">record_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_record_form">
+            <field name="name">Records</field>
+            <field name="res_model">marketing.automation.record</field>
+            <field name="domain" eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('scenario', '=', Eval('active_id')), ('scenario', 'in', Eval('active_ids')))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_record_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="record_view_list"/>
+            <field name="act_window" ref="act_record_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_record_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="record_view_form"/>
+            <field name="act_window" ref="act_record_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_record_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.automation.scenario,-1</field>
+            <field name="action" ref="act_record_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_record">
+            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_record_marketing">
+            <field name="model" search="[('model', '=', 'marketing.automation.record')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="record_activity_view_list">
+            <field name="model">marketing.automation.record.activity</field>
+            <field name="type">tree</field>
+            <field name="name">record_activity_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="record_activity_view_form">
+            <field name="model">marketing.automation.record.activity</field>
+            <field name="type">form</field>
+            <field name="name">record_activity_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_record_activity_form">
+            <field name="name">Record Activities</field>
+            <field name="res_model">marketing.automation.record.activity</field>
+            <field name="domain" eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'marketing.automation.record', 'record', 'activity'), '=', Eval('active_id')), (If(Eval('active_model') == 'marketing.automation.record', 'record', 'activity'), 'in', Eval('active_ids')))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_record_activity_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="record_activity_view_list"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_record_activity_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="record_activity_view_form"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_record_activity_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_record_activity_form_domain_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_record_activity_form_domain_cancelled">
+            <field name="name">Cancelled</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'cancelled')]" pyson="1"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_record_activity_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_record_activity_form"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_record_activity_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.automation.record,-1</field>
+            <field name="action" ref="act_record_activity_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_record_activity_form_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.automation.activity,-1</field>
+            <field name="action" ref="act_record_activity_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_record_activity">
+            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_record_activity_marketing">
+            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="record_activity_on_email_opened_button">
+            <field name="name">on_email_opened</field>
+            <field name="string">E-Mail Opened</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+        </record>
+        <record model="ir.model.button" id="record_activity_on_email_clicked_button">
+            <field name="name">on_email_clicked</field>
+            <field name="string">E-Mail Clicked</field>
+            <field name="model" search="[('model', '=', 'marketing.automation.record.activity')]"/>
+        </record>
+
+        <record model="ir.action.report" id="report_unsubscribe">
+            <field name="name">Marketing Automation Unsubscribe</field>
+            <field name="model"></field>
+            <field name="report_name">marketing.automation.unsubscribe</field>
+            <field name="report">marketing_automation/unsubscribe.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+       <record model="ir.cron" id="cron_scenario_trigger">
+           <field name="method">marketing.automation.scenario|trigger</field>
+           <field name="interval_number" eval="1"/>
+           <field name="interval_type">hours</field>
+       </record>
+       <record model="ir.cron" id="cron_record_activity_process">
+           <field name="method">marketing.automation.record.activity|process</field>
+           <field name="interval_number" eval="15"/>
+           <field name="interval_type">minutes</field>
+       </record>
+
+    </data>
+</tryton>
