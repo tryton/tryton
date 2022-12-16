@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Stock Configuration">
+    <label name="shipment_in_sequence"/>
+    <field name="shipment_in_sequence"/>
+    <label name="shipment_in_return_sequence"/>
+    <field name="shipment_in_return_sequence"/>
+    <label name="shipment_out_sequence"/>
+    <field name="shipment_out_sequence"/>
+    <label name="shipment_out_return_sequence"/>
+    <field name="shipment_out_return_sequence"/>
+    <label name="shipment_internal_sequence"/>
+    <field name="shipment_internal_sequence"/>
+</form>
