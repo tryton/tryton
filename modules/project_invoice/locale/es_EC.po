@@ -1,0 +1,87 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "No hay ninguna lista de precios en el trabajo \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "No hay ningún tercero en el trabajo \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "No hay ningún producto en el trabajo \"%s\"."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "No puede eliminar una línea facturada."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "No puede modificar una línea facturada."
+
+msgctxt "field:project.work,hours_to_invoice:"
+msgid "Hours to Invoice"
+msgstr "Horas a Facturar"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línea de Factura"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Facturación"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Valor Facturado"
+
+msgctxt "field:project.work,invoiced_hours:"
+msgid "Invoiced Hours"
+msgstr "Horas Facturadas"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Facturación"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línea de Factura"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Facturas"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Facturación de Proyectos"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Por Esfuerzo Estimado"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Por Trabajo Realizado"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Por Esfuerzo Estimado"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Por Trabajo Realizado"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Factura"
