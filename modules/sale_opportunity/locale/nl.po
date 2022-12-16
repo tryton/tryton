@@ -1,0 +1,518 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Verkoopkans reeks"
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Verkoopkans reeks"
+
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "Adres"
+
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr "Contact"
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr "Succes kans"
+
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Omgezet door"
+
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr "Reden voor verlies"
+
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr "Status verkoopkans"
+
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.opportunity.reporting.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.opportunity.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:sale.opportunity.reporting.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:sale.opportunity.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt ""
+"field:sale.opportunity.reporting.conversion.employee.time_series,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr "Geschat omzetbedrag."
+
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr "Percentage tussen 0 en 100."
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.action,name:act_reporting_conversion"
+msgid "Opportunity Conversions"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.action,name:act_reporting_conversion_employee"
+msgid "Opportunity Conversions per Employee"
+msgstr "Verkoopkansen per werknemer"
+
+msgctxt "model:ir.action,name:act_reporting_conversion_employee_time_series"
+msgid "Opportunity Conversions per Employee"
+msgstr "Verkoopkansen per werknemer"
+
+msgctxt "model:ir.action,name:act_reporting_conversion_time_series"
+msgid "Opportunity Conversions"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Omgezet"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Potenties"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "model:ir.message,text:msg_modify_origin_opportunity"
+msgid "You cannot modify the opportunity origin of the sale \"%(sale)s\"."
+msgstr ""
+"U kunt de oorsprong van de verkoopkans van de verkoop \"%(sale)s\" niet "
+"wijzigen."
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr "Om verkoopkans \"%(opportunity)s\" te verwijderen, moet u deze annuleren."
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_amount_trend"
+msgid "Amount Trend"
+msgstr "Ontwikkeling van het bedrag"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_conversion_rate"
+msgid "Conversion Rate"
+msgstr "Conversie percentage"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_conversion_trend"
+msgid "Conversion Trend"
+msgstr "Conversie trend"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_converted"
+msgid "Converted"
+msgstr "Geconverteerd"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount"
+msgid "Converted Amount"
+msgstr "Geconverteerd bedrag"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_converted_amount_trend"
+msgid "Converted Amount Trend"
+msgstr "Ontwikkeling geconverteerd bedrag"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_lost"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_help"
+msgid "Number of opportunities"
+msgstr "Aantal verkoopkansen"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_number_trend"
+msgid "Number Trend"
+msgstr "Ontwikkeling van het aantal"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_rate"
+msgid "Winning Rate"
+msgstr "Percentage gewonnen"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_winning_trend"
+msgid "Winning Trend"
+msgstr "Ontwikkeling gewonnen"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "model:ir.message,text:msg_sale_opportunity_reporting_won_amount"
+msgid "Won Amount"
+msgstr "Gewonnen bedrag"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_opportunity_reporting_won_amount_trend"
+msgid "Won Amount Trend"
+msgstr "Ontwikkeling van gewonnen bedrag"
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Omzetten naar verkoop"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Markeer als potentie"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Markeren als verloren"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Omzetten naar verkoopkans"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_conversion_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_employee_time_series_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_conversion_time_series_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_opportunity"
+msgid "Opportunities"
+msgstr "Verkoopkansen"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "Verkoopkans regel"
+
+msgctxt "model:sale.opportunity.reporting.context,name:"
+msgid "Sale Opportunity Reporting Context"
+msgstr "Context rapportering verkoopkansen"
+
+msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr "Rapportering conversie verkoopkansen"
+
+msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Rapportage verkoopkansen conversie per werknemer"
+
+msgctxt ""
+"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion per Employee"
+msgstr "Rapportage verkoopkansen conversie per werknemer"
+
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
+msgid "Sale Opportunity Reporting Conversion"
+msgstr "Rapportering conversie verkoopkansen"
+
+msgctxt "model:sale.opportunity.reporting.main,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Rapportage verkoopkansen"
+
+msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
+msgid "Sale Opportunity Reporting"
+msgstr "Rapportage verkoopkansen"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "Omgezet"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "Potentie"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "Verkoopkans"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Day"
+msgstr "Dag"
+
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "selection:sale.opportunity.reporting.context,period:"
+msgid "Year"
+msgstr "Jaar"
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "view:sale.opportunity.reporting.conversion.employee.time_series:"
+msgid "Won Amount"
+msgstr "Gewonnen bedrag"
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "view:sale.opportunity.reporting.conversion.time_series:"
+msgid "Won Amount"
+msgstr "Gewonnen bedrag"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Lost"
+msgstr "Verloren"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won"
+msgstr "Gewonnen"
+
+msgctxt "view:sale.opportunity.reporting.conversion:"
+msgid "Won Amount"
+msgstr "Gewonnen bedrag"
+
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted"
+msgstr "Geconverteerd"
+
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Converted Amount"
+msgstr "Geconverteerd bedrag"
+
+msgctxt "view:sale.opportunity.reporting.main.time_series:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted"
+msgstr "Geconverteerd"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Converted Amount"
+msgstr "Geconverteerd bedrag"
+
+msgctxt "view:sale.opportunity.reporting.main:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr "Verkoopkans"

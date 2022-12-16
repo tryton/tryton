@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='suppliers']/field[@name='purchase_uom']" position="after">
+        <label name="purchase_secondary_uom"/>
+        <field name="purchase_secondary_uom"/>
+        <group id="purchase_secondary_uom" col="-1" colspan="2">
+            <label name="purchase_secondary_uom_factor" string="Factor:"/>
+            <field name="purchase_secondary_uom_factor"/>
+            <label name="purchase_secondary_uom_rate" string="Rate:"/>
+            <field name="purchase_secondary_uom_rate"/>
+        </group>
+    </xpath>
+</data>
