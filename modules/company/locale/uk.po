@@ -1,0 +1,326 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Працівники"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Нижній колонтитул"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Заголовок"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Часовий пояс"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Дата завершення"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Особа"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Дата початку"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr "Підлеглі"
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr "Керівник"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Компанії"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Демон"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:party.contact_mechanism.language,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "Компанії"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Поточна компанія"
+
+msgctxt "field:res.user,company_filter:"
+msgid "Company Filter"
+msgstr "Фільтр компанії"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Поточний працівник"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Працівники"
+
+msgctxt "field:res.user-company.company,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:res.user-company.company,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Користувач"
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Основна валюта компанії."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Додайте працівників до компанії."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Текст для відображення в нижніх колонтитулах звіту."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Текст для відображення в заголовках звітів."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Використовується для обчислення поточної дати."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Компанія, до якої належить працівник."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Коли працівник залишає компанію."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Особа, яка представляє працівника."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Коли працівник приєднується до компанії."
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Працівники, за якими наглядає цей працівник."
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Працівник, який наглядає за цим працівником."
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr "Компанії, зареєстровані для цього демона."
+
+#, fuzzy
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user\n"
+"- \"employees\" as list of ids from the current user\n"
+"- \"companies\" as list of ids from the current user"
+msgstr ""
+"\n"
+"- \"працівник\" поточного користувача"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restricts the sequence usage to the company."
+msgstr "Обмежує використання послідовності компанією."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restricts the sequence usage to the company."
+msgstr "Обмежує використання послідовності компанією."
+
+msgctxt "help:res.user,companies:"
+msgid "The companies that the user has access to."
+msgstr "Компанії, до яких користувач має доступ."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Виберіть компанію для роботи."
+
+msgctxt "help:res.user,company_filter:"
+msgid "Define records of which companies are shown."
+msgstr "Визначити, записи яких компаній показувати."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Оберіть працівника, щоб користувач поводився як такий."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Додайте працівників, щоб надати користувачеві доступ до них."
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Налаштування компаній"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Налаштувати компанію"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Компанії"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Працівники"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr "Наглядає"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Лист"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Демон - Компанія"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
+msgid "User in companies"
+msgstr "Користувач у компаніях"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict_companies"
+msgid "User in companies"
+msgstr "Користувач у компаніях"
+
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Companies"
+msgstr "Компанії"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Компанії"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Працівники"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr "Адміністрування компаній"
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr "Адміністрування працівників"
+
+msgctxt "model:res.user-company.company,name:"
+msgid "User - Company"
+msgstr "Користувач - Компанія"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Користувач - Працівник"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "З повагою,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Шановні пані та панове,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Тема:"
+
+msgctxt "selection:res.user,company_filter:"
+msgid "All"
+msgstr "Всі"
+
+msgctxt "selection:res.user,company_filter:"
+msgid "Current"
+msgstr "Поточний"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Тепер ви можете додати свою компанію до системи."
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Звіти"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Додати"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "Гаразд"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
