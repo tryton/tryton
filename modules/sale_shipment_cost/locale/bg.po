@@ -1,0 +1,106 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Начин на остойностяване на доставка на продажба"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Начин на остойностяване на доставка на продажба"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Стойност на пратка"
+
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr ""
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "Превозвач"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Начин на остойностяване на доставка"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "Превозвач"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "Разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_edit:"
+msgid "Edit Cost"
+msgstr "Стойност на пратка"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Ред от разход от фактура"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Валута при разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Валута при разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Разход"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_used:"
+msgid "Cost"
+msgstr "Разход"
+
+msgctxt "help:stock.shipment.out,cost_edit:"
+msgid "Check to edit the cost."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "За поръчка"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "За пратка"
+
+#, fuzzy
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr "Начин на остойностяване на доставка"

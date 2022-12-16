@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="message_view_tree">
+            <field name="model">ir.message</field>
+            <field name="type">tree</field>
+            <field name="name">message_list</field>
+        </record>
+        <record model="ir.ui.view" id="message_view_form">
+            <field name="model">ir.message</field>
+            <field name="type">form</field>
+            <field name="name">message_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_message_form">
+            <field name="name">Message</field>
+            <field name="res_model">ir.message</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_form_view1">
+            <field name="view" ref="message_view_tree"/>
+            <field name="sequence" eval="10"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_form_view2">
+            <field name="view" ref="message_view_form"/>
+            <field name="sequence" eval="20"/>
+            <field name="act_window" ref="act_message_form"/>
+        </record>
+        <menuitem
+            parent="menu_localization"
+            action="act_message_form"
+            sequence="20"
+            id="menu_message_form"/>
+    </data>
+    <data grouped="1">
+        <record model="ir.message" id="msg_ID">
+            <field name="text">ID</field>
+        </record>
+        <record model="ir.message" id="msg_created_by">
+            <field name="text">Created by</field>
+        </record>
+        <record model="ir.message" id="msg_created_at">
+            <field name="text">Created at</field>
+        </record>
+        <record model="ir.message" id="msg_edited_by">
+            <field name="text">Edited by</field>
+        </record>
+        <record model="ir.message" id="msg_edited_at">
+            <field name="text">Edited at</field>
+        </record>
+        <record model="ir.message" id="msg_record_name">
+            <field name="text">Record Name</field>
+        </record>
+        <record model="ir.message" id="msg_active">
+            <field name="text">Active</field>
+        </record>
+        <record model="ir.message" id="msg_active_help">
+            <field name="text">Uncheck to exclude from future use.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_name">
+            <field name="text">Name</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_string">
+            <field name="text">String</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help">
+            <field name="text">Help</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_type">
+            <field name="text">Type</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_boolean">
+            <field name="text">Boolean</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_integer">
+            <field name="text">Integer</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_char">
+            <field name="text">Char</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_float">
+            <field name="text">Float</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_numeric">
+            <field name="text">Numeric</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_date">
+            <field name="text">Date</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_datetime">
+            <field name="text">DateTime</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection">
+            <field name="text">Selection</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_multiselection">
+            <field name="text">MultiSelection</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_digits">
+            <field name="text">Digits</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_domain">
+            <field name="text">Domain</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_help">
+            <field name="text">A couple of key and label separated by ":" per line.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_sorted">
+            <field name="text">Selection Sorted</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_sorted_help">
+            <field name="text">If the selection must be sorted on label.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection">
+            <field name="text">Help Selection</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection_help">
+            <field name="text">The key followed by the help text separated by a ":", one per line.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_json">
+            <field name="text">Selection JSON</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection_json">
+            <field name="text">Help Selection JSON</field>
+        </record>
+        <record model="ir.message" id="msg_sequence">
+            <field name="text">Sequence</field>
+        </record>
+        <record model="ir.message" id="msg_id_positive">
+            <field name="text">ID must be positive.</field>
+        </record>
+        <record model="ir.message" id="msg_write_xml_record">
+            <field name="text">You are not allowed to modify this record.</field>
+        </record>
+        <record model="ir.message" id="msg_delete_xml_record">
+            <field name="text">You are not allowed to delete this record.</field>
+        </record>
+        <record model="ir.message" id="msg_base_config_record">
+            <field name="text">This record is part of the base configuration.</field>
+        </record>
+        <record model="ir.message" id="msg_relation_not_found">
+            <field name="text">Relation not found: "%(value)r" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_too_many_relations_found">
+            <field name="text">Too many relations found: "%(value)r" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_reference_syntax_error">
+            <field name="text">Syntax error for reference: "%(value)r" in "%(field)s".</field>
+        </record>
+        <record model="ir.message" id="msg_xml_id_syntax_error">
+            <field name="text">Syntax error for XML id: "%(value)r" in "%(field)s".</field>
+        </record>
+        <record model="ir.message" id="msg_domain_validation_record">
+            <field name="text">The value for field "%(field)s" in "%(model)s" is not valid according to its domain.</field>
+        </record>
+        <record model="ir.message" id="msg_required_validation_record">
+            <field name="text">A value is required for field "%(field)s" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_size_validation_record">
+            <field name="text">The value for field "%(field)s" in "%(model)s" is too long (%(size)i > %(max_size)i).</field>
+        </record>
+        <record model="ir.message" id="msg_digits_validation_record">
+            <field name="text">The number of digits in the value "%(value)s" for field "%(field)s" in "%(model)s" exceeds the limit of "%(digits)i".</field>
+        </record>
+        <record model="ir.message" id="msg_forbidden_char_validation_record">
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" contains some invalid chars "%(chars)s".</field>
+        </record>
+        <record model="ir.message" id="msg_selection_validation_record">
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" is not one of the allowed options.</field>
+        </record>
+        <record model="ir.message" id="msg_time_format_validation_record">
+            <field name="text">The time value "%(value)s" for field "%(field)s" in "%(model)s" is not valid.</field>
+        </record>
+        <record model="ir.message" id="msg_foreign_model_missing">
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" does not exist.</field>
+        </record>
+        <record model="ir.message" id="msg_foreign_model_exist">
+            <field name="text">The records could not be deleted because they are used by field "%(field)s" of "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_access_rule_error">
+            <field name="text">You are not allowed to access "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_access_rule_field_error">
+            <field name="text">You are not allowed to access "%(model)s.%(field)s".</field>
+        </record>
+        <record model="ir.message" id="msg_create_rule_error">
+            <field name="text">You are not allowed to create records of "%(model)s" because they fail on at least one of these rules:
+%(rules)s</field>
+        </record>
+        <record model="ir.message" id="msg_read_rule_error">
+            <field name="text">You are not allowed to read records "%(ids)s" of "%(model)s" because of at least one of these rules:
+%(rules)s</field>
+        </record>
+        <record model="ir.message" id="msg_read_error">
+            <field name="text">You are trying to read records "%(ids)s" of "%(model)s" that don't exist anymore.</field>
+        </record>
+        <record model="ir.message" id="msg_write_rule_error">
+            <field name="text">You are not allowed to write to records "%(ids)s" of "%(model)s" because of at least one of these rules:
+%(rules)s</field>
+        </record>
+        <record model="ir.message" id="msg_write_error">
+            <field name="text">You are trying to write to records "%(ids)s" of "%(model)s" that don't exist anymore.</field>
+        </record>
+        <record model="ir.message" id="msg_delete_rule_error">
+            <field name="text">You are not allowed to delete records "%(ids)s" of "%(model)s" because of at lease one of those rules:
+%(rules)s</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_invalid_domain">
+            <field name="text">Invalid domain in schema "%(schema)s".</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_invalid_selection">
+            <field name="text">Invalid selection in schema "%(schema)s".</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_invalid_help_selection">
+            <field name="text">Invalid help selection in schema "%(schema)s".</field>
+        </record>
+        <record model="ir.message" id="msg_recursion_error">
+            <field name="text">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
+        </record>
+        <record model="ir.message" id="msg_search_function_missing">
+            <field name="text">Missing search function for field "%(field)s" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_setter_function_missing">
+            <field name="text">Missing setter function for field "%(field)s" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_access_button_error">
+            <field name="text">Calling button "%(button)s on "%(model)s" is not allowed.</field>
+        </record>
+
+        <record model="ir.message" id="msg_view_invalid_xml">
+            <field name="text">Invalid XML for view "%(name)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_action_wrong_wizard_model">
+            <field name="text">Wrong wizard model in keyword action "%(name)s".</field>
+        </record>
+        <record model="ir.message" id="msg_report_invalid_email">
+            <field name="text">Invalid email definition for report "%(name)s".</field>
+        </record>
+        <record model="ir.message" id="msg_action_invalid_views">
+            <field name="text">Invalid view "%(view)s" for action "%(action)s".</field>
+        </record>
+        <record model="ir.message" id="msg_action_invalid_domain">
+            <field name="text">Invalid domain or search criteria "%(domain)s" for action "%(action)s".</field>
+        </record>
+        <record model="ir.message" id="msg_action_invalid_context">
+            <field name="text">Invalid context "%(context)s" for action "%(action)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_model_invalid_condition">
+            <field name="text">The condition "%(condition)s" is not a valid PYSON expression for button rule "%(rule)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_sequence_missing">
+            <field name="text">Missing sequence.</field>
+        </record>
+        <record model="ir.message" id="msg_sequence_invalid_prefix">
+            <field name="text">Invalid prefix "%(affix)s" for sequence "%(sequence)s".</field>
+        </record>
+        <record model="ir.message" id="msg_sequence_invalid_suffix">
+            <field name="text">Invalid suffix "%(affix)s" for sequence "%(sequence)s".</field>
+        </record>
+        <record model="ir.message" id="msg_sequence_last_timestamp_future">
+            <field name="text">The "Last Timestamp" cannot be in the future for sequence "%s".</field>
+        </record>
+        <record model="ir.message" id="msg_sequence_change_sequence_type">
+            <field name="text">You cannot change the sequence type of a sequence instead create a new sequence.</field>
+        </record>
+
+        <record model="ir.message" id="msg_language_invalid_grouping">
+            <field name="text">Invalid grouping "%(grouping)s" for language "%(language)s".</field>
+        </record>
+        <record model="ir.message" id="msg_language_invalid_date">
+            <field name="text">Invalid date format "%(format)s" for language "%(language)s".</field>
+        </record>
+        <record model="ir.message" id="msg_language_default_translatable">
+            <field name="text">The default language "%(language)s" must be translatable.</field>
+        </record>
+        <record model="ir.message" id="msg_language_delete_default">
+            <field name="text">The default language "%(language)s" can not be deleted.</field>
+        </record>
+
+        <record model="ir.message" id="msg_rule_invalid_domain">
+            <field name="text">Invalid domain in rule "%(name)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_translation_overridden">
+            <field name="text">You can not export translation "%(name)s" because it has been overridden by module "%(overriding_module)s".</field>
+        </record>
+
+
+        <record model="ir.message" id="msg_module_delete_state">
+            <field name="text">You can not remove a module that is activated or that is about to be activated.</field>
+        </record>
+        <record model="ir.message" id="msg_module_deactivate_dependency">
+            <field name="text">Some activated modules depend on the ones you are trying to deactivate:</field>
+        </record>
+
+        <record model="ir.message" id="msg_trigger_invalid_condition">
+            <field name="text">Condition "%(condition)s" is not a valid PYSON expression for trigger "%(trigger)s".</field>
+        </record>
+        <record model="ir.message" id="msg_html_editor_save_fail">
+            <field name="text">Failed to save, please retry.</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_Y">
+            <field name="text">Y</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_M">
+            <field name="text">M</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_w">
+            <field name="text">w</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_d">
+            <field name="text">d</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_h">
+            <field name="text">h</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_m">
+            <field name="text">m</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_s">
+            <field name="text">s</field>
+        </record>
+        <record model="ir.message" id="msg_resource_copy_help">
+            <field name="text">The resources to which this record must be copied.</field>
+        </record>
+        <record model="ir.message" id="msg_attachments">
+            <field name="text">Attachments</field>
+        </record>
+        <record model="ir.message" id="msg_notes">
+            <field name="text">Notes</field>
+        </record>
+        <record model="ir.message" id="msg_access_wizard_error">
+            <field name="text">You are not allowed to execute wizard "%(wizard)s".</field>
+        </record>
+        <record model="ir.message" id="msg_access_wizard_model_error">
+            <field name="text">You are not allowed to execute wizard "%(wizard)s" on "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_subject">
+            <field name="text">Invalid subject in e-mail template "%(template)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_body">
+            <field name="text">Invalid body in e-mail template "%(template)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_field_pyson">
+            <field name="text">Invalid PYSON %(field)s in e-mail template "%(template)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_field_pyson_type">
+            <field name="text">The PYSON %(field)s in e-mail template "%(template)s" must generate a list.</field>
+        </record>
+        <record model="ir.message" id="msg_avatar_resource_unique">
+            <field name="text">Only one avatar is allowed per resource.</field>
+        </record>
+        <record model="ir.message" id="msg_avatar_size_unique">
+            <field name="text">The size of an avatar must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_avatar">
+            <field name="text">Avatar</field>
+        </record>
+        <record model="ir.message" id="msg_avatars">
+            <field name="text">Avatars</field>
+        </record>
+        <record model="ir.message" id="msg_avatar_url">
+            <field name="text">Avatar URL</field>
+        </record>
+    </data>
+</tryton>
