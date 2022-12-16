@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem parent="product.menu_main_product" sequence="40"
+            id="menu_classification" name="Classifications"/>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="classification_view_list">
+            <field name="model">product.classification.dummy</field>
+            <field name="type">tree</field>
+            <field name="name">classification_list</field>
+        </record>
+        <record model="ir.ui.view" id="classification_view_form">
+            <field name="model">product.classification.dummy</field>
+            <field name="type">form</field>
+            <field name="name">classification_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="classification_tree_view_tree">
+            <field name="model">product.classification_tree.dummy</field>
+            <field name="inherit" ref="classification_view_list"/>
+            <field name="field_childs">childs</field>
+            <field name="name">classification_tree_tree</field>
+        </record>
+        <record model="ir.ui.view" id="classification_tree_view_form">
+            <field name="model">product.classification_tree.dummy</field>
+            <field name="inherit" ref="classification_view_form"/>
+            <field name="name">classification_tree_form</field>
+        </record>
+
+        <!-- TODO generic relate to open product -->
+    </data>
+</tryton>
