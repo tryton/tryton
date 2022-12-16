@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="request_view_tree">
+            <field name="model">res.request</field>
+            <field name="type">tree</field>
+            <field name="name">request_list</field>
+        </record>
+        <record model="ir.ui.view" id="request_view_form">
+            <field name="model">res.request</field>
+            <field name="type">form</field>
+            <field name="name">request_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_request_form">
+            <field name="name">Requests</field>
+            <field name="res_model">res.request</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="request_view_tree"/>
+            <field name="act_window" ref="act_request_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="request_view_form"/>
+            <field name="act_window" ref="act_request_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_request_form" id="menu_request_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_request_form_group_admin">
+            <field name="menu" ref="menu_request_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="request_link_view_form">
+            <field name="model">res.request.link</field>
+            <field name="type">form</field>
+            <field name="name">request_link_form</field>
+        </record>
+        <record model="ir.ui.view" id="request_link_view_tree">
+            <field name="model">res.request.link</field>
+            <field name="type">tree</field>
+            <field name="name">request_link_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_request_link_form">
+            <field name="name">Request Links</field>
+            <field name="res_model">res.request.link</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_link_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="request_link_view_tree"/>
+            <field name="act_window" ref="act_request_link_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_request_link_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="request_link_view_form"/>
+            <field name="act_window" ref="act_request_link_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_request_link_form" id="menu_request_link_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_request_link_form_group_admin">
+            <field name="menu" ref="menu_request_link_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="request_history_view_tree">
+            <field name="model">res.request.history</field>
+            <field name="type">tree</field>
+            <field name="name">request_history_list</field>
+        </record>
+        <record model="ir.ui.view" id="request_history_view_form">
+            <field name="model">res.request.history</field>
+            <field name="type">form</field>
+            <field name="name">request_history_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="request_reference_view_tree">
+            <field name="model">res.request.reference</field>
+            <field name="type">tree</field>
+            <field name="name">request_reference_list</field>
+        </record>
+        <record model="ir.ui.view" id="request_reference_view_form">
+            <field name="model">res.request.reference</field>
+            <field name="type">form</field>
+            <field name="name">request_reference_form</field>
+        </record>
+    </data>
+</tryton>

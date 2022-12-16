@@ -1,0 +1,32 @@
+#. extracted from introduction.rst
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-06 19:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+
+#: introduction.rst:1
+msgid ""
+"Introduction\n"
+"############"
+msgstr ""
+
+#: introduction.rst:4
+msgid ""
+"Tryton is a Graphical User Interface to the Tryton Framework\n"
+"based on GTK__ and Python__."
+msgstr ""
+
+#: introduction.rst:7
+msgid ""
+"__ http://www.gtk.org\n"
+"__ http://www.python.org"
+msgstr ""
