@@ -1,0 +1,323 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.dunning:"
+msgid "Line can be used only once on dunning."
+msgstr "Une ligne ne peut être utilisée qu'une seule fois sur une relance."
+
+msgctxt "field:account.configuration,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Procédure de relance par défaut"
+
+msgctxt "field:account.dunning,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:account.dunning,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.dunning,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Montant en devise secondaire"
+
+msgctxt "field:account.dunning,blocked:"
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgctxt "field:account.dunning,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.dunning,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.dunning,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.dunning,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.dunning,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning,level:"
+msgid "Level"
+msgstr "Niveau"
+
+msgctxt "field:account.dunning,line:"
+msgid "Line"
+msgstr "Ligne"
+
+msgctxt "field:account.dunning,maturity_date:"
+msgid "Maturity Date"
+msgstr "Date d'échéance"
+
+msgctxt "field:account.dunning,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.dunning,procedure:"
+msgid "Procedure"
+msgstr "Procédure"
+
+msgctxt "field:account.dunning,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.dunning,second_currency:"
+msgid "Second Currency"
+msgstr "Devise secondaire"
+
+msgctxt "field:account.dunning,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Décimales de la seconde devise"
+
+msgctxt "field:account.dunning,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.dunning,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.dunning,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.dunning.create.start,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.dunning.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.level,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.dunning.level,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.dunning.level,days:"
+msgid "Number of Overdue Days"
+msgstr "Nombre de jours de retard"
+
+msgctxt "field:account.dunning.level,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.level,procedure:"
+msgid "Procedure"
+msgstr "Procédure"
+
+msgctxt "field:account.dunning.level,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.dunning.level,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:account.dunning.level,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.dunning.level,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.dunning.procedure,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.dunning.procedure,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.dunning.procedure,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.procedure,levels:"
+msgid "Levels"
+msgstr "Niveaux"
+
+msgctxt "field:account.dunning.procedure,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.dunning.procedure,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.dunning.procedure,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.dunning.procedure,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.dunning.process.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line,dunnings:"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "field:party.party,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Procédure de relance"
+
+msgctxt "model:account.dunning,name:"
+msgid "Account Dunning"
+msgstr "Relance comptable"
+
+msgctxt "model:account.dunning.create.start,name:"
+msgid "Create Account Dunning"
+msgstr "Créer la relance comptable"
+
+msgctxt "model:account.dunning.level,name:"
+msgid "Account Dunning Level"
+msgstr "Niveau de relance comptable"
+
+msgctxt "model:account.dunning.procedure,name:"
+msgid "Account Dunning Procedure"
+msgstr "Procédure de relance comptable"
+
+msgctxt "model:account.dunning.process.start,name:"
+msgid "Create Account Dunning"
+msgstr "Créer la relance comptable"
+
+msgctxt "model:ir.action,name:act_dunning_form"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "model:ir.action,name:act_dunning_party"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "model:ir.action,name:act_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Procédures de relance"
+
+msgctxt "model:ir.action,name:wizard_dunning_create"
+msgid "Create Dunnings"
+msgstr "Créer les relances"
+
+msgctxt "model:ir.action,name:wizard_dunning_process"
+msgid "Process Dunning"
+msgstr "Traitement des relances"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_create"
+msgid "Create Dunnings"
+msgstr "Créer les relances"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_form"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Procédures de relance"
+
+msgctxt "model:ir.ui.menu,name:menu_dunnings"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "model:res.group,name:group_dunning"
+msgid "Dunning"
+msgstr "Relance"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning"
+msgstr "Créer la relance"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning for date"
+msgstr "Créer les relance pour la date"
+
+msgctxt "view:account.dunning.level:"
+msgid "Dunning Level"
+msgstr "Niveau de relance"
+
+msgctxt "view:account.dunning.level:"
+msgid "dunning levels"
+msgstr "niveaux de relance"
+
+msgctxt "view:account.dunning.procedure:"
+msgid "Dunning Procedure"
+msgstr "Procédure de relance"
+
+msgctxt "view:account.dunning.procedure:"
+msgid "Dunning Procedures"
+msgstr "Procédures de relance"
+
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning"
+msgstr "Traitement des relances"
+
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning?"
+msgstr "Traiter les relances?"
+
+msgctxt "view:account.dunning:"
+msgid "Dunning"
+msgstr "Relance"
+
+msgctxt "view:account.dunning:"
+msgid "Dunnings"
+msgstr "Relances"
+
+msgctxt "view:party.party:"
+msgid "Dunning"
+msgstr "Relance"
+
+msgctxt "wizard_button:account.dunning.create,start,create_:"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:account.dunning.create,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Traiter"

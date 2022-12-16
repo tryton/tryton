@@ -1,0 +1,1312 @@
+msgid "specify alternate config file"
+msgstr ""
+
+msgid "development mode"
+msgstr ""
+
+msgid "logging everything at INFO level"
+msgstr ""
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr ""
+
+msgid "specify the login user"
+msgstr ""
+
+msgid "specify the server port"
+msgstr ""
+
+msgid "specify the server hostname"
+msgstr ""
+
+msgid "Too much arguments"
+msgstr ""
+
+#, python-format
+msgid "File \"%s\" not found"
+msgstr ""
+
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr ""
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr ""
+
+msgid "Select your action"
+msgstr ""
+
+msgid "No action defined!"
+msgstr ""
+
+msgid "Tryton Connection"
+msgstr ""
+
+msgid "Server:"
+msgstr ""
+
+msgid "Port:"
+msgstr ""
+
+msgid "Selection"
+msgstr ""
+
+msgid "Your selection:"
+msgstr ""
+
+msgid "Save As..."
+msgstr ""
+
+msgid "Always ignore this warning."
+msgstr ""
+
+msgid "Do you want to proceed?"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Concurrency Exception"
+msgstr ""
+
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+
+msgid "Compare"
+msgstr ""
+
+msgid "Write Anyway"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Report Bug"
+msgstr ""
+
+msgid "Application Error!"
+msgstr ""
+
+msgid "Error: "
+msgstr ""
+
+#, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr ""
+
+msgid "Bug Tracker"
+msgstr ""
+
+msgid "User:"
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+
+msgid "Created new bug with ID "
+msgstr ""
+
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+
+msgid "Exception:"
+msgstr ""
+
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+
+msgid "Security risk!"
+msgstr ""
+
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+
+msgid "Network Error!"
+msgstr ""
+
+msgid "<i>Search...</i>"
+msgstr ""
+
+msgid "<i>Create...</i>"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Displayed value"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Display format"
+msgstr ""
+
+msgid "Open the calendar"
+msgstr ""
+
+msgid "Date Format"
+msgstr ""
+
+msgid "Displayed date format"
+msgstr ""
+
+msgid "y"
+msgstr ""
+
+msgid "yes"
+msgstr ""
+
+msgid "true"
+msgstr ""
+
+msgid "t"
+msgstr ""
+
+msgid "True"
+msgstr ""
+
+msgid "False"
+msgstr ""
+
+msgid "Edit..."
+msgstr ""
+
+msgid "Attachments..."
+msgstr ""
+
+msgid "Actions..."
+msgstr ""
+
+msgid "Relate..."
+msgstr ""
+
+msgid "Report..."
+msgstr ""
+
+msgid "E-Mail..."
+msgstr ""
+
+msgid "Print..."
+msgstr ""
+
+msgid "Y"
+msgstr ""
+
+msgid "M"
+msgstr ""
+
+msgid "w"
+msgstr ""
+
+msgid "d"
+msgstr ""
+
+msgid "h"
+msgstr ""
+
+msgid "m"
+msgstr ""
+
+msgid "s"
+msgstr ""
+
+msgid "_File"
+msgstr ""
+
+msgid "_User"
+msgstr ""
+
+msgid "_Options"
+msgstr ""
+
+msgid "Fa_vorites"
+msgstr ""
+
+msgid "_Help"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "No result found."
+msgstr ""
+
+msgid "_Connect..."
+msgstr ""
+
+msgid "_Disconnect"
+msgstr ""
+
+msgid "Data_base"
+msgstr ""
+
+msgid "_New Database..."
+msgstr ""
+
+msgid "_Restore Database..."
+msgstr ""
+
+msgid "_Backup Database..."
+msgstr ""
+
+msgid "Dro_p Database..."
+msgstr ""
+
+msgid "_Quit..."
+msgstr ""
+
+msgid "_Preferences..."
+msgstr ""
+
+msgid "_Menu Reload"
+msgstr ""
+
+msgid "_Menu Toggle"
+msgstr ""
+
+msgid "_Global Search"
+msgstr ""
+
+msgid "_Toolbar"
+msgstr ""
+
+msgid "_Default"
+msgstr ""
+
+msgid "_Text and Icons"
+msgstr ""
+
+msgid "_Icons"
+msgstr ""
+
+msgid "_Text"
+msgstr ""
+
+msgid "_Menubar"
+msgstr ""
+
+msgid "Change Accelerators"
+msgstr ""
+
+msgid "_Mode"
+msgstr ""
+
+msgid "_Normal"
+msgstr ""
+
+msgid "_PDA"
+msgstr ""
+
+msgid "_Form"
+msgstr ""
+
+msgid "Save Width/Height"
+msgstr ""
+
+msgid "Save Tree State"
+msgstr ""
+
+msgid "Spell Checking"
+msgstr ""
+
+msgid "_Previous Tab"
+msgstr ""
+
+msgid "_Next Tab"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr ""
+
+msgid "_Email..."
+msgstr ""
+
+msgid "_Save Options"
+msgstr ""
+
+msgid "_Tips..."
+msgstr ""
+
+msgid "_Keyboard Shortcuts..."
+msgstr ""
+
+msgid "_About..."
+msgstr ""
+
+msgid "Manage Favorites"
+msgstr ""
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+
+msgid "Close Tab"
+msgstr ""
+
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+
+msgid "Access denied!"
+msgstr ""
+
+msgid "Database drop failed with error message:\n"
+msgstr ""
+
+msgid "Database drop failed!"
+msgstr ""
+
+msgid "Database dropped successfully!"
+msgstr ""
+
+msgid "Open Backup File to Restore..."
+msgstr ""
+
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+
+msgid "Database is password protected!"
+msgstr ""
+
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+
+msgid "Database restore failed with error message:\n"
+msgstr ""
+
+msgid "Database restore failed!"
+msgstr ""
+
+msgid "Database restored successfully!"
+msgstr ""
+
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+
+msgid "Database dump failed with error message:\n"
+msgstr ""
+
+msgid "Database dump failed!"
+msgstr ""
+
+msgid "Database backuped successfully!"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Create a new record"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save this record"
+msgstr ""
+
+msgid "Switch"
+msgstr ""
+
+msgid "Switch view"
+msgstr ""
+
+msgid "_Reload"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "_New"
+msgstr ""
+
+msgid "_Save"
+msgstr ""
+
+msgid "_Switch View"
+msgstr ""
+
+msgid "_Reload/Undo"
+msgstr ""
+
+msgid "_Delete..."
+msgstr ""
+
+msgid "_Close Tab"
+msgstr ""
+
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+
+msgid "No connection!"
+msgstr ""
+
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+
+msgid "Create new database"
+msgstr ""
+
+msgid "C_reate"
+msgstr ""
+
+msgid "Create the new database."
+msgstr ""
+
+msgid "Server Setup:"
+msgstr ""
+
+msgid "Server connection:"
+msgstr ""
+
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+
+msgid "C_hange"
+msgstr ""
+
+msgid "Setup the server connection..."
+msgstr ""
+
+msgid "Tryton Server Password:"
+msgstr ""
+
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+
+msgid "New database setup:"
+msgstr ""
+
+msgid "Database name:"
+msgstr ""
+
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+
+msgid "Default language:"
+msgstr ""
+
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+
+msgid "Admin password:"
+msgstr ""
+
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+
+msgid "Confirm admin password:"
+msgstr ""
+
+msgid "Type the Admin password again"
+msgstr ""
+
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr ""
+
+msgid "Passwords doesn't match!"
+msgstr ""
+
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+
+msgid "This database name already exist!"
+msgstr ""
+
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr ""
+
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+
+msgid "Error creating database!"
+msgstr ""
+
+msgid "Could not connect to server!"
+msgstr ""
+
+msgid "This client version is not compatible with the server!"
+msgstr ""
+
+msgid "No database found, you must create one!"
+msgstr ""
+
+msgid "Backup a database"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "Backup the choosen database."
+msgstr ""
+
+msgid "Choose a Tryton database to backup:"
+msgstr ""
+
+msgid "Delete a database"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete the choosen database."
+msgstr ""
+
+msgid "Choose a Tryton database to delete:"
+msgstr ""
+
+msgid "Server Connection:"
+msgstr ""
+
+msgid "Database:"
+msgstr ""
+
+msgid "Profile Editor"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "_Add"
+msgstr ""
+
+msgid "_Remove"
+msgstr ""
+
+msgid "Host:"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Fetching databases list"
+msgstr ""
+
+msgid "Username:"
+msgstr ""
+
+msgid "Could not connect to the server"
+msgstr ""
+
+msgid "Incompatible version of the server"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "_Cancel"
+msgstr ""
+
+msgid "Cancel connection to the Tryton server"
+msgstr ""
+
+msgid "C_onnect"
+msgstr ""
+
+msgid "Connect the Tryton server"
+msgstr ""
+
+msgid "Profile:"
+msgstr ""
+
+msgid "_Manage profiles"
+msgstr ""
+
+msgid "Host / Database information"
+msgstr ""
+
+msgid "User name:"
+msgstr ""
+
+msgid "Restore Database"
+msgstr ""
+
+msgid "File to Restore:"
+msgstr ""
+
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+
+msgid "New Database Name:"
+msgstr ""
+
+msgid "Update Database:"
+msgstr ""
+
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Restore the database from file."
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Email Program Settings"
+msgstr ""
+
+msgid "Command Line:"
+msgstr ""
+
+msgid "Legend of Available Placeholders:"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "CC:"
+msgstr ""
+
+msgid "Subject:"
+msgstr ""
+
+msgid "Body:"
+msgstr ""
+
+msgid "Attachment:"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Previous Record"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Next Record"
+msgstr ""
+
+msgid "Attachment(0)"
+msgstr ""
+
+msgid "Add an attachment to the record"
+msgstr ""
+
+msgid "_Duplicate"
+msgstr ""
+
+msgid "_Previous"
+msgstr ""
+
+msgid "_Next"
+msgstr ""
+
+msgid "_Search"
+msgstr ""
+
+msgid "View _Logs..."
+msgstr ""
+
+msgid "Show revisions..."
+msgstr ""
+
+msgid "A_ttachments..."
+msgstr ""
+
+msgid "_Actions..."
+msgstr ""
+
+msgid "_Relate..."
+msgstr ""
+
+msgid "_Report..."
+msgstr ""
+
+msgid "_E-Mail..."
+msgstr ""
+
+msgid "_Print..."
+msgstr ""
+
+msgid "_Export Data..."
+msgstr ""
+
+msgid "_Import Data..."
+msgstr ""
+
+#, python-format
+msgid "Attachment(%d)"
+msgstr ""
+
+msgid "You have to select one record!"
+msgstr ""
+
+msgid "ID:"
+msgstr ""
+
+msgid "Creation User:"
+msgstr ""
+
+msgid "Creation Date:"
+msgstr ""
+
+msgid "Latest Modification by:"
+msgstr ""
+
+msgid "Latest Modification Date:"
+msgstr ""
+
+msgid "Model:"
+msgstr ""
+
+msgid "Are you sure to remove this record?"
+msgstr ""
+
+msgid "Are you sure to remove those records?"
+msgstr ""
+
+msgid "Records not removed!"
+msgstr ""
+
+msgid "Records removed!"
+msgstr ""
+
+msgid "Working now on the duplicated record(s)!"
+msgstr ""
+
+msgid "Record saved!"
+msgstr ""
+
+msgid "Invalid form!"
+msgstr ""
+
+msgid " of "
+msgstr ""
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Launch action"
+msgstr ""
+
+msgid "Relate"
+msgstr ""
+
+msgid "Open related records"
+msgstr ""
+
+msgid "Report"
+msgstr ""
+
+msgid "Open report"
+msgstr ""
+
+msgid "E-Mail"
+msgstr ""
+
+msgid "E-Mail report"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Print report"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Limit"
+msgstr ""
+
+msgid "Search Limit Settings"
+msgstr ""
+
+msgid "Limit:"
+msgstr ""
+
+msgid "Preferences"
+msgstr ""
+
+msgid "Edit User Preferences"
+msgstr ""
+
+msgid "Preference"
+msgstr ""
+
+msgid "Current Password:"
+msgstr ""
+
+msgid "Revision"
+msgstr ""
+
+msgid "Select a revision"
+msgstr ""
+
+msgid "Revision:"
+msgstr ""
+
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+msgid "Text Entries Shortcuts"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr ""
+
+msgid "Copy selected text"
+msgstr ""
+
+msgid "Paste copied text"
+msgstr ""
+
+msgid "Next widget"
+msgstr ""
+
+msgid "Previous widget"
+msgstr ""
+
+msgid "Relation Entries Shortcuts"
+msgstr ""
+
+msgid "Create new relation"
+msgstr ""
+
+msgid "Open/Search relation"
+msgstr ""
+
+msgid "List Entries Shortcuts"
+msgstr ""
+
+msgid "Create new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr ""
+
+msgid "Mark line for deletion"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr ""
+
+msgid "Edition Widgets"
+msgstr ""
+
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+
+msgid "Tips"
+msgstr ""
+
+msgid "_Display a new tip next time"
+msgstr ""
+
+msgid "Export to CSV"
+msgstr ""
+
+msgid "<b>Predefined exports</b>"
+msgstr ""
+
+msgid "<b>All fields</b>"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Save Export"
+msgstr ""
+
+msgid "Delete Export"
+msgstr ""
+
+msgid "<b>Fields to export</b>"
+msgstr ""
+
+msgid "<b>Options</b>"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Add _field names"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr ""
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#, python-format
+msgid "%d record saved!"
+msgstr ""
+
+#, python-format
+msgid "%d records saved!"
+msgstr ""
+
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Remove <Del>"
+msgstr ""
+
+msgid "Create a new record <F3>"
+msgstr ""
+
+msgid "Delete selected record <Del>"
+msgstr ""
+
+msgid "Undelete selected record <Ins>"
+msgstr ""
+
+msgid "Import from CSV"
+msgstr ""
+
+msgid "Auto-Detect"
+msgstr ""
+
+msgid "<b>Fields to import</b>"
+msgstr ""
+
+msgid "File to Import:"
+msgstr ""
+
+msgid "Open..."
+msgstr ""
+
+msgid "CSV Parameters"
+msgstr ""
+
+msgid "Field Separator:"
+msgstr ""
+
+msgid "Text Delimiter:"
+msgstr ""
+
+msgid "Encoding:"
+msgstr ""
+
+msgid "Lines to Skip:"
+msgstr ""
+
+msgid "Field name"
+msgstr ""
+
+msgid "You must select an import file first!"
+msgstr ""
+
+msgid "Error opening CSV file"
+msgstr ""
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr ""
+
+#, python-format
+msgid "%d record imported!"
+msgstr ""
+
+#, python-format
+msgid "%d records imported!"
+msgstr ""
+
+msgid "Wizard"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "Creation User"
+msgstr ""
+
+msgid "Creation Date"
+msgstr ""
+
+msgid "Modification User"
+msgstr ""
+
+msgid "Modification Date"
+msgstr ""
+
+msgid "Unable to get view tree state"
+msgstr ""
+
+msgid "Unable to set view tree state"
+msgstr ""
+
+msgid ":"
+msgstr ""
+
+msgid "Save As"
+msgstr ""
+
+msgid "Image Size"
+msgstr ""
+
+msgid "Width:"
+msgstr ""
+
+msgid "Height:"
+msgstr ""
+
+msgid "PNG image (*.png)"
+msgstr ""
+
+msgid "Image size too large!"
+msgstr ""
+
+msgid ".."
+msgstr ""
+
+msgid "F_ilters"
+msgstr ""
+
+msgid "Show bookmarks of filters"
+msgstr ""
+
+msgid "Remove this bookmark"
+msgstr ""
+
+msgid "Bookmark this filter"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr ""
+
+msgid "Find"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+msgid "Week View"
+msgstr ""
+
+msgid "Month View"
+msgstr ""
+
+msgid "Week"
+msgstr ""
+
+msgid "Select a File..."
+msgstr ""
+
+msgid "Show plain text"
+msgstr ""
+
+msgid "Add value"
+msgstr ""
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr ""
+
+msgid "Select an Image..."
+msgstr ""
+
+msgid "All files"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Add existing record"
+msgstr ""
+
+msgid "Remove selected record <Del>"
+msgstr ""
+
+msgid "Open a record <F2>"
+msgstr ""
+
+msgid "Search a record <F2>"
+msgstr ""
+
+msgid "Remove selected record"
+msgstr ""
+
+msgid "Edit selected record <F2>"
+msgstr ""
+
+msgid "Change text to bold"
+msgstr ""
+
+msgid "Change text to italic"
+msgstr ""
+
+msgid "Change text to underline"
+msgstr ""
+
+msgid "Choose font-family"
+msgstr ""
+
+msgid "Choose font-size"
+msgstr ""
+
+msgid "Justify of line to the left"
+msgstr ""
+
+msgid "Justify of line to the center"
+msgstr ""
+
+msgid "Justify of line to the right"
+msgstr ""
+
+msgid "Justify of line to fill window"
+msgstr ""
+
+msgid "Change the foreground text"
+msgstr ""
+
+msgid "Change the background text"
+msgstr ""
+
+msgid "Change the markup text view"
+msgstr ""
+
+msgid "Select a foreground color"
+msgstr ""
+
+msgid "Select a background color"
+msgstr ""
+
+msgid "Translation"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Fuzzy"
+msgstr ""
+
+msgid "You need to save the record before adding translations!"
+msgstr ""
+
+msgid "No other language available!"
+msgstr ""
+
+msgid "Translate view"
+msgstr ""
+
