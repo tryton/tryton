@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="sequence_type"/>
+    <field name="sequence_type" widget="selection"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="prefix"/>
+    <field name="prefix"/>
+    <label name="suffix"/>
+    <field name="suffix"/>
+    <label name="type"/>
+    <field name="type"/>
+    <group string="Incremental" id="incremental" colspan="4">
+        <label name="padding"/>
+        <field name="padding" />
+        <label name="number_increment"/>
+        <field name="number_increment"/>
+        <label name="number_next"/>
+        <field name="number_next"/>
+    </group>
+    <group string="Timestamp" id="timestamp" colspan="4">
+        <label name="timestamp_rounding"/>
+        <field name="timestamp_rounding"/>
+        <label name="timestamp_offset"/>
+        <field name="timestamp_offset"/>
+        <label name="last_timestamp"/>
+        <field name="last_timestamp"/>
+    </group>
+    <separator string="Legend (Placeholders for prefix, suffix)" colspan="4"
+        id="legend"/>
+    <label string="Year:" id="label_year"/>
+    <label string="${year}" colspan="3" xalign="0.0" xexpand="1" id="year"/>
+    <label string="Month:" id="label_month"/>
+    <label string="${month}" colspan="3" xalign="0.0" xexpand="1" id="month"/>
+    <label string="Day:" id="label_day"/>
+    <label string="${day}" colspan="3" xalign="0.0" xexpand="1" id="day"/>
+</form>
