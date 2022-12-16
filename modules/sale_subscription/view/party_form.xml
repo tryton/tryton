@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='links']" position="inside">
+        <link icon="tryton-sale-subscription" name="sale_subscription.act_subscription_party_relate" empty="hide"/>
+    </xpath>
+</data>

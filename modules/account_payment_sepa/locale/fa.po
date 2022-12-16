@@ -1,0 +1,582 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "ادامه مجوز SEPA"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "ادامه مجوز SEPA"
+
+msgctxt "field:account.payment,sepa_end_to_end_id:"
+msgid "SEPA End To End ID"
+msgstr "مجوز SEPA پایان به پایان شناسه"
+
+msgctxt "field:account.payment,sepa_instruction_id:"
+msgid "SEPA Instruction ID"
+msgstr "دستورالعمل شناسه مجوز SEPA"
+
+msgctxt "field:account.payment,sepa_mandate:"
+msgid "Mandate"
+msgstr "مجوز"
+
+msgctxt "field:account.payment,sepa_mandate_sequence_type:"
+msgid "Mandate Sequence Type"
+msgstr "نوع ادامه مجوز"
+
+msgctxt "field:account.payment,sepa_return_reason_code:"
+msgid "Return Reason Code"
+msgstr "دلیل برگشت کد"
+
+msgctxt "field:account.payment,sepa_return_reason_information:"
+msgid "Return Reason Information"
+msgstr "دلیل برگشت اطلاعات"
+
+msgctxt "field:account.payment.group,sepa_messages:"
+msgid "SEPA Messages"
+msgstr "پیام های مجوز SEPA"
+
+msgctxt "field:account.payment.journal,company_party:"
+msgid "Company Party"
+msgstr "شرکت نهاد/سازمان"
+
+msgctxt "field:account.payment.journal,sepa_bank_account_number:"
+msgid "Bank Account Number"
+msgstr "شماره حساب بانکی"
+
+msgctxt "field:account.payment.journal,sepa_batch_booking:"
+msgid "Batch Booking"
+msgstr "رزرو دسته ای"
+
+msgctxt "field:account.payment.journal,sepa_charge_bearer:"
+msgid "Charge Bearer"
+msgstr "حامل شارژ"
+
+msgctxt "field:account.payment.journal,sepa_payable_flavor:"
+msgid "Payable Flavor"
+msgstr "چاشنی قابل پرداخت"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Payable Initiator Identifier"
+msgstr "شناسه بستانکار SEPA"
+
+msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
+msgid "Receivable Flavor"
+msgstr "چاشنی قابل دریافت"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Receivable Initiator Identifier"
+msgstr "شناسه بستانکار SEPA"
+
+msgctxt "field:account.payment.sepa.mandate,account_number:"
+msgid "Account Number"
+msgstr "شماره حساب"
+
+msgctxt "field:account.payment.sepa.mandate,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.payment.sepa.mandate,identification:"
+msgid "Identification"
+msgstr "شناسایی"
+
+msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
+msgid "Identification Readonly"
+msgstr "شناسایی فقط خواندنی"
+
+msgctxt "field:account.payment.sepa.mandate,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:account.payment.sepa.mandate,payments:"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "field:account.payment.sepa.mandate,scheme:"
+msgid "Scheme"
+msgstr "طرح"
+
+msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
+msgid "Always use RCUR"
+msgstr "معمولاً استفاده از RCUR"
+
+msgctxt "field:account.payment.sepa.mandate,signature_date:"
+msgid "Signature Date"
+msgstr "تاریخ امضاء"
+
+msgctxt "field:account.payment.sepa.mandate,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.payment.sepa.mandate,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:account.payment.sepa.message,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.payment.sepa.message,filename:"
+msgid "Filename"
+msgstr "نام فایل"
+
+msgctxt "field:account.payment.sepa.message,message:"
+msgid "Message"
+msgstr "پیام"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,message_file_id:"
+msgid "Message File ID"
+msgstr "پیام"
+
+msgctxt "field:account.payment.sepa.message,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.payment.sepa.message,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.payment.sepa.message,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:party.identifier,sepa_es_suffix:"
+msgid "SEPA Suffix"
+msgstr ""
+
+msgctxt "field:party.party,sepa_creditor_identifier_used:"
+msgid "SEPA Creditor Identifier Used"
+msgstr "شناسه بستانکار استفاده شده SEPA"
+
+msgctxt "field:party.party,sepa_mandates:"
+msgid "SEPA Mandates"
+msgstr "مجوزهای SEPA"
+
+msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr "پیکربندی حساب ادامه مجوز SEPA"
+
+msgctxt "model:account.payment.sepa.mandate,name:"
+msgid "SEPA Mandate"
+msgstr "مجوز SEPA"
+
+msgctxt "model:account.payment.sepa.message,name:"
+msgid "SEPA Message"
+msgstr "‫پیام SEPA"
+
+msgctxt "model:ir.action,name:act_mandate_form"
+msgid "SEPA Mandates"
+msgstr "مجوزهای SEPA"
+
+msgctxt "model:ir.action,name:act_mandate_form2"
+msgid "Mandates"
+msgstr "مجوزها"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "SEPA Messages"
+msgstr "پیام های SEPA"
+
+msgctxt "model:ir.action,name:report_mandate"
+msgid "Mandate"
+msgstr "مجوز"
+
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
+msgid "Requested"
+msgstr "درخواست شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
+msgid "Receivable with Mandate"
+msgstr "قابل دریافت با مجوز"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
+msgid ""
+"To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+"برای حذف مجوز\"%(mandate)s\" شما باید آنرا لغو یا حالت آنرا به پیش نویس "
+"دوباره تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_mandate_unique_id"
+msgid "SEPA mandate identification must be unique by company."
+msgstr "شناسه مجوز SEPA باید برای هر شرکت منحصر بفرد باشد."
+
+msgctxt "model:ir.message,text:msg_party_no_id"
+msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_process_no_iban"
+msgid "To process payment \"%(payment)s\" you must define IBAN for it."
+msgstr "برای پردازش پرداخت :\"%(payment)s\" شما باید یک IBAN برای آن تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
+msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
+msgstr ""
+"برای پردازش پرداخت :\"%(payment)s\" شما باید یک مجوز SEPA برای آن تعریف "
+"کنید."
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
+msgid "Are you sure you want to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_cancel_button"
+msgid "Are you sure you want to cancel the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_do_button"
+msgid "Are you sure you want to process the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+msgctxt "model:ir.model.button,string:group_generate_message_button"
+msgid "Generate Message"
+msgstr "Generate Message"
+
+msgctxt "model:ir.model.button,string:mandate_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:mandate_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:mandate_request_button"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:message_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:message_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:message_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_mandate_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_message_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
+msgid "SEPA Mandate"
+msgstr "مجوز SEPA"
+
+msgctxt "model:ir.ui.menu,name:menu_mandate_form"
+msgid "SEPA Mandates"
+msgstr "مجوزهای SEPA"
+
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "SEPA Messages"
+msgstr "پیام های SEPA"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "."
+msgstr "."
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Account number – IBAN"
+msgstr "شماره حساب - IBAN"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"As part of your rights, you are entitled to a refund from your bank under "
+"the terms and conditions of your agreement with your bank. A refund must be "
+"claimed within 8 weeks starting from the date on which your account was "
+"debited."
+msgstr ""
+"بعنوان بخشی از حقوق شما،شما تحت شرایط و ضوابط توافق شده با بانک مربوطه به "
+"بازپرداخت بانکی خود میپردازید. هرگونه ادعایی باید در مدت 8 هفته از تاریخی که"
+" حساب شما پرداخت را انجام داده است مطرح شود."
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "By signing this mandate form, you authorize"
+msgstr "با امضای این فرم مجوز، شما اجازه می دهید"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "City"
+msgstr "شهر"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor identifier"
+msgstr "شناسه بستانکار"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor name"
+msgstr "نام بستانکار"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor's name"
+msgstr "نام بستانکاری"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Direct Debit MANDATE"
+msgstr "مجوز پرداخت مستقیم"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Name of the debtor"
+msgstr "نام بدهکار"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "One-off payment"
+msgstr "یک بار پرداخت"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Postal code"
+msgstr "کد پستی"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Recurrent payment"
+msgstr "پرداخت مجدد"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signature"
+msgstr "امضاء"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signed at"
+msgstr "امضا شده در"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Street name and number"
+msgstr "شماره و نام خیابان"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Type of payment"
+msgstr "نوع پرداخت"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your account number"
+msgstr "شماره حساب شما"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your address"
+msgstr "آدرس شما"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your name"
+msgstr "نام شما"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"to send instructions to your bank to debit your account and your bank to "
+"debit your account in accordance with the instructions from"
+msgstr "برای ارسال دستورالعمل ها به بانک خود برای پرداخت و کسراز حسابتان"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Creditor"
+msgstr "بستانکار"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Debtor"
+msgstr "بدهکار"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Service Level"
+msgstr "سطح خدمات"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Shared"
+msgstr "به اشتراک گذاشته شده"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "شناسه بستانکار SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "شناسه بستانکار SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Business to Business"
+msgstr "کسب و کار به کسب و کار"
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Core"
+msgstr "هسته"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Requested"
+msgstr "درخواست شده"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "One-off"
+msgstr "One-off"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "Recurrent"
+msgstr "بازگشت کننده"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "IN"
+msgstr "در"
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "OUT"
+msgstr "بیرون"
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "view:account.payment.journal:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "view:account.payment:"
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Information"
+msgstr "شناسایی"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Return Reason"
+msgstr "دلیل برگشت کد"
