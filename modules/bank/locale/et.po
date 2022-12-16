@@ -1,0 +1,137 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "Pank"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "Numbrid"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "Omanikud"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "Omanik"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Kompaktne number"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "Pangakontod"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code."
+msgstr "BIC kood"
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "Bank milles konto on avatud"
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "Lisa numbrid mis viitavad pangakontole"
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "Pangakonto mis on identifitseeritud selle numbri järgi"
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "Pank"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "Pangakonto"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "Pangakonto - osapool"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "Pangakonto number"
+
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Pangad"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "INAB number \"%(number)s\" ei ole õige."
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr "INAB number \"%(number)s\" ei ole õige."
+
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Kontod"
+
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Pangad"
+
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Pangandus"
+
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Panga administreerimine"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "Muud"
+
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Pangandus"
