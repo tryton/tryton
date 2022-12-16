@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_tax_rounding_view_form">
+            <field name="model">account.configuration.tax_rounding</field>
+            <field name="type">form</field>
+            <field name="name">configuration_tax_rounding_form</field>
+        </record>
+        <record model="ir.ui.view" id="configuration_tax_rounding_view_list">
+            <field name="model">account.configuration.tax_rounding</field>
+            <field name="type">tree</field>
+            <field name="name">configuration_tax_rounding_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_configuration_tax_rounding">
+            <field name="model"
+                search="[('model', '=', 'account.configuration.tax_rounding')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_configuration_tax_rounding_account_admin">
+            <field name="model"
+                search="[('model', '=', 'account.configuration.tax_rounding')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="inherit" ref="account.fiscalyear_view_form"/>
+            <field name="name">fiscalyear_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_form"/>
+            <field name="name">period_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_list_payment">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_list_payment</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_list_to_pay">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_list_to_pay</field>
+        </record>
+
+    </data>
+</tryton>

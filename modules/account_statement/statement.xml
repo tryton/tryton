@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_statement">
+            <field name="name">Statement</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_statement">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_statement"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_statement">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_statement"/>
+        </record>
+
+        <menuitem name="Statements" parent="account.menu_account"
+            id="menu_statements" sequence="45"/>
+        <menuitem name="Statements" parent="account.menu_account_configuration"
+            id="menu_statement_configuration" sequence="70"/>
+        <record model="ir.ui.view" id="statement_view_form">
+            <field name="model">account.statement</field>
+            <field name="type">form</field>
+            <field name="name">statement_form</field>
+        </record>
+        <record model="ir.ui.view" id="statement_view_tree">
+            <field name="model">account.statement</field>
+            <field name="type">tree</field>
+            <field name="name">statement_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_statement_form">
+            <field name="name">Statements</field>
+            <field name="res_model">account.statement</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_validated">
+            <field name="name">Validated</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'validated')]" pyson="1"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_posted">
+            <field name="name">Posted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="10"
+            action="act_statement_form" id="menu_statement_form"/>
+
+        <record model="ir.rule.group" id="rule_group_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_statement1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_statement"/>
+        </record>
+
+        <record model="ir.action.report" id="report_statement">
+            <field name="name">Statement</field>
+            <field name="model">account.statement</field>
+            <field name="report_name">account.statement</field>
+            <field name="report">account_statement/statement.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_statement_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.statement,-1</field>
+            <field name="action" ref="report_statement"/>
+        </record>
+
+        <record model="ir.ui.view" id="statement_line_view_form">
+            <field name="model">account.statement.line</field>
+            <field name="type">form</field>
+            <field name="name">statement_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="statement_line_view_tree">
+            <field name="model">account.statement.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">statement_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="statement_line_view_tree_editable">
+            <field name="model">account.statement.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">statement_line_tree_editable</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_statement_line_move">
+            <field name="name">Statement Lines</field>
+            <field name="res_model">account.statement.line</field>
+            <field name="domain"
+                eval="[('move', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_statement_line_move_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="act_statement_line_move"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_statement_line_move_line">
+            <field name="name">Statement Lines</field>
+            <field name="res_model">account.statement.line</field>
+            <field name="domain"
+                eval="[('move.lines', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_statement_line_move_line_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_statement_line_move_line"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_statement_line">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_statement_line1">
+            <field name="domain"
+                eval="[('statement.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_statement_line"/>
+        </record>
+
+        <record model="ir.model.access" id="access_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_account_admin">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_account">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="group_statement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_statement_line">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_line_account">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_line_statement">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="group_statement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_draft_button_group_account">
+            <field name="button" ref="statement_draft_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_validate_button">
+            <field name="name">validate_statement</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_validate_button_group_account">
+            <field name="button" ref="statement_validate_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_validate_button_group_statement">
+            <field name="button" ref="statement_validate_button"/>
+            <field name="group" ref="group_statement"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_post_button">
+            <field name="name">post</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_post_button_group_account">
+            <field name="button" ref="statement_post_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_cancel_button_group_account">
+            <field name="button" ref="statement_cancel_button"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="line_group_view_form">
+            <field name="model">account.statement.line.group</field>
+            <field name="type">form</field>
+            <field name="name">line_group_form</field>
+        </record>
+        <record model="ir.ui.view" id="line_group_view_list">
+            <field name="model">account.statement.line.group</field>
+            <field name="type">tree</field>
+            <field name="name">line_group_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_line_group_form">
+            <field name="name">Statement Line Groups</field>
+            <field name="res_model">account.statement.line.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_group_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="line_group_view_list"/>
+            <field name="act_window" ref="act_line_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_group_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="line_group_view_form"/>
+            <field name="act_window" ref="act_line_group_form"/>
+        </record>
+        <menuitem parent="menu_statement_form" sequence="10"
+            action="act_line_group_form" id="menu_line_group_form"/>
+
+        <record model="ir.rule.group" id="rule_group_line_group">
+            <field name="model" search="[('model', '=', 'account.statement.line.group')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_line_group1">
+            <field name="domain"
+                eval="[('statement.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_line_group"/>
+        </record>
+
+        <record model="ir.model.access" id="access_line_group">
+            <field name="model" search="[('model', '=', 'account.statement.line.group')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_line_group_account_admin">
+            <field name="model" search="[('model', '=', 'account.statement.line.group')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_line_group_account">
+            <field name="model" search="[('model', '=', 'account.statement.line.group')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_line_group_statement">
+            <field name="model" search="[('model', '=', 'account.statement.line.group')]"/>
+            <field name="group" ref="group_statement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_lines_form">
+            <field name="name">Move Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_lines_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement,-1</field>
+            <field name="action" ref="act_move_lines_form"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_lines_form2">
+            <field name="name">Move Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_lines_form2_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement.line,-1</field>
+            <field name="action" ref="act_move_lines_form2"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_moves_form">
+            <field name="name">Moves</field>
+            <field name="res_model">account.move</field>
+            <field name="domain"
+                eval="[('origin.statement.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_moves_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement,-1</field>
+            <field name="action" ref="act_moves_form"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_moves_form2">
+            <field name="name">Moves</field>
+            <field name="res_model">account.move</field>
+            <field name="domain"
+                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement.line')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_moves_form2_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement.line,-1</field>
+            <field name="action" ref="act_moves_form2"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_line_groups_form">
+            <field name="name">Line Groups</field>
+            <field name="res_model">account.statement.line.group</field>
+            <field name="domain"
+                eval="[('journal', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_line_groups_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement.journal,-1</field>
+            <field name="action" ref="act_line_groups_form"/>
+        </record>
+    </data>
+</tryton>
