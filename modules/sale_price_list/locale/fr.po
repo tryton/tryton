@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Liste de prix de vente"
+
+msgctxt "field:party.party,sale_price_lists:"
+msgid "Sale Price Lists"
+msgstr "Listes de prix de vente"
+
+msgctxt "field:party.party.sale_price_list,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:party.party.sale_price_list,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:party.party.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Liste de prix de vente"
+
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "field:sale.configuration,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Liste de prix de vente"
+
+msgctxt "field:sale.configuration.sale_price_list,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Liste de prix de vente"
+
+msgctxt "field:sale.sale,price_list:"
+msgid "Price List"
+msgstr "Liste de prix"
+
+msgctxt "help:party.party,sale_price_list:"
+msgid "The default price list for new sales."
+msgstr "La liste de prix par défaut pour les nouvelles ventes."
+
+msgctxt "help:sale.configuration,sale_price_list:"
+msgid "The default price list for new parties."
+msgstr "La liste de prix par défaut pour les nouveaux tiers."
+
+msgctxt "help:sale.sale,price_list:"
+msgid "Use to compute the unit price of lines."
+msgstr "Utiliser pour calculer le prix unitaire des lignes."
+
+msgctxt "model:party.party.sale_price_list,name:"
+msgid "Party Sale Price List"
+msgstr "Liste de prix de vente tiers"
+
+msgctxt "model:sale.configuration.sale_price_list,name:"
+msgid "Sale Configuration Sale PriceList"
+msgstr "Configuration de vente liste de prix de vente"
+
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Sale"
+msgstr "Produit de vente"
