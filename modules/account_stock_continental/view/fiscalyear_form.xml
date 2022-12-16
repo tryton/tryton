@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Account Stock" id="account_stock">
+            <label name="account_stock_method"/>
+            <field name="account_stock_method"/>
+        </page>
+    </xpath>
+</data>

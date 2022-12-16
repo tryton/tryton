@@ -1,0 +1,5 @@
+Account Stock Landed Cost Weight Module
+#######################################
+
+The account_stock_landed_cost_weight module adds an allocation method based on
+weight of each line. (The *Weight* is taken from the *Product Measurements*)
