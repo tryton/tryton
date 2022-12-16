@@ -1,0 +1,819 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.group:"
+msgid "The name of the group must be unique!"
+msgstr "نام گروه باید منحصر به فرد!"
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr "رمز عبور نمی تواند همان ایمیل کاربر باشد."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr "رمز عبور نمیتواند همان نام ورود به سیستم کاربر باشد."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr "رمز عبور نمی تواند مشابه نام کاربر باشد."
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr "رمز عبور حاوی بیش از حد تعداد کاراکتر های مشابه است."
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr "رمز عبور ممنوع است."
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr "رمز عبور خیلی کوتاه است."
+
+msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+"کاربران برای اهداف ورود به سیستم قابل حذف نیستند.\n"
+"در عوض شما میتوانید آنها را غیرفعال کنید."
+
+msgctxt "error:res.user:"
+msgid "You can not have two users with the same login!"
+msgstr "شما نمیتوانید دو کاربر با نام ورود به سیستم مشابه داشته باشید!"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.action-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button-res.group,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "دکمه"
+
+msgctxt "field:ir.model.button-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.button-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.button-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.button-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.button-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.button-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.field-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.field-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.field-res.group,field:"
+msgid "Model Field"
+msgstr "مدل فیلد"
+
+msgctxt "field:ir.model.field-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.field-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.field-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.field-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.field-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.rule.group-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.rule.group-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.rule.group-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.rule.group-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "گروه قوانین"
+
+msgctxt "field:ir.rule.group-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.rule.group-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.sequence,groups:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.strict,groups:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.type-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.sequence.type-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "گروه های کاربر"
+
+msgctxt "field:ir.sequence.type-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.sequence.type-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "نوع ادامه"
+
+msgctxt "field:ir.sequence.type-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.sequence.type-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.menu-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.menu-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.ui.menu-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "field:ir.ui.menu-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.menu-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.menu-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "دکمه ها"
+
+msgctxt "field:res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "دسترسی فیلد"
+
+msgctxt "field:res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "دسترسی منو"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "مدل دسترسی"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "قوانین"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "field:res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "field:res.user,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "برنامه های کاربردی"
+
+msgctxt "field:res.user,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "ایمیل"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:res.user,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "جهت زبان"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "منو اقدامات"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "رمز عبور"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "رمز عبور درهم"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "بازنشانی رمز عبور"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "بازنشانی رمز عبور منقضی شده"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "منو PySON"
+
+msgctxt "field:res.user,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "جلسات"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "امضاء"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "نوار وضعیت"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "هشدارها"
+
+msgctxt "field:res.user,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:res.user-ir.action,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user-ir.action,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user-ir.action,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user-ir.action,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user-ir.action,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user-ir.action,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user-res.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user-res.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:res.user-res.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user-res.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user-res.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "برنامه کاربردی"
+
+msgctxt "field:res.user.application,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user.application,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user.application,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "کلید"
+
+msgctxt "field:res.user.application,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user.application,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user.application,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user.config.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user.login.attempt,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user.login.attempt,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user.login.attempt,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "آدرس آی پی"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "آی پی شبکه"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "ورود"
+
+msgctxt "field:res.user.login.attempt,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user.login.attempt,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user.login.attempt,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "همیشه"
+
+msgctxt "field:res.user.warning,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:res.user.warning,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:res.user.warning,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:res.user.warning,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user.warning,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:res.user.warning,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:ir.model.button-res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type"
+msgstr "گروه ها مجاز به ویرایش توالی این نوع هستند"
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login"
+msgstr "اقداماتی که در ورود به سیستم باید اجرا شوند"
+
+msgctxt "help:res.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "پیکربندی کاربران"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "اقدام - گروه"
+
+msgctxt "model:ir.cron,name:cron_trigger_time"
+msgid "Run On Time Triggers"
+msgstr "ماشه های در زمان اجرا"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Send by email a new temporary password to the user"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "مدل دکمه - گروه"
+
+msgctxt "model:ir.model.field-res.group,name:"
+msgid "Model Field Group Rel"
+msgstr "گروه مرتبط مدل فیلد"
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "گروه قانون - گروه"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "نوع ادامه - گروه"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "منوی رابط کاربر - گروه"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "مدیریت"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "کاربر - اقدام"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "کاربر - گروه"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "کاربر برنامه"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "پیکربندی اولیه کاربر"
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "تلاش برای ورود"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "هشدار کاربر"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ", has been reset."
+msgstr "، تنظیم مجدد شد."
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "بازنشانی کلمه عبور"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password for your account,"
+msgstr "کلمه عبورحساب کاربری شما،"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at"
+msgstr "کلمه عبور شما منقضی میشود در"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "UTC"
+msgstr "UTC"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You can connect with this temporary password"
+msgstr "شما می توانید با این کلمه عبور موقت ارتباط برقرار کنید"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You must set a new one from the user's preferences."
+msgstr "شما باید یک تزئین جدید برای ظاهرمحیط کاربری خود تنظیم کنید."
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "https://"
+msgstr "https://"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "to"
+msgstr "به"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "tryton://"
+msgstr "tryton://"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "درخواست شده"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "تایید شده"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "مجوزهای دسترسی"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "اعضاء"
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique!"
+msgstr "مراقب باشید ورود به سیستم باید منحصر به فرد باشد!"
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "شما هم اکنون می توانید برخی از کاربران را به سیستم اضافه کنید."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "مجوزهای دسترسی"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "عضویت در گروه"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "ظاهر برنامه"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "افزودن"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "تاریخ پایان"
