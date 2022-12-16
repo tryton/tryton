@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="module"/>
+    <field name="model" expand="1"/>
+    <field name="fs_id" expand="1"/>
+    <field name="db_id"/>
+    <field name="noupdate"/>
+    <field name="out_of_sync"/>
+    <button name="sync"/>
+</tree>
+
