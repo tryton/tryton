@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<tryton>
+    <record model="ir.ui.view" id="test_modelview_empty_page_view_form">
+        <field name="model">test.modelview.empty_page</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <notebook>
+                    <page id="empty"></page>
+                    <page id="non-empty">
+                        <label id="foo"/>
+                    </page>
+                </notebook>
+            </form>
+            ]]>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="test_modelview_button_view_form">
+        <field name="model">test.modelview.button_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <label name="value"/>
+                <field name="value"/>
+                <button name="test"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+</tryton>
