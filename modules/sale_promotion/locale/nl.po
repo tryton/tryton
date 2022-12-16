@@ -1,0 +1,167 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.promotion:"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr ""
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,active:"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:sale.promotion,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:sale.promotion,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.promotion,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+#, fuzzy
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+#, fuzzy
+msgctxt "field:sale.promotion,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "Producten"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.product,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.product,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr ""
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr ""
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr ""
