@@ -1,0 +1,130 @@
+type,name,res_id,src,value,fuzzy
+error,party.address,0,You can not modify the party of an address!,Не може да променяте партньора за адрес!,0
+error,party.category,0,The name of a party category must be unique by parent!,Името на категорията на партньора трябва да бъде уникална по родител!,0
+error,party.category,0,You can not create recursive categories!,Не може да създавате взаимно вложени категории!,0
+error,party.category,0,"You can not use "" / "" in name field!","В името на полето не може да има "" / ""!",0
+error,party.check_vies,0,"The VIES service is unavailable, try again later.","VIES услугата е недостъпна, опитайте отново по-късно.",0
+error,party.contact_mechanism,0,You can not modify the party of a contact mechanism!,Не може да променяте партньора за начин на контакт!,0
+error,party.party,0,Invalid VAT number!,Невалиден ДДС номер!,0
+error,party.party,0,The code of the party must be unique!,Кода на партньора трябва да е уникален!,0
+field,"party.address,active",0,Active,Активен,0
+field,"party.address,city",0,City,Град,0
+field,"party.address,country",0,Country,Държава,0
+field,"party.address,full_address",0,Full Address,Пълен адрес,0
+field,"party.address,name",0,Name,Име,0
+field,"party.address,party",0,Party,Партньор,0
+field,"party.address,rec_name",0,Name,Име,0
+field,"party.address,sequence",0,Sequence,Последователност,0
+field,"party.address,street",0,Street,Улица,0
+field,"party.address,streetbis",0,Street (bis),Улица 2,0
+field,"party.address,subdivision",0,Subdivision,Подразделение,0
+field,"party.address,zip",0,Zip,Пощ. код,0
+field,"party.category,active",0,Active,Активен,0
+field,"party.category,childs",0,Children,Деца,0
+field,"party.category,name",0,Name,Име,0
+field,"party.category,parent",0,Parent,Родител,0
+field,"party.category,rec_name",0,Name,Име,0
+field,"party.check_vies.check,parties_failed",0,Parties Failed,Партньора не е валиден,0
+field,"party.check_vies.check,parties_succeed",0,Parties Succeed,Валиден партньор,0
+field,"party.configuration,party_lang",0,Party Language,Език на партньор,0
+field,"party.configuration,party_sequence",0,Party Sequence,Последователност за партньор,0
+field,"party.configuration,rec_name",0,Name,Име,0
+field,"party.contact_mechanism,active",0,Active,Активен,0
+field,"party.contact_mechanism,comment",0,Comment,Коментар,0
+field,"party.contact_mechanism,email",0,E-Mail,E-Mail,0
+field,"party.contact_mechanism,other_value",0,Value,Стойност,0
+field,"party.contact_mechanism,party",0,Party,Партньор,0
+field,"party.contact_mechanism,rec_name",0,Name,Име,0
+field,"party.contact_mechanism,sequence",0,Sequence,Последователност,0
+field,"party.contact_mechanism,sip",0,SIP,SIP,0
+field,"party.contact_mechanism,skype",0,Skype,Skype,0
+field,"party.contact_mechanism,type",0,Type,Вид,0
+field,"party.contact_mechanism,value",0,Value,Стойност,0
+field,"party.contact_mechanism,website",0,Website,Website,0
+field,"party.party,active",0,Active,Активен,0
+field,"party.party,addresses",0,Addresses,Адреси,0
+field,"party.party,categories",0,Categories,Категории,0
+field,"party.party,code",0,Code,Код,0
+field,"party.party,code_length",0,Code Length,Дължина на кода,0
+field,"party.party,contact_mechanisms",0,Contact Mechanisms,Начини на контакт,0
+field,"party.party,email",0,E-Mail,E-Mail,0
+field,"party.party,fax",0,Fax,Факс,0
+field,"party.party,full_name",0,Full Name,Пълно име,0
+field,"party.party,lang",0,Language,Език,0
+field,"party.party,mobile",0,Mobile,Мобилен,0
+field,"party.party,name",0,Name,Име,0
+field,"party.party,phone",0,Phone,Телефон,0
+field,"party.party,rec_name",0,Name,Име,0
+field,"party.party,vat_code",0,VAT Code,ДДС код,0
+field,"party.party,vat_country",0,VAT Country,ДДС държава,0
+field,"party.party,vat_number",0,VAT Number,ДДС номер,0
+field,"party.party,website",0,Website,Website,0
+field,"party.party-party.category,category",0,Category,Категория,0
+field,"party.party-party.category,party",0,Party,Партньор,0
+field,"party.party-party.category,rec_name",0,Name,Име,0
+help,"party.configuration,party_lang",0,The value set on this field will preset the language on new parties,Стойността в това поле ще се използва за език при нови партньори.,0
+help,"party.party,vat_country",0,Setting VAT country will enable validation of the VAT number.,Оказвайки държава за ДДС ще позволи да се провери ДДС номера.,0
+help,"party.party,vat_number",0,Value Added Tax number,ДДС номер,0
+model,"ir.action,name",,Categories,Категории,0
+model,"ir.action,name",act_address_form,Addresses,Адреси,0
+model,"ir.action,name",act_address_form2,Addresses,Адреси,0
+model,"ir.action,name",act_category_form,Categories,Категории,0
+model,"ir.action,name",act_category_tree,Categories,Категории,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Патньори по категория,0
+model,"ir.action,name",act_party_configuration_form,Party Configuration,Конфигуриране на партньор,0
+model,"ir.action,name",act_party_form,Parties,Партньори,0
+model,"ir.action,name",act_party_form2,Parties,Партньори,0
+model,"ir.action,name",report_label,Labels,Етикети,0
+model,"ir.action,name",wizard_check_vies,Check VIES,Провека в VIES,0
+model,"ir.sequence,name",sequence_party,Party,Партньор,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Партньор,0
+model,"ir.ui.menu,name",,New category,Нова категория,0
+model,"ir.ui.menu,name",menu_address_form,Addresses,Адреси,0
+model,"ir.ui.menu,name",menu_address_form2,New Address,Нов адрес,0
+model,"ir.ui.menu,name",menu_category_form,New Category,Нова категория,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Категории,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Конфигурация,0
+model,"ir.ui.menu,name",menu_party,Party Management,Управление на партньор,0
+model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Конфигуриране на партньор,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Партньори,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Нов партньор,0
+model,"party.address,name",0,Address,Адрес,0
+model,"party.category,name",0,Category,Категория,0
+model,"party.check_vies.check,name",0,Check VIES - Check,Проверка ДДС номер (VIES) - проверка,0
+model,"party.check_vies.no_check,name",0,Check VIES - No Check,Проверка ДДС номер (VIES) - без проверка,0
+model,"party.configuration,name",0,Party Configuration,Конфигуриране на партньор,0
+model,"party.contact_mechanism,name",0,Contact Mechanism,Начин на контакт,0
+model,"party.party,name",0,Party,Партньор,0
+model,"party.party-party.category,name",0,Party - Category,Партньор - Категория,0
+model,"res.group,name",group_party_admin,Party Administration,Управление на партньор,0
+selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
+selection,"party.contact_mechanism,type",0,Fax,Факс,0
+selection,"party.contact_mechanism,type",0,IRC,IRC,0
+selection,"party.contact_mechanism,type",0,Jabber,Jabber,0
+selection,"party.contact_mechanism,type",0,Mobile,Мобилен,0
+selection,"party.contact_mechanism,type",0,Other,Друг,0
+selection,"party.contact_mechanism,type",0,Phone,Телефон,0
+selection,"party.contact_mechanism,type",0,SIP,SIP,0
+selection,"party.contact_mechanism,type",0,Skype,Skype,0
+selection,"party.contact_mechanism,type",0,Website,Website,0
+view,party.address,0,Addresses,Адреси,0
+view,party.category,0,Categories,Категории,0
+view,party.category,0,Category,Категория,0
+view,party.check_vies.check,0,Parties Failed,Партньора не е валиден,0
+view,party.check_vies.check,0,Parties Succeed,Валиден партньор,0
+view,party.check_vies.check,0,VAT Information Exchange System Results,Резултати от Система за обмен на инфиормация за ДДС,0
+view,party.check_vies.no_check,0,VAT Information Exchange System,Система за обмен на ДДС информация,0
+view,party.check_vies.no_check,0,"You must have a recent version of ""vatnumber"" installed!","Трябва да имате инсталирана последната версия на ""vatnumber""!",0
+view,party.configuration,0,Party Configuration,Конфигуриране на партньор,0
+view,party.contact_mechanism,0,Contact Mechanism,Начин на контакт,0
+view,party.contact_mechanism,0,Contact Mechanisms,Начини на контакт,0
+view,party.party,0,Accounting,Счетоводство,0
+view,party.party,0,Addresses,Адреси,0
+view,party.party,0,Categories,Категории,0
+view,party.party,0,Contact Mechanisms,Начини на контакт,0
+view,party.party,0,General,Основен,0
+view,party.party,0,Parties,Партньори,0
+view,party.party,0,Party,Партньор,0
+view,party.party,0,VAT,ДДС,0
+wizard_button,"party.check_vies,check,end",0,Ok,Добре,0
+wizard_button,"party.check_vies,no_check,end",0,Ok,Добре,0

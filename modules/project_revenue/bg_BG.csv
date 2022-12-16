@@ -1,0 +1,23 @@
+type,name,res_id,src,value,fuzzy
+error,company.employee_cost_price,0,A employee can only have one cost price by date!,Служител може да има само една себестойност за ден!,0
+field,"company.employee,cost_price",0,Cost Price,Фабрична цена,0
+field,"company.employee,cost_prices",0,Cost Prices,Себестойност,0
+field,"company.employee,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"company.employee_cost_price,cost_price",0,Cost Price,Фабрична цена,0
+field,"company.employee_cost_price,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"company.employee_cost_price,date",0,Date,Дата,0
+field,"company.employee_cost_price,employee",0,Employee,Служител,0
+field,"company.employee_cost_price,rec_name",0,Name,Име,0
+field,"project.work,cost",0,Cost,Разход,0
+field,"project.work,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"project.work,list_price",0,List Price,Каталожна цена,0
+field,"project.work,product",0,Product,Продукт,0
+field,"project.work,revenue",0,Revenue,Приход,0
+help,"company.employee,cost_price",0,Hourly cost price for this Employee,Себестойност за час за този служител,0
+help,"company.employee,cost_prices",0,List of hourly cost price over time,Списък на себестойност за час през времето,0
+help,"company.employee_cost_price,cost_price",0,Hourly cost price,Себестойност за час,0
+model,"company.employee_cost_price,name",0,Employee Cost Price,Себестойност на клиент,0
+view,company.employee,0,Cost,Разход,0
+view,company.employee_cost_price,0,Cost Prices,Себестойност,0
+view,project.work,0,Cost,Разход,0
+view,project.work,0,Revenue,Приход,0

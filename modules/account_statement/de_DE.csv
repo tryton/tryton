@@ -1,0 +1,74 @@
+type,name,res_id,src,value,fuzzy
+error,account.statement,0,End Balance must be %s!,Endsaldo muss %s sein!,0
+error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,Der eingegebene Betrag (%s) ist größer als der Rechnungsbetrag!,0
+error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,Haben- oder Sollkonto im Journal ist das selbe Konto wie das des Zahlungspostens!,0
+error,account.statement.line,0,Please provide debit and credit account on statement journal.,Bitte Soll- und Habenkonto im Journal Zahlungsverkehr angeben.,0
+field,"account.statement,company",0,Company,Unternehmen,0
+field,"account.statement,currency_digits",0,Currency Digits,Stellen Währung,0
+field,"account.statement,date",0,Date,Datum,0
+field,"account.statement,end_balance",0,End Balance,Endsaldo,0
+field,"account.statement,journal",0,Journal,Journal,0
+field,"account.statement,lines",0,Transactions,Transaktionen,0
+field,"account.statement,move_lines",0,Move Lines,Buchungszeilen,0
+field,"account.statement,rec_name",0,Name,Name,0
+field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
+field,"account.statement,state",0,State,Status,0
+field,"account.statement.journal,company",0,Company,Unternehmen,0
+field,"account.statement.journal,currency",0,Currency,Währung,0
+field,"account.statement.journal,journal",0,Journal,Journal,0
+field,"account.statement.journal,name",0,Name,Name,0
+field,"account.statement.journal,rec_name",0,Name,Name,0
+field,"account.statement.line,account",0,Account,Konto,0
+field,"account.statement.line,amount",0,Amount,Betrag,0
+field,"account.statement.line,date",0,Date,Datum,0
+field,"account.statement.line,description",0,Description,Beschreibung,0
+field,"account.statement.line,invoice",0,Invoice,Rechnung,0
+field,"account.statement.line,move",0,Account Move,Buchungssatz,0
+field,"account.statement.line,party",0,Party,Partei,0
+field,"account.statement.line,rec_name",0,Name,Name,0
+field,"account.statement.line,statement",0,Statement,Kontoauszug,0
+model,"account.journal.type,name",journal_type_statement,Statement,Kontoauszug,0
+model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
+model,"account.statement.journal,name",0,Statement Journal,Journal Kontoauszug,0
+model,"account.statement.line,name",0,Account Statement Line,Zahlungsverkehr Position,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Entwürfe Kontoauszüge,0
+model,"ir.action,name",act_new_statement_form,New Statement,Neuer Kontoauszug,0
+model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Kontoauszüge,0
+model,"ir.action,name",act_statement_form,All Statement,Alle Kontoauszüge,0
+model,"ir.action,name",act_statement_journal_form,Statement Journals,Journale Kontoauszüge,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Geprüfte Kontoauszüge,0
+model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Entwürfe Kontoauszüge,0
+model,"ir.ui.menu,name",menu_new_statement_form,New Statement,Neuer Kontoauszug,0
+model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Festgeschriebene Kontoauszüge,0
+model,"ir.ui.menu,name",menu_statement_configuration,Statements,Zahlungsverkehr,0
+model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle Kontoauszüge,0
+model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale Kontoauszüge,0
+model,"ir.ui.menu,name",menu_statements,Statements,Zahlungsverkehr,0
+model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Kontoauszüge,0
+model,"res.group,name",group_statement,Statement,Kontoauszug,0
+model,"workflow,name",wkf_statement,Statement,Kontoauszug,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",statement_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",statement_act_posted,Posted,Festgeschrieben,0
+model,"workflow.activity,name",statement_act_validated,Validated,Geprüft,0
+selection,"account.statement,state",0,Canceled,Annulliert,0
+selection,"account.statement,state",0,Draft,Entwurf,0
+selection,"account.statement,state",0,Posted,Festgeschrieben,0
+selection,"account.statement,state",0,Validated,Geprüft,0
+view,account.statement,0,Bank Statement,Kontoauszug,0
+view,account.statement,0,Bank Statement Lines,Posten Kontoauszug,0
+view,account.statement,0,Bank Statements,Kontoauszüge,0
+view,account.statement,0,Cancel,Annullieren,0
+view,account.statement,0,Move Lines,Buchungszeilen,0
+view,account.statement,0,Other Info,Sonstiges,0
+view,account.statement,0,Post,Festschreiben,0
+view,account.statement,0,Reset to Draft,Auf Entwurf zurücksetzen,0
+view,account.statement,0,Statement,Kontoauszug,0
+view,account.statement,0,Statement Lines,Kontoauszug Positionen,0
+view,account.statement,0,Statements,Kontoauszüge,0
+view,account.statement,0,Validate,Prüfen,0
+view,account.statement.journal,0,Statement Journal,Journal Kontoauszug,0
+view,account.statement.journal,0,Statement Journals,Journale Kontoauszüge,0
+view,account.statement.line,0,Bank Statement Line,Posten Kontoauszug,0
+view,account.statement.line,0,Statement Line,Kontoauszug Position,0
+view,account.statement.line,0,Statement Lines,Kontoauszug Positionen,0

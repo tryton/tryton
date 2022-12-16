@@ -1,0 +1,70 @@
+type,name,res_id,src,value,fuzzy
+error,account.statement,0,End Balance must be %s!,Le solde final doit être %s !,0
+error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,Le montant (%s) est plus grand que le montant à payer de la facture !,0
+error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,Le compte de crédit ou débit sur le journal est le même que celui de la ligne de relevé !,0
+error,account.statement.line,0,Please provide debit and credit account on statement journal.,Veuillez fournir un compte de débit et de crédit pour le journal de relevés.,0
+field,"account.statement,company",0,Company,Société,1
+field,"account.statement,currency_digits",0,Currency Digits,Décimales de la devise,0
+field,"account.statement,date",0,Date,Date,0
+field,"account.statement,end_balance",0,End Balance,Solde final,0
+field,"account.statement,journal",0,Journal,Journal,0
+field,"account.statement,lines",0,Transactions,Transactions,0
+field,"account.statement,move_lines",0,Move Lines,Lignes de mouvement comptable,0
+field,"account.statement,rec_name",0,Name,Nom,0
+field,"account.statement,start_balance",0,Start Balance,Solde de départ,0
+field,"account.statement,state",0,State,État,0
+field,"account.statement.journal,company",0,Company,Société,0
+field,"account.statement.journal,currency",0,Currency,Devise,0
+field,"account.statement.journal,journal",0,Journal,Journal,0
+field,"account.statement.journal,name",0,Name,Nom,0
+field,"account.statement.journal,rec_name",0,Name,Nom,0
+field,"account.statement.line,account",0,Account,Compte,0
+field,"account.statement.line,amount",0,Amount,Montant,0
+field,"account.statement.line,date",0,Date,Date,0
+field,"account.statement.line,description",0,Description,Description,0
+field,"account.statement.line,invoice",0,Invoice,Facture,0
+field,"account.statement.line,move",0,Account Move,Mouvement comptable,0
+field,"account.statement.line,party",0,Party,Tiers,0
+field,"account.statement.line,rec_name",0,Name,Nom,0
+field,"account.statement.line,statement",0,Statement,Relevé,0
+model,"account.journal.type,name",journal_type_statement,Statement,Relevé,0
+model,"account.statement,name",0,Account Statement,Relevé comptable,0
+model,"account.statement.journal,name",0,Statement Journal,Journal de relevés,0
+model,"account.statement.line,name",0,Account Statement Line,Ligne de relevé comptable,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Relevés brouillons,0
+model,"ir.action,name",act_new_statement_form,New Statement,Nouveau relevé,0
+model,"ir.action,name",act_posted_statement_form,Posted Statements,Relevés postés,0
+model,"ir.action,name",act_statement_form,All Statement,Tous les relevés,0
+model,"ir.action,name",act_statement_journal_form,Statement Journals,Journaux de relevés,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Relevés validés,0
+model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Relevés brouillons,0
+model,"ir.ui.menu,name",menu_new_statement_form,New Statement,Nouveau relevé,0
+model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Relevés postés,0
+model,"ir.ui.menu,name",menu_statement_configuration,Statements,Relevés,0
+model,"ir.ui.menu,name",menu_statement_form,All Statement,Tous les relevés,0
+model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journaux de relevés,0
+model,"ir.ui.menu,name",menu_statements,Statements,Relevés,0
+model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Relevés validés,0
+model,"res.group,name",group_statement,Statement,Relevé,0
+model,"workflow,name",wkf_statement,Statement,Relevé,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Annulé,0
+model,"workflow.activity,name",statement_act_draft,Draft,Brouillon,0
+model,"workflow.activity,name",statement_act_posted,Posted,Posté,0
+model,"workflow.activity,name",statement_act_validated,Validated,Validé,0
+selection,"account.statement,state",0,Canceled,Annulé,0
+selection,"account.statement,state",0,Draft,Brouillon,0
+selection,"account.statement,state",0,Posted,Posté,0
+selection,"account.statement,state",0,Validated,Validé,0
+view,account.statement,0,Cancel,Annuler,0
+view,account.statement,0,Move Lines,Lignes de mouvement comptable,0
+view,account.statement,0,Other Info,Autre informations,1
+view,account.statement,0,Post,Poster,0
+view,account.statement,0,Reset to Draft,Remetter en brouillon,0
+view,account.statement,0,Statement,Relevé,0
+view,account.statement,0,Statement Lines,Lignes de relevé,0
+view,account.statement,0,Statements,Relevés,0
+view,account.statement,0,Validate,Valider,0
+view,account.statement.journal,0,Statement Journal,Journal de relevés,0
+view,account.statement.journal,0,Statement Journals,Journaux de relevés,0
+view,account.statement.line,0,Statement Line,Ligne de relevé,0
+view,account.statement.line,0,Statement Lines,Lignes de relevé,0

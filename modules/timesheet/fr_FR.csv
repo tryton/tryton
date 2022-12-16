@@ -1,0 +1,99 @@
+type,name,res_id,src,value,fuzzy
+error,timesheet.line,0,Hours field must be positive,Le champ Heures doit être positif,0
+error,timesheet.work,0,Every work must be in the same company as it's parent work!,Chaque activité doit être dans la même société que son activité parente !,0
+error,timesheet.work,0,You can not create recursive works!,Vous ne pouvez pas créer des activités récursives!,0
+field,"timesheet.enter_lines.init,date",0,Date,Date,0
+field,"timesheet.enter_lines.init,employee",0,Employee,Employé,0
+field,"timesheet.hours_employee,employee",0,Employee,Employé,0
+field,"timesheet.hours_employee,hours",0,Hours,Heures,0
+field,"timesheet.hours_employee,rec_name",0,Name,Nom,0
+field,"timesheet.hours_employee_monthly,employee",0,Employee,Employé,0
+field,"timesheet.hours_employee_monthly,hours",0,Hours,Heures,0
+field,"timesheet.hours_employee_monthly,month",0,Month,Mois,0
+field,"timesheet.hours_employee_monthly,rec_name",0,Name,Nom,0
+field,"timesheet.hours_employee_monthly,year",0,Year,Année,0
+field,"timesheet.hours_employee_weekly,employee",0,Employee,Employé,0
+field,"timesheet.hours_employee_weekly,hours",0,Hours,Heures,0
+field,"timesheet.hours_employee_weekly,rec_name",0,Name,Nom,0
+field,"timesheet.hours_employee_weekly,week",0,Week,Semaine,0
+field,"timesheet.hours_employee_weekly,year",0,Year,Année,0
+field,"timesheet.line,date",0,Date,Date,0
+field,"timesheet.line,description",0,Description,Description,0
+field,"timesheet.line,employee",0,Employee,Employé,0
+field,"timesheet.line,hours",0,Hours,Heures,0
+field,"timesheet.line,rec_name",0,Name,Nom,0
+field,"timesheet.line,work",0,Work,Activité,0
+field,"timesheet.open_hours_employee.init,end_date",0,End Date,Date de fin,0
+field,"timesheet.open_hours_employee.init,start_date",0,Start Date,Date de début,0
+field,"timesheet.work,active",0,Active,Actif,0
+field,"timesheet.work,children",0,Children,Enfants,0
+field,"timesheet.work,company",0,Company,Société,0
+field,"timesheet.work,hours",0,Timesheet Hours,Heures,0
+field,"timesheet.work,left",0,Left,Gauche,0
+field,"timesheet.work,name",0,Name,Nom,0
+field,"timesheet.work,parent",0,Parent,Parent,0
+field,"timesheet.work,rec_name",0,Name,Nom,0
+field,"timesheet.work,right",0,Right,Droite,0
+field,"timesheet.work,timesheet_available",0,Available on timesheets,Disponible sur les feuilles de présence,0
+field,"timesheet.work.open.init,from_date",0,From Date,Date de début,0
+field,"timesheet.work.open.init,to_date",0,To Date,Date de fin,0
+help,"timesheet.work,hours",0,Total time spent on this work,Temps total passé sur cette activité,0
+help,"timesheet.work,timesheet_available",0,Allow to fill in timesheets with this work,Autoriser cette activité sur les feuilles de présence,0
+model,"ir.action,name",act_enter_lines,Enter Timesheet,Entrez feuille de présence,0
+model,"ir.action,name",act_hours_employee_form,Hours per Employee,Heures par employé,0
+model,"ir.action,name",act_hours_employee_monthly_form,Hours per Employee per Month,Nombre d'heures par employé par mois,0
+model,"ir.action,name",act_hours_employee_weekly_form,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
+model,"ir.action,name",act_line_form,Timesheet Lines,Lignes de feuille de présence,0
+model,"ir.action,name",act_open_hours_employee,Hours per Employee,Heures par employé,0
+model,"ir.action,name",act_open_work,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_open_work2,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_open_work_graph,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_work_form,Works,Activités,0
+model,"ir.action,name",act_work_form2,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_work_form3,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_work_list,Works,Activités,1
+model,"ir.action,name",act_work_tree,Works,Activités,0
+model,"ir.action,name",act_work_tree2,Works,Activités,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
+model,"ir.ui.menu,name",menu_enter_lines,Enter Timesheet,Entrer feuille de présence,0
+model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Lignes de feuille de présence,0
+model,"ir.ui.menu,name",menu_open_hours_employee,Hours per Employee,Heures par employé,0
+model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per Month,Nombre d'heures par employé par mois,0
+model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
+model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Feuilles de présence,0
+model,"ir.ui.menu,name",menu_work_form,New Work,Nouvelle activité,0
+model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Heures par activité,0
+model,"ir.ui.menu,name",menu_work_list,Works,Activités,1
+model,"ir.ui.menu,name",menu_work_tree,Works,Activités,0
+model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Heures par activité,0
+model,"res.group,name",group_timesheet_admin,Timesheet Administration,Administration feuille de présence,0
+model,"timesheet.enter_lines.init,name",0,Enter Lines Init,Entrez les lignes - Init,0
+model,"timesheet.hours_employee,name",0,Hours per Employee,Heures par employé,0
+model,"timesheet.hours_employee_monthly,name",0,Hours per Employee per Month,Nombre d'heures par employé par mois,0
+model,"timesheet.hours_employee_weekly,name",0,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
+model,"timesheet.line,name",0,Timesheet Line,Ligne de feuille de présence,0
+model,"timesheet.open_hours_employee.init,name",0,Open Hours Employee Init,Heures d'ouverture des employés - Init,0
+model,"timesheet.work,name",0,Work,Activité,0
+model,"timesheet.work.open.init,name",0,Open Work Init,Ouvrir activité - Init,0
+view,timesheet.enter_lines.init,0,Enter Timesheet,Entrez feuille de présence,0
+view,timesheet.hours_employee,0,Hours,Heures,0
+view,timesheet.hours_employee,0,Hours per Employee,Heures par employé,0
+view,timesheet.hours_employee_monthly,0,Hours per Employee per Month,Nombre d'heures par employé par mois,0
+view,timesheet.hours_employee_weekly,0,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
+view,timesheet.line,0,Hours,Heures,0
+view,timesheet.line,0,Timesheet Line,Ligne de feuille de présence,0
+view,timesheet.line,0,Timesheet Lines,Lignes de feuille de présence,0
+view,timesheet.open_hours_employee.init,0,Hours per Employee,Heures par employé,0
+view,timesheet.work,0,Hours per Work,Heures par activité,0
+view,timesheet.work,0,Work,Activité,0
+view,timesheet.work,0,Works,Activités,0
+view,timesheet.work.open.init,0,Hours per Work,Heures par activité,0
+wizard_button,"timesheet.enter_lines,init,end",0,Cancel,Annuler,0
+wizard_button,"timesheet.enter_lines,init,enter",0,Enter,Entrez,0
+wizard_button,"timesheet.open_hours_employee,init,end",0,Cancel,Annuler,0
+wizard_button,"timesheet.open_hours_employee,init,open",0,Open,Ouvrir,0
+wizard_button,"timesheet.work.open,init,end",0,Cancel,Annuler,0
+wizard_button,"timesheet.work.open,init,open",0,Open,Ouvrir,0
+wizard_button,"timesheet.work.open2,init,end",0,Cancel,Annuler,0
+wizard_button,"timesheet.work.open2,init,open",0,Open,Ouvrir,0
