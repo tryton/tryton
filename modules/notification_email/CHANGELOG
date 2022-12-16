@@ -1,0 +1,22 @@
+Version 4.8.5 - 2019-08-17
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.4 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.3 - 2018-09-22
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.2 - 2018-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Add fallback users for recipients
+* Add contact mechanism usage
+
+Version 4.6.0 - 2017-10-30
+* Initial release

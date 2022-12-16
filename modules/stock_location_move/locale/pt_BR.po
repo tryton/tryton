@@ -1,0 +1,60 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.internal:"
+msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
+msgstr "A localização '%(location)s' já foi atribuída por '%(assigned_by)s'."
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr "Atribuído por"
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr "Móvel"
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr "Localizações"
+
+msgctxt "field:stock.shipment.internal-location,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:stock.shipment.internal-location,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:stock.shipment.internal-location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr "Localização"
+
+msgctxt "field:stock.shipment.internal-location,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr "Remessa"
+
+msgctxt "field:stock.shipment.internal-location,write_date:"
+msgid "Write Date"
+msgstr "Data de Edição"
+
+msgctxt "field:stock.shipment.internal-location,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "Stock Location Movable"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr "Remessa Interna - Localização"

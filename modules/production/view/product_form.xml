@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Production" id="production">
+            <label name="producible"/>
+            <field name="producible"/>
+            <field name="boms" colspan="4"
+                view_ids="production.product-bom_view_list_sequence"/>
+            <field name="lead_times" colspan="4"
+                view_ids="production.production_lead_time_view_list_sequence"/>
+        </page>
+    </xpath>
+</data>
