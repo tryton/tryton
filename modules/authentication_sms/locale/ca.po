@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "Mòbil"
+
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr "ID"
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS."
+msgstr "Número de telèfon que suporta rebre SMS."
+
+msgctxt "model:ir.message,text:msg_sms_text"
+msgid "%(name)s code %(code)s"
+msgstr "%(name)s codi %(code)s"
+
+msgctxt "model:ir.message,text:msg_user_sms_code"
+msgid "SMS Code for %(login)s"
+msgstr "Codi SMS per %(login)s"
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr "Codi SMS"

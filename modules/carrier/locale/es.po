@@ -1,0 +1,103 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Método coste del transportista"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Producto del transportista"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Selecciones"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Desde el país"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Hacia el país"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr "Método para calcular el coste del transportista."
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "El producto para facturar el servicio de transporte."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "El tercero que representa el transportista."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "El transportista seleccionado."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío viene de este país.\n"
+"Dejar en blanco para todos los países."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío va hacia este país.\n"
+"Dejar en blanco para todos los países."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Selección del transportista"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Transportistas"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Selección del transportista"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Transportistas"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Selección del transportista"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Administración de transportistas"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Precio del producto"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Criterio"
