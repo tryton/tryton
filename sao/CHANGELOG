@@ -1,0 +1,188 @@
+Version 5.2.20 - 2020-07-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.19 - 2020-07-10
+* Bug fixes (see mercurial logs for details)
+* Sanitize translated RichtText fields content (issue9453)
+
+Version 5.2.18 - 2020-06-29
+* Bug fixes (see mercurial logs for details)
+* Sanitize RichtText fields content (issue9405)
+* Escape external string (issue9394)
+
+Version 5.2.17 - 2020-06-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.16 - 2020-06-03
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.15 - 2020-05-26
+* Bug fixes (see mercurial logs for details)
+* Escape external strings (issue9351)
+
+Version 5.2.14 - 2020-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.13 - 2020-03-15
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.12 - 2020-03-09
+* Bug fixes (see mercurial logs for details)
+* Add noreferrer noopener to external URL (issue9089)
+
+Version 5.2.11 - 2020-02-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.10 - 2019-12-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.9 - 2019-12-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.8 - 2019-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.7 - 2019-10-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.6 - 2019-09-15
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.5 - 2019-09-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.4 - 2019-08-17
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.3 - 2019-08-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.2 - 2019-07-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.1 - 2019-06-10
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add domain inversion for reference fields
+* Add list-form view
+* Support HTML widget
+* Use locale format for data export
+* Add day view on calendar
+* Add CSV exports into print toolbar
+* Display unread and total of notes
+* Use resources method
+* Rename roundup.url configuration to bug.url
+* Use separate XML parser in Views
+* Add range selection with Shift-click
+* Use between numbers in filter box
+* Fill 'to' with 'from' value on filter box
+* Add tab domain in URL
+* Use properties
+* Allow sao classes to use javascript properties
+* Improve layout of CSV import/export
+* Add support for height and width on notebook
+* Use tab key for tab navigation
+* Use record and field properties of widget instead of method arguments
+* Reduce offset when no search result
+* Add support for plugins
+* Add support for expand, height and width attributes
+* Add drag & drop support on attachment button
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Prevent similar tab
+* Remove dialog for input file
+* Use dropdown for attachment
+* Manage icons in input
+* Support RTL language direction
+* Apply factor on domain parser
+* Use tab name in CSV Export/Import
+* Add bus management
+* Load custom CSS and Javascript
+* New icons
+* Support timestamp field
+* Validate dictionary items
+* Add (i)like support to domain inversion
+* Improve loading strategy by using views
+* Add support of width attribute on tree view
+* Use non conflicting keyboard shortcuts
+* Use the context to get the suffix of window name
+* Call on_change methods after setting default dtstart on calendar view
+* Allow to open in new tab Many2One and Reference with CTRL key
+* Store session in browser storage
+* Increase the space available for tab list
+* Allow to toggle menu on large screen
+* Manage URL and history
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Manage active field on search widget
+* Add position and length on list view
+* Reset record to its original state when discarding the popup window
+* Add support of expand attribute on group tag
+* Add the context model name in the screen context
+* Add sum of records on list view
+* Add shortcuts to Date and DateTime widgets
+* Use limit to expand tree
+* Use spellcheck and lang attributes for textbox widget
+* Support icon on page
+* Add keyword attribute to button tag
+* Support field name on image tag
+* Use input number and toLocaleString for numeric fields
+* Show related record names for all windows
+* Allow to edit Many2One from tree view
+* Use translated values when exporting Reference and Selection fields
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Allow to export model and record name of Reference fields
+* Re-position buttons on Binary/Image widget
+* Set focus on first visible input when modal is shown
+* Improve treeview headers
+* Add keyboard shortcuts
+* Update states of both toolbar and menu
+* Improve toolbar order
+* Use login details in title
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Manage help attribute on tree views
+* Manage color attribute on graph view
+* Add support for size on Many2Many
+* Allow to show plain text in password field
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add PYSON Widget
+* Add CSV Import/Export
+* Manage translated field
+* Add favorites menu
+* Show records names in wizard title
+* Add support for datetime_field to Many2One, Reference
+* Add calendar view
+* Move info-bar to the top
+* Add noeval to PYSONDecoder
+* Add support for pyson_order on action window
+* Make datetimepicker locale aware
+* Restore tab default order when no manual change
+* Add support for column sorting
+* Manage confirm attribute on buttons
+* Call autocompletion when setting record value
+* Limit readonly state for xxx2Many
+* Simplify login with single database
+* Show records names in relate window title
+* Add support for count on Action Window Domains
+* Manage custom login process
+* Add erase on Many2One
+* Re-position icons on Many2One widget
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Timedelta uses 30 days for month
+* Manage context model of ir.action.act_window
+* Add Note
+
+Version 3.8.0 - 2015-11-02
+* Initial release
