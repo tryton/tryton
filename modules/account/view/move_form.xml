@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Account Move" cursor="journal">
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="post_number"/>
+    <field name="post_number"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="post_date"/>
+    <field name="post_date"/>
+    <label name="origin"/>
+    <field name="origin" colspan="3"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <field name="lines" colspan="4"
+        view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="2" colspan="2" id="buttons">
+        <button string="Post" name="post" icon="tryton-ok"/>
+        <button string="Draft" name="draft"
+            icon="tryton-clear"/>
+    </group>
+</form>
