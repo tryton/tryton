@@ -1,0 +1,68 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_price_list:"
+msgid "Sale Price List"
+msgstr "لیست قیمت فروش"
+
+msgctxt "field:party.party,sale_price_lists:"
+msgid "Sale Price Lists"
+msgstr "لیست های قیمت فروش"
+
+msgctxt "field:party.party.sale_price_list,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:party.party.sale_price_list,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "لیست قیمت فروش"
+
+#, fuzzy
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "field:sale.configuration,sale_price_list:"
+msgid "Sale Price List"
+msgstr "لیست قیمت فروش"
+
+msgctxt "field:sale.configuration.sale_price_list,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "لیست قیمت فروش"
+
+msgctxt "field:sale.sale,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "help:party.party,sale_price_list:"
+msgid "The default price list for new sales."
+msgstr "لیست قیمت پیش فرض برای فروش های جدید."
+
+msgctxt "help:sale.configuration,sale_price_list:"
+msgid "The default price list for new parties."
+msgstr "لیست قیمت پیش فرض برای نهادها/سازمان های جدید."
+
+msgctxt "help:sale.sale,price_list:"
+msgid "Use to compute the unit price of lines."
+msgstr "برای محاسبه واحد قیمت سطرها استفاده کنید."
+
+msgctxt "model:party.party.sale_price_list,name:"
+msgid "Party Sale Price List"
+msgstr "لیست قیمت فروش نهاد/سازمان"
+
+msgctxt "model:sale.configuration.sale_price_list,name:"
+msgid "Sale Configuration Sale PriceList"
+msgstr "پیکربندی فروش ؛ لیست قیمت فروش"
+
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Sale"
+msgstr ""
