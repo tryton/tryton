@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
+msgstr "La quantitat anglo-saxona no pot ser major que la quantitat."
+
+msgctxt "field:product.category,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Compte cost béns venuts"
+
+msgctxt "field:product.category,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Compte cost béns venuts usada"
+
+msgctxt "field:product.product,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Compte cost de béns venuts"
+
+msgctxt "field:product.product,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Compte cost de béns venuts usada"
+
+msgctxt "field:product.template,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Compte cost béns venuts"
+
+msgctxt "field:product.template,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Compte cost béns venuts usada"
+
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "Quantitat anglosaxona d'entrada"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "Quantitat anglosaxona de sortida"
+
+msgctxt "help:product.product,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Aquest compte s'usarà en lloc del definit a la categoria."
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "Anglosaxó"

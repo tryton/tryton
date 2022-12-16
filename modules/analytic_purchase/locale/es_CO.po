@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Alguna cuenta raíz obligatoria falta en \"%(name)s\""
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "La cuenta analítica es requerida para \"%(root)s\" en la línea \"(line)s\"."
+
+msgctxt "field:purchase.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Cuentas Analíticas"
+
+msgctxt "field:purchase.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Tamaño de Centro de Costos"
