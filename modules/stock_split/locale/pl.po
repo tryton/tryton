@@ -1,0 +1,100 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr ""
+
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Ilość"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Cyfry jednostki"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "Jm"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Kategoria jm"
+
+msgctxt "field:stock.shipment.split.start,domain_moves:"
+msgid "Domain Moves"
+msgstr ""
+
+msgctxt "field:stock.shipment.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.shipment.split.start,moves:"
+msgid "Moves"
+msgstr "Ruchy"
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr ""
+
+msgctxt "help:stock.shipment.split.start,moves:"
+msgid "The selected moves will be sent in the new shipment."
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_split_shipment"
+msgid "Split Shipment"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "Split Move"
+
+msgctxt "model:stock.shipment.split.start,name:"
+msgid "Split Shipment"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr ""
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr ""
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr ""
+
+msgctxt "view:stock.shipment.out:"
+msgid "Split"
+msgstr ""
+
+msgctxt "view:stock.shipment.split.start:"
+msgid "Choose move to send in new shipment"
+msgstr ""
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr ""
+
+msgctxt "wizard_button:stock.shipment.split,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr ""
