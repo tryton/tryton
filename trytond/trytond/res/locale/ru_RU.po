@@ -1,0 +1,699 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.group:0"
+msgid "The name of the group must be unique!"
+msgstr "Наименование группы должно быть уникальным!"
+
+msgctxt "error:res.user:0"
+msgid "Wrong password!"
+msgstr "Ошибка пароля!"
+
+msgctxt "error:res.user:0"
+msgid "You can not have two users with the same login!"
+msgstr "Такое имя пользователя уже есть !"
+
+msgctxt "error:res.user:0"
+msgid ""
+"You can not remove the root user\n"
+"as it is used internally for resources\n"
+"created by the system (updates, module installation, ...)"
+msgstr ""
+"Вы не можете удалить основного пользователя системы\n"
+"т.к. он используется во внутренних процессах системы\n"
+"(обновление, установка модулей, ...)"
+
+#, fuzzy
+msgctxt "field:ir.action-res.group,action:0"
+msgid "Action"
+msgstr "Действие"
+
+#, fuzzy
+msgctxt "field:ir.action-res.group,group:0"
+msgid "Group"
+msgstr "Группы"
+
+msgctxt "field:ir.action-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.model.field-res.group,field_id:0"
+msgid "Model Field"
+msgstr "Поле шаблона"
+
+msgctxt "field:ir.model.field-res.group,group_id:0"
+msgid "Group"
+msgstr "Группа"
+
+msgctxt "field:ir.model.field-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.group,group:0"
+msgid "Group"
+msgstr "Группы"
+
+msgctxt "field:ir.rule.group-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:0"
+msgid "Rule Group"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.rule.group-res.user,rule_group:0"
+msgid "Rule Group"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,user:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:ir.sequence,groups:0"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.strict,groups:0"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.type,groups:0"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,group:0"
+msgid "User Groups"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.sequence.type-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:ir.sequence.type-res.group,sequence_type:0"
+msgid "Sequence Type"
+msgstr "Тип последовательности"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu-res.group,group:0"
+msgid "Group"
+msgstr "Группы"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu-res.group,menu:0"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "field:ir.ui.menu-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.group,field_access:0"
+msgid "Access Field"
+msgstr ""
+
+msgctxt "field:res.group,menu_access:0"
+msgid "Access Menu"
+msgstr "Меню доступа"
+
+msgctxt "field:res.group,model_access:0"
+msgid "Access Model"
+msgstr "Шаблон доступа"
+
+msgctxt "field:res.group,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.group,rule_groups:0"
+msgid "Rules"
+msgstr "Правила"
+
+msgctxt "field:res.group,users:0"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "field:res.request,act_from:0"
+msgid "From"
+msgstr "От кого"
+
+msgctxt "field:res.request,act_to:0"
+msgid "To"
+msgstr "Кому"
+
+msgctxt "field:res.request,active:0"
+msgid "Active"
+msgstr "Действительный"
+
+msgctxt "field:res.request,body:0"
+msgid "Body"
+msgstr "Сообщение"
+
+msgctxt "field:res.request,date_sent:0"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:res.request,history:0"
+msgid "History"
+msgstr "Архив"
+
+msgctxt "field:res.request,name:0"
+msgid "Subject"
+msgstr "Тема"
+
+msgctxt "field:res.request,number_references:0"
+msgid "Number of References"
+msgstr "Кол-во ссылок"
+
+msgctxt "field:res.request,priority:0"
+msgid "Priority"
+msgstr "Приоритер"
+
+msgctxt "field:res.request,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.request,references:0"
+msgid "References"
+msgstr "Ссылки"
+
+msgctxt "field:res.request,state:0"
+msgid "State"
+msgstr "Статус"
+
+msgctxt "field:res.request,trigger_date:0"
+msgid "Trigger Date"
+msgstr "Дата сообщения"
+
+msgctxt "field:res.request.history,act_from:0"
+msgid "From"
+msgstr "От кого"
+
+msgctxt "field:res.request.history,act_to:0"
+msgid "To"
+msgstr "Кому"
+
+msgctxt "field:res.request.history,body:0"
+msgid "Body"
+msgstr "Сообщение"
+
+msgctxt "field:res.request.history,date_sent:0"
+msgid "Date sent"
+msgstr "Дата отправки"
+
+msgctxt "field:res.request.history,name:0"
+msgid "Summary"
+msgstr "Резюме"
+
+msgctxt "field:res.request.history,number_references:0"
+msgid "References"
+msgstr "Ссылки"
+
+msgctxt "field:res.request.history,priority:0"
+msgid "Priority"
+msgstr "Приоретет"
+
+msgctxt "field:res.request.history,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.request.history,request:0"
+msgid "Request"
+msgstr "Сообщение"
+
+msgctxt "field:res.request.history,state:0"
+msgid "State"
+msgstr "Статус"
+
+msgctxt "field:res.request.history,subject:0"
+msgid "Subject"
+msgstr "Тема"
+
+msgctxt "field:res.request.link,model:0"
+msgid "Model"
+msgstr "Шаблон"
+
+msgctxt "field:res.request.link,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.request.link,priority:0"
+msgid "Priority"
+msgstr "Приоритет"
+
+msgctxt "field:res.request.link,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.request.reference,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.request.reference,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:res.request.reference,request:0"
+msgid "Request"
+msgstr "Сообщение"
+
+msgctxt "field:res.user,action:0"
+msgid "Home Action"
+msgstr "Началое действие"
+
+msgctxt "field:res.user,active:0"
+msgid "Active"
+msgstr "Действительный"
+
+msgctxt "field:res.user,connections:0"
+msgid "Connections"
+msgstr "Соединения"
+
+msgctxt "field:res.user,email:0"
+msgid "Email"
+msgstr "Эл.почта"
+
+msgctxt "field:res.user,groups:0"
+msgid "Groups"
+msgstr "Группы"
+
+msgctxt "field:res.user,language:0"
+msgid "Language"
+msgstr "Язык"
+
+msgctxt "field:res.user,language_direction:0"
+msgid "Language Direction"
+msgstr "Направления языка"
+
+msgctxt "field:res.user,login:0"
+msgid "Login"
+msgstr "Регистрация"
+
+msgctxt "field:res.user,menu:0"
+msgid "Menu Action"
+msgstr "Действия Меню"
+
+msgctxt "field:res.user,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.user,password:0"
+msgid "Password"
+msgstr "Пароль"
+
+msgctxt "field:res.user,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.user,rule_groups:0"
+msgid "Rules"
+msgstr "Правила"
+
+msgctxt "field:res.user,salt:0"
+msgid "Salt"
+msgstr "Бывалый"
+
+msgctxt "field:res.user,signature:0"
+msgid "Signature"
+msgstr "Подпись"
+
+msgctxt "field:res.user,status_bar:0"
+msgid "Status Bar"
+msgstr "Строка состояния"
+
+msgctxt "field:res.user,timezone:0"
+msgid "Timezone"
+msgstr "Зона времени"
+
+msgctxt "field:res.user,warnings:0"
+msgid "Warnings"
+msgstr "Внимания"
+
+#, fuzzy
+msgctxt "field:res.user-res.group,group:0"
+msgid "Group"
+msgstr "Группы"
+
+msgctxt "field:res.user-res.group,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:res.user-res.group,user:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:res.user.warning,always:0"
+msgid "Always"
+msgstr "Всегда"
+
+msgctxt "field:res.user.warning,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.user.warning,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:res.user.warning,user:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "help:ir.sequence.type,groups:0"
+msgid "Groups allowed to edit the sequences of this type"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Грыппы"
+
+msgctxt "model:ir.action,name:act_request_form"
+msgid "Requests"
+msgstr "Сообщения"
+
+msgctxt "model:ir.action,name:act_request_link_form"
+msgid "Request Links"
+msgstr "Ссылки сообщения"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "model:ir.action-res.group,name:0"
+msgid "Action - Group"
+msgstr "Действия - Группы"
+
+msgctxt "model:ir.cron,name:cron_trigger_time"
+msgid "Run On Time Triggers"
+msgstr ""
+
+msgctxt "model:ir.model.field-res.group,name:0"
+msgid "Model Field Group Rel"
+msgstr "Шаблон Поля Группа Связь"
+
+msgctxt "model:ir.rule.group-res.group,name:0"
+msgid "Rule Group - Group"
+msgstr "Правило группы - Группа"
+
+msgctxt "model:ir.rule.group-res.user,name:0"
+msgid "Rule Group - User"
+msgstr "Правило группы - Пользователь"
+
+msgctxt "model:ir.sequence.type-res.group,name:0"
+msgid "Sequence Type - Group"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Группы"
+
+msgctxt "model:ir.ui.menu,name:menu_request_form"
+msgid "Requests"
+msgstr "Сообщения"
+
+msgctxt "model:ir.ui.menu,name:menu_request_link_form"
+msgid "Request Links"
+msgstr "Ссылки сообщения"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "model:ir.ui.menu-res.group,name:0"
+msgid "UI Menu - Group"
+msgstr " Пол.инт. Меню - Группа"
+
+msgctxt "model:res.group,name:0"
+msgid "Group"
+msgstr "Группа"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "группа Управление"
+
+msgctxt "model:res.request,name:0"
+msgid "Request"
+msgstr "Сообщение"
+
+msgctxt "model:res.request.history,name:0"
+msgid "Request history"
+msgstr "Архив сообщений"
+
+msgctxt "model:res.request.link,name:0"
+msgid "Request link"
+msgstr "Ссылка сообщения"
+
+msgctxt "model:res.request.link,name:request_link_cron"
+msgid "Scheduler"
+msgstr "Планировщик"
+
+msgctxt "model:res.request.reference,name:0"
+msgid "Request Reference"
+msgstr "Параметры сообщения"
+
+msgctxt "model:res.user,name:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "model:res.user,name:user_admin"
+msgid "Administrator"
+msgstr "Администратор"
+
+msgctxt "model:res.user,name:user_trigger"
+msgid "Cron Trigger"
+msgstr ""
+
+msgctxt "model:res.user-res.group,name:0"
+msgid "User - Group"
+msgstr "Пользователь - Группа"
+
+msgctxt "model:res.user.config.init,name:0"
+msgid "User Config Init"
+msgstr "Настройка пользователя - инициализация"
+
+msgctxt "model:res.user.warning,name:0"
+msgid "User Warning"
+msgstr "Внимание Пользователь"
+
+msgctxt "selection:res.request,priority:0"
+msgid "High"
+msgstr "Высокий"
+
+msgctxt "selection:res.request,priority:0"
+msgid "Low"
+msgstr "Низкий"
+
+msgctxt "selection:res.request,priority:0"
+msgid "Normal"
+msgstr "Нормально"
+
+msgctxt "selection:res.request,state:0"
+msgid "Chatting"
+msgstr "Переписка"
+
+msgctxt "selection:res.request,state:0"
+msgid "Closed"
+msgstr "Закрыто"
+
+msgctxt "selection:res.request,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:res.request,state:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "High"
+msgstr "Высокий"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "Low"
+msgstr "Низкий"
+
+msgctxt "selection:res.request.history,priority:0"
+msgid "Normal"
+msgstr "Нормально"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Chatting"
+msgstr "Переписка"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Closed"
+msgstr "Закрыто"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:res.request.history,state:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Installation"
+msgstr "Отменить установку"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Uninstallation"
+msgstr "Отменить удаление"
+
+msgctxt "view:ir.module.module:0"
+msgid "Cancel Upgrade"
+msgstr " Отменить обновление"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Installation"
+msgstr "Установить"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Uninstallation (beta)"
+msgstr "Удалить (beta)"
+
+msgctxt "view:ir.module.module:0"
+msgid "Mark for Upgrade"
+msgstr "Обновить"
+
+msgctxt "view:res.group:0"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.group:0"
+msgid "Group"
+msgstr "Группы"
+
+msgctxt "view:res.group:0"
+msgid "Groups"
+msgstr "Группы"
+
+msgctxt "view:res.group:0"
+msgid "Members"
+msgstr ""
+
+msgctxt "view:res.group:0"
+msgid "Security"
+msgstr "Доступ"
+
+msgctxt "view:res.request.history:0"
+msgid "Request History"
+msgstr "Переписка"
+
+msgctxt "view:res.request.link:0"
+msgid "Request Link"
+msgstr "Ссылка сообщения"
+
+msgctxt "view:res.request.reference:0"
+msgid "Request Reference"
+msgstr "Ссылка сообщения"
+
+msgctxt "view:res.request.reference:0"
+msgid "Request References"
+msgstr "Ссылки сообщения"
+
+msgctxt "view:res.request:0"
+msgid "Close"
+msgstr "Закрыть"
+
+msgctxt "view:res.request:0"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "view:res.request:0"
+msgid "History"
+msgstr "Переписка"
+
+msgctxt "view:res.request:0"
+msgid "References"
+msgstr "Ссылки"
+
+msgctxt "view:res.request:0"
+msgid "Reply"
+msgstr "Ответить"
+
+msgctxt "view:res.request:0"
+msgid "Request"
+msgstr "Сообщение"
+
+msgctxt "view:res.request:0"
+msgid "Requests"
+msgstr "Сообщения"
+
+msgctxt "view:res.request:0"
+msgid "Send"
+msgstr "Послать"
+
+msgctxt "view:res.user.config.init:0"
+msgid "Add Users"
+msgstr "Добавить пользователей"
+
+msgctxt "view:res.user.config.init:0"
+msgid "Be careful that the login must be unique!"
+msgstr "Внимание Имя Пользователя должно быть уникальным!"
+
+msgctxt "view:res.user.config.init:0"
+msgid "You can now add some users into the system."
+msgstr "Вы можете добавить пользователей в систему."
+
+msgctxt "view:res.user.warning:0"
+msgid "Warning"
+msgstr "Внимание"
+
+msgctxt "view:res.user.warning:0"
+msgid "Warnings"
+msgstr "Внимания"
+
+msgctxt "view:res.user:0"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.user:0"
+msgid "Group Membership"
+msgstr ""
+
+msgctxt "view:res.user:0"
+msgid "Preferences"
+msgstr "Ссылки"
+
+msgctxt "view:res.user:0"
+msgid "Security"
+msgstr "Доступ"
+
+msgctxt "view:res.user:0"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "view:res.user:0"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "wizard_button:res.user.config,init,end:0"
+msgid "Cancel"
+msgstr "Отмена"
+
+msgctxt "wizard_button:res.user.config,init,user:0"
+msgid "Ok"
+msgstr "Ок"
+
+msgctxt "wizard_button:res.user.config,user,add:0"
+msgid "Add"
+msgstr "Добавить"
+
+msgctxt "wizard_button:res.user.config,user,end:0"
+msgid "End"
+msgstr "Закончить"
