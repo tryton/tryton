@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.category,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "حساب هزینه از فروش کالا ها"
+
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "حساب هزینه از فروش کالا ها"
+
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "مقدار ورودی آنگلو-ساکسون"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "مقدار خروجی آنگلو-ساکسون"
+
+msgctxt "model:ir.message,text:msg_invoice_line_stock_move_different_product"
+msgid ""
+"The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
+"This may compute a wrong COGS."
+msgstr ""
+"سطر صورتحساب : \"%s'\" مرتبط است با جابجایی موجودی محصولات دیگر از: \"%s'\".\n"
+"این ممکن است COGS اشتباه را محاسبه کند."
+
+msgctxt "model:ir.message,text:msg_move_quantity_greater"
+msgid "Anglo-Saxon quantity cannot be greater than quantity."
+msgstr "کمیت آنگلو-ساکسون نمی تواند بیشتر از مقدار باشد."
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "آنگلو-ساکسون"
