@@ -1,0 +1,573 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,boms:"
+msgid "BOMs"
+msgstr "Retseptid"
+
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Viiteaeg"
+
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr "Toodetav"
+
+msgctxt "field:product.product-production.bom,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:product.product-production.bom,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:product.template,producible:"
+msgid "Producible"
+msgstr "Toodetav"
+
+#, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Omistatud"
+
+msgctxt "field:production,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:production,cost:"
+msgid "Cost"
+msgstr "Hind"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Tehtud"
+
+msgctxt "field:production,effective_date:"
+msgid "Effective Date"
+msgstr "Kehtiv kuupäev"
+
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr "Tegelik alguskuupäev"
+
+msgctxt "field:production,inputs:"
+msgid "Inputs"
+msgstr "Sisendid"
+
+msgctxt "field:production,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:production,outputs:"
+msgid "Outputs"
+msgstr "Väljundid"
+
+#, fuzzy
+msgctxt "field:production,partially_assigned:"
+msgid "Partially Assigned"
+msgstr "Omistatud"
+
+msgctxt "field:production,planned_date:"
+msgid "Planned Date"
+msgstr "Planeeritud kuuüäev"
+
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr "Planeeritud alguskuupäev"
+
+msgctxt "field:production,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:production,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:production,reference:"
+msgid "Reference"
+msgstr "Viide"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
+
+msgctxt "field:production,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:production,uom:"
+msgid "Uom"
+msgstr "Mõõtühik"
+
+msgctxt "field:production,uom_category:"
+msgid "Uom Category"
+msgstr "Mõõtühiku kategooria"
+
+msgctxt "field:production,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:production.bom,inputs:"
+msgid "Inputs"
+msgstr "Sisendid"
+
+msgctxt "field:production.bom,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:production.bom,output_products:"
+msgid "Output Products"
+msgstr "Valmistooted"
+
+msgctxt "field:production.bom,outputs:"
+msgid "Outputs"
+msgstr "Väljundid"
+
+msgctxt "field:production.bom.input,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production.bom.input,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:production.bom.input,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:production.bom.input,uom:"
+msgid "Uom"
+msgstr "Mõõtühik"
+
+msgctxt "field:production.bom.input,uom_category:"
+msgid "Uom Category"
+msgstr "Mõõtühiku kategooria"
+
+msgctxt "field:production.bom.output,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production.bom.output,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:production.bom.output,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:production.bom.output,uom:"
+msgid "Uom"
+msgstr "Mõõtühik"
+
+msgctxt "field:production.bom.output,uom_category:"
+msgid "Uom Category"
+msgstr "Mõõtühiku kategooria"
+
+msgctxt "field:production.bom.tree,childs:"
+msgid "Childs"
+msgstr "Alamjaotused"
+
+msgctxt "field:production.bom.tree,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:production.bom.tree,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:production.bom.tree,uom:"
+msgid "Uom"
+msgstr "Mõõtühik"
+
+msgctxt "field:production.bom.tree.open.start,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production.bom.tree.open.start,category:"
+msgid "Category"
+msgstr "Kategooria"
+
+msgctxt "field:production.bom.tree.open.start,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:production.bom.tree.open.start,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:production.bom.tree.open.start,uom:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:production.bom.tree.open.tree,bom_tree:"
+msgid "BOM Tree"
+msgstr "Retseptipuu"
+
+msgctxt "field:production.configuration,production_sequence:"
+msgid "Production Sequence"
+msgstr "Tootmise järjestus"
+
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr "Tootmise järjestus"
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Viiteaeg"
+
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.location,production_location:"
+msgid "Production"
+msgstr "Tootmine"
+
+#, fuzzy
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Tootmise väljund"
+
+#, fuzzy
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Tootmine"
+
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
+msgctxt "field:stock.move,production_input:"
+msgid "Production Input"
+msgstr "Tootmise sisend"
+
+msgctxt "field:stock.move,production_output:"
+msgid "Production Output"
+msgstr "Tootmise väljund"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_bom_form"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "model:ir.action,name:act_bom_list"
+msgid "BOMs"
+msgstr "Retseptid"
+
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Retseptid"
+
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Tootmised"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_configuration_form"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.action,name:act_production_list"
+msgid "Productions"
+msgstr "Tootmised"
+
+msgctxt "model:ir.action,name:wizard_bom_tree_open"
+msgid "BOM Tree"
+msgstr "Retseptipuu"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Tootmise omistamine"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr "Kui sisendid"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr "Kui väljundid"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr "Omistatud"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_available"
+msgid "Partially Assigned"
+msgstr "Omistatud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr "Päring"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr "Jooksev"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "model:ir.message,text:msg_missing_product_list_price"
+msgid ""
+"The product \"%(product)s\" on production \"%(production)s\" does not have "
+"any list price defined."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_recursive_bom"
+msgid "You cannot create a recursive BOM for product \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:production_done_button"
+msgid "Are you sure you want to complete the production?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Omista"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Taasta reteptile"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Käivita"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "Oota"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.sequence,name:sequence_production"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_production"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:ir.ui.menu,name:menu_bom_list"
+msgid "BOMs"
+msgstr "Retseptid"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.ui.menu,name:menu_production"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Tootmised"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.ui.menu,name:menu_production_list"
+msgid "Productions"
+msgstr "Tootmised"
+
+msgctxt "model:product.product-production.bom,name:"
+msgid "Product - BOM"
+msgstr "Toode - Retsept"
+
+msgctxt "model:production,name:"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:production.bom,name:"
+msgid "Bill of Material"
+msgstr "Retsept"
+
+msgctxt "model:production.bom.input,name:"
+msgid "Bill of Material Input"
+msgstr "Retsepti sisend"
+
+msgctxt "model:production.bom.output,name:"
+msgid "Bill of Material Output"
+msgstr "Retsepti väljund"
+
+msgctxt "model:production.bom.tree,name:"
+msgid "BOM Tree"
+msgstr "Retseptipuu"
+
+msgctxt "model:production.bom.tree.open.start,name:"
+msgid "Open BOM Tree"
+msgstr "Ava retseptipuu"
+
+msgctxt "model:production.bom.tree.open.tree,name:"
+msgid "Open BOM Tree"
+msgstr "Ava retseptipuu"
+
+msgctxt "model:production.configuration,name:"
+msgid "Production Configuration"
+msgstr "Tootmise seadistus"
+
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr "Tootmise seadistus tootmise järjestus"
+
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr "Tootmise aeg"
+
+msgctxt "model:res.group,name:group_production"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:res.group,name:group_production_admin"
+msgid "Production Administration"
+msgstr "Tootmine administreerimine"
+
+msgctxt "model:stock.location,name:location_production"
+msgid "Production"
+msgstr "Tootmine"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Assign Productions"
+msgstr "Tootmise omistamine"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Tootmised"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
+msgctxt "selection:production,state:"
+msgid "Assigned"
+msgstr "Omistatud"
+
+#, fuzzy
+msgctxt "selection:production,state:"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+msgctxt "selection:production,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:production,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:production,state:"
+msgid "Request"
+msgstr "Päring"
+
+msgctxt "selection:production,state:"
+msgid "Running"
+msgstr "Jooksev"
+
+msgctxt "selection:production,state:"
+msgid "Waiting"
+msgstr "Ootel"
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "view:production.bom:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "view:production:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "view:production:"
+msgid "Other Info"
+msgstr "Muu info"
+
+msgctxt "wizard_button:production.bom.tree.open,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:production.bom.tree.open,start,tree:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,end:"
+msgid "Close"
+msgstr "Sulge"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,start:"
+msgid "Change"
+msgstr "Muuda"
