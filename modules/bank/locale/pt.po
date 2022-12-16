@@ -1,0 +1,137 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "Banco"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "Números"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "Proprietários"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "Contas"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "Proprietário"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "Contas"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "Numero"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Número Compacto"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "Contas Bancárias"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code."
+msgstr "Código Identificador do Banco/Negócio."
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "O banco em que a conta foi aberta."
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "Adicione os números que identificam a conta bancária."
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "A conta bancária a qual é identificada pelo número."
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "Banco"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "Conta Bancária"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "Conta Bancária - Pessoa"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "Número da Conta Bancária"
+
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Contas"
+
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Bancos"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "O número IBAN  \"%(number)s\" não é válido."
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr "O número IBAN  \"%(number)s\" não é válido."
+
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Contas"
+
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Bancos"
+
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Banco"
+
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Administração Bancária"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "Nefropatia hereditária năo classificada em outra parte - outras"
+
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Numero"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Banco"
