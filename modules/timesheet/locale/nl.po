@@ -1,0 +1,548 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:"
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr ""
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different than the origin's company"
+msgstr ""
+
+msgctxt "error:timesheet.work:"
+msgid "The origin must be unique per company."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Maand"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Jaar"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Week"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Week"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Jaar"
+
+#, fuzzy
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Werk"
+
+#, fuzzy
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Vervaldatum"
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,active:"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:timesheet.work,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Tijdregistratieregel"
+
+#, fuzzy
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Werk"
+
+#, fuzzy
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+#, fuzzy
+msgctxt "field:timesheet.work.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr ""
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr ""
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr ""
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr ""
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr ""
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Werken"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapportage"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Tijdverantwoording"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Werken"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Tijdregistratie"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Tijdregistratieregel"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr ""
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Tijdverantwoording"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr ""
+
+msgctxt "view:timesheet.hours_employee_monthly:"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "view:timesheet.hours_employee_weekly:"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "view:timesheet.work:"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "view:timesheet.work:"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "view:timesheet.work:"
+msgid "Works"
+msgstr "Werken"
