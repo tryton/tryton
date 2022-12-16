@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="line_view_form">
+            <field name="model">timesheet.line</field>
+            <field name="type">form</field>
+            <field name="name">line_form</field>
+        </record>
+        <record model="ir.ui.view" id="line_view_tree">
+            <field name="model">timesheet.line</field>
+            <field name="type">tree</field>
+            <field name="name">line_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_line_form">
+            <field name="name">Timesheet Lines</field>
+            <field name="res_model">timesheet.line</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="line_view_tree"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="line_view_form"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+        <menuitem parent="menu_timesheet" action="act_line_form"
+            id="menu_line_form" sequence="30"/>
+
+        <record model="ir.action.act_window" id="act_line_form_work">
+            <field name="name">Timesheet Lines</field>
+            <field name="res_model">timesheet.line</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('work', '=', Eval('active_id')), ('work', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_line_form_work_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="line_view_tree"/>
+            <field name="act_window" ref="act_line_form_work"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_line_form_work_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="line_view_form"/>
+            <field name="act_window" ref="act_line_form_work"/>
+        </record>
+        <record model="ir.action.keyword" id="act_line_form_work_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">timesheet.work,-1</field>
+            <field name="action" ref="act_line_form_work"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_line">
+            <field name="name">Own timesheet line</field>
+            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_line1">
+            <field name="domain"
+                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_line"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_line_admin">
+            <field name="name">Any timesheet line</field>
+            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_line_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_line_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="line_enter_start_view_form">
+            <field name="model">timesheet.line.enter.start</field>
+            <field name="type">form</field>
+            <field name="name">line_enter_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_line_enter">
+            <field name="name">Enter Timesheet</field>
+            <field name="wiz_name">timesheet.line.enter</field>
+        </record>
+        <menuitem parent="menu_timesheet" action="act_line_enter"
+            id="menu_line_enter" sequence="20"/>
+
+        <record model="ir.ui.view" id="hours_employee_view_tree">
+            <field name="model">timesheet.hours_employee</field>
+            <field name="type">tree</field>
+            <field name="name">hours_employee_tree</field>
+        </record>
+        <record model="ir.ui.view" id="hours_employee_view_graph">
+            <field name="model">timesheet.hours_employee</field>
+            <field name="type">graph</field>
+            <field name="name">hours_employee_graph</field>
+        </record>
+        <record model="ir.action.act_window" id="act_hours_employee_form">
+            <field name="name">Hours per Employee</field>
+            <field name="res_model">timesheet.hours_employee</field>
+            <field name="context_model">timesheet.hours_employee.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="hours_employee_view_tree"/>
+            <field name="act_window" ref="act_hours_employee_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="hours_employee_view_graph"/>
+            <field name="act_window" ref="act_hours_employee_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_hours_employee_form"
+            id="menu_hours_employee" sequence="20"/>
+
+        <record model="ir.rule.group" id="rule_group_hours_employee">
+            <field name="name">Own employee hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_hours_employee1">
+            <field name="domain"
+                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_hours_employee"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_hours_employee_admin">
+            <field name="name">Any employee hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_hours_employee_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_hours_employee_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="hours_employee_context_view_form">
+            <field name="model">timesheet.hours_employee.context</field>
+            <field name="type">form</field>
+            <field name="name">hours_employee_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="hours_employee_weekly_view_tree">
+            <field name="model">timesheet.hours_employee_weekly</field>
+            <field name="type">tree</field>
+            <field name="name">hours_employee_weekly_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_hours_employee_weekly_form">
+            <field name="name">Hours per Employee per Week</field>
+            <field name="res_model">timesheet.hours_employee_weekly</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_weekly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="hours_employee_weekly_view_tree"/>
+            <field name="act_window" ref="act_hours_employee_weekly_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_hours_employee_weekly_form"
+            id="menu_hours_employee_open_weekly" sequence="30"/>
+
+        <record model="ir.ui.view" id="hours_employee_monthly_view_tree">
+            <field name="model">timesheet.hours_employee_monthly</field>
+            <field name="type">tree</field>
+            <field name="name">hours_employee_monthly_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_hours_employee_monthly_form">
+            <field name="name">Hours per Employee per Month</field>
+            <field name="res_model">timesheet.hours_employee_monthly</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_monthly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="hours_employee_monthly_view_tree"/>
+            <field name="act_window" ref="act_hours_employee_monthly_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_hours_employee_monthly_form"
+            id="menu_hours_employee_open_monthly" sequence="40"/>
+    </data>
+</tryton>
