@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="email_view_form">
+            <field name="model">notification.email</field>
+            <field name="type">form</field>
+            <field name="name">email_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_view_list">
+            <field name="model">notification.email</field>
+            <field name="type">tree</field>
+            <field name="name">email_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_form">
+            <field name="name">Notification Emails</field>
+            <field name="res_model">notification.email</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_email_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_view_list"/>
+            <field name="act_window" ref="act_email_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_email_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_view_form"/>
+            <field name="act_window" ref="act_email_form"/>
+        </record>
+
+        <menuitem parent="ir.menu_models" action="act_email_form"
+            id="menu_email_form"/>
+
+        <record model="ir.model.access" id="access_email">
+            <field name="model"
+                search="[('model', '=', 'notification.email')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_admin">
+            <field name="model"
+                search="[('model', '=', 'notification.email')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="email_log_view_form">
+            <field name="model">notification.email.log</field>
+            <field name="type">form</field>
+            <field name="name">log_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_log_view_list">
+            <field name="model">notification.email.log</field>
+            <field name="type">tree</field>
+            <field name="name">log_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_email_log">
+            <field name="model"
+                search="[('model', '=', 'notification.email.log')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_log_admin">
+            <field name="model"
+                search="[('model', '=', 'notification.email.log')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_notification_email_log">
+            <field name="name">Logs</field>
+            <field name="res_model">notification.email.log</field>
+            <field name="domain"
+                eval="[('trigger.notification_email', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_notification_email_log_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">notification.email,-1</field>
+            <field name="action" ref="act_notification_email_log"/>
+        </record>
+    </data>
+</tryton>
