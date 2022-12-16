@@ -1,0 +1,71 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Ubicacions predeterminades"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Ubicació del magatzem"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Ubicació de producte"
+
+msgctxt "view:product.product:"
+msgid "Default Locations"
+msgstr "Ubicacions predeterminades"
+
+msgctxt "view:product.product:"
+msgid "Product Location"
+msgstr "Ubicació de producte"
+
+msgctxt "view:product.product:"
+msgid "Product Locations"
+msgstr "Ubicacions de producte"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr "Ubicació de producte"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr "Ubicacions de producte"
