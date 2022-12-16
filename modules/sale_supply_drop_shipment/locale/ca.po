@@ -1,0 +1,273 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Ubicació compra directa"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Ubicació compra directa"
+
+msgctxt "field:purchase.product_supplier,drop_shipment:"
+msgid "Drop Shipment"
+msgstr "Enviament directe"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "Enviament directe disponible"
+
+msgctxt "field:purchase.purchase,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:purchase.purchase,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adreça d'enviament"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "Ubicació enviament directe"
+
+msgctxt "field:purchase.purchase,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "field:purchase.request,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:purchase.request,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adreça d'enviament"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Ubicació venda directa"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Ubicació venda directa"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "Ubicació enviament directe"
+
+msgctxt "field:sale.sale,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Seqüència d'enviament directe"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Seqüència d'enviament directe"
+
+msgctxt "field:stock.move,customer_drop:"
+msgid "Drop Customer"
+msgstr "Client d'enviament directe"
+
+msgctxt "field:stock.shipment.drop,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.shipment.drop,contact_address:"
+msgid "Contact Address"
+msgstr "Adreça de contacte"
+
+msgctxt "field:stock.shipment.drop,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "Movimients de client"
+
+msgctxt "field:stock.shipment.drop,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adreça d'enviament"
+
+msgctxt "field:stock.shipment.drop,effective_date:"
+msgid "Effective Date"
+msgstr "Data efectiva"
+
+msgctxt "field:stock.shipment.drop,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.shipment.drop,planned_date:"
+msgid "Planned Date"
+msgstr "Data estimada"
+
+msgctxt "field:stock.shipment.drop,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:stock.shipment.drop,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:stock.shipment.drop,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "Moviments de proveïdor"
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr "Quan s'han enviat realment les existències."
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr "El identificador principal de l'albarà."
+
+msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "Enviat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt ""
+"model:ir.message,text:msg_delivery_address_required_quotation_purchase"
+msgid ""
+"To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
+" address."
+msgstr ""
+"Per obtenir un pressupost de la compra \"%(compra)s\" heu de proporcionar "
+"una direcció d'entrega."
+
+msgctxt "model:ir.message,text:msg_drop_shipment_delete_cancel"
+msgid "To delete drop shipment \"%(shipment)s\" you must cancel it."
+msgstr "Per eliminar l'enviament directe \"%(shipmetn)s\" heu de cancel·lar-lo."
+
+msgctxt "model:ir.message,text:msg_reset_move"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale or a purchase."
+msgstr ""
+"No podeu restablir a esborrany el moviment \"%(move)s\" perquè ha estat "
+"generat per una venda o una compra."
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr "Esteu segurs que voleu completar l'albarà?"
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Finalitza"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Envia"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Enviament directe"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Enviament directe"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Enviaments directes"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "Configuració de la ubicació d'enviament directe per les compres"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "Configuració de la ubicació d'enviament directe per les vendes"
+
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Enviament directe"
+
+msgctxt "model:stock.shipment.drop,name:"
+msgid "Drop Shipment"
+msgstr "Enviament directe"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "Enviat"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Waiting"
+msgstr "En espera"
