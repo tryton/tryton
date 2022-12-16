@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr "El compte \"%(account)s\" del tercer \"%(party)s\" no té suficient bestreta."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has deposit for the "
+"company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" perquè té una bestreta per "
+"l'empresa \"%(company)s\"."
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "Bestreta"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "Recuperació de bestreta en factura"
+
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "Recupera bestreta"
+
+msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
+msgid "Recall Deposit"
+msgstr "Recupera bestreta"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "Bestreta"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "Bestreta"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "Recupera"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "Recupera bestreta"
