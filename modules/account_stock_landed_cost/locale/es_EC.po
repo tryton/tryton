@@ -1,0 +1,190 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Secuencia de costo de recepción"
+
+msgctxt "field:account.invoice.line,landed_cost:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "field:account.landed_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Método de asignación"
+
+msgctxt "field:account.landed_cost,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.landed_cost,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.landed_cost,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:account.landed_cost,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.landed_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.landed_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Fecha de contabilización"
+
+msgctxt "field:account.landed_cost,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.landed_cost,shipments:"
+msgid "Shipments"
+msgstr "Guías de remisión"
+
+msgctxt "field:account.landed_cost,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.landed_cost,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.landed_cost,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
+msgid "Shipment"
+msgstr "Guía de remisión"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "field:product.template,landed_cost:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "field:stock.move,unit_landed_cost:"
+msgid "Unit Landed Cost"
+msgstr "Unidad de costo de recepción"
+
+msgctxt "model:account.landed_cost,name:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "model:account.landed_cost-stock.shipment.in,name:"
+msgid "Landed Cost - Shipment"
+msgstr "Costo de recepción - Guía de remisión"
+
+msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Costos de recepción"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Contabilizados"
+
+msgctxt "model:ir.sequence,name:sequence_landed_cost"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "model:ir.ui.menu,name:menu_landed_cost"
+msgid "Landed Costs"
+msgstr "Costos de Recepción"
+
+msgctxt "selection:account.landed_cost,allocation_method:"
+msgid "By Value"
+msgstr "Por valor"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "view:account.landed_cost:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.landed_cost:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:account.landed_cost:"
+msgid "Landed Cost"
+msgstr "Costo de recepción"
+
+msgctxt "view:account.landed_cost:"
+msgid "Landed Costs"
+msgstr "Costos de recepción"
+
+msgctxt "view:account.landed_cost:"
+msgid "Post"
+msgstr "Contabilizar"

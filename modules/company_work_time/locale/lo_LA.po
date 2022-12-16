@@ -1,0 +1,23 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,hours_per_work_day:"
+msgid "Hours per Work Day"
+msgstr "ຊົ່ວໂມງຕໍ່ມື້ວຽກ"
+
+msgctxt "field:company.company,hours_per_work_month:"
+msgid "Hours per Work Month"
+msgstr "ຊົ່ວໂມງຕໍ່ເດືອນ"
+
+msgctxt "field:company.company,hours_per_work_week:"
+msgid "Hours per Work Week"
+msgstr "ຊົ່ວໂມງຕໍ່ອາທິດ"
+
+msgctxt "field:company.company,hours_per_work_year:"
+msgid "Hours per Work Year"
+msgstr "ຊົ່ວໂມງຕໍ່ປີ"
+
+msgctxt "view:company.company:"
+msgid "Work Time"
+msgstr "ເວລາວຽກ"
