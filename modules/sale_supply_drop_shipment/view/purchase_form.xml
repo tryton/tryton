@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='reference']" position="after">
+        <label name="customer"/>
+        <field name="customer"/>
+        <label name="delivery_address"/>
+        <field name="delivery_address"/>
+        <newline/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='info']/field[@name='invoice_method']"
+        position="after">
+        <label name="drop_location"/>
+        <field name="drop_location"/>
+    </xpath>
+    <xpath expr="//group[@id='links']" position="inside">
+        <link icon="tryton-shipment-in" name="sale_supply_drop_shipment.act_purchase_drop_shipment_form"/>
+    </xpath>
+</data>
