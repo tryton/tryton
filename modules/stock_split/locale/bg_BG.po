@@ -1,0 +1,61 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+#, fuzzy
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+#, fuzzy
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "Мерни единици"
+
+#, fuzzy
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Категория мер. ед."
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr ""
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr ""
+
+msgctxt "view:stock.move.split.start:"
+msgid "Split Move"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr ""
