@@ -1,0 +1,80 @@
+#!/usr/bin/env python
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+import sys
+import os
+import argparse
+
+DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
+    '..', '..', 'trytond')))
+if os.path.isdir(DIR):
+    sys.path.insert(0, os.path.dirname(DIR))
+
+from trytond import __version__
+from trytond import server
+
+
+def parse_commandline():
+    options = {}
+
+    parser = argparse.ArgumentParser(prog='trytond')
+
+    parser.add_argument('--version', action='version',
+        version='%(prog)s ' + __version__)
+    parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
+        default=os.environ.get('TRYTOND_CONFIG'), help="specify config file")
+    parser.add_argument('--dev', dest='dev', action='store_true',
+        help='enable development mode')
+    parser.add_argument("-v", "--verbose", action="store_true",
+        dest="verbose", help="enable verbose mode")
+
+    parser.add_argument("-d", "--database", dest="database_names", nargs='+',
+        default=[], metavar='DATABASE', help="specify the database name")
+    parser.add_argument("-u", "--update", dest="update", nargs='+', default=[],
+        metavar='MODULE', help="update a module")
+    parser.add_argument("--all", dest="update", action="append_const",
+        const="ir", help="update all installed modules")
+
+    parser.add_argument("--pidfile", dest="pidfile", metavar='FILE',
+        help="file where the server pid will be stored")
+    parser.add_argument("--logconf", dest="logconf", metavar='FILE',
+        help="logging configuration file (ConfigParser format)")
+    parser.add_argument("--cron", dest="cron", action="store_true",
+        help="enable cron")
+
+    parser.epilog = ('The first time a database is initialized admin '
+        'password is read from file defined by TRYTONPASSFILE '
+        'environment variable or interactively ask user.\n'
+        'The config file can be specified in the TRYTOND_CONFIG '
+        'environment variable.\n'
+        'The database URI can be specified in the TRYTOND_DATABASE_URI '
+        'environment variable.')
+
+    options = parser.parse_args()
+
+    if not options.database_names and options.update:
+        parser.error('Missing database option')
+    return options
+
+
+if '--profile' in sys.argv:
+    import profile
+    import pstats
+    import tempfile
+    sys.argv.remove('--profile')
+
+    options = parse_commandline()
+    statfile = tempfile.mkstemp(".stat", "trytond-")[1]
+    profile.run('server.TrytonServer(options).run()', statfile)
+    s = pstats.Stats(statfile)
+    s.sort_stats('cumulative').print_stats()
+    s.sort_stats('call').print_stats()
+    s.sort_stats('time').print_stats()
+    s.sort_stats('time')
+    s.print_callers()
+    s.print_callees()
+
+    os.remove(statfile)
+else:
+    options = parse_commandline()
+    server.TrytonServer(options).run()
