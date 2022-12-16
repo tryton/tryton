@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//notebook/page[@id='info']" position="inside">
+        <label name="sepa_mandate"/>
+        <field name="sepa_mandate"/>
+        <separator id="sepa_return_reason" string="Return Reason" colspan="4"/>
+        <label name="sepa_return_reason_code" string="Code"/>
+        <field name="sepa_return_reason_code"/>
+        <newline/>
+        <label name="sepa_return_reason_information" string="Information"/>
+        <field name="sepa_return_reason_information" yexpand="0" colspan="3"/>
+    </xpath>
+</data>

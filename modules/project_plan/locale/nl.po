@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Percentage"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Voorganger"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Opvolger"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Werkelijke einddatum"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Werkelijke eindtijd"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Werkelijke start"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Werkelijke starttijd"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Toekenningen"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Achteruitstelvertraging(Back Leveling Delay)"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Vaste einddatum"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Beperking eindtijd"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Vaste startdatum"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Vaste start tijd"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Looptijd"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "vroegste einddatum"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "vroegste eindtijd"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Vroegste startdatum"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "vroegst start tijd"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "ten laatste gedaan"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "ten laatste gedaan (tijd)"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "laatste start datum"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "laatste start tijd"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Leverings vertraging"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "voorgangers"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "opvolgers"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Tasks Leveling (match taken?)"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Toewijzing"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Voorganger - opvolger"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Toekenningen"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "planning"
