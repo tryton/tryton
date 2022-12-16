@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_association_rule_view_list">
+            <field name="model">sale.product.association.rule</field>
+            <field name="type">tree</field>
+            <field name="name">product_association_rule_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_association_rule_view_form">
+            <field name="model">sale.product.association.rule</field>
+            <field name="type">form</field>
+            <field name="name">product_association_rule_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_association_rule_form">
+            <field name="name">Sale Association Rules</field>
+            <field name="res_model">sale.product.association.rule</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_association_rule_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_association_rule_view_list"/>
+            <field name="act_window" ref="act_product_association_rule_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_association_rule_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_association_rule_view_form"/>
+            <field name="act_window" ref="act_product_association_rule_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_product"
+            action="act_product_association_rule_form"
+            sequence="50"
+            id="menu_product_association_rule_form"/>
+
+        <record model="ir.model.access" id="access_product_association_rule">
+            <field name="model" search="[('model', '=', 'sale.product.association.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.cron" id="cron_product_association_rule_compute">
+            <field name="method">sale.product.association.rule|compute</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">weeks</field>
+        </record>
+    </data>
+</tryton>

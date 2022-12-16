@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="sale"/>
+    <field name="sale" colspan="3"/>
+    <label name="date"/>
+    <field name="date"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <field name="lines" colspan="4"/>
+    <group col="2" colspan="2" id="states">
+        <label name="state"/>
+        <field name="state"/>
+    </group>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="validate_amendment"/>
+    </group>
+</form>

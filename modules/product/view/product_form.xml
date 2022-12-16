@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='code']" position="replace">
+        <group col="-1" name="code" string="">
+            <field name="prefix_code"/>
+            <field name="suffix_code"/>
+        </group>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']/label[@name='type']"
+        position="before">
+        <label name="template"/>
+        <field name="template" colspan="3"/>
+    </xpath>
+    <xpath expr="/form/notebook/page/field[@name='products']" position="replace">
+        <group id="description" colspan="2" col="1" yexpand="1" yfill="1">
+            <separator name="description"/>
+            <field name="description"/>
+        </group>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page name="identifiers" col="1">
+            <field name="identifiers" pre_validate="1"
+                view_ids="product.identifier_view_list_sequence"/>
+        </page>
+    </xpath>
+</data>
