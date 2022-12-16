@@ -1,0 +1,26 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,siret:"
+msgid "SIRET"
+msgstr "SIRET"
+
+msgctxt "field:party.address,siret_nic:"
+msgid "SIRET NIC"
+msgstr "SIRET NIC"
+
+msgctxt "field:party.party,siren:"
+msgid "SIREN"
+msgstr "SIREN"
+
+msgctxt "model:ir.message,text:msg_invalid_siren"
+msgid "The SIREN number \"%(number)s\" for party \"%(party)s\" is not valid."
+msgstr ""
+"Le numéro SIREN « %(number)s » pour le tiers « %(party)s » n'est pas valide."
+
+msgctxt "model:ir.message,text:msg_invalid_siret"
+msgid "The SIRET number \"%(number)s\" for address \"%(address)s\" is not valid."
+msgstr ""
+"Le numéro SIRET « %(number)s » pour l'adresse « %(address)s » n'est pas "
+"valide."
