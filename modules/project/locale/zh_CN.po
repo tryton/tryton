@@ -1,0 +1,284 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "子工作"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "说明"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "投入"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "父工作"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "联系地址"
+
+msgctxt "field:project.work,path:"
+msgid "Path"
+msgstr ""
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "进度"
+
+msgctxt "field:project.work,status:"
+msgid "Status"
+msgstr "状态"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "在时间表上显示"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "工期"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "时间表结束"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "时间表开始"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "时间表工作"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "总投入"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "总进度"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr "计数"
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr "默认"
+
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "姓名"
+
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "进度"
+
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "类型"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "这项工作的估计工作量."
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "这项工作的估计进度."
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "这项工作和其子工作的总投入时间."
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "这项工作和其子工作的估计总工作量."
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "这项工作和其子工作的估计总进度."
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr "选中可显示此状态下的工作数."
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr "选中后，将用作此种类型的默认状态."
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr "此状态要求的最小进度."
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr "可以使用此状态的工作类型."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "任务"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "项目"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "项目"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "任务"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "时间表明细"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "工作量"
+
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr "工作状态"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "工作量"
+
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr "所有"
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr "无法清除参与者 \"%(party)s\" ， 因为他们与公司 \"%(company)s\" 有未完成项目."
+
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
+msgstr "如果要完成工作 \"%(work)s\"，你必须完成它的所有子工作."
+
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr "如果要设置工作 \"%(work)s\" 的状态为 \"%(status)s\"，你必须将其进度推进到至少 %(progress)s."
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgstr "如果要重新开启工作 \"%(work)s\"，你首先必须重新开启它的父工作 \"%(parent)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Projects"
+msgstr "项目"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "项目"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "项目"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "任务"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "工作量"
+
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr "工作状态"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "工作量"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "工作量"
+
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr "工作状态"
+
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "完成"
+
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "开启"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "项目管理"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "项目"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "任务"
+
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "结束:"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "开始:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "时间表:"
