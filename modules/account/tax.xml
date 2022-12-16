@@ -1,0 +1,584 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Taxes" parent="menu_account_configuration"
+            id="menu_taxes"/>
+
+        <record model="ir.ui.view" id="tax_group_view_form">
+            <field name="model">account.tax.group</field>
+            <field name="type">form</field>
+            <field name="name">tax_group_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_group_view_tree">
+            <field name="model">account.tax.group</field>
+            <field name="type">tree</field>
+            <field name="name">tax_group_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_group_form">
+            <field name="name">Tax Groups</field>
+            <field name="res_model">account.tax.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_group_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_group_view_tree"/>
+            <field name="act_window" ref="act_tax_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_group_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_group_view_form"/>
+            <field name="act_window" ref="act_tax_group_form"/>
+        </record>
+        <menuitem parent="menu_taxes" action="act_tax_group_form"
+            id="menu_tax_group_form"/>
+
+        <record model="ir.model.access" id="access_tax_group">
+            <field name="model" search="[('model', '=', 'account.tax.group')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_group_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.group')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_template_view_form">
+            <field name="model">account.tax.code.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_template_view_tree">
+            <field name="model">account.tax.code.template</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">tax_code_template_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_code_template_tree">
+            <field name="name">Tax Codes Templates</field>
+            <field name="res_model">account.tax.code.template</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_template_view_tree"/>
+            <field name="act_window" ref="act_tax_code_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_code_template_view_form"/>
+            <field name="act_window" ref="act_tax_code_template_tree"/>
+        </record>
+        <menuitem parent="menu_templates" action="act_tax_code_template_tree"
+            id="menu_tax_code_template_tree" sequence="30"/>
+
+        <record model="ir.model.access" id="access_tax_code_template">
+            <field name="model" search="[('model', '=', 'account.tax.code.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_view_form">
+            <field name="model">account.tax.code</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_view_tree">
+            <field name="model">account.tax.code</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">tax_code_tree</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_view_list">
+            <field name="model">account.tax.code</field>
+            <field name="type">tree</field>
+            <field name="name">tax_code_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tax_code_tree">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_tree"/>
+            <field name="act_window" ref="act_tax_code_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_code_view_form"/>
+            <field name="act_window" ref="act_tax_code_tree"/>
+        </record>
+        <menuitem parent="menu_taxes" action="act_tax_code_tree"
+            id="menu_tax_code_tree"/>
+
+        <record model="ir.action.act_window" id="act_tax_code_list">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_list"/>
+            <field name="act_window" ref="act_tax_code_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_code_view_form"/>
+            <field name="act_window" ref="act_tax_code_list"/>
+        </record>
+        <menuitem parent="menu_tax_code_tree"
+            action="act_tax_code_list" id="menu_tax_code_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="tax_code_view_tree2">
+            <field name="model">account.tax.code</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">tax_code_tree2</field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_code_tree2">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_tree2"/>
+            <field name="act_window" ref="act_tax_code_tree2"/>
+        </record>
+        <record model="ir.ui.view" id="tax_code_open_chart_start_view_form">
+            <field name="model">account.tax.code.open_chart.start</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_open_chart_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="act_code_tax_open_chart">
+            <field name="name">Open Chart of Tax Codes</field>
+            <field name="wiz_name">account.tax.code.open_chart</field>
+        </record>
+        <menuitem parent="menu_charts" action="act_code_tax_open_chart"
+            icon="tryton-tree" id="menu_code_tax_open_chart"/>
+
+        <record model="ir.model.access" id="access_tax_code">
+            <field name="model" search="[('model', '=', 'account.tax.code')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_code_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.code')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_tax_code">
+            <field name="model" search="[('model', '=', 'account.tax.code')]" />
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_tax_code1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tax_code" />
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_line_template_view_form">
+            <field name="model">account.tax.code.line.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_line_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_line_template_view_list">
+            <field name="model">account.tax.code.line.template</field>
+            <field name="type">tree</field>
+            <field name="name">tax_code_line_template_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_code_line_template">
+            <field name="model" search="[('model', '=', 'account.tax.code.line.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_line_view_form">
+            <field name="model">account.tax.code.line</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_line_view_list">
+            <field name="model">account.tax.code.line</field>
+            <field name="type">tree</field>
+            <field name="name">tax_code_line_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_code_line">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_code_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_tax_code_line">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]" />
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_tax_code_line1">
+            <field name="domain"
+                eval="[('code.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tax_code_line" />
+        </record>
+
+        <record model="ir.ui.view" id="tax_template_view_form">
+            <field name="model">account.tax.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_template_view_list">
+            <field name="model">account.tax.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">tax_template_list</field>
+        </record>
+        <record model="ir.ui.view" id="tax_template_view_tree">
+            <field name="model">account.tax.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">tax_template_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tax_template_list">
+            <field name="name">Taxes Templates</field>
+            <field name="res_model">account.tax.template</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_template_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_template_view_tree"/>
+            <field name="act_window" ref="act_tax_template_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_template_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_template_view_form"/>
+            <field name="act_window" ref="act_tax_template_list"/>
+        </record>
+        <menuitem parent="menu_templates" action="act_tax_template_list"
+            id="menu_tax_template_list" sequence="40"/>
+
+        <record model="ir.model.access" id="access_tax_template">
+            <field name="model" search="[('model', '=', 'account.tax.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_view_form">
+            <field name="model">account.tax</field>
+            <field name="type">form</field>
+            <field name="name">tax_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_view_list">
+            <field name="model">account.tax</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">tax_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tax_list">
+            <field name="name">Taxes</field>
+            <field name="res_model">account.tax</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('company')), ('parent', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_view_list"/>
+            <field name="act_window" ref="act_tax_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_view_form"/>
+            <field name="act_window" ref="act_tax_list"/>
+        </record>
+        <menuitem parent="menu_taxes"
+            action="act_tax_list" id="menu_tax_list"
+            sequence="10"/>
+
+        <record model="ir.model.access" id="access_tax">
+            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_tax">
+            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_tax1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tax"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_tax_test">
+            <field name="name">Test Tax</field>
+            <field name="wiz_name">account.tax.test</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_tax_test_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.tax,-1</field>
+            <field name="action" ref="wizard_tax_test"/>
+        </record>
+        <menuitem parent="menu_taxes" action="wizard_tax_test"
+            id="menu_tax_test"/>
+
+        <record model="ir.ui.view" id="tax_test_view_form">
+            <field name="model">account.tax.test</field>
+            <field name="type">form</field>
+            <field name="name">tax_test_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_test_result_view_list">
+            <field name="model">account.tax.test.result</field>
+            <field name="type">tree</field>
+            <field name="name">tax_test_result_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_line_view_form">
+            <field name="model">account.tax.line</field>
+            <field name="type">form</field>
+            <field name="name">tax_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_line_view_tree">
+            <field name="model">account.tax.line</field>
+            <field name="type">tree</field>
+            <field name="name">tax_line_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_line_form">
+            <field name="name">Tax Lines</field>
+            <field name="res_model">account.tax.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_line_view_tree"/>
+            <field name="act_window" ref="act_tax_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_line_view_form"/>
+            <field name="act_window" ref="act_tax_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_tax_code">
+            <field name="name">Open Tax Code</field>
+            <field name="wiz_name">account.tax.open_code</field>
+            <field name="model">account.tax.code</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_tax_code_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.tax.code,-1</field>
+            <field name="action" ref="act_open_tax_code"/>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_line">
+            <field name="model" search="[('model', '=', 'account.tax.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_line_account">
+            <field name="model" search="[('model', '=', 'account.tax.line')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_template_view_form">
+            <field name="model">account.tax.rule.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_rule_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_template_view_tree">
+            <field name="model">account.tax.rule.template</field>
+            <field name="type">tree</field>
+            <field name="name">tax_rule_template_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tax_rule_template_form">
+            <field name="name">Tax Rule Templates</field>
+            <field name="res_model">account.tax.rule.template</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_rule_template_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_rule_template_view_tree"/>
+            <field name="act_window" ref="act_tax_rule_template_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_rule_template_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_rule_template_view_form"/>
+            <field name="act_window" ref="act_tax_rule_template_form"/>
+        </record>
+        <menuitem parent="menu_templates" action="act_tax_rule_template_form"
+            id="menu_tax_rule_template_form" sequence="50"/>
+
+        <record model="ir.model.access" id="access_tax_rule_template">
+            <field name="model" search="[('model', '=', 'account.tax.rule.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_view_form">
+            <field name="model">account.tax.rule</field>
+            <field name="type">form</field>
+            <field name="name">tax_rule_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_view_tree">
+            <field name="model">account.tax.rule</field>
+            <field name="type">tree</field>
+            <field name="name">tax_rule_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tax_rule_form">
+            <field name="name">Tax Rules</field>
+            <field name="res_model">account.tax.rule</field>
+            <field name="domain" eval="[('company', '=', Eval('company'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_rule_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_rule_view_tree"/>
+            <field name="act_window" ref="act_tax_rule_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_rule_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_rule_view_form"/>
+            <field name="act_window" ref="act_tax_rule_form"/>
+        </record>
+        <menuitem parent="menu_taxes" action="act_tax_rule_form"
+            id="menu_tax_rule_form"/>
+
+        <record model="ir.model.access" id="access_tax_rule">
+            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_rule_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_tax_rule">
+            <field name="model" search="[('model', '=', 'account.tax.rule')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_tax_rule1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tax_rule"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_template_view_form">
+            <field name="model">account.tax.rule.line.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_rule_line_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_template_view_tree">
+            <field name="model">account.tax.rule.line.template</field>
+            <field name="type">tree</field>
+            <field name="name">tax_rule_line_template_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_rule_line_template">
+            <field name="model" search="[('model', '=', 'account.tax.rule.line.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+
+        <record model="ir.ui.view" id="tax_rule_line_view_form">
+            <field name="model">account.tax.rule.line</field>
+            <field name="type">form</field>
+            <field name="name">tax_rule_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_tree">
+            <field name="model">account.tax.rule.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">tax_rule_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_tree_sequence">
+            <field name="model">account.tax.rule.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">tax_rule_line_tree_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_rule_line">
+            <field name="model" search="[('model', '=', 'account.tax.rule.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_rule_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.rule.line')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

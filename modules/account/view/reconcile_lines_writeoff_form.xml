@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="journal">
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="writeoff"/>
+    <field name="writeoff"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+</form>

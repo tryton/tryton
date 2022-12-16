@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree editable="top">
+    <field name="resource"/>
+    <field name="name"/>
+    <field name="summary"/>
+    <field name="last_user"/>
+    <field name="last_modification" widget="date"/>
+    <field name="last_modification" widget="time"
+        string="Last Modification Time"/>
+    <field name="type"/>
+    <field name="data"/>
+    <field name="link" widget="url"/>
+</tree>

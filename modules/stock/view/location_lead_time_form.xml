@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="warehouse_from"/>
+    <field name="warehouse_from"/>
+    <label name="warehouse_to"/>
+    <field name="warehouse_to"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="lead_time"/>
+    <field name="lead_time"/>
+</form>

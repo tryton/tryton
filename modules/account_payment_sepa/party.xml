@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_mandate_form2">
+            <field name="name">Mandates</field>
+            <field name="res_model">account.payment.sepa.mandate</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_mandate_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="mandate_view_list"/>
+            <field name="act_window" ref="act_mandate_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_mandate_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="mandate_view_form"/>
+            <field name="act_window" ref="act_mandate_form2"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_project_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_mandate_form2"/>
+        </record>
+    </data>
+</tryton>
