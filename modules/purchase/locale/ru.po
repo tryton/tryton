@@ -1,0 +1,1181 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,purchase_exception_state:"
+msgid "Exception State"
+msgstr "Состояние ситуации"
+
+msgctxt "field:account.invoice,purchases:"
+msgid "Purchases"
+msgstr "Покупки"
+
+msgctxt "field:party.party,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+msgctxt "field:party.party,customer_codes:"
+msgid "Customer Codes"
+msgstr ""
+
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,company:"
+msgid "Company"
+msgstr "Организация"
+
+msgctxt "field:party.party.customer_code,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,party:"
+msgid "Party"
+msgstr "Контрагент"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Поставщики"
+
+#, fuzzy
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Для покупки"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Строка покупки"
+
+#, fuzzy
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Покупка, ед. измерения"
+
+msgctxt "field:product.template,product_suppliers:"
+msgid "Suppliers"
+msgstr "Поставщики"
+
+msgctxt "field:product.template,purchasable:"
+msgid "Purchasable"
+msgstr "Для покупки"
+
+msgctxt "field:product.template,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Покупка, ед. измерения"
+
+msgctxt "field:purchase.configuration,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Метод инвойса"
+
+msgctxt "field:purchase.configuration,purchase_process_after:"
+msgid "Process Purchase after"
+msgstr ""
+
+msgctxt "field:purchase.configuration,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Метод инвойса"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Организация"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr ""
+
+msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "Домен инвойсов"
+
+msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "Создать заново инвойсы"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "Домен проводок"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "Создать заново проводки"
+
+#, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:purchase.line,amount:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:purchase.line,delivery_date:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.line,delivery_date_store:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
+
+msgctxt "field:purchase.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:purchase.line,from_location:"
+msgid "From Location"
+msgstr "Из местоположения"
+
+msgctxt "field:purchase.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Строки инвойса"
+
+msgctxt "field:purchase.line,move_done:"
+msgid "Moves Done"
+msgstr "Перемещения выполнены"
+
+msgctxt "field:purchase.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Особые ситуации перемещения"
+
+msgctxt "field:purchase.line,moves:"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:purchase.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Игнорированные проводки"
+
+msgctxt "field:purchase.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Созданные заново проводки"
+
+msgctxt "field:purchase.line,note:"
+msgid "Note"
+msgstr "Комментарий"
+
+msgctxt "field:purchase.line,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:purchase.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr ""
+
+msgctxt "field:purchase.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Категория ед. измерения продукции"
+
+msgctxt "field:purchase.line,purchase:"
+msgid "Purchase"
+msgstr "Покупки"
+
+#, fuzzy
+msgctxt "field:purchase.line,purchase_state:"
+msgid "Purchase State"
+msgstr "Дата покупки"
+
+msgctxt "field:purchase.line,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:purchase.line,taxes:"
+msgid "Taxes"
+msgstr "Налоги"
+
+msgctxt "field:purchase.line,to_location:"
+msgid "To Location"
+msgstr "В местоположение"
+
+msgctxt "field:purchase.line,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:purchase.line,unit:"
+msgid "Unit"
+msgstr "Единица измерения"
+
+msgctxt "field:purchase.line,unit_price:"
+msgid "Unit Price"
+msgstr "Цена за единицу"
+
+msgctxt "field:purchase.line-account.tax,line:"
+msgid "Purchase Line"
+msgstr "Строка покупки"
+
+msgctxt "field:purchase.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:purchase.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Перемещение"
+
+msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
+msgid "Purchase Line"
+msgstr "Строка покупки"
+
+msgctxt "field:purchase.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Перемещение"
+
+msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
+msgid "Purchase Line"
+msgstr "Строка покупки"
+
+msgctxt "field:purchase.product_supplier,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:purchase.product_supplier,company:"
+msgid "Company"
+msgstr "Организация"
+
+msgctxt "field:purchase.product_supplier,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:purchase.product_supplier,party:"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "field:purchase.product_supplier,prices:"
+msgid "Prices"
+msgstr "Цены"
+
+msgctxt "field:purchase.product_supplier,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier,template:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:purchase.product_supplier.price,product_supplier:"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "field:purchase.product_supplier.price,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:purchase.product_supplier.price,unit_price:"
+msgid "Unit Price"
+msgstr "Цена за единицу"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
+
+msgctxt "field:purchase.purchase,comment:"
+msgid "Comment"
+msgstr "Комментарии"
+
+msgctxt "field:purchase.purchase,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmed"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:purchase.purchase,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
+
+msgctxt "field:purchase.purchase,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:purchase.purchase,invoice_address:"
+msgid "Invoice Address"
+msgstr "Адрес для инвойса"
+
+msgctxt "field:purchase.purchase,invoice_method:"
+msgid "Invoice Method"
+msgstr "Метод инвойса"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Состояние инвойса"
+
+msgctxt "field:purchase.purchase,invoice_state:"
+msgid "Invoice State"
+msgstr "Состояние инвойса"
+
+msgctxt "field:purchase.purchase,invoices:"
+msgid "Invoices"
+msgstr "Инвойсы"
+
+msgctxt "field:purchase.purchase,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Игнорированные инвойсы"
+
+msgctxt "field:purchase.purchase,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Созданные заново инвойсы"
+
+msgctxt "field:purchase.purchase,lines:"
+msgid "Lines"
+msgstr "Строки"
+
+msgctxt "field:purchase.purchase,moves:"
+msgid "Moves"
+msgstr "Перемещения"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr "Номер"
+
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:purchase.purchase,party:"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "field:purchase.purchase,party_lang:"
+msgid "Party Language"
+msgstr "Язык контрагента"
+
+msgctxt "field:purchase.purchase,payment_term:"
+msgid "Payment Term"
+msgstr "Правило оплаты"
+
+msgctxt "field:purchase.purchase,purchase_date:"
+msgid "Purchase Date"
+msgstr "Дата покупки"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
+
+msgctxt "field:purchase.purchase,reference:"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:purchase.purchase,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Возврат"
+
+msgctxt "field:purchase.purchase,shipment_state:"
+msgid "Shipment State"
+msgstr "Состояние доставки"
+
+msgctxt "field:purchase.purchase,shipments:"
+msgid "Shipments"
+msgstr "Доставка"
+
+msgctxt "field:purchase.purchase,state:"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:purchase.purchase,tax_amount:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:purchase.purchase,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Облагаемые налогом"
+
+msgctxt "field:purchase.purchase,total_amount:"
+msgid "Total"
+msgstr "Итого"
+
+msgctxt "field:purchase.purchase,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Итого"
+
+msgctxt "field:purchase.purchase,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Необлагаемые"
+
+msgctxt "field:purchase.purchase,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Необлагаемые налогом"
+
+msgctxt "field:purchase.purchase,warehouse:"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Инвойс"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Инвойс"
+
+msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr ""
+
+msgctxt "field:stock.move,purchase:"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "field:stock.move,purchase_exception_state:"
+msgid "Exception State"
+msgstr "Состояние ситуации"
+
+msgctxt "field:stock.move,supplier:"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "help:party.party,customer_code:"
+msgid ""
+"The code the party as supplier has assigned to the company as customer."
+msgstr ""
+
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:purchase.configuration,purchase_process_after:"
+msgid ""
+"The grace period during which confirmed purchase can still be reset to draft.\n"
+"Applied only if a worker queue is activated."
+msgstr ""
+
+msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+"Выбранные инвойсы будут созданы заново. Остальные будут проигнорированы."
+
+msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
+msgid "The selected moves will be recreated. The other ones will be ignored."
+msgstr ""
+"Выбранные перемещения будут созданы заново. Остальные будут проигнорированы."
+
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:purchase.product_supplier.price,quantity:"
+msgid "Minimal quantity."
+msgstr "Минимальное кол-во"
+
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr ""
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Invoices"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_supplier"
+msgid "Parties associated to Purchases"
+msgstr "Parties associated to Purchases"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_supplier_form"
+msgid "Suppliers"
+msgstr "Поставщики"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_supplier_price_form"
+msgid "Prices"
+msgstr "Цены"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_configuration_form"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_form"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_form2"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Покупки"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "Returns"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "Shipments"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "Handle Invoice Exception"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Покупки"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "Handle Shipment Exception"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Confirmed"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "Особая ситуация"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Обслуживание"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
+msgid "Quotation"
+msgstr "Quotation"
+
+msgctxt "model:ir.message,text:msg_change_purchase_uom"
+msgid ""
+"You are trying to change the purchase UoM on which the purchase prices are "
+"based."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending purchases with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
+msgid "To delete purchase \"%(purchase)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a purchase."
+msgstr ""
+"Вы не можете сбросить в черновик перемещение \"%s\" так как оно создано из "
+"покупки."
+
+msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft purchase "
+"\"%(purchase)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
+msgid "A tax can be added only once to a purchase line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
+msgid ""
+"To invoice purchase \"%(purchase)s\" you must configure a default account "
+"expense."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
+msgid ""
+"To modify the header of purchase \"%(purchase)s\", it must be in draft "
+"state."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"purchase."
+msgstr ""
+"Вы не можете сбросить в черновик перемещение \"%s\" так как оно создано из "
+"покупки."
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
+msgid ""
+"To invoice purchase \"%(purchase)s\" you must define an account expense for "
+"product \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
+msgid ""
+"To process purchase \"%(purchase)s\" you must set a supplier location on "
+"party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
+msgid ""
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:purchase_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:purchase_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:purchase_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Handle Invoice Exception"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Handle Shipment Exception"
+
+msgctxt "model:ir.model.button,string:purchase_modify_header_button"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+msgctxt "model:ir.model.button,string:purchase_process_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:purchase_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product_supplier"
+msgid "Suppliers"
+msgstr "Поставщики"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase"
+msgid "Purchases"
+msgstr "Покупки"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase_form"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_supplier"
+msgid "Associated to Purchases"
+msgstr "Parties associated to Purchases"
+
+msgctxt "model:party.party.customer_code,name:"
+msgid "Party Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Поставщик"
+
+msgctxt "model:purchase.configuration,name:"
+msgid "Purchase Configuration"
+msgstr "Конфигурация покупок"
+
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr ""
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr ""
+
+msgctxt "model:purchase.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "Обработка особых ситуаций инвойса"
+
+msgctxt "model:purchase.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "Обработка особых ситуаций доставки"
+
+msgctxt "model:purchase.line,name:"
+msgid "Purchase Line"
+msgstr "Строка покупки"
+
+msgctxt "model:purchase.line-account.tax,name:"
+msgid "Purchase Line - Tax"
+msgstr "Строка покупки - Налоги"
+
+msgctxt "model:purchase.line-ignored-stock.move,name:"
+msgid "Purchase Line - Ignored Move"
+msgstr "Строка покупки - Игнорированные перемещения"
+
+msgctxt "model:purchase.line-recreated-stock.move,name:"
+msgid "Purchase Line - Ignored Move"
+msgstr "Строка покупки - Игнорированные перемещения"
+
+msgctxt "model:purchase.product_supplier,name:"
+msgid "Product Supplier"
+msgstr "Поставщик продукции"
+
+msgctxt "model:purchase.product_supplier.price,name:"
+msgid "Product Supplier Price"
+msgstr "Цена поставщика продукции"
+
+msgctxt "model:purchase.purchase,name:"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
+msgid "Purchase - Ignored Invoice"
+msgstr "Покупки - Игнорированные инвойсы"
+
+msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
+msgid "Purchase - Recreated Invoice"
+msgstr "Покупки - Созданные заново инвойсы"
+
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Покупки"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_purchase_admin"
+msgid "Purchase Administrator"
+msgstr "Purchase Administrator"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:purchase.purchase:"
+msgid "Amount"
+msgstr "Сумма"
+
+msgctxt "report:purchase.purchase:"
+msgid "Customer Code:"
+msgstr ""
+
+msgctxt "report:purchase.purchase:"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr ""
+
+msgctxt "report:purchase.purchase:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "report:purchase.purchase:"
+msgid "Description:"
+msgstr "Описание:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Draft Purchase Order"
+msgstr "Черновой заказ на покупку"
+
+msgctxt "report:purchase.purchase:"
+msgid "Purchase Order N°:"
+msgstr "Заказ на покупку №:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Ссылка"
+
+msgctxt "report:purchase.purchase:"
+msgid "Request for Quotation N°:"
+msgstr "Запрос на Котировку №:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Taxes"
+msgstr "Налоги"
+
+msgctxt "report:purchase.purchase:"
+msgid "Taxes:"
+msgstr "Налоги:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Total (excl. taxes):"
+msgstr "Итого (без налогов):"
+
+msgctxt "report:purchase.purchase:"
+msgid "Total:"
+msgstr "Итого:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Unit Price"
+msgstr "Цена за единицу"
+
+msgctxt "selection:account.invoice,purchase_exception_state:"
+msgid "Ignored"
+msgstr "Игнорируется"
+
+msgctxt "selection:account.invoice,purchase_exception_state:"
+msgid "Recreated"
+msgstr "Создано заново"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Comment"
+msgstr "Комментарии"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Line"
+msgstr "Строка"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Subtotal"
+msgstr "Подитог"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Title"
+msgstr "Заголовок"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Order"
+msgstr "Основанные на заказе"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Shipment"
+msgstr "Основанные на доставке"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Manual"
+msgstr "Ручной"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Exception"
+msgstr "Особая ситуация"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "None"
+msgstr "Отсутствует"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Paid"
+msgstr "Оплачен"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Exception"
+msgstr "Особая ситуация"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "None"
+msgstr "Отсутствует"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Waiting"
+msgstr "Ожидание"
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,state:"
+msgid "Cancelled"
+msgstr "Отменено"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Confirmed"
+msgstr "Подтвержденно"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Draft"
+msgstr "Черновик"
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,state:"
+msgid "Processing"
+msgstr "Обслуживание"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Quotation"
+msgstr "Котировка"
+
+msgctxt "selection:stock.move,purchase_exception_state:"
+msgid "Ignored"
+msgstr "Игнорируется"
+
+msgctxt "selection:stock.move,purchase_exception_state:"
+msgid "Recreated"
+msgstr "Создано заново"
+
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "view:product.template:"
+msgid "Suppliers"
+msgstr "Поставщики"
+
+#, fuzzy
+msgctxt "view:purchase.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "Выберите инвойсы для пересоздания"
+
+#, fuzzy
+msgctxt "view:purchase.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "Выберите проводки для пересоздания"
+
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Delivery Date:"
+msgstr "Дата доставки"
+
+msgctxt "view:purchase.line:"
+msgid "General"
+msgstr "Основной"
+
+msgctxt "view:purchase.line:"
+msgid "Notes"
+msgstr "Комментарии"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Налоги"
+
+msgctxt "view:purchase.purchase:"
+msgid "Other Info"
+msgstr "Другая информация"
+
+msgctxt "view:purchase.purchase:"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return these/this purchase(s)?"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "Ок"
+
+msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "Ок"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:purchase.modify_header,start,modify:"
+msgid "Modify"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Returns"
