@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_shopify_identifier">
+            <field name="text">Shopify Identifier</field>
+        </record>
+        <record model="ir.message" id="msg_identifier_record_web_shop_unique">
+            <field name="text">The record cannot have more than one Shopify identifier per web shop.</field>
+        </record>
+        <record model="ir.message" id="msg_location_id_unique">
+            <field name="text">Each Shopify location can only be linked to one warehouse.</field>
+        </record>
+        <record model="ir.message" id="msg_shopify_identifiers">
+            <field name="text">Shopify Identifiers</field>
+        </record>
+        <record model="ir.message" id="msg_identifier_sale_web_shop_unique">
+            <field name="text">A Shopify order can only be imported as a sale once.</field>
+        </record>
+        <record model="ir.message" id="msg_shop_currency_different">
+            <field name="text">To update products on the shop "%(shop)s", you must set the currency to "%(shopify_currency)s" instead of "%(shop_currency)s".</field>
+        </record>
+        <record model="ir.message" id="msg_shop_locale_different">
+            <field name="text">To update products on the shop "%(shop)s", you must set the language to "%(shopify_primary_locale)s" instead of "%(shop_language)s".</field>
+        </record>
+        <record model="ir.message" id="msg_product_shopify_uom_digits">
+            <field name="text">To update product "%(product)s" on Shopify, you must use an UOM without digits.</field>
+        </record>
+        <record model="ir.message" id="msg_product_change_template">
+            <field name="text">To change the template of product "%(product)s" you must unpublish it from the Shopify web shops.</field>
+        </record>
+        <record model="ir.message" id="msg_custom_collection_fail">
+            <field name="text">Failed to save custom collection "%(category)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_product_fail">
+            <field name="text">Failed to save product "%(template)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_product_image_fail">
+            <field name="text">Failed to save image "%(image)s" for product "%(template)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_variant_fail">
+            <field name="text">Failed to save variant "%(product)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_inventory_item_fail">
+            <field name="text">Failed to save inventory item for product "%(product)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_fulfillment_fail">
+            <field name="text">Failed to save fulfillment for sale "%(sale)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_refund_fail">
+            <field name="text">Failed to save refund for sale "%(sale)s" with error:
+%(error)s</field>
+        </record>
+        <record model="ir.message" id="msg_identifier_payment_unique">
+            <field name="text">A shopify transaction can only be imported as payment once.</field>
+        </record>
+        <record model="ir.message" id="msg_identifier_shipment_sale_unique">
+            <field name="text">The shipment can not have more than one Shopify identifier per sale.</field>
+        </record>
+        <record model="ir.message" id="msg_sale_line_without_product">
+            <field name="text">To process the sale "%(sale)s" you must set a product on the line "%(line)s".</field>
+        </record>
+    </data>
+</tryton>
