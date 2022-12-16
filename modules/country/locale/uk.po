@@ -1,0 +1,1024 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr "Трилітерний код"
+
+msgctxt "field:country.country,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr "Числовий код"
+
+msgctxt "field:country.country,flag:"
+msgid "Flag"
+msgstr ""
+
+msgctxt "field:country.country,members:"
+msgid "Members"
+msgstr ""
+
+msgctxt "field:country.country,name:"
+msgid "Name"
+msgstr "Назва"
+
+msgctxt "field:country.country,organizations:"
+msgid "Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.country,region:"
+msgid "Region"
+msgstr "Регіон"
+
+msgctxt "field:country.country,subdivisions:"
+msgid "Subdivisions"
+msgstr "Адмін.поділи"
+
+#, fuzzy
+msgctxt "field:country.organization,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:country.organization,countries:"
+msgid "Countries"
+msgstr "Країни"
+
+msgctxt "field:country.organization,members:"
+msgid "Members"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.organization,name:"
+msgid "Name"
+msgstr "Назва"
+
+msgctxt "field:country.organization.member,active:"
+msgid "Active"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.organization.member,country:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "field:country.organization.member,from_date:"
+msgid "From Date"
+msgstr ""
+
+msgctxt "field:country.organization.member,organization:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "field:country.organization.member,to_date:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Місто"
+
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr "Поштовий індекс"
+
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Адмін.поділ"
+
+#, fuzzy
+msgctxt "field:country.region,code_numeric:"
+msgid "Numeric Code"
+msgstr "Числовий код"
+
+#, fuzzy
+msgctxt "field:country.region,countries:"
+msgid "Countries"
+msgstr "Країни"
+
+#, fuzzy
+msgctxt "field:country.region,name:"
+msgid "Name"
+msgstr "Назва"
+
+#, fuzzy
+msgctxt "field:country.region,parent:"
+msgid "Parent"
+msgstr "Батько"
+
+#, fuzzy
+msgctxt "field:country.region,subregions:"
+msgid "Subregions"
+msgstr "Адмін.поділи"
+
+msgctxt "field:country.subdivision,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:country.subdivision,country:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "field:country.subdivision,flag:"
+msgid "Flag"
+msgstr ""
+
+msgctxt "field:country.subdivision,name:"
+msgid "Name"
+msgstr "Назва"
+
+msgctxt "field:country.subdivision,parent:"
+msgid "Parent"
+msgstr "Батько"
+
+msgctxt "field:country.subdivision,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "help:country.country,code3:"
+msgid "The 3 chars ISO country code."
+msgstr "Трилітерний код країни ISO."
+
+msgctxt "help:country.country,code:"
+msgid "The 2 chars ISO country code."
+msgstr "Дволітерний код країни ISO."
+
+msgctxt "help:country.country,code_numeric:"
+msgid "The ISO numeric country code."
+msgstr "Числовий код країни ISO."
+
+msgctxt "help:country.country,name:"
+msgid "The main identifier of the country."
+msgstr "Основний ідентифікатор країни."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr "Місто, пов'язане з поштовим індексом."
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr "Країна, яка містить поштовий індекс."
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "Адмін.поділ, де знаходиться поштовий індекс."
+
+msgctxt "help:country.region,code_numeric:"
+msgid "UN M49 region code."
+msgstr ""
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr "Код ISO адмін.поділу."
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr "Країна, де знаходиться цей адмін.поділ."
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr "Основний ідентифікатор адмін.поділу."
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr "Додати адмін.поділ до батька."
+
+msgctxt "model:country.country,name:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "model:country.organization,name:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_amu"
+msgid "Arab Maghreb Union"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_apec"
+msgid "Asia-Pacific Economic Cooperation"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_asean"
+msgid "Association of Southeast Asian Nations"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_benelux"
+msgid "Benelux Union"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_can"
+msgid "Andean Community"
+msgstr "Міська громада"
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_caricom"
+msgid "Caribbean Community"
+msgstr "Міська громада"
+
+msgctxt "model:country.organization,name:organization_cemac"
+msgid "Economic and Monetary Community of Central Africa"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_cen-sad"
+msgid "Community of Sahel–Saharan States"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_comesa"
+msgid "Common Market for Eastern and Southern Africa"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_eac"
+msgid "East African Community"
+msgstr "Міська громада"
+
+msgctxt "model:country.organization,name:organization_eccas"
+msgid "Economic Community of Central African States"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_ecowas"
+msgid "Economic Community of West African States"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_eu"
+msgid "European Union"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_gcc"
+msgid "Cooperation Council for the Arab States of the Gulf"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_igad"
+msgid "Intergovernmental Authority on Development"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_mercosur"
+msgid "Southern Common Market"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_nafta"
+msgid "North American Free Trade Agreement"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_sadc"
+msgid "Southern African Development Community"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_safta"
+msgid "South Asian Free Trade Area"
+msgstr ""
+
+msgctxt "model:country.organization.member,name:"
+msgid "Organization Member"
+msgstr ""
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr "Поштовий індекс"
+
+#, fuzzy
+msgctxt "model:country.region,name:"
+msgid "Region"
+msgstr "Регіон"
+
+msgctxt "model:country.region,name:region_africa"
+msgid "Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_americas"
+msgid "Americas"
+msgstr ""
+
+msgctxt "model:country.region,name:region_antarctica"
+msgid "Antarctica"
+msgstr ""
+
+msgctxt "model:country.region,name:region_asia"
+msgid "Asia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_australia_new_zealand"
+msgid "Australia and New Zealand"
+msgstr ""
+
+msgctxt "model:country.region,name:region_caribbean"
+msgid "Caribbean"
+msgstr ""
+
+msgctxt "model:country.region,name:region_central_america"
+msgid "Central America"
+msgstr ""
+
+msgctxt "model:country.region,name:region_central_asia"
+msgid "Central Asia"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:region_channel_islands"
+msgid "Channel Islands"
+msgstr "Ланцюг (островів)"
+
+msgctxt "model:country.region,name:region_eastern_africa"
+msgid "Eastern Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_eastern_asia"
+msgid "Eastern Asia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_eastern_europe"
+msgid "Eastern Europe"
+msgstr ""
+
+msgctxt "model:country.region,name:region_europe"
+msgid "Europe"
+msgstr ""
+
+msgctxt "model:country.region,name:region_latin_america_caribbean"
+msgid "Latin America and the Caribbean"
+msgstr ""
+
+msgctxt "model:country.region,name:region_melanesia"
+msgid "Melanesia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_micronesia"
+msgid "Micronesia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_middle_africa"
+msgid "Middle Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_north_america"
+msgid "North America"
+msgstr ""
+
+msgctxt "model:country.region,name:region_northern_africa"
+msgid "Northern Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_northern_america"
+msgid "Northern America"
+msgstr ""
+
+msgctxt "model:country.region,name:region_northern_europe"
+msgid "Northern Europe"
+msgstr ""
+
+msgctxt "model:country.region,name:region_oceania"
+msgid "Oceania"
+msgstr ""
+
+msgctxt "model:country.region,name:region_polynesia"
+msgid "Polynesia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_south-eastern_asia"
+msgid "South-eastern Asia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_south_america"
+msgid "South America"
+msgstr ""
+
+msgctxt "model:country.region,name:region_southern_africa"
+msgid "Southern Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_southern_asia"
+msgid "Southern Asia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_southern_europe"
+msgid "Southern Europe"
+msgstr ""
+
+msgctxt "model:country.region,name:region_sub-saharan_africa"
+msgid "Sub-Saharan Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_western_africa"
+msgid "Western Africa"
+msgstr ""
+
+msgctxt "model:country.region,name:region_western_asia"
+msgid "Western Asia"
+msgstr ""
+
+msgctxt "model:country.region,name:region_western_europe"
+msgid "Western Europe"
+msgstr ""
+
+msgctxt "model:country.region,name:region_world"
+msgid "World"
+msgstr ""
+
+msgctxt "model:country.subdivision,name:"
+msgid "Subdivision"
+msgstr "Адмін.поділ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_country_by_region"
+msgid "Countries by Region"
+msgstr "Країни"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "Країни"
+
+msgctxt "model:ir.action,name:act_organization_form"
+msgid "Organizations"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr "Поштові індекси"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_region_form"
+msgid "Regions"
+msgstr "Регіон"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_region_tree"
+msgid "Areas"
+msgstr "Область"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_country"
+msgid "Countries"
+msgstr "Країни"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "Країни"
+
+msgctxt "model:ir.ui.menu,name:menu_organization_form"
+msgid "Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_region_form"
+msgid "Regions"
+msgstr "Регіон"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_region_tree"
+msgid "Areas"
+msgstr "Область"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administration"
+msgstr "Адміністрація"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Region"
+msgstr "Адміністративний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Territory"
+msgstr "Адміністративна територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative area"
+msgstr "Адміністративна область"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative atoll"
+msgstr "Адміністративний атол"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Адміністративна дільниця"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Arctic Region"
+msgstr "Арктичний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Area"
+msgstr "Область"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Atoll"
+msgstr "Атол"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous City"
+msgstr "Автономне місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Commune"
+msgstr "Автономна комуна"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous District"
+msgstr "Автономний округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Province"
+msgstr "Автономна провінція"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Region"
+msgstr "Автономний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Автономне місто в Північній Африці"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous communities"
+msgstr "Автономні громади"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous community"
+msgstr "Автономна громада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous island"
+msgstr "Автономний острів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous monastic state"
+msgstr "Автономний чернечий штат"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous municipality"
+msgstr "Автономний муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous republic"
+msgstr "Автономна республіка"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous sector"
+msgstr "Автономний сектор"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territorial unit"
+msgstr "Автономна територіальна одиниця"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territory"
+msgstr "Автономна територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Borough"
+msgstr "Район"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Canton"
+msgstr "Кантон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Столиця"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital District"
+msgstr "Столичний округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Metropolitan City"
+msgstr "Столичне місто метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Territory"
+msgstr "Столична територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital city"
+msgstr "Столичне місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Ланцюг (островів)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chains (of islands)"
+msgstr "Ланцюги (островів)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City"
+msgstr "Місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City corporation"
+msgstr "Міська корпорація"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Муніципалітет міста"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City with county rights"
+msgstr "Місто з правами повіту"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Commune"
+msgstr "Комуна"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Constitutional province"
+msgstr "Конституційна провінція"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Council area"
+msgstr "Територія ради"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Country"
+msgstr "Країна"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "County"
+msgstr "Повіт"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr "Децентралізований регіональний суб'єкт"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Department"
+msgstr "Департамент"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Dependency"
+msgstr "Залежність"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Development region"
+msgstr "Регіон розвитку"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District"
+msgstr "Округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District council area"
+msgstr "Територія окружної ради"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Окружний муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr "Округ з особливим статусом"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr "Округи республіканського управління"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Division"
+msgstr "Поділ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic Prefecture"
+msgstr "Економічна префектура"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic region"
+msgstr "Економічний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Emirate"
+msgstr "Емірат"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Entity"
+msgstr "Суб'єкт"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Dependency"
+msgstr "Федеральна залежність"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal District"
+msgstr "Федеральний округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territories"
+msgstr "Федеральні території"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Федеральна територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Територія федеральної столиці"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr "Вільний муніципальний консорціум"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical entity"
+msgstr "Географічний суб'єкт"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical region"
+msgstr "Географічний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical unit"
+msgstr "Географічна одиниця"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Governorate"
+msgstr "Губернаторство"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr "Група островів (20 населених островів)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Included for completeness"
+msgstr "Включено для повноти"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Indigenous region"
+msgstr "Регіон корінних народів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island"
+msgstr "Острів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island council"
+msgstr "Рада острова"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island group"
+msgstr "Група островів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Острови, групи островів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Земля"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Local council"
+msgstr "Місцева рада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "London borough"
+msgstr "Район Лондона"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Адміністрація метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan cities"
+msgstr "Міста метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Місто метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr "Громада метрополії з особливим статусом"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan department"
+msgstr "Департамент метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan district"
+msgstr "Округ метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan region"
+msgstr "Регіон метрополії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipalities"
+msgstr "Муніципалітети"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipality"
+msgstr "Муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Nation"
+msgstr "Край"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Oblast"
+msgstr "Область_"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Outlying area"
+msgstr "Віддалена територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "Закордонна громада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr "Закордонна громада з особливим статусом"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas department"
+msgstr "Закордонний департамент"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region"
+msgstr "Закордонний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region/department"
+msgstr "Закордонний регіон/департамент"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territorial collectivity"
+msgstr "Закордонна територіальна громада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Закордонна територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Пакистанська територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Parish"
+msgstr "Парафія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "Шабія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularates"
+msgstr "Шабії"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Prefecture"
+msgstr "Префектура"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Principality"
+msgstr "Князівство"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Province"
+msgstr "Провінція"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Quarter"
+msgstr "Квартал"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rayon"
+msgstr "Район_"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Region"
+msgstr "Регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional council"
+msgstr "Регіональна рада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Регіональний штат"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republic"
+msgstr "Республіка"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republican City"
+msgstr "Республіканське місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Сільський муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Self-governed part"
+msgstr "Самоврядна частина"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special District"
+msgstr "Особливий округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Municipality"
+msgstr "Особливий муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Region"
+msgstr "Особливий регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Особливе адміністративне місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative region"
+msgstr "Особливий адміністративний регіон"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special city"
+msgstr "Особливе місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special island authority"
+msgstr "Особлива влада островів"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Особливе самоврядне місто"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr "Особлива самоврядна провінція"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special zone"
+msgstr "Особлива зона"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "State"
+msgstr "Штат"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territorial unit"
+msgstr "Територіальна одиниця"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territory"
+msgstr "Територія"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Містечко"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town council"
+msgstr "Міська рада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Two-tier county"
+msgstr "Дворівневий повіт"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Union territory"
+msgstr "Територія Союзу"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority"
+msgstr "Унітарна влада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (england)"
+msgstr "Унітарна влада (Англія)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (wales)"
+msgstr "Унітарна влада (Уельс)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Міська громада"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Міський муніципалітет"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr "Воєводство"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Виборчий округ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "zone"
+msgstr "зона"

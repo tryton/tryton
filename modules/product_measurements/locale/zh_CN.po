@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:product.product,height_uom:"
+msgid "Height UOM"
+msgstr ""
+
+msgctxt "field:product.product,length:"
+msgid "Length"
+msgstr ""
+
+msgctxt "field:product.product,length_uom:"
+msgid "Length UOM"
+msgstr ""
+
+msgctxt "field:product.product,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:product.product,volume_uom:"
+msgid "Volume UOM"
+msgstr ""
+
+msgctxt "field:product.product,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:product.product,weight_uom:"
+msgid "Weight UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,width:"
+msgid "Width"
+msgstr "宽"
+
+#, fuzzy
+msgctxt "field:product.product,width_uom:"
+msgid "Width UOM"
+msgstr "宽"
+
+msgctxt "field:product.template,height:"
+msgid "Height"
+msgstr ""
+
+msgctxt "field:product.template,height_uom:"
+msgid "Height UOM"
+msgstr ""
+
+msgctxt "field:product.template,length:"
+msgid "Length"
+msgstr ""
+
+msgctxt "field:product.template,length_uom:"
+msgid "Length UOM"
+msgstr ""
+
+msgctxt "field:product.template,volume:"
+msgid "Volume"
+msgstr ""
+
+msgctxt "field:product.template,volume_uom:"
+msgid "Volume UOM"
+msgstr ""
+
+msgctxt "field:product.template,weight:"
+msgid "Weight"
+msgstr ""
+
+msgctxt "field:product.template,weight_uom:"
+msgid "Weight UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template,width:"
+msgid "Width"
+msgstr "宽"
+
+#, fuzzy
+msgctxt "field:product.template,width_uom:"
+msgid "Width UOM"
+msgstr "宽"
+
+msgctxt "help:product.product,height:"
+msgid "Height for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.product,length:"
+msgid "Length for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.product,volume:"
+msgid "Volume for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.product,weight:"
+msgid "Weight for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.product,width:"
+msgid "Width for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.template,height:"
+msgid "Height for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.template,length:"
+msgid "Length for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.template,volume:"
+msgid "Volume for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.template,weight:"
+msgid "Weight for 1 default UOM."
+msgstr ""
+
+msgctxt "help:product.template,width:"
+msgid "Width for 1 default UOM."
+msgstr ""
+
+msgctxt "view:product.template:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:product.template:"
+msgid "Measurements for 1 default UOM."
+msgstr ""
