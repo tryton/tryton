@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_scenario_invalid_domain">
+            <field name="text">Invalid domain in scenario "%(scenario)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_activity_invalid_condition">
+            <field name="text">Invalid condition "%(condition)s" in activity "%(activity)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_activity_invalid_email_template">
+            <field name="text">Invalid e-mail template in activity "%(activity)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_activity_invalid_email_title">
+            <field name="text">Invalid e-mail title in activity "%(activity)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_activity_record_unique">
+            <field name="text">Record Activity must be unique by record and activity.</field>
+        </record>
+        <record model="ir.message" id="msg_record_scenario_record_unique">
+            <field name="text">Record must be unique by scenario.</field>
+        </record>
+        <record model="ir.message" id="msg_record_uuid_unique">
+            <field name="text">UUID of record must be unique.</field>
+        </record>
+    </data>
+</tryton>
