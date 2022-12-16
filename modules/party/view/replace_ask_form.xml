@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<form>
+    <label name="source" string="Party"/>
+    <field name="source"/>
+    <label name="destination" string="Replace By"/>
+    <field name="destination"/>
+</form>
