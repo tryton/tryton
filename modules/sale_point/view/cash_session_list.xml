@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="point" expand="1"/>
+    <field name="start_amount" optional="0"/>
+    <field name="balance" optional="0"/>
+    <field name="end_amount" optional="0"/>
+    <field name="state"/>
+    <button name="close"/>
+    <button name="post" tree_invisible="1"/>
+</tree>
