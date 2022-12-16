@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Location">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="type"/>
+    <field name="type"/>
+    <newline/>
+    <label name="address"/>
+    <field name="address"/>
+    <newline/>
+    <label name="input_location"/>
+    <field name="input_location"/>
+    <newline/>
+    <label name="output_location"/>
+    <field name="output_location"/>
+    <newline/>
+    <label name="storage_location"/>
+    <field name="storage_location"/>
+    <label name="picking_location"/>
+    <field name="picking_location"/>
+</form>
