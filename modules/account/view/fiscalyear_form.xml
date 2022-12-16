@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Fiscal Year">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="state"/>
+    <field name="state"/>
+    <notebook colspan="4">
+        <page string="Periods" id="periods">
+            <field name="periods" colspan="4"/>
+            <group col="2" colspan="4" id="buttons">
+                <button name="create_period"
+                    string="Create Monthly Periods"/>
+                <button name="create_period_3"
+                    string="Create 3 Months Periods"/>
+            </group>
+        </page>
+        <page string="Sequences" id="sequences">
+            <label name="post_move_sequence"/>
+            <field name="post_move_sequence"/>
+        </page>
+    </notebook>
+    <label string="" colspan="2" id="empty"/>
+    <group col="1" colspan="2" id="buttons">
+        <button name="close" string="Close Fiscal Year"
+            icon="tryton-readonly"
+            confirm="Are you sure to close fiscal year?"/>
+        <button name="reopen" string="Re-Open Fiscal Year"
+            icon="tryton-clear"/>
+    </group>
+</form>
