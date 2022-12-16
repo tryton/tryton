@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="parent"/>
+    <field name="parent"/>
+
+    <label name="type"/>
+    <field name="type" colspan="5"/>
+
+    <label name="debit_type"/>
+    <field name="debit_type" colspan="5"/>
+
+    <label name="credit_type"/>
+    <field name="credit_type" colspan="5"/>
+
+    <label name="closed"/>
+    <field name="closed"/>
+    <label name="general_ledger_balance"/>
+    <field name="general_ledger_balance"/>
+    <newline/>
+
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="replaced_by"/>
+    <field name="replaced_by"/>
+
+    <label name="reconcile"/>
+    <field name="reconcile"/>
+    <label name="party_required"/>
+    <field name="party_required"/>
+
+    <field name="taxes" colspan="6"/>
+</form>
