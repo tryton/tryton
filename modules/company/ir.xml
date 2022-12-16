@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sequence_view_form">
+            <field name="model">ir.sequence</field>
+            <field name="inherit" ref="ir.sequence_view_form"/>
+            <field name="name">sequence_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sequence_view_tree">
+            <field name="model">ir.sequence</field>
+            <field name="inherit" ref="ir.sequence_view_tree"/>
+            <field name="name">sequence_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'ir.sequence')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence2">
+            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence_strict">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict2">
+            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+
+        <record model="ir.ui.view" id="cron_view_form">
+            <field name="model">ir.cron</field>
+            <field name="inherit" ref="ir.cron_view_form"/>
+            <field name="name">cron_form</field>
+        </record>
+    </data>
+</tryton>

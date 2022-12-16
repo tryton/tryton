@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="contact"/>
+    <field name="contact"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="address"/>
+    <field name="address" colspan="3"/>
+    <newline/>
+
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="reference"/>
+    <field name="reference"/>
+
+    <label name="amount"/>
+    <field name="amount" symbol="currency"/>
+    <label name="conversion_probability"/>
+    <group id="conversion_probability">
+        <field name="conversion_probability" factor="100" xexpand="0"/>
+        <label name="conversion_probability" string="%"
+            xalign="0.0" xexpand="1"/>
+    </group>
+
+    <notebook colspan="6">
+        <page string="Lead/Opportunity" id="opportunity">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+            <label name="employee"/>
+            <field name="employee"/>
+            <label name="converted_by"/>
+            <field name="converted_by"/>
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+            <label name="payment_term"/>
+            <field name="payment_term"/>
+            <separator name="comment" colspan="4"/>
+            <field name="comment" colspan="4"/>
+            <separator name="lost_reason" colspan="4"/>
+            <field name="lost_reason" colspan="4"/>
+        </page>
+        <page name="lines">
+            <field name="lines"/>
+        </page>
+        <page name="sales">
+            <field name="sales" colspan="4"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="4" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="lost" icon="tryton-cancel"/>
+        <button name="lead" icon="tryton-back"/>
+        <button name="opportunity" icon="tryton-forward"/>
+        <button name="convert" icon="tryton-forward"/>
+    </group>
+</form>

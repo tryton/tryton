@@ -1,0 +1,104 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr ""
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Carrier Selection"
+
+#, fuzzy
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Carrier"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr ""
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr ""
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr ""
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr ""
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Carrier"
+
+#, fuzzy
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Carrier Selection"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Carriers"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Carrier Selection"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Carrier"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Carriers"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Carrier Selection"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Carrier Administration"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr ""
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr ""
