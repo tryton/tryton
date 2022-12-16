@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,product_customers:"
+msgid "Customers"
+msgstr "Kliendid"
+
+msgctxt "field:product.template,product_customers:"
+msgid "Customers"
+msgstr "Kliendid"
+
+#, fuzzy
+msgctxt "field:sale.amendment.line,product_customer:"
+msgid "Customer's Product"
+msgstr "Kliendi toode"
+
+msgctxt "field:sale.line,product_customer:"
+msgid "Customer's Product"
+msgstr "Kliendi toode"
+
+msgctxt "field:sale.product_customer,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:sale.product_customer,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:sale.product_customer,party:"
+msgid "Customer"
+msgstr "Klient"
+
+msgctxt "field:sale.product_customer,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:sale.product_customer,template:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "model:ir.action,name:act_product_customer_form"
+msgid "Product Customers"
+msgstr "Toote kliendid"
+
+msgctxt "model:ir.ui.menu,name:menu_product_customer"
+msgid "Product Customers"
+msgstr "Toote kliendid"
+
+msgctxt "model:sale.product_customer,name:"
+msgid "Product Customer"
+msgstr "Toote klient"
