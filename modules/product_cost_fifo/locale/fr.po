@@ -1,0 +1,38 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "Quantité PEPS"
+
+msgctxt "model:ir.message,text:msg_move_delete_fifo"
+msgid ""
+"You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
+"calculation."
+msgstr ""
+"Vous ne pouvez pas supprimer le mouvement « %(move)s » parce qu'il est "
+"utilisé pour le calcul PEPS du prix de revient."
+
+msgctxt "model:ir.message,text:msg_move_fifo_quantity_greater"
+msgid "The FIFO quantity on move cannot be greater than its quantity."
+msgstr ""
+"La quantité PEPS du mouvement ne peut pas être plus grande que sa quantité."
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "FIFO"
+msgstr "PEPS"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "PEPS"
+
+msgctxt "error:stock.move:"
+msgid "FIFO quantity can not be greater than quantity."
+msgstr "La quantité PEPS ne peut être plus grande que la quantité."
+
+msgctxt "error:stock.move:"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
+msgstr ""
+"Vous ne pouvez supprimer le mouvement « %s » qui est utilisé pour le calcul "
+"PEPS du prix de revient."
