@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <notebook colspan="6">
+        <page string="General Information" id="general">
+            <label name="type"/>
+            <field name="type"/>
+            <label name="sequence"/>
+            <field name="sequence"/>
+        </page>
+    </notebook>
+</form>

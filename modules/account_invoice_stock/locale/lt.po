@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Sandėlio operacijos"
+
+msgctxt "field:account.invoice.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Sukūrimo data"
+
+msgctxt "field:account.invoice.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Sukūręs naudotojas"
+
+msgctxt "field:account.invoice.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Sąskaitos faktūros eilutė"
+
+msgctxt "field:account.invoice.line-stock.move,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Sandėlio operacija"
+
+msgctxt "field:account.invoice.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Pakeitimo data"
+
+msgctxt "field:account.invoice.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Pakeitęs naudotojas"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Sąskaitos faktūros eilutės"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Sąskaitos faktūros eilutė - sandėlio operacija"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Sandėlys"
