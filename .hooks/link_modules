@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
+import glob
+import io
+import os
+
+root = os.path.dirname(os.path.dirname(__file__))
+source = os.path.join(root, 'modules')
+destination = os.path.join(root, 'trytond', 'trytond', 'modules')
+
+modules = set()
+for filename in glob.glob('modules/*/setup.py', root_dir=root):
+    modules.add(os.path.basename(os.path.dirname(filename)))
+
+for module in modules:
+    path = os.path.join(destination, module)
+    if not os.path.exists(path):
+        os.symlink(
+            os.path.relpath(os.path.join(source, module), destination), path)
+
+for module in os.listdir(destination):
+    path = os.path.join(destination, module)
+    if os.path.islink(path) and module not in modules:
+        os.unlink(path)
+
+with io.open(os.path.join(root, '.hgignore-modules'), 'w') as fp:
+    for module in modules:
+        fp.write(os.path.join('trytond', 'modules', module) + '\n')

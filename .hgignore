@@ -1,0 +1,12 @@
+syntax: glob
+*.py[cdo]
+*.egg-info
+dist/
+build/
+node_modules/
+bower_components/
+.tox/
+requirements.txt
+requirements-dev.txt
+.hgignore-modules
+include:.hgignore-modules
