@@ -1,0 +1,13 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"\n"
+"- parent_unit_price: the unit_price from the parent"
+msgstr ""

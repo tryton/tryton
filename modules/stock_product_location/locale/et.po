@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Vaikimisi asukoht"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Ladustamise asukoht"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Järjekord"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Toote asukoht"
