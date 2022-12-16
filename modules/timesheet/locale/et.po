@@ -1,0 +1,363 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Kuu"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Aasta"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Nädal"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Nädal"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Aasta"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Töö"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Töögraafiku kestvus"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Töögraafiku lõpp"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Töögraafiku read"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Töögraafiku algus"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Töö"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "Kuupäevast"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "Kuupäevani"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Millal aega kulutati"
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr ""
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Millal aega kulutati"
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr ""
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr ""
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr ""
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Sellele tööle kulunud aeg"
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Tunde töötaja kohta"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Tunde töötaja kohta kuus"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Tunde töötaja kohta nädalas"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Sisesta töögraafik"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Töögraafiku read"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Töögraafiku read"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr "Oma töötaja tunnid"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr "Kõigi töötajate tunnid"
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr "Oma tööajatabeli rida"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr "Kõik tööaja tabeli read"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr "Kõik tööd"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Seadistus"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Tunde töötaja kohta"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Tunde töötaja kohta kuus"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Tunde töötaja kohta nädalas"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Sisesta töögraafik"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Töögraafiku read"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Aruandlus"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Töögraafik"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Töögraafiku administreerimine"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Tunde töötaja kohta"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "Tunde töötaja kohta sisu"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Tunde töötaja kohta kuus"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Tunde töötaja kohta nädalas"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Töögraafiku rida"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Lisa read"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Töö"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "Töö sisu"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Töögraafik"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Sisesta"
