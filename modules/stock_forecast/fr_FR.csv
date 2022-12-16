@@ -1,0 +1,66 @@
+type,name,res_id,src,value,fuzzy
+error,stock.forecast,0,"""To Date"" must be greater than ""From Date""!","""À la date"" doit être plus grande que «De la date"" !",0
+error,stock.forecast,0,You can not create forecasts for the same locations with overlapping dates,Vous ne pouvez pas créer des prévisions pour les mêmes emplacements avec des dates qui se chevauchent,0
+error,stock.forecast.complete,0,"""From Date"" should be smaller than ""To Date""!","""De la date"" devrait être plus petit que ""À la date"" !",0
+error,stock.forecast.line,0,Line quantity must be greater than the minimal quantity!,La quantité de ligne doit être supérieure à la quantité minimale !,0
+error,stock.forecast.line,0,Line quantity must be positive!,Les quantités sur les lignes doivent être positives!,0
+error,stock.forecast.line,0,Product must be unique by forcast!,Le produit doit être unique par prévision !,0
+field,"stock.forecast,company",0,Company,Société,0
+field,"stock.forecast.complete.ask,from_date",0,From Date,Date de début,0
+field,"stock.forecast.complete.ask,to_date",0,To Date,Date de fin,0
+field,"stock.forecast.complete.choose,products",0,Products,Produits,0
+field,"stock.forecast,destination",0,Destination,Destination,0
+field,"stock.forecast,from_date",0,From Date,Date de début,0
+field,"stock.forecast.line,forecast",0,Forecast,Prévision,0
+field,"stock.forecast.line,minimal_quantity",0,Minimal Qty,Qté minimale,0
+field,"stock.forecast.line,moves",0,Moves,Mouvements,0
+field,"stock.forecast.line,product",0,Product,Produit,0
+field,"stock.forecast.line,quantity",0,Quantity,Quantité,0
+field,"stock.forecast.line,rec_name",0,Name,Nom,0
+field,"stock.forecast,lines",0,Lines,Lignes,0
+field,"stock.forecast.line-stock.move,line",0,Forecast Line,Ligne de prévision,0
+field,"stock.forecast.line-stock.move,move",0,Move,Mouvement,0
+field,"stock.forecast.line-stock.move,rec_name",0,Name,Nom,0
+field,"stock.forecast.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
+field,"stock.forecast.line,uom",0,UOM,UDM,0
+field,"stock.forecast,location",0,Location,Emplacement,0
+field,"stock.forecast,rec_name",0,Name,Nom,0
+field,"stock.forecast,state",0,State,État,0
+field,"stock.forecast,to_date",0,To Date,Date de fin,0
+model,"ir.action,name",wizard_forecast_complete,Complete Forecast,Completer les prévisions,0
+model,"ir.action,name",act_forecast_form_draft,Draft Forecasts,Prévisions en brouillon,0
+model,"ir.action,name",act_forecast_form,Forecasts,Prévisions,0
+model,"ir.action,name",act_forecast_form2,Forecasts,Prévisions,0
+model,"ir.ui.menu,name",menu_forecast_form_draft,Draft Forecasts,Prévisions en brouillon,0
+model,"ir.ui.menu,name",menu_forecast_form,Forecasts,Prévisions,0
+model,"ir.ui.menu,name",menu_forecast_form_new,New Forecast,Nouvelle prévision,0
+model,"res.group,name",group_stock_forecast,Stock Forecast,Stock prévisionnel,0
+model,"stock.forecast.complete.ask,name",0,Forecast Complete Ask,Completer la prévision - Demander,0
+model,"stock.forecast.complete.choose,name",0,Forecast Complete Choose,Completer la prévision - Choisir,0
+model,"stock.forecast.line,name",0,Stock Forecast Line,Ligne de prévision de stock,0
+model,"stock.forecast.line-stock.move,name",0,ForecastLine - Move,Ligne de prévision - Mouvement,0
+model,"stock.forecast,name",0,Stock Forecast,Stock prévisionnel,0
+model,"workflow.activity,name",forecast_act_cancel,Cancel,Annuler,0
+model,"workflow.activity,name",forecast_act_done,Done,Fait,0
+model,"workflow.activity,name",forecast_act_draft,Draft,Brouillon,0
+model,"workflow,name",wkf_forecast,Forecast,Prévision,0
+selection,"stock.forecast,state",0,Cancel,Annuler,0
+selection,"stock.forecast,state",0,Done,Fait,0
+selection,"stock.forecast,state",0,Draft,Brouillon,0
+view,stock.forecast,0,Add forecast line based on past data.,Ajouter la ligne des prévisions fondées sur des données historiques.,0
+view,stock.forecast,0,Cancel,Annuler,0
+view,stock.forecast,0,Complete Forecast,Completer la prévision,0
+view,stock.forecast,0,Confirm,Confirmer,0
+view,stock.forecast,0,Forecast,Prévision,0
+view,stock.forecast,0,Forecasts,Prévisions,0
+view,stock.forecast,0,Reset to Draft,Remettre en brouillon,0
+view,stock.forecast.complete.ask,0,Choose dates,Choisir les dates,0
+view,stock.forecast.complete.choose,0,Choose products,Choisissez les produits,0
+view,stock.forecast.line,0,Forecast Line,Ligne de prévision,0
+view,stock.forecast.line,0,Forecast Lines,Lignes de prévision,0
+wizard_button,"stock.forecast.complete,choose,complete",0,Complete,Achevé,0
+wizard_button,"stock.forecast.complete,choose,end",0,cancel,annuler,0
+wizard_button,"stock.forecast.complete,choose,init",0,Choose Dates,Choisissez les dates,0
+wizard_button,"stock.forecast.complete,init,choose",0,Choose products,Choisissez les produits,0
+wizard_button,"stock.forecast.complete,init,complete",0,Complete,Achevé,0
+wizard_button,"stock.forecast.complete,init,end",0,cancel,annuler,0

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="view_view_form">
+            <field name="model">ir.ui.view</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="View">
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="inherit"/>
+                    <field name="inherit"/>
+                    <label name="domain"/>
+                    <field name="domain"/>
+                    <label name="priority"/>
+                    <field name="priority"/>
+                    <label name="field_childs"/>
+                    <field name="field_childs"/>
+                    <separator name="arch" colspan="4"/>
+                    <field name="arch" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_view_tree">
+            <field name="model">ir.ui.view</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree>
+                    <field name="priority" select="2"/>
+                    <field name="model" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="inherit" select="1"/>
+                    <field name="domain" select="2"/>
+                    <field name="field_childs" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_form">
+            <field name="name">Views</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_view_tree"/>
+            <field name="act_window" ref="act_view_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="view_view_form"/>
+            <field name="act_window" ref="act_view_form"/>
+        </record>
+        <menuitem parent="menu_ui"
+            action="act_view_form" id="menu_view"/>
+        <record model="ir.ui.view" id="view_sc_view_form">
+            <field name="model">ir.ui.view_sc</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Shortcut">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="res_id"/>
+                    <field name="res_id"/>
+                    <label name="user_id"/>
+                    <field name="user_id"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_sc_view_tree">
+            <field name="model">ir.ui.view_sc</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Shortcut">
+                    <field name="name" select="1"/>
+                    <field name="user_id" select="1"/>
+                    <field name="sequence"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_sc_form">
+            <field name="name">View Shortcuts</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view_sc</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_sc_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_sc_view_tree"/>
+            <field name="act_window" ref="act_view_sc_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_sc_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="view_sc_view_form"/>
+            <field name="act_window" ref="act_view_sc_form"/>
+        </record>
+        <menuitem parent="menu_ui"
+            action="act_view_sc_form" id="menu_view_sc"/>
+
+        <record model="ir.ui.view" id="view_tree_width_view_form">
+            <field name="model">ir.ui.view_tree_width</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="View Tree Width">
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="field"/>
+                    <field name="field"/>
+                    <label name="user"/>
+                    <field name="user"/>
+                    <label name="width"/>
+                    <field name="width"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_tree_width_view_tree">
+            <field name="model">ir.ui.view_tree_width</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Views Tree Width">
+                    <field name="model"/>
+                    <field name="field"/>
+                    <field name="user"/>
+                    <field name="width"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_view_tree_width_form">
+            <field name="name">View Tree Width</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.ui.view_tree_width</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_width_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_tree_width_view_tree"/>
+            <field name="act_window" ref="act_view_tree_width_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_view_tree_width_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="view_tree_width_view_form"/>
+            <field name="act_window" ref="act_view_tree_width_form"/>
+        </record>
+        <menuitem parent="menu_ui"
+            action="act_view_tree_width_form" id="menu_view_tree_width"/>
+    </data>
+</tryton>
