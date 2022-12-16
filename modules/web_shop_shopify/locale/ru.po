@@ -1,0 +1,288 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute.set,shopify_option1:"
+msgid "Option 1"
+msgstr ""
+
+msgctxt "field:product.attribute.set,shopify_option2:"
+msgid "Option 2"
+msgstr ""
+
+msgctxt "field:product.attribute.set,shopify_option3:"
+msgid "Option 3"
+msgstr ""
+
+msgctxt "field:product.product,shopify_sku:"
+msgid "SKU"
+msgstr ""
+
+msgctxt "field:product.product,shopify_uom:"
+msgid "Shopify UOM"
+msgstr ""
+
+msgctxt "field:product.shopify_inventory_item,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:product.template,shopify_uom:"
+msgid "Shopify UOM"
+msgstr ""
+
+msgctxt "field:sale.sale,shopify_tax_adjustment:"
+msgid "Shopify Tax Adjustment"
+msgstr ""
+
+msgctxt "field:stock.shipment.shopify_identifier,sale:"
+msgid "Sale"
+msgstr ""
+
+msgctxt "field:stock.shipment.shopify_identifier,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_password:"
+msgid "Password"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_payment_journals:"
+msgid "Payment Journals"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_trial:"
+msgid "Trial"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_url:"
+msgid "Shop URL"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_version:"
+msgid "Version"
+msgstr ""
+
+msgctxt "field:web.shop,shopify_warehouses:"
+msgid "Warehouses"
+msgstr ""
+
+msgctxt "field:web.shop-stock.location,shopify_id:"
+msgid "Shopify ID"
+msgstr ""
+
+msgctxt "field:web.shop-stock.location,shopify_stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_identifier,record:"
+msgid "Record"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_identifier,to_update:"
+msgid "To Update"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_identifier,to_update_extra:"
+msgid "To Update Extra"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_identifier,web_shop:"
+msgid "Web Shop"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_payment_journal,gateway:"
+msgid "Gateway"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_payment_journal,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:web.shop.shopify_payment_journal,shop:"
+msgid "Shop"
+msgstr ""
+
+msgctxt "help:web.shop,shopify_trial:"
+msgid "If checked reduce the number of calls per minute."
+msgstr ""
+
+msgctxt "help:web.shop-stock.location,shopify_stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr ""
+
+msgctxt "help:web.shop.shopify_payment_journal,gateway:"
+msgid "The payment gateway name for which the journal must be used."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_shop_shopify_identifier_form"
+msgid "Shopify Identifiers"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_stock_shipment_shopify_identifier_form"
+msgid "Shipment Identifiers"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_custom_collection_fail"
+msgid ""
+"Failed to save custom collection \"%(category)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fulfillment_fail"
+msgid ""
+"Failed to save fulfillment for sale \"%(sale)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_identifier_payment_unique"
+msgid "A shopify transaction can only be imported as payment once."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_identifier_record_web_shop_unique"
+msgid "The record cannot have more than one Shopify identifier per web shop."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_identifier_sale_web_shop_unique"
+msgid "A Shopify order can only be imported as a sale once."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_identifier_shipment_sale_unique"
+msgid "The shipment can not have more than one Shopify identifier per sale."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_item_fail"
+msgid ""
+"Failed to save inventory item for product \"%(product)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_location_id_unique"
+msgid "Each Shopify location can only be linked to one warehouse."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid ""
+"To change the template of product \"%(product)s\" you must unpublish it from"
+" the Shopify web shops."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_fail"
+msgid ""
+"Failed to save product \"%(template)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_image_fail"
+msgid ""
+"Failed to save image \"%(image)s\" for product \"%(template)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_shopify_uom_digits"
+msgid ""
+"To update product \"%(product)s\" on Shopify, you must use an UOM without "
+"digits."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_refund_fail"
+msgid ""
+"Failed to save refund for sale \"%(sale)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_line_without_product"
+msgid ""
+"To process the sale \"%(sale)s\" you must set a product on the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shop_currency_different"
+msgid ""
+"To update products on the shop \"%(shop)s\", you must set the currency to "
+"\"%(shopify_currency)s\" instead of \"%(shop_currency)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shop_locale_different"
+msgid ""
+"To update products on the shop \"%(shop)s\", you must set the language to "
+"\"%(shopify_primary_locale)s\" instead of \"%(shop_language)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shopify_identifier"
+msgid "Shopify Identifier"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shopify_identifiers"
+msgid "Shopify Identifiers"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_variant_fail"
+msgid ""
+"Failed to save variant \"%(product)s\" with error:\n"
+"%(error)s"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:shop_shopify_identifier_set_to_update_button"
+msgid "Set to Update"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_shop_shopify_identifier_form"
+msgid "Shopify Identifiers"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
+msgid "Shipment Identifiers"
+msgstr ""
+
+msgctxt "model:product.shopify_inventory_item,name:"
+msgid "Shopify Inventory Item"
+msgstr ""
+
+msgctxt "model:stock.shipment.shopify_identifier,name:"
+msgid "Shopify Shipment Identifier"
+msgstr ""
+
+msgctxt "model:web.shop.shopify_identifier,name:"
+msgid "Shopify Identifier"
+msgstr ""
+
+msgctxt "model:web.shop.shopify_payment_journal,name:"
+msgid "Shopify Payment Journal"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Shopify"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fetch Shopify Orders"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Inventory"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Orders"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Products"
+msgstr ""
+
+msgctxt "selection:stock.shipment.shopify_identifier,shipment:"
+msgid "Customer Shipment"
+msgstr ""
+
+msgctxt "selection:web.shop,type:"
+msgid "Shopify"
+msgstr ""
+
+msgctxt "view:product.attribute.set:"
+msgid "Shopify Options"
+msgstr ""
+
+msgctxt "view:web.shop:"
+msgid "Shopify"
+msgstr ""
