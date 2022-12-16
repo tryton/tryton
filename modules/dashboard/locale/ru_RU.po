@@ -1,0 +1,104 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:dashboard.action,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:dashboard.action,sequence:"
+msgid "Sequence"
+msgstr "Последовательность"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Панель действий"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Расположение на панели"
+
+#, fuzzy
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Панель действий"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Квадрат"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Стек Нижний"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Стек слева"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Стек справа"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Стек сверху"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Action"
+msgstr "Панель действия"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Actions"
+msgstr "Панель действий"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "view:res.user:"
+msgid "Dashboard Action"
+msgstr "Действия панели"
+
+msgctxt "view:res.user:"
+msgid "Dashboard Actions"
+msgstr "Действия панели"

@@ -1,0 +1,89 @@
+Version 2.6.12 - 2015-05-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.11 - 2015-03-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.10 - 2014-12-03
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.9 - 2014-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.8 - 2014-04-07
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.7 - 2014-03-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.6 - 2013-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.5 - 2013-06-09
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.4 - 2013-05-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.3 - 2013-02-12
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.2 - 2012-12-23
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.1 - 2012-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Rename:
+    - Move.name into number
+    - Move.reference into post_number
+    - MoveLine.reference into description
+* Remove name and active on move line
+* Add origin field on Move
+* Compute the aged balance over all fiscalyears and reverse dates order
+* Add cumulate option for Debit/Credit on Account
+* Allow to open accounts from balance sheet
+* Add start/end balance to Trial balance
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Add new account type stock
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+* Add test creation of minimal chart of accounts
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
+* Add description field on account.tax.code.template and account.tax.code
+* Add tax field on account.tax.line
+* Remove unique constraint on tax group code column
+* Add default search value on account move
+* Remove egenix-mx-base and replace it by python-dateutil
+* Improve General Ledger to compute lines for each accounts at once
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add origin_tax field on account.tax.rule
+* Change get_receivable_payable on party.party to work with a list of name
+* Remove blocked field on account.move.line
+* Fix digits of amount on tax and tax line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add tax rule to replace vat and supplier_vat on party
+  Previous vat configuration will be lost
+* Allow to update chart of account from template
+* Change sequence on Journal into Property for multi-company
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
