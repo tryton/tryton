@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="trigger_view_form">
+            <field name="model">ir.trigger</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Trigger">
+                    <label name="name"/>
+                    <field name="name" colspan="3"/>
+                    <label name="model"/>
+                    <field name="model"/>
+                    <group colspan="2" col="10" id="checkboxes">
+                        <label name="active"/>
+                        <field name="active" xexpand="0"/>
+                        <label name="on_time"/>
+                        <field name="on_time" xexpand="0"/>
+                        <label name="on_create"/>
+                        <field name="on_create" xexpand="0"/>
+                        <label name="on_write"/>
+                        <field name="on_write" xexpand="0"/>
+                        <label name="on_delete"/>
+                        <field name="on_delete" xexpand="0"/>
+                    </group>
+                    <label name="condition"/>
+                    <field name="condition" colspan="3"/>
+                    <label name="limit_number"/>
+                    <field name="limit_number"/>
+                    <label name="minimum_delay"/>
+                    <field name="minimum_delay" widget="float_time"/>
+                    <label name="action_model"/>
+                    <field name="action_model"/>
+                    <label name="action_function"/>
+                    <field name="action_function"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="trigger_view_tree">
+            <field name="model">ir.trigger</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Triggers">
+                    <field name="name"/>
+                    <field name="model"/>
+                    <field name="on_time"/>
+                    <field name="on_create"/>
+                    <field name="on_write"/>
+                    <field name="on_delete"/>
+                    <field name="active"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_trigger_form">
+            <field name="name">Triggers</field>
+            <field name="res_model">ir.trigger</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_trigger_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="trigger_view_tree"/>
+            <field name="act_window" ref="act_trigger_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_trigger_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="trigger_view_form"/>
+            <field name="act_window" ref="act_trigger_form"/>
+        </record>
+        <menuitem parent="menu_models"
+            action="act_trigger_form" id="menu_trigger_form"/>
+
+    </data>
+</tryton>
