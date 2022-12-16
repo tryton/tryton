@@ -1,0 +1,22 @@
+Version 4.8.2 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Erase user email when party is erased
+* Require email only for active user
+* Add maximum authentication attempt
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Increase session randomness to 32 bytes
+* Manage email case insensitively
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Initial release
