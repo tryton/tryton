@@ -1,0 +1,145 @@
+Version 1.6.10 - 2012-11-05
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.9 - 2012-09-10
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.8 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.7 - 2012-03-28
+* Bug fixes (see mercurial logs for details)
+* Don't allow rpc call on ModelStorage without ModelView (CVE-2012-0215)
+
+Version 1.6.6 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.5 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.4 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.3 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.2 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.1 - 2010-07-29
+* Bug fixes (see mercurial logs for details)
+* Make _timestamp numeric instead of datetime to work with XML-RPC and JSON-RPC
+
+Version 1.6.0 - 2010-05-08
+* Bug fixes (see mercurial logs for details)
+* Add symbol parameter to formatLang
+* searcher on Function fields take only one domain clause as argument
+* Use a Reference field on ir.attachment to store resource informations
+  Improve the ir.attachment views to be usable on the client side
+* Use basic access authentication for XML-RPC
+* Replace child{1,2} attributes in xml views by a unique child
+* Models that uses _inherits will search in inherited parents for missing functions
+* Remove ids from on_change* calls
+* Improve search on translatable fields
+* export_data return empty value for invisible fields
+* Don't allow to use float in Numeric fields
+* set/get function on Fields take a list of ids
+* New interface for Function/Property fields
+  Take a Field as first argument instead of many separate arguments
+  Remove static arguments
+* Fix Float and Numeric for lost of precision
+* Add decimal digits validation on fields
+* Improve unittests to run trytond from tests
+  Use sqlite as default backend
+  Add skiptest attribute to data tag
+  Add option to test_tryton to run tests from all modules
+* Add MySQL backend
+* Refactoring by validation with pylint
+* Modify ondelete attribute of Many2One according to required attribute value
+* Refactor import_data of ModelStorage
+* Raise exception when search function is missing on Function fields
+* Add LRU memoization, use it to cache compiled code for safe_eval.
+* Add PySON to replace python string evaluation on client side
+* Add JSON-RPC
+* Add groups on Sequence Types and add rules on sequence based on it.
+* Ignore Fields that starts with "_"
+* Add comment on table and field for postgresql backend
+* Remove egenix-mx-base and replace it by python-dateutil
+* Add cache to safe_eval
+* Rename HttpDaemon into XMLRPCDaemon
+* Improve TranslateFactory to fetch all translations for a report in one query
+* Handle displayname on webdav.collection
+* Handle current-user-privilege-set on webdav.collection
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add datetime_field on xxx2Many to use a specific _datetime when reading the related record
+* Add new tool safe_eval
+* Handle sequence and history renaming when renaming table
+* Add old_password to set_preferences of res.user on password change
+* Allow to drop constraint, index and foreign key with custom table name
+* Added column_rename on TableHandler
+* Add new tool reduce_ids
+* Add limit_clause function on cursor
+* Fill the cursor cache at search
+* Allow rpc on today of ir.date
+* Use the module dependency order to apply views that inherits
+* Allow to update database at the end of restore
+* Add ir.model.access check get and set of ir.property
+* Add ModelSingleton
+* Move login test in res.user
+* Rename osv into model on workflow
+* Add logout method
+* Move BrowseRecord cache onto the cursor except for Function fields
+* Don't order search result if order value is []
+* Add reload of modules if files have changed
+* Add salt to sha of password
+* Add strftime to ir.lang to handle locale's format
+* Add sqlite backend
+* Add validate test for required and size
+* Remove _sequence on ModelSQL
+* Use gzip in pysocket
+* Add gzip encoding for XML-RPC
+* Add report name in the result of Report.execute
+* Add ir.action.wizard_size to store prefered wizard size
+* Add delete_all action on One2Many field
+* Read, write, create, delete permission on record rules
+* Add reset_default method to ir.default
+* Doesn't append '%' to "like", "ilike" clauses
+* Handle database dump and restore with password
+* Add float_time attribute in fields view
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add delete of foreign keys with ondelete CASCADE
+* Add write for foreign keys with ondelete SET NULL
+* Add datetime_field on Many2One to use a specific _datetime when reading the related record
+* Use _datetime in context to read record value at specific datetime
+* Add _history_table on ModelSQL to historize change on records
+* Allow to use related fields (many2one and reference) in read
+* Use rec_name function field instead of name_get and name_search
+* Use a new Pool for objects
+* Move workflow in ModelWorkflow and the workflow module
+* Remove Service and LocalService objects
+* New netrpc/xmlrpc syntax
+* copy on ModelStorage copies one2many directly on the right record
+* Search on translated field will search only on translated value
+* Add active field on ir.action to allow better override of reports
+* Add depends attributes on Column
+* Make Modified Preorder Tree Traversal respects the default order of the model
+* Add replace_attributes for xpath tag
+* Add email parameter on report action
+* Allow to inherit views from an other model
+* Add user warnings
+* Allow to use a list of id for copy method
+* Use one lock per database
+* Improve netrpc communication speed
+* Add contextual domain on inherited views
+* Allow to use globals in domain and states
+* Add translate attribute on Selection field
+* Use explicit join in search SQL query
+* Fix for host with IPv6 enable but without default IPv6 route
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
