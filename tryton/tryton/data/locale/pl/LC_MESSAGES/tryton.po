@@ -1,0 +1,1148 @@
+# Translations template for tryton.
+# Copyright (C) 2016 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "podaj alternatywny plik konfiguracji"
+
+msgid "development mode"
+msgstr "tryb dewelopera"
+
+msgid "logging everything at INFO level"
+msgstr "rejestrowanie wszystkiego na poziomie INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "podaj poziom rejestrowania: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "podaj login użytkownika"
+
+msgid "specify the server hostname:port"
+msgstr "podaj nazwę:port serwera"
+
+#, python-format, python-format, python-format, python-format
+msgid "Unable to write config file %s."
+msgstr "Nie można zapisać pliku konfiguracyjnego %s!"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Nie można ustawić lokalizacji %s"
+
+msgid ", "
+msgstr ", "
+
+msgid ",…"
+msgstr ",…"
+
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+msgid "Select your action"
+msgstr "Wybierz akcję"
+
+msgid "No action defined."
+msgstr "Brak zdefiniowanej akcji."
+
+msgid "By: "
+msgstr "Przez: "
+
+msgid "Selection"
+msgstr "Zaznaczenie"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Your selection:"
+msgstr "Twoje zaznaczenie:"
+
+msgid "Select"
+msgstr "Wybierz"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Save As..."
+msgstr "Zapisz jako..."
+
+msgid "Always ignore this warning."
+msgstr "Zawsze ignoruj takie ostrzeżenie."
+
+msgid "Do you want to proceed?"
+msgstr "Czy chcesz kontynuować?"
+
+msgid "No"
+msgstr "Nie"
+
+msgid "Yes"
+msgstr "Tak"
+
+msgid "Concurrency Exception"
+msgstr "Wyjątek równoczesnego zapisu danych"
+
+msgid "This record has been modified while you were editing it."
+msgstr "Ten rekord został zmodyfikowany w trakcie twojej edycji."
+
+msgid "Cancel saving"
+msgstr "Anuluj zapis"
+
+msgid "Compare"
+msgstr "Porównaj"
+
+msgid "See the modified version"
+msgstr "Zobacz zmienioną wersję"
+
+msgid "Write Anyway"
+msgstr "Zapisz"
+
+msgid "Save your current version"
+msgstr "Zapisz swoją bieżącą wersję"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "Application Error"
+msgstr "Błąd aplikacji"
+
+msgid "Report Bug"
+msgstr "Zgłoś błąd"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr "Sprawdź URL: %s"
+
+msgid "Unable to check for new version"
+msgstr "Nie można sprawdzić dostępności nowej wersji"
+
+msgid "A new version is available!"
+msgstr "Nowa wersja jest dostępna!"
+
+msgid "Download"
+msgstr "Pobierz"
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>Szukaj...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Utwórz...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "Brak możliwości wyszukania uzupełnienia dla %s"
+
+msgid "Value"
+msgstr "Wartość"
+
+msgid "Displayed value"
+msgstr "Wyświetlana wartość"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Display format"
+msgstr "Wyświetl format"
+
+msgid "Open the calendar"
+msgstr "Otwórz kalendarz"
+
+msgid "Date Format"
+msgstr "Format daty"
+
+msgid "Displayed date format"
+msgstr "Wyświetlany format daty"
+
+msgid "y"
+msgstr "t"
+
+msgid "True"
+msgstr "Tak"
+
+msgid "t"
+msgstr "p"
+
+msgid "False"
+msgstr "Nie"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+msgid "Edit..."
+msgstr "Edycja..."
+
+msgid "Attachments..."
+msgstr "Załączniki..."
+
+msgid "Notes..."
+msgstr "Notatki..."
+
+msgid "Actions..."
+msgstr "Akcje..."
+
+msgid "Relate..."
+msgstr "Otwórz..."
+
+msgid "Report..."
+msgstr "Utwórz raport..."
+
+msgid "E-Mail..."
+msgstr "Wyślij e-mail..."
+
+msgid "Print..."
+msgstr "Wydrukuj..."
+
+msgid "Y"
+msgstr "R"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "t"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "g"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "Preferences..."
+msgstr "Preferencje..."
+
+msgid "Toolbar"
+msgstr "Pasek narzędzi"
+
+msgid "Default"
+msgstr "Domyślnie"
+
+msgid "Text and Icons"
+msgstr "Tekst i ikony"
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Icons"
+msgstr "Ikony"
+
+msgid "Form"
+msgstr "Formularz"
+
+msgid "Save Width/Height"
+msgstr "Zapamiętaj szerokość/wysokość"
+
+msgid "Save Tree State"
+msgstr "Zapamiętaj stan drzewa"
+
+msgid "Fast Tabbing"
+msgstr "Szybki tabulator"
+
+msgid "Spell Checking"
+msgstr "Sprawdzanie pisowni"
+
+msgid "PDA Mode"
+msgstr "Tryb PDA"
+
+msgid "Search Limit..."
+msgstr "Ograniczenie wyszukiwania..."
+
+msgid "Email..."
+msgstr "E-mail..."
+
+msgid "Check Version"
+msgstr "Sprawdź wersję"
+
+msgid "Options"
+msgstr "Opcje"
+
+msgid "Keyboard Shortcuts..."
+msgstr "Skróty klawiszowe..."
+
+msgid "About..."
+msgstr "O programie..."
+
+msgid "Help"
+msgstr "Pomoc"
+
+msgid "Quit"
+msgstr "Zakończ"
+
+msgid "No result found."
+msgstr "Nie znaleziono wyniku."
+
+msgid "Favorites"
+msgstr "Ulubione"
+
+msgid "Manage..."
+msgstr "Zarządzaj..."
+
+msgid "Action"
+msgstr "Akcja"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Wykonanie polecenia wymaga zamknięcia wszystkich kart.\n"
+"Czy chcesz kontynuować?"
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+#, fuzzy
+msgid "Previous tab"
+msgstr "Poprzednia karta"
+
+#, fuzzy
+msgid "Next tab"
+msgstr "Następna karta"
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr "Wytnij zaznaczony tekst"
+
+msgid "Copy selected text"
+msgstr "Skopiuj zaznaczony tekst"
+
+msgid "Paste copied text"
+msgstr "Wklej zaznaczony tekst"
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr "Utwórz nowe odniesienie"
+
+msgid "Open/Search relation"
+msgstr "Otwórz/Szukaj odniesienie"
+
+msgid "List Entries"
+msgstr ""
+
+msgid "Switch view"
+msgstr "Przełącz widok"
+
+msgid "Create/Select new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr "Utwórz odnośnik"
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr "Odznacz wiersz do usunięcia"
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr "Przesuń kursor"
+
+#, fuzzy
+msgid "Move right"
+msgstr "Przesuń w prawo"
+
+#, fuzzy
+msgid "Move left"
+msgstr "Przesuń w lewo"
+
+msgid "Move up"
+msgstr "Przesuń w górę"
+
+msgid "Move down"
+msgstr "Przesuń w dół"
+
+msgid "Move up of one page"
+msgstr "Przesuń w górę o jedną stronę"
+
+msgid "Move down of one page"
+msgstr "Przesuń w dół o jedną stronę"
+
+msgid "Move to top"
+msgstr "Przesuń do góry"
+
+msgid "Move to bottom"
+msgstr "Przesuń do dołu"
+
+msgid "Move to parent"
+msgstr "Przesuń do elementu nadrzędnego"
+
+msgid "Select all"
+msgstr "Zaznacz wszystko"
+
+msgid "Unselect all"
+msgstr "Odznacz wszystko"
+
+msgid "Select parent"
+msgstr "Zaznacz element nadrzędny"
+
+msgid "Select/Activate current row"
+msgstr "Zaznacz/Aktywuj bieżący wiersz"
+
+msgid "Toggle selection"
+msgstr "Przełącz zaznaczenie"
+
+msgid "Expand/Collapse"
+msgstr "Rozwiń/Zwiń"
+
+msgid "Expand row"
+msgstr "Rozwiń wiersz"
+
+msgid "Collapse row"
+msgstr "Zwiń wiersz"
+
+msgid "Toggle row"
+msgstr "Przełącz wiersz"
+
+msgid "Collapse all rows"
+msgstr "Zwiń wszystkie wiersze"
+
+msgid "Expand all rows"
+msgstr "Rozwiń wszystkie wiersze"
+
+msgid "Close Tab"
+msgstr "Zamknij kartę"
+
+msgid "modularity, scalability and security"
+msgstr "modułowość, skalowalność i bezpieczeństwo"
+
+msgid "translator-credits"
+msgstr "Wojciech Warczakowski"
+
+#, python-format
+msgid "Attachments (%s)"
+msgstr "Załączniki (%s)"
+
+msgid "Profile Editor"
+msgstr "Edytor profili"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Add new profile"
+msgstr "Dodaj nowy profil"
+
+msgid "Remove selected profile"
+msgstr "Usuń wybrany profil"
+
+msgid "Host:"
+msgstr "Host:"
+
+msgid "Database:"
+msgstr "Baza danych:"
+
+msgid "Fetching databases list"
+msgstr "Pobieranie listy baz danych"
+
+msgid "Username:"
+msgstr "Użytkownik:"
+
+msgid "Incompatible version of the server"
+msgstr "Niewłaściwa wersja serwera"
+
+msgid "Could not connect to the server"
+msgstr "Nie można połączyć się z serwerem"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "_Cancel"
+msgstr "Anuluj"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Anuluj połączenie z serwerem Tryton"
+
+msgid "C_onnect"
+msgstr "Połącz"
+
+msgid "Connect the Tryton server"
+msgstr "Połącz z serwerem Tryton"
+
+msgid "Profile:"
+msgstr "Profil:"
+
+msgid "Host / Database information"
+msgstr "Informacje o hoście / bazie danych"
+
+msgid "User name:"
+msgstr "Użytkownik:"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email Program Settings"
+msgstr "Ustawienia czytnika poczty"
+
+msgid "Command Line:"
+msgstr "Linia poleceń:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Lista dostępnych symboli zastępczych:"
+
+msgid "To:"
+msgstr "Do:"
+
+msgid "CC:"
+msgstr "DW:"
+
+msgid "Subject:"
+msgstr "Temat:"
+
+msgid "Body:"
+msgstr "Treść:"
+
+msgid "Attachment:"
+msgstr "Załącznik:"
+
+msgid "Add..."
+msgstr "Dodaj..."
+
+#, python-format, fuzzy, python-format
+msgid "Attachment (%s)"
+msgstr "Załączniki (%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+msgid "You have to select one record."
+msgstr "Musisz wybrać jeden rekord."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Utworzył:"
+
+msgid "Creation Date:"
+msgstr "Data utworzenia:"
+
+msgid "Latest Modification by:"
+msgstr "Autor ostatniej modyfikacji:"
+
+msgid "Latest Modification Date:"
+msgstr "Data ostatniej modyfikacji:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Czy na pewno usunąć wybrany rekord?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Czy na pewno usunąć wybrane rekordy?"
+
+msgid "Records not removed."
+msgstr "Rekordy nie zostały usunięte."
+
+msgid "Records removed."
+msgstr "Rekordy zostały usunięte."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Pracujesz na zduplikowanym(ch) rekordzie(ch)."
+
+msgid "Record saved."
+msgstr "Rekord został zapisany."
+
+msgid " of "
+msgstr " z "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Rekord został zmodyfikowany.\n"
+"Czy chcesz go zapisać?"
+
+msgid "Launch action"
+msgstr "Uruchom akcję"
+
+msgid "Relate"
+msgstr "Otwórz"
+
+msgid "Open related records"
+msgstr "Otwórz powiązane rekordy"
+
+msgid "Report"
+msgstr "Raport"
+
+msgid "Open report"
+msgstr "Otwórz raport"
+
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgid "E-Mail report"
+msgstr "Wyślij raport"
+
+msgid "Print"
+msgstr "Wydruk"
+
+msgid "Print report"
+msgstr "Drukuj raport"
+
+msgid "_Copy URL"
+msgstr "Skopiuj adres URL"
+
+msgid "Copy URL into clipboard"
+msgstr "Skopiuj adres URL do schowka"
+
+msgid "Unknown"
+msgstr "Nieznany"
+
+msgid "Limit"
+msgstr "Limit"
+
+msgid "Search Limit Settings"
+msgstr "Ustawienia limitu wyszukiwania"
+
+msgid "Limit:"
+msgstr "Limit:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr "Notatki (%s)"
+
+msgid "Preferences"
+msgstr "Preferencje"
+
+msgid "Edit User Preferences"
+msgstr "Edytuj preferencje użytkownika"
+
+msgid "Preference"
+msgstr "Preferencje"
+
+msgid "Revision"
+msgstr "Rewizja"
+
+msgid "Select a revision"
+msgstr "Wybierz rewizję"
+
+msgid "Revision:"
+msgstr "Rewizja:"
+
+msgid "_Switch View"
+msgstr "Przełącz widok"
+
+msgid "Switch View"
+msgstr "Przełącz widok"
+
+msgid "_Previous"
+msgstr "Poprzedni"
+
+msgid "Previous Record"
+msgstr "Poprzedni rekord"
+
+msgid "_Next"
+msgstr "Następny"
+
+msgid "Next Record"
+msgstr "Następny rekord"
+
+msgid "_Search"
+msgstr "Szukaj"
+
+msgid "_New"
+msgstr "Nowy"
+
+msgid "Create a new record"
+msgstr "Utwórz nowy rekord"
+
+msgid "_Save"
+msgstr "Zapisz"
+
+msgid "Save this record"
+msgstr "Zapisz rekord"
+
+msgid "_Reload/Undo"
+msgstr "Odśwież/Przywróć"
+
+msgid "Reload/Undo"
+msgstr "Odśwież/Przywróć"
+
+msgid "_Duplicate"
+msgstr "Duplikuj"
+
+msgid "_Delete..."
+msgstr "Usuń..."
+
+msgid "View _Logs..."
+msgstr "Przeglądaj dziennik..."
+
+msgid "Show revisions..."
+msgstr "Pokaż rewizje..."
+
+msgid "A_ttachments..."
+msgstr "Załączniki..."
+
+msgid "Add an attachment to the record"
+msgstr "Dodaj załącznik do rekordu"
+
+msgid "_Notes..."
+msgstr "Notatki..."
+
+msgid "Add a note to the record"
+msgstr "Dodaj notatkę do rekordu"
+
+msgid "_Actions..."
+msgstr "Akcje..."
+
+msgid "_Relate..."
+msgstr "Odnośnik..."
+
+msgid "_Report..."
+msgstr "Raport..."
+
+msgid "_E-Mail..."
+msgstr "E-mail..."
+
+msgid "_Print..."
+msgstr "Wydruk..."
+
+msgid "_Export Data..."
+msgstr "Eksportuj dane..."
+
+msgid "_Import Data..."
+msgstr "Importuj dane..."
+
+msgid "Copy _URL..."
+msgstr "Skopiuj adres URL..."
+
+msgid "_Close Tab"
+msgstr "Zamknij kartę"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Wszystkie pola</b>"
+
+msgid "_Add"
+msgstr "Dodaj"
+
+msgid "_Remove"
+msgstr "Usuń"
+
+msgid "_Clear"
+msgstr "Wyczyść"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>Pola wybrane</b>"
+
+msgid "CSV Parameters"
+msgstr "Parametry CSV"
+
+msgid "Delimiter:"
+msgstr "Separator:"
+
+msgid "Quote char:"
+msgstr "Znak cudzysłowa:"
+
+msgid "Encoding:"
+msgstr "Kodowanie:"
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr "Nazwa pola"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr "Eksport do CSV: %s"
+
+msgid "_Save Export"
+msgstr "Zapisz eksport"
+
+msgid "_Delete Export"
+msgstr "Usuń eksport"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Predefiniowane eksporty</b>"
+
+msgid "Name"
+msgstr "Nazwa"
+
+msgid "Open"
+msgstr "Otwórz"
+
+#, fuzzy
+msgid "Add field names"
+msgstr "Dodaj nazwy pól"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (model name)"
+
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (record name)"
+
+msgid "What is the name of this export?"
+msgstr "Jaka jest nazwa tego eksportu?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Czy nadpisać definicję '%s'?"
+
+#, python-format
+msgid "%d record saved."
+msgstr "%d rekord został zapisany."
+
+#, python-format
+msgid "%d records saved."
+msgstr "%d rekordy zostały zapisane."
+
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Operacja nie powiodła się.\n"
+"Komunikat błędu:\n"
+"%s"
+
+msgid "Error"
+msgstr "Błąd"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "New"
+msgstr "Nowy"
+
+msgid "Switch"
+msgstr "Przełącz"
+
+msgid "Previous"
+msgstr "Poprzedni"
+
+msgid "Next"
+msgstr "Następny"
+
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "Remove <Del>"
+msgstr "Usuń <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "Utwórz nowy rekord <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Usuń zaznaczony rekord <Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Przywróć zaznaczony rekord <Ins>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr "Import z CSV: %s"
+
+msgid "_Auto-Detect"
+msgstr "Rozpoznaj"
+
+msgid "File to Import:"
+msgstr "Plik do zaimportowania:"
+
+msgid "Open..."
+msgstr "Otwórz..."
+
+msgid "Lines to Skip:"
+msgstr "Wiersze do ominięcia:"
+
+msgid "You must select an import file first."
+msgstr "Najpierw wybierz plik do zaimportowania."
+
+msgid "Error opening CSV file"
+msgstr "Błąd otwarcia pliku CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Błąd przetwarzania pliku w polu %s."
+
+#, python-format
+msgid "%d record imported."
+msgstr "Rekord %d został zaimportowany."
+
+#, python-format
+msgid "%d records imported."
+msgstr "Rekordy %d zostały zaimportowane."
+
+msgid "Search"
+msgstr "Szukaj"
+
+#, python-format
+msgid "Search %s"
+msgstr "Szukaj %s"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "Brak możliwości usunięcia kreatora %s"
+
+msgid "Wizard"
+msgstr "Kreator"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Creation User"
+msgstr "Utworzył"
+
+msgid "Creation Date"
+msgstr "Data utworzenia"
+
+msgid "Modification User"
+msgstr "Zmodyfikował"
+
+msgid "Modification Date"
+msgstr "Data modyfikacji"
+
+#, python-format, python-format, python-format, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "Brak możliwości uzyskania stanu widoku drzewa dla %s"
+
+msgid "Unable to set view tree state"
+msgstr "Brak możliwości ustawienia stanu widoku drzewa"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "\"%s\" jest nieprawidłowy pod względem swojej domeny"
+
+#, python-format
+msgid "\"%s\" is required"
+msgstr "\"%s\" jest wymagany"
+
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "Wartości \"%s\" nie są prawidłowe"
+
+msgid "Pre-validation"
+msgstr "Wstępna walidacja"
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Rozmiar obrazka"
+
+msgid "Width:"
+msgstr "Szerokość:"
+
+msgid "Height:"
+msgstr "Wysokość:"
+
+msgid "PNG image (*.png)"
+msgstr "Obrazek w formacie PNG (*.png)"
+
+msgid "Save As"
+msgstr "Zapisz jako"
+
+msgid "Image size too large."
+msgstr "Za duży rozmiar obrazka."
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr "Otwórz filtry"
+
+msgid "Show bookmarks of filters"
+msgstr "Pokaż zakładki filtrów"
+
+msgid "Remove this bookmark"
+msgstr "Usuń zakładkę"
+
+msgid "Bookmark this filter"
+msgstr "Dodaj filtr do zakładek"
+
+msgid "Show active records"
+msgstr "Pokaż aktywne rekordy"
+
+msgid "Show inactive records"
+msgstr "Pokaż nieaktywne rekordy"
+
+msgid "Bookmark Name:"
+msgstr "Dodaj do zakładek nazwę:"
+
+msgid "Find"
+msgstr "Znajdź"
+
+msgid "Today"
+msgstr "Dzisiaj"
+
+msgid "go back"
+msgstr "wstecz"
+
+msgid "go forward"
+msgstr "dalej"
+
+msgid "previous year"
+msgstr "poprzedni rok"
+
+msgid "next year"
+msgstr "następny rok"
+
+msgid "Day View"
+msgstr ""
+
+msgid "Week View"
+msgstr "Widok tygodnia"
+
+msgid "Month View"
+msgstr "Widok miesiąca"
+
+msgid "Week"
+msgstr "Tydzień"
+
+msgid "Select..."
+msgstr "Wybierz..."
+
+msgid "Clear"
+msgstr "Wyczyść"
+
+msgid "All files"
+msgstr "Wszystkie pliki"
+
+msgid "Show plain text"
+msgstr "Pokaż tekst"
+
+msgid "Add value"
+msgstr "Dodaj wartość"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Usuń \"%s\""
+
+msgid "Images"
+msgstr "Obrazki"
+
+msgid "Add existing record"
+msgstr "Dodaj istniejący rekord"
+
+msgid "Remove selected record"
+msgstr "Usuń wybrany rekord"
+
+msgid "Open the record <F2>"
+msgstr "Otwórz rekord <F2>"
+
+msgid "Clear the field <Del>"
+msgstr "Wyczyść pole <Del>"
+
+msgid "Search a record <F2>"
+msgstr "Szukaj rekord <F2>"
+
+#, fuzzy
+msgid "Edit selected record"
+msgstr "Edytuj wybrany rekord <F2>"
+
+#, fuzzy
+msgid "Delete selected record"
+msgstr "Usuń wybrany rekord"
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr "Wybierz kolor"
+
+msgid "Choose a language"
+msgstr ""
+
+msgid "Translation"
+msgstr "Tłumaczenie"
+
+msgid "Edit"
+msgstr "Edycja"
+
+msgid "Fuzzy"
+msgstr "Niejasne"
+
+msgid "You need to save the record before adding translations."
+msgstr "Musisz zapisać rekord przed dodaniem tłumaczeń."
+
+msgid "No other language available."
+msgstr "Brak innych języków."
+
+msgid "Translate view"
+msgstr "Widok tłumaczenia"
