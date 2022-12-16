@@ -1,0 +1,245 @@
+type,name,res_id,src,value,fuzzy
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
+error,account.fiscalyear,0,You must have different invoice sequence per fiscal year!,Verschiedene Geschäftsjahre erfordern unterschiedliche Rechnungssequenzen!,0
+error,account.invoice,0,"Base taxes different from invoice lines!
+Re-compute the invoice.",Steuern stimmen nicht mit den Rechnungspositionen überein!,0
+error,account.invoice,0,Credit account on journal is the same than the invoice account!,Haben-Konto im Journal und Rechnungskonto sind identisch!,0
+error,account.invoice,0,Debit account on journal is the same than the invoice account!,Soll-Konto im Journal und Rechnungskonto sind identisch!,0
+error,account.invoice,0,"Taxes defined but not in invoice lines!
+Re-compute the invoice.","Steuern sind definiert, allerdings nicht in den Rechnungspositionen!
+",0
+error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.","Steuern sind für die Rechnungspositionen definiert, allerdings nicht für die Rechnung selbst!
+",0
+error,account.invoice,0,The credit account on journal is missing!,Haben-Konto im Journal fehlt!,0
+error,account.invoice,0,The debit account on journal is missing!,Soll-Konto im Journal fehlt,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!,0
+error,account.invoice,0,"You can not create an invoice
+with account from a different invoice company!",Es können keine Rechnungen mit einem Konto von einer anderen rechnungsstellenden Firma angelegt werden,0
+error,account.invoice,0,"You can not modify invoice that is open, paid or canceled!","Rechnungen die offen, bezahlt oder abgebrochen wurden können nicht verändert werden!",0
+error,account.invoice,0,You can not reset to draft an invoice that have move!,"Rechnungen die bereits gebucht sind, können nicht auf Vorlage zurückgesetzt werden!",0
+error,account.invoice,0,"You can not use the same account
+than on invoice line account!",Es darf nicht das selbe Konto benutzt werden wie in den Rechnungspositionen,0
+error,account.invoice.line,0,Line type must have an account!,Typ der Position muss einem Konto zugeordnet werden!,0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
+error,account.invoice.line,0,"You can not create invoice line
+with account from a different invoice company!",Rechnungszeile kann nicht erstellt werden: das Konto ist einer anderen rechnungsstellenden Firma zugeordnet,0
+error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Positionen nicht bearbeitet werden",0
+error,account.invoice.line,0,"You can not use the same account
+than the invoice account!",Es darf nicht das selbe Konto benutzt werden wie das Rechnungskonto!,0
+error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
+error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
+error,account.invoice.payment_term.line.delay,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
+error,account.invoice.payment_term.line.type,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Steuern nicht bearbeitet werden",0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
+field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
+field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
+field,"account.invoice,account",0,Account,Konto,0
+field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
+field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
+field,"account.invoice,comment",0,Comment,Kommentar,0
+field,"account.invoice,company",0,Company,Unternehmen,0
+field,"account.invoice,contact_address",0,Contact Address,Kontaktadresse,0
+field,"account.invoice,currency",0,Currency,Währung,0
+field,"account.invoice,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"account.invoice,description",0,Description,Beschreibung,0
+field,"account.invoice,invoice_address",0,Invoice Address,Rechnungsadresse,0
+field,"account.invoice,invoice_date",0,Invoice Date,Rechnungsdatum,0
+field,"account.invoice,invoice_report",0,Invoice Report,Rechnungsbericht,0
+field,"account.invoice,invoice_report_format",0,Invoice Report Format,Format Rechnungsbericht,0
+field,"account.invoice,journal",0,Journal,Journal,0
+field,"account.invoice.line,account",0,Account,Konto,0
+field,"account.invoice.line,amount",0,Amount,Betrag,0
+field,"account.invoice.line,description",0,Description,Bezeichnung,0
+field,"account.invoice.line,invoice",0,Invoice,Rechnung,0
+field,"account.invoice.line,product",0,Product,Artikel,0
+field,"account.invoice.line,quantity",0,Quantity,Menge,0
+field,"account.invoice,lines",0,Lines,Positionen,0
+field,"account.invoice.line,sequence",0,Sequence,Sequenz,0
+field,"account.invoice,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
+field,"account.invoice.line,taxes",0,Taxes,Steuern,0
+field,"account.invoice.line,type",0,Type,Typ,0
+field,"account.invoice.line,unit",0,Unit,Einheit,0
+field,"account.invoice.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
+field,"account.invoice.line,unit_price",0,Unit Price,Einzelpreis,0
+field,"account.invoice,move",0,Move,Buchung,0
+field,"account.invoice,number",0,Number,Nummer,0
+field,"account.invoice,party",0,Party,Partei,0
+field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
+field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
+field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
+field,"account.invoice.pay_invoice.ask,company",0,Company,Unternehmen,0
+field,"account.invoice.pay_invoice.ask,currency",0,Currency,Währung,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Currency Digits,Stellen Währung,0
+field,"account.invoice.pay_invoice.ask,date",0,Date,Datum,0
+field,"account.invoice.pay_invoice.ask,description",0,Description,Beschreibung,0
+field,"account.invoice.pay_invoice.ask,journal",0,Journal,Journal,0
+field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Journal,Journal,0
+field,"account.invoice.pay_invoice.ask,lines",0,Lines,Positionen,0
+field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
+field,"account.invoice.pay_invoice.ask,type",0,Type,Typ,0
+field,"account.invoice.pay_invoice.init,amount",0,Amount,Betrag,0
+field,"account.invoice.pay_invoice.init,currency",0,Currency,Währung,0
+field,"account.invoice.pay_invoice.init,currency_digits",0,Currency Digits,Stellen Währung,0
+field,"account.invoice.pay_invoice.init,date",0,Date,Datum,0
+field,"account.invoice.pay_invoice.init,description",0,Description,Beschreibung,0
+field,"account.invoice.pay_invoice.init,journal",0,Journal,Journal,0
+field,"account.invoice,payment_lines",0,Payment Lines,Zahlungspositionen,0
+field,"account.invoice,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"account.invoice.payment_term,active",0,Active,Aktiv,0
+field,"account.invoice.payment_term,description",0,Description,Beschreibung,0
+field,"account.invoice.payment_term.line,amount",0,Amount,Betrag,0
+field,"account.invoice.payment_term.line,currency",0,Currency,Währung,0
+field,"account.invoice.payment_term.line,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"account.invoice.payment_term.line,days",0,Number of Days,Anzahl an Tagen,0
+field,"account.invoice.payment_term.line,delay",0,Condition,Bedingung,0
+field,"account.invoice.payment_term.line.delay,code",0,Code,Kundennummer,0
+field,"account.invoice.payment_term.line.delay,name",0,Name,Name,0
+field,"account.invoice.payment_term.line,payment",0,Payment Term,Zahlungsbedingung,0
+field,"account.invoice.payment_term.line,percent",0,Percent,Prozent,0
+field,"account.invoice.payment_term,lines",0,Lines,Positionen,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Sequenz,0
+field,"account.invoice.payment_term.line,type",0,Type,Typ,0
+field,"account.invoice.payment_term.line.type,code",0,Code,Kundennummer,0
+field,"account.invoice.payment_term.line.type,name",0,Name,Name,0
+field,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
+field,"account.invoice,reconciled",0,Reconciled,Abgestimmt,0
+field,"account.invoice,reference",0,Reference,Referenz,0
+field,"account.invoice,state",0,State,Status,0
+field,"account.invoice.tax,account",0,Account,Konto,0
+field,"account.invoice,tax_amount",0,Tax,Steuer,0
+field,"account.invoice.tax,amount",0,Amount,Betrag,0
+field,"account.invoice.tax,base",0,Base,Netto,0
+field,"account.invoice.tax,base_code",0,Base Code,Code Netto,0
+field,"account.invoice.tax,base_sign",0,Base Sign,Vorzeichen (Netto),0
+field,"account.invoice.tax,description",0,Description,Beschreibung,0
+field,"account.invoice,taxes",0,Tax Lines,Steuerpositionen,0
+field,"account.invoice.tax,invoice",0,Invoice,Rechnung,0
+field,"account.invoice.tax,manual",0,Manual,Manuell,0
+field,"account.invoice.tax,sequence",0,Sequence,Sequenz,0
+field,"account.invoice.tax,tax_code",0,Tax Code,Steuerkennziffer,0
+field,"account.invoice.tax,tax_sign",0,Tax Sign,Vorzeichen (Steuer),0
+field,"account.invoice,total_amount",0,Total,Brutto,0
+field,"account.invoice,type",0,Type,Typ,0
+field,"account.invoice,type_name",0,Type,Typ,0
+field,"account.invoice,untaxed_amount",0,Untaxed,Netto,0
+field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
+field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
+field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
+field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
+help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Netto Tage,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percent,Prozent,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
+model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
+model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
+model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
+model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
+model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
+model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
+model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
+model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
+model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Rechnung,0
+model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle Rechnungen,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
+model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
+model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
+model,"workflow.activity,name",invoice_activity_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",invoice_activity_draft,Draft,Entwurf,0
+model,"workflow.activity,name",invoice_activity_open,Open,Öffnen,0
+model,"workflow.activity,name",invoice_activity_paid,Paid,Bezahlt,0
+model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro Forma,0
+model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
+odt,account.invoice,0,Amount,Betrag,0
+odt,account.invoice,0,Base,Netto,0
+odt,account.invoice,0,Date,Datum,0
+odt,account.invoice,0,Date:,Datum:,0
+odt,account.invoice,0,Description,Beschreibung,0
+odt,account.invoice,0,Description:,Beschreibung:,0
+odt,account.invoice,0,E-Mail:,E-Mail:,0
+odt,account.invoice,0,Payment Term,Zahlungsbedingung,0
+odt,account.invoice,0,Phone:,Telefon:,0
+odt,account.invoice,0,Quantity,Menge,0
+odt,account.invoice,0,Tax,Steuer,0
+odt,account.invoice,0,Taxes,Steuern,0
+odt,account.invoice,0,Taxes:,Steuern:,0
+odt,account.invoice,0,Total:,Gesamt:,0
+odt,account.invoice,0,Total (excl. taxes):,Netto:,0
+odt,account.invoice,0,Unit Price,Einzelpreis,0
+odt,account.invoice,0,VAT:,UST-ID:,0
+selection,"account.invoice.line,type",0,Comment,Kommentar,0
+selection,"account.invoice.line,type",0,Line,Position,0
+selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
+selection,"account.invoice.line,type",0,Title,Überschrift,0
+selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
+selection,"account.invoice,state",0,Canceled,Abgebrochen,0
+selection,"account.invoice,state",0,Draft,Entwurf,0
+selection,"account.invoice,state",0,Open,Offen,0
+selection,"account.invoice,state",0,Paid,Bezahlt,0
+selection,"account.invoice,state",0,Pro forma,Pro Forma,0
+selection,"account.invoice,type",0,Credit Note,Gutschrift,0
+selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
+selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
+selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
+view,account.invoice,0,Amount Second Currency,Betrag Zweitwährung,0
+view,account.invoice,0,_Cancel,_Abbrechen,0
+view,account.invoice,0,Credit,Haben,0
+view,account.invoice,0,Debit,Soll,0
+view,account.invoice,0,_Draft,_Entwurf,0
+view,account.invoice,0,Invoice,Rechnung,0
+view,account.invoice,0,Invoices,Rechnungen,0
+view,account.invoice,0,Lines,Positionen,0
+view,account.invoice,0,_Open,_Öffnen,0
+view,account.invoice,0,Other Info,Sonstiges,0
+view,account.invoice,0,_Pay,_Bezahlen,0
+view,account.invoice,0,Payment,Zahlung,0
+view,account.invoice,0,Payment Lines,Zahlungspositionen,0
+view,account.invoice,0,Pro For_ma,_Pro Forma,0
+view,account.invoice,0,_Reset to Draft,Auf Entwurf _Zurücksetzen,0
+view,account.invoice,0,Taxes,Steuern,0
+view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Wollen Sie diese Rechnungen wirklich gutschreiben?,0
+view,account.invoice.credit_invoice.init,0,Credit Invoice,Rechnung gutschreiben,0
+view,account.invoice.line,0,Invoice Line,Rechnungszeile,0
+view,account.invoice.line,0,Invoice Lines,Rechnungspositionen,0
+view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Betrag Zweitwährung,0
+view,account.invoice.pay_invoice.ask,0,Credit,Haben,0
+view,account.invoice.pay_invoice.ask,0,Debit,Soll,0
+view,account.invoice.pay_invoice.ask,0,Lines to Pay,Zahlbare Positionen,0
+view,account.invoice.pay_invoice.ask,0,Pay Invoice,Rechnung bezahlen,0
+view,account.invoice.pay_invoice.init,0,Pay Invoice,Rechnung bezahlen,0
+view,account.invoice.payment_term,0,Payment Term,Zahlungsbedingung,0
+view,account.invoice.payment_term,0,Payment Term Line,Zahlungsbedingung,0
+view,account.invoice.payment_term,0,Payment Term Lines,Positionen Zahlungsbedingung,0
+view,account.invoice.payment_term,0,Payment Terms,Zahlungsbedingung,0
+view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Warnung!</b>,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Rechnung drucken,0
+view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Die Rechnungen werden <i>direkt</i> an den Drucker gesendet.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Sie haben mehr als eine Rechnung zum ausdrucken gewählt.,0
+view,account.invoice.tax,0,Invoice Tax,Rechnungssteuer,0
+view,account.invoice.tax,0,Invoice Taxes,Rechnungssteuern,0
+view,account.invoice.tax,0,Tax Code,Steuerkennziffer,0
+view,party.party,0,Payment Terms,Zahlungsbedingungen,0
+wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Gutschrift erstellen,0
+wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Abbrechen,0
+wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Abbrechen,0
+wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,OK,0
+wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,OK,0
+wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Abbrechen,0
+wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Abbrechen,0
+wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Drucken,0
