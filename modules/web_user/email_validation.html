@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <title>Email Validation</title>
+    </head>
+    <body>
+        <py:for each="user in records">
+        <div style="display: block; text-align: center">
+            <div>
+                <h1>Just one more step..</h1>
+                <p>${user.email}</p>
+                <form action="${user.get_email_validation_url()}">
+                    <py:for each="name, value in extract_params(user.get_email_validation_url())">
+                    <input type="hidden" name="${name}" value="${value}"/>
+                    </py:for>
+                    <button type="submit"
+                            style="cursor:pointer;
+                            padding: 0.5em 1em; font-size:2em;
+                            border: 1px solid #2E6DA4; border-radius: 4px;
+                            color: #FFF; background-color: #337AB7;">
+                        Validate
+                    </button>
+                </form>
+            </div>
+            <hr style="margin-top: 20px;
+            border-style: solid none none; border-color: #EEE"></hr>
+            <div style="font-size: 80%; color: #777">
+                <p>Button is not working? Paste this into your browser:</p>
+                <p>${user.get_email_validation_url()}</p>
+                <p>If you received this email by mistake, just ignore it.</p>
+            </div>
+        </div>
+        </py:for>
+    </body>
+</html>
