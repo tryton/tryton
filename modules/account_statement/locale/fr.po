@@ -1,0 +1,616 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Solde final"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Nombre de lignes"
+
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr "Fichier d'origine"
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr "ID du fichier d'origine"
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Origines"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Solde initial"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "À réconcilier"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Validation"
+
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Fichier"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr "Format du fichier"
+
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Compte bancaire"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "Tiers de la société"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Type de validation"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Facture"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Mouvement comptable"
+
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr "État du relevé"
+
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Mouvement"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
+msgstr "Informations"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr "Montant en attente"
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "ID du relevé"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr "État du relevé"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Relevé comptable"
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr "Importer un relevé"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Journal de relevés"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Ligne de relevé comptable"
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Groupe de lignes de relevé comptable"
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr "Origine de relevé comptable"
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr "Information de l'origine du relevé"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Groupes de lignes de relevé"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Groupes de ligne"
+
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Lignes de mouvement"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Réconcilier les relevés"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Origines"
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Importer un relevé"
+
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Postés"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Validés"
+
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+"Pour importer le relevé, vous devez créer un journal pour le compte "
+"« %(account)s »."
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+"Pour importer le relevé, le journal « %(journal)s » doit avoir la devise "
+"« %(currency)s » au lieu de « %(journal_currency)s »."
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr "Seulement un journal est permis par compte bancaire."
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr "Le montant de la ligne de relevé ne peut pas être zéro."
+
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+"Pour poster le mouvement « %(move)s », vous devez poster le relevé "
+"« %(statement)s »."
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr "Pour supprimer le relevé « %(statement)s », vous devez l'annuler."
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+"La validation des relevés enlèvera les factures payées des autres relevés."
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+"Pour poster le relevé « %(statement)s », vous devez créer des lignes pour "
+"les %(amount)s en attente sur l'origine « %(origin)s »."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+"Pour valider le relevé « %(statement)s », vous devez changer les lignes pour"
+" avoir une balance finale de %(end_balance)s au lieu de %(amount)s."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+"Pour valider le relevé « %(statement)s », vous devez ajouter %(n)s ligne(s)."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+"Pour valider le relevé « %(statement)s », vous devez enlever %(n)s ligne(s)."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+"Pour valider le relevé « %(statement)s », vous devez changer les lignes pour"
+" avoir un montant total de %(total_amount)s au lieu de %(amount)s."
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr "Êtes-vous sûr de vouloir poster le relevé ?"
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Poster"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Réconcilier"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Valider"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_group"
+msgid "User in statement's company"
+msgstr "Utilisateur dans la société du relevé"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_line"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
+msgid "User in statement's company"
+msgstr "Utilisateur dans la société du relevé"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Groupes de lignes de relevé"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Importer un relevé"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Relevés"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "report:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "report:account.statement:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "report:account.statement:"
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgctxt "report:account.statement:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "report:account.statement:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "report:account.statement:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "report:account.statement:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "report:account.statement:"
+msgid "Journal:"
+msgstr "Journal :"
+
+msgctxt "report:account.statement:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "report:account.statement:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "report:account.statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "report:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validé"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Nombre de lignes"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "view:account.statement.origin:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Lignes de relevé"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importer"

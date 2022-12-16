@@ -1,0 +1,271 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,work_center:"
+msgid "Work Center"
+msgstr "Centre de treball"
+
+msgctxt "field:production,works:"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "field:production.routing.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Categoria centre de treball"
+
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr "Cicles actius"
+
+msgctxt "field:production.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:production.work,cycles:"
+msgid "Cycles"
+msgstr "Cicles"
+
+msgctxt "field:production.work,operation:"
+msgid "Operation"
+msgstr "Operació"
+
+msgctxt "field:production.work,production:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "field:production.work,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:production.work,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:production.work,work_center:"
+msgid "Work Center"
+msgstr "Centre de treball"
+
+msgctxt "field:production.work,work_center_category:"
+msgid "Work Center Category"
+msgstr "Categoria centre de treball"
+
+msgctxt "field:production.work.center,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:production.work.center,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:production.work.center,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:production.work.center,cost_method:"
+msgid "Cost Method"
+msgstr "Mètode de cost"
+
+msgctxt "field:production.work.center,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:production.work.center,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.work.center,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:production.work.center,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:production.work.center.category,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.work.cycle,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:production.work.cycle,duration:"
+msgid "Duration"
+msgstr "Durada"
+
+msgctxt "field:production.work.cycle,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:production.work.cycle,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "model:ir.action,name:act_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Categories de centre de treball"
+
+msgctxt "model:ir.action,name:act_work_center_list"
+msgid "Work Centers"
+msgstr "Centres de treball"
+
+msgctxt "model:ir.action,name:act_work_center_tree"
+msgid "Work Centers"
+msgstr "Centres de treball"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Sol·licitud"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+"Per eliminar el treball \"%(work)s\" ha d'estar en estat \"sol·licitud\" o "
+"\"borrador\"."
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+"Per poder finalitzar la producció \"%(production)s\", el treball "
+"\"%(work)s\" ha d'estar finalitzat."
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
+"No s'ha pogut trobar un centre de treball de la categoría \"%(category)s\" "
+"dins de \"%(parent)s\"."
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Finalitza"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr "Inicia"
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr "Atura"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Categories de centre de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_list"
+msgid "Work Centers"
+msgstr "Centres de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
+msgid "Work Centers"
+msgstr "Centres de treball"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Treballs"
+
+msgctxt "model:production.work,name:"
+msgid "Production Work"
+msgstr "Treball de producció"
+
+msgctxt "model:production.work.center,name:"
+msgid "Work Center"
+msgstr "Centre de treball"
+
+msgctxt "model:production.work.center.category,name:"
+msgid "Work Center Category"
+msgstr "Categoria centre de treball"
+
+msgctxt "model:production.work.cycle,name:"
+msgid "Work Cycle"
+msgstr "Cicle de treball"
+
+msgctxt "selection:production.work,state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "selection:production.work,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:production.work,state:"
+msgid "Finished"
+msgstr "Acabat"
+
+msgctxt "selection:production.work,state:"
+msgid "Request"
+msgstr "Sol·licitud"
+
+msgctxt "selection:production.work,state:"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "selection:production.work,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Cycle"
+msgstr "Per cicle"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Hour"
+msgstr "Per hora"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Running"
+msgstr "En execució"
