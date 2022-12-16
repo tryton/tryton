@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product-bom_view_list">
+            <field name="model">product.product-production.bom</field>
+            <field name="type">tree</field>
+            <field name="name">product_bom_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-bom_view_list_sequence">
+            <field name="model">product.product-production.bom</field>
+            <field name="type">tree</field>
+            <field name="name">product_bom_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-bom_view_form">
+            <field name="model">product.product-production.bom</field>
+            <field name="type">form</field>
+            <field name="name">product_bom_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_product-bom">
+            <field name="model"
+                search="[('model', '=', 'product.product-production.bom')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product-bom_admin">
+            <field name="model"
+                search="[('model', '=', 'product.product-production.bom')]"/>
+            <field name="group" ref="group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="name">product_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="production_lead_time_view_list">
+            <field name="model">production.lead_time</field>
+            <field name="type">tree</field>
+            <field name="name">production_lead_time_list</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="production_lead_time_view_list_sequence">
+            <field name="model">production.lead_time</field>
+            <field name="type">tree</field>
+            <field name="name">production_lead_time_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="production_lead_time_view_form">
+            <field name="model">production.lead_time</field>
+            <field name="type">form</field>
+            <field name="name">production_lead_time_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_production_lead_time">
+            <field name="model" search="[('model', '=', 'production.lead_time')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_production_lead_time_admin">
+            <field name="model" search="[('model', '=', 'production.lead_time')]"/>
+            <field name="group" ref="group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

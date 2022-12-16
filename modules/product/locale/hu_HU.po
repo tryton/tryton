@@ -1,0 +1,869 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.uom:"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Ha a mértékegység nem lett még használva, törölni lehet.\n"
+"Különben csak inaktiválni lehet és helyette ehy másik újat előállítani."
+
+msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Érvénytelen mértékegység érték a faktor és árfolyamnak \"%s\""
+
+msgctxt "error:product.uom:"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Faktor és reciprok faktor nem lehet mind kettő 0"
+
+#, fuzzy
+msgctxt "error:product.uom:"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
+msgstr ""
+"Faktort, faktorértéket vagy kategóriáját egy mértékegységnek nem lehet "
+"módosítani"
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "Alárendelt (kategória)"
+
+msgctxt "field:product.category,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.category,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "Fölérendelt (kategória)"
+
+msgctxt "field:product.category,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.category,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.category,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.configuration,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Aktív"
+
+#, fuzzy
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Cikk kategória"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "Cikkszám"
+
+#, fuzzy
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Felhasznált anyag"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Beszerzési ár"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Method"
+msgstr "Költségmódszer"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Beszerzési ár"
+
+msgctxt "field:product.product,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.product,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "Alapegység"
+
+#, fuzzy
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Alapértelmezett kategória mértékegysége"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "Jellemzés"
+
+msgctxt "field:product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Árlista szerinti ár"
+
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Árlista szerinti ár"
+
+#, fuzzy
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.product,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "Cikk sablon"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:product.product,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.product,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.template,active:"
+msgid "Active"
+msgstr "Aktív"
+
+#, fuzzy
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Cikk kategória"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "Felhasznált anyag"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "Beszerzési ár"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Method"
+msgstr "Költségmódszer"
+
+msgctxt "field:product.template,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.template,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "Alapértelmezett egység"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Alapértelmezett kategória mértékegysége"
+
+msgctxt "field:product.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "Árlista szerinti ár"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.template,products:"
+msgid "Variants"
+msgstr "Változat"
+
+msgctxt "field:product.template,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:product.template,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Cikk kategória"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr "Űrlap adószámlához"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.uom,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:product.uom,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:product.uom,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.uom,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "Tizedes vessző utáni számjegyek "
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "Faktor"
+
+msgctxt "field:product.uom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "Mérték"
+
+msgctxt "field:product.uom,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "Kerekítési pontosság"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "Szimbólum"
+
+msgctxt "field:product.uom,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.uom,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:product.uom.category,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:product.uom.category,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:product.uom.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.uom.category,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Unit of Measures"
+msgstr "Mértékegység"
+
+msgctxt "field:product.uom.category,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:product.uom.category,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"A központi egység faktora egy mértékegységnek mindig 1.\n"
+"Képlet: ez az egység=faktor*központi egység\n"
+"A reciprok faktor mező automatikusan az itt megadott értékből lesz kiszámolva"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"A reciproka a központi egység faktora egy mértékegységnek mindig 1.\n"
+"Képlet: központi egység=reciprok*ez az egység\n"
+"A faktor mező automatikusan az itt megadott értékből lesz kiszámolva"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Cikk kategória"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Cikk kategóriák"
+
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Változás"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Változás"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "Cikk kategória szerint"
+
+msgctxt "model:ir.action,name:act_template_form"
+msgid "Products"
+msgstr "Cikk"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Kategóriák mértékegysége"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Mértékegység"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Kategóriák"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Cikk kategóriák"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Beállítások"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Cikk"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Változat"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Products"
+msgstr "Cikk"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Kategóriák"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Mértékegység"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "Cikk kategória"
+
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr ""
+
+msgctxt "model:product.product,name:"
+msgid "Product Variant"
+msgstr "Cikk változat"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "Cikk javaslat"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr ""
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of measure"
+msgstr "Mértékegység"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Elfogadva"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Karát"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "Centiméter"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "köbcentiméter"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "köbláb"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "köbhüvelyk"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Köbméter"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Nap"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Láb"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "Gallon"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Gramm"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Hektár"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Óra"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "Hüvelyk"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Kilogramm"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Kilométer"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Liter"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Méter"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Mérföld"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Milliméter"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Perc"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Uncia"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Font"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Másodperc"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "négyzetcentiméter"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "Négyzetláb"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "Négyzethüvelyk"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Négyzetméter"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "Négyzet yard"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Darab"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Munkanap"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "Yard"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "ft³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "in³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "ft"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "in"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lb"
+msgstr "lb"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "ft²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "in²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "Darab"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "PT"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Product uom category"
+msgstr "Cikk mértékegységének kategóriája"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Hossz"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Felület"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Idő"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Mennyiség"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Térfogat"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Súly"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Cikk adminisztráció"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Átlag"
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Rögzített"
+
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Eszköz"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Árú"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Szolgáltatás"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "Átlag"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "Rögzített"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "Eszköz"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "Árú"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "Szolgáltatás"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "Alárendelt (kategória)"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Party Configuration"
+msgstr "Partner beállítások"
+
+msgctxt "view:product.product:"
+msgid "Product"
+msgstr "Cikk"
+
+msgctxt "view:product.product:"
+msgid "Products"
+msgstr "Cikk"
+
+msgctxt "view:product.uom.category:"
+msgid "Categories of Unit of Measure"
+msgstr "Kategóriák mértékegysége"
+
+#, fuzzy
+msgctxt "view:product.uom.category:"
+msgid "Category of Unit of Measure"
+msgstr "Kategóriák mértékegysége"
+
+#, fuzzy
+msgctxt "view:product.uom:"
+msgid "Unit of Measure"
+msgstr "Mértékegység"
+
+msgctxt "view:product.uom:"
+msgid "Units of Measure"
+msgstr "Mértékegység"
