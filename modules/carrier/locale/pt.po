@@ -1,0 +1,107 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Método de custo da transportadora"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Produto da transportadora"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+#, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Seleção de Transportadora"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transportadora"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "País de Origem"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "País de Destino"
+
+#, fuzzy
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr "Método para computar o custo da transportadora"
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr ""
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Transportadora"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Seleção de Transportadora"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Carriers"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Carrier Selection"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Carrier"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Carriers"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Carrier Selection"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Carrier Administration"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Preço do produto"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Critério"

@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "روابط"
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "از"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "به"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "از"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "به"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "رابطه معکوس"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr ""
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "شناسه اصلی از نوع ارتباط."
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "ایجاد خودکار رابطه معکوس."
+
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Party Relations"
+msgstr "روابط نهادی/سازمانی"
+
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "انوع رابطه"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Party Relations"
+msgstr "روابط نهادی/سازمانی"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "انوع رابطه"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "رابطه نهاد/سازمان"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "رابطه نهاد/سازمان"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "نوع رابطه"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "روابط"
