@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="quotation"/>
+    <field name="quotation"/>
+    <label name="request"/>
+    <field name="request"/>
+    <notebook>
+        <page string="General" id="general">
+            <label name="product"/>
+            <field name="product"/>
+            <newline/>
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="unit"/>
+            <field name="unit"/>
+            <label name="unit_price"/>
+            <field name="unit_price"/>
+            <label name="currency"/>
+            <field name="currency"/>
+
+            <label name="supply_date"/>
+            <field name="supply_date"/>
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
+        </page>
+    </notebook>
+</form>
