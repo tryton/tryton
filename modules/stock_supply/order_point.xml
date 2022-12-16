@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="order_point_view_form">
+            <field name="model">stock.order_point</field>
+            <field name="type">form</field>
+            <field name="name">order_point_form</field>
+        </record>
+        <record model="ir.ui.view" id="order_point_view_tree">
+            <field name="model">stock.order_point</field>
+            <field name="type">tree</field>
+            <field name="name">order_point_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_order_point_form">
+            <field name="name">Order Points</field>
+            <field name="res_model">stock.order_point</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="order_point_view_tree"/>
+            <field name="act_window" ref="act_order_point_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="order_point_view_form"/>
+            <field name="act_window" ref="act_order_point_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="60"
+            action="act_order_point_form" id="menu_order_point_form"/>
+
+        <record model="ir.model.access" id="access_order_point">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_order_point_admin">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_order_point">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_order_point">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_order_point"/>
+        </record>
+    </data>
+</tryton>
