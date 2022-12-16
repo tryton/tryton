@@ -1,0 +1,323 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Untergeordnet (Unternehmen)"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Mitarbeiter"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Dokumentenfuß"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Dokumentenkopf"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Unternehmen)"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Zeitzone"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr "Unterstellte Mitarbeiter"
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr "Vorgesetzter"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Aktuelles Unternehmen"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Aktueller Mitarbeiter"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Mitarbeiter"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Mutterbetrieb"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Untergeordnete Unternehmen hinzufügen."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Die Standardwährung des Unternehmens."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Dem Unternehmen Mitarbeiter hinzufügen."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Der anzuzeigende Text in der Fußzeile der Berichte."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Der anzuzeigende Text in der Kopfzeile der Berichte."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Übergordnetes Unternehmen hinzufügen."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Wird zum berechnen des heutigen Datums verwendet."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Das Unternehmen dem der Mitarbeiter angehört."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Wann ein Mitarbeiter das Unternehmen verlässt."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Die Partei die den Mitarbeite repräsentiert."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Wann ein Mitarbeiter dem Unternehmen beitritt."
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Die Mitarbeiter, die diesem Mitarbeiter unterstellt sind."
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Der Vorgesetzte dieses Mitarbeiters."
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr "Unternehmen, für die dieser Job durchgeführt werden soll."
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
+"\n"
+"- \"Mitarbeiter\" des aktuellen Benutzers"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Die Nutzung des Nummernkreises auf das Unternehmen beschränken."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Die Nutzung des Nummernkreises auf das Unternehmen beschränken."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Das Unternehmen für das gearbeitet wird auswählen."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Den Mitarbeiter auswählen als der sich der User verhalten soll."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Dem Unternehmen Mitarbeiter hinzufügen."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Zugriff auf das Unternehmen und untergeordnete Unternehmen erlauben."
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Unternehmen Konfiguration"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Unternehmen konfigurieren"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Mitarbeiter"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr "Unterstellte Mitarbeiter"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Brief"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Zeitplaner - Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Mitarbeiter"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr "Unternehmen Administration"
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr "Mitarbeiter Administration"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Benutzer - Mitarbeiter"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "Mit freundlichen Grüßen,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Sehr geehrte Damen und Herren,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Betreff:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Sie können nun Ihr Unternehmen dem System hinzufügen."
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Berichte"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
