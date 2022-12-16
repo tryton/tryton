@@ -1,0 +1,57 @@
+{
+  "name": "tryton-sao",
+  "title": "sao",
+  "description": "Tryton webclient",
+  "version": "6.4.9",
+  "homepage": "http://www.tryton.org/",
+  "author": {
+    "name": "Tryton"
+  },
+  "repository": {
+    "type": "hg",
+    "url": "http://hg.tryton.org/sao"
+  },
+  "bugs": {
+    "url": "http://bugs.tryton.org/",
+    "email": "bugs@tryton.org"
+  },
+  "license": "GPL-3.0+",
+  "files": [
+    "COPYRIGHT",
+    "CHANGELOG",
+    "Gruntfile.js",
+    "LICENSE",
+    "README.md",
+    "bower.json",
+    "dist",
+    "images",
+    "index.html",
+    "locale",
+    "package.json",
+    "src",
+    "tests"
+  ],
+  "scripts": {
+    "test": "npx grunt test",
+    "postinstall": "npx bower install"
+  },
+  "devDependencies": {
+    "grunt-contrib-nodeunit": "^2.0",
+    "grunt-contrib-qunit": "^3.1",
+    "grunt-contrib-watch": "^1.1",
+    "grunt-shell": "^3.0",
+    "grunt-po2json": "^0.3"
+  },
+  "keywords": [
+    "tryton"
+  ],
+  "dependencies": {
+    "bower": "^1.8.4",
+    "grunt": "^1.0",
+    "grunt-cli": "^1.3",
+    "grunt-contrib-concat": "^1.0",
+    "grunt-contrib-jshint": "^2.1",
+    "grunt-contrib-less": "^2.0",
+    "grunt-contrib-uglify": "^5.0"
+  }
+}
