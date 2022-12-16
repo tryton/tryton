@@ -1,0 +1,265 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"."
+msgstr "قطعه موردنیاز برای جابجایی محصول \"%s\"."
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "قطعه مورد نیاز"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "قطعه مورد نیاز"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "قطعه"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "مقدار پیش بینی شده"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "قطعه"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "مخازن قطعه"
+
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "مقدار داخلی"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "قطعه"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "نوع مکانی که نیازمند قطعه میباشد"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "نوع مکانی که نیازمند قطعه میباشد"
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"اجازه می دهد مقادیرموجودی مورد انتظار را برای این تاریخ محاسبه کنید.\n"
+"* مقدار خالی یک تاریخ درآینده نامحدود است.\n"
+"* یک تاریخ در گذشته ارزش های تاریخی را فراهم می کند."
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "قطعه‌ها"
+
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr "قطعه"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "قطعه‌ها"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "الگوی - نوع قطعه موجود"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "قطعه موجود"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "نوع قطعه موجود"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "گمشده ها و یافته ها"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "تهیه کننده"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "مخزن"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "تأمین کننده"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "قطعه بواسطه مکان"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "موجودی دوره انبار در هر قطعه"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "قطعه‌ها"
