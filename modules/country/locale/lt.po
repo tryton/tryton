@@ -1,0 +1,539 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr "3 raidžių kodas"
+
+msgctxt "field:country.country,code:"
+msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr "Skaitmenų kodas"
+
+msgctxt "field:country.country,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:country.country,subdivisions:"
+msgid "Subdivisions"
+msgstr "Regionas"
+
+msgctxt "field:country.subdivision,code:"
+msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:country.subdivision,country:"
+msgid "Country"
+msgstr "Šalis"
+
+msgctxt "field:country.subdivision,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:country.subdivision,parent:"
+msgid "Parent"
+msgstr "Motininė"
+
+msgctxt "field:country.subdivision,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Miestas"
+
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "Šalis"
+
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Regionas"
+
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Pašto kodas"
+
+msgctxt "help:country.country,code3:"
+msgid "The 3 chars ISO country code."
+msgstr "3 raidžių šalies ISO kodas."
+
+msgctxt "help:country.country,code:"
+msgid "The 2 chars ISO country code."
+msgstr "2 raidžių ISO kodas."
+
+msgctxt "help:country.country,code_numeric:"
+msgid "The ISO numeric country code."
+msgstr "Skaitmeninis ISO šalies kodas."
+
+msgctxt "help:country.country,name:"
+msgid "The main identifier of the country."
+msgstr "Pagrindinis šalies identifikatorius."
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr "Regiono ISO kodas."
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr "Šalis, kurioje yra regionas."
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr "Pagrindinis regiono identifikatorius."
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr ""
+
+msgctxt "help:country.zip,city:"
+msgid "The name of the city for the zip."
+msgstr ""
+
+msgctxt "help:country.zip,country:"
+msgid "The country where the zip is."
+msgstr ""
+
+msgctxt "help:country.zip,subdivision:"
+msgid "The subdivision where the zip is."
+msgstr ""
+
+msgctxt "model:country.country,name:"
+msgid "Country"
+msgstr "Šalis"
+
+msgctxt "model:country.subdivision,name:"
+msgid "Subdivision"
+msgstr "Regionas"
+
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Pašto kodas"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "Šalys"
+
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Pašto kodas"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "Šalys"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administration"
+msgstr "Valdymas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Region"
+msgstr "Administracinis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Territory"
+msgstr "Administracinė teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative area"
+msgstr "Administracinė sritis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative atoll"
+msgstr "Administracinis atolas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Arctic Region"
+msgstr "Arkties regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Area"
+msgstr "Sritis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Atoll"
+msgstr "Atolas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous City"
+msgstr "Autonominis miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Commune"
+msgstr "Autonominė komuna"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous District"
+msgstr "Autonominė apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Province"
+msgstr "Autonominė provincija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Region"
+msgstr "Autonominis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous communities"
+msgstr "Autonominės savivaldos"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous community"
+msgstr "Autonominė savivalda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous island"
+msgstr "Autonominė sala"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous monastic state"
+msgstr "Autonominė vienuolių valstybė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous municipality"
+msgstr "Autonominis municipalitetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous republic"
+msgstr "Autonominė respublika"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous sector"
+msgstr "Autonominis sektorius"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territorial unit"
+msgstr "Autonominis teritorinis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territory"
+msgstr "Autonominė teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Borough"
+msgstr "Miestas su grafystės teisėmis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Canton"
+msgstr "Kantonas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital District"
+msgstr "Sostinės rajonas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Metropolitan City"
+msgstr "Sostinės metropolio miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Territory"
+msgstr "Sostinės teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital city"
+msgstr "Sostinė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chains (of islands)"
+msgstr "Salų grandinė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City"
+msgstr "Miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City corporation"
+msgstr "Miestų susivienijimas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City with county rights"
+msgstr "Miestas su apskrities teisėmis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Commune"
+msgstr "Komuna"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Constitutional province"
+msgstr "Konstitucinė provincija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Council area"
+msgstr "Tarybos sritis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Country"
+msgstr "Šalis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "County"
+msgstr "Grafystė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Department"
+msgstr "Departamentas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Dependency"
+msgstr "Priklausomybė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Development region"
+msgstr "Vystymo regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District"
+msgstr "Apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District council area"
+msgstr "Miesto tarybos apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Division"
+msgstr "Sritis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic Prefecture"
+msgstr "Ekonominė prefektūra"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic region"
+msgstr "Ekonominis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Emirate"
+msgstr "Emiratas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Entity"
+msgstr "Teisinis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Dependency"
+msgstr "Federalinė priklausomybė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal District"
+msgstr "Federalinė apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territories"
+msgstr "Federalinė teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical entity"
+msgstr "Geografinis teisinis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical region"
+msgstr "Geografinis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical unit"
+msgstr "Geografinis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Governorate"
+msgstr "Provincija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Included for completeness"
+msgstr "Papildantis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Indigenous region"
+msgstr "Vietinis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island"
+msgstr "Sala"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island council"
+msgstr "Salos taryba"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island group"
+msgstr "Salų grupė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Local council"
+msgstr "Vietinė taryba"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "London borough"
+msgstr "Londono rajonas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan cities"
+msgstr "Metropolio miestai"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan department"
+msgstr "Metropolio departamentas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan district"
+msgstr "Metropolio rajonas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan region"
+msgstr "Metropolio regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipalities"
+msgstr "Municipalitetai"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipality"
+msgstr "Municipalitetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Nation"
+msgstr "Tauta"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Oblast"
+msgstr "Sritis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Outlying area"
+msgstr "Aplinkinės sritys"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas department"
+msgstr "Užjūrio departamentas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region"
+msgstr "Užjūrio regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region/department"
+msgstr "Užjūrio regionas/departamentas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territorial collectivity"
+msgstr "Užjūrio teritorinis junginys"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Parish"
+msgstr "Grafystės apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularates"
+msgstr "Apygardos"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Prefecture"
+msgstr "Prefektūra"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Principality"
+msgstr "Kunigaikštystė"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Province"
+msgstr "Provincija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Quarter"
+msgstr "Kvartalas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rayon"
+msgstr "Rajonas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Region"
+msgstr "Regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional council"
+msgstr "Regiono taryba"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republic"
+msgstr "Respublika"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republican City"
+msgstr "Respublikos miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Self-governed part"
+msgstr "Savivaldi dalis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special District"
+msgstr "Speciali apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Municipality"
+msgstr "Specialus municipalitetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Region"
+msgstr "Specialus regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative region"
+msgstr "Specialus administracinis regionas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special city"
+msgstr "Specialus miestas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special island authority"
+msgstr "Specialios priklausomybės sala"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special zone"
+msgstr "Speciali zona"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "State"
+msgstr "Valstija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territorial unit"
+msgstr "Teritorinis vienetas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territory"
+msgstr "Teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town council"
+msgstr "Miesto taryba"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Two-tier county"
+msgstr "Dviejų lygių apygarda"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Union territory"
+msgstr "Suvienyta teritorija"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority"
+msgstr "Vieningas valdymas"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (england)"
+msgstr "Vieningas valdymas (Anglija)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (wales)"
+msgstr "Vieningas valdymas (Velsas)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "zone"
+msgstr "Zona"
