@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="start_date"/>
+    <field name="start_date"/>
+
+    <label name="frequency"/>
+    <group id="frequency_interval" col="-1">
+        <field name="frequency"/>
+        <label name="interval" string="every"/>
+        <field name="interval" xexpand="0"/>
+        <label name="interval" string="months" xalign="0.0" xexpand="1"/>
+    </group>
+
+    <label name="amount"/>
+    <field name="amount"/>
+
+    <label name="number"/>
+    <field name="number"/>
+</form>

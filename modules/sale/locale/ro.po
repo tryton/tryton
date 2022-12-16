@@ -1,0 +1,1602 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_exception_state:"
+msgid "Exception State"
+msgstr "Stare de excepție"
+
+msgctxt "field:account.invoice,sales:"
+msgid "Sales"
+msgstr "Vânzări"
+
+#, fuzzy
+msgctxt "field:party.party,sale_invoice_method:"
+msgid "Invoice Method"
+msgstr "Metoda de facturare"
+
+msgctxt "field:party.party,sale_methods:"
+msgid "Sale Methods"
+msgstr "Metode de Vânzare"
+
+msgctxt "field:party.party,sale_shipment_method:"
+msgid "Shipment Method"
+msgstr "Metoda de Expediere"
+
+msgctxt "field:party.party.sale_method,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:party.party.sale_method,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.party.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Metoda de facturare al vânzării"
+
+msgctxt "field:party.party.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Metoda de Expediere Marfă"
+
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Timp Implicit de execuţie"
+
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Timp Implicit de execuţie"
+
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr "Timp de livrare"
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Marfă"
+
+msgctxt "field:product.product,sale_price_uom:"
+msgid "Sale Price"
+msgstr "Preț de vânzare"
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "Vânzare UM"
+
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "Depozite"
+
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr "Cantitate"
+
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "Data vânzării"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr "Data încheiere Stoc"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr "Timp de livrare"
+
+msgctxt "field:product.template,salable:"
+msgid "Salable"
+msgstr "Marfă"
+
+msgctxt "field:product.template,sale_uom:"
+msgid "Sale UOM"
+msgstr "Vânzare UM"
+
+msgctxt "field:sale.configuration,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Metoda facturii de vânzare"
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
+msgstr "Procesează Vânzare după"
+
+msgctxt "field:sale.configuration,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Secvență de vânzare"
+
+msgctxt "field:sale.configuration,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Metoda de expediere marfă"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Metoda de facturare al vânzării"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Metoda de expediere a vânzării"
+
+msgctxt "field:sale.configuration.sequence,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:sale.configuration.sequence,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Secvență de vânzare"
+
+msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "Facturi de domeniu"
+
+msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "Recreați facturi"
+
+msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "Mișcări de domeniu"
+
+msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "Recreați mișcări"
+
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Cantitatea actuală"
+
+msgctxt "field:sale.line,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.line,description:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "field:sale.line,from_location:"
+msgid "From Location"
+msgstr "Din locație"
+
+msgctxt "field:sale.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Rând factură"
+
+msgctxt "field:sale.line,move_done:"
+msgid "Moves Done"
+msgstr "Mișcari Finalizate"
+
+msgctxt "field:sale.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Excepție de Miscare"
+
+msgctxt "field:sale.line,moves:"
+msgid "Moves"
+msgstr "Mișcări"
+
+msgctxt "field:sale.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Mișcări ignorate"
+
+msgctxt "field:sale.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Mișcări recreate"
+
+msgctxt "field:sale.line,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:sale.line,product:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:sale.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categorie UM Produs"
+
+msgctxt "field:sale.line,quantity:"
+msgid "Quantity"
+msgstr "Cantitate"
+
+msgctxt "field:sale.line,sale:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr "Starea vanzarii"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr "Data de expediere"
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr "Rezumat"
+
+msgctxt "field:sale.line,taxes:"
+msgid "Taxes"
+msgstr "Impozite"
+
+msgctxt "field:sale.line,to_location:"
+msgid "To Location"
+msgstr "Spre Locație"
+
+msgctxt "field:sale.line,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:sale.line,unit:"
+msgid "Unit"
+msgstr "Unitate"
+
+msgctxt "field:sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preț unitar"
+
+msgctxt "field:sale.line,warehouse:"
+msgid "Warehouse"
+msgstr "Depozit"
+
+msgctxt "field:sale.line-account.tax,line:"
+msgid "Sale Line"
+msgstr "Rând de vânzare"
+
+msgctxt "field:sale.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Impozit"
+
+msgctxt "field:sale.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Mișcare"
+
+msgctxt "field:sale.line-ignored-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Rând de vânzare"
+
+msgctxt "field:sale.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Mișcare"
+
+msgctxt "field:sale.line-recreated-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Rând de vânzare"
+
+msgctxt "field:sale.reporting.context,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:sale.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Din data"
+
+msgctxt "field:sale.reporting.context,period:"
+msgid "Period"
+msgstr "Perioadă"
+
+msgctxt "field:sale.reporting.context,to_date:"
+msgid "To Date"
+msgstr "pâna la Data"
+
+msgctxt "field:sale.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Depozit"
+
+msgctxt "field:sale.reporting.country,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:sale.reporting.country,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.country.subdivision,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:sale.reporting.country.subdivision,subdivision:"
+msgid "Subdivision"
+msgstr "Subdiviziune"
+
+msgctxt "field:sale.reporting.country.subdivision,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
+msgid "Subdivision"
+msgstr "Subdiviziune"
+
+msgctxt "field:sale.reporting.country.time_series,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:sale.reporting.country.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.customer,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.reporting.customer,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.customer.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.customer.category.time_series,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:sale.reporting.customer.category.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.customer.category.tree,children:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "field:sale.reporting.customer.category.tree,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.reporting.customer.category.tree,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:sale.reporting.customer.category.tree,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "field:sale.reporting.customer.time_series,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:sale.reporting.main,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.main.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product,product:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:sale.reporting.product,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.product.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,time_series:"
+msgid "Time Series"
+msgstr "Seria de timp"
+
+msgctxt "field:sale.reporting.product.category.time_series,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:sale.reporting.product.category.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product.category.tree,children:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "field:sale.reporting.product.category.tree,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.reporting.product.category.tree,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:sale.reporting.product.category.tree,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "field:sale.reporting.product.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:sale.reporting.region,children:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "field:sale.reporting.region,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+msgctxt "field:sale.reporting.region,region:"
+msgid "Region"
+msgstr "Regiune"
+
+msgctxt "field:sale.sale,comment:"
+msgid "Comment"
+msgstr "Cometariu"
+
+msgctxt "field:sale.sale,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmat de"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr "Legatura"
+
+msgctxt "field:sale.sale,currency:"
+msgid "Currency"
+msgstr "Valută"
+
+msgctxt "field:sale.sale,description:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "field:sale.sale,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adresa de facturare"
+
+msgctxt "field:sale.sale,invoice_method:"
+msgid "Invoice Method"
+msgstr "Metoda de facturare"
+
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "Parte Facturata"
+
+msgctxt "field:sale.sale,invoice_state:"
+msgid "Invoice State"
+msgstr "Stare Factura"
+
+msgctxt "field:sale.sale,invoices:"
+msgid "Invoices"
+msgstr "Facturi"
+
+msgctxt "field:sale.sale,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Facturi ignorate"
+
+msgctxt "field:sale.sale,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Facturi recreate"
+
+msgctxt "field:sale.sale,lines:"
+msgid "Lines"
+msgstr "Rânduri"
+
+msgctxt "field:sale.sale,moves:"
+msgid "Moves"
+msgstr "Mișcări"
+
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr "Număr"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:sale.sale,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:sale.sale,party_lang:"
+msgid "Party Language"
+msgstr "Limba Părții"
+
+msgctxt "field:sale.sale,payment_term:"
+msgid "Payment Term"
+msgstr "Termen de plata"
+
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Ofertat de"
+
+msgctxt "field:sale.sale,reference:"
+msgid "Reference"
+msgstr "Referinţă"
+
+msgctxt "field:sale.sale,sale_date:"
+msgid "Sale Date"
+msgstr "Data vanzarii"
+
+msgctxt "field:sale.sale,shipment_address:"
+msgid "Shipment Address"
+msgstr "Adresa de expediere"
+
+msgctxt "field:sale.sale,shipment_method:"
+msgid "Shipment Method"
+msgstr "Metoda de expediere"
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Parte Expeditor"
+
+msgctxt "field:sale.sale,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Retururi expediție"
+
+msgctxt "field:sale.sale,shipment_state:"
+msgid "Shipment State"
+msgstr "Data de expediere"
+
+msgctxt "field:sale.sale,shipments:"
+msgid "Shipments"
+msgstr "Transporturi"
+
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "Data de expediere"
+
+msgctxt "field:sale.sale,state:"
+msgid "State"
+msgstr "Stare"
+
+msgctxt "field:sale.sale,tax_amount:"
+msgid "Tax"
+msgstr "Impozit"
+
+#, fuzzy
+msgctxt "field:sale.sale,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Impozit precalculat"
+
+msgctxt "field:sale.sale,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+#, fuzzy
+msgctxt "field:sale.sale,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Impozit precalculat"
+
+msgctxt "field:sale.sale,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Neimpozitat"
+
+#, fuzzy
+msgctxt "field:sale.sale,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Baza de impozitare"
+
+msgctxt "field:sale.sale,warehouse:"
+msgid "Warehouse"
+msgstr "Depozit"
+
+msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factura fiscala"
+
+msgctxt "field:sale.sale-ignored-account.invoice,sale:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factura fiscala"
+
+msgctxt "field:sale.sale-recreated-account.invoice,sale:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "field:stock.move,sale:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "field:stock.move,sale_exception_state:"
+msgid "Exception State"
+msgstr "Stare de excepție"
+
+msgctxt "help:party.party,sale_invoice_method:"
+msgid ""
+"The default sale invoice method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"Metoda implicită de facturare pentru client.\n"
+"Lăsaţi gol pentru a utiliza valoarea implicită din configurare."
+
+msgctxt "help:party.party,sale_shipment_method:"
+msgid ""
+"The default sale shipment method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"Metoda implicită de facturare pentru client.\n"
+"Lăsaţi gol pentru a utiliza valoarea implicită din configurare."
+
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+"Timpul între confirmarea vânzării pana la trimiterea al produselor.\n"
+"Utilizat pentru produse fără un timp de execuţie."
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+"Timpul de la confirmarea vânzării pana la trimiterea al produselor.\n"
+"Daca este gol se va folosi timpul implicit de execuţie."
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+"Timpul de la confirmarea vânzării pana la trimiterea al produselor.\n"
+"Daca este gol se va folosi timpul implicit de execuţie."
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
+msgstr ""
+"Perioada de grație în timpul căreia vânzarea confirmată poate fi încă resetată la draft.\n"
+"Se aplică dacă este activată o coadă de muncitori."
+
+msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr "Facturile selectate vor fi recreate. Celelalte vor fi ignorate."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr "Când ar trebui sa se expediază marfa."
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Facturi"
+
+msgctxt "model:ir.action,name:act_open_customer"
+msgid "Parties associated to Sales"
+msgstr "Părțile asociate Vânzărilor"
+
+msgctxt "model:ir.action,name:act_product"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
+msgid "Sales per Subdivision"
+msgstr "Vânzări pe subdiviziune"
+
+msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Vânzări pe țară"
+
+msgctxt "model:ir.action,name:act_reporting_customer"
+msgid "Sales per Customer"
+msgstr "Vânzări pe client"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category"
+msgid "Sales per Customer Category"
+msgstr "Vânzări pe Categorii de Clienţi"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
+msgid "Sales per Party Category"
+msgstr "Vânzări pe Categorii de Părţi"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
+msgid "Sales per Customer Category"
+msgstr "Vânzări pe Categorii de Clienţi"
+
+msgctxt "model:ir.action,name:act_reporting_customer_time_series"
+msgid "Sales per Customer"
+msgstr "Vânzări pe client"
+
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Sales per Product"
+msgstr "Vânzări pe produs"
+
+msgctxt "model:ir.action,name:act_reporting_product_category"
+msgid "Sales per Product Category"
+msgstr "Vânzări pe Categorii de Produse"
+
+msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
+msgid "Sales per Product Category"
+msgstr "Vânzări pe Categorie de Produs"
+
+msgctxt "model:ir.action,name:act_reporting_product_category_tree"
+msgid "Sales per Product Category"
+msgstr "Vânzări pe Categorie de Produs"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Sales per Product"
+msgstr "Vânzări pe produs"
+
+msgctxt "model:ir.action,name:act_reporting_region"
+msgid "Sales per Region"
+msgstr "Vânzări pe regiune"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "Retururi"
+
+msgctxt "model:ir.action,name:act_sale_configuration_form"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "Mișcări"
+
+msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "Transporturi"
+
+msgctxt "model:ir.action,name:report_sale"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "Gestionare Excepție Factura"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modificați antetul"
+
+msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgid "Open Region"
+msgstr "Regiune deschisă"
+
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Return Sale"
+msgstr "Retur Vânzarii"
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "Gestioneaza Excepție de expediere"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Confirmat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Excepție"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr "Se prelucreaza"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr "Ofertă"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending sales with "
+"company \"%(company)s\"."
+msgstr ""
+"Nu se poate șterge parte \"%(party)s\" când au vănzări nefinalizate cu "
+"compania \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_customer_location_required"
+msgid ""
+"To process sale \"%(sale)s\" you must set a customer location on party "
+"\"%(party)s\"."
+msgstr ""
+"Pentru a procesa vânzarea \"%(sale)s\" trebuie setata o locatie pentru parte"
+" \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_delete_cancel"
+msgid "To delete sale \"%(sale)s\" you must cancel it."
+msgstr "Pentru a șterge vânzarea \"%(sale)s\" trebuie să o anulați."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and shipment "
+"\"%(shipment_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+"Nu puteți utiliza împreună factura \"%(invoice_method)s\" si "
+"expediere\"%(shipment_method)s\" la vănzare \"%(sale)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
+msgstr ""
+"Pentru a obține o ofertă pentru vânzarea \"%(sale)s\" trebuie să introduceți"
+" o adresă de facturare."
+
+msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a sale."
+msgstr ""
+"Nu puteți devalida factura \"%(invoice)s\", deoarece a fost generată de o "
+"vânzare."
+
+msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft sale "
+"\"%(sale)s\"."
+msgstr ""
+"Pentru a șterge rândul \"%(line)s\" trebuie anulat sau resetat \"%(sale)s\" "
+"la proiectul de vânzare."
+
+msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
+msgid "A tax can be added only once to a sale line."
+msgstr "O taxă poate fi adăugată o singură dată la o linie de vânzare."
+
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
+msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
+msgstr ""
+"Pentru facturarea vânzării \"%(sale)s\" trebuie să configurati un cont "
+"implicit pentru venit."
+
+msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
+msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
+msgstr ""
+"Pentru a modifica antetul vânzării \"%(sale)s\", acesta trebuie să fie în "
+"stare devalidata."
+
+msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale."
+msgstr ""
+"Devalidarea a mișcarii \"%(move)s\" nu este posibilă deoarece a fost "
+"generată de o vânzare."
+
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
+msgid ""
+"To invoice sale \"%(sale)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Pentru facturarea vânzării \"%(sale)s\" trebuie definit un cont de venit "
+"pentru produsul \"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Valută"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "Zecimale valută"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr "Numărul de vânzări"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "Venit"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "Tendința veniturilor"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
+msgstr ""
+"Pentru a obține o ofertă pentru vânzarea \"%(sale)s\" trebuie să introduceți"
+" o adresă de expediere."
+
+msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgstr ""
+"Pentru a obține o ofertă de vânzare \"%(sale)s\" trebuie să specificați un "
+"depozit."
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "model:ir.model.button,string:sale_confirm_button"
+msgid "Confirm"
+msgstr "Confirmare"
+
+msgctxt "model:ir.model.button,string:sale_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Gestionare Excepție Factura"
+
+msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Gestioneaza Excepție de expediere"
+
+msgctxt "model:ir.model.button,string:sale_modify_header_button"
+msgid "Modify Header"
+msgstr "Modificare Antet"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Proces"
+
+msgctxt "model:ir.model.button,string:sale_quote_button"
+msgid "Quote"
+msgstr "Ofertă"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr "Utilizator în companii"
+
+msgctxt "model:ir.sequence,name:sequence_sale"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.ui.menu,name:menu_customer"
+msgid "Associated to Sales"
+msgstr "Părți asociate Vânzărilor"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Raportare"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:party.party.sale_method,name:"
+msgid "Party Sale Method"
+msgstr "Metodă de Vânzare al Părţi"
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr "Timpul Implicit de Execuţie al Produsului"
+
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr "Contextul vânzării produselor"
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr "Vânzări"
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr "Administrator de Vanzari"
+
+msgctxt "model:sale.configuration,name:"
+msgid "Sale Configuration"
+msgstr "Configurare vânzări"
+
+msgctxt "model:sale.configuration.sale_method,name:"
+msgid "Sale Configuration Sale Method"
+msgstr "Configurare metoda de vânzare"
+
+msgctxt "model:sale.configuration.sequence,name:"
+msgid "Sale Configuration Sequence"
+msgstr "Configurare Secvență Vânzare"
+
+msgctxt "model:sale.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "Gestionare Excepție Factura"
+
+msgctxt "model:sale.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "Gestioneaza Excepție de expediere"
+
+msgctxt "model:sale.line,name:"
+msgid "Sale Line"
+msgstr "Rând de vânzare"
+
+msgctxt "model:sale.line-account.tax,name:"
+msgid "Sale Line - Tax"
+msgstr "Linie de vânzare - impozit"
+
+msgctxt "model:sale.line-ignored-stock.move,name:"
+msgid "Sale Line - Ignored Move"
+msgstr "Linie de vânzare - Mișcare Ignorată"
+
+msgctxt "model:sale.line-recreated-stock.move,name:"
+msgid "Sale Line - Recreated Move"
+msgstr "Rând de vânzare - Mișcare recreată"
+
+msgctxt "model:sale.reporting.context,name:"
+msgid "Sale Reporting Context"
+msgstr "Contextul raportării vânzărilor"
+
+msgctxt "model:sale.reporting.country,name:"
+msgid "Sale Reporting per Country"
+msgstr "Raportarea vânzărilor pe țară"
+
+msgctxt "model:sale.reporting.country.subdivision,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Raportarea vânzărilor pe subdiviziune"
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Raportarea vânzărilor pe subdiviziune"
+
+msgctxt "model:sale.reporting.country.time_series,name:"
+msgid "Sale Reporting per Country"
+msgstr "Raportarea vânzărilor pe țară"
+
+msgctxt "model:sale.reporting.customer,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Raportarea vânzărilor pe client"
+
+msgctxt "model:sale.reporting.customer.category,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Raportarea Vânzărilor pe Categorii de Clienţi"
+
+msgctxt "model:sale.reporting.customer.category.time_series,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Raportarea Vânzărilor pe Categorii de Clienţi"
+
+msgctxt "model:sale.reporting.customer.category.tree,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Raportarea Vânzărilor pe Categorii de Clienţi"
+
+msgctxt "model:sale.reporting.customer.time_series,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Raportarea vânzărilor pe client"
+
+msgctxt "model:sale.reporting.main,name:"
+msgid "Sale Reporting"
+msgstr "Raport de Vânzări"
+
+msgctxt "model:sale.reporting.main.time_series,name:"
+msgid "Sale Reporting"
+msgstr "Raport de Vânzări"
+
+msgctxt "model:sale.reporting.product,name:"
+msgid "Sale Reporting per Product"
+msgstr "Raportarea vânzărilor pe produs"
+
+msgctxt "model:sale.reporting.product.category,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Raportarea Vânzărilor pe Categorie de Produse"
+
+msgctxt "model:sale.reporting.product.category.time_series,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Raportarea Vânzărilor pe Categorie de Produse"
+
+msgctxt "model:sale.reporting.product.category.tree,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Raportarea Vânzărilor pe Categorie de Produse"
+
+msgctxt "model:sale.reporting.product.time_series,name:"
+msgid "Sale Reporting per Product"
+msgstr "Raportarea vânzărilor pe produs"
+
+msgctxt "model:sale.reporting.region,name:"
+msgid "Sale Reporting per Region"
+msgstr "Raportarea vânzărilor pe regiune"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Retur Vânzare"
+
+msgctxt "model:sale.sale,name:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "model:sale.sale-ignored-account.invoice,name:"
+msgid "Sale - Ignored Invoice"
+msgstr "Vânzare - factură ignorată"
+
+msgctxt "model:sale.sale-recreated-account.invoice,name:"
+msgid "Sale - Recreated Invoice"
+msgstr "Vânzare - factură recreată"
+
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "report:sale.sale:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:sale.sale:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "report:sale.sale:"
+msgid "Description:"
+msgstr "Descriere:"
+
+msgctxt "report:sale.sale:"
+msgid "Draft Sale Order"
+msgstr "Comanda devalidata"
+
+msgctxt "report:sale.sale:"
+msgid "Quantity"
+msgstr "Cantitate"
+
+msgctxt "report:sale.sale:"
+msgid "Quotation N°:"
+msgstr "Oferta N°:"
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Referinţă:"
+
+msgctxt "report:sale.sale:"
+msgid "Sale Order N°:"
+msgstr "Nr. Comandă de vânzare:"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes"
+msgstr "Impozite"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes:"
+msgstr "Impozite:"
+
+msgctxt "report:sale.sale:"
+msgid "Total (excl. taxes):"
+msgstr "Total (fără impozite):"
+
+msgctxt "report:sale.sale:"
+msgid "Total:"
+msgstr "Total:"
+
+msgctxt "report:sale.sale:"
+msgid "Unit Price"
+msgstr "Preț unitar"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Ignored"
+msgstr "Ignorat"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Recreated"
+msgstr "Recreat"
+
+msgctxt "selection:sale.line,type:"
+msgid "Comment"
+msgstr "Cometariu"
+
+msgctxt "selection:sale.line,type:"
+msgid "Line"
+msgstr "Rând"
+
+msgctxt "selection:sale.line,type:"
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgctxt "selection:sale.line,type:"
+msgid "Title"
+msgstr "Titlu"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Day"
+msgstr "Zi"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Month"
+msgstr "Lună"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Year"
+msgstr "An"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Order Processed"
+msgstr "La procesarea comenzii"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Shipment Sent"
+msgstr "La expediere trimis"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Exception"
+msgstr "Excepție"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "None"
+msgstr "Nici unul"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Paid"
+msgstr "Plătit"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Waiting"
+msgstr "În Aşteptare"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Invoice Paid"
+msgstr "La plata facturii"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Order Processed"
+msgstr "La procesare comanda"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Exception"
+msgstr "Excepție"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "None"
+msgstr "Nici unul"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Sent"
+msgstr "Trimis"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Waiting"
+msgstr "În Aşteptare"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Cancelled"
+msgstr "Anulat"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Confirmed"
+msgstr "Confirmat"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Done"
+msgstr "Terminat"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Processing"
+msgstr "Se prelucreaza"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Quotation"
+msgstr "Ofertă"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Ignored"
+msgstr "Ignorat"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Recreated"
+msgstr "Recreat"
+
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "view:product.template:"
+msgid "Customers"
+msgstr "Clienți"
+
+msgctxt "view:sale.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "Alegeți facturi de recreat:"
+
+msgctxt "view:sale.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "Alegeți mișarea pentru a recrea:"
+
+msgctxt "view:sale.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.line:"
+msgid "Notes"
+msgstr "Notițe"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Impozite"
+
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.main:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Number"
+msgstr "Număr"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Revenue"
+msgstr "Venituri"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return these/this sale(s)?"
+msgstr "Sunteți sigur că veți returna aceste vânzări /această vânzare?"
+
+msgctxt "view:sale.sale:"
+msgid "Other Info"
+msgstr "Alte informații"
+
+msgctxt "view:sale.sale:"
+msgid "Sale"
+msgstr "Vânzare"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:sale.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:sale.modify_header,start,modify:"
+msgid "Modify"
+msgstr "Modificare"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Retur"

@@ -1,0 +1,119 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "Usuario de envío de fallos"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Reclamación"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Nivel"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinatarios ocultos"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinatarios secundarios"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Medio de contacto"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Enviar correo"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+"El usuario a notificar cuando no se ha encontrado ningún correo electrónico "
+"para enviar la reclamación"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+"Define que correo electrónico de los métodos de contacto del tercero se "
+"quiere utilizar"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Dejar en blanco para utilizar el valor definido en la configuración."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Registro de correos electrónicos de reclamación"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Registro de correos electrónicos"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Correo electrónico de reclamación"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Fecha:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Fecha vencimiento"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Gastos:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagos pendientes recibidos"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Aviso recordatorio"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "Correo electrónico"
