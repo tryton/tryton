@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='general']/field[@name='cost_price_method']"
+        position="after">
+        <label name="salable"/>
+        <field name="salable"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page string="Customers" id="customers">
+            <label name="salable"/>
+            <field name="salable"/>
+            <label name="sale_uom"/>
+            <field name="sale_uom"/>
+            <label name="lead_time"/>
+            <field name="lead_time"/>
+        </page>
+    </xpath>
+</data>
+

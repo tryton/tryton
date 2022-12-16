@@ -1,0 +1,175 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
+"used on a move \"%(move)s\" in a closed period"
+msgstr ""
+"No podeu modificar les dates de caducitat del lot \"%(lot)s\" perquè "
+"s'utilitza en el moviment \"%(move)s\" en un període tancat."
+
+msgctxt "error:stock.move:"
+msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
+msgstr "El lot \"%(lot)s\" del moviment \"%(move)s\" ha caducat."
+
+msgctxt "error:stock.period:"
+msgid ""
+"You can not close a period before the Shelf Live Expiration Date "
+"\"%(date)s\" of Lot \"%(lot)s\""
+msgstr ""
+"No podeu tancar un període abans de la data de caducitat \"%(date)s\" del "
+"lot \"%(lot)s\"."
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Estat caducitat"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Temps a caducar"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Estat vida útil"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Temps vida útil"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Estat caducitat"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Temps a caducar"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Estat vida útil"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Temps vida útil"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Retard de la vida útil"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Data caducitat"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Estat caducitat"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Data caducitat"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Estat caducitat"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days"
+msgstr "En nombre de dies."
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr "El retard en número de dies abans de l'eliminació de la previsió."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Forçar caducitats a logística"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Opcional"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Obligatori"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Vida útil"
