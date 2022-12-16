@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkoopfactuur termijn"
+
+msgctxt "field:party.party.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkoopfactuur termijn"
+
+msgctxt "field:sale.configuration,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkoopfactuur termijn"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Verkoopfactuur termijn"
+
+msgctxt "field:sale.invoice.term,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:sale.invoice.term,relative_deltas:"
+msgid "Deltas"
+msgstr "Verschillen"
+
+msgctxt "field:sale.invoice.term.relative_delta,day:"
+msgid "Day of Month"
+msgstr "Dag van de maand"
+
+msgctxt "field:sale.invoice.term.relative_delta,days:"
+msgid "Number of Days"
+msgstr "Aantal dagen"
+
+msgctxt "field:sale.invoice.term.relative_delta,month:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "field:sale.invoice.term.relative_delta,months:"
+msgid "Number of Months"
+msgstr "Aantal maanden"
+
+msgctxt "field:sale.invoice.term.relative_delta,term:"
+msgid "Invoice Term"
+msgstr "Factuur termijn"
+
+msgctxt "field:sale.invoice.term.relative_delta,weekday:"
+msgid "Day of Week"
+msgstr "Dag van de week"
+
+msgctxt "field:sale.invoice.term.relative_delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Aantal weken"
+
+msgctxt "field:sale.sale,invoice_term:"
+msgid "Invoice Term"
+msgstr "Factuur termijn"
+
+msgctxt "help:party.party,sale_invoice_term:"
+msgid ""
+"The default sale invoice term for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"De standaard factuur termijn voor de klant.\n"
+"Laat leeg om de standaard waarde te gebruiken van de configuratie."
+
+msgctxt "help:sale.invoice.term,name:"
+msgid "The main identifier of the invoice term."
+msgstr "De hoofd identificatie van de factuur termijn."
+
+msgctxt "model:ir.action,name:act_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Factuur termijnen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Factuur termijnen"
+
+msgctxt "model:sale.invoice.term,name:"
+msgid "Invoice Term"
+msgstr "Factuur termijn"
+
+msgctxt "model:sale.invoice.term.relative_delta,name:"
+msgid "Invoice Term Delta"
+msgstr "Factuur termijn verschillen"
