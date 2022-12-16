@@ -1,0 +1,44 @@
+Version 4.4.5 - 2019-04-02
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.4 - 2018-05-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.3 - 2017-11-07
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.2 - 2017-10-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.1 - 2017-06-06
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Split moves into supplier and customer moves
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Propagate exception handling from sale to purchase
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Initial release
