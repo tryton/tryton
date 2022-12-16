@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator id="payment" string="Payment" colspan="4"/>
+        <label name="payment_group_sequence" string="Group Sequence"/>
+        <field name="payment_group_sequence"/>
+        <newline/>
+    </xpath>
+</data>

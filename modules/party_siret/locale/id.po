@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,siret:"
+msgid "SIRET"
+msgstr ""
+
+msgctxt "field:party.party,siren:"
+msgid "SIREN"
+msgstr ""
