@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="sale_opportunity">
+        <record model="ir.ui.view" id="sale_opportunity_reporting_context_view_form">
+            <field name="model">sale.opportunity.reporting.context</field>
+            <field name="inherit" ref="sale_opportunity.reporting_context_view_form"/>
+            <field name="name">sale_opportunity_reporting_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_opportunity_reporting_marketing_context_view_form">
+            <field name="model">sale.opportunity.reporting.marketing.context</field>
+            <field name="type">form</field>
+            <field name="name">sale_opportunity_reporting_marketing_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_opportunity_reporting_marketing_view_list">
+            <field name="model">sale.opportunity.reporting.marketing</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="sale_opportunity.reporting_main_view_list"/>
+            <field name="name">sale_opportunity_reporting_marketing_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_opportunity_reporting_marketing">
+            <field name="name">Opportunities per Marketing</field>
+            <field name="res_model">sale.opportunity.reporting.marketing</field>
+            <field name="context_model">sale.opportunity.reporting.marketing.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_opportunity_reporting_marketing_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_opportunity_reporting_marketing_view_list"/>
+            <field name="act_window" ref="act_sale_opportunity_reporting_marketing"/>
+        </record>
+        <record model="ir.action.keyword" id="act_sale_opportunity_reporting_marketing_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" ref="sale_opportunity.menu_reporting_opportunity"/>
+            <field name="action" ref="act_sale_opportunity_reporting_marketing"/>
+        </record>
+    </data>
+</tryton>
