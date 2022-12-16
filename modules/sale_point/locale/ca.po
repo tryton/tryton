@@ -1,0 +1,678 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.gross_price,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.gross_price,gross_price:"
+msgid "Gross Price"
+msgstr "Preu brut"
+
+msgctxt "field:product.gross_price,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.product,gross_price:"
+msgid "Gross Price"
+msgstr "Preu brut"
+
+msgctxt "field:product.product,gross_prices:"
+msgid "Gross Prices"
+msgstr "Preus bruts"
+
+msgctxt "field:product.template,gross_price:"
+msgid "Gross Price"
+msgstr "Preu brut"
+
+msgctxt "field:product.template,gross_prices:"
+msgid "Gross Prices"
+msgstr "Preus bruts"
+
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr "Adreça"
+
+msgctxt "field:sale.point,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point,customer_location:"
+msgid "To Location"
+msgstr "A la ubicació"
+
+msgctxt "field:sale.point,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:sale.point,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.point,return_location:"
+msgid "Return Location"
+msgstr "Ubicació de retorn"
+
+msgctxt "field:sale.point,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:sale.point,storage_location:"
+msgid "Storage Location"
+msgstr "Ubicació d'emmagatzematge"
+
+msgctxt "field:sale.point,tax_included:"
+msgid "Tax Included"
+msgstr "Impostos inclosos"
+
+msgctxt "field:sale.point.cash.session,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:sale.point.cash.session,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.cash.session,end_amount:"
+msgid "End Amount"
+msgstr "Import final"
+
+msgctxt "field:sale.point.cash.session,next_session:"
+msgid "Next Session"
+msgstr "Propera sessió"
+
+msgctxt "field:sale.point.cash.session,payments:"
+msgid "Payments"
+msgstr "Pagaments"
+
+msgctxt "field:sale.point.cash.session,point:"
+msgid "Point"
+msgstr "Punt"
+
+msgctxt "field:sale.point.cash.session,previous_session:"
+msgid "Previous Session"
+msgstr "Sessió anterior"
+
+msgctxt "field:sale.point.cash.session,start_amount:"
+msgid "Start Amount"
+msgstr "Import inicial"
+
+msgctxt "field:sale.point.cash.session,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:sale.point.cash.session,transfers:"
+msgid "Transfers"
+msgstr "Transferències"
+
+msgctxt "field:sale.point.cash.session.relation,next:"
+msgid "Next"
+msgstr "Següent"
+
+msgctxt "field:sale.point.cash.session.relation,previous:"
+msgid "Previous"
+msgstr "Anterior"
+
+msgctxt "field:sale.point.cash.transfer,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.point.cash.transfer,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.cash.transfer,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.cash.transfer,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.point.cash.transfer,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.point.cash.transfer,point:"
+msgid "Point"
+msgstr "Punt"
+
+msgctxt "field:sale.point.cash.transfer,session:"
+msgid "Session"
+msgstr "Sessió"
+
+msgctxt "field:sale.point.cash.transfer,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:sale.point.cash.transfer,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:sale.point.cash.transfer.type,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:sale.point.cash.transfer.type,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.cash.transfer.type,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:sale.point.cash.transfer.type,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.point.payment,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.point.payment,cash:"
+msgid "Cash"
+msgstr "Efectiu"
+
+msgctxt "field:sale.point.payment,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.payment,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.payment,method:"
+msgid "Method"
+msgstr "Mètode"
+
+msgctxt "field:sale.point.payment,point:"
+msgid "Point"
+msgstr "Punt"
+
+msgctxt "field:sale.point.payment,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:sale.point.payment,sale_state:"
+msgid "Sale State"
+msgstr "Estat de la venda"
+
+msgctxt "field:sale.point.payment,session:"
+msgid "Session"
+msgstr "Sessió"
+
+msgctxt "field:sale.point.payment.method,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:sale.point.payment.method,cash:"
+msgid "Cash"
+msgstr "Efectiu"
+
+msgctxt "field:sale.point.payment.method,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.payment.method,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.point.sale,amount_paid:"
+msgid "Paid"
+msgstr "Pagat"
+
+msgctxt "field:sale.point.sale,amount_to_pay:"
+msgid "To Pay"
+msgstr "A pagar"
+
+msgctxt "field:sale.point.sale,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.sale,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.sale,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.point.sale,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:sale.point.sale,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.point.sale,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.point.sale,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.point.sale,payments:"
+msgid "Payments"
+msgstr "Pagaments"
+
+msgctxt "field:sale.point.sale,point:"
+msgid "Point"
+msgstr "Punt"
+
+msgctxt "field:sale.point.sale,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:sale.point.sale,total:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:sale.point.sale,total_tax:"
+msgid "Total Tax"
+msgstr "Total impostos"
+
+msgctxt "field:sale.point.sale.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.point.sale.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.point.sale.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.point.sale.line,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:sale.point.sale.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.point.sale.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.point.sale.line,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:sale.point.sale.line,sale_state:"
+msgid "Sale State"
+msgstr "Estat de la venda"
+
+msgctxt "field:sale.point.sale.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.point.sale.line,unit_gross_price:"
+msgid "Unit Gross Price"
+msgstr "Preu brut unitari"
+
+msgctxt "field:sale.point.sale.line,unit_list_price:"
+msgid "Unit List Price"
+msgstr "Preu unitari de venda"
+
+msgctxt "field:sale.point.sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "help:product.product,gross_price:"
+msgid "The price with default tax included."
+msgstr "El preu amb els impostos per defecte inclosos."
+
+msgctxt "help:product.template,gross_price:"
+msgid "The price with default tax included."
+msgstr "El preu amb els impostos per defecte inclosos."
+
+msgctxt "help:sale.point,customer_location:"
+msgid "The location where goods are put when sold."
+msgstr "La ubicació on es s'envien els béns quan es venen."
+
+msgctxt "help:sale.point,return_location:"
+msgid ""
+"The location where goods are put when returned.\n"
+"If empty the storage location is used."
+msgstr ""
+"La ubicació on es posen els béns quan es retornen.\n"
+"Si està buit, s'utilitza la ubicació d'emmagatzematge."
+
+msgctxt "help:sale.point,storage_location:"
+msgid "The location from where goods are taken when sold."
+msgstr "La ubicació d'on s'agafen els béns quan es venen."
+
+msgctxt "help:sale.point,tax_included:"
+msgid "Check if unit Price includes tax."
+msgstr "Marca si el preu unitari inclou impostos."
+
+msgctxt "model:ir.action,name:act_cash_session_form"
+msgid "POS Cash Sessions"
+msgstr "Tancament de caixa TPV"
+
+msgctxt "model:ir.action,name:act_cash_transfer_type_form"
+msgid "POS Cash Transfer Types"
+msgstr "Tipus de transferència de diners TPV"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "POS Payment Methods"
+msgstr "Mètodes de pagament TPV"
+
+msgctxt "model:ir.action,name:act_point_form"
+msgid "Points of Sale"
+msgstr "Punts de venda"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "POS Sales"
+msgstr "Vendes de TPV"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay POS Sale"
+msgstr "Pagar venda TPV"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_closed"
+msgid "Closed"
+msgstr "Tancada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_open"
+msgid "Opened"
+msgstr "Oberta"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_done"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_open"
+msgid "Opened"
+msgstr "Oberta"
+
+msgctxt "model:ir.message,text:msg_cash_session_delete_open"
+msgid "To delete session \"%(session)s\" you must re-open it."
+msgstr "Per eliminar la sessió \"%(session)s\", heu de tornar a obrir-la."
+
+msgctxt "model:ir.message,text:msg_cash_session_previous_unique"
+msgid "A session can be used as previous only once."
+msgstr "Una sessió només es pot utilitzar com a anterior una vegada."
+
+msgctxt "model:ir.message,text:msg_cash_session_wrong_end_amount"
+msgid ""
+"To close session \"%(session)s\" you must change end amount to have "
+"%(amount)s instead of %(end_amount)s."
+msgstr ""
+"Per tancar la sessió \"%(session)s\", heu de canviar l'import final per "
+"tenir %(amount)s en lloc de %(end_amount)s."
+
+msgctxt "model:ir.message,text:msg_payment_delete_sale_open"
+msgid "To delete payment \"%(payment)s\" you must re-open sale \"%(sale)s\"."
+msgstr ""
+"Per eliminar el pagament \"%(payment)s\", heu de tornar a obrir la venda "
+"\"%(sale)s\"."
+
+msgctxt "model:ir.message,text:msg_payment_delete_session_open"
+msgid "To delete payment \"%(payment)s\" you must re-open session \"%(session)s\"."
+msgstr ""
+"Per eliminar el pagament \"%(payment)s\", heu de tornar a obrir la sessió "
+"\"%(session)s\"."
+
+msgctxt "model:ir.message,text:msg_payment_method_cash_unique"
+msgid "Each company can only have one cash payment method."
+msgstr "Cada empresa només pot tenir un mètode de pagament en efectiu."
+
+msgctxt "model:ir.message,text:msg_point_cash_session_open_unique"
+msgid "Each point of sale can only have one session open."
+msgstr "Cada punt de venda només pot tenir una sessió oberta."
+
+msgctxt "model:ir.message,text:msg_point_change_tax_included"
+msgid ""
+"You cannot change the point of sale's tax included flag because it has "
+"sales."
+msgstr ""
+"No podeu canviar la marca d'impostos inclosos del punt de venda perquè té ja"
+" té vendes."
+
+msgctxt "model:ir.message,text:msg_sale_amount_paid_cancelled"
+msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
+msgstr ""
+"La venda %(sale)s\" està cancel·lada, de manera que no pot tenir import "
+"pagat."
+
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
+msgstr ""
+"La venda \"%(sale)s\" està finalitzada, de manera que no pot tenir un import"
+" a pagar."
+
+msgctxt "model:ir.message,text:msg_sale_delete_numbered"
+msgid "You cannot delete sale \"%(sale)s\" because it has a number."
+msgstr "No podeu eliminar la venda \"%(sale)s\" perquè té un número."
+
+msgctxt "model:ir.message,text:msg_transfer_delete_posted"
+msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
+msgstr ""
+"No podeu eliminar la transferència \"%(transfer)s\" perquè està "
+"comptabilitzada."
+
+msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
+msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
+msgstr ""
+"Per eliminar la transferència \"%(transfer)s\" heu de tornar a obrir la "
+"sessió \"%(session)s\"."
+
+msgctxt "model:ir.model.button,confirm:cash_session_post_button"
+msgid "Are you sure you want to post the sessions?"
+msgstr "Segur que voleu comptabilitzar les sessions?"
+
+msgctxt "model:ir.model.button,confirm:cash_transfer_post_button"
+msgid "Are you sure you want to post the transfer?"
+msgstr "Segur que voleu comptabilitzar la transferència?"
+
+msgctxt "model:ir.model.button,confirm:sale_post_button"
+msgid "Are you sure you want to post the sales?"
+msgstr "Segur que voleu comptabilitzar les vendes?"
+
+msgctxt "model:ir.model.button,string:cash_session_close_button"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "model:ir.model.button,string:cash_session_open_button"
+msgid "Re-Open"
+msgstr "Torna a obrir"
+
+msgctxt "model:ir.model.button,string:cash_session_post_button"
+msgid "Post"
+msgstr "Comptabilitza"
+
+msgctxt "model:ir.model.button,string:cash_transfer_post_button"
+msgid "Post"
+msgstr "Comptabilitzar"
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:sale_open_button"
+msgid "Re-Open"
+msgstr "Torna a obrir"
+
+msgctxt "model:ir.model.button,string:sale_pay_button"
+msgid "Pay"
+msgstr "Paga"
+
+msgctxt "model:ir.model.button,string:sale_post_button"
+msgid "Post"
+msgstr "Comptabilitzar"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_session_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_type_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_point_sale_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "POS"
+msgstr "TPV"
+
+msgctxt "model:ir.ui.menu,name:menu_cash_session_form"
+msgid "POS Cash Sessions"
+msgstr "Tancament de caixa TPV"
+
+msgctxt "model:ir.ui.menu,name:menu_cash_transfer_type_form"
+msgid "POS Cash Transfer Types"
+msgstr "Tipus de transferència de dinero TPV"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "POS Payment Methods"
+msgstr "Mètodes de pagament TPV"
+
+msgctxt "model:ir.ui.menu,name:menu_point_form"
+msgid "Points of Sale"
+msgstr "Punts de venda"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "POS Sales"
+msgstr "Vendes TPV"
+
+msgctxt "model:product.gross_price,name:"
+msgid "Product Gross Price"
+msgstr "Preu brut del producte"
+
+msgctxt "model:res.group,name:group_sale_point"
+msgid "POS"
+msgstr "TPV"
+
+msgctxt "model:res.group,name:group_sale_point_posting"
+msgid "POS Posting"
+msgstr "Comptabilització de TPV"
+
+msgctxt "model:sale.point,name:"
+msgid "Point of Sale"
+msgstr "Punts de venda"
+
+msgctxt "model:sale.point.cash.session,name:"
+msgid "POS Cash Session"
+msgstr "Tacament de caixa TPV"
+
+msgctxt "model:sale.point.cash.session.relation,name:"
+msgid "POS Session Relation"
+msgstr "Relació de sessió de TPV"
+
+msgctxt "model:sale.point.cash.transfer,name:"
+msgid "POS Cash Transfer"
+msgstr "Trasnferència de diners TPV"
+
+msgctxt "model:sale.point.cash.transfer.type,name:"
+msgid "POS Cash Transfer Type"
+msgstr "Tipus de transferència de diners TPV"
+
+msgctxt "model:sale.point.payment,name:"
+msgid "POS Payment"
+msgstr "Pagament TPV"
+
+msgctxt "model:sale.point.payment.method,name:"
+msgid "POS Payment Method"
+msgstr "Mètode de pagament TPV"
+
+msgctxt "model:sale.point.sale,name:"
+msgid "POS Sale"
+msgstr "Venda TPV"
+
+msgctxt "model:sale.point.sale.line,name:"
+msgid "POS Sale Line"
+msgstr "Línia de venda TPV"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Closed"
+msgstr "Tancada"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Open"
+msgstr "Oberta"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Posted"
+msgstr "Comptabilitzada"
+
+msgctxt "selection:sale.point.cash.transfer,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:sale.point.cash.transfer,state:"
+msgid "Posted"
+msgstr "Comptabilitzada"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Cancelled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Open"
+msgstr "Oberta"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Posted"
+msgstr "Comptabilitzada"
+
+msgctxt "view:sale.point.sale.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.point.sale:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:sale.point.sale:"
+msgid "Payments"
+msgstr "Pagaments"
+
+msgctxt "view:sale.point.sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,pay:"
+msgid "OK"
+msgstr "D'acord"
