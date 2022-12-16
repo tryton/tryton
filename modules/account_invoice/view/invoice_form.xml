@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6" cursor="party">
+    <label name="type"/>
+    <field name="type"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="invoice_address"/>
+    <field name="invoice_address"/>
+    <label name="party_tax_identifier" string="Tax Identifier:"/>
+    <field name="party_tax_identifier"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="reference"/>
+    <field name="reference"/>
+    <notebook colspan="6">
+        <page string="Invoice" id="invoice" col="6">
+            <label name="invoice_date"/>
+            <field name="invoice_date"/>
+            <label name="payment_term"/>
+            <field name="payment_term"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <field name="lines" colspan="6"
+                view_ids="account_invoice.invoice_line_view_tree_sequence"/>
+            <group col="2" colspan="6" id="taxes_amount_state">
+                <field name="taxes"
+                    view_ids="account_invoice.invoice_tax_view_tree_sequence"/>
+                <group col="4" colspan="1" id="amount_state" yfill="1">
+                    <group col="2" colspan="2" id="reconciled_state" yfill="1">
+                        <label name="reconciled"/>
+                        <field name="reconciled"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                    </group>
+                    <group col="2" colspan="2" id="amount" yfill="1">
+                        <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                        <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                        <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                        <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                        <label name="total_amount" xalign="1.0" xexpand="1"/>
+                        <field name="total_amount" xalign="1.0" xexpand="0"/>
+                    </group>
+                </group>
+            </group>
+        </page>
+        <page string="Other Info" id="info">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="tax_identifier"/>
+            <field name="tax_identifier"/>
+            <label name="account"/>
+            <field name="account"/>
+            <label name="accounting_date"/>
+            <field name="accounting_date"/>
+            <label name="move"/>
+            <field name="move"/>
+            <label name="cancel_move"/>
+            <field name="cancel_move"/>
+            <field name="additional_moves" colspan="4"/>
+            <separator name="comment" colspan="4"/>
+            <field name="comment" colspan="4"/>
+        </page>
+        <page string="Payment" id="payment">
+            <label name="payment_term_date"/>
+            <field name="payment_term_date"/>
+            <newline/>
+            <label name="amount_to_pay_today"/>
+            <field name="amount_to_pay_today"/>
+            <label name="amount_to_pay"/>
+            <field name="amount_to_pay"/>
+            <field name="lines_to_pay" colspan="4" view_ids="account_invoice.move_line_view_list_to_pay"/>
+            <button name="reschedule_lines_to_pay" colspan="4"/>
+            <field name="payment_lines" colspan="4"
+                view_ids="account_invoice.move_line_view_list_payment"/>
+            <field name="reconciliation_lines" colspan="4" view_ids="account_invoice.move_line_view_list_payment"/>
+        </page>
+    </notebook>
+    <label id="empty" colspan="3"/>
+    <group col="-1" colspan="3" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="validate_invoice" icon="tryton-forward"/>
+        <button name="post" icon="tryton-ok"/>
+        <button name="pay" icon="tryton-forward"/>
+        <button name="process" icon="tryton-refresh"/>
+    </group>
+    <field name="party_lang" invisible="1" colspan="6"/>
+</form>

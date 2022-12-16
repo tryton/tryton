@@ -1,0 +1,36 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.correct.start,invoice:"
+msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.invoice.correct.start,lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "model:account.invoice.correct.start,name:"
+msgid "Correct Invoice"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_invoice_correct"
+msgid "Correct"
+msgstr "Correct"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Correct"
+
+msgctxt "view:account.invoice.correct.start:"
+msgid "Choose lines to correct:"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.correct,start,correct:"
+msgid "Correct"
+msgstr "Correct"
+
+msgctxt "wizard_button:account.invoice.correct,start,end:"
+msgid "Cancel"
+msgstr ""

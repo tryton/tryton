@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton. The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_tax_form_view">
+            <field name="model">account.tax.template</field>
+            <field name="inherit" ref="account.tax_template_view_form"/>
+            <field name="name">tax_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_form_view">
+            <field name="model">account.tax</field>
+            <field name="inherit" ref="account.tax_view_form"/>
+            <field name="name">tax_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="inherit" ref="account.fiscalyear_view_form"/>
+            <field name="name">fiscalyear_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_form"/>
+            <field name="name">period_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_sii_view_form">
+            <field name="model">account.invoice.sii</field>
+            <field name="type">form</field>
+            <field name="name">invoice_sii_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_sii_view_list">
+            <field name="model">account.invoice.sii</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_sii_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_sii_form">
+            <field name="name">Spanish SII</field>
+            <field name="res_model">account.invoice.sii</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_sii_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_sii_view_list"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_sii_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_sii_view_form"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_sii_form_domain_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'pending')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_sii_form_domain_errors">
+            <field name="name">Wrong</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'wrong')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_sii_form_domain_rejected">
+            <field name="name">Rejected</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'rejected')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_sii_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_invoice_sii_form"/>
+        </record>
+        <menuitem
+            parent="account_invoice.menu_invoices"
+            action="act_invoice_sii_form"
+            id="menu_invoice_sii_form"/>
+
+        <record model="ir.model.access" id="access_invoice_sii">
+            <field name="model" search="[('model', '=', 'account.invoice.sii')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_sii_account">
+            <field name="model" search="[('model', '=', 'account.invoice.sii')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_sii_account_admin">
+            <field name="model" search="[('model', '=', 'account.invoice.sii')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.cron" id="cron_invoice_send">
+            <field name="method">account.invoice.sii|send</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+    </data>
+</tryton>

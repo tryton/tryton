@@ -1,0 +1,206 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,es_sii_environment:"
+msgid "SII Environment"
+msgstr "Entorn SII"
+
+msgctxt "field:account.configuration,es_sii_url:"
+msgid "SII URL"
+msgstr "URL SII"
+
+msgctxt "field:account.credential.sii,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.credential.sii,es_sii_environment:"
+msgid "SII Environment"
+msgstr "Entorn SII"
+
+msgctxt "field:account.credential.sii,es_sii_url:"
+msgid "SII URL"
+msgstr "URL SII"
+
+msgctxt "field:account.fiscalyear,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr "Envia factures al SII"
+
+msgctxt "field:account.invoice.sii,csv:"
+msgid "CSV"
+msgstr "CSV"
+
+msgctxt "field:account.invoice.sii,error_code:"
+msgid "Error Code"
+msgstr "Codi error"
+
+msgctxt "field:account.invoice.sii,error_description:"
+msgid "Error Description"
+msgstr "Descripció de l'error"
+
+msgctxt "field:account.invoice.sii,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.sii,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.period,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr "Envia factures al SII"
+
+msgctxt "field:account.tax,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr "Excloure del SII"
+
+msgctxt "field:account.tax,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr "Clau operació SII"
+
+msgctxt "field:account.tax,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr "Clau Impost SII"
+
+msgctxt "field:account.tax.template,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr "Excloure del SII"
+
+msgctxt "field:account.tax.template,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr "Clau operació SII"
+
+msgctxt "field:account.tax.template,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr "Clau Impost SII"
+
+msgctxt "help:account.configuration,es_sii_url:"
+msgid "The URL where the invoices should be sent."
+msgstr "La URL on s'han d'enviar les factures."
+
+msgctxt "help:account.invoice.sii,csv:"
+msgid ""
+"A secure validation code that confirms the delivery of the related Invoice."
+msgstr ""
+"Un codi segur de validació que confirma la recepció de la factura "
+"relacionada."
+
+msgctxt "help:account.period,es_sii_send_invoices:"
+msgid "Check to create SII records for the invoices in the period."
+msgstr "Marqueu per crear registres SII per les factures del període."
+
+msgctxt "model:account.credential.sii,name:"
+msgid "Account Credential SII"
+msgstr "Comptabilitat credencials SII"
+
+msgctxt "model:account.invoice.sii,name:"
+msgid "Invoice SII"
+msgstr "Factura SII"
+
+msgctxt "model:ir.action,name:act_invoice_sii_form"
+msgid "Spanish SII"
+msgstr "SII Espanyol"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_errors"
+msgid "Wrong"
+msgstr "Incorrecta"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_pending"
+msgid "Pending"
+msgstr "Pendent"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_rejected"
+msgid "Rejected"
+msgstr "Rebutjada"
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_delete_sent"
+msgid ""
+"You cannot delete SII invoice \"%(invoice)s\" because it has already been "
+"sent."
+msgstr ""
+"No es pot esborrar la factura SII \"%(invoice)s\" perquè ja ha estat "
+"enviada."
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_unique"
+msgid "Only one SII invoice can be created for each invoice."
+msgstr "Només es pot crear una factura SII per a cada factura."
+
+msgctxt "model:ir.message,text:msg_es_sii_posted_invoices"
+msgid ""
+"You can not change the SII setting for period \"%(period)s\" because there "
+"are already posted invoices."
+msgstr ""
+"No podeu canviar la configuració SII del període \"%(period)\"s perquè ja te"
+" factures comptabilitzades."
+
+msgctxt "model:ir.message,text:msg_missing_sii_url"
+msgid ""
+"To send invoices to SII service, you need to set an URL on the account "
+"configuration."
+msgstr ""
+"Per enviar factures al servei SII, heu d'establir una URL a la configuració "
+"comptable."
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_sii_form"
+msgid "Spanish SII"
+msgstr "SII Espanyol"
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Staging"
+msgstr "Desenvolupament"
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Staging"
+msgstr "Desenvolupament"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Pending"
+msgstr "Pendent"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Rejected"
+msgstr "Rebutjada"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Sent"
+msgstr "Enviada"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Wrong"
+msgstr "Incorrecta"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to SII"
+msgstr "Envia factures al SII"
+
+msgctxt "view:account.configuration:"
+msgid "Spanish Immediate Information Supply"
+msgstr "Subministrament Immediat d'Informació Espanyol"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Spanish SII"
+msgstr "SII Espanyol"
+
+msgctxt "view:account.tax.template:"
+msgid "Spanish SII"
+msgstr "SII Espanyol"
+
+msgctxt "view:account.tax:"
+msgid "Spanish SII"
+msgstr "SII Espanyol"

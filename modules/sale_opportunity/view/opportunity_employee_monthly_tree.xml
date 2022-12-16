@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="month"/>
+    <field name="employee" expand="1"/>
+    <field name="number" optional="1"/>
+    <field name="converted" optional="1"/>
+    <field name="won" optional="0"/>
+    <field name="lost" optional="1"/>
+    <field name="conversion_rate" factor="100" optional="1">
+        <suffix string="%" name="conversion_rate"/>
+    </field>
+    <field name="winning_rate" factor="100" optional="0">
+        <suffix string="%" name="winning_rate"/>
+    </field>
+    <field name="amount" optional="1"/>
+    <field name="converted_amount" optional="1"/>
+    <field name="won_amount" optional="0"/>
+    <field name="conversion_amount_rate" factor="100" optional="1">
+        <suffix string="%" name="conversion_amount_rate"/>
+    </field>
+    <field name="winning_amount_rate" factor="100" optional="0">
+        <suffix string="%" name="winning_amount_rate"/>
+    </field>
+</tree>
