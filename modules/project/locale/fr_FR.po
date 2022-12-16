@@ -1,0 +1,247 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project!"
+msgstr ""
+"Il ne doit y avoir qu'une seule tâche de feuille de présence par "
+"tâche/projet !"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project!"
+msgstr ""
+"Il ne doit y avoir qu'une seule tâche de feuille de présence par "
+"tâche/projet !"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Commentaire"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:project.work,effort:"
+msgid "Effort"
+msgstr "Effort"
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Adresse"
+
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Effort total"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Lignes de feuille de présence"
+
+msgctxt "help:project.work,effort:"
+msgid "Estimated Effort for this work"
+msgstr "Effort estimé pour cette activité"
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Effort total estimé pour cette activité et ses sous-activités"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tâches"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Tâche"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administrion de projets"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Ouvert"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Ouvert"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projet"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projet"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tâche"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tâche"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:project.work:"
+msgid "Projects"
+msgstr "Projets"
+
+msgctxt "view:project.work:"
+msgid "Tasks"
+msgstr "Tâche"
+
+msgctxt "view:project.work:"
+msgid "Tasks"
+msgstr "Tâche"
+
+msgctxt "view:project.work:"
+msgid "Timesheet"
+msgstr "Feuille de présence"
+
+msgctxt "view:project.work:"
+msgid "Timesheet"
+msgstr "Feuille de présence"
+
+msgctxt "view:project.work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "view:project.work:"
+msgid "Work Efforts"
+msgstr "Activités"
+
+msgctxt "view:project.work:"
+msgid "Works"
+msgstr "Travaux"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Efforts de travail"

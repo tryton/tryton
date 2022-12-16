@@ -1,0 +1,139 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:"
+msgid "Invalid formula!"
+msgstr "Невалидна формула!"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:product.price_list,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.price_list,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.price_list,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:product.price_list.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.price_list.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Формула"
+
+msgctxt "field:product.price_list.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "field:product.price_list.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list.line,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:product.price_list.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+msgctxt "field:product.price_list.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.price_list.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Израз на python който ще се изпълни с:\n"
+"- unit_price: оригиналната единична цена"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Ценови листи"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Ценови листи"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Ред от ценова листа"
+
+msgctxt "view:party.party:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Line"
+msgstr "Ред от ценова листа"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Lines"
+msgstr "Редове от ценова листа"
+
+msgctxt "view:product.price_list:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "view:product.price_list:"
+msgid "Price List Lines"
+msgstr "Редове от ценова листа"
+
+msgctxt "view:product.price_list:"
+msgid "Price Lists"
+msgstr "Ценови листи"

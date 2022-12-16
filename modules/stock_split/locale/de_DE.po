@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr "Anzahl"
+
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Anzahl Stellen"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "Einheit"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Kategorie Maßeinheit"
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr "Maximale Anzahl von Lagerbewegungen"
+
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr "Lagerbewegung Aufteilung"
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "Lagerbewegung Aufteilung"
+
+msgctxt "view:stock.move.split.start:"
+msgid "Split Move"
+msgstr "Lagerbewegung Aufteilung"
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr "Aufteilen"
