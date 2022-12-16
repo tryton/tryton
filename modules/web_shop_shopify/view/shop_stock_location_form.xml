@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="shop"/>
+    <field name="shop" colspan="3"/>
+
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="shopify_id"/>
+    <field name="shopify_id"/>
+
+    <label name="shopify_stock_skip_warehouse"/>
+    <field name="shopify_stock_skip_warehouse"/>
+</form>
