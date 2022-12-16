@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "شناسه مالیاتی شرکت"
+
+msgctxt "field:account.ec_sales_list,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:account.ec_sales_list,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:account.ec_sales_list,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "شناسه مالیاتی نهاد/سازمان"
+
+msgctxt "field:account.ec_sales_list,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:account.ec_sales_list,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:account.ec_sales_list,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.ec_sales_list.context,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "لیست کد فروش های ایی سی"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "لیست کد فروش های ایی سی"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "لیست فروش های ایی سی"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "متن لیست فروش های ایی سی"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "لیست فروش های ایی سی"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "لیست فروش های ایی سی"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "لیست فروش های ایی سی"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "لیست فروش های ایی سی"
