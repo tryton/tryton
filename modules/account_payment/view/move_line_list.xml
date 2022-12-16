@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="move"/>
+    <field name="move_origin"/>
+    <field name="description" expand="1"/>
+    <field name="party" expand="1"/>
+    <field name="maturity_date"/>
+    <field name="payment_amount" symbol="payment_currency"/>
+    <field name="account" expand="1"/>
+    <field name="debit" symbol="currency"/>
+    <field name="credit" symbol="currency"/>
+    <field name="amount_second_currency" symbol="second_currency"/>
+    <button name="payment_block"/>
+    <button name="payment_unblock"/>
+    <button name="pay" tree_invisible="1"/>
+    <field name="payment_blocked" tree_invisible="1"/>
+</tree>

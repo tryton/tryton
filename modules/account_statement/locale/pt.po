@@ -1,0 +1,635 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Saldo Final"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "Linhas"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Número de linhas"
+
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr "Arquido de origem"
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr "ID do Arquivo de Origem"
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Origens"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Saldo Inicial"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Estado"
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Montante Total"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Validação"
+
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Arquivo"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr "Formato do arquivo"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "Contas"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Conta Bancária"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "Pessoa da Empresa"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Tipo de Validação"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Contas"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Fatura"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Lançamento Contábil"
+
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Origem"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr "Estado do Extrato"
+
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Lançamento"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Conta"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Descrição"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
+msgstr "Informações"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Linhas"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr "Montante Pendente"
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "ID do Extrato"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr "Estado do Extrato"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Extrato Bancário"
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr "Iniciar Importação do Extrato"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Diário de Extratos"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Linha de Extrato Bancário"
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Grupo de Linhas do Extrato"
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr "Origem do Extrato Bancário"
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr "Informação da Origem do Extrato"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Statement Line Groups"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Line Groups"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Move Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Moves"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr "Statements"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Statement Journals"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Origins"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Posted"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Validated"
+
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr "Apenas um diário é permitido por conta bancária."
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_group"
+msgid "User in statement's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
+msgid "User in statement's company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Statement Line Groups"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Statements"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr "Statements"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Statement Journals"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Statements"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Statement"
+
+msgctxt "report:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "report:account.statement:"
+msgid "Amount"
+msgstr "Quantidade"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "report:account.statement:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.statement:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.statement:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "report:account.statement:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "report:account.statement:"
+msgid "Journal:"
+msgstr "Diário:"
+
+msgctxt "report:account.statement:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "report:account.statement:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "report:account.statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "report:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Extrato"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Número de linhas"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "view:account.statement.origin:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Outras informações"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Linhas do Extrato"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importar"

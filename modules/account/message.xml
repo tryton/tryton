@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_no_period_date">
+            <field name="text">To continue, you must create a period for the date "%(date)s".</field>
+        </record>
+        <record model="ir.message" id="msg_modify_delete_period_moves">
+            <field name="text">You cannot modify or delete period "%(period)s" because it contains moves.</field>
+        </record>
+        <record model="ir.message" id="msg_create_period_closed_fiscalyear">
+            <field name="text">You cannot create a period in fiscal year "%(fiscalyear)s" because it is closed.</field>
+        </record>
+        <record model="ir.message" id="msg_open_period_closed_fiscalyear">
+            <field name="text">You cannot reopen period "%(period)s" because its fiscal year "%(fiscalyear)s" is closed.</field>
+        </record>
+        <record model="ir.message" id="msg_change_period_post_move_sequence">
+            <field name="text">You cannot change the post move sequence in period "%(period)s" because it has posted moves.</field>
+        </record>
+        <record model="ir.message" id="msg_close_period_non_posted_moves">
+            <field name="text">To close period "%(period)s" you must post the moves "%(moves)s".</field>
+        </record>
+        <record model="ir.message" id="msg_period_overlap">
+            <field name="text">The periods "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+        </record>
+        <record model="ir.message" id="msg_period_same_sequence">
+            <field name="text">You cannot use the same post move sequence for the periods "%(first)s" and "%(second)s" because they are from different fiscal years.</field>
+        </record>
+        <record model="ir.message" id="msg_period_fiscalyear_dates">
+            <field name="text">The dates for period "%(period)s" must be between the dates of its fiscal year "%(fiscalyear)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_journal_period_unique">
+            <field name="text">You can create only one journal per period.</field>
+        </record>
+        <record model="ir.message" id="msg_modify_delete_journal_period_moves">
+            <field name="text">You cannot modify or delete journal-period "%(journal_period)s" because it contains moves.</field>
+        </record>
+        <record model="ir.message" id="msg_create_journal_period_closed_period">
+            <field name="text">You cannot create a journal-period in closed period "%(period)s".</field>
+        </record>
+        <record model="ir.message" id="msg_open_journal_period_closed_period">
+            <field name="text">You cannot reopen journal-period "%(journal_period)s" in closed period "%(period)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_tax_update_unit_price_with_parent">
+            <field name="text">You cannot set "Update Unit Price" on child tax "%(tax)s".</field>
+        </record>
+        <record model="ir.message" id="msg_modify_tax_line_closed_period">
+            <field name="text">You cannot add/modify/delete tax lines in closed period "%(period)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_change_fiscalyear_post_move_sequence">
+            <field name="text">You cannot change the post move sequence on fiscal year "%(fiscalyear)s" because it contains posted moves.</field>
+        </record>
+        <record model="ir.message" id="msg_no_fiscalyear_date">
+            <field name="text">To continue, you must create a fiscal year for the date "%(date)s".</field>
+        </record>
+        <record model="ir.message" id="msg_fiscalyear_overlap">
+            <field name="text">The fiscal years "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+        </record>
+        <record model="ir.message" id="msg_fiscalyear_different_post_move_sequence">
+            <field name="text">The fiscal years "%(first)s" and "%(second)s" cannot have the same post move sequence, you must use different sequences.</field>
+        </record>
+        <record model="ir.message" id="msg_close_fiscalyear_account_balance_not_zero">
+            <field name="text">To close the fiscal year, the balance of account "%(account)s" must be zero.</field>
+        </record>
+        <record model="ir.message" id="msg_close_fiscalyear_earlier">
+            <field name="text">To close fiscal year "%(fiscalyear)s", you must close all earlier fiscal years.</field>
+        </record>
+        <record model="ir.message" id="msg_reopen_fiscalyear_later">
+            <field name="text">To reopen fiscal year "%(fiscalyear)s", you must reopen all later fiscal years.</field>
+        </record>
+
+        <record model="ir.message" id="msg_party_missing_receivable_account">
+            <field name="text">To continue, you must define a receivable account for party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_party_missing_payable_account">
+            <field name="text">To continue, you must define a payable account for party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_receivable_payable">
+            <field name="text">You cannot erase party "%(party)s" while they have pending receivable/payable with company "%(company)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_delete_account_with_move_lines">
+            <field name="text">You cannot delete account "%(account)s" because it has move lines.</field>
+        </record>
+        <record model="ir.message" id="msg_account_invalid_type_second_currency">
+            <field name="text">To set a second currency for account "%(account)s", it must not have a type "payable", "revenue", "receivable" nor "expense".</field>
+        </record>
+        <record model="ir.message" id="msg_account_invalid_deferral_second_currency">
+            <field name="text">To set a second currency for account "%(account)s", it must be deferral.</field>
+        </record>
+
+        <record model="ir.message" id="msg_deferral_unique">
+            <field name="text">Deferral must be unique by account and fiscal year.</field>
+        </record>
+        <record model="ir.message" id="msg_write_deferral">
+            <field name="text">You cannot modify any account deferrals.</field>
+        </record>
+
+        <record model="ir.message" id="msg_account_chart_exists">
+            <field name="text">A chart of accounts already exists for company "%(company)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_post_empty_move">
+            <field name="text">To post move "%(move)s", you must fill in its lines.</field>
+        </record>
+        <record model="ir.message" id="msg_post_unbalanced_move">
+            <field name="text">To post move "%(move)s", you must balance all its lines debits and credits.</field>
+        </record>
+        <record model="ir.message" id="msg_modify_posted_moved">
+            <field name="text">You cannot modify posted move "%(move)s".</field>
+        </record>
+        <record model="ir.message" id="msg_move_date_outside_period">
+            <field name="text">The date of move "%(move)s" is outside the period, you must change the date or the period.</field>
+        </record>
+        <record model="ir.message" id="msg_move_cancel_closed_period">
+            <field name="text">The period of move "%(move)s" is closed.
+Use the current period to cancel the move?</field>
+        </record>
+
+        <record model="ir.message" id="msg_write_reconciliation">
+            <field name="text">You cannot modify any reconciliation.</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_delete_delegated">
+            <field name="text">The reconciliation "%(reconciliation)s" is delegated to the line "%(line)s".
+You may need to cancel its move "%(move)s".</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_line_not_valid">
+            <field name="text">You cannot reconcile non-valid line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_different_accounts">
+            <field name="text">You cannot reconcile line "%(line)s" with others because its account "%(account1)s" is different from "%(account2)s".</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_account_not_reconcile">
+            <field name="text">To reconcile line "%(line)s", you must set its account "%(account)s" as reconcilable.</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_different_parties">
+            <field name="text">You cannot reconcile line "%(line)s" with others because its party "%(party1)s" is different from "%(party2)s".</field>
+        </record>
+        <record model="ir.message" id="msg_reconciliation_unbalanced">
+            <field name="text">To reconcile lines, they must have the same debit "%(debit)s" and credit "%(credit)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_line_debit_credit">
+            <field name="text">You cannot set both debit and credit on the line.</field>
+        </record>
+        <record model="ir.message" id="msg_line_second_currency_sign">
+            <field name="text">You must set the sign for second currency to match the sign of debit - credit.</field>
+        </record>
+        <record model="ir.message" id="msg_modify_line_closed_journal_period">
+            <field name="text">You cannot add/modify/delete lines on closed journal-period "%(journal_period)s".</field>
+        </record>
+        <record model="ir.message" id="msg_modify_line_posted_move">
+            <field name="text">You cannot modify line "%(line)s" from posted move "%(move)s".</field>
+        </record>
+        <record model="ir.message" id="msg_modify_line_reconciled">
+            <field name="text">You cannot modify reconciled line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_line_closed_account">
+            <field name="text">To create a line on account "%(account)s", you must set a type or unclose it.</field>
+        </record>
+        <record model="ir.message" id="msg_line_already_reconciled">
+            <field name="text">You cannot reconcile already reconciled line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_line_party_required">
+            <field name="text">To create a line on account "%(account)s", you must set a party on line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_line_party_set">
+            <field name="text">To create a line on account "%(account)s", you must remove the party on line "%(line)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_group_line">
+            <field name="text">Line "%(line)s" can not be grouped.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_single">
+            <field name="text">You cannot group a single line.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_many_parties">
+            <field name="text">You cannot group lines with different parties.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_same_company">
+            <field name="text">You cannot group lines of different companies.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_same_second_currency">
+            <field name="text">You cannot group lines of different second currencies.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_maximum_account">
+            <field name="text">You cannot group lines from more than 2 different accounts.</field>
+        </record>
+        <record model="ir.message" id="msg_cancel_line_delegated">
+            <field name="text">The moves "%(moves)s" contain grouped lines, cancelling them will ungroup the lines.</field>
+        </record>
+    </data>
+</tryton>

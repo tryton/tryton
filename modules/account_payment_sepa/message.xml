@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_payment_process_no_mandate">
+            <field name="text">To process payment "%(payment)s" you must define a SEPA mandate for it.</field>
+        </record>
+        <record model="ir.message" id="msg_payment_process_no_iban">
+            <field name="text">To process payment "%(payment)s" you must define IBAN for it.</field>
+        </record>
+        <record model="ir.message" id="msg_mandate_unique_id">
+            <field name="text">SEPA mandate identification must be unique by company.</field>
+        </record>
+        <record model="ir.message" id="msg_mandate_delete_draft_cancelled">
+            <field name="text">To delete mandate "%(mandate)s" you must cancel it or reset its state to draft.</field>
+        </record>
+        <record model="ir.message" id="msg_party_no_id">
+            <field name="text">The party "%(party)s" is missing a "%(type)s" identifier.</field>
+        </record>
+    </data>
+</tryton>

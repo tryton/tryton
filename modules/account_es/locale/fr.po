@@ -1,0 +1,289 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment.journal,es_sepa_bank_account_country_code:"
+msgid "Bank Account Country Code"
+msgstr "Code pays du compte bancaire"
+
+msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
+msgid "Request Advancement"
+msgstr "Demande d'avancement"
+
+msgctxt "field:account.reporting.aeat.start,periods:"
+msgid "Periods"
+msgstr "Périodes"
+
+msgctxt "field:account.reporting.aeat.start,report:"
+msgid "Report"
+msgstr "Rapport"
+
+msgctxt "field:account.reporting.es_ec_operation_list,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.reporting.es_ec_operation_list,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.reporting.es_ec_operation_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Identifiant de taxe de la société"
+
+msgctxt "field:account.reporting.es_ec_operation_list,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.reporting.es_ec_operation_list,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.reporting.es_ec_operation_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identifiant de taxe du tiers"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,period:"
+msgid "Period"
+msgstr "Période"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:account.reporting.vat_list_es,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.reporting.vat_list_es,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.reporting.vat_list_es,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Identifiant de taxe de la société"
+
+msgctxt "field:account.reporting.vat_list_es,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.reporting.vat_list_es,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.reporting.vat_list_es,first_period_amount:"
+msgid "First Period Amount"
+msgstr "Montant de la première période"
+
+msgctxt "field:account.reporting.vat_list_es,fourth_period_amount:"
+msgid "Fourth Period Amount"
+msgstr "Montant de la quatrième période"
+
+msgctxt "field:account.reporting.vat_list_es,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.reporting.vat_list_es,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identifiant de taxe du tiers"
+
+msgctxt "field:account.reporting.vat_list_es,province_code:"
+msgid "Province Code"
+msgstr "Code de province"
+
+msgctxt "field:account.reporting.vat_list_es,second_period_amount:"
+msgid "Second Period Amount"
+msgstr "Montant de la deuxième période"
+
+msgctxt "field:account.reporting.vat_list_es,third_period_amount:"
+msgid "Third Period Amount"
+msgstr "Montant de la troisième période"
+
+msgctxt "field:account.reporting.vat_list_es.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.reporting.vat_list_es.context,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.tax,es_ec_purchases_list_code:"
+msgid "Spanish EC Purchases List Code"
+msgstr "Code de la liste des achats CE espagnoles"
+
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Rapportée avec"
+
+msgctxt "field:account.tax,es_vat_list_code:"
+msgid "Spanish VAT List Code"
+msgstr "Liste de code TVA espagnole"
+
+msgctxt "field:account.tax.code,aeat_report:"
+msgid "AEAT Report"
+msgstr "Rapport AEAT"
+
+msgctxt "field:account.tax.code.template,aeat_report:"
+msgid "AEAT Report"
+msgstr "Rapport AEAT"
+
+msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
+msgid "Spanish EC Purchase List Code"
+msgstr "Code de la liste d'achat CE espagnole"
+
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Rapporté avec"
+
+msgctxt "field:account.tax.template,es_vat_list_code:"
+msgid "Spanish VAT List Code"
+msgstr "Liste de code TVA espagnole"
+
+msgctxt "field:party.party,es_province_code:"
+msgid "Spanish Province Code"
+msgstr "Code de province espagnole"
+
+msgctxt "help:account.payment.journal,es_sepa_request_advancement:"
+msgid "Check to receive payments before the payment date."
+msgstr "Cochez pour recevoir les paiements avant la date de paiement."
+
+msgctxt "help:party.party,es_province_code:"
+msgid "Set 99 for non Spanish parties."
+msgstr "Entrer 99 pour les tiers non espagnoles."
+
+msgctxt "model:account.reporting.aeat.start,name:"
+msgid "Print AEAT Start"
+msgstr "Imprimer AEAT"
+
+msgctxt "model:account.reporting.es_ec_operation_list,name:"
+msgid "EC Operation List"
+msgstr "Liste des opérations CE"
+
+msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
+msgid "EC Operation List Context"
+msgstr "Contexte de la liste des opérations CE"
+
+msgctxt "model:account.reporting.vat_list_es,name:"
+msgid "Spanish VAT List"
+msgstr "Liste TVA espagnole"
+
+msgctxt "model:account.reporting.vat_list_es.context,name:"
+msgid "Spanish VAT List Context"
+msgstr "Contexte de la liste TVA espagnole"
+
+msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
+msgid "EC Operation List"
+msgstr "Liste des opérations CE"
+
+msgctxt "model:ir.action,name:act_vat_list_form"
+msgid "Spanish VAT List"
+msgstr "Liste TVA espagnole"
+
+msgctxt "model:ir.action,name:report_aeat_111"
+msgid "AEAT Model 111"
+msgstr "AEAT Modèle 111"
+
+msgctxt "model:ir.action,name:report_aeat_115"
+msgid "AEAT Model 115"
+msgstr "AEAT Modèle 115"
+
+msgctxt "model:ir.action,name:report_aeat_303"
+msgid "AEAT Model 303"
+msgstr "AEAT Modèle 303"
+
+msgctxt "model:ir.action,name:report_aeat_347"
+msgid "AEAT Model 347"
+msgstr "AEAT Modèle 347"
+
+msgctxt "model:ir.action,name:report_aeat_349"
+msgid "AEAT Model 349"
+msgstr "AEAT Modèle 349"
+
+msgctxt "model:ir.action,name:wizard_print_aeat_report"
+msgid "Print AEAT"
+msgstr "Imprimer AEAT"
+
+msgctxt "model:ir.message,text:msg_report_same_fiscalyear"
+msgid "To generate the report the periods must be in the same fiscal year."
+msgstr ""
+"Pour générer le rapport, les périodes doivent être dans le même année "
+"fiscale."
+
+msgctxt "model:ir.ui.menu,name:menu_es_ec_operation_list"
+msgid "EC Operation List"
+msgstr "Liste des opérations CE"
+
+msgctxt "model:ir.ui.menu,name:menu_print_aeat"
+msgid "Print AEAT"
+msgstr "Imprimer AEAT"
+
+msgctxt "model:ir.ui.menu,name:menu_vat_list"
+msgid "Spanish VAT List"
+msgstr "Liste TVA espagnole"
+
+msgctxt "selection:account.reporting.aeat.start,report:"
+msgid "Model 111"
+msgstr "Modèle 111"
+
+msgctxt "selection:account.reporting.aeat.start,report:"
+msgid "Model 115"
+msgstr "Modèle 115"
+
+msgctxt "selection:account.reporting.aeat.start,report:"
+msgid "Model 303"
+msgstr "Modèle 303"
+
+msgctxt "selection:account.tax.code,aeat_report:"
+msgid "Model 111"
+msgstr "Modèle 111"
+
+msgctxt "selection:account.tax.code,aeat_report:"
+msgid "Model 115"
+msgstr "Modèle 115"
+
+msgctxt "selection:account.tax.code,aeat_report:"
+msgid "Model 303"
+msgstr "Modèle 303"
+
+msgctxt "selection:account.tax.code.template,aeat_report:"
+msgid "Model 111"
+msgstr "Modèle 111"
+
+msgctxt "selection:account.tax.code.template,aeat_report:"
+msgid "Model 115"
+msgstr "Modèle 115"
+
+msgctxt "selection:account.tax.code.template,aeat_report:"
+msgid "Model 303"
+msgstr "Modèle 303"
+
+msgctxt "view:account.tax.template:"
+msgid "Spanish VAT"
+msgstr "TVA espagnole"
+
+msgctxt "view:account.tax:"
+msgid "Spanish VAT"
+msgstr "TVA espagnole"
+
+msgctxt "wizard_button:account.reporting.aeat,start,choice:"
+msgid "Print"
+msgstr "Imprimer"
+
+msgctxt "wizard_button:account.reporting.aeat,start,end:"
+msgid "Cancel"
+msgstr "Annuler"

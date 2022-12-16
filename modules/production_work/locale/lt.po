@@ -1,0 +1,281 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:production,work_center:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "field:production,works:"
+msgid "Works"
+msgstr "Works"
+
+#, fuzzy
+msgctxt "field:production.routing.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr ""
+
+msgctxt "field:production.work,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:production.work,cycles:"
+msgid "Cycles"
+msgstr ""
+
+msgctxt "field:production.work,operation:"
+msgid "Operation"
+msgstr ""
+
+msgctxt "field:production.work,production:"
+msgid "Production"
+msgstr ""
+
+msgctxt "field:production.work,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:production.work,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work,work_center:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "field:production.work,work_center_category:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "field:production.work.center,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:production.work.center,children:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:production.work.center,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:production.work.center,cost_method:"
+msgid "Cost Method"
+msgstr ""
+
+msgctxt "field:production.work.center,cost_price:"
+msgid "Cost Price"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work.center,name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:production.work.center,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:production.work.center,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work.center.category,name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:production.work.cycle,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:production.work.cycle,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:production.work.cycle,state:"
+msgid "State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work.cycle,work:"
+msgid "Work"
+msgstr "Works"
+
+msgctxt "model:ir.action,name:act_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Work Center Categories"
+
+msgctxt "model:ir.action,name:act_work_center_list"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+msgctxt "model:ir.action,name:act_work_center_tree"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Works"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "All"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "Running"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Work Center Categories"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_list"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
+msgid "Work Centers"
+msgstr "Work Centers"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Works"
+
+msgctxt "model:production.work,name:"
+msgid "Production Work"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.work.center,name:"
+msgid "Work Center"
+msgstr "Work Centers"
+
+#, fuzzy
+msgctxt "model:production.work.center.category,name:"
+msgid "Work Center Category"
+msgstr "Work Center Categories"
+
+msgctxt "model:production.work.cycle,name:"
+msgid "Work Cycle"
+msgstr ""
+
+msgctxt "selection:production.work,state:"
+msgid "Done"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "selection:production.work,state:"
+msgid "Finished"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Request"
+msgstr "Request"
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Running"
+msgstr "Running"
+
+#, fuzzy
+msgctxt "selection:production.work,state:"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Cycle"
+msgstr ""
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Hour"
+msgstr ""
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Done"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:production.work.cycle,state:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "selection:production.work.cycle,state:"
+msgid "Running"
+msgstr "Running"

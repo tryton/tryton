@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="line"/>
+    <field name="months"/>
+    <field name="month" widget="selection"/>
+    <field name="weeks"/>
+    <field name="weekday" widget="selection"/>
+    <field name="days"/>
+    <field name="day"/>
+</tree>
