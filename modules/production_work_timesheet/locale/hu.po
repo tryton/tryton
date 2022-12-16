@@ -1,0 +1,25 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.routing.operation,timesheet_available:"
+msgid "Available on timesheets"
+msgstr ""
+
+msgctxt "field:production.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Időpozíció"
+
+#, fuzzy
+msgctxt "field:production.work,timesheet_work:"
+msgid "Timesheet Work"
+msgstr "Időpozíció"
+
+msgctxt "field:production.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr ""
