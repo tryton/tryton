@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "Controparte"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "Banca"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "Numeri"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "Proprietari"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "Conto"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "Proprietario"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "Conto"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "Numero"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Numero Compatto"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "conti bancari"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code."
+msgstr "Codice identificatore banca/azienda."
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "La banca in cui si è aperto un conto."
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "Aggiungi i numeri che identificano il conto bancario."
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "Il conto bancario identificato dal numero."
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "Banca"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "Conto bancario"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "Conto bancario - controparte"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "Numero conto bancario"
+
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Conti"
+
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Banche"
+
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "Il BIC \"%(bic)s\" non è valido."
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr "Il numero IBAN \"%(number)s\" non è valido."
+
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Conti"
+
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Banche"
+
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Servizi bancari"
+
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Amministrazione Bancaria"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "Altro"
+
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Numero"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Servizi bancari"

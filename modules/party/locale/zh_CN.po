@@ -1,0 +1,1130 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "联系方式"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "城市"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "国家"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "完整地址"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "建筑物名称"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "参与者名称"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "街道"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "行政区划"
+
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "行政区划类型"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "邮政编码"
+
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "国家代码"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "格式"
+
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "语言代码"
+
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "国家代码"
+
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "行政区划类型"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "子类别"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "父类别"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "参与者增值税号验证失败"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "参与者增值税号验证成功"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "参与者所用语言"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "参与者序列"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "参与者所用语言"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "参与者序列"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "说明"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "电子邮件"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "姓名"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "取值"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "取值"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "取值（紧凑型）"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "网站"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "地址"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "类别"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "编码（只读）"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "联系方式"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "电子邮件"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "传真"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "全名"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "标识"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "语言"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "移动电话"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "手机"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "替换为"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "税号"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "网站"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "类别"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "替换为"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "替换前"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr "如果已填写，参与者名称将被替换为地址格式"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"可用变量 (也适用于大写 ):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "在此类别下面添加子类别."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "此类别的主标识."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "将此类别添加到父类下面."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "新参与者的默认语言."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "用于生成参与者代码."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "新建参与者的默认语言."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "用于生成参与者代码."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "参与者已删除."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "这条记录对应的参与者."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "参与者所属类别."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "参与者的唯一标识符."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "添加参与者的其它标识符."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "用于翻译与参与者的通信."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "参与者的主标识."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "用于替换当前参与者的其它参与者."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "税报表标识符."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "替换之后的参与者."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "将被替换的参与者."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "地址"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "地址格式"
+
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "地址细分类型"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "类别"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "类别"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "联系方式"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "按类别划分的参与者"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "参与者设置"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "参与者"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "标签"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "增值税号有效性（VIES）检测"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "清除"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "替换"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "不能改变参与者地址 \"%(address)s\"."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "参与者类别名称必须唯一."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr "不能改变参与者联系方式 \"%(contact)s\"."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr "参与者有不同的名称： \"%(source_name)s\" vs \"%(destination_name)s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr "参与者有不同的税号：\"%(source_code)s\" vs \"%(destination_code)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "参与者 \"%(party)s\" 在启用状态下无法删除."
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "参与者 \"%(party)s\" 的 %(type)s \"%(code)s\" 设置无效."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "无效格式 \"%(format)s\" ，异常为： \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "参与者 \"%(party)s\" 的电话号码 \"%(phone)s\" 设置无效."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "参与者代码不能重复."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "增值税号验证（VIES）服务不可用，过一段时间再试."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "地址"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "地址格式"
+
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "类别"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "类别"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "联系方式"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "参与者设置"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "参与者"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "地址"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "地址格式"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr ""
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "类别"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "增值税号有效性检测（VIES）"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "参与者设置"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "参与者设置语言"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "参与者配置序列"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "联系方式"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "删除参与者"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "参与者标识"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "参与者 - 类别"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "参与者语言"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "替换参与者"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "参与者管理"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "电子邮件"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "传真"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "移动电话"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "其它"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "手机"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skipe"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "网站"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Albanian VAT Number"
+msgstr "阿尔巴尼亚增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "德国税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Argentinian Tax Number"
+msgstr "阿根廷税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr "澳大利亚商业编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr "澳大利亚公司注册号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr "澳大利亚税务档案号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr "奥地利税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr "奥地利税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr "比利时企业编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr "巴西公司标识符"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr "巴西国家标识符"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr "保加利亚外国人编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr "保加利亚个人身份代码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr "保加利亚增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr "加拿大商业编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr "加拿大社会保险号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr "智利国家税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr "中国居民身份证号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr "哥伦比亚企业税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr "哥伦比亚身份代码"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "西班牙外国人编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "爱沙尼亚个人身份证号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr "克罗地亚识别号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "中国居民身份证号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr "塞浦路斯增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr "捷克国家标识符"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr "捷克增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr "丹麦公民号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr "丹麦增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr "多米尼加共和国国家识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr "多米尼加共和国税"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr "荷兰公民身份号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr "荷兰学校识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr "荷兰增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr "荷兰学生识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr "厄瓜多尔个人身份代码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr "厄瓜多尔税务识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr "英语唯一学号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr "爱沙尼亚组织注册码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr "爱沙尼亚个人身份证号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr "爱沙尼亚增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr "欧洲增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr "芬兰关联标识符"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr "芬兰企业识别"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr "芬兰个人识别码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr "芬兰增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr "芬兰个人税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr "法国个人识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr "法国税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr "法国增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr "德国公司注册号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr "德国个人税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr "德国税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr "德国增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr "希腊增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "德国税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr "匈牙利增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr "冰岛个人和组织身份代码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr "冰岛增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr "印度数字居民个人身份号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr "印度所得税识别码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr "爱尔兰个人号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr "爱尔兰增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr "意大利个人税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr "意大利增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "西班牙外国人编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr "拉脱维亚增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr "立陶宛增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr "卢森堡增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr "马来西亚国家注册身份证号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr "马耳他增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr "毛里求斯国家标识符"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr "墨西哥税号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "克罗地亚识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr "摩纳哥增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr "挪威组织编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr "挪威增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "德国税号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "澳大利亚公司注册号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "克罗地亚识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr "波兰国家识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr "波兰经济单位登记"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr "波兰增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr "葡萄牙增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr "罗马尼亚数字个人代码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr "罗马尼亚增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr "俄罗斯税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr "债权人的SEPA标识符（AT-02）"
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr "圣马力诺国家税务编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr "塞尔维亚税务识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr "斯洛伐克出生证号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr "斯洛伐克增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr "斯洛文尼亚增值税编号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "克罗地亚识别号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "法国税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr "西班牙公司税"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr "西班牙外国人编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr "西班牙个人识别码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr "西班牙增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr "瑞典公司编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr "瑞典增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr "瑞士企业识别码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr "瑞士社会保险号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr "瑞士增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr "土耳其个人身份号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr "美国收养纳税人识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr "美国雇主识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr "美国个人纳税人识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr "美国填表人税号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr "美国社会保险号码"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr "美国纳税人识别号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr "英国（和马恩岛）增值税编号"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr "英国国家卫生服务机构患者识别码"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "德国税号"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "欧洲增值税编号"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "基本情况"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "替换为"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "清除"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "替换"
