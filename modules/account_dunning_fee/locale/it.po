@@ -1,0 +1,94 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Spese"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Metodo di calcolo"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Registro"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Percentuale"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Prodotto"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Importo"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Posizioni valuta"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "Sollecito"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Livello"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Movimenti"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Spesa"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Metodo di calcolo delle spese"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Conto di imputazione della spesa"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Conto di imputazione della spesa per livello di sollecito"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "L'addebito di spesa dev'essere unico per ogni sollecito e livello"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Listino prezzi"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Percentuale"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"

@@ -1,0 +1,62 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,lot_unit:"
+msgid "Lot Unit"
+msgstr "lot eenheid"
+
+msgctxt "field:product.template,lot_unit:"
+msgid "Lot Unit"
+msgstr "lot eenheid"
+
+msgctxt "field:stock.lot,product_default_uom_category:"
+msgid "Default Product UoM Category"
+msgstr "product eenheidsmaat categorie"
+
+msgctxt "field:stock.lot,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.lot,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:stock.lot,unit_quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "help:product.product,lot_unit:"
+msgid "The default unit for lot."
+msgstr "De standaardeenheid voor het lot."
+
+msgctxt "help:product.template,lot_unit:"
+msgid "The default unit for lot."
+msgstr "De standaardeenheid voor het lot."
+
+msgctxt "help:stock.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "De grootste eenheid voor het lot."
+
+msgctxt "help:stock.lot,unit_quantity:"
+msgid "The maximal quantity for the lot."
+msgstr "De maximale hoeveelheid voor het lot."
+
+msgctxt "model:ir.message,text:msg_change_unit"
+msgid "You cannot change the unit of a stock lot which has stock moves."
+msgstr ""
+"U kunt de eenheid van een lot die voorraadbewegingen heeft niet wijzigen."
+
+msgctxt "model:ir.message,text:msg_change_unit_quantity"
+msgid "You cannot change the quantity of a stock lot which has stock moves."
+msgstr ""
+"U kunt de hoeveelheid van een lot die voorraadbewegingen heeft niet "
+"wijzigen."
+
+msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
+msgid ""
+"You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "
+"\"%(name)s\"."
+msgstr ""
+"U kunt niet meer dan %(quantity)s%(unit)s van lot \"%(lot)s\"  in \"% (name)"
+" s\" gebruiken."
