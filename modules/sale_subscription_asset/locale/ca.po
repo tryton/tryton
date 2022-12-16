@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.subscription.line,asset_lot:"
+msgid "Asset Lot"
+msgstr "Lot de l'actiu"
+
+msgctxt "field:sale.subscription.line,asset_lot_required:"
+msgid "Asset Lot Required"
+msgstr "Lot de l'actiu obligatori"
+
+msgctxt "field:sale.subscription.service,asset_lots:"
+msgid "Asset Lots"
+msgstr "Lots de l'actiu"
+
+msgctxt "field:sale.subscription.service,asset_lots_available:"
+msgid "Available Asset Lots"
+msgstr "Lots de l'actiu disponibles"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "field:stock.lot,subscribed:"
+msgid "Subscribed"
+msgstr "Subscripció"
+
+msgctxt "field:stock.lot,subscription_lines:"
+msgid "Subscription Lines"
+msgstr "Línies de subscripció"
+
+msgctxt "field:stock.lot,subscription_services:"
+msgid "Services"
+msgstr "Serveis"
+
+msgctxt "model:ir.message,text:msg_asset_line_overlap"
+msgid ""
+"The lines \"%(line1)s\" and \"%(line2)s\" overlap, you must use different "
+"dates."
+msgstr ""
+"Les línies \"%(line1)s\" i \"%(line2)s\" es sobreposen, heu d'utilitzar "
+"dates diferents."
+
+msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
+msgid "Subscription Service - Stock Lot Asset"
+msgstr "Servei de subscripció - Lot del actiu"
