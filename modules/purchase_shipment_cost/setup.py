@@ -40,23 +40,6 @@ name = 'trytond_purchase_shipment_cost'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = (
-        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
-            name[8:], name, version))
-local_version = []
-if os.environ.get('CI_JOB_ID'):
-    local_version.append(os.environ['CI_JOB_ID'])
-else:
-    for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER']:
-        if os.environ.get(build):
-            local_version.append(os.environ[build])
-        else:
-            local_version = []
-            break
-if local_version:
-    version += '+' + '.'.join(local_version)
 
 requires = []
 for dep in info.get('depends', []):
@@ -64,22 +47,11 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-extras_require = {}
-for dep in info.get('extras_depend', []):
-    if not re.match(r'(ir|res)(\W|$)', dep):
-        extras_require[dep] = get_require_version('trytond_%s' % dep)
-
 tests_require = [get_require_version('proteus'),
     get_require_version('trytond_account_invoice_stock'),
     get_require_version('trytond_account_stock_continental'),
     get_require_version('trytond_account_stock_anglo_saxon'),
     get_require_version('trytond_purchase')]
-extras_require['test'] = tests_require
-dependency_links = []
-if minor_version % 2:
-    dependency_links.append(
-        'https://trydevpi.tryton.org/?local_version='
-        + '.'.join(local_version))
 
 setup(name=name,
     version=version,
@@ -148,8 +120,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.7',
     install_requires=requires,
-    extras_require=extras_require,
-    dependency_links=dependency_links,
+    extras_require={
+        'test': tests_require,
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]
