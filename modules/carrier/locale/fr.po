@@ -1,0 +1,167 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Méthode de coût de transport"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Produit de transport"
+
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:carrier,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Active"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Du pays"
+
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Vers le pays"
+
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:carrier.selection,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Méthode de calcul de coût de transport"
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "Le produit à facturer le service du transporteur."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "Le tiers qui représente le transporteur."
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "Le transporteur sélectionné."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"À appliquer seulement pour les livraisons depuis ce pays.\n"
+"Laisser vide pour n'importe quel pays."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"À appliquer seulement pour les livraisons vers ce pays.\n"
+"Laisser vide pour n'importe quel pays. "
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Sélection de transporteurs"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Transporteurs"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Sélection de transporteurs"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Transporteurs"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Sélection de transporteurs"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Administration des transporteurs"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Prix du produit"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Critères"
+
+msgctxt "view:carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "view:carrier:"
+msgid "Carriers"
+msgstr "Transporteurs"
