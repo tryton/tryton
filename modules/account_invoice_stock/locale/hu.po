@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,shipments:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "field:account.invoice.line,correction:"
+msgid "Correction"
+msgstr "Árjavítás"
+
+msgctxt "field:account.invoice.line,shipments:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Készletmozgások"
+
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Számlasor"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Készletmozgás"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Számlasorok"
+
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr ""
+
+msgctxt "help:account.invoice.line,correction:"
+msgid "Check to correct price of already posted invoice."
+msgstr ""
+"Jelölje be, hogy egy már lekönyvelt számla alapján kiszámított egységárat "
+"módosítson."
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr ""
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Készlet"

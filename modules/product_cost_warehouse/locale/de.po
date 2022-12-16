@@ -1,0 +1,86 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Einstandspreis pro Logistikstandort"
+
+msgctxt "field:ir.cron,warehouses:"
+msgid "Warehouses"
+msgstr "Logistikstandorte"
+
+msgctxt "field:ir.cron-stock.warehouse,cron:"
+msgid "Cron"
+msgstr "Zeitplaner"
+
+msgctxt "field:ir.cron-stock.warehouse,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:product.configuration,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Einstandspreis pro Logistikstandort"
+
+msgctxt "field:product.configuration.cost_price_warehouse,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt ""
+"field:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Einstandspreis pro Logistikstandort"
+
+msgctxt "field:product.cost_price,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:product.cost_price,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Logistikstandort erforderlich"
+
+msgctxt "field:product.cost_price.revision,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:product.cost_price.revision,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Logistikstandort erforderlich"
+
+msgctxt "field:stock.location,cost_warehouse:"
+msgid "Cost Warehouse"
+msgstr "Kosten Logistikstandort"
+
+msgctxt "help:company.company,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Artikeleinstandskosten je Logistikstandort berechnen."
+
+msgctxt "help:ir.cron,warehouses:"
+msgid "Warehouses registered for this cron."
+msgstr ""
+"Die Logistikstandorte, die für diese geplante Aktion registriert wurden."
+
+msgctxt "help:product.configuration,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Artikeleinstandskosten je Logistikstandort berechnen."
+
+msgctxt ""
+"help:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Artikeleinstandskosten je Logistikstandort berechnen."
+
+msgctxt "model:ir.cron-stock.warehouse,name:"
+msgid "Cron - Warehouse"
+msgstr "Zeitplaner - Logistikstandort"
+
+msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
+msgid ""
+"To move products between \"%(from_)s\" and \"%(to)s\", you must use the "
+"internal shipment transit location."
+msgstr ""
+"Um Artikel zwischen \"%(from_)s\" und \"%(to)s\" zu bewegen, muss der "
+"Transitlagerort für interne Lieferungen verwendet werden."
+
+msgctxt "model:product.configuration.cost_price_warehouse,name:"
+msgid "Product Configuration Cost Price per Warehouse"
+msgstr "Artikel Einstellungen Einstandskosten Pro Logistikstandort"
