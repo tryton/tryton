@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">contact_mechanism_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree_sequence">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">contact_mechanism_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_form">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">form</field>
+            <field name="name">contact_mechanism_form</field>
+        </record>
+
+    </data>
+</tryton>
