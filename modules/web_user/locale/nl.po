@@ -1,0 +1,247 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:web.user.session:"
+msgid "Key must be unique"
+msgstr ""
+
+msgctxt "error:web.user:"
+msgid "E-mail must be unique"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user,active:"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:web.user,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:web.user,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr ""
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr ""
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Relaties"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr ""
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr ""
+
+msgctxt "field:web.user,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr ""
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:web.user,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:web.user.authenticate.attempt,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:web.user.session,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:web.user.session,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:web.user.session,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr ""
+
+msgctxt "field:web.user.session,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:web.user.session,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:web.user.session,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+#, fuzzy
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Web Users"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr ""
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "Goedkeuren"
+
+#, fuzzy
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#, fuzzy
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"

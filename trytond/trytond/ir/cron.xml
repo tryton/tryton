@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Scheduler" parent="menu_administration"
+            id="menu_scheduler"/>
+
+        <record model="ir.ui.view" id="cron_view_tree">
+            <field name="model">ir.cron</field>
+            <field name="type">tree</field>
+            <field name="name">cron_list</field>
+        </record>
+        <record model="ir.ui.view" id="cron_view_form">
+            <field name="model">ir.cron</field>
+            <field name="type">form</field>
+            <field name="name">cron_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_cron_form">
+            <field name="name">Scheduled Actions</field>
+            <field name="res_model">ir.cron</field>
+            <field name="context"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="cron_view_tree"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_cron_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="cron_view_form"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <menuitem parent="ir.menu_scheduler"
+            action="act_cron_form" id="menu_cron_form"/>
+
+        <record model="ir.model.button" id="cron_run_once_button">
+            <field name="name">run_once</field>
+            <field name="string">Run Once</field>
+            <field name="model" search="[('model', '=', 'ir.cron')]"/>
+        </record>
+    </data>
+</tryton>
