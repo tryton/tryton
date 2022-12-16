@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='outgoing_moves']/field[@name='root_packages']"
+        position="after">
+        <label name="shipping_description"/>
+        <field name="shipping_description"/>
+        <button name="create_shipping"/>
+    </xpath>
+</data>
