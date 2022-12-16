@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="invoice_address"/>
+    <field name="invoice_address"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="shipment_party"/>
+    <field name="shipment_party"/>
+    <label name="shipment_address"/>
+    <field name="shipment_address"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="reference"/>
+    <field name="reference"/>
+    <notebook colspan="6">
+        <page string="Sale" id="sale">
+            <label name="sale_date"/>
+            <field name="sale_date"/>
+            <label name="payment_term"/>
+            <field name="payment_term"/>
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <field name="lines" colspan="4"
+                view_ids="sale.sale_line_view_tree_sequence"/>
+            <group col="2" colspan="2" id="states" yfill="1">
+                <label name="invoice_state"/>
+                <field name="invoice_state"/>
+                <label name="shipment_state"/>
+                <field name="shipment_state"/>
+                <label name="state"/>
+                <field name="state"/>
+            </group>
+            <group col="2" colspan="2" id="amount_buttons" yfill="1">
+                <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                <field name="total_amount" xalign="1.0" xexpand="0"/>
+                <group col="-1" colspan="2" id="buttons">
+                    <button name="cancel" icon="tryton-cancel"/>
+                    <button name="modify_header" icon="tryton-executable"/>
+                    <button name="draft"/>
+                    <button name="quote" icon="tryton-go-next"/>
+                    <button name="handle_invoice_exception"
+                        icon="tryton-go-next"/>
+                    <button name="handle_shipment_exception"
+                        icon="tryton-go-next"/>
+                    <button name="confirm" icon="tryton-go-next"/>
+                    <button name="process" icon="tryton-go-next"/>
+                </group>
+            </group>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="origin"/>
+            <field name="origin"/>
+            <label name="invoice_method"/>
+            <field name="invoice_method"/>
+            <label name="shipment_method"/>
+            <field name="shipment_method"/>
+            <separator name="comment" colspan="4"/>
+            <field name="comment" colspan="4"/>
+        </page>
+        <page name="invoices">
+            <field name="invoices" colspan="4"/>
+        </page>
+        <page name="shipments">
+            <field name="moves" colspan="4"
+                view_ids="sale.move_view_list_shipment"/>
+            <field name="shipments" colspan="4"/>
+            <field name="shipment_returns" colspan="4"/>
+        </page>
+    </notebook>
+    <field name="currency_digits" invisible="1" colspan="6"/>
+    <field name="party_lang" invisible="1" colspan="6"/>
+</form>
