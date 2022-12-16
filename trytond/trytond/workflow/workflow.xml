@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Workflow" id="menu_workflow"
+            parent="ir.menu_administration"/>
+        <record model="ir.ui.menu-res.group" id="menu_workflow_group_admin">
+            <field name="menu" ref="menu_workflow"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="workflow_view_form">
+            <field name="model">workflow</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Workflow" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="on_create"/>
+                    <field name="on_create"/>
+                    <field name="activities" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="workflow_view_tree">
+            <field name="model">workflow</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Workflow">
+                    <field name="name"/>
+                    <field name="model"/>
+                    <field name="on_create"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_workflow_form">
+            <field name="name">Workflows</field>
+            <field name="res_model">workflow</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_workflow_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="workflow_view_tree"/>
+            <field name="act_window" ref="act_workflow_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_workflow_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="workflow_view_form"/>
+            <field name="act_window" ref="act_workflow_form"/>
+        </record>
+        <menuitem parent="menu_workflow"
+            action="act_workflow_form" id="menu_workflow_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_workflow_form_group_admin">
+            <field name="menu" ref="menu_workflow"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_workflow">
+            <field name="model" search="[('model', '=', 'workflow')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_workflow_admin">
+            <field name="model" search="[('model', '=', 'workflow')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.ui.view" id="activity_view_form">
+            <field name="model">workflow.activity</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Activity">
+                    <label name="name"/>
+                    <field name="name" colspan="3"/>
+                    <label name="workflow"/>
+                    <field name="workflow"/>
+                    <label name="method"/>
+                    <field name="method"/>
+                    <label name="subflow"/>
+                    <field name="subflow"/>
+                    <label name="signal_send"/>
+                    <field name="signal_send"/>
+                    <newline/>
+                    <label name="flow_start"/>
+                    <field name="flow_start"/>
+                    <label name="flow_stop"/>
+                    <field name="flow_stop"/>
+                    <label name="join_mode"/>
+                    <field name="join_mode"/>
+                    <label name="split_mode"/>
+                    <field name="split_mode"/>
+                    <field name="out_transitions" colspan="4">
+                        <tree string="Transitions">
+                            <field name="act_to"/>
+                            <field name="signal"/>
+                            <field name="group"/>
+                            <field name="condition"/>
+                            <field name="trigger_model"/>
+                            <field name="trigger_ids"/>
+                        </tree>
+                        <form string="Transition">
+                            <label name="act_to"/>
+                            <field name="act_to" colspan="3"/>
+                            <newline/>
+                            <label name="condition"/>
+                            <field name="condition" colspan="3"/>
+                            <label name="signal"/>
+                            <field name="signal"/>
+                            <label name="group"/>
+                            <field name="group"/>
+                            <label name="trigger_model"/>
+                            <field name="trigger_model"/>
+                            <label name="trigger_ids"/>
+                            <field name="trigger_ids"/>
+                        </form>
+                    </field>
+                    <field name="in_transitions" colspan="4">
+                        <tree string="Transitions">
+                            <field name="act_from"/>
+                            <field name="signal"/>
+                            <field name="group"/>
+                            <field name="condition"/>
+                            <field name="trigger_model"/>
+                            <field name="trigger_ids"/>
+                        </tree>
+                        <form string="Transition">
+                            <label name="act_from"/>
+                            <field name="act_from" colspan="3"/>
+                            <newline/>
+                            <label name="condition"/>
+                            <field name="condition" colspan="3"/>
+                            <label name="signal"/>
+                            <field name="signal"/>
+                            <label name="group"/>
+                            <field name="group"/>
+                            <label name="trigger_model"/>
+                            <field name="trigger_model"/>
+                            <label name="trigger_ids"/>
+                            <field name="trigger_ids"/>
+                        </form>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="activity_view_tree">
+            <field name="model">workflow.activity</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Activity">
+                    <field name="name"/>
+                    <field name="workflow"/>
+                    <field name="method"/>
+                    <field name="flow_start"/>
+                    <field name="flow_stop"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_activity_form">
+            <field name="name">Activities</field>
+            <field name="res_model">workflow.activity</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_activity_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="activity_view_tree"/>
+            <field name="act_window" ref="act_activity_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_activity_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="activity_view_form"/>
+            <field name="act_window" ref="act_activity_form"/>
+        </record>
+        <menuitem parent="menu_workflow"
+            action="act_activity_form" id="menu_activity_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_activity_form_group_admin">
+            <field name="menu" ref="menu_activity_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_workflow_activity">
+            <field name="model" search="[('model', '=', 'workflow.activity')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_workflow_activity_admin">
+            <field name="model" search="[('model', '=', 'workflow.activity')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.ui.view" id="transition_view_form">
+            <field name="model">workflow.transition</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Transition">
+                    <label name="act_from"/>
+                    <field name="act_from"/>
+                    <label name="act_to"/>
+                    <field name="act_to"/>
+                    <label name="condition"/>
+                    <field name="condition" colspan="3"/>
+                    <label name="signal"/>
+                    <field name="signal"/>
+                    <label name="group"/>
+                    <field name="group"/>
+                    <label name="trigger_model"/>
+                    <field name="trigger_model"/>
+                    <label name="trigger_ids"/>
+                    <field name="trigger_ids"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="transition_view_tree">
+            <field name="model">workflow.transition</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Transitions">
+                    <field name="act_from"/>
+                    <field name="act_to"/>
+                    <field name="signal"/>
+                    <field name="group"/>
+                    <field name="condition"/>
+                    <field name="trigger_model"/>
+                    <field name="trigger_ids"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_transition_form">
+            <field name="name">Transitions</field>
+            <field name="res_model">workflow.transition</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_transition_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="transition_view_tree"/>
+            <field name="act_window" ref="act_transition_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_transition_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="transition_view_form"/>
+            <field name="act_window" ref="act_transition_form"/>
+        </record>
+        <menuitem parent="menu_workflow"
+            action="act_transition_form" id="menu_transition_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_transition_form_group_admin">
+            <field name="menu" ref="menu_transition_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_workflow_transition">
+            <field name="model" search="[('model', '=', 'workflow.transition')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_workflow_transition_admin">
+            <field name="model" search="[('model', '=', 'workflow.transition')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.ui.view" id="instance_view_form">
+            <field name="model">workflow.instance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Instance">
+                    <label name="workflow"/>
+                    <field name="workflow"/>
+                    <label name="uid"/>
+                    <field name="uid"/>
+                    <label name="res_id"/>
+                    <field name="res_id"/>
+                    <label name="res_type"/>
+                    <field name="res_type"/>
+                    <label name="state"/>
+                    <field name="state"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="instance_view_tree">
+            <field name="model">workflow.instance</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Instances">
+                    <field name="workflow"/>
+                    <field name="uid"/>
+                    <field name="res_id"/>
+                    <field name="res_type"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_instance_form">
+            <field name="name">Instances</field>
+            <field name="res_model">workflow.instance</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_instance_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="instance_view_tree"/>
+            <field name="act_window" ref="act_instance_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_instance_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="instance_view_form"/>
+            <field name="act_window" ref="act_instance_form"/>
+        </record>
+        <menuitem parent="menu_workflow"
+            action="act_instance_form" id="menu_instance_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_instance_form_group_admin">
+            <field name="menu" ref="menu_instance_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="workitem_view_form">
+            <field name="model">workflow.workitem</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Workitem">
+                    <label name="activity"/>
+                    <field name="activity"/>
+                    <label name="subflow"/>
+                    <field name="subflow"/>
+                    <label name="instance"/>
+                    <field name="instance"/>
+                    <label name="state"/>
+                    <field name="state"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="workitem_view_tree">
+            <field name="model">workflow.workitem</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Workitems">
+                    <field name="activity"/>
+                    <field name="subflow"/>
+                    <field name="instance"/>
+                    <field name="state"/>
+                </tree>
+              ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_workitem_form">
+            <field name="name">Workitems</field>
+            <field name="res_model">workflow.workitem</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_workitem_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="workitem_view_tree"/>
+            <field name="act_window" ref="act_workitem_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_workitem_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="workitem_view_form"/>
+            <field name="act_window" ref="act_workitem_form"/>
+        </record>
+        <menuitem parent="menu_workflow"
+            action="act_workitem_form" id="menu_workitem_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_workitem_form_group_admin">
+            <field name="menu" ref="menu_workitem_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+    </data>
+</tryton>
