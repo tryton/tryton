@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="country"/>
+    <field name="language"/>
+    <field name="active" tree_invisible="1"/>
+</tree>
