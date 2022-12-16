@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user:"
+msgid "You can not set the password of ldap user \"%s\"."
+msgstr "Za LDAP uporabnika \"%s\" ni možno nastaviti gesla."
+
+msgctxt "field:ldap.connection,auth_base_dn:"
+msgid "Base DN"
+msgstr "Osnovni DN"
+
+msgctxt "field:ldap.connection,auth_create_user:"
+msgid "Create User"
+msgstr "Ustvari uporabnika"
+
+msgctxt "field:ldap.connection,auth_require_filter:"
+msgid "Require Filter"
+msgstr "Zahtevan filter"
+
+msgctxt "field:ldap.connection,auth_scope:"
+msgid "Scope"
+msgstr "Pristojnost"
+
+msgctxt "field:ldap.connection,auth_uid:"
+msgid "UID"
+msgstr "UID"
+
+msgctxt "help:ldap.connection,auth_base_dn:"
+msgid "Base DN for authentication"
+msgstr "Osnovni DN za avtentifikacijo"
+
+msgctxt "help:ldap.connection,auth_create_user:"
+msgid "Create user if not in database"
+msgstr "Ustvari uporabnik, če ga ni v bazi podatkov"
+
+msgctxt "help:ldap.connection,auth_uid:"
+msgid "UID Attribute for authentication"
+msgstr "Atribut UID za avtentifikacijo"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Base"
+msgstr "Osnova"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "OneLevel"
+msgstr "Ena raven"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Subtree"
+msgstr "Poddrevo"
+
+msgctxt "view:ldap.connection:"
+msgid "Authentication"
+msgstr "Avtentifikacija"
