@@ -1,0 +1,276 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.purchase:"
+msgid ""
+"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
+"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
+"request."
+msgstr ""
+"انبار : \"%s\" خرید \"%s\" متفاوت است با انبار: \"%s\" که در درخواست خرید "
+"پیوند شده است."
+
+msgctxt "error:purchase.purchase:"
+msgid ""
+"You can not delete the purchase \"%(purchase)s\" because it is linked to at "
+"least one purchase request."
+msgstr ""
+"شما نمی توانید خرید : \"%s\" را حذف کنید از آنجا که حداقل به یک درخواست خرید"
+" مرتبط است ."
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "Purchase price is missing for product \"%s\"."
+msgstr "قیمت خرید محصول \"%s\" گم شده است."
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "This price is necessary for creating purchases."
+msgstr "این قیمت برای ایجاد خرید ضروری است."
+
+msgctxt "error:purchase.request:"
+msgid "Purchase requests are only created by the system."
+msgstr "درخواست های خرید فقط توسط سیستم ایجاد می شوند."
+
+msgctxt "error:purchase.request:"
+msgid "You can not delete purchased request."
+msgstr "شما نمی توانید درخواست خریداری شده را حذف کنید."
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "درخواست ها"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "مقدار محاسبه شده"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "واحد اندازی گیری محاسبه شده"
+
+msgctxt "field:purchase.request,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:purchase.request,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "ارقام واحد اندازه گیری پیش فرض"
+
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:purchase.request,exception_ignored:"
+msgid "Ignored Exception"
+msgstr "اعتراض نادیده گرفته شده"
+
+msgctxt "field:purchase.request,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "خرید"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "تاریخ بهترین خرید"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "خط خرید"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:purchase.request,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr "تاریخ عرضه موجودی"
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "تاریخ انتظار عرضه"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "UOM"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "ارقام واحد اندازه گیری"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "نیازمند انبار"
+
+msgctxt "field:purchase.request,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:purchase.request,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "درخواست های خرید"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "ایجاد خرید"
+
+msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
+msgid "Handle Purchase Cancellation"
+msgstr "رسیدگی به لغو خریدها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
+msgid "Exception"
+msgstr "اعتراض"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "درخواست های خرید"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "درخواست خرید"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr "ایجاد خرید به درخواست نهاد/سازمان"
+
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
+msgid "Handle Purchase Cancellation Exception - Start"
+msgstr "رسیدگی به لغو خریدهای اعتراضی - شروع"
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "درخواست خرید"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Exception"
+msgstr "اعتراض"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "خریداری شده"
+
+msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
+msgid "Do you want to cancel the request or to reset it to draft?"
+msgstr ""
+"آیا میخواهید درخواست را لغو کنید یا دوباره بعنوان پیش نویس بازنشانی کنید؟"
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "اطلاعات محصول"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "اطلاعات تامین"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "ادامه هید"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
+msgid "Cancel Request"
+msgstr "لغو درخواست"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
+msgid "Reset to draft"
+msgstr "بازنشانی در پیش نویس"
