@@ -1,0 +1,303 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Alárendelt (vállalkozás)"
+
+msgctxt "field:company.company,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:company.company,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Alkalmazott"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Lábjegyzet"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Fejléc"
+
+msgctxt "field:company.company,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Fölérendelt (vállalkozás)"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:company.company,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Időzóna"
+
+msgctxt "field:company.company,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:company.company,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:company.company.config.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:company.employee,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:company.employee,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:company.employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:company.employee,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:company.employee,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:company.employee,write_uid:"
+msgid "Write User"
+msgstr "Által módosított"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Társaságok"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:ir.cron-company.company,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.cron-company.company,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "field:ir.cron-company.company,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.cron-company.company,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.cron-company.company,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.cron-company.company,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.property,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:res.user,companies:"
+msgid "Current Companies"
+msgstr "Aktuális társaság"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Aktuális társaság"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Aktuális alkalmazott"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Alkalmazott"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Anyavállalat"
+
+msgctxt "field:res.user-company.employee,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user-company.employee,create_uid:"
+msgid "Create User"
+msgstr "Felhasználó által létrehozott"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "field:res.user-company.employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user-company.employee,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:res.user-company.employee,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user-company.employee,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron"
+msgstr "Társaság, mely részére készül a megbízás"
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Társaság konfiguráció"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Társaság konfiguráció"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Társaságok"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Társaságok"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Alkalmazott"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Levél"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Időterv-Társaság"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Társaságok"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Társaságok"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Alkalmazott"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Felhasználó-Alkalmazott"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "Üdvözlettel,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Dátum:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Tisztelt Hölgyek és Urak,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Tárgy:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Most tudja a rendszerhez hozzáadni a vállalatot."
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Jelentések"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Hozzáadás"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Mégse"

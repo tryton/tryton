@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="uom_view_tree">
+            <field name="model">product.uom</field>
+            <field name="type">tree</field>
+            <field name="name">uom_tree</field>
+        </record>
+        <record model="ir.ui.view" id="uom_view_form">
+            <field name="model">product.uom</field>
+            <field name="type">form</field>
+            <field name="name">uom_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_uom_form">
+            <field name="name">Units of Measure</field>
+            <field name="res_model">product.uom</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="uom_view_tree"/>
+            <field name="act_window" ref="act_uom_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="uom_view_form"/>
+            <field name="act_window" ref="act_uom_form"/>
+        </record>
+        <menuitem name="Units of Measure" parent="menu_main_product"
+            sequence="3" id="menu_uom_form" action="act_uom_form"/>
+
+        <record model="ir.ui.view" id="uom_category_view_tree">
+            <field name="model">product.uom.category</field>
+            <field name="type">tree</field>
+            <field name="name">uom_category_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="uom_category_view_form">
+            <field name="model">product.uom.category</field>
+            <field name="type">form</field>
+            <field name="name">uom_category_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_uom_category_form">
+            <field name="name">Categories of Unit of Measure</field>
+            <field name="res_model">product.uom.category</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_category_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="uom_category_view_tree"/>
+            <field name="act_window" ref="act_uom_category_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_category_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="uom_category_view_form"/>
+            <field name="act_window" ref="act_uom_category_form"/>
+        </record>
+        <menuitem name="Categories" parent="menu_uom_form" sequence="2"
+            id="menu_uom_category_form"
+            action="act_uom_category_form"/>
+
+        <record model="product.uom.category" id="uom_cat_unit">
+            <field name="name">Units</field>
+        </record>
+        <record model="product.uom" id="uom_unit">
+            <field name="name">Unit</field>
+            <field name="symbol">u</field>
+            <field name="category" ref="uom_cat_unit"/>
+            <field name="rate" eval="1."/>
+            <field name="factor" eval="1."/>
+            <field name="rounding" eval="1."/>
+            <field name="digits" eval="0"/>
+        </record>
+
+        <record model="product.uom.category" id="uom_cat_weight">
+            <field name="name">Weight</field>
+        </record>
+        <record model="product.uom" id="uom_kilogram">
+            <field name="name">Kilogram</field>
+            <field name="symbol">kg</field>
+            <field name="category" ref="uom_cat_weight"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_gram">
+            <field name="name">Gram</field>
+            <field name="symbol">g</field>
+            <field name="category" ref="uom_cat_weight"/>
+            <field name="factor" eval="0.001"/>
+            <field name="rate" eval="1000."/>
+        </record>
+        <record model="product.uom" id="uom_carat">
+            <field name="name">Carat</field>
+            <field name="symbol">c</field>
+            <field name="category" ref="uom_cat_weight"/>
+            <field name="factor" eval="5000."/>
+            <field name="rate" eval="0.0002"/>
+        </record>
+        <record model="product.uom" id="uom_pound">
+            <field name="name">Pound</field>
+            <field name="symbol">lb</field>
+            <field name="category" ref="uom_cat_weight"/>
+            <field name="factor" eval="0.45359237"/>
+            <field name="rate" eval="round(1.0 / 0.45359237, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_ounce">
+            <field name="name">Ounce</field>
+            <field name="symbol">oz</field>
+            <field name="category" ref="uom_cat_weight"/>
+            <field name="factor" eval="0.028349523125"/>
+            <field name="rate" eval="round(1.0 / 0.028349523125, 12)"/>
+        </record>
+
+        <record model="product.uom.category" id="uom_cat_time">
+            <field name="name">Time</field>
+        </record>
+        <record model="product.uom" id="uom_second">
+            <field name="name">Second</field>
+            <field name="symbol">s</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="round(1.0 / 3600, 12)"/>
+            <field name="rate" eval="3600."/>
+        </record>
+        <record model="product.uom" id="uom_minute">
+            <field name="name">Minute</field>
+            <field name="symbol">min</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="round(1.0 / 60, 12)"/>
+            <field name="rate" eval="60."/>
+        </record>
+        <record model="product.uom" id="uom_hour">
+            <field name="name">Hour</field>
+            <field name="symbol">h</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_work_day">
+            <field name="name">Work Day</field>
+            <field name="symbol">wd</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="8."/>
+            <field name="rate" eval="0.125"/>
+        </record>
+        <record model="product.uom" id="uom_day">
+            <field name="name">Day</field>
+            <field name="symbol">d</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="24."/>
+            <field name="rate" eval="round(1.0 / 24, 12)"/>
+        </record>
+
+
+        <record model="product.uom.category" id="uom_cat_length">
+            <field name="name">Length</field>
+        </record>
+        <record model="product.uom" id="uom_meter">
+            <field name="name">Meter</field>
+            <field name="symbol">m</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_kilometer">
+            <field name="name">Kilometer</field>
+            <field name="symbol">km</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="1000."/>
+            <field name="rate" eval="0.001"/>
+        </record>
+        <record model="product.uom" id="uom_centimeter">
+            <field name="name">centimeter</field>
+            <field name="symbol">cm</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="0.01"/>
+            <field name="rate" eval="100."/>
+        </record>
+        <record model="product.uom" id="uom_millimeter">
+            <field name="name">Millimeter</field>
+            <field name="symbol">mm</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="0.001"/>
+            <field name="rate" eval="1000."/>
+        </record>
+        <record model="product.uom" id="uom_foot">
+            <field name="name">Foot</field>
+            <field name="symbol">ft</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="0.3048"/>
+            <field name="rate" eval="round(1.0 / 0.3048, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_yard">
+            <field name="name">Yard</field>
+            <field name="symbol">yd</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="0.9144"/>
+            <field name="rate" eval="round(1.0/ 0.9144, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_inch">
+            <field name="name">Inch</field>
+            <field name="symbol">in</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="0.0254"/>
+            <field name="rate" eval="round(1.0 / 0.0254, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_mile">
+            <field name="name">Mile</field>
+            <field name="symbol">mi</field>
+            <field name="category" ref="uom_cat_length"/>
+            <field name="factor" eval="1609.344"/>
+            <field name="rate" eval="round(1.0 / 1609.344, 12)"/>
+        </record>
+
+        <record model="product.uom.category" id="uom_cat_volume">
+            <field name="name">Volume</field>
+        </record>
+        <record model="product.uom" id="uom_cubic_meter">
+            <field name="name">Cubic meter</field>
+            <field name="symbol">m³</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="1000."/>
+            <field name="rate" eval="0.001"/>
+        </record>
+        <record model="product.uom" id="uom_liter">
+            <field name="name">Liter</field>
+            <field name="symbol">l</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_cubic_centimeter">
+            <field name="name">Cubic centimeter</field>
+            <field name="symbol">cm³</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="0.001"/>
+            <field name="rate" eval="1000."/>
+        </record>
+        <record model="product.uom" id="uom_cubic_inch">
+            <field name="name">Cubic inch</field>
+            <field name="symbol">in³</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="0.016387064"/>
+            <field name="rate" eval="round(1.0 / 0.016387064, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_cubic_foot">
+            <field name="name">Cubic foot</field>
+            <field name="symbol">ft³</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="28.316846592"/>
+            <field name="rate" eval="round(1.0 / 28.316846592, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_gallon">
+            <field name="name">Gallon</field>
+            <field name="symbol">gal</field>
+            <field name="category" ref="uom_cat_volume"/>
+            <field name="factor" eval="3.785411784"/>
+            <field name="rate" eval="round(1.0 / 3.785411784, 12)"/>
+        </record>
+
+        <record model="product.uom.category" id="uom_cat_surface">
+            <field name="name">Surface</field>
+        </record>
+        <record model="product.uom" id="uom_square_meter">
+            <field name="name">Square meter</field>
+            <field name="symbol">m²</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="1."/>
+            <field name="rate" eval="1."/>
+        </record>
+        <record model="product.uom" id="uom_square_centimeter">
+            <field name="name">Square centimeter</field>
+            <field name="symbol">cm²</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="0.0001"/>
+            <field name="rate" eval="10000."/>
+        </record>
+        <record model="product.uom" id="uom_are">
+            <field name="name">Are</field>
+            <field name="symbol">a</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="100."/>
+            <field name="rate" eval="0.01"/>
+        </record>
+        <record model="product.uom" id="uom_hectare">
+            <field name="name">Hectare</field>
+            <field name="symbol">ha</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="10000."/>
+            <field name="rate" eval="0.0001"/>
+        </record>
+        <record model="product.uom" id="uom_square_inch">
+            <field name="name">Square inch</field>
+            <field name="symbol">in²</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="0.00064516"/>
+            <field name="rate" eval="round(1.0 / 0.00064516, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_square_foot">
+            <field name="name">Square foot</field>
+            <field name="symbol">ft²</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="0.09290304"/>
+            <field name="rate" eval="round(1.0 / 0.09290304, 12)"/>
+        </record>
+        <record model="product.uom" id="uom_square_yard">
+            <field name="name">Square yard</field>
+            <field name="symbol">yd²</field>
+            <field name="category" ref="uom_cat_surface"/>
+            <field name="factor" eval="0.83612736"/>
+            <field name="rate" eval="round(1.0 / 0.83612736, 12)"/>
+        </record>
+
+
+        <record model="ir.model.access" id="access_uom">
+            <field name="model" search="[('model', '=', 'product.uom')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_uom_admin">
+            <field name="model" search="[('model', '=', 'product.uom')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_uom_category">
+            <field name="model" search="[('model', '=', 'product.uom.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_uom_category_admin">
+          <field name="model" search="[('model', '=', 'product.uom.category')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
