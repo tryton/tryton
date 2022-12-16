@@ -1,0 +1,80 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.rule,account:"
+msgid "Substitution Account"
+msgstr "Anzuwendendes Konto"
+
+msgctxt "field:account.account.rule,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.account.rule,end_date:"
+msgid "Ending Date"
+msgstr "Enddatum"
+
+msgctxt "field:account.account.rule,origin_account:"
+msgid "Original Account"
+msgstr "Ursprungskonto"
+
+msgctxt "field:account.account.rule,return_:"
+msgid "Return"
+msgstr "Rückgabe/-nahme"
+
+msgctxt "field:account.account.rule,start_date:"
+msgid "Starting Date"
+msgstr "Startdatum"
+
+msgctxt "field:account.account.rule,tax:"
+msgid "Tax"
+msgstr "Steuer"
+
+msgctxt "field:account.account.rule,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:account.account.rule,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "help:account.account.rule,return_:"
+msgid "Check to limit to return operation."
+msgstr ""
+"Auswählen, um die Kontenregel auf Rückgabe/-nahme Aktionen zu beschränken."
+
+msgctxt "model:account.account.rule,name:"
+msgid "Account Rule"
+msgstr "Kontenregel"
+
+msgctxt "model:ir.action,name:act_account_rule_form"
+msgid "Account Rules"
+msgstr "Kontenregeln"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
+msgid "Account Rules"
+msgstr "Kontenregeln"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Expense"
+msgstr "Aufwand"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Payable"
+msgstr "Verbindlichkeiten"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Receivable"
+msgstr "Forderungen"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Revenue"
+msgstr "Ertrag"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Stock"
+msgstr "Lager"

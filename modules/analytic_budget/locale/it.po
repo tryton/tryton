@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:analytic_account.budget,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,root:"
+msgid "Root"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,root_lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:analytic_account.budget,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.context,budget:"
+msgid "Budget"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.copy.start,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.copy.start,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.copy.start,factor:"
+msgid "Factor"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.copy.start,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.copy.start,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,actual_amount:"
+msgid "Actual Amount"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,budget:"
+msgid "Budget"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,children:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,current_name:"
+msgid "Current Name"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,left:"
+msgid "Left"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,percentage:"
+msgid "Percentage"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,right:"
+msgid "Right"
+msgstr "Destra"
+
+msgctxt "field:analytic_account.budget.line,root:"
+msgid "Root"
+msgstr ""
+
+msgctxt "field:analytic_account.budget.line,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+msgctxt "help:analytic_account.budget,company:"
+msgid "The company that the budget is associated with."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.copy.start,factor:"
+msgid "The percentage to apply to the budget line amounts."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,actual_amount:"
+msgid "The total amount booked against the budget line."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,amount:"
+msgid "The amount allocated to the budget line."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,children:"
+msgid "Used to add structure below the budget."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,parent:"
+msgid "Used to add structure above the budget."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,percentage:"
+msgid "The percentage of booked amount of the budget line."
+msgstr ""
+
+msgctxt "help:analytic_account.budget.line,total_amount:"
+msgid "The total amount allocated to the budget line and its children."
+msgstr ""
+
+msgctxt "model:analytic_account.budget,name:"
+msgid "Analytic Budget"
+msgstr ""
+
+msgctxt "model:analytic_account.budget.context,name:"
+msgid "Analytic Budget Context"
+msgstr ""
+
+msgctxt "model:analytic_account.budget.copy.start,name:"
+msgid "Copy Analytic Budget"
+msgstr ""
+
+msgctxt "model:analytic_account.budget.line,name:"
+msgid "Analytic Budget"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_budget_form"
+msgid "Analytic Budgets"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_budget_line_form"
+msgid "Budget Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_budget_report"
+msgid "Analytic Budgets"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_budget_copy"
+msgid "Copy Budget"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:budget_copy_button"
+msgid "Copy"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:budget_update_lines_button"
+msgid "Update Lines"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_budget_form"
+msgid "Analytic Budgets"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_budget_report"
+msgid "Analytic Budgets"
+msgstr ""
+
+msgctxt "view:analytic_account.budget.copy.start:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name"
+msgstr ""
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name:"
+msgstr ""
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,copy:"
+msgid "Copy"
+msgstr ""
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,end:"
+msgid "Cancel"
+msgstr ""

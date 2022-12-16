@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="party"/>
+    <field name="party"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" 
+            xexpand="0" width="25"/>
+        <!-- Add here some checkboxes ! -->
+        <label name="sequence"/>
+        <field name="sequence"/>
+    </group>
+    <label name="type"/>
+    <field name="type"/>
+    <group col="2" colspan="2" id="value">
+        <label name="other_value"/>
+        <field name="other_value"/>
+        <label name="website"/>
+        <field name="website" widget="url"/>
+        <label name="email"/>
+        <field name="email" widget="email"/>
+        <label name="skype"/>
+        <field name="skype" widget="callto"/>
+        <label name="sip"/>
+        <field name="sip" widget="sip"/>
+    </group>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="language"/>
+    <field name="language" widget="selection"/>
+
+    <separator name="comment" colspan="6"/>
+    <field name="comment" colspan="6"/>
+</form>
