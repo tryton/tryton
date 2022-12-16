@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<graph string="Rates" type="line">
+    <x>
+        <field name="date"/>
+    </x>
+    <y>
+        <field name="rate" fill="1" empty="0"/>
+    </y>
+</graph>
