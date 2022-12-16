@@ -1,0 +1,99 @@
+Version 4.8.8 - 2019-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.7 - 2019-10-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.6 - 2019-09-15
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.5 - 2019-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.4 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.3 - 2018-12-02
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.2 - 2018-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Always use the context and config of the instance
+* Add support for search_* attributes in ModelList
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add set_sequence method to ModelList
+* Add __int__ to Model
+* Allow to use keyword arguments with trytond configuration
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Fill default Report data
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add StateAction support to Wizard
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Allow to provide extra keyword arguments to set_xmlrpc()
+* Add support of fields.TimeDelta
+* Remove password on set_trytond
+* Manage reload, save, delete, duplicate and click as class and instance method
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* New configuration syntax
+* Add Report
+* Explicitly set value of parent field
+* Add duplicate method
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Models cache depends also on user
+* Drop support of Python 2.6
+* Allow to pass field values to new method
+* Add click method for buttons
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Add support of fields.Dict
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Use loading attribute
+* Add support of _buttons
+* Add support of fields.Time
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Change license to LGPL-3
+* Drop support of Python 2.5
+
+Version 2.0.0 - 2011-04-28
+* Bug fixes (see mercurial logs for details)
+* Manage default values of trytond configuration
+
+Version 1.8.0 - 2010-12-24
+* Initial release

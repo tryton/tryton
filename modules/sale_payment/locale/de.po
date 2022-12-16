@@ -1,0 +1,24 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment:"
+msgid "Payment cannot be approved because sale \"%(sale)s\" is cancelled."
+msgstr ""
+"Zahlung kann nicht abgeschlossen werden, da der Verkauf \"%(sale)s\" "
+"abgebrochen wurde."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be canceled because it has payments."
+msgstr ""
+"Der Verkauf \"%(sale)s\" kann nicht annuliert werden, da er Zahlungen hat."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be reset to draft because it has payments."
+msgstr ""
+"Der Verkauf \"%(sale)s\" kann nicht in den Entwurfsmodus gesetzt werden, da "
+"er bereits Zahlungen hat."
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Zahlungen"
