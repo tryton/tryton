@@ -1,0 +1,271 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakendamise jada"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakendamise jada"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Pakend"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Kanded"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Pakend"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Tarne"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Nimi"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Pakend"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Pakendid"
+
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr ""
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Pakendi tüüp"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Pakendi tüüp"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Laopakend"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Laopakendi tüüp"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Suletud"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Avatud"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "Pakend"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Pakendamise jada"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr ""
