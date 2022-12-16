@@ -1,0 +1,283 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.category:"
+msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgstr "Няма сметка за приход/разход зададена за тази категория %s (%d)"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "Няма зададен сметка за разходи/приходи за продукт %s (%d)"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Разходи за сметка"
+
+msgctxt "field:product.category,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Използвани разходи по сметка"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Използване на родителски сметки"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Приход по сметка"
+
+msgctxt "field:product.category,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Използвани приходи по сметка"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Данъци на клиенти"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Използвани данъци на клиенти"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Данъци на доставчик"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Използвани данъци на доставчик"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Използване на данъците на родителя"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.category-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.category-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:product.category-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.category-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.category-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.category-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:product.category-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.category-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:product.template,account_category:"
+msgid "Use Category's accounts"
+msgstr "Използване на сметките за категорията"
+
+msgctxt "field:product.template,account_expense:"
+msgid "Account Expense"
+msgstr "Разходи за сметка"
+
+msgctxt "field:product.template,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Използвани разходи по сметка"
+
+msgctxt "field:product.template,account_revenue:"
+msgid "Account Revenue"
+msgstr "Приход по сметка"
+
+msgctxt "field:product.template,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Използвани разходи по сметка"
+
+msgctxt "field:product.template,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Данъци на клиенти"
+
+msgctxt "field:product.template,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Използвани данъци на клиенти"
+
+msgctxt "field:product.template,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Данъци на доставчик"
+
+msgctxt "field:product.template,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Използвани данъци на доставчик"
+
+msgctxt "field:product.template,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "Използване на данъците за категорията"
+
+msgctxt "field:product.template-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.template-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.template-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-customer-account.tax,product:"
+msgid "Product Template"
+msgstr "Щаблон за продукт"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:product.template-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:product.template-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.template-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.template-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-supplier-account.tax,product:"
+msgid "Product Template"
+msgstr "Щаблон за продукт"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:product.template-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:product.template-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category"
+msgstr "Използване на сметките зададени в родителската категория"
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category"
+msgstr "Използване на данъци от родителската категория"
+
+msgctxt "help:product.template,account_category:"
+msgid "Use the accounts defined on the category"
+msgstr "Използване на сметките зададени за категорията"
+
+msgctxt "help:product.template,account_expense:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+msgctxt "help:product.template,account_revenue:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+
+msgctxt "help:product.template,taxes_category:"
+msgid "Use the taxes defined on the category"
+msgstr "Използване на данъците зададени за категорията"
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Категория - Данък на клиент"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Категория - Данъци на доставчик"
+
+msgctxt "model:product.template-customer-account.tax,name:"
+msgid "Product Template - Customer Tax"
+msgstr "Шаблон на продукт - Данък на клиент"
+
+msgctxt "model:product.template-supplier-account.tax,name:"
+msgid "Product Template - Supplier Tax"
+msgstr "Шаблон на продукт - Данък на доставчик"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Счетоводство"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Счетоводство"
+
+msgctxt "view:product.template:"
+msgid "Accounts"
+msgstr "Сметки"
+
+msgctxt "view:product.template:"
+msgid "Taxes"
+msgstr "Данъци"
