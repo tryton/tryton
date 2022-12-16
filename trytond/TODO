@@ -1,0 +1,3 @@
+- Add check on action groups when executing wizard
+- Handle button as a field to allow to override it with python code
+- Allow to create fields from the client interface
