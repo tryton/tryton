@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="country.organization" id="organization_eu">
+            <field name="name">European Union</field>
+            <field name="code">EU</field>
+        </record>
+
+        <record model="country.organization" id="organization_benelux">
+            <field name="name">Benelux Union</field>
+            <field name="code">Benelux</field>
+        </record>
+
+        <record model="country.organization" id="organization_nafta">
+            <field name="name">North American Free Trade Agreement</field>
+            <field name="code">NAFTA</field>
+        </record>
+
+        <record model="country.organization" id="organization_mercosur">
+            <field name="name">Southern Common Market</field>
+            <field name="code">Mercosur</field>
+        </record>
+
+        <record model="country.organization" id="organization_can">
+            <field name="name">Andean Community</field>
+            <field name="code">CAN</field>
+        </record>
+
+        <record model="country.organization" id="organization_caricom">
+            <field name="name">Caribbean Community</field>
+            <field name="code">CARICOM</field>
+        </record>
+
+        <record model="country.organization" id="organization_apec">
+            <field name="name">Asia-Pacific Economic Cooperation</field>
+            <field name="code">APEC</field>
+        </record>
+
+        <record model="country.organization" id="organization_asean">
+            <field name="name">Association of Southeast Asian Nations</field>
+            <field name="code">ASEAN</field>
+        </record>
+
+        <record model="country.organization" id="organization_safta">
+            <field name="name">South Asian Free Trade Area</field>
+            <field name="code">SAFTA</field>
+        </record>
+
+        <record model="country.organization" id="organization_gcc">
+            <field name="name">Cooperation Council for the Arab States of the Gulf</field>
+            <field name="code">GCC</field>
+        </record>
+
+        <record model="country.organization" id="organization_cemac">
+            <field name="name">Economic and Monetary Community of Central Africa</field>
+            <field name="code">CEMAC</field>
+        </record>
+
+        <record model="country.organization" id="organization_eccas">
+            <field name="name">Economic Community of Central African States</field>
+            <field name="code">ECCAS</field>
+        </record>
+
+        <record model="country.organization" id="organization_ecowas">
+            <field name="name">Economic Community of West African States</field>
+            <field name="code">ECOWAS</field>
+        </record>
+
+        <record model="country.organization" id="organization_cen-sad">
+            <field name="name">Community of Sahel–Saharan States</field>
+            <field name="code">CEN-SAD</field>
+        </record>
+
+        <record model="country.organization" id="organization_comesa">
+            <field name="name">Common Market for Eastern and Southern Africa</field>
+            <field name="code">COMESA</field>
+        </record>
+
+        <record model="country.organization" id="organization_eac">
+            <field name="name">East African Community</field>
+            <field name="code">EAC</field>
+        </record>
+
+        <record model="country.organization" id="organization_igad">
+            <field name="name">Intergovernmental Authority on Development</field>
+            <field name="code">IGAD</field>
+        </record>
+
+        <record model="country.organization" id="organization_sadc">
+            <field name="name">Southern African Development Community</field>
+            <field name="code">SADC</field>
+        </record>
+
+        <record model="country.organization" id="organization_amu">
+            <field name="name">Arab Maghreb Union</field>
+            <field name="code">AMU</field>
+        </record>
+    </data>
+</tryton>

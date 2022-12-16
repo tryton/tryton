@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Dnevnik zaloge"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Dnevnik zaloge"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Način vodenja zaloge"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Konto zaloge"
+
+#, fuzzy
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Konto zaloge"
+
+#, fuzzy
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Konto zaloge"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "Konto zaloge"
+
+#, fuzzy
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Konto zaloge"
+
+#, fuzzy
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Konto zaloge"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Konfiguracija dnevnika zaloge"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Kontinentalen"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Zaloga"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Konto zaloge"

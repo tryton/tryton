@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,receivable_rules:"
+msgid "Receivable Rules"
+msgstr "Règles de créance"
+
+msgctxt "field:account.account.receivable.rule,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.account.receivable.rule,account_party_required:"
+msgid "Account Party Required"
+msgstr "Tiers requis du compte"
+
+msgctxt "field:account.account.receivable.rule,account_payable:"
+msgid "Account Payable"
+msgstr "Compte fournisseur"
+
+msgctxt "field:account.account.receivable.rule,account_receivable:"
+msgid "Account Receivable"
+msgstr "Compte client"
+
+msgctxt "field:account.account.receivable.rule,accounts:"
+msgid "Accounts"
+msgstr "Comptes"
+
+msgctxt "field:account.account.receivable.rule,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.account.receivable.rule,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.account.receivable.rule,overflow_account:"
+msgid "Overflow Account"
+msgstr "Compte de surplus"
+
+msgctxt "field:account.account.receivable.rule,priorities:"
+msgid "Priorities"
+msgstr "Priorités"
+
+msgctxt "field:account.account.receivable.rule.account,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt ""
+"field:account.account.receivable.rule.account,account_party_required:"
+msgid "Account Party Required"
+msgstr "Tiers requis du compte"
+
+msgctxt "field:account.account.receivable.rule.account,account_payable:"
+msgid "Account Payable"
+msgstr "Compte fournisseur"
+
+msgctxt "field:account.account.receivable.rule.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "Compte client"
+
+msgctxt "field:account.account.receivable.rule.account,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.account.receivable.rule.account,only_reconcile:"
+msgid "Only Reconcile"
+msgstr "Réconcilier uniquement"
+
+msgctxt "field:account.account.receivable.rule.account,rule:"
+msgid "Rule"
+msgstr "Règle"
+
+msgctxt "help:account.account.receivable.rule,overflow_account:"
+msgid ""
+"The account to move exceeded amount.\n"
+"Leave empty to keep it in the current account."
+msgstr ""
+"Le compte auquel transférer le montant excédant.\n"
+"Laissez vide pour le conserver dans le compte courant."
+
+msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
+msgid "Distribute only to fully reconcile."
+msgstr "Distribuer uniquement pour effectuer une réconciliation complète."
+
+msgctxt "model:account.account.receivable.rule,name:"
+msgid "Account Receivable Rule"
+msgstr "Règle de créance comptable"
+
+msgctxt "model:account.account.receivable.rule.account,name:"
+msgid "Account Receivable Rule Account"
+msgstr "Compte de règle de créance comptable"
+
+msgctxt "model:ir.action,name:act_account_receivable_rule_form"
+msgid "Account Receivable Rules"
+msgstr "Règles de créance comptable"
+
+msgctxt "model:ir.message,text:msg_account_unique"
+msgid "Only one active rule is allowed by account."
+msgstr "Une seule règle active est autorisée par compte."
+
+msgctxt "model:ir.message,text:msg_rule_account_unique"
+msgid "Only one account is allowed by rule."
+msgstr "Un seul compte est autorisé par règle."
+
+msgctxt "model:ir.model.button,string:account_receivable_rule_apply_button"
+msgid "Apply"
+msgstr "Appliquer"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_receivable_rule_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.ui.menu,name:menu_account_receivable_rule_form"
+msgid "Account Receivable Rules"
+msgstr "Règles de créance comptable"
+
+msgctxt "selection:account.account.receivable.rule,priorities:"
+msgid "Account, Maturity Date"
+msgstr "Compte, date d'échéance"
+
+msgctxt "selection:account.account.receivable.rule,priorities:"
+msgid "Maturity Date, Account"
+msgstr "Date d'échéance, compte"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Apply Account Receivable Rules"
+msgstr "Appliquer les règles de créance comptable"
