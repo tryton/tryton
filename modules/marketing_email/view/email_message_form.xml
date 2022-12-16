@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="list_">
+    <label name="from_"/>
+    <field name="from_" colspan="3"/>
+    <label name="list_" string="To:"/>
+    <field name="list_" colspan="3"/>
+    <label name="title"/>
+    <field name="title" colspan="3"/>
+    <notebook colspan="4">
+        <page name="content">
+            <label name="content" yfill="1" yalign="0"/>
+            <group col="-1" id="content" colspan="3" yexpand="1">
+                <field name="content"/>
+                <field name="content" string="Edit" widget="html" xexpand="0"/>
+            </group>
+        </page>
+        <page name="urls">
+            <field name="urls" colspan="4"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="draft"/>
+        <button name="send_test" colspan="2"/>
+        <button name="send"/>
+    </group>
+</form>

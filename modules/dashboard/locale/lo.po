@@ -1,0 +1,57 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "ການປະຕິບັດ"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "ໂຄງກະດານບັນຊາ"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "ການປະຕິບັດກະດານບັນຊາ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "ສີ່ຫຼ່ຽມ"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "ແຖວຂໍ້ມູນລຸ່ມ"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "ແຖວຂໍ້ມູນຊ້າຍ"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "ແຖວຂໍ້ມູນຂວາ"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "ແຖວຂໍ້ມູນເທິງ"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "ກະດານບັນຊາ"
