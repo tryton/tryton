@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Línies de compra"
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr "Servei del proveïdor"
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr "Les línies a afegir al cost de la producció."
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr "El proveïdor a qui externalitzar la producció."
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr "La quantitat a comprar per produir una quantitat de la LdM."
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr "El servei a comprar al proveïdor per la producció."
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr "El servei del proveïdor a comprar per la producció."
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr "Afegeix al cost de la producció."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"Els produccions \"%(productions)s\" no es poden processar perquè tenen "
+"compres pendents."
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr "Producció"
