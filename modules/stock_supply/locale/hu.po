@@ -1,0 +1,214 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Rendelés pont"
+
+#, fuzzy
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Beszerzési időszak"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Beszerzési időszak"
+
+msgctxt "field:stock.location,overflowing_location:"
+msgid "Overflowing Location"
+msgstr ""
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Előkészítés helye"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Raktár hely"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Max. mennyiség"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Min. mennyiség"
+
+msgctxt "field:stock.order_point,overflowing_location:"
+msgid "Overflowing Location"
+msgstr ""
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Előkészítés helye"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Raktár helye"
+
+msgctxt "field:stock.order_point,target_quantity:"
+msgid "Target Quantity"
+msgstr ""
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Egység"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző utáni számjegy"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Termék raktár"
+
+#, fuzzy
+msgctxt "help:stock.location,overflowing_location:"
+msgid "Leave empty for no default overflowing."
+msgstr "Üresen hagyni, ha nincs előkészítési hely "
+
+#, fuzzy
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning."
+msgstr "Üresen hagyni, ha nincs előkészítési hely "
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
+msgid "Order Points"
+msgstr "Order Points"
+
+msgctxt "model:ir.action,name:act_stock_supply"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Internal"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+msgctxt "model:ir.message,text:msg_late_customer_moves"
+msgid "There are some customer moves that are late."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_late_supplier_moves"
+msgid "There are some supplier moves that are late."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_order_point_concurrent_overflowing_location_internal"
+msgid ""
+"You cannot define for the same product two order points with opposite locations\n"
+"(from \"Overflowing Location\" to \"Provisioning Location\" and vice versa)."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_order_point_concurrent_provisioning_location_internal"
+msgid ""
+"You cannot define for the same product two order points with opposite locations\n"
+"(from \"Storage Location\" to \"Provisioning Location\" and vice versa)."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_order_point_unique"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr "Csak egy rendelés pont engedélyezett termék-raktárhelyként."
+
+msgctxt "model:ir.rule.group,name:rule_group_order_point"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Order Points"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_supply"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+msgctxt "model:purchase.configuration.supply_period,name:"
+msgid "Purchase Configuration Supply Period"
+msgstr ""
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Rendelés pont"
+
+#, fuzzy
+msgctxt "model:stock.supply.start,name:"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Belső"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Vásárlás"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Rendelés pont típus"
+
+#, fuzzy
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Termék infó"
+
+#, fuzzy
+msgctxt "view:stock.supply.start:"
+msgid "Supply Stock?"
+msgstr "Supply Stock"
+
+#, fuzzy
+msgctxt "wizard_button:stock.supply,start,create_:"
+msgid "Create"
+msgstr "Létrehozás"
+
+#, fuzzy
+msgctxt "wizard_button:stock.supply,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
