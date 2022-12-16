@@ -1,0 +1,1884 @@
+# Spanish (Argentina) translations for tryton.
+# Copyright (C) 2012-2014 Thymbra Latinoamericana
+# This file is distributed under the same license as the tryton project.
+# Bruno M. Villasanti <bvillasanti@thymbra.com>, 2012-2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tryton 3.4.0\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2014-10-19 12:07+0200\n"
+"PO-Revision-Date: 2014-10-16 23:39-0300\n"
+"Last-Translator: Bruno M. Villasanti <bvillasanti@thymbra.com>\n"
+"Language-Team: Argentina\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: tryton/config.py:84
+msgid "specify alternate config file"
+msgstr "Indica un archivo de configuración alternativo"
+
+#: tryton/config.py:87
+msgid "development mode"
+msgstr "Modo desarrollo"
+
+#: tryton/config.py:90
+msgid "logging everything at INFO level"
+msgstr "Registra toda la información con nivel INFO"
+
+#: tryton/config.py:92
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "Indica el nivel de registro: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+#: tryton/config.py:95
+msgid "specify the login user"
+msgstr "Indica el usuario"
+
+#: tryton/config.py:97
+msgid "specify the server port"
+msgstr "Indica el puerto del servidor"
+
+#: tryton/config.py:99
+msgid "specify the server hostname"
+msgstr "Indica el nombre del servidor"
+
+#: tryton/config.py:103
+msgid "Too much arguments"
+msgstr "Demasiados argumentos"
+
+#: tryton/config.py:106
+#, python-format
+msgid "File \"%s\" not found"
+msgstr "El archivo «%s» no se ha encontrado"
+
+#: tryton/config.py:144
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr "¡No se ha podido escribir el archivo de configuración %s!"
+
+#: tryton/translate.py:184
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "No se ha podido establecer el idioma %s"
+
+#: tryton/action/main.py:171
+msgid "Select your action"
+msgstr "Seleccione su acción"
+
+#: tryton/action/main.py:177
+msgid "No action defined!"
+msgstr "¡No se ha definido ninguna acción!"
+
+#: tryton/common/common.py:284
+msgid "Tryton Connection"
+msgstr "Conexión a Tryton"
+
+#: tryton/common/common.py:295
+msgid "Server:"
+msgstr "Servidor:"
+
+#: tryton/common/common.py:313 tryton/gui/window/dblogin.py:79
+msgid "Port:"
+msgstr "Puerto:"
+
+#: tryton/common/common.py:381
+msgid "Selection"
+msgstr "Selección"
+
+#: tryton/common/common.py:390
+msgid "Your selection:"
+msgstr "Su selección:"
+
+#: tryton/common/common.py:526 tryton/gui/main.py:1422
+#: tryton/gui/window/win_export.py:459
+#: tryton/gui/window/view_form/view/graph.py:178
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:69
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:144
+#: tryton/gui/window/view_form/view/form_gtk/image.py:71
+#: tryton/gui/window/view_form/view/form_gtk/image.py:155
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:498
+msgid "Save As..."
+msgstr "Guardar como..."
+
+#: tryton/common/common.py:673
+msgid "Always ignore this warning."
+msgstr "Ignorar siempre esta advertencia."
+
+#: tryton/common/common.py:678
+msgid "Do you want to proceed?"
+msgstr "¿Desea continuar?"
+
+#: tryton/common/common.py:697
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#: tryton/common/common.py:803 tryton/common/common.py:1111
+msgid "Concurrency Exception"
+msgstr "Excepción de concurrencia"
+
+#: tryton/common/common.py:817
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Aviso de concurrencia de escritura:</b>\n"
+"\n"
+"Este registro ha sido modificado mientras lo editaba.\n"
+"  Elija:\n"
+"   - \"Cancelar\" para no guardar;\n"
+"   - \"Comparar\" para ver la versión modificada:\n"
+"   - \"Guardar de todas formas\" para guardar sus cambios."
+
+#: tryton/common/common.py:826
+msgid "Compare"
+msgstr "Comparar"
+
+#: tryton/common/common.py:831
+msgid "Write Anyway"
+msgstr "Guardar de todas formas"
+
+#: tryton/common/common.py:857 tryton/gui/window/win_export.py:492
+#: tryton/gui/window/win_import.py:262 tryton/gui/window/win_import.py:290
+msgid "Error"
+msgstr "Error"
+
+#: tryton/common/common.py:861
+msgid "Report Bug"
+msgstr "Informar de un error"
+
+#: tryton/common/common.py:868
+msgid "Application Error!"
+msgstr "¡Error de aplicación!"
+
+#: tryton/common/common.py:891
+msgid "Error: "
+msgstr "Error: "
+
+#: tryton/common/common.py:911
+#, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "Para informar de errores debe tener una cuenta en <u>%s</u>"
+
+#: tryton/common/common.py:941
+msgid "Bug Tracker"
+msgstr "Seguimiento de errores"
+
+#: tryton/common/common.py:959
+msgid "User:"
+msgstr "Usuario:"
+
+#: tryton/common/common.py:967 tryton/common/common.py:1129
+#: tryton/gui/window/dblogin.py:462
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: tryton/common/common.py:1022
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"El mismo error ya fue notificado por otro usuario.\n"
+"Para mantenerle informado añadiremos su usuario a la lista de interesados"
+" en este asunto."
+
+#: tryton/common/common.py:1033
+msgid "Created new bug with ID "
+msgstr "Se creó un nuevo error con ID "
+
+#: tryton/common/common.py:1041 tryton/gui/main.py:935
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"¡Error de conexión!\n"
+"¡Nombre de usuario o contraseña incorrectos!"
+
+#: tryton/common/common.py:1046
+msgid "Exception:"
+msgstr "Excepción:"
+
+#: tryton/common/common.py:1063
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+"¡La huella de seguridad del servidor ha cambiado desde la última "
+"conexión!\n"
+"La aplicación no se podrá conectar a este servidor hasta que se corrija "
+"la huella de seguridad del servidor."
+
+#: tryton/common/common.py:1065
+msgid "Security risk!"
+msgstr "¡Riesgo de seguridad!"
+
+#: tryton/common/common.py:1070 tryton/common/common.py:1135
+#: tryton/gui/main.py:932
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"¡Error de conexión!\n"
+"¡No ha sido posible conectarse al servidor!"
+
+#: tryton/common/common.py:1150
+msgid "Network Error!"
+msgstr "¡Error de red!"
+
+#: tryton/common/common.py:1405
+msgid "Y"
+msgstr "A"
+
+#: tryton/common/common.py:1406
+msgid "M"
+msgstr "M"
+
+#: tryton/common/common.py:1407
+msgid "w"
+msgstr "s"
+
+#: tryton/common/common.py:1408
+msgid "d"
+msgstr "d"
+
+#: tryton/common/common.py:1409
+msgid "h"
+msgstr "h"
+
+#: tryton/common/common.py:1410
+msgid "m"
+msgstr "m"
+
+#: tryton/common/completion.py:21
+msgid "<i>Search...</i>"
+msgstr "<i>Buscar...</i>"
+
+#: tryton/common/completion.py:22
+msgid "<i>Create...</i>"
+msgstr "<i>Crear...</i>"
+
+#: tryton/common/date_widget.py:67
+msgid "Open the calendar <F2>"
+msgstr "Abrir el calendario <F2>"
+
+#: tryton/common/date_widget.py:275
+msgid "Date Selection"
+msgstr "Selección de fecha"
+
+#: tryton/common/domain_parser.py:229
+msgid "y"
+msgstr "a"
+
+#: tryton/common/domain_parser.py:229
+msgid "yes"
+msgstr "sí"
+
+#: tryton/common/domain_parser.py:229
+msgid "true"
+msgstr "verdadero"
+
+#: tryton/common/domain_parser.py:229
+msgid "t"
+msgstr "v"
+
+#: tryton/common/domain_parser.py:430
+#: tryton/gui/window/view_form/view/screen_container.py:464
+msgid "True"
+msgstr "Verdadero"
+
+#: tryton/common/domain_parser.py:430
+#: tryton/gui/window/view_form/view/screen_container.py:464
+msgid "False"
+msgstr "Falso"
+
+#: tryton/common/popup_menu.py:77
+msgid "Edit..."
+msgstr "Editar..."
+
+#: tryton/common/popup_menu.py:82
+msgid "Attachments..."
+msgstr "Adjuntos..."
+
+#: tryton/common/popup_menu.py:92
+msgid "Actions..."
+msgstr "Acciones..."
+
+#: tryton/common/popup_menu.py:93
+msgid "Relate..."
+msgstr "Relacionado..."
+
+#: tryton/common/popup_menu.py:94
+msgid "Report..."
+msgstr "Informe..."
+
+#: tryton/common/popup_menu.py:95
+msgid "E-Mail..."
+msgstr "Correo electrónico..."
+
+#: tryton/common/popup_menu.py:96
+msgid "Print..."
+msgstr "Imprimir..."
+
+#: tryton/gui/main.py:218
+msgid "_File"
+msgstr "_Archivo"
+
+#: tryton/gui/main.py:226
+msgid "_User"
+msgstr "U_suario"
+
+#: tryton/gui/main.py:240
+msgid "_Options"
+msgstr "_Opciones"
+
+#: tryton/gui/main.py:248
+msgid "Fa_vorites"
+msgstr "Fa_voritos"
+
+#: tryton/gui/main.py:264
+msgid "_Help"
+msgstr "Ay_uda"
+
+#: tryton/gui/main.py:286 tryton/gui/window/win_search.py:26
+#: tryton/gui/window/view_form/view/screen_container.py:102
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:334
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:39
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:44
+msgid "Search"
+msgstr "Buscar"
+
+#: tryton/gui/main.py:374
+msgid "No result found."
+msgstr "No se han encontrado resultados."
+
+#: tryton/gui/main.py:396
+msgid "_Connect..."
+msgstr "_Conectar..."
+
+#: tryton/gui/main.py:405
+msgid "_Disconnect"
+msgstr "_Desconectar"
+
+#: tryton/gui/main.py:415
+msgid "Data_base"
+msgstr "_Base de datos"
+
+#: tryton/gui/main.py:426
+msgid "_New Database..."
+msgstr "_Nueva base de datos..."
+
+#: tryton/gui/main.py:435
+msgid "_Restore Database..."
+msgstr "_Restaurar base de datos..."
+
+#: tryton/gui/main.py:444
+msgid "_Backup Database..."
+msgstr "Hacer _copia de seguridad de la base de datos..."
+
+#: tryton/gui/main.py:453
+msgid "Dro_p Database..."
+msgstr "_Eliminar base de datos..."
+
+#: tryton/gui/main.py:462
+msgid "_Quit..."
+msgstr "_Salir..."
+
+#: tryton/gui/main.py:477
+msgid "_Preferences..."
+msgstr "_Preferencias..."
+
+#: tryton/gui/main.py:488
+msgid "_Menu Reload"
+msgstr "_Recargar menú"
+
+#: tryton/gui/main.py:497
+msgid "_Menu Toggle"
+msgstr "Conmutar _menú"
+
+#: tryton/gui/main.py:504
+msgid "_Global Search"
+msgstr "Búsqueda _global"
+
+#: tryton/gui/main.py:519
+msgid "_Toolbar"
+msgstr "Barra de herramien_tas"
+
+#: tryton/gui/main.py:527
+msgid "_Default"
+msgstr "Por _defecto"
+
+#: tryton/gui/main.py:537
+msgid "_Text and Icons"
+msgstr "Texto _e iconos"
+
+#: tryton/gui/main.py:547
+msgid "_Icons"
+msgstr "_Iconos"
+
+#: tryton/gui/main.py:556
+msgid "_Text"
+msgstr "_Texto"
+
+#: tryton/gui/main.py:565
+msgid "_Menubar"
+msgstr "Barra de _menú"
+
+#: tryton/gui/main.py:573
+msgid "Change Accelerators"
+msgstr "Cambiar teclas rápidas"
+
+#: tryton/gui/main.py:581
+msgid "_Mode"
+msgstr "_Modo"
+
+#: tryton/gui/main.py:589
+msgid "_Normal"
+msgstr "_Normal"
+
+#: tryton/gui/main.py:597
+msgid "_PDA"
+msgstr "_PDA"
+
+#: tryton/gui/main.py:604
+msgid "_Form"
+msgstr "_Formulario"
+
+#: tryton/gui/main.py:613
+msgid "Save Width/Height"
+msgstr "Guardar ancho/alto"
+
+#: tryton/gui/main.py:624
+msgid "Save Tree State"
+msgstr "Guardar estado del árbol"
+
+#: tryton/gui/main.py:636
+msgid "Spell Checking"
+msgstr "Corrección ortográfica"
+
+#: tryton/gui/main.py:646
+msgid "Tabs Position"
+msgstr "Posición de las pestañas"
+
+#: tryton/gui/main.py:654
+msgid "Top"
+msgstr "Superior"
+
+#: tryton/gui/main.py:663
+msgid "Left"
+msgstr "Izquierda"
+
+#: tryton/gui/main.py:673
+msgid "Right"
+msgstr "Derecha"
+
+#: tryton/gui/main.py:683
+msgid "Bottom"
+msgstr "Inferior"
+
+#: tryton/gui/main.py:692
+msgid "_Previous Tab"
+msgstr "_Anterior pestaña"
+
+#: tryton/gui/main.py:698
+msgid "_Next Tab"
+msgstr "_Siguiente pestaña"
+
+#: tryton/gui/main.py:704
+msgid "Search Limit..."
+msgstr "Límite de búsqueda..."
+
+#: tryton/gui/main.py:710
+msgid "_Email..."
+msgstr "_Correo electrónico..."
+
+#: tryton/gui/main.py:718
+msgid "_Save Options"
+msgstr "_Guardar opciones"
+
+#: tryton/gui/main.py:730
+msgid "_Tips..."
+msgstr "Conse_jos..."
+
+#: tryton/gui/main.py:739
+msgid "_Keyboard Shortcuts..."
+msgstr "Com_binaciones de teclas..."
+
+#: tryton/gui/main.py:748
+msgid "_About..."
+msgstr "_Acerca de..."
+
+#: tryton/gui/main.py:799
+msgid "Manage Favorites"
+msgstr "_Administrar favoritos"
+
+#: tryton/gui/main.py:949
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"La acción seleccionada requiere cerrar todas las pestañas. \n"
+"¿Desea continuar?"
+
+#: tryton/gui/main.py:1208
+msgid "Close Tab"
+msgstr "Cerrar pestaña"
+
+#: tryton/gui/main.py:1329
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Va a eliminar una base de datos de Tryton.\n"
+"¿Está seguro que quiere continuar?"
+
+#: tryton/gui/main.py:1339
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"La contraseña del servidor Tryton es incorrecta.\n"
+"Inténtelo de nuevo."
+
+#: tryton/gui/main.py:1341 tryton/gui/main.py:1377 tryton/gui/main.py:1413
+#: tryton/gui/window/dbcreate.py:362
+msgid "Access denied!"
+msgstr "¡Acceso denegado!"
+
+#: tryton/gui/main.py:1344
+msgid "Database drop failed with error message:\n"
+msgstr "La eliminación de la base de datos ha fallado con el mensaje de error:\n"
+
+#: tryton/gui/main.py:1345
+msgid "Database drop failed!"
+msgstr "¡Falló la eliminación de la base de datos!"
+
+#: tryton/gui/main.py:1347
+msgid "Database dropped successfully!"
+msgstr "¡La base de datos se ha eliminado satisfactoriamente!"
+
+#: tryton/gui/main.py:1352
+msgid "Open Backup File to Restore..."
+msgstr "Abrir una copia de seguridad para restaurar..."
+
+#: tryton/gui/main.py:1369
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"No es posible restaurar una base de datos protegida con contraseña.\n"
+"La copia de seguridad y su restauración tiene que ser manual."
+
+#: tryton/gui/main.py:1373 tryton/gui/main.py:1409
+msgid "Database is password protected!"
+msgstr "¡La base de datos está protegida por contraseña!"
+
+#: tryton/gui/main.py:1375 tryton/gui/main.py:1411
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"La contraseña del servidor Tryton es incorrecta.\n"
+"Inténtelo de nuevo."
+
+#: tryton/gui/main.py:1380
+msgid "Database restore failed with error message:\n"
+msgstr "La restauración de la base de datos ha fallado con el error:\n"
+
+#: tryton/gui/main.py:1382 tryton/gui/main.py:1387
+msgid "Database restore failed!"
+msgstr "¡La restauración de la base de datos ha fallado!"
+
+#: tryton/gui/main.py:1385
+msgid "Database restored successfully!"
+msgstr "¡La base de datos se ha restaurado correctamente!"
+
+#: tryton/gui/main.py:1406
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"No es posible hacer copia de una base de datos protegida por contraseña.\n"
+"La copia de seguridad y su restauración tiene que ser manual."
+
+#: tryton/gui/main.py:1416
+msgid "Database dump failed with error message:\n"
+msgstr "La extracción de la base de datos ha fallado con el mensaje de error:\n"
+
+#: tryton/gui/main.py:1418
+msgid "Database dump failed!"
+msgstr "¡La extracción de la base de datos ha fallado!"
+
+#: tryton/gui/main.py:1429
+msgid "Database backuped successfully!"
+msgstr "¡La copia de seguridad de la base de datos ha finalizado correctamente!"
+
+#: tryton/gui/window/board.py:19 tryton/gui/window/form.py:32
+msgid "New"
+msgstr "Nuevo"
+
+#: tryton/gui/window/board.py:19 tryton/gui/window/form.py:32
+msgid "Create a new record"
+msgstr "Crear un nuevo registro"
+
+#: tryton/gui/window/board.py:20 tryton/gui/window/form.py:34
+#: tryton/gui/window/win_export.py:143
+msgid "Save"
+msgstr "Guardar"
+
+#: tryton/gui/window/board.py:20 tryton/gui/window/form.py:34
+msgid "Save this record"
+msgstr "Guardar este registro"
+
+#: tryton/gui/window/board.py:21 tryton/gui/window/form.py:36
+#: tryton/gui/window/win_form.py:232
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:153
+msgid "Switch"
+msgstr "Cambiar vista"
+
+#: tryton/gui/window/board.py:21 tryton/gui/window/form.py:36
+msgid "Switch view"
+msgstr "Cambiar vista"
+
+#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:38
+msgid "_Reload"
+msgstr "_Recargar"
+
+#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:38
+msgid "Reload"
+msgstr "Recargar"
+
+#: tryton/gui/window/board.py:28 tryton/gui/window/form.py:50
+msgid "_New"
+msgstr "_Nuevo"
+
+#: tryton/gui/window/board.py:29 tryton/gui/window/form.py:51
+#: tryton/gui/window/win_form.py:67
+msgid "_Save"
+msgstr "_Guardar"
+
+#: tryton/gui/window/board.py:30 tryton/gui/window/form.py:52
+msgid "_Switch View"
+msgstr "Cambiar vi_sta"
+
+#: tryton/gui/window/board.py:32 tryton/gui/window/form.py:54
+msgid "_Reload/Undo"
+msgstr "_Recargar/Deshacer"
+
+#: tryton/gui/window/board.py:34 tryton/gui/window/form.py:58
+msgid "_Delete..."
+msgstr "_Eliminar..."
+
+#: tryton/gui/window/board.py:36 tryton/gui/window/form.py:68
+msgid "_Close Tab"
+msgstr "_Cerrar pestaña"
+
+#: tryton/gui/window/dbcreate.py:32
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+"Esta es la URL del servidor Tryton. Use el servidor «localhost» y el "
+"puerto «8000» si el servidor está instalado en este ordenador. Pulse en "
+"«Cambiar» para cambiar la dirección."
+
+#: tryton/gui/window/dbcreate.py:45
+msgid "No connection!"
+msgstr "¡No hay conexión!"
+
+#: tryton/gui/window/dbcreate.py:48
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"¡No se ha podido conectar al servidor!\n"
+"1. Revise si el servidor se está ejecutando.\n"
+"2. Averigüe en qué dirección y puerto está escuchando.\n"
+"3. Si hay un cortafuegos entre el servidor y este cliente, asegúrese que "
+"la dirección y el puerto (normalmente 8000) del servidor no están "
+"bloqueados.\n"
+"Pulse en «Cambiar» para cambiar la dirección."
+
+#: tryton/gui/window/dbcreate.py:139
+msgid "Create new database"
+msgstr "Crear nueva base de datos"
+
+#: tryton/gui/window/dbcreate.py:149
+msgid "C_reate"
+msgstr "C_rear"
+
+#: tryton/gui/window/dbcreate.py:157
+msgid "Create the new database."
+msgstr "Crear la nueva base de datos."
+
+#: tryton/gui/window/dbcreate.py:168
+msgid "Server Setup:"
+msgstr "Configuración del servidor:"
+
+#: tryton/gui/window/dbcreate.py:173
+msgid "Server connection:"
+msgstr "Conexión con el servidor:"
+
+#: tryton/gui/window/dbcreate.py:182 tryton/gui/window/dbdumpdrop.py:140
+#: tryton/gui/window/dbrestore.py:88
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+"Esta es la URL del servidor. Use el servidor «localhost» y el puerto "
+"«8000» si el servidor está instalado en este ordenador. Pulse en "
+"«Cambiar» para cambiar la dirección."
+
+#: tryton/gui/window/dbcreate.py:185 tryton/gui/window/dbdumpdrop.py:147
+#: tryton/gui/window/dbrestore.py:93
+msgid "C_hange"
+msgstr "C_ambiar"
+
+#: tryton/gui/window/dbcreate.py:194 tryton/gui/window/dbrestore.py:99
+msgid "Setup the server connection..."
+msgstr "Configurar la conexión con el servidor..."
+
+#: tryton/gui/window/dbcreate.py:197 tryton/gui/window/dbdumpdrop.py:186
+#: tryton/gui/window/dbrestore.py:102
+msgid "Tryton Server Password:"
+msgstr "Contraseña del servidor Tryton:"
+
+#: tryton/gui/window/dbcreate.py:207 tryton/gui/window/dbdumpdrop.py:196
+#: tryton/gui/window/dbrestore.py:111
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+"Esta es la contraseña del servidor Tryton. No corresponde a un usuario "
+"real. Esta contraseña se suele definir en la configuración de trytond."
+
+#: tryton/gui/window/dbcreate.py:218
+msgid "New database setup:"
+msgstr "Nueva configuración de la base de datos:"
+
+#: tryton/gui/window/dbcreate.py:224
+msgid "Database name:"
+msgstr "Nombre de la base de datos:"
+
+#: tryton/gui/window/dbcreate.py:236
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+"Elija un nombre para la nueva base de datos.\n"
+"Puede utilizar caracteres alfanuméricos o _ (subrayado)\n"
+"¡Evite cualquier acento, espacio o caracteres especiales! Ejemplo: tryton"
+
+#: tryton/gui/window/dbcreate.py:243
+msgid "Default language:"
+msgstr "Idioma por defecto:"
+
+#: tryton/gui/window/dbcreate.py:253
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Elija el idioma por defecto que se instalará para esta base de datos. "
+"Podrá instalar nuevos idiomas después de la instalación, a través del "
+"menú de administración."
+
+#: tryton/gui/window/dbcreate.py:257
+msgid "Admin password:"
+msgstr "Contraseña del administrador:"
+
+#: tryton/gui/window/dbcreate.py:267
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Elija una contraseña para el usuario administrador de la nueva base de "
+"datos. Podrá acceder a la base de datos con dichas credenciales:\n"
+"Nombre de usuario: admin\n"
+"Contraseña: <La contraseña que introduzca aquí>"
+
+#: tryton/gui/window/dbcreate.py:275
+msgid "Confirm admin password:"
+msgstr "Confirme la contraseña del Administrador:"
+
+#: tryton/gui/window/dbcreate.py:284
+msgid "Type the Admin password again"
+msgstr "Teclee la contraseña del Administrador de nuevo"
+
+#: tryton/gui/window/dbcreate.py:333
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr ""
+"La nueva contraseña del Administrador no coincide con el campo de "
+"confirmación.\n"
+
+#: tryton/gui/window/dbcreate.py:335
+msgid "Passwords doesn't match!"
+msgstr "¡Las contraseñas no coinciden!"
+
+#: tryton/gui/window/dbcreate.py:343
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Ya existe una base de datos con el mismo nombre.\n"
+"Inténtelo con otro nombre de base de datos."
+
+#: tryton/gui/window/dbcreate.py:346
+msgid "This database name already exist!"
+msgstr "¡Ya existe una base de datos con este nombre!"
+
+#: tryton/gui/window/dbcreate.py:359
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr "La contraseña del servidor Tryton no es correcta. Inténtelo de nuevo."
+
+#: tryton/gui/window/dbcreate.py:367
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"No se ha podido crear la base de datos, la causa es desconocida.\n"
+"Si hay una base de datos creada, podría estar dañada. ¡Pruebe a eliminar "
+"esta base de datos! Revise el mensaje de error en busca de información "
+"adicional.\n"
+"Mensaje de error:\n"
+
+#: tryton/gui/window/dbcreate.py:375
+msgid "Error creating database!"
+msgstr "¡Se ha producido un error al crear la base de datos!"
+
+#: tryton/gui/window/dbdumpdrop.py:26
+msgid "Could not connect to server!"
+msgstr "¡No se ha podido conectar al servidor!"
+
+#: tryton/gui/window/dbdumpdrop.py:30
+msgid "This client version is not compatible with the server!"
+msgstr "¡Esta versión del cliente no es compatible con el servidor!"
+
+#: tryton/gui/window/dbdumpdrop.py:39
+msgid "No database found, you must create one!"
+msgstr "¡No se ha encontrado ninguna base de datos, debe crear una!"
+
+#: tryton/gui/window/dbdumpdrop.py:77
+msgid "Backup a database"
+msgstr "Realizar copia de seguridad de una base de datos"
+
+#: tryton/gui/window/dbdumpdrop.py:78
+msgid "Backup"
+msgstr "Copia de seguridad"
+
+#: tryton/gui/window/dbdumpdrop.py:79
+msgid "Backup the choosen database."
+msgstr "Hacer copia de seguridad de la base de datos elegida."
+
+#: tryton/gui/window/dbdumpdrop.py:81
+msgid "Choose a Tryton database to backup:"
+msgstr "Elija una base de datos Tryton para hacer una copia de seguridad:"
+
+#: tryton/gui/window/dbdumpdrop.py:83
+msgid "Delete a database"
+msgstr "Eliminar una base de datos"
+
+#: tryton/gui/window/dbdumpdrop.py:84
+msgid "Delete"
+msgstr "Eliminar"
+
+#: tryton/gui/window/dbdumpdrop.py:85
+msgid "Delete the choosen database."
+msgstr "Eliminar la base de datos elegida."
+
+#: tryton/gui/window/dbdumpdrop.py:87
+msgid "Choose a Tryton database to delete:"
+msgstr "Elija la base de datos Tryton a eliminar:"
+
+#: tryton/gui/window/dbdumpdrop.py:130 tryton/gui/window/dbrestore.py:77
+msgid "Server Connection:"
+msgstr "Conexión al servidor:"
+
+#: tryton/gui/window/dbdumpdrop.py:156 tryton/gui/window/dblogin.py:89
+#: tryton/gui/window/dblogin.py:444
+msgid "Database:"
+msgstr "Base de datos:"
+
+#: tryton/gui/window/dblogin.py:31
+msgid "Profile Editor"
+msgstr "Editor de perfiles"
+
+#: tryton/gui/window/dblogin.py:46
+msgid "Profile"
+msgstr "Perfil"
+
+#: tryton/gui/window/dblogin.py:52 tryton/gui/window/win_export.py:66
+#: tryton/gui/window/win_import.py:47
+msgid "_Add"
+msgstr "_Añadir"
+
+#: tryton/gui/window/dblogin.py:57 tryton/gui/window/win_export.py:74
+#: tryton/gui/window/win_import.py:55
+msgid "_Remove"
+msgstr "_Eliminar"
+
+#: tryton/gui/window/dblogin.py:70
+msgid "Hostname:"
+msgstr "Servidor:"
+
+#: tryton/gui/window/dblogin.py:107
+msgid "Create"
+msgstr "Crear"
+
+#: tryton/gui/window/dblogin.py:110
+msgid "Fetching databases list"
+msgstr "Recuperando lista de bases de datos"
+
+#: tryton/gui/window/dblogin.py:128
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: tryton/gui/window/dblogin.py:308
+msgid "Could not connect to the server"
+msgstr "No se ha podido conectar al servidor"
+
+#: tryton/gui/window/dblogin.py:310 tryton/gui/window/dblogin.py:616
+msgid "Incompatible version of the server"
+msgstr "El cliente no es compatible con la versión del servidor"
+
+#: tryton/gui/window/dblogin.py:370
+msgid "Login"
+msgstr "Usuario"
+
+#: tryton/gui/window/dblogin.py:377
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: tryton/gui/window/dblogin.py:382
+msgid "Cancel connection to the Tryton server"
+msgstr "Cancelar conexión al servidor Tryton"
+
+#: tryton/gui/window/dblogin.py:384
+msgid "C_onnect"
+msgstr "C_onectar"
+
+#: tryton/gui/window/dblogin.py:389
+msgid "Connect the Tryton server"
+msgstr "Conectar al servidor Tryton"
+
+#: tryton/gui/window/dblogin.py:417
+msgid "Profile:"
+msgstr "Perfil:"
+
+#: tryton/gui/window/dblogin.py:421
+msgid "_Manage profiles"
+msgstr "_Administrar perfiles"
+
+#: tryton/gui/window/dblogin.py:431
+msgid "Host / Database information"
+msgstr "Información del Servidor / Base de datos"
+
+#: tryton/gui/window/dblogin.py:434
+msgid "Host:"
+msgstr "Servidor:"
+
+#: tryton/gui/window/dblogin.py:467
+msgid "User name:"
+msgstr "Nombre de usuario:"
+
+#: tryton/gui/window/dbrestore.py:66
+msgid "Restore Database"
+msgstr "Restaurar base de datos"
+
+#: tryton/gui/window/dbrestore.py:119
+msgid "File to Restore:"
+msgstr "Archivo a restaurar:"
+
+#: tryton/gui/window/dbrestore.py:133
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Elija el nombre de la base de datos a restaurar.\n"
+"Los caracteres permitidos son alfanuméricos o _ (subrayado)\n"
+"¡Evite todos los acentos, espacios, o caracteres especiales! \n"
+"Ejemplo: tryton"
+
+#: tryton/gui/window/dbrestore.py:139
+msgid "New Database Name:"
+msgstr "Nombre de la nueva base de datos:"
+
+#: tryton/gui/window/dbrestore.py:142
+msgid "Update Database:"
+msgstr "Actualizar base de datos:"
+
+#: tryton/gui/window/dbrestore.py:146
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+"Márquelo para que se realice una actualización automática de la base de "
+"datos desde una versión anterior de Tryton, después de restaurarla."
+
+#: tryton/gui/window/dbrestore.py:156
+msgid "Restore"
+msgstr "Restaurar"
+
+#: tryton/gui/window/dbrestore.py:165
+msgid "Restore the database from file."
+msgstr "Restaurar la base de datos desde un archivo."
+
+#: tryton/gui/window/email.py:16
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: tryton/gui/window/email.py:25
+msgid "Email Program Settings"
+msgstr "Configuración del programa de correo electrónico"
+
+#: tryton/gui/window/email.py:28
+msgid "Command Line:"
+msgstr "Línea de comando:"
+
+#: tryton/gui/window/email.py:37
+msgid "Legend of Available Placeholders:"
+msgstr "Leyenda de palabras clave disponibles:"
+
+#: tryton/gui/window/email.py:44
+msgid "To:"
+msgstr "Para:"
+
+#: tryton/gui/window/email.py:48
+msgid "CC:"
+msgstr "CC:"
+
+#: tryton/gui/window/email.py:52
+msgid "Subject:"
+msgstr "Asunto:"
+
+#: tryton/gui/window/email.py:56
+msgid "Body:"
+msgstr "Mensaje:"
+
+#: tryton/gui/window/email.py:60
+msgid "Attachment:"
+msgstr "Adjunto:"
+
+#: tryton/gui/window/form.py:41 tryton/gui/window/tips.py:74
+#: tryton/gui/window/win_form.py:205
+#: tryton/gui/window/view_form/view/screen_container.py:165
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:127
+msgid "Previous"
+msgstr "Anterior"
+
+#: tryton/gui/window/form.py:42
+msgid "Previous Record"
+msgstr "Registro anterior"
+
+#: tryton/gui/window/form.py:43 tryton/gui/window/tips.py:81
+#: tryton/gui/window/win_form.py:219
+#: tryton/gui/window/view_form/view/screen_container.py:177
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:141
+msgid "Next"
+msgstr "Siguiente"
+
+#: tryton/gui/window/form.py:43
+msgid "Next Record"
+msgstr "Registro siguiente"
+
+#: tryton/gui/window/form.py:46
+msgid "Attachment(0)"
+msgstr "Adjunto(0)"
+
+#: tryton/gui/window/form.py:47
+msgid "Add an attachment to the record"
+msgstr "Añadir un adjunto al registro"
+
+#: tryton/gui/window/form.py:56
+msgid "_Duplicate"
+msgstr "_Duplicar"
+
+#: tryton/gui/window/form.py:61
+msgid "_Previous"
+msgstr "_Anterior"
+
+#: tryton/gui/window/form.py:63
+msgid "_Next"
+msgstr "Sig_uiente"
+
+#: tryton/gui/window/form.py:64
+msgid "_Search"
+msgstr "_Buscar"
+
+#: tryton/gui/window/form.py:65
+msgid "View _Logs..."
+msgstr "Ver _Registro..."
+
+#: tryton/gui/window/form.py:66
+msgid "Show revisions..."
+msgstr "Mostrar versiones..."
+
+#: tryton/gui/window/form.py:71
+msgid "A_ttachments..."
+msgstr "Adjun_tos..."
+
+#: tryton/gui/window/form.py:73
+msgid "_Actions..."
+msgstr "_Acciones..."
+
+#: tryton/gui/window/form.py:75
+msgid "_Relate..."
+msgstr "_Relacionado..."
+
+#: tryton/gui/window/form.py:78
+msgid "_Report..."
+msgstr "_Informe..."
+
+#: tryton/gui/window/form.py:80
+msgid "_E-Mail..."
+msgstr "_Correo electrónico..."
+
+#: tryton/gui/window/form.py:82
+msgid "_Print..."
+msgstr "Im_primir..."
+
+#: tryton/gui/window/form.py:85
+msgid "_Export Data..."
+msgstr "_Exportar datos..."
+
+#: tryton/gui/window/form.py:87
+msgid "_Import Data..."
+msgstr "_Importar datos..."
+
+#: tryton/gui/window/form.py:216
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Adjunto(%d)"
+
+#: tryton/gui/window/form.py:234
+msgid "You have to select one record!"
+msgstr "¡Debe seleccionar un registro!"
+
+#: tryton/gui/window/form.py:238
+msgid "ID:"
+msgstr "ID:"
+
+#: tryton/gui/window/form.py:239
+msgid "Creation User:"
+msgstr "Creado por:"
+
+#: tryton/gui/window/form.py:240
+msgid "Creation Date:"
+msgstr "Fecha de creación:"
+
+#: tryton/gui/window/form.py:241
+msgid "Latest Modification by:"
+msgstr "Última modificación por:"
+
+#: tryton/gui/window/form.py:242
+msgid "Latest Modification Date:"
+msgstr "Última fecha de modificación:"
+
+#: tryton/gui/window/form.py:260
+msgid "Model:"
+msgstr "Modelo:"
+
+#: tryton/gui/window/form.py:308
+msgid "Are you sure to remove this record?"
+msgstr "¿Está seguro que quiere eliminar este registro?"
+
+#: tryton/gui/window/form.py:310
+msgid "Are you sure to remove those records?"
+msgstr "¿Está seguro que quiere eliminar estos registros?"
+
+#: tryton/gui/window/form.py:313
+msgid "Records not removed!"
+msgstr "¡Los registros no se han eliminado!"
+
+#: tryton/gui/window/form.py:315
+msgid "Records removed!"
+msgstr "¡Registros eliminados!"
+
+#: tryton/gui/window/form.py:342
+msgid "Working now on the duplicated record(s)!"
+msgstr "¡Ahora está trabajando en el registro duplicado!"
+
+#: tryton/gui/window/form.py:352
+msgid "Record saved!"
+msgstr "¡Registro guardado!"
+
+#: tryton/gui/window/form.py:355
+msgid "Invalid form!"
+msgstr "¡Formulario no válido!"
+
+#: tryton/gui/window/form.py:464
+msgid " of "
+msgstr " de "
+
+#: tryton/gui/window/form.py:485
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Este registro ha sido modificado.\n"
+"¿Desea guardarlo?"
+
+#: tryton/gui/window/form.py:538
+msgid "Action"
+msgstr "Acción"
+
+#: tryton/gui/window/form.py:538
+msgid "Launch action"
+msgstr "Ejecutar acción"
+
+#: tryton/gui/window/form.py:539
+msgid "Relate"
+msgstr "_Relacionado"
+
+#: tryton/gui/window/form.py:539
+msgid "Open related records"
+msgstr "Abrir registros relacionados"
+
+#: tryton/gui/window/form.py:541
+msgid "Report"
+msgstr "Informes"
+
+#: tryton/gui/window/form.py:541
+msgid "Open report"
+msgstr "Abrir informe"
+
+#: tryton/gui/window/form.py:542
+msgid "E-Mail"
+msgstr "Email"
+
+#: tryton/gui/window/form.py:542
+msgid "E-Mail report"
+msgstr "Informe por email"
+
+#: tryton/gui/window/form.py:543
+msgid "Print"
+msgstr "Imprimir"
+
+#: tryton/gui/window/form.py:543
+msgid "Print report"
+msgstr "Imprimir informe"
+
+#: tryton/gui/window/form.py:609
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:848
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: tryton/gui/window/limit.py:17
+msgid "Limit"
+msgstr "Límite"
+
+#: tryton/gui/window/limit.py:26
+msgid "Search Limit Settings"
+msgstr "Preferencias del límite de búsqueda"
+
+#: tryton/gui/window/limit.py:29
+msgid "Limit:"
+msgstr "Límite:"
+
+#: tryton/gui/window/preference.py:23
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: tryton/gui/window/preference.py:49
+msgid "Edit User Preferences"
+msgstr "Editar preferencias de usuario"
+
+#: tryton/gui/window/preference.py:75
+msgid "Preference"
+msgstr "Preferencias"
+
+#: tryton/gui/window/preference.py:88
+msgid "Current Password:"
+msgstr "Contraseña actual:"
+
+#: tryton/gui/window/revision.py:20
+msgid "Revision"
+msgstr "Versión"
+
+#: tryton/gui/window/revision.py:29
+msgid "Select a revision"
+msgstr "Selecione una versión"
+
+#: tryton/gui/window/revision.py:32
+msgid "Revision:"
+msgstr "Versión:"
+
+#: tryton/gui/window/shortcuts.py:17
+msgid "Keyboard Shortcuts"
+msgstr "Combinaciones de teclas"
+
+#: tryton/gui/window/shortcuts.py:28
+msgid "Text Entries Shortcuts"
+msgstr "Atajos en campos de texto"
+
+#: tryton/gui/window/shortcuts.py:29
+msgid "Cut selected text"
+msgstr "Cortar texto seleccionado"
+
+#: tryton/gui/window/shortcuts.py:30
+msgid "Copy selected text"
+msgstr "Copiar texto seleccionado"
+
+#: tryton/gui/window/shortcuts.py:31
+msgid "Paste copied text"
+msgstr "Pegar texto seleccionado"
+
+#: tryton/gui/window/shortcuts.py:32
+msgid "Next widget"
+msgstr "Campo siguiente"
+
+#: tryton/gui/window/shortcuts.py:33
+msgid "Previous widget"
+msgstr "Campo anterior"
+
+#: tryton/gui/window/shortcuts.py:34
+msgid "Relation Entries Shortcuts"
+msgstr "Atajos en campos de relación"
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Create new relation"
+msgstr "Crear nueva relación"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Open/Search relation"
+msgstr "Abrir/Buscar relación"
+
+#: tryton/gui/window/shortcuts.py:37
+msgid "List Entries Shortcuts"
+msgstr "Atajos en listas"
+
+#: tryton/gui/window/shortcuts.py:38
+msgid "Create new line"
+msgstr "Crear nueva línea"
+
+#: tryton/gui/window/shortcuts.py:39
+msgid "Open relation"
+msgstr "Abrir relación"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Mark line for deletion"
+msgstr "Marcar línea para eliminación"
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Unmark line for deletion"
+msgstr "Desmarcar línea para eliminación"
+
+#: tryton/gui/window/shortcuts.py:44
+msgid "Edition Widgets"
+msgstr "Controles de edición"
+
+#: tryton/gui/window/tips.py:17
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Bienvenido a Tryton</b>\n"
+"\n"
+"\n"
+
+#: tryton/gui/window/tips.py:21
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>¿Conoce Triton? uno de los apelativos de nuestro proyecto</b>\n"
+"\n"
+"Triton (pronunciado /ˈtraɪtən/ TRYE-tən, o en griego Τρίτων) es la\n"
+"luna más grande del planeta Neptuno, descubierta el 10 de Octubre de\n"
+"1846 por William Lassell. Es la única luna grande del Sistema Solar\n"
+"con una órbita retrógrada, esto es, que orbita en dirección opuesta\n"
+"a la rotación del planeta.  Con 2.700 km de diámetro. es la séptima luna\n"
+"en tamaño del Sistema Solar. Triton cuenta con más del 99.5 porciento\n"
+"de toda la masa que orbita a Neptuno, incluyendo los anillos del planeta "
+"y\n"
+"veinte lunas conocidas.  Tiene más masa que todas las otras 159 lunas\n"
+"más pequeñas del Sistema Solar combinadas.\n"
+
+#: tryton/gui/window/tips.py:34
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Exportar lista de registros</b>\n"
+"\n"
+"Puede copiar los registros de cualquier lista con Ctrl + C\n"
+"y pegarlas en cualquier aplicación con Ctrl + V\n"
+
+#: tryton/gui/window/tips.py:39
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+"<b>Exportar gráficos</b>\n"
+"\n"
+"Puede guardar los gráficos como imagen PNG haciendo clic con el botón "
+"derecho sobre el mismo.\n"
+
+#: tryton/gui/window/tips.py:46
+msgid "Tips"
+msgstr "Consejos"
+
+#: tryton/gui/window/tips.py:66
+msgid "_Display a new tip next time"
+msgstr "_Mostrar un nuevo consejo la próxima vez"
+
+#: tryton/gui/window/win_export.py:25
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
+#: tryton/gui/window/win_export.py:40
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Exportaciones predeterminadas</b>"
+
+#: tryton/gui/window/win_export.py:52 tryton/gui/window/win_import.py:38
+msgid "<b>All fields</b>"
+msgstr "<b>Todos los campos</b>"
+
+#: tryton/gui/window/win_export.py:83 tryton/gui/window/win_import.py:64
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:78
+#: tryton/gui/window/view_form/view/form_gtk/image.py:81
+msgid "Clear"
+msgstr "Limpiar"
+
+#: tryton/gui/window/win_export.py:95
+msgid "Save Export"
+msgstr "Guardar exportación"
+
+#: tryton/gui/window/win_export.py:104
+msgid "Delete Export"
+msgstr "Eliminar exportación"
+
+#: tryton/gui/window/win_export.py:115
+msgid "<b>Fields to export</b>"
+msgstr "<b>Campos a exportar</b>"
+
+#: tryton/gui/window/win_export.py:132
+msgid "<b>Options</b>"
+msgstr "<b>Opciones</b>"
+
+#: tryton/gui/window/win_export.py:142
+msgid "Open"
+msgstr "Abrir"
+
+#: tryton/gui/window/win_export.py:147
+msgid "Add _field names"
+msgstr "Añadir nombres de _campo"
+
+#: tryton/gui/window/win_export.py:217
+msgid "Name"
+msgstr "Nombre"
+
+#: tryton/gui/window/win_export.py:249
+#, python-format
+msgid "%s (string)"
+msgstr "%s (cadena)"
+
+#: tryton/gui/window/win_export.py:350
+msgid "What is the name of this export?"
+msgstr "¿Cuál es el nombre de esta exportación?"
+
+#: tryton/gui/window/win_export.py:356
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "¿Sobrescribir definición de '%s'?"
+
+#: tryton/gui/window/win_export.py:486
+#, python-format
+msgid "%d record saved!"
+msgstr "¡Se ha guardado %d registro!"
+
+#: tryton/gui/window/win_export.py:488
+#, python-format
+msgid "%d records saved!"
+msgstr "¡Se han guardado %d registros!"
+
+#: tryton/gui/window/win_export.py:491
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"¡Ha fallado la operación!\n"
+"Mensaje de error:\n"
+"%s"
+
+#: tryton/gui/window/win_form.py:36
+msgid "Link"
+msgstr "Enlace"
+
+#: tryton/gui/window/win_form.py:136
+msgid "Add"
+msgstr "Añadir"
+
+#: tryton/gui/window/win_form.py:149
+msgid "Remove <Del>"
+msgstr "Eliminar <Supr>"
+
+#: tryton/gui/window/win_form.py:164
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:85
+msgid "Create a new record <F3>"
+msgstr "Crear un nuevo registro <F3>"
+
+#: tryton/gui/window/win_form.py:176
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:105
+msgid "Delete selected record <Del>"
+msgstr "Eliminar registro seleccionado <Supr>"
+
+#: tryton/gui/window/win_form.py:190
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:115
+msgid "Undelete selected record <Ins>"
+msgstr "Recuperar registro seleccionado <Ins>"
+
+#: tryton/gui/window/win_import.py:20
+msgid "Import from CSV"
+msgstr "Importar desde CSV"
+
+#: tryton/gui/window/win_import.py:76
+msgid "Auto-Detect"
+msgstr "Auto-detectar"
+
+#: tryton/gui/window/win_import.py:93
+msgid "<b>Fields to import</b>"
+msgstr "<b>Campos a importar</b>"
+
+#: tryton/gui/window/win_import.py:109
+msgid "File to Import:"
+msgstr "Archivo a importar:"
+
+#: tryton/gui/window/win_import.py:111
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:57
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:112
+#: tryton/gui/window/view_form/view/form_gtk/image.py:59
+#: tryton/gui/window/view_form/view/form_gtk/image.py:125
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:462
+msgid "Open..."
+msgstr "Abrir..."
+
+#: tryton/gui/window/win_import.py:116
+msgid "CSV Parameters"
+msgstr "Parámetros CSV"
+
+#: tryton/gui/window/win_import.py:124
+msgid "Field Separator:"
+msgstr "Separador de campo:"
+
+#: tryton/gui/window/win_import.py:133
+msgid "Text Delimiter:"
+msgstr "Delimitador de texto:"
+
+#: tryton/gui/window/win_import.py:141
+msgid "Encoding:"
+msgstr "Codificación:"
+
+#: tryton/gui/window/win_import.py:150
+msgid "Lines to Skip:"
+msgstr "Líneas a omitir:"
+
+#: tryton/gui/window/win_import.py:185 tryton/gui/window/win_import.py:190
+msgid "Field name"
+msgstr "Nombre del campo"
+
+#: tryton/gui/window/win_import.py:251
+msgid "You must select an import file first!"
+msgstr "¡Primero debe elegir un archivo a importar!"
+
+#: tryton/gui/window/win_import.py:262
+msgid "Error opening CSV file"
+msgstr "Error al abrir el archivo CSV"
+
+#: tryton/gui/window/win_import.py:289
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Se ha producido un error al procesar el archivo en el campo %s."
+
+#: tryton/gui/window/win_import.py:364
+#, python-format
+msgid "%d record imported!"
+msgstr "¡Se ha importado %d registro!"
+
+#: tryton/gui/window/win_import.py:366
+#, python-format
+msgid "%d records imported!"
+msgstr "¡Se han importado %d registros!"
+
+#: tryton/gui/window/wizard.py:289
+msgid "Wizard"
+msgstr "Asistente"
+
+#: tryton/gui/window/view_form/screen/screen.py:130
+msgid "ID"
+msgstr "ID"
+
+#: tryton/gui/window/view_form/screen/screen.py:131
+msgid "Creation User"
+msgstr "Creado por:"
+
+#: tryton/gui/window/view_form/screen/screen.py:132
+msgid "Creation Date"
+msgstr "Fecha de creación:"
+
+#: tryton/gui/window/view_form/screen/screen.py:133
+msgid "Modification User"
+msgstr "Última modificación por:"
+
+#: tryton/gui/window/view_form/screen/screen.py:134
+msgid "Modification Date"
+msgstr "Última fecha de modificación:"
+
+#: tryton/gui/window/view_form/screen/screen.py:632
+msgid "Unable to get view tree state"
+msgstr "No se ha podido obtener el estado del árbol"
+
+#: tryton/gui/window/view_form/screen/screen.py:691
+msgid "Unable to set view tree state"
+msgstr "No se ha podido establecer el estado del árbol"
+
+#: tryton/gui/window/view_form/view/form.py:180
+#: tryton/gui/window/view_form/view/form.py:182
+#: tryton/gui/window/view_form/view/list.py:511
+#: tryton/gui/window/view_form/view/list.py:513
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:450
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:452
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:199
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:201
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:100
+msgid "Save As"
+msgstr "Guardar como"
+
+#: tryton/gui/window/view_form/view/graph.py:111
+msgid "Image Size"
+msgstr "Tamaño de la imagen"
+
+#: tryton/gui/window/view_form/view/graph.py:120
+msgid "Width:"
+msgstr "Anchura:"
+
+#: tryton/gui/window/view_form/view/graph.py:127
+msgid "Height:"
+msgstr "Altura:"
+
+#: tryton/gui/window/view_form/view/graph.py:139
+msgid "PNG image (*.png)"
+msgstr "Imagen PNG (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:168
+msgid "Image size too large!"
+msgstr "¡El tamaño de la imagen es muy grande!"
+
+#: tryton/gui/window/view_form/view/screen_container.py:24
+msgid ".."
+msgstr ".."
+
+#: tryton/gui/window/view_form/view/screen_container.py:95
+msgid "F_ilters"
+msgstr "F_iltros"
+
+#: tryton/gui/window/view_form/view/screen_container.py:149
+msgid "Show bookmarks of filters"
+msgstr "Muestra las búsquedas favoritas"
+
+#: tryton/gui/window/view_form/view/screen_container.py:314
+msgid "Remove this bookmark"
+msgstr "Eliminar de las búsquedas favoritas"
+
+#: tryton/gui/window/view_form/view/screen_container.py:321
+msgid "Bookmark this filter"
+msgstr "Guardar como búsqueda favorita"
+
+#: tryton/gui/window/view_form/view/screen_container.py:386
+msgid "Bookmark Name:"
+msgstr "Nombre de la búsqueda favorita:"
+
+#: tryton/gui/window/view_form/view/screen_container.py:493
+msgid "Find"
+msgstr "Buscar"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:20
+msgid "Today"
+msgstr "Hoy"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:87
+msgid "Week View"
+msgstr "Vista semanal"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:94
+msgid "Month View"
+msgstr "Vista mensual"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:115
+msgid "Week"
+msgstr "Semana"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:47
+msgid "Select a File..."
+msgstr "Seleccione un archivo..."
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:161
+msgid "Show plain text"
+msgstr "Mostrar como texto plano"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:350
+msgid "Add value"
+msgstr "Añadir un valor"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:462
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Eliminar \"%s\""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:48
+msgid "Select an Image..."
+msgstr "Seleccione una imagen..."
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:115
+msgid "All files"
+msgstr "Todos los archivos"
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:119
+msgid "Images"
+msgstr "Imágenes"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:57
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:60
+msgid "Add existing record"
+msgstr "Añadir un registro existente"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:68
+msgid "Remove selected record <Del>"
+msgstr "Eliminar registro seleccionado <Supr>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:296
+msgid "Open a record <F2>"
+msgstr "Abrir registro <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:298
+msgid "Search a record <F2>"
+msgstr "Buscar registro <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:72
+msgid "Remove selected record"
+msgstr "Eliminar registro seleccionado <Supr>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:95
+msgid "Edit selected record <F2>"
+msgstr "Editar registro seleccionado <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:157
+msgid "Change text to bold"
+msgstr "Cambiar texto a negrita"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:158
+msgid "Change text to italic"
+msgstr "Cambiar texto a cursiva"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:159
+msgid "Change text to underline"
+msgstr "Cambiar texto a subrallado"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:160
+msgid "Choose font-family"
+msgstr "Elegir tipo de letra"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:161
+msgid "Choose font-size"
+msgstr "Elegir tamaño de letra"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:162
+msgid "Justify of line to the left"
+msgstr "Alinear la línea a la izquierda"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:164
+msgid "Justify of line to the center"
+msgstr "Centrar la línea"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:165
+msgid "Justify of line to the right"
+msgstr "Alinear la línea a la derecha"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:167
+msgid "Justify of line to fill window"
+msgstr "Justificar la línea para rellenar ventana"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:169
+msgid "Change the foreground text"
+msgstr "Cambiar el texto principal"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:171
+msgid "Change the background text"
+msgstr "Cambiar color de fondo"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:172
+msgid "Change the markup text view"
+msgstr "Cambiar el texto de marcado"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:507
+msgid "Select a foreground color"
+msgstr "Seleccionar color principal"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:508
+msgid "Select a background color"
+msgstr "Seleccionar color de fondo"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:175
+msgid "Translation"
+msgstr "Traducción"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:231
+msgid "Edit"
+msgstr "Editar"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:236
+msgid "Fuzzy"
+msgstr "Confuso"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:305
+msgid "You need to save the record before adding translations!"
+msgstr "¡Debe guardar el registro antes de añadir traducciones!"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:316
+msgid "No other language available!"
+msgstr "¡No hay otro idioma disponible!"
+
+#: tryton/plugins/translation/__init__.py:18
+msgid "Translate view"
+msgstr "Traducir vista"
+
