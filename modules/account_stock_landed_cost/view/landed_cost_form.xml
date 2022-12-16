@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="posted_date"/>
+    <field name="posted_date"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="allocation_method"/>
+    <field name="allocation_method"/>
+    <label name="company"/>
+    <field name="company"/>
+    <field name="invoice_lines" colspan="4"/>
+    <field name="shipments" colspan="4"/>
+
+    <field name="categories" colspan="2"/>
+    <field name="products" colspan="2"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-clear"/>
+        <button name="post" icon="tryton-ok"/>
+    </group>
+</form>
