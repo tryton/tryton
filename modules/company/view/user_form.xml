@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page/separator[@name='signature']"
+        position="before">
+        <label name="company"/>
+        <field name="company" widget="selection"/>
+        <label name="company_filter"/>
+        <field name="company_filter"/>
+
+        <label name="employee"/>
+        <field name="employee" widget="selection"/>
+        <newline/>
+
+        <field name="companies" colspan="2"/>
+        <field name="employees" colspan="2"/>
+    </xpath>
+</data>
