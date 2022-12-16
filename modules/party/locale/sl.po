@@ -1,0 +1,947 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.address.format:"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
+
+msgctxt "error:party.address:"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "Partnerjev naslov \"%s\" ni možno popravljati."
+
+msgctxt "error:party.category:"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr "Neveljavno ime kategorije \"%s\": V imenu uporaba znaka \" / \" ni možna."
+
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent."
+msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
+
+msgctxt "error:party.check_vies:"
+msgid "The VIES service is unavailable, try again later."
+msgstr "VIES storitev je nedostopna, poskusite kasneje."
+
+msgctxt "error:party.contact_mechanism:"
+msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
+msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
+
+msgctxt "error:party.contact_mechanism:"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
+
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
+
+msgctxt "error:party.party:"
+msgid "The code of the party must be unique."
+msgstr "Šifra partnerja mora biti edinstvena."
+
+msgctxt "error:party.replace:"
+msgid ""
+"Parties have different Tax Identifier: %(source_code)s vs "
+"%(destination_code)s."
+msgstr ""
+"Partnerja imata različen davčni ID: %(source_code)s in %(destination_code)s."
+
+msgctxt "error:party.replace:"
+msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
+msgstr ""
+"Partnerja imata različna imena: %(source_name)s in %(destination_name)s."
+
+msgctxt "field:party.address,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Mesto"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Država"
+
+msgctxt "field:party.address,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.address,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Polni naslov"
+
+msgctxt "field:party.address,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "Naziv stavbe"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.address,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.address,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Ulica"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Regija"
+
+msgctxt "field:party.address,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.address,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "Poštna številka"
+
+msgctxt "field:party.address.format,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:party.address.format,country:"
+msgid "Country"
+msgstr "Država"
+
+msgctxt "field:party.address.format,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.address.format,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Oblika"
+
+msgctxt "field:party.address.format,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.address.format,language:"
+msgid "Language"
+msgstr "Jezik"
+
+msgctxt "field:party.address.format,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.address.format,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.address.format,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.category,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Podkategorije"
+
+msgctxt "field:party.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Matična kategorija"
+
+msgctxt "field:party.category,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.check_vies.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Partnerji neuspešno preverjeni"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Partnerji uspešno preverjeni"
+
+msgctxt "field:party.configuration,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.configuration,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Jezik partnerja"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Štetje partnerjev"
+
+msgctxt "field:party.configuration,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.configuration,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.configuration.party_lang,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.configuration.party_lang,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.configuration.party_lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Jezik partnerja"
+
+msgctxt "field:party.configuration.party_lang,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.configuration.party_lang,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.configuration.party_lang,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.configuration.party_sequence,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.configuration.party_sequence,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.configuration.party_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Štetje partnerjev"
+
+msgctxt "field:party.configuration.party_sequence,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.configuration.party_sequence,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.configuration.party_sequence,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.contact_mechanism,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Opomba"
+
+msgctxt "field:party.contact_mechanism,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.contact_mechanism,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "E-pošta"
+
+msgctxt "field:party.contact_mechanism,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Drugo"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.contact_mechanism,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.contact_mechanism,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Vrednost"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Zgoščena vrednost"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Spletna stran"
+
+msgctxt "field:party.contact_mechanism,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.contact_mechanism,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.identifier,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.party,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Naslovi"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Šifra samo za branje"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
+msgctxt "field:party.party,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.party,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "E-pošta"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Faks"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Polno ime"
+
+msgctxt "field:party.party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identifikatorji"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Jezik"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Jeziki"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Mobilni"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "field:party.party,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Zamenjan z"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Davčni ID"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Spletna stran"
+
+msgctxt "field:party.party,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.party,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:party.party-party.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.party-party.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.party-party.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.party-party.category,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.party-party.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.party-party.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.party.lang,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:party.party.lang,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:party.party.lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Jezik"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.party.lang,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:party.party.lang,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:party.party.lang,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Cilj"
+
+msgctxt "field:party.replace.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Original"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe naslova."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe formata."
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Spremenljivke na voljo (tudi z velikimi črkami):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe kategorije."
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Dodajanje podkategorij."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "Glavni identifikator kategorije."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Dodajanje kategorije pod matično kategorijo."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "Privzeti jezik za nove partnerje."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Upošteva se pri izdelavi šifre partnerja."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "Privzeti jezik za nove partnerje."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Upošteva se pri izdelavi šifre partnerja."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe kontatka."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "Partner, identificiran v tem zapisu."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Kategorija, v katero spada partner."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "Unikaten ID partnerja"
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Dodajanje drugih identifikatorjev partnerja."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Upošteva se pri prevajanju komunikacije s partnerjem."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "Glavni identifikator partnerja"
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "Partner, ki zamenjuje slednjega."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "Identifikator na davčnem poročilu."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "Novi partner, ki bo zamenjal prejšnjega."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "Prejšnji partner, ki bo zamenjan z novim."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Naslovi"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Oblike naslovov"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Partnerji po kategorijah"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "Konfiguracija partnerjev"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Partnerji"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Nalepke"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Preveri z VIES sistemom"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Zamenjava"
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Naslovi"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Oblike naslovov"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Nastavitve"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "Konfiguracija"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Partnerji"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Naslov"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Oblika naslova"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Preveri z VIES sistemom"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Konfiguracija partnerjev"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Konfiguracija jezika partnerjev"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Konfiguracija štetja partnerjev"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Kontakt"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Partner - Kategorija"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Jezik partnerja"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Zamenjava partnerja"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Partner - vodenje"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "E-naslov"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Faks"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Mobilni"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Drugo"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Spletna stran"
+
+msgctxt "selection:party.identifier,type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "VAT"
+msgstr "DDV"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Zamenjava z"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "V redu"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Zamenjaj"
+
+msgctxt "view:party.address:"
+msgid "Addresses"
+msgstr "Naslovi"
+
+msgctxt "view:party.category:"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "view:party.category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "view:party.check_vies.result:"
+msgid "VAT Information Exchange System Results"
+msgstr "Rezultati sistem za izmenjavo DDV informacij"
+
+msgctxt "view:party.configuration:"
+msgid "Party Configuration"
+msgstr "Konfiguracija partnerjev"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontakt"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr "Identifikatorji partnerjev"
