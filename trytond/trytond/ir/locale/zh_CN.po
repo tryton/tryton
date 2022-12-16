@@ -1,0 +1,3706 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.action,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:ir.action,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.action,records:"
+msgid "Records"
+msgstr "记录 ID"
+
+msgctxt "field:ir.action,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.action,usage:"
+msgid "Usage"
+msgstr "用法"
+
+msgctxt "field:ir.action.act_window,act_window_domains:"
+msgid "Domains"
+msgstr "域配置"
+
+msgctxt "field:ir.action.act_window,act_window_views:"
+msgid "Views"
+msgstr "视图"
+
+msgctxt "field:ir.action.act_window,action:"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "field:ir.action.act_window,context:"
+msgid "Context Value"
+msgstr "上下文取值"
+
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "上下文域"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr "上下文模型"
+
+msgctxt "field:ir.action.act_window,domain:"
+msgid "Domain Value"
+msgstr "域取值"
+
+msgctxt "field:ir.action.act_window,domains:"
+msgid "Domains"
+msgstr "域"
+
+msgctxt "field:ir.action.act_window,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.action.act_window,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:ir.action.act_window,limit:"
+msgid "Limit"
+msgstr "限制"
+
+msgctxt "field:ir.action.act_window,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.action.act_window,order:"
+msgid "Order Value"
+msgstr "顺序"
+
+msgctxt "field:ir.action.act_window,pyson_context:"
+msgid "PySON Context"
+msgstr "PYSON 上下文"
+
+msgctxt "field:ir.action.act_window,pyson_domain:"
+msgid "PySON Domain"
+msgstr "PYSON 域"
+
+msgctxt "field:ir.action.act_window,pyson_order:"
+msgid "PySON Order"
+msgstr "PySON 顺序"
+
+msgctxt "field:ir.action.act_window,pyson_search_value:"
+msgid "PySON Search Criteria"
+msgstr "PySON 查找条件"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,records:"
+msgid "Records"
+msgstr "记录 ID"
+
+msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.action.act_window,search_value:"
+msgid "Search Criteria"
+msgstr "查找条件"
+
+msgctxt "field:ir.action.act_window,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.action.act_window,usage:"
+msgid "Usage"
+msgstr "用法"
+
+msgctxt "field:ir.action.act_window,views:"
+msgid "Views"
+msgstr "视图"
+
+msgctxt "field:ir.action.act_window.domain,act_window:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "计数"
+
+msgctxt "field:ir.action.act_window.domain,domain:"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "field:ir.action.act_window.domain,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.action.act_window.view,act_window:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.act_window.view,view:"
+msgid "View"
+msgstr "视图"
+
+msgctxt "field:ir.action.keyword,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.keyword,keyword:"
+msgid "Keyword"
+msgstr "关键词"
+
+msgctxt "field:ir.action.keyword,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.action.report,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.report,direct_print:"
+msgid "Direct Print"
+msgstr "直接打印"
+
+msgctxt "field:ir.action.report,extension:"
+msgid "Extension"
+msgstr "扩展"
+
+msgctxt "field:ir.action.report,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "为自定义"
+
+msgctxt "field:ir.action.report,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:ir.action.report,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.action.report,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.action.report,records:"
+msgid "Records"
+msgstr "记录 ID"
+
+msgctxt "field:ir.action.report,report:"
+msgid "Path"
+msgstr "路径"
+
+msgctxt "field:ir.action.report,report_content:"
+msgid "Content"
+msgstr "内容"
+
+msgctxt "field:ir.action.report,report_content_custom:"
+msgid "Content"
+msgstr "内容"
+
+msgctxt "field:ir.action.report,report_content_html:"
+msgid "Content HTML"
+msgstr "内容（HTML）"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "内容名称"
+
+msgctxt "field:ir.action.report,report_name:"
+msgid "Internal Name"
+msgstr "内部名称"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr "仅用于单记录"
+
+msgctxt "field:ir.action.report,template_extension:"
+msgid "Template Extension"
+msgstr "模版扩展"
+
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "可翻译"
+
+msgctxt "field:ir.action.report,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.action.report,usage:"
+msgid "Usage"
+msgstr "用法"
+
+msgctxt "field:ir.action.url,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.url,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.action.url,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.action.url,records:"
+msgid "Records"
+msgstr "记录 ID"
+
+msgctxt "field:ir.action.url,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.action.url,url:"
+msgid "Action Url"
+msgstr "动作 Url"
+
+msgctxt "field:ir.action.url,usage:"
+msgid "Usage"
+msgstr "用法"
+
+msgctxt "field:ir.action.wizard,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.action.wizard,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.action.wizard,keywords:"
+msgid "Keywords"
+msgstr "关键词"
+
+msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.action.wizard,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,records:"
+msgid "Records"
+msgstr "记录 ID"
+
+msgctxt "field:ir.action.wizard,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.action.wizard,usage:"
+msgid "Usage"
+msgstr "用法"
+
+msgctxt "field:ir.action.wizard,window:"
+msgid "Window"
+msgstr "窗口"
+
+msgctxt "field:ir.action.wizard,wiz_name:"
+msgid "Wizard name"
+msgstr "向导名称"
+
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "复制到资源"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "复制到可见资源"
+
+msgctxt "field:ir.attachment,data:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "field:ir.attachment,data_size:"
+msgid "Data size"
+msgstr "数据大小"
+
+msgctxt "field:ir.attachment,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr "文件 ID"
+
+msgctxt "field:ir.attachment,last_modification:"
+msgid "Last Modification"
+msgstr "最后修改"
+
+msgctxt "field:ir.attachment,last_user:"
+msgid "Last User"
+msgstr "最近使用的用户"
+
+msgctxt "field:ir.attachment,link:"
+msgid "Link"
+msgstr "链接"
+
+msgctxt "field:ir.attachment,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.attachment,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.attachment,summary:"
+msgid "Summary"
+msgstr "摘要"
+
+msgctxt "field:ir.attachment,type:"
+msgid "Type"
+msgstr "类型"
+
+#, fuzzy
+msgctxt "field:ir.avatar,cache:"
+msgid "Cache"
+msgstr "缓存"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "复制到资源"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "复制到可见资源"
+
+msgctxt "field:ir.avatar,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar,image_id:"
+msgid "Image ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_modification:"
+msgid "Last Modification"
+msgstr "最后修改"
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_user:"
+msgid "Last User"
+msgstr "最近使用的用户"
+
+#, fuzzy
+msgctxt "field:ir.avatar,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.avatar,uuid:"
+msgid "UUID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,avatar:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image_id:"
+msgid "Image ID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,size:"
+msgid "Size"
+msgstr ""
+
+msgctxt "field:ir.cache,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.cache,timestamp:"
+msgid "Timestamp"
+msgstr "时间戳"
+
+msgctxt "field:ir.calendar.day,abbreviation:"
+msgid "Abbreviation"
+msgstr "缩写"
+
+msgctxt "field:ir.calendar.day,index:"
+msgid "Index"
+msgstr "索引"
+
+msgctxt "field:ir.calendar.day,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.calendar.month,abbreviation:"
+msgid "Abbreviation"
+msgstr "缩写"
+
+msgctxt "field:ir.calendar.month,index:"
+msgid "Index"
+msgstr "索引"
+
+msgctxt "field:ir.calendar.month,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "主机名"
+
+msgctxt "field:ir.configuration,language:"
+msgid "language"
+msgstr "语言"
+
+msgctxt "field:ir.cron,day:"
+msgid "Day"
+msgstr "天"
+
+msgctxt "field:ir.cron,hour:"
+msgid "Hour"
+msgstr "小时"
+
+msgctxt "field:ir.cron,interval_number:"
+msgid "Interval Number"
+msgstr "间隔数"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Type"
+msgstr "间隔类型"
+
+msgctxt "field:ir.cron,method:"
+msgid "Method"
+msgstr "方法"
+
+msgctxt "field:ir.cron,minute:"
+msgid "Minute"
+msgstr "分钟"
+
+msgctxt "field:ir.cron,next_call:"
+msgid "Next Call"
+msgstr "下一次调用"
+
+msgctxt "field:ir.cron,weekday:"
+msgid "Day of Week"
+msgstr "星期几"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr "地址"
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "地址"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr "正文"
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr "收件人"
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "隐藏收件人"
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "次要收件人"
+
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr "主题"
+
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr "地址"
+
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "电子邮箱"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr "正文"
+
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "模型名称"
+
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr "收件人"
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "隐藏收件人"
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr "隐藏收件人"
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr "收件人"
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "次要收件人"
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr "次要收件人"
+
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "报告"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr "主题"
+
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "报告"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "模版"
+
+msgctxt "field:ir.export,export_fields:"
+msgid "Fields"
+msgstr "字段"
+
+msgctxt "field:ir.export,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.export,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.export.line,export:"
+msgid "Export"
+msgstr "导出"
+
+msgctxt "field:ir.export.line,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.lang,am:"
+msgid "AM"
+msgstr "上午"
+
+msgctxt "field:ir.lang,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:ir.lang,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:ir.lang,decimal_point:"
+msgid "Decimal Separator"
+msgstr "小数点"
+
+msgctxt "field:ir.lang,direction:"
+msgid "Direction"
+msgstr "书写方向"
+
+msgctxt "field:ir.lang,grouping:"
+msgid "Grouping"
+msgstr "分组"
+
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "小数点"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "分组"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "负货币符号前置"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "负号按空格分开"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "负号位置"
+
+msgctxt "field:ir.lang,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "负号"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "正货币符号前置"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "正号按空格分开"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "正号位置"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "上级代码"
+
+msgctxt "field:ir.lang,pg_text_search:"
+msgid "PostgreSQL Text Search Configuration"
+msgstr ""
+
+msgctxt "field:ir.lang,pm:"
+msgid "PM"
+msgstr "下午"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "正号"
+
+msgctxt "field:ir.lang,thousands_sep:"
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+msgctxt "field:ir.lang,translatable:"
+msgid "Translatable"
+msgstr "可以翻译"
+
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "语言"
+
+msgctxt "field:ir.message,text:"
+msgid "Text"
+msgstr "文本"
+
+msgctxt "field:ir.model,fields:"
+msgid "Fields"
+msgstr "字段"
+
+msgctxt "field:ir.model,global_search_p:"
+msgid "Global Search"
+msgstr "全局查找"
+
+msgctxt "field:ir.model,info:"
+msgid "Information"
+msgstr "信息"
+
+msgctxt "field:ir.model,model:"
+msgid "Model Name"
+msgstr "模型名称"
+
+msgctxt "field:ir.model,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.model,name:"
+msgid "Model Description"
+msgstr "模型描述"
+
+msgctxt "field:ir.model.access,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:ir.model.access,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.model.access,perm_create:"
+msgid "Create Access"
+msgstr "创建访问权限"
+
+msgctxt "field:ir.model.access,perm_delete:"
+msgid "Delete Access"
+msgstr "删除访问权限"
+
+msgctxt "field:ir.model.access,perm_read:"
+msgid "Read Access"
+msgstr "读权限"
+
+msgctxt "field:ir.model.access,perm_write:"
+msgid "Write Access"
+msgstr "写权限"
+
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "点击"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "确认"
+
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "帮助"
+
+msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.model.button,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "重置"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "重置者"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "规则"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "标签"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "按钮"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "规则按钮"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "按钮"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "记录 ID"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "按钮"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "条件"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "用户数"
+
+msgctxt "field:ir.model.data,db_id:"
+msgid "Resource ID"
+msgstr "资源 ID"
+
+msgctxt "field:ir.model.data,fs_id:"
+msgid "Identifier on File System"
+msgstr "文件系统里的标识"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "文件系统里的取值"
+
+msgctxt "field:ir.model.data,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.model.data,noupdate:"
+msgid "No Update"
+msgstr "不更新"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "未同步"
+
+msgctxt "field:ir.model.data,values:"
+msgid "Values"
+msgstr "取值"
+
+#, fuzzy
+msgctxt "field:ir.model.field,access:"
+msgid "Access"
+msgstr "访问权限"
+
+msgctxt "field:ir.model.field,field_description:"
+msgid "Field Description"
+msgstr "字段描述"
+
+msgctxt "field:ir.model.field,help:"
+msgid "Help"
+msgstr "帮助"
+
+msgctxt "field:ir.model.field,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.model.field,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.model.field,relation:"
+msgid "Model Relation"
+msgstr "模型关系"
+
+msgctxt "field:ir.model.field,ttype:"
+msgid "Field Type"
+msgstr "字段类型"
+
+msgctxt "field:ir.model.field.access,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:ir.model.field.access,field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "field:ir.model.field.access,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.model.field.access,perm_create:"
+msgid "Create Access"
+msgstr "新建访问权限"
+
+msgctxt "field:ir.model.field.access,perm_delete:"
+msgid "Delete Access"
+msgstr "删除访问权限"
+
+msgctxt "field:ir.model.field.access,perm_read:"
+msgid "Read Access"
+msgstr "读权限"
+
+msgctxt "field:ir.model.field.access,perm_write:"
+msgid "Write Access"
+msgstr "写权限"
+
+msgctxt "field:ir.model.print_model_graph.start,filter:"
+msgid "Filter"
+msgstr "筛选"
+
+msgctxt "field:ir.model.print_model_graph.start,level:"
+msgid "Level"
+msgstr "层级"
+
+msgctxt "field:ir.module,childs:"
+msgid "Childs"
+msgstr "子项"
+
+msgctxt "field:ir.module,dependencies:"
+msgid "Dependencies"
+msgstr "依赖"
+
+msgctxt "field:ir.module,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.module,parents:"
+msgid "Parents"
+msgstr "父级"
+
+msgctxt "field:ir.module,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:ir.module,version:"
+msgid "Version"
+msgstr "版本"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "待更新模块"
+
+msgctxt "field:ir.module.config_wizard.item,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.module.config_wizard.item,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:ir.module.config_wizard.other,percentage:"
+msgid "Percentage"
+msgstr "百分比"
+
+msgctxt "field:ir.module.dependency,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.module.dependency,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.module.dependency,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "复制到资源"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "复制到可见资源"
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "上次修改"
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "最近访问的用户"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr "消息"
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr "消息"
+
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr "未读"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr "备注"
+
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "出列时间"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "出列时间"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "预期时间"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "完成时间"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "预定时间"
+
+msgctxt "field:ir.rule,domain:"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "field:ir.rule,rule_group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.rule.group,default_p:"
+msgid "Default"
+msgstr "默认"
+
+msgctxt "field:ir.rule.group,global_p:"
+msgid "Global"
+msgstr "全局"
+
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.rule.group,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.rule.group,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.rule.group,perm_create:"
+msgid "Create Access"
+msgstr "创建访问权限"
+
+msgctxt "field:ir.rule.group,perm_delete:"
+msgid "Delete Access"
+msgstr "删除访问权限"
+
+msgctxt "field:ir.rule.group,perm_read:"
+msgid "Read Access"
+msgstr "读权限"
+
+msgctxt "field:ir.rule.group,perm_write:"
+msgid "Write Access"
+msgstr "写权限"
+
+msgctxt "field:ir.rule.group,rules:"
+msgid "Tests"
+msgstr "测试"
+
+msgctxt "field:ir.sequence,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "上一时间戳"
+
+msgctxt "field:ir.sequence,name:"
+msgid "Sequence Name"
+msgstr "序列名"
+
+msgctxt "field:ir.sequence,number_increment:"
+msgid "Increment Number"
+msgstr "递增数"
+
+msgctxt "field:ir.sequence,number_next:"
+msgid "Next Number"
+msgstr "下一个序号"
+
+msgctxt "field:ir.sequence,number_next_internal:"
+msgid "Next Number"
+msgstr "下一个序号"
+
+msgctxt "field:ir.sequence,padding:"
+msgid "Number padding"
+msgstr "数字填充"
+
+msgctxt "field:ir.sequence,prefix:"
+msgid "Prefix"
+msgstr "前缀"
+
+#, fuzzy
+msgctxt "field:ir.sequence,sequence_type:"
+msgid "Sequence Type"
+msgstr "序列类型"
+
+msgctxt "field:ir.sequence,suffix:"
+msgid "Suffix"
+msgstr "后缀"
+
+msgctxt "field:ir.sequence,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "时间偏移"
+
+msgctxt "field:ir.sequence,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "时间戳舍入"
+
+msgctxt "field:ir.sequence,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.sequence.strict,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "上一时间戳"
+
+msgctxt "field:ir.sequence.strict,name:"
+msgid "Sequence Name"
+msgstr "序列名称"
+
+msgctxt "field:ir.sequence.strict,number_increment:"
+msgid "Increment Number"
+msgstr "递增数"
+
+msgctxt "field:ir.sequence.strict,number_next:"
+msgid "Next Number"
+msgstr "下一个序号"
+
+msgctxt "field:ir.sequence.strict,number_next_internal:"
+msgid "Next Number"
+msgstr "下一个序号"
+
+msgctxt "field:ir.sequence.strict,padding:"
+msgid "Number padding"
+msgstr "数字填充"
+
+msgctxt "field:ir.sequence.strict,prefix:"
+msgid "Prefix"
+msgstr "前缀"
+
+#, fuzzy
+msgctxt "field:ir.sequence.strict,sequence_type:"
+msgid "Sequence Type"
+msgstr "序列类型"
+
+msgctxt "field:ir.sequence.strict,suffix:"
+msgid "Suffix"
+msgstr "后缀"
+
+msgctxt "field:ir.sequence.strict,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "时间偏移"
+
+msgctxt "field:ir.sequence.strict,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "时间戳舍入"
+
+msgctxt "field:ir.sequence.strict,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.sequence.type,name:"
+msgid "Sequence Name"
+msgstr "序列名"
+
+msgctxt "field:ir.session,key:"
+msgid "Key"
+msgstr "密匙"
+
+msgctxt "field:ir.session.wizard,data:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "field:ir.translation,fuzzy:"
+msgid "Fuzzy"
+msgstr "模糊"
+
+msgctxt "field:ir.translation,lang:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:ir.translation,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.translation,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.translation,name:"
+msgid "Field Name"
+msgstr "字段名称"
+
+msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "覆盖模块"
+
+msgctxt "field:ir.translation,res_id:"
+msgid "Resource ID"
+msgstr "资源 ID"
+
+msgctxt "field:ir.translation,src:"
+msgid "Source"
+msgstr "源"
+
+msgctxt "field:ir.translation,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:ir.translation,value:"
+msgid "Translation Value"
+msgstr "翻译值"
+
+msgctxt "field:ir.translation.export.result,file:"
+msgid "File"
+msgstr "文件"
+
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "文件名"
+
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.translation.export.start,language:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:ir.translation.export.start,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.translation.update.start,language:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "field:ir.trigger,condition:"
+msgid "Condition"
+msgstr "条件"
+
+msgctxt "field:ir.trigger,limit_number:"
+msgid "Limit Number"
+msgstr "数量限制"
+
+msgctxt "field:ir.trigger,minimum_time_delay:"
+msgid "Minimum Delay"
+msgstr "最小延迟"
+
+msgctxt "field:ir.trigger,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.trigger,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.trigger,on_create:"
+msgid "On Create"
+msgstr "创建时触发"
+
+msgctxt "field:ir.trigger,on_delete:"
+msgid "On Delete"
+msgstr "删除时触发"
+
+msgctxt "field:ir.trigger,on_time:"
+msgid "On Time"
+msgstr "时间触发"
+
+msgctxt "field:ir.trigger,on_write:"
+msgid "On Write"
+msgstr "写入时触发"
+
+msgctxt "field:ir.trigger.log,record_id:"
+msgid "Record ID"
+msgstr "记录 ID"
+
+msgctxt "field:ir.trigger.log,trigger:"
+msgid "Trigger"
+msgstr "触发器"
+
+msgctxt "field:ir.ui.icon,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.ui.icon,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.ui.icon,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.ui.icon,path:"
+msgid "SVG Path"
+msgstr "SVG 路径"
+
+msgctxt "field:ir.ui.menu,action:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "动作关键词"
+
+msgctxt "field:ir.ui.menu,childs:"
+msgid "Children"
+msgstr "子项"
+
+msgctxt "field:ir.ui.menu,complete_name:"
+msgid "Complete Name"
+msgstr "全称"
+
+msgctxt "field:ir.ui.menu,favorite:"
+msgid "Favorite"
+msgstr "最喜欢的"
+
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.ui.menu,icon:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "field:ir.ui.menu,name:"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "field:ir.ui.menu,parent:"
+msgid "Parent Menu"
+msgstr "上一级菜单"
+
+msgctxt "field:ir.ui.menu.favorite,menu:"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "field:ir.ui.menu.favorite,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.ui.view,arch:"
+msgid "View Architecture"
+msgstr "视图结构"
+
+msgctxt "field:ir.ui.view,data:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "field:ir.ui.view,domain:"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "field:ir.ui.view,field_childs:"
+msgid "Children Field"
+msgstr "子字段"
+
+msgctxt "field:ir.ui.view,inherit:"
+msgid "Inherited View"
+msgstr "继承的视图"
+
+msgctxt "field:ir.ui.view,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "field:ir.ui.view,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.ui.view,priority:"
+msgid "Priority"
+msgstr "优先级"
+
+msgctxt "field:ir.ui.view,type:"
+msgid "View Type"
+msgstr "视图类型"
+
+msgctxt "field:ir.ui.view_search,domain:"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "field:ir.ui.view_search,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.ui.view_search,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.ui.view_search,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.ui.view_tree_state,child_name:"
+msgid "Child Name"
+msgstr "子项名称"
+
+msgctxt "field:ir.ui.view_tree_state,domain:"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.ui.view_tree_state,nodes:"
+msgid "Expanded Nodes"
+msgstr "已展开的节点"
+
+msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
+msgid "Selected Nodes"
+msgstr "已选定的节点"
+
+msgctxt "field:ir.ui.view_tree_state,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.ui.view_tree_width,field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:ir.ui.view_tree_width,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.ui.view_tree_width,width:"
+msgid "Width"
+msgstr "宽度"
+
+#, fuzzy
+msgctxt "help:ir.action,records:"
+msgid "The records on which the action runs."
+msgstr "必须将此记录复制的资源."
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh."
+msgstr "每次刷新都要重新执行域的某些部分."
+
+msgctxt "help:ir.action.act_window,limit:"
+msgid "Default limit for the list view."
+msgstr "列表视图默认限制."
+
+#, fuzzy
+msgctxt "help:ir.action.act_window,records:"
+msgid "The records on which the action runs."
+msgstr "必须将此记录复制的资源."
+
+msgctxt "help:ir.action.act_window,search_value:"
+msgid "Default search criteria for the list view."
+msgstr "列表视图的默认搜索条件."
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see LibreOffice documentation for "
+"compatible format."
+msgstr "对于同一模板保留为空，有关兼容格式，请参阅LibreOffice文档."
+
+#, fuzzy
+msgctxt "help:ir.action.report,records:"
+msgid "The records on which the action runs."
+msgstr "必须将此记录复制的资源."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr "检查模板是否仅适用于一条记录."
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "取消此项，可以禁用报告的翻译功能."
+
+#, fuzzy
+msgctxt "help:ir.action.url,records:"
+msgid "The records on which the action runs."
+msgstr "必须将此记录复制的资源."
+
+#, fuzzy
+msgctxt "help:ir.action.wizard,records:"
+msgid "The records on which the action runs."
+msgstr "必须将此记录复制的资源."
+
+msgctxt "help:ir.action.wizard,window:"
+msgid "Run wizard in a new window."
+msgstr "在新窗口中运行向导."
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "包含收件人的字段."
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "包含次要收件人的字段."
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr "一个 PYSON 表达式，它生成一个隐藏收件人列表，其中记录由 \"self\" 表示."
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr "一个 PYSON 表达式，它生成一个收件人列表，其中记录由 \"self\" 表示."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "包含次要收件人的字段."
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr "一个 PYSON 表达式，它生成一个次要收件人列表，其中记录由 \"self\" 表示."
+
+msgctxt "help:ir.lang,code:"
+msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgstr "RFC 4646 标签: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "特殊父级的代码"
+
+msgctxt "help:ir.model,module:"
+msgid "Module in which this model is defined."
+msgstr "定义该模型的模块."
+
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr "单击按钮时询问用户确认的文本."
+
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules."
+msgstr "用于重置当前规则的按钮."
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"一个 PYSON 表达式将会和一条记录一同执行，这条记录用 “self” 表示.\n"
+" 符合条件则触发该动作."
+
+msgctxt "help:ir.model.data,db_id:"
+msgid "The id of the record in the database."
+msgstr "数据库中记录的 ID."
+
+msgctxt "help:ir.model.data,fs_id:"
+msgid "The id of the record as known on the file system."
+msgstr "文件系统里对应记录的 ID."
+
+msgctxt "help:ir.model.field,access:"
+msgid ""
+"If checked, the access right on the model of the field is also tested "
+"against the relation of the field."
+msgstr ""
+
+msgctxt "help:ir.model.field,module:"
+msgid "Module in which this field is defined."
+msgstr "定义该字段的模块."
+
+msgctxt "help:ir.model.print_model_graph.start,filter:"
+msgid ""
+"Entering a Python Regular Expression will exclude matching models from the "
+"graph."
+msgstr "输入的 Python 正则表达式将从图中排除匹配的的模型."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "任务完成时间."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "任务可以开始的时间."
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user"
+msgstr ""
+"域将会和一条 PYSON 表达式一同执行，这条表达式内容中包含:\n"
+"- \"user\" 代表当前用户"
+
+msgctxt "help:ir.rule.group,default_p:"
+msgid "Add this rule to all users by default."
+msgstr "默认情况下，将此规则添加到所有用户."
+
+msgctxt "help:ir.rule.group,global_p:"
+msgid ""
+"Make the rule global \n"
+"so every users must follow this rule."
+msgstr ""
+"让规则全局化\n"
+"所以, 每个用户都必须遵循这个规则."
+
+msgctxt "help:ir.rule.group,name:"
+msgid "Displayed to users when access error is raised for this rule."
+msgstr "将此条规则导致的访问错误显示给用户."
+
+msgctxt "help:ir.rule.group,rules:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr "任意一项测试结果为真，即判断符合规则."
+
+msgctxt "help:ir.trigger,condition:"
+msgid ""
+"A PYSON statement evaluated with record represented by \"self\"\n"
+"It triggers the action if true."
+msgstr ""
+"一个 PYSON 表达式, 这个表达式与 \"self\" 表示的记录一同执行,\n"
+"如果为真，则触发该操作."
+
+msgctxt "help:ir.trigger,limit_number:"
+msgid ""
+"Limit the number of call to \"Action Function\" by records.\n"
+"0 for no limit."
+msgstr ""
+"限制数据调用“动作方法”次数\n"
+" 0表示无限制."
+
+msgctxt "help:ir.trigger,minimum_time_delay:"
+msgid ""
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
+msgstr ""
+"当同一条记录调用 \"动作函数\" 时, 设置两次动作之间的最小延迟时间.\n"
+"留空表示不延迟."
+
+msgctxt "help:ir.ui.view_search,domain:"
+msgid "The PYSON domain."
+msgstr "PYSON 域."
+
+msgctxt "model:ir.action,name:"
+msgid "Action"
+msgstr "动作"
+
+msgctxt "model:ir.action,name:act_action_act_window_form"
+msgid "Window Actions"
+msgstr "窗口动作"
+
+msgctxt "model:ir.action,name:act_action_form"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "model:ir.action,name:act_action_report_form"
+msgid "Reports"
+msgstr "报告"
+
+msgctxt "model:ir.action,name:act_action_url_form"
+msgid "URLs"
+msgstr "网址"
+
+msgctxt "model:ir.action,name:act_action_wizard_form"
+msgid "Wizards"
+msgstr "向导"
+
+msgctxt "model:ir.action,name:act_attachment_form"
+msgid "Attachments"
+msgstr "附件"
+
+msgctxt "model:ir.action,name:act_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "配置向导项"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "电子邮箱"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mail Archives"
+msgstr "电子邮件地址"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr "电子邮件模板"
+
+msgctxt "model:ir.action,name:act_export_form"
+msgid "Exports"
+msgstr "导出"
+
+msgctxt "model:ir.action,name:act_icon_form"
+msgid "Icons"
+msgstr "图标"
+
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "配置语言"
+
+msgctxt "model:ir.action,name:act_lang_form"
+msgid "Languages"
+msgstr "语言"
+
+msgctxt "model:ir.action,name:act_menu_list"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "model:ir.action,name:act_menu_tree"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "Message"
+msgstr "消息"
+
+msgctxt "model:ir.action,name:act_model_access_form"
+msgid "Models Access"
+msgstr "模型访问权限"
+
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr "访问权限"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "点击"
+
+msgctxt "model:ir.action,name:act_model_button_form"
+msgid "Buttons"
+msgstr "按钮"
+
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "model:ir.action,name:act_model_field_access_form"
+msgid "Fields Access"
+msgstr "字段访问权限"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr "访问权限"
+
+msgctxt "model:ir.action,name:act_model_fields_form"
+msgid "Fields"
+msgstr "字段"
+
+msgctxt "model:ir.action,name:act_model_form"
+msgid "Models"
+msgstr "模型"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "挂起激活 / 升级"
+
+msgctxt "model:ir.action,name:act_module_config"
+msgid "Configure Modules"
+msgstr "配置模块"
+
+msgctxt "model:ir.action,name:act_module_config_wizard"
+msgid "Module Configuration"
+msgstr "模块配置"
+
+msgctxt "model:ir.action,name:act_module_form"
+msgid "Modules"
+msgstr "模块"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr "注释"
+
+msgctxt "model:ir.action,name:act_rule_group_form"
+msgid "Record Rules"
+msgstr "记录规则"
+
+msgctxt "model:ir.action,name:act_sequence_form"
+msgid "Sequences"
+msgstr "序列"
+
+msgctxt "model:ir.action,name:act_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "严格的序列"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sequence_type_form"
+msgid "Types"
+msgstr "类型"
+
+msgctxt "model:ir.action,name:act_translation_clean"
+msgid "Clean Translations"
+msgstr "清理翻译"
+
+msgctxt "model:ir.action,name:act_translation_export"
+msgid "Export Translations"
+msgstr "导出翻译"
+
+msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "翻译"
+
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "翻译"
+
+msgctxt "model:ir.action,name:act_translation_set"
+msgid "Set Translations"
+msgstr "设置翻译"
+
+msgctxt "model:ir.action,name:act_translation_update"
+msgid "Synchronize Translations"
+msgstr "同步翻译"
+
+msgctxt "model:ir.action,name:act_trigger_form"
+msgid "Triggers"
+msgstr "触发器"
+
+msgctxt "model:ir.action,name:act_view_form"
+msgid "Views"
+msgstr "视图"
+
+msgctxt "model:ir.action,name:act_view_search"
+msgid "View Search"
+msgstr "搜索视图"
+
+msgctxt "model:ir.action,name:act_view_show"
+msgid "Show View"
+msgstr "显示视图"
+
+msgctxt "model:ir.action,name:act_view_tree_state"
+msgid "Tree State"
+msgstr "树状态"
+
+msgctxt "model:ir.action,name:act_view_tree_width_form"
+msgid "View Tree Width"
+msgstr "视图树宽度"
+
+msgctxt "model:ir.action,name:print_model_graph"
+msgid "Graph"
+msgstr "图"
+
+msgctxt "model:ir.action,name:report_model_graph"
+msgid "Graph"
+msgstr "图"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr "工作流程图"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "翻译"
+
+msgctxt "model:ir.action.act_window,name:"
+msgid "Action act window"
+msgstr "动作窗口"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Action act window domain"
+msgstr "动作窗口域"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "未同步"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "本地"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "模块"
+
+msgctxt "model:ir.action.act_window.view,name:"
+msgid "Action act window view"
+msgstr "动作窗口视图"
+
+msgctxt "model:ir.action.keyword,name:"
+msgid "Action keyword"
+msgstr "动作关键词"
+
+msgctxt "model:ir.action.report,name:"
+msgid "Action report"
+msgstr "动作报表"
+
+msgctxt "model:ir.action.url,name:"
+msgid "Action URL"
+msgstr "动作 Url"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Action wizard"
+msgstr "动作向导"
+
+msgctxt "model:ir.attachment,name:"
+msgid "Attachment"
+msgstr "附件"
+
+msgctxt "model:ir.avatar,name:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.avatar.cache,name:"
+msgid "Avatar Cache"
+msgstr ""
+
+msgctxt "model:ir.cache,name:"
+msgid "Cache"
+msgstr "缓存"
+
+msgctxt "model:ir.calendar.day,abbreviation:Friday"
+msgid "Fri"
+msgstr "星期五"
+
+msgctxt "model:ir.calendar.day,abbreviation:Monday"
+msgid "Mon"
+msgstr "星期一"
+
+msgctxt "model:ir.calendar.day,abbreviation:Saturday"
+msgid "Sat"
+msgstr "星期六"
+
+msgctxt "model:ir.calendar.day,abbreviation:Sunday"
+msgid "Sun"
+msgstr "星期日"
+
+msgctxt "model:ir.calendar.day,abbreviation:Thursday"
+msgid "Thu"
+msgstr "星期四"
+
+msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
+msgid "Tue"
+msgstr "星期二"
+
+msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
+msgid "Wed"
+msgstr "星期三"
+
+msgctxt "model:ir.calendar.day,name:"
+msgid "Day"
+msgstr "日"
+
+msgctxt "model:ir.calendar.day,name:Friday"
+msgid "Friday"
+msgstr "星期五"
+
+msgctxt "model:ir.calendar.day,name:Monday"
+msgid "Monday"
+msgstr "星期一"
+
+msgctxt "model:ir.calendar.day,name:Saturday"
+msgid "Saturday"
+msgstr "星期六"
+
+msgctxt "model:ir.calendar.day,name:Sunday"
+msgid "Sunday"
+msgstr "星期日"
+
+msgctxt "model:ir.calendar.day,name:Thursday"
+msgid "Thursday"
+msgstr "星期四"
+
+msgctxt "model:ir.calendar.day,name:Tuesday"
+msgid "Tuesday"
+msgstr "星期二"
+
+msgctxt "model:ir.calendar.day,name:Wednesday"
+msgid "Wednesday"
+msgstr "星期三"
+
+msgctxt "model:ir.calendar.month,abbreviation:April"
+msgid "Apr"
+msgstr "四月"
+
+msgctxt "model:ir.calendar.month,abbreviation:August"
+msgid "Aug"
+msgstr "八月"
+
+msgctxt "model:ir.calendar.month,abbreviation:December"
+msgid "Dec"
+msgstr "十二月"
+
+msgctxt "model:ir.calendar.month,abbreviation:February"
+msgid "Feb"
+msgstr "二月"
+
+msgctxt "model:ir.calendar.month,abbreviation:January"
+msgid "Jan"
+msgstr "一月"
+
+msgctxt "model:ir.calendar.month,abbreviation:July"
+msgid "Jul"
+msgstr "七月"
+
+msgctxt "model:ir.calendar.month,abbreviation:June"
+msgid "Jun"
+msgstr "六月"
+
+msgctxt "model:ir.calendar.month,abbreviation:March"
+msgid "Mar"
+msgstr "三月"
+
+msgctxt "model:ir.calendar.month,abbreviation:May"
+msgid "May"
+msgstr "五月"
+
+msgctxt "model:ir.calendar.month,abbreviation:November"
+msgid "Nov"
+msgstr "十一月"
+
+msgctxt "model:ir.calendar.month,abbreviation:October"
+msgid "Oct"
+msgstr "十月"
+
+msgctxt "model:ir.calendar.month,abbreviation:September"
+msgid "Sep"
+msgstr "九月"
+
+msgctxt "model:ir.calendar.month,name:"
+msgid "Month"
+msgstr "月"
+
+msgctxt "model:ir.calendar.month,name:April"
+msgid "April"
+msgstr "四月"
+
+msgctxt "model:ir.calendar.month,name:August"
+msgid "August"
+msgstr "八月"
+
+msgctxt "model:ir.calendar.month,name:December"
+msgid "December"
+msgstr "十二月"
+
+msgctxt "model:ir.calendar.month,name:February"
+msgid "February"
+msgstr "二月"
+
+msgctxt "model:ir.calendar.month,name:January"
+msgid "January"
+msgstr "一月"
+
+msgctxt "model:ir.calendar.month,name:July"
+msgid "July"
+msgstr "七月"
+
+msgctxt "model:ir.calendar.month,name:June"
+msgid "June"
+msgstr "六月"
+
+msgctxt "model:ir.calendar.month,name:March"
+msgid "March"
+msgstr "三月"
+
+msgctxt "model:ir.calendar.month,name:May"
+msgid "May"
+msgstr "五月"
+
+msgctxt "model:ir.calendar.month,name:November"
+msgid "November"
+msgstr "十一月"
+
+msgctxt "model:ir.calendar.month,name:October"
+msgid "October"
+msgstr "十月"
+
+msgctxt "model:ir.calendar.month,name:September"
+msgid "September"
+msgstr "九月"
+
+msgctxt "model:ir.configuration,name:"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.cron,name:"
+msgid "Cron"
+msgstr "计划任务"
+
+msgctxt "model:ir.date,name:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "电子邮箱"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr "电子邮件地址"
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr "电子邮件模板"
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr "电子邮件模板 - 报告"
+
+msgctxt "model:ir.export,name:"
+msgid "Export"
+msgstr "导出"
+
+msgctxt "model:ir.export.line,name:"
+msgid "Export line"
+msgstr "导出行"
+
+msgctxt "model:ir.lang,name:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "model:ir.lang,name:lang_bg"
+msgid "Bulgarian"
+msgstr "保加利亚语"
+
+msgctxt "model:ir.lang,name:lang_ca"
+msgid "Català"
+msgstr "加泰罗尼亚语"
+
+msgctxt "model:ir.lang,name:lang_cs"
+msgid "Czech"
+msgstr "捷克语"
+
+msgctxt "model:ir.lang,name:lang_de"
+msgid "German"
+msgstr "德语"
+
+msgctxt "model:ir.lang,name:lang_en"
+msgid "English"
+msgstr "英语"
+
+msgctxt "model:ir.lang,name:lang_es"
+msgid "Spanish"
+msgstr "西班牙语"
+
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "西班牙语(拉丁美洲)"
+
+msgctxt "model:ir.lang,name:lang_et"
+msgid "Estonian"
+msgstr "爱沙尼亚语"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "波斯语"
+
+msgctxt "model:ir.lang,name:lang_fi"
+msgid "Finnish"
+msgstr "芬兰语"
+
+msgctxt "model:ir.lang,name:lang_fr"
+msgid "French"
+msgstr "法语"
+
+msgctxt "model:ir.lang,name:lang_hu"
+msgid "Hungarian"
+msgstr "匈牙利语"
+
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr "印度尼西亚语"
+
+msgctxt "model:ir.lang,name:lang_it"
+msgid "Italian"
+msgstr "意大利语"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "老挝语"
+
+msgctxt "model:ir.lang,name:lang_lt"
+msgid "Lithuanian"
+msgstr "立陶宛语"
+
+msgctxt "model:ir.lang,name:lang_nl"
+msgid "Dutch"
+msgstr "荷兰语"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "波兰语"
+
+msgctxt "model:ir.lang,name:lang_pt"
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+msgctxt "model:ir.lang,name:lang_ru"
+msgid "Russian"
+msgstr "俄语"
+
+msgctxt "model:ir.lang,name:lang_sl"
+msgid "Slovenian"
+msgstr "斯洛文尼亚语"
+
+msgctxt "model:ir.lang,name:lang_tr"
+msgid "Turkish"
+msgstr "土耳其语"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "中文简体"
+
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "语言配置开始"
+
+msgctxt "model:ir.message,name:"
+msgid "Message"
+msgstr "消息"
+
+msgctxt "model:ir.message,text:msg_ID"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:ir.message,text:msg_access_button_error"
+msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
+msgstr "不允许在 \"%(model)s\" 上点击按钮 \"%(button)s."
+
+msgctxt "model:ir.message,text:msg_access_rule_error"
+msgid "You are not allowed to access \"%(model)s\"."
+msgstr "没有访问 \"%(model)s\" 的权限."
+
+msgctxt "model:ir.message,text:msg_access_rule_field_error"
+msgid "You are not allowed to access \"%(model)s.%(field)s\"."
+msgstr "没有访问 \"%(model)s.%(field)s\" 的权限."
+
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "没有运行向导程序 \"%(wizard)s\" 的权限."
+
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr "没有权限在 \"%(model)s\" 上运行向导程序 \"%(wizard)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_context"
+msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
+msgstr "动作 \"%(action)s\" 的内容 \"%(context)s\" 设置无效."
+
+msgctxt "model:ir.message,text:msg_action_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
+msgstr "动作 \"%(action)s\" 的域或找条件 \"%(domain)s\" 无效."
+
+msgctxt "model:ir.message,text:msg_action_invalid_views"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "动作\"%(action)s\" 的视图 \"%(view)s\" 无效."
+
+msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
+msgid "Wrong wizard model in keyword action \"%(name)s\"."
+msgstr "关键字操作 \"%(name)s\" 的向导模型有误."
+
+msgctxt "model:ir.message,text:msg_active"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "model:ir.message,text:msg_active_help"
+msgid "Uncheck to exclude from future use."
+msgstr "如果以后不使用，就取消选择."
+
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "附件"
+
+msgctxt "model:ir.message,text:msg_avatar"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_resource_unique"
+msgid "Only one avatar is allowed per resource."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_avatar_size_unique"
+msgid "The size of an avatar must be unique."
+msgstr "模块名称必须唯一！"
+
+msgctxt "model:ir.message,text:msg_avatar_url"
+msgid "Avatar URL"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatars"
+msgid "Avatars"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_base_config_record"
+msgid "This record is part of the base configuration."
+msgstr "该记录是基本配置的一部分。"
+
+msgctxt "model:ir.message,text:msg_create_rule_error"
+msgid ""
+"You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"不允许创建\"%(model)s\"的记录，因为在以下规则中，至少有一条不满足：\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_created_at"
+msgid "Created at"
+msgstr "创建日期"
+
+msgctxt "model:ir.message,text:msg_created_by"
+msgid "Created by"
+msgstr "创建者"
+
+msgctxt "model:ir.message,text:msg_delete_rule_error"
+msgid ""
+"You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
+"%(rules)s"
+msgstr ""
+"不允许删除模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_delete_xml_record"
+msgid "You are not allowed to delete this record."
+msgstr "没有权限删除此记录."
+
+msgctxt "model:ir.message,text:msg_dict_schema_boolean"
+msgid "Boolean"
+msgstr "布尔型"
+
+msgctxt "model:ir.message,text:msg_dict_schema_char"
+msgid "Char"
+msgstr "字符型"
+
+msgctxt "model:ir.message,text:msg_dict_schema_date"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "model:ir.message,text:msg_dict_schema_datetime"
+msgid "DateTime"
+msgstr "日期时间"
+
+msgctxt "model:ir.message,text:msg_dict_schema_digits"
+msgid "Digits"
+msgstr "数字"
+
+msgctxt "model:ir.message,text:msg_dict_schema_domain"
+msgid "Domain"
+msgstr "域"
+
+msgctxt "model:ir.message,text:msg_dict_schema_float"
+msgid "Float"
+msgstr "浮点型"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "帮助"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
+msgid "Help Selection"
+msgstr "选择"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
+msgid "The key followed by the help text separated by a \":\", one per line."
+msgstr "每行用 \":\" 分隔的一些键和标签."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
+msgid "Help Selection JSON"
+msgstr "选择 JSON"
+
+msgctxt "model:ir.message,text:msg_dict_schema_integer"
+msgid "Integer"
+msgstr "整型"
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "模式 \"%(schema)s\" 中的域无效."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
+msgid "Invalid help selection in schema \"%(schema)s\"."
+msgstr "模式\"%(schema)s\"中的选择无效."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
+msgid "Invalid selection in schema \"%(schema)s\"."
+msgstr "模式\"%(schema)s\"中的选择无效."
+
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "多选"
+
+msgctxt "model:ir.message,text:msg_dict_schema_name"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "model:ir.message,text:msg_dict_schema_numeric"
+msgid "Numeric"
+msgstr "数值型"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection"
+msgid "Selection"
+msgstr "选择"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
+msgid "A couple of key and label separated by \":\" per line."
+msgstr "每行用 \":\" 分隔的一些键和标签."
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
+msgid "Selection JSON"
+msgstr "选择 JSON"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
+msgid "Selection Sorted"
+msgstr "选择（已排序）"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
+msgid "If the selection must be sorted on label."
+msgstr "如果所选内容必须按标签排序."
+
+msgctxt "model:ir.message,text:msg_dict_schema_string"
+msgid "String"
+msgstr "字符串"
+
+msgctxt "model:ir.message,text:msg_dict_schema_type"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "model:ir.message,text:msg_digits_validation_record"
+msgid ""
+"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
+"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\", 其数字取值 \"%(value)s\" 的位数超出了 \"%(digits)i\" 的限制."
+
+msgctxt "model:ir.message,text:msg_domain_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
+" its domain."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\"，其取值\"%(value)s\" 对于其域来说，是无效取值."
+
+msgctxt "model:ir.message,text:msg_edited_at"
+msgid "Edited at"
+msgstr "编辑时间"
+
+msgctxt "model:ir.message,text:msg_edited_by"
+msgid "Edited by"
+msgstr "编辑者"
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "电子邮件模板 \"%(template)s\" 中的正文无效，异常为 \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "电子邮件模板 \"%(template)s\" 中的 PYSON %(field)s无效，异常为 \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr "电子邮件模板 \"%(template)s\" 中的 PYSON %(field)s 必须生成一个列表."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "电子邮件模板 \"%(template)s\" 中的主题无效，异常为 \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
+"some invalid chars \"%(chars)s\"."
+msgstr "\"%(model)s\" 中字段 \"%(field)s\" 的值 \"%(value)s\" 包含一些无效字符 \"%(chars)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_exist"
+msgid ""
+"The records could not be deleted because they are used by field "
+"\"%(field)s\" of \"%(model)s\"."
+msgstr "记录无法删除，因为 \"%(model)s\" 的字段 \"%(field)s\" 正在使用此记录."
+
+msgctxt "model:ir.message,text:msg_foreign_model_missing"
+msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 对应的取值 \"%(value)s\" 不存在."
+
+msgctxt "model:ir.message,text:msg_html_editor_save_fail"
+msgid "Failed to save, please retry."
+msgstr "保存失败，请重试。"
+
+msgctxt "model:ir.message,text:msg_id_positive"
+msgid "ID must be positive."
+msgstr "ID 必须为正."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_default_translatable"
+msgid "The default language \"%(language)s\" must be translatable."
+msgstr "默认语言必须设置为可翻译."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_language_delete_default"
+msgid "The default language \"%(language)s\" can not be deleted."
+msgstr "默认语言不可删除."
+
+msgctxt "model:ir.message,text:msg_language_invalid_date"
+msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
+msgstr "语言\"%(language)s\"中的日期格式 \"%(format)s\"设置无效."
+
+msgctxt "model:ir.message,text:msg_language_invalid_grouping"
+msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
+msgstr "语言\"%(language)s\"中的分组 \"%(grouping)s\"设置无效."
+
+msgctxt "model:ir.message,text:msg_model_invalid_condition"
+msgid ""
+"The condition \"%(condition)s\" is not a valid PYSON expression for button "
+"rule \"%(rule)s\"."
+msgstr "对按钮规则\"%(rule)s\"来说，条件\"%(condition)s\" 不是合法的 PYSON 表达式."
+
+msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr "某些已激活的模块依赖准备卸载的模块:"
+
+msgctxt "model:ir.message,text:msg_module_delete_state"
+msgid ""
+"You can not remove a module that is activated or that is about to be "
+"activated."
+msgstr "无法移除未安装或者待安装状态的模块."
+
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "注释"
+
+msgctxt "model:ir.message,text:msg_read_error"
+msgid ""
+"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
+" anymore."
+msgstr "\"%(model)s\" 的记录 \"%(ids)s\" 已经不存在了，无法读取."
+
+msgctxt "model:ir.message,text:msg_read_rule_error"
+msgid ""
+"You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"不允许读取模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_record_name"
+msgid "Record Name"
+msgstr "记录名称"
+
+msgctxt "model:ir.message,text:msg_recursion_error"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr "递归错误：记录 \"%(rec_name)s\"和父项\"%(parent_rec_name)s\" 已配置为其自身的祖先."
+
+msgctxt "model:ir.message,text:msg_reference_syntax_error"
+msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
+msgstr "\"%(field)s\" 的取值 \"%(value)r\" 有语法错误."
+
+msgctxt "model:ir.message,text:msg_relation_not_found"
+msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
+msgstr "找不到关系: 模型 \"%(model)s\" 中的 \"%(value)r\"."
+
+msgctxt "model:ir.message,text:msg_report_invalid_email"
+msgid "Invalid email definition for report \"%(name)s\"."
+msgstr "报表 \"%(name)s\" 的电子邮件定义无效."
+
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "模型\"%(model)s\"的字段\"%(field)s\"需要有取值."
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
+msgstr "必须将此记录复制的资源."
+
+msgctxt "model:ir.message,text:msg_rule_invalid_domain"
+msgid "Invalid domain in rule \"%(name)s\"."
+msgstr "规则\"%(name)s\"的域配置无效."
+
+msgctxt "model:ir.message,text:msg_search_function_missing"
+msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" 缺少搜索函数."
+
+msgctxt "model:ir.message,text:msg_selection_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
+"of the allowed options."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\"，其取值\"%(value)s\" 不在允许的选项范围内."
+
+msgctxt "model:ir.message,text:msg_sequence"
+msgid "Sequence"
+msgstr "序列"
+
+msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
+msgid ""
+"You cannot change the sequence type of a sequence instead create a new "
+"sequence."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
+msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "序列 \"%(sequence)s\"前缀\"%(prefix)s\"无效."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
+msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "序列 \"%(sequence)s\"后缀\"%(suffix)s\"无效."
+
+msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
+msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
+msgstr "\"最近一个时间戳\"不能超过序列\"%s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_missing"
+msgid "Missing sequence."
+msgstr "序列缺失."
+
+msgctxt "model:ir.message,text:msg_setter_function_missing"
+msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "模型 \"%(model)s\" 的字段\"%(field)s\" 没有 setter 函数."
+
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
+"%(max_size)i)."
+msgstr "模型 \"%(model)s\" 的字段 \"%(field)s\" ，其取值位数太长(%(size)i > %(max_size)i)."
+
+msgctxt "model:ir.message,text:msg_time_format_validation_record"
+msgid ""
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
+" valid."
+msgstr "模型 \"%(model)s\" 的字段\"%(field)s\"，时间取值 \"%(value)s\" 无效."
+
+msgctxt "model:ir.message,text:msg_timedelta_M"
+msgid "M"
+msgstr "月"
+
+msgctxt "model:ir.message,text:msg_timedelta_Y"
+msgid "Y"
+msgstr "年"
+
+msgctxt "model:ir.message,text:msg_timedelta_d"
+msgid "d"
+msgstr "日"
+
+msgctxt "model:ir.message,text:msg_timedelta_h"
+msgid "h"
+msgstr "小时"
+
+msgctxt "model:ir.message,text:msg_timedelta_m"
+msgid "m"
+msgstr "分钟"
+
+msgctxt "model:ir.message,text:msg_timedelta_s"
+msgid "s"
+msgstr "秒"
+
+msgctxt "model:ir.message,text:msg_timedelta_w"
+msgid "w"
+msgstr "周"
+
+msgctxt "model:ir.message,text:msg_too_many_relations_found"
+msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
+msgstr "发现太多的关系：\"%(value)r\" in \"%(model)s”."
+
+msgctxt "model:ir.message,text:msg_translation_overridden"
+msgid ""
+"You can not export translation \"%(name)s\" because it has been overridden "
+"by module \"%(overriding_module)s\"."
+msgstr "无法导出翻译 “%(name)s”，因为它已被模块“%(overriding_module)s”覆盖."
+
+msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
+"\"%(trigger)s\"."
+msgstr "触发器\"%(trigger)s\"设置的条件\"%(condition)s\" 不是合法的 PYSON 表达式."
+
+msgctxt "model:ir.message,text:msg_view_invalid_xml"
+msgid "Invalid XML for view \"%(name)s\"."
+msgstr "视图 \"%(name)s\" 对应的XML不合法."
+
+msgctxt "model:ir.message,text:msg_write_error"
+msgid ""
+"You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
+"exist anymore."
+msgstr "\"%(model)s\" 的记录 \"%(ids)s\" 已经不存在了，无法写入."
+
+msgctxt "model:ir.message,text:msg_write_rule_error"
+msgid ""
+"You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"不允许写入模型 \"%(model)s\" 的记录 \"%(ids)s\" ， 由于下面的规则（至少一条）:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_write_xml_record"
+msgid "You are not allowed to modify this record."
+msgstr "你无权修改此记录."
+
+msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
+msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgstr "XML id 语法错误：\"%(field)s\" 的取值 \"%(value)r\" ."
+
+msgctxt "model:ir.model,name:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "model:ir.model.access,name:"
+msgid "Model access"
+msgstr "模型访问权限"
+
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr "确定要加载语言翻译?"
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr "确定要删除语言翻译？"
+
+msgctxt "model:ir.model.button,name:"
+msgid "Model Button"
+msgstr "模型按钮"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "仅运行一次"
+
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "加载翻译"
+
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "卸载翻译"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "同步"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "标记为激活"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "取消激活"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "标记为停用（测试版）"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "取消停用"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "标记为升级"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "取消升级"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "显示"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "模型按钮重置"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "模型按钮点击"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "模型按钮规则"
+
+msgctxt "model:ir.model.data,name:"
+msgid "Model data"
+msgstr "模型数据"
+
+msgctxt "model:ir.model.field,name:"
+msgid "Model field"
+msgstr "模型字段"
+
+msgctxt "model:ir.model.field.access,name:"
+msgid "Model Field Access"
+msgstr "模型字段权限"
+
+msgctxt "model:ir.model.print_model_graph.start,name:"
+msgid "Print Model Graph"
+msgstr "打印模型图"
+
+msgctxt "model:ir.module,name:"
+msgid "Module"
+msgstr "模块"
+
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "模块安装升级完成"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "模块安装升级开始"
+
+msgctxt "model:ir.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "模块设置向导完成"
+
+msgctxt "model:ir.module.config_wizard.first,name:"
+msgid "Module Config Wizard First"
+msgstr "模块设置向导开始"
+
+msgctxt "model:ir.module.config_wizard.item,name:"
+msgid "Config wizard to run after activating a module"
+msgstr "激活模块后运行的配置向导"
+
+msgctxt "model:ir.module.config_wizard.other,name:"
+msgid "Module Config Wizard Other"
+msgstr "模块设置向导其他"
+
+msgctxt "model:ir.module.dependency,name:"
+msgid "Module dependency"
+msgstr "模块依赖关系"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr "注释"
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr "注释阅读"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "队列"
+
+msgctxt "model:ir.rule,name:"
+msgid "Rule"
+msgstr "规则"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "Rule group"
+msgstr "规则组"
+
+msgctxt "model:ir.sequence,name:"
+msgid "Sequence"
+msgstr "序列"
+
+msgctxt "model:ir.sequence.strict,name:"
+msgid "Sequence Strict"
+msgstr "严格序列"
+
+msgctxt "model:ir.sequence.type,name:"
+msgid "Sequence type"
+msgstr "序列类型"
+
+msgctxt "model:ir.session,name:"
+msgid "Session"
+msgstr "会话"
+
+msgctxt "model:ir.session.wizard,name:"
+msgid "Session Wizard"
+msgstr "Session 设置向导"
+
+msgctxt "model:ir.translation,name:"
+msgid "Translation"
+msgstr "翻译"
+
+msgctxt "model:ir.translation.clean.start,name:"
+msgid "Clean translation"
+msgstr "清理翻译"
+
+msgctxt "model:ir.translation.clean.succeed,name:"
+msgid "Clean translation"
+msgstr "清理翻译"
+
+msgctxt "model:ir.translation.export.result,name:"
+msgid "Export translation"
+msgstr "导出翻译"
+
+msgctxt "model:ir.translation.export.start,name:"
+msgid "Export translation"
+msgstr "导出翻译"
+
+msgctxt "model:ir.translation.set.start,name:"
+msgid "Set Translation"
+msgstr "设置翻译"
+
+msgctxt "model:ir.translation.set.succeed,name:"
+msgid "Set Translation"
+msgstr "设置翻译"
+
+msgctxt "model:ir.translation.update.start,name:"
+msgid "Update translation"
+msgstr "更新翻译"
+
+msgctxt "model:ir.trigger,name:"
+msgid "Trigger"
+msgstr "触发器"
+
+msgctxt "model:ir.trigger.log,name:"
+msgid "Trigger Log"
+msgstr "触发器日志"
+
+msgctxt "model:ir.ui.icon,name:"
+msgid "Icon"
+msgstr "图标"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "UI menu"
+msgstr "UI 菜单"
+
+msgctxt "model:ir.ui.menu,name:menu_act_action"
+msgid "Actions"
+msgstr "动作"
+
+msgctxt "model:ir.ui.menu,name:menu_action"
+msgid "Actions"
+msgstr "动作"
+
+msgctxt "model:ir.ui.menu,name:menu_action_act_window"
+msgid "Window Actions"
+msgstr "窗口动作"
+
+msgctxt "model:ir.ui.menu,name:menu_action_report_form"
+msgid "Reports"
+msgstr "报告"
+
+msgctxt "model:ir.ui.menu,name:menu_action_url"
+msgid "URLs"
+msgstr "网址"
+
+msgctxt "model:ir.ui.menu,name:menu_action_wizard"
+msgid "Wizards"
+msgstr "向导"
+
+msgctxt "model:ir.ui.menu,name:menu_administration"
+msgid "Administration"
+msgstr "管理"
+
+msgctxt "model:ir.ui.menu,name:menu_attachment_form"
+msgid "Attachments"
+msgstr "附件"
+
+msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "配置向导项"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "电子邮箱"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "电子邮件模板"
+
+msgctxt "model:ir.ui.menu,name:menu_export_form"
+msgid "Exports"
+msgstr "导出"
+
+msgctxt "model:ir.ui.menu,name:menu_icon_form"
+msgid "Icons"
+msgstr "图标"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
+msgid "Types"
+msgstr "类型"
+
+msgctxt "model:ir.ui.menu,name:menu_lang_form"
+msgid "Languages"
+msgstr "语言"
+
+msgctxt "model:ir.ui.menu,name:menu_localization"
+msgid "Localization"
+msgstr "本地化"
+
+msgctxt "model:ir.ui.menu,name:menu_menu_list"
+msgid "Menu"
+msgstr "菜单"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "Message"
+msgstr "消息"
+
+msgctxt "model:ir.ui.menu,name:menu_model_access_form"
+msgid "Models Access"
+msgstr "模型访问权限"
+
+msgctxt "model:ir.ui.menu,name:menu_model_button_form"
+msgid "Buttons"
+msgstr "按钮"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
+msgid "Fields Access"
+msgstr "字段访问权限"
+
+msgctxt "model:ir.ui.menu,name:menu_model_form"
+msgid "Models"
+msgstr "模型"
+
+msgctxt "model:ir.ui.menu,name:menu_models"
+msgid "Models"
+msgstr "模型"
+
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "执行 \"未完成的安装\"/ \"升级\""
+
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
+msgstr "模块"
+
+msgctxt "model:ir.ui.menu,name:menu_modules"
+msgid "Modules"
+msgstr "模块"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr "注释"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
+msgid "Record Rules"
+msgstr "记录规则"
+
+msgctxt "model:ir.ui.menu,name:menu_scheduler"
+msgid "Scheduler"
+msgstr "调度器"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_form"
+msgid "Sequences"
+msgstr "序列"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "严格序列"
+
+msgctxt "model:ir.ui.menu,name:menu_sequences"
+msgid "Sequences"
+msgstr "序列"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_clean"
+msgid "Clean Translations"
+msgstr "清理翻译"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_export"
+msgid "Export Translations"
+msgstr "导出翻译"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_form"
+msgid "Translations"
+msgstr "翻译"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_set"
+msgid "Set Translations"
+msgstr "设置翻译"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_update"
+msgid "Synchronize Translations"
+msgstr "同步翻译"
+
+msgctxt "model:ir.ui.menu,name:menu_trigger_form"
+msgid "Triggers"
+msgstr "触发器"
+
+msgctxt "model:ir.ui.menu,name:menu_ui"
+msgid "User Interface"
+msgstr "用户界面"
+
+msgctxt "model:ir.ui.menu,name:menu_view"
+msgid "Views"
+msgstr "视图"
+
+msgctxt "model:ir.ui.menu,name:menu_view_search"
+msgid "View Search"
+msgstr "搜索视图"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
+msgid "Tree State"
+msgstr "树状态"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
+msgid "View Tree Width"
+msgstr "视图树宽度"
+
+msgctxt "model:ir.ui.menu,name:model_model_fields_form"
+msgid "Fields"
+msgstr "字段"
+
+msgctxt "model:ir.ui.menu.favorite,name:"
+msgid "Menu Favorite"
+msgstr "最喜欢的菜单"
+
+msgctxt "model:ir.ui.view,name:"
+msgid "View"
+msgstr "视图"
+
+msgctxt "model:ir.ui.view.show.start,name:"
+msgid "Show view"
+msgstr "显示视图"
+
+msgctxt "model:ir.ui.view_search,name:"
+msgid "View Search"
+msgstr "搜索视图"
+
+msgctxt "model:ir.ui.view_tree_state,name:"
+msgid "View Tree State"
+msgstr "视图树状态"
+
+msgctxt "model:ir.ui.view_tree_width,name:"
+msgid "View Tree Width"
+msgstr "视图树宽度"
+
+msgctxt "selection:ir.action,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action,records:"
+msgid "Selected"
+msgstr "已选定的节点"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Selected"
+msgstr "已选定的节点"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Action form"
+msgstr "动作表单"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Form relate"
+msgstr "关联表单"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open Graph"
+msgstr "打开表单"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open tree"
+msgstr "打开树形列表"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Print form"
+msgstr "打印表单"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.report,records:"
+msgid "Selected"
+msgstr "已选定的节点"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.url,records:"
+msgid "Selected"
+msgstr "已选定的节点"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Selected"
+msgstr "已选定的节点"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Link"
+msgstr "链接"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Days"
+msgstr "日"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Hours"
+msgstr "小时"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Minutes"
+msgstr "分钟"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Months"
+msgstr "月"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Weeks"
+msgstr "周"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "清空任务队列"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Run On Time Triggers"
+msgstr "运行基于时间的触发器"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Left-to-right"
+msgstr "从左向右"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Right-to-left"
+msgstr "从右向左"
+
+msgctxt "selection:ir.module,state:"
+msgid "Activated"
+msgstr "已启用"
+
+msgctxt "selection:ir.module,state:"
+msgid "Not Activated"
+msgstr "没有激活"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be activated"
+msgstr "待启用"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be removed"
+msgstr "待删除"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be upgraded"
+msgstr "待升级"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Done"
+msgstr "完成"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Open"
+msgstr "打开"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Activated"
+msgstr "已启用"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Not Activated"
+msgstr "未启用"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be activated"
+msgstr "待启用"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be removed"
+msgstr "待删除"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be upgraded"
+msgstr "待升级"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Unknown"
+msgstr "未知"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Decimal Timestamp"
+msgstr "十进制时间戳"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "十六进制时间戳"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Incremental"
+msgstr "升序"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Decimal Timestamp"
+msgstr "十进制时间戳"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "十六进制时间戳"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Incremental"
+msgstr "升序"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Help"
+msgstr "帮助"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Report"
+msgstr "报告"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Selection"
+msgstr "选择"
+
+msgctxt "selection:ir.translation,type:"
+msgid "View"
+msgstr "视图"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Wizard Button"
+msgstr "向导按钮"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Board"
+msgstr "面板"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Calendar"
+msgstr "日历"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Form"
+msgstr "表单"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Graph"
+msgstr "图"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "List Form"
+msgstr "清单表格"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Tree"
+msgstr "树"
+
+msgctxt "view:ir.action.act_window:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:ir.action.report:"
+msgid "Edit"
+msgstr "编辑"
+
+msgctxt "view:ir.action.report:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:ir.action.url:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:ir.action.wizard:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:ir.action:"
+msgid "General"
+msgstr "常规"
+
+msgctxt "view:ir.attachment:"
+msgid "Document"
+msgstr ""
+
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr "最近更改时间"
+
+msgctxt "view:ir.cron:"
+msgid "At"
+msgstr "在"
+
+msgctxt "view:ir.cron:"
+msgid "Every"
+msgstr "每"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "仅运行一次"
+
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr "隐藏收件人:"
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr "收件人:"
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr "次要收件人:"
+
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr "现在你可以将其他翻译加载到系统中."
+
+msgctxt "view:ir.lang:"
+msgid "Date Formatting"
+msgstr "日期格式"
+
+msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "货币格式"
+
+msgctxt "view:ir.lang:"
+msgid "Numbers Formatting"
+msgstr "数字格式"
+
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "模块已升级/激活."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "注意：本操作可能需要几分钟时间."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "系统将要升级."
+
+msgctxt "view:ir.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "设置完成."
+
+msgctxt "view:ir.module.config_wizard.first:"
+msgid ""
+"You will be able to configure your installation depending on the modules you"
+" have installed."
+msgstr "您将可以根据已安装的模块配置安装."
+
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "取消激活"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Deactivation"
+msgstr "取消 “取消激活” 操作"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Upgrade"
+msgstr "取消升级"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Activation"
+msgstr "标记为激活"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Deactivation (beta)"
+msgstr "标记为停用（测试版）"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Upgrade"
+msgstr "标记为升级"
+
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr "时间"
+
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "view:ir.rule.group:"
+msgid ""
+"If there is no test defined, the rule is always satisfied if not global."
+msgstr "如果没有定义测试，只要不是全局的，则始终满足规则."
+
+msgctxt "view:ir.rule.group:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr "任意一项测试结果为真，即判断符合规则."
+
+msgctxt "view:ir.sequence:"
+msgid "${day}"
+msgstr "${day}"
+
+msgctxt "view:ir.sequence:"
+msgid "${month}"
+msgstr "${month}"
+
+msgctxt "view:ir.sequence:"
+msgid "${year}"
+msgstr "${year}"
+
+msgctxt "view:ir.sequence:"
+msgid "Day:"
+msgstr "天："
+
+msgctxt "view:ir.sequence:"
+msgid "Incremental"
+msgstr "升序"
+
+msgctxt "view:ir.sequence:"
+msgid "Legend (Placeholders for prefix, suffix)"
+msgstr "前缀、后缀占位符"
+
+msgctxt "view:ir.sequence:"
+msgid "Month:"
+msgstr "月份："
+
+msgctxt "view:ir.sequence:"
+msgid "Timestamp"
+msgstr "时间戳"
+
+msgctxt "view:ir.sequence:"
+msgid "Year:"
+msgstr "年："
+
+msgctxt "view:ir.translation.clean.start:"
+msgid "Clean Translations?"
+msgstr "清理翻译 ?"
+
+msgctxt "view:ir.translation.clean.succeed:"
+msgid "Translations cleaned successfully."
+msgstr "翻译已成功清理."
+
+msgctxt "view:ir.translation.set.start:"
+msgid "Synchronize Translations?"
+msgstr "需要同步翻译吗？"
+
+msgctxt "view:ir.translation.set.succeed:"
+msgid "Translations set successfully."
+msgstr "翻译设置成功."
+
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr "加载"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
+msgid "Print"
+msgstr "打印"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "开始升级"
+
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
+msgid "Next"
+msgstr "下一步"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.translation.clean,start,clean:"
+msgid "Clean"
+msgstr "清理"
+
+msgctxt "wizard_button:ir.translation.clean,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.translation.clean,succeed,end:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:ir.translation.export,result,end:"
+msgid "Close"
+msgstr "关闭"
+
+msgctxt "wizard_button:ir.translation.export,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.translation.export,start,export:"
+msgid "Export"
+msgstr "导出"
+
+msgctxt "wizard_button:ir.translation.set,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.translation.set,start,set_:"
+msgid "Set"
+msgstr "设置"
+
+msgctxt "wizard_button:ir.translation.set,succeed,end:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:ir.translation.update,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:ir.translation.update,start,update:"
+msgid "Update"
+msgstr "更新"
+
+msgctxt "wizard_button:ir.ui.view.show,start,end:"
+msgid "Close"
+msgstr "关闭"

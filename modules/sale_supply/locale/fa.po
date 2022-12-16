@@ -1,0 +1,42 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "عرضه در فروش"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "عرضه در فروش"
+
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "سطرهای فروش"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "درخواست خرید"
+
+#, fuzzy
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "عرضه در فروش"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "درخواست های خرید"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Requested"
+msgstr "درخواست شده"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr ""

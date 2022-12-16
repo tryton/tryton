@@ -1,0 +1,88 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Steuergruppe Istversteuerung"
+
+msgctxt "field:account.invoice,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Steuergruppe Istversteuerung"
+
+msgctxt "field:account.invoice.tax.group.cash,invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:account.invoice.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Steuergruppe"
+
+msgctxt "field:account.period,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Steuergruppe Istversteuerung"
+
+msgctxt "field:account.tax.group.cash,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Geschäftsjahr"
+
+msgctxt "field:account.tax.group.cash,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.tax.group.cash,period:"
+msgid "Period"
+msgstr "Buchungszeitraum"
+
+msgctxt "field:account.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Steuergruppe"
+
+msgctxt "field:account.tax.line,on_cash_basis:"
+msgid "On Cash Basis"
+msgstr "Istversteuerung"
+
+msgctxt "field:account.tax.line,period:"
+msgid "Period"
+msgstr "Buchungszeitraum"
+
+msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
+msgid "Supplier Tax Group On Cash Basis"
+msgstr "Steuergruppe Lieferant Istversteuerung"
+
+msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this fiscal year."
+msgstr "Die Steuergruppe bei Istversteuerung für dieses Geschäftsjahr."
+
+msgctxt "help:account.invoice,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this invoice."
+msgstr "Die Steuergruppe bei Istversteuerung für diese Rechnung."
+
+msgctxt "help:account.period,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this period."
+msgstr "Die Steuergruppe bei Istversteuerung für diesen Buchungszeitraum."
+
+msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this supplier."
+msgstr "Die Steuergruppe bei Istversteuerung für diesen Lieferanten."
+
+msgctxt "model:account.invoice.tax.group.cash,name:"
+msgid "Tax Group on Cash Basis per Invoice"
+msgstr "Steuergruppe für Istversteuerung pro Rechnung"
+
+msgctxt "model:account.tax.group.cash,name:"
+msgid "Tax Group On Cash Basis"
+msgstr "Steuergruppe Istversteuerung"
+
+msgctxt "model:ir.message,text:msg_close_period_line_payment"
+msgid ""
+"To close period \"%(period)s\" you must link all payable/receivable lines to"
+" invoices."
+msgstr ""
+"Damit der Buchungszeitraum \"%(period)s\" geschlossen werden kann, müssen "
+"alle Buchungszeilen für Forderungen/Verbindlichkeiten mit Rechnungen "
+"verknüpft sein."
+
+msgctxt "view:account.fiscalyear:"
+msgid "Taxes"
+msgstr "Steuern"
