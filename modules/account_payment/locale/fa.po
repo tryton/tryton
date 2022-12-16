@@ -1,0 +1,572 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "توالی گروه پرداخت"
+
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "توالی گروه پرداخت"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "پرداخت مستقیم"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "مبلغ پرداختی"
+
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr "مسدود شده"
+
+#, fuzzy
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "مبلغ پرداختی"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "پرداخت مستقیم"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "نوع پرداخت"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
+msgstr "روزنامه ها"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "نوع"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "خط"
+
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "روش پردازش"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "نوع"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "عدد"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "مبلغ پرداختی"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "موفق شد"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "گروه پرداخت"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "مبلغ پرداختی"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "روش پردازش"
+
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "پرداخت مستقیم"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "پرداخت مستقیم"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "پرداخت مستقیم"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "تیک بزنید اگر صورتحساب با پرداخت مستقیم پرداخت می شود."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "تیک بزنید اگر خط با پرداخت مستقیم پرداخت می شود."
+
+msgctxt "help:account.move.line.pay.start,date:"
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr ""
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "تیک بزنید اگر تأمین کننده پرداخت مستقیم دارد."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "تیک بزنید اگر تأمین کننده پرداخت مستقیم دارد."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "پیکربندی حساب توالی گروه پرداخت"
+
+msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "خط پرداخت"
+
+#, fuzzy
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "خط پرداخت"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "پرداخت"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "گروه پرداخت"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "روزنامه پرداخت"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "روند پرداخت"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "خطوط برای پرداخت"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "خطوط پرداخت"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "گروه های پرداخت"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "روزنامه های پرداخت"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "پردازش پرداخت ها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "قابل پرداخت"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "قابل دریافت"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "تایید شده"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "ناموفق"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "موفق شد"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان : \"%(party)s\"  را حذف کنید در حالی که آنها در "
+"انتظار پرداخت با شرکت: \"%(company)s\" هستند."
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr "سطر: \"%(line)s\"برای پرداخت مسدود شده است."
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+"برای حذف پرداخت:\"%(payment)s\" شما باید حالت آنرا به پیش نویس تنظیم مجدد "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr "پرداخت : \"%s\" سطر: \"%s\" را بیش از مقدار پرداخت می کند."
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Pay Lines"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Block"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "Unblock"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Fail"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "حساب پیش فرض گروه پرداخت"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "حساب گروه پرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "خطوط برای پرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "گروه های پرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "روزنامه های پرداخت"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr "پرداخت نهاد/سازمان با پرداخت مستقیم"
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "پرداخت"
+
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr "تایید پرداخت"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "قابل پرداخت"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "قابل دریافت"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "قابل پرداخت"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "قابل دریافت"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "تایید شده"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "ناموفق"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "موفق شد"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "قابل پرداخت"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "قابل دریافت"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "ادامه گروه"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "پرداخت"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "پرداخت ها"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "موفق شد"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "مقدار"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "پردازش پرداخت ها؟"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "پرداخت"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
+msgid "Pay"
+msgstr "پرداخت"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "پردازش"

@@ -1,0 +1,348 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Analytic Lines"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr ""
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr ""
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr ""
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr ""
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr ""
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr ""
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr ""
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr ""
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr ""
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Analytic Accounts"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr ""
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Analytic Account"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Analytic Lines"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Analytic Rules"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Analytic Lines"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Analytic Lines to Complete"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Open Account"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytic Rules"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Analytic Rules"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Analytic Account"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Analytic Lines to Complete"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytic Rules"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Analytic Administration"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr ""
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr ""

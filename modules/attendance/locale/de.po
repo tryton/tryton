@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:attendance.line,at:"
+msgid "At"
+msgstr "Um"
+
+msgctxt "field:attendance.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:attendance.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.line,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:attendance.line,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:attendance.period,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:attendance.period,ends_at:"
+msgid "Ends at"
+msgstr "Endet um"
+
+msgctxt "field:attendance.period,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:attendance.sheet,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:attendance.sheet,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.sheet,duration:"
+msgid "Duration"
+msgstr "Dauer"
+
+msgctxt "field:attendance.sheet,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:attendance.sheet,lines:"
+msgid "Lines"
+msgstr "Einträge"
+
+msgctxt "field:attendance.sheet,timesheet_duration:"
+msgid "Timesheet Duration"
+msgstr "Zeiterfassung Dauer"
+
+msgctxt "field:attendance.sheet.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:attendance.sheet.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.sheet.line,duration:"
+msgid "Duration"
+msgstr "Dauer"
+
+msgctxt "field:attendance.sheet.line,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:attendance.sheet.line,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:attendance.sheet.line,sheet:"
+msgid "Sheet"
+msgstr "Liste"
+
+msgctxt "field:attendance.sheet.line,to:"
+msgid "To"
+msgstr "Bis"
+
+msgctxt "help:attendance.line,company:"
+msgid "The company which the employee attended."
+msgstr "Das Unternehmen für das der Mitarbeiter anwesend war."
+
+msgctxt "help:attendance.period,company:"
+msgid "The company the period is associated with."
+msgstr "Das Unternehmen dem diese Periode zugeordnet ist."
+
+msgctxt "help:attendance.period,state:"
+msgid "The current state of the attendance period."
+msgstr "Der aktuelle Status der Anwesenheitsperiode."
+
+msgctxt "model:attendance.line,name:"
+msgid "Attendance Line"
+msgstr "Anwesenheitseintrag"
+
+msgctxt "model:attendance.period,name:"
+msgid "Attendance Period"
+msgstr "Anwesenheitsperiode"
+
+msgctxt "model:attendance.sheet,name:"
+msgid "Attendance Sheet"
+msgstr "Anwesenheitsliste"
+
+msgctxt "model:attendance.sheet.line,name:"
+msgid "Attendance SheetLine"
+msgstr "Anwesenheitszeile"
+
+msgctxt "model:ir.action,name:act_attendance"
+msgid "Attendances"
+msgstr "Anwesenheiten"
+
+msgctxt "model:ir.action,name:act_period_list"
+msgid "Attendance Periods"
+msgstr "Anwesenheitsperioden"
+
+msgctxt "model:ir.action,name:act_sheet"
+msgid "Attendance Sheet"
+msgstr "Anwesenheitsliste"
+
+msgctxt "model:ir.message,text:msg_close_period_previous_open"
+msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
+msgstr ""
+"Damit Periode \"%(period)s\" geschlossen werden kann muss zuerst "
+"\"%(other_period)s\" geschlossen werden."
+
+msgctxt "model:ir.message,text:msg_delete_period_close"
+msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Um Anwesenheitseintrag \"%(attendance)s\" zu löschen muss zuerst die Periode"
+" \"%(period)s\" wieder geöffnet werden."
+
+msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
+msgid ""
+"To change period \"%(period)s\" you must first change \"%(other_period)s\" "
+"to draft."
+msgstr ""
+"Um die Periode \"%(period)s\" zu ändern muss zuerst die Periode "
+"\"%(other_period)s\" auf Entwurf gesetzt werden."
+
+msgctxt "model:ir.message,text:msg_modify_period_close"
+msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Um den Anwesenheitseintrag \"%(attendance)s\" zu ändern, muss die Periode "
+"\"%(period)s\" wieder geöffnet werden."
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Schließen"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance"
+msgid "Own attendance"
+msgstr "Eigene Anwesenheit"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
+msgid "Any attendance"
+msgstr "Alle Anwesenheiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet"
+msgid "Own attendance sheet"
+msgstr "Eigene Anwesenheitsliste"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
+msgid "Any attendance sheet"
+msgstr "Alle Anwesenheitslisten"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
+msgid "Own attendance sheet line"
+msgstr "Eigene Anwesenheitseinträge"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
+msgid "Any attendance sheet line"
+msgstr "Alle Anwesenheitseinträge"
+
+msgctxt "model:ir.ui.menu,name:menu_attendance"
+msgid "Attendances"
+msgstr "Anwesenheiten"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_main_attendance"
+msgid "Attendance"
+msgstr "Anwesenheit"
+
+msgctxt "model:ir.ui.menu,name:menu_period_list"
+msgid "Attendance Periods"
+msgstr "Anwesenheitsperioden"
+
+msgctxt "model:ir.ui.menu,name:menu_sheet"
+msgid "Attendance Sheet"
+msgstr "Anwesenheitsliste"
+
+msgctxt "model:res.group,name:group_attendance_admin"
+msgid "Attendance Administration"
+msgstr "Anwesenheit Administration"
+
+msgctxt "selection:attendance.line,type:"
+msgid "In"
+msgstr "Ein"
+
+msgctxt "selection:attendance.line,type:"
+msgid "Out"
+msgstr "Aus"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Closed"
+msgstr "Geschlossen"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:attendance.line:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "view:attendance.line:"
+msgid "Time"
+msgstr "Uhrzeit"
+
+msgctxt "view:attendance.period:"
+msgid "Time"
+msgstr "Uhrzeit"

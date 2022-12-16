@@ -1,0 +1,491 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,agent:"
+msgid "Commission Agent"
+msgstr "Vertreter"
+
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr "Vertreter übernehmen"
+
+msgctxt "field:account.invoice.line,commissions:"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "field:account.invoice.line,from_commissions:"
+msgid "From Commissions"
+msgstr "Aus Provisionen"
+
+msgctxt "field:account.invoice.line,principal:"
+msgid "Commission Principal"
+msgstr "Provisionsschuldner"
+
+msgctxt "field:commission,agent:"
+msgid "Agent"
+msgstr "Vertreter"
+
+msgctxt "field:commission,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:commission,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:commission,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:commission,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:commission,invoice_state:"
+msgid "Invoice State"
+msgstr "Rechnungsstatus"
+
+msgctxt "field:commission,origin:"
+msgid "Origin"
+msgstr "Herkunft"
+
+msgctxt "field:commission,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:commission,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:commission.agent,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:commission.agent,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:commission.agent,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:commission.agent,pending_amount:"
+msgid "Pending Amount"
+msgstr "Ausstehender Betrag"
+
+msgctxt "field:commission.agent,plan:"
+msgid "Plan"
+msgstr "Plan"
+
+msgctxt "field:commission.agent,selections:"
+msgid "Selections"
+msgstr "Zuweisungen"
+
+msgctxt "field:commission.agent,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:commission.agent.selection,agent:"
+msgid "Agent"
+msgstr "Vertreter"
+
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:commission.agent.selection,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:commission.agent.selection,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:commission.agent.selection,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:commission.create_invoice.ask,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:commission.create_invoice.ask,to:"
+msgid "To"
+msgstr "Bis"
+
+msgctxt "field:commission.create_invoice.ask,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:commission.plan,commission_method:"
+msgid "Commission Method"
+msgstr "Provisionsmethode"
+
+msgctxt "field:commission.plan,commission_product:"
+msgid "Commission Product"
+msgstr "Provisionsartikel"
+
+msgctxt "field:commission.plan,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:commission.plan,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Kategorie"
+
+msgctxt "field:commission.plan.line,formula:"
+msgid "Formula"
+msgstr "Formel"
+
+msgctxt "field:commission.plan.line,plan:"
+msgid "Plan"
+msgstr "Plan"
+
+msgctxt "field:commission.plan.line,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr "Vertreter"
+
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "Provisionsschuldner"
+
+msgctxt "field:product.template,principals:"
+msgid "Commission Principals"
+msgstr "Provisionsschuldner"
+
+msgctxt "field:product.template-commission.agent,agent:"
+msgid "Agent"
+msgstr "Vertreter"
+
+msgctxt "field:product.template-commission.agent,template:"
+msgid "Template"
+msgstr "Vorlage"
+
+msgctxt "field:sale.line,principal:"
+msgid "Commission Principal"
+msgstr "Provisionsschuldner"
+
+msgctxt "field:sale.sale,agent:"
+msgid "Commission Agent"
+msgstr "Vertreter"
+
+msgctxt "help:account.invoice,agent:"
+msgid "The agent who receives a commission for the invoice."
+msgstr "Der Vertreter, der eine Provision für diese Rechnung erhält."
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
+msgstr "Auswählen um den ursprünglichen Vertreter der Rechnung beizubehalten."
+
+msgctxt "help:account.invoice.line,principal:"
+msgid "The principal who pays a commission for the invoice line."
+msgstr "Der Auftraggeber, der für diese Rechnung eine Provision zahlt."
+
+msgctxt "help:commission,date:"
+msgid "When the commission is due."
+msgstr "Zeitpunkt an dem die Provision fällig ist."
+
+msgctxt "help:commission,invoice_state:"
+msgid "The current state of the invoice that the commission appears on."
+msgstr "Der aktuelle Status der Rechnung auf der die Provision basiert."
+
+msgctxt "help:commission,origin:"
+msgid "The source of the commission."
+msgstr "Die Grundlage für die Provision."
+
+msgctxt "help:commission,product:"
+msgid "The product that is used on the invoice line."
+msgstr "Der auf der Rechnungsposition verwendete Artikel."
+
+msgctxt "help:commission.agent,party:"
+msgid "The party for whom the commission is calculated."
+msgstr "Die Partei der die Provision gewährt wird."
+
+msgctxt "help:commission.agent,plan:"
+msgid "The plan used to calculate the commission."
+msgstr "Der für die Berechnung der Provision verwendete Plan."
+
+msgctxt "help:commission.agent.selection,end_date:"
+msgid "The last date that the agent will be considered for selection."
+msgstr ""
+"Das letzte Datum an dem der Vertreter zur Zuweisung berücksichtigt wird."
+
+msgctxt "help:commission.agent.selection,start_date:"
+msgid "The first date that the agent will be considered for selection."
+msgstr ""
+"Das erste Datum an dem der Vertreter zur Zuweisung berücksichtigt wird."
+
+msgctxt "help:commission.create_invoice.ask,from_:"
+msgid "Limit to commissions from this date."
+msgstr "Beschränkung auf Provisionen ab diesem Datum."
+
+msgctxt "help:commission.create_invoice.ask,to:"
+msgid "Limit to commissions to this date."
+msgstr "Beschränkung auf Provisionen bis zu diesem Datum."
+
+msgctxt "help:commission.create_invoice.ask,type_:"
+msgid "Limit to commissions of this type."
+msgstr "Beschränkung auf Provisionen dieses Typs."
+
+msgctxt "help:commission.plan,commission_method:"
+msgid "When the commission is due."
+msgstr "Bei Fälligkeit der Provision."
+
+msgctxt "help:commission.plan,commission_product:"
+msgid "The product that is used on the invoice lines."
+msgstr "Der Artikel der auf den Rechnungspositionen verwendet wird."
+
+msgctxt "help:commission.plan,lines:"
+msgid "The formulas used to calculate the commission for different criteria."
+msgstr ""
+"Die Formeln, die zur Berechnung der Provisionen anhand verschiedener "
+"Kriterien verwendet werden."
+
+msgctxt "help:commission.plan.line,category:"
+msgid "Apply only to products in the category."
+msgstr "Anwendung nur auf Artikel dieser Kategorie."
+
+msgctxt "help:commission.plan.line,formula:"
+msgid ""
+"The python expression used to calculate the amount of commission for the line.\n"
+"It is evaluated with:\n"
+"- amount: the original amount"
+msgstr ""
+"Python Ausdruck, der für die Berechnung des auf der Position basierenden Provisionsbetrags verwendet wird.\n"
+"Er wird ausgewertet mit:\n"
+"- amount: der originale Betrag"
+
+msgctxt "help:commission.plan.line,plan:"
+msgid "The plan to which the line belongs."
+msgstr "Der Provisionsplan zu dem diese Position gehört."
+
+msgctxt "help:commission.plan.line,product:"
+msgid "Apply only to the product."
+msgstr "Anwendung nur auf diesen Artikel."
+
+msgctxt "help:product.product,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"Die Auftraggeber, die eine Provision zahlen wenn der Artikel verkauft wird."
+
+msgctxt "help:product.template,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"Die Auftraggeber, die eine Provision zahlen wenn der Artikel verkauft wird."
+
+msgctxt "help:sale.line,principal:"
+msgid "The principal who pays a commission for the line."
+msgstr "Der Auftraggeber, der für diese Position eine Provision zahlt."
+
+msgctxt "help:sale.sale,agent:"
+msgid "The agent who receives a commission for the sale."
+msgstr "Der Vertreter, der für den Verkauf eine Provision erhält."
+
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "Provision"
+
+msgctxt "model:commission,name:"
+msgid "Commission"
+msgstr "Provision"
+
+msgctxt "model:commission.agent,name:"
+msgid "Commission Agent"
+msgstr "Vertreter"
+
+msgctxt "model:commission.agent.selection,name:"
+msgid "Agent Selection"
+msgstr "Vertreter Zuweisung"
+
+msgctxt "model:commission.create_invoice.ask,name:"
+msgid "Create Commission Invoice"
+msgstr "Provisionsrechnung erstellen"
+
+msgctxt "model:commission.plan,name:"
+msgid "Commission Plan"
+msgstr "Provisionsplan"
+
+msgctxt "model:commission.plan.line,name:"
+msgid "Commission Plan Line"
+msgstr "Provisionsplan Position"
+
+msgctxt "model:ir.action,name:act_agent_form"
+msgid "Agents"
+msgstr "Vertreter"
+
+msgctxt "model:ir.action,name:act_agent_selections"
+msgid "Selections"
+msgstr "Zuweisungen"
+
+msgctxt "model:ir.action,name:act_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Provisionsrechnungen erstellen"
+
+msgctxt "model:ir.action,name:act_commission_form"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "model:ir.action,name:act_commission_form2"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "model:ir.action,name:act_commission_from_relate"
+msgid "From Commissions"
+msgstr "Aus Provisionen"
+
+msgctxt "model:ir.action,name:act_commission_relate"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "model:ir.action,name:act_plan_form"
+msgid "Commission Plans"
+msgstr "Provisionspläne"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+"Partei \"%(party)s\" kann nicht gelöscht werden, solange noch unerledigte "
+"Provisionen bei Unternehmen \"%(company)s\" bestehen."
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ungültige Formel \"%(formula)s\" in Provisionsplanposition \"%(line)s\" mit "
+"Fehlermeldung \"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_agent_form"
+msgid "Agents"
+msgstr "Vertreter"
+
+msgctxt "model:ir.ui.menu,name:menu_commission"
+msgid "Commission"
+msgstr "Provisionen"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Provisionsrechnungen erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_form"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_plan_form"
+msgid "Commission Plans"
+msgstr "Provisionspläne"
+
+msgctxt "model:product.template-commission.agent,name:"
+msgid "Product Template - Commission Agent"
+msgstr "Artikelvorlage - Kommissonsvertreter"
+
+msgctxt "model:res.group,name:group_commission"
+msgid "Commission"
+msgstr "Provision"
+
+msgctxt "model:res.group,name:group_commission_admin"
+msgid "Commission Administration"
+msgstr "Provision Administration"
+
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "Provision"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Invoiced"
+msgstr "Fakturiert"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Paid"
+msgstr "Bezahlt"
+
+msgctxt "selection:commission,type_:"
+msgid "Incoming"
+msgstr "Eingehend"
+
+msgctxt "selection:commission,type_:"
+msgid "Outgoing"
+msgstr "Ausgehend"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Agent Of"
+msgstr "Vertreter von"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Principal Of"
+msgstr "Auftraggeber von"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Both"
+msgstr "Beides"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Incoming"
+msgstr "Eingehend"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Outgoing"
+msgstr "Ausgehend"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Payment"
+msgstr "Bei Bezahlung der Rechnung"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Posting"
+msgstr "Bei Festschreibung der Rechnung"
+
+msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "view:commission.agent.selection:"
+msgid "Criteria"
+msgstr "Kriterien"
+
+msgctxt "view:party.party:"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Provisionen"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Abbrechen"

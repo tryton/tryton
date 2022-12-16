@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_marketing">
+            <field name="name">Marketing</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_marketing">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_marketing"/>
+        </record>
+
+        <record model="ir.ui.icon" id="marketing_icon">
+            <field name="name">tryton-marketing</field>
+            <field name="path">icons/tryton-marketing.svg</field>
+        </record>
+
+        <menuitem name="Marketing" id="menu_marketing" sequence="6" icon="tryton-marketing"/>
+        <record model="ir.ui.menu-res.group" id="menu_marketing_group_marketing">
+            <field name="menu" ref="menu_marketing"/>
+            <field name="group" ref="group_marketing"/>
+        </record>
+    </data>
+</tryton>
