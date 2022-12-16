@@ -1,0 +1,81 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Verzendservice"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "verzendlabel"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Verzendreferentie"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Hoogte"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Hoogte decimalen"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Hoogte eenheid"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Lengte"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "lengte decimalen"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Lengte-eenheid"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Breedte"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "decimalen breedte"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Breedte eenheid"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Verzending omschrijving"
+
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Maak verzending"
+
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+"Om verzendlabels te maken voor verzending \"%(shipment)s\", moet u deze "
+"verpakken."
+
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "De zending \"\"%(shipment)s\" heeft geen koerier."
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Maak een verzending voor de pakketten"
+
+msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
+msgid "Shipping"
+msgstr "Verzenden"
+
+msgctxt "view:stock.package.type:"
+msgid "Dimensions"
+msgstr "afmetingen"
