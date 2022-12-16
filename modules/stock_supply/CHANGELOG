@@ -1,0 +1,95 @@
+Version 4.6.4 - 2019-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.3 - 2019-04-02
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.2 - 2018-11-16
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.1 - 2018-08-20
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Add warning for late customer moves
+* Change supply period into TimeDelta
+* Add support for overflowing quantities
+* Merge supply into one wizard
+* Improve computation of max lead time
+* Generate request internal shipments recursively
+* Do not create purchase request if other order point exists
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add configuration for the supply period
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Move purchase request to purchase_request module
+* Add Python3 support
+* Add searcher on purchase
+* Adding exception state on the purchase requests
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Generate purchase requests even if rounding set the quantity to 0
+* Add searcher on purchase_request's state
+* Add default internal provisioning per location
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add relate from product to order points
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Allow to calculate purchase requests filtered by warehouse
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Add wizard to create internal shipments
+* Add warning for late supplier moves when creating purchase request
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* find_best_supplier doesn't optimize anymore on the delivery delay
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Generate also purchase requests for assets
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Warehouse is not always required
+* get_shortage works on a list of products
+* Group purchases using a key
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Add wizard to create purchase requests
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
