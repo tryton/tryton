@@ -1,0 +1,345 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value!"
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be %s!"
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion!"
+msgstr ""
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr ""
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:account.statement,lines:"
+msgid "Transactions"
+msgstr ""
+
+msgctxt "field:account.statement,move_lines:"
+msgid "Move Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Статус"
+
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "field:account.statement.line,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr ""
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr ""
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr ""
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_draft_statement_form"
+msgid "Draft Statements"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_posted_statement_form"
+msgid "Posted Statements"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "All Statement"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_validated_statement_form"
+msgid "Validated Statement"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
+msgid "Draft Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
+msgid "Posted Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "All Statement"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
+msgid "Validated Statement"
+msgstr ""
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Отменено"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr ""
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr ""
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr ""
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr ""
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Reset to Draft"
+msgstr "Сброс в черновики"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr ""

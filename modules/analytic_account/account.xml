@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Analytic Account" parent="account.menu_account_configuration"
+            id="menu_analytic_account_configuration"/>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">analytic_account.account</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Analytic Account" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="6">
+                        <page string="General Information" id="general">
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="display_balance"/>
+                            <field name="display_balance"/>
+                            <label name="root"/>
+                            <field name="root"/>
+                            <label name="parent"/>
+                            <field name="parent"/>
+                            <label name="company"/>
+                            <field name="company"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <label name="mandatory"/>
+                            <field name="mandatory"/>
+                        </page>
+                        <page string="Notes" id="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                    <group colspan="6" col="2" id="state">
+                        <label name="state"/>
+                        <field name="state"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Analytic Accounts">
+                    <field name="rec_name"/>
+                    <field name="company"/>
+                    <field name="type"/>
+                    <field name="active" tree_invisible="1"/>
+                    <field name="name" tree_invisible="1"/>
+                    <field name="code" tree_invisible="1"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="childs" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_view_list">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Analytic Accounts">
+                    <field name="rec_name"/>
+                    <field name="company"/>
+                    <field name="type"/>
+                    <field name="active" tree_invisible="1"/>
+                    <field name="name" tree_invisible="1"/>
+                    <field name="code" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_tree">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_analytic_account_configuration"
+            action="act_account_tree" id="menu_account_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_list">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <menuitem parent="menu_account_tree"
+            action="act_account_list" id="menu_account_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="account_view_tree2">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Analytic Accounts" keyword_open="1">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="currency"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_tree2">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree2"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_chart">
+            <field name="name">Open Chart of Analytic Accounts</field>
+            <field name="wiz_name">analytic_account.open_chart</field>
+        </record>
+        <menuitem parent="account.menu_charts" action="act_open_chart"
+            icon="tryton-tree" id="menu_open_chart"/>
+
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="group" ref="group_analytic_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account">
+            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'analytic_account.account')]"/>
+            <field name="operator">in</field>
+            <field name="operand">User/Current Companies</field>
+            <field name="rule_group" ref="rule_group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_chart_start_view_form">
+            <field name="model">analytic_account.open_chart.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Chart of Analytic Accounts">
+                    <label name="start_date"/>
+                    <field name="start_date"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

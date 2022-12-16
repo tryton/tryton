@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required on line \"%s\" (%d)!"
+msgstr "Compte analytique requis sur la ligne \"%s\" (%d)!"
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required on line \"%s\" (%d)!"
+msgstr "Compte analytique requis sur la ligne \"%s\" (%d)!"
+
+msgctxt "field:purchase.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Comptes analytiques"

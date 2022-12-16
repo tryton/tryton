@@ -1,0 +1,67 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,open_date:"
+msgid "Open Date"
+msgstr "Data d'obertura"
+
+msgctxt "field:account.invoice.payment_term.line.delay,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.delay,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:account.invoice.payment_term.line.delay,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
+msgid ""
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delay,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delay,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.type,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.line.type,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:account.invoice.payment_term.line.type,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.type,rec_name:"
+msgid ""
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.type,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.type,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line.delay,name:"
+msgid "account.invoice.payment_term.line.delay"
+msgstr "Linea de retard del termini de pagament"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line.type,name:"
+msgid "account.invoice.payment_term.line.type"
+msgstr "Tipus de línia del termini de pagament"
