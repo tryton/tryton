@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Imprimer sur la lettre"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Lettre de relance"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Date d'échéance"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "E-Mail:"
+msgstr "E-Mail:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Paiements en attente reçus"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Phone:"
+msgstr "Téléphone :"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avis de rappel"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "VAT Number:"
+msgstr "Numéro TVA :"
