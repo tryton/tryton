@@ -1,0 +1,107 @@
+type,name,res_id,src,value,fuzzy
+error,analytic_account.account,0,You can not create recursive accounts!,¡No puede crear cuentas recursivas!,0
+error,purchase.line,0,"It misses an ""Account Expense"" on product ""%s""!","Falta una propiedad por defecto ""Account Expense""!",0
+error,purchase.line,0,The supplier location is required!,Se requiere la localización del proveedor!,0
+error,purchase.purchase,0,"Analytic account is required on line ""%s"" (%d)!","Se requiere una cuenta analítica en la línea ""%s"" (%d)!",0
+error,purchase.purchase,0,Invoice addresses must be defined for the quotation.,Factura direccionada debe ser definida por el presupuesto.,0
+error,purchase.purchase,0,"It misses an ""Account Payable"" on the party ""%s""!","Falta una ""Cuenta Pagadera"" en el tercero ""%s""!",0
+field,"analytic_account.account,active",0,Active,Activo,0
+field,"analytic_account.account,balance",0,Balance,Balance,0
+field,"analytic_account.account,childs",0,Children,Descendientes,0
+field,"analytic_account.account,code",0,Code,Código,0
+field,"analytic_account.account,company",0,Company,Compañía,0
+field,"analytic_account.account,credit",0,Credit,Crédito,0
+field,"analytic_account.account,currency",0,Currency,Moneda,0
+field,"analytic_account.account,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"analytic_account.account,debit",0,Debit,Débito,0
+field,"analytic_account.account,display_balance",0,Display Balance,Mostrar Balance,0
+field,"analytic_account.account,mandatory",0,Mandatory,Obligatorio,0
+field,"analytic_account.account,name",0,Name,Nombre,0
+field,"analytic_account.account,note",0,Note,Nota,0
+field,"analytic_account.account,parent",0,Parent,Padre,0
+field,"analytic_account.account,rec_name",0,Name,Nombre,0
+field,"analytic_account.account,root",0,Root,Raíz,0
+field,"analytic_account.account,state",0,State,Estado,0
+field,"analytic_account.account,type",0,Type,Tipo,0
+field,"purchase.line,amount",0,Amount,Cantidad,0
+field,"purchase.line,analytic_accounts",0,Analytic Accounts,Cuentas Analíticas,0
+field,"purchase.line,description",0,Description,Descripción,0
+field,"purchase.line,invoice_lines",0,Invoice Lines,Líneas de Factura,0
+field,"purchase.line,move_done",0,Moves Done,Movimientos Hechos,0
+field,"purchase.line,move_exception",0,Moves Exception,Exepción de Movimientos,0
+field,"purchase.line,moves",0,Moves,Movimientos,0
+field,"purchase.line,moves_ignored",0,Ignored Moves,Movimientos Ignorados,0
+field,"purchase.line,moves_recreated",0,Recreated Moves,Movimientos Recreados,0
+field,"purchase.line,note",0,Note,Nota,0
+field,"purchase.line,product",0,Product,Producto,0
+field,"purchase.line,purchase",0,Purchase,Compra,0
+field,"purchase.line,quantity",0,Quantity,Cantidad,0
+field,"purchase.line,rec_name",0,Name,Nombre,0
+field,"purchase.line,sequence",0,Sequence,Secuencia,0
+field,"purchase.line,taxes",0,Taxes,Impuestos,0
+field,"purchase.line,type",0,Type,Tipo,0
+field,"purchase.line,unit",0,Unit,Unidad,0
+field,"purchase.line,unit_digits",0,Unit Digits,Dígitos de Unidad,0
+field,"purchase.line,unit_price",0,Unit Price,Precio Unitario,0
+field,"purchase.purchase,comment",0,Comment,Comentario,0
+field,"purchase.purchase,company",0,Company,Compañía,0
+field,"purchase.purchase,currency",0,Currency,Moneda,0
+field,"purchase.purchase,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"purchase.purchase,description",0,Description,Descripción,0
+field,"purchase.purchase,invoice_address",0,Invoice Address,Dirección de Facturación,0
+field,"purchase.purchase,invoice_exception",0,Invoices Exception,Excepción de Facturación,0
+field,"purchase.purchase,invoice_method",0,Invoice Method,Método de Facturación,0
+field,"purchase.purchase,invoice_paid",0,Invoices Paid,Facturas Pagadas,0
+field,"purchase.purchase,invoices",0,Invoices,Facturas,0
+field,"purchase.purchase,invoices_ignored",0,Ignored Invoices,Facturas Ignoradas,0
+field,"purchase.purchase,invoices_recreated",0,Recreated Invoices,Facturas Recreadas,0
+field,"purchase.purchase,invoice_state",0,Invoice State,Estado de Factura,0
+field,"purchase.purchase,lines",0,Lines,Líneas,0
+field,"purchase.purchase,moves",0,Moves,Movimientos,0
+field,"purchase.purchase,packing_done",0,Shipment Done,Envío Finalizado,0
+field,"purchase.purchase,packing_exception",0,Shipments Exception,Excepción de Envíos,0
+field,"purchase.purchase,packings",0,Shipments,Envíos,0
+field,"purchase.purchase,packing_state",0,Shipment State,Estado de Envío,0
+field,"purchase.purchase,party",0,Party,Tercero,0
+field,"purchase.purchase,party_lang",0,Party Language,Idioma del Tercero,0
+field,"purchase.purchase,payment_term",0,Payment Term,Término de Pago,0
+field,"purchase.purchase,purchase_date",0,Purchase Date,Fecha de Compra,0
+field,"purchase.purchase,rec_name",0,Name,Nombre,0
+field,"purchase.purchase,reference",0,Reference,Referencia,0
+field,"purchase.purchase,state",0,State,Estado,0
+field,"purchase.purchase,supplier_reference",0,Supplier Reference,Referencia del Proveedor,0
+field,"purchase.purchase,tax_amount",0,Tax,Impuesto,0
+field,"purchase.purchase,total_amount",0,Total,Total,0
+field,"purchase.purchase,untaxed_amount",0,Untaxed,Sin Impuesto,0
+field,"purchase.purchase,warehouse",0,Warehouse,Depósito,0
+model,"analytic_account.account,name",0,Analytic Account,Cuenta Analítica,0
+model,"purchase.line,name",0,Purchase Line,Línea de Compra,0
+model,"purchase.purchase,name",0,Purchase,Compra,0
+selection,"analytic_account.account,display_balance",0,Credit - Debit,Crédito - Débito,0
+selection,"analytic_account.account,display_balance",0,Debit - Credit,Débito - Crédito,0
+selection,"analytic_account.account,state",0,Closed,Cerrado,0
+selection,"analytic_account.account,state",0,Draft,Borrador,0
+selection,"analytic_account.account,state",0,Opened,Abierto,0
+selection,"analytic_account.account,type",0,Normal,Normal,0
+selection,"analytic_account.account,type",0,Root,Raíz,0
+selection,"analytic_account.account,type",0,View,Vista,0
+selection,"purchase.line,type",0,Comment,Comentario,0
+selection,"purchase.line,type",0,Line,Línea,0
+selection,"purchase.line,type",0,Subtotal,Subtotal,0
+selection,"purchase.line,type",0,Title,Título,0
+selection,"purchase.purchase,invoice_method",0,Based On Order,Basado En La Orden,0
+selection,"purchase.purchase,invoice_method",0,Based On Shipment,Basado En El Envío,0
+selection,"purchase.purchase,invoice_method",0,Manual,Manual,0
+selection,"purchase.purchase,invoice_state",0,Exception,Excepción,0
+selection,"purchase.purchase,invoice_state",0,None,Ninguno,0
+selection,"purchase.purchase,invoice_state",0,Paid,Pagado,0
+selection,"purchase.purchase,invoice_state",0,Waiting,En Espera,0
+selection,"purchase.purchase,packing_state",0,Exception,Excepción,0
+selection,"purchase.purchase,packing_state",0,None,Ninguno,0
+selection,"purchase.purchase,packing_state",0,Received,Recibido,0
+selection,"purchase.purchase,packing_state",0,Waiting,En Espera,0
+selection,"purchase.purchase,state",0,Canceled,Cancelado,0
+selection,"purchase.purchase,state",0,Confirmed,Confirmado,0
+selection,"purchase.purchase,state",0,Done,Hecho,0
+selection,"purchase.purchase,state",0,Draft,Borrador,0
+selection,"purchase.purchase,state",0,Quotation,Cotización,0
