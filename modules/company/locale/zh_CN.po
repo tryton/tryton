@@ -1,0 +1,323 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "子公司"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "雇员"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "页脚"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "页眉"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "上级公司"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "时区"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "离职日期"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "入职日期"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "计划任务"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "当前公司"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "现任员工"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "雇员"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "主要公司"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "雇员"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "为这个公司添加子公司."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "这个公司使用的主要货币."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "为当前公司添加雇员."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "要在报告页脚上显示的文本."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "要在报告页眉上显示的文本."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "为这个公司设置上级公司."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "用于计算当前日期."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "员工所属的公司."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "当员工离开公司的时间."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "代表雇员的参与者."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "雇员加入公司的时候."
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "代表雇员的参与者."
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "代表雇员的参与者."
+
+#, fuzzy
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr "在这个 cron 注册的公司"
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "限制当前序列仅用于某个公司."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "限制公司使用序列."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "选择要为其工作的公司."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "选择一个雇员，好让这个用户对应."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "添加员工，授予用户访问权限。"
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "允许访问公司及其子公司."
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "公司配置"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "雇员"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "设置公司"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "雇员"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "信"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "计划任务 - 公司"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "公司中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "公司中的用户"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "公司"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "雇员"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "用户 - 雇员"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "真挚的问候,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "日期:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "尊敬的女士们、先生们,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "主题:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "现在可以将你的公司添加到系统中了."
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "报告"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "添加"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "取消"

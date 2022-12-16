@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Zestawy"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Atrybuty"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Zestaw"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Zestaw atrybutów"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Zestaw atrybutów"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Dodaj zestawy do atrybutu."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Dodaj atrybuty do zestawu."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "Podstawowy identyfikator zestawu atrybutów produktu."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Wybierz zestaw atrybutów, które chcesz zastosować do wariantów."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Dodaj atrybuty do wariantu."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Wybierz zestaw atrybutów, które chcesz zastosować do wariantów."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Zestawy atrybutów"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Zestawy atrybutów"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Atrybut produktu"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Atrybut produktu - Zestaw"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Zestaw atrybutów produktu"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Atrybuty"
