@@ -1,0 +1,153 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "UdM de venta secundaria"
+
+msgctxt "field:product.product,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Factor UdM de venta secundaria"
+
+msgctxt "field:product.product,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Rati UdM de venta secundaria"
+
+msgctxt "field:product.template,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "UdM de venta secundaria"
+
+msgctxt "field:product.template,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Factor UdM de venta secundaria"
+
+msgctxt "field:product.template,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Rati UdM de venta secundaria"
+
+msgctxt "field:sale.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Categoria de UdM secundaria del producte"
+
+msgctxt "field:sale.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Quantitat secundaria"
+
+msgctxt "field:sale.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Unitat secundaria"
+
+msgctxt "field:sale.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "Dígits de la unitat secundaria"
+
+msgctxt "field:sale.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "Preu unitari secundari"
+
+msgctxt "field:sale.line,secondary_uom_factor:"
+msgid "Secondary UOM Factor"
+msgstr "Factor UdM secundaria"
+
+msgctxt "field:sale.line,secondary_uom_rate:"
+msgid "Secondary UOM Rate"
+msgstr "Rati UdM secundaria"
+
+msgctxt "field:sale.product_customer,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoria UdM per defecte"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "UdM de venta secundaria"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Factor UdM de venta secundaria"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Rati UdM de venta secundaria"
+
+msgctxt "help:product.product,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"1 (unitat de venta) = coeficient (unitat secundaria)"
+
+msgctxt "help:product.product,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"coeficient (unitat de venta) = 1 (unitat secundaria)"
+
+msgctxt "help:product.template,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"1 (unitat de venta) = coeficient (unitat secundaria)"
+
+msgctxt "help:product.template,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"coeficient (unitat de venta) = 1 (unitat secundaria)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"1 (unitat de venta) = coeficient (unitat secundaria)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficient per la fórmula:\n"
+"coeficient (unitat de venta) = 1 (unitat secundaria)"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_secondary_uom_incompatible_factor_rate"
+msgid "Incompatible sale secondary factor and rate values for \"%(record)s\"."
+msgstr ""
+"El factor i el rati de venda secundari de \"%(record)s\" són incompatibles."
+
+msgctxt "view:product.template:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:product.template:"
+msgid "Rate:"
+msgstr "Rati:"
+
+msgctxt "view:sale.line:"
+msgid "Quantity:"
+msgstr "Quantitat:"
+
+msgctxt "view:sale.line:"
+msgid "Unit Price:"
+msgstr "Preu unitari:"
+
+msgctxt "view:sale.line:"
+msgid "Unit:"
+msgstr "Unitat:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Rate:"
+msgstr "Rati:"

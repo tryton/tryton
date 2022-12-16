@@ -1,0 +1,440 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:marketing.automation.activity,action:"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "field:marketing.automation.activity,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:marketing.automation.activity,condition:"
+msgid "Condition"
+msgstr "Condició"
+
+msgctxt "field:marketing.automation.activity,delay:"
+msgid "Delay"
+msgstr "Retard"
+
+msgctxt "field:marketing.automation.activity,email_clicked:"
+msgid "E-Mails Clicked"
+msgstr "Correus electrònics clicats"
+
+msgctxt "field:marketing.automation.activity,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:marketing.automation.activity,email_opened:"
+msgid "E-Mails Opened"
+msgstr "Correus electrònics oberts"
+
+msgctxt "field:marketing.automation.activity,email_template:"
+msgid "E-Mail Template"
+msgstr "Plantilla de correu electrònic"
+
+msgctxt "field:marketing.automation.activity,email_title:"
+msgid "E-Mail Title"
+msgstr "Títol del correu electrònic"
+
+msgctxt "field:marketing.automation.activity,event:"
+msgid "Event"
+msgstr "Esdeveniment"
+
+msgctxt "field:marketing.automation.activity,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:marketing.automation.activity,negative:"
+msgid "Negative"
+msgstr "Negatiu"
+
+msgctxt "field:marketing.automation.activity,on:"
+msgid "On"
+msgstr "A"
+
+msgctxt "field:marketing.automation.activity,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:marketing.automation.activity,parent_action:"
+msgid "Parent Action"
+msgstr "Acció pare"
+
+msgctxt "field:marketing.automation.activity,record_count:"
+msgid "Records"
+msgstr "Registres"
+
+msgctxt "field:marketing.automation.record,blocked:"
+msgid "Blocked"
+msgstr "Bloquejat"
+
+msgctxt "field:marketing.automation.record,record:"
+msgid "Record"
+msgstr "Registre"
+
+msgctxt "field:marketing.automation.record,scenario:"
+msgid "Scenario"
+msgstr "Escenari"
+
+msgctxt "field:marketing.automation.record,uuid:"
+msgid "UUID"
+msgstr "Identificador únic universal"
+
+msgctxt "field:marketing.automation.record.activity,activity:"
+msgid "Activity"
+msgstr "Activitat"
+
+msgctxt "field:marketing.automation.record.activity,activity_action:"
+msgid "Activity Action"
+msgstr "Acció d'activitat"
+
+msgctxt "field:marketing.automation.record.activity,at:"
+msgid "At"
+msgstr "A"
+
+msgctxt "field:marketing.automation.record.activity,email_clicked:"
+msgid "E-Mail Clicked"
+msgstr "Correus electrònics clicats"
+
+msgctxt "field:marketing.automation.record.activity,email_opened:"
+msgid "E-Mail Opened"
+msgstr "Correus electrònics oberts"
+
+msgctxt "field:marketing.automation.record.activity,record:"
+msgid "Record"
+msgstr "Registre"
+
+msgctxt "field:marketing.automation.record.activity,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:marketing.automation.scenario,activities:"
+msgid "Activities"
+msgstr "Activitats"
+
+msgctxt "field:marketing.automation.scenario,domain:"
+msgid "Domain"
+msgstr "Domini"
+
+msgctxt "field:marketing.automation.scenario,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:marketing.automation.scenario,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:marketing.automation.scenario,record_count:"
+msgid "Records"
+msgstr "Registres"
+
+msgctxt "field:marketing.automation.scenario,record_count_blocked:"
+msgid "Records Blocked"
+msgstr "Registres bloquejats"
+
+msgctxt "field:marketing.automation.scenario,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "help:marketing.automation.activity,condition:"
+msgid ""
+"The PYSON statement that the record must match in order to execute the activity.\n"
+"The record is represented by \"self\"."
+msgstr ""
+"L'expressió PYSON que el registre ha de complir per tal d'executar-se l'activitat.\n"
+"El registre s'expressa amb \"self\"."
+
+msgctxt "help:marketing.automation.activity,delay:"
+msgid "After how much time the action should be executed."
+msgstr "Desprès de quant temps s'hauria d'executar l'acció."
+
+msgctxt "help:marketing.automation.activity,email_from:"
+msgid "Leave empty to use the value defined in the configuration file."
+msgstr "Deixa buit per utilizar el valor definit al fitxer de configuració."
+
+msgctxt "help:marketing.automation.activity,email_template:"
+msgid ""
+"The HTML content of the E-mail.\n"
+"The Genshi syntax can be used with 'record' in the evaluation context."
+msgstr ""
+"El contingut HTML del correu electrònic.\n"
+"La sintaxi Genshi es pot fer servir amb 'record' al context d'avaluació."
+
+msgctxt "help:marketing.automation.activity,email_title:"
+msgid ""
+"The subject of the email.\n"
+"The Genshi syntax can be used with 'record' in the evaluation context."
+msgstr ""
+"L'assumpte del correu electrònic.\n"
+"La sintaxi Genshi es pot fer servir amb 'record' al context d'avaluació."
+
+msgctxt "help:marketing.automation.activity,negative:"
+msgid ""
+"Check to execute the activity if the event has not happened by the end of "
+"the delay."
+msgstr ""
+"Marcar per executar l'activitat si l'esdeveniment no s'ha executat al acabar"
+" el retard."
+
+msgctxt "help:marketing.automation.scenario,domain:"
+msgid "A PYSON domain used to filter records valid for this scenario."
+msgstr ""
+"Un domini PYSON utilitzat per filtrar registres vàlid per aquest escenari."
+
+msgctxt "model:ir.action,name:act_activity_tree"
+msgid "Activities"
+msgstr "Activitats"
+
+msgctxt "model:ir.action,name:act_record_activity_form"
+msgid "Record Activities"
+msgstr "Activitats del registre"
+
+msgctxt "model:ir.action,name:act_record_form"
+msgid "Records"
+msgstr "Registres"
+
+msgctxt "model:ir.action,name:act_scenario_form"
+msgid "Scenarios"
+msgstr "Escenaris"
+
+msgctxt "model:ir.action,name:report_unsubscribe"
+msgid "Marketing Automation Unsubscribe"
+msgstr "Baixa d'automatització de màrqueting"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_done"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_record_activity_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.action.act_window.domain,name:act_scenario_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_running"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_scenario_form_domain_stopped"
+msgid "Stopped"
+msgstr "Aturat"
+
+msgctxt "model:ir.message,text:msg_activity_invalid_condition"
+msgid ""
+"Invalid condition \"%(condition)s\" in activity \"%(activity)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Condició no vàlida \"%(condition)s\" a l'activitat \"%(activity)s\" amb "
+"l'excepció \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_invalid_email_template"
+msgid ""
+"Invalid e-mail template in activity \"%(activity)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Plantilla de correu electrònic no vàlida a l'activitat \"%(activity)s\" amb "
+"l'excepció \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_invalid_email_title"
+msgid ""
+"Invalid e-mail title in activity \"%(activity)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Ttítol de la plantilla de correu electrònic no vàlida a l'activitat "
+"\"%(activity)s\" amb l'excepció \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_activity_record_unique"
+msgid "Record Activity must be unique by record and activity."
+msgstr "L'activitat del registre ha de ser única per registre i activitat."
+
+msgctxt "model:ir.message,text:msg_record_scenario_record_unique"
+msgid "Record must be unique by scenario."
+msgstr "El registre ha de ser únic per cada escenari."
+
+msgctxt "model:ir.message,text:msg_record_uuid_unique"
+msgid "UUID of record must be unique."
+msgstr "L'UUID del registre ha de ser únic."
+
+msgctxt "model:ir.message,text:msg_scenario_invalid_domain"
+msgid "Invalid domain in scenario \"%(scenario)s\" with exception \"%(exception)s\"."
+msgstr ""
+"Domini no vàlid a l'escenari \"%(scenario)s\" amb l'excepció "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:record_activity_on_email_clicked_button"
+msgid "E-Mail Clicked"
+msgstr "Correu electrònic clicat"
+
+msgctxt "model:ir.model.button,string:record_activity_on_email_opened_button"
+msgid "E-Mail Opened"
+msgstr "Correu electrònic obert"
+
+msgctxt "model:ir.model.button,string:scenario_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:scenario_run_button"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "model:ir.model.button,string:scenario_stop_button"
+msgid "Stop"
+msgstr "Atura"
+
+msgctxt "model:ir.ui.menu,name:menu_scenario_form"
+msgid "Scenarios"
+msgstr "Escenaris"
+
+msgctxt "model:marketing.automation.activity,name:"
+msgid "Marketing Activity"
+msgstr "Activitat de màrqueting"
+
+msgctxt "model:marketing.automation.record,name:"
+msgid "Marketing Record"
+msgstr "Registre de màrqueting"
+
+msgctxt "model:marketing.automation.record.activity,name:"
+msgid "Marketing Record Activity"
+msgstr "Activitat del registre de màrqueting"
+
+msgctxt "model:marketing.automation.scenario,name:"
+msgid "Marketing Scenario"
+msgstr "Escenari de màrqueting"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "Unsubscribe"
+msgstr "Donar-se de baixa"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid ""
+"We are sorry to see you go, and apologize if we have overwhelmed your inbox."
+msgstr ""
+"Sentim veure't marxar, i ens disculpem si hem aclaparat la teva safata "
+"d'entrada."
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "You are unsubscribed"
+msgstr "T'has donat de baixa"
+
+msgctxt "report:marketing.automation.unsubscribe:"
+msgid "You have been successfully unsubscribed from this kind of email."
+msgstr "T'has donat de baixa amb èxit d'aquest tipus de correu electrònic."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Process Marketing Activity"
+msgstr "Processar activitats de màrqueting"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Trigger Marketing Scenarios"
+msgstr "Executar disparadors del escenaris de màrqueting"
+
+msgctxt "selection:marketing.automation.activity,action:"
+msgid "Send E-Mail"
+msgstr "Correu electrònic enviat"
+
+msgctxt "selection:marketing.automation.activity,event:"
+msgid "E-Mail Clicked"
+msgstr "Correu electrònic clicat"
+
+msgctxt "selection:marketing.automation.activity,event:"
+msgid "E-Mail Opened"
+msgstr "Correu electrònic obert"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Clicked"
+msgstr "Correu electrònic clicat"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Not Clicked"
+msgstr "Correu electrònic no clicat"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Not Opened"
+msgstr "Correu electrònic no obert"
+
+msgctxt "selection:marketing.automation.activity,on:"
+msgid "E-Mail Opened"
+msgstr "Correu electrònic obert"
+
+msgctxt "selection:marketing.automation.activity,parent:"
+msgid "Activity"
+msgstr "Activitat"
+
+msgctxt "selection:marketing.automation.activity,parent:"
+msgid "Scenario"
+msgstr "Escenari"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Cancelled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt "selection:marketing.automation.record.activity,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "selection:marketing.automation.scenario,state:"
+msgid "Stopped"
+msgstr "Aturat"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "After"
+msgstr "Desprès"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Edit"
+msgstr "Edita"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "If"
+msgstr "Si"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "On"
+msgstr "A"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Template:"
+msgstr "Plantilla:"
+
+msgctxt "view:marketing.automation.activity:"
+msgid "Title:"
+msgstr "Títol:"
+
+msgctxt "view:marketing.automation.record.activity:"
+msgid "Time"
+msgstr "Hora"
