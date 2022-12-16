@@ -1,0 +1,583 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.category:"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
+msgstr "هیچ فیلدی: \"%s\" وجود ندارد در زیرمجموعه: \"%s\""
+
+msgctxt "error:product.template:"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
+msgstr "هیچ فیلدی: \"%s\" تعریف نشده است در محصول: \"%s\""
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt "field:account.configuration,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.configuration,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_product_account_expense:"
+msgid "Default Account Expense"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt ""
+"field:account.configuration.default_account,default_product_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr "حساب هزینه پیش فرض"
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "حساب درآمد پیش فرض"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "استفاده از حساب های منبع"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "مالیات های مشتری"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "مالیات های مشتری استفاده شده"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "مالیات های تامین کننده"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "مالیات های تامین کننده استفاده شده"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "مرجع مالیات های استفاده شده"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.category-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.category-customer-account.tax,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.category-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.category-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.category-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.category-supplier-account.tax,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.category-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.category-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.category.account,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.category.account,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.category.account,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.category.account,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.category.account,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.category.account,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.configuration,default_accounts_category:"
+msgid "Use Category's accounts by default"
+msgstr "استفاده از زیرمجموعه های حساب ها برای پیش فرض"
+
+msgctxt "field:product.configuration,default_taxes_category:"
+msgid "Use Category' taxes by default"
+msgstr "استفاده از زیرمجموعه های مالیات ها برای پیش فرض"
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr "دسته بندی حساب"
+
+msgctxt "field:product.product,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.product,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.product,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "field:product.product,accounts_category:"
+msgid "Use Category's accounts"
+msgstr "استفاده از دسته بندی های حساب ها"
+
+msgctxt "field:product.product,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "مالیات های مشتری"
+
+msgctxt "field:product.product,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "مالیات مشتری استفاده شده"
+
+msgctxt "field:product.product,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "مالیات تامین کننده"
+
+msgctxt "field:product.product,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "مالیات تامین کننده استفاده شده"
+
+msgctxt "field:product.product,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "استفاده از دسته بندی های مالیاتی"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr "دسته بندی حساب"
+
+msgctxt "field:product.template,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.template,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.template,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "field:product.template,accounts_category:"
+msgid "Use Category's accounts"
+msgstr "استفاده از دسته بندی های حساب های"
+
+msgctxt "field:product.template,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "مالیات مشتری"
+
+msgctxt "field:product.template,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "مالیات مشتری استفاده شده"
+
+msgctxt "field:product.template,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "مالیات تامین کننده"
+
+msgctxt "field:product.template,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "مالیات تامین کننده استفاده شده"
+
+msgctxt "field:product.template,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "استفاده از دسته بندی های مالیاتی"
+
+msgctxt "field:product.template-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-customer-account.tax,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-customer-account.tax,product:"
+msgid "Product Template"
+msgstr "الگوی محصول"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.template-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-product.category.account,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-supplier-account.tax,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-supplier-account.tax,product:"
+msgid "Product Template"
+msgstr "الگوی محصول"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:product.template-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template.account,account_expense:"
+msgid "Account Expense"
+msgstr "حساب هزینه"
+
+msgctxt "field:product.template.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "حساب درآمد"
+
+msgctxt "field:product.template.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.template.account,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template.account,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template.account,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template.account,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template.account,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template.account,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template.account,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "استفاده از حساب های تعریف شده دردسته بندی مرجع."
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr "برای تبدیل به طبقه بندی حسابداری کادر را تیک بزنید."
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr "مالیات هایی که در هنگام فروش محصولات این زیرمجموعه اعمال می شود."
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr "مالیات هایی که در هنگام خرید محصولات این زیرمجموعه اعمال می شود."
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "استفاده از مالیات های تعریف شده در دسته بندی مرجع."
+
+msgctxt "help:product.product,account_expense:"
+msgid "The account to use instead of the one defined on the account category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,account_revenue:"
+msgid "The account to use instead of the one defined on the account category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,accounts_category:"
+msgid "Check to use the accounts defined on the account category."
+msgstr "برای استفاده حساب های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
+
+msgctxt "help:product.product,customer_taxes:"
+msgid "The taxes to apply when selling the product."
+msgstr "مالیات هایی که در هنگام فروش محصول اعمال می شود."
+
+msgctxt "help:product.product,supplier_taxes:"
+msgid "The taxes to apply when purchasing the product."
+msgstr "مالیات هایی که هنگام خرید محصول اعمال می شود."
+
+msgctxt "help:product.product,taxes_category:"
+msgid "Check to use the taxes defined on the account category."
+msgstr ""
+"برای استفاده مالیات های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
+
+msgctxt "help:product.template,account_expense:"
+msgid "The account to use instead of the one defined on the account category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_revenue:"
+msgid "The account to use instead of the one defined on the account category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,accounts_category:"
+msgid "Check to use the accounts defined on the account category."
+msgstr "برای استفاده حساب های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
+
+msgctxt "help:product.template,customer_taxes:"
+msgid "The taxes to apply when selling the product."
+msgstr "مالیات هایی که در هنگام فروش محصول اعمال می شود."
+
+msgctxt "help:product.template,supplier_taxes:"
+msgid "The taxes to apply when purchasing the product."
+msgstr "مالیات هایی که هنگام خرید محصول اعمال می شود."
+
+msgctxt "help:product.template,taxes_category:"
+msgid "Check to use the taxes defined on the account category."
+msgstr ""
+"برای استفاده مالیات های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "دسته بندی - مالیات مشتری"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "دسته بندی - مالیات تامین کننده"
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr "دسته بندی حساب"
+
+msgctxt "model:product.template-customer-account.tax,name:"
+msgid "Product Template - Customer Tax"
+msgstr "الگوی محصول - مالیات مشتری"
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr "الگوی - دسته بندی حساب"
+
+msgctxt "model:product.template-supplier-account.tax,name:"
+msgid "Product Template - Supplier Tax"
+msgstr "الگوی محصول - مالیات تامین کننده"
+
+msgctxt "model:product.template.account,name:"
+msgid "Product Template Account"
+msgstr "الگوی حساب محصول"
+
+msgctxt "view:account.configuration:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "حسابداری"
+
+msgctxt "view:product.template:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "view:product.template:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "هیچ حساب هزینه/درآمد برای محصول : \"%s\" تعریف نشده است"
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accouting category."
+msgstr "برای تبدیل به طبقه بندی حسابداری کادر را تیک بزنید."
+
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr "هیچ حساب هزینه/درآمد در طبقه بندی : \"%s\" تعریف نشده است"

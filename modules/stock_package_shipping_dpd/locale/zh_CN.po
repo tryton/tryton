@@ -1,0 +1,112 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:carrier.credential.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid "Shipment \"%(shipment)s\" already has a reference number."
+msgstr ""
+
+msgctxt "error:stock.shipment.out:"
+msgid "An address is required for warehouse \"%(warehouse)s\"."
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "密码"
+
+msgctxt "field:carrier.credential.dpd,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "DPD Credentials"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Create DPD Shipping for Packages"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr ""
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr ""
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr ""
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Informations"
+msgstr ""
