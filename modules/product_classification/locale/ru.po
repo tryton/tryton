@@ -1,0 +1,54 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Правило оплаты"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Подчиненый"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Правило оплаты"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Предок"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Классификация"
+
+#, fuzzy
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Классификация"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Классификация"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr ""
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr ""

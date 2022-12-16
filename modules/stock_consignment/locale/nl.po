@@ -1,0 +1,12 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,consignment_party:"
+msgid "Consignment Party"
+msgstr "reservatie relatie"
+
+msgctxt "help:stock.location,consignment_party:"
+msgid "The party invoiced when consignment stock is used."
+msgstr ""
+"De gefactureerde relatie wanneer de gereserveerdevoorraad wordt gebruikt."
