@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <group id="content" col="2" colspan="1">
+        <label name="resource"/>
+        <field name="resource"/>
+        <label name="name"/>
+        <group id="name_data" col="1" colspan="1">
+            <field name="data" filename_visible="1"/>
+            <group name="link" string="">
+                <field name="name"/>
+            </group>
+        </group>
+        <label name="type"/>
+        <field name="type"/>
+        <label name="link"/>
+        <field name="link" widget="url"/>
+    </group>
+    <field name="data" widget="image" readonly="1"/>
+    <notebook>
+        <page name="description" col="1">
+            <field name="description"/>
+        </page>
+    </notebook>
+    <group id="last" col="4" colspan="2">
+        <label name="last_user"/>
+        <field name="last_user"/>
+        <label name="last_modification"/>
+        <field name="last_modification"/>
+    </group>
+</form>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="rule"/>
+    <field name="rule"/>
+    <newline/>
+    <label name="group"/>
+    <field name="group"/>
+    <label name="origin_tax"/>
+    <field name="origin_tax"/>
+    <label name="tax"/>
+    <field name="tax"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="keep_origin"/>
+    <field name="keep_origin"/>
+</form>

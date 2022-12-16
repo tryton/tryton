@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.line:"
+msgid "The Sale Line \"%s\" exceed the over shipment tolerance."
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr ""
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.configuration.shipment_tolerance,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr ""
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr ""
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr ""
+
+msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgid "Sale Configuration Shipment Tolerance"
+msgstr ""
+
+msgctxt "view:sale.configuration:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:sale.configuration:"
+msgid "Sale Shipment Tolerance"
+msgstr ""

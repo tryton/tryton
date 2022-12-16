@@ -1,0 +1,76 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Método de agrupación de guías de remisión de venta"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Guías de remisión"

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_line_invoice_type">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="30"/>
+            <field name="name">invoice_line_tree_invoice_type</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="name">purchase_form</field>
+        </record>
+    </data>
+</tryton>
