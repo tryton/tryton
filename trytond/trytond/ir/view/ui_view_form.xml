@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="model"/>
+    <field name="model"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="inherit"/>
+    <field name="inherit"/>
+    <label name="domain"/>
+    <field name="domain" widget="pyson"/>
+    <label name="priority"/>
+    <field name="priority"/>
+    <label name="field_childs"/>
+    <field name="field_childs"/>
+    <label name="module"/>
+    <field name="module"/>
+    <label name="name"/>
+    <field name="name"/>
+    <separator name="arch" colspan="4"/>
+    <field name="arch" colspan="4"/>
+    <button name="show" colspan="4"/>
+</form>
