@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='sale']/field[@name='currency']"
+        position="after">
+        <label name="carrier"/>
+        <field name="carrier"/>
+    </xpath>
+    <xpath
+        expr="/form/notebook/page[@id='other']/field[@name='shipment_method']"
+        position="after">
+        <label name="shipment_cost_method"/>
+        <field name="shipment_cost_method"/>
+    </xpath>
+</data>

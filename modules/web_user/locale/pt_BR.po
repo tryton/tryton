@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:web.user.session:"
+msgid "Key must be unique"
+msgstr "Chave deve ser única"
+
+msgctxt "error:web.user:"
+msgid "E-mail must be unique"
+msgstr "E-mail deve ser único"
+
+msgctxt "field:web.user,active:"
+msgid "Active"
+msgstr "Ativo"
+
+msgctxt "field:web.user,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:web.user,create_uid:"
+msgid "Create User"
+msgstr "Criar usuário"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "E-mail"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "Token do E-mail"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "E-mail Válido"
+
+msgctxt "field:web.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "Senha"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "Hash da Senha"
+
+msgctxt "field:web.user,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "Redefinir Token da Senha"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "Redefinir Validade do Token da Senha"
+
+msgctxt "field:web.user,write_date:"
+msgid "Write Date"
+msgstr "Data de Edição"
+
+msgctxt "field:web.user,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:web.user.authenticate.attempt,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:web.user.authenticate.attempt,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:web.user.authenticate.attempt,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "Entrar"
+
+msgctxt "field:web.user.authenticate.attempt,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:web.user.authenticate.attempt,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:web.user.authenticate.attempt,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:web.user.session,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:web.user.session,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:web.user.session,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "Chave"
+
+msgctxt "field:web.user.session,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Usuário"
+
+msgctxt "field:web.user.session,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:web.user.session,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Usuário Web"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "Tentativa de autenticação do usuário Web"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "Sessão de Usuário Web"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "O botão não está funcionando? Cole isso em seu navegador:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "Se você não fez esta solicitação, você pode ignorar esse email."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Redefinir senha"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr "Nós recebemos uma solicitação para redefinir a senha da sua conta,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "Botão não está funcionando? Cole isso no seu navegador:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Email de Validação"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Se você recebeu esse email por engano, apenas ignore-o."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "Apenas mais um passo..."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "Validar"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Redefinir senha"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "Validar E-mail"
