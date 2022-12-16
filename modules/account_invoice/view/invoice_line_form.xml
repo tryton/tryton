@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="product">
+    <label name="invoice"/>
+    <field name="invoice" colspan="3"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="product"/>
+            <field name="product"/>
+            <label name="account"/>
+            <field name="account"/>
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="unit"/>
+            <field name="unit"/>
+            <label name="unit_price"/>
+            <field name="unit_price" symbol="currency"/>
+            <label name="amount"/>
+            <field name="amount" symbol="currency"/>
+            <label name="taxes_date"/>
+            <field name="taxes_date"/>
+            <label name="taxes_deductible_rate"/>
+            <group col="2" id="taxes_deductible_rate">
+                <field name="taxes_deductible_rate" factor="100" xexpand="0"/>
+                <label name="taxes_deductible_rate" string="%" xalign="0.0" xexpand="1"/>
+            </group>
+            <field name="taxes" colspan="4"/>
+
+            <label name="origin"/>
+            <field name="origin" colspan="3"/>
+        </page>
+        <page name="description">
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
+        </page>
+        <page string="Notes" id="notes">
+            <separator name="note" colspan="4"/>
+            <field name="note" colspan="4"/>
+        </page>
+    </notebook>
+    <field name="party_lang" invisible="1" colspan="4"/>
+</form>

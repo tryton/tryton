@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_invalid_siren">
+            <field name="text">The SIREN number "%(number)s" for party "%(party)s" is not valid.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_siret">
+            <field name="text">The SIRET number "%(number)s" for address "%(address)s" is not valid.</field>
+        </record>
+    </data>
+</tryton>

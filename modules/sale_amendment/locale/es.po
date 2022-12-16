@@ -1,0 +1,180 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.amendment,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:sale.amendment,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.amendment,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:sale.amendment,sale:"
+msgid "Sale"
+msgstr "Venta"
+
+msgctxt "field:sale.amendment,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:sale.amendment.line,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:sale.amendment.line,amendment:"
+msgid "Amendment"
+msgstr "Corrección"
+
+msgctxt "field:sale.amendment.line,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.amendment.line,invoice_address:"
+msgid "Invoice Address"
+msgstr "Dirección de facturación"
+
+msgctxt "field:sale.amendment.line,line:"
+msgid "Line"
+msgstr "Línea"
+
+msgctxt "field:sale.amendment.line,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:sale.amendment.line,payment_term:"
+msgid "Payment Term"
+msgstr "Plazo de pago"
+
+msgctxt "field:sale.amendment.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:sale.amendment.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoría UdM del producto"
+
+msgctxt "field:sale.amendment.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:sale.amendment.line,sale:"
+msgid "Sale"
+msgstr "Venta"
+
+msgctxt "field:sale.amendment.line,shipment_address:"
+msgid "Shipment Address"
+msgstr "Dirección de envío"
+
+msgctxt "field:sale.amendment.line,shipment_party:"
+msgid "Shipment Party"
+msgstr "Tercero del envío"
+
+msgctxt "field:sale.amendment.line,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:sale.amendment.line,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:sale.amendment.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:sale.amendment.line,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt "field:sale.amendment.line,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:sale.sale,amendments:"
+msgid "Amendments"
+msgstr "Correcciones"
+
+msgctxt "model:ir.action,name:act_sale_amendment_form"
+msgid "Amendments"
+msgstr "Correcciones"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_validated"
+msgid "Validated"
+msgstr "Validada"
+
+msgctxt "model:ir.message,text:msg_one_sale_at_time"
+msgid ""
+"You cannot validate more than one amendment at the same time for sale "
+"\"%(sale)s\"."
+msgstr ""
+"No se puede validar al mismo teimpo mas de una corrección para la misma "
+"venta \"%(sale)s\"."
+
+msgctxt ""
+"model:ir.model.button,confirm:sale_amendment_validation_amendment_button"
+msgid "Are you sure you want to validate the amendments?"
+msgstr "Estas seguro que quieres validar las correciones?"
+
+msgctxt ""
+"model:ir.model.button,string:sale_amendment_validation_amendment_button"
+msgid "Validate"
+msgstr "Validar"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
+msgid "Amendments"
+msgstr "Correcciones"
+
+msgctxt "model:res.group,name:group_sale_amendment"
+msgid "Sale Amendment"
+msgstr "Correción de venta"
+
+msgctxt "model:sale.amendment,name:"
+msgid "Sale Amendment"
+msgstr "Correción de venta"
+
+msgctxt "model:sale.amendment.line,name:"
+msgid "Sale Amendment Line"
+msgstr "Linea de correción de venta"
+
+msgctxt "selection:sale.amendment,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:sale.amendment,state:"
+msgid "Validated"
+msgstr "Validada"
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Line"
+msgstr "Modificar línea"
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Parties and Addresses"
+msgstr "Modificar terceros y direcciones"
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Payment Term"
+msgstr "Modificar plazo de pago"
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Warehouse"
+msgstr "Modificar almacén"
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Recompute Taxes"
+msgstr "Recalcular impuestos"
