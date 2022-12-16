@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="type">form</field>
+            <field name="name">move_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_tree_simple">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_tree_simple</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_list_shipment_in">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_list_shipment_in</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_list_shipment">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_list_shipment</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_from_supplier">
+            <field name="name">From Suppliers</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain"
+                eval="[('from_location.type', '=', 'supplier')]" pyson="1"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_from_supplier_waiting">
+            <field name="name">From Suppliers Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain"
+                eval="[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment', '=', None)]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_to_customer">
+            <field name="name">To Customers</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain"
+                eval="[('to_location.type', '=', 'customer')]"
+                pyson="1"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="40"
+            action="act_move_form" id="menu_move_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_move_form_group_stock">
+            <field name="menu" ref="menu_move_form"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_move">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_move">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_move"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_group_stock">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="move_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the move?</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Reset to Draft</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_assign_button">
+            <field name="name">assign</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="confirm">Are you sure you want to complete the move?</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_moves">
+            <field name="name">Stock Moves</field>
+            <field name="res_model">stock.move</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'product.template', 'product.template', 'product'), '=', Eval('active_id', -1)), (If(Eval('active_model') == 'product.template', 'product.template', 'product'), 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+            <field name="order" eval="[('effective_date', 'DESC NULLS FIRST')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_moves_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_moves_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_product_moves"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_product_moves_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_moves_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action-res.group" id="act_product_moves-group_stock">
+            <field name="action" ref="act_product_moves"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+    </data>
+</tryton>
