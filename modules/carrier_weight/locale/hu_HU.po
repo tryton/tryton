@@ -1,0 +1,77 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Árlista"
+
+#, fuzzy
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "Tömeg mértékegysége"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr ""
+
+msgctxt "field:carrier.weight_price_list,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Tömeg"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:carrier.weight_price_list,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Tömeg"
