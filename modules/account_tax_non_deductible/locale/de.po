@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax,non_deductible:"
+msgid "Non-Deductible"
+msgstr "Nicht abzugsfähig"
+
+msgctxt "field:account.tax.template,non_deductible:"
+msgid "Non-Deductible"
+msgstr "Nicht abzugsfähig"
+
+msgctxt "help:account.tax.template,non_deductible:"
+msgid "Check to always include the tax amount as expense."
+msgstr "Auswählen um den Steuerbetrag als Aufwand zu behandeln."
