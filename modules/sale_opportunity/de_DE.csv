@@ -1,0 +1,162 @@
+type,name,res_id,src,value,fuzzy
+error,sale.opportunity,0,Probability must be between 0 and 100!,Wahrscheinlichkeit muss zwischen 0 und 100 liegen!,0
+field,"sale.open_opportunity_employee.init,end_date",0,End Date,Enddatum,0
+field,"sale.open_opportunity_employee.init,start_date",0,Start Date,Anfangsdatum,0
+field,"sale.opportunity,address",0,Address,Adresse,0
+field,"sale.opportunity,amount",0,Amount,Betrag,0
+field,"sale.opportunity,comment",0,Comment,Kommentar,0
+field,"sale.opportunity,company",0,Company,Unternehmen,0
+field,"sale.opportunity,currency",0,Currency,Währung,0
+field,"sale.opportunity,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"sale.opportunity,description",0,Description,Bezeichnung,0
+field,"sale.opportunity,employee",0,Employee,Mitarbeiter,0
+field,"sale.opportunity,end_date",0,End Date,Enddatum,0
+field,"sale.opportunity,history",0,History,Verlauf,0
+field,"sale.opportunity,lines",0,Lines,Positionen,0
+field,"sale.opportunity,lost_reason",0,Reason for loss,Ursache für Verlust,0
+field,"sale.opportunity,party",0,Party,Partei,0
+field,"sale.opportunity,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"sale.opportunity,probability",0,Conversion Probability,Umwandlungswahrscheinlichkeit,0
+field,"sale.opportunity,rec_name",0,Name,Name,0
+field,"sale.opportunity,sale",0,Sale,Verkauf,0
+field,"sale.opportunity,start_date",0,Start Date,Anfangsdatum,0
+field,"sale.opportunity,state",0,State,Status,0
+field,"sale.opportunity,warehouse",0,Warehouse,Warenlager,0
+field,"sale.opportunity.history,address",0,Address,Adresse,0
+field,"sale.opportunity.history,comment",0,Comment,Kommentar,0
+field,"sale.opportunity.history,company",0,Company,Unternehmen,0
+field,"sale.opportunity.history,date",0,Change Date,Änderungsdatum,0
+field,"sale.opportunity.history,description",0,Description,Bezeichnung,0
+field,"sale.opportunity.history,employee",0,Employee,Mitarbeiter,0
+field,"sale.opportunity.history,end_date",0,End Date,Enddatum,0
+field,"sale.opportunity.history,lines",0,Lines,Positionen,0
+field,"sale.opportunity.history,lost_reason",0,Reason for loss,Ursache für Verlust,0
+field,"sale.opportunity.history,opportunity",0,Sale Opportunity,Verkaufschance,0
+field,"sale.opportunity.history,party",0,Party,Partei,0
+field,"sale.opportunity.history,probability",0,Conversion Probability,Umwandlungswahrscheinlichkeit,0
+field,"sale.opportunity.history,rec_name",0,Name,Name,0
+field,"sale.opportunity.history,start_date",0,Start Date,Anfangsdatum,0
+field,"sale.opportunity.history,state",0,State,Status,0
+field,"sale.opportunity.history,user",0,User,Benutzer,0
+field,"sale.opportunity.line,opportunity",0,Opportunity,Verkaufschance,0
+field,"sale.opportunity.line,product",0,Product,Artikel,0
+field,"sale.opportunity.line,quantity",0,Quantity,Anzahl,0
+field,"sale.opportunity.line,rec_name",0,Name,Name,0
+field,"sale.opportunity.line,sale_line",0,Sale Line,Position Verkauf,0
+field,"sale.opportunity.line,sequence",0,Sequence,Reihenfolge,0
+field,"sale.opportunity.line,unit",0,Unit,Einheit,0
+field,"sale.opportunity.line,unit_digits",0,Unit Digits,Einheit Anzahl Stellen,0
+field,"sale.opportunity_employee,amount",0,Amount,Betrag,0
+field,"sale.opportunity_employee,company",0,Company,Unternehmen,0
+field,"sale.opportunity_employee,conversion_amount_rate",0,Conversion Amount Rate,Umwandlungsrate Betrag,0
+field,"sale.opportunity_employee,conversion_rate",0,Conversion Rate,Umwandlungsrate,0
+field,"sale.opportunity_employee,converted",0,Converted,Umgewandelt,0
+field,"sale.opportunity_employee,converted_amount",0,Converted Amount,Umgewandelter Betrag,0
+field,"sale.opportunity_employee,currency",0,Currency,Währung,0
+field,"sale.opportunity_employee,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"sale.opportunity_employee,employee",0,Employee,Mitarbeiter,0
+field,"sale.opportunity_employee,lost",0,Lost,Verlust,0
+field,"sale.opportunity_employee,number",0,Number,Nummer,0
+field,"sale.opportunity_employee,rec_name",0,Name,Name,0
+field,"sale.opportunity_employee_monthly,amount",0,Amount,Betrag,0
+field,"sale.opportunity_employee_monthly,company",0,Company,Unternehmen,0
+field,"sale.opportunity_employee_monthly,conversion_amount_rate",0,Conversion Amount Rate,Umwandlungsrate Betrag,0
+field,"sale.opportunity_employee_monthly,conversion_rate",0,Conversion Rate,Umwandlungsrate,0
+field,"sale.opportunity_employee_monthly,converted",0,Converted,Umgewandelt,0
+field,"sale.opportunity_employee_monthly,converted_amount",0,Converted Amount,Umgewandelter Betrag,0
+field,"sale.opportunity_employee_monthly,currency",0,Currency,Währung,0
+field,"sale.opportunity_employee_monthly,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"sale.opportunity_employee_monthly,employee",0,Employee,Mitarbeiter,0
+field,"sale.opportunity_employee_monthly,lost",0,Lost,Verlust,0
+field,"sale.opportunity_employee_monthly,month",0,Month,Monat,0
+field,"sale.opportunity_employee_monthly,number",0,Number,Nummer,0
+field,"sale.opportunity_employee_monthly,rec_name",0,Name,Name,0
+field,"sale.opportunity_employee_monthly,year",0,Year,Jahr,0
+field,"sale.opportunity_monthly,amount",0,Amount,Betrag,0
+field,"sale.opportunity_monthly,company",0,Company,Unternehmen,0
+field,"sale.opportunity_monthly,conversion_amount_rate",0,Conversion Amount Rate,Umwandlungsrate Betrag,0
+field,"sale.opportunity_monthly,conversion_rate",0,Conversion Rate,Umwandlungsrate,0
+field,"sale.opportunity_monthly,converted",0,Converted,Umgewandelt,0
+field,"sale.opportunity_monthly,converted_amount",0,Converted Amount,Umgewandelter Betrag,0
+field,"sale.opportunity_monthly,currency",0,Currency,Währung,0
+field,"sale.opportunity_monthly,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"sale.opportunity_monthly,lost",0,Lost,Verlust,0
+field,"sale.opportunity_monthly,month",0,Month,Monat,0
+field,"sale.opportunity_monthly,number",0,Number,Nummer,0
+field,"sale.opportunity_monthly,rec_name",0,Name,Name,0
+field,"sale.opportunity_monthly,year",0,Year,Jahr,0
+field,"sale.opportunity_monthly,year_month",0,Year-Month,Jahr-Monat,0
+help,"sale.opportunity,amount",0,Estimated revenue amount,Geschätzter Ertrag,0
+help,"sale.opportunity,probability",0,Percentage between 0 and 100,Prozentsatz zwischen 0 und 100,0
+help,"sale.opportunity_employee,conversion_amount_rate",0,In %,In %,0
+help,"sale.opportunity_employee,conversion_rate",0,In %,In %,0
+help,"sale.opportunity_employee_monthly,conversion_amount_rate",0,In %,In %,0
+help,"sale.opportunity_employee_monthly,conversion_rate",0,In %,In %,0
+help,"sale.opportunity_monthly,conversion_amount_rate",0,In %,In %,0
+help,"sale.opportunity_monthly,conversion_rate",0,In %,In %,0
+model,"ir.action,name",act_open_sale_opportunity_employee,Opportunities per Employee,Verkaufschancen pro Mitarbeiter,0
+model,"ir.action,name",act_opportunity_employee_form,Opportunities per Employee,Verkaufschancen pro Mitarbeiter,0
+model,"ir.action,name",act_opportunity_employee_monthly_form,Opportunities per Employee per Month,Verkaufschancen pro Mitarbeiter pro Monat,0
+model,"ir.action,name",act_opportunity_form,Leads and Opportunities,Interessenten und Verkaufschancen,0
+model,"ir.action,name",act_opportunity_form2,Sales Leads/Opportunities,Interessenten/Verkaufschancen,0
+model,"ir.action,name",act_opportunity_form_cancelled,Cancelled Leads and Opportunities,Annullierte Interessenten und Verkaufschancen,0
+model,"ir.action,name",act_opportunity_form_converted,Converted Opportunities,Umgewandelte Verkaufschancen,0
+model,"ir.action,name",act_opportunity_form_lead,Opened Leads,Offene Interessenten,0
+model,"ir.action,name",act_opportunity_form_lost,Lost Leads and Opportunities,Verluste Interessenten und Verkaufschancen,0
+model,"ir.action,name",act_opportunity_form_new,New Lead,Neuer Interessent,0
+model,"ir.action,name",act_opportunity_form_opportunity,Opportunities,Verkaufschancen,0
+model,"ir.action,name",act_opportunity_monthly_form,Opportunities per Month,Verkaufschancen pro Monat,0
+model,"ir.ui.menu,name",menu_open_sale_opportunity_employee,Opportunities per Employee,Verkaufschancen pro Mitarbeiter,0
+model,"ir.ui.menu,name",menu_opportunity_employee_monthly_form,Opportunities per Employee per Month,Verkaufschancen pro Mitarbeiter pro Monat,0
+model,"ir.ui.menu,name",menu_opportunity_form,Leads and Opportunities,Interessenten und Verkaufschancen,0
+model,"ir.ui.menu,name",menu_opportunity_form_cancelled,Cancelled Leads and Opportunities,Annullierte Interessenten und Verkaufschancen,0
+model,"ir.ui.menu,name",menu_opportunity_form_converted,Converted Opportunities,Umgewandelte Verkaufschancen,0
+model,"ir.ui.menu,name",menu_opportunity_form_lead,Opened Leads,Offene Interessenten,0
+model,"ir.ui.menu,name",menu_opportunity_form_lost,Lost Leads and Opportunities,Verluste Interessenten und Verkaufschancen,0
+model,"ir.ui.menu,name",menu_opportunity_form_new,New Lead,Neuer Interessent,0
+model,"ir.ui.menu,name",menu_opportunity_form_opportunity,Opportunities,Verkaufschancen,0
+model,"ir.ui.menu,name",menu_opportunity_monthly_form,Opportunities per Month,Verkaufschancen pro Monat,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"res.group,name",group_opportunity,Sale Opportunity,Verkaufschance,0
+model,"sale.open_opportunity_employee.init,name",0,Open Sale Opportunity per Employee Init,Verkaufschancen pro Mitarbeiter Öffnen,0
+model,"sale.opportunity,name",0,Sale Opportunity,Verkaufschance,0
+model,"sale.opportunity.history,name",0,Sale Opportunity History,Verkaufschancen Verlauf,0
+model,"sale.opportunity.line,name",0,Sale Opportunity Line,Verkaufschance Position,0
+model,"sale.opportunity_employee,name",0,Sale Opportunity per Employee,Verkaufschance pro Mitarbeiter,0
+model,"sale.opportunity_employee_monthly,name",0,Sale Opportunity per Employee per Month,Verkaufschance pro Mitarbeiter pro Monat,0
+model,"sale.opportunity_monthly,name",0,Sale Opportunity per Month,Verkaufschance pro Monat,0
+model,"workflow,name",opportunity_workflow,Sales Opportunity Workflow,Verkaufschancen Workflow,0
+model,"workflow.activity,name",opportunity_activity_cancelled,Cancelled,Annulliert,0
+model,"workflow.activity,name",opportunity_activity_converted,Converted,Umgewandelt,0
+model,"workflow.activity,name",opportunity_activity_lead,Lead,Interessent,0
+model,"workflow.activity,name",opportunity_activity_lost,Lost,Verlust,0
+model,"workflow.activity,name",opportunity_activity_opportunity,Opportunity,Verkaufschance,0
+selection,"sale.opportunity,state",0,Cancelled,Annulliert,0
+selection,"sale.opportunity,state",0,Converted,Umgewandelt,0
+selection,"sale.opportunity,state",0,Lead,Interessent,0
+selection,"sale.opportunity,state",0,Lost,Verlust,0
+selection,"sale.opportunity,state",0,Opportunity,Verkaufschance,0
+selection,"sale.opportunity.history,state",0,Cancelled,Annulliert,0
+selection,"sale.opportunity.history,state",0,Converted,Umgewandelt,0
+selection,"sale.opportunity.history,state",0,Lead,Interessent,0
+selection,"sale.opportunity.history,state",0,Lost,Verlust,0
+selection,"sale.opportunity.history,state",0,Opportunity,Chance,0
+view,sale.open_opportunity_employee.init,0,Sale Opportunities per Employee,Verkaufschancen pro Mitarbeiter,0
+view,sale.opportunity,0,Cancel,Annullieren,0
+view,sale.opportunity,0,Convert to Opportunity,In Verkaufschance umwandeln,0
+view,sale.opportunity,0,Convert to Sale,In Verkauf umwandeln,0
+view,sale.opportunity,0,Lead/Opportunity,Interessent/Chance,0
+view,sale.opportunity,0,Mark as Lost,Als Verlust markieren,0
+view,sale.opportunity,0,Reset as Lead,Auf Interessent zurücksetzen,0
+view,sale.opportunity,0,Sale Lead/Opportunity,Interessent/Verkaufschance,0
+view,sale.opportunity,0,Sales Leads/Opportunities,Interessenten/Verkaufschancen,0
+view,sale.opportunity,0,Set as Lead,Auf Interessent setzen,0
+view,sale.opportunity.history,0,History,Verlauf,0
+view,sale.opportunity.history,0,Lead/Opportunity,Interessent/Chance,0
+view,sale.opportunity.line,0,Sale Lead/Opportunity Line,Interessent/Verkaufschance,0
+view,sale.opportunity.line,0,Sales Leads/Opportunities Lines,Interessenten/Verkaufschancen,0
+view,sale.opportunity_employee,0,Opportunities per Employee,Verkaufschancen pro Mitarbeiter,0
+view,sale.opportunity_employee_monthly,0,Sale Opportunities per Month,Verkaufschancen pro Monat,0
+view,sale.opportunity_monthly,0,Sale Opportunities per Month,Verkaufschancen pro Mitarbeiter,0
+wizard_button,"sale.open_opportunity_employee,init,end",0,Cancel,Annullieren,0
+wizard_button,"sale.open_opportunity_employee,init,open",0,Open,Öffnen,0

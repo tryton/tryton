@@ -1,0 +1,85 @@
+type,name,res_id,src,value,fuzzy
+error,purchase.request,0,Purchase requests are only created by the system.,Bestellvorschläge werden nur durch das System generiert!,0
+error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Fehlender Einkaufspreis für Artikel: %s (id: %s)!,0
+error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Dieser Preis wird für die Auftragserstellung benötigt!,0
+error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Die maximale Anzahl muss größer als die minimale Anzahl sein,0
+error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Es ist nur ein Bestellpunkt für jede Paarung Artikel-Lagerort erlaubt,0
+error,stock.order_point,0,You can not define two order points on the same product with opposite locations.,Für einen Artikel können keine verschiedenen Bestellpunkte mit unterschiedlichen Lagerstandorten erstellt werden!,0
+field,"product.product,order_points",0,Order Points,Bestellpunkte,0
+field,"purchase.request,company",0,Company,Unternehmen,0
+field,"purchase.request,computed_quantity",0,Computed Quantity,Berechnete Anzahl,0
+field,"purchase.request,computed_uom",0,Computed UOM,Berechnete Maßeinheit,0
+field,"purchase.request,origin",0,Origin,Herkunft,0
+field,"purchase.request,party",0,Party,Partei,0
+field,"purchase.request,product",0,Product,Artikel,0
+field,"purchase.request,purchase",0,Purchase,Bestellvorschlag,0
+field,"purchase.request,purchase_date",0,Best Purchase Date,Bestes Einkaufsdatum,0
+field,"purchase.request,purchase_line",0,Purchase Line,Position Bestellvorschlag,0
+field,"purchase.request,quantity",0,Quantity,Anzahl,0
+field,"purchase.request,rec_name",0,Name,Name,0
+field,"purchase.request,state",0,State,Status,0
+field,"purchase.request,stock_level",0,Stock at Supply Date,Lagerbestand am Lieferdatum,0
+field,"purchase.request,supply_date",0,Expected Supply Date,Voraussichtliches Lieferdatum,0
+field,"purchase.request,uom",0,UOM,Maßeinheit,0
+field,"purchase.request,warehouse",0,Warehouse,Warenlager,0
+field,"purchase.request.create_purchase.ask_party,company",0,Company,Unternehmen,0
+field,"purchase.request.create_purchase.ask_party,party",0,Supplier,Lieferant,0
+field,"purchase.request.create_purchase.ask_party,product",0,Product,Artikel,0
+field,"purchase.request.create_purchase.ask_term,company",0,Company,Unternehmen,0
+field,"purchase.request.create_purchase.ask_term,party",0,Supplier,Lieferant,0
+field,"purchase.request.create_purchase.ask_term,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"stock.order_point,company",0,Company,Unternehmen,0
+field,"stock.order_point,location",0,Location,Lagerort,0
+field,"stock.order_point,max_quantity",0,Maximal Quantity,Maximale Anzahl,0
+field,"stock.order_point,min_quantity",0,Minimal Quantity,Minimale Anzahl,0
+field,"stock.order_point,product",0,Product,Artikel,0
+field,"stock.order_point,provisioning_location",0,Provisioning Location,Bereitstellungsort,0
+field,"stock.order_point,rec_name",0,Name,Name,0
+field,"stock.order_point,storage_location",0,Storage Location,Lagerort,0
+field,"stock.order_point,type",0,Type,Typ,0
+field,"stock.order_point,unit",0,Unit,Einheit,0
+field,"stock.order_point,unit_digits",0,Unit Digits,Anzahl Stellen,0
+field,"stock.order_point,warehouse_location",0,Warehouse Location,Warenlager,0
+model,"ir.action,name",act_order_point_form,Order Points,Bestellpunkte,0
+model,"ir.action,name",act_order_point_form2,Order Points,Bestellpunkte,0
+model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
+model,"ir.action,name",act_purchase_request_form,Purchase Requests,Bestellvorschläge,0
+model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Entwürfe (Bestellvorschläge),0
+model,"ir.action,name",wizard_create_purchase,Create Purchase,Auftrag erstellen,0
+model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Erstellung von Bestellvorschlägen,0
+model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Erstellung von Internen Lieferposten,0
+model,"ir.ui.menu,name",menu_order_point_form,Order Points,Bestellpunkte,0
+model,"ir.ui.menu,name",menu_order_point_form_new,New Order Point,Neuer Bestellpunkt,0
+model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Bestellvorschläge,0
+model,"ir.ui.menu,name",menu_purchase_request_form_draft,Draft Purchase Requests,Entwürfe (Bestellvorschläge),0
+model,"purchase.request,name",0,Purchase Request,Bestellvorschlag,0
+model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Verkauf Nachfrage Partei,0
+model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Verkauf Nachfrage Zahlungsbedingung,0
+model,"res.group,name",group_purchase_request,Purchase Request,Bestellvorschlag,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Zeitplaner Bestellvorschläge,0
+model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Zeitplaner Interne Lieferposten,0
+model,"stock.order_point,name",0,Order Point,Bestellpunkt,0
+selection,"purchase.request,origin",0,Order Point,Bestellpunkt,0
+selection,"purchase.request,state",0,Cancel,Annulliert,0
+selection,"purchase.request,state",0,Done,Erledigt,0
+selection,"purchase.request,state",0,Draft,Entwurf,0
+selection,"purchase.request,state",0,Purchased,Auftrag erstellt,0
+selection,"stock.order_point,type",0,Internal,Intern,0
+selection,"stock.order_point,type",0,Purchase,Bestellvorschlag,0
+view,purchase.request,0,Product Info,Info Artikel,0
+view,purchase.request,0,Purchase Request,Bestellvorschlag,0
+view,purchase.request,0,Purchase Requests,Bestellvorschläge,0
+view,purchase.request,0,Supply Info,Info,0
+view,purchase.request,0,supply Info,Info Lieferant,0
+view,purchase.request.create_purchase.ask_party,0,,,0
+view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Auftragerstellung: Fehlender Lieferant,0
+view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Auftragerstellung: Fehlende Zahlungsbedingung,0
+view,stock.order_point,0,Locations,Lagerorte,0
+view,stock.order_point,0,Order Point,Bestellpunkt,0
+view,stock.order_point,0,Order Point Type,Typ Bestellpunkt,0
+view,stock.order_point,0,Order Points,Bestellpunkte,0
+view,stock.order_point,0,Product Info,Artikelinfo,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Abbrechen,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,init",0,Continue,Fortfahren,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,end",0,Cancel,Abbrechen,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,init",0,Continue,Fortfahren,0
