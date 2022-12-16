@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of 
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='purchase_invoice_method']"
+        position="after">
+        <newline/>
+        <label name="purchase_drop_location"/>
+        <field name="purchase_drop_location"/>
+    </xpath>
+</data>
