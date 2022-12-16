@@ -1,0 +1,78 @@
+Version 1.4.10 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.9 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.8 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.7 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.6 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.5 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.4 - 2010-07-25
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.3 - 2010-03-31
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.2 - 2010-02-17
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.1 - 2009-11-23
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Handle datetime_field in xxx2Many
+* Add new safe_eval
+* Ask previous password for set_preferences on password change
+* Add "Statusbar" option
+* Add default filename for database backup
+* Add checkbox on restore to update database
+* Add 'login.host' options to hide server connection
+* Handle required attribute with local domains
+* Allow to run wizard in tabs
+* Remove statusbar on form for more space
+* Add "Change Accelerators" option
+* Use gzip in pysocket
+* Use the report name to create the temporary file to open it
+* Allow to store wizard size
+* Add reset default on fields
+* Store in config default width and height of main window
+* Added arrow navigation if supported by gtk
+* Add 'starts with' and 'ends with' on char search
+* Handle domain with '=' or '!=' as operator on selection
+* Extend fields domain with local domains
+* Improve float time widget to handle year, month, week and day
+  and handle float_time attribute for contextual time convertion
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Make graph works also with datetime
+* Add edition on Many2Many
+* Fix open in csv export to use file actions
+* Update client labels at language change
+* Handle datetime_field in Many2One
+* Set readonly on records with _datetime in the context
+* Display values of reference fields even if there is no model
+* Allow to directly print or create email with reports
+* Handle invisible states on list view
+* Add user warnings
+* Add Model in logs
+* Allow to duplicate many records at once
+* Improve netrpc communication speed
+* Improve date widget to display mask only when having focus
+* Fix for host with IPv6 enable but without default IPv6 route
+* Add desktop entry
+* Add win32 single executable
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
