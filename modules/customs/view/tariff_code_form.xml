@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="country"/>
+    <field name="country"/>
+    <!-- TODO country group -->
+    <newline/>
+    <label id="from" string="From"/>
+    <group id="start" col="2">
+        <field name="start_day"/>
+        <field name="start_month"/>
+    </group>
+    <label id="to" string="To"/>
+    <group id="end" col="2">
+        <field name="end_day"/>
+        <field name="end_month"/>
+    </group>
+</form>

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_currency_admin">
+            <field name="name">Currency Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_currency_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_currency_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_currency_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_currency_admin"/>
+        </record>
+        <record model="ir.ui.icon" id="currency_icon">
+            <field name="name">tryton-currency</field>
+            <field name="path">icons/tryton-currency.svg</field>
+        </record>
+        <menuitem name="Currency" id="menu_currency" sequence="3"
+            icon="tryton-currency"/>
+        <record model="ir.ui.menu-res.group" id="menu_currency_group_currency_admin">
+            <field name="menu" ref="menu_currency"/>
+            <field name="group" ref="group_currency_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="currency_view_form">
+            <field name="model">currency.currency</field>
+            <field name="type">form</field>
+            <field name="name">currency_form</field>
+        </record>
+        <record model="ir.ui.view" id="currency_view_tree">
+            <field name="model">currency.currency</field>
+            <field name="type">tree</field>
+            <field name="name">currency_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_currency_form">
+            <field name="name">Currencies</field>
+            <field name="res_model">currency.currency</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_currency_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="currency_view_tree"/>
+            <field name="act_window" ref="act_currency_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_currency_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="currency_view_form"/>
+            <field name="act_window" ref="act_currency_form"/>
+        </record>
+        <menuitem parent="menu_currency" action="act_currency_form"
+            id="menu_currency_form"/>
+        <record model="ir.model.access" id="access_currency">
+            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_currency_currency_admin">
+            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="group" ref="group_currency_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_list">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">tree</field>
+            <field name="name">currency_rate_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_form">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">form</field>
+            <field name="name">currency_rate_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_graph">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">graph</field>
+            <field name="name">currency_rate_graph</field>
+        </record>
+
+        <record model="ir.model.access" id="access_currency_rate">
+            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_currency_rate_currency_admin">
+            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
+            <field name="group" ref="group_currency_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+
+    <data noupdate="1" skiptest="1">
+        <!--- Default rate -->
+        <record model="currency.currency.rate" id="eur_rate">
+            <field name="date" eval="time.strftime('%Y-01-01')"/>
+            <field name="rate" eval="Decimal('1.0')"/>
+            <field name="currency" ref="eur"/>
+        </record>
+
+    </data>
+</tryton>

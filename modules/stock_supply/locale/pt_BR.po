@@ -1,0 +1,297 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.order_point:"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Apenas uma regras de abastecimento é permitida para cada par produto-"
+"localização."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Overflowing Location\" and vice "
+"versa)."
+msgstr ""
+"Você não pode definir duas regras de abastecimento no mesmo produto com "
+"localizações opostas (de \"Local de Armazenamento\" para \"Local de "
+"Transbordo\" e vice versa)."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Provisioning Location\" and vice "
+"versa)."
+msgstr ""
+"Você não pode definir duas regras de abastecimento no mesmo produto com "
+"localizações opostas (de \"Local de Armazenamento\" para \"Local de "
+"Transbordo\" e vice versa)."
+
+msgctxt "error:stock.supply:"
+msgid "There are some late customer moves."
+msgstr "Algumas movimentações de clientes estão atrasadas."
+
+msgctxt "error:stock.supply:"
+msgid "There are some late supplier moves."
+msgstr "Algumas movimentações de fornecedores estão atrasadas."
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Regras de Abastecimento"
+
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Período de Abastecimento"
+
+msgctxt "field:purchase.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:purchase.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:purchase.configuration.supply_period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:purchase.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Período de Abastecimento"
+
+msgctxt "field:purchase.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:purchase.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:stock.location,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Localização de Transbordo"
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Localização do Abastecimento"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.order_point,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:stock.order_point,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:stock.order_point,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Localização"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Quantidade máxima"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Quantidade mínima"
+
+msgctxt "field:stock.order_point,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Localização de Transbordo"
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Localização do Abastecimento"
+
+msgctxt "field:stock.order_point,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Local de armazenamento"
+
+msgctxt "field:stock.order_point,target_quantity:"
+msgid "Target Quantity"
+msgstr "Quantidade Alvo"
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Unidade"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos da unidade"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Localização do Almoxarifado"
+
+msgctxt "field:stock.order_point,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:stock.order_point,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "field:stock.supply.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:stock.location,overflowing_location:"
+msgid "Leave empty for no default overflowing"
+msgstr "Deixe vazio para nenhum transbordo padrão"
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr "Deixe vazio para nenhum abastecimento padrão"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_stock_supply"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Internal"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Purchase"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Order Points"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_stock_supply"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+msgctxt "model:purchase.configuration.supply_period,name:"
+msgid "Purchase Configuration Supply Period"
+msgstr "Configurações de Compra Período de Abastecimento"
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Regra de Abastecimento"
+
+msgctxt "model:stock.supply.start,name:"
+msgid "Supply Stock"
+msgstr "Abastecer Estoque"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Interno"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Tipo de Regra de Abastecimento"
+
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Informação do Produto"
+
+msgctxt "view:stock.supply.start:"
+msgid "Supply Stock?"
+msgstr "Abastecer Estoque?"
+
+msgctxt "wizard_button:stock.supply,start,create_:"
+msgid "Create"
+msgstr "Criar"
+
+msgctxt "wizard_button:stock.supply,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Purchase Requests"
+msgstr "Gerar Pedidos de Compra"
+
+msgctxt "model:ir.cron,name:cron_shipment_iternal"
+msgid "Generate Internal Shipments"
+msgstr "Gere expedições internas"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Criar Pedidos de Compra"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Gerar Remessas Internas"
+
+msgctxt "model:purchase.request.create.start,name:"
+msgid "Create Purchase Request"
+msgstr "Criar Pedidos de Compra"
+
+msgctxt "model:stock.shipment.internal.create.start,name:"
+msgid "Create Shipment Internal"
+msgstr "Criar Remessa Interna"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Requests?"
+msgstr "Criar Pedidos de Compra?"
+
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments?"
+msgstr "Criar Remessas Internas?"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
+msgid "Create"
+msgstr "Criar"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
