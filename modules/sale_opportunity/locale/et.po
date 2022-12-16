@@ -1,0 +1,532 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Võimaluse jada"
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Võimaluse jada"
+
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "Aadress"
+
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "Kommentaar"
+
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr "Pöördumise tõenäosus"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Muudetud"
+
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:sale.opportunity,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr "Kaotamise põhjus"
+
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr "Makstingimus"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "Viide"
+
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Müügid"
+
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "Võimalus"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr "Võimaluse olek"
+
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:sale.opportunity.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+msgctxt "field:sale.opportunity_employee,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:sale.opportunity_employee,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,converted:"
+msgid "Converted"
+msgstr "Muudetud"
+
+msgctxt "field:sale.opportunity_employee,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:sale.opportunity_employee,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:sale.opportunity_employee,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:sale.opportunity_employee,lost:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+msgctxt "field:sale.opportunity_employee,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "Võidetud"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+msgctxt "field:sale.opportunity_employee.context,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:sale.opportunity_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:sale.opportunity_employee_monthly,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:sale.opportunity_employee_monthly,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,converted:"
+msgid "Converted"
+msgstr "Muudetud"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:sale.opportunity_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:sale.opportunity_employee_monthly,lost:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+msgctxt "field:sale.opportunity_employee_monthly,month:"
+msgid "Month"
+msgstr "Kuu"
+
+msgctxt "field:sale.opportunity_employee_monthly,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "Võidetud"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+msgctxt "field:sale.opportunity_employee_monthly,year:"
+msgid "Year"
+msgstr "Aasta"
+
+msgctxt "field:sale.opportunity_monthly,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "field:sale.opportunity_monthly,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,converted:"
+msgid "Converted"
+msgstr "Muudetud"
+
+msgctxt "field:sale.opportunity_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:sale.opportunity_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:sale.opportunity_monthly,lost:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+msgctxt "field:sale.opportunity_monthly,month:"
+msgid "Month"
+msgstr "Kuu"
+
+msgctxt "field:sale.opportunity_monthly,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "Võidetud"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Võidetud väärtus"
+
+msgctxt "field:sale.opportunity_monthly,year:"
+msgid "Year"
+msgstr "Aasta"
+
+msgctxt "field:sale.opportunity_monthly,year_month:"
+msgid "Year-Month"
+msgstr "Aasta-Kuu"
+
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr "Protsent 0 kuni 100"
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Müük"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_form"
+msgid "Opportunities per Employee"
+msgstr "Võimlaused töötaja lõikes"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Võimalused töötaja ja kuu lõikes"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Potensiaalid ja võimalused"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "Müügid potensiaalid/võimalused"
+
+msgctxt "model:ir.action,name:act_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Võimalused kuude lõikes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Muudetud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Potensiaalid"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Kaotatud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Võimalused"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Võidetud"
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Muuda müügiks"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Märgi potensiaaliks"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Märgi kaotatuks"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Muuda võimaluseks"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr "Kasutaja võimalust pakkuvas ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Müügivõimalus"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Müügivõimalus"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Võimalused töötaja ja kuu lõikes"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "Võimalused töötaja"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Potentsiaalid ja võimalused"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Võimalused kuude lõikes"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "Müügi võimalus"
+
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "Müügi võimalus"
+
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "Müügi võimaluse rida"
+
+msgctxt "model:sale.opportunity_employee,name:"
+msgid "Sale Opportunity per Employee"
+msgstr "Müügi võimalus töötaja lõikes"
+
+msgctxt "model:sale.opportunity_employee.context,name:"
+msgid "Sale Opportunity per Employee Context"
+msgstr "Müügi võimalus töötaja lõikes - sisu"
+
+msgctxt "model:sale.opportunity_employee_monthly,name:"
+msgid "Sale Opportunity per Employee per Month"
+msgstr "Müügi võimalus töötaja ja kuu lõikes"
+
+msgctxt "model:sale.opportunity_monthly,name:"
+msgid "Sale Opportunity per Month"
+msgstr "Müügi võimalus kuu lõikes"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "Muudetud"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "Potentsiaal"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "Kaotatud"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "Võimalus"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Võidetud"
+
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr "Potesntsiaal/Võimalus"
+
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"

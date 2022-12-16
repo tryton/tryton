@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "关系"
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "从"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "至"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "从"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "至"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "逆向关系"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr ""
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "此关系类型的主标识."
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "自动创建逆向关系."
+
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Party Relations"
+msgstr "参与者关系"
+
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "关系类型"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Party Relations"
+msgstr "参与者关系"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "关系类型"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "参与者关系"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "参与者关系"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "关系类型"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "关系"

@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Cobrança"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Nível"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinatários"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinatários Ocultos"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinatários Secundários"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Modelo de Email"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Enviar Email"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Deixe vazio para usar o valor definido no arquivo de configuração."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Log de Emails de Cobrança"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Email Logs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Dunning Email"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Vencimento"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Taxas:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagamentos Recebidos Pendentes"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referência"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Lembrete"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr ""
