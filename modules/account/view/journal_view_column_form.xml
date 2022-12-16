@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="View Column">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="field"/>
+    <field name="field"/>
+    <label name="view"/>
+    <field name="view"/>
+    <label name="required"/>
+    <field name="required"/>
+    <label name="readonly"/>
+    <field name="readonly"/>
+</form>
