@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <group col="2" colspan="2" id="rule">
+        <field name="antecedents" view_ids="product.product_view_tree_simple"/>
+        <field name="consequents" view_ids="product.product_view_tree_simple"/>
+    </group>
+
+    <label name="confidence"/>
+    <field name="confidence"/>
+
+    <label name="support"/>
+    <field name="support"/>
+
+    <label name="lift"/>
+    <field name="lift"/>
+
+    <label name="conviction"/>
+    <field name="conviction"/>
+</form>

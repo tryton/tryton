@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_term_view_form">
+            <field name="model">sale.invoice.term</field>
+            <field name="type">form</field>
+            <field name="name">invoice_term_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_term_view_list">
+            <field name="model">sale.invoice.term</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_term_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_term_form">
+            <field name="name">Invoice Terms</field>
+            <field name="res_model">sale.invoice.term</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_term_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_term_view_list"/>
+            <field name="act_window" ref="act_invoice_term_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_term_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_term_view_form"/>
+            <field name="act_window" ref="act_invoice_term_form"/>
+        </record>
+        <menuitem
+            parent="sale.menu_configuration"
+            action="act_invoice_term_form"
+            sequence="20"
+            id="menu_invoice_term_form"/>
+
+        <record model="ir.model.access" id="access_invoice_term">
+            <field name="model" search="[('model', '=', 'sale.invoice.term')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_term_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.invoice.term')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_term_relative_delta_view_form">
+            <field name="model">sale.invoice.term.relative_delta</field>
+            <field name="type">form</field>
+            <field name="name">invoice_term_relative_delta_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_term_relative_delta_view_list">
+            <field name="model">sale.invoice.term.relative_delta</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_term_relative_delta_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_term_relative_delta_view_list_sequence">
+            <field name="model">sale.invoice.term.relative_delta</field>
+            <field name="type">tree</field>
+            <field name="name">invoice_term_relative_delta_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+    </data>
+</tryton>

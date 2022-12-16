@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="field"/>
+    <field name="field"/>
+    <label name="group"/>
+    <field name="group"/>
+    <label name="active"/>
+    <field name="active"/>
+    <group id="checkboxes" colspan="6">
+        <label name="perm_read"/>
+        <field name="perm_read"/>
+        <label name="perm_write"/>
+        <field name="perm_write"/>
+        <label name="perm_create"/>
+        <field name="perm_create"/>
+        <label name="perm_delete"/>
+        <field name="perm_delete"/>
+    </group>
+    <separator name="description" colspan="6"/>
+    <field name="description" colspan="6"/>
+</form>
