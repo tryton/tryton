@@ -1,0 +1,354 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "Code de catégorie CEE-ONU"
+
+msgctxt "field:account.tax,unece_code:"
+msgid "UNECE Code"
+msgstr "Code CEE-ONU"
+
+msgctxt "field:account.tax.template,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "Code de catégorie CEE-ONU"
+
+msgctxt "field:account.tax.template,unece_code:"
+msgid "UNECE Code"
+msgstr "Code CEE-ONU"
+
+msgctxt "field:product.uom,unece_code:"
+msgid "UNECE Code"
+msgstr "Code CEE-ONU"
+
+msgctxt "help:account.tax,unece_category_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Code standard de la Commission économique pour l'Europe des Nations unies."
+
+msgctxt "help:account.tax,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Code standard de la Commission économique pour l'Europe des Nations unies."
+
+msgctxt "help:product.uom,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Code standard de la Commission économique pour l'Europe des Nations unies."
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Canary Islands general indirect tax"
+msgstr "Taxe indirecte générale des îles Canaries"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Duty paid by supplier"
+msgstr "Droit acquitté par le fournisseur"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt for resale"
+msgstr "Exempté pour la revente"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt from tax"
+msgstr "Exonéré de taxe"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Free export item, tax not charged"
+msgstr "Article d'exportation gratuit, taxe non facturée"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Higher rate"
+msgstr "Taux supérieur"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Lower rate"
+msgstr "Taux inférieur"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Mixed tax rate"
+msgstr "Taux d'imposition mixte"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Services outside scope of tax"
+msgstr "Services hors taxes"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Standard rate"
+msgstr "Taux standard"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Tax for production, services and importation in Ceuta and Melilla"
+msgstr ""
+"Taxe sur la production, les services et l'importation à Ceuta et Melilla"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Transferred (VAT)"
+msgstr "Transféré (TVA)"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT Reverse Charge"
+msgstr "TVA auto-liquidation"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT exempt for EEA intra-community supply of goods and services"
+msgstr ""
+"Exonération de TVA pour la fourniture intracommunautaire de biens et de "
+"services dans l'EEE"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) due from a previous invoice"
+msgstr "Taxe sur la valeur ajoutée (TVA) due sur une facture précédente"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - collector's items and antiques"
+msgstr ""
+"Système de marge de la taxe sur la valeur ajoutée (TVA) - objets de "
+"collection et antiquités"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - second-hand goods"
+msgstr ""
+"Système de marge de la taxe sur la valeur ajoutée (TVA) - biens d'occasion"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - travel agents"
+msgstr ""
+"Système de marge de la taxe sur la valeur ajoutée (TVA) - agents de voyages"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - works of art"
+msgstr ""
+"Système de marge de la taxe sur la valeur ajoutée (TVA) - œuvres d'art"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) not now due for payment"
+msgstr "Taxe sur la valeur ajoutée (TVA) non exigible pour le paiement"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Zero rated goods"
+msgstr "Biens sans cote"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural export rebate"
+msgstr "Rabais à l'exportation agricole"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural levy"
+msgstr "Prélèvement agricole"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Alcohol mark tax"
+msgstr "Taxe sur les marques d'alcool"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Anti-dumping duty"
+msgstr "Droit antidumping"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Business license fee"
+msgstr "Frais de licence d'entreprise"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Canadian provincial sales tax"
+msgstr "Taxe sur les ventes en province canadienne"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Car tax"
+msgstr "Taxe sur les voitures"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Coffee tax"
+msgstr "Taxe sur le café"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Commodity specific tax"
+msgstr "Taxe spécifique sur les commodités"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Countervailing duty"
+msgstr "Droit compensateur"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Customs duty"
+msgstr "Droit de douane"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Energy fee"
+msgstr "Frais d'énergie"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Environmental tax"
+msgstr "Taxe environnementale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Excise duty"
+msgstr "Droit d'accise"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Federal excise tax"
+msgstr "Taxe d'accise fédérale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Free"
+msgstr "Gratuit"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "General construction tax"
+msgstr "Taxe générale de construction"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Goods and services tax"
+msgstr "Taxe sur les biens et services"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Harmonised sales tax, Canadian"
+msgstr "Taxe de vente harmonisée, canadienne"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Illuminants tax"
+msgstr "Taxe sur les illuminants"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Import tax"
+msgstr "Taxe d'importation"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Individual tax"
+msgstr "Taxe individuelle"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Insurance tax"
+msgstr "Taxe d'assurance"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Light dues payable"
+msgstr "Frais légers à payer"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local construction tax"
+msgstr "Taxe de construction locale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local sales tax"
+msgstr "Taxe de vente locale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Lust tax"
+msgstr "Taxe sur le luxe"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Mineral oil tax"
+msgstr "Taxe sur les huiles minérales"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Miscellaneous cash deposit"
+msgstr "Dépôt en espèces divers"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Monetary compensatory amount"
+msgstr "Montant compensatoire monétaire"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Other taxes"
+msgstr "Autres taxes"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Paper consortium tax (Italy)"
+msgstr "Taxe sur les consortiums papier (Italie)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Petroleum tax"
+msgstr "Taxe pétrolière"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Preference duty"
+msgstr "Droit de préférence"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty bond"
+msgstr "Mesures compensatoires provisoires de droits compensateurs"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty cash"
+msgstr "Mesures compensatoires provisoires d'argent comptant"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty bond"
+msgstr "Provision de droits compensateurs"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty cash"
+msgstr "Provision d'argent comptant"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Quebec sales tax"
+msgstr "Taxe de vente du Québec"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted social securities"
+msgstr "Sécurités sociales décalées"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted wage tax"
+msgstr "Impôt sur les salaires décalé"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special construction tax"
+msgstr "Taxe de construction spéciale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special tax"
+msgstr "Taxe spéciale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Stamp duty (Imposta di Bollo)"
+msgstr "Droit de timbre (Imposta di Bollo)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "State/provincial sales tax"
+msgstr "Taxe de vente étatique/provinciale"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Surtax"
+msgstr "Surtaxe"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Suspended duty"
+msgstr "Droit suspendu"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tax on replacement part"
+msgstr "Taxe sur les pièces de rechange"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tobacco tax"
+msgstr "Taxe sur le tabac"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tonnage taxes"
+msgstr "Taxes sur le tonnage"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Turnover tax"
+msgstr "Taxe sur le chiffre d'affaires"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Valuation deposit"
+msgstr "Dépôt de garantie"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Value added tax"
+msgstr "Taxe sur la valeur ajoutée"
+
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "CEE-ONU"
+
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "CEE-ONU"
