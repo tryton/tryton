@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="parent"/>
+    <field name="parent"/>
+
+    <label name="action"/>
+    <field name="action"/>
+    <newline/>
+
+    <label name="on" string="On"/>
+    <field name="on"/>
+    <label name="delay" string="After"/>
+    <field name="delay"/>
+
+    <label name="condition" string="If"/>
+    <field name="condition" colspan="3" widget="pyson"/>
+
+    <notebook colspan="4">
+        <page name="action" col="1">
+            <group id="email" yexpand="1" yfill="1">
+                <label name="email_from"/>
+                <field name="email_from" colspan="3"/>
+
+                <label name="email_title" string="Title:"/>
+                <field name="email_title" colspan="3"/>
+
+                <label name="email_template" string="Template:" yfill="1" yalign="0"/>
+                <group col="-1" id="email_template" colspan="3" yexpand="1">
+                    <field name="email_template"/>
+                    <field name="email_template" string="Edit" widget="html" xexpand="0"/>
+                </group>
+            </group>
+        </page>
+        <page name="children">
+            <field name="children" colspan="4"/>
+        </page>
+    </notebook>
+</form>

@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Lignes d'achat"
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr "Service du fournisseur"
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr "Les lignes à ajouter au coût de production."
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr "Le fournisseur à qui sous-traiter la production."
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr "La quantité à acheter pour produire une fois la nomenclature."
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr "Le service à acheter au fournisseur pour la production."
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr "Le service du fournisseur à acheter pour la production."
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr "Ajouter au coût de production."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"Les productions « %(productions)s » ne peuvent pas être traitées car elles "
+"ont des achats en attentes."
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr "Production"
