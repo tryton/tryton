@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/field[@name=&quot;subdivision&quot;]"
+                        position="after">
+                        <newline/>
+                        <label name="google_maps_url"/>
+                        <field name="google_maps_url" widget="url"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
