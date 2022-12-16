@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="product_cost_history_view_tree">
+            <field name="model">product.product.cost_history</field>
+            <field name="type">tree</field>
+            <field name="name">product_cost_history_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_cost_history_view_graph">
+            <field name="model">product.product.cost_history</field>
+            <field name="type">graph</field>
+            <field name="name">product_cost_history_graph</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_cost_history_form">
+            <field name="name">Product Cost History</field>
+            <field name="res_model">product.product.cost_history</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_cost_history_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_cost_history_view_tree"/>
+            <field name="act_window" ref="act_product_cost_history_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_cost_history_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_cost_history_view_graph"/>
+            <field name="act_window" ref="act_product_cost_history_form"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_product_cost_history_open">
+            <field name="name">Cost History</field>
+            <field name="wiz_name">product.product.cost_history.open</field>
+            <field name="model">product.product</field>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_product_cost_history_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_product_cost_history_open"/>
+        </record>
+
+    </data>
+</tryton>
