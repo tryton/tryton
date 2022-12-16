@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="antecedent_names" expand="1"/>
+    <field name="consequent_names" expand="1"/>
+    <field name="confidence" optional="1"/>
+    <field name="support" optional="1"/>
+    <field name="lift" optional="1"/>
+    <field name="conviction" optional="1"/>
+</tree>
