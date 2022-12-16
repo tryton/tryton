@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//notebook" position="inside">
+        <page id="quotation" string="Quotations">
+            <label name="preferred_quotation_line" string="Preferred Quotation:"/>
+            <field name="preferred_quotation_line"
+                view_ids="purchase_request_quotation.purchase_request_quotation_line_view_list_request"/>
+            <field name="quotation_lines_active" colspan="4" widget="many2many"
+                readonly="1" string="Quotations"
+                view_ids="purchase_request_quotation.purchase_request_quotation_line_view_list_request"/>
+        </page>
+    </xpath>
+</data>
