@@ -1,0 +1,32 @@
+Version 5.6.5 - 2021-05-15
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.4 - 2021-04-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.3 - 2021-03-03
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.2 - 2021-01-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.1 - 2020-06-16
+* Bug fixes (see mercurial logs for details)
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Only allow the purchase request group to create quotations
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+* Add request date on report
+
+Version 4.8.0 - 2018-04-23
+* Initial release
