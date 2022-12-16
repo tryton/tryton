@@ -1,0 +1,253 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"."
+msgstr "O Lote é requerido para a movimentação do produto \"%s\"."
+
+#, fuzzy
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Lote Obrigatório"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Lote Obrigatório"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Data de Criação"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Modelo"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Quantidade prevista"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Lotes pré-calculados"
+
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Data de Criação"
+
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Quantidade interna"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Localização"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "O tipo de localização para a qual o lote é obrigatório"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "O tipo de localização para a qual o lote é obrigatório"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Movimentações"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Modelo - Tipo de lote"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Lote de estoque"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Tipo do lote de estoque"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Achados e Perdidos"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Produção"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Armazenamento"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Fornecedor"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Período de estoque pré-calculado por lote"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Cache"
+msgstr "Periodo de lote pré-calculado"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Caches"
+msgstr "Período de lotes pré-calculados"
