@@ -1,0 +1,300 @@
+@import "variables";
+
+.navbar {
+    z-index: @zindex-navbar;
+}
+
+.tab-form, .tab-board {
+    & nav.toolbar {
+        margin-bottom: 1px;
+        & ul.nav > li > a {
+            padding-right: 0px;
+        }
+    }
+    & nav.toolbar.affix {
+        top: @navbar-height + 1px;
+        z-index: @zindex-navbar - 1;
+    }
+}
+
+.nav-tabs > li .close {
+    margin: -2px 0 0 10px;
+    font-size: 18px;
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    .tab-form, .tab-board {
+        .navbar-nav > li {
+            float: left;
+            width: 50%;
+        }
+    }
+}
+
+input[type='color'] {
+    & .btn {
+        height: @line-height-base;
+    }
+    & .btn-lg {
+        height: @line-height-large;
+    }
+    & .btn-sm {
+        height: @line-height-small;
+    }
+    & .btn-xs {
+        height: @line-height-small;
+    }
+}
+
+button {
+   & img.icon {
+       height: unit(@line-height-base, em);
+   }
+}
+
+.treeview {
+    overflow-x: auto;
+
+    & > table.tree {
+        width: 100%;
+
+        & > thead > tr > th.selection {
+            width: 30px;
+        }
+        & > thead > tr > th {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 30px;
+        }
+        & > tbody > tr > td {
+            cursor: pointer;
+            & > * {
+                vertical-align: middle;
+            }
+        }
+        & img.column-affix {
+            width: 2em;
+            height: 2em;
+        }
+        & a.column-affix > img {
+            width: 1em;
+            height: 1em;
+        }
+    }
+    & .editabletree-char, .editabletree-date, .editabletree-datetime,
+    .editabletree-integer, .editabletree-float, .editabletree-selection,
+    .editabletree-timedelta, .editabletree-boolean, .editabletree-many2one,
+    .editabletree-one2many {
+        width: 100%;
+    }
+    & td {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    & td > .column-text {
+        white-space: pre;
+    }
+    & .expander {
+        cursor: pointer;
+    }
+    & .treefooter {
+        text-align: center;
+    }
+    & label {
+        font-weight: normal;
+        display: inline;
+    }
+    & label.required {
+        font-weight: bold;
+    }
+    & label.editable {
+        font-style: italic;
+    }
+}
+
+.form {
+    width: 100%;
+    & > .form-container {
+        width: 100%;
+        & td {
+            padding: 1px;
+        }
+    }
+    & td.form-label {
+        white-space: pre;
+    }
+    & .form-char, .form-password, .form-integer, .form-float {
+        & input {
+            min-width: 8em;
+        }
+    }
+    & .form-url, .form-email, .form-callto, .form-sip {
+        & a > img {
+            width: 1em;
+            height: 1em;
+        }
+    }
+    & td.form-one2many, td.form-many2many {
+        vertical-align: top;
+    }
+    & .form-one2many-menu::after, .form-many2many-menu::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    & .form-one2many-menu, .form-many2many-menu {
+        & .form-one2many-string, .form-many2many-string {
+            display: inline-table;
+            float: left;
+            margin: 5px;
+        }
+        & .form-one2many-toolbar, .form-many2many-toolbar {
+            display: inline-table;
+            float: right;
+        }
+    }
+    & .form-richtext {
+        & .richtext {
+            min-height: 5em;
+        }
+    }
+    & .form-separator {
+        & label {
+            margin-top: 10px;
+        }
+        & hr {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    }
+    & .form-image_ {
+        & img {
+            width: 4em;
+            height: 4em;
+        }
+    }
+    & label {
+        font-weight: normal;
+        display: inline;
+    }
+    & label.required {
+        font-weight: bold;
+    }
+    & label.editable {
+        font-style: italic;
+    }
+    .panel-heading {
+        padding: 1px 1px;
+    }
+}
+
+.form-binary, .editabletree-binary {
+    min-width: calc(5 * 2.4em);
+}
+
+.form-integer, .form-float, .form-timedelta,
+.dict-integer, .dict-float, .dict-numeric,
+.editabletree-integer, .editabletree-float, .editabletree-timedelta {
+    & input {
+        text-align: right;
+    }
+}
+.column-integer, .column-float, .column-timedelta {
+    text-align: right;
+}
+
+.form-boolean, .editabletree-boolean {
+    & input[type=checkbox] {
+        width: initial;
+    }
+}
+
+.dict-label {
+    text-align: right;
+}
+
+.progress {
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    .dict-label {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    .treeview.responsive {
+        /* Override the width from Sao.View.resize */
+        width: 100% !important;
+    }
+    table.responsive,
+    table.responsive > thead,
+    table.responsive > thead > tr,
+    table.responsive > thead > tr > th,
+    table.responsive > tbody,
+    table.responsive > tbody > tr,
+    table.responsive > tbody > tr > td {
+        display: block !important;
+    }
+    table.responsive {
+        /* Hide table headers (but not display: none; for accessiblity) */
+        & > thead > tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        & > thead > tr,
+        & > tbody > tr > td {
+            text-align: left !important;
+        }
+        /* Force height to empty content */
+        & td > div:empty {
+            min-height: 20px;
+        }
+    }
+    table.responsive-noheader {
+        & > tbody > tr > td {
+            width: 100% !important;
+        }
+    }
+    table.responsive-header {
+        > tbody > tr {
+            border: 1px solid #ccc;
+        }
+        & > tbody > tr > td {
+            /* Behave like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30%;
+        }
+        & > tbody > tr > td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 30%;
+            padding-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Label */
+            content: attr(data-title);
+        }
+    }
+}
+
+#processing {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+
+img.global-search-icon {
+    width: 2em;
+    height: 2em;
+}
