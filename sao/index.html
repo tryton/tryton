@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<html style="overflow: auto;" lang="en" theme="default">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Tryton</title>
+        <link rel="icon" type="image/png" href="images/tryton-icon.png">
+
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/locales.min.js"></script>
+        <script type="text/javascript" src="bower_components/gettext.js/dist/gettext.min.js"></script>
+        <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+        <script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
+        <script type="text/javascript" src="bower_components/papaparse/papaparse.min.js"></script>
+        <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="bower_components/fullcalendar/dist/locale-all.js"></script>
+        <script type="text/javascript" src="bower_components/mousetrap/mousetrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/Sortable/Sortable.min.js"></script>
+
+        <link rel="stylesheet" href="bower_components/c3/c3.min.css">
+        <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+
+        <script type="text/javascript" src="dist/tryton-sao.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="dist/tryton-sao.min.css"
+        media="screen"/>
+        <script type="text/javascript">
+            if (typeof Sao == 'undefined') {
+                document.write(unescape('%3cscript type="text/javascript" src="dist/tryton-sao.js"%3e%3c/script%3e'));
+                document.write(unescape('%3clink rel="stylesheet" type="text/css" href="dist/tryton-sao.css" media="screen"/%3e'));
+            }
+        </script>
+        <script type="text/javascript" src="custom.js"></script>
+        <link rel="stylesheet" type="text/css" href="custom.css" media="screen"/>
+    </head>
+    <body>
+        <noscript>
+            <strong>Sorry sao does not work without JavaScript enabled. Please enable it to continue.</strong>
+        </noscript>
+        <div class="body" style="display: none;">
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed"
+                                              data-toggle="collapse" data-target="#main_navbar">
+                            <span class="caret"></span>
+                        </button>
+                        <a class="navbar-brand" href="javascript:void(0)" data-toggle="offcanvas">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                                </svg>
+                            </span>
+                            <span id="title">Tryton</span>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_navbar">
+                        <form class="navbar-form navbar-left flip" role="search" id="global-search" style="border-style: none;">
+                        </form>
+                        <ul class="nav navbar-nav navbar-right flip">
+                            <li id="user-preferences"></li>
+                            <li id="user-logout">
+                                <a href="#">
+                                    <span class="icon hidden-xs">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="visible-xs">
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id="tablist" class="nav navbar-nav nav-pills" role="tablist">
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div id="main" class="container-fluid" style="padding: 0px;">
+                <div class="row row-offcanvas row-offcanvas-left active"
+                     style="height: calc(100vh - 50px - 1px - 20px); margin: 0px;">
+                    <div class="col-xs-12 col-sm-4 col-lg-3 sidebar-offcanvas" id="menu" role="navigation"
+                                                                                         style="overflow-y: auto; height: 100%;"></div>
+                    <div class="col-xs-12 col-sm-8 col-lg-9 main-offcanvas" style="overflow-y: auto; height: 100%;" id="tabs" role="tabpanel">
+                        <div id="tabcontent" class="tab-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if ((typeof jQuery == 'undefined') || (typeof Sao == 'undefined')) {
+                document.querySelector('body').innerHTML = '<strong>sao is not fully installed. Please refer to <a href="README.md">README</a></strong>';
+            } else {
+                jQuery(function() {
+                    jQuery('.body').show();
+                    jQuery('[data-toggle="offcanvas"]').click(function() {
+                        jQuery('.row-offcanvas').toggleClass('active');
+                    });
+                    jQuery('#tabs').on('ready', function() {
+                        var mq = window.matchMedia('(max-width: 991px)');
+                        if (mq.matches) {
+                            if (jQuery('#tablist').children().length) {
+                                jQuery('.row-offcanvas').removeClass('active');
+                            } else {
+                                jQuery('.row-offcanvas').addClass('active');
+                            }
+                        }
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>
