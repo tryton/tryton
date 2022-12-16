@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Reporting" parent="sale.menu_sale"
+            id="menu_reporting" sequence="100"/>
+
+        <record model="res.group" id="group_opportunity">
+            <field name="name">Sale Opportunity</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_opportunity">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_view_form">
+            <field name="model">sale.opportunity</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_view_tree">
+            <field name="model">sale.opportunity</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_opportunity_form">
+            <field name="name">Leads and Opportunities</field>
+            <field name="res_model">sale.opportunity</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_opportunity_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="opportunity_view_tree"/>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_opportunity_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="opportunity_view_form"/>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_leads">
+            <field name="name">Leads</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[("state", "=", "lead")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_opportunities">
+            <field name="name">Opportunities</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[("state", "=", "opportunity")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_converted">
+            <field name="name">Converted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[("state", "=", "converted")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_cancelled">
+            <field name="name">Cancelled</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[("state", "=", "cancelled")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_lost">
+            <field name="name">Lost</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain">[("state", "=", "lost")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <menuitem parent="sale.menu_sale" action="act_opportunity_form"
+            id="menu_opportunity_form" sequence="5"/>
+
+        <record model="ir.model.access" id="access_opportunity">
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_oppotunity">
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="group" ref="group_opportunity"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_lead_button">
+            <field name="name">lead</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_lead_button_group_opportinity">
+            <field name="button" ref="opportunity_lead_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_opportunity_button">
+            <field name="name">opportunity</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_opportunity_button_group_opportunity">
+            <field name="button" ref="opportunity_opportunity_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_convert_button">
+            <field name="name">convert</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_convert_button_group_opportinity">
+            <field name="button" ref="opportunity_convert_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_lost_button">
+            <field name="name">lost</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_lost_button_group_opportinity">
+            <field name="button" ref="opportunity_lost_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_cancel_button_group_opportinity">
+            <field name="button" ref="opportunity_cancel_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_opportunity">
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_opportunity1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_opportunity"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_line_view_form">
+            <field name="model">sale.opportunity.line</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="opportunity_line_view_tree">
+            <field name="model">sale.opportunity.line</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_line_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_opportunity_line">
+            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_line_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_line_opportunity">
+            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
+            <field name="group" ref="group_opportunity"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_history_view_form">
+            <field name="model">sale.opportunity.history</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_history_form</field>
+        </record>
+        <record model="ir.ui.view" id="opportunity_history_view_tree">
+            <field name="model">sale.opportunity.history</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_history_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_opportunity_history">
+            <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_history_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_history_opportunity">
+            <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="group" ref="group_opportunity"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_opportunity_history">
+            <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_opportunity_history1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_opportunity_history"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_employee_view_tree">
+            <field name="model">sale.opportunity_employee</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_employee_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_employee_view_graph1">
+            <field name="model">sale.opportunity_employee</field>
+            <field name="type">graph</field>
+            <field name="name">opportunity_employee_graph1</field>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_employee_view_graph2">
+            <field name="model">sale.opportunity_employee</field>
+            <field name="type">graph</field>
+            <field name="name">opportunity_employee_graph2</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_opportunity_employee_form">
+            <field name="name">Opportunities per Employee</field>
+            <field name="res_model">sale.opportunity_employee</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_employee_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="opportunity_employee_view_tree"/>
+            <field name="act_window" ref="act_opportunity_employee_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_employee_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="opportunity_employee_view_graph1"/>
+            <field name="act_window" ref="act_opportunity_employee_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_employee_form_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="opportunity_employee_view_graph2"/>
+            <field name="act_window" ref="act_opportunity_employee_form"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_opportunity_employee">
+            <field name="model" search="[('model', '=', 'sale.opportunity_employee')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_opportunity_employee1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_opportunity_employee"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_employee_open_start_view_form">
+            <field name="model">sale.opportunity_employee.open.start</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_employee_open_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_opportunity_employee_open">
+            <field name="name">Opportunities per Employee</field>
+            <field name="wiz_name">sale.opportunity_employee.open</field>
+        </record>
+        <menuitem parent="menu_reporting" action="act_opportunity_employee_open"
+            icon="tryton-list" id="menu_opportunity_employee_open"/>
+
+        <record model="ir.ui.view" id="opportunity_monthly_view_tree">
+            <field name="model">sale.opportunity_monthly</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_monthly_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_monthly_view_graph1">
+            <field name="model">sale.opportunity_monthly</field>
+            <field name="type">graph</field>
+            <field name="name">opportunity_monthly_graph1</field>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_monthly_view_graph2">
+            <field name="model">sale.opportunity_monthly</field>
+            <field name="type">graph</field>
+            <field name="name">opportunity_monthly_graph2</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_opportunity_monthly_form">
+            <field name="name">Opportunities per Month</field>
+            <field name="res_model">sale.opportunity_monthly</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_monthly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="opportunity_monthly_view_tree"/>
+            <field name="act_window" ref="act_opportunity_monthly_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_monthly_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="opportunity_monthly_view_graph1"/>
+            <field name="act_window" ref="act_opportunity_monthly_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_monthly_form_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="opportunity_monthly_view_graph2"/>
+            <field name="act_window" ref="act_opportunity_monthly_form"/>
+        </record>
+
+        <menuitem parent="menu_reporting" action="act_opportunity_monthly_form"
+            id="menu_opportunity_monthly_form"/>
+
+        <record model="ir.rule.group" id="rule_group_opportunity_monthly">
+            <field name="model" search="[('model', '=', 'sale.opportunity_monthly')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_opportunity_monthly1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_opportunity_monthly"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_employee_monthly_view_tree">
+            <field name="model">sale.opportunity_employee_monthly</field>
+            <field name="type">tree</field>
+            <field name="name">opportunity_employee_monthly_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_opportunity_employee_monthly_form">
+            <field name="name">Opportunities per Employee per Month</field>
+            <field name="res_model">sale.opportunity_employee_monthly</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_opportunity_employee_monthly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="opportunity_employee_monthly_view_tree"/>
+            <field name="act_window" ref="act_opportunity_employee_monthly_form"/>
+        </record>
+
+        <menuitem parent="menu_reporting"
+            action="act_opportunity_employee_monthly_form"
+            id="menu_opportunity_employee_monthly_form"/>
+
+        <record model="ir.rule.group" id="rule_group_opportunity_employee_monthly">
+            <field name="model" search="[('model', '=', 'sale.opportunity_employee_monthly')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_opportunity_employee_monthly1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_opportunity_employee_monthly"/>
+        </record>
+
+    </data>
+</tryton>

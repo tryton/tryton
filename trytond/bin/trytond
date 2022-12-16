@@ -1,0 +1,109 @@
+#!/usr/bin/env python
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+import sys
+import os
+import optparse
+
+DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
+    '..', '..', 'trytond')))
+if os.path.isdir(DIR):
+    sys.path.insert(0, os.path.dirname(DIR))
+
+import trytond
+from trytond.version import VERSION
+
+
+def parse_commandline():
+    options = {}
+
+    parser = optparse.OptionParser(version=VERSION)
+
+    parser.add_option("-c", "--config", dest="config",
+        help="specify config file")
+    parser.add_option('--debug', dest='debug_mode', action='store_true',
+        help='enable debug mode (start post-mortem debugger if exceptions'
+        ' occur)')
+    parser.add_option("-v", "--verbose", action="store_true",
+        dest="verbose", help="enable verbose mode")
+
+    parser.add_option("-d", "--database", dest="db_name",
+        help="specify the database name")
+    parser.add_option("-i", "--init", dest="init",
+        help="init a module (use \"all\" for all modules)")
+    parser.add_option("-u", "--update", dest="update",
+        help="update a module (use \"all\" for all modules)")
+
+    parser.add_option("--pidfile", dest="pidfile",
+        help="file where the server pid will be stored")
+    parser.add_option("--logfile", dest="logfile",
+        help="file where the server log will be stored")
+    parser.add_option("--disable-cron", dest="cron",
+        action="store_false", help="disable cron")
+
+    parser.epilog = 'The first time a database is initialized with "-i" admin'\
+            ' password is read from file defined by TRYTONPASSFILE '\
+            'environment variable or interactively ask user'
+
+    (opt, _) = parser.parse_args()
+
+    if opt.config:
+        options['configfile'] = opt.config
+    else:
+        # No config file speficified, it will be guessed
+        options['configfile'] = None
+
+    for arg in (
+            'verbose',
+            'debug_mode',
+            'pidfile',
+            'logfile',
+            'cron',
+            ):
+        if getattr(opt, arg) is not None:
+            options[arg] = getattr(opt, arg)
+
+    db_name = []
+    if opt.db_name:
+        for i in opt.db_name.split(','):
+            db_name.append(i)
+    options['db_name'] = db_name
+
+    init = {}
+    if opt.init:
+        for i in opt.init.split(','):
+            if i != 'test':
+                init[i] = 1
+    options['init'] = init
+
+    update = {}
+    if opt.update:
+        for i in opt.update.split(','):
+            if i != 'test':
+                update[i] = 1
+    options['update'] = update
+
+    return options
+
+
+if '--profile' in sys.argv:
+    import profile
+    import pstats
+    import tempfile
+    sys.argv.remove('--profile')
+
+    options = parse_commandline()
+    statfile = tempfile.mkstemp(".stat", "trytond-")[1]
+    profile.run('trytond.server.TrytonServer(options).run()', statfile)
+    s = pstats.Stats(statfile)
+    s.sort_stats('cumulative').print_stats()
+    s.sort_stats('call').print_stats()
+    s.sort_stats('time').print_stats()
+    s.sort_stats('time')
+    s.print_callers()
+    s.print_callees()
+
+    os.remove(statfile)
+else:
+    options = parse_commandline()
+    trytond.server.TrytonServer(options).run()
