@@ -1,0 +1,97 @@
+Version 6.0.4 - 2022-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.3 - 2022-02-16
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.2 - 2021-10-15
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.1 - 2021-09-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Allow to add a sale shipment line with cost 0
+* Add unsold shipment cost to the outgoing moves
+* Simplify manual alteration of shipment cost
+* Use purchase carrier price as cost for shipment
+* Allow shipment costs to not be sold
+* Add carrier on shipment list view
+* Exclude by default shipment cost from promotion amount
+* Allow shipment cost price to be edited
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Compute shipment cost without creating a line
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+* Invoice shipment cost with cost method on order and invoice method on
+  shipment when at least one shipment is done.
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Do not compute shipment cost when not shipping goods
+* Do not recompute returned shipment cost
+* Do not match carrier selection with countries if countries are unknown
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Invoice shipment cost when at least one shipment is done
+* Use price_digits for storing cost
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Use Carrier Selection instead of a company wise default value
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Set sale shipment cost on sale only at quotation
+* Allow to change the carrier until the shipment is done
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-10-17
+* Initial release
