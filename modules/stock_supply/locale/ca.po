@@ -1,0 +1,202 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Regles de proveïment"
+
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Període de subministre"
+
+msgctxt "field:purchase.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Període de subministre"
+
+msgctxt "field:stock.location,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Ubicació de excessos"
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Ubicació de l'aprovisionament"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Quantitat màxima"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Quantitat mínima"
+
+msgctxt "field:stock.order_point,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Ubicació de excessos"
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Ubicació de l'aprovisionament"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Ubicació interna"
+
+msgctxt "field:stock.order_point,target_quantity:"
+msgid "Target Quantity"
+msgstr "Quantitat destí"
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Magatzem"
+
+msgctxt "help:stock.location,overflowing_location:"
+msgid "Leave empty for no default overflowing."
+msgstr "Deixeu-lo buit per no tenir una ubicació d'excessos per defecte."
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning."
+msgstr "Deixeu-lo buit per no tenir una ubicació de proveïment per defecte."
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Regles de proveïment"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Regles de proveïment"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
+msgid "Order Points"
+msgstr "Regles de proveïment"
+
+msgctxt "model:ir.action,name:act_stock_supply"
+msgid "Supply Stock"
+msgstr "Aprovisiona existències"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Intern"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "model:ir.message,text:msg_late_customer_moves"
+msgid "There are some customer moves that are late."
+msgstr "Existeixen moviments de client endarrerits."
+
+msgctxt "model:ir.message,text:msg_late_supplier_moves"
+msgid "There are some supplier moves that are late."
+msgstr "Existeixen moviments de proveïdor endarrerits."
+
+msgctxt ""
+"model:ir.message,text:msg_order_point_concurrent_overflowing_location_internal"
+msgid ""
+"You cannot define for the same product two order points with opposite locations\n"
+"(from \"Overflowing Location\" to \"Provisioning Location\" and vice versa)."
+msgstr ""
+"No es pot definir dos regles d'aprovisionament amb ubicacions oposades(\n"
+"de la \"ubicació d'emmagatzemament\" a la \"ubicació d'aprovisionament\" i viceversa)."
+
+msgctxt ""
+"model:ir.message,text:msg_order_point_concurrent_provisioning_location_internal"
+msgid ""
+"You cannot define for the same product two order points with opposite locations\n"
+"(from \"Storage Location\" to \"Provisioning Location\" and vice versa)."
+msgstr ""
+"No es pot definir dos regles d'aprovisionament amb ubicacions oposades\n"
+"(de la \"ubicació d'emmagatzemament\" a la \"ubicació d'aprovisionament\" i viceversa)."
+
+msgctxt "model:ir.message,text:msg_order_point_unique"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Només es permet una regla de proveïment per cada combinació de producte-"
+"ubicació."
+
+msgctxt "model:ir.rule.group,name:rule_group_order_point"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Regles de proveïment"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_supply"
+msgid "Supply Stock"
+msgstr "Aprovisiona existències"
+
+msgctxt "model:purchase.configuration.supply_period,name:"
+msgid "Purchase Configuration Supply Period"
+msgstr "Configuració del període d'aprovisionament en compres"
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Regla de proveïment"
+
+msgctxt "model:stock.supply.start,name:"
+msgid "Supply Stock"
+msgstr "Aprovisionament d'existències"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "Aprovisiona existències"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Intern"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Tipus de regla de proveïment"
+
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Informació del producte"
+
+msgctxt "view:stock.supply.start:"
+msgid "Supply Stock?"
+msgstr "Aprovisionar existències?"
+
+msgctxt "wizard_button:stock.supply,start,create_:"
+msgid "Create"
+msgstr "Crea"
+
+msgctxt "wizard_button:stock.supply,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
