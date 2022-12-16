@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="tree">
+    <element>
+      <name ns="">tree</name>
+      <ref name="attlist.tree"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="field"/>
+          <ref name="button"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">on_write</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">editable</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">sequence</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">keyword_open</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">tree_state</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">visual</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="field">
+    <element>
+      <name ns="">field</name>
+      <ref name="attlist.field"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="prefix"/>
+          <ref name="suffix"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">readonly</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">widget</name>
+        <choice>
+          <value>binary</value>
+          <value>boolean</value>
+          <value>callto</value>
+          <value>char</value>
+          <value>date</value>
+          <value>datetime</value>
+          <value>email</value>
+          <value>float</value>
+          <value>image</value>
+          <value>integer</value>
+          <value>many2many</value>
+          <value>many2one</value>
+          <value>multiselection</value>
+          <value>numeric</value>
+          <value>one2many</value>
+          <value>one2one</value>
+          <value>progressbar</value>
+          <value>reference</value>
+          <value>selection</value>
+          <value>sip</value>
+          <value>text</value>
+          <value>time</value>
+          <value>timedelta</value>
+          <value>url</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">tree_invisible</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">expand</name>
+        <data type="integer"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">visual</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">icon</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">sum</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">width</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">height</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="left_to_right">
+        <name ns="">orientation</name>
+        <choice>
+          <value>left_to_right</value>
+          <value>right_to_left</value>
+          <value>bottom_to_top</value>
+          <value>top_to_bottom</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">pre_validate</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">completion</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">string</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">factor</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">filename</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">view_ids</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">symbol</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="prefix">
+    <element>
+      <name ns="">prefix</name>
+      <ref name="attlist.affix"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="suffix">
+    <element>
+      <name ns="">suffix</name>
+      <ref name="attlist.affix"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.affix" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">string</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.affix" combine="interleave">
+    <choice>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
+      <attribute>
+        <name ns="">id</name>
+        <text/>
+      </attribute>
+    </choice>
+  </define>
+  <define name="attlist.affix" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">icon</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="button">
+    <element>
+      <name ns="">button</name>
+      <ref name="attlist.button"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">help</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">string</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">confirm</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">states</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="action">
+        <name ns="">keyword</name>
+        <choice>
+          <value>relate</value>
+          <value>print</value>
+          <value>action</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">change</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">type</name>
+        <choice>
+          <value>class</value>
+          <value>instance</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0">
+        <name ns="">tree_invisible</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="data">
+    <element>
+      <name ns="">data</name>
+      <ref name="attlist.data"/>
+      <zeroOrMore>
+        <ref name="xpath"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <empty/>
+  </define>
+  <define name="xpath">
+    <element>
+      <name ns="">xpath</name>
+      <ref name="attlist.xpath"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="field"/>
+          <ref name="button"/>
+          <ref name="tree"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <attribute>
+      <name ns="">expr</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="inside">
+        <name ns="">position</name>
+        <choice>
+          <value>inside</value>
+          <value>replace</value>
+          <value>replace_attributes</value>
+          <value>after</value>
+          <value>before</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <start>
+    <choice>
+      <ref name="tree"/>
+      <ref name="data"/>
+    </choice>
+  </start>
+</grammar>
