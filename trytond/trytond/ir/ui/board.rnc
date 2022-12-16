@@ -1,0 +1,156 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+board =
+  element board {
+    attlist.board,
+    (image
+     | separator
+     | label
+     | newline
+     | notebook
+     | group
+     | hpaned
+     | vpaned
+     | action)*
+  }
+attlist.board &= [ a:defaultValue = "4" ] attribute col { text }?
+image = element image { attlist.image, empty }
+attlist.image &= attribute name { text }
+attlist.image &= [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.image &=
+  [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
+attlist.image &= [ a:defaultValue = "0" ] attribute yfill { "0" | "1" }?
+attlist.image &=
+  [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
+attlist.image &= [ a:defaultValue = "0" ] attribute xfill { "0" | "1" }?
+attlist.image &= attribute help { text }?
+attlist.image &= attribute states { text }?
+separator = element separator { attlist.separator, empty }
+attlist.separator &= [ a:defaultValue = "" ] attribute string { text }?
+attlist.separator &= ( attribute name { text } | attribute name { text } )
+attlist.separator &= attribute states { text }?
+attlist.separator &=
+  [ a:defaultValue = "0.0" ] attribute xalign { text }?
+attlist.separator &=
+  [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.separator &=
+  [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
+attlist.separator &=
+  [ a:defaultValue = "0" ] attribute yfill { "0" | "1" }?
+attlist.separator &=
+  [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
+attlist.separator &=
+  [ a:defaultValue = "0" ] attribute xfill { "0" | "1" }?
+attlist.separator &= attribute help { text }?
+label = element label { attlist.label, empty }
+attlist.label &= [ a:defaultValue = "" ] attribute string { text }?
+attlist.label &= ( attribute name { text } | attribute name { text } )
+attlist.label &= attribute states { text }?
+attlist.label &= [ a:defaultValue = "0.0" ] attribute xalign { text }?
+attlist.label &= [ a:defaultValue = "0.5" ] attribute yalign { text }?
+attlist.label &=
+  [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
+attlist.label &= [ a:defaultValue = "0" ] attribute yfill { "0" | "1" }?
+attlist.label &=
+  [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
+attlist.label &= [ a:defaultValue = "1" ] attribute xfill { "0" | "1" }?
+attlist.label &= [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.label &= attribute help { text }?
+newline = element newline { attlist.newline, empty }
+attlist.newline &= attribute id { text }
+notebook = element notebook { attlist.notebook, page* }
+attlist.notebook &= [ a:defaultValue = "4" ] attribute colspan { text }?
+page =
+  element page {
+    attlist.page,
+    (image
+     | separator
+     | label
+     | newline
+     | notebook
+     | group
+     | hpaned
+     | vpaned
+     | action)*
+  }
+attlist.page &= attribute angle { text }?
+attlist.page &=
+  [ a:defaultValue = "Unknown" ] attribute string { text }?
+attlist.page &= [ a:defaultValue = "4" ] attribute col { text }?
+attlist.page &= ( attribute name { text } | attribute id { text } )
+group =
+  element group {
+    attlist.group,
+    (image
+     | separator
+     | label
+     | newline
+     | notebook
+     | group
+     | hpaned
+     | vpaned
+     | action)*
+  }
+attlist.group &= attribute string { text }?
+attlist.group &= [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.group &=
+  [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
+attlist.group &= [ a:defaultValue = "1" ] attribute yfill { "0" | "1" }?
+attlist.group &=
+  [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
+attlist.group &= [ a:defaultValue = "1" ] attribute xfill { "0" | "1" }?
+attlist.group &= [ a:defaultValue = "1" ] attribute rowspan { text }?
+attlist.group &= [ a:defaultValue = "4" ] attribute col { text }?
+attlist.group &= attribute id { text }
+
+hpaned = element hpaned { attlist.paned, child* }
+
+vpaned = element vpaned { attlist.paned, child* }
+
+attlist.paned &= [ a:defaultValue = "4" ] attribute colspan { text }?
+attlist.paned &= attribute position { text }?
+attlist.paned &= attribute id { text }
+
+child =
+  element child {
+    attlist.child,
+    (image
+     | separator
+     | label
+     | newline
+     | notebook
+     | group
+     | hpaned
+     | vpaned
+     | action)*
+  }
+
+attlist.child &= attribute id { text }
+
+data = element data { attlist.data, xpath+ }
+attlist.data &= empty
+
+xpath = element xpath { attlist.xpath,
+    (image
+    | separator
+    | label
+    | newline
+    | notebook
+    | group
+    | hpaned
+    | vpaned
+    | action
+    | page
+    | child
+    | board
+    )*
+  }
+attlist.xpath &= attribute expr { text }
+attlist.xpath &=
+  [ a:defaultValue = "inside" ]
+  attribute position { "inside" | "replace" | "replace_attributes" | "after" | "before" }?
+action = element action { attlist.action, empty }
+attlist.action &= attribute name { text }
+attlist.action &= [ a:defaultValue = "1" ] attribute colspan { text }?
+label |= notAllowed
+start = data | board | label
