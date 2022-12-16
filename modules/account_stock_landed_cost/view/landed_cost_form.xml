@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Landed Cost">
+    <label name="posted_date"/>
+    <field name="posted_date"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="allocation_method"/>
+    <field name="allocation_method"/>
+    <label name="company"/>
+    <field name="company"/>
+    <field name="invoice_lines" colspan="4"/>
+    <field name="shipments" colspan="4"/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="3" colspan="2" id="buttons">
+        <button name="cancel" string="Cancel" icon="tryton-cancel"/>
+        <button name="draft" string="Draft" icon="tryton-clear"/>
+        <button name="post" string="Post" icon="tryton-ok"/>
+    </group>
+</form>
