@@ -1,0 +1,469 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment.process:"
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "Plačilo \"%(payment)s\" je preplačalo postavko \"%(line)s\"."
+
+msgctxt "error:account.payment:"
+msgid "Payment \"%s\" must be in draft before deletion."
+msgstr "Plačilo \"%s\" mora biti pred brisanjem v stanju priprave."
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Štetje plačilnih skupin"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "Znesek plačila"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "Vrsta plačila"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line.pay.start,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.payment,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.payment,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "Skupina"
+
+msgctxt "field:account.payment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "Vrsta"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "Postavka"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:account.payment,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:account.payment,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.payment,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.payment.group,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.payment.group,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.payment.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "Vrsta"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "field:account.payment.group,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.payment.group,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.payment.group,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.payment.journal,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.payment.journal,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.payment.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "Način obdelave"
+
+msgctxt "field:account.payment.journal,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.payment.journal,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.payment.journal,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:account.payment.process.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "Plačilo postavke"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "Plačilo"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "Plačilna skupina"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "Dnevnik plačil"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "Obdelava plačila"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "Postavke za plačat"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "Plačilo postavk"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "Plačilne skupine"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Dnevniki plačil"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "Obdelava plačil"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "Obveznosti"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "Terjatve"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "Vse"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "Neuspešna"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Uspešna"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "Privzeta plačilna skupina"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "Plačilna skupina"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "Postavke za plačat"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "Nakazila"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "Plačilne skupine"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Dnevniki plačil"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "Računovodstvo - plačilo"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "Obveznosti"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "Terjatve"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "Obveznosti"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "Terjatve"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "Odobreno"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "Neuspešno"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "Uspešno"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "Obveznosti"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "Terjatve"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "Ročno"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "Štetje skupin"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Plačilo"
+
+msgctxt "view:account.move.line.pay.start:"
+msgid "Pay Line"
+msgstr "Plačilo postavke"
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Lines"
+msgstr "Postavke knjižb"
+
+msgctxt "view:account.move.line:"
+msgid "Pay Lines"
+msgstr "Plačilo postavk"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Group"
+msgstr "Plačilna skupina"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Groups"
+msgstr "Plačilne skupine"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journal"
+msgstr "Dnevnik plačil"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journals"
+msgstr "Dnevniki plačil"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments"
+msgstr "Obdelava plačil"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "Obdelava plačil?"
+
+msgctxt "view:account.payment:"
+msgid "Approve"
+msgstr "Odobritev"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt "view:account.payment:"
+msgid "Fail"
+msgstr "Neuspelo"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "Drugo"
+
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Plačilo"
+
+msgctxt "view:account.payment:"
+msgid "Payments"
+msgstr "Plačila"
+
+msgctxt "view:account.payment:"
+msgid "Succeed"
+msgstr "Uspelo"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:account.move.line.pay,start,pay:"
+msgid "Pay"
+msgstr "Plačilo"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "Obdelava"

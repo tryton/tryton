@@ -1,0 +1,283 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Vous ne pouvez pas changer le prix de revient pour un produit qui a déjà fait l'objet de mouvements de stock.\n"
+"Vous devez utiliser l'assistant « Mise à jour du prix de revient »."
+
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr "Le compte de stock doit être différent du compte de contrepartie"
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Contrepartie du prix de revient"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal de stock"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Méthode de comptabilité de stock"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Compte de stock"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte de stock client"
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Compte de stock client utilisé"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte de stock de production"
+
+msgctxt "field:product.category,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Compte de stock de production utilisé"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte de stock fournisseur"
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Compte de stock fournisseur utilisé"
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Compte de stock utilisé"
+
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr "Compte de stock"
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte de stock client"
+
+msgctxt "field:product.product,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Compte de stock client utilisé"
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.product,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte de stock de production"
+
+msgctxt "field:product.product,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Compte de stock de production utilisé"
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte de stock fournisseur"
+
+msgctxt "field:product.product,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Compte de stock fournisseur utilisé"
+
+msgctxt "field:product.product,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Compte de stock utilisé"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Compte de stock"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte de stock client"
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Compte de stock client utilisé"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock « pertes et surplus »"
+
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte de stock de production"
+
+msgctxt "field:product.template,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Compte de stock de production utilisé"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte de stock fournisseur"
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Compte de stock fournisseur utilisé"
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Compte de stock utilisé"
+
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Prix de revient"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Contrepartie"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Différence de prix"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Compte de stock"
+
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Mise à jour du prix de revient"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Mise à jour du prix de revient - Demande"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Mise à jour du prix de revient - Afficher mouvement"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continentale"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Aucune"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Compte de stock"
+
+msgctxt "view:product.update_cost_price.ask:"
+msgid "Update Cost Price"
+msgstr "Mise à jour du prix de revient"
+
+msgctxt "view:product.update_cost_price.show_move:"
+msgid "Update Cost Price - Move"
+msgstr "Mise à jour du prix de revient - Mouvement"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Annulé"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Annuler"
