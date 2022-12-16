@@ -1,0 +1,56 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Szállítmányok csoportosítása"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr ""
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Szállítmányok csoportosítása"
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Szállítmányok csoportosítása"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Szállítmányok csoportosítása"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"Új vevők létrehozásakor ezt a szállítmány csoportosítási módot adja meg "
+"automatikusan a rendszer."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"Új vevők létrehozásakor ezt a szállítmány csoportosítási módot adja meg "
+"automatikusan a rendszer."
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr ""
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr "alapértelmezett"
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Szállítmányok"
