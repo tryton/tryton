@@ -1,0 +1,28 @@
+Version 5.0.6 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.5 - 2022-02-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.4 - 2021-06-17
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.3 - 2021-02-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.2 - 2020-04-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.1 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Initial release

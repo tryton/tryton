@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Domyślne lokalizacje"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr ""
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Produkt"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Sekwencja"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magazyn"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Lokalizacja produktu"
