@@ -1,0 +1,31 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_allocation_method:"
+msgid "Carrier Cost Allocation Method"
+msgstr "Начин на разпределяне на остойностяване на превоз"
+
+msgctxt "field:stock.move,unit_shipment_cost:"
+msgid "Unit Shipment Cost"
+msgstr "Остойностяване на доставка на единица"
+
+msgctxt "field:stock.shipment.in,carrier:"
+msgid "Carrier"
+msgstr "Превозвач"
+
+msgctxt "field:stock.shipment.in,cost:"
+msgid "Cost"
+msgstr "Разход"
+
+msgctxt "field:stock.shipment.in,cost_currency:"
+msgid "Cost Currency"
+msgstr "Валута при разход"
+
+msgctxt "field:stock.shipment.in,cost_currency_digits:"
+msgid "Cost Currency Digits"
+msgstr "Цифри на валута за разход"
+
+msgctxt "selection:carrier,carrier_cost_allocation_method:"
+msgid "By Value"
+msgstr "По стойност"
