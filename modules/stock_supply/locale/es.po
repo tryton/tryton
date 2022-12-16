@@ -1,0 +1,289 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.order_point:"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Sólo se permite una regla de abastecimiento por cada combinación de "
+"producto-ubicación."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Overflowing Location\" and vice "
+"versa)."
+msgstr ""
+"No se puede definir dos reglas de aprovisionamiento con ubicaciones opuestas"
+" (de la \"ubicación de almacenamiento\" a la \"ubicación de excesos\" y "
+"viceversa)."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Provisioning Location\" and vice "
+"versa)."
+msgstr ""
+"No se puede definir dos reglas de aprovisionamiento con ubicaciones opuestas"
+" (de la \"ubicación de almacenamiento\" a la \"ubicación del "
+"abastecimiento\" y viceversa)."
+
+msgctxt "error:stock.supply:"
+msgid "There are some late customer moves."
+msgstr "Hay algunos movimientos de cliente retrasados."
+
+msgctxt "error:stock.supply:"
+msgid "There are some late supplier moves."
+msgstr "Hay algunos movimientos de proveedor retrasados."
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "field:purchase.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Período de suministro"
+
+msgctxt "field:purchase.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:purchase.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:purchase.configuration.supply_period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:purchase.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Período de suministro"
+
+msgctxt "field:purchase.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:purchase.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:stock.location,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Ubicación de excesos"
+
+msgctxt "field:stock.location,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Ubicación del abastecimiento"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.order_point,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.order_point,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.order_point,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Cantidad máxima"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Cantidad mínima"
+
+msgctxt "field:stock.order_point,overflowing_location:"
+msgid "Overflowing Location"
+msgstr "Ubicación de excesos"
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Ubicación del abastecimiento"
+
+msgctxt "field:stock.order_point,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Ubicación interna"
+
+msgctxt "field:stock.order_point,target_quantity:"
+msgid "Target Quantity"
+msgstr "Cantidad destino"
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de la unidad"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Ubicación del almacén"
+
+msgctxt "field:stock.order_point,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:stock.order_point,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:stock.supply.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:stock.location,overflowing_location:"
+msgid "Leave empty for no default overflowing"
+msgstr "Dejarlo vacío para no tener una ubicación de excesos por defecto."
+
+msgctxt "help:stock.location,provisioning_location:"
+msgid "Leave empty for no default provisioning"
+msgstr ""
+"Dejarlo vacío para no tener una ubicación de abastecimiento por defecto."
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.action,name:act_order_point_form_relate2"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.action,name:act_stock_supply"
+msgid "Supply Stock"
+msgstr "Aprovisionar existencias"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Interna"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Reglas de abastecimiento"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_supply"
+msgid "Supply Stock"
+msgstr "Aprovisionar existencias"
+
+msgctxt "model:purchase.configuration.supply_period,name:"
+msgid "Purchase Configuration Supply Period"
+msgstr "Configuración del periodo de aprovisionamiento en compras."
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Regla de abastecimiento"
+
+msgctxt "model:stock.supply.start,name:"
+msgid "Supply Stock"
+msgstr "Aprovisionamiento de existencias."
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Interno"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Tipo de regla de abastecimiento"
+
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Información del producto"
+
+msgctxt "view:stock.supply.start:"
+msgid "Supply Stock?"
+msgstr "Aprovisionar existencias?"
+
+msgctxt "wizard_button:stock.supply,start,create_:"
+msgid "Create"
+msgstr "Crear"
+
+msgctxt "wizard_button:stock.supply,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Purchase Requests"
+msgstr "Generar solicitudes de compra"
+
+msgctxt "model:ir.cron,name:cron_shipment_iternal"
+msgid "Generate Internal Shipments"
+msgstr "Generar albaranes internos"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Crear solicitudes de compra"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Crear albaranes internos"
+
+msgctxt "model:purchase.request.create.start,name:"
+msgid "Create Purchase Request"
+msgstr "Crear solicitud de compra"
+
+msgctxt "model:stock.shipment.internal.create.start,name:"
+msgid "Create Shipment Internal"
+msgstr "Crear albaranes internos"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Requests?"
+msgstr "¿Quiere crear las solicitudes de compra?"
+
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments?"
+msgstr "¿Crear albaranes internos?"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
+msgid "Create"
+msgstr "Crear"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"

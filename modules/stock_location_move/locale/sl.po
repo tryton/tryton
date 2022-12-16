@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.internal:"
+msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
+msgstr ""
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr ""
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal-location,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "Stock Location Movable"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr ""

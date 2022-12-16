@@ -1,0 +1,90 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.supply:"
+msgid "There are some late productions."
+msgstr "Obstaja nekaj zakasnelih proizvodenj."
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Obdobje dobave"
+
+msgctxt "field:production.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:production.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:production.configuration.supply_period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Obdobje dobave"
+
+msgctxt "field:production.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:production.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "Request Productions"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
+msgstr "Konfiguracija obdobja dobave proizvodnje"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "Proizvodni nalog"
+
+msgctxt "help:production.configuration,supply_period:"
+msgid "In number of days"
+msgstr "V dnevih"
+
+msgctxt "model:ir.action,name:act_production_request_create"
+msgid "Create Production Requests"
+msgstr "Izdelava proizvodnih zahtevkov"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Production Requests"
+msgstr "Izdelava proizvodnih zahtevkov"
+
+msgctxt "model:ir.ui.menu,name:menu_production_request_create"
+msgid "Create Production Requests"
+msgstr "Izdelava proizvodnih zahtevkov"
+
+msgctxt "model:production.create_request.start,name:"
+msgid "Create Production Request"
+msgstr "Izdelava proizvodnega zahtevka"
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Requests?"
+msgstr "Izdelava proizvodnih zahtevkov?"
+
+msgctxt "wizard_button:production.create_request,start,create_:"
+msgid "Create"
+msgstr "Izdelaj"
+
+msgctxt "wizard_button:production.create_request,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
