@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_supplier_view_form">
+            <field name="model">purchase.product_supplier</field>
+            <field name="inherit" ref="purchase.product_supplier_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name=&quot;delivery_time&quot;]"
+                        position="after">
+                        <field name="weekdays" colspan="4"
+                            view_ids="stock_supply_day.product_supplier_weekdayview_tree_editable"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_weekdayview_form">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Week Day">
+                    <label name="product_supplier"/>
+                    <field name="product_supplier"/>
+                    <newline/>
+                    <label name="weekday"/>
+                    <field name="weekday"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_weekdayview_tree">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Week Day">
+                    <field name="product_supplier"/>
+                    <field name="weekday"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="product_supplier_weekdayview_tree_editable">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Week Day" editable="bottom">
+                    <field name="product_supplier"/>
+                    <field name="weekday" expand="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>

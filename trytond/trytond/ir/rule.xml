@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="rule_group_view_form">
+            <field name="model">ir.rule.group</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Record rules" col="6">
+                    <label name="model"/>
+                    <field name="model"/>
+                    <label name="global_p"/>
+                    <field name="global_p"/>
+                    <label name="default_p"/>
+                    <field name="default_p"/>
+                    <group col="4" colspan="6" id="perm">
+                        <label name="perm_read"/>
+                        <field name="perm_read"/>
+                        <label name="perm_write"/>
+                        <field name="perm_write"/>
+                        <label name="perm_create"/>
+                        <field name="perm_create"/>
+                        <label name="perm_delete"/>
+                        <field name="perm_delete"/>
+                    </group>
+                    <label name="name"/>
+                    <field name="name" colspan="5"/>
+                    <field name="rules" colspan="6"/>
+                    <label string="The rule is satisfied if at least one test is True"
+                        colspan="6" xalign="0.0" id="satisfied"/>
+                    <label string="If there is no test defined, the rule is always satisfied if not global"
+                        colspan="6" xalign="0.0" id="no_test"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="rule_group_view_tree">
+            <field name="model">ir.rule.group</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Record rules">
+                    <field name="perm_read"/>
+                    <field name="perm_write"/>
+                    <field name="perm_create"/>
+                    <field name="perm_delete"/>
+                    <field name="model"/>
+                    <field name="name"/>
+                    <field name="global_p"/>
+                    <field name="default_p"/>
+                </tree>
+              ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_rule_group_form">
+            <field name="name">Record Rules</field>
+            <field name="res_model">ir.rule.group</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_rule_group_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="rule_group_view_tree"/>
+            <field name="act_window" ref="act_rule_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_rule_group_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="rule_group_view_form"/>
+            <field name="act_window" ref="act_rule_group_form"/>
+        </record>
+        <menuitem parent="ir.menu_models"
+            action="act_rule_group_form" id="menu_rule_group_form"/>
+        <record model="ir.ui.view" id="rule_view_form">
+            <field name="model">ir.rule</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="Test" col="6">
+                    <label name="field"/>
+                    <field name="field"/>
+                    <label name="operator"/>
+                    <field name="operator"/>
+                    <label name="operand"/>
+                    <field name="operand"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="rule_view_tree">
+            <field name="model">ir.rule</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Test">
+                    <field name="field"/>
+                    <field name="operator"/>
+                    <field name="operand"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
