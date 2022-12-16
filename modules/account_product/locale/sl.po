@@ -1,0 +1,215 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Privzet konto odhodkov"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Privzet konto prihodkov"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Privzet konto odhodkov"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Privzet konto prihodkov"
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Konto odhodkov"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Uporabi matične konte"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Konto prihodkov"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Računovodstvo"
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "Konti"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Davki za kupce"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Uporabljeni davki kupca"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Davki za dobavitelje"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Uporabljeni davki dobavitelja"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Uporabi matične davke"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Davek"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Davek"
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "Konto odhodkov"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "Konto prihodkov"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr "Kategorija konta"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr "Kategorija konta"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "Predloga"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "Uporabi konte, določene v matični kategoriji"
+
+#, fuzzy
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr "Označite v primeru pretvorbe v računovodsko kategorijo."
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr "Upoštevani davki pri prodaji izdelkov iz te kategorije."
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr "Upoštevani davki pri nabavi izdelkov iz te kategorije."
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "Upoštevani davki iz matične kategorije."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Kategorija - Davek kupca"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Kategorija - Davek dobavitelja"
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr "Konto v kategoriji"
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Izdelek"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Računovodstvo"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Konti"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Davki"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Računovodstvo"
