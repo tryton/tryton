@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="parent"/>
+    <field name="parent"/>
+    <notebook>
+        <page string="Members" col="2" id="members">
+            <field name="users" colspan="2"/>
+        </page>
+        <page string="Access Permissions" col="1" id="permissions">
+            <notebook>
+                <page name="model_access" col="2">
+                    <field name="model_access"/>
+                    <field name="field_access"/>
+                </page>
+                <page name="rule_groups" col="1">
+                    <field name="rule_groups"/>
+                </page>
+                <page name="buttons" col="1">
+                    <field name="buttons"/>
+                </page>
+                <page name="menu_access" col="1">
+                    <field name="menu_access"/>
+                </page>
+            </notebook>
+        </page>
+    </notebook>
+</form>
