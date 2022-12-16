@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="product_supplier"/>
+    <field name="product_supplier" colspan="3"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="quantity"/>
+    <field name="quantity" symbol="uom"/>
+    <newline/>
+    <label name="unit_price"/>
+    <field name="unit_price"/>
+</form>

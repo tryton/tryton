@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_incoterm">
+            <field name="text">Incoterm</field>
+        </record>
+        <record model="ir.message" id="msg_incoterm_location">
+            <field name="text">Incoterm Location</field>
+        </record>
+        <record model="ir.message" id="msg_incoterm_location_required">
+            <field name="text">Incoterm Location Required</field>
+        </record>
+        <record model="ir.message" id="msg_sale_incoterm_required_for_quotation">
+            <field name="text">To get a quote for sale "%(sale)s" you must enter an incoterm.</field>
+        </record>
+        <record model="ir.message" id="msg_purchase_incoterm_required_for_quotation">
+            <field name="text">To get a quote for purchase "%(purchase)s" you must enter an incoterm.</field>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label id="name" string="Name:"/>
+    <field name="rec_name" colspan="3"/>
+    <label name="budget"/>
+    <field name="budget" readonly="1"/>
+
+    <label name="total_amount"/>
+    <field name="total_amount"/>
+    <label name="actual_amount"/>
+    <field name="actual_amount"/>
+    <label name="percentage"/>
+    <group id="percentage" col="-1">
+        <field name="percentage" factor="100" xexpand="0"/>
+        <field name="percentage" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+</form>
