@@ -1,0 +1,172 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr "Gruplar"
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr "Ad"
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr "Seçilebilir"
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr "Sınıf"
+
+#, fuzzy
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr "Cultivar"
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+#, fuzzy
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr "Cultivarlar"
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr "Ad"
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr "Alt Öge"
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr "Ad"
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr "Ana Öğe"
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr "Seçilebilir"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr "Cultivarlar"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr "Cultivar Grupları"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr "Cultivarlar"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr "Cultivar Grupları"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr "Taxons"
+
+#, fuzzy
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr "Cultivar"
+
+#, fuzzy
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr "Cultivar-CultivarGrup"
+
+#, fuzzy
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr "Cultivar Grup"
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr "Takson"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr "Sınıf"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr "Bölüm"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr "Etkinlik Alanı"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr "Aile"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr "Form"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr "Kısım"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr "Alem"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr "Sipariş"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr "Dal"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr "Bölüm"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr "Silsile"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr "Türler"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr "Soy"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr "Çeşit"
