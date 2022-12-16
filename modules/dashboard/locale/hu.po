@@ -1,0 +1,58 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Művelet"
+
+#, fuzzy
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr ""
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr ""
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr ""
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Dashboard"

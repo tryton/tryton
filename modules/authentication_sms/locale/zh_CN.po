@@ -1,0 +1,37 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "语言编码"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr ""
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sms_text"
+msgid "%(name)s code %(code)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_sms_code"
+msgid "SMS Code for %(login)s"
+msgstr ""
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr ""
