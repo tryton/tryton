@@ -1,0 +1,19 @@
+trytond_purchase_requisition
+============================
+
+The purchase_requisition module of the Tryton application platform.
+
+Installing
+----------
+
+See INSTALL
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT

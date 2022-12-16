@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="party_address"/>
+    <field name="party_address"/>
+    <notebook colspan="8">
+        <page string="General" id="general" col="6">
+            <label name="timesheet_available" string="Timesheet:"/>
+            <group col="-1" id="timesheet">
+                <field name="timesheet_available" xexpand="0"/>
+                <label name="timesheet_start_date" string="Start:"/>
+                <field name="timesheet_start_date" xexpand="0"/>
+                <label name="timesheet_end_date" string="End:"/>
+                <field name="timesheet_end_date" xexpand="0"/>
+            </group>
+            <newline/>
+            <label name="effort_duration"/>
+            <field name="effort_duration"/>
+            <label name="progress"/>
+            <group col="2" id="progress">
+                <field name="progress" factor="100" xexpand="0"/>
+                <label name="progress" string="%" xalign="0.0" xexpand="1"/>
+            </group>
+            <newline/>
+            <label name="timesheet_duration"/>
+            <field name="timesheet_duration"/>
+            <label name="total_effort"/>
+            <field name="total_effort"/>
+            <newline/>
+            <separator name="comment" colspan="6"/>
+            <field name="comment" colspan="6"/>
+            <group col="4" colspan="6" id="state_buttons">
+                <group col="2" colspan="2" id="state">
+                    <label name="state"/>
+                    <field name="state"/>
+                </group>
+                <group col="-1" colspan="2" id="buttons">
+                </group>
+            </group>
+        </page>
+        <page name="children" col="1">
+              <field name="children"
+                  view_ids="project.work_view_list_children"/>
+        </page>
+    </notebook>
+</form>
