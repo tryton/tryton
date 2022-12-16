@@ -1,0 +1,7 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Preisliste)"
