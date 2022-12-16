@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='number']" position="before">
+        <field name="marketing_campaign" expand="1"/>
+        <field name="marketing_medium" expand="1"/>
+        <field name="marketing_source" expand="1"/>
+    </xpath>
+    <xpath expr="//field[contains(@name, 'trend')]" position="replace"></xpath>
+</data>

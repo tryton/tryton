@@ -1,0 +1,272 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,gift_card:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "field:account.account.type.template,gift_card:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "field:account.configuration,gift_card_account_expense:"
+msgid "Gift Card Expense"
+msgstr "Charges de carte cadeau"
+
+msgctxt "field:account.configuration,gift_card_account_revenue:"
+msgid "Gift Card Revenue"
+msgstr "Produits de carte cadeau"
+
+msgctxt "field:account.configuration.gift_card_account,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt ""
+"field:account.configuration.gift_card_account,gift_card_account_expense:"
+msgid "Gift Card Expense"
+msgstr "Charges de carte cadeau"
+
+msgctxt ""
+"field:account.configuration.gift_card_account,gift_card_account_revenue:"
+msgid "Gift Card Revenue"
+msgstr "Produits de carte cadeau"
+
+msgctxt "field:product.product,gift_card:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "field:product.template,gift_card:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "field:sale.configuration,gift_card_sequence:"
+msgid "Gift Card Sequence"
+msgstr "Séquence de carte cadeau"
+
+msgctxt "field:sale.configuration.gift_card.sequence,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.configuration.gift_card.sequence,gift_card_sequence:"
+msgid "Gift Card Sequence"
+msgstr "Séquence de carte cadeau"
+
+msgctxt "field:sale.gift_card,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.gift_card,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.gift_card,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:sale.gift_card,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:sale.gift_card,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:sale.gift_card,spent_on:"
+msgid "Spent On"
+msgstr "Dépensé sur"
+
+msgctxt "field:sale.gift_card,value:"
+msgid "Value"
+msgstr "Valeur"
+
+msgctxt "field:sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr "E-mail de la carte cadeau"
+
+msgctxt "field:sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "field:sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr "Est une carte cadeau"
+
+msgctxt "field:sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr "Est un service de carte cadeau"
+
+msgctxt "field:sale.point.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "field:sale.point.sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr "E-mail de la carte cadeau"
+
+msgctxt "field:sale.point.sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "field:sale.point.sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr "Est une carte cadeau"
+
+msgctxt "field:sale.point.sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr "Est un service de carte cadeau"
+
+msgctxt "field:sale.point.sale.pay.gift_card,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.point.sale.pay.gift_card,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.point.sale.pay.gift_card,email:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "field:sale.point.sale.pay.gift_card,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:sale.point.sale.pay.gift_card,sale:"
+msgid "Sale"
+msgstr "Vente"
+
+msgctxt "field:sale.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "field:stock.move,gift_cards:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "field:stock.move,gift_cards_required:"
+msgid "Gift Cards Required"
+msgstr "Cartes cadeaux requises"
+
+msgctxt "help:sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr "Laissez vide pour l'e-mail du client."
+
+msgctxt "help:sale.point.sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr "Laissez vide pour l'e-mail du client."
+
+msgctxt "model:account.configuration.gift_card_account,name:"
+msgid "Account Configuration Gift Card Account"
+msgstr "Configuration comptable Compte carte cadeau"
+
+msgctxt "model:ir.action,name:act_gift_card_form"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "model:ir.action,name:report_gift_card"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "model:ir.action,name:report_gift_card_email"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "model:ir.action.act_window.domain,name:act_gift_card_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_gift_card_form_domain_pending"
+msgid "Pending"
+msgstr "En attentes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_gift_card_form_domain_sent"
+msgid "Sent"
+msgstr "Envoyées"
+
+msgctxt "model:ir.message,text:msg_gift_card_invalid_uom"
+msgid "The default UOM for the gift card \"%(template)s\" must be \"%(unit)s\"."
+msgstr ""
+"L'UdM par défaut de la carte cadeau « %(template)s » doit être « %(unit)s »."
+
+msgctxt "model:ir.message,text:msg_gift_card_move_quantity"
+msgid ""
+"To do the move \"%(move)s\", you must use exactly %(quantity)d gift card(s)."
+msgstr ""
+"Pour effectuer le mouvement « %(move)s », vous devez utiliser exactement "
+"%(quantity)d carte(s) cadeau(x)."
+
+msgctxt "model:ir.message,text:msg_gift_card_number_unique"
+msgid "The numbers for each company's gift cards must be unique."
+msgstr ""
+"Les numéros des cartes cadeaux de chaque société doivent être uniques."
+
+msgctxt "model:ir.rule.group,name:rule_group_gift_card_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_gift_card"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "model:ir.ui.menu,name:menu_gift_card_form"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "model:res.group,name:group_gift_card_admin"
+msgid "Gift Card Administration"
+msgstr "Administration des cartes cadeaux"
+
+msgctxt "model:sale.configuration.gift_card.sequence,name:"
+msgid "Gift Card Configuration Sequence"
+msgstr "Configuration de cartes cadeaux Séquence"
+
+msgctxt "model:sale.gift_card,name:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "model:sale.point.sale.pay.gift_card,name:"
+msgid "POS Pay - Gift Card"
+msgstr "Paiement PDV - Carte-cadeau"
+
+msgctxt "report:sale.gift_card.email:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "report:sale.gift_card.email:"
+msgid "Here is your code:"
+msgstr "Voici votre code :"
+
+msgctxt "report:sale.gift_card.email:"
+msgid "You received a gift card of %(value)s for %(company)s."
+msgstr "Vous avez reçu une carte cadeau de %(value)s for %(company)s."
+
+msgctxt "report:sale.gift_card:"
+msgid "Value:"
+msgstr "Valeur :"
+
+msgctxt "view:account.configuration:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
+
+msgctxt "view:sale.line:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "view:sale.point.sale.line:"
+msgid "Gift Cards"
+msgstr "Cartes cadeaux"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,add_gift_card:"
+msgid "Add"
+msgstr "Ajouter"
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,gift_card:"
+msgid "Gift Card"
+msgstr "Carte cadeau"
