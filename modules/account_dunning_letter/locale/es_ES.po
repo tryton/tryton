@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Imprimir en una carta"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Carta de reclamación"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date:"
+msgstr "Fecha:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Fecha de vencimiento"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "E-Mail:"
+msgstr "Correo electrónico:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagos pendientes recibidos"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Phone:"
+msgstr "Teléfono:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Aviso recordatorio"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "VAT Number:"
+msgstr "CIF/NIF:"
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "process"
+msgstr "Procesar"

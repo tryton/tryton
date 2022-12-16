@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Journal View" col="2">
+    <label name="name"/>
+    <field name="name"/>
+    <field name="columns" colspan="2"
+        view_ids="account.journal_view_column_view_list_sequence">
+    </field>
+</form>
