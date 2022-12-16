@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Analytic Account" parent="account.menu_account_configuration"
+            id="menu_analytic_account_configuration"/>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">analytic_account.account</field>
+            <field name="type">form</field>
+            <field name="name">account_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_tree</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_list">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_list</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_list2">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">account_list2</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_tree">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+            <field name="domain"
+                eval="[('parent', '=', None), ('type', '=', 'root')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_analytic_account_configuration"
+            action="act_account_tree" id="menu_account_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_list">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <menuitem parent="menu_account_tree"
+            action="act_account_list" id="menu_account_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="account_view_tree2">
+            <field name="model">analytic_account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="name">account_tree2</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_tree2">
+            <field name="name">Analytic Accounts</field>
+            <field name="res_model">analytic_account.account</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree2"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_chart">
+            <field name="name">Open Chart of Analytic Accounts</field>
+            <field name="wiz_name">analytic_account.open_chart</field>
+        </record>
+        <menuitem parent="account.menu_charts" action="act_open_chart"
+            icon="tryton-tree" id="menu_open_chart"/>
+
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="group" ref="group_analytic_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_distribution_view_form">
+            <field name="model">analytic_account.account.distribution</field>
+            <field name="type">form</field>
+            <field name="name">account_distribution_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_distribution_view_list">
+            <field name="model">analytic_account.account.distribution</field>
+            <field name="type">tree</field>
+            <field name="name">account_distribution_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_account_distribution">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_distribution_account_admin">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.account.distribution')]"/>
+            <field name="group" ref="group_analytic_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_chart_start_view_form">
+            <field name="model">analytic_account.open_chart.start</field>
+            <field name="type">form</field>
+            <field name="name">open_chart_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="analytic_account_entry_view_form">
+            <field name="model">analytic.account.entry</field>
+            <field name="type">form</field>
+            <field name="name">analytic_account_entry_form</field>
+        </record>
+        <record model="ir.ui.view" id="analytic_account_entry_view_list">
+            <field name="model">analytic.account.entry</field>
+            <field name="type">tree</field>
+            <field name="name">analytic_account_entry_tree</field>
+        </record>
+    </data>
+</tryton>
