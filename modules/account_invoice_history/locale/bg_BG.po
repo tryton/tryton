@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,open_date:"
+msgid "Open Date"
+msgstr "Дата на отваряне"
+
+msgctxt "field:account.invoice.payment_term.line.delay,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.payment_term.line.delay,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.payment_term.line.delay,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
+msgid ""
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delay,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.payment_term.line.delay,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.payment_term.line.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.payment_term.line.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.payment_term.line.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line.type,rec_name:"
+msgid ""
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.type,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.payment_term.line.type,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "model:account.invoice.payment_term.line.delay,name:"
+msgid "account.invoice.payment_term.line.delay"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term.line.type,name:"
+msgid "account.invoice.payment_term.line.type"
+msgstr ""

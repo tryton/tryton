@@ -1,0 +1,12 @@
+Version 2.4.1 - 2012-04-24
+* Restore es_AR translation
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Improve rec_name of carrier
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-10-17
+* Initial release
