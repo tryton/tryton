@@ -1,0 +1,120 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr "Bozza prezzo unitario"
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr "Promozione"
+
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr ""
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "Data finale"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr "Formula"
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr "Listino"
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "Prodotti"
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "Quantità"
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "Data iniziale"
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "Unità"
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "Posizioni Unità"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Promozione"
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "Prodotto"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr "Promozione"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Espressione python che verrà valorizzata con:\n"
+"- unit_price: l'unit_price originario"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr "Promotions"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr "Sale Promotions"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Formula \"%(formula)s\" invalida nella promozione \"%(promotion)s\" con "
+"eccezione \"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr "Promotions"
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr "Promozione su vendite"
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr ""
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr "Promozione su vendita - prodotto"
