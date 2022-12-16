@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/label[@name=&quot;hours&quot;]" position="replace"/>
+
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;hours&quot;]" position="replace">
+                        <group colspan="2" col="2" id="cost">
+                            <separator string="Cost" id="cost" colspan="2"/>
+                            <label name="cost"/>
+                            <field name="cost"/>
+                            <label name="hours"/>
+                            <field name="hours" widget="float_time" float_time="company_work_time"/>
+                        </group>
+                    </xpath>
+
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/group[@id=&quot;effort&quot;]" position="replace">
+                        <group colspan="2" col="2" id="revenue">
+                            <separator string="Revenue" id="revenue" colspan="2"/>
+                            <label name="revenue"/>
+                            <field name="revenue"/>
+                            <label name="product"/>
+                            <field name="product"/>
+                            <label name="list_price"/>
+                            <field name="list_price"/>
+                            <label name="effort"/>
+                            <field name="effort" widget="float_time" float_time="company_work_time"/>
+                            <label name="total_effort"/>
+                            <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+                        </group>
+                    </xpath>
+
+                    <xpath expr="/form/notebook/page[@id=&quot;children&quot;]/field[@name=&quot;children&quot;]/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                        <field name="product"/>
+                        <field name="list_price"/>
+                        <field name="revenue"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_tree">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                        <field name="product"/>
+                        <field name="list_price"/>
+                        <field name="revenue"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_tree2">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_tree2"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                        <field name="product"/>
+                        <field name="list_price"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_tree3">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_tree3"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                        <field name="revenue"/>
+                        <field name="cost"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
