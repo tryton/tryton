@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,percentage:"
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgctxt "help:carrier,percentage:"
+msgid "The percentage applied on the amount to compute the cost."
+msgstr "Le pourcentage appliqué sur le montant pour calculer le coût."
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Percentage"
+msgstr "Pourcentage"
