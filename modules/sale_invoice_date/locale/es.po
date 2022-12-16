@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Plazo facturación venta"
+
+msgctxt "field:party.party.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Plazo facturación venta"
+
+msgctxt "field:sale.configuration,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Plazo facturación venta"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Plazo facturación venta"
+
+msgctxt "field:sale.invoice.term,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.invoice.term,relative_deltas:"
+msgid "Deltas"
+msgstr "Incrementos"
+
+msgctxt "field:sale.invoice.term.relative_delta,day:"
+msgid "Day of Month"
+msgstr "Día del mes"
+
+msgctxt "field:sale.invoice.term.relative_delta,days:"
+msgid "Number of Days"
+msgstr "Número de días"
+
+msgctxt "field:sale.invoice.term.relative_delta,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:sale.invoice.term.relative_delta,months:"
+msgid "Number of Months"
+msgstr "Número de meses"
+
+msgctxt "field:sale.invoice.term.relative_delta,term:"
+msgid "Invoice Term"
+msgstr "Plazo de facturación"
+
+msgctxt "field:sale.invoice.term.relative_delta,weekday:"
+msgid "Day of Week"
+msgstr "Día de la semana"
+
+msgctxt "field:sale.invoice.term.relative_delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Número de semanas"
+
+msgctxt "field:sale.sale,invoice_term:"
+msgid "Invoice Term"
+msgstr "Plazo de facturación"
+
+msgctxt "help:party.party,sale_invoice_term:"
+msgid ""
+"The default sale invoice term for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El plazo de facturación de venta por defecto para el cliente.\n"
+"Dejar vacío para utilizar el valor por defecto de la configuración."
+
+msgctxt "help:sale.invoice.term,name:"
+msgid "The main identifier of the invoice term."
+msgstr "El identificador principal del plazo de facturación."
+
+msgctxt "model:ir.action,name:act_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Plazos de facturación"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Plazos de facturación"
+
+msgctxt "model:sale.invoice.term,name:"
+msgid "Invoice Term"
+msgstr "Plazo de facturación"
+
+msgctxt "model:sale.invoice.term.relative_delta,name:"
+msgid "Invoice Term Delta"
+msgstr "Incremento del plazo de facturación"
