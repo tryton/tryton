@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_reception_direct_debit_view_form">
+            <field name="model">party.party.reception_direct_debit</field>
+            <field name="type">form</field>
+            <field name="name">party_reception_direct_debit_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_reception_direct_debit_view_list">
+            <field name="model">party.party.reception_direct_debit</field>
+            <field name="type">tree</field>
+            <field name="name">party_reception_direct_debit_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_party_reception_direct_debit_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'party.party.reception_direct_debit')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_party_reception_direct_debit_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_party_reception_direct_debit_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_party_reception_direct_debit">
+            <field name="model" search="[('model', '=', 'party.party.reception_direct_debit')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_party_reception_direct_debit_payment">
+            <field name="model" search="[('model', '=', 'party.party.reception_direct_debit')]"/>
+            <field name="group" ref="group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

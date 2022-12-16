@@ -1,0 +1,158 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move,grouped_lines:"
+msgid "Grouped Lines"
+msgstr "Línies agrupades"
+
+msgctxt "field:account.move.line.group,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.move.line.group,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.move.line.group,amount_currency:"
+msgid "Amount Currency"
+msgstr "Moneda de l'import"
+
+msgctxt "field:account.move.line.group,amount_reconciled:"
+msgid "Amount Reconciled"
+msgstr "Import conciliat"
+
+msgctxt "field:account.move.line.group,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Import segona moneda"
+
+msgctxt "field:account.move.line.group,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.move.line.group,credit:"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "field:account.move.line.group,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.move.line.group,date:"
+msgid "Effective Date"
+msgstr "Data efectiva"
+
+msgctxt "field:account.move.line.group,debit:"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "field:account.move.line.group,delegated_amount:"
+msgid "Delegated Amount"
+msgstr "Import delegat"
+
+msgctxt "field:account.move.line.group,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.move.line.group,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.move.line.group,maturity_date:"
+msgid "Maturity Date"
+msgstr "Data de venciment"
+
+msgctxt "field:account.move.line.group,move:"
+msgid "Move"
+msgstr "Assentament"
+
+msgctxt "field:account.move.line.group,move_description:"
+msgid "Move Description"
+msgstr "Descripció de l'assentament"
+
+msgctxt "field:account.move.line.group,move_origin:"
+msgid "Move Origin"
+msgstr "Origen de l'assentament"
+
+msgctxt "field:account.move.line.group,move_state:"
+msgid "Move State"
+msgstr "Estat de l'assentament"
+
+msgctxt "field:account.move.line.group,partially_reconciled:"
+msgid "Partially Reconciled"
+msgstr "Conciliat parcialment"
+
+msgctxt "field:account.move.line.group,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.move.line.group,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:account.move.line.group,reconciled:"
+msgid "Reconciled"
+msgstr "Conciliat"
+
+msgctxt "field:account.move.line.group,second_currency:"
+msgid "Second Currency"
+msgstr "Segona moneda"
+
+msgctxt "field:account.move.line.group,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.move.line.group-move.line,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:account.move.line.group-move.line,line:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "model:account.move.line.group,name:"
+msgid "Account Move Line Group"
+msgstr "Grup de línia d'assentament de compte"
+
+msgctxt "model:account.move.line.group-move.line,name:"
+msgid "Account Move Line Group - Move Line"
+msgstr "Grup de línia de moviment de compte - Apunt comptable"
+
+msgctxt "model:ir.action,name:act_move_line_group_form"
+msgid "Account Move Lines (Grouped)"
+msgstr "Apunts comptables (Agrupats)"
+
+msgctxt "model:ir.action,name:act_move_line_group_payable_receivable"
+msgid "Payable/Receivable Lines (Grouped)"
+msgstr "Apunts a pagar/a cobrar (Agrupades)"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account (Grouped)"
+msgstr "Obre assentaments comptables (Agrupats)"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "A pagar"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "A cobrar"
+
+msgctxt "view:account.move.line.group:"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "view:account.move.line.group:"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "view:account.move.line.group:"
+msgid "Other Info"
+msgstr "Informació addicional"

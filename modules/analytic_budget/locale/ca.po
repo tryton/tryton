@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:analytic_account.budget,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:analytic_account.budget,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:analytic_account.budget,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.budget,root:"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "field:analytic_account.budget,root_lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:analytic_account.budget,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:analytic_account.budget.context,budget:"
+msgid "Budget"
+msgstr "Pressupost"
+
+msgctxt "field:analytic_account.budget.copy.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget.copy.start,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:analytic_account.budget.copy.start,factor:"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "field:analytic_account.budget.copy.start,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.budget.copy.start,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:analytic_account.budget.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:analytic_account.budget.line,actual_amount:"
+msgid "Actual Amount"
+msgstr "Import real"
+
+msgctxt "field:analytic_account.budget.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:analytic_account.budget.line,budget:"
+msgid "Budget"
+msgstr "Pressupost"
+
+msgctxt "field:analytic_account.budget.line,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:analytic_account.budget.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:analytic_account.budget.line,current_name:"
+msgid "Current Name"
+msgstr "Nom actual"
+
+msgctxt "field:analytic_account.budget.line,left:"
+msgid "Left"
+msgstr "Esquerra"
+
+msgctxt "field:analytic_account.budget.line,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.budget.line,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:analytic_account.budget.line,percentage:"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "field:analytic_account.budget.line,right:"
+msgid "Right"
+msgstr "Dreta"
+
+msgctxt "field:analytic_account.budget.line,root:"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "field:analytic_account.budget.line,total_amount:"
+msgid "Total Amount"
+msgstr "Import total"
+
+msgctxt "help:analytic_account.budget,company:"
+msgid "The company that the budget is associated with."
+msgstr "L’empresa amb la que està associat el pressupost."
+
+msgctxt "help:analytic_account.budget.copy.start,factor:"
+msgid "The percentage to apply to the budget line amounts."
+msgstr "El percentatge a aplicar als imports de la línia de pressupost."
+
+msgctxt "help:analytic_account.budget.line,actual_amount:"
+msgid "The total amount booked against the budget line."
+msgstr "L'import total comptabilitzat a la línia de pressupost."
+
+msgctxt "help:analytic_account.budget.line,amount:"
+msgid "The amount allocated to the budget line."
+msgstr "L'import assignat a la línia pressupostària."
+
+msgctxt "help:analytic_account.budget.line,children:"
+msgid "Used to add structure below the budget."
+msgstr "Utilitzat per afegir una estructura per sota del pressupost."
+
+msgctxt "help:analytic_account.budget.line,parent:"
+msgid "Used to add structure above the budget."
+msgstr "Utilitzat per afegir una estructura per sobre del pressupost."
+
+msgctxt "help:analytic_account.budget.line,percentage:"
+msgid "The percentage of booked amount of the budget line."
+msgstr "El percentatge d'import comptabilitzat de la línia de pressupost."
+
+msgctxt "help:analytic_account.budget.line,total_amount:"
+msgid "The total amount allocated to the budget line and its children."
+msgstr "L'import total assignat a la línia de pressupost i als seus fills."
+
+msgctxt "model:analytic_account.budget,name:"
+msgid "Analytic Budget"
+msgstr "Pressupost analític"
+
+msgctxt "model:analytic_account.budget.context,name:"
+msgid "Analytic Budget Context"
+msgstr "Context del pressupost analític"
+
+msgctxt "model:analytic_account.budget.copy.start,name:"
+msgid "Copy Analytic Budget"
+msgstr "Copiar el pressupost analític"
+
+msgctxt "model:analytic_account.budget.line,name:"
+msgid "Analytic Budget"
+msgstr "Pressupost analític"
+
+msgctxt "model:ir.action,name:act_budget_form"
+msgid "Analytic Budgets"
+msgstr "Pressupostos analítics"
+
+msgctxt "model:ir.action,name:act_budget_line_form"
+msgid "Budget Lines"
+msgstr "Línies de pressupost"
+
+msgctxt "model:ir.action,name:act_budget_report"
+msgid "Analytic Budgets"
+msgstr "Pressupostos analítics"
+
+msgctxt "model:ir.action,name:wizard_budget_copy"
+msgid "Copy Budget"
+msgstr "Copiar el pressupost"
+
+msgctxt "model:ir.model.button,string:budget_copy_button"
+msgid "Copy"
+msgstr "Copia"
+
+msgctxt "model:ir.model.button,string:budget_update_lines_button"
+msgid "Update Lines"
+msgstr "Actualitzar línies"
+
+msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_form"
+msgid "Analytic Budgets"
+msgstr "Pressupostos analítics"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_report"
+msgid "Analytic Budgets"
+msgstr "Pressupostos analítics"
+
+msgctxt "view:analytic_account.budget.copy.start:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name:"
+msgstr "Nom:"
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,copy:"
+msgid "Copy"
+msgstr "Copiar"
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
