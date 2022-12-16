@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.asset,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "conti analitici"
+
+msgctxt "field:account.asset,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "dimensione conti analitici"
+
+msgctxt "field:account.invoice.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "conti analitici"
+
+msgctxt "field:account.invoice.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "dimensione conti analitici"
+
+msgctxt "view:account.invoice.line:"
+msgid "Analytic"
+msgstr "Analitico"
