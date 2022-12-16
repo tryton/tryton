@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.role,groups:"
+msgid "Groups"
+msgstr "组"
+
+msgctxt "field:res.role,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:res.role-res.group,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:res.role-res.group,role:"
+msgid "Role"
+msgstr "角色"
+
+msgctxt "field:res.user,roles:"
+msgid "Roles"
+msgstr "角色"
+
+msgctxt "field:res.user.role,from_date:"
+msgid "From Date"
+msgstr "从日期"
+
+msgctxt "field:res.user.role,role:"
+msgid "Role"
+msgstr "角色"
+
+msgctxt "field:res.user.role,to_date:"
+msgid "To Date"
+msgstr "到日期"
+
+msgctxt "field:res.user.role,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "model:ir.action,name:act_role_form"
+msgid "Roles"
+msgstr "角色"
+
+msgctxt "model:ir.ui.menu,name:menu_role_form"
+msgid "Roles"
+msgstr "角色"
+
+msgctxt "model:res.role,name:"
+msgid "Role"
+msgstr "角色"
+
+msgctxt "model:res.role-res.group,name:"
+msgid "Role - Group"
+msgstr "角色-组"
+
+msgctxt "model:res.user.role,name:"
+msgid "User Role"
+msgstr "用户角色"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Synchronize Users Roles"
+msgstr "同步用户角色"
