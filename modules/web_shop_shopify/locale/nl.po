@@ -1,0 +1,317 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute.set,shopify_option1:"
+msgid "Option 1"
+msgstr "Optie 1"
+
+msgctxt "field:product.attribute.set,shopify_option2:"
+msgid "Option 2"
+msgstr "Optie 2"
+
+msgctxt "field:product.attribute.set,shopify_option3:"
+msgid "Option 3"
+msgstr "Optie 3"
+
+msgctxt "field:product.product,shopify_sku:"
+msgid "SKU"
+msgstr "SKU"
+
+msgctxt "field:product.product,shopify_uom:"
+msgid "Shopify UOM"
+msgstr "Shopify maateenheid"
+
+msgctxt "field:product.shopify_inventory_item,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:product.template,shopify_uom:"
+msgid "Shopify UOM"
+msgstr "Shopify maateenheid"
+
+msgctxt "field:sale.sale,shopify_tax_adjustment:"
+msgid "Shopify Tax Adjustment"
+msgstr "Shopify Belastingaanpassing"
+
+msgctxt "field:stock.shipment.shopify_identifier,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:stock.shipment.shopify_identifier,shipment:"
+msgid "Shipment"
+msgstr "Levering"
+
+msgctxt "field:web.shop,shopify_password:"
+msgid "Password"
+msgstr "Paswoord"
+
+msgctxt "field:web.shop,shopify_payment_journals:"
+msgid "Payment Journals"
+msgstr "Betalingsdagboeken"
+
+msgctxt "field:web.shop,shopify_trial:"
+msgid "Trial"
+msgstr "Poging"
+
+msgctxt "field:web.shop,shopify_url:"
+msgid "Shop URL"
+msgstr "Winkel-URL"
+
+msgctxt "field:web.shop,shopify_version:"
+msgid "Version"
+msgstr "Versie"
+
+msgctxt "field:web.shop,shopify_warehouses:"
+msgid "Warehouses"
+msgstr "Magazijnen"
+
+msgctxt "field:web.shop-stock.location,shopify_id:"
+msgid "Shopify ID"
+msgstr "Shopify-ID"
+
+msgctxt "field:web.shop-stock.location,shopify_stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr "Enige opslagzone"
+
+msgctxt "field:web.shop.shopify_identifier,record:"
+msgid "Record"
+msgstr "Record"
+
+msgctxt "field:web.shop.shopify_identifier,to_update:"
+msgid "To Update"
+msgstr "Bijwerken"
+
+msgctxt "field:web.shop.shopify_identifier,to_update_extra:"
+msgid "To Update Extra"
+msgstr "Extra bijwerken"
+
+msgctxt "field:web.shop.shopify_identifier,web_shop:"
+msgid "Web Shop"
+msgstr "Webwinkel"
+
+msgctxt "field:web.shop.shopify_payment_journal,gateway:"
+msgid "Gateway"
+msgstr "poort"
+
+msgctxt "field:web.shop.shopify_payment_journal,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:web.shop.shopify_payment_journal,shop:"
+msgid "Shop"
+msgstr "Winkel"
+
+msgctxt "help:web.shop,shopify_trial:"
+msgid "If checked reduce the number of calls per minute."
+msgstr "Indien aangevinkt, verminder het aantal oproepen per minuut."
+
+msgctxt "help:web.shop-stock.location,shopify_stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr "Vink aan om alleen de hoeveelheid van de opslagzone te gebruiken."
+
+msgctxt "help:web.shop.shopify_payment_journal,gateway:"
+msgid "The payment gateway name for which the journal must be used."
+msgstr ""
+"De naam van de betalingsgateway waarvoor het journaal moet worden gebruikt."
+
+msgctxt "model:ir.action,name:act_shop_shopify_identifier_form"
+msgid "Shopify Identifiers"
+msgstr "Shopify-ID's"
+
+msgctxt "model:ir.action,name:act_stock_shipment_shopify_identifier_form"
+msgid "Shipment Identifiers"
+msgstr "Zendings-ID's"
+
+msgctxt "model:ir.message,text:msg_custom_collection_fail"
+msgid ""
+"Failed to save custom collection \"%(category)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"De volgende fout is opgetreden tijdens het opslaan van de gepersonaliseerde compilatie \"%(category)s\":\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_fulfillment_fail"
+msgid ""
+"Failed to save fulfillment for sale \"%(sale)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"Kan uitvoering voor verkoop \"%(sale)s\" niet opslaan met fout:\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_identifier_payment_unique"
+msgid "A shopify transaction can only be imported as payment once."
+msgstr ""
+"Een shopify-transactie kan slechts één keer als betaling worden "
+"geïmporteerd."
+
+msgctxt "model:ir.message,text:msg_identifier_record_web_shop_unique"
+msgid "The record cannot have more than one Shopify identifier per web shop."
+msgstr "Het record kan niet meer dan één Shopify-ID per webshop bevatten."
+
+msgctxt "model:ir.message,text:msg_identifier_sale_web_shop_unique"
+msgid "A Shopify order can only be imported as a sale once."
+msgstr ""
+"Een Shopify-bestelling kan slechts één keer als verkoop worden geïmporteerd."
+
+msgctxt "model:ir.message,text:msg_identifier_shipment_sale_unique"
+msgid "The shipment can not have more than one Shopify identifier per sale."
+msgstr "De zending mag niet meer dan één Shopify-ID per verkoop hebben."
+
+msgctxt "model:ir.message,text:msg_inventory_item_fail"
+msgid ""
+"Failed to save inventory item for product \"%(product)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"De volgende fout is opgetreden tijdens het opslaan van de voorraadinformatie voor het artikel \"%(product)s\"\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_location_id_unique"
+msgid "Each Shopify location can only be linked to one warehouse."
+msgstr "Elke Shopify-locatie kan slechts aan één magazijn worden gekoppeld."
+
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid ""
+"To change the template of product \"%(product)s\" you must unpublish it from"
+" the Shopify web shops."
+msgstr ""
+"Om het sjabloon van het artikel \"%(product)\" te kunnen bewerken, moet de "
+"publicatie in de Shopfiy webshop eerst worden ingetrokken."
+
+msgctxt "model:ir.message,text:msg_product_fail"
+msgid ""
+"Failed to save product \"%(template)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"De volgende fout is opgetreden tijdens het opslaan van het artikel \"%(template)s\":\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_product_image_fail"
+msgid ""
+"Failed to save image \"%(image)s\" for product \"%(template)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"De volgende fout is opgetreden tijdens het opslaan van de afbeelding \"%(image)s\" voor artikel \"%(template)s\":\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_product_shopify_uom_digits"
+msgid ""
+"To update product \"%(product)s\" on Shopify, you must use an UOM without "
+"digits."
+msgstr ""
+"Om product \"%(product)s\" op Shopify bij te werken, moet je een maateenheid"
+" zonder cijfers gebruiken."
+
+msgctxt "model:ir.message,text:msg_refund_fail"
+msgid ""
+"Failed to save refund for sale \"%(sale)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"De volgende fout is opgetreden tijdens het opslaan van het tegoed voor de verkoop \"%(sale)s\":\n"
+"%(error)s"
+
+msgctxt "model:ir.message,text:msg_sale_line_without_product"
+msgid ""
+"To process the sale \"%(sale)s\" you must set a product on the line "
+"\"%(line)s\"."
+msgstr ""
+"Om de verkoop \"%(sale)s\" te verwerken, moet u een product instellen op de "
+"regel \"%(line)s\"."
+
+msgctxt "model:ir.message,text:msg_shop_currency_different"
+msgid ""
+"To update products on the shop \"%(shop)s\", you must set the currency to "
+"\"%(shopify_currency)s\" instead of \"%(shop_currency)s\"."
+msgstr ""
+"Om producten in de winkel \"%(shop)s\" bij te werken, moet u de valuta "
+"instellen op \"%(shopify_currency)s\" in plaats van \"%(shop_currency)s\"."
+
+msgctxt "model:ir.message,text:msg_shop_locale_different"
+msgid ""
+"To update products on the shop \"%(shop)s\", you must set the language to "
+"\"%(shopify_primary_locale)s\" instead of \"%(shop_language)s\"."
+msgstr ""
+"Om producten in de winkel \"%(shop)s\" bij te werken, moet u de taal "
+"instellen op \"%(shopify_primary_locale)s\" in plaats van "
+"\"%(shop_language)s\"."
+
+msgctxt "model:ir.message,text:msg_shopify_identifier"
+msgid "Shopify Identifier"
+msgstr "Shopify-ID"
+
+msgctxt "model:ir.message,text:msg_shopify_identifiers"
+msgid "Shopify Identifiers"
+msgstr "Shopify-ID's"
+
+msgctxt "model:ir.message,text:msg_variant_fail"
+msgid ""
+"Failed to save variant \"%(product)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"Kan variant \"%(product)s\" niet opslaan met fout:\n"
+"%(error)s"
+
+msgctxt ""
+"model:ir.model.button,string:shop_shopify_identifier_set_to_update_button"
+msgid "Set to Update"
+msgstr "Instellen om te updaten"
+
+msgctxt "model:ir.ui.menu,name:menu_shop_shopify_identifier_form"
+msgid "Shopify Identifiers"
+msgstr "Shopify-ID's"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
+msgid "Shipment Identifiers"
+msgstr "Zendings-ID's"
+
+msgctxt "model:product.shopify_inventory_item,name:"
+msgid "Shopify Inventory Item"
+msgstr "Shopify-voorraaditem"
+
+msgctxt "model:stock.shipment.shopify_identifier,name:"
+msgid "Shopify Shipment Identifier"
+msgstr "Shopify Verzend-ID"
+
+msgctxt "model:web.shop.shopify_identifier,name:"
+msgid "Shopify Identifier"
+msgstr "Shopify-ID"
+
+msgctxt "model:web.shop.shopify_payment_journal,name:"
+msgid "Shopify Payment Journal"
+msgstr "Shopify-betalingsdagboek"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Shopify"
+msgstr "Shopify"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fetch Shopify Orders"
+msgstr "Shopify-bestellingen ophalen"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Inventory"
+msgstr "Shopify-inventaris bijwerken"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Orders"
+msgstr "Shopify-bestellingen bijwerken"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Shopify Products"
+msgstr "Update Shopify-producten"
+
+msgctxt "selection:stock.shipment.shopify_identifier,shipment:"
+msgid "Customer Shipment"
+msgstr "Klant zending"
+
+msgctxt "selection:web.shop,type:"
+msgid "Shopify"
+msgstr "Shopify"
+
+msgctxt "view:product.attribute.set:"
+msgid "Shopify Options"
+msgstr "Shopify-opties"
+
+msgctxt "view:web.shop:"
+msgid "Shopify"
+msgstr "Shopify"
