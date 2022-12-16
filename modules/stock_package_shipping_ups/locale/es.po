@@ -1,0 +1,349 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.create_shipping.ups:"
+msgid "Shipment \"%(shipment)s\" already has a reference number."
+msgstr "El albarán \"%(shipment)s\" ya tiene un número de referencia."
+
+msgctxt "error:stock.shipment.create_shipping.ups:"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"La llamada al servicio web UPS ha fallado con el siguiente mensaje de error:\n"
+"\n"
+"%(message)s"
+
+msgctxt "error:stock.shipment.out:"
+msgid "A phone number is required for party \"%(party)s\"."
+msgstr "Es obligatorio un número de teléfono para el tercero \"%(party)s\"."
+
+msgctxt "error:stock.shipment.out:"
+msgid "A shipping description is required for shipment \"%(shipment)s\"."
+msgstr "Es obligatoria una descripción para el envío \"%(shipment)s\"."
+
+msgctxt "field:carrier,ups_label_height:"
+msgid "Label Height"
+msgstr "Altura de la etiqueta"
+
+msgctxt "field:carrier,ups_label_image_format:"
+msgid "Label Image Format"
+msgstr "Formato de la imagen de la etiqueta"
+
+msgctxt "field:carrier,ups_service_type:"
+msgid "Service Type"
+msgstr "Tipo de servicio"
+
+msgctxt "field:carrier.credential.ups,account_number:"
+msgid "Account Number"
+msgstr "Número de cuenta"
+
+msgctxt "field:carrier.credential.ups,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier.credential.ups,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:carrier.credential.ups,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:carrier.credential.ups,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.credential.ups,license:"
+msgid "License"
+msgstr "Licencia"
+
+msgctxt "field:carrier.credential.ups,password:"
+msgid "Password"
+msgstr "Contraseña"
+
+msgctxt "field:carrier.credential.ups,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:carrier.credential.ups,server:"
+msgid "Server"
+msgstr "Servidor"
+
+msgctxt "field:carrier.credential.ups,use_metric:"
+msgid "Use Metric"
+msgstr "Usar sistema métrico"
+
+msgctxt "field:carrier.credential.ups,user_id:"
+msgid "User ID"
+msgstr "Identificador usuario"
+
+msgctxt "field:carrier.credential.ups,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:carrier.credential.ups,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:stock.package.type,ups_code:"
+msgid "UPS Code"
+msgstr "Código UPS"
+
+msgctxt "model:carrier.credential.ups,name:"
+msgid "UPS Credential"
+msgstr "Credencial UPS"
+
+msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
+msgid "Create UPS Shipping for Packages"
+msgstr "Crear envíos UPS para paquetes"
+
+msgctxt "model:ir.action,name:act_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "Credenciales UPS"
+
+msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "Credenciales UPS"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Testing"
+msgstr "Pruebas"
+
+msgctxt "view:carrier.credential.ups:"
+msgid "Credential Informations"
+msgstr "Información de la credencial"
+
+msgctxt "view:carrier:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "view:stock.package.type:"
+msgid "UPS"
+msgstr "UPS"
+
+msgctxt "selection:carrier,ups_label_height:"
+msgid "6"
+msgstr "6"
+
+msgctxt "selection:carrier,ups_label_height:"
+msgid "8"
+msgstr "8"
+
+msgctxt "selection:carrier,ups_label_image_format:"
+msgid "EPL2"
+msgstr "EPL2"
+
+msgctxt "selection:carrier,ups_label_image_format:"
+msgid "GIF"
+msgstr "GIF"
+
+msgctxt "selection:carrier,ups_label_image_format:"
+msgid "SPL"
+msgstr "SPL"
+
+msgctxt "selection:carrier,ups_label_image_format:"
+msgid "Star Printer"
+msgstr "Impresora Star"
+
+msgctxt "selection:carrier,ups_label_image_format:"
+msgid "ZPL"
+msgstr "ZPL"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "2nd Day Air"
+msgstr "2ndo día aerio"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "2nd Day Air A.M."
+msgstr "2do día aerio A.M."
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "3 Days Select"
+msgstr "Seleccionar 3 dias"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Economy Mail Innovations"
+msgstr "Innovaciones de correo económico"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Expedited"
+msgstr "Expedido"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Expedited Mail Innovations"
+msgstr "Innovaciones de correo expedido"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Express"
+msgstr "Exprés"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Express Plus"
+msgstr "Exprés plus"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "First Class Mail"
+msgstr "Correo primera clase"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Ground"
+msgstr "Por tierra"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Next Day Air"
+msgstr "Siguiente día aerio"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Next Day Air Saver"
+msgstr "Siguiente día aerio ahorro"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Priority Mail"
+msgstr "Correo prioritario"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "Priority Mail Innovations"
+msgstr "Innovaciones de correo prioritario"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Access Point Economy"
+msgstr "UPS Punto de acceso económico"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Next Day Air Early"
+msgstr "UPS Siguiente día aerio pronto"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Saver"
+msgstr "UPS Ahorro"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Standard"
+msgstr "UPS Estándar"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Today Dedicated Courier"
+msgstr "UPS Hoy mensajero dedicado"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Today Express"
+msgstr "UPS Hoy exprés"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Today Express Saver"
+msgstr "UPS Hoy exprés ahorro"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Today Intercity"
+msgstr "UPS Hoy interciudad"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Today Standard"
+msgstr "UPS Hoy estándar"
+
+msgctxt "selection:carrier,ups_service_type:"
+msgid "UPS Worldwide Express Freight"
+msgstr "UPS Carga exprés mundial"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "BPM"
+msgstr "BPM"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "BPM Flat"
+msgstr "BPM Carta"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "BPM Parcel"
+msgstr "BPM Paquete"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Customer Supplied Package"
+msgstr "Paquete proporcionado por el cliente"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "First Class"
+msgstr "Primera clase"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Flats"
+msgstr "Cartas"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Irregulars"
+msgstr "Irregulares"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Large Express Box"
+msgstr "Caja exprés grande"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Machinables"
+msgstr "Maquinarias"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Media Mail"
+msgstr "Media Mail"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Medium Express Box"
+msgstr "Caja exprés mediana"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "PAK"
+msgstr "PAK"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Pallet"
+msgstr "Palet"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Parcel Post"
+msgstr "Paquete postal"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Parcels"
+msgstr "Paquetes"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Priority"
+msgstr "Prioridad"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Small Express Box"
+msgstr "Caja exprés pequeña"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Standard Flat"
+msgstr "Carta estándar"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "Tube"
+msgstr "Tubo"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "UPS 10KG Box"
+msgstr "Caja 10KG UPS"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "UPS 25KG Box"
+msgstr "Caja 25KG UPS"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "UPS Express Box"
+msgstr "UPS Caja exprés"
+
+msgctxt "selection:stock.package.type,ups_code:"
+msgid "UPS Letter"
+msgstr "Caja UPS"
