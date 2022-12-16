@@ -1,0 +1,50 @@
+Version 2.2.6 - 2014-03-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.5 - 2014-01-18
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.4 - 2013-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.3 - 2013-05-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.2 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.1 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+* Add field currency_date to set the date for the rate calculation
+* Change get_move_line on Invoice Line and Tax to return a list of values
+  instead of values
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Add default search value on invoice
+* Remove egenix-mx-base and replace it by python-dateutil
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Set invoice date when invoice is opened
+* Add invoice number to report name
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add accounting date on invoice
+* Use amount_to_pay if amount_to_pay_today is zero in pay invoice wizard
+* Use reference to taxes for invoice line in invoice report
+* Add mechanism for invoice line standalone
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

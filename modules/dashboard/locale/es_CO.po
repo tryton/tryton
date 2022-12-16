@@ -1,0 +1,102 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Acción"
+
+#, fuzzy
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Nombre de Contacto"
+
+#, fuzzy
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Secuencia"
+
+#, fuzzy
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Usuario"
+
+#, fuzzy
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Acciones del Escritorio"
+
+#, fuzzy
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Diseño del Escritorio"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#, fuzzy
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Cuadrado"
+
+#, fuzzy
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Al Fondo"
+
+#, fuzzy
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "A la Izquierda"
+
+#, fuzzy
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "A la Derecha"
+
+#, fuzzy
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "A la Cima"
+
+#, fuzzy
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#, fuzzy
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Acción del Escritorio"
+
+#, fuzzy
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Acción del Escritorio"
+
+#, fuzzy
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#, fuzzy
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Acción del Escritorio"
+
+#, fuzzy
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Acción del Escritorio"
