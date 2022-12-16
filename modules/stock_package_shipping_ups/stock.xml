@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="package_type_view_form">
+            <field name="model">stock.package.type</field>
+            <field name="inherit" ref="stock_package.package_type_view_form"/>
+            <field name="name">package_type_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_create_shipping_ups_wizard">
+            <field name="name">Create UPS Shipping for Packages</field>
+            <field name="wiz_name">stock.shipment.create_shipping.ups</field>
+        </record>
+    </data>
+</tryton>
