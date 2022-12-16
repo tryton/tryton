@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.supply:"
+msgid "There are some late productions."
+msgstr ""
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "Request Productions"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:ir.action,name:act_production_request_create"
+msgid "Create Production Requests"
+msgstr "Create Production Requests"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Production Requests"
+msgstr "Generate Production Requests"
+
+msgctxt "model:ir.ui.menu,name:menu_production_request_create"
+msgid "Create Production Requests"
+msgstr "Create Production Requests"
+
+#, fuzzy
+msgctxt "model:production.create_request.start,name:"
+msgid "Create Production Request"
+msgstr "Create Production Requests"
+
+#, fuzzy
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Requests?"
+msgstr "Create Production Requests"
