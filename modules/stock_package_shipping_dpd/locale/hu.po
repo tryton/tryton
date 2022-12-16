@@ -1,0 +1,85 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Jelszó"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr ""
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "DPD Credentials"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Create DPD Shipping for Packages"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Termelés"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr ""
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Information"
+msgstr ""
