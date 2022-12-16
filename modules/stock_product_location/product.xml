@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
+                        position="after">
+                      <page string="Default Locations" id="default_locations">
+                          <field name="locations" colspan="4">
+                              <tree string="Product Locations"
+                                    sequence="sequence">
+                                  <field name="warehouse"/>
+                                  <field name="location"/>
+                                  <field name="sequence"
+                                    tree_invisible="1"/>
+                              </tree>
+                              <form string="Product Location"
+                                  cursor="warehouse">
+                                  <label name="sequence"/>
+                                  <field name="sequence"/>
+                                  <newline/>
+                                  <label name="warehouse"/>
+                                  <field name="warehouse"/>
+                                  <label name="location"/>
+                                  <field name="location"/>
+                              </form>
+                          </field>
+                      </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
