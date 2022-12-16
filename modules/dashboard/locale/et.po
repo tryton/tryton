@@ -1,0 +1,55 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Toiming"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Kasutaja"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Töölaua toimingud"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Töölaua paigutus"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Töölaua toiming"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Töölaud"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Töölaud"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Ruut"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Paiguta alla"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Paiguta vasakule"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Paiguta paremale"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Paiguta üles"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Töölaud"
