@@ -1,0 +1,107 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Müügi hinnakiri"
+
+msgctxt "field:party.party,sale_price_lists:"
+msgid "Sale Price Lists"
+msgstr "Müügi hinnakirjad"
+
+msgctxt "field:party.party.sale_price_list,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:party.party.sale_price_list,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:party.party.sale_price_list,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:party.party.sale_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.sale_price_list,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:party.party.sale_price_list,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:party.party.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Müügi hinnakiri"
+
+msgctxt "field:party.party.sale_price_list,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:party.party.sale_price_list,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:sale.configuration,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Müügi hinnakiri"
+
+msgctxt "field:sale.configuration.sale_price_list,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.configuration.sale_price_list,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:sale.configuration.sale_price_list,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:sale.configuration.sale_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.configuration.sale_price_list,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Müügi hinnakiri"
+
+msgctxt "field:sale.configuration.sale_price_list,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:sale.configuration.sale_price_list,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:sale.sale,price_list:"
+msgid "Price List"
+msgstr "Hinnakiri"
+
+msgctxt "help:party.party,sale_price_list:"
+msgid "The default price list for new sales."
+msgstr "Vaikimisi hinnakiri uutele müükidele."
+
+msgctxt "help:sale.configuration,sale_price_list:"
+msgid "The default price list for new parties."
+msgstr "Vaikimisi hinnakiri uutele osapooltele."
+
+msgctxt "help:sale.sale,price_list:"
+msgid "Use to compute the unit price of lines."
+msgstr "Kasuta, et arvestada ridade ühiku hind."
+
+msgctxt "model:party.party.sale_price_list,name:"
+msgid "Party Sale Price List"
+msgstr "Osapoole müügi hinnakiri"
+
+msgctxt "model:sale.configuration.sale_price_list,name:"
+msgid "Sale Configuration Sale PriceList"
+msgstr "Müügi seadistamine müügi hinnakiri"
