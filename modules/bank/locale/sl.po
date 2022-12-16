@@ -1,0 +1,142 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "Banka"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "Računi"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "Imetniki"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "Bančni račun"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "Imetnik"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "Bančni račun"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Račun skrčeno"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "Bančni računi"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code."
+msgstr "Bančna/poslovna identifikacijska šifra"
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "Banka, pri kateri je račun odprt."
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "Vpišite številke za identifikacijo bančnega računa."
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "Bančni račun, ki je identificiran s številko."
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "Banka"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "Bančni račun"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "Bančni račun - Partner"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "Številka bančnega računa"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Banks"
+
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Banks"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Banking"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Bank Administration"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "Drugo"
+
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Bančništvo"
