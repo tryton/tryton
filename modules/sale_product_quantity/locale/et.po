@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr ""
+
+msgctxt "field:product.product,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr ""
+
+msgctxt "field:product.product,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr ""
+
+msgctxt "field:product.template,sale_quantity_digits:"
+msgid "Sale Quantity Digits"
+msgstr ""
+
+msgctxt "field:product.template,sale_quantity_minimal:"
+msgid "Sale Minimal Quantity"
+msgstr ""
+
+msgctxt "field:product.template,sale_quantity_rounding:"
+msgid "Sale Rounding Quantity"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_minimal"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is too small, you must set at "
+"least %(minimum)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_line_quantity_rounding"
+msgid ""
+"The quantity %(quantity)s of line %(line)s is not valid, you must set "
+"multiple of %(rounding)s."
+msgstr ""
