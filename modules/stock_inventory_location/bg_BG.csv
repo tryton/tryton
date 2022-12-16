@@ -1,0 +1,12 @@
+type,name,res_id,src,value,fuzzy
+field,"stock.inventory.create.init,company",0,Company,Фирма,0
+field,"stock.inventory.create.init,date",0,Date,Дата,0
+field,"stock.inventory.create.init,locations",0,Locations,Местонахождения,0
+field,"stock.inventory.create.init,lost_found",0,Lost and Found,Загубени и намерени,0
+model,"ir.action,name",wizard_create_inventory,Create Inventories,Създаване на инвентаризации,0
+model,"ir.ui.menu,name",menu_create_inventory,Create Inventories,Създаване на инвентаризации,0
+model,"stock.inventory.create.init,name",0,Create Inventories Init,Начало на създаване на инвентаризация,0
+view,stock.inventory.create.init,0,Create Inventories,Създаване на инвентаризация,0
+view,stock.inventory.create.init,0,Locations,Местонахождения,0
+wizard_button,"stock.inventory.create,init,create",0,Create,Създаване,0
+wizard_button,"stock.inventory.create,init,end",0,Cancel,Отказ,0
