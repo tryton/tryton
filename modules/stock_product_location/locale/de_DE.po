@@ -1,0 +1,71 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Standardlagerorte"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Lagerort"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Warenlager"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:product.product:"
+msgid "Default Locations"
+msgstr "Standardlagerorte"
+
+msgctxt "view:product.product:"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:product.product:"
+msgid "Product Locations"
+msgstr "Artikel Lagerorte"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr "Artikel Lagerorte"
