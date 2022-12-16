@@ -1,0 +1,1475 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version:  1.0\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2015-03-23 18:56+0100\n"
+"PO-Revision-Date: 2012-04-23 11:06+0200\n"
+"Last-Translator: Dan Horák <dan@danny.cz>\n"
+"Language-Team: Czech\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+msgid "specify alternate config file"
+msgstr "zadejte alternativní konfigurační soubor"
+
+msgid "development mode"
+msgstr ""
+
+msgid "logging everything at INFO level"
+msgstr ""
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr ""
+
+msgid "specify the login user"
+msgstr "zadejte uživatelské jméno"
+
+msgid "specify the server port"
+msgstr "zadejte číslo portu síťového serveru"
+
+msgid "specify the server hostname"
+msgstr "zadejte název hostitele pro server"
+
+msgid "Too much arguments"
+msgstr ""
+
+#, python-format
+msgid "File \"%s\" not found"
+msgstr ""
+
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr "Nelze zapsat konfigurační soubor %s!"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Nemohu nastavit lokalizaci %s"
+
+msgid "Select your action"
+msgstr "Vyberte akci"
+
+msgid "No action defined!"
+msgstr "Žádná akce není definována!"
+
+msgid "Tryton Connection"
+msgstr "Tryton spojení"
+
+msgid "Server:"
+msgstr "Server:"
+
+msgid "Port:"
+msgstr "Port:"
+
+msgid "Selection"
+msgstr "Výběr"
+
+msgid "Your selection:"
+msgstr "Váš výběr:"
+
+msgid "Save As..."
+msgstr "Uložit jako..."
+
+msgid "Always ignore this warning."
+msgstr "zadejte alternativní konfigurační soubor"
+
+msgid "Do you want to proceed?"
+msgstr ""
+
+msgid "Confirmation"
+msgstr "Potvrzení"
+
+msgid "Concurrency Exception"
+msgstr "Výjimka při souběhu"
+
+#, fuzzy
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Varování při souběhu zápisů:</b>\n"
+"\n"
+"Tento záznam byl změněn zatímco jste ho upravovali.\n"
+" Vyberte:\n"
+"  - \"Zrušit\" pro zrušení ukládání,\n"
+"  - \"Porovnat\" pro zobrazení změněné verze,\n"
+"  - \"Přesto zapsat\" pro zapsání vaší verze."
+
+msgid "Compare"
+msgstr "Porovnat"
+
+msgid "Write Anyway"
+msgstr "Přesto zapsat"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Report Bug"
+msgstr "Nahlásit chybu"
+
+msgid "Application Error!"
+msgstr "Chyba aplikace!"
+
+msgid "Error: "
+msgstr "Chyba:"
+
+#, fuzzy, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "Pro hlášení chyb musíte mít účet na <u>%s</u>"
+
+msgid "Bug Tracker"
+msgstr "Sledování chyb"
+
+msgid "User:"
+msgstr "Uživatel:"
+
+msgid "Password:"
+msgstr "Heslo:"
+
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"Ta samá chyba již byla nahlášena jiným uživatelem.\n"
+"Vaše uživatelské jméno bylo přidáno na její seznam."
+
+msgid "Created new bug with ID "
+msgstr "Založena nová chyba s ID"
+
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"Chyba při spojení!\n"
+"Špatné uživatelské jméno nebo heslo!"
+
+msgid "Exception:"
+msgstr "Výjimka:"
+
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+
+msgid "Security risk!"
+msgstr ""
+
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"Chyba spojení!\n"
+"Nelze se připojit k serveru!"
+
+msgid "Network Error!"
+msgstr "Chyba sítě!"
+
+msgid "<i>Search...</i>"
+msgstr ""
+
+msgid "<i>Create...</i>"
+msgstr ""
+
+#, fuzzy
+msgid "Value"
+msgstr "Nepravda"
+
+msgid "Displayed value"
+msgstr ""
+
+#, fuzzy
+msgid "Format"
+msgstr "_Normální"
+
+msgid "Display format"
+msgstr ""
+
+#, fuzzy
+msgid "Open the calendar"
+msgstr "Otevřít kalendář"
+
+msgid "Date Format"
+msgstr ""
+
+msgid "Displayed date format"
+msgstr ""
+
+msgid "y"
+msgstr ""
+
+#, fuzzy
+msgid "yes"
+msgstr "bajtů"
+
+#, fuzzy
+msgid "true"
+msgstr "Pravda"
+
+msgid "t"
+msgstr ""
+
+msgid "True"
+msgstr "Pravda"
+
+msgid "False"
+msgstr "Nepravda"
+
+#, fuzzy
+msgid "Edit..."
+msgstr "Konec..."
+
+#, fuzzy
+msgid "Attachments..."
+msgstr "Příloha:"
+
+#, fuzzy
+msgid "Actions..."
+msgstr "Akce..."
+
+#, fuzzy
+msgid "Relate..."
+msgstr "_Odstranit..."
+
+#, fuzzy
+msgid "Report..."
+msgstr "Importovat data..."
+
+#, fuzzy
+msgid "E-Mail..."
+msgstr "_Email..."
+
+#, fuzzy
+msgid "Print..."
+msgstr "_Tisk..."
+
+msgid "Y"
+msgstr ""
+
+msgid "M"
+msgstr ""
+
+msgid "w"
+msgstr ""
+
+msgid "d"
+msgstr ""
+
+msgid "h"
+msgstr ""
+
+msgid "m"
+msgstr ""
+
+msgid "s"
+msgstr ""
+
+msgid "_File"
+msgstr "_Soubor"
+
+msgid "_User"
+msgstr "_Uživatel"
+
+msgid "_Options"
+msgstr "_Volby"
+
+msgid "Fa_vorites"
+msgstr ""
+
+msgid "_Help"
+msgstr "Nápo_věda"
+
+msgid "Search"
+msgstr "Hledat"
+
+msgid "No result found."
+msgstr ""
+
+msgid "_Connect..."
+msgstr "_Připojit..."
+
+msgid "_Disconnect"
+msgstr "_Odpojit"
+
+msgid "Data_base"
+msgstr "Databáze"
+
+msgid "_New Database..."
+msgstr "Nová databáze..."
+
+msgid "_Restore Database..."
+msgstr "Obnovit databázi..."
+
+msgid "_Backup Database..."
+msgstr "Zazálohovat databázi..."
+
+msgid "Dro_p Database..."
+msgstr "Smazat databázi"
+
+msgid "_Quit..."
+msgstr "Konec..."
+
+msgid "_Preferences..."
+msgstr "_Vlastnosti..."
+
+#, fuzzy
+msgid "_Menu Reload"
+msgstr "_Obnovit"
+
+msgid "_Menu Toggle"
+msgstr ""
+
+msgid "_Global Search"
+msgstr ""
+
+#, fuzzy
+msgid "_Toolbar"
+msgstr "Nástrojová lišta"
+
+msgid "_Default"
+msgstr "_Výchozí"
+
+msgid "_Text and Icons"
+msgstr "_Text a ikony"
+
+msgid "_Icons"
+msgstr "_Ikony"
+
+msgid "_Text"
+msgstr "_Text"
+
+msgid "_Menubar"
+msgstr "Hlavní nabídka"
+
+msgid "Change Accelerators"
+msgstr ""
+
+msgid "_Mode"
+msgstr "_Režim"
+
+msgid "_Normal"
+msgstr "_Normální"
+
+msgid "_PDA"
+msgstr "_PDA"
+
+msgid "_Form"
+msgstr "Formulář"
+
+msgid "Save Width/Height"
+msgstr ""
+
+msgid "Save Tree State"
+msgstr ""
+
+msgid "Spell Checking"
+msgstr "Kontrola pravopisu"
+
+#, fuzzy
+msgid "_Previous Tab"
+msgstr "_Předchozí"
+
+msgid "_Next Tab"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr ""
+
+msgid "_Email..."
+msgstr "_Email..."
+
+msgid "_Save Options"
+msgstr "Uložit nastavení"
+
+msgid "_Tips..."
+msgstr "_Tipy..."
+
+msgid "_Keyboard Shortcuts..."
+msgstr "_Klávesové zkratky..."
+
+msgid "_About..."
+msgstr "_O programu..."
+
+msgid "Manage Favorites"
+msgstr ""
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+
+msgid "Close Tab"
+msgstr "Zavřít záložku"
+
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Bude smazána Tryton databáze.\n"
+"Opravdu chcete pokračovat?"
+
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"Špatné heslo Tryton serveru\n"
+"Zkuste to znovu."
+
+msgid "Access denied!"
+msgstr "Přístup odepřen!"
+
+msgid "Database drop failed with error message:\n"
+msgstr "Odstranění databáze selhalo s chybovou zprávou:\n"
+
+msgid "Database drop failed!"
+msgstr "Odstranění databáze selhalo!"
+
+msgid "Database dropped successfully!"
+msgstr "Databáze úspěšné odstraněna!"
+
+msgid "Open Backup File to Restore..."
+msgstr "Otevřít soubor se zálohou pro obnovu..."
+
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Není možné obnovit databázi chráněnou heslem.\n"
+"Záloha a obnova musí být provedeny ručně."
+
+msgid "Database is password protected!"
+msgstr "Databáze je chráněna heslem!"
+
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"Špatné heslo Tryton serveru\n"
+"Zkuste to znovu."
+
+msgid "Database restore failed with error message:\n"
+msgstr "Obnovení databáze selhalo s chybovou zprávou:\n"
+
+msgid "Database restore failed!"
+msgstr "Obnova databáze selhala!"
+
+msgid "Database restored successfully!"
+msgstr "Databáze úspěšně obnovena!"
+
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Není možné zálohovat databázi chráněnou heslem.\n"
+"Záloha a obnova musí být provedeny ručně."
+
+msgid "Database dump failed with error message:\n"
+msgstr "Záloha databáze selhala s chybovou zprávou:\n"
+
+msgid "Database dump failed!"
+msgstr "Záloha databáze selhala!"
+
+msgid "Database backuped successfully!"
+msgstr "Databáze úspěšně zazálohována!"
+
+msgid "New"
+msgstr ""
+
+msgid "Create a new record"
+msgstr "Vytvořit nový záznam"
+
+#, fuzzy
+msgid "Save"
+msgstr "_Uložit"
+
+msgid "Save this record"
+msgstr "Uložit tento záznam"
+
+msgid "Switch"
+msgstr "Přepnout"
+
+msgid "Switch view"
+msgstr "Přepnout pohled"
+
+msgid "_Reload"
+msgstr "_Obnovit"
+
+msgid "Reload"
+msgstr "Obnovit"
+
+msgid "_New"
+msgstr "_Nový"
+
+msgid "_Save"
+msgstr "_Uložit"
+
+msgid "_Switch View"
+msgstr "Přepnout pohled"
+
+msgid "_Reload/Undo"
+msgstr "Obnovit/Zpět"
+
+msgid "_Delete..."
+msgstr "_Odstranit..."
+
+msgid "_Close Tab"
+msgstr "_Zavřít kartu"
+
+#, fuzzy
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+"Toto je URL Tryton serveru. Použijte server 'localhost' a port '8070', "
+"pokud je server nainstalován na tomto počítači. Klikněte na \"Změnit\" "
+"pro změnu adresy."
+
+msgid "No connection!"
+msgstr "Není spojení!"
+
+#, fuzzy
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"Nelze se připojit k serveru!\n"
+"1. Zkontrolujte, jestli server běží.\n"
+"2. Zjistěte, na které adrese a portu poslouchá.\n"
+"3. Pokud je mezi klientem a serverem firewall, zajistěte, že adresa a "
+"port (obvykle 8070) serveru nejsou blokovány.\n"
+"Klikněte na \"Změnit\" pro změnu adresy."
+
+msgid "Create new database"
+msgstr "Vytvořit novou databázi"
+
+msgid "C_reate"
+msgstr "_Vytvořit"
+
+msgid "Create the new database."
+msgstr "Vytvořit novou databázi."
+
+msgid "Server Setup:"
+msgstr "Nastavení serveru:"
+
+msgid "Server connection:"
+msgstr "Spojení k serveru:"
+
+#, fuzzy
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+"Toto je URL Tryton serveru. Použijte server 'localhost' a port '8070', "
+"pokud je server nainstalován na tomto počítači. Klikněte na \"Změnit\" "
+"pro změnu adresy."
+
+msgid "C_hange"
+msgstr "Změnit"
+
+msgid "Setup the server connection..."
+msgstr "Nastavení spojení k serveru..."
+
+msgid "Tryton Server Password:"
+msgstr "Heslo pro Tryton server:"
+
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+"Toto je heslo pro Tryton server. Nepatří žádnému skutečnému uživateli. "
+"Toto heslo je obvykle definováno v konfiguračním souboru serveru."
+
+msgid "New database setup:"
+msgstr "Nastavení nové databáze:"
+
+msgid "Database name:"
+msgstr "Název databáze:"
+
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+"Vyberte název nové databáze.\n"
+"Povolené znaky jsou alfanumerické a _ (podtržítko)\n"
+"Nepoužívejte znaky s akcenty, mezeru nebo speciální znaky!\n"
+"Příklad: tryton"
+
+msgid "Default language:"
+msgstr "Výchozí jazyk:"
+
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Vyberte výchozí jazyk, který bude nainstalován pro tuto databázi. Po "
+"instalaci budete schopni instalovat další jazyky pomocí administračního "
+"menu."
+
+msgid "Admin password:"
+msgstr "Heslo správce:"
+
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Vyberte heslo pro správce nové databáze. Pomocí následujících údajů se "
+"pak budete schopni k této databázi připojit:\n"
+"Uživatel: admin\n"
+"Heslo: <právě zadané heslo>"
+
+msgid "Confirm admin password:"
+msgstr "Potvrzení hesla správce:"
+
+msgid "Type the Admin password again"
+msgstr "Zadejte znovu heslo správce"
+
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr "Heslo správce a jeho zopakování nejsou shodné.\n"
+
+msgid "Passwords doesn't match!"
+msgstr "Hesla nesouhlasí!"
+
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Databáze se stejným názvem již existuje.\n"
+"Použijte jiný název."
+
+msgid "This database name already exist!"
+msgstr "Databáze s tímto názvem již existuje!"
+
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr "Zadali jste špatné heslo pro Tryton server. Zkuste to znovu."
+
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"Databázi nelze vytvořit, příčina je neznámá.\n"
+"Pokud je databáze již vytvořená, může být poškozená. Zkuste ji odstranit."
+" Zkontrolujte chybové hlášení pro případné další informace.\n"
+"Chybová zpráva:\n"
+
+msgid "Error creating database!"
+msgstr "Chyba při vytváření databáze!"
+
+msgid "Could not connect to server!"
+msgstr "Nelze se spojit se serverem!"
+
+msgid "This client version is not compatible with the server!"
+msgstr "Verze klienta není kompatibilní se serverem!"
+
+msgid "No database found, you must create one!"
+msgstr "Nenalezena žádná databáze, musíte nějakou vytvořit!"
+
+msgid "Backup a database"
+msgstr "Zálohovat databázi"
+
+msgid "Backup"
+msgstr "Zálohovat"
+
+msgid "Backup the choosen database."
+msgstr "Zálohovat vybranou databázi."
+
+msgid "Choose a Tryton database to backup:"
+msgstr "Vyberte Tryton databázi pro zálohování:"
+
+msgid "Delete a database"
+msgstr "Smazat databázi"
+
+msgid "Delete"
+msgstr "Smazat"
+
+msgid "Delete the choosen database."
+msgstr "Smazat vybranou databázi."
+
+msgid "Choose a Tryton database to delete:"
+msgstr "Vyberte Tryton databázi pro smazání:"
+
+msgid "Server Connection:"
+msgstr "Přepojení k serveru:"
+
+msgid "Database:"
+msgstr "Databáze:"
+
+msgid "Profile Editor"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Přidat"
+
+msgid "_Remove"
+msgstr "_Odstranit"
+
+#, fuzzy
+msgid "Host:"
+msgstr "Port:"
+
+#, fuzzy
+msgid "Create"
+msgstr "_Vytvořit"
+
+#, fuzzy
+msgid "Fetching databases list"
+msgstr "Nastavení nové databáze:"
+
+#, fuzzy
+msgid "Username:"
+msgstr "Uživatelské jméno:"
+
+#, fuzzy
+msgid "Could not connect to the server"
+msgstr "Nelze se spojit se serverem!"
+
+#, fuzzy
+msgid "Incompatible version of the server"
+msgstr "Verze serveru není kompatibilní!"
+
+msgid "Login"
+msgstr "Přihlášení"
+
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Zrušit spojení k Tryton serveru."
+
+msgid "C_onnect"
+msgstr "_Připojit"
+
+msgid "Connect the Tryton server"
+msgstr "Připojit k Tryton serveru"
+
+msgid "Profile:"
+msgstr ""
+
+msgid "_Manage profiles"
+msgstr ""
+
+msgid "Host / Database information"
+msgstr ""
+
+msgid "User name:"
+msgstr "Uživatelské jméno:"
+
+msgid "Restore Database"
+msgstr "Obnovit databázi"
+
+msgid "File to Restore:"
+msgstr "Obnovit ze souboru:"
+
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Vyberte název databáze pro obnovu.\n"
+"Povolené znaky jsou alfanumerické a _ (podtržítko)\n"
+"Nepoužívejte znaky s akcenty, mezeru nebo speciální znaky!\n"
+"Příklad: tryton"
+
+msgid "New Database Name:"
+msgstr "Název nové databáze:"
+
+#, fuzzy
+msgid "Update Database:"
+msgstr "Zálohovat databázi"
+
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+
+msgid "Restore"
+msgstr "Obnovit"
+
+msgid "Restore the database from file."
+msgstr "Obnovit databázi ze souboru."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Program Settings"
+msgstr "Poslat nastavení programu emailem"
+
+msgid "Command Line:"
+msgstr "Příkazový řádek:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Seznam dostupných náhrad:"
+
+msgid "To:"
+msgstr "Komu:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Předmět: "
+
+msgid "Body:"
+msgstr "Tělo:"
+
+msgid "Attachment:"
+msgstr "Příloha:"
+
+msgid "Previous"
+msgstr "Předchozí"
+
+msgid "Previous Record"
+msgstr "Předchozí záznam"
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Next Record"
+msgstr "Následující záznam"
+
+msgid "Attachment(0)"
+msgstr "Přílohy(0)"
+
+msgid "Add an attachment to the record"
+msgstr "Přidat přílohu k záznamu"
+
+msgid "_Duplicate"
+msgstr "_Duplikovat"
+
+msgid "_Previous"
+msgstr "_Předchozí"
+
+msgid "_Next"
+msgstr "_Následující"
+
+#, fuzzy
+msgid "_Search"
+msgstr "Hledat"
+
+msgid "View _Logs..."
+msgstr "Zobrazit záznamy..."
+
+msgid "Show revisions..."
+msgstr ""
+
+#, fuzzy
+msgid "A_ttachments..."
+msgstr "Příloha:"
+
+msgid "_Actions..."
+msgstr "Akce..."
+
+#, fuzzy
+msgid "_Relate..."
+msgstr "_Odstranit..."
+
+#, fuzzy
+msgid "_Report..."
+msgstr "Importovat data..."
+
+#, fuzzy
+msgid "_E-Mail..."
+msgstr "_Email..."
+
+msgid "_Print..."
+msgstr "_Tisk..."
+
+msgid "_Export Data..."
+msgstr "Exportovat data"
+
+msgid "_Import Data..."
+msgstr "Importovat data..."
+
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Příloha(%d)"
+
+msgid "You have to select one record!"
+msgstr "Musíte vybrat právě jeden záznam!"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Vytvořeno uživatelem:"
+
+msgid "Creation Date:"
+msgstr "Datum vytvoření:"
+
+msgid "Latest Modification by:"
+msgstr "Poslední úpravu provedl:"
+
+msgid "Latest Modification Date:"
+msgstr "Datum poslední úpravy:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Opravdu chcete odstranit tento záznam?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Opravdu chcete odstranit tyto záznamy?"
+
+msgid "Records not removed!"
+msgstr "Záznamy neodstraněny!"
+
+msgid "Records removed!"
+msgstr "Záznamy odstraněny!"
+
+msgid "Working now on the duplicated record(s)!"
+msgstr "Nyní pracujete s duplicitním záznamem!"
+
+msgid "Record saved!"
+msgstr "Záznam uložen!"
+
+msgid "Invalid form!"
+msgstr "Neplatný formulář!"
+
+msgid " of "
+msgstr " z "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Tento záznam byl upraven\n"
+"chcete ho uložit?"
+
+msgid "Action"
+msgstr "Akce"
+
+msgid "Launch action"
+msgstr ""
+
+#, fuzzy
+msgid "Relate"
+msgstr "_Vytvořit"
+
+#, fuzzy
+msgid "Open related records"
+msgstr "Otevřít záznam"
+
+#, fuzzy
+msgid "Report"
+msgstr "Sestavy"
+
+#, fuzzy
+msgid "Open report"
+msgstr "Otevřít záznam"
+
+#, fuzzy
+msgid "E-Mail"
+msgstr "Email"
+
+msgid "E-Mail report"
+msgstr ""
+
+msgid "Print"
+msgstr "Tisk"
+
+msgid "Print report"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Neznámý"
+
+#, fuzzy
+msgid "Limit"
+msgstr "Omezit:"
+
+msgid "Search Limit Settings"
+msgstr ""
+
+#, fuzzy
+msgid "Limit:"
+msgstr "Omezit:"
+
+msgid "Preferences"
+msgstr "Nastavení"
+
+msgid "Edit User Preferences"
+msgstr "Upravit uživatelské nastavení"
+
+msgid "Preference"
+msgstr "Nastavení"
+
+#, fuzzy
+msgid "Current Password:"
+msgstr "Heslo správce:"
+
+#, fuzzy
+msgid "Revision"
+msgstr "Předchozí"
+
+#, fuzzy
+msgid "Select a revision"
+msgstr "Výběr"
+
+msgid "Revision:"
+msgstr ""
+
+msgid "Keyboard Shortcuts"
+msgstr "Klávesové zkratky"
+
+msgid "Text Entries Shortcuts"
+msgstr "Zkratky pro texty"
+
+msgid "Cut selected text"
+msgstr "Vyjmout vybraný text"
+
+msgid "Copy selected text"
+msgstr "Kopírovat vybraný text"
+
+msgid "Paste copied text"
+msgstr "Vložit vybraný text"
+
+msgid "Next widget"
+msgstr "Další prvek"
+
+msgid "Previous widget"
+msgstr "Předchozí prvek"
+
+msgid "Relation Entries Shortcuts"
+msgstr "Zkratky pro relace"
+
+msgid "Create new relation"
+msgstr "Vytvořit novou relaci"
+
+msgid "Open/Search relation"
+msgstr "Otevřít/prohledat relaci"
+
+#, fuzzy
+msgid "List Entries Shortcuts"
+msgstr "Zkratky pro texty"
+
+#, fuzzy
+msgid "Create new line"
+msgstr "Vytvořit novou relaci"
+
+#, fuzzy
+msgid "Open relation"
+msgstr "Otevřít/prohledat relaci"
+
+msgid "Mark line for deletion"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr ""
+
+msgid "Edition Widgets"
+msgstr "Editovací prvky"
+
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Vítejte v Trytonu</b>\n"
+"\n"
+"\n"
+
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>Znáte Tryton, jednoho ze jmenovců našeho projektu?</b>\n"
+"\n"
+"Triton (vysloveno /ˈtraɪtən/ TRYE-tən, nebo jako v řečtině Τρίτων) je\n"
+"největší měsíc planety Neptun, objevený 10. října 1846\n"
+"Williamem Lassellem. Je to jediný velký měsíc ve sluneční soustavě\n"
+"s retrográdním oběhem, což je oběh s opačnou rotací, než je rotace\n"
+"planety. S průměrem 2700 km jde o sedmý největší měsíc sluneční\n"
+"soustavy. Triton zahrnuje 99.5 procenta známé hmoty obíhající Neptun,\n"
+"včetně prstenců planety a dalších 12 známých měsíců. Je také hmotnější\n"
+"než všech 159 menších měsíců ve sluneční soustavě dohromady.\n"
+
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Seznam exportovaných záznamů</b>\n"
+"Ze seznamu můžete zkopírovat záznamy pomocí Ctrl + C\n"
+"a vložit je do libovolné aplikace pomocí Ctrl + V\n"
+
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+
+msgid "Tips"
+msgstr "Tipy"
+
+msgid "_Display a new tip next time"
+msgstr "Zobrazit příště další tip"
+
+msgid "Export to CSV"
+msgstr "Exportovat do CSV souboru"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Předdefinované exporty</b>"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Všechna pole</b>"
+
+msgid "Clear"
+msgstr "Vymazat"
+
+msgid "Save Export"
+msgstr "Uložit exportu"
+
+msgid "Delete Export"
+msgstr "Smazat exportu"
+
+msgid "<b>Fields to export</b>"
+msgstr "<b>Pole pro export</b>"
+
+msgid "<b>Options</b>"
+msgstr "<b>Možnosti</b>"
+
+msgid "Open"
+msgstr "Otevřít"
+
+msgid "Add _field names"
+msgstr "Přidat jména polí"
+
+msgid "Name"
+msgstr ""
+
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr ""
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#, python-format
+msgid "%d record saved!"
+msgstr "%d záznam uložen!"
+
+#, python-format
+msgid "%d records saved!"
+msgstr "%d záznamů uloženo!"
+
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Operace selhala.\n"
+"Chybová zpráva:\n"
+"%s"
+
+msgid "Link"
+msgstr "Odkaz"
+
+msgid "Add"
+msgstr "Přidat"
+
+msgid "Remove <Del>"
+msgstr ""
+
+#, fuzzy
+msgid "Create a new record <F3>"
+msgstr "Vytvořit nový záznam"
+
+#, fuzzy
+msgid "Delete selected record <Del>"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Undelete selected record <Ins>"
+msgstr "Smazat vybraný záznam"
+
+msgid "Import from CSV"
+msgstr "Import CSV souboru"
+
+msgid "Auto-Detect"
+msgstr "Automatická detekce"
+
+msgid "<b>Fields to import</b>"
+msgstr "<b>Pole pro import</b>"
+
+msgid "File to Import:"
+msgstr "Soubor k importu:"
+
+msgid "Open..."
+msgstr "Otevřít..."
+
+msgid "CSV Parameters"
+msgstr "Parametry CSV"
+
+#, fuzzy
+msgid "Field Separator:"
+msgstr "Oddělovač polí:"
+
+msgid "Text Delimiter:"
+msgstr "Oddělovač textu:"
+
+msgid "Encoding:"
+msgstr "Kódování:"
+
+msgid "Lines to Skip:"
+msgstr "Vynechané řádky:"
+
+msgid "Field name"
+msgstr "Jméno pole"
+
+msgid "You must select an import file first!"
+msgstr "Nejprve je nutné vybrat soubor pro import!"
+
+msgid "Error opening CSV file"
+msgstr "Chyba při otevírání CSV souboru"
+
+#, fuzzy, python-format
+msgid "Error processing the file at field %s."
+msgstr "Chyba při zpracování souboru u pole %s.\n"
+
+#, python-format
+msgid "%d record imported!"
+msgstr "%d záznam načten!"
+
+#, python-format
+msgid "%d records imported!"
+msgstr "%d záznamů načteno!"
+
+msgid "Wizard"
+msgstr "Průvodce"
+
+#, fuzzy
+msgid "ID"
+msgstr "Najít"
+
+#, fuzzy
+msgid "Creation User"
+msgstr "Vytvořeno uživatelem:"
+
+#, fuzzy
+msgid "Creation Date"
+msgstr "Datum vytvoření:"
+
+#, fuzzy
+msgid "Modification User"
+msgstr "Datum poslední úpravy:"
+
+#, fuzzy
+msgid "Modification Date"
+msgstr "Datum poslední úpravy:"
+
+msgid "Unable to get view tree state"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to set view tree state"
+msgstr "Nemohu nastavit lokalizaci %s"
+
+msgid ":"
+msgstr ":"
+
+msgid "Save As"
+msgstr "Uložit jako"
+
+msgid "Image Size"
+msgstr "Velikost obrázku"
+
+msgid "Width:"
+msgstr "Šířka:"
+
+msgid "Height:"
+msgstr "Výška:"
+
+msgid "PNG image (*.png)"
+msgstr "Obrázek PNG (*.png)"
+
+msgid "Image size too large!"
+msgstr "Rozměry obrázku jsou příliš velké!"
+
+msgid ".."
+msgstr ""
+
+#, fuzzy
+msgid "F_ilters"
+msgstr "_Soubor"
+
+msgid "Show bookmarks of filters"
+msgstr ""
+
+msgid "Remove this bookmark"
+msgstr ""
+
+msgid "Bookmark this filter"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr ""
+
+msgid "Find"
+msgstr "Najít"
+
+#, fuzzy
+msgid "Today"
+msgstr "Tělo:"
+
+#, fuzzy
+msgid "Week View"
+msgstr "Přepnout pohled"
+
+#, fuzzy
+msgid "Month View"
+msgstr "Přepnout pohled"
+
+msgid "Week"
+msgstr ""
+
+#, fuzzy
+msgid "Select a File..."
+msgstr "Vyberte soubor"
+
+msgid "Show plain text"
+msgstr ""
+
+msgid "Add value"
+msgstr ""
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr ""
+
+#, fuzzy
+msgid "Select an Image..."
+msgstr "Vyberte soubor"
+
+msgid "All files"
+msgstr "Všechny soubory"
+
+msgid "Images"
+msgstr "Obrázky"
+
+#, fuzzy
+msgid "Add existing record"
+msgstr "Uložit tento záznam"
+
+#, fuzzy
+msgid "Remove selected record <Del>"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Open a record <F2>"
+msgstr "Otevřít záznam"
+
+#, fuzzy
+msgid "Search a record <F2>"
+msgstr "Hledat záznam"
+
+#, fuzzy
+msgid "Remove selected record"
+msgstr "Smazat vybraný záznam"
+
+#, fuzzy
+msgid "Edit selected record <F2>"
+msgstr "Upravit vybraný záznam"
+
+msgid "Change text to bold"
+msgstr ""
+
+msgid "Change text to italic"
+msgstr ""
+
+msgid "Change text to underline"
+msgstr ""
+
+msgid "Choose font-family"
+msgstr ""
+
+msgid "Choose font-size"
+msgstr ""
+
+msgid "Justify of line to the left"
+msgstr ""
+
+msgid "Justify of line to the center"
+msgstr ""
+
+msgid "Justify of line to the right"
+msgstr ""
+
+msgid "Justify of line to fill window"
+msgstr ""
+
+msgid "Change the foreground text"
+msgstr ""
+
+msgid "Change the background text"
+msgstr ""
+
+msgid "Change the markup text view"
+msgstr ""
+
+msgid "Select a foreground color"
+msgstr ""
+
+msgid "Select a background color"
+msgstr ""
+
+#, fuzzy
+msgid "Translation"
+msgstr "Přidat překlad"
+
+msgid "Edit"
+msgstr ""
+
+msgid "Fuzzy"
+msgstr ""
+
+msgid "You need to save the record before adding translations!"
+msgstr "Musíte uložit záznam před přidáváním překladů!"
+
+msgid "No other language available!"
+msgstr "Jiný jazyk není k dispozici!"
+
+msgid "Translate view"
+msgstr "Přeložit pohled"
+
