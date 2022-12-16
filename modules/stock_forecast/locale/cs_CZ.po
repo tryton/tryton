@@ -1,0 +1,320 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"!"
+msgstr ""
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity!"
+msgstr ""
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive!"
+msgstr ""
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forcast!"
+msgstr ""
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\"!"
+msgstr ""
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion!"
+msgstr ""
+
+msgctxt "error:stock.forecast:"
+msgid ""
+"You can not create forecasts for the same locations with overlapping dates"
+msgstr ""
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:stock.forecast,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.forecast,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr ""
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr ""
+
+msgctxt "field:stock.forecast,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:stock.forecast,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr ""
+
+msgctxt "field:stock.forecast,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.forecast,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.complete.ask,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.complete.choose,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.forecast.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_forecast_form_draft"
+msgid "Draft Forecasts"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
+msgid "Draft Forecasts"
+msgstr ""
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr ""
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr ""
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr ""
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr ""
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr ""
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr ""
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr ""
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "view:stock.forecast.complete.ask:"
+msgid "Choose dates"
+msgstr ""
+
+msgctxt "view:stock.forecast.complete.choose:"
+msgid "Choose products"
+msgstr ""
+
+msgctxt "view:stock.forecast.line:"
+msgid "Forecast Line"
+msgstr ""
+
+msgctxt "view:stock.forecast.line:"
+msgid "Forecast Lines"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Confirm"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Forecast"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Forecasts"
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Reset to Draft"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr ""
