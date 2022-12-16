@@ -1,0 +1,366 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:0"
+msgid ""
+"You can not create an attachment\n"
+"in a collection with the name\n"
+"of an existing child collection!"
+msgstr ""
+"Ein Anhang kann nicht den selben Namen\n"
+"wie eine untergeordnete Sammlung haben!"
+
+msgctxt "error:webdav.collection:0"
+msgid "The collection name must be unique inside a collection!"
+msgstr ""
+"Der Name ein untergeordneten Sammlung kann nur\n"
+"einmal in einer Sammlung vergeben werden!"
+
+msgctxt "error:webdav.collection:0"
+msgid ""
+"You can not create a collection\n"
+"in a collection with the name of an existing file!"
+msgstr ""
+"Eine Sammlung kann nicht den selben Namen\n"
+"wie eine bestehende Datei haben!"
+
+msgctxt "error:webdav.collection:0"
+msgid "You can not create recursive collections!"
+msgstr "Sammlungen können nicht rekursiv angelegt werden!"
+
+msgctxt "error:workflow.instance:0"
+msgid "No workflow instance defined!"
+msgstr "Keine Workflowinstanz definiert!"
+
+msgctxt "error:workflow:0"
+msgid "No workflow defined!"
+msgstr "Kein Workflow definiert!"
+
+msgctxt "field:webdav.collection,childs:0"
+msgid "Children"
+msgstr "Untergeordnet (Sammlungen)"
+
+msgctxt "field:webdav.collection,domain:0"
+msgid "Domain"
+msgstr "Wertebereich (Domain)"
+
+msgctxt "field:webdav.collection,model:0"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:webdav.collection,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:webdav.collection,parent:0"
+msgid "Parent"
+msgstr "Übergeordnet (Sammlung)"
+
+msgctxt "field:webdav.collection,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow,activities:0"
+msgid "Activities"
+msgstr "Aktivitäten"
+
+msgctxt "field:workflow,model:0"
+msgid "Resource Model"
+msgstr "Modell Ressource"
+
+msgctxt "field:workflow,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow,on_create:0"
+msgid "On Create"
+msgstr "Bei der Erstellung"
+
+msgctxt "field:workflow,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.activity,flow_start:0"
+msgid "Flow Start"
+msgstr "Flow Start"
+
+msgctxt "field:workflow.activity,flow_stop:0"
+msgid "Flow Stop"
+msgstr "Flow Stop"
+
+msgctxt "field:workflow.activity,in_transitions:0"
+msgid "Incoming transitions"
+msgstr "Eingehende Übergänge"
+
+msgctxt "field:workflow.activity,join_mode:0"
+msgid "Join Mode"
+msgstr "Verbindungsmodus"
+
+msgctxt "field:workflow.activity,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.activity,out_transitions:0"
+msgid "Outgoing transitions"
+msgstr "Ausgehende Übergänge"
+
+msgctxt "field:workflow.activity,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.activity,signal_send:0"
+msgid "Signal (subflow.*)"
+msgstr "Signal (subflow.*)"
+
+msgctxt "field:workflow.activity,split_mode:0"
+msgid "Split Mode"
+msgstr "Geteilter Modus"
+
+msgctxt "field:workflow.activity,subflow:0"
+msgid "Subflow"
+msgstr "Unterflow"
+
+msgctxt "field:workflow.activity,workflow:0"
+msgid "Workflow"
+msgstr "Workflow"
+
+msgctxt "field:workflow.instance,overflows:0"
+msgid "Overflow"
+msgstr "Überlauf"
+
+msgctxt "field:workflow.instance,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.instance,res_id:0"
+msgid "Resource ID"
+msgstr "ID Ressource"
+
+msgctxt "field:workflow.instance,res_type:0"
+msgid "Resource Model"
+msgstr "Modell Ressource"
+
+msgctxt "field:workflow.instance,state:0"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:workflow.instance,transitions:0"
+msgid "Transitions"
+msgstr "Übergänge"
+
+msgctxt "field:workflow.instance,uid:0"
+msgid "User ID"
+msgstr "Benutzer ID"
+
+msgctxt "field:workflow.instance,workflow:0"
+msgid "Workflow"
+msgstr "Workflow"
+
+msgctxt "field:workflow.instance,workitems:0"
+msgid "Workitems"
+msgstr "Elemente"
+
+msgctxt "field:workflow.transition,act_from:0"
+msgid "Source Activity"
+msgstr "Quelle der Aktivität"
+
+msgctxt "field:workflow.transition,act_to:0"
+msgid "Destination Activity"
+msgstr "Bestimmung der Aktivität"
+
+msgctxt "field:workflow.transition,condition:0"
+msgid "Condition"
+msgstr "Bedingung"
+
+msgctxt "field:workflow.transition,group:0"
+msgid "Group Required"
+msgstr "Erforderliche Gruppe"
+
+msgctxt "field:workflow.transition,instances:0"
+msgid "Instances"
+msgstr "Instanzen"
+
+msgctxt "field:workflow.transition,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.transition,signal:0"
+msgid "Signal (button Name)"
+msgstr "Signal (Name des Knopfes)"
+
+msgctxt "field:workflow.transition,trigger_model:0"
+msgid "Trigger Type"
+msgstr "Typ Auslöser"
+
+msgctxt "field:workflow.transition-workflow.instance,inst_id:0"
+msgid "Instance"
+msgstr "Instanz"
+
+msgctxt "field:workflow.transition-workflow.instance,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.transition-workflow.instance,trans_id:0"
+msgid "Transition"
+msgstr "Übergang"
+
+msgctxt "field:workflow.trigger,instance:0"
+msgid "Destination Instance"
+msgstr "Bestimmungsinstanz"
+
+msgctxt "field:workflow.trigger,model:0"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:workflow.trigger,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.trigger,res_id:0"
+msgid "Resource ID"
+msgstr "ID Ressource"
+
+msgctxt "field:workflow.trigger,workitem:0"
+msgid "Workitem"
+msgstr "Element"
+
+msgctxt "field:workflow.workitem,activity:0"
+msgid "Activity"
+msgstr "Aktivität"
+
+msgctxt "field:workflow.workitem,instance:0"
+msgid "Instance"
+msgstr "Instanz"
+
+msgctxt "field:workflow.workitem,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:workflow.workitem,state:0"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:workflow.workitem,subflow:0"
+msgid "Subflow"
+msgstr "Unterflow"
+
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Sammlungen"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Sammlungen"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Sammlungen"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Sammlungen"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:0"
+msgid "Collection"
+msgstr "Sammlung"
+
+msgctxt "model:workflow,name:0"
+msgid "Workflow"
+msgstr "Workflow"
+
+msgctxt "model:workflow.activity,name:0"
+msgid "Workflow activity"
+msgstr "Workflow Aktivität"
+
+msgctxt "model:workflow.instance,name:0"
+msgid "Workflow instance"
+msgstr "Workflow Instanz"
+
+msgctxt "model:workflow.transition,name:0"
+msgid "Workflow transition"
+msgstr "Workflow Übergang"
+
+msgctxt "model:workflow.transition-workflow.instance,name:0"
+msgid "Workflow Transition - Instance"
+msgstr "Workflow Übergang - Instanz"
+
+msgctxt "model:workflow.trigger,name:0"
+msgid "Workflow trigger"
+msgstr "Workflow Trigger"
+
+msgctxt "model:workflow.workitem,name:0"
+msgid "Workflow workitem"
+msgstr "Workflow Element"
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "And"
+msgstr "Und"
+
+msgctxt "selection:workflow.activity,join_mode:0"
+msgid "Xor"
+msgstr "Oder (exklusiv)"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "And"
+msgstr "Und"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Or"
+msgstr "Oder"
+
+msgctxt "selection:workflow.activity,split_mode:0"
+msgid "Xor"
+msgstr "Oder (exklusiv)"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collection"
+msgstr "Sammlung"
+
+msgctxt "view:webdav.collection:0"
+msgid "Collections"
+msgstr "Sammlungen"
+
+msgctxt "view:workflow.activity:0"
+msgid "Activity"
+msgstr "Aktivität"
+
+msgctxt "view:workflow.activity:0"
+msgid "Transition"
+msgstr "Übergang"
+
+msgctxt "view:workflow.activity:0"
+msgid "Transitions"
+msgstr "Übergänge"
+
+msgctxt "view:workflow.instance:0"
+msgid "Instance"
+msgstr "Instanz"
+
+msgctxt "view:workflow.instance:0"
+msgid "Instances"
+msgstr "Instanzen"
+
+msgctxt "view:workflow.transition:0"
+msgid "Transition"
+msgstr "Übergang"
+
+msgctxt "view:workflow.transition:0"
+msgid "Transitions"
+msgstr "Übergänge"
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitem"
+msgstr "Element"
+
+msgctxt "view:workflow.workitem:0"
+msgid "Workitems"
+msgstr "Elemente"
+
+msgctxt "view:workflow:0"
+msgid "Workflow"
+msgstr "Workflow"
