@@ -1,0 +1,36 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "موبایل"
+
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr "شناسه کاربر"
+
+#, fuzzy
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS."
+msgstr "شماره تلفن همراه که پیام کوتاه را پشتیبانی کند"
+
+msgctxt "model:ir.message,text:msg_sms_text"
+msgid "%(name)s code %(code)s"
+msgstr "\"%(name)s\" کد \"%(کد)s\""
+
+msgctxt "model:ir.message,text:msg_user_sms_code"
+msgid "SMS Code for %(login)s"
+msgstr ""
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr "کد پیامک"
