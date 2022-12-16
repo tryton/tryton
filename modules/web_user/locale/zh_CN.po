@@ -1,0 +1,162 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "电子邮件"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "电子邮件令牌"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "电子邮件有效"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "密码"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "密码HASH"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "重置密码令牌"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "重置密码令牌过期"
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr "IP地址"
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr "IP网络"
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "登录"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "密匙"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Web 用户"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "电子邮件验证"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "已经激活的Web用户，电子邮件不能重复."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr "Web用户会话密钥必须唯一."
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "验证电子邮件"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Web 用户"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Web 用户"
+
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "web 用户会话"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "Web用户验证尝试"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "web 用户会话"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "按钮不起作用？ 将此粘贴到浏览器的地址栏中:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "如果你没有发出过此请求，就忽略此电子邮件."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr "我们收到了重置你的帐户密码的请求,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "按钮不起作用？ 将此粘贴到浏览器的地址栏中:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "电子邮件验证"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "如果误收到此电子邮件，请忽略它。"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "仅一步之遥.."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "验证"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "验证电子邮件"
