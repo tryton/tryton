@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="type">form</field>
+            <field name="name">move_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_tree_simple">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_tree_simple</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_from_supplier">
+            <field name="name">From Suppliers</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('from_location.type', '=', 'supplier')]</field>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_from_supplier_waiting">
+            <field name="name">From Suppliers Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment', '=', None)]</field>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_form_domain_to_customer">
+            <field name="name">To Customers</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('to_location.type', '=', 'customer')]</field>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="40"
+            action="act_move_form" id="menu_move_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_move_form_group_stock">
+            <field name="menu" ref="menu_move_form"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_move">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_move"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_group_stock">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
