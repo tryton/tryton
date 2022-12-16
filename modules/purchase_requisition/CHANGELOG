@@ -1,0 +1,53 @@
+Version 6.4.1 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Add support for Python 3.10
+* Remove support for Python 3.6
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+* Compute purchase date of request based on supplier and product
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Add summary to requisition line
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Rename purchase requisition state from cancel to cancelled
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add employee on requisitions for some states
+* Allow setting unit on line without product
+* Add button to process requisition
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Remove domain constraint on unit
+* Use processing delay to process approved requisition
+* Allow reset to draft approved but not processed requisition
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Make description on purchase requisition line optional
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Initial release
