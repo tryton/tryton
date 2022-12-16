@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_form"/>
+            <field name="name">sale_line_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_request_form">
+            <field name="name">Purchase Requests</field>
+            <field name="res_model">purchase.request</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'sale.sale'), ('origin.id', 'in', Eval('active_ids'), 'sale.sale'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_open_purchase_request_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="action_purchase_request_group_purchase_request">
+            <field name="action" ref="act_purchase_request_form"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="action_purchase_request_group_purchase">
+            <field name="action" ref="act_purchase_request_form"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
+    </data>
+</tryton>

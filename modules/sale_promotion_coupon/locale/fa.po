@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "کوپن ها"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "تعداد استفاده"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "تعداد"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "در هر نهاد/سازمان"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "تبلیغ و ترویج"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "کوپن"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "کوپن ها"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+"چه مدت زمان یک کوپن باید استفاده شود.\n"
+"0 یا کمتر برای نامحدود."
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr "تیک بزنید برای شمارش استفاده در هر نهاد/سازمان."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "تعداد کوپن های :\"%s\" دوبرابر شده است."
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "کوپن تبلیغ و ترویج"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "شماره کوپن تبلیغ و ترویج"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "فروش - شماره کوپن تبلیغ و ترویج"
