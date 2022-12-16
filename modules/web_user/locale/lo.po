@@ -1,0 +1,169 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "ອີ-ເມວລ໌"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "ອີ-ເມວລ໌ ຢັງຢືນຕົວຕົນ"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "ອີ-ເມວລ໌ ຖືກຕ້ອງ"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "ລະຫັດຜ່ານປະສົມ"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "ຕັ້ງລະຫັດຢັ້ງຢືນຜ່ານຄືນໃໝ່"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "ການຕັ້ງລະຫັດຢັ້ງຢືນຜ່ານຄືນໃໝ່ໝົດເວລາແລ້ວ"
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "ເຊື່ອມຕໍ່ເຂົ້າລະບົບ"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "ຄຳສຳຄັນ"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Email Validation"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Web Users"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "ຜູ້ໃຊ້ງານເວັບ"
+
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "ເທື່ອເຂົ້າໃຊ້ຂອງຜູ້ໃຊ້ງານເວັບ"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "ພະຍາຍາມກວດສອບສິດທີ່ຖືກຕ້ອງຂອງຜູ້ໃຊ້ງານເວັບ"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "ເທື່ອເຂົ້າໃຊ້ຂອງຜູ້ໃຊ້ງານເວັບ"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "ປຸ່ມບໍ່ເຮັດວຽກບໍ? ໃຫ້ ວາງ ອັນນີ້ລົງໃສ່ ໂຕທ່ອງເວັບຂອງທ່ານ:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "ຖ້າຫາກທ່ານບໍ່ໄດ້ຮ້ອງຂໍ ອ-ເມວລ໌ ນີ້, ທ່ານບໍ່ຕ້ອງຮັບຮູ້ ອີ-ເມວລ໌ ນີ້."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "ຕັ້ງຄ່າລະຫັດຜ່ານຄືນໃໝ່"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr "ພວກເຮົາໄດ້ຮັບຄຳຮ້ອງຂໍໃຫ້ຕັ້ງຄ່າລະຫັດຜ່ານບັນຊີໃຊ້ງານຂອງທ່ານຄືນໃໝ່,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "ປຸ່ມບໍ່ເຮັດວຽກບໍ? ໃຫ້ ວາງ ອັນນີ້ລົງໃສ່ ໂຕທ່ອງເວັບຂອງທ່ານ:"
+
+#, fuzzy
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "ການຢືນຢັນຄວາມຖືກຕ້ອງ ອີ-ເມວລ໌"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr ""
+"ຖ້າຫາກທ່ານໄດ້ຮັບ ອີ-ເມວລ໌ ນີ້ ໂດຍຄວາມຜິດພາດໃດໜຶ່ງ, ພຽງແຕ່ໃຫ້ທ່ານ ບໍ່ຮັບຮູ້ "
+"ອີ-ເມວລ໌ ນີ້ກໍພໍ."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "ພຽງແຕ່ອີກບາດກ້າວໜຶ່ງທໍ່ນັ້ນ.."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "ກວດສອບຄວາມຖືກຕ້ອງ"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "ຕັ້ງຄ່າລະຫັດຜ່ານຄືນໃໝ່"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "ກວດສອບຄວາມຖືກຕ້ອງ ອີ-ເມວລ໌"
