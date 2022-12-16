@@ -1,0 +1,619 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Balans"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Eindbalans"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "Lijnen"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Aantal lijnen"
+
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr "Oorsprongbestand"
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr "originele bestands- ID"
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Oorsprong"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Begin bedrag"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Afpunten"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Totaal bedrag"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "bevestiging"
+
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Bestand"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr "Bestandsformaat"
+
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Bankrekening"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "relatie / bedrijf (Company Party)"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Validatietype"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Boeking"
+
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Oorsprong(herkomst)"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr "Staat van de verklaring"
+
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Boeking"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
+msgstr "Informatie"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr "Bedrag in afwachting"
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "Bankafschrift ID"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr "Staat van de verklaring"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Rekeningafschrift"
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr "importeer bankafschrift start"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Dagboek bankafschriften"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Rekeningafschriftregel"
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Groep rekeningafschrift regel"
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr "Rekeningafschriftregel oorsprong"
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr "Verklaring herkomstinformatie"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Line Groups"
+msgstr "Lijngroepen"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Lijngroepen"
+
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "boek lijnen"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Boekingen/bewegingen"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "afpunten (statements) (rekeninguittreksels?)"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr "Bankafschrift"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Journals"
+msgstr "Dagboeken"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Oorsprong"
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Geboekt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Goedgekeurd"
+
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+"Om een afschrift te importeren, moet u een journaal aanmaken voor "
+"rekening\"%(account)s\"."
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+"Om een afschrift te importeren, moet het journaal \"%(journal)s\" de valuta "
+"\"%(currency)s\" hebben in plaats van \"%(journal_currency)s\"."
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr "Per bankrekening is slechts één dagboek toegestaan."
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr "Het bedrag van (het rekening uittreksel) kan niet nul zijn."
+
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+"Om de beweging \"%(move)s\" te boeken moet je eerst het statement "
+"\"%(statement)s\" boeken."
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+"Om het rekeningsuittreksel \"%(statement)s\" te verwijderen, moet u deze "
+"annuleren."
+
+msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
+msgid ""
+"The validation of the statements will remove already paid or cancelled "
+"invoices from the statements' lines."
+msgstr ""
+"De validatie van de afschriften zal reeds betaalde of geannuleerde facturen "
+"uit de afschriftenregels verwijderen."
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+"Validatie van afschriften verwijdert betaalde facturen uit andere "
+"afschriften."
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+"Om een rekeningafschrift \"%(statement)s\" te boeken, moet u eerst lijnen "
+"aanmaken voor het openstaand bedrag van %(amount)s uit \"%(origin)s\"."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+"Om verklaring(statemet, relevé,kontoauszug) \"% (statement)s\" te valideren,"
+" moet u regels wijzigen om een eindsaldo van%(end_balance)s te hebben in "
+"plaats van %(amount)s."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+"Om het rekening uittreksel \"%(statement)s\" te kunnen valideren , moeten "
+"nog %(n)s line(s) lijnen toegevoegd worden."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+"Om het rekening uittreksel \"%(statement)s\" te kunnen valideren , moeten "
+"%(n)s line(s) lijnen verwijderd worden."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+"Om de verklaring \"%(statement)s\"te valideren, moeten de lijnen worden "
+"aangepast zodat het totale aantal %(total_amount)s wordt bereikt in plaats "
+"van %(amount)s."
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr "Weet u zeker dat u het rekeningoverzicht wilt vastleggen?"
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Afletteren"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "bevestigen"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Line Groups"
+msgstr "Lijngroepen"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr "bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Journals"
+msgstr "Dagboeken"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Bankafschrift"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "report:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "report:account.statement:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "report:account.statement:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "report:account.statement:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.statement:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.statement:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "report:account.statement:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "report:account.statement:"
+msgid "Journal:"
+msgstr "Dagboek:"
+
+msgctxt "report:account.statement:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "report:account.statement:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "report:account.statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "report:account.statement:"
+msgid "Total"
+msgstr "Totaal"
+
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "selection:account.statement,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Geboekt"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Goedgekeurd"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Balans"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Aantal lijnen"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:account.statement.origin:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Aanvullende informatie"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importeren"
