@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_location_already_assigned">
+            <field name="text">The location "%(location)s" has already been assigned by "%(assigned_by)s".</field>
+        </record>
+    </data>
+</tryton>
