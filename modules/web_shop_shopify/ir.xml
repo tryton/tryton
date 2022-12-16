@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_update_product">
+            <field name="method">web.shop|shopify_update_product</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+
+        <record model="ir.cron" id="cron_update_inventory">
+            <field name="method">web.shop|shopify_update_inventory</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+
+        <record model="ir.cron" id="cron_fetch_order">
+            <field name="method">web.shop|shopify_fetch_order</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+
+        <record model="ir.cron" id="cron_update_order">
+            <field name="method">web.shop|shopify_update_order</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+    </data>
+</tryton>
