@@ -1,0 +1,538 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:"
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr ""
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"You can not unset \"Available on timesheets\" for work \"%s\" because it "
+"already has timesheets."
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:timesheet.hours_employee.open.start,end_date:"
+msgid "End Date"
+msgstr "Дата окончания"
+
+msgctxt "field:timesheet.hours_employee.open.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee.open.start,start_date:"
+msgid "Start Date"
+msgstr "Дата начала"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Месяц"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Месяц"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Год"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Неделя"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Неделя"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Год"
+
+#, fuzzy
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Работа"
+
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,active:"
+msgid "Active"
+msgstr "Действующий"
+
+msgctxt "field:timesheet.work,children:"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Организация"
+
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr ""
+
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,left:"
+msgid "Left"
+msgstr "Слева"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.work,parent:"
+msgid "Parent"
+msgstr "Предок"
+
+msgctxt "field:timesheet.work,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:timesheet.work,right:"
+msgid "Right"
+msgstr "Справа"
+
+msgctxt "field:timesheet.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Доступно в табеле"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Конечная дата табеля"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Строки табеля"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Начальная дата табеля"
+
+msgctxt "field:timesheet.work,total_duration:"
+msgid "Total Timesheet Duration"
+msgstr ""
+
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:timesheet.work.open.start,from_date:"
+msgid "From Date"
+msgstr "Начальная дата"
+
+msgctxt "field:timesheet.work.open.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work.open.start,to_date:"
+msgid "To Date"
+msgstr "Конечная дата"
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work"
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_available:"
+msgid "Allow to fill in timesheets with this work"
+msgstr "Разрешить заполнять табель с этой работой"
+
+msgctxt "help:timesheet.work,total_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Часы на сотрудника в месяц"
+
+msgctxt "model:ir.action,name:act_hours_employee_open"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Часы на сотрудника в неделю"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Ввод табеля"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Строки табеля"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Строки табеля"
+
+msgctxt "model:ir.action,name:act_open_work"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:ir.action,name:act_open_work_graph"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:ir.action,name:act_work_form2"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:ir.action,name:act_work_form3"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "model:ir.action,name:act_work_tree2"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Часы на сотрудника в месяц"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Часы на сотрудника в неделю"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Ввод табеля"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Строки табеля"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Отчетность"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Табель"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree2"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Администрирование табелей"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+msgctxt "model:timesheet.hours_employee.open.start,name:"
+msgid "Open Hours per Employee"
+msgstr "Открытые часы на сотрудника"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Часы на сотрудника в месяц"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Часы на сотрудника в неделю"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Строка табеля"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Ввод строк"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Работа"
+
+msgctxt "model:timesheet.work.open.start,name:"
+msgid "Open Work"
+msgstr "Открытые работы"
+
+msgctxt "view:timesheet.hours_employee.open.start:"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+#, fuzzy
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Hours per Employee"
+msgstr "Часы на сотрудника"
+
+msgctxt "view:timesheet.hours_employee_monthly:"
+msgid "Hours per Employee per Month"
+msgstr "Часы на сотрудника в месяц"
+
+msgctxt "view:timesheet.hours_employee_weekly:"
+msgid "Hours per Employee per Week"
+msgstr "Часы на сотрудника в неделю"
+
+msgctxt "view:timesheet.line.enter.start:"
+msgid "Enter Timesheet"
+msgstr "Ввод табеля"
+
+#, fuzzy
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "view:timesheet.line:"
+msgid "Timesheet Line"
+msgstr "Строка табеля"
+
+msgctxt "view:timesheet.line:"
+msgid "Timesheet Lines"
+msgstr "Строки табеля"
+
+msgctxt "view:timesheet.work.open.start:"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "view:timesheet.work:"
+msgid "Hours per Work"
+msgstr "Часов на работу"
+
+msgctxt "view:timesheet.work:"
+msgid "Work"
+msgstr "Работа"
+
+msgctxt "view:timesheet.work:"
+msgid "Works"
+msgstr "Работы"
+
+msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:timesheet.hours_employee.open,start,open_:"
+msgid "Open"
+msgstr "Открыть"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Ввод"
+
+msgctxt "wizard_button:timesheet.work.open,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:timesheet.work.open,start,open_:"
+msgid "Open"
+msgstr "Открыть"
+
+msgctxt "wizard_button:timesheet.work.open2,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:timesheet.work.open2,start,open_:"
+msgid "Open"
+msgstr "Открыть"

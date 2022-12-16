@@ -1,0 +1,107 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "Seleccionable"
+
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Clasificación"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Clasificación"
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Clasificaciones"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "Clasificación de productos de prueba"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "Árbol de clasificación de productos de prueba"
+
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Clasificación"

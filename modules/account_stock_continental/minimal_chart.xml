@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="account.account.type.template"
+                id="account_type_template_asset_current_inventories">
+            <field name="name" lang="en">Inventories</field>
+            <field name="name" lang="bg">Инвентаризации</field>
+            <field name="name" lang="ca">Inventaris</field>
+            <field name="name" lang="de">Bestandskorrekturen</field>
+            <field name="name" lang="es">Inventarios</field>
+            <field name="name" lang="fr">Inventaires</field>
+            <field name="name" lang="nl">Inventories</field>
+            <field name="name" lang="pt">Inventários</field>
+            <field name="name" lang="ru">Инвентаризация</field>
+            <field name="name" lang="sl">Popisi</field>
+            <field name="parent"
+                ref="account.account_type_template_asset_current"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_stock">
+            <field name="name" lang="en">Stock</field>
+            <field name="name" lang="bg">Наличност</field>
+            <field name="name" lang="ca">Estoc</field>
+            <field name="name" lang="de">Lager</field>
+            <field name="name" lang="es">Existencias</field>
+            <field name="name" lang="fr">Stock</field>
+            <field name="name" lang="nl">Voorraad</field>
+            <field name="name" lang="pt">Estoque</field>
+            <field name="name" lang="ru">Хранилище</field>
+            <field name="name" lang="sl">Zaloga</field>
+            <field name="type"
+                ref="account_type_template_asset_current_inventories"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root"/>
+            <field name="kind">stock</field>
+        </record>
+
+        <record model="account.account.template"
+                 id="account_template_stock_supplier">
+            <field name="name" lang="en">Stock Supplier</field>
+            <field name="name" lang="bg">Stock Supplier</field>
+            <field name="name" lang="ca">Estoc proveïdor</field>
+            <field name="name" lang="de">Lager Lieferant</field>
+            <field name="name" lang="es">Stock del proveedor</field>
+            <field name="name" lang="fr">Stock fournisseur</field>
+            <field name="name" lang="nl">Stock Supplier</field>
+            <field name="name" lang="pt">Estoque do Fornecedor</field>
+            <field name="name" lang="ru">Stock Supplier</field>
+            <field name="name" lang="sl">Zaloga dobavitelja</field>
+            <field name="type"
+                ref="account_type_template_asset_current_inventories"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root"/>
+            <field name="kind">stock</field>
+        </record>
+        <record model="account.account.template"
+                id="account_template_stock_customer">
+            <field name="name" lang="en">Stock Customer</field>
+            <field name="name" lang="bg">Stock Customer</field>
+            <field name="name" lang="ca">Estoc client</field>
+            <field name="name" lang="de">Lager Kunde</field>
+            <field name="name" lang="es">Stock cliente</field>
+            <field name="name" lang="fr">Stock client</field>
+            <field name="name" lang="nl">Stock Customer</field>
+            <field name="name" lang="pt">Estoque do Cliente</field>
+            <field name="name" lang="ru">Stock Customer</field>
+            <field name="name" lang="sl">Zaloga kupca</field>
+            <field name="type"
+                ref="account_type_template_asset_current_inventories"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root"/>
+            <field name="kind">stock</field>
+        </record>
+
+        <record model="account.account.template"
+                id="account_template_stock_production">
+            <field name="name" lang="en">Stock Production</field>
+            <field name="name" lang="bg">Stock Production</field>
+            <field name="name" lang="ca">Estoc producció</field>
+            <field name="name" lang="de">Lager Produktion</field>
+            <field name="name" lang="es">Stock producción</field>
+            <field name="name" lang="fr">Stock de production</field>
+            <field name="name" lang="nl">Stock Production</field>
+            <field name="name" lang="pt">Estoque da Produção</field>
+            <field name="name" lang="ru">Stock Production</field>
+            <field name="name" lang="sl">Zaloga proizvodnje</field>
+            <field name="type" ref="account_type_template_asset_current_inventories"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root"/>
+            <field name="kind">stock</field>
+        </record>
+
+        <record model="account.account.template"
+                id="account_template_stock_lost_found">
+            <field name="name" lang="en">Stock Lost and Found</field>
+            <field name="name" lang="bg">Stock Lost and Found</field>
+            <field name="name" lang="ca">Estoc perdut/trobat</field>
+            <field name="name" lang="de">Lager Inventurdifferenz</field>
+            <field name="name" lang="es">Stock perdido y encontrado</field>
+            <field name="name" lang="fr">Stock « pertes et surplus »</field>
+            <field name="name" lang="nl">Stock Lost and Found</field>
+            <field name="name" lang="pt">Estoque de Achados e Perdidos</field>
+            <field name="name" lang="ru">Stock Lost and Found</field>
+            <field name="name" lang="sl">Zaloga izgubljeno/najdeno</field>
+            <field name="type"
+                ref="account_type_template_asset_current_inventories"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root"/>
+            <field name="kind">stock</field>
+        </record>
+    </data>
+</tryton>
