@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="point"/>
+    <field name="point"/>
+    <label name="session"/>
+    <field name="session"/>
+
+    <label name="type"/>
+    <field name="type" widget="selection"/>
+    <label name="amount"/>
+    <field name="amount"/>
+
+    <label name="date"/>
+    <field name="date"/>
+    <label name="move"/>
+    <field name="move"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" col="-1" colspan="2">
+        <button name="post" icon="tryton-ok"/>
+    </group>
+</form>
