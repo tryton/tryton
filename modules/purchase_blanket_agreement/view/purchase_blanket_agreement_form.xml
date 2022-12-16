@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="supplier"/>
+    <field name="supplier"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="description"/>
+    <field name="description"/>
+    <label name="reference"/>
+    <field name="reference"/>
+
+    <notebook>
+        <page string="Agreement" id="agreement">
+            <label name="from_date"/>
+            <field name="from_date"/>
+            <label name="to_date"/>
+            <field name="to_date"/>
+
+            <label name="currency"/>
+            <field name="currency"/>
+
+            <field name="lines" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="2" colspan="2" id="amount" yfill="1">
+        <label name="amount" xalign="1.0" xexpand="1"/>
+        <field name="amount" xalign="1.0" xexpand="0"/>
+    </group>
+
+    <group id="links" col="-1" colspan="2">
+        <link icon="tryton-purchase" name="purchase_blanket_agreement.act_purchase_form_blanket_agreement"/>
+    </group>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft"/>
+        <button name="run"/>
+        <button name="create_purchase" icon="tryton-launch"/>
+        <button name="close" icon="tryton-close"/>
+    </group>
+</form>

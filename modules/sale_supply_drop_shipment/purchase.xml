@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="name">purchase_form</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="inherit"
+                ref="purchase.purchase_configuration_view_form"/>
+            <field name="name">purchase_configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_drop_shipment_form">
+            <field name="name">Drop Shipments</field>
+            <field name="res_model">stock.shipment.drop</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.purchase', '=', Eval('active_id')), ('moves.purchase', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_purchase_drop_shipment_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_purchase_drop_shipment_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_view_form">
+            <field name="model">purchase.product_supplier</field>
+            <field name="inherit" ref="purchase.product_supplier_view_form"/>
+            <field name="name">product_supplier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_request_view_form">
+            <field name="model">purchase.request</field>
+            <field name="inherit" ref="purchase_request.purchase_request_view_form"/>
+            <field name="name">purchase_request_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_request_view_tree">
+            <field name="model">purchase.request</field>
+            <field name="inherit"
+                ref="purchase_request.purchase_request_view_tree"/>
+            <field name="name">purchase_request_tree</field>
+        </record>
+
+    </data>
+</tryton>
