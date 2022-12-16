@@ -1,0 +1,167 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.in.return:"
+msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
+msgstr ""
+"Es konnten nicht alle ausgehenden Lagerbewegungen der Warenrückgabe \"%s\" "
+"gepackt werden."
+
+msgctxt "error:stock.shipment.out:"
+msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
+msgstr ""
+"Es konnten nicht alle ausgehenden Lagerbewegungen des Kundenlieferpostens "
+"\"%s\" gepackt werden."
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Nummernkreis Paket"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Paket"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Untergeordnet (Paket)"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:stock.package,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.package,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.package,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Lagerbewegungen"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Paket)"
+
+msgctxt "field:stock.package,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Lieferposten"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:stock.package,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.package,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.package.type,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.package.type,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.package.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.package.type,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.package.type,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.package.type,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Pakete"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Pakete"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Pakete"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Pakete"
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Pakettypen"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Paketetiketten"
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Paket"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Paket"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Pakettypen"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Lager Paket"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Lager Pakettyp"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "Paket:"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "Lieferposten:"
+
+msgctxt "view:stock.package.type:"
+msgid "Package Type"
+msgstr "Pakettyp"
+
+msgctxt "view:stock.package.type:"
+msgid "Package Types"
+msgstr "Pakettypen"
+
+msgctxt "view:stock.package:"
+msgid "Package"
+msgstr "Paket"
+
+msgctxt "view:stock.package:"
+msgid "Packages"
+msgstr "Pakete"

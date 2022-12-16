@@ -1,0 +1,77 @@
+Version 4.0.23 - 2018-11-12
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.22 - 2018-09-22
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.21 - 2018-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.20 - 2018-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.19 - 2018-06-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.18 - 2018-05-22
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.17 - 2018-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.16 - 2018-04-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.15 - 2018-03-15
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.14 - 2017-11-07
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.13 - 2017-10-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.12 - 2017-08-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.11 - 2017-07-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.10 - 2017-06-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.9 - 2017-03-10
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.8 - 2017-02-06
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.7 - 2016-12-17
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.6 - 2016-11-06
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.5 - 2016-10-02
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.4 - 2016-09-03
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.3 - 2016-08-02
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.2 - 2016-07-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.1 - 2016-05-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Timedelta uses 30 days for month
+* Manage context model of ir.action.act_window
+* Add Note
+
+Version 3.8.0 - 2015-11-02
+* Initial release
