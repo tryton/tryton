@@ -1,0 +1,837 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.uom:"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Si no se ha usado la UdM puede eliminarla. En caso contrario, puede "
+"desactivarla y crear una de nueva."
+
+msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Los valores de factor y conversión de la UdM \"%s\" no son correctos."
+
+msgctxt "error:product.uom:"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "La conversión y el factor no pueden ser cero simultáneamente."
+
+msgctxt "error:product.uom:"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
+msgstr ""
+"No puede cambiar la conversión, el factor o la categoría de una unidad de "
+"medida."
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:product.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.category,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:product.category,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.category,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Método de coste por defecto"
+
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.configuration,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Consumible"
+
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.product,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.product,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "UdM por defecto"
+
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoría por defecto UdM"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.product,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:product.product,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.product,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.template,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "Consumible"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:product.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "UdM por defecto"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoría por defecto UdM"
+
+msgctxt "field:product.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template,products:"
+msgid "Variants"
+msgstr "Variantes"
+
+msgctxt "field:product.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:product.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.uom,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:product.uom,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.uom,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.uom,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "Decimales a mostrar"
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "field:product.uom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "Conversión"
+
+msgctxt "field:product.uom,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "Precisión de redondeo"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "Símbolo"
+
+msgctxt "field:product.uom,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.uom,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.uom.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.uom.category,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.uom.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.uom.category,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Unit of Measures"
+msgstr "Unidades de medidas"
+
+msgctxt "field:product.uom.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.uom.category,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"coeficiente (unidad base) = 1 (esta unidad)"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"1 (unidad base) = coeficiente (esta unidad)"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías de producto"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categorías de producto"
+
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr "Configuración de productos"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Productos"
+
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Variantes"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "Productos por categoría"
+
+msgctxt "model:ir.action,name:act_template_form"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Categorías de la unidad de medida"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Unidades de medida"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Árbol de categorías"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Productos"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Variantes"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr "Productos"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Unidades de medida"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr "Configuración de productos"
+
+msgctxt "model:product.product,name:"
+msgid "Product Variant"
+msgstr "Variante de producto"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr "Plantilla - Categoría"
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of measure"
+msgstr "Unidad de medida"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Área"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Quilate"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "Centímetro"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "Centímetro cúbico"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "Pie cúbico"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "Pulgada cúbica"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Metro cúbico"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Día"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Pie"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "Galón"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Gramo"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Hectárea"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Hora"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "Pulgada"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Kilogramo"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Kilómetro"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Litro"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Metro"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Milla"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Milímetro"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Minuto"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Onza"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Libra"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Segundo"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "Centímetro cuadrado"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "Pie cuadrado"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "Pulgada cuadrada"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Metro cuadrado"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "Yarda cuadrada"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Día de trabajo"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "Yarda"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "pie³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "pul³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "pie"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "pul"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lb"
+msgstr "lb"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "pie²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "pul²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "u"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "wd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Product uom category"
+msgstr "Categoría de UdM de producto"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Superficie"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Tiempo"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Unidades"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Volumen"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Administración de productos"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Promedio"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Fijo"
+
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Activos"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Bienes"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Servicios"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "Promedio"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "Fijo"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "Activos"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "Bienes"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "Servicios"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:product.configuration:"
+msgid "Party Configuration"
+msgstr "Configuración de terceros"
+
+msgctxt "view:product.product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "view:product.product:"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "view:product.uom.category:"
+msgid "Categories of Unit of Measure"
+msgstr "Categorías de unidades de medida"
+
+msgctxt "view:product.uom.category:"
+msgid "Category of Unit of Measure"
+msgstr "Categoría de unidad de medida"
+
+msgctxt "view:product.uom:"
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+msgctxt "view:product.uom:"
+msgid "Units of Measure"
+msgstr "Unidades de medida"

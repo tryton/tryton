@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="board">
+    <element name="board">
+      <ref name="attlist.board"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="image"/>
+          <ref name="separator"/>
+          <ref name="label"/>
+          <ref name="newline"/>
+          <ref name="notebook"/>
+          <ref name="group"/>
+          <ref name="hpaned"/>
+          <ref name="vpaned"/>
+          <ref name="action"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.board" combine="interleave">
+    <optional>
+      <attribute name="col" a:defaultValue="4"/>
+    </optional>
+  </define>
+  <define name="image">
+    <element name="image">
+      <ref name="attlist.image"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <attribute name="name"/>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="yexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="yfill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="xexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="xfill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="help"/>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="states"/>
+    </optional>
+  </define>
+  <define name="separator">
+    <element name="separator">
+      <ref name="attlist.separator"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="string" a:defaultValue=""/>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <choice>
+      <attribute name="name"/>
+      <attribute name="name"/>
+    </choice>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="states"/>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="xalign" a:defaultValue="0.0"/>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="yexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="yfill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="xexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="xfill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.separator" combine="interleave">
+    <optional>
+      <attribute name="help"/>
+    </optional>
+  </define>
+  <define name="label">
+    <element name="label">
+      <ref name="attlist.label"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="string" a:defaultValue=""/>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <choice>
+      <attribute name="name"/>
+      <attribute name="name"/>
+    </choice>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="states"/>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="xalign" a:defaultValue="0.0"/>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="yalign" a:defaultValue="0.5"/>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="yexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="yfill" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="xexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="xfill" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="attlist.label" combine="interleave">
+    <optional>
+      <attribute name="help"/>
+    </optional>
+  </define>
+  <define name="newline">
+    <element name="newline">
+      <ref name="attlist.newline"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.newline" combine="interleave">
+    <attribute name="id"/>
+  </define>
+  <define name="notebook">
+    <element name="notebook">
+      <ref name="attlist.notebook"/>
+      <zeroOrMore>
+        <ref name="page"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.notebook" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="4"/>
+    </optional>
+  </define>
+  <define name="page">
+    <element name="page">
+      <ref name="attlist.page"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="image"/>
+          <ref name="separator"/>
+          <ref name="label"/>
+          <ref name="newline"/>
+          <ref name="notebook"/>
+          <ref name="group"/>
+          <ref name="hpaned"/>
+          <ref name="vpaned"/>
+          <ref name="action"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.page" combine="interleave">
+    <optional>
+      <attribute name="angle"/>
+    </optional>
+  </define>
+  <define name="attlist.page" combine="interleave">
+    <optional>
+      <attribute name="string" a:defaultValue="Unknown"/>
+    </optional>
+  </define>
+  <define name="attlist.page" combine="interleave">
+    <optional>
+      <attribute name="col" a:defaultValue="4"/>
+    </optional>
+  </define>
+  <define name="attlist.page" combine="interleave">
+    <choice>
+      <attribute name="name"/>
+      <attribute name="id"/>
+    </choice>
+  </define>
+  <define name="group">
+    <element name="group">
+      <ref name="attlist.group"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="image"/>
+          <ref name="separator"/>
+          <ref name="label"/>
+          <ref name="newline"/>
+          <ref name="notebook"/>
+          <ref name="group"/>
+          <ref name="hpaned"/>
+          <ref name="vpaned"/>
+          <ref name="action"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="string"/>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="yexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="yfill" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="xexpand" a:defaultValue="0">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="xfill" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="rowspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="col" a:defaultValue="4"/>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <attribute name="id"/>
+  </define>
+  <define name="hpaned">
+    <element name="hpaned">
+      <ref name="attlist.paned"/>
+      <zeroOrMore>
+        <ref name="child"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="vpaned">
+    <element name="vpaned">
+      <ref name="attlist.paned"/>
+      <zeroOrMore>
+        <ref name="child"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.paned" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="4"/>
+    </optional>
+  </define>
+  <define name="attlist.paned" combine="interleave">
+    <optional>
+      <attribute name="position"/>
+    </optional>
+  </define>
+  <define name="attlist.paned" combine="interleave">
+    <attribute name="id"/>
+  </define>
+  <define name="child">
+    <element name="child">
+      <ref name="attlist.child"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="image"/>
+          <ref name="separator"/>
+          <ref name="label"/>
+          <ref name="newline"/>
+          <ref name="notebook"/>
+          <ref name="group"/>
+          <ref name="hpaned"/>
+          <ref name="vpaned"/>
+          <ref name="action"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.child" combine="interleave">
+    <attribute name="id"/>
+  </define>
+  <define name="data">
+    <element name="data">
+      <ref name="attlist.data"/>
+      <oneOrMore>
+        <ref name="xpath"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <empty/>
+  </define>
+  <define name="xpath">
+    <element name="xpath">
+      <ref name="attlist.xpath"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="image"/>
+          <ref name="separator"/>
+          <ref name="label"/>
+          <ref name="newline"/>
+          <ref name="notebook"/>
+          <ref name="group"/>
+          <ref name="hpaned"/>
+          <ref name="vpaned"/>
+          <ref name="action"/>
+          <ref name="page"/>
+          <ref name="child"/>
+          <ref name="board"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <attribute name="expr"/>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <optional>
+      <attribute name="position" a:defaultValue="inside">
+        <choice>
+          <value>inside</value>
+          <value>replace</value>
+          <value>replace_attributes</value>
+          <value>after</value>
+          <value>before</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="action">
+    <element name="action">
+      <ref name="attlist.action"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.action" combine="interleave">
+    <attribute name="name"/>
+  </define>
+  <define name="attlist.action" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
+  <define name="label" combine="choice">
+    <notAllowed/>
+  </define>
+  <start>
+    <choice>
+      <ref name="data"/>
+      <ref name="board"/>
+      <ref name="label"/>
+    </choice>
+  </start>
+</grammar>
