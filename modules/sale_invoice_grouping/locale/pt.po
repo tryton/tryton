@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método de Agrupamento de Fatura de Venda"
+
+msgctxt "field:party.party,sale_invoice_grouping_methods:"
+msgid "Sale Invoice Grouping Methods"
+msgstr "Fatura de Venda Métodos de Agrupamentos"
+
+msgctxt "field:party.party.sale_invoice_grouping_method,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Fatura de Venda Método de Agrupamento"
+
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método de Agrupamento de Fatura de Venda"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método de Agrupamento de Fatura de Venda"
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr "O método padrão para o agrupamento de faturas de novos clientes."
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr "O método padrão para o agrupamento de faturas de novos clientes."
+
+msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgid "Party Sale Invoice Grouping Method"
+msgstr "Fatura de Venda Métodos de Agrupamentos da Pessoa"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr "Nenhum"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr "Padrão"
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr "Faturamento"
