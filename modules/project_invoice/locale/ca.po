@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,amount_to_invoice:"
+msgid "Amount to Invoice"
+msgstr "Import a facturar"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Import facturat"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Progrés facturat"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:project.work,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Quantitat a facturar"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:project.work.invoiced_progress,progress:"
+msgid "Progress"
+msgstr "Progrés"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr "No podeu eliminar una línia facturada."
+
+msgctxt "model:ir.message,text:msg_missing_account_revenue"
+msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
+msgstr ""
+"Per facturar el treball \"%(work)s\" heu de configurar un compte d'ingressos"
+" per defecte."
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr "No hi ha cap preu de venda al treball \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr "No hi ha cap tercer al treball \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr "No podeu modificar una línia facturada."
+
+msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
+msgid ""
+"To invoice work \"%(work)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Per facturar el treball \"%(work)s\" heu de definir un compte d'ingressos "
+"pel producte \"%(product)s\"."
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Progrés de treballs facturats"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Facturació de projectes"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Per l'esforç estimat"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Segons el progrés"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Per les hores realitzades"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "%"
+msgstr "%"
