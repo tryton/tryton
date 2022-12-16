@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Tolérance de sur-expédition de vente"
+
+msgctxt "field:sale.configuration,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Tolérance de sous-expédition de vente"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Tolérance de sur-expédition de vente"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Tolérance de sous-expédition de vente"
+
+msgctxt "help:sale.configuration,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "La quantité supérieure acceptée en pourcentage."
+
+msgctxt "help:sale.configuration,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "La quantité inférieure acceptée en pourcentage."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "La quantité supérieure acceptée en pourcentage."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "La quantité inférieure acceptée en pourcentage."
+
+msgctxt "model:ir.message,text:msg_over_shipment"
+msgid ""
+"The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "
+"shipped > %(maximal)s )."
+msgstr ""
+"La ligne de vente « %(line)s » dépasse la tolérance de sur-expédition "
+"(%(shipped)s expédiés > %(maximal)s)."
+
+msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgid "Sale Configuration Shipment Tolerance"
+msgstr "Configuration de tolérance d'expédition de vente"
+
+msgctxt "view:sale.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.configuration:"
+msgid "Sale Shipment Tolerance"
+msgstr "Tolérance d'expédition de vente"
