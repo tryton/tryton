@@ -1,0 +1,378 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:analytic_account.account.selection:0"
+msgid ""
+"Can not have many accounts with the same root or a missing mandatory root "
+"account!"
+msgstr ""
+
+#, fuzzy
+msgctxt "error:analytic_account.account:0"
+msgid "You can not create recursive accounts!"
+msgstr "U kunt geen rekeningen aanmaken die naar zichzelf verwijzen!"
+
+#, fuzzy
+msgctxt "error:analytic_account.line:0"
+msgid "Wrong credit/debit values!"
+msgstr "Verkeerde debit/credit waarden!"
+
+msgctxt "error:analytic_account.line:0"
+msgid ""
+"You can not create move line\n"
+"on view/inactive account!"
+msgstr ""
+
+msgctxt "field:account.move.line,analytic_lines:0"
+msgid "Analytic Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,active:0"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,balance:0"
+msgid "Balance"
+msgstr "Balans"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,childs:0"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,code:0"
+msgid "Code"
+msgstr "Code"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,credit:0"
+msgid "Credit"
+msgstr "Credit"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,debit:0"
+msgid "Debit"
+msgstr "Debit"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,display_balance:0"
+msgid "Display Balance"
+msgstr "Toon balans"
+
+msgctxt "field:analytic_account.account,mandatory:0"
+msgid "Mandatory"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,note:0"
+msgid "Note"
+msgstr "Aantekening"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,parent:0"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:analytic_account.account,root:0"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,state:0"
+msgid "State"
+msgstr "Status"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,type:0"
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,account:0"
+msgid "Account"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt ""
+"field:analytic_account.account-"
+"analytic_account.account.selection,selection:0"
+msgid "Selection"
+msgstr "Selectie"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.open_chart_account.init,end_date:0"
+msgid "End Date"
+msgstr "Eind datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.open_chart_account.init,start_date:0"
+msgid "Start Date"
+msgstr "Start datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.selection,accounts:0"
+msgid "Accounts"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.selection,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,account:0"
+msgid "Account"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,active:0"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,credit:0"
+msgid "Credit"
+msgstr "Credit"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,date:0"
+msgid "Date"
+msgstr "Vervaldatum"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,debit:0"
+msgid "Debit"
+msgstr "Debit"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,journal:0"
+msgid "Journal"
+msgstr "Dagboek"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,move_line:0"
+msgid "Account Move Line"
+msgstr "Boekingsregel"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,party:0"
+msgid "Party"
+msgstr "Relaties"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,reference:0"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "model:analytic_account.account,name:0"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt ""
+"model:analytic_account.account-analytic_account.account.selection,name:0"
+msgid "Analytic Account - Analytic Account Selection"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:analytic_account.account.open_chart_account.init,name:0"
+msgid "Open Chart Account Init"
+msgstr "Rekeningschema gaan openen"
+
+msgctxt "model:analytic_account.account.selection,name:0"
+msgid "Analytic Account Selection"
+msgstr ""
+
+msgctxt "model:analytic_account.line,name:0"
+msgid "Analytic Line"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_chart_account"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart_account"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,display_balance:0"
+msgid "Credit - Debit"
+msgstr "Credit - Debit"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,display_balance:0"
+msgid "Debit - Credit"
+msgstr "Debit - Credit"
+
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Closed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Draft"
+msgstr "Concept"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Opened"
+msgstr "Geopend"
+
+msgctxt "selection:analytic_account.account,type:0"
+msgid "Normal"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:0"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,type:0"
+msgid "View"
+msgstr "Overzicht"
+
+msgctxt "view:account.move.line:0"
+msgid "Analytic"
+msgstr ""
+
+msgctxt "view:account.move:0"
+msgid "Analytic"
+msgstr ""
+
+msgctxt "view:analytic_account.account.open_chart_account.init:0"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "view:analytic_account.account:0"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "view:analytic_account.account:0"
+msgid "Analytic Accounts"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:analytic_account.account:0"
+msgid "General Information"
+msgstr "Algemene informatie"
+
+#, fuzzy
+msgctxt "view:analytic_account.account:0"
+msgid "Notes"
+msgstr "Aantekeningen"
+
+msgctxt "view:analytic_account.line:0"
+msgid "Analytic Line"
+msgstr ""
+
+msgctxt "view:analytic_account.line:0"
+msgid "Analytic Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:analytic_account.line:0"
+msgid "General Information"
+msgstr "Algemene informatie"
+
+#, fuzzy
+msgctxt "wizard_button:analytic_account.account.open_chart_account,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt ""
+"wizard_button:analytic_account.account.open_chart_account,init,open:0"
+msgid "Open"
+msgstr "Open"

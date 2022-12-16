@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_view_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page/field[@name=&quot;invoices&quot;]"
+                        position="after">
+                        <field name="invoice_lines" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="workflow.transition"
+            id="purchase_transition_waiting_invoice_purchase_invoice_done">
+            <field name="act_from"
+                ref="purchase.purchase_activity_waiting_invoice_purchase"/>
+            <field name="act_to"
+                ref="purchase.purchase_activity_invoice_done"/>
+            <field name="trigger_model">account.invoice.line</field>
+            <field name="trigger_ids">wkf_triggered_invoice_lines</field>
+            <field name="condition">wkf_invoice_waiting2invoice_done</field>
+        </record>
+
+        <record model="workflow.transition"
+            id="purchase_transition_waiting_invoice_shipment_invoice_shipment_done">
+            <field name="act_from"
+                ref="purchase.purchase_activity_waiting_invoice_shipment"/>
+            <field name="act_to"
+                ref="purchase.purchase_activity_invoice_shipment_done"/>
+            <field name="trigger_model">account.invoice.line</field>
+            <field name="trigger_ids">wkf_triggered_invoice_lines</field>
+            <field name="condition">wkf_waiting_invoice_shipment2invoice_shipment_done</field>
+        </record>
+
+    </data>
+</tryton>
