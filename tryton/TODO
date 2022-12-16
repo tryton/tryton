@@ -1,0 +1,11 @@
+- Add set_search_column on treeview
+- Use unicode for value from gtk.Entry
+- Allow to open relation in new form
+- Add a calculator for number fields
+- Use a view from the server for attachment
+- Improve pysocket to allow **kwargs
+- Add post-it on records
+- Add tip on shortcut customize
+- Add domain on char, date, float and interger widgets
+- Allow to set default for search field depending of the view id and the action
+- Make export windows load relation fields when expanded
