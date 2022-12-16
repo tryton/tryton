@@ -1,0 +1,190 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:sale.extra,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:sale.extra,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Транзакции"
+
+#, fuzzy
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+#, fuzzy
+msgctxt "field:sale.extra,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:sale.extra,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Свободен"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Единица"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr ""
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr ""
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr ""
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Line"
+msgstr ""
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Lines"
+msgstr ""
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr ""
+
+msgctxt "view:sale.extra:"
+msgid "Extra"
+msgstr ""
+
+msgctxt "view:sale.extra:"
+msgid "Extras"
+msgstr ""
