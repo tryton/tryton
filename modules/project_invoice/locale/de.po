@@ -1,0 +1,155 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "Fehlender Listenpreis für Aufgabe \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "Fehlende Partei für Aufgabe \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "Fehlende Variante für Aufgabe \"%s\"."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "Abgerechnete Positionen können nicht gelöscht werden."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Eine abgerechnete Zeile kann nicht geändert werden."
+
+msgctxt "field:project.work,duration_to_invoice:"
+msgid "Duration to Invoice"
+msgstr "Fakturierbare Zeit"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Abgerechneter Betrag"
+
+msgctxt "field:project.work,invoiced_duration:"
+msgid "Invoiced Duration"
+msgstr "Fakturierte Zeit"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Fakturierter Forstschritt"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:project.work.invoiced_progress,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:project.work.invoiced_progress,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:project.work.invoiced_progress,effort_duration:"
+msgid "Effort"
+msgstr "Zeitaufwand"
+
+msgctxt "field:project.work.invoiced_progress,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:project.work.invoiced_progress,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Tätigkeit"
+
+msgctxt "field:project.work.invoiced_progress,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:project.work.invoiced_progress,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Positionen der Zeiterfassung"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Rechnungen"
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Nach Forstschritt fakturierte Aufgabe"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Projekt Fakturierung"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Nach veranschlagtem Aufwand"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Progress"
+msgstr "Nach Fortschritt"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Nach erfasstem Aufwand"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Nach veranschlagtem Aufwand"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Nach Fortschritt"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Nach erfasstem Aufwand"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progress"
+msgstr "Nach Forstschritt fakturierte Aufgabe"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progresses"
+msgstr "Nach Forstschritt fakturierte Aufgaben"

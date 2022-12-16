@@ -1,0 +1,473 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:commission.plan.line:"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در خط برنامه حق العمل: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+"نهاد/سازمان: \"%s\" نباید حذف شود چرا که حق العمل های معلق در شرکت: \"%s\" "
+"وجود دارد."
+
+msgctxt "field:account.invoice,agent:"
+msgid "Commission Agent"
+msgstr "عامل حق العمل"
+
+msgctxt "field:account.invoice.line,commissions:"
+msgid "Commissions"
+msgstr "حق العمل ها"
+
+msgctxt "field:account.invoice.line,from_commissions:"
+msgid "From Commissions"
+msgstr "از حق العمل های"
+
+msgctxt "field:account.invoice.line,principal:"
+msgid "Commission Principal"
+msgstr "حق العمل اصلی"
+
+msgctxt "field:commission,agent:"
+msgid "Agent"
+msgstr "عامل"
+
+msgctxt "field:commission,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:commission,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:commission,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:commission,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:commission,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:commission,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:commission,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:commission,invoice_state:"
+msgid "Invoice State"
+msgstr "وضعیت صورت حساب"
+
+msgctxt "field:commission,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:commission,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:commission,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:commission,type_:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:commission,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:commission,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:commission.agent,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:commission.agent,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:commission.agent,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:commission.agent,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:commission.agent,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:commission.agent,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:commission.agent,pending_amount:"
+msgid "Pending Amount"
+msgstr "مقدار معلق"
+
+msgctxt "field:commission.agent,plan:"
+msgid "Plan"
+msgstr "طرح"
+
+msgctxt "field:commission.agent,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:commission.agent,type_:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:commission.agent,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:commission.agent,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:commission.create_invoice.ask,from_:"
+msgid "From"
+msgstr "از"
+
+msgctxt "field:commission.create_invoice.ask,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:commission.create_invoice.ask,to:"
+msgid "To"
+msgstr "به"
+
+msgctxt "field:commission.create_invoice.ask,type_:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:commission.plan,commission_method:"
+msgid "Commission Method"
+msgstr "روش حق العمل"
+
+msgctxt "field:commission.plan,commission_product:"
+msgid "Commission Product"
+msgstr "محصول حق العمل"
+
+msgctxt "field:commission.plan,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:commission.plan,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:commission.plan,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:commission.plan,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:commission.plan,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:commission.plan,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:commission.plan,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:commission.plan,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:commission.plan.line,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:commission.plan.line,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:commission.plan.line,formula:"
+msgid "Formula"
+msgstr "فرمول"
+
+msgctxt "field:commission.plan.line,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:commission.plan.line,plan:"
+msgid "Plan"
+msgstr "طرح"
+
+msgctxt "field:commission.plan.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:commission.plan.line,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:commission.plan.line,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:commission.plan.line,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:commission.plan.line,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "اصول حق العمل"
+
+msgctxt "field:product.template,principals:"
+msgid "Commission Principals"
+msgstr "اصول حق العمل"
+
+msgctxt "field:product.template-commission.agent,agent:"
+msgid "Agent"
+msgstr "عامل"
+
+msgctxt "field:product.template-commission.agent,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-commission.agent,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-commission.agent,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-commission.agent,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-commission.agent,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template-commission.agent,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-commission.agent,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:sale.line,principal:"
+msgid "Commission Principal"
+msgstr "حق العمل اصلی"
+
+msgctxt "field:sale.sale,agent:"
+msgid "Commission Agent"
+msgstr "عامل حق العمل"
+
+msgctxt "help:commission.plan,commission_method:"
+msgid "When the commission is due"
+msgstr "زمانی که حق العمل به حساب می آید"
+
+msgctxt "help:commission.plan.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- amount: the original amount"
+msgstr ""
+"عبارت پایتون که با آن ارزیابی می شود:\n"
+"- مقدار: مقدار اصلی"
+
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "حق العمل"
+
+msgctxt "model:account.journal.type,name:journal_type_commission"
+msgid "Commission"
+msgstr "حق العمل"
+
+msgctxt "model:commission,name:"
+msgid "Commission"
+msgstr "حق العمل"
+
+msgctxt "model:commission.agent,name:"
+msgid "Commission Agent"
+msgstr "عامل حق العمل"
+
+msgctxt "model:commission.create_invoice.ask,name:"
+msgid "Create Commission Invoice"
+msgstr "ایجاد صورتحساب حق العمل"
+
+msgctxt "model:commission.plan,name:"
+msgid "Commission Plan"
+msgstr "طرح حق العمل"
+
+msgctxt "model:commission.plan.line,name:"
+msgid "Commission Plan Line"
+msgstr "خط طرح حق العمل"
+
+msgctxt "model:ir.action,name:act_agent_form"
+msgid "Agents"
+msgstr "عوامل"
+
+msgctxt "model:ir.action,name:act_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "ایجاد صورتحساب حق العمل"
+
+msgctxt "model:ir.action,name:act_commission_form"
+msgid "Commissions"
+msgstr "حق العمل"
+
+msgctxt "model:ir.action,name:act_commission_form2"
+msgid "Commissions"
+msgstr "حق العمل"
+
+msgctxt "model:ir.action,name:act_commission_from_relate"
+msgid "From Commissions"
+msgstr "از حق العمل "
+
+msgctxt "model:ir.action,name:act_commission_relate"
+msgid "Commissions"
+msgstr "حق العمل"
+
+msgctxt "model:ir.action,name:act_plan_form"
+msgid "Commission Plans"
+msgstr "طرح حق العمل"
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:ir.ui.menu,name:menu_agent_form"
+msgid "Agents"
+msgstr "عوامل"
+
+msgctxt "model:ir.ui.menu,name:menu_commission"
+msgid "Commission"
+msgstr "حق العمل"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "ایجاد صورتحساب حق العمل"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_form"
+msgid "Commissions"
+msgstr "حق العمل"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکره بندی"
+
+msgctxt "model:ir.ui.menu,name:menu_plan_form"
+msgid "Commission Plans"
+msgstr "طرح حق العمل"
+
+msgctxt "model:product.template-commission.agent,name:"
+msgid "Product Template - Commission Agent"
+msgstr "الگوی محصول - عامل حق العمل"
+
+msgctxt "model:res.group,name:group_commission"
+msgid "Commission"
+msgstr "حق العمل "
+
+msgctxt "model:res.group,name:group_commission_admin"
+msgid "Commission Administration"
+msgstr "مدیریت حق العمل"
+
+msgctxt "selection:commission,invoice_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Canceled"
+msgstr "لغو شده"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Invoiced"
+msgstr "فاکتور شده"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Paid"
+msgstr "پرداخت شده"
+
+msgctxt "selection:commission,type_:"
+msgid "Incoming"
+msgstr "وارده"
+
+msgctxt "selection:commission,type_:"
+msgid "Outgoing"
+msgstr "صادره"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Agent Of"
+msgstr "عامل از"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Principal Of"
+msgstr "اصلی از"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Both"
+msgstr "هر دو"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Incoming"
+msgstr "وارده"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Outgoing"
+msgstr "صادره"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Payment"
+msgstr "در پرداخت"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Posting"
+msgstr "در حال ارسال"
+
+msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "حق العمل ها"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "حق العمل ها"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "حق العمل ها"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "صورت حساب"
