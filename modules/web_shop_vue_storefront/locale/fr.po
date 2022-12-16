@@ -1,0 +1,82 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,vsf_telephone:"
+msgid "Telephone"
+msgstr "Téléphone"
+
+msgctxt "field:product.product,vsf_sku:"
+msgid "SKU"
+msgstr "UVC"
+
+msgctxt "field:product.template,vsf_sku:"
+msgid "SKU"
+msgstr "UVC"
+
+msgctxt "field:web.shop,vsf_elasticsearch_index:"
+msgid "Elasticsearch Index"
+msgstr "Index Elasticsearch"
+
+msgctxt "field:web.shop,vsf_elasticsearch_url:"
+msgid "Elasticsearch URL"
+msgstr "URL d'Elasticsearch"
+
+msgctxt "field:web.shop.vsf_identifier,record:"
+msgid "Record"
+msgstr "Enregistrement"
+
+msgctxt "model:ir.message,text:msg_grand_total"
+msgid "Grand Total"
+msgstr "Somme finale"
+
+msgctxt "model:ir.message,text:msg_identifier_record_unique"
+msgid "The Vue Storefront identifier must be unique for each record."
+msgstr ""
+"L'identifiant Vue Storefront doit être unique pour chaque enregistrement."
+
+msgctxt "model:ir.message,text:msg_invalid_tax_identifier"
+msgid "The number \"%(code)s\" is not a valid tax identifier."
+msgstr "Le numéro « %(code)s » n'est pas un identifiant fiscal valide."
+
+msgctxt "model:ir.message,text:msg_login_wrong"
+msgid "You did not sign in correctly or your account is temporarily disabled."
+msgstr ""
+"Vous ne vous êtes pas connecté correctement ou votre compte est "
+"temporairement désactivé."
+
+msgctxt "model:ir.message,text:msg_shipping"
+msgid "Shipping"
+msgstr "Livraison"
+
+msgctxt "model:ir.message,text:msg_subtotal"
+msgid "Subtotal"
+msgstr "Sous-total"
+
+msgctxt "model:ir.message,text:msg_tax"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "model:ir.message,text:msg_unknown_country_code"
+msgid "The country code \"%(code)s\" is not known."
+msgstr "Le code pays « %(code)s » n'est pas connu."
+
+msgctxt "model:ir.message,text:msg_vsf_identifier"
+msgid "Vue Storefront Identifier"
+msgstr "Identifiant Vue Storefront"
+
+msgctxt "model:web.shop.vsf_identifier,name:"
+msgid "Web Shop Vue Storefront Identifier"
+msgstr "Identifiant de la boutique Web Vue Storefront"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Vue Storefront"
+msgstr "Mettre à jour Vue Storefront"
+
+msgctxt "selection:web.shop,type:"
+msgid "Vue Storefront"
+msgstr "Vue Storefront"
+
+msgctxt "view:web.shop:"
+msgid "Vue Storefront"
+msgstr "Vue Storefront"
