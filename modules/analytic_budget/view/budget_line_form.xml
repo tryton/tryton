@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="account"/>
+    <field name="account" colspan="3"/>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+
+    <label name="budget"/>
+    <field name="budget" colspan="3"/>
+
+    <label name="parent"/>
+    <field name="parent" colspan="3"/>
+
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="total_amount"/>
+    <field name="total_amount"/>
+
+    <notebook>
+        <page name="children" col="1">
+            <field name="children"/>
+        </page>
+    </notebook>
+</form>
