@@ -1,0 +1,143 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "در کار : \"%s\" هیچ لیست قیمتی وجود ندارد."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "در کار : \"%s\" هیچ نهاد/سازمانی وجود ندارد."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "در کار : \"%s\" هیچ محصولی وجود ندارد."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "شما نمی توانید خط صورتحساب را حذف کنید."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "شما نمی توانید خط صورتحساب را تغییردهید."
+
+msgctxt "field:project.work,duration_to_invoice:"
+msgid "Duration to Invoice"
+msgstr "مدت زمان صورتحساب"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "سبک صورتحساب"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "مبلغ صورتحساب"
+
+msgctxt "field:project.work,invoiced_duration:"
+msgid "Invoiced Duration"
+msgstr "مدت زمان فاکتور شده"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "پیشرفت های فاکتورشده"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "روش صورتحساب"
+
+msgctxt "field:project.work.invoiced_progress,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:project.work.invoiced_progress,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:project.work.invoiced_progress,effort_duration:"
+msgid "Effort"
+msgstr "تلاش"
+
+msgctxt "field:project.work.invoiced_progress,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:project.work.invoiced_progress,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "field:project.work.invoiced_progress,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:project.work.invoiced_progress,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "خطوط جدول زمانی"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "پیشرفت های کار فاکتورشده"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "صورتحساب پروژه"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "در حال تلاش"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Progress"
+msgstr "در حال پیش رفت"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "در جدول زمانی"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "در حال تلاش"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "در حال پیش رفت"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "در جدول زمانی"

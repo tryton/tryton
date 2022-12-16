@@ -1,0 +1,651 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment.group:"
+msgid "No bank account for payment \"%s\"."
+msgstr ""
+
+msgctxt "error:account.payment.group:"
+msgid "No valid mandate for payment \"%s\""
+msgstr ""
+
+msgctxt "error:account.payment.sepa.mandate:"
+msgid "The identification of the SEPA mandate must be unique in a company."
+msgstr ""
+
+msgctxt "error:account.payment.sepa.mandate:"
+msgid ""
+"You can not delete mandate \"%s\" because it is not in draft or canceled "
+"state."
+msgstr ""
+
+msgctxt "error:party.identifier:"
+msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
+msgstr ""
+
+msgctxt "error:party.identifier:"
+msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
+msgstr ""
+
+msgctxt "field:account.configuration,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.payment,sepa_end_to_end_id:"
+msgid "SEPA End To End ID"
+msgstr ""
+
+msgctxt "field:account.payment,sepa_instruction_id:"
+msgid "SEPA Instruction ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment,sepa_mandate:"
+msgid "Mandate"
+msgstr "Mandate"
+
+msgctxt "field:account.payment,sepa_mandate_sequence_type:"
+msgid "Mandate Sequence Type"
+msgstr ""
+
+msgctxt "field:account.payment,sepa_return_reason_code:"
+msgid "Return Reason Code"
+msgstr ""
+
+msgctxt "field:account.payment,sepa_return_reason_information:"
+msgid "Return Reason Information"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.group,sepa_messages:"
+msgid "SEPA Messages"
+msgstr "SEPA Messages"
+
+msgctxt "field:account.payment.journal,company_party:"
+msgid "Company Party"
+msgstr ""
+
+msgctxt "field:account.payment.journal,sepa_bank_account_number:"
+msgid "Bank Account Number"
+msgstr ""
+
+msgctxt "field:account.payment.journal,sepa_batch_booking:"
+msgid "Batch Booking"
+msgstr ""
+
+msgctxt "field:account.payment.journal,sepa_charge_bearer:"
+msgid "Charge Bearer"
+msgstr ""
+
+msgctxt "field:account.payment.journal,sepa_payable_flavor:"
+msgid "Payable Flavor"
+msgstr ""
+
+msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
+msgid "Receivable Flavor"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,account_number:"
+msgid "Account Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.sepa.mandate,identification:"
+msgid "Identification"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,identification_readonly:"
+msgid "Identification Readonly"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,party:"
+msgid "Party"
+msgstr "Управление на партньор"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,payments:"
+msgid "Payments"
+msgstr "Плащане"
+
+msgctxt "field:account.payment.sepa.mandate,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,scheme:"
+msgid "Scheme"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
+msgid "Always use RCUR"
+msgstr ""
+
+msgctxt "field:account.payment.sepa.mandate,signature_date:"
+msgid "Signature Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,state:"
+msgid "State"
+msgstr "Щат"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,type:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.payment.sepa.message,filename:"
+msgid "Filename"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.sepa.message,message:"
+msgid "Message"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,origin:"
+msgid "Origin"
+msgstr "Източник"
+
+msgctxt "field:account.payment.sepa.message,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,state:"
+msgid "State"
+msgstr "Щат"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,type:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:party.party,sepa_creditor_identifier_used:"
+msgid "SEPA Creditor Identifier Used"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party,sepa_mandates:"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandates"
+
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.payment.sepa.mandate,name:"
+msgid "SEPA Mandate"
+msgstr "SEPA Mandate"
+
+#, fuzzy
+msgctxt "model:account.payment.sepa.message,name:"
+msgid "SEPA Message"
+msgstr "SEPA Messages"
+
+msgctxt "model:ir.action,name:act_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandates"
+
+msgctxt "model:ir.action,name:act_mandate_form2"
+msgid "Mandates"
+msgstr "Mandates"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "SEPA Messages"
+msgstr "SEPA Messages"
+
+msgctxt "model:ir.action,name:report_mandate"
+msgid "Mandate"
+msgstr "Mandate"
+
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
+msgid "Requested"
+msgstr "Заявка"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
+msgid "Canceled"
+msgstr "Отказан"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
+msgid "Done"
+msgstr "Приключено"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
+msgid "Waiting"
+msgstr "Очакване"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
+msgid "Receivable with Mandate"
+msgstr "Receivable with Mandate"
+
+msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
+msgid "Are you sure to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+msgctxt "model:ir.model.button,string:group_generate_message_button"
+msgid "Generate Message"
+msgstr "Generate Message"
+
+msgctxt "model:ir.model.button,string:mandate_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:mandate_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:mandate_request_button"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:message_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:message_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:message_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
+msgid "SEPA Mandate"
+msgstr "SEPA Mandate"
+
+msgctxt "model:ir.ui.menu,name:menu_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandates"
+
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "SEPA Messages"
+msgstr "SEPA Messages"
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "."
+msgstr "."
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Account number – IBAN"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"As part of your rights, you are entitled to a refund from your bank under "
+"the terms and conditions of your agreement with your bank. A refund must be "
+"claimed within 8 weeks starting from the date on which your account was "
+"debited."
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "BIC"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "By signing this mandate form, you authorize"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "City"
+msgstr "Град"
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Country"
+msgstr "Държава"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor identifier"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor name"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Creditor's name"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Direct Debit MANDATE"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Location"
+msgstr "Местоположение"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Name of the debtor"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "One-off payment"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Postal code"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Recurrent payment"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "SEPA"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signature"
+msgstr "Подпис"
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Signed at"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Street name and number"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Type of payment"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your account number"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your address"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid "Your name"
+msgstr ""
+
+msgctxt "report:account.payment.sepa.mandate:"
+msgid ""
+"to send instructions to your bank to debit your account and your bank to "
+"debit your account in accordance with the instructions from"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "SEPA"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Creditor"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Debtor"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Service Level"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Shared"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Business to Business"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.mandate,scheme:"
+msgid "Core"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Canceled"
+msgstr "Отказан"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Requested"
+msgstr "Заявка"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "One-off"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "Recurrent"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Canceled"
+msgstr "Отказан"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Done"
+msgstr "Приключено"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt "selection:account.payment.sepa.message,state:"
+msgid "Waiting"
+msgstr "Очакване"
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "IN"
+msgstr ""
+
+msgctxt "selection:account.payment.sepa.message,type:"
+msgid "OUT"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Creditor Identifier"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "SEPA"
+msgstr ""
+
+msgctxt "view:account.payment.journal:"
+msgid "SEPA"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Cancel"
+msgstr "Отказан"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Request"
+msgstr "Заявка"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Validate"
+msgstr "Проверен"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.message:"
+msgid "Cancel"
+msgstr "Отказан"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.message:"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt "view:account.payment.sepa.message:"
+msgid "Wait"
+msgstr "Очаквано"
