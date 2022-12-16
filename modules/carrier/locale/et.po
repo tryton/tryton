@@ -1,0 +1,159 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Vedaja kulumeetod"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Vedaja toode"
+
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:carrier,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Vedaja"
+
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Riigist"
+
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr "Järjestus"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Riiki"
+
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:carrier.selection,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Veokulu arvutamise meetod"
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "Toose veoteenuse arveldamiseks."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "Osapool kes esindab vedajat."
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Tühista valik, et välistada tulevast kasutust."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "Valitud vedaja."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Lisa ainult lähetamiseks sellest riigist.\n"
+"Jäta tühjaks muude riikide korral."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Lisa ainult lähetamiseks sellest riigist.\n"
+"Jäta tühjaks muude riikide korral."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Vedaja"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Vedaja valik"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Vedajad"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Vedaja valik"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Vedaja"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Vedajad"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Vedaja valik"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Vedaja administreerimine"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Toote hind"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Kriteerium"

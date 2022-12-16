@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="invoice_address"/>
+    <field name="invoice_address"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <label name="reference"/>
+    <field name="reference"/>
+    <notebook colspan="6">
+        <page string="Subscription" id="subscription">
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+            <label name="invoice_start_date"/>
+            <field name="invoice_start_date"/>
+            <label name="invoice_recurrence"/>
+            <field name="invoice_recurrence"/>
+            <label name="payment_term"/>
+            <field name="payment_term"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <field name="lines" colspan="4"
+                view_ids="sale_subscription.subscription_line_view_list_sequence"/>
+            <group col="2" colspan="2" id="states" yfill="1">
+                <label name="state"/>
+                <field name="state"/>
+            </group>
+            <group col="4" colspan="2" id="buttons" yfill="1">
+                <button name="cancel"/>
+                <button name="draft"/>
+                <button name="quote"/>
+                <button name="run"/>
+            </group>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+        </page>
+    </notebook>
+</form>
