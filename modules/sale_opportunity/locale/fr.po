@@ -1,0 +1,527 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Séquence d'opportunité"
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Séquence d'opportunité"
+
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "Adresse"
+
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "Commentaire"
+
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr "Contact"
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr "Probabilité de conversion"
+
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Convertie par"
+
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.opportunity,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "Employé"
+
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr "Raison de la perte"
+
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr "Conditions de paiement"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Ventes"
+
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "Opportunité"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr "État de l'opportunité"
+
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:sale.opportunity.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:sale.opportunity_employee,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.opportunity_employee,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "Taux de conversion des montants"
+
+msgctxt "field:sale.opportunity_employee,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "Taux de conversion"
+
+msgctxt "field:sale.opportunity_employee,converted:"
+msgid "Converted"
+msgstr "Convertie"
+
+msgctxt "field:sale.opportunity_employee,converted_amount:"
+msgid "Converted Amount"
+msgstr "Montant convertit"
+
+msgctxt "field:sale.opportunity_employee,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.opportunity_employee,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:sale.opportunity_employee,employee:"
+msgid "Employee"
+msgstr "Employé"
+
+msgctxt "field:sale.opportunity_employee,lost:"
+msgid "Lost"
+msgstr "Perdue"
+
+msgctxt "field:sale.opportunity_employee,number:"
+msgid "Number"
+msgstr "Nombre"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Taux du montant gagné"
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr "Taux gagnant"
+
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "Gagnée"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr "Montant gagné"
+
+msgctxt "field:sale.opportunity_employee.context,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:sale.opportunity_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:sale.opportunity_employee_monthly,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.opportunity_employee_monthly,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "Taux de conversion des montants"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "Taux de conversion"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted:"
+msgid "Converted"
+msgstr "Convertie"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr "Montant converti"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:sale.opportunity_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Employé"
+
+msgctxt "field:sale.opportunity_employee_monthly,lost:"
+msgid "Lost"
+msgstr "Perdue"
+
+msgctxt "field:sale.opportunity_employee_monthly,month:"
+msgid "Month"
+msgstr "Mois"
+
+msgctxt "field:sale.opportunity_employee_monthly,number:"
+msgid "Number"
+msgstr "Nombre"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Taux du montant gagné"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "Taux de réussite"
+
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "Gagné"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Montant gagné"
+
+msgctxt "field:sale.opportunity_employee_monthly,year:"
+msgid "Year"
+msgstr "Année"
+
+msgctxt "field:sale.opportunity_monthly,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.opportunity_monthly,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr "Taux de conversion des montants"
+
+msgctxt "field:sale.opportunity_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr "Taux de conversion"
+
+msgctxt "field:sale.opportunity_monthly,converted:"
+msgid "Converted"
+msgstr "Convertie"
+
+msgctxt "field:sale.opportunity_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr "Montant converti"
+
+msgctxt "field:sale.opportunity_monthly,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.opportunity_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:sale.opportunity_monthly,lost:"
+msgid "Lost"
+msgstr "Perdue"
+
+msgctxt "field:sale.opportunity_monthly,month:"
+msgid "Month"
+msgstr "Mois"
+
+msgctxt "field:sale.opportunity_monthly,number:"
+msgid "Number"
+msgstr "Nombre"
+
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr "Taux du montant gagné"
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr "Taux gagnant"
+
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "Gagnée"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr "Montant gagné"
+
+msgctxt "field:sale.opportunity_monthly,year:"
+msgid "Year"
+msgstr "Année"
+
+msgctxt "field:sale.opportunity_monthly,year_month:"
+msgid "Year-Month"
+msgstr "Année-Mois"
+
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr "Revenu estimé."
+
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr "Pourcentage entre 0 et 100."
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Ventes"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_form"
+msgid "Opportunities per Employee"
+msgstr "Opportunités par employé"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Opportunités par employé par mois"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Prospects et opportunités"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "Prospects/Opportunités de ventes"
+
+msgctxt "model:ir.action,name:act_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Opportunités par mois"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Annulés"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Convertis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Prospects"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Perdus"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Opportunités"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "Gagnés"
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+"Pour supprimer l’opportunité « %(opportunity)s », vous devez l'annuler."
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convertir en vente"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Reconvertir en contact"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Marquer comme perdue"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convertir en opportunité"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr "Utilisateur dans la société de l'opportunité"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Opportunité de vente"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Opportunité de vente"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Opportunités par employé par mois"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "Opportunités par employé"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Prospects et opportunités"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Opportunités par mois"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "Opportunité de vente"
+
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "Opportunités de vente"
+
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "Ligne d'opportunité de vente"
+
+msgctxt "model:sale.opportunity_employee,name:"
+msgid "Sale Opportunity per Employee"
+msgstr "Opportunités de vente par employé"
+
+msgctxt "model:sale.opportunity_employee.context,name:"
+msgid "Sale Opportunity per Employee Context"
+msgstr "Contexte d'opportunités de vente par employé"
+
+msgctxt "model:sale.opportunity_employee_monthly,name:"
+msgid "Sale Opportunity per Employee per Month"
+msgstr "Opportunités de vente par employé par mois"
+
+msgctxt "model:sale.opportunity_monthly,name:"
+msgid "Sale Opportunity per Month"
+msgstr "Opportunités de vente par mois"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "Annulée"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "Convertie"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "Contact"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "Perdue"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "Opportunité"
+
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "Gagnée"
+
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr "Contact / Opportunité"
+
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"
