@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Period">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="start_date"/>
+                    <field name="start_date"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <newline/>
+                    <label name="post_move_sequence"/>
+                    <field name="post_move_sequence"/>
+                    <newline/>
+                    <label name="state"/>
+                    <field name="state" colspan="3"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="period_view_tree">
+            <field name="model">account.period</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Periods">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="type" select="2"/>
+                    <field name="state" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_period_form">
+            <field name="name">Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="domain">[('fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <menuitem parent="menu_fiscalyear_form"
+            action="act_period_form" id="menu_period_form"
+            sequence="20"/>
+
+        <record model="ir.action.act_window" id="act_period_form3">
+            <field name="name">Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="domain">[('fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form3"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form3_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form3"/>
+        </record>
+        <menuitem name="New Period" parent="menu_period_form"
+            action="act_period_form3" id="menu_period_form_new"
+            sequence="10"/>
+
+        <record model="ir.model.access" id="access_period">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_account_admin">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_close_period">
+            <field name="name">Close Periods</field>
+            <field name="wiz_name">account.period.close_period</field>
+            <field name="model">account.period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_close_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.period,0</field>
+            <field name="action" ref="act_close_period"/>
+        </record>
+        <record model="ir.action.wizard" id="act_reopen_period">
+            <field name="name">Re-Open Periods</field>
+            <field name="wiz_name">account.period.reopen_period</field>
+            <field name="model">account.period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reopen_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.period,0</field>
+            <field name="action" ref="act_reopen_period"/>
+        </record>
+        <record model="ir.action.act_window" id="act_period_form2">
+            <field name="name">Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="domain">[('state', 'in', ['open']), ('fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form2"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_period_form2"
+            id="menu_period_form2" name="Close Periods"/>
+    </data>
+</tryton>

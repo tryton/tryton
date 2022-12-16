@@ -1,0 +1,357 @@
+type,name,res_id,src,value,fuzzy
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,Не може а променяте последователност на фактура ако има вече отворена фактура за финансовата година,0
+error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,За финансова година трябва да имате различни последователности за фактура  ,0
+error,account.invoice,0,"Base taxes different from invoice lines!
+Re-compute the invoice.","Данъчната основа е различна от тази на редовете на фактурата!
+Наново изчислете фактурата.",0
+error,account.invoice,0,"Taxes defined but not on invoice lines!
+Re-compute the invoice.","Зададени са данъци но не за редове на фактура!
+Преизчислете фактурата.",0
+error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.","Данъци са зададени върху редовете на фактурата но не на фактурата!
+Преизчислете фактурата",0
+error,account.invoice,0,The credit account on journal is missing!,Лиспва кредитна сметка за дневника!,0
+error,account.invoice,0,The credit account on journal is the same than the invoice account!,Кредитната сметка на дневника е същата като сметката на фактурата!,0
+error,account.invoice,0,The debit account on journal is missing!,Липсва дебитна сметка за дневник!,0
+error,account.invoice,0,The debit account on journal is the same than the invoice account!,Дебитната сметка на дневника е същата като сметката на фактурата!,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Няма последователност за фактура върху период/финансова година!,0
+error,account.invoice,0,"You can not create an invoice
+with account from a different invoice company!","Не може да създадете фактура
+със сметка на друга фактурираща фирма!",0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!",Не може да променяте фактура която е отворена или платена!,0
+error,account.invoice,0,You can not reset to draft an invoice that has move!,Не може да прехвърлите в проект фактура която има движение!,0
+error,account.invoice,0,"You can not use the same account
+as on invoice line!","Не може да ползвате съшата сметка
+като тази на реда от фактурата!",0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,Не можете да кредитиратe обезщетение фактура по която не е отворена!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,Не можете да кредитиратe обезщетение фактура по която има плащане!,0
+error,account.invoice.line,0,"Line with ""line"" type must have an account!","Ред от вид ""line"" трябва да има сметка!",0
+error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Ред без ""ред"" трябва да има фактура!",0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!",Не може да добавяте ред към фактура която е отворена/платена/отказана!,0
+error,account.invoice.line,0,"You can not create invoice line
+with account with a different invoice company!","Не може да създавате ред от фактура
+със сметка от различна фактурираща фирма!",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",Не може да променяте ред от фактура която е отворена и/или платена!,0
+error,account.invoice.line,0,"You can not use the same account
+as on the invoice!","Не може да използвате същата сметка
+като тази на фактурата!",0
+error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,Не може да създавате частично плащане за сума по-голяма от сумата за плащане!,0
+error,account.invoice.payment_term,0,Invalid payment term line!,Невалиден ред от условие за плащане!,0
+error,account.invoice.payment_term,0,Payment term missing a remainder line!,В условието за плащане липсва ред от напомняне!,0
+error,account.invoice.payment_term.line.delay,0,The code must be unique!,Кода трябва да е уникален!,0
+error,account.invoice.payment_term.line.type,0,The code must be unique!,Кода трябва да е уникален!,0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!",Не може да добавяте ред към фактура която е отворена/платена/отказана!,0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",Не може да променяте данък от фактура която е отворена и/или платена!,0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,Не може а променяте последователност на фактура ако има вече отворена фактура за финансовата година,0
+error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,За финансова година и една и съща фирма трябва да имате различни последователности за фактура !,0
+field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Последователност за кредитно известие на доставчик,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Последователност на фактура за доставчик,0
+field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Последователност за кредитно известие на клиент,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Последователност за фактура на клиент,0
+field,"account.invoice,account",0,Account,Сметка,0
+field,"account.invoice,accounting_date",0,Accounting Date,Дата на осчетоводяване,0
+field,"account.invoice,amount_to_pay",0,Amount to Pay,Сума за плащане,0
+field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Сума за плащане днес,0
+field,"account.invoice,comment",0,Comment,Коментар,0
+field,"account.invoice,company",0,Company,Фирма,0
+field,"account.invoice,currency",0,Currency,Валута,0
+field,"account.invoice,currency_date",0,Currency Date,Текуща дата,0
+field,"account.invoice,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.invoice,description",0,Description,Описание,0
+field,"account.invoice,invoice_address",0,Invoice Address,Адрес за фактура,0
+field,"account.invoice,invoice_date",0,Invoice Date,Дата на фактура,0
+field,"account.invoice,invoice_report",0,Invoice Report,Справка за фактура,0
+field,"account.invoice,invoice_report_format",0,Invoice Report Format,Формат на спавка за фактура,0
+field,"account.invoice,journal",0,Journal,Дневник,0
+field,"account.invoice,lines",0,Lines,Редове,0
+field,"account.invoice,lines_to_pay",0,Lines to Pay,Редове за плащане,0
+field,"account.invoice,move",0,Move,Движение,0
+field,"account.invoice,number",0,Number,Номер,0
+field,"account.invoice,party",0,Party,Партньор,0
+field,"account.invoice,party_lang",0,Party Language,Език на партньор,0
+field,"account.invoice,payment_lines",0,Payment Lines,Редове от плащане,0
+field,"account.invoice,payment_term",0,Payment Term,Условие за плащане,0
+field,"account.invoice,rec_name",0,Name,Име,0
+field,"account.invoice,reconciled",0,Reconciled,Съгласуван,0
+field,"account.invoice,reference",0,Reference,Отпратка,0
+field,"account.invoice,state",0,State,Състояние,0
+field,"account.invoice,tax_amount",0,Tax,Данък,0
+field,"account.invoice,taxes",0,Tax Lines,Ред на данъци,0
+field,"account.invoice,total_amount",0,Total,Общо,0
+field,"account.invoice,type",0,Type,Вид,0
+field,"account.invoice,type_name",0,Type,Вид,0
+field,"account.invoice,untaxed_amount",0,Untaxed,Необложен с данък,0
+field,"account.invoice-account.move.line,invoice",0,Invoice,Фактура,0
+field,"account.invoice-account.move.line,line",0,Payment Line,Ред от плащане,0
+field,"account.invoice-account.move.line,rec_name",0,Name,Име,0
+field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,С обежщетение,0
+field,"account.invoice.line,account",0,Account,Сметка,0
+field,"account.invoice.line,amount",0,Amount,Сума,0
+field,"account.invoice.line,company",0,Company,Фирма,0
+field,"account.invoice.line,currency",0,Currency,Валута,0
+field,"account.invoice.line,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.invoice.line,description",0,Description,Описание,0
+field,"account.invoice.line,invoice",0,Invoice,Фактура,0
+field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Данъци на фактура,0
+field,"account.invoice.line,invoice_type",0,Invoice Type,Вид фактура,0
+field,"account.invoice.line,note",0,Note,Бележка,0
+field,"account.invoice.line,party",0,Party,Партньор,0
+field,"account.invoice.line,party_lang",0,Party Language,Език на партньор,0
+field,"account.invoice.line,product",0,Product,Продукт,0
+field,"account.invoice.line,quantity",0,Quantity,Количество,0
+field,"account.invoice.line,rec_name",0,Name,Име,0
+field,"account.invoice.line,sequence",0,Sequence,Последователност,0
+field,"account.invoice.line,taxes",0,Taxes,Данъци,0
+field,"account.invoice.line,type",0,Type,Вид,0
+field,"account.invoice.line,unit",0,Unit,Единица,0
+field,"account.invoice.line,unit_digits",0,Unit Digits,Десетични единици,0
+field,"account.invoice.line,unit_price",0,Unit Price,Единична цена,0
+field,"account.invoice.line-account.tax,line",0,Invoice Line,Ред от фактура,0
+field,"account.invoice.line-account.tax,rec_name",0,Name,Име,0
+field,"account.invoice.line-account.tax,tax",0,Tax,Данък,0
+field,"account.invoice.pay_invoice.ask,account",0,Account,Сметка,0
+field,"account.invoice.pay_invoice.ask,account_writeoff",0,Write-Off Account,Сметка на отписване,0
+field,"account.invoice.pay_invoice.ask,amount",0,Payment Amount,Платена сума,0
+field,"account.invoice.pay_invoice.ask,amount_writeoff",0,Write-Off Amount,Сума за отписване,0
+field,"account.invoice.pay_invoice.ask,company",0,Company,Фирма,0
+field,"account.invoice.pay_invoice.ask,currency",0,Payment Currency,Валута при плащане,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Payment Currency Digits,Цифри на валута за плащане,0
+field,"account.invoice.pay_invoice.ask,currency_digits_writeoff",0,Write-Off Currency Digits,Цифри на валута за отписване,0
+field,"account.invoice.pay_invoice.ask,currency_writeoff",0,Write-Off Currency,Валута на отписване,0
+field,"account.invoice.pay_invoice.ask,date",0,Date,Дата,0
+field,"account.invoice.pay_invoice.ask,description",0,Description,Описание,0
+field,"account.invoice.pay_invoice.ask,invoice",0,Invoice,Фактура,0
+field,"account.invoice.pay_invoice.ask,journal",0,Journal,Дневник,0
+field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Write-Off Journal,Дневник на отписване,0
+field,"account.invoice.pay_invoice.ask,lines",0,Lines,Редове,0
+field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Редове за плащане,0
+field,"account.invoice.pay_invoice.ask,payment_lines",0,Payment Lines,Редове от плащане,0
+field,"account.invoice.pay_invoice.ask,type",0,Type,Вид,0
+field,"account.invoice.pay_invoice.init,amount",0,Amount,Сума,0
+field,"account.invoice.pay_invoice.init,currency",0,Currency,Валута,0
+field,"account.invoice.pay_invoice.init,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.invoice.pay_invoice.init,date",0,Date,Дата,0
+field,"account.invoice.pay_invoice.init,description",0,Description,Описание,0
+field,"account.invoice.pay_invoice.init,journal",0,Journal,Дневник,0
+field,"account.invoice.payment_term,active",0,Active,Активен,0
+field,"account.invoice.payment_term,description",0,Description,Описание,0
+field,"account.invoice.payment_term,lines",0,Lines,Редове,0
+field,"account.invoice.payment_term,name",0,Payment Term,Условие за плащане,0
+field,"account.invoice.payment_term,rec_name",0,Name,Име,0
+field,"account.invoice.payment_term.line,amount",0,Amount,Сума,0
+field,"account.invoice.payment_term.line,currency",0,Currency,Валута,0
+field,"account.invoice.payment_term.line,currency_digits",0,Currency Digits,Цифри за валута,0
+field,"account.invoice.payment_term.line,days",0,Number of Days,Брой дни,0
+field,"account.invoice.payment_term.line,delay",0,Condition,Условие,0
+field,"account.invoice.payment_term.line,payment",0,Payment Term,Условие за плащане,0
+field,"account.invoice.payment_term.line,percentage",0,Percentage,Процент,0
+field,"account.invoice.payment_term.line,rec_name",0,Name,Име,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Последователност,0
+field,"account.invoice.payment_term.line,type",0,Type,Вид,0
+field,"account.invoice.payment_term.line.delay,code",0,Code,Код,0
+field,"account.invoice.payment_term.line.delay,name",0,Name,Име,0
+field,"account.invoice.payment_term.line.delay,rec_name",0,Name,Име,0
+field,"account.invoice.payment_term.line.type,code",0,Code,Код,0
+field,"account.invoice.payment_term.line.type,name",0,Name,Име,0
+field,"account.invoice.payment_term.line.type,rec_name",0,Name,Име,0
+field,"account.invoice.tax,account",0,Account,Сметка,0
+field,"account.invoice.tax,amount",0,Amount,Сума,0
+field,"account.invoice.tax,base",0,Base,Основа,0
+field,"account.invoice.tax,base_code",0,Base Code,Основен код,0
+field,"account.invoice.tax,base_sign",0,Base Sign,Основен знак,0
+field,"account.invoice.tax,description",0,Description,Описание,0
+field,"account.invoice.tax,invoice",0,Invoice,Фактура,0
+field,"account.invoice.tax,manual",0,Manual,Ръчно,0
+field,"account.invoice.tax,rec_name",0,Name,Име,0
+field,"account.invoice.tax,sequence",0,Sequence,Последователност,0
+field,"account.invoice.tax,sequence_number",0,Sequence Number,Номер на последователност,0
+field,"account.invoice.tax,tax",0,Tax,Данък,0
+field,"account.invoice.tax,tax_code",0,Tax Code,Код на данък,0
+field,"account.invoice.tax,tax_sign",0,Tax Sign,Знак на данък,0
+field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Последователност за кредитно известие на доставчик,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Последователност на фактура за доставчик,0
+field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Последователност за кредитно известие на клиент,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Последователност за фактура на клиент,0
+field,"party.address,invoice",0,Invoice,Фактура,0
+field,"party.party,payment_term",0,Invoice Payment Term,Условие за плащане на фактура,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Условие за плащане на доставчик,0
+help,"account.invoice.credit_invoice.init,with_refund",0,"If true, the current invoice(s) will be paid.",Ако е истина текущара(те) сметка(и) ще бъдат платена(и).,0
+help,"account.invoice.payment_term.line,percentage",0,In %,В %,0
+help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,За подреждане на редовете във възходящ ред,0
+model,"account.invoice,name",0,Invoice,Фактура,0
+model,"account.invoice-account.move.line,name",0,Invoice - Payment Line,Фактура - Ред от плащане,0
+model,"account.invoice.credit_invoice.init,name",0,Credit Invoice Init,Начало на кредитна фактура,0
+model,"account.invoice.line,name",0,Invoice Line,Ред от фактура,0
+model,"account.invoice.line-account.tax,name",0,Invoice Line - Tax,Ред от фактура - Данък,0
+model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Запистване за плащане на фактура,0
+model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Начално плащане на фактура,0
+model,"account.invoice.payment_term,name",0,Payment Term,Условие за плащане,0
+model,"account.invoice.payment_term.line,name",0,Payment Term Line,Ред от условие за плащане,0
+model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Ред от забавяне на условие за плащане,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Край на месеца,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Дни (нето),0
+model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Ред от вид условие за плащане,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Фиксиран,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Процент,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Напомняне,0
+model,"account.invoice.print_invoice_report.warning,name",0,Print Invoice Report Warning,Предупреждение при отпечатване на справка за фактура,0
+model,"account.invoice.tax,name",0,Invoice Tax,Данък към фактура,0
+model,"ir.action,name",act_invoice_form,All Invoices,Всичко фактури,0
+model,"ir.action,name",act_invoice_form2,Invoices,Фактури,0
+model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Кредитно известие на доставчик,0
+model,"ir.action,name",act_invoice_in_credit_note_form2,Supplier Credit Notes,Кредитно известие на доставчик,0
+model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Проект на кредитно известие на доставчик,0
+model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,ПРО-ФОРМА на кредитни известия на доставчик,0
+model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Отворени кредитни известия на доставчик,0
+model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Фактури на доставчик,0
+model,"ir.action,name",act_invoice_in_invoice_form2,Supplier Invoices,Фактури на доставчик,0
+model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Шаблон на фактури за доставчик,0
+model,"ir.action,name",act_invoice_in_invoice_form4,Pro Forma Supplier Invoices,ПРО-ФОРМА фактури за доставчик,0
+model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Отворени фактури за доставчик,0
+model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Кредитни известия,0
+model,"ir.action,name",act_invoice_out_credit_note_form2,Credit Notes,Кредитни известия,0
+model,"ir.action,name",act_invoice_out_credit_note_form3,Draft Credit Notes,Проект на кредитно известие,0
+model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,ПРО-ФОРМА на кредитни известия,0
+model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Отворени кредитни известия,0
+model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Фактури,0
+model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Фактури,0
+model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Проект на фактури,0
+model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,ПРО-ФОРМА фактури,0
+model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Отворени фактури,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Условия за плащане,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Условия за плащане,0
+model,"ir.action,name",credit_invoice,Credit,Кредит,0
+model,"ir.action,name",print_invoice_report,Invoice,Фактура,0
+model,"ir.action,name",report_invoice,Invoice,Фактура,0
+model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Плащане на фактура,0
+model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Фактура,0
+model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Всичко фактури,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Кредитно известие на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Ново кредитно известие на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Проект на кредитно известие на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,ПРО-ФОРМА на кредитни известия на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Отворени кредитни известия на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Фактури на доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Нова фактура за доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Проект на фактури за доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form4,Pro Forma Supplier Invoices,ПРО-ФОРМА фактури за доставчик,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Отворени фактури за доставчик,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Кредитни известия,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Ново кредитно известие,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,Проект на кредитно известие,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,ПРО-ФОРМА на кредитни известия,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Отворени кредитни известия,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Фактури,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Нова фактура,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Проект на фактури,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,ПРО-ФОРМА фактури,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Отворени фактури,0
+model,"ir.ui.menu,name",menu_invoices,Invoices,Фактури,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Условия за плащане,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,Ново условие за плащане,0
+model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Условия за плащане,0
+model,"workflow,name",invoice_workflow,Invoice workflow,Работен процес на фактура,0
+model,"workflow.activity,name",invoice_activity_cancel,Canceled,Отказан,0
+model,"workflow.activity,name",invoice_activity_draft,Draft,Проект,0
+model,"workflow.activity,name",invoice_activity_open,Open,Отваряне,0
+model,"workflow.activity,name",invoice_activity_paid,Paid,Платен,0
+model,"workflow.activity,name",invoice_activity_proforma,Pro forma,ПРО-ФОРМА,0
+odt,account.invoice,0,Amount,Сума,0
+odt,account.invoice,0,Base,Основа,0
+odt,account.invoice,0,Credit Note N°:,Кредитно известие N°:,0
+odt,account.invoice,0,Date,Дата,0
+odt,account.invoice,0,Date:,Дата:,0
+odt,account.invoice,0,Description,Описание,0
+odt,account.invoice,0,Description:,Описание:,0
+odt,account.invoice,0,Draft Credit Note,Проект на кредитно известие,0
+odt,account.invoice,0,Draft Invoice,Проект на фактура,0
+odt,account.invoice,0,Draft Supplier Credit Note,Проект на кредитно известие на доставчик,0
+odt,account.invoice,0,Draft Supplier Invoice,Проект на фактура за доставчик,0
+odt,account.invoice,0,E-Mail:,E-Mail:,0
+odt,account.invoice,0,Invoice N°:,Фактура N°:,0
+odt,account.invoice,0,Payment Term,Условие за плащане,0
+odt,account.invoice,0,Phone:,Телефон:,0
+odt,account.invoice,0,Pro forma Credit Note,ПРО-ФОРМА на кредитно известие,0
+odt,account.invoice,0,Pro forma Invoice,ПРО-ФОРМА фактура,0
+odt,account.invoice,0,Pro forma Supplier Credit Note,ПРО-ФОРМА на кредитно известие на доставчик,0
+odt,account.invoice,0,Pro forma Supplier Invoice,ПРО-ФОРМА фактура за доставчик,0
+odt,account.invoice,0,Quantity,Количество,0
+odt,account.invoice,0,Supplier Credit Note N°:,Кредитно известие на доставчик N°:,0
+odt,account.invoice,0,Supplier Invoice N°:,Фактура за доставчик N°:,0
+odt,account.invoice,0,Tax,Данък,0
+odt,account.invoice,0,Taxes,Данъци,0
+odt,account.invoice,0,Taxes:,Данъци:,0
+odt,account.invoice,0,Total (excl. taxes):,Общо (без данъци):,0
+odt,account.invoice,0,Total:,Общо:,0
+odt,account.invoice,0,Unit Price,Единична цена,0
+odt,account.invoice,0,VAT:,ДДС:,0
+selection,"account.invoice,state",0,Canceled,Отказан,0
+selection,"account.invoice,state",0,Draft,Проект,0
+selection,"account.invoice,state",0,Opened,Отворен,0
+selection,"account.invoice,state",0,Paid,Платен,0
+selection,"account.invoice,state",0,Pro forma,ПРО-ФОРМА,0
+selection,"account.invoice,type",0,Credit Note,Кредитно известие,0
+selection,"account.invoice,type",0,Invoice,Фактура,0
+selection,"account.invoice,type",0,Supplier Credit Note,Кредитно известие на доставчик,0
+selection,"account.invoice,type",0,Supplier Invoice,Фактура за доставчик,0
+selection,"account.invoice.line,invoice_type",0,Access Permissions,Фактура,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Кредитно известие,0
+selection,"account.invoice.line,invoice_type",0,Invoice,Фактура,0
+selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Кредитно известие на доставчик,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Фактура за доставчик,0
+selection,"account.invoice.line,type",0,Comment,Коментар,0
+selection,"account.invoice.line,type",0,Line,Ред,0
+selection,"account.invoice.line,type",0,Subtotal,Междинна сума,0
+selection,"account.invoice.line,type",0,Title,Заглавие,0
+selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Частично плащане,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Анулиран,0
+view,account.invoice,0,Amount Second Currency,Сума в допълнителна валута,0
+view,account.invoice,0,Credit,Кредит,0
+view,account.invoice,0,Debit,Дебит,0
+view,account.invoice,0,Invoice,Фактура,0
+view,account.invoice,0,Invoices,Фактури,0
+view,account.invoice,0,Lines,Редове,0
+view,account.invoice,0,Other Info,Друга информация,0
+view,account.invoice,0,Payment,Плащане,0
+view,account.invoice,0,Payment Lines,Редове от плащане,0
+view,account.invoice,0,Pro For_ma,ПРО ФОРМА,0
+view,account.invoice,0,Taxes,Данъци,0
+view,account.invoice,0,_Cancel,Отказ,0
+view,account.invoice,0,_Draft,Проект,0
+view,account.invoice,0,_Open,Отваряне,0
+view,account.invoice,0,_Pay,Плащане,0
+view,account.invoice,0,_Reset to Draft,Изпращане в проект,0
+view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?,0
+view,account.invoice.credit_invoice.init,0,Credit Invoice,Кредитна фактура,0
+view,account.invoice.line,0,General,Основен,0
+view,account.invoice.line,0,Invoice Line,Ред от фактура,0
+view,account.invoice.line,0,Invoice Lines,Редове от фактура,0
+view,account.invoice.line,0,Notes,Бележки,0
+view,account.invoice.line,0,Products,Продукти,0
+view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Сума в допълнителна валута,0
+view,account.invoice.pay_invoice.ask,0,Credit,Кредит,0
+view,account.invoice.pay_invoice.ask,0,Debit,Дебит,0
+view,account.invoice.pay_invoice.ask,0,Lines to Pay,Редове за плащане,0
+view,account.invoice.pay_invoice.ask,0,Pay Invoice,Плащане на фактура,0
+view,account.invoice.pay_invoice.ask,0,Payment Lines,Редове от плащане,0
+view,account.invoice.pay_invoice.init,0,Pay Invoice,Плащане на фактура,0
+view,account.invoice.payment_term,0,Payment Term,Условие за плащане,0
+view,account.invoice.payment_term,0,Payment Term Line,Ред от условие за плащане,0
+view,account.invoice.payment_term,0,Payment Term Lines,Ред от условие за плащане,0
+view,account.invoice.payment_term,0,Payment Terms,Условия за плащане,0
+view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Внимание!</b>,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Отпечатване на фактура,0
+view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Фактурите ще бъдет изпратени <i>директно</i> на принтера.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Избрали сте за печат повече от една фактура,0
+view,account.invoice.tax,0,Invoice Tax,Данък към фактура,0
+view,account.invoice.tax,0,Invoice Taxes,Данъци на фактура,0
+view,account.invoice.tax,0,Tax Code,Код на данък,0
+view,party.party,0,Payment Terms,Условия за плащане,0
+wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Кредит,0
+wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Отказ,0
+wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Отказ,0
+wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,Добре,0
+wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,Добре,0
+wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Отказ,0
+wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Отказ,0
+wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Печат,0

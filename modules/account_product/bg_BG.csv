@@ -1,0 +1,42 @@
+type,name,res_id,src,value,fuzzy
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Няма зададен сметка за разходи/приходи за продукт %s (%d),0
+field,"product.category,account_expense",0,Account Expense,Разходи за сметка,0
+field,"product.category,account_revenue",0,Account Revenue,Приход по сметка,0
+field,"product.category,customer_taxes",0,Customer Taxes,Данъци на клиенти,0
+field,"product.category,supplier_taxes",0,Supplier Taxes,Данъци на доставчик,0
+field,"product.category-customer-account.tax,category",0,Category,Категория,0
+field,"product.category-customer-account.tax,product",0,Category,Категория,0
+field,"product.category-customer-account.tax,rec_name",0,Name,Име,0
+field,"product.category-customer-account.tax,tax",0,Tax,Данък,0
+field,"product.category-supplier-account.tax,category",0,Category,Категория,0
+field,"product.category-supplier-account.tax,product",0,Category,Категория,0
+field,"product.category-supplier-account.tax,rec_name",0,Name,Име,0
+field,"product.category-supplier-account.tax,tax",0,Tax,Данък,0
+field,"product.template,account_category",0,Use Category's accounts,Използване на сметките за категорията,0
+field,"product.template,account_expense",0,Account Expense,Разходи за сметка,0
+field,"product.template,account_expense_used",0,Account Expense Used,Използвани разходи по сметка,0
+field,"product.template,account_revenue",0,Account Revenue,Приход по сметка,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Използвани разходи по сметка,0
+field,"product.template,customer_taxes",0,Customer Taxes,Данъци на клиенти,0
+field,"product.template,customer_taxes_used",0,Customer Taxes Used,Използвани данъци на клиенти,0
+field,"product.template,supplier_taxes",0,Supplier Taxes,Данъци на доставчик,0
+field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Използвани данъци на клиенти,0
+field,"product.template,taxes_category",0,Use Category's Taxes,Използване на данъците за категорията,0
+field,"product.template-customer-account.tax,product",0,Product Template,Щаблон за продукт,0
+field,"product.template-customer-account.tax,rec_name",0,Name,Име,0
+field,"product.template-customer-account.tax,tax",0,Tax,Данък,0
+field,"product.template-supplier-account.tax,product",0,Product Template,Щаблон за продукт,0
+field,"product.template-supplier-account.tax,rec_name",0,Name,Име,0
+field,"product.template-supplier-account.tax,tax",0,Tax,Данък,0
+help,"product.template,account_category",0,Use the accounts defined on the category,Използване на сметките зададени за категорията,0
+help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Ще се използва тази сметка вместо тази зададена за категорията,0
+help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Ще се използва тази сметка вместо тази зададена за категорията,0
+help,"product.template,taxes_category",0,Use the taxes defined on the category,Използване на данъците зададени за категорията,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Категория - Данък на клиент,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Категория - Данъци на доставчик,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Шаблон на продукт - Данък на клиент,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Шаблон на продукт - Данък на доставчик,0
+view,product.category,0,Accounting,Счетоводство,0
+view,product.template,0,Accounting,Счетоводство,0
+view,product.template,0,Accounts,Сметки,0
+view,product.template,0,Taxes,Данъци,0
