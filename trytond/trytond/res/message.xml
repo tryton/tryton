@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_password_length">
+            <field name="text">The password is too short.</field>
+        </record>
+        <record model="ir.message" id="msg_password_forbidden">
+            <field name="text">The password is forbidden.</field>
+        </record>
+        <record model="ir.message" id="msg_password_entropy">
+            <field name="text">The same characters appear in the password too many times.</field>
+        </record>
+        <record model="ir.message" id="msg_password_name">
+            <field name="text">The password cannot be the same as user's name.</field>
+        </record>
+        <record model="ir.message" id="msg_password_login">
+            <field name="text">The password cannot be the same as user's login.</field>
+        </record>
+        <record model="ir.message" id="msg_password_email">
+            <field name="text">The password cannot be the same as user's email address.</field>
+        </record>
+        <record model="ir.message" id="msg_user_delete_forbidden">
+            <field name="text">For logging purposes users cannot be deleted, instead they should be deactivated.</field>
+        </record>
+        <record model="ir.message" id="msg_user_password">
+            <field name="text">Password for %(login)s</field>
+        </record>
+    </data>
+</tryton>

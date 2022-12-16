@@ -1,0 +1,205 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,web_shops:"
+msgid "Web Shops"
+msgstr "Webwinkels"
+
+msgctxt "field:product.category,web_shops:"
+msgid "Web Shops"
+msgstr "Webwinkels"
+
+msgctxt "field:product.product,web_shops:"
+msgid "Web Shops"
+msgstr "Webwinkels"
+
+msgctxt "field:sale.sale,web_id:"
+msgid "Web ID"
+msgstr "Web-ID"
+
+msgctxt "field:sale.sale,web_shop:"
+msgid "Web Shop"
+msgstr "Webwinkels"
+
+msgctxt "field:web.shop,attributes:"
+msgid "Attributes"
+msgstr "attributen"
+
+msgctxt "field:web.shop,attributes_removed:"
+msgid "Attributes Removed"
+msgstr "verijderde attributen"
+
+msgctxt "field:web.shop,categories:"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "field:web.shop,categories_removed:"
+msgid "Categories Removed"
+msgstr "verwijderde Categorieën"
+
+msgctxt "field:web.shop,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:web.shop,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:web.shop,guest_party:"
+msgid "Guest Party"
+msgstr "Gast Relatie"
+
+msgctxt "field:web.shop,language:"
+msgid "Language"
+msgstr "Taal"
+
+msgctxt "field:web.shop,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:web.shop,products:"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "field:web.shop,products_removed:"
+msgid "Products Removed"
+msgstr "Verwijderde Producten"
+
+msgctxt "field:web.shop,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:web.shop,warehouses:"
+msgid "Warehouses"
+msgstr "Magazijn"
+
+msgctxt "field:web.shop-product.attribute,attribute:"
+msgid "Attribute"
+msgstr "Attribuut"
+
+msgctxt "field:web.shop-product.attribute,shop:"
+msgid "Shop"
+msgstr "Winkel"
+
+msgctxt "field:web.shop-product.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:web.shop-product.category,shop:"
+msgid "Shop"
+msgstr "Winkel"
+
+msgctxt "field:web.shop-product.product,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:web.shop-product.product,shop:"
+msgid "Shop"
+msgstr "Winkel"
+
+msgctxt "field:web.shop-stock.location,shop:"
+msgid "Shop"
+msgstr "Winkel"
+
+msgctxt "field:web.shop-stock.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:web.user,invoice_address:"
+msgid "Invoice Address"
+msgstr "Factuuradres"
+
+msgctxt "field:web.user,shipment_address:"
+msgid "Shipment Address"
+msgstr "Afleveradres"
+
+msgctxt "help:product.attribute,web_shops:"
+msgid "The list of web shops on which the attribute is published."
+msgstr "De lijst met webwinkels waarop het attribuut is gepubliceerd."
+
+msgctxt "help:product.category,web_shops:"
+msgid "The list of web shops on which the category is published."
+msgstr "De lijst met webwinkels waarop de categorie is gepubliceerd."
+
+msgctxt "help:product.product,web_shops:"
+msgid "The list of web shops on which the product is published."
+msgstr "De lijst met webwinkels waarop het product is gepubliceerd."
+
+msgctxt "help:web.shop,attributes:"
+msgid "The list of attributes to publish."
+msgstr "De lijst met te publiceren kenmerken."
+
+msgctxt "help:web.shop,attributes_removed:"
+msgid "The list of attributes to unpublish."
+msgstr "De lijst met te publiceren kenmerken."
+
+msgctxt "help:web.shop,categories:"
+msgid "The list of categories to publish."
+msgstr "De lijst met te publiceren categorieën."
+
+msgctxt "help:web.shop,categories_removed:"
+msgid "The list of categories to unpublish."
+msgstr ""
+"De lijst met categorieën waarvan de publicatie ongedaan moet worden gemaakt."
+
+msgctxt "help:web.shop,products:"
+msgid "The list of products to publish."
+msgstr "De lijst met te publiceren producten."
+
+msgctxt "help:web.shop,products_removed:"
+msgid "The list of products to unpublish."
+msgstr ""
+"De lijst met producten waarvan de publicatie ongedaan moet worden gemaakt."
+
+msgctxt "help:web.shop,type:"
+msgid "The front-end used for the web shop."
+msgstr "De front-end die wordt gebruikt voor de webshop."
+
+msgctxt "model:ir.action,name:act_shop"
+msgid "Web Shops"
+msgstr "Webwinkels"
+
+msgctxt "model:ir.message,text:msg_sale_invalid_party"
+msgid ""
+"To process the sale \"%(sale)s\" you must select another party instead of "
+"the guest \"%(party)s\"."
+msgstr ""
+"Om de verkoop \"%(sale)s\" te verwerken, moet u een andere relatie "
+"selecteren in plaats van de gast \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_web_id_unique"
+msgid "The web ID on the sale must be unique."
+msgstr "De web-ID van de verkoop moet uniek zijn."
+
+msgctxt "model:ir.message,text:msg_shop_name_unique"
+msgid "The web shop name must be unique."
+msgstr "De naam van de webshop moet uniek zijn."
+
+msgctxt "model:ir.ui.menu,name:menu_shop"
+msgid "Web Shops"
+msgstr "Webwinkels"
+
+msgctxt "model:web.shop,name:"
+msgid "Web Shop"
+msgstr "Webwinkels"
+
+msgctxt "model:web.shop-product.attribute,name:"
+msgid "Web Shop - Attribute"
+msgstr "Webwinkel - Kenmerk"
+
+msgctxt "model:web.shop-product.category,name:"
+msgid "Web Shop - Product Category"
+msgstr "Webwinkel - Productcategorie"
+
+msgctxt "model:web.shop-product.product,name:"
+msgid "Web Shop - Product"
+msgstr "Webwinkel - Product"
+
+msgctxt "model:web.shop-stock.location,name:"
+msgid "Web Shop - Warehouse"
+msgstr "Webwinkel - Magazijn"
+
+msgctxt "view:web.shop:"
+msgid "Products"
+msgstr "Producten"
