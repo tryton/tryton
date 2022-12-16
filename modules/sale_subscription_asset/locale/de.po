@@ -1,0 +1,73 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.subscription.line:"
+msgid "The lines \"%(line1)s\" and \"%(line2)s\" for the same lot overlap."
+msgstr ""
+"Die Positionen \"%(line1)s\" und \"%(line2)s\" für dieselbe Charge "
+"überschneiden einander."
+
+msgctxt "field:sale.subscription.line,asset_lot:"
+msgid "Asset Lot"
+msgstr "Charge Abonnement Objekt"
+
+msgctxt "field:sale.subscription.line,asset_lot_required:"
+msgid "Asset Lot Required"
+msgstr "Anlage Charge erforderlich"
+
+msgctxt "field:sale.subscription.service,asset_lots:"
+msgid "Asset Lots"
+msgstr "Anlage Charge"
+
+msgctxt "field:sale.subscription.service,asset_lots_available:"
+msgid "Available Asset Lots"
+msgstr "Verfügbare Abonnement Objekte"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
+msgid "Service"
+msgstr "Dienstleistung"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.lot,subscribed:"
+msgid "Subscribed"
+msgstr "Abonniert"
+
+msgctxt "field:stock.lot,subscription_lines:"
+msgid "Subscription Lines"
+msgstr "Abonnementpositionen"
+
+msgctxt "field:stock.lot,subscription_services:"
+msgid "Services"
+msgstr "Dienstleistungen"
+
+msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
+msgid "Subscription Service - Stock Lot Asset"
+msgstr "Abonnement Dienstleistung - Charge Abonnement Objekt"

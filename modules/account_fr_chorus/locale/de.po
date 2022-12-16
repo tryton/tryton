@@ -1,0 +1,169 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.chorus:"
+msgid "Invoice can be registered only once for Chorus."
+msgstr "Die Rechnung kann nur einmal für Chorus registriert werden."
+
+msgctxt "error:account.invoice.chorus:"
+msgid "The Chorus invoice \"%(invoice)s\" can not be deleted once sent."
+msgstr ""
+"Die Chorus Rechnung \"%(invoice)s\" kann nicht gelöscht werden nachdem sie "
+"gesendet wurde."
+
+msgctxt "error:account.invoice.chorus:"
+msgid "The address \"%(address)s\" is missing a SIRET."
+msgstr "Die Adresse \"%(address)s\" hat keinen SIRET."
+
+msgctxt "field:account.configuration,chorus_login:"
+msgid "Chorus Login"
+msgstr "Chorus Login"
+
+msgctxt "field:account.configuration,chorus_password:"
+msgid "Chorus Password"
+msgstr "Chorus Passwort"
+
+msgctxt "field:account.configuration,chorus_service:"
+msgid "Chorus Service"
+msgstr "Chorus Dienst"
+
+msgctxt "field:account.configuration,chorus_syntax:"
+msgid "Chorus Syntax"
+msgstr "Chorus Syntax"
+
+msgctxt "field:account.credential.chorus,chorus_login:"
+msgid "Login"
+msgstr "Anmeldename"
+
+msgctxt "field:account.credential.chorus,chorus_password:"
+msgid "Password"
+msgstr "Passwort"
+
+msgctxt "field:account.credential.chorus,chorus_service:"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "field:account.credential.chorus,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.credential.chorus,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.credential.chorus,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.credential.chorus,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.credential.chorus,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.credential.chorus,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.credential.chorus,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.invoice.chorus,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.invoice.chorus,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.invoice.chorus,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.chorus,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.chorus,invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:account.invoice.chorus,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.invoice.chorus,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.invoice.chorus,syntax:"
+msgid "Syntax"
+msgstr "Syntax"
+
+msgctxt "field:account.invoice.chorus,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.invoice.chorus,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:party.party,chorus:"
+msgid "Chorus Pro"
+msgstr "Chorus Pro"
+
+msgctxt "help:party.party,chorus:"
+msgid "Send documents for this party through Chorus Pro"
+msgstr "Dokumente dieser Partei über Chorus Pro senden"
+
+msgctxt "model:account.credential.chorus,name:"
+msgid "Account Credential Chorus"
+msgstr "Kontenberechtigung Chorus"
+
+msgctxt "model:account.invoice.chorus,name:"
+msgid "Invoice Chorus"
+msgstr "Chorus Rechnung"
+
+msgctxt "model:ir.action,name:act_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "model:ir.cron,name:cron_invoice_send"
+msgid "Send invoices to Chorus"
+msgstr "Rechnungen an Chorus senden"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Qualification"
+msgstr "Qualifizierung"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Qualification"
+msgstr "Qualifizierung"
+
+msgctxt "view:account.configuration:"
+msgid "Chorus"
+msgstr "Chorus"
