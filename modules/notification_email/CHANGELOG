@@ -1,0 +1,42 @@
+Version 6.2.2 - 2022-06-15
+* Bug fixes (see mercurial logs for details)
+
+Version 6.2.1 - 2022-03-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Allow different FROM per language
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Add resource relate on notification log
+* Add optional subject to notifications
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add commission agent as a recipient
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Use party language for employees notifications
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add employee as recipients
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Add fallback users for recipients
+* Add contact mechanism usage
+
+Version 4.6.0 - 2017-10-30
+* Initial release
