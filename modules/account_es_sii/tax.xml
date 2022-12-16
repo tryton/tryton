@@ -1,0 +1,233 @@
+<?xml version='1.0'?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="account.tax.template" id="account_es.iva_rep_4_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_4_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_10_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_10_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_10_servicios_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_10_servicios_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_21_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_21_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_21_servicios_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_21_servicios_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_ex_normal">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_ex_pyme">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_ex_servicios_normal">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_ex_servicios_pyme">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_exportaciones_normal">
+            <field name="es_sii_tax_key">E2</field>
+            <field name="es_sii_operation_key">02</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_exportaciones_pyme">
+            <field name="es_sii_tax_key">E2</field>
+            <field name="es_sii_operation_key">02</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_exportaciones_servicios_normal">
+            <field name="es_sii_tax_key">E2</field>
+            <field name="es_sii_operation_key">02</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_exportaciones_servicios_pyme">
+            <field name="es_sii_tax_key">E2</field>
+            <field name="es_sii_operation_key">02</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_intracomunitario_bienes_normal">
+            <field name="es_sii_tax_key">E5</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_intracomunitario_bienes_pyme">
+            <field name="es_sii_tax_key">E5</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_intracomunitario_servicios_normal">
+            <field name="es_sii_tax_key">E6</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_rep_intracomunitario_servicios_pyme">
+            <field name="es_sii_tax_key">E6</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_4_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_4_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_10_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_10_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_10_servicios_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_10_servicios_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_21_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_21_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_21_servicios_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_21_servicios_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_ex_normal">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_ex_pyme">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_ex_servicios_normal">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_ex_servicios_pyme">
+            <field name="es_sii_tax_key">E1</field>
+            <field name="es_sii_operation_key">01</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_10_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_10_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_4_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_4_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_servicios_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_servicios_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_servicios_10_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_servicios_10_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_10_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_10_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_4_1_normal">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_intracomunitario_inv_4_1_pyme">
+            <field name="es_sii_tax_key">S1</field>
+            <field name="es_sii_operation_key">09</field>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_normal">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_pyme">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_servicios_normal">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_servicios_pyme">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_inv_normal">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+        <record model="account.tax.template" id="account_es.iva_sop_importacion_inv_pyme">
+            <field name="es_exclude_from_sii" eval="True"/>
+        </record>
+    </data>
+</tryton>
