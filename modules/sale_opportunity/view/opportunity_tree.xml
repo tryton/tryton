@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="number" expand="1"/>
+    <field name="reference" expand="1"/>
+    <field name="start_date"/>
+    <field name="end_date"/>
+    <field name="employee" expand="1"/>
+    <field name="description" expand="1"/>
+    <field name="party" expand="1"/>
+    <field name="amount" symbol="currency"/>
+    <field name="state"/>
+    <field name="conversion_probability" factor="100">
+        <suffix name="conversion_probability" string="%"/>
+    </field>
+</tree>
