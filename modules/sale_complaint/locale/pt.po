@@ -1,0 +1,401 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Ações"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Endereço"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Empregado"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Origem"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "ID de Origem"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Modelo de Origem"
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Referência"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Ação"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "Reclamação"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Reclamação"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Linhas da fatura"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Resultado"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Linhas de Venda"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "Unidade"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos Decimais da Unidade"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Ação"
+
+#, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID de Origem"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Reclamação"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Linha da Fatura"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Unidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos Decimais da Unidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Ação"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID de Origem"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Reclamação"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Linha de Venda"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Unidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos Decimais da Unidade"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Origem"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Sequência de Reclamação"
+
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Sequência de Reclamação"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines."
+msgstr "Deixe vazio para todas as linhas"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity."
+msgstr "Deixe vazio para a mesma quantidade"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines."
+msgstr "Deixe vazio para todas as linhas"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Deixe vazio para o mesmo preço"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Deixe vazio para o mesmo preço"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Deixe vazio para o mesmo preço"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Customer Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Types"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "Waiting"
+
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Ação da Reclamação do Cliente"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "Ação da Reclamação do Cliente"
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Types"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Reclamação do Cliente"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Ação da Reclamação do Cliente"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "Ação de Reclamação do Cliente - Linha de Fatura"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "Ação de Reclamação do Cliente - Linha de Venda"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "Tipo de Reclamação do Cliente"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Aprovado"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Concluído"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Rejeitado"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "Em espera"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Criar Nota de Crédito"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "Criar uma Devolução de Venda"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reclamação"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Processar"
