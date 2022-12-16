@@ -1,0 +1,531 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_sale">
+            <field name="name">Sales</field>
+        </record>
+        <record model="res.group" id="group_sale_admin">
+            <field name="name">Sales Administrator</field>
+            <field name="parent" ref="group_sale"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_sale">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_sale_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="sale_icon">
+            <field name="name">tryton-sale</field>
+            <field name="path">icons/tryton-sale.svg</field>
+        </record>
+
+        <menuitem
+            name="Sales"
+            sequence="80"
+            id="menu_sale"
+            icon="tryton-sale"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_group_sale">
+            <field name="menu" ref="menu_sale"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
+            <field name="name">Handle Shipment Exception</field>
+            <field name="wiz_name">sale.handle.shipment.exception</field>
+            <field name="model">sale.sale</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_invoice_handle_exception">
+            <field name="name">Handle Invoice Exception</field>
+            <field name="wiz_name">sale.handle.invoice.exception</field>
+            <field name="model">sale.sale</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type">form</field>
+            <field name="name">sale_form</field>
+        </record>
+        <record model="ir.ui.view" id="sale_view_tree">
+            <field name="model">sale.sale</field>
+            <field name="type">tree</field>
+            <field name="name">sale_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_shipment_exception_ask_view_form">
+            <field name="model">sale.handle.shipment.exception.ask</field>
+            <field name="type">form</field>
+            <field name="name">handle_shipment_exception_ask_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_invoice_exception_ask_view_form">
+            <field name="model">sale.handle.invoice.exception.ask</field>
+            <field name="type">form</field>
+            <field name="name">handle_invoice_exception_ask_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_form">
+            <field name="name">Shipments</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.sale', '=', Eval('active_id')), ('moves.sale', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_shipment_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_shipment_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_return_form">
+            <field name="name">Returns</field>
+            <field name="res_model">stock.shipment.out.return</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('moves.sale', '=', Eval('active_id')), ('moves.sale', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_shipment_return_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_return_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lines.origin.sale.id', '=', Eval('active_id'), 'sale.line'), ('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_invoice_form"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_form">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"
+                eval="[('state', '=', 'draft')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_quotation">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain"
+                eval="[('state', '=', 'quotation')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_confirmed">
+            <field name="name">Confirmed</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain"
+                eval="[('state', '=', 'confirmed')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain"
+                eval="[('state', '=', 'processing')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_exception">
+            <field name="name">Exception</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain"
+                eval="['OR', ('invoice_state', '=', 'exception'), ('shipment_state', '=', 'exception')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+
+        <menuitem
+            parent="menu_sale"
+            action="act_sale_form"
+            sequence="10"
+            id="menu_sale_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_form_group_sale">
+            <field name="menu" ref="menu_sale_form"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_invoice_relate">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[('invoices', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_invoice_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_invoice_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_invoice_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_invoice_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_sale_invoice_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_sale_invoice_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_shipments_relate">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipments_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_shipments_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipments_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_shipments_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_sale_shipments_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="act_sale_shipments_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_shipment_returns_relate">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[('shipment_returns', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipment_returns_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipment_returns_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_sale_shipment_returns_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="act_sale_shipment_returns_relate"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale">
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_sale">
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_cancel_button_group_sale">
+            <field name="button" ref="sale_cancel_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_draft_button_group_sale">
+            <field name="button" ref="sale_draft_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_quote_button">
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_quote_button_group_sale">
+            <field name="button" ref="sale_quote_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_confirm_button">
+            <field name="name">confirm</field>
+            <field name="string">Confirm</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_confirm_button_group_sale">
+            <field name="button" ref="sale_confirm_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_process_button_group_sale_admin">
+            <field name="button" ref="sale_process_button"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+        <record model="ir.model.button" id="sale_modify_header_button">
+            <field name="name">modify_header</field>
+            <field name="string">Modify Header</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_modify_header_button_group_sale">
+            <field name="button" ref="sale_modify_header_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="sale_handle_shipment_exception_button">
+            <field name="name">handle_shipment_exception</field>
+            <field name="string">Handle Shipment Exception</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_handle_shipment_exception_button_group_sale">
+            <field name="button" ref="sale_handle_shipment_exception_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="sale_handle_invoice_exception_button">
+            <field name="name">handle_invoice_exception</field>
+            <field name="string">Handle Invoice Exception</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_handle_invoice_exception_button_group_sale">
+            <field name="button" ref="sale_handle_invoice_exception_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_sale">
+            <field name="name">Sale</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_sale">
+            <field name="name">Sale</field>
+            <field name="sequence_type" ref="sequence_type_sale"/>
+        </record>
+
+        <record model="ir.action.report" id="report_sale">
+            <field name="name">Sale</field>
+            <field name="model">sale.sale</field>
+            <field name="report_name">sale.sale</field>
+            <field name="report">sale/sale.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sale_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="report_sale"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.line</field>
+            <field name="type">form</field>
+            <field name="name">sale_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_tree">
+            <field name="model">sale.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">sale_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_tree_sequence">
+            <field name="model">sale.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">sale_line_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">template_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+        <record model="ir.action.wizard" id="act_open_customer">
+            <field name="name">Parties associated to Sales</field>
+            <field name="wiz_name">sale.open_customer</field>
+        </record>
+        <menuitem
+            name="Associated to Sales"
+            parent="party.menu_party_form"
+            action="act_open_customer"
+            sequence="50"
+            id="menu_customer"
+            icon="tryton-list"/>
+
+        <record model="ir.ui.view" id="return_sale_start_view_form">
+            <field name="model">sale.return_sale.start</field>
+            <field name="type">form</field>
+            <field name="name">return_sale_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_return_sale">
+            <field name="name">Return Sale</field>
+            <field name="wiz_name">sale.return_sale</field>
+            <field name="model">sale.sale</field>
+        </record>
+        <record model="ir.action.keyword" id="act_wizard_return_sale_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="wizard_return_sale"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_modify_header">
+            <field name="name">Modify Header</field>
+            <field name="wiz_name">sale.modify_header</field>
+            <field name="model">sale.sale</field>
+        </record>
+        <record model="ir.ui.view" id="modify_header_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">modify_header_form</field>
+            <field name="domain"
+                eval="Eval('context', {}).get('modify_header', False)"
+                pyson="1"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sale_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sale_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_sale">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_line_sale">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_group_sale">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out_group_sale">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out_return_group_sale">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+    </data>
+</tryton>

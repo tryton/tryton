@@ -1,0 +1,263 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,cost_shipment_carriages:"
+msgid "Cost of Shipment Carriages"
+msgstr "Vervoerskosten"
+
+msgctxt "field:incoterm.incoterm,after_carrier:"
+msgid "After Carrier"
+msgstr "Na transporteur"
+
+msgctxt "field:incoterm.incoterm,before_carrier:"
+msgid "Before Carrier"
+msgstr "Voor transporteur"
+
+msgctxt "field:sale.carriage,available_carriers:"
+msgid "Available Carriers"
+msgstr "Beschikbare transporteurs"
+
+msgctxt "field:sale.carriage,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:sale.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Kosten methode"
+
+msgctxt "field:sale.carriage,from_:"
+msgid "From"
+msgstr "Van"
+
+msgctxt "field:sale.carriage,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:sale.carriage,sale_state:"
+msgid "Sale State"
+msgstr "Verkoop status"
+
+msgctxt "field:sale.carriage,to:"
+msgid "To"
+msgstr "Naar"
+
+msgctxt "field:sale.carriage,type:"
+msgid "Type"
+msgstr "Soort"
+
+msgctxt "field:sale.sale,after_carriages:"
+msgid "After Carriages"
+msgstr "Na transporteurs"
+
+msgctxt "field:sale.sale,before_carriages:"
+msgid "Before Carriages"
+msgstr "Voor transporteurs"
+
+msgctxt "field:sale.sale,carriages:"
+msgid "Carriages"
+msgstr "Transporteurs"
+
+msgctxt "field:stock.shipment.carriage,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:stock.shipment.carriage,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.shipment.carriage,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_currency:"
+msgid "Cost Currency"
+msgstr "Kosten Valuta"
+
+msgctxt "field:stock.shipment.carriage,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Kosten Valuta"
+
+msgctxt "field:stock.shipment.carriage,cost_edit:"
+msgid "Edit Cost"
+msgstr "Kosten bewerken"
+
+msgctxt "field:stock.shipment.carriage,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Factuur regel kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Kosten methode"
+
+msgctxt "field:stock.shipment.carriage,cost_sale:"
+msgid "Cost Sale"
+msgstr "Kosten verkoop"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Valuta verkoop kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Valuta verkoop kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Kosten verkoop"
+
+msgctxt "field:stock.shipment.carriage,cost_used:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:stock.shipment.carriage,from_:"
+msgid "From"
+msgstr "Van"
+
+msgctxt "field:stock.shipment.carriage,shipment:"
+msgid "Shipment"
+msgstr "Zending"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Verzendkosten Alleen Lezen"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr "Verzendingskosten Verkoop Alleen Lezen"
+
+msgctxt "field:stock.shipment.carriage,to:"
+msgid "To"
+msgstr "Naar"
+
+msgctxt "field:stock.shipment.carriage,type:"
+msgid "Type"
+msgstr "Soort"
+
+msgctxt "field:stock.shipment.in,after_carriages:"
+msgid "After Carriages"
+msgstr "Na transporteurs"
+
+msgctxt "field:stock.shipment.in,before_carriages:"
+msgid "Before Carriages"
+msgstr "Voor transporteurs"
+
+msgctxt "field:stock.shipment.in,carriages:"
+msgid "Carriages"
+msgstr "Transporteurs"
+
+msgctxt "field:stock.shipment.out,after_carriages:"
+msgid "After Carriages"
+msgstr "Na transporteurs"
+
+msgctxt "field:stock.shipment.out,before_carriages:"
+msgid "Before Carriages"
+msgstr "Voor transporteurs"
+
+msgctxt "field:stock.shipment.out,carriages:"
+msgid "Carriages"
+msgstr "Transporteurs"
+
+msgctxt "field:stock.shipment.out.return,after_carriages:"
+msgid "After Carriages"
+msgstr "Na transporteurs"
+
+msgctxt "field:stock.shipment.out.return,before_carriages:"
+msgid "Before Carriages"
+msgstr "Voor transporteurs"
+
+msgctxt "field:stock.shipment.out.return,carriages:"
+msgid "Carriages"
+msgstr "Transporteurs"
+
+msgctxt "help:incoterm.incoterm,after_carrier:"
+msgid "Who contracts carriages after main carriage."
+msgstr "Wie contracteert transporteurs na de hoofd transporteur."
+
+msgctxt "help:incoterm.incoterm,before_carrier:"
+msgid "Who contracts carriages before main carriage."
+msgstr "Wie contracteert transporteurs voor de hoofd transporteur."
+
+msgctxt "help:sale.sale,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transporteurs na de hoofd transporteur."
+
+msgctxt "help:sale.sale,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transporteurs voor de hoofd transporteur."
+
+msgctxt "help:stock.shipment.carriage,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Vink aan om de kosten te bewerken."
+
+msgctxt "help:stock.shipment.in,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transporteurs na de hoofd transporteur."
+
+msgctxt "help:stock.shipment.in,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transporteurs voor de hoofd transporteur."
+
+msgctxt "help:stock.shipment.out,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transporteurs na de hoofd transporteur."
+
+msgctxt "help:stock.shipment.out,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transporteurs voor de hoofd transporteur."
+
+msgctxt "help:stock.shipment.out.return,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Transporteurs na de hoofd transporteur."
+
+msgctxt "help:stock.shipment.out.return,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr "Transporteurs voor de hoofd transporteur."
+
+msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
+msgid "You cannot delete the carriage \"%(carriage)s\"."
+msgstr "U kunt de transporteur \"%(carriage)s\" niet verwijderen."
+
+msgctxt "model:sale.carriage,name:"
+msgid "Sale Carriage"
+msgstr "Verkoop transporteur"
+
+msgctxt "model:stock.shipment.carriage,name:"
+msgid "Shipment Carriage"
+msgstr "Zend transporteur"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Buyer"
+msgstr "Koper"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Seller"
+msgstr "Verkoper"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Buyer"
+msgstr "Koper"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Seller"
+msgstr "Verkoper"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "After"
+msgstr "Na"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "Before"
+msgstr "Voor"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "After"
+msgstr "Na"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "Before"
+msgstr "Voor"
+
+msgctxt "view:sale.sale:"
+msgid "Carriages"
+msgstr "Transporteurs"
