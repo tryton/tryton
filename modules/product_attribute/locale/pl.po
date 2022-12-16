@@ -1,0 +1,235 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "Cyfry"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Wybór"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "Wybór JSON"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Posortowany wybór"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Zestawy"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "Łańcuch tekstowy"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Atrybuty"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Zestaw"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Zestaw atrybutów"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Atrybuty"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Zestaw atrybutów"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Para klucz i etykieta na wiersz oddzielonych przez \":\""
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Jeśli wybór należy posortować na etykiecie"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Atrybut produktu"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Atrybut produktu - Zestaw"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Zestaw atrybutów produktu"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr "Boolean"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "Char"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "DateTime"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr "Float"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "Integer"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "Numeric"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Selection"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Atrybuty"
