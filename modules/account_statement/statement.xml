@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_statement">
+            <field name="name">Statement</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_statement">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_statement"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_statement">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_statement"/>
+        </record>
+
+        <menuitem name="Statements" parent="account.menu_account"
+            id="menu_statements" sequence="45"/>
+        <menuitem name="Statements" parent="account.menu_account_configuration"
+            id="menu_statement_configuration" sequence="70"/>
+        <record model="ir.ui.view" id="statement_view_form">
+            <field name="model">account.statement</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Statement">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="start_balance"/>
+                    <field name="start_balance"/>
+                    <label name="end_balance"/>
+                    <field name="end_balance"/>
+                    <notebook colspan="4">
+                        <page string="Statement Lines" col="4" id="statement_lines">
+                            <field name="lines" colspan="4"
+                                view_ids="account_statement.statement_line_view_tree_editable"/>
+                            <group col="6" colspan="4" id="state_buttons">
+                                <label name="balance"/>
+                                <field name="balance"/>
+                                <label name="state"/>
+                                <field name="state"/>
+                                <group col="4" colspan="2" id="buttons">
+                                    <button string="Validate" name="validate"
+                                        type="object"/>
+                                    <button string="Cancel" name="cancel"
+                                        type="object"/>
+                                    <button string="Post" name="post"
+                                        type="object"/>
+                                    <button string="Reset to Draft" name="draft"
+                                        type="object"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info" id="info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <field name="move_lines" colspan="4"/>
+                        </page>
+                    </notebook>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="statement_view_tree">
+            <field name="model">account.statement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Statements">
+                    <field name="journal"/>
+                    <field name="date"/>
+                    <field name="start_balance"/>
+                    <field name="end_balance"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_draft_statement_form">
+            <field name="name">Draft Statements</field>
+            <field name="res_model">account.statement</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_draft_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_draft_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="2"
+            action="act_draft_statement_form" id="menu_draft_statement_form"/>
+
+        <record model="ir.action.act_window" id="act_validated_statement_form">
+            <field name="name">Validated Statement</field>
+            <field name="res_model">account.statement</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_validated_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_validated_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_validated_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_validated_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="3"
+            action="act_validated_statement_form" id="menu_validated_statement_form"/>
+
+        <record model="ir.action.act_window" id="act_posted_statement_form">
+            <field name="name">Posted Statements</field>
+            <field name="res_model">account.statement</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_posted_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_posted_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_posted_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_posted_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="4"
+            action="act_posted_statement_form" id="menu_posted_statement_form"/>
+
+        <record model="ir.action.act_window" id="act_statement_form">
+            <field name="name">All Statement</field>
+            <field name="res_model">account.statement</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="5"
+            action="act_statement_form" id="menu_statement_form"/>
+
+        <record model="ir.rule.group" id="rule_group_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_statement1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.statement')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_statement"/>
+        </record>
+
+        <record model="ir.ui.view" id="statement_line_view_form">
+            <field name="model">account.statement.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Statement Line">
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="invoice"/>
+                    <field name="invoice"/>
+                    <newline/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="move"/>
+                    <field name="move"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="statement_line_view_tree">
+            <field name="model">account.statement.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Statement Lines">
+                    <field name="statement"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="invoice"/>
+                    <field name="description"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="statement_line_view_tree_editable">
+            <field name="model">account.statement.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Statement Lines" editable="bottom">
+                    <field name="date"/>
+                    <field name="amount" sum="Amount"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="invoice"/>
+                    <field name="description"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_statement_account_admin">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_account">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="group" ref="group_statement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_statement_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_line_account">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_line_statement">
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
+            <field name="group" ref="group_statement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_draft_button_group_account">
+            <field name="button" ref="statement_draft_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_validate_button">
+            <field name="name">validate</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_validate_button_group_account">
+            <field name="button" ref="statement_validate_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_post_button">
+            <field name="name">post</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_post_button_group_account">
+            <field name="button" ref="statement_post_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_cancel_button_group_account">
+            <field name="button" ref="statement_cancel_button"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+    </data>
+</tryton>
