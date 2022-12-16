@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.out:"
+msgid "It misses an \"Account Revenue\" on product \"%s\"!"
+msgstr "¡Falta una «cuenta de ingresos» en el producto «%s»!"
+
+msgctxt "field:sale.configuration,sale_carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Método de costo de la venta"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Costo de envío"
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Método de costo de envío"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "Costo"
+
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr "Moneda del costo"
+
+msgctxt "field:stock.shipment.out,cost_currency_digits:"
+msgid "Cost Currency Digits"
+msgstr "Dígitos del costo"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Costo de la línea de factura"
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
+msgid "On Order"
+msgstr "Al ordenar"
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
+msgid "On Shipment"
+msgstr "Al enviar"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "Al ordenar"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "Al enviar"

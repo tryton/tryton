@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.out:"
+msgid "It misses an \"Account Revenue\" on product \"%s\"!"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_carrier:"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr ""
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_currency_digits:"
+msgid "Cost Currency Digits"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr ""
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
+msgid "On Order"
+msgstr ""
+
+msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
+msgid "On Shipment"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr ""
