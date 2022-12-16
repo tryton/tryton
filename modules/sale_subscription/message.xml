@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_consumption_modify_invoiced">
+            <field name="text">You cannot modify invoiced consumption "%(consumption)s".</field>
+        </record>
+        <record model="ir.message" id="msg_consumption_delete_invoiced">
+            <field name="text">You cannot delete invoiced consumption "%(consumption)s".</field>
+        </record>
+        <record model="ir.message" id="msg_consumption_invoice_missing_account_revenue">
+            <field name="text">To invoice consumptions you must define an account revenue for product "%(product)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_pending_subscription">
+            <field name="text">You cannot erase party "%(party)s" while they have pending subscriptions with company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_recurrence_rule_invalid_by">
+            <field name="text">Invalid "%(field)s" "%(value)s" in recurence rule "%(recurrence_rule)s" with exception "%(exception)s".</field>
+        </record>
+    </data>
+</tryton>
