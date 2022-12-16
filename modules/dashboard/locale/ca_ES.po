@@ -1,0 +1,91 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:dashboard.action,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:dashboard.action,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Accions de l'escriptori"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Organització de l'escriptori"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Acció de l'escriptori"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Escriptori"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Escriptori"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Ajustat"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "De dalt a baix"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "De dreta a esquerra"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "D'esquerra a dreta"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "De baix a dalt"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Action"
+msgstr "Acció de l'escriptori"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Actions"
+msgstr "Accions de l'escriptori"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Escriptori"
