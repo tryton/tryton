@@ -1,0 +1,7 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "selection:currency.cron,source:"
+msgid "Romanian National Bank"
+msgstr "Banque nationale roumaine"

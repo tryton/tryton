@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="move_line"/>
+    <field name="move_line"/>
+    <newline/>
+    <label name="account"/>
+    <field name="account"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="debit"/>
+    <field name="debit"/>
+    <label name="credit"/>
+    <field name="credit"/>
+</form>

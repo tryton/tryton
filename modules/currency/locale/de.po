@@ -1,0 +1,219 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Währungen"
+
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr "Tag des Monats"
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr "Frequenz"
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr "Letzte Aktualisierung"
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr "Quelle"
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr "Wochentag"
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr "Zeitplaner"
+
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Numerischer Code"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Aktueller Kurs"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Kurse"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Rundung"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Symbol"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Kurs"
+
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr "Die Währungen deren Kurs aktualisiert werden soll."
+
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr "Die Basiswährung für die Kursermittlung."
+
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr "Die Aktualisierungsfrequenz für die Währungskurse."
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr "Die externe Quelle für die Währungskurse."
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "Der 3-stellige ISO-Währungscode."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "Die Anzahl der Nachkommastellen die angezeigt werden sollen."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "Das Hauptidentifizierungsmerkmal der Währung."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "Der 3-stellige ISO-Währungscode."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Der Währung einen variablen Wechselkurs hinzufügen."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "Der kleinste Betrag der in dieser Währung dargestellt werden kann."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "Das Symbol zu Darstellung der Währung."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "Die Währung auf die der Kurs angewendet wird."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "Ab wann der Kurs angewendet wird."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "Der variable Kurs der zur Umrechnung der Währung genutzt wird."
+
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Zeitplaner Währungskurse"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr "Zeitplaner Währungskurse - Währung"
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Währungskurs"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Zeitgesteuerte Währungskursaktualisierung"
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "Währungen"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Der Währungskurs muss positiv sein."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Es darf nur einen Kurs pro Datum für eine Währung geben."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr "Fehlender Kurs für Währung \"%(currency)s\" am \"%(date)s\"."
+
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr "Ausführen"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Zeitgesteuerte Währungskursaktualisierung"
+
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currencies"
+msgstr "Währungen"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "Währungen"
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "Währungen Administration"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr "Täglich"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr "Monatlich"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr "Europäische Zentralbank"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Währungskurse Aktualisieren"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Kurse"

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.report" id="report_invoice_watermark_paid">
+            <field name="name">Invoice Watermark Paid</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.watermark</field>
+            <field name="report">account_invoice_watermark/invoice_watermark_paid.fodt</field>
+            <field name="extension">pdf</field>
+            <field name="single" eval="True"/>
+        </record>
+
+        <record model="ir.action.report" id="report_invoice_watermark_draft">
+            <field name="name">Invoice Watermark Draft</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice.watermark</field>
+            <field name="report">account_invoice_watermark/invoice_watermark_draft.fodt</field>
+            <field name="extension">pdf</field>
+            <field name="single" eval="True"/>
+        </record>
+    </data>
+</tryton>

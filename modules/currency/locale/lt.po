@@ -1,0 +1,229 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Valiutos"
+
+#, fuzzy
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr ""
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr ""
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr ""
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr ""
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr ""
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Skaitmenys"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Skaitmenų kodas"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Valiutos kursas"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Kursai"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Apvalinimo faktorius"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Simbolis"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Kursas"
+
+#, fuzzy
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr "Valiuta, kuriai pritaikomas kursas."
+
+#, fuzzy
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr "Valiuta, kuriai pritaikomas kursas."
+
+#, fuzzy
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr "Valiutos kursas turi būti teigiamas."
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr ""
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "Valiutos 3 simbolių ISO kodas."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr ""
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "Pagrindinis valiutos identifikatorius."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "Valiutos 3 skaitmenų kodas."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Pridėti kintamus valiutos kursus."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "Minimali suma, kuri gali būti parodoma šia valiuta."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "Valiutos formatui naudojamas simbolis."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "Valiuta, kuriai pritaikomas kursas."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Valiuta"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr ""
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Valiutos kursas"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "Valiutos"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Valiutos kursas turi būti teigiamas."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Valiuta vienai datai gali turėti tik vieną keitimo kursą."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currencies"
+msgstr "Valiutos"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "Valiutos"
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "Valiutos valdymas"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr ""
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr ""
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr ""
+
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Valiutos kursas"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Kursai"
