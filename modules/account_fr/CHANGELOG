@@ -1,0 +1,32 @@
+Version 3.8.1 - 2017-06-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add FEC generation
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Drop the tax rule "Ventes intracommunautaires" and associated taxes.
+* Create separate taxes for goods and services. You should review all your
+  products, product categories and custom tax rules to rely on the new taxes.
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* New tax rates for 2014
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-07-31
+* Initial release
