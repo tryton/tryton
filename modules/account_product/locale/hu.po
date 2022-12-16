@@ -1,0 +1,209 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Alapértelmezett költségszámla"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Alapértelmezett bevétel számla"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Alapértelmezett költségszámla"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Alapértelmezett bevétel számla"
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr "Termék kategória"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Költségszámla"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "A fölérendelt számláit használja"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Árbevétel számla"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Számviteli"
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "Számlák"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Értékesítési adók"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr ""
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Beszerzési adók"
+
+msgctxt "field:product.category,supplier_taxes_deductible_rate:"
+msgid "Supplier Taxes Deductible Rate"
+msgstr "Visszaigényelhető adó aránya"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr ""
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "A fölérendelt adóit használja"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Adó"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Adó"
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "Költségszámla"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "Árbevétel számla"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr "Számviteli kategória"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr "Számviteli kategória"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "Sablon"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "A főkategóriánál beállított számlákat használja."
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to indicate the category is used for accounting."
+msgstr ""
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr "Ezen kategóriába tartozó termékek értékesítésekor használt adók."
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr "Ezen kategóriába tartozó termékek beszerzésekor használt adók."
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "A főkategóriánál beállított adókat használja."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "Nincs „%(field)s” megadva a „%(name)s” rekordhoz."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr "A „%(name)s” terméknél nincs megadva számviteli kategória."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr ""
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr ""
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr ""
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
+msgctxt "model:res.group,name:group_account_product_admin"
+msgid "Account Product Administration"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Pénzügy"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Számlák"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Adók"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Pénzügy"

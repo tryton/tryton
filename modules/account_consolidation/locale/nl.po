@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,consolidation:"
+msgid "Consolidation"
+msgstr "Consolidatie"
+
+msgctxt "field:account.consolidation,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.consolidation,amount_cmp:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.consolidation,assets:"
+msgid "Assets"
+msgstr "Activa"
+
+msgctxt "field:account.consolidation,children:"
+msgid "Children"
+msgstr "Onderliggend"
+
+msgctxt "field:account.consolidation,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.consolidation,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.consolidation,parent:"
+msgid "Parent"
+msgstr "Bovenliggend"
+
+msgctxt "field:account.consolidation,statement:"
+msgid "Statement"
+msgstr "Afschrift"
+
+msgctxt "field:account.consolidation,types:"
+msgid "Types"
+msgstr "Soorten"
+
+msgctxt "field:account.consolidation.balance_sheet.context,companies:"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "field:account.consolidation.balance_sheet.context,comparison:"
+msgid "Comparison"
+msgstr "Vergelijking"
+
+msgctxt "field:account.consolidation.balance_sheet.context,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.consolidation.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.consolidation.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "Bevestigde boeking"
+
+msgctxt "field:account.consolidation.income_statement.context,companies:"
+msgid "Companies"
+msgstr "Bedrijven"
+
+msgctxt "field:account.consolidation.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "Vergelijking"
+
+msgctxt "field:account.consolidation.income_statement.context,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:account.consolidation.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:account.consolidation.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "Bevestigde boeking"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:account.invoice,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Consolidatie Bedrijf"
+
+msgctxt "field:account.move,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Consolidatie Bedrijf"
+
+msgctxt "field:account.move.line,consolidation_company:"
+msgid "Consolidation Company"
+msgstr "Consolidatie Bedrijf"
+
+msgctxt "help:account.consolidation.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "Alleen bevestigde boekingen weergeven."
+
+msgctxt "help:account.consolidation.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "Alleen bevestigde boekingen weergeven."
+
+msgctxt "model:account.consolidation,name:"
+msgid "Account Consolidation"
+msgstr "Rekeningen Consolidatie"
+
+msgctxt "model:account.consolidation.balance_sheet.context,name:"
+msgid "Consolidation Balance Sheet Context"
+msgstr "Context Geconsolideerde Balans"
+
+msgctxt "model:account.consolidation.income_statement.context,name:"
+msgid "Consolidation Income Statement Context"
+msgstr "Context Geconsolideerde Resultatenrekening"
+
+msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"
+msgid "Consolidated Balance Sheet"
+msgstr "Geconsolideerde Balans"
+
+msgctxt "model:ir.action,name:act_consolidation_income_statement_tree"
+msgid "Consolidated Income Statement"
+msgstr "Geconsolideerde Resultatenrekening"
+
+msgctxt "model:ir.action,name:act_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Geconsolideerde Rekeningen"
+
+msgctxt "model:ir.action,name:act_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Geconsolideerde Rekeningen"
+
+msgctxt "model:ir.action,name:report_consolidation_statement"
+msgid "Statement"
+msgstr "Afschrift"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_list"
+msgid "Account Consolidations"
+msgstr "Geconsolideerde Rekeningen"
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_tree"
+msgid "Account Consolidations"
+msgstr "Geconsolideerde Rekeningen"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_balance_sheet"
+msgid "Consolidated Balance Sheet"
+msgstr "Geconsolideerde Balans"
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_income_statement"
+msgid "Consolidated Income Statement"
+msgstr "Geconsolideerde Resultatenrekening"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Balance Sheet"
+msgstr "Balans"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Companies:"
+msgstr "Bedrijven:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "From Date:"
+msgstr "Vanaf Datum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Income Statement"
+msgstr "Resultatenrekening"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Print Date:"
+msgstr "Afdrukdatum:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Statement"
+msgstr "Afschrift"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "To"
+msgstr "Aan"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "User:"
+msgstr "Gebruiker:"
+
+msgctxt "report:account.consolidation.statement:"
+msgid "at"
+msgstr "om"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Balance"
+msgstr "Balans"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Income"
+msgstr "Inkomsten"
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Off-Balance"
+msgstr "Buiten balans"
+
+msgctxt "view:account.consolidation:"
+msgid "Comparison"
+msgstr "Vergelijking"

@@ -1,0 +1,110 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,cost_shipments:"
+msgid "Cost of Shipments"
+msgstr "Coste de los envíos"
+
+msgctxt "field:party.party,sale_shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Método de coste de envío"
+
+msgctxt "field:party.party.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Método de coste de envío de la venta"
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Método de coste envío"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Método de coste envío"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Coste de envío"
+
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr "Importe con costes de envío incluidos"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr "Transportistas disponibles"
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Método de coste envío"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Coste de la línea de factura"
+
+msgctxt "field:stock.shipment.out,cost_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Coste de la venta"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Moneda del coste de la venta"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Moneda del coste de la venta"
+
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Coste de la venta"
+
+msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr "Coste envío solo lectura"
+
+msgctxt "help:party.party,sale_shipment_cost_method:"
+msgid ""
+"The default shipment cost method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El método de costo de envío predeterminado para el cliente.\n"
+"Dejar en blanco para usar el valor predeterminado de la configuración."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+"Para confirmar la venta \"%(sale)s\" debe cambiar el transportista "
+"\"%(carrier)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+"Para facturar el coste de envío del albarán %(shipment)s\", debe definir una"
+" cuenta de ingresos para el producto \"%(product)s\"."
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr "Ninguno"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "En el pedido"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "En el albarán"
+
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr "Costes de envío incluidos"

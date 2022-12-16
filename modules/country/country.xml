@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="country_icon">
+            <field name="name">tryton-country</field>
+            <field name="path">icons/tryton-country.svg</field>
+        </record>
+
+        <menuitem
+            name="Countries"
+            parent="ir.menu_administration"
+            sequence="30"
+            id="menu_country"
+            icon="tryton-country"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_country_group_admin">
+            <field name="menu" ref="menu_country"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="organization_view_form">
+            <field name="model">country.organization</field>
+            <field name="type">form</field>
+            <field name="name">organization_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="organization_view_list">
+            <field name="model">country.organization</field>
+            <field name="type">tree</field>
+            <field name="name">organization_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_organization_form">
+            <field name="name">Organizations</field>
+            <field name="res_model">country.organization</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_organization_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="organization_view_list"/>
+            <field name="act_window" ref="act_organization_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_organization_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="organization_view_form"/>
+            <field name="act_window" ref="act_organization_form"/>
+        </record>
+        <menuitem
+            parent="menu_country"
+            action="act_organization_form"
+            sequence="20"
+            id="menu_organization_form"/>
+
+        <record model="ir.model.access" id="access_organization">
+            <field name="model" search="[('model', '=', 'country.organization')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_organization_admin">
+            <field name="model" search="[('model', '=', 'country.organization')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="organization_member_view_form">
+            <field name="model">country.organization.member</field>
+            <field name="type">form</field>
+            <field name="name">organization_member_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="organization_member_view_list">
+            <field name="model">country.organization.member</field>
+            <field name="type">tree</field>
+            <field name="name">organization_member_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="region_view_form">
+            <field name="model">country.region</field>
+            <field name="type">form</field>
+            <field name="name">region_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="region_view_list">
+            <field name="model">country.region</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">region_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="region_view_tree">
+            <field name="model">country.region</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">subregions</field>
+            <field name="name">region_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_region_tree">
+            <field name="name">Areas</field>
+            <field name="res_model">country.region</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_region_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="region_view_tree"/>
+            <field name="act_window" ref="act_region_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_region_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="region_view_form"/>
+            <field name="act_window" ref="act_region_tree"/>
+        </record>
+        <menuitem
+            parent="menu_country"
+            action="act_region_tree"
+            sequence="20"
+            id="menu_region_tree"/>
+
+        <record model="ir.action.act_window" id="act_region_form">
+            <field name="name">Regions</field>
+            <field name="res_model">country.region</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_region_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="region_view_list"/>
+            <field name="act_window" ref="act_region_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_region_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="region_view_form"/>
+            <field name="act_window" ref="act_region_form"/>
+        </record>
+        <menuitem
+            parent="menu_region_tree"
+            action="act_region_form"
+            sequence="10"
+            id="menu_region_form"/>
+
+        <record model="ir.model.access" id="access_region">
+            <field name="model" search="[('model', '=', 'country.region')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_region_admin">
+            <field name="model" search="[('model', '=', 'country.region')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="country_view_form">
+            <field name="model">country.country</field>
+            <field name="type">form</field>
+            <field name="name">country_form</field>
+        </record>
+        <record model="ir.ui.view" id="country_view_tree">
+            <field name="model">country.country</field>
+            <field name="type">tree</field>
+            <field name="name">country_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_country_form">
+            <field name="name">Countries</field>
+            <field name="res_model">country.country</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_country_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="country_view_tree"/>
+            <field name="act_window" ref="act_country_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_country_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="country_view_form"/>
+            <field name="act_window" ref="act_country_form"/>
+        </record>
+        <menuitem
+            parent="menu_country"
+            action="act_country_form"
+            sequence="10"
+            id="menu_country_form"/>
+
+        <record model="ir.action.act_window" id="act_country_by_region">
+            <field name="name">Countries by Region</field>
+            <field name="res_model">country.country</field>
+            <field
+                name="domain"
+                eval="[('region', 'child_of', Eval('active_ids', []), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_country_by_region_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">country.region,-1</field>
+            <field name="action" ref="act_country_by_region"/>
+        </record>
+
+        <record model="ir.model.access" id="access_country">
+            <field name="model" search="[('model', '=', 'country.country')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_country_admin">
+            <field name="model" search="[('model', '=', 'country.country')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="subdivision_view_form">
+            <field name="model">country.subdivision</field>
+            <field name="type">form</field>
+            <field name="name">subdivision_form</field>
+        </record>
+        <record model="ir.ui.view" id="subdivision_view_tree">
+            <field name="model">country.subdivision</field>
+            <field name="type">tree</field>
+            <field name="name">subdivision_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_subdivision">
+            <field name="model" search="[('model', '=', 'country.subdivision')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_subdivision_admin">
+            <field name="model" search="[('model', '=', 'country.subdivision')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="postal_code_view_form">
+            <field name="model">country.postal_code</field>
+            <field name="type">form</field>
+            <field name="name">postal_code_form</field>
+        </record>
+        <record model="ir.ui.view" id="postal_code_view_list">
+            <field name="model">country.postal_code</field>
+            <field name="type">tree</field>
+            <field name="name">postal_code_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_postal_code_form">
+            <field name="name">Postal Codes</field>
+            <field name="res_model">country.postal_code</field>
+            <field name="domain"
+                eval="[('country', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_postal_code_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="postal_code_view_list"/>
+            <field name="act_window" ref="act_postal_code_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_postal_code_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="postal_code_view_form"/>
+            <field name="act_window" ref="act_postal_code_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_postal_code_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">country.country,-1</field>
+            <field name="action" ref="act_postal_code_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_postal_code">
+            <field name="model" search="[('model', '=', 'country.postal_code')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_postal_code_admin">
+            <field name="model" search="[('model', '=', 'country.postal_code')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
