@@ -1,0 +1,187 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:"
+msgid ""
+"You can not create an attachment named \"%(attachment)s in collection "
+"\"%(collection)s\" because there is already a collection with that name."
+msgstr ""
+"No podeu crear un adjunt anomenat \"%(attachment)s al directori "
+"\"%(collection)s\" perquè ja existeix un altre amb aquest nom."
+
+msgctxt "error:webdav.collection:"
+msgid "The collection name must be unique inside a collection!"
+msgstr "El nom del directori ha de ser únic dins del directori."
+
+msgctxt "error:webdav.collection:"
+msgid ""
+"You can not create a collection named \"%(parent)s\" in collection "
+"\"%(child)s\" because there is already a file with that name."
+msgstr ""
+"No podeu crear un directori amb el nom \"%(parent)s\" dins del directori "
+"\"%(child)s\" perquè ja existeix un altre amb aquest nom."
+
+msgctxt "field:ir.attachment,path:"
+msgid "Path"
+msgstr "Ruta"
+
+msgctxt "field:ir.attachment,shares:"
+msgid "Shares"
+msgstr "Directori compartit"
+
+msgctxt "field:ir.attachment,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.collection,childs:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:webdav.collection,complete_name:"
+msgid "Complete Name"
+msgstr "Nom complet"
+
+msgctxt "field:webdav.collection,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:webdav.collection,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:webdav.collection,domain:"
+msgid "Domain"
+msgstr "Domini"
+
+msgctxt "field:webdav.collection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.collection,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:webdav.collection,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:webdav.collection,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:webdav.collection,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:webdav.collection,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:webdav.collection,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:webdav.share,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:webdav.share,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:webdav.share,expiration_date:"
+msgid "Expiration Date"
+msgstr "Data expiració"
+
+msgctxt "field:webdav.share,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.share,key:"
+msgid "Key"
+msgstr "Clau"
+
+msgctxt "field:webdav.share,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:webdav.share,path:"
+msgid "Path"
+msgstr "Ruta"
+
+msgctxt "field:webdav.share,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:webdav.share,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.share,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:webdav.share,write_date:"
+msgid "Write Date"
+msgstr "Data modicación"
+
+msgctxt "field:webdav.share,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Directoris"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Directoris"
+
+msgctxt "model:ir.action,name:act_share_list"
+msgid "Shares"
+msgstr "Directoris compartits"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Directoris"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Directoris"
+
+msgctxt "model:ir.ui.menu,name:menu_share_list"
+msgid "Shares"
+msgstr "Directoris compartits"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:"
+msgid "Collection"
+msgstr "Directori"
+
+msgctxt "model:webdav.share,name:"
+msgid "Share"
+msgstr "Directori compartit"
+
+msgctxt "view:ir.attachment:"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "view:webdav.collection:"
+msgid "Collection"
+msgstr "Directori"
+
+msgctxt "view:webdav.collection:"
+msgid "Collections"
+msgstr "Directoris"
+
+msgctxt "view:webdav.share:"
+msgid "Share"
+msgstr "Directori compartit"
+
+msgctxt "view:webdav.share:"
+msgid "Shares"
+msgstr "Directoris compartits"
