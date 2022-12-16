@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Forecast Lines" editable="bottom">
+    <field name="product"/>
+    <field name="quantity"/>
+    <field name="minimal_quantity"/>
+    <field name="uom"/>
+    <field name="quantity_executed"/>
+    <field name="forecast"/>
+    <field name="unit_digits" tree_invisible="1"/>
+</tree>

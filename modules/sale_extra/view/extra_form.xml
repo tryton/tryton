@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Extra">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="price_list"/>
+    <field name="price_list"/>
+    <separator id="pattern" colspan="4"/>
+    <label name="sale_amount"/>
+    <field name="sale_amount"/>
+    <field name="lines" colspan="4"
+        view_ids="sale_extra.extra_line_view_list_sequence"/>
+</form>
