@@ -1,0 +1,36 @@
+Installing trytond_account_payment_sepa
+=======================================
+
+Prerequisites
+-------------
+
+ * Python 3.4 or later (http://www.python.org/)
+ * Genshi (http://genshi.edgewall.org/)
+ * python-dateutil (https://dateutil.readthedocs.org/)
+ * trytond (http://www.tryton.org/)
+ * trytond_party (http://www.tryton.org/)
+ * trytond_account_payment (http://www.tryton.org/)
+ * trytond_bank (http://www.tryton.org/)
+ * trytond_company (http://www.tryton.org/)
+ * python-stdnum (http://arthurdejong.org/python-stdnum/)
+
+Installation
+------------
+
+Once you've downloaded and unpacked the trytond_account_payment_sepa source
+release, enter the directory where the archive was unpacked, and run:
+
+    python setup.py install
+
+Note that you may need administrator/root privileges for this step, as
+this command will by default attempt to install module to the Python
+site-packages directory on your system.
+
+For advanced options, please refer to the easy_install and/or the distutils
+documentation:
+
+  http://setuptools.readthedocs.io/en/latest/easy_install.html
+  http://docs.python.org/inst/inst.html
+
+To use without installation, extract the archive into ``trytond/modules`` with
+the directory name account_payment_sepa.
