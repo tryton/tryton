@@ -1,0 +1,159 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr "Valitav"
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr "Kasvav"
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr "Kasvavad"
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr "Ülemjaotus"
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr "Valitav"
+
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr "Kasvav"
+
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr "Kasvav grupp"
+
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr "Kasvavad"
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr "Kasvav grupp"
+
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr "Kasvav"
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr "Kasvav-KasvavGrupp"
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr "Kasvav Grupp"
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr "Klass"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr "Divisjon"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr "Domeen"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr "Perekond"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr "Vorm"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr "Kuningriik"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr "Kord"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr "Seksioon"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr "Seeria"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr "Liik"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr "Hõim"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr ""

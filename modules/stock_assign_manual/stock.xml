@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_form"/>
+            <field name="name">shipment_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_assign_manual_wizard_button">
+            <field name="name">assign_manual_wizard</field>
+            <field name="string">Manual Assign</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="shipment_in_return_assign_manual_wizard_button_group_stock">
+            <field name="button" ref="shipment_in_return_assign_manual_wizard_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="name">shipment_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_manual_wizard_button">
+            <field name="name">assign_manual_wizard</field>
+            <field name="string">Manual Assign</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="shipment_out_assign_manual_wizard_button_group_stock">
+            <field name="button" ref="shipment_out_assign_manual_wizard_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
+            <field name="inherit" ref="stock.shipment_internal_view_form"/>
+            <field name="name">shipment_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_assign_manual_wizard_button">
+            <field name="name">assign_manual_wizard</field>
+            <field name="string">Manual Assign</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="shipment_internal_assign_manual_wizard_button_group_stock">
+            <field name="button" ref="shipment_internal_assign_manual_wizard_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign_manual">
+            <field name="name">Manual Assign Supplier Return Shipment</field>
+            <field name="wiz_name">stock.shipment.assign.manual</field>
+            <field name="model">stock.shipment.in.return</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_out_assign_manual">
+            <field name="name">Manual Assign Customer Shipment</field>
+            <field name="wiz_name">stock.shipment.assign.manual</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_internal_assign_manual">
+            <field name="name">Manual Assign Internal Shipment</field>
+            <field name="wiz_name">stock.shipment.assign.manual</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_assign_manual_show_view_form">
+            <field name="model">stock.shipment.assign.manual.show</field>
+            <field name="type">form</field>
+            <field name="name">shipment_assign_manual_show_form</field>
+        </record>
+    </data>
+</tryton>

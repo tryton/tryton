@@ -1,0 +1,72 @@
+Version 5.8.2 - 2021-10-15
+* Bug fixes (see mercurial logs for details)
+
+Version 5.8.1 - 2021-01-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Rename mandate and message states from canceled to cancelled
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Merge sepa identifier into eu_at_02
+* Allow to customize message_id
+* Include bank account number on mandate rec_name
+* Allow sepa_mandate to be set on draft payments
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Add initiator identifiers on journal
+* Allow to store SEPA message content on the file system
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Remove unique constraint on SEPA identifier
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Make sepa creditor identifier a party identifier
+* Allow to always use RCUR
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Use value date of camt.054 as clearing date
+* Allow to re-generate message of a payment group
+* Use right sequence type in case of previous rejected payments
+* Add pain.001.003.03 and pain.008.003.02 flavors
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add mandate report
+* Use FRST sequence type only for the first payment ever processed
+* Handle camt.054
+* Add generic SEPA Message
+* Add sequence for Mandate identification
+* Add unique constraint on Mandate identification
+* Add Direct Debit Business to Business scheme
+
+Version 3.2.0 - 2014-04-21
+* Initial release

@@ -1,0 +1,606 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Neraca"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Saldo Akhir"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr ""
+
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr ""
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr ""
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr ""
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Saldo Awal"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr ""
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr ""
+
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Berkas"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr ""
+
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Akun Bank"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "Pihak Perusahaan"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr ""
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Perpindahan Akun"
+
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Asal"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr ""
+
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Perpindahan"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
+msgstr "Informasi"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr ""
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr ""
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr ""
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr ""
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr ""
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr ""
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr ""
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr ""
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr ""
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Perpindahan"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_group"
+msgid "User in statement's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_line"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
+msgid "User in statement's company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr ""
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "report:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "report:account.statement:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "report:account.statement:"
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+msgctxt "report:account.statement:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "report:account.statement:"
+msgid "Date:"
+msgstr "Tanggal:"
+
+msgctxt "report:account.statement:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "report:account.statement:"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "report:account.statement:"
+msgid "Journal:"
+msgstr "Jurnal:"
+
+msgctxt "report:account.statement:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "report:account.statement:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "report:account.statement:"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "report:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Pernyataan"
+
+msgctxt "selection:account.statement,state:"
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr ""
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr ""
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "view:account.statement.origin:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Info Lain"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr ""
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr ""
