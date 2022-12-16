@@ -1,0 +1,20 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tryton
+GenericName=Client for the Tryton Application Platform
+GenericName[ca_ES]=Client per l'aplicació Tryton
+GenericName[de]=Client für die Tryton Applikationsplattform
+GenericName[es_AR]=Cliente para la aplicación Tryton
+GenericName[es_ES]=Cliente para la aplicación Tryton
+GenericName[fr]=Client de la plate-forme applicative Tryton
+Comment=Access Tryton server
+Comment[de]=Verbindet zu einem Tryton Server
+Comment[es_AR]=Acceso al servidor Tryton
+Comment[ca_ES]=Accés al servidor Tryton
+Comment[es_ES]=Acceso al servidor Tryton
+Comment[fr]=Accéder au serveur Tryton
+Exec=tryton
+Icon=tryton-icon
+Terminal=false
+Categories=Office;Finance;

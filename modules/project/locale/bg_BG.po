@@ -1,0 +1,191 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project!"
+msgstr "Задача/проект може да имат само един график за дейност!"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Коментар"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:project.work,effort:"
+msgid "Effort"
+msgstr "Услие"
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Адрес за контакт"
+
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Общо усилия"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Задача"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Редове от график"
+
+msgctxt "help:project.work,effort:"
+msgid "Estimated Effort for this work"
+msgstr "Оценка на усилията за тази работа"
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Проекти"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Проекти"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Задачи"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Задачи"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Управление на проекти"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Проекти"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Проекти"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Задачи"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Задачи"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Дейност"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Управление на проекти"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Приключен"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Отворен"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Проект"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Задача"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Основен"
+
+msgctxt "view:project.work:"
+msgid "Projects"
+msgstr "Проекти"
+
+msgctxt "view:project.work:"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "view:project.work:"
+msgid "Timesheet"
+msgstr "График"
+
+msgctxt "view:project.work:"
+msgid "Work Efforts"
+msgstr "Дейности"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Дейности"
