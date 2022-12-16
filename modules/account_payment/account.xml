@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="move_line_view_list">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_line_form">
+            <field name="name">Lines to Pay</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain"
+                eval="[('account.kind', 'in', ['receivable', 'payable']), ('party', '!=', None), ('reconciliation', '=', None), ('payment_amount', '!=', 0), ('move_state', '=', 'posted')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_list"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_move_line_form_domain_payable">
+            <field name="name">Payable</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"
+                eval="[('account.kind', '=', 'payable'), ['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]]"
+                pyson="1"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_move_line_form_domain_receivable">
+            <field name="name">Receivable</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain"
+                eval="[('account.kind', '=', 'receivable'), ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)]]"
+                pyson="1"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+
+        <menuitem parent="menu_payments" action="act_move_line_form"
+            sequence="10" id="menu_move_line_form"/>
+
+        <record model="ir.model.access" id="access_move_line_payment">
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="group" ref="group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_pay_start_view_form">
+            <field name="model">account.move.line.pay.start</field>
+            <field name="type">form</field>
+            <field name="name">move_line_pay_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_pay_line">
+            <field name="name">Pay Lines</field>
+            <field name="wiz_name">account.move.line.pay</field>
+            <field name="model">account.move.line</field>
+        </record>
+
+        <record model="ir.model.button" id="move_line_pay_button">
+            <field name="name">pay</field>
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="move_line_pay_button_group_payment">
+            <field name="button" ref="move_line_pay_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.property" id="property_payment_group_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'payment_group_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_account_payment_group'))"/>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+    </data>
+</tryton>
