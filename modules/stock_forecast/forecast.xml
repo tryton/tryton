@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_stock_forecast">
+            <field name="name">Stock Forecast</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_forecast">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_forecast">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_forecast_complete">
+            <field name="name">Complete Forecast</field>
+            <field name="wiz_name">stock.forecast.complete</field>
+            <field name="model">stock.forecast</field>
+        </record>
+
+        <record model="ir.ui.view" id="forecast_view_form">
+            <field name="model">stock.forecast</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Forecast" col="4">
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <label name="destination"/>
+                        <field name="destination"/>
+                        <label name="from_date"/>
+                        <field name="from_date"/>
+                        <label name="to_date"/>
+                        <field name="to_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                        <button string="Complete Forecast" type="action"
+                            name="%(wizard_forecast_complete)d"
+                            states="{'readonly': Not(Equal(Eval('state'), 'draft'))}"
+                            colspan="2"
+                            help="Add forecast line based on past data."/>
+                        <field name="lines" colspan="4"/>
+                        <group col="4" colspan="4" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group colspan="2" col="3" id="buttons">
+                                <button string="Reset to Draft" name="draft"
+                                    type="object" icon="tryton-clear"/>
+                                <button string="Cancel" name="cancel"
+                                    type="object" icon="tryton-cancel"/>
+                                <button string="Confirm" name="confirm"
+                                    type="object" icon="tryton-ok"/>
+                            </group>
+                        </group>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="forecast_view_tree">
+            <field name="model">stock.forecast</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Forecasts">
+                        <field name="warehouse"/>
+                        <field name="state"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="company"/>
+                        <field name="create_date" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_forecast_form">
+            <field name="name">Forecasts</field>
+            <field name="res_model">stock.forecast</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-2))]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_forecast_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="forecast_view_tree"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_forecast_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="forecast_view_form"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="50"
+            action="act_forecast_form" id="menu_forecast_form"/>
+
+        <record model="ir.action.act_window" id="act_forecast_form_draft">
+            <field name="name">Draft Forecasts</field>
+            <field name="res_model">stock.forecast</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_forecast_form_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="forecast_view_tree"/>
+            <field name="act_window" ref="act_forecast_form_draft"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_forecast_form_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="forecast_view_form"/>
+            <field name="act_window" ref="act_forecast_form_draft"/>
+        </record>
+        <menuitem parent="menu_forecast_form"
+            action="act_forecast_form_draft" id="menu_forecast_form_draft"
+            sequence="20"/>
+
+        <record model="ir.ui.view" id="forecast_line_view_form">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Forecast Line" col="4">
+                        <label name="forecast"/>
+                        <field name="forecast"/>
+                        <newline/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="minimal_quantity"/>
+                        <field name="minimal_quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="quantity_executed"/>
+                        <field name="quantity_executed"/>
+                        <field name="moves" colspan="4"/>
+                        <field name="unit_digits" invisible="1" colspan="4"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="forecast_line_view_tree">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Forecast Lines" editable="bottom">
+                        <field name="product"/>
+                        <field name="quantity"/>
+                        <field name="minimal_quantity"/>
+                        <field name="uom"/>
+                        <field name="quantity_executed"/>
+                        <field name="forecast"/>
+                        <field name="unit_digits" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="forecast_comlete_ask_view_form">
+            <field name="model">stock.forecast.complete.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Choose dates">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="forecast_comlete_choose_view_form">
+            <field name="model">stock.forecast.complete.choose</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Choose products" col="1" >
+                    <field name="products"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+
+        <record model="ir.model.access" id="access_forecast">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_forecast_line">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_line_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_cancel_button_group_stock_forecast">
+            <field name="button" ref="forecast_cancel_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_draft_button_group_stock_forecast">
+            <field name="button" ref="forecast_draft_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_confirm_button_group_stock_forecast">
+            <field name="button" ref="forecast_confirm_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+    </data>
+</tryton>
