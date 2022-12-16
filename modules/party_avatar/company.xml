@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="company">
+        <record model="ir.ui.view" id="company_view_list">
+            <field name="model">company.company</field>
+            <field name="inherit" ref="company.company_view_list"/>
+            <field name="name">company_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_view_list">
+            <field name="model">company.employee</field>
+            <field name="inherit" ref="company.employee_view_tree"/>
+            <field name="name">employee_list</field>
+        </record>
+    </data>
+</tryton>

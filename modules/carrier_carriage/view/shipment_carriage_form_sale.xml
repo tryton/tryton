@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='cost_used']" position="after">
+        <label name="cost_sale_used"/>
+        <group id="cost_sale_used" col="-1" colspan="3">
+            <field name="cost_sale_used" xexpand="0"/>
+            <field name="cost_sale_currency_used"/>
+        </group>
+    </xpath>
+</data>
