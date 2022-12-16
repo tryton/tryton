@@ -1,0 +1,91 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Aktion"
+
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:dashboard.action,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:dashboard.action,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Benutzer"
+
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Dashboard Aktionen"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Dashboard Anordnung"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Dashboard Aktion"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Rechtecke"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Stapel unten"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Stapel links"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Stapel rechts"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Stapel oben"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Action"
+msgstr "Dashboard Aktion"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Actions"
+msgstr "Dashboard Aktionen"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Dashboard"

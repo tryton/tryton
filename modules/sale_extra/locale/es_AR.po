@@ -1,0 +1,167 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.extra,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.extra,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de moneda"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Fecha final"
+
+msgctxt "field:sale.extra,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Lista de precios"
+
+msgctxt "field:sale.extra,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Importe de venta"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+msgctxt "field:sale.extra,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.extra,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.extra.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.extra.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Gratuito"
+
+msgctxt "field:sale.extra.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoría de UdM de producto"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:sale.extra.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Importe de venta"
+
+msgctxt "field:sale.extra.line,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de unidad"
+
+msgctxt "field:sale.extra.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.extra.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Extras de venta"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Extra de venta"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "Línea extra de venta"
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Line"
+msgstr "Línea extra"
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Lines"
+msgstr "Líneas extra"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Línea de venta"
+
+msgctxt "view:sale.extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "view:sale.extra:"
+msgid "Extras"
+msgstr "Extras"
