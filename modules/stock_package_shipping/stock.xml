@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="package_type_view_form">
+            <field name="model">stock.package.type</field>
+            <field name="inherit" ref="stock_package.package_type_view_form"/>
+            <field name="name">package_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="package_view_form">
+            <field name="model">stock.package</field>
+            <field name="inherit" ref="stock_package.package_view_form"/>
+            <field name="name">package_form</field>
+        </record>
+        <record model="ir.ui.view" id="package_view_tree">
+            <field name="model">stock.package</field>
+            <field name="inherit" ref="stock_package.package_view_tree"/>
+            <field name="name">package_list</field>
+        </record>
+
+        <record model="ir.model.button" id="package_print_shipping_label_button">
+            <field name="name">print_shipping_label</field>
+            <field name="string">Shipping Label</field>
+            <field name="model" search="[('model', '=', 'stock.package')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="name">shipment_out_form</field>
+        </record>
+
+        <record model="ir.model.button"
+                id="shipment_out_create_shipping_button">
+            <field name="name">create_shipping</field>
+            <field name="string">Create Shipping for Packages</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_form"/>
+            <field name="name">shipment_in_return_form</field>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_create_shipping_button">
+            <field name="name">create_shipping</field>
+            <field name="string">Create Shipping for Packages</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_create_shipping_wizard">
+            <field name="name">Create Shipping</field>
+            <field name="wiz_name">stock.shipment.create_shipping</field>
+        </record>
+
+        <record model="ir.action.report" id="report_shipping_label">
+            <field name="name">Shipping Label</field>
+            <field name="model">stock.package</field>
+            <field name="report_name">stock.package.shipping_label</field>
+            <field name="single" eval="True"/>
+            <field name="template_extension">txt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_shipping_label_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.package,-1</field>
+            <field name="action" ref="report_shipping_label"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_shipping_label">
+            <field name="name">Shipping Labels</field>
+            <field name="wiz_name">stock.shipment.print_shipping_label</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_print_shipping_label_keyword_shipment_out">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="wizard_print_shipping_label"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_print_shipping_label_keyword_shipment_in_return">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="wizard_print_shipping_label"/>
+        </record>
+    </data>
+</tryton>
