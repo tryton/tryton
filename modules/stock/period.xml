@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">stock.period</field>
+            <field name="type">form</field>
+            <field name="name">period_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_list">
+            <field name="model">stock.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_list">
+            <field name="name">Periods</field>
+            <field name="res_model">stock.period</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_list"/>
+            <field name="act_window" ref="act_period_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_list"/>
+        </record>
+        <menuitem parent="menu_configuration" sequence="20"
+            action="act_period_list" id="menu_period_list"/>
+
+        <record model="ir.model.access" id="access_period">
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_stock">
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_admin">
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="period_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="period_draft_button_group_stock_admin">
+            <field name="button" ref="period_draft_button"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="period_close_button">
+            <field name="name">close</field>
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="period_close_button_group_stock_admin">
+            <field name="button" ref="period_close_button"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="period_cache_view_form">
+            <field name="model">stock.period.cache</field>
+            <field name="type">form</field>
+            <field name="name">period_cache_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_cache_view_list">
+            <field name="model">stock.period.cache</field>
+            <field name="type">tree</field>
+            <field name="name">period_cache_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_period_cache_cache">
+            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_cache_cache_stock">
+            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_cache_admin">
+            <field name="model" search="[('model', '=', 'stock.period.cache')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

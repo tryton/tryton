@@ -1,0 +1,31 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_allocation_method:"
+msgid "Carrier Cost Allocation Method"
+msgstr "Método asignación coste del transportista"
+
+msgctxt "field:stock.move,unit_shipment_cost:"
+msgid "Unit Shipment Cost"
+msgstr "Coste unidad envío"
+
+msgctxt "field:stock.shipment.in,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:stock.shipment.in,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:stock.shipment.in,cost_currency:"
+msgid "Cost Currency"
+msgstr "Moneda coste"
+
+msgctxt "field:stock.shipment.in,cost_currency_digits:"
+msgid "Cost Currency Digits"
+msgstr "Decimales de la moneda de coste"
+
+msgctxt "selection:carrier,carrier_cost_allocation_method:"
+msgid "By Value"
+msgstr "Por valor"
