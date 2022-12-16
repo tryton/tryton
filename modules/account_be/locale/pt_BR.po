@@ -1,0 +1,81 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.be.vat_customer,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Identificado de Tributos da Empresa"
+
+msgctxt "field:account.be.vat_customer,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.be.vat_customer,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.be.vat_customer,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.be.vat_customer,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos Decimais da moeda"
+
+msgctxt "field:account.be.vat_customer,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.be.vat_customer,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identificador de Tributos da Pessoa"
+
+msgctxt "field:account.be.vat_customer,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:account.be.vat_customer,turnover:"
+msgid "Turnover"
+msgstr "Faturado"
+
+msgctxt "field:account.be.vat_customer,vat:"
+msgid "VAT"
+msgstr "IVA"
+
+msgctxt "field:account.be.vat_customer,write_date:"
+msgid "Write Date"
+msgstr "Data de Edição"
+
+msgctxt "field:account.be.vat_customer,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:account.be.vat_customer.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.be.vat_customer.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ano Fiscal"
+
+msgctxt "field:account.be.vat_customer.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:account.be.vat_customer,name:"
+msgid "Belgium VAT Customer"
+msgstr "IVA de Clientes Belgas"
+
+msgctxt "model:account.be.vat_customer.context,name:"
+msgid "Belgium VAT Customer Context"
+msgstr "Contexto do IVA De Clientes Belgas"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_vat_customer_form"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_vat_customer"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"

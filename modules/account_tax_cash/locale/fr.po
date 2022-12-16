@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.period:"
+msgid ""
+"There are payable/receivable lines from the period \"%(period)s\" not linked"
+" to an invoice."
+msgstr ""
+"Il y a des lignes à payer / à recevoir de la période « %(period)s » qui ne "
+"sont pas liées à une facture."
+
+msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Groupe de taxe au comptant"
+
+msgctxt "field:account.invoice,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Groupe de taxe au comptant"
+
+msgctxt "field:account.invoice.tax.group.cash,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.invoice.tax.group.cash,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.invoice.tax.group.cash,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.tax.group.cash,invoice:"
+msgid "Invoice"
+msgstr "Facture"
+
+msgctxt "field:account.invoice.tax.group.cash,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.invoice.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Groupe de taxe"
+
+msgctxt "field:account.invoice.tax.group.cash,write_date:"
+msgid "Write Date"
+msgstr "Date de modification"
+
+msgctxt "field:account.invoice.tax.group.cash,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.period,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Groupe de taxe au comptant"
+
+msgctxt "field:account.tax.group.cash,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.tax.group.cash,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.tax.group.cash,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.tax.group.cash,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.group.cash,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.tax.group.cash,period:"
+msgid "Period"
+msgstr "Période"
+
+msgctxt "field:account.tax.group.cash,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Groupe de taxe"
+
+msgctxt "field:account.tax.group.cash,write_date:"
+msgid "Write Date"
+msgstr "Date de modification"
+
+msgctxt "field:account.tax.group.cash,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.tax.line,on_cash_basis:"
+msgid "On Cash Basis"
+msgstr "Au comptant"
+
+msgctxt "field:account.tax.line,period:"
+msgid "Period"
+msgstr "Période"
+
+msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
+msgid "Supplier Tax Group On Cash Basis"
+msgstr "Groupe de taxe fournisseur au comptant"
+
+msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this fiscal year."
+msgstr "Le groupe de taxe rapporté au comptant pour cette année fiscale."
+
+msgctxt "help:account.invoice,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this invoice."
+msgstr "Le groupe de taxe rapporté au comptant pour cette facture."
+
+msgctxt "help:account.period,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this period."
+msgstr "Le groupe de taxe rapporté au comptant pour cette période."
+
+msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this supplier."
+msgstr "Le groupe de taxe rapporté au comptant pour ce fournisseur."
+
+msgctxt "model:account.invoice.tax.group.cash,name:"
+msgid "Tax Group on Cash Basis per Invoice"
+msgstr "Le groupe de taxe au comptant par facture"
+
+msgctxt "model:account.tax.group.cash,name:"
+msgid "Tax Group On Cash Basis"
+msgstr "Groupe de taxe au comptant"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Taxes"
+msgstr "Taxes"

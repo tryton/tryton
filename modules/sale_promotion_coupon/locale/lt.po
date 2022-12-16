@@ -1,0 +1,149 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.promotion.coupon.number:"
+msgid "The coupon numbered '%(numbers)s' are duplicated."
+msgstr ""
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.promotion.coupon.number,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr ""
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr ""
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr ""
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr ""

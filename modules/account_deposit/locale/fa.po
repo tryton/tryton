@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr "حساب : \"%s\" برای نهاد/سازمان : \"%s\" دارای سپرده کافی نیست."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has deposit for the "
+"company \"%(company)s\"."
+msgstr ""
+"نهاد/سازمان: \"%s\" نمی تواند پاک شود زیرا برای شرکت : \"%s\" سپرده گذاری "
+"کرده است."
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "سپرده"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "فراخوانی سپرده در صورتحساب"
+
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "یادآوری سپرده"
+
+msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
+msgid "Recall Deposit"
+msgstr "Recall Deposit"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "سپرده"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "سپرده"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "فراخوانی"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "فراخوانی سپرده"
