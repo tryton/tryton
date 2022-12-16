@@ -1,0 +1,243 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:bank.account.number:"
+msgid "Invalid IBAN \"%s\"."
+msgstr "Ungültige IBAN \"%s\"."
+
+msgctxt "field:bank,bic:"
+msgid "BIC"
+msgstr "BIC"
+
+msgctxt "field:bank,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:bank,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:bank,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:bank,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:bank,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:bank,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:bank,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:bank.account,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:bank.account,bank:"
+msgid "Bank"
+msgstr "Bank"
+
+msgctxt "field:bank.account,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:bank.account,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:bank.account,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:bank.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:bank.account,numbers:"
+msgid "Numbers"
+msgstr "Kontonummern"
+
+msgctxt "field:bank.account,owners:"
+msgid "Owners"
+msgstr "Kontoinhaber"
+
+msgctxt "field:bank.account,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:bank.account,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:bank.account,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:bank.account-party.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:bank.account-party.party,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:bank.account-party.party,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:bank.account-party.party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:bank.account-party.party,owner:"
+msgid "Owner"
+msgstr "Kontoinhaber"
+
+msgctxt "field:bank.account-party.party,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:bank.account-party.party,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:bank.account-party.party,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:bank.account.number,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:bank.account.number,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:bank.account.number,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:bank.account.number,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:bank.account.number,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Nummer Kompaktformat"
+
+msgctxt "field:bank.account.number,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:bank.account.number,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:bank.account.number,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:bank.account.number,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:bank.account.number,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:party.party,bank_accounts:"
+msgid "Bank Accounts"
+msgstr "Bankkonten"
+
+msgctxt "help:bank,bic:"
+msgid "Bank/Business Identifier Code"
+msgstr "Bank/BIC (Business Identifier Code)"
+
+msgctxt "model:bank,name:"
+msgid "Bank"
+msgstr "Bank"
+
+msgctxt "model:bank.account,name:"
+msgid "Bank Account"
+msgstr "Bankkonto"
+
+msgctxt "model:bank.account-party.party,name:"
+msgid "Bank Account - Party"
+msgstr "Bankkonto - Partei"
+
+msgctxt "model:bank.account.number,name:"
+msgid "Bank Account Number"
+msgstr "Kontonummer"
+
+msgctxt "model:ir.action,name:act_bank_account_form"
+msgid "Accounts"
+msgstr "Konten"
+
+msgctxt "model:ir.action,name:act_bank_form"
+msgid "Banks"
+msgstr "Banken"
+
+msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
+msgid "Accounts"
+msgstr "Konten"
+
+msgctxt "model:ir.ui.menu,name:menu_bank_form"
+msgid "Banks"
+msgstr "Banken"
+
+msgctxt "model:ir.ui.menu,name:menu_banking"
+msgid "Banking"
+msgstr "Banking"
+
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Bank Administration"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "IBAN"
+msgstr "IBAN"
+
+msgctxt "selection:bank.account.number,type:"
+msgid "Other"
+msgstr "Anderes"
+
+msgctxt "view:party.party:"
+msgid "Banking"
+msgstr "Banking"
+
+msgctxt "view:bank.account.number:"
+msgid "Bank Account Number"
+msgstr "Kontonummer"
+
+msgctxt "view:bank.account.number:"
+msgid "Bank Account Numbers"
+msgstr "Kontonummern"
+
+msgctxt "view:bank.account:"
+msgid "Bank Account"
+msgstr "Bankkonto"
+
+msgctxt "view:bank.account:"
+msgid "Bank Accounts"
+msgstr "Bankkonten"
+
+msgctxt "view:bank:"
+msgid "Bank"
+msgstr "Bank"
+
+msgctxt "view:bank:"
+msgid "Banks"
+msgstr "Banken"

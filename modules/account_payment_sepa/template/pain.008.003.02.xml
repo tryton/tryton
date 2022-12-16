@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.003.02"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.008.003.02
+    pain.008.003.02.xsd"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:py="http://genshi.edgewall.org/">
+    <xi:include href="base.xml"/>
+    <xi:include href="base.003.xml"/>
+    <CstmrDrctDbtInitn>
+        <GrpHdr>
+            <MsgId>${group.number[:35]}</MsgId>
+            <CreDtTm>${datetime.datetime.now().replace(microsecond=0).isoformat()}</CreDtTm>
+            <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
+            <InitgPty>
+                ${PartyIdentification(group.sepa_initiating_party, with_address=False)}
+            </InitgPty>
+        </GrpHdr>
+        <PmtInf py:for="key, payments in group.sepa_payments">
+            <PmtInfId>${group.sepa_group_payment_id(key)[:35]}</PmtInfId>
+            <PmtMtd>DD</PmtMtd>
+            <BtchBookg>${'true' if group.journal.sepa_batch_booking else 'false'}</BtchBookg>
+            <NbOfTxs>${len(payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in payments)}</CtrlSum>
+            <PmtTpInf>
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                </SvcLvl>
+                <LclInstrm>
+                    <Cd>${key['scheme']}</Cd>
+                </LclInstrm>
+                <SeqTp>${key['sequence_type']}</SeqTp>
+                <!-- CtgyPurp -->
+            </PmtTpInf>
+            <ReqdColltnDt>${key['date'].isoformat()}</ReqdColltnDt>
+            <Cdtr>
+                ${PartyIdentification(group.company.party, id=False)}
+            </Cdtr>
+            <CdtrAcct>
+                ${Account(group.journal.sepa_bank_account_number)}
+            </CdtrAcct>
+            <CdtrAgt>
+                ${FinancialInstitution(group.journal.sepa_bank_account_number.account.bank, only_bic=True)}
+            </CdtrAgt>
+            <!-- UltmtCdtr -->
+            <ChrgBr>SLEV</ChrgBr>
+            <CdtrSchmeId>
+                ${PartyIdentification(group.company.party, with_name=False, with_address=False)}
+            </CdtrSchmeId>
+            <DrctDbtTxInf py:for="payment in payments">
+                <PmtId>
+                    <InstrId>${payment.sepa_instruction_id}</InstrId>
+                    <EndToEndId>${payment.sepa_end_to_end_id}</EndToEndId>
+                </PmtId>
+                <InstdAmt py:attrs="{'Ccy': payment.currency.code}">${payment.amount}</InstdAmt>
+                <!-- ChrgBr --> <!-- EPC only at payment information level -->
+                <DrctDbtTx>
+                    <MndtRltdInf py:with="mandate = payment.sepa_mandate">
+                        <MndtId>${mandate.identification}</MndtId>
+                        <DtOfSgntr>${mandate.signature_date.isoformat()}</DtOfSgntr>
+                        <!-- AmdmntInd -->
+                        <!-- AmdmntInfDtls -->
+                        <!-- ElctrncSgntr -->
+                    </MndtRltdInf>
+                    <!-- CdtrSchmeId -->
+                </DrctDbtTx>
+                <!-- UltmtCdtr -->
+                <DbtrAgt>
+                    ${FinancialInstitution(payment.sepa_bank_account_number.account.bank, only_bic=True)}
+                </DbtrAgt>
+                <Dbtr>
+                    ${PartyIdentification(payment.party)}
+                </Dbtr>
+                <DbtrAcct>
+                    ${Account(payment.sepa_bank_account_number, with_ccy=False)}
+                </DbtrAcct>
+                <!-- UltmtDbtr -->
+                <!-- Purp -->
+                <RmtInf py:if="payment.sepa_remittance_information">
+                    <Ustrd>${normalize('NFKD', payment.sepa_remittance_information).encode('ascii', 'replace')[:140]}</Ustrd>
+                    <!-- Strd -->
+                </RmtInf>
+            </DrctDbtTxInf>
+        </PmtInf>
+    </CstmrDrctDbtInitn>
+</Document>

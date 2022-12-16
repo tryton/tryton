@@ -1,0 +1,54 @@
+tryton
+======
+
+The client of the Tryton application platform.
+A three-tiers  high-level general purpose application platform
+written in Python and use Postgresql as database engine.
+It is the core base of an Open Source ERP.
+It provides modularity, scalability and security.
+
+Installing
+----------
+
+See INSTALL
+
+Package Contents
+----------------
+
+  bin/
+      Script for startup.
+
+  doc/
+      sphinx documentation in reStructuredText.
+      To generate the HTML:
+
+        python doc/build.py
+
+  tryton/
+      tryton sources.
+
+Support
+-------
+
+If you encounter any problems with Tryton, please don't hesitate to ask
+questions on the Tryton bug tracker, mailing list, wiki or IRC channel:
+
+  http://bugs.tryton.org/
+  http://groups.tryton.org/
+  http://wiki.tryton.org/
+  irc://irc.freenode.net/tryton
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT
+
+
+For more information please visit the Tryton web site:
+
+  http://www.tryton.org/
