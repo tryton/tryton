@@ -1,0 +1,21 @@
+clone:
+    hg:
+        image: plugins/hg
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        commands:
+            - pip install tox pydot
+            - tox -e "${TOXENV}"
+        volumes:
+             - cache:/root/.cache
+
+matrix:
+    include:
+        - IMAGE: python:3.5
+          TOXENV: py35
+        - IMAGE: python:3.6
+          TOXENV: py36
+        - IMAGE: python:3.7
+          TOXENV: py37
