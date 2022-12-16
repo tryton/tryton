@@ -1,0 +1,426 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.complaint.action:"
+msgid "Action \"%s\" must not have result to be deleted."
+msgstr "La acción \"%s\" no debe tener resultados para ser eliminada."
+
+msgctxt "error:sale.complaint:"
+msgid "Complaint \"%s\" must be in draft to be deleted."
+msgstr "La reclamación \"%s\" debe estar en borrador para ser eliminada."
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Acciones"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Dirección"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.complaint,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.complaint,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Empleado"
+
+msgctxt "field:sale.complaint,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "ID del origen"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Modelo del origen"
+
+msgctxt "field:sale.complaint,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:sale.complaint,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.complaint,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "Reclamación"
+
+msgctxt "field:sale.complaint.action,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.complaint.action,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.complaint.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:sale.complaint.action,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Resultado"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Líneas de venta"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de la unidad"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Precio de la unidad"
+
+msgctxt "field:sale.complaint.action,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.complaint.action,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:sale.complaint.action-sale.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.complaint.action-sale.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.complaint.action-sale.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Línea de venta"
+
+msgctxt "field:sale.complaint.action-sale.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint.action-sale.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.complaint.action-sale.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.complaint.type,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:sale.complaint.type,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:sale.complaint.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:sale.complaint.type,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.complaint.type,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.complaint.type,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Secuencia de reclamación"
+
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines"
+msgstr "Dejarlo vacío para todas las líneas."
+
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity"
+msgstr "Dejarlo vacío para la misma cantidad."
+
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines"
+msgstr "Dejarlo vacío para todas las líneas."
+
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price"
+msgstr "Dejarlo vacío para el mismo precio."
+
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "Reclamaciones"
+
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Reclamaciones de cliente"
+
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "Reclamaciones"
+
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Tipos"
+
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Aprobada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Reclamación de cliente"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Reclamación de cliente"
+
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "Reclamaciones"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Reclamación de cliente"
+
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Tipos"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Reclamación de cliente"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Acción de reclamación de cliente"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "Acción de reclamación de cliente - Línea de factura"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "Acción de reclamación de cliente - Línea de venta"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "Tipo de reclamación de cliente"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Aprobada"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Cancelada"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Rechazada"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Crear factura de abono"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "Crear venta de devolución"
+
+msgctxt "view:sale.complaint.action:"
+msgid "Customer Complaint Action"
+msgstr "Acción reclamación de cliente"
+
+msgctxt "view:sale.complaint.action:"
+msgid "Customer Complaint Actions"
+msgstr "Acciones reclamación de cliente"
+
+msgctxt "view:sale.complaint.type:"
+msgid "Customer Complaint Type"
+msgstr "Tipo de reclamación de cliente"
+
+msgctxt "view:sale.complaint.type:"
+msgid "Customer Complaint Types"
+msgstr "Tipos de reclamación de cliente"
+
+msgctxt "view:sale.complaint:"
+msgid "Approve"
+msgstr "Aprobar"
+
+msgctxt "view:sale.complaint:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reclamación"
+
+msgctxt "view:sale.complaint:"
+msgid "Customer Complaint"
+msgstr "Reclamación de cliente"
+
+msgctxt "view:sale.complaint:"
+msgid "Customer Complaints"
+msgstr "Reclamaciones de cliente"
+
+msgctxt "view:sale.complaint:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "view:sale.complaint:"
+msgid "Reject"
+msgstr "Rechazar"
+
+msgctxt "view:sale.complaint:"
+msgid "Wait"
+msgstr "En espera"
