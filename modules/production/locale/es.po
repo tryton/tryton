@@ -1,0 +1,565 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,boms:"
+msgid "BOMs"
+msgstr "LdM"
+
+msgctxt "field:product.product,lead_times:"
+msgid "Lead Times"
+msgstr "Tiempo de espera"
+
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr "Producible"
+
+msgctxt "field:product.product-production.bom,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:product.product-production.bom,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.template,producible:"
+msgid "Producible"
+msgstr "Producible"
+
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Reservado por"
+
+msgctxt "field:production,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:production,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:production,cost:"
+msgid "Cost"
+msgstr "Coste"
+
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Finalizado por"
+
+msgctxt "field:production,effective_date:"
+msgid "Effective Date"
+msgstr "Fecha efectiva"
+
+msgctxt "field:production,effective_start_date:"
+msgid "Effective Start Date"
+msgstr "Fecha inicio efectiva"
+
+msgctxt "field:production,inputs:"
+msgid "Inputs"
+msgstr "Entradas"
+
+msgctxt "field:production,location:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "field:production,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:production,outputs:"
+msgid "Outputs"
+msgstr "Salidas"
+
+msgctxt "field:production,partially_assigned:"
+msgid "Partially Assigned"
+msgstr "Reservado parcialmente"
+
+msgctxt "field:production,planned_date:"
+msgid "Planned Date"
+msgstr "Fecha estimada"
+
+msgctxt "field:production,planned_start_date:"
+msgid "Planned Start Date"
+msgstr "Fecha inicio estimada"
+
+msgctxt "field:production,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production,reference:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr "Ejecutado por"
+
+msgctxt "field:production,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:production,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:production,uom_category:"
+msgid "Uom Category"
+msgstr "Categoría de UdM"
+
+msgctxt "field:production,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:production.bom,inputs:"
+msgid "Inputs"
+msgstr "Entradas"
+
+msgctxt "field:production.bom,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:production.bom,output_products:"
+msgid "Output Products"
+msgstr "Productos salida"
+
+msgctxt "field:production.bom,outputs:"
+msgid "Outputs"
+msgstr "Salidas"
+
+msgctxt "field:production.bom.input,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:production.bom.input,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.bom.input,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.bom.input,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:production.bom.input,uom_category:"
+msgid "Uom Category"
+msgstr "Categoría de UdM"
+
+msgctxt "field:production.bom.output,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:production.bom.output,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.bom.output,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.bom.output,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:production.bom.output,uom_category:"
+msgid "Uom Category"
+msgstr "Categoría de UdM"
+
+msgctxt "field:production.bom.tree,childs:"
+msgid "Childs"
+msgstr "Hijos"
+
+msgctxt "field:production.bom.tree,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.bom.tree,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.bom.tree,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:production.bom.tree.open.start,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:production.bom.tree.open.start,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:production.bom.tree.open.start,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.bom.tree.open.start,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.bom.tree.open.start,uom:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:production.bom.tree.open.tree,bom_tree:"
+msgid "BOM Tree"
+msgstr "Árbol LdM"
+
+msgctxt "field:production.configuration,production_sequence:"
+msgid "Production Sequence"
+msgstr "Secuencia de producción"
+
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr "Secuencia de producción"
+
+msgctxt "field:production.lead_time,bom:"
+msgid "BOM"
+msgstr "Lista de material"
+
+msgctxt "field:production.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "Tiempo de espera"
+
+msgctxt "field:production.lead_time,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.location,production_location:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Salida de la producción"
+
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Recogida de la producción"
+
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr "Precio de coste actualizado"
+
+msgctxt "field:stock.move,production_input:"
+msgid "Production Input"
+msgstr "Entrada producción"
+
+msgctxt "field:stock.move,production_output:"
+msgid "Production Output"
+msgstr "Salida producción"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Donde se almacenan los productos producidos.\n"
+"Dejar en blanco para utilizar la zona de almacenamiento del almacén."
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Desde donde se recogen los componentes de la producción.\n"
+"Dejar en blanco para utilizar la zona de almacenamiento del almacén."
+
+msgctxt "model:ir.action,name:act_bom_form"
+msgid "BOM"
+msgstr "Listas de materiales"
+
+msgctxt "model:ir.action,name:act_bom_list"
+msgid "BOMs"
+msgstr "Listas de materiales"
+
+msgctxt "model:ir.action,name:act_product_in_bom"
+msgid "BOMs"
+msgstr "Listas de materiales"
+
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
+
+msgctxt "model:ir.action,name:act_production_configuration_form"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.action,name:act_production_list"
+msgid "Productions"
+msgstr "Producciones"
+
+msgctxt "model:ir.action,name:wizard_bom_tree_open"
+msgid "BOM Tree"
+msgstr "Árbol de la lista de materiales"
+
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Reservar la producción"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
+msgid "As Inputs"
+msgstr "Como entradas"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
+msgid "As Outputs"
+msgstr "Como salidas"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr "Reservado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_available"
+msgid "Partially Assigned"
+msgstr "Reservado parcialmente"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr "Solicitudes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr "En ejecución"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.message,text:msg_missing_product_list_price"
+msgid ""
+"The product \"%(product)s\" on production \"%(production)s\" does not have "
+"any list price defined."
+msgstr ""
+"El producto \"%(product)s\" de la producción \"%(production)s\" no tiene "
+"ningún precio de lista definido."
+
+msgctxt "model:ir.message,text:msg_recursive_bom"
+msgid "You cannot create a recursive BOM for product \"%(product)s\"."
+msgstr "No puede crear una LdM recursiva para el producto \"%(product)s\"."
+
+msgctxt "model:ir.model.button,confirm:production_done_button"
+msgid "Are you sure you want to complete the production?"
+msgstr "¿Estás seguro que quieres finalizar la producción?"
+
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Reservar"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Finalizar"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Restaurar con la LdM"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Ejecutar"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.sequence,name:sequence_production"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_production"
+msgid "Production"
+msgstr "Producciones"
+
+msgctxt "model:ir.ui.menu,name:menu_bom_list"
+msgid "BOMs"
+msgstr "Listas de materiales"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_production"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
+
+msgctxt "model:ir.ui.menu,name:menu_production_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_production_list"
+msgid "Productions"
+msgstr "Producciones"
+
+msgctxt "model:product.product-production.bom,name:"
+msgid "Product - BOM"
+msgstr "Producto - LdM"
+
+msgctxt "model:production,name:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "model:production.bom,name:"
+msgid "Bill of Material"
+msgstr "Lista de Material"
+
+msgctxt "model:production.bom.input,name:"
+msgid "Bill of Material Input"
+msgstr "Entrada Lista de Material"
+
+msgctxt "model:production.bom.output,name:"
+msgid "Bill of Material Output"
+msgstr "Salida Lista de Material"
+
+msgctxt "model:production.bom.tree,name:"
+msgid "BOM Tree"
+msgstr "Árbol LdM"
+
+msgctxt "model:production.bom.tree.open.start,name:"
+msgid "Open BOM Tree"
+msgstr "Abrir árbol BOM"
+
+msgctxt "model:production.bom.tree.open.tree,name:"
+msgid "Open BOM Tree"
+msgstr "Abrir árbol BOM"
+
+msgctxt "model:production.configuration,name:"
+msgid "Production Configuration"
+msgstr "Configuración de la producción"
+
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr "Configuración de la secuencia de producción"
+
+msgctxt "model:production.lead_time,name:"
+msgid "Production Lead Time"
+msgstr "Tiempo de espera de la producción"
+
+msgctxt "model:res.group,name:group_production"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "model:res.group,name:group_production_admin"
+msgid "Production Administration"
+msgstr "Administración de producción"
+
+msgctxt "model:stock.location,name:location_production"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Assign Productions"
+msgstr "Reserva las producciones"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Replanificar las producciones"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr "Establecer el coste desde los movimientos"
+
+msgctxt "selection:production,state:"
+msgid "Assigned"
+msgstr "Reservada"
+
+msgctxt "selection:production,state:"
+msgid "Cancelled"
+msgstr "Cancelada"
+
+msgctxt "selection:production,state:"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "selection:production,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:production,state:"
+msgid "Request"
+msgstr "Solicitud"
+
+msgctxt "selection:production,state:"
+msgid "Running"
+msgstr "En ejecución"
+
+msgctxt "selection:production,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "view:product.template:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "view:production.bom:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "view:production:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "view:production:"
+msgid "Other Info"
+msgstr "Información adicional"
+
+msgctxt "wizard_button:production.bom.tree.open,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:production.bom.tree.open,start,tree:"
+msgid "OK"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,end:"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "wizard_button:production.bom.tree.open,tree,start:"
+msgid "Change"
+msgstr "Cambiar"
