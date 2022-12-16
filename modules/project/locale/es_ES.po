@@ -1,0 +1,190 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:0"
+msgid "There should be only one timesheet work by task/project!"
+msgstr "Solo debe haber un parte de trabajo por tarea/proyecto"
+
+msgctxt "field:project.work,children:0"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:project.work,comment:0"
+msgid "Comment"
+msgstr "Comentario"
+
+msgctxt "field:project.work,effort:0"
+msgid "Effort"
+msgstr "Esfuerzo"
+
+msgctxt "field:project.work,parent:0"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:project.work,party:0"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:project.work,party_address:0"
+msgid "Contact Address"
+msgstr "Dirección de contacto"
+
+msgctxt "field:project.work,rec_name:0"
+msgid "Name"
+msgstr "Nombre"
+
+#, fuzzy
+msgctxt "field:project.work,sequence:0"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:project.work,state:0"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:project.work,total_effort:0"
+msgid "Total Effort"
+msgstr "Esfuerzo total"
+
+msgctxt "field:project.work,type:0"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:project.work,work:0"
+msgid "Work"
+msgstr "Actividad"
+
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid "Timesheet Lines"
+msgstr "Lineas de parte de trabajo"
+
+msgctxt "help:project.work,effort:0"
+msgid "Estimated Effort for this work"
+msgstr "El esfuerzo estimado para esta actividad"
+
+msgctxt "help:project.work,total_effort:0"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Esfuerzo total estimado para esta actividad y sus subactividades"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_form"
+msgid "Works"
+msgstr "Actividades"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Actividades"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Actividades"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Gestión de proyecto"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Actividades"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Actividades"
+
+msgctxt "model:project.work,name:0"
+msgid "Work Effort"
+msgstr "Actividades"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administración de proyecto"
+
+msgctxt "selection:project.work,state:0"
+msgid "Done"
+msgstr "Terminada"
+
+msgctxt "selection:project.work,state:0"
+msgid "Opened"
+msgstr "Abierto"
+
+msgctxt "selection:project.work,type:0"
+msgid "Project"
+msgstr "Proyecto"
+
+msgctxt "selection:project.work,type:0"
+msgid "Task"
+msgstr "Tarea"
+
+msgctxt "view:project.work:0"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "view:project.work:0"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:0"
+msgid "Other Info"
+msgstr "Información adicional"
+
+msgctxt "view:project.work:0"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "view:project.work:0"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "view:project.work:0"
+msgid "Timesheet"
+msgstr "Parte de trabajo"
+
+msgctxt "view:project.work:0"
+msgid "Work"
+msgstr "Actividad"
+
+msgctxt "view:project.work:0"
+msgid "Work Efforts"
+msgstr "Actividades"
+
+msgctxt "view:project.work:0"
+msgid "Works"
+msgstr "Actividades"
+
+msgctxt "view:project.work:0"
+msgid "Works Efforts"
+msgstr "Actividades"
