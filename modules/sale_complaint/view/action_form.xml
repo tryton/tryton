@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="complaint"/>
+    <field name="complaint" colspan="3"/>
+    <label name="action"/>
+    <field name="action"/>
+    <label name="result"/>
+    <field name="result"/>
+    <field name="sale_lines" colspan="4"/>
+    <field name="invoice_lines" colspan="4"/>
+    <group colspan="4" col="6" id="line">
+        <label name="quantity"/>
+        <field name="quantity"/>
+        <label name="unit"/>
+        <field name="unit"/>
+        <label name="unit_price"/>
+        <field name="unit_price"/>
+    </group>
+</form>
