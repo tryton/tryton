@@ -1,0 +1,48 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Koszt"
+
+#, fuzzy
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "Cyfry waluty"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "Cyfry waluty"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Cena sprzedaży"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Produkt"
+
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Wiersze zakupu"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "Przychód"
+
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr ""
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Purchases"
+msgstr "Zakupy"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "Projekt"
