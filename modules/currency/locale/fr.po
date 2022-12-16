@@ -1,0 +1,128 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Chiffres"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Code numérique"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Taux Actuel"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Taux"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Facteur d'Arrondi"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Symbole"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Taux"
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "Le code pays ISO à 3 caractères."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "Le nombre de chiffres à afficher après le séparateur de décimal."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "L'identifiant principal de la devise."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "Le code ISO à 3 chiffres de la devise."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Ajouter un taux d'échange flottant pour la devise."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "Le montant minimal qui peut être représenté dans cette devise."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "Le symbole utilisé pour le formatage de la devise."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "La devise sur la quelle le taux s'applique."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "Depuis quand le taux s'applique."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "Le taux d'échange flottant utilisé pour convertir la devise."
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Taux de devise"
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "Devises"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Un taux de devise doit être positif."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Une devise ne peut avoir qu'un seul taux par date."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+"Aucun taux trouvé pour la devise « %(currency)s » à la date « %(date)s »."
+
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "Devises"
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "Administration des devises"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Taux"
