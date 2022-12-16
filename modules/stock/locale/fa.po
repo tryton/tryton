@@ -1,0 +1,2965 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,delivery:"
+msgid "Delivery"
+msgstr "تحویل"
+
+msgctxt "field:party.party,customer_location:"
+msgid "Customer Location"
+msgstr "محل مشتری"
+
+msgctxt "field:party.party,locations:"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "field:party.party,supplier_location:"
+msgid "Supplier Location"
+msgstr "محل تامین کننده"
+
+msgctxt "field:party.party.location,customer_location:"
+msgid "Customer Location"
+msgstr "محل مشتری"
+
+msgctxt "field:party.party.location,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:party.party.location,supplier_location:"
+msgid "Supplier Location"
+msgstr "محل تامین کننده"
+
+msgctxt "field:product.by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+msgctxt "field:product.by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,cost_price:"
+msgid "New Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:product.cost_price.revision,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,template:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,cost_price:"
+msgid "New Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:product.product,cost_value:"
+msgid "Cost Value"
+msgstr "مقدار هزینه"
+
+msgctxt "field:product.product,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "مقدار پیش بینی شده"
+
+msgctxt "field:product.product,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:product.recompute_cost_price.start,from_:"
+msgid "From"
+msgstr ""
+
+msgctxt "field:product.template,cost_value:"
+msgid "Cost Value"
+msgstr "مقدار هزینه"
+
+msgctxt "field:product.template,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "مقدار پیش بینی شده"
+
+msgctxt "field:product.template,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt "field:res.user,warehouse:"
+msgid "Current Warehouse"
+msgstr "انبار"
+
+msgctxt "field:stock.configuration,inventory_sequence:"
+msgid "Inventory Sequence"
+msgstr "ادامه فهرست دارایی"
+
+msgctxt "field:stock.configuration,shipment_in_return_sequence:"
+msgid "Supplier Return Shipment Sequence"
+msgstr "ادامه ارچاع محموله مرجوعی به تأمیین کننده"
+
+msgctxt "field:stock.configuration,shipment_in_sequence:"
+msgid "Supplier Shipment Sequence"
+msgstr "ادامه محموله تأمیین کننده"
+
+msgctxt "field:stock.configuration,shipment_internal_sequence:"
+msgid "Internal Shipment Sequence"
+msgstr "ادامه حمل محموله داخلی"
+
+msgctxt "field:stock.configuration,shipment_internal_transit:"
+msgid "Internal Shipment Transit"
+msgstr "حمل ونقل محموله داخلی"
+
+msgctxt "field:stock.configuration,shipment_out_return_sequence:"
+msgid "Customer Return Shipment Sequence"
+msgstr "ادامه محموله مرجوعی مشتری"
+
+msgctxt "field:stock.configuration,shipment_out_sequence:"
+msgid "Customer Shipment Sequence"
+msgstr "ادامه حمل و نقل مشتری"
+
+msgctxt "field:stock.configuration.location,shipment_internal_transit:"
+msgid "Internal Shipment Transit"
+msgstr "حمل ونقل محموله داخلی"
+
+msgctxt "field:stock.configuration.sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.configuration.sequence,inventory_sequence:"
+msgid "Inventory Sequence"
+msgstr "ادامه فهرست دارایی"
+
+msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
+msgid "Supplier Return Shipment Sequence"
+msgstr "ادامه محموله مرجوعی به تأمیین کننده"
+
+msgctxt "field:stock.configuration.sequence,shipment_in_sequence:"
+msgid "Supplier Shipment Sequence"
+msgstr "ادامه محموله تأمیین کننده"
+
+msgctxt "field:stock.configuration.sequence,shipment_internal_sequence:"
+msgid "Internal Shipment Sequence"
+msgstr "ادامه محموله داخلی"
+
+msgctxt "field:stock.configuration.sequence,shipment_out_return_sequence:"
+msgid "Customer Return Shipment Sequence"
+msgstr "ادامه محموله مرجوعی مشتری"
+
+msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
+msgid "Customer Shipment Sequence"
+msgstr "ادامه حمل و نقل مشتری"
+
+msgctxt "field:stock.inventory,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.inventory,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:stock.inventory,empty_quantity:"
+msgid "Empty Quantity"
+msgstr "مقدار خالی"
+
+msgctxt "field:stock.inventory,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:stock.inventory,location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.inventory,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.inventory,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.inventory.count.quantity,line:"
+msgid "Line"
+msgstr "سطر"
+
+msgctxt "field:stock.inventory.count.quantity,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_added:"
+msgid "Added Quantity"
+msgstr "مقدار افزوده شده"
+
+msgctxt "field:stock.inventory.count.quantity,total_quantity:"
+msgid "Total Quantity"
+msgstr "تعداد کل"
+
+msgctxt "field:stock.inventory.count.quantity,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:stock.inventory.count.quantity,uom:"
+msgid "UOM"
+msgstr "واحد اندازی گیری"
+
+msgctxt "field:stock.inventory.count.search,search:"
+msgid "Search"
+msgstr "جستجو"
+
+msgctxt "field:stock.inventory.count.search,search_model:"
+msgid "Search Model"
+msgstr "مدل جستجو"
+
+msgctxt "field:stock.inventory.line,expected_quantity:"
+msgid "Expected Quantity"
+msgstr "مقدار مورد انتظار"
+
+msgctxt "field:stock.inventory.line,inventory:"
+msgid "Inventory"
+msgstr "دفتر دارایی"
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,inventory_date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,inventory_location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.inventory.line,inventory_state:"
+msgid "Inventory State"
+msgstr "وضعیت دفتر دارایی"
+
+msgctxt "field:stock.inventory.line,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.inventory.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.inventory.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.inventory.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:stock.inventory.line,uom:"
+msgid "UOM"
+msgstr "واحد اندازی گیری"
+
+msgctxt "field:stock.location,address:"
+msgid "Address"
+msgstr "آدرس"
+
+msgctxt "field:stock.location,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:stock.location,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:stock.location,cost_value:"
+msgid "Cost Value"
+msgstr "مقدار هزینه"
+
+msgctxt "field:stock.location,flat_childs:"
+msgid "Flat Children"
+msgstr "مجموعه یکنواخت"
+
+msgctxt "field:stock.location,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "مقدار پیش بینی شده"
+
+msgctxt "field:stock.location,input_location:"
+msgid "Input"
+msgstr "ورودی"
+
+msgctxt "field:stock.location,left:"
+msgid "Left"
+msgstr "چپ"
+
+#, fuzzy
+msgctxt "field:stock.location,lost_found_location:"
+msgid "Lost and Found"
+msgstr "گمشده ها و یافته ها"
+
+msgctxt "field:stock.location,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:stock.location,output_location:"
+msgid "Output"
+msgstr "خروجی"
+
+msgctxt "field:stock.location,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:stock.location,picking_location:"
+msgid "Picking"
+msgstr "چیدن"
+
+msgctxt "field:stock.location,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.location,right:"
+msgid "Right"
+msgstr "راست"
+
+msgctxt "field:stock.location,storage_location:"
+msgid "Storage"
+msgstr "مخزن"
+
+msgctxt "field:stock.location,type:"
+msgid "Location type"
+msgstr "نوع موقعیت"
+
+msgctxt "field:stock.location,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+#, fuzzy
+msgctxt "field:stock.location,waste_locations:"
+msgid "Waste Locations"
+msgstr "مکان حمل و نقل"
+
+#, fuzzy
+msgctxt "field:stock.location,waste_warehouses:"
+msgid "Waste Warehouses"
+msgstr "انبار"
+
+msgctxt "field:stock.location.lead_time,lead_time:"
+msgid "Lead Time"
+msgstr "زمان پیشبرد"
+
+msgctxt "field:stock.location.lead_time,warehouse_from:"
+msgid "Warehouse From"
+msgstr "از انبار"
+
+msgctxt "field:stock.location.lead_time,warehouse_to:"
+msgid "Warehouse To"
+msgstr "به انبار"
+
+#, fuzzy
+msgctxt "field:stock.location.waste,location:"
+msgid "Waste Location"
+msgstr "مکان حمل و نقل"
+
+#, fuzzy
+msgctxt "field:stock.location.waste,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:stock.move,assignation_required:"
+msgid "Assignation Required"
+msgstr "تخصیص ضروری است"
+
+msgctxt "field:stock.move,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.move,cost_price:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:stock.move,cost_price_required:"
+msgid "Cost Price Required"
+msgstr "قیمت واحد مورد نیاز"
+
+msgctxt "field:stock.move,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:stock.move,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.move,from_location:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "field:stock.move,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "مقدار داخلی"
+
+msgctxt "field:stock.move,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:stock.move,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.move,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.move,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "دسته بندی واحد اندازه گیری محصول"
+
+msgctxt "field:stock.move,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.move,shipment:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "field:stock.move,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.move,to_location:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "field:stock.move,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:stock.move,unit_price:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+#, fuzzy
+msgctxt "field:stock.move,unit_price_company:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "field:stock.move,unit_price_required:"
+msgid "Unit Price Required"
+msgstr "قیمت واحد مورد نیاز"
+
+#, fuzzy
+msgctxt "field:stock.move,unit_price_updated:"
+msgid "Unit Price Updated"
+msgstr "قیمت واحد"
+
+msgctxt "field:stock.move,uom:"
+msgid "Uom"
+msgstr "واحد اندازی گیری"
+
+msgctxt "field:stock.period,caches:"
+msgid "Caches"
+msgstr "مخازن نگهداری"
+
+msgctxt "field:stock.period,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.period,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:stock.period,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.period.cache,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "مقدار داخلی"
+
+msgctxt "field:stock.period.cache,location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.period.cache,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+msgctxt "field:stock.period.cache,product:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt ""
+"field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr "منطقه ذخیره سازی"
+
+msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_delta:"
+msgid "Cumulative Quantity Delta"
+msgstr ""
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_end:"
+msgid "Cumulative Quantity End"
+msgstr ""
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_start:"
+msgid "Cumulative Quantity Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,move:"
+msgid "Move"
+msgstr "جابجایی ها"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.products_by_locations.context,forecast_date:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+msgctxt "field:stock.products_by_locations.context,stock_date_end:"
+msgid "At Date"
+msgstr "در تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.shipment.assign.partial,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.in,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.in,contact_address:"
+msgid "Contact Address"
+msgstr "آدرس تماس"
+
+msgctxt "field:stock.shipment.in,done_by:"
+msgid "Done By"
+msgstr "انجام شد توسط"
+
+msgctxt "field:stock.shipment.in,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.in,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "جابجایی های ورودی"
+
+msgctxt "field:stock.shipment.in,inventory_moves:"
+msgid "Inventory Moves"
+msgstr "دفتر دارایی جابجایی ها"
+
+msgctxt "field:stock.shipment.in,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.in,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr "مبداء"
+
+msgctxt "field:stock.shipment.in,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.in,received_by:"
+msgid "Received By"
+msgstr "دریافت شده توسط"
+
+msgctxt "field:stock.shipment.in,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.in,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.in,supplier:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:stock.shipment.in,supplier_location:"
+msgid "Supplier Location"
+msgstr "محل تامین کننده"
+
+msgctxt "field:stock.shipment.in,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:stock.shipment.in,warehouse_input:"
+msgid "Warehouse Input"
+msgstr "انبار ورودی"
+
+msgctxt "field:stock.shipment.in,warehouse_storage:"
+msgid "Warehouse Storage"
+msgstr "انبار ذخیره سازی"
+
+msgctxt "field:stock.shipment.in.return,assigned_by:"
+msgid "Assigned By"
+msgstr "اختصاص داده شده توسط"
+
+msgctxt "field:stock.shipment.in.return,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.in.return,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:stock.shipment.in.return,done_by:"
+msgid "Done By"
+msgstr "انجام شد توسط"
+
+msgctxt "field:stock.shipment.in.return,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.in.return,from_location:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "field:stock.shipment.in.return,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.in.return,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr "مبداء"
+
+msgctxt "field:stock.shipment.in.return,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.in.return,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.in.return,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.in.return,supplier:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:stock.shipment.in.return,to_location:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "field:stock.shipment.internal,assigned_by:"
+msgid "Received By"
+msgstr "دریافت شده توسط"
+
+msgctxt "field:stock.shipment.internal,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.internal,done_by:"
+msgid "Done By"
+msgstr "انجام شد توسط"
+
+msgctxt "field:stock.shipment.internal,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.internal,effective_start_date:"
+msgid "Effective Start Date"
+msgstr "شروع تاریخ موثر"
+
+msgctxt "field:stock.shipment.internal,from_location:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "field:stock.shipment.internal,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "جابجایی های ورودی"
+
+msgctxt "field:stock.shipment.internal,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.internal,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.shipment.internal,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "جابجایی های خروجی"
+
+msgctxt "field:stock.shipment.internal,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.internal,planned_start_date:"
+msgid "Planned Start Date"
+msgstr "شروع تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.internal,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.internal,shipped_by:"
+msgid "Shipped By"
+msgstr "حمل شد توسط"
+
+msgctxt "field:stock.shipment.internal,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.internal,to_location:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "field:stock.shipment.internal,transit_location:"
+msgid "Transit Location"
+msgstr "مکان حمل و نقل"
+
+msgctxt "field:stock.shipment.out,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.out,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:stock.shipment.out,customer_location:"
+msgid "Customer Location"
+msgstr "محل مشتری"
+
+msgctxt "field:stock.shipment.out,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:stock.shipment.out,done_by:"
+msgid "Done By"
+msgstr "انجام شد توسط"
+
+msgctxt "field:stock.shipment.out,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.out,inventory_moves:"
+msgid "Inventory Moves"
+msgstr "دفتر دارایی جابجایی"
+
+msgctxt "field:stock.shipment.out,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.out,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr "مبداء"
+
+msgctxt "field:stock.shipment.out,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "جابجایی های خروجی"
+
+msgctxt "field:stock.shipment.out,packed_by:"
+msgid "Packed By"
+msgstr "بسته بندی شده توسط"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,picked_by:"
+msgid "Picked By"
+msgstr "بسته بندی شده توسط"
+
+msgctxt "field:stock.shipment.out,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.out,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.out,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.out,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:stock.shipment.out,warehouse_output:"
+msgid "Warehouse Output"
+msgstr "انبار خروجی"
+
+msgctxt "field:stock.shipment.out,warehouse_storage:"
+msgid "Warehouse Storage"
+msgstr "انبار ذخیره سازی"
+
+msgctxt "field:stock.shipment.out.return,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.out.return,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:stock.shipment.out.return,customer_location:"
+msgid "Customer Location"
+msgstr "محل مشتری"
+
+msgctxt "field:stock.shipment.out.return,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:stock.shipment.out.return,done_by:"
+msgid "Done By"
+msgstr "انجام شد توسط"
+
+msgctxt "field:stock.shipment.out.return,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.out.return,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "جابجایی های ورودی"
+
+msgctxt "field:stock.shipment.out.return,inventory_moves:"
+msgid "Inventory Moves"
+msgstr "دفتر دارایی جابجایی"
+
+msgctxt "field:stock.shipment.out.return,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.out.return,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr "مبداء"
+
+msgctxt "field:stock.shipment.out.return,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.out.return,received_by:"
+msgid "Received By"
+msgstr "دریافت شده توسط"
+
+msgctxt "field:stock.shipment.out.return,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.out.return,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.out.return,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:stock.shipment.out.return,warehouse_input:"
+msgid "Warehouse Input"
+msgstr "انبار ورودی"
+
+msgctxt "field:stock.shipment.out.return,warehouse_storage:"
+msgid "Warehouse Storage"
+msgstr "انبار ذخیره سازی"
+
+msgctxt "help:party.address,delivery:"
+msgid "Check to send deliveries to the address."
+msgstr "برای ارسال تحویل ها به آدرس ها، بررسی کنید."
+
+msgctxt "help:party.party,customer_location:"
+msgid "The default destination location for stock sent to the party."
+msgstr "مکان مقصد پیش فرض هنگام ارسال کردن محصولات به نهاد/سازمان."
+
+msgctxt "help:party.party,supplier_location:"
+msgid "The default source location for stock received from the party."
+msgstr "مکان منبع پیش فرض هنگام دریافت کردن محصولات از نهاد/سازمان."
+
+msgctxt "help:party.party.location,customer_location:"
+msgid "The default destination location for stock sent to the party."
+msgstr "مکان مقصد پیش فرض هنگام ارسال کردن محصولات به نهاد/سازمان."
+
+msgctxt "help:party.party.location,supplier_location:"
+msgid "The default source location for stock received from the party."
+msgstr "مکان منبع پیش فرض هنگام دریافت کردن محصولات از نهاد/سازمان."
+
+msgctxt "help:product.by_location.context,forecast_date:"
+msgid ""
+"The date for which the stock quantity is calculated.\n"
+"* An empty value calculates as far ahead as possible.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"تاریخی که مقدار محصولات محاسبه می شود.\n"
+"* مقدار خالی محاسبه شده تا آنجا که امکان دارد.\n"
+"* یک تاریخ در گذشته مقادیر تاریخی را ارائه می دهد."
+
+msgctxt "help:product.cost_price.revision,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
+msgctxt "help:product.modify_cost_price.start,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
+msgctxt "help:product.product,cost_value:"
+msgid "The value of the stock in the location."
+msgstr "ارزش محصولات در محل."
+
+msgctxt "help:product.product,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr "مقدار محصولاتی که انتظار می رود در محل باشد."
+
+msgctxt "help:product.product,quantity:"
+msgid "The amount of stock in the location."
+msgstr "مقدار محصولات در محل."
+
+msgctxt "help:product.template,cost_value:"
+msgid "The value of the stock in the location."
+msgstr "ارزش محصولات در محل."
+
+msgctxt "help:product.template,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr "مقدار محصولاتی که انتظار می رود در محل باشد."
+
+msgctxt "help:product.template,quantity:"
+msgid "The amount of stock in the location."
+msgstr "مقدار محصولات در محل."
+
+#, fuzzy
+msgctxt "help:res.user,warehouse:"
+msgid "The warehouse that the user works at."
+msgstr "جابجایی هایی که سهام را خارج می کند."
+
+msgctxt "help:stock.configuration,inventory_sequence:"
+msgid "Used to generate the number given to inventories."
+msgstr "برای تولید تعداد داده شده به موجودی استفاده می شود."
+
+msgctxt "help:stock.configuration,shipment_in_return_sequence:"
+msgid "Used to generate the number given to supplier return shipments."
+msgstr ""
+"برای تولید تعداد داده شده برای برگشت کالا به تامین کننده استفاده می شود."
+
+msgctxt "help:stock.configuration,shipment_in_sequence:"
+msgid "Used to generate the number given to supplier shipments."
+msgstr "برای تولید تعداد داده شده برای محموله های تامین کننده استفاده میشود."
+
+msgctxt "help:stock.configuration,shipment_internal_sequence:"
+msgid "Used to generate the number given to internal shipments."
+msgstr "برای تولید تعداد داده شده برای محموله های داخلی استفاده میشود."
+
+msgctxt "help:stock.configuration,shipment_internal_transit:"
+msgid ""
+"The default location used for stock that is in transit between warehouses."
+msgstr ""
+"محل پیش فرض مورد استفاده برای محصولات است که در حال حمل بین انبارها است."
+
+msgctxt "help:stock.configuration,shipment_out_return_sequence:"
+msgid "Used to generate the number given to customer return shipments."
+msgstr "برای تولید تعداد داده شده برای برگشت کالا به مشتری استفاده می شود."
+
+msgctxt "help:stock.configuration,shipment_out_sequence:"
+msgid "Used to generate the number given to customer shipments."
+msgstr "برای تولید تعداد داده شده برای کالا به مشتری استفاده می شود."
+
+msgctxt "help:stock.configuration.location,shipment_internal_transit:"
+msgid ""
+"The default location used for stock that is in transit between warehouses."
+msgstr ""
+"محل پیش فرض مورد استفاده برای محصولات است که در حال حمل بین انبارها است."
+
+msgctxt "help:stock.inventory,company:"
+msgid "The company the inventory is associated with."
+msgstr "شرکت موجودی مرتبط با آن است."
+
+msgctxt "help:stock.inventory,date:"
+msgid "The date of the stock count."
+msgstr "تاریخ شمارش اموال."
+
+#, fuzzy
+msgctxt "help:stock.inventory,empty_quantity:"
+msgid "How lines without a quantity are handled."
+msgstr "چگونه سطرهای بدون مقدار مورد استفاده قرار می گیرند."
+
+msgctxt "help:stock.inventory,location:"
+msgid "The location inventoried."
+msgstr "محل انبار شده است."
+
+msgctxt "help:stock.inventory,number:"
+msgid "The main identifier for the inventory."
+msgstr "شناسه اصلی موجودی."
+
+msgctxt "help:stock.inventory,state:"
+msgid "The current state of the inventory."
+msgstr "وضعیت جاری موجودی."
+
+msgctxt "help:stock.inventory.count.quantity,quantity_added:"
+msgid "The quantity to add to the existing count."
+msgstr "مقدار اضافه کردن به تعداد موجود."
+
+msgctxt "help:stock.inventory.count.quantity,total_quantity:"
+msgid "The total amount of the line counted so far."
+msgstr "مقدار کل سطر که تا کنون محاسبه شده است."
+
+msgctxt "help:stock.inventory.count.quantity,uom:"
+msgid "The unit in which the quantities are specified."
+msgstr "واحد که مقدار آن مشخص شده است."
+
+msgctxt "help:stock.inventory.count.search,search:"
+msgid "The item that's counted."
+msgstr "مورد شمارش شده است."
+
+msgctxt "help:stock.inventory.line,expected_quantity:"
+msgid "The quantity the system calculated should be in the location."
+msgstr "مقدار سیستم محاسبه شده باید در محل باشد."
+
+msgctxt "help:stock.inventory.line,inventory:"
+msgid "The inventory the line belongs to."
+msgstr "موجودی سطر به آن تعلق دارد."
+
+msgctxt "help:stock.inventory.line,quantity:"
+msgid "The actual quantity found in the location."
+msgstr "مقدار واقعی موجود در محل."
+
+msgctxt "help:stock.inventory.line,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr "واحد که مقدار آن مشخص شده است."
+
+msgctxt "help:stock.location,childs:"
+msgid "Used to add structure below the location."
+msgstr "استفاده می شود برای اضافه کردن ساختار زیر محل."
+
+msgctxt "help:stock.location,code:"
+msgid "The internal identifier used for the location."
+msgstr "شناسه داخلی مورد استفاده برای مکان."
+
+msgctxt "help:stock.location,cost_value:"
+msgid "The value of the stock in the location."
+msgstr "مقدار اموال در محل."
+
+msgctxt "help:stock.location,flat_childs:"
+msgid "Check to enforce a single level of children with no grandchildren."
+msgstr "برای تکمیل یک سطح تک فرزندی که هیچ نوه نداشته باشد، بررسی کنید."
+
+msgctxt "help:stock.location,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr "مقدار اموال که انتظار می رود در محل باشد."
+
+msgctxt "help:stock.location,input_location:"
+msgid "Where incoming stock is received."
+msgstr "جایی که اموال ورودی دریافت شده است."
+
+#, fuzzy
+msgctxt "help:stock.location,lost_found_location:"
+msgid "Used, by inventories, when correcting stock levels in the warehouse."
+msgstr "جابجایی که سهام را به انبار می آورد."
+
+msgctxt "help:stock.location,output_location:"
+msgid "Where outgoing stock is sent from."
+msgstr "جایی که اموال خروجی از آنجا ارسال میشود."
+
+msgctxt "help:stock.location,parent:"
+msgid "Used to add structure above the location."
+msgstr "استفاده می شود برای اضافه کردن ساختار در بالای محل."
+
+msgctxt "help:stock.location,picking_location:"
+msgid ""
+"Where stock is picked from.\n"
+"Leave empty to use the storage location."
+msgstr ""
+"جایی که اموال از آن گرفته شده است.\n"
+"برای استفاده مکان ذخیره سازی، خالی بگذارید."
+
+msgctxt "help:stock.location,quantity:"
+msgid "The amount of stock in the location."
+msgstr "مقدار اموال در محل."
+
+msgctxt "help:stock.location,storage_location:"
+msgid "The top level location where stock is stored."
+msgstr "سطح بالای محل ذخیره سازی اموال."
+
+#, fuzzy
+msgctxt "help:stock.location,waste_locations:"
+msgid "The locations used for waste products from the warehouse."
+msgstr ""
+"محل پیش فرض مورد استفاده برای محصولات است که در حال حمل بین انبارها است."
+
+#, fuzzy
+msgctxt "help:stock.location,waste_warehouses:"
+msgid "The warehouses that use the location for waste products."
+msgstr "جابجایی هایی که سهام را خارج می کند."
+
+msgctxt "help:stock.location.lead_time,lead_time:"
+msgid "The time it takes to move stock between the warehouses."
+msgstr "زمان لازم برای جابجایی اموال بین انبارها است."
+
+msgctxt "help:stock.move,company:"
+msgid "The company the stock move is associated with."
+msgstr "شرکت جابجایی اموال با آن مرتبط است."
+
+msgctxt "help:stock.move,currency:"
+msgid "The currency in which the unit price is specified."
+msgstr "ارزی که در آن واحد قیمت مشخص شده است."
+
+msgctxt "help:stock.move,effective_date:"
+msgid "When the stock was actually moved."
+msgstr "زمانی که اموال واقعاً جابجا شده است."
+
+msgctxt "help:stock.move,from_location:"
+msgid "Where the stock is moved from."
+msgstr "جایی که اموال از آنجا جابجا شده است."
+
+msgctxt "help:stock.move,origin:"
+msgid "The source of the stock move."
+msgstr "منبع جابجایی اموال."
+
+msgctxt "help:stock.move,planned_date:"
+msgid "When the stock is expected to be moved."
+msgstr "زمان مورد انتظار جابجایی اموال."
+
+msgctxt "help:stock.move,product:"
+msgid "The product that the move is associated with."
+msgstr "محصولی که جابجایی با آن ارتباط دارد."
+
+msgctxt "help:stock.move,quantity:"
+msgid "The amount of stock moved."
+msgstr "مقدار اموال جابجا شده."
+
+msgctxt "help:stock.move,shipment:"
+msgid "Used to group several stock moves together."
+msgstr "برای گروه بندی چندین جابجایی اموال با هم استفاده میشود."
+
+msgctxt "help:stock.move,state:"
+msgid "The current state of the stock move."
+msgstr "وضعیت جاری جابجایی اموال."
+
+msgctxt "help:stock.move,to_location:"
+msgid "Where the stock is moved to."
+msgstr "جایی که اموال به آن جابجا شده است."
+
+msgctxt "help:stock.move,unit_price_company:"
+msgid "Unit price in company currency."
+msgstr ""
+
+msgctxt "help:stock.move,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr "واحد که مقدار آن مشخص شده است."
+
+msgctxt "help:stock.period,company:"
+msgid "The company the stock period is associated with."
+msgstr "دوره اموال با شرکت مرتبط است."
+
+msgctxt "help:stock.period,date:"
+msgid "When the stock period ends."
+msgstr "زمانی که دوره اموال به پایان می رسد."
+
+msgctxt "help:stock.period,state:"
+msgid "The current state of the stock period."
+msgstr "وضعیت جاری دوره اموال."
+
+msgctxt ""
+"help:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr ""
+
+msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
+msgid "The warehouse for which the quantities will be calculated."
+msgstr "انباری که مقدار آن محاسبه خواهد شد."
+
+msgctxt "help:stock.products_by_locations.context,forecast_date:"
+msgid ""
+"The date for which the stock quantity is calculated.\n"
+"* An empty value calculates as far ahead as possible.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"تاریخی که مقدار اموال محاسبه می شود.\n"
+"* مقدار خالی محاسبه شده تا آنجا که امکان دارد.\n"
+"* یک تاریخ در گذشته مقادیر تاریخی را ارائه می دهد."
+
+#, fuzzy
+msgctxt "help:stock.shipment.assign.partial,moves:"
+msgid "The moves that were not assigned."
+msgstr "جابجایی هایی که اختصاصی نبودند."
+
+msgctxt "help:stock.shipment.in,company:"
+msgid "The company the shipment is associated with."
+msgstr "شرکت حمل و نقل با آن مرتبط است."
+
+msgctxt "help:stock.shipment.in,contact_address:"
+msgid "The address at which the supplier can be contacted."
+msgstr "آدرس که در آن فروشنده می تواند با آن تماس بگیرد."
+
+msgctxt "help:stock.shipment.in,effective_date:"
+msgid "When the stock was actually received."
+msgstr "هنگامی که اموال در واقع دریافت شد."
+
+msgctxt "help:stock.shipment.in,incoming_moves:"
+msgid "The moves that bring the stock into the warehouse."
+msgstr "جابجایی که سهام را به انبار می آورد."
+
+msgctxt "help:stock.shipment.in,inventory_moves:"
+msgid "The moves that put the stock away into the storage area."
+msgstr "جابجایی که اموال را به محل ذخیره سازی منتقل می کند."
+
+msgctxt "help:stock.shipment.in,number:"
+msgid "The main identifier for the shipment."
+msgstr "شناسه اصلی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.in,planned_date:"
+msgid "When the stock is expected to be received."
+msgstr "زمانی که انتظار می رود اموال دریافت شود."
+
+msgctxt "help:stock.shipment.in,reference:"
+msgid "The supplier's identifier for the shipment."
+msgstr "شناسه تامین کننده برای حمل و نقل."
+
+msgctxt "help:stock.shipment.in,state:"
+msgid "The current state of the shipment."
+msgstr "وضعیت فعلی حمل و نقل."
+
+msgctxt "help:stock.shipment.in,supplier:"
+msgid "The party that supplied the stock."
+msgstr "نهاد/سازمان که اموال را تامین کرد."
+
+msgctxt "help:stock.shipment.in,warehouse:"
+msgid "Where the stock is received."
+msgstr "جایی که اموال دریافت می شود."
+
+msgctxt "help:stock.shipment.in.return,company:"
+msgid "The company the shipment is associated with."
+msgstr "شرکت حمل و نقل با آن مرتبط است."
+
+msgctxt "help:stock.shipment.in.return,delivery_address:"
+msgid "Where the stock is sent to."
+msgstr "جایی که اموال ارسال میشود."
+
+msgctxt "help:stock.shipment.in.return,effective_date:"
+msgid "When the stock was actually returned."
+msgstr "زمانی که اموال واقعاً برگشت شده است."
+
+msgctxt "help:stock.shipment.in.return,from_location:"
+msgid "Where the stock is moved from."
+msgstr "جایی که اموال از آن جابجا شده است."
+
+msgctxt "help:stock.shipment.in.return,moves:"
+msgid "The moves that return the stock to the supplier."
+msgstr "جابجایی که اموال به تأمین کننده عودت می شود."
+
+msgctxt "help:stock.shipment.in.return,number:"
+msgid "The main identifier for the shipment."
+msgstr "شناسه اصلی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.in.return,planned_date:"
+msgid "When the stock is expected to be returned."
+msgstr "زمانی که انتظار میرود اموال بازگشت شود."
+
+msgctxt "help:stock.shipment.in.return,reference:"
+msgid "The supplier's identifier for the shipment."
+msgstr "شناسه تأمین کننده برای حمل و نقل."
+
+msgctxt "help:stock.shipment.in.return,state:"
+msgid "The current state of the shipment."
+msgstr "وضعیت جاری حمل و نقل."
+
+msgctxt "help:stock.shipment.in.return,supplier:"
+msgid "The party that supplied the stock."
+msgstr "نهاد/سازمانی که اموال را تآمین کرده است."
+
+msgctxt "help:stock.shipment.in.return,to_location:"
+msgid "Where the stock is moved to."
+msgstr "جایی که اموال به ان جابجا شده است."
+
+msgctxt "help:stock.shipment.internal,company:"
+msgid "The company the shipment is associated with."
+msgstr "شرکت حمل و نقل مرتبط با آن."
+
+msgctxt "help:stock.shipment.internal,effective_date:"
+msgid "When the shipment was actually completed."
+msgstr "هنگامی که حمل و نقل در واقع انجام شد."
+
+msgctxt "help:stock.shipment.internal,effective_start_date:"
+msgid "When the stock was actually sent."
+msgstr "هنگامی که اموال در واقع فرستاده شد."
+
+msgctxt "help:stock.shipment.internal,from_location:"
+msgid "Where the stock is moved from."
+msgstr "جایی که اموال از آن جابجا شد."
+
+msgctxt "help:stock.shipment.internal,incoming_moves:"
+msgid "The moves that receive the stock in."
+msgstr "جابجایی هایی که اموال را دریافت می کند."
+
+msgctxt "help:stock.shipment.internal,moves:"
+msgid "The moves that perform the shipment."
+msgstr "جابجایی هایی که حمل ونقل را انجام می دهند."
+
+msgctxt "help:stock.shipment.internal,number:"
+msgid "The main identifier for the shipment."
+msgstr "شناسه اصلی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.internal,outgoing_moves:"
+msgid "The moves that send the stock out."
+msgstr "جابجایی هایی که سهام را خارج می کند."
+
+msgctxt "help:stock.shipment.internal,planned_date:"
+msgid "When the shipment is expected to be completed."
+msgstr "زمانی که انتظار می رود حمل و نقل تکمیل شود."
+
+msgctxt "help:stock.shipment.internal,planned_start_date:"
+msgid "When the stock is expected to be sent."
+msgstr "زمانی که انتظار می رود اموال فرستاده شود."
+
+msgctxt "help:stock.shipment.internal,reference:"
+msgid "The external identifiers for the shipment."
+msgstr "شناسه های خارجی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.internal,state:"
+msgid "The current state of the shipment."
+msgstr "وضعیت فعلی حمل و نقل."
+
+msgctxt "help:stock.shipment.internal,to_location:"
+msgid "Where the stock is moved to."
+msgstr "جایی که اموال به آن جابجا شده است."
+
+msgctxt "help:stock.shipment.internal,transit_location:"
+msgid ""
+"Where the stock is located while it is in transit between the warehouses."
+msgstr "جایی که اموال موجود است، در حالی که در حال حمل و نقل بین انبارها است."
+
+msgctxt "help:stock.shipment.out,company:"
+msgid "The company the shipment is associated with."
+msgstr "شرکت حمل و نقل با آن مرتبط است."
+
+msgctxt "help:stock.shipment.out,customer:"
+msgid "The party that purchased the stock."
+msgstr "نهاد/سازمانی که اموال را خریداری کرده است."
+
+msgctxt "help:stock.shipment.out,delivery_address:"
+msgid "Where the stock is sent to."
+msgstr "جایی که اموال به آن ارسال می شود."
+
+msgctxt "help:stock.shipment.out,effective_date:"
+msgid "When the stock was actually sent."
+msgstr "زمانی که اموال در واقع فرستاده شد."
+
+msgctxt "help:stock.shipment.out,inventory_moves:"
+msgid "The moves that pick the stock from the storage area."
+msgstr "جابجایی که اموال را از منطقه ذخیره سازی انتخاب می کند."
+
+msgctxt "help:stock.shipment.out,number:"
+msgid "The main identifier for the shipment."
+msgstr "شناسه اصلی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.out,outgoing_moves:"
+msgid "The moves that send the stock to the customer."
+msgstr "جابجایی که اموال را به مشتری ارسال می کند."
+
+msgctxt "help:stock.shipment.out,planned_date:"
+msgid "When the stock is expected to be sent."
+msgstr "زمانی که انتظار می رود اموال فرستاده شود."
+
+msgctxt "help:stock.shipment.out,reference:"
+msgid "The customer's identifier for the shipment."
+msgstr "شناسه مشتری برای حمل و نقل."
+
+msgctxt "help:stock.shipment.out,state:"
+msgid "The current state of the shipment."
+msgstr "وضعیت فعلی حمل و نقل."
+
+msgctxt "help:stock.shipment.out,warehouse:"
+msgid "Where the stock is sent from."
+msgstr "جایی که اموال از آن فرستاده شده."
+
+msgctxt "help:stock.shipment.out.return,company:"
+msgid "The company the shipment is associated with."
+msgstr "شرکت حمل و نقل با آن مرتبط است."
+
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
+msgstr "نهاد/سازمانی که اموال را خریداری کرده است."
+
+msgctxt "help:stock.shipment.out.return,delivery_address:"
+msgid "The address the customer can be contacted at."
+msgstr "آدرس مشتری که می توان با آن تماس گرفت."
+
+msgctxt "help:stock.shipment.out.return,effective_date:"
+msgid "When the stock was returned."
+msgstr "هنگامی که اموال بازگشت."
+
+msgctxt "help:stock.shipment.out.return,incoming_moves:"
+msgid "The moves that bring the stock into the warehouse."
+msgstr "جابجایی که اموال را به انبار می آورد."
+
+msgctxt "help:stock.shipment.out.return,inventory_moves:"
+msgid "The moves that put the stock away into the storage area."
+msgstr "جابجایی هایی که اموال را به محل ذخیره سازی منتقل می کند."
+
+msgctxt "help:stock.shipment.out.return,number:"
+msgid "The main identifier for the shipment."
+msgstr "شناسه اصلی برای حمل و نقل."
+
+msgctxt "help:stock.shipment.out.return,planned_date:"
+msgid "When the stock is expected to be returned."
+msgstr "زمانی که انتظار می رود اموال بازگردانده شود."
+
+msgctxt "help:stock.shipment.out.return,reference:"
+msgid "The customer's identifier for the shipment."
+msgstr "شناسه مشتری برای حمل و نقل."
+
+msgctxt "help:stock.shipment.out.return,state:"
+msgid "The current state of the shipment."
+msgstr "وضعیت فعلی حمل و نقل."
+
+msgctxt "help:stock.shipment.out.return,warehouse:"
+msgid "Where the stock is returned."
+msgstr "جایی که اموال بازگشته است."
+
+msgctxt "model:ir.action,name:act_inventory_form"
+msgid "Inventories"
+msgstr "فهرست موجودی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_inventory_line_relate"
+msgid "Inventory Lines"
+msgstr "فهرست موجودی"
+
+msgctxt "model:ir.action,name:act_location_form"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "model:ir.action,name:act_location_lead_time_form"
+msgid "Location Lead Times"
+msgstr "مکان آماده سازی"
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Locations List Quantity"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Locations Tree Quantity"
+
+msgctxt "model:ir.action,name:act_location_tree"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "model:ir.action,name:act_period_list"
+msgid "Periods"
+msgstr "دوره ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_cost_price_revision"
+msgid "Cost Price Revision"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_moves"
+msgid "Stock Moves"
+msgstr "جابجایی موجودی"
+
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "مقادیر محصول توسط انبار"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_quantities_warehouse_move"
+msgid "Stock Moves By Warehouse"
+msgstr "مقادیر محصول توسط انبار"
+
+msgctxt "model:ir.action,name:act_products_by_locations"
+msgid "Products"
+msgstr "محصولات"
+
+msgctxt "model:ir.action,name:act_shipment_in_form"
+msgid "Supplier Shipments"
+msgstr "محموله تامین کننده"
+
+msgctxt "model:ir.action,name:act_shipment_in_return_form"
+msgid "Supplier Return Shipments"
+msgstr "محموله برگشتی به تامین کننده"
+
+msgctxt "model:ir.action,name:act_shipment_internal_form"
+msgid "Internal Shipments"
+msgstr "محموله های داخلی"
+
+msgctxt "model:ir.action,name:act_shipment_out_form"
+msgid "Customer Shipments"
+msgstr "محموله های مشتری"
+
+msgctxt "model:ir.action,name:act_shipment_out_form2"
+msgid "Customer Shipments"
+msgstr "محموله های مشتری"
+
+msgctxt "model:ir.action,name:act_shipment_out_form3"
+msgid "Supplier Shipments"
+msgstr "محموله تامین کننده"
+
+msgctxt "model:ir.action,name:act_shipment_out_return_form"
+msgid "Customer Return Shipments"
+msgstr "محموله مرجوعی مشتری"
+
+msgctxt "model:ir.action,name:act_stock_configuration_form"
+msgid "Stock Configuration"
+msgstr "پیکربندی موجودی"
+
+msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
+msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+msgctxt "model:ir.action,name:report_shipment_internal"
+msgid "Internal Shipment"
+msgstr "حمل و نقل داخلی"
+
+msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
+msgid "Delivery Note"
+msgstr "متن تحویل"
+
+msgctxt "model:ir.action,name:report_shipment_out_picking_list"
+msgid "Picking List"
+msgstr "لیست انتخاب"
+
+msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
+msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+msgctxt "model:ir.action,name:wizard_inventory_count"
+msgid "Count"
+msgstr "شمردن"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
+msgid "Stock Moves"
+msgstr "جابجایی موجودی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_product_modify_cost_price"
+msgid "Modify Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "model:ir.action,name:wizard_recompute_cost_price"
+msgid "Recompute Cost Price"
+msgstr "محاسبه مجدد ارزش بها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
+msgid "Assign Supplier Return Shipment"
+msgstr "تخصیص محموله برگشتی به تامین کننده"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
+msgid "Assign Internal Shipment"
+msgstr "حمل و نقل داخلی"
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign"
+msgid "Assign Customer Shipment"
+msgstr "تخصیص حمل و نقل مشتری"
+
+msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
+msgid "From Suppliers"
+msgstr "از تامین کنندگان"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
+msgid "From Suppliers Waiting"
+msgstr "از تامین کنندگان منتظر"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
+msgid "To Customers"
+msgstr "به مشتریان"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
+msgid "Requests"
+msgstr "درخواست ها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
+msgid "Shipped"
+msgstr "ارسال شد"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_waiting"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
+msgid "Packed"
+msgstr "بسته بندي شده"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_picked"
+msgid "Picked"
+msgstr "بسته بندي شده"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt "model:ir.message,text:msg_erase_party_shipment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending shipments with "
+"company \"%(company)s\"."
+msgstr ""
+"شما نمی توانید نهاد/سازمان :\"%(party)s\"را حذف کنید در حالی که آنها محموله "
+"در حال انتظار با شرکت :\"%(company)s\" دارد."
+
+msgctxt "model:ir.message,text:msg_invalid_cost_price"
+msgid ""
+"Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_count_create_line"
+msgid "No existing line found for \"%(search)s\"."
+msgstr "هیچ سطرایجاد شده ای برای \"%(search)s\"پیدا نشد ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
+msgid "The inventories \"%(inventories)s\" have dates in the future."
+msgstr "برای حذف موجودی :\"%(inventory)s\" شما باید آن را لغو کنید."
+
+msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
+msgid "To delete inventory \"%(inventory)s\" you must cancel it."
+msgstr "برای حذف موجودی :\"%(inventory)s\" شما باید آن را لغو کنید."
+
+msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
+msgid ""
+"To delete inventory line \"%(line)s\" you must cancel inventory "
+"\"%(inventory)s\"."
+msgstr ""
+"برای حذف موجودی سطر:\"%(line)s\" شما باید موجودی :\"%(inventory)s\"را لغو "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_inventory_line_quantity_positive"
+msgid "Inventory line quantity must be positive."
+msgstr "مقدار سطر موجودی باید مثبت باشد."
+
+msgctxt "model:ir.message,text:msg_inventory_line_unique"
+msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
+msgstr "سطرموجودی :\"%(line)s\" در موجودی :\"%(inventory)s\" منحصر بفرد نیست."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
+msgid ""
+"To confirm the inventory \"%(inventory)s\" you must set a lost and found on "
+"a parent of location \"%(location)s\"."
+msgstr ""
+"برای تایید موجودی :\"%(inventory)s\" شما باید یک گزینه برای مقدار خالی را "
+"انتخاب کنید."
+
+msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
+msgid ""
+"To confirm the inventory \"%(inventory)s\" you must select an option for "
+"empty quantity."
+msgstr ""
+"برای تایید موجودی :\"%(inventory)s\" شما باید یک گزینه برای مقدار خالی را "
+"انتخاب کنید."
+
+msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
+msgid ""
+"To set location \"%(location)s\" as storage/input/output of warehouse "
+"\"%(warehouse)s\", it must be in the warehouse."
+msgstr ""
+"برای تعیین مکان :\"%(location)s\" به عنوان انبار/ ورودی / خروجی از انبار "
+":\"%(warehouse)s\"، آن باید در انبار باشد."
+
+msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
+msgid "To inactivate location \"%(location)s\", you must empty it."
+msgstr "برای غیرفعال کردن مکان :\"%(location)s\"، باید آن را خالی کنید."
+
+msgctxt "model:ir.message,text:msg_location_invalid_type_for_moves"
+msgid ""
+"You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
+"because the type does not support moves and location has existing moves."
+msgstr ""
+"شما نمیتوانید نوع مکان :\"%(location)s\"را به \"%(type)s\" تغییر دهید\n"
+"چراکه نوع جابجایی را پشتیبانی نمی کند و مکان جابجایی هایی موجود دارد."
+
+msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
+msgid ""
+"To delete stock move \"%(move)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+"برای حذف جابجایی اموال :\"%(move)s\"شما باید آن را لغو یا به حالت پیش نویس "
+"بازنشانی کنید."
+
+msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
+msgid "The moves \"%(moves)s\" have effective dates in the future."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_from_to_location"
+msgid "The source and destination of stock move must be different."
+msgstr "منبع و مقصد جابجایی اموال باید متفاوت باشد."
+
+msgctxt "model:ir.message,text:msg_move_internal_quantity_positive"
+msgid "Internal move quantity must be positive."
+msgstr "مقدار جابجایی داخلی باید مثبت باشد."
+
+msgctxt "model:ir.message,text:msg_move_modify_assigned"
+msgid "To modify stock move \"%(move)s\" you must reset its state to draft."
+msgstr ""
+"برای تغییر جابجایی اموال :\"%(move)s\" شما باید آنرا به حالت پیش نویس "
+"بازنشانی کنید."
+
+msgctxt "model:ir.message,text:msg_move_modify_cancel"
+msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
+msgstr ""
+"شما نمی توانید جابجایی اموال :\"%(move)s\"را تغییر دهید، زیرا آن لغو شده "
+"است."
+
+msgctxt "model:ir.message,text:msg_move_modify_done"
+msgid "You cannot modify stock move \"%(move)s\" because it is done."
+msgstr ""
+"شما نمی توانید جابجایی اموال :\"%(move)s\"را تغییر دهید، زیرا آن انجام شده "
+"است."
+
+msgctxt "model:ir.message,text:msg_move_modify_period_close"
+msgid "To modify stock move \"%(move)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"برای تغییرجابجایی اموال :\"%(move)s\"شما باید دوره :\"%(period)s\" را مجدداً"
+" باز کنید."
+
+msgctxt "model:ir.message,text:msg_move_no_origin"
+msgid "Stock moves \"%(moves)s\" have no origin."
+msgstr "جابجایی اموال :\"%(move)s\" هیچ منشأی ندارد."
+
+msgctxt "model:ir.message,text:msg_move_quantity_positive"
+msgid "Move quantity must be positive."
+msgstr "مقدار جابجایی باید مثبت باشد."
+
+msgctxt "model:ir.message,text:msg_period_close_assigned_move"
+msgid "You cannot close periods with assigned moves in it."
+msgstr ""
+"شما نمی توانید دوره هایی را با جابجایی های مشخص شده در آن، تعطیل کنید."
+
+msgctxt "model:ir.message,text:msg_period_close_date"
+msgid "You cannot close periods with a date in the future or today."
+msgstr "شما نمیتوانید دوره هایی با یک تاریخ در آینده یا امروز تعطیل کنید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated with stock moves.\n"
+"You must use the \"Modify Cost Price\" wizard."
+msgstr ""
+"برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید نوع آن را "
+"تغییر دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_default_uom"
+msgid ""
+"You cannot change the default UOM of a product which is associated with "
+"stock moves."
+msgstr ""
+"برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید واحد "
+"مقدارپیش فرض را تغییر دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_type"
+msgid ""
+"You cannot change the type of a product which is associated with stock "
+"moves."
+msgstr ""
+"برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید نوع آن را "
+"تغییر دهید."
+
+msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
+msgid "To delete shipment \"%(shipment)s\" you must cancel it."
+msgstr "برای حذف حمل ونقل :\"%(shipment)s\" شما باید آن را لغو کنید."
+
+msgctxt "model:ir.model.button,confirm:inventory_cancel_button"
+msgid "Are you sure you want to cancel the inventory?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:inventory_confirm_button"
+msgid "Are you sure you want to confirm the inventory?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:move_cancel_button"
+msgid "Are you sure you want to cancel the move?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:move_do_button"
+msgid "Are you sure you want to complete the move?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
+msgid "Are you sure you want to receive the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
+msgid "Are you sure you want to receive the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
+msgid "Add an inventory line for each missing products"
+msgstr "Add an inventory line for each missing products"
+
+msgctxt "model:ir.model.button,help:inventory_count_button"
+msgid "Launch the wizard to count products"
+msgstr "اجرای ویزارد برای شمارش محصولات"
+
+msgctxt "model:ir.model.button,string:inventory_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
+msgid "Complete"
+msgstr "کامل"
+
+msgctxt "model:ir.model.button,string:inventory_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:inventory_count_button"
+msgid "Count"
+msgstr "شمردن"
+
+msgctxt "model:ir.model.button,string:move_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:move_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:move_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_internal_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_out_pack_button"
+msgid "Pack"
+msgstr "بسته بندي شده"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_out_pick_button"
+msgid "Pick"
+msgstr "چیدن"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_out_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_move"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_quantities_warehouse"
+msgid "User in company"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_product_quantities_warehouse_move"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_in"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_in_return"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_internal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_out"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_out_return"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_inventory"
+msgid "Inventory"
+msgstr "فهرست موجودی"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_in"
+msgid "Supplier Shipment"
+msgstr "محموله تامین کننده"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
+msgid "Supplier Return Shipment"
+msgstr "محموله برگشتی به تامین کننده"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_internal"
+msgid "Internal Shipment"
+msgstr "محموله داخلی"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_out"
+msgid "Customer Shipment"
+msgstr "محموله مشتری"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
+msgid "Customer Return Shipment"
+msgstr "محموله مرجوعی مشتری"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
+msgid "Inventory"
+msgstr "فهرست موجودی"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
+msgid "Supplier Shipment"
+msgstr "محموله تامین کننده"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
+msgid "Supplier Return Shipment"
+msgstr "محموله برگشتی به تامین کننده"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
+msgid "Internal Shipment"
+msgstr "محموله داخلی"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
+msgid "Customer Shipment"
+msgstr "محموله مشتری"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
+msgid "Customer Return Shipment"
+msgstr "محموله مرجوعی مشتری"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_inventory_form"
+msgid "Inventories"
+msgstr "فهرست موجودی"
+
+msgctxt "model:ir.ui.menu,name:menu_location_form"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "model:ir.ui.menu,name:menu_location_form2"
+msgid "Locations"
+msgstr "Locations"
+
+msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
+msgid "Location Lead Times"
+msgstr "مکان آماده سازی"
+
+msgctxt "model:ir.ui.menu,name:menu_location_tree"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_period_list"
+msgid "Periods"
+msgstr "دوره ها"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "گزارش گیری"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
+msgid "Supplier Shipments"
+msgstr "محموله های تأمین کننده"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
+msgid "Supplier Return Shipments"
+msgstr "محموله های برگشتی به تأمین کننده"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
+msgid "Internal Shipments"
+msgstr "محموله های داخلی"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
+msgid "Customer Shipments"
+msgstr "محموله های مشتری"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
+msgid "Customer Return Shipments"
+msgstr "محموله های مرجوعی مشتری"
+
+msgctxt "model:ir.ui.menu,name:menu_stock"
+msgid "Inventory & Stock"
+msgstr "دفتر دارایی انبار & موجودی"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
+msgid "Stock Configuration"
+msgstr "پیکربندی موجودی"
+
+msgctxt "model:party.party.location,name:"
+msgid "Party Location"
+msgstr "مکان نهاد/سازمان"
+
+msgctxt "model:product.by_location.context,name:"
+msgid "Product by Location"
+msgstr "محصول توسط محل"
+
+msgctxt "model:product.cost_price.revision,name:"
+msgid "Product Cost Price Revision"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:product.modify_cost_price.start,name:"
+msgid "Modify Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,name:"
+msgid "Recompute Cost Price"
+msgstr "محاسبه مجدد ارزش بها"
+
+msgctxt "model:res.group,name:group_stock"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "model:res.group,name:group_stock_admin"
+msgid "Stock Administration"
+msgstr "اداره کردن موجودی"
+
+msgctxt "model:res.group,name:group_stock_force_assignment"
+msgid "Stock Force Assignment"
+msgstr "تخصیص زوری موجودی"
+
+msgctxt "model:stock.configuration,name:"
+msgid "Stock Configuration"
+msgstr "پیکربندی موجودی"
+
+msgctxt "model:stock.configuration.location,name:"
+msgid "Stock Configuration Location"
+msgstr "پیکره بندی مکان موجودی"
+
+msgctxt "model:stock.configuration.sequence,name:"
+msgid "Stock Configuration Sequence"
+msgstr "ادامه پیکربندی موجودی"
+
+msgctxt "model:stock.inventory,name:"
+msgid "Stock Inventory"
+msgstr "موجودی انبار"
+
+msgctxt "model:stock.inventory.count.quantity,name:"
+msgid "Stock Inventory Count"
+msgstr "تعداد موجودی انبار"
+
+msgctxt "model:stock.inventory.count.search,name:"
+msgid "Stock Inventory Count"
+msgstr "تعداد موجودی انبار"
+
+msgctxt "model:stock.inventory.line,name:"
+msgid "Stock Inventory Line"
+msgstr "سطر موجودی انبار"
+
+msgctxt "model:stock.location,name:"
+msgid "Stock Location"
+msgstr "مکان انبار"
+
+msgctxt "model:stock.location,name:location_customer"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "model:stock.location,name:location_input"
+msgid "Input Zone"
+msgstr "منطقه ورودی"
+
+msgctxt "model:stock.location,name:location_lost_found"
+msgid "Lost and Found"
+msgstr "گمشده ها و یافته ها"
+
+msgctxt "model:stock.location,name:location_output"
+msgid "Output Zone"
+msgstr "منطقه خروجی"
+
+msgctxt "model:stock.location,name:location_storage"
+msgid "Storage Zone"
+msgstr "منطقه ذخیره سازی"
+
+msgctxt "model:stock.location,name:location_supplier"
+msgid "Supplier"
+msgstr "تأمین کننده"
+
+msgctxt "model:stock.location,name:location_transit"
+msgid "Transit"
+msgstr "حمل و نقل"
+
+msgctxt "model:stock.location,name:location_warehouse"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "model:stock.location.lead_time,name:"
+msgid "Location Lead Time"
+msgstr "مکان آماده سازی"
+
+#, fuzzy
+msgctxt "model:stock.location.waste,name:"
+msgid "Warehouse Waste Location"
+msgstr "مکان حمل و نقل"
+
+msgctxt "model:stock.move,name:"
+msgid "Stock Move"
+msgstr "جابجایی موجودی"
+
+msgctxt "model:stock.period,name:"
+msgid "Stock Period"
+msgstr "دوره موجودی"
+
+msgctxt "model:stock.period.cache,name:"
+msgid "Stock Period Cache"
+msgstr "دوره موجودی انبار"
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "مقادیر محصول توسط انبار"
+
+msgctxt "model:stock.product_quantities_warehouse.context,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "مقادیر محصول توسط انبار"
+
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse.move,name:"
+msgid "Product Quantities By Warehouse Moves"
+msgstr "مقادیر محصول توسط انبار"
+
+msgctxt "model:stock.products_by_locations.context,name:"
+msgid "Products by Locations"
+msgstr "محصولات توسط مکان ها"
+
+#, fuzzy
+msgctxt "model:stock.shipment.assign.partial,name:"
+msgid "Assign Shipment"
+msgstr "تخصیص حمل محموله داخلی"
+
+msgctxt "model:stock.shipment.in,name:"
+msgid "Supplier Shipment"
+msgstr "محموله تامین کننده"
+
+msgctxt "model:stock.shipment.in.return,name:"
+msgid "Supplier Return Shipment"
+msgstr "محموله برگشتی به تامین کننده"
+
+msgctxt "model:stock.shipment.internal,name:"
+msgid "Internal Shipment"
+msgstr "محموله داخلی"
+
+msgctxt "model:stock.shipment.out,name:"
+msgid "Customer Shipment"
+msgstr "محموله مشتری"
+
+msgctxt "model:stock.shipment.out.return,name:"
+msgid "Customer Return Shipment"
+msgstr "محموله مرجوعی مشتری"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Planned Date:"
+msgstr "تاریخ برنامه ریزی شده :"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Shipment Number"
+msgstr "شماره محموله"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Supplier:"
+msgstr "تامین کننده :"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Warehouse:"
+msgstr "انبار :"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "From Location:"
+msgstr "از مکان :"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Internal Shipment"
+msgstr "محموله داخلی"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Planned Date:"
+msgstr "تاریخ برنامه ریزی شده :"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "Shipment Number"
+msgstr "شماره محموله"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "report:stock.shipment.internal.report:"
+msgid "To Location:"
+msgstr "به مکان :"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Customer Code:"
+msgstr "کد مشتری :"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Date:"
+msgstr "تاریخ:"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note"
+msgstr "متن تحویل"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Shipment Number:"
+msgstr "شماره محموله :"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Customer:"
+msgstr "مشتری :"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List"
+msgstr "لیست انتخاب"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Planned Date:"
+msgstr "تاریخ برنامه ریزی شده :"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Shipment Number"
+msgstr "شماره محموله"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Warehouse:"
+msgstr "انبار :"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Planned Date:"
+msgstr "تاریخ برنامه ریزی شده :"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Warehouse:"
+msgstr "انبار :"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Recompute Cost Price from Moves"
+msgstr "محاسبه مجدد ارزش بها"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Customer Shipments"
+msgstr "محموله های مشتری"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Internal Shipments"
+msgstr "محموله های داخلی"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Supplier Return Shipments"
+msgstr "محموله برگشتی به تامین کننده"
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Empty"
+msgstr "خالی"
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Keep"
+msgstr "نگه داشتن"
+
+#, fuzzy
+msgctxt "selection:stock.inventory,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.inventory,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.inventory,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.location,type:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "selection:stock.location,type:"
+msgid "Drop"
+msgstr "دراپ"
+
+msgctxt "selection:stock.location,type:"
+msgid "Lost and Found"
+msgstr "گمشده ها و یافته ها"
+
+msgctxt "selection:stock.location,type:"
+msgid "Production"
+msgstr "تهیه کننده"
+
+msgctxt "selection:stock.location,type:"
+msgid "Storage"
+msgstr "مخزن"
+
+msgctxt "selection:stock.location,type:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "selection:stock.location,type:"
+msgid "View"
+msgstr "مشاهده"
+
+msgctxt "selection:stock.location,type:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "selection:stock.move,state:"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+#, fuzzy
+msgctxt "selection:stock.move,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.move,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.move,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.move,state:"
+msgid "Staging"
+msgstr "استقرار"
+
+msgctxt "selection:stock.period,state:"
+msgid "Closed"
+msgstr "بسته شده"
+
+msgctxt "selection:stock.period,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.in,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.in,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.in,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.in,state:"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt "selection:stock.shipment.in.return,state:"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.in.return,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.in.return,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.in.return,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.in.return,state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Request"
+msgstr "درخواست"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Shipped"
+msgstr "حمل شد"
+
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Assigned"
+msgstr "تخصیص داده شده"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Packed"
+msgstr "بسته بندی شده"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Picked"
+msgstr "بسته بندی شده"
+
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.out.return,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.out.return,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.out.return,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.out.return,state:"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt "view:party.party:"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "view:product.product:"
+msgid "Cost Value"
+msgstr "مقدار هزینه"
+
+msgctxt "view:res.user:"
+msgid "The warehouse that you work at."
+msgstr ""
+
+msgctxt "view:stock.configuration:"
+msgid "Inventory"
+msgstr "فهرست موجودی"
+
+msgctxt "view:stock.configuration:"
+msgid "Shipments"
+msgstr "محموله ها"
+
+#, fuzzy
+msgctxt "view:stock.shipment.assign.partial:"
+msgid "Unable to assign these products:"
+msgstr "این محصولات قابل اختصاص دادن نیستند :"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Outgoing Moves"
+msgstr "جابجایی های خروجی"
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,modify:"
+msgid "OK"
+msgstr "قبول"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,recompute:"
+msgid "Recompute"
+msgstr "محاسبه مجدد ارزش بها"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,add:"
+msgid "Add"
+msgstr "افزودن"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,search:"
+msgid "Cancel"
+msgstr "لغو"
+
+msgctxt "wizard_button:stock.inventory.count,search,end:"
+msgid "End"
+msgstr "پایان"
+
+msgctxt "wizard_button:stock.inventory.count,search,quantity:"
+msgid "Select"
+msgstr "انتخاب"
+
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.assign,partial,cancel:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.assign,partial,end:"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "wizard_button:stock.shipment.assign,partial,force:"
+msgid "Force"
+msgstr ""
+
+msgctxt "wizard_button:stock.shipment.assign,partial,ignore:"
+msgid "Ignore"
+msgstr ""
