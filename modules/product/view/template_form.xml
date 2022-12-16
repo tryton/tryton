@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Product" col="6">
+  <label name="name"/>
+  <field name="name" xexpand="1"/>
+  <label name="active"/>
+  <field name="active" xexpand="0" width="100"/>
+  <notebook colspan="6">
+      <page string="General" id="general">
+          <label name="type"/>
+          <field name="type"/>
+          <label name="consumable"/>
+          <field name="consumable"/>
+          <label name="category"/>
+          <field name="category" />
+          <label name="default_uom"/>
+          <field name="default_uom" />
+          <label name="list_price"/>
+          <field name="list_price"/>
+          <newline/>
+          <label name="cost_price"/>
+          <field name="cost_price"/>
+          <label name="cost_price_method"/>
+          <field name="cost_price_method"/>
+          <field name="products" mode="form,tree" colspan="4"/>
+      </page>
+  </notebook>
+</form>
