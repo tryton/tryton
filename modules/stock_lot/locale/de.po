@@ -1,0 +1,221 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Charge erforderlich für Lagerort"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Charge erforderlich für Lagerort"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Voraussichtliche Menge"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "Ermittlungsdatum"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "Ermittlungsdatum"
+
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "Ermittlungsdatum"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "Lagerorte"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "Ermittlungsdatum"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "Warenlager"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Caches Charge"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Interne Menge"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Ort"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Lagerperiode"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist."
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist."
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Den erwarteten Lagerbestand für dieses Datum ermitteln.\n"
+"* Ein leerer Wert bedeutet ein unendliches Datum in der Zukunft.\n"
+"* Ein Wert in der Vergangenheit berechnet historische Werte."
+
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Den erwarteten Lagerbestand für dieses Datum ermitteln.\n"
+"* Ein leerer Wert bedeutet ein unendliches Datum in der Zukunft.\n"
+"* Ein Wert in der Vergangenheit berechnet historische Werte."
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Bestandsliste nach Lagerorten"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Bestandsbaum nach Lagerorten"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse"
+msgid "Lots By Warehouse"
+msgstr "Chargen nach Warenlager"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Lagerbewegungen"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"Der Artikel einer Charge, für die es Lagerbewegungen gibt, kann nicht "
+"geändert werden."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+"Damit der Artikel \"%(product)s\" umgelagert werden kann, muss eine Charge "
+"angegeben werden."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+"Für \"%(product)s\" muss eine Charge ausgewählt werden anstatt einem "
+"Artikel."
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Lager Charge"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "Chargen nach Lagerort"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr "Charge nach Warenlager"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Lagerperioden Cache pro Charge"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Kunde"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "Inventurdifferenz"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "Lager"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Kunde"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "Inventurdifferenz"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "Lager"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Chargen"
