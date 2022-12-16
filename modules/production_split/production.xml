@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="production_split_icon">
+            <field name="name">tryton-production-split</field>
+            <field name="path">icons/tryton-production-split.svg</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_split_production">
+            <field name="name">Split Production</field>
+            <field name="wiz_name">production.split</field>
+            <field name="model">production</field>
+        </record>
+
+        <record model="ir.ui.view" id="production_view_form">
+            <field name="model">production</field>
+            <field name="inherit" ref="production.production_view_form"/>
+            <field name="name">production_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="split_start_view_form">
+            <field name="model">production.split.start</field>
+            <field name="type">form</field>
+            <field name="name">split_start_form</field>
+        </record>
+        <record model="ir.model.button" id="production_split_wizard_button">
+            <field name="name">split_wizard</field>
+            <field name="string">Split</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+    </data>
+</tryton>

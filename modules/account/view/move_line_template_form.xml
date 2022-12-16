@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="account"/>
+    <field name="account"/>
+    <label name="move"/>
+    <field name="move"/>
+    <label name="operation"/>
+    <field name="operation"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <notebook colspan="4">
+        <page string="Other Info" id="info">
+            <label name="party"/>
+            <field name="party"/>
+        </page>
+        <page name="taxes">
+            <field name="taxes" colspan="4"/>
+        </page>
+    </notebook>
+</form>

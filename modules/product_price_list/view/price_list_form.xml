@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="tax_included"/>
+        <field name="tax_included"/>
+        <label name="active"/>
+        <field name="active"/>
+        <!-- Add other checkboxes here -->
+    </group>
+
+    <label name="company"/>
+    <field name="company"/>
+
+    <newline/>
+
+    <label name="unit"/>
+    <field name="unit"/>
+
+    <notebook colspan="4">
+        <page name="lines">
+            <field name="lines" colspan="4"
+                view_ids="product_price_list.price_list_line_view_tree_sequence"/>
+        </page>
+    </notebook>
+</form>

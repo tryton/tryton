@@ -1,0 +1,107 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Metoda Cost Curier"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Produs Curier"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Selecții"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Curier"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Din Ţara"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "În țară"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr "Metoda de calcul pentru costul curierului."
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "Produsul utilizat pentru a factura serviciul curierului."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "Partea care reprezinta curierul."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "Curierul selectat."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica numai la expedieri din aceasta ţara.\n"
+"Câmp gol pentru orice ţara."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica numai la expedieri în aceasta ţara.\n"
+"Câmp gol pentru orice ţara."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Curier"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Selecţie Curier"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Curieri"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Selection"
+msgstr "Selecţie"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Curier"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Curieri"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Selection"
+msgstr "Selecţie"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Administrare Curieri"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Preţ Produs"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Criterii"

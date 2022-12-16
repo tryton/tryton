@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="fr">
+        <record id="account_type_template_minimal_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Plan de type de compte minimal</field>
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
+        </record>
+        <record id="account_type_template_asset_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Actif</field>
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_minimal_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_current_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Courant</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_cash_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Cash</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_receivable_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Recevable</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_long_term_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Long terme</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_fr"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Passif</field>
+            
+            
+            
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_minimal_fr"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_liability_current_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Courant</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_fr"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_liability_current_payable_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">À payer</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_fr"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="account_type_template_liability_current_tax_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Taxe</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_fr"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_long_term_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Long terme</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_fr"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_equity_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Capitaux propres</field>
+            
+            
+            
+            
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_minimal_fr"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_income_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Revenu</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_equity_fr"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="40"/>
+        </record>
+        <record id="account_type_template_revenue_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Produit</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_fr"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_expense_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Charge</field>
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_fr"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_off_balance_fr" model="account.account.type.template">
+            
+            
+            
+            
+            
+            <field name="name">Hors bilan</field>
+            
+            
+            
+            
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_minimal_fr"/>
+            <field name="statement">off-balance</field>
+        </record>
+
+        <record id="account_template_root_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Plan comptable minimal</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_minimal_fr"/>
+            <field name="closed" eval="True"/>
+        </record>
+        <record id="account_template_receivable_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte client</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_receivable_fr"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+        <record id="account_template_payable_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte fournisseur</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_payable_fr"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+        <record id="account_template_revenue_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte de produits</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_revenue_fr"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+        <record id="account_template_expense_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte de charges</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_expense_fr"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+        <record id="account_template_cash_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte de liquidité</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_cash_fr"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+        <record id="account_template_tax_fr" model="account.account.template">
+            
+            
+            
+            
+            
+            <field name="name">Compte de taxes</field>
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_tax_fr"/>
+            <field name="parent" ref="account_template_root_fr"/>
+        </record>
+    </data>
+</tryton>

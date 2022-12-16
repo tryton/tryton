@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_invoice_unique">
+            <field name="text">You can create only one Chorus invoice per invoice.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_address_no_siret">
+            <field name="text">To create a Chorus invoice for "%(invoice)s", you must set a SIRET on address "%(address)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_delete_sent">
+            <field name="text">You cannot delete Chorus invoice "%(invoice)s" because it is sent.</field>
+        </record>
+    </data>
+</tryton>
