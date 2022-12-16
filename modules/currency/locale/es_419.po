@@ -1,0 +1,127 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr ""
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr ""
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr ""
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr ""
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr ""
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr ""
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr ""
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr ""
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr ""
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr ""
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currency"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr ""
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr ""
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr ""

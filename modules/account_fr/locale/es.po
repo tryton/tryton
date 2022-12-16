@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "Archivo"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+msgctxt "field:account.fr.fec.start,deferral_period:"
+msgid "Deferral Period"
+msgstr "Período de cierre"
+
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ejercicio fiscal"
+
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "help:account.fr.fec.start,deferral_period:"
+msgid ""
+"The period to exclude which contains the moves to balance non-deferral "
+"account"
+msgstr ""
+"El periodo a excluir porqué contiene movimientos de regularización de las "
+"cuentas de cierre"
+
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "Generar FEC"
+
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "Generar FEC"
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "Generar FEC"
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "Generar FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr "IS-BIC"
+
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr "Generar"
