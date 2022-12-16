@@ -1,0 +1,107 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "Wählbar"
+
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Untergeordnet (Klassifizierungen)"
+
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Klassifizierung)"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "Wählbar"
+
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Klassifizierung"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Klassifizierung"
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Klassifizierungen"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "Pseudoproduktklassifizierung"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "Pseudoproduktklassifizierungsbaum"
+
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Klassifizierung"

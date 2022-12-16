@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Product - BOM">
+    <label name="product"/>
+    <field name="product" colspan="3"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <newline/>
+    <label name="bom"/>
+    <field name="bom" widget="selection"/>
+</form>
