@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_sale_cancel_payment">
+            <field name="text">You cannot cancel sale "%(sale)s" because it has payments.</field>
+        </record>
+        <record model="ir.message" id="msg_sale_draft_payment">
+            <field name="text">You cannot reset to draft sale "%(sale)s" because it has payments.</field>
+        </record>
+        <record model="ir.message" id="msg_payment_sale_draft">
+            <field name="text">You cannot use sale "%(sale)s" on payment "%(payment)s" because it is a draft sale.</field>
+        </record>
+        <record model="ir.message" id="msg_payment_sale_cancel">
+            <field name="text">You cannot use sale "%(sale)s" on payment "%(payment)s" because it is a cancelled sale.</field>
+        </record>
+    </data>
+</tryton>
