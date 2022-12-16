@@ -1,0 +1,1175 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,purchase_exception_state:"
+msgid "Exception State"
+msgstr "Išimtinė būsena"
+
+msgctxt "field:account.invoice,purchases:"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "field:party.party,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+msgctxt "field:party.party,customer_codes:"
+msgid "Customer Codes"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currencies:"
+msgid "Supplier Currencies"
+msgstr "Tiekėjo grąžinimas"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Tiekėjo grąžinimas"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tiekimo laikas"
+
+#, fuzzy
+msgctxt "field:party.party,supplier_lead_times:"
+msgid "Lead Times"
+msgstr "Tiekimo laikas"
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:party.party.customer_code,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_currency,supplier_currency:"
+msgid "Supplier Currency"
+msgstr "Tiekėjo grąžinimas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:party.party.supplier_lead_time,supplier_lead_time:"
+msgid "Lead Time"
+msgstr "Tiekimo laikas"
+
+msgctxt "field:product.product,product_suppliers:"
+msgid "Suppliers"
+msgstr "Tiekėjai"
+
+msgctxt "field:product.product,purchasable:"
+msgid "Purchasable"
+msgstr "Perkama"
+
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Pirkimo kaina"
+
+msgctxt "field:product.product,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Pirkimo mato vienetas"
+
+msgctxt "field:product.template,product_suppliers:"
+msgid "Suppliers"
+msgstr "Tiekėjai"
+
+msgctxt "field:product.template,purchasable:"
+msgid "Purchasable"
+msgstr "Perkama"
+
+msgctxt "field:product.template,purchase_uom:"
+msgid "Purchase UOM"
+msgstr "Pirkimo mato vienetas"
+
+msgctxt "field:purchase.configuration,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Sąskaita faktūra išrašoma"
+
+msgctxt "field:purchase.configuration,purchase_process_after:"
+msgid "Process Purchase after"
+msgstr ""
+
+msgctxt "field:purchase.configuration,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr ""
+
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Sąskaita faktūra išrašoma"
+
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr "Pirkimo numeruotė"
+
+msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "Sąskaitų faktūrų domenas"
+
+msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "Atkurti sąskaitas faktūras"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "Operacijų domenas"
+
+msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "Atkurti operacijas"
+
+#, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:purchase.line,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:purchase.line,delivery_date:"
+msgid "Delivery Date"
+msgstr "Pristatymo data"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr "Taisyti pristatymo datą"
+
+msgctxt "field:purchase.line,delivery_date_store:"
+msgid "Delivery Date"
+msgstr "Pristatymo data"
+
+msgctxt "field:purchase.line,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:purchase.line,from_location:"
+msgid "From Location"
+msgstr "Išsiuntimo vieta"
+
+msgctxt "field:purchase.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Sąskaitos faktūros eilutės"
+
+msgctxt "field:purchase.line,move_done:"
+msgid "Moves Done"
+msgstr "Atliktos operacijos"
+
+msgctxt "field:purchase.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Operacijų išimtys"
+
+msgctxt "field:purchase.line,moves:"
+msgid "Moves"
+msgstr "Operacijos"
+
+msgctxt "field:purchase.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Ignoruotos operacijos"
+
+msgctxt "field:purchase.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Atkurtos operacijos"
+
+msgctxt "field:purchase.line,note:"
+msgid "Note"
+msgstr "Pastaba"
+
+msgctxt "field:purchase.line,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "field:purchase.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Tiekėjo produktas"
+
+msgctxt "field:purchase.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Prekės mato vieneto kategorija"
+
+msgctxt "field:purchase.line,purchase:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "field:purchase.line,purchase_state:"
+msgid "Purchase State"
+msgstr "Pirkimo būsena"
+
+msgctxt "field:purchase.line,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:purchase.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:purchase.line,taxes:"
+msgid "Taxes"
+msgstr "Mokesčiai"
+
+msgctxt "field:purchase.line,to_location:"
+msgid "To Location"
+msgstr "Gavimo vieta"
+
+msgctxt "field:purchase.line,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:purchase.line,unit:"
+msgid "Unit"
+msgstr "Mato vienetas"
+
+msgctxt "field:purchase.line,unit_price:"
+msgid "Unit Price"
+msgstr "Kaina"
+
+msgctxt "field:purchase.line-account.tax,line:"
+msgid "Purchase Line"
+msgstr "Pirkimo eilutė"
+
+msgctxt "field:purchase.line-account.tax,tax:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "field:purchase.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Operacija"
+
+msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
+msgid "Purchase Line"
+msgstr "Pirkimo eilutė"
+
+msgctxt "field:purchase.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Operacija"
+
+msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
+msgid "Purchase Line"
+msgstr "Pirkimo eilutė"
+
+msgctxt "field:purchase.product_supplier,code:"
+msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:purchase.product_supplier,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:purchase.product_supplier,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "Tiekimo laikas"
+
+msgctxt "field:purchase.product_supplier,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:purchase.product_supplier,party:"
+msgid "Supplier"
+msgstr "Tiekėjas"
+
+msgctxt "field:purchase.product_supplier,prices:"
+msgid "Prices"
+msgstr "Kainos"
+
+msgctxt "field:purchase.product_supplier,product:"
+msgid "Variant"
+msgstr "Variantas"
+
+msgctxt "field:purchase.product_supplier,template:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:purchase.product_supplier.price,product_supplier:"
+msgid "Supplier"
+msgstr "Tiekėjas"
+
+msgctxt "field:purchase.product_supplier.price,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:purchase.product_supplier.price,unit_price:"
+msgid "Unit Price"
+msgstr "Kaina"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
+
+msgctxt "field:purchase.purchase,comment:"
+msgid "Comment"
+msgstr "Komentaras"
+
+msgctxt "field:purchase.purchase,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Patvirtinti"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:purchase.purchase,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Pristatymo data"
+
+msgctxt "field:purchase.purchase,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:purchase.purchase,invoice_address:"
+msgid "Invoice Address"
+msgstr "Juridinis adresas"
+
+msgctxt "field:purchase.purchase,invoice_method:"
+msgid "Invoice Method"
+msgstr "Sąskaita faktūra išrašoma"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Sąskaitos faktūros būsena"
+
+msgctxt "field:purchase.purchase,invoice_state:"
+msgid "Invoice State"
+msgstr "Sąskaitos faktūros būsena"
+
+msgctxt "field:purchase.purchase,invoices:"
+msgid "Invoices"
+msgstr "Sąskaitos faktūros"
+
+msgctxt "field:purchase.purchase,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Ignoruotos sąskaitos faktūros"
+
+msgctxt "field:purchase.purchase,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Atkurtos sąskaitos faktūros"
+
+msgctxt "field:purchase.purchase,lines:"
+msgid "Lines"
+msgstr "Eilutės"
+
+msgctxt "field:purchase.purchase,moves:"
+msgid "Moves"
+msgstr "Operacijos"
+
+msgctxt "field:purchase.purchase,number:"
+msgid "Number"
+msgstr "Numeris"
+
+msgctxt "field:purchase.purchase,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:purchase.purchase,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:purchase.purchase,party_lang:"
+msgid "Party Language"
+msgstr "Kontrahento kalba"
+
+msgctxt "field:purchase.purchase,payment_term:"
+msgid "Payment Term"
+msgstr "Mokėjimo sąlyga"
+
+msgctxt "field:purchase.purchase,purchase_date:"
+msgid "Purchase Date"
+msgstr "Pirkimo data"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Pasiūlymas"
+
+msgctxt "field:purchase.purchase,reference:"
+msgid "Reference"
+msgstr "Nuoroda"
+
+msgctxt "field:purchase.purchase,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Grąžinimas"
+
+msgctxt "field:purchase.purchase,shipment_state:"
+msgid "Shipment State"
+msgstr "Siuntimo būsena"
+
+msgctxt "field:purchase.purchase,shipments:"
+msgid "Shipments"
+msgstr "Siuntimai"
+
+msgctxt "field:purchase.purchase,state:"
+msgid "State"
+msgstr "Būsena"
+
+msgctxt "field:purchase.purchase,tax_amount:"
+msgid "Tax"
+msgstr "PVM"
+
+msgctxt "field:purchase.purchase,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Išsaugota PVM vertė"
+
+msgctxt "field:purchase.purchase,total_amount:"
+msgid "Total"
+msgstr "Viso su PVM"
+
+msgctxt "field:purchase.purchase,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Išsaugota suma su PVM"
+
+msgctxt "field:purchase.purchase,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Viso"
+
+msgctxt "field:purchase.purchase,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Išsaugota suma"
+
+msgctxt "field:purchase.purchase,warehouse:"
+msgid "Warehouse"
+msgstr "Sandėlys"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "field:stock.location,supplier_return_location:"
+msgid "Supplier Return"
+msgstr "Tiekėjo grąžinimas"
+
+msgctxt "field:stock.move,purchase:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "field:stock.move,purchase_exception_state:"
+msgid "Exception State"
+msgstr "Išimtinė būsena"
+
+msgctxt "field:stock.move,supplier:"
+msgid "Supplier"
+msgstr "Tiekėjas"
+
+msgctxt "help:party.party,customer_code:"
+msgid ""
+"The code the party as supplier has assigned to the company as customer."
+msgstr ""
+
+msgctxt "help:party.party,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
+msgctxt "help:party.party,supplier_lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the goods from the party when used as a supplier.\n"
+"Used if no lead time is set on the product supplier."
+msgstr ""
+
+msgctxt "help:party.party.supplier_currency,supplier_currency:"
+msgid "Default currency for purchases from this party."
+msgstr ""
+
+msgctxt "help:purchase.configuration,purchase_process_after:"
+msgid ""
+"The grace period during which confirmed purchase can still be reset to draft.\n"
+"Applied only if a worker queue is activated."
+msgstr ""
+
+msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+
+msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
+msgid "The selected moves will be recreated. The other ones will be ignored."
+msgstr ""
+
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr ""
+
+msgctxt "help:purchase.product_supplier,lead_time:"
+msgid ""
+"The time from confirming the purchase order to receiving the products.\n"
+"If empty the lead time of the supplier is used."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:purchase.product_supplier.price,quantity:"
+msgid "Minimal quantity."
+msgstr "Minimalus kiekis"
+
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr ""
+
+msgctxt "help:stock.location,supplier_return_location:"
+msgid "If empty the Storage location is used."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Sąskaitos faktūros"
+
+msgctxt "model:ir.action,name:act_open_supplier"
+msgid "Parties associated to Purchases"
+msgstr "Su pirkimais susieti kontrahentai"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_supplier_form"
+msgid "Suppliers"
+msgstr "Tiekėjai"
+
+msgctxt "model:ir.action,name:act_product_supplier_price_form"
+msgid "Prices"
+msgstr "Kainos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_configuration_form"
+msgid "Configuration"
+msgstr "Nuostatos"
+
+msgctxt "model:ir.action,name:act_purchase_form"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "model:ir.action,name:act_purchase_form2"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Operacijos"
+
+msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "Grąžinimai"
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "Siuntimai"
+
+msgctxt "model:ir.action,name:report_purchase"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Taisyti antraštės duomenis"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "Tvarkyti siuntimo išimtinę situaciją"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
+msgid "All"
+msgstr "Visi"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Patvirtinti"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
+msgid "Draft"
+msgstr "Juodraštis"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "Išimtis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
+msgid "Processing"
+msgstr "Vykdomi"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
+msgid "Quotation"
+msgstr "Pasiūlymas"
+
+msgctxt "model:ir.message,text:msg_change_purchase_uom"
+msgid ""
+"You are trying to change the purchase UoM on which the purchase prices are "
+"based."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending purchases with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
+msgid "To delete purchase \"%(purchase)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a purchase."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft purchase "
+"\"%(purchase)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_line_tax_unique"
+msgid "A tax can be added only once to a purchase line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_missing_account_expense"
+msgid ""
+"To invoice purchase \"%(purchase)s\" you must configure a default account "
+"expense."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_modify_header_draft"
+msgid ""
+"To modify the header of purchase \"%(purchase)s\", it must be in draft "
+"state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"purchase."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_expense"
+msgid ""
+"To invoice purchase \"%(purchase)s\" you must define an account expense for "
+"product \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
+msgid ""
+"To process purchase \"%(purchase)s\" you must set a supplier location on "
+"party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
+msgid ""
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:purchase_cancel_button"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "model:ir.model.button,string:purchase_confirm_button"
+msgid "Confirm"
+msgstr "Patvirtinti"
+
+msgctxt "model:ir.model.button,string:purchase_draft_button"
+msgid "Draft"
+msgstr "Taisyti"
+
+msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Tvarkyti siuntimo išimtinę situaciją"
+
+msgctxt "model:ir.model.button,string:purchase_modify_header_button"
+msgid "Modify Header"
+msgstr "Taisyti antraštės duomenis"
+
+msgctxt "model:ir.model.button,string:purchase_process_button"
+msgid "Process"
+msgstr "Vykdyti"
+
+msgctxt "model:ir.model.button,string:purchase_quote_button"
+msgid "Quote"
+msgstr "Pasiūlymas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_product_supplier_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_purchase_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.sequence,name:sequence_purchase"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Nuostatos"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product_supplier"
+msgid "Suppliers"
+msgstr "Tiekėjai"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
+msgid "Configuration"
+msgstr "Nuostatos"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_form"
+msgid "Purchases"
+msgstr "Pirkimai"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Ataskaitos"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_supplier"
+msgid "Associated to Purchases"
+msgstr "Su pirkimais susieti kontrahentai"
+
+msgctxt "model:party.party.customer_code,name:"
+msgid "Party Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,name:"
+msgid "Party Supplier Currency"
+msgstr "Prekės tiekėjo kaina"
+
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,name:"
+msgid "Supplier Lead Time"
+msgstr "Tiekimo laikas"
+
+msgctxt "model:purchase.configuration,name:"
+msgid "Purchase Configuration"
+msgstr "Pirkimų nuostatos"
+
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr "Pirkimo nuostatų pirkimo būdas"
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr "Pirkimo nuostatų numeruotė"
+
+msgctxt "model:purchase.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
+
+msgctxt "model:purchase.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "Tvarkyti siuntimo išimtinę situaciją"
+
+msgctxt "model:purchase.line,name:"
+msgid "Purchase Line"
+msgstr "Pirkimo eilutė"
+
+msgctxt "model:purchase.line-account.tax,name:"
+msgid "Purchase Line - Tax"
+msgstr "Pirkimo eilutė - PVM"
+
+msgctxt "model:purchase.line-ignored-stock.move,name:"
+msgid "Purchase Line - Ignored Move"
+msgstr "Pirkimo eilutė - ignoruotos operacijos"
+
+msgctxt "model:purchase.line-recreated-stock.move,name:"
+msgid "Purchase Line - Ignored Move"
+msgstr "Pirkimo eilutė - ignoruotos operacijos"
+
+msgctxt "model:purchase.product_supplier,name:"
+msgid "Product Supplier"
+msgstr "Prekės tiekėjai"
+
+msgctxt "model:purchase.product_supplier.price,name:"
+msgid "Product Supplier Price"
+msgstr "Prekės tiekėjo kaina"
+
+msgctxt "model:purchase.purchase,name:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
+msgid "Purchase - Ignored Invoice"
+msgstr "Pirkimai - ignoruotos sąskaitos faktūros"
+
+msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
+msgid "Purchase - Recreated Invoice"
+msgstr "Pirkimai - atkurtos sąskaitos faktūros"
+
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:res.group,name:group_purchase"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "model:res.group,name:group_purchase_admin"
+msgid "Purchase Administrator"
+msgstr "Pirkimo valdymas"
+
+#, fuzzy
+msgctxt "report:purchase.purchase:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:purchase.purchase:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "report:purchase.purchase:"
+msgid "Customer Code:"
+msgstr ""
+
+msgctxt "report:purchase.purchase:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr "Siuntimo adresas:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "report:purchase.purchase:"
+msgid "Description:"
+msgstr "Aprašymas:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Draft Purchase Order"
+msgstr "Pirkimo juodraštis"
+
+msgctxt "report:purchase.purchase:"
+msgid "Purchase Order N°:"
+msgstr "Pirkimo užsakymas Nr:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "report:purchase.purchase:"
+msgid "Reference:"
+msgstr "Nuoroda:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Request for Quotation N°:"
+msgstr "Užklausa pasiūlymui Nr.:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Taxes"
+msgstr "Mokesčiai"
+
+msgctxt "report:purchase.purchase:"
+msgid "Taxes:"
+msgstr "PVM:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Total (excl. taxes):"
+msgstr "Viso:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Total:"
+msgstr "Viso su PVM:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Unit Price"
+msgstr "Kaina"
+
+msgctxt "selection:account.invoice,purchase_exception_state:"
+msgid "Ignored"
+msgstr "Ignoruota"
+
+msgctxt "selection:account.invoice,purchase_exception_state:"
+msgid "Recreated"
+msgstr "Atkurta"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Comment"
+msgstr "Komentaras"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Line"
+msgstr "Eilutė"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Subtotal"
+msgstr "Tarpinė suma"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Title"
+msgstr "Antraštė"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Order"
+msgstr "Pagal užsakymą"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Shipment"
+msgstr "Pagal siuntimą"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Manual"
+msgstr "Rankiniu būdu"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Exception"
+msgstr "Išimtis"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "None"
+msgstr "Jokia"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Paid"
+msgstr "Apmokėta"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Waiting"
+msgstr "Laukianti apmokėjimo"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Exception"
+msgstr "Išimtis"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "None"
+msgstr "Jokia"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Received"
+msgstr "Gauta"
+
+msgctxt "selection:purchase.purchase,shipment_state:"
+msgid "Waiting"
+msgstr "Laukianti apmokėjimo"
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,state:"
+msgid "Cancelled"
+msgstr "Anuliuota"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Confirmed"
+msgstr "Patvirtinta"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Done"
+msgstr "Pabaigta"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Processing"
+msgstr "Vykdoma"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Quotation"
+msgstr "Pasiūlymas"
+
+msgctxt "selection:stock.move,purchase_exception_state:"
+msgid "Ignored"
+msgstr "Ignoruota"
+
+msgctxt "selection:stock.move,purchase_exception_state:"
+msgid "Recreated"
+msgstr "Atkurta"
+
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Supplier"
+msgstr "Tiekėjas"
+
+msgctxt "view:product.template:"
+msgid "Suppliers"
+msgstr "Tiekėjai"
+
+#, fuzzy
+msgctxt "view:purchase.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "Pasirinkite sąskaitas faktūras atkūrimui"
+
+#, fuzzy
+msgctxt "view:purchase.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "Pasirinkite sąskaitas faktūras atkūrimui"
+
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Delivery Date:"
+msgstr "Pristatymo data"
+
+msgctxt "view:purchase.line:"
+msgid "General"
+msgstr "Pagrindinis"
+
+msgctxt "view:purchase.line:"
+msgid "Notes"
+msgstr "Pastabos"
+
+msgctxt "view:purchase.line:"
+msgid "Taxes"
+msgstr "Mokesčiai"
+
+msgctxt "view:purchase.purchase:"
+msgid "Other Info"
+msgstr "Kita informacija"
+
+msgctxt "view:purchase.purchase:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return these/this purchase(s)?"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:purchase.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:purchase.modify_header,start,modify:"
+msgid "Modify"
+msgstr "Taisyti"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Grąžinimai"
