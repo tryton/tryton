@@ -1,0 +1,91 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Acción"
+
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:dashboard.action,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:dashboard.action,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Acciones de Escritorio"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Diseño del Escritorio"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Acción del Escritorio"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Cuadrado"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Al Fondo"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "A la Izquierda"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "A la Derecha"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "A la Cima"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Action"
+msgstr "Acción del Escritorio"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Actions"
+msgstr "Acciones de Escritorio"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Escritorio"

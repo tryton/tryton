@@ -1,0 +1,313 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:company.company,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:company.company,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Служители"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Долен колонтитул"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Горен колонтитул"
+
+msgctxt "field:company.company,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:company.company,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Времева зона"
+
+msgctxt "field:company.company,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:company.company,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:company.company.config.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:company.employee,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:company.employee,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:company.employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:company.employee,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:company.employee,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:company.employee,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:ir.cron-company.company,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:ir.cron-company.company,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Планировщик"
+
+msgctxt "field:ir.cron-company.company,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.cron-company.company,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:ir.cron-company.company,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:ir.cron-company.company,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:ir.property,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:res.user,companies:"
+msgid "Current Companies"
+msgstr "Текущи фирми"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Текуща фирма"
+
+#, fuzzy
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Служител"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Служители"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Основна фирма"
+
+msgctxt "field:res.user-company.employee,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:res.user-company.employee,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Служител"
+
+msgctxt "field:res.user-company.employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user-company.employee,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Потребител"
+
+msgctxt "field:res.user-company.employee,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:res.user-company.employee,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron"
+msgstr "Фирми регистрирани за този планировщик"
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Конфигуриране на фирма"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Служител"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Конфигуриране на фирма"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Служители"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Писмо"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Служители"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Потребител - Служител"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "С уважение,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Уважаеми дами и годпода,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Относно:"
+
+msgctxt "view:company.company.config.start:"
+msgid "Create Company"
+msgstr "Създаване на фирма"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Сега може да добавите фирмата си към системата"
+
+msgctxt "view:company.company:"
+msgid "Companies"
+msgstr "Фирми"
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Справки"
+
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Служител"
+
+msgctxt "view:company.employee:"
+msgid "Employees"
+msgstr "Служители"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Добавяне"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "Добре"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
