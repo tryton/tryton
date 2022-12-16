@@ -1,0 +1,12 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:commission,waiting_move:"
+msgid "Move"
+msgstr "Перемещение"
+
+msgctxt "field:commission.agent,waiting_account:"
+msgid "Waiting Account"
+msgstr ""
