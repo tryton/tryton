@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="taxon_view_tree">
+            <field name="model">product.taxon</field>
+            <field name="inherit" ref="product_classification.classification_tree_view_tree"/>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">taxon_tree</field>
+        </record>
+        <record model="ir.ui.view" id="taxon_view_list">
+            <field name="model">product.taxon</field>
+            <field name="inherit" ref="product_classification.classification_view_list"/>
+            <field name="priority" eval="10"/>
+            <field name="name">taxon_list</field>
+        </record>
+        <record model="ir.ui.view" id="taxon_view_form">
+            <field name="model">product.taxon</field>
+            <field name="inherit" ref="product_classification.classification_tree_view_form"/>
+            <field name="name">taxon_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_taxon_tree">
+            <field name="name">Taxons</field>
+            <field name="res_model">product.taxon</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_taxon_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="taxon_view_tree"/>
+            <field name="act_window" ref="act_taxon_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_taxon_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="taxon_view_form"/>
+            <field name="act_window" ref="act_taxon_tree"/>
+        </record>
+        <menuitem parent="product_classification.menu_classification"
+            id="menu_taxon_tree" action="act_taxon_tree" icon="tryton-tree"/>
+
+        <record model="ir.action.act_window" id="act_taxon_form">
+            <field name="name">Taxons</field>
+            <field name="res_model">product.taxon</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_taxon_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="taxon_view_list"/>
+            <field name="act_window" ref="act_taxon_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_taxon_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="taxon_view_form"/>
+            <field name="act_window" ref="act_taxon_form"/>
+        </record>
+        <menuitem parent="menu_taxon_tree"
+            id="menu_taxon" action="act_taxon_form" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_taxon">
+            <field name="model" search="[('model', '=', 'product.taxon')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_taxon_admin">
+            <field name="model" search="[('model', '=', 'product.taxon')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="cultivar_view_list">
+            <field name="model">product.cultivar</field>
+            <field name="inherit" ref="product_classification.classification_view_list"/>
+            <field name="name">cultivar_list</field>
+        </record>
+        <record model="ir.ui.view" id="cultivar_view_form">
+            <field name="model">product.cultivar</field>
+            <field name="inherit" ref="product_classification.classification_view_form"/>
+            <field name="name">cultivar_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_cultivar_form">
+            <field name="name">Cultivars</field>
+            <field name="res_model">product.cultivar</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cultivar_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="cultivar_view_list"/>
+            <field name="act_window" ref="act_cultivar_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cultivar_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="cultivar_view_form"/>
+            <field name="act_window" ref="act_cultivar_form"/>
+        </record>
+        <menuitem parent="product_classification.menu_classification"
+            id="menu_cultivar" action="act_cultivar_form" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_cultivar">
+            <field name="model" search="[('model', '=', 'product.cultivar')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cultivar_admin">
+            <field name="model" search="[('model', '=', 'product.cultivar')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="cultivar_group_view_list">
+            <field name="model">product.cultivar.group</field>
+            <field name="type">tree</field>
+            <field name="name">cultivar_group_list</field>
+        </record>
+        <record model="ir.ui.view" id="cultivar_group_view_form">
+            <field name="model">product.cultivar.group</field>
+            <field name="type">form</field>
+            <field name="name">cultivar_group_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_cultivar_group_form">
+            <field name="name">Cultivar Groups</field>
+            <field name="res_model">product.cultivar.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cultivar_group_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="cultivar_group_view_list"/>
+            <field name="act_window" ref="act_cultivar_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cultivar_group_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="cultivar_group_view_form"/>
+            <field name="act_window" ref="act_cultivar_group_form"/>
+        </record>
+        <menuitem parent="menu_cultivar" id="menu_cultivar_group"
+            action="act_cultivar_group_form"/>
+
+        <record model="ir.model.access" id="access_cultivar_group">
+            <field name="model" search="[('model', '=', 'product.cultivar.group')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cultivar_group_admin">
+            <field name="model" search="[('model', '=', 'product.cultivar.group')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
