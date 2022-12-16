@@ -1,0 +1,352 @@
+type,name,res_id,src,value,fuzzy
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,No puede cambiar la secuencia de una factura si hay una factura abierta en el año fiscal,0
+error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,¡Debe tener una secuencia diferente de facturación por año fiscal!,0
+error,account.invoice,0,"Base taxes different from invoice lines!
+Re-compute the invoice.",Los Impuestos Base difieren de las líneas de factura!,0
+error,account.invoice,0,"Taxes defined but not on invoice lines!
+Re-compute the invoice.","Impuestos definidos pero no en líneas de factura!
+Recalcule la factura.",0
+error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.",Impuestos definidos en factura pero no usados en las líneas!,0
+error,account.invoice,0,The credit account on journal is missing!,Falta la cuenta crédito del diario!,0
+error,account.invoice,0,The credit account on journal is the same than the invoice account!,¡La cuenta crédito en el diario es la misma que la cuenta facturada!,0
+error,account.invoice,0,The debit account on journal is missing!,Falta la cuenta débito del diario!,0
+error,account.invoice,0,The debit account on journal is the same than the invoice account!,¡La cuenta débito en el diario es la misma que la cuenta facturada!,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,No hay una secuencia de facturaas para el período/año fiscal!,0
+error,account.invoice,0,"You can not create an invoice
+with account from a different invoice company!",No puede crear una factura,0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!","¡No puede modificar una factura que está abierta, pagada!",0
+error,account.invoice,0,You can not reset to draft an invoice that has move!,¡No puede poner en borrador una factura que ha sido movida!,0
+error,account.invoice,0,"You can not use the same account
+as on invoice line!","¡No puede usar la misma cuenta
+como línea en la factura!",0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,¡No puede acreditar con reembolsos una factura que no está abierta!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,¡No puede acreditar una devolución de una factura con pagos!,0
+error,account.invoice.line,0,"Line with ""line"" type must have an account!","¡Una línea con tipo de ""línea"" debe tener una cuenta!",0
+error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","¡Una línea sin tipo de ""línea"" debe tener una factura!",0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","No puede adicionar una línea a una factura que está abierta, pagada o cancelada!",0
+error,account.invoice.line,0,"You can not create invoice line
+with account with a different invoice company!","¡No puede crear una línea de factura
+con cuenta a partir de una factura de una compañía distinta!",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!","¡No puede modificar la línea de una factura que está abierta, pagada!",0
+error,account.invoice.line,0,"You can not use the same account
+as on the invoice!","No puede usar la misma cuenta
+que en la factura!",0
+error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,¡No puede crear un pago parcial con un monto mayor que el valor a pagar!,0
+error,account.invoice.payment_term,0,Invalid payment term line!,Línea de opción de pago inválida!,0
+error,account.invoice.payment_term,0,Payment term missing a remainder line!,Hace falta una línea final al término de pago!,0
+error,account.invoice.payment_term.line.delay,0,The code must be unique!,¡El código debe ser único!,0
+error,account.invoice.payment_term.line.type,0,The code must be unique!,¡El código debe ser único!,0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","No puede adicionar una línea a una factura que está abierta, pagada o cancelada!",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",,0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,No puede cambiar la secuencia de una factura si hay una factura abierta en el período,0
+error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,¡Debe tener secuencias diferentes de facturas por año fiscal en la misma compañía!,0
+field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Secuencia de la Nota Crédito del Proveedor,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Secuencia de Factura de Proveedor,0
+field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Secuencia de Nota Crédito de Cliente,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Secuencia de Facturas de Cliente,0
+field,"account.invoice,account",0,Account,Cuenta,0
+field,"account.invoice,accounting_date",0,Accounting Date,Fecha de contabilización,0
+field,"account.invoice-account.move.line,invoice",0,Invoice,Factura,0
+field,"account.invoice-account.move.line,line",0,Payment Line,Línea de pago,0
+field,"account.invoice-account.move.line,rec_name",0,Name,Nombre,0
+field,"account.invoice,amount_to_pay",0,Amount to Pay,Cantidad a pagar,0
+field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Cantidad a pagar hoy,0
+field,"account.invoice,comment",0,Comment,Comentario,0
+field,"account.invoice,company",0,Company,Compañía,0
+field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,Con devolución,0
+field,"account.invoice,currency",0,Currency,Moneda,0
+field,"account.invoice,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.invoice,description",0,Description,Descripción,0
+field,"account.invoice,invoice_address",0,Invoice Address,Dirección de Facturación,0
+field,"account.invoice,invoice_date",0,Invoice Date,Fecha de Factura,0
+field,"account.invoice,invoice_report",0,Invoice Report,Reporte de Facturación,0
+field,"account.invoice,invoice_report_format",0,Invoice Report Format,Formato de Reporte de Facturación,0
+field,"account.invoice,journal",0,Journal,Diario,0
+field,"account.invoice.line,account",0,Account,Cuenta,0
+field,"account.invoice.line-account.tax,line",0,Invoice Line,Línea de Factura,0
+field,"account.invoice.line-account.tax,rec_name",0,Name,Nombre,0
+field,"account.invoice.line-account.tax,tax",0,Tax,Impuesto,0
+field,"account.invoice.line,amount",0,Amount,Cantidad,0
+field,"account.invoice.line,company",0,Company,Compañía,0
+field,"account.invoice.line,currency",0,Currency,Moneda,0
+field,"account.invoice.line,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.invoice.line,description",0,Description,Descripción,0
+field,"account.invoice.line,invoice",0,Invoice,Factura,0
+field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Impuestos de Facturas,0
+field,"account.invoice.line,invoice_type",0,Invoice Type,Tipo de Factura,0
+field,"account.invoice.line,note",0,Note,Nota,0
+field,"account.invoice.line,party",0,Party,Terceros,0
+field,"account.invoice.line,party_lang",0,Party Language,Idioma del Tercero,0
+field,"account.invoice.line,product",0,Product,Producto,0
+field,"account.invoice.line,quantity",0,Quantity,Cantidad,0
+field,"account.invoice.line,rec_name",0,Name,Nombre,0
+field,"account.invoice,lines",0,Lines,Líneas,0
+field,"account.invoice.line,sequence",0,Sequence,Secuencia,0
+field,"account.invoice,lines_to_pay",0,Lines to Pay,Líneas a Pagar,0
+field,"account.invoice.line,taxes",0,Taxes,Impuestos,0
+field,"account.invoice.line,type",0,Type,Tipo,0
+field,"account.invoice.line,unit",0,Unit,Unidad,0
+field,"account.invoice.line,unit_digits",0,Unit Digits,Dígitos de Unidad,0
+field,"account.invoice.line,unit_price",0,Unit Price,Precio Unitario,0
+field,"account.invoice,move",0,Move,Movimiento,0
+field,"account.invoice,number",0,Number,Número,0
+field,"account.invoice,party",0,Party,Tercero,0
+field,"account.invoice,party_lang",0,Party Language,Idioma del Tercero,0
+field,"account.invoice.pay_invoice.ask,account",0,Account,Cuenta,0
+field,"account.invoice.pay_invoice.ask,account_writeoff",0,Write-Off Account,Cuenta de Ajustes,0
+field,"account.invoice.pay_invoice.ask,amount",0,Payment Amount,Valor del Pago,0
+field,"account.invoice.pay_invoice.ask,amount_writeoff",0,Write-Off Amount,Valor del Ajuste,0
+field,"account.invoice.pay_invoice.ask,company",0,Company,Compañía,0
+field,"account.invoice.pay_invoice.ask,currency",0,Payment Currency,Pago en Moneda,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Payment Currency Digits,Dígitos de Pago de Moneda,0
+field,"account.invoice.pay_invoice.ask,currency_digits_writeoff",0,Write-Off Currency Digits,Ajuste de Dígitos de Moneda,0
+field,"account.invoice.pay_invoice.ask,currency_writeoff",0,Write-Off Currency,Ajuste de Moneda,0
+field,"account.invoice.pay_invoice.ask,date",0,Date,Fecha,0
+field,"account.invoice.pay_invoice.ask,description",0,Description,Descripción,0
+field,"account.invoice.pay_invoice.ask,invoice",0,Invoice,Factura,0
+field,"account.invoice.pay_invoice.ask,journal",0,Journal,Diario,0
+field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Write-Off Journal,Diario de Ajuste,0
+field,"account.invoice.pay_invoice.ask,lines",0,Lines,Líneas,0
+field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Líneas a Pagar,0
+field,"account.invoice.pay_invoice.ask,payment_lines",0,Payment Lines,Líneas de Pago,0
+field,"account.invoice.pay_invoice.ask,type",0,Type,Tipo,0
+field,"account.invoice.pay_invoice.init,amount",0,Amount,Cantidad,0
+field,"account.invoice.pay_invoice.init,currency",0,Currency,Moneda,0
+field,"account.invoice.pay_invoice.init,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.invoice.pay_invoice.init,date",0,Date,Fecha,0
+field,"account.invoice.pay_invoice.init,description",0,Description,Descripción,0
+field,"account.invoice.pay_invoice.init,journal",0,Journal,Diario,0
+field,"account.invoice,payment_lines",0,Payment Lines,Líneas de Pago,0
+field,"account.invoice,payment_term",0,Payment Term,Término de Pago,0
+field,"account.invoice.payment_term,active",0,Active,Activo,0
+field,"account.invoice.payment_term,description",0,Description,Descripción,0
+field,"account.invoice.payment_term.line,amount",0,Amount,Cantidad,0
+field,"account.invoice.payment_term.line,currency",0,Currency,Moneda,0
+field,"account.invoice.payment_term.line,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.invoice.payment_term.line,days",0,Number of Days,Cantidad de días,0
+field,"account.invoice.payment_term.line,delay",0,Condition,Condición,0
+field,"account.invoice.payment_term.line.delay,code",0,Code,Código,0
+field,"account.invoice.payment_term.line.delay,name",0,Name,Nombre,0
+field,"account.invoice.payment_term.line.delay,rec_name",0,Name,Nombre,0
+field,"account.invoice.payment_term.line,payment",0,Payment Term,Término de Pago,0
+field,"account.invoice.payment_term.line,percentage",0,Percentage,Porcentaje,0
+field,"account.invoice.payment_term.line,rec_name",0,Name,Nombre,0
+field,"account.invoice.payment_term,lines",0,Lines,Líneas,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Secuencia,0
+field,"account.invoice.payment_term.line,type",0,Type,Tipo,0
+field,"account.invoice.payment_term.line.type,code",0,Code,Código,0
+field,"account.invoice.payment_term.line.type,name",0,Name,Nombre,0
+field,"account.invoice.payment_term.line.type,rec_name",0,Name,Nombre,0
+field,"account.invoice.payment_term,name",0,Payment Term,Término de Pago,0
+field,"account.invoice.payment_term,rec_name",0,Name,Nombre,0
+field,"account.invoice,rec_name",0,Name,Nombre,0
+field,"account.invoice,reconciled",0,Reconciled,Conciliado,0
+field,"account.invoice,reference",0,Reference,Referencia,0
+field,"account.invoice,state",0,State,Estado,0
+field,"account.invoice.tax,account",0,Account,Cuenta,0
+field,"account.invoice,tax_amount",0,Tax,Impuesto,0
+field,"account.invoice.tax,amount",0,Amount,Cantidad,0
+field,"account.invoice.tax,base",0,Base,Base,0
+field,"account.invoice.tax,base_code",0,Base Code,Código Base,0
+field,"account.invoice.tax,base_sign",0,Base Sign,Signo Base,0
+field,"account.invoice.tax,description",0,Description,Descripción,0
+field,"account.invoice,taxes",0,Tax Lines,Líneas de Impuestos,0
+field,"account.invoice.tax,invoice",0,Invoice,Factura,0
+field,"account.invoice.tax,manual",0,Manual,Manual,0
+field,"account.invoice.tax,rec_name",0,Name,Nombre,0
+field,"account.invoice.tax,sequence",0,Sequence,Secuencia,0
+field,"account.invoice.tax,sequence_number",0,Sequence Number,Número de Secuencia,0
+field,"account.invoice.tax,tax",0,Tax,Impuesto,0
+field,"account.invoice.tax,tax_code",0,Tax Code,Código de Impuesto,0
+field,"account.invoice.tax,tax_sign",0,Tax Sign,Signo del Impuesto,0
+field,"account.invoice,total_amount",0,Total,Total,0
+field,"account.invoice,type",0,Type,Tipo,0
+field,"account.invoice,type_name",0,Type,Tipo,0
+field,"account.invoice,untaxed_amount",0,Untaxed,Sin Impuesto,0
+field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Secuencia de la Nota Crédito del Proveedor,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Secuencia de Factura de Proveedor,0
+field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Secuencia de Nota Crédito de Cliente,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Secuencia de Facturas de Cliente,0
+field,"party.address,invoice",0,Invoice,Factura,0
+field,"party.party,payment_term",0,Invoice Payment Term,Término de Pago de la Factura,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Término de Pago a Proveedor,0
+help,"account.invoice.credit_invoice.init,with_refund",0,"If true, the current invoice(s) will be paid.","Si cierto, la(s) factura(s) actuales se pagarán.",0
+help,"account.invoice.payment_term.line,percentage",0,In %,En %,0
+help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Para ordenar las líneas ascendentemente,0
+model,"account.invoice-account.move.line,name",0,Invoice - Payment Line,Factura - Línea de pago,0
+model,"account.invoice.credit_invoice.init,name",0,Credit Invoice Init,Inicio de Factura Crédito,0
+model,"account.invoice.line-account.tax,name",0,Invoice Line - Tax,Línea de Factura - Impuesto,0
+model,"account.invoice.line,name",0,Invoice Line,Línea de Factura,0
+model,"account.invoice,name",0,Invoice,Factura,0
+model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Solicitud de Pago de Factura,0
+model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Inicio de Pago de Factura,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Mes Final,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Días Netos,0
+model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Línea de Pago Tardío,0
+model,"account.invoice.payment_term.line,name",0,Payment Term Line,Línea de Término de Pago,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fijo,0
+model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Tipo Pago de Término,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Porcentaje,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Diferencia,0
+model,"account.invoice.payment_term,name",0,Payment Term,Término de Pago,0
+model,"account.invoice.print_invoice_report.warning,name",0,Print Invoice Report Warning,Imprimir Advertencia de Pago de Factura,0
+model,"account.invoice.tax,name",0,Invoice Tax,Impuesto en Factura,0
+model,"ir.action,name",act_invoice_form,All Invoices,Todas las facturas,0
+model,"ir.action,name",credit_invoice,Credit,Crédito,0
+model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Notas Crédito,0
+model,"ir.action,name",act_invoice_out_credit_note_form2,Credit Notes,Notas Crédito,0
+model,"ir.action,name",act_invoice_out_credit_note_form3,Draft Credit Notes,Notas Crédito en Borrador,0
+model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Factura en Borrador,0
+model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Borrador Nota Crédito del Proveedor,0
+model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Borrador de Factura de Proveedor,0
+model,"ir.action,name",report_invoice,Invoice,Factura,0
+model,"ir.action,name",print_invoice_report,Invoice,Factura,0
+model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Facturas,0
+model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Facturas,0
+model,"ir.action,name",act_invoice_form2,Invoices,Facturas,0
+model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Nota Crédito Abierta,0
+model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Factura Abierta,0
+model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Nota Crédito de Proveedor Abierta,0
+model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Factura de Proveedor Abierta,0
+model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Pagar Factura,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Formas de Pago,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Formas de Pago,1
+model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Nota Crédito Proforma,0
+model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Factura Proforma,0
+model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Nota Crédito de Proveedor Proforma,0
+model,"ir.action,name",act_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Factura del Proveedor Proforma,0
+model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Notas Crédito del Proveedor,0
+model,"ir.action,name",act_invoice_in_credit_note_form2,Supplier Credit Notes,Notas Crédito del Proveedor,0
+model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Facturas de Proveedor,0
+model,"ir.action,name",act_invoice_in_invoice_form2,Supplier Invoices,Facturas de Proveedor,0
+model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Factura,0
+model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Todas las facturas,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Notas Crédito,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,Borrador Nota Crédito,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Borrador Factura,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Borrador Nota Crédito Proveedor,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Borrador Factura Proveedor,0
+model,"ir.ui.menu,name",menu_invoices,Invoices,Facturas,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Facturas,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Nueva Nota Crédito,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Nueva Factura,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Nueva Nota Crédito Proveedor,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Factura Nuevo Proveedor,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Nota Crédito Abierta,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Factura Abierta,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Nota Crédito Proveedor Abierta,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Factura Proveedor Abierta,0
+model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Formas de Pago,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Formas de Pago,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Nota Crédito Proforma,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Factura Proforma,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Nota Crédito Proveedor Proforma,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Factura Proveedor Proforma,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Notas Crédito del Proveedor,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Facturas de Proveedor,0
+model,"workflow.activity,name",invoice_activity_cancel,Canceled,Cancelado,0
+model,"workflow.activity,name",invoice_activity_draft,Draft,Borrador,0
+model,"workflow.activity,name",invoice_activity_open,Open,Abrir,0
+model,"workflow.activity,name",invoice_activity_paid,Paid,Pagado,0
+model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro forma,0
+model,"workflow,name",invoice_workflow,Invoice workflow,Flujo de Trabajo Factura,0
+odt,account.invoice,0,Amount,Cantidad,0
+odt,account.invoice,0,Base,Base,0
+odt,account.invoice,0,Credit Note N°:,Nota Crédito N°:,0
+odt,account.invoice,0,Date,Fecha,0
+odt,account.invoice,0,Date:,Fecha:,0
+odt,account.invoice,0,Description,Descripción,0
+odt,account.invoice,0,Description:,Descripción:,0
+odt,account.invoice,0,Draft Credit Note,Borrador de Nota Crédito,0
+odt,account.invoice,0,Draft Invoice,Borrador de Factura,0
+odt,account.invoice,0,Draft Supplier Credit Note,Borrador de Nota Crédito del Proveedor,0
+odt,account.invoice,0,Draft Supplier Invoice,Borrador de Factura del Proveedor,0
+odt,account.invoice,0,E-Mail:,Correo electrónico:,0
+odt,account.invoice,0,Invoice N°:,Factura N°:,0
+odt,account.invoice,0,Payment Term,Término de Pago,0
+odt,account.invoice,0,Phone:,Teléfono:,0
+odt,account.invoice,0,Pro forma Credit Note,Nota Crédito Proforma,0
+odt,account.invoice,0,Pro forma Invoice,Factura Proforma,0
+odt,account.invoice,0,Pro forma Supplier Credit Note,Nota Crédito del Proveedor Proforma,0
+odt,account.invoice,0,Pro forma Supplier Invoice,Factura del Proveedor Proforma,0
+odt,account.invoice,0,Quantity,Cantidad,0
+odt,account.invoice,0,Supplier Credit Note N°:,Nota Crédito del Proveedor N°:,0
+odt,account.invoice,0,Supplier Invoice N°:,Factura del Proveedor N°:,0
+odt,account.invoice,0,Tax,Impuesto,0
+odt,account.invoice,0,Taxes,Impuestos,0
+odt,account.invoice,0,Taxes:,Impuestos:,0
+odt,account.invoice,0,Total:,Total:,0
+odt,account.invoice,0,Total (excl. taxes):,Total (sin impuestos):,0
+odt,account.invoice,0,Unit Price,Precio Unitario,0
+odt,account.invoice,0,VAT:,IVA:,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Nota Crédito,0
+selection,"account.invoice.line,invoice_type",0,Invoice,Factura,0
+selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Nota Crédito del Proveedor,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Factura de Proveedor,0
+selection,"account.invoice.line,type",0,Comment,Comentario,0
+selection,"account.invoice.line,type",0,Line,Línea,0
+selection,"account.invoice.line,type",0,Subtotal,Subtotal,0
+selection,"account.invoice.line,type",0,Title,Título,0
+selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Pago Parcial,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ajuste,0
+selection,"account.invoice,state",0,Canceled,Cancelado,0
+selection,"account.invoice,state",0,Draft,Borrador,0
+selection,"account.invoice,state",0,Opened,Abierto,0
+selection,"account.invoice,state",0,Paid,Pagado,0
+selection,"account.invoice,state",0,Pro forma,Pro forma,0
+selection,"account.invoice,type",0,Credit Note,Nota de Crédito,0
+selection,"account.invoice,type",0,Invoice,Factura,0
+selection,"account.invoice,type",0,Supplier Credit Note,Nota Crédito del Proveedor,0
+selection,"account.invoice,type",0,Supplier Invoice,Factura de Proveedor,0
+view,account.invoice,0,Amount Second Currency,Cantidad en la Moneda Secundaria,0
+view,account.invoice,0,_Cancel,_Cancelar,0
+view,account.invoice,0,Credit,Crédito,0
+view,account.invoice,0,Debit,Débito,0
+view,account.invoice,0,_Draft,_Borrador,0
+view,account.invoice,0,Invoice,Factura,0
+view,account.invoice,0,Invoices,Facturas,0
+view,account.invoice,0,Lines,Líneas,0
+view,account.invoice,0,_Open,_Abrir,0
+view,account.invoice,0,Other Info,Información Adicional,0
+view,account.invoice,0,_Pay,_Pago,0
+view,account.invoice,0,Payment,Pago,0
+view,account.invoice,0,Payment Lines,Líneas de Pago,0
+view,account.invoice,0,Pro For_ma,Pro For_ma,0
+view,account.invoice,0,_Reset to Draft,_Revertir a Borrador,0
+view,account.invoice,0,Taxes,Impuestos,0
+view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Segur@ desea acreditar la(s) factura(s)?,0
+view,account.invoice.credit_invoice.init,0,Credit Invoice,Factura Crédito,0
+view,account.invoice.line,0,General,General,0
+view,account.invoice.line,0,Invoice Line,Línea de Factura,0
+view,account.invoice.line,0,Invoice Lines,Líneas de Factura,0
+view,account.invoice.line,0,Notes,Notas,0
+view,account.invoice.line,0,Products,Productos,0
+view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Cantidad en la Moneda Secundaria,0
+view,account.invoice.pay_invoice.ask,0,Credit,Crédito,0
+view,account.invoice.pay_invoice.ask,0,Debit,Débito,0
+view,account.invoice.pay_invoice.ask,0,Lines to Pay,Líneas a Pagar,0
+view,account.invoice.pay_invoice.ask,0,Pay Invoice,Pagar Factura,0
+view,account.invoice.pay_invoice.ask,0,Payment Lines,Líneas de Pago,0
+view,account.invoice.pay_invoice.init,0,Pay Invoice,Pagar Factura,0
+view,account.invoice.payment_term,0,Payment Term,Término de Pago,0
+view,account.invoice.payment_term,0,Payment Term Line,Línea de Término de Pago,0
+view,account.invoice.payment_term,0,Payment Term Lines,Líneas de Término de Pago,0
+view,account.invoice.payment_term,0,Payment Terms,Formas de Pago,0
+view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Advertencia!</b>,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Imprimir Factura,0
+view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Las facturas serán enviadas <i>directamente</i> a la impresora.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Ha elegido más de una factura para imprimir,0
+view,account.invoice.tax,0,Invoice Tax,Impuesto en Factura,0
+view,account.invoice.tax,0,Invoice Taxes,Impuestos de Facturas,0
+view,account.invoice.tax,0,Tax Code,Código de Impuesto,0
+view,party.party,0,Payment Terms,Formas de Pago,0
+wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Crédito,0
+wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Cancelar,0
+wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Cancelar,0
+wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,Aceptar,0
+wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,Aceptar,0
+wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Cancelar,0
+wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Cancelar,0
+wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Imprimir,0

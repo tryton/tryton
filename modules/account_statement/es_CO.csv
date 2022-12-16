@@ -1,0 +1,72 @@
+type,name,res_id,src,value,fuzzy
+error,account.statement,0,End Balance must be %s!,El Balance debe ser %s!,0
+error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,¡El valor (%s) es mayor que lo que se debe pagar en la factura!,0
+error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,¡Las cuentas crédito o débito en un diario son las mismas que las líneas de estado de cuenta!,0
+error,account.statement.line,0,Please provide debit and credit account on statement journal.,Por favor indique las cuentas débito y crédito en el libro de estado de cuentas.,0
+field,"account.statement,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.statement,date",0,Date,Fecha,0
+field,"account.statement,end_balance",0,End Balance,Balance Final,0
+field,"account.statement,journal",0,Journal,Diario,0
+field,"account.statement.journal,company",0,Company,Compañía,0
+field,"account.statement.journal,currency",0,Currency,Moneda,0
+field,"account.statement.journal,journal",0,Journal,Diario,0
+field,"account.statement.journal,name",0,Name,Nombre,0
+field,"account.statement.journal,rec_name",0,Name,Nombre,0
+field,"account.statement.line,account",0,Account,Cuenta,0
+field,"account.statement.line,amount",0,Amount,Cantidad,0
+field,"account.statement.line,date",0,Date,Fecha,0
+field,"account.statement.line,description",0,Description,Descripción,0
+field,"account.statement.line,invoice",0,Invoice,Factura,0
+field,"account.statement.line,move",0,Account Move,Movimiento de Cuenta,0
+field,"account.statement.line,party",0,Party,Tercero,0
+field,"account.statement.line,rec_name",0,Name,Nombre,0
+field,"account.statement,lines",0,Transactions,Transacciones,0
+field,"account.statement.line,statement",0,Statement,Estado de Cuenta,0
+field,"account.statement,move_lines",0,Move Lines,Líneas de Movimiento,0
+field,"account.statement,rec_name",0,Name,Nombre,0
+field,"account.statement,start_balance",0,Start Balance,Balance Inicial,0
+field,"account.statement,state",0,State,Estado,0
+model,"account.journal.type,name",journal_type_statement,Statement,Estado de Cuenta,0
+model,"account.statement.journal,name",0,Statement Journal,Diario de Estados de Cuenta,0
+model,"account.statement.line,name",0,Account Statement Line,Línea de Estado de Cuenta,0
+model,"account.statement,name",0,Account Statement,Estado de Cuentas,0
+model,"ir.action,name",act_statement_form,All Statement,Todos los estados de cuenta,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Borrador de Estados de Cuenta,0
+model,"ir.action,name",act_new_statement_form,New Statement,Nuevo Extracto,0
+model,"ir.action,name",act_posted_statement_form,Posted Statements,Estados de Cuenta Autorizados,0
+model,"ir.action,name",act_statement_journal_form,Statement Journals,Libros de Estados de Cuenta,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Estados de Cuenta Validados,0
+model,"ir.ui.menu,name",menu_statement_form,All Statement,Todos los estados de cuenta,0
+model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Estados de Cuenta en Borrador,0
+model,"ir.ui.menu,name",menu_new_statement_form,New Statement,Nuevo Extracto,0
+model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Estados de Cuenta Autorizados,0
+model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Diarios de Estados de Cuenta,0
+model,"ir.ui.menu,name",menu_statements,Statements,Estados de Cuenta,0
+model,"ir.ui.menu,name",menu_statement_configuration,Statements,Estados de Cuenta,0
+model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Estados de Cuenta Válidos,0
+model,"res.group,name",group_statement,Statement,Estado de Cuenta,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Cancelado,0
+model,"workflow.activity,name",statement_act_draft,Draft,Borrador,0
+model,"workflow.activity,name",statement_act_posted,Posted,Confirmado,0
+model,"workflow.activity,name",statement_act_validated,Validated,Validado,0
+model,"workflow,name",wkf_statement,Statement,Estado de Cuenta,0
+selection,"account.statement,state",0,Canceled,Cancelado,0
+selection,"account.statement,state",0,Draft,Borrador,0
+selection,"account.statement,state",0,Posted,Confirmado,0
+selection,"account.statement,state",0,Validated,Validado,0
+view,account.statement,0,Bank Statement,Extractos Bancarios,0
+view,account.statement,0,Bank Statement Lines,Líneas de extracto bancario,0
+view,account.statement,0,Bank Statements,Extractos Bancarios,0
+view,account.statement,0,Cancel,Cancelar,0
+view,account.statement,0,Move Lines,Líneas de Movimiento,0
+view,account.statement,0,Post,Confirmar,0
+view,account.statement,0,Reset to Draft,Revertir a Borrador,0
+view,account.statement,0,Statement,Estado de Cuenta,0
+view,account.statement,0,Statement Lines,Líneas de Estado de Cuenta,0
+view,account.statement,0,Statements,Estados de Cuenta,0
+view,account.statement,0,Validate,Validar,0
+view,account.statement.journal,0,Statement Journal,Libro de Estados de Cuenta,0
+view,account.statement.journal,0,Statement Journals,Libros de Estados de Cuenta,0
+view,account.statement.line,0,Bank Statement Line,Línea de extracto bancario,0
+view,account.statement.line,0,Statement Line,Libros de Estados de Cuenta,0
+view,account.statement.line,0,Statement Lines,Líneas de Estado de Cuenta,0

@@ -1,0 +1,76 @@
+type,name,res_id,src,value,fuzzy
+error,company.company,0,You can not create recursive companies!,Unternehmen können nicht rekursiv angelegt werden!,0
+error,res.user,0,You can not set a company that is not a child of your main company!,Das Unternehmen muss ein Tochterunternehmen (untergeordnet) des Hauptunternehmens sein,0
+field,"company.company,childs",0,Children,Untergeordnet (Unternehmen),0
+field,"company.company,create_date",0,Creation date,Erstellungsdatum,0
+field,"company.company,create_uid",0,Creation user,Ersteller,0
+field,"company.company,currency",0,Currency,Währung,0
+field,"company.company,employees",0,Employees,Mitarbeiter,0
+field,"company.company,footer",0,Footer,Dokumentenfuß,0
+field,"company.company,header",0,Header,Dokumentenkopf,0
+field,"company.company,id",0,ID,ID,0
+field,"company.company,parent",0,Parent,Übergeordnet (Unternehmen),0
+field,"company.company,party",0,Party,Partei,0
+field,"company.company,rec_name",0,Name,Name,0
+field,"company.company,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"company.company,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"company.employee,company",0,Company,Unternehmen,0
+field,"company.employee,create_date",0,Creation date,Erstellungsdatum,0
+field,"company.employee,create_uid",0,Creation user,Ersteller,0
+field,"company.employee,id",0,ID,ID,0
+field,"company.employee,party",0,Party,Partei,0
+field,"company.employee,rec_name",0,Name,Name,0
+field,"company.employee,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"company.employee,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"ir.cron,companies",0,Companies,Unternehmen,0
+field,"ir.cron-company.company,company",0,Company,Unternehmen,0
+field,"ir.cron-company.company,cron",0,Cron,Cron,0
+field,"ir.cron-company.company,rec_name",0,Name,Name,0
+field,"ir.property,company",0,Company,Unternehmen,0
+field,"ir.sequence,company",0,Company,Unternehmen,0
+field,"ir.sequence.strict,company",0,Company,Unternehmen,0
+field,"res.user,companies",0,Current Companies,Aktuelle Unternehmen,0
+field,"res.user,company",0,Current Company,Aktuelles Unternehmen,0
+field,"res.user,employee",0,Employee,Mitarbeiter,0
+field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
+help,"ir.cron,companies",0,Companies registered for this cron,"Unternehmen, für welche dieser Job durchgeführt werden soll",0
+model,"company.company,name",0,Company,Unternehmen,0
+model,"company.company.config.init,name",0,Company Config Init,Unternehmen Konfiguration Init,0
+model,"company.employee,name",0,Employee,Mitarbeiter,0
+model,"ir.action,name",act_company_form,Companies,Unternehmen,0
+model,"ir.action,name",act_company_form2,Companies,Unternehmen,0
+model,"ir.action,name",act_company_tree,Companies,Unternehmen,0
+model,"ir.action,name",act_employee_form,Employees,Mitarbeiter,0
+model,"ir.action,name",report_letter,Letter,Brief,0
+model,"ir.cron-company.company,name",0,ir.cron-company.company,ir.cron-company.company,0
+model,"ir.ui.menu,name",menu_company_form,Edit Companies,Unternehmen bearbeiten,0
+model,"ir.ui.menu,name",menu_company_form2,New Company,Neues Unternehmen,0
+model,"ir.ui.menu,name",menu_company_tree,Companies,Unternehmen,0
+model,"ir.ui.menu,name",menu_employee_form,Employees,Mitarbeiter,0
+odt,party.letter,0,"Best Regards,","Mit freundlichen Grüßen,",0
+odt,party.letter,0,Date:,Datum:,0
+odt,party.letter,0,"Dear Madams and Sirs,","Sehr geehrte Damen und Herren,",0
+odt,party.letter,0,E-Mail:,E-Mail:,0
+odt,party.letter,0,Phone:,Telefon:,0
+odt,party.letter,0,Subject:,Betreff:,0
+odt,party.letter,0,VAT Number:,USt-ID-Nr.:,0
+view,company.company,0,Addresses,Adressen,0
+view,company.company,0,Companies,Unternehmen,0
+view,company.company,0,Company,Unternehmen,0
+view,company.company,0,Employees,Mitarbeiter,0
+view,company.company,0,General,Allgemein,0
+view,company.company,0,Reports,Berichte,0
+view,company.company,0,_Employees,_Mitarbeiter,0
+view,company.company,0,_General,_Allgemein,0
+view,company.company,0,_Reports,_Berichte,0
+view,company.company.config.init,0,Create Company,Unternehmen anlegen,0
+view,company.company.config.init,0,You can now add your company into the system.,Sie können nun Ihr Unternehmen dem System hinzufügen!,0
+view,company.employee,0,Addresses,Adressen,0
+view,company.employee,0,Employee,Mitarbeiter,0
+view,company.employee,0,Employees,Mitarbeiter,0
+view,company.employee,0,General,Allgemein,0
+view,company.employee,0,_General,_Allgemein,0
+wizard_button,"company.company.config,company,add",0,Add,Hinzufügen,0
+wizard_button,"company.company.config,company,end",0,Cancel,Abbrechen,0
+wizard_button,"company.company.config,init,company",0,Ok,OK,0
+wizard_button,"company.company.config,init,end",0,Cancel,Abbrechen,0

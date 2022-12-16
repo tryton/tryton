@@ -1,0 +1,17 @@
+type,name,res_id,src,value,fuzzy
+model,"ir.action,name",act_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Gutschriftspositionen Lieferanten,0
+model,"ir.action,name",act_invoice_line_in_credit_note_form2,Supplier Credit Note Lines,Gutschriftspositionen Lieferanten,0
+model,"ir.action,name",act_invoice_line_in_invoice_form,Supplier Invoice Lines,Rechnungspositionen Lieferanten,0
+model,"ir.action,name",act_invoice_line_in_invoice_form2,Supplier Invoice Lines,Rechnungspositionen Lieferanten,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form,Credit Note Lines,Gutschriftspositionen Kunden,0
+model,"ir.action,name",act_invoice_line_out_credit_note_form2,Credit Note Lines,Gutschriftspositionen Kunden,0
+model,"ir.action,name",act_invoice_line_out_invoice_form,Invoice Lines,Rechnungspositionen Kunden,0
+model,"ir.action,name",act_invoice_line_out_invoice_form2,Invoice Lines,Rechnungspositionen Kunden,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form,Supplier Credit Note Lines,Gutschriftspositionen Lieferanten,0
+model,"ir.ui.menu,name",menu_invoice_line_in_credit_note_form2,New Supplier Credit Note Line,Neue Gutschriftsposition Lieferant,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form,Supplier Invoice Lines,Rechnungspositionen Lieferanten,0
+model,"ir.ui.menu,name",menu_invoice_line_in_invoice_form2,New Supplier Invoice Line,Neue Rechnungsposition Lieferant,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form,Credit Note Lines,Gutschriftspositionen Kunden,0
+model,"ir.ui.menu,name",menu_invoice_line_out_credit_note_form2,New Credit Note Line,Neue Gutschriftsposition Kunde,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form,Invoice Lines,Rechnungspositionen Kunden,0
+model,"ir.ui.menu,name",menu_invoice_line_out_invoice_form2,New Invoice Line,Neue Rechnungsposition Kunde,0
