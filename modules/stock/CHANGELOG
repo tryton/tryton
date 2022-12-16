@@ -1,0 +1,167 @@
+Version 4.8.8 - 2019-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.7 - 2019-06-10
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.6 - 2019-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.5 - 2019-03-15
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.4 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.3 - 2019-01-05
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.2 - 2018-11-12
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Add _stock_move_split context keyword when copying move for split
+* Manage same input and storage location in supplier shipment
+* Check pending shipment to erase party
+* Define how inventory non filled lines are managed
+* Do not fill inventory quantity automatically
+* Assign supplier return shipment using children when location is a view
+* Duplicate "Locations Quantity" into tree and list
+* Remove product_ids from products_by_location for grouping_filter
+* Add quantities relates on Template
+* Allow grouping per product columns to compute quantities
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add flat children option on location
+* Raise single warning for move without origin
+* Allow to set manual effective date on move
+* Improve computation of cost price
+* Limit move locations 'child_of' constraints to specific shipment states
+* Allow to delete staging move
+* Allow to deactivate only empty locations
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Add employee on shipments for some states
+* Add request state on internal shipment
+* Manage same picking/storage and output location
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Make inventory number always readonly
+* Manage readonly state on Inventory Line
+* Add lead time and transit location for internal shipments between warehouses
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Shipments code into number
+* Add number to inventories
+* Add supplier and delivery address on supplier return shipment
+* Add Python3 support
+* Add do button on stock move form & list
+* Add warehouse address on internal shipment
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add drop location type
+* Add buttons on stock move form & list
+* Allow to use view location on staging and draft moves
+* Add picking location on warehouse
+* Always compute expected quantity in inventory
+* Allow to change the destination of internal shipment's moves
+* Allow to modify internal shipment moves in waiting state
+* Compute inventory lines in complete_lines() using new grouping() method
+* Allow to re-compute cost price
+* Allow to change unit price of move done
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add 'staging' state to stock move
+* Apply stock_assign of compute_quantity_query only on outgoing moves
+* Add domain on location's parent and childs
+* Do not filter out inactive products from stock computation
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Always succeed assignation from lost and found on internal shipments
+* Remove return shipment out wizard
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Add warning for moves without origin
+* Allow to define the effective date of shipments
+* Prevent changing product type if stock moves exist
+* Use new methods to compute quantities in StockMixin._search_quantity()
+* Split products_by_location into two methods on Move:
+  compute_quantities_query and compute_quantities
+* Use origin for inventory moves
+* Allow partial assignation on Supplier Shipment Return
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Add Mixin class with helper to setup stock quantity fields
+* Allow to customize move creation of Inventory
+* Allow to customize unique constraint on Inventory
+* Allow specific grouping Period Cache
+* Add grouping on products_by_location and assign_try
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Merge all shipment Many2One into shipment Reference
+* Add origin Reference on Stock Move
+* Add workflow to stock move
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Add Product Quantities By Warehouse
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Remove special to_location_warehouse search clause
+* Remove default from and to location and instead use domain
+* Update cost_price only from supplier to storage
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Ensure coherence between planned date of shipments and moves
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+* Add period to reduce data computation
+* Add internal_quantity on move to speedup computation
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
+* Use model singleton to define shipment sequences
+* Add default search value on inventory, move and shipments
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add new group "Stock Force Assignment"
+* Migrate packing* objects and tables to shipment*
+* Return move id in create_move of inventory line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Added return packings and a wizard to create customer return packing.
+* Make assign_try to assign as much possible
+* Move assign_try and pick_product from product.product to stock.move
+* Added stock_skip_warehouse keyword for products_by_location
+  method. The default behaviour is now to compute quantities on all
+  child locations for a warehouse.
+* Handle average price for products return to supplier
+* Added stock_destinations keyword on products_by_location context to
+  filter moves to a set of destinations.
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
