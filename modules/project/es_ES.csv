@@ -1,0 +1,44 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,There should be only one timesheet work by task/project!,Solo debe haber un parte de trabajo por tarea/proyecto,0
+field,"project.work,children",0,Children,Hijos,0
+field,"project.work,comment",0,Comment,Comentario,0
+field,"project.work,effort",0,Effort,Esfuerzo,0
+field,"project.work,parent",0,Parent,Padre,0
+field,"project.work,party",0,Party,Tercero,0
+field,"project.work,party_address",0,Contact Address,Dirección de contacto,0
+field,"project.work,rec_name",0,Name,Nombre,0
+field,"project.work,state",0,State,Estado,0
+field,"project.work,total_effort",0,Total Effort,Esfuerzo total,0
+field,"project.work,type",0,Type,Tipo,0
+field,"project.work,work",0,Work,Actividad,0
+field,"timesheet.work,sequence",0,Sequence,Secuencia,0
+field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Lineas de parte de trabajo,0
+help,"project.work,effort",0,Estimated Effort for this work,El esfuerzo estimado para esta actividad,0
+help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Esfuerzo total estimado para esta actividad y sus subactividades,0
+model,"ir.action,name",act_project_form,Projects,Proyectos,0
+model,"ir.action,name",act_task_form,Tasks,Tareas,0
+model,"ir.action,name",act_open_child_work,Tasks,Tareas,0
+model,"ir.action,name",act_work_tree,Works,Actividades,0
+model,"ir.action,name",act_work_form,Works Efforts,Actividades,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuración,0
+model,"ir.ui.menu,name",menu_project,Project Management,Gestión de proyecto,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Proyectos,0
+model,"ir.ui.menu,name",menu_project_form,Projects,Proyectos,0
+model,"ir.ui.menu,name",menu_task_form,Tasks,Tareas,0
+model,"ir.ui.menu,name",menu_work_form,Works Efforts,Actividades,0
+model,"project.work,name",0,Work Effort,Actividades,0
+model,"res.group,name",group_project_admin,Project Administration,Administración de proyecto,0
+selection,"project.work,state",0,Done,Terminada,0
+selection,"project.work,state",0,Opened,Abierto,0
+selection,"project.work,type",0,Project,Proyecto,0
+selection,"project.work,type",0,Task,Tarea,0
+view,project.work,0,Children,Hijos,0
+view,project.work,0,General,General,0
+view,project.work,0,Other Info,Información adicional,0
+view,project.work,0,Projects,Proyectos,0
+view,project.work,0,Tasks,Tareas,0
+view,project.work,0,Timesheet,Parte de trabajo,0
+view,project.work,0,Work,Actividad,0
+view,project.work,0,Work Efforts,Actividades,0
+view,project.work,0,Works,Actividades,0
+view,project.work,0,Works Efforts,Actividades,0

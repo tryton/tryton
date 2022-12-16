@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Move" col="4">
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="unit_price"/>
+                        <field name="unit_price"/>
+                        <label name="currency"/>
+                        <field name="currency"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator colspan="4" id="separator"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <field name="unit_price_required" invisible="1" colspan="4"/>
+                        <field name="unit_digits" invisible="1" colspan="4"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Moves">
+                        <field name="product" select="1"/>
+                        <field name="from_location" select="1"/>
+                        <field name="to_location" select="1"/>
+                        <field name="quantity" select="2"/>
+                        <field name="uom" select="2"/>
+                        <field name="state" select="2"/>
+                        <field name="unit_digits" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="40"
+            action="act_move_form" id="menu_move_form"/>
+
+
+        <record model="ir.action.act_window" id="act_move_form_supp">
+            <field name="name">Moves from Suppliers</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('from_location.type', '=', 'supplier')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_supp_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_supp"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_supp"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="1"
+            action="act_move_form_supp" id="menu_move_form_supp"/>
+
+        <record model="ir.action.act_window" id="act_move_form_supp_proceed">
+            <field name="name">Moves from Suppliers Waiting Arrival</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment_in', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_proceed_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_supp_proceed"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_proceed_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_supp_proceed"/>
+        </record>
+        <menuitem parent="menu_move_form_supp" sequence="1"
+                  action="act_move_form_supp_proceed"
+                  id="menu_move_form_supp_proceed"/>
+
+        <record model="ir.action.act_window" id="act_move_form_cust">
+            <field name="name">Moves to Customers</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('to_location.type', '=', 'customer')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_form_cust_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_cust"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_move_form_cust_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_cust"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="3"
+            action="act_move_form_cust" id="menu_move_form_cust"/>
+
+        <record model="ir.rule.group" id="rule_group_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_move">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.move')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_move"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_group_stock">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
