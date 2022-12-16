@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+
+    <field
+        name="relative_deltas"
+        mode="form,tree"
+        view_ids="sale_invoice_date.invoice_term_relative_delta_view_form,sale_invoice_date.invoice_term_relative_delta_view_list_sequence"
+        colspan="4"/>
+</form>

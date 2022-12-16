@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_order_point_form_relate">
+            <field name="name">Order Points</field>
+            <field name="res_model">stock.order_point</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('product', '=', Eval('active_id')), ('product', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_order_point_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_order_point_form_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_order_point_form_relate2">
+            <field name="name">Order Points</field>
+            <field name="res_model">stock.order_point</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('product.template', '=', Eval('active_id')), ('product.template', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_order_point_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_order_point_form_relate2"/>
+        </record>
+    </data>
+</tryton>

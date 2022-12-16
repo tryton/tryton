@@ -1,0 +1,243 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,mygls_print_position:"
+msgid "Print Position"
+msgstr "Poziţia Printare"
+
+msgctxt "field:carrier,mygls_services:"
+msgid "Services"
+msgstr "Servicii"
+
+msgctxt "field:carrier,mygls_sms:"
+msgid "SMS"
+msgstr "SMS"
+
+msgctxt "field:carrier,mygls_type_of_printer:"
+msgid "Type of Printer"
+msgstr "Tip de Imprimanta"
+
+msgctxt "field:carrier.credential.mygls,client_number:"
+msgid "Client Number"
+msgstr "Număr Client"
+
+msgctxt "field:carrier.credential.mygls,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:carrier.credential.mygls,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:carrier.credential.mygls,password:"
+msgid "Password"
+msgstr "Parola"
+
+msgctxt "field:carrier.credential.mygls,server:"
+msgid "Server"
+msgstr "Server"
+
+msgctxt "field:carrier.credential.mygls,username:"
+msgid "Username"
+msgstr "Utilizator"
+
+msgctxt "field:stock.package,mygls_shipping_id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:carrier,mygls_sms:"
+msgid ""
+"Variables that can be used in the text of the SMS:\n"
+"ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
+msgstr ""
+"Variabile care pot fi utilizate în textul SMS-ului:\n"
+"ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
+
+msgctxt "model:carrier.credential.mygls,name:"
+msgid "MyGLS Credential"
+msgstr "Credenţiale MyGLS"
+
+msgctxt "model:ir.action,name:act_create_shipping_mygls_wizard"
+msgid "Create MyGLS Shipping for Packages"
+msgstr "Creare Expediere MyGLS pentru Colete"
+
+msgctxt "model:ir.action,name:act_credential_form"
+msgid "MyGLS Credentials"
+msgstr "Credenţiale MyGLS"
+
+msgctxt "model:ir.message,text:msg_email_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add an email to party "
+"\"%(party)s\"."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie să adăugaţi o adresă de "
+"e-mail la parte \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_mobile_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add a mobile number to party "
+"\"%(party)s\"."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie adăugat un număr de "
+"telefon mobil la parte \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_mygls_api_error"
+msgid ""
+"MyGLS API call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"Interogarea API MyGLS a eşuat cu următorul mesaj:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_phone_mobile_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add a phone or mobile number "
+"to party \"%(party)s\"."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\"trebuie adăugat un număr de "
+"telefon mobil la parte \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create a shipping label for shipment \"%(shipment)s\" because it "
+"already has a reference number."
+msgstr ""
+"Nu se poate crea o eticheta pentru expedierea \"%(shipment)s\" pentru că are"
+" deja un număr de referinţa."
+
+msgctxt "model:ir.message,text:msg_shipping_to_address_country_code_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set a country code to the "
+"destination address."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie sa fie setat un cod de "
+"ţara la adresă al destinatarului."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_country_code_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set a country code to the "
+"address of warehouse \"%(warehouse)s\"."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie sa fie setat un cod de "
+"ţara la adresa al depozitului \"%(warehouse)s\"."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+"Pentru a valida expedierea \"%(shipment)s\" trebuie setata o adresa la "
+"depozit \"%(warehouse)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_credential_form"
+msgid "MyGLS Credentials"
+msgstr "Credenţiale MyGLS"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Addressee Only Service"
+msgstr "Serviciul Exclusiv Destinatarului"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Contact Service"
+msgstr "Serviciul Contact"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Exchange Service"
+msgstr "Serviciul de Schimb"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T09)"
+msgstr "Serviciul Expres (T9)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T10)"
+msgstr "Serviciul Expres (T10)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T12)"
+msgstr "Serviciul Expres (T12)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Flexible Delivery Service"
+msgstr "Serviciul Livrare Flexibila"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Flexible delivery Sms Service"
+msgstr "Serviciul Livrare Flexibila cu SMS"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Pick & Return Services"
+msgstr "Serviciul Ridicare & Retur"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Pick & Ship Service"
+msgstr "Serviciul Ridicare & Expediere"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "SMS pre-advice"
+msgstr "Avertizare în prealabil prin SMS"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "SMS service"
+msgstr "Serviciul SMS"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Saturday service"
+msgstr "Serviciul Sămbata"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Service guaranteed delivery shipment in 24 Hours"
+msgstr "Serviciul cu garanţie livrării în 24 Ore"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Stand By Service"
+msgstr "Serviciul În Aşteptare"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Think Green Service"
+msgstr "Serviciul Gândeşte Verde"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "MyGLS"
+msgstr "MyGLS"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Croatia"
+msgstr "Croaţia"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Czechia"
+msgstr "Cehia"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Hungary"
+msgstr "Ungaria"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Romania"
+msgstr "România"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Slovakia"
+msgstr "Slovacia"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Slovenia"
+msgstr "Slovenia"
+
+msgctxt "selection:carrier.credential.mygls,server:"
+msgid "Production"
+msgstr "Producţie"
+
+msgctxt "selection:carrier.credential.mygls,server:"
+msgid "Testing"
+msgstr "Testare"
+
+msgctxt "view:carrier.credential.mygls:"
+msgid "Credential Information"
+msgstr "Informaţii Credenţiale"
+
+msgctxt "view:carrier:"
+msgid "MyGLS"
+msgstr "MyGLS"
