@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Despeses"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Mètode de càlcul"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "Reclamació"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Nivell"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Despeses"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Mètode per calcular l'import de les despeses"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Compte de les despeses de reclamació"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Compte de les despeses de reclamació - Nivell"
+
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Despeses de reclamació"
+
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "Les despeses han de ser úniques per reclamació i nivell."
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Despeses de reclamació"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Preu de venda"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"

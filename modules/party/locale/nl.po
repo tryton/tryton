@@ -1,0 +1,1124 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Contactmogelijkheid"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Stad"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Volledig adres"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "naam van het gebouw"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "Naam relatie"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Straat"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Provincie"
+
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Onderverdelingstypes"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "Postcode"
+
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Landcode"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Formaat"
+
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Taalcode"
+
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Landcode"
+
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Onderverdelingstypes"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Relaties met mistlukte verificatie"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Relaties met gelukte verificatie"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Taal relatie"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Relatiecode"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Taal relatie"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Relatiereeks"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Waarde"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Waarde"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "compact formaat"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Website"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Adressen"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code Alleen lezen"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Contactmogelijkheden"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Naam voluit"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "identificaties"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Taal"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Talen"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Mobiel"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Telefoon"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Vervangen door"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "BTW identificatie (Tax Identifier)"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Website"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Taal"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Bestemming"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Bron"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Bepaal welke e-mail u wilt gebruiken van de contactmechanismen van de "
+"relatie."
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+"Als dit ingevuld is ,vervangt het de naam van de relatie voor de adres "
+"opmaak"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Beschikbare variablene (ook in hoofdletters):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Voeg onderliggend niveau toe aan de categorie."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "De hoofdidentificatie van de categorie."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Voeg de categorie toe onder het bovenliggend niveau (parent)."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "De standaardtaal voor nieuwe relatie."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Gebruikt om relatiecode te genereren."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "De standaardtaal voor nieuwe relatie."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Gebruikt om relatiecode te genereren."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "De te wissen relatie."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "De relatie geïdentificeerd door dit record."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "De categorieën waartoe de relatie behoort."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "De unieke identificatiecode van de relatie."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Voeg andere identificaties van de relatie toe."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Wordt gebruikt om communicatie met de relatiejte vertalen."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "De hoofdidentificatie van de relatie."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "De relatie die deze vervangt."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "De identificatie die wordt gebruikt voor belastingaangifte."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "De vervangende relatie."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "De te vervangen relatie."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Adressen"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Adresindelingen"
+
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Subdivisie typen"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Contactmogelijkheden"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Relaties per categorie"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "Relatie instellingen"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Relaties"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "etiket (label)"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Controleer VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "wissen"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Vervangen"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "U kunt de relatie van het adres\"%(address)s\"niet wijzigen."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "De landcode van het type onderverdeling moet uniek zijn."
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "De naam van de relatiecategorie moet uniek zijn (by parent)."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr ""
+"U kunt de relatie van het contactmechanisme \"%(contact)s\" niet wijzigen."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+"De Relaties hebben verschillende namen: %(source_name)s\" vs "
+"\"%(destination_name)s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"De relaties hebben verschillende belasting-ID's: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "De relatie \"%(party)s\" kan niet gewist worden omdat ze nog actief is."
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "Het %(type)s \"%(code)s\" voor relatie \"%(party)s\" is niet geldig."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Ongeldige notatie \"%(format)s\"met foutmelding\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "Het telefoonnummer \"%(phone)s\" voor relatie \"%(party)s\" is niet geldig."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "De code voor relatie moet uniek zijn."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "De VIES -dienst is niet beschikbaar, probeer het later nog eens."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Adressen"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Adresindelingen"
+
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "adres Subdivisie typen"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Contactmogelijkheden"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "Relatie instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Relaties"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Adres"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Adresnotatie"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "adres Subdivisie typen"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "controleer VIES"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Relatie instellingen"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Relatie instellingen taal"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Relatie instellingen volgorde"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Contactmogelijkheid"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Relatie wissen"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Relatie identificator"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Relatie categorie"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Taal relatie"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Vervang Relatie"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Relatie administratie"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Mobiel"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Overig"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Telefoon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Website"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Albanian VAT Number"
+msgstr "Albanees BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Andorrees belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Argentinian Tax Number"
+msgstr "Argentijns belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr "Australisch bedrijfsnummer(ABN"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr "Australisch bedrijfsnummer (ACN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr "Australisch belastingdossiernummer (TFN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr "Oostenrijks bedrijfsregister"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr "Oostenrijkse belastingidentificatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr "Belgisch ondernemingsnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr "Braziliaanse ondernemings ID (CPNJ)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr "Braziliaans Nationaal ID (CPF)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr "Bulgaars identificatienummer voor buitenlanders (PNF)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr "Bulgaars persoonlijk identificatienummer (EGN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr "Bulgaars BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr "Canadees ondernemingsnummer (CRA BN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr "Canadees sociaal verzekeringsnummer (SIN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr "Chileens nationaal belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr "Chinees identiteitskaartnummer van resident"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr "Colombiaans bedrijfsbelastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr "Colombiaanse identiteitscode"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Costa Ricaans vreemdelingennummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Costa Ricaans Persoonlijk ID-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr "Kroatisch identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Cubaans identiteitskaartnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr "Cypriotisch BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr "Tsjechisch identiteitskaartnummer (RČ)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr "Tsjechisch BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr "Deens burgernummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr "Deens BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr "Nummer identiteitskaart Dominicaanse Republiek (Cedula)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr "Belastingnummer Dominicaanse Republiek (RNC)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr "Nederlands burger identificatie nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr "Nederlandse School Identificatie Nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr "Nederlands BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr "Nederlands student identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr "Ecuadoraanse persoonlijke identiteitscode"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr "Ecuadoraanse belastingcode (RUC)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr "Engels uniek studentnummer (UPN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr "Estse registratiecode van organisatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr "Estisch Persoonlijk ID-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr "Estlands BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr "Europees BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr "Finse Vereniging Identifier"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr "Finse bedrijfsidentificatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr "Finse persoonlijke identiteitscode"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr "Fins BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr "Fins individueel belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr "Frans persoonlijk identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr "Frans belastingidentificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr "Frans BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr "Duits ondernemingsregisternummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr "Duits persoonlijk belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr "Duits belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr "Duits BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr "Grieks BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Belastingnummer van Guatemala"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr "Hongaars BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr "IJslands persoon- en organisatie-identificatienummer (Kennitala)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr "IJslands BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr "Indisch digitaal persoonlijk registratienummer (Aadhaar)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr "Indiase inkomstenbelastingidentificatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr "Iers persoonlijk nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr "Iers BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr "Italiaanse belastingcode (Codice Fiscale)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr "Italiaans BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Japans bedrijfsnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr "Letlands BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr "Litouws BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr "Luxemburgs BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr "Maleise ID-kaart (NRIC nr.)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr "Maltees BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr "Mauritiaanse nationale identificatiecode"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr "Mexicaans belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Identificatienummer van het Moldavische bedrijf"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr "Monegasque btw-identificatienummer (nr. TVA)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Nummer van de belastingdienst van Nieuw-Zeeland"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr "Noors organisatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr "Noors BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Belastingnummer van Paraguay"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Peruviaans vennootschapsbelastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Peruviaans identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr "Pools nationaal identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr "Pools register van economische eenheden (REGON)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr "Pools BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr "Portugees BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr "Roemeense numerieke persoonlijke code"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr "Roemeense BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr "Russische belastingidentificatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr "SEPA-identificatie van de crediteur (AT-02)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr "Nationaal belastingnummer San Marino"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr "Servische belastingidentificatie"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr "Slowaaks geboortegetal (RČ)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr "Slowaaks BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr "Sloveens BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Zuid-Afrikaans identiteitsdocumentnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Zuid-Afrikaans belastingidentificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr "Spaans vennootschapsbelastingnummer (CIF)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr "Spaans vreemdelingennummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr "Spaanse persoonlijke identiteitscodes"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr "Spaans BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr "Zweeds bedrijfsnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr "Zweeds BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr "Zwitsers bedrijfsidentificatienummer (UID)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr "Zwitsers sofi-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr "Zwitsers BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr "Turks persoonlijk identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr "Amerikaanse belastingcode (ATIN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr "Amerikaans werkgeversidentificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr "Amerikaans identificatienummer individuele belastingbetaler (ITIN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr "Amerikaanse belastingcode (PTIN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr "US Social Security Number (SSN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr "Amerikaans belastingidentificatienummer (TIN)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr "BTW-nummer van het Verenigd Koninkrijk (en Isle of Man)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr "UK National Healthcare System (NHS) Patiëntnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Belastingnummer in Uruguay"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Venezolaans btw-nummer"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Vervangen door"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "Ok"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "wissen"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Vervangen"

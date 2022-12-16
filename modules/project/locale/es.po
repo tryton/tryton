@@ -1,0 +1,285 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Comentario"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Esfuerzo"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Izquierda"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Dirección de contacto"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Progreso"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Derecha"
+
+msgctxt "field:project.work,status:"
+msgid "Status"
+msgstr "Estado"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en partes de trabajo"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Tiempo"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de parte de trabajo"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inicio de parte de trabajo"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Partes de trabajo"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Tiempo total"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Progreso total"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr "Contador"
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr "Por defecto"
+
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "Progreso"
+
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "Tipos"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "Esfuerzo estimado para este trabajo."
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "Progreso estimado para este trabajo."
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Tiempo total empleado en este trabajo y sus subtrabajos."
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Esfuerzo total estimado para este trabajo y sus subtrabajos."
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "Progreso total estimado para este trabajo y sus subtrabajos."
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr "Marcar para mostrar el número de trabajos en este estado."
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr "Marcar para usar como estado por defecto para el tipo."
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr "El progreso mínimo que se requerie para este estado."
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr "Los tipos de trabajo que pueden usar este estado."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Árbol de proyectos"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Líneas del parte de trabajo"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr "Estado del trabajo"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Árbol de proyectos y tareas"
+
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+"No puede eliminar el tercero \"%(party)s\" mientras tenga proyectos abiertos"
+" con la empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
+msgstr ""
+"Para completar el trabajo \"%(work)s\", debe completar primero todos sus "
+"hijos."
+
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr ""
+"Para establecer el trabajo \"%(work)s\" en el estado \"%(status)s\", debe "
+"incrementar su progreso como mínimo hasta %(progress)s."
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgstr "Para reabrir el trabajo \"%(work)s\", debe reabrir su padre \"%(parent)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Árbol de proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr "Estado del trabajo"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Árbol de proyectos y tareas"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Proyecto y tarea"
+
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr "Estado del trabajo"
+
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administración de proyectos"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Proyecto"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tarea"
+
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fin:"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Inicio:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Hoja de trabajo:"

@@ -1,0 +1,176 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement.rule,amount_high:"
+msgid "Amount High"
+msgstr "Kõrgeim väärtus"
+
+msgctxt "field:account.statement.rule,amount_low:"
+msgid "Amount Low"
+msgstr "Madalaim väärtus"
+
+msgctxt "field:account.statement.rule,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.statement.rule,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:account.statement.rule,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+msgctxt "field:account.statement.rule,information_rules:"
+msgid "Information Rules"
+msgstr "Informatsiooni reegel"
+
+msgctxt "field:account.statement.rule,journal:"
+msgid "Journal"
+msgstr "Päevik"
+
+msgctxt "field:account.statement.rule,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:account.statement.rule,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:account.statement.rule.information,boolean:"
+msgid "Boolean"
+msgstr "Jah/ei"
+
+msgctxt "field:account.statement.rule.information,char:"
+msgid "Char"
+msgstr "Char"
+
+msgctxt "field:account.statement.rule.information,float_high:"
+msgid "Float High"
+msgstr "Kõrgeim ujuv"
+
+msgctxt "field:account.statement.rule.information,float_low:"
+msgid "Float Low"
+msgstr "Madalaim ujuv"
+
+msgctxt "field:account.statement.rule.information,integer_high:"
+msgid "Integer High"
+msgstr "Kõrgem täisarv"
+
+msgctxt "field:account.statement.rule.information,integer_low:"
+msgid "Integer Low"
+msgstr "Madalaim täisarv"
+
+msgctxt "field:account.statement.rule.information,key:"
+msgid "Key"
+msgstr "Võti"
+
+msgctxt "field:account.statement.rule.information,key_type:"
+msgid "Key Type"
+msgstr "Võtme tüüp"
+
+msgctxt "field:account.statement.rule.information,number_high:"
+msgid "Numeric High"
+msgstr "Kõrgeim numbrilin"
+
+msgctxt "field:account.statement.rule.information,number_low:"
+msgid "Numeric Low"
+msgstr "Madalaim numbriline"
+
+msgctxt "field:account.statement.rule.information,rule:"
+msgid "Rule"
+msgstr "Reegel"
+
+msgctxt "field:account.statement.rule.information,selection:"
+msgid "Selection"
+msgstr "Valik"
+
+msgctxt "field:account.statement.rule.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.statement.rule.line,amount:"
+msgid "Amount"
+msgstr "Summa"
+
+msgctxt "field:account.statement.rule.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.statement.rule.line,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:account.statement.rule.line,rule:"
+msgid "Rule"
+msgstr "Reegel"
+
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"The regular expression the description is searched with.\n"
+"It may define the groups named:\n"
+"'party', 'bank_account', 'invoice'."
+msgstr ""
+
+msgctxt "help:account.statement.rule.information,char:"
+msgid ""
+"The regular expression the key information is searched with.\n"
+"It may define the groups named:\n"
+"party, bank_account, invoice."
+msgstr ""
+
+msgctxt "help:account.statement.rule.line,account:"
+msgid ""
+"Leave empty to use the party's receivable or payable account.\n"
+"The rule must have a company to use this field."
+msgstr ""
+
+msgctxt "help:account.statement.rule.line,amount:"
+msgid "A Python expression evaluated with 'amount' and 'pending'."
+msgstr ""
+
+msgctxt "help:account.statement.rule.line,party:"
+msgid ""
+"Leave empty to use the group named 'party' from the regular expressions."
+msgstr ""
+
+msgctxt "model:account.statement.rule,name:"
+msgid "Account Statement Rule"
+msgstr "Konto aruande reegel"
+
+msgctxt "model:account.statement.rule.information,name:"
+msgid "Account Statement Rule Information"
+msgstr "Konto aruande reegli info"
+
+msgctxt "model:account.statement.rule.line,name:"
+msgid "Account Statement Rule Line"
+msgstr "Konto aruande reegli rida"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Rules"
+msgstr "Reeglid"
+
+msgctxt "model:ir.model.button,string:statement_apply_rules_button"
+msgid "Apply Rules"
+msgstr "Rakenda reeglid"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Rules"
+msgstr "Reeglid"
+
+msgctxt "view:account.statement.rule.information:"
+msgid "-"
+msgstr "-"
+
+msgctxt "view:account.statement.rule:"
+msgid "-"
+msgstr "-"
+
+msgctxt "view:account.statement.rule:"
+msgid "Between"
+msgstr "Vahemik"
+
+msgctxt "view:account.statement.rule:"
+msgid "Criteria"
+msgstr "Kriteerium"

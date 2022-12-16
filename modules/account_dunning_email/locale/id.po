@@ -1,0 +1,115 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr ""
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr ""
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr ""
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr ""
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Tanggal:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referensi"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr ""
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Waktu"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "E-mail"

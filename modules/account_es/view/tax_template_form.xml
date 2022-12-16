@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page id="es_vat" string="Spanish VAT">
+            <label name="es_vat_list_code"/>
+            <field name="es_vat_list_code"/>
+            <label name="es_reported_with"/>
+            <field name="es_reported_with"/>
+        </page>
+    </xpath>
+    <xpath expr="/form//field[@name='ec_sales_list_code']" position="after">
+        <label name="es_ec_purchases_list_code"/>
+        <field name="es_ec_purchases_list_code"/>
+    </xpath>
+</data>

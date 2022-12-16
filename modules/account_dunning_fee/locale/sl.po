@@ -1,0 +1,94 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Stroški"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Način izračuna"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Odstotno"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "Izterjava"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Stopnja"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Promet"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Plačilo"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Načina izračuna višine stroška"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Strošek izterjave"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Stopnja stroškov izterjave"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "Strošek mora biti unikaten po izterjavi in stopnji"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Odstotno"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"
