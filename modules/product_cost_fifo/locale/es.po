@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "Cantidad FIFO"
+
+msgctxt "field:stock.move,fifo_quantity_available:"
+msgid "FIFO Quantity Available"
+msgstr "Cantidad FIFO disponible"
+
+msgctxt "help:stock.move,fifo_quantity:"
+msgid "Quantity used by FIFO."
+msgstr "Cantidad utilizada para el FIFO."
+
+msgctxt "help:stock.move,fifo_quantity_available:"
+msgid "Quantity available for FIFO"
+msgstr "Cantidad disponible para FIFO"
+
+msgctxt "model:ir.message,text:msg_move_delete_fifo"
+msgid ""
+"You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
+"calculation."
+msgstr ""
+"No puede eliminar el movimiento \"%(move)s\" porque se utiliza en el cálculo"
+" de precio coste FIFO."
+
+msgctxt "model:ir.message,text:msg_move_fifo_quantity_greater"
+msgid "The FIFO quantity on move cannot be greater than its quantity."
+msgstr "La cantidad FIFO en el movimiento no puede ser mayor que su cantidad."
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page string="Commissions" id="commissions">
+            <label name="principal"/>
+            <field name="principal"/>
+            <field name="commissions" colspan="4"/>
+            <field name="from_commissions" colspan="4"/>
+        </page>
+    </xpath>
+</data>
