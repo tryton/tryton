@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window.domain"
+                id="act_order_point_form_domain_production">
+            <field name="name">Production</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain"
+                eval="[('type', '=', 'production')]" pyson="1"/>
+            <field name="act_window" ref="stock_supply.act_order_point_form"/>
+        </record>
+    </data>
+</tryton>
