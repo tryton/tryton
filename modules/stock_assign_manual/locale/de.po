@@ -1,0 +1,168 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.shipment.assign.manual.show,move:"
+msgid "Move"
+msgstr "Lagerbewegung"
+
+msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
+msgid "Move Quantity"
+msgstr "Menge Lagerbewegung"
+
+msgctxt "field:stock.shipment.assign.manual.show,place:"
+msgid "Place"
+msgstr "Platz"
+
+msgctxt "field:stock.shipment.assign.manual.show,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:stock.shipment.assign.manual.show,skipped:"
+msgid "Skipped"
+msgstr "Übersprungen"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:stock.shipment.assigned.move,assigned_quantity:"
+msgid "Assigned Quantity"
+msgstr "Reservierte Menge"
+
+msgctxt "field:stock.shipment.assigned.move,move:"
+msgid "Move"
+msgstr "Lagerbewegung"
+
+msgctxt "field:stock.shipment.assigned.move,move_quantity:"
+msgid "Move Quantity"
+msgstr "Menge Lagerbewegung"
+
+msgctxt "field:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "Unassigned Quantity"
+msgstr "Nicht Reservierte Menge"
+
+msgctxt "field:stock.shipment.assigned.move,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:stock.shipment.assigned.move,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:stock.shipment.unassign.manual.show,assigned_moves:"
+msgid "Assigned Moves"
+msgstr "Reservierte Lagerbewegungen"
+
+msgctxt "field:stock.shipment.unassign.manual.show,moves:"
+msgid "Moves"
+msgstr "Lagerbewegungen"
+
+msgctxt "help:stock.shipment.assign.manual.show,quantity:"
+msgid ""
+"The maximum quantity to assign from the place.\n"
+"Leave empty for the full quantity of the move."
+msgstr ""
+"Die maximale Menge, die von diesem Platz reserviert werden kann.\n"
+"Leer lassen für die gesamte Menge der Lagerbewegung."
+
+msgctxt "help:stock.shipment.assigned.move,assigned_quantity:"
+msgid "The quantity left assigned"
+msgstr "Die Menge, die reserviert bleibt."
+
+msgctxt "help:stock.shipment.assigned.move,unassigned_quantity:"
+msgid "The quantity to unassign"
+msgstr "Die Menge, deren Reservierung aufgehoben werden soll."
+
+msgctxt "help:stock.shipment.unassign.manual.show,moves:"
+msgid "The moves to unassign."
+msgstr "Die Lagerbewegungen, deren Reservierung aufgehoben werden soll."
+
+msgctxt "model:ir.action,name:wizard_production_assign_manual"
+msgid "Manual Assign Production"
+msgstr "Manuelle Reservierung Produktion"
+
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign_manual"
+msgid "Manual Assign Supplier Return Shipment"
+msgstr "Manuelle Reservierung Warenrückgabe (an Lieferanten)"
+
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign_manual"
+msgid "Manual Assign Internal Shipment"
+msgstr "Manuelle Reservierung Interne Lieferung"
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
+msgid "Manual Assign Customer Shipment"
+msgstr "Manuelle Reservierung Warenausgangslieferungen"
+
+msgctxt "model:ir.action,name:wizard_shipment_unassign_manual"
+msgid "Manually Unassign Shipment"
+msgstr "Manuelle Aufhebung Reservierung Lieferung"
+
+msgctxt "model:ir.message,text:msg_assign_failed"
+msgid "Failed to assign of %(move)s from %(place)s, please retry."
+msgstr ""
+"Die Reservierung für Lagerbewegung %(move)s von Platz %(place)s ist "
+"fehlgeschlagen. Bitte nochmal versuchen."
+
+msgctxt "model:ir.message,text:msg_invalid_quantity"
+msgid "The quantity must be between 0 and %(quantity)s."
+msgstr "Die Menge muss zwischen 0 und %(quantity)s liegen."
+
+msgctxt "model:ir.model.button,string:production_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_out_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt "model:stock.shipment.assign.manual.show,name:"
+msgid "Manual Assign Shipment"
+msgstr "Manuelle Reservierung Lieferung"
+
+msgctxt "model:stock.shipment.assigned.move,name:"
+msgid "Shipment Assigned Move"
+msgstr "Lieferung Reservierte Lagerbewegungen"
+
+msgctxt "model:stock.shipment.unassign.manual.show,name:"
+msgid "Manually Unassign Shipment"
+msgstr "Manuelle Aufhebung Reservierung Lieferung"
+
+msgctxt "view:stock.shipment.unassign.manual.show:"
+msgid "Enter the quantities to unassign:"
+msgstr "Mengen zur Aufhebung der Reservierung erfassen:"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
+msgid "Assign"
+msgstr "Reservieren"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
+msgid "Skip"
+msgstr "Überspringen"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.shipment.unassign.manual,show,unassign:"
+msgid "Unassign"
+msgstr "Reservierung aufheben"
