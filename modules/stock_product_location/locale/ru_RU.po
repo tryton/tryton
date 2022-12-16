@@ -1,0 +1,75 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr ""
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+#, fuzzy
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Последовательность"
+
+#, fuzzy
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr ""
+
+msgctxt "view:product.product:"
+msgid "Default Locations"
+msgstr ""
+
+msgctxt "view:product.product:"
+msgid "Product Location"
+msgstr ""
+
+msgctxt "view:product.product:"
+msgid "Product Locations"
+msgstr ""
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr ""
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr ""

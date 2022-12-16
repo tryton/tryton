@@ -1,0 +1,341 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr "Het bedrag (%s) is hoger dan het bedrag op de factuur!"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value!"
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+"Credit of debit rekening van het dagboek is dezelfde als van het "
+"bankafschrift!"
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal."
+msgstr ""
+"Geef een debit en een credit rekening op voor het dagboek  bankafschriften."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be %s!"
+msgstr "Eindbalans moet %s zijn!"
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion!"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Balans"
+
+#, fuzzy
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Eindbalans"
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.statement,lines:"
+msgid "Transactions"
+msgstr "Transacties"
+
+msgctxt "field:account.statement,move_lines:"
+msgid "Move Lines"
+msgstr "Boekingsregels"
+
+msgctxt "field:account.statement,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Begin bedrag"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement.journal,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Boeking"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.statement.line,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Rekeningafschrift"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Dagboek bankafschriften"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Rekeningafschriftregel"
+
+msgctxt "model:ir.action,name:act_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Concept bankafschriften"
+
+msgctxt "model:ir.action,name:act_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Geboekte bankafschriften"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "All Statement"
+msgstr "Alle bankafschriften"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Dagboeken bankafschriften"
+
+msgctxt "model:ir.action,name:act_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Goedgekeurde bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Concept bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Geboekte bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "All Statement"
+msgstr "Alle bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Dagboeken bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Bankafschriften"
+
+msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Goedgekeurde bankafschriften"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Geboekt"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Goedgekeurd"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr "Dagboek bankafschriften"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr "Dagboeken bankafschriften"
+
+#, fuzzy
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr "Bankafschriftregel"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "view:account.statement:"
+msgid "Move Lines"
+msgstr "Boekingen"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Aanvullende informatie"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Boeken"
+
+msgctxt "view:account.statement:"
+msgid "Reset to Draft"
+msgstr "Terug naar concept"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr "Bankafschrift"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Bankafschriftregels"
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr "Bankafschriften"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Goedkeuren"

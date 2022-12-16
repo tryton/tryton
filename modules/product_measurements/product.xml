@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook"
+                        position="inside">
+                        <page string="Measurements" col="3" id="measurements"
+                            states="{'invisible': Eval('type').in_(['service'])}">
+                            <label name="length"/>
+                            <field name="length"/>
+                            <field name="length_uom"/>
+                            <label name="height"/>
+                            <field name="height"/>
+                            <field name="height_uom"/>
+                            <label name="width"/>
+                            <field name="width"/>
+                            <field name="width_uom"/>
+                            <label name="weight"/>
+                            <field name="weight"/>
+                            <field name="weight_uom"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>

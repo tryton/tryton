@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user:"
+msgid "You can not set a password to a ldap user!"
+msgstr "No pot establir la contrasenya d'un usuari LDAP"
+
+msgctxt "field:ldap.connection,auth_base_dn:"
+msgid "Base DN"
+msgstr "DN base"
+
+msgctxt "field:ldap.connection,auth_create_user:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:ldap.connection,auth_require_filter:"
+msgid "Require Filter"
+msgstr "Filtre requerit"
+
+msgctxt "field:ldap.connection,auth_scope:"
+msgid "Scope"
+msgstr "Àmbit"
+
+msgctxt "field:ldap.connection,auth_uid:"
+msgid "UID"
+msgstr "UID"
+
+msgctxt "help:ldap.connection,auth_base_dn:"
+msgid "Base DN for authentication"
+msgstr "DN base per a l'autenticació"
+
+msgctxt "help:ldap.connection,auth_create_user:"
+msgid "Create user if not in database"
+msgstr "Crea l'usuari si no existeix a la base de dades"
+
+msgctxt "help:ldap.connection,auth_uid:"
+msgid "UID Attribute for authentication"
+msgstr "Atribut UID per a l'autenticació"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "OneLevel"
+msgstr "UnNivell"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Subtree"
+msgstr "Subarbre"
+
+msgctxt "view:ldap.connection:"
+msgid "Authentication"
+msgstr "Autenticació"

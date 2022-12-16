@@ -1,0 +1,123 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr ""
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move,account_move:"
+msgid "Account Move"
+msgstr "Boeking"
+
+#, fuzzy
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "model:account.account.template,name:account_template_stock"
+msgid "Stock"
+msgstr "Voorraad"
+
+msgctxt "model:account.account.template,name:account_template_stock_customer"
+msgid "Stock Customer"
+msgstr ""
+
+msgctxt ""
+"model:account.account.template,name:account_template_stock_lost_found"
+msgid "Stock Lost and Found"
+msgstr ""
+
+msgctxt "model:account.account.template,name:account_template_stock_supplier"
+msgid "Stock Supplier"
+msgstr ""
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgid "Inventories"
+msgstr ""

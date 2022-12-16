@@ -1,0 +1,113 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Diario de Existencias"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Cuenta de Existencias"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Cuenta de Existencias del Cliente"
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Cuenta de Existencias del Cliente utilizada"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Cuenta de Existencias Perdidas y Encontradas"
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Cuenta de Existencias Perdidas y Encontradas"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Cuenta de Existencias del Proveedor"
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Cuenta de Existencias del Proveedor utilizada"
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Cuenta de Existencias utilizada"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Cuenta de Existencias"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Cuenta de Existencias del Cliente"
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Cuenta de Existencias del Cliente utilizada"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Cuenta de Existencias Perdidas y Encontradas"
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Cuenta de Existencias Perdidas y Encontradas"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Cuenta de Existencias del Proveedor"
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Cuenta de Existencias del Proveedor utilizada"
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Cuenta de Existencias utilizada"
+
+msgctxt "field:stock.move,account_move:"
+msgid "Account Move"
+msgstr "Asiento contable"
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "model:account.account.template,name:account_template_stock"
+msgid "Stock"
+msgstr "Existencias"
+
+msgctxt "model:account.account.template,name:account_template_stock_customer"
+msgid "Stock Customer"
+msgstr "Existencias del Cliente"
+
+msgctxt ""
+"model:account.account.template,name:account_template_stock_lost_found"
+msgid "Stock Lost and Found"
+msgstr "Existencias Perdidas y Encontradas"
+
+msgctxt "model:account.account.template,name:account_template_stock_supplier"
+msgid "Stock Supplier"
+msgstr "Existencias del Proveedor"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgid "Inventories"
+msgstr "Inventarios"

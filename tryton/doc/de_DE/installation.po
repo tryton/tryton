@@ -1,0 +1,104 @@
+# extracted from installation.rst
+msgid ""
+msgstr ""
+"Project-Id-Version: Tryton\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-04 16:33+0200\n"
+"PO-Revision-Date: 2010-05-06 19:03+0100\n"
+"Last-Translator: Tobias Paepke <tryton@paepke.net>\n"
+"Language-Team: http://tryton.origo.ethz.ch/forum/8\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+"X-Poedit-Language: german\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: installation.rst:1
+msgid ""
+"Installing tryton\n"
+"================="
+msgstr ""
+"Tryton Installation\n"
+"==================="
+
+#: installation.rst:4
+msgid ""
+"Prerequisites\n"
+"-------------"
+msgstr ""
+"Voraussetzungen\n"
+"---------------"
+
+#: installation.rst:7
+msgid ""
+" * Python 2.4 or later (http://www.python.org/)\n"
+" * pygtk 2.0 or later (http://www.pygtk.org/)\n"
+" * librsvg (http://librsvg.sourceforge.net/)\n"
+" * python-dateutil (http://labix.org/python-dateutil)\n"
+" * simplejson (http://undefined.org/python/#simplejson)\n"
+" * Optional: pytz (http://pytz.sourceforge.net/)"
+msgstr ""
+" * Python 2.4 oder neuer (http://www.python.org/)\n"
+" * pygtk 2.0 oder neuer (http://www.pygtk.org/)\n"
+" * librsvg (http://librsvg.sourceforge.net/)\n"
+" * python-dateutil (http://labix.org/python-dateutil)\n"
+" * simplejson (http://undefined.org/python/#simplejson)\n"
+" * Optional: pytz (http://pytz.sourceforge.net/)"
+
+#: installation.rst:14
+msgid ""
+"Installation\n"
+"------------"
+msgstr ""
+"Installation\n"
+"------------"
+
+#: installation.rst:17
+msgid ""
+"Once you've downloaded and unpacked a tryton source release, enter the\n"
+"directory where the archive was unpacked, and run:"
+msgstr ""
+"Nach dem Herunterladen und Auspacken der Tryton Quellen wechselt man in das\n"
+"Verzeichnis in welches das Archiv ausgepackt wurde und führt folgenden Befehl\n"
+"aus:"
+
+#: installation.rst:20
+msgid "    ``python setup.py install``"
+msgstr "    ``python setup.py install``"
+
+#: installation.rst:22
+msgid ""
+"Note that you may need administrator/root privileges for this step, as\n"
+"this command will by default attempt to install tryton to the Python\n"
+"site-packages directory on your system."
+msgstr ""
+"Für diesen Schritt können Administrator/root Berechtigungen benötigt\n"
+"werden, da dieser Befehl Tryton standardmäßig in das systemweite Python\n"
+"site-package Verzeichnis installiert."
+
+#: installation.rst:26
+msgid ""
+"For advanced options, please refer to the easy_install__ and/or the\n"
+"distutils__ documentation:"
+msgstr ""
+"Für weitere Installationsoptionen kann man die Dokumentation von\n"
+"easy_install__ oder distutils__ beachten."
+
+#: installation.rst:29
+msgid "__ http://peak.telecommunity.com/DevCenter/EasyInstall"
+msgstr "__ http://peak.telecommunity.com/DevCenter/EasyInstall"
+
+#: installation.rst:31
+msgid "__ http://docs.python.org/inst/inst.html"
+msgstr "__ http://docs.python.org/inst/inst.html"
+
+#: installation.rst:33
+msgid ""
+"To use without installation, run ``bin/tryton`` from where the archive was\n"
+"unpacked."
+msgstr ""
+"Um Tryton ohne Installation zu benutzen kann man ``bin/tryton`` im Verzeichnis\n"
+"des entpackten Archiv aufrufen."
+
