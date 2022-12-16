@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="create_chart_properties_view_form">
+            <field name="model">account.create_chart.properties</field>
+            <field name="inherit"
+                ref="account.create_chart_properties_view_form"/>
+            <field name="name">create_chart_properties_form</field>
+        </record>
+    </data>
+</tryton>

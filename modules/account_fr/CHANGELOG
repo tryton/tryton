@@ -1,0 +1,61 @@
+Version 4.8.4 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.3 - 2018-11-12
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.2 - 2018-06-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Set CompAux in starting balance of FEC
+* Update chart to new tax code definition
+* Allow to export FEC on draft fiscalyear
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Add header and use tab separator on FEC
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add FEC generation
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Drop the tax rule "Ventes intracommunautaires" and associated taxes.
+* Create separate taxes for goods and services. You should review all your
+  products, product categories and custom tax rules to rely on the new taxes.
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* New tax rates for 2014
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-07-31
+* Initial release

@@ -1,0 +1,340 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"."
+msgstr "\"Von Datum\" sollte vor \"Bis Datum\" liegen."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity"
+msgstr "Anzahl auf der Zeile muss größer als Minimalanzahl sein."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive"
+msgstr "Anzahl auf der Zeile muss einen positiven Wert aufweisen."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forecast"
+msgstr ""
+"Eine Variante kann nur einmal pro Bedarfsermittlung eingetragen werden."
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\""
+msgstr "\"Bis Datum\" muss größer als \"Von Datum\" sein."
+
+msgctxt "error:stock.forecast:"
+msgid ""
+"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
+" same location."
+msgstr ""
+"Bedarfsermittlung \"%(first)s\" überschneidet sich mit den Datumsangaben von"
+" Bedarfsermittlung \"%(second)s\" bezogen auf denselben Lagerort."
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion."
+msgstr ""
+"Bedarfsermittlung \"%s\" muss annulliert werden, bevor sie gelöscht werden "
+"kann."
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:stock.forecast,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.forecast,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Bestimmungsort"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:stock.forecast,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:stock.forecast,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Ort"
+
+msgctxt "field:stock.forecast,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.forecast,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:stock.forecast.complete.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:stock.forecast.complete.choose,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Varianten"
+
+msgctxt "field:stock.forecast.line,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.forecast.line,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Bedarfsermittlung"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr "Prognosestatus"
+
+msgctxt "field:stock.forecast.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Minimale Anzahl"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Bewegungen"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Variante"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Maßeinheitenkategorie"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Anzahl"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Anzahl ausgeführt"
+
+msgctxt "field:stock.forecast.line,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "Maßeinheit"
+
+msgctxt "field:stock.forecast.line,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.forecast.line,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.forecast.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.forecast.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.forecast.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Position Bedarfsermittlung"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Bewegung"
+
+msgctxt "field:stock.forecast.line-stock.move,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:stock.forecast.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.forecast.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Bedarfsermittlung"
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Bedarfsermittlung durchführen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Bestätigen"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Bedarfsermittlung"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Lager Bedarfsermittlung"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Bedarfsermittlung Lagerhaltung"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Nachfrage Bedarfsermittlung durchführen"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Bedarfsermittlung Durchführen Auswahl"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Bedarfsermittlungsposition"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Position Bedarfsermittlung - Bewegung"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancel"
+msgstr "Annulliert"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Annulliert"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr ""
+"Erstelle Bedarfspositionen basierend auf den Werten aus der Vergangenheit"
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Bedarfsermittlung durchführen"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Varianten auswählen"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Durchführen"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Auswahl Datum"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Durchführen"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:stock.forecast:"
+msgid "Confirm"
+msgstr "Bestätigen"
+
+msgctxt "view:stock.forecast:"
+msgid "Reset to Draft"
+msgstr "Auf Entwurf zurücksetzen"

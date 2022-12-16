@@ -1,0 +1,332 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"شما نمی توانید ارزش بها محصول را که به جابجایی موجودی پیوند شده است،تغییر دهید.\n"
+"شما باید از دستیار \"به روز رسانی ارزش بها\" استفاده کنید."
+
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr "حساب موجودی و همتا نمیتوانند حساب مشابهی داشته باشند"
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "حساب ارزش بها همتا"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "روزنامه موجودی"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "حساب ارزش بها همتا"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:account.configuration.stock_journal,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:account.configuration.stock_journal,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:account.configuration.stock_journal,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.configuration.stock_journal,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "روزنامه موجودی"
+
+msgctxt "field:account.configuration.stock_journal,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:account.configuration.stock_journal,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "روش حساب موجودی"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "حساب موجودی مشتری"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "حساب موجودی گم شده و پیداشده"
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "حساب موجودی محصول"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "حساب موجودی تأمین کننده"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "field:product.category.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "حساب موجودی مشتری"
+
+msgctxt "field:product.category.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "حساب موجودی گم شده و پیداشده"
+
+msgctxt "field:product.category.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "حساب موجودی تولید"
+
+msgctxt "field:product.category.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "حساب موجودی تأمین کننده"
+
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "حساب موجودی مشتری"
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "حساب موجودی گم شده و پیداشده"
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "حساب موجودی تولید"
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "حساب موجودی تأمین کننده"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "حساب موجودی مشتری"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "حساب موجودی گم شده و پیداشده"
+
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "حساب موجودی تولید"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "حساب موجودی تأمین کننده"
+
+msgctxt "field:product.template.account,account_stock:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "field:product.template.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "حساب موجودی مشتری"
+
+msgctxt "field:product.template.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "حساب موجودی گم شده و پیداشده"
+
+msgctxt "field:product.template.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "حساب موجودی تولید"
+
+msgctxt "field:product.template.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "حساب موجودی تأمین کننده"
+
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "متغیر"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "همتا"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "اختلاف قیمت"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "حساب موجودی"
+
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
+
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr "پیکربندی حساب ؛ حساب ارزش بها همتا"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "پیکربندی حساب ؛ روزنامه موجودی"
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "بروزرسانی ارزش بهاء"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "درخواست به روز رسانی ارزش بها"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "به روز رسانی ارزش بها نمایش جابجایی"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "قاره"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "موجودی"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "حساب موجودی"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "انصراف"
