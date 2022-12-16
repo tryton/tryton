@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="inherit" ref="account.move_view_form"/>
+            <field name="name">move_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_form">
+            <field name="model">account.move.line.group</field>
+            <field name="type">form</field>
+            <field name="name">move_line_group_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_form_move">
+            <field name="model">account.move.line.group</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_group_form_move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_form_payable_receivable">
+            <field name="model">account.move.line.group</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_group_form_payable_receivable</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_list">
+            <field name="model">account.move.line.group</field>
+            <field name="type">tree</field>
+            <field name="name">move_line_group_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_list_move">
+            <field name="model">account.move.line.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_group_list_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_view_list_payable_receivable">
+            <field name="model">account.move.line.group</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_line_group_list_payabale_receivable</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_line_group_form">
+            <field name="name">Account Move Lines (Grouped)</field>
+            <field name="res_model">account.move.line.group</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_group_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_group_view_list"/>
+            <field name="act_window" ref="act_move_line_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_group_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_group_view_form"/>
+            <field name="act_window" ref="act_move_line_group_form"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Move Account (Grouped)</field>
+            <field name="wiz_name">account.move.open_account</field>
+            <field name="model">account.account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move_line_group_payable_receivable">
+            <field name="name">Payable/Receivable Lines (Grouped)</field>
+            <field name="res_model">account.move.line.group</field>
+            <field name="domain"
+                eval="[['OR', ('account.type.receivable', '=', True), ('account.type.payable', '=', True)], If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids'))), ('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('reconciled', '=', False)]" pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_group_payable_receivable_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_group_view_list_payable_receivable"/>
+            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_group_payable_receivable_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_group_view_form_payable_receivable"/>
+            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_payable">
+            <field name="name">Payable</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('account.type.payable', '=', True)]" pyson="1"/>
+            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_receivable">
+            <field name="name">Receivable</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('account.type.receivable', '=', True)]" pyson="1"/>
+            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_line_group_payable_receivable_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_move_line_group_payable_receivable"/>
+        </record>
+        <record model="ir.action-res.group" id="act_move_line_group_payable_receivable-group_account">
+            <field name="action" ref="act_move_line_group_payable_receivable"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+    </data>
+</tryton>

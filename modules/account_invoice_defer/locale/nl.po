@@ -1,0 +1,203 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Rekening uitgestelde kosten"
+
+msgctxt "field:account.configuration,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Rekening uitgestelde inkomsten"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Rekening uitgestelde kosten"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Rekening uitgestelde inkomsten"
+
+msgctxt "field:account.invoice.deferred,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.invoice.deferred,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.invoice.deferred,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.deferred,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:account.invoice.deferred,invoice_line:"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "field:account.invoice.deferred,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.invoice.deferred,moves:"
+msgid "Moves"
+msgstr "Boekingen/bewegingen"
+
+msgctxt "field:account.invoice.deferred,start_date:"
+msgid "Start Date"
+msgstr "Start Datum"
+
+msgctxt "field:account.invoice.deferred,state:"
+msgid "State"
+msgstr "Staat"
+
+msgctxt "field:account.invoice.deferred,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice.line,defer_from:"
+msgid "Defer From"
+msgstr "Uitstellen van"
+
+msgctxt "field:account.invoice.line,defer_to:"
+msgid "Defer To"
+msgstr "uitstellen tot"
+
+msgctxt "field:account.invoice.line,deferrable:"
+msgid "Deferrable"
+msgstr "uitstelbaar"
+
+msgctxt "model:account.invoice.deferred,name:"
+msgid "Invoice Deferred"
+msgstr "Factuur uitgesteld"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Leveranciersfacturen uitgesteld"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Klantfacturen uitgesteld"
+
+msgctxt "model:ir.action,name:wizard_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Uitgestelde factuurbewegingen maken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_running"
+msgid "Running"
+msgstr "in uitvoering"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_running"
+msgid "Running"
+msgstr "in uitvoering"
+
+msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
+msgid "Invoice line can be deferred only once."
+msgstr "Factuurregel kan slechts één keer worden uitgesteld."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
+msgid ""
+"You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
+"\"draft\" state."
+msgstr ""
+"U kunt uitgestelde facturen \"%(deferral)s\" niet verwijderen omdat deze "
+"niet de status \"concept\" heeft."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some invoices deferred "
+"\"%(deferrals)s\" do not have yet move for the period."
+msgstr ""
+"U kunt periode \"%(period)s\" niet sluiten omdat sommige uitgestelde "
+"facturen \"%(deferrals)s\" nog niet zijn geboekt voor de periode."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr "Er is geen grootboekrekening ingesteld voor uitgestelde kosten."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr "Er is geen grootboekrekening ingesteld voor uitgestelde opbrengsten."
+
+msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
+msgid "Are you sure you want to defer the invoices?"
+msgstr "Weet u zeker dat u de facturen wilt uitstellen?"
+
+msgctxt "model:ir.model.button,help:invoice_deferred_run_button"
+msgid "Start deferring the invoice"
+msgstr "Begin met het uitstellen van de factuur"
+
+msgctxt "model:ir.model.button,string:invoice_deferred_run_button"
+msgid "Run"
+msgstr "uitvoeren"
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_deferred_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Uitgestelde factuurbewegingen maken"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Leveranciersfacturen uitgesteld"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Klantfacturen uitgesteld"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Closed"
+msgstr "Afgesloten"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Running"
+msgstr "in uitvoering"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "view:account.configuration:"
+msgid "Deferred"
+msgstr "uitgesteld"
+
+msgctxt "view:account.invoice.deferred:"
+msgid "Other Info"
+msgstr "Aanvullende informatie"

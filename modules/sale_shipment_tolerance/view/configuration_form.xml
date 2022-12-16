@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator string="Sale Shipment Tolerance"
+            id="sale_shipment_tolerance" colspan="4"/>
+        <label name="sale_under_shipment_tolerance"/>
+        <group col="2" id="sale_under_shipment_tolerance">
+            <field name="sale_under_shipment_tolerance"
+                factor="100" xexpand="0"/>
+            <label name="sale_under_shipment_tolerance"
+                string="%" xexpand="1" xalign="0.0"/>
+        </group>
+        <label name="sale_over_shipment_tolerance"/>
+        <group col="2" id="sale_over_shipment_tolerance">
+            <field name="sale_over_shipment_tolerance"
+                factor="100" xexpand="0"/>
+            <label name="sale_over_shipment_tolerance"
+                string="%" xexpand="1" xalign="0.0"/>
+        </group>
+    </xpath>
+</data>

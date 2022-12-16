@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="name" expand="2">
+        <prefix name="flag"/>
+    </field>
+    <field name="code" optional="1"/>
+    <field name="code3" optional="1"/>
+    <field name="code_numeric" optional="1"/>
+    <field name="region" expand="1" optional="1"/>
+</tree>
