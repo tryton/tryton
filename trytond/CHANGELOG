@@ -1,0 +1,318 @@
+Version 3.0.17 - 2016-07-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.16 - 2016-04-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.15 - 2016-03-14
+* Bug fixes (see mercurial logs for details)
+* Limit the login size in LoginAttempt
+
+Version 3.0.14 - 2016-02-06
+* Bug fixes (see mercurial logs for details)
+* Don't read historized user when evaluating record rules as it could lead to
+  past privilege escalation.
+
+Version 3.0.13 - 2016-01-11
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.12 - 2015-11-09
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.11 - 2015-05-19
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.10 - 2015-03-30
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.9 - 2015-02-16
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.8 - 2014-11-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.7 - 2014-09-29
+* Bug fixes (see mercurial logs for details)
+* Use literal_eval instead of safe_eval (CVE-2014-6633)
+* Prevent double underscore in safe_eval (CVE-2014-6633)
+
+Version 3.0.6 - 2014-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.5 - 2014-07-01
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.4 - 2014-04-07
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.3 - 2014-03-22
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.2 - 2014-01-18
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.1 - 2013-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Allow customization of translation in po files
+* Use python-sql
+* Add convert_domain method on Fields
+* Add sql_format and sql_type methods on Fields
+* Allow to return a full domain for Function.searcher
+* Replace static backend by dynamic get method
+* Replace order_field by order_<field name> method
+* Allow field One2One in check_recursion
+* Remove the default order on MPTT
+* Add grouped attribute to data tag
+* Store selection tree state
+* Add order to Action Window
+* Add factor on number fields
+* Add calendar view
+* Remove request
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Allow to search on target of Reference field
+* Remove _inherits
+* Add dynamic label
+* Add prefix, suffix on tree view
+* Replace _constraints with validate in ModelStorage
+* Add selection_change_with on Selection and Reference fields
+* Add Dict fields
+* Remove unique constraint on model and field access
+* Use lists of values in create
+* (Field, Operator, Operand) are replaced by Domain on Rule
+* Add global search
+* Replace view shortcut by menu favorite
+* Store default language in database
+* Add icon attribute on fields
+* Prevent Wizard State name to start with '_'
+* Add completion attribute for Many2One, Many2Many and One2Many
+* Add ViewSearch
+* Add domains on Action Window
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Add pre-validation
+* Allow to use XML file for views
+* Add RPC definition
+* Repace BrowseRecord by Model instance
+* Replace Cache decorator by a simple LRU Cache
+* Remove Cacheable
+* Remove _description
+* Rename _name by __name__
+* Use class in Pool
+* Fix search button clause in ModelButton.get_groups (CVE-2012-2238)
+* Merge all kind of buttons
+* Use XML id for board action instead of id
+* Add states attribute to notebook
+* Allow to use tuple for Reference
+* Add constant interpolation on line graph
+* Add create/delete field access
+* Add dynamic size limit on the One2Many, Many2Many and Char
+* Replace __tryton__.py by tryton.cfg
+* Allow to use Reference field in One2Many & Many2Many
+* Remove hexmd5 from ModelView.fields_view_get
+* Allow client to manage model access
+* Add time format validation
+* Remove ModelSQL.default_sequence
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Don't allow rpc call on ModelStorage without ModelView (CVE-2012-0215)
+* Add shared WebDAV
+* Remove workflow module
+* Simplify workflow engine
+* Add ir.model.button for access rights
+* Replace fill by expand
+* Integer, Numeric and Float allow None as value
+* NULL value is None and not False
+* Replace user action by a list of actions
+* Add group call to on_change_with
+* Allow to get fuzzy translation
+* Allow to customize server timezone
+* Add richtext widget for WYSIWYG editor
+* Add support of fields.Time
+* Replace nested view by reference id
+* Remove underscore to ir.translation methods
+* Add default database language code
+* Add extras_depend to module definition
+* Store session in database
+* New Wizard design
+* Add pyson.Id
+* Use XML-RPC struct for Decimal and Date
+* Remove change_default on fields
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+* Remove name field in ir.property
+* Add wizard to show views
+* Switched from .csv to .po for translations
+* Search on Many2One fields include inactive records
+* Change select on fields into Boolean
+* Change format of search_value on ir.action.act_window
+* Manage relation field access
+* Support size format in context for Binary fields
+* Use buffer for Binary fields
+* No more store Binary fields in base64
+* Remove tabpos attribute on notebook
+* Make PYSON more Pythonic
+* Add readonly on Transaction
+* Add has_returning on Cursor
+* Remove use of python code in workflow XML
+* Use SQL sequence on PostgreSQL for ir.sequence
+* Allow to specify more than one interface
+* Use unoconv for report format conversion
+* Allow to use any Opendocument as report template
+* Drop NetRPC and activate JSON-RPC by default
+* Remove ir.action.wizard_size
+* Rename expand and fill attributes into yexpand and yfill
+* Add xalign and yalign as field attributes
+* Drop support of Python 2.5
+* Remove support of Many2Many field in record XML
+* Change Pool into a Singleton
+* Remove support of zipped modules
+
+Version 2.0.0 - 2011-04-26
+* Bug fixes (see mercurial logs for details)
+* Use md5 hash for indexing translation
+* Merge tree and list views
+* Added autocompletion on fields.Char
+* Remove ir.default
+* Add type, last user and last modification on ir.attachment
+* Rename datas into data on ir.attachment
+* Add new configuration option to prevent database listing
+* Add warning to wizards
+* Add server-side icons
+* Add support for file link to BinaryField
+* Add model field access
+* Add loading attribute on fields
+* Remove priority attribute on fields
+* Model doesn't convert anymore ids for inherited methods
+* Remove required attribute on Boolean fields
+* Add One2One field
+* Add AUTOINCREMENT to sqlite primary key
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+* Add timestamp sequence
+* New transaction management
+* Make _timestamp numeric instead of datetime to work with XML-RPC and JSON-RPC
+* Add ir.trigger to trigger ModelStorage change
+* Add default value to Boolean fields at database level
+
+Version 1.6.0 - 2010-05-08
+* Bug fixes (see mercurial logs for details)
+* Add symbol parameter to formatLang
+* searcher on Function fields take only one domain clause as argument
+* Use a Reference field on ir.attachment to store resource informations
+  Improve the ir.attachment views to be usable on the client side
+* Use basic access authentication for XML-RPC
+* Replace child{1,2} attributes in xml views by a unique child
+* Models that uses _inherits will search in inherited parents for missing functions
+* Remove ids from on_change* calls
+* Improve search on translatable fields
+* export_data return empty value for invisible fields
+* Don't allow to use float in Numeric fields
+* set/get function on Fields take a list of ids
+* New interface for Function/Property fields
+  Take a Field as first argument instead of many separate arguments
+  Remove static arguments
+* Fix Float and Numeric for lost of precision
+* Add decimal digits validation on fields
+* Improve unittests to run trytond from tests
+  Use sqlite as default backend
+  Add skiptest attribute to data tag
+  Add option to test_tryton to run tests from all modules
+* Add MySQL backend
+* Refactoring by validation with pylint
+* Modify ondelete attribute of Many2One according to required attribute value
+* Refactor import_data of ModelStorage
+* Raise exception when search function is missing on Function fields
+* Add LRU memoization, use it to cache compiled code for safe_eval.
+* Add PySON to replace python string evaluation on client side
+* Add JSON-RPC
+* Add groups on Sequence Types and add rules on sequence based on it.
+* Ignore Fields that starts with "_"
+* Add comment on table and field for postgresql backend
+* Remove egenix-mx-base and replace it by python-dateutil
+* Add cache to safe_eval
+* Rename HttpDaemon into XMLRPCDaemon
+* Improve TranslateFactory to fetch all translations for a report in one query
+* Handle displayname on webdav.collection
+* Handle current-user-privilege-set on webdav.collection
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add datetime_field on xxx2Many to use a specific _datetime when reading the related record
+* Add new tool safe_eval
+* Handle sequence and history renaming when renaming table
+* Add old_password to set_preferences of res.user on password change
+* Allow to drop constraint, index and foreign key with custom table name
+* Added column_rename on TableHandler
+* Add new tool reduce_ids
+* Add limit_clause function on cursor
+* Fill the cursor cache at search
+* Allow rpc on today of ir.date
+* Use the module dependency order to apply views that inherits
+* Allow to update database at the end of restore
+* Add ir.model.access check get and set of ir.property
+* Add ModelSingleton
+* Move login test in res.user
+* Rename osv into model on workflow
+* Add logout method
+* Move BrowseRecord cache onto the cursor except for Function fields
+* Don't order search result if order value is []
+* Add reload of modules if files have changed
+* Add salt to sha of password
+* Add strftime to ir.lang to handle locale's format
+* Add sqlite backend
+* Add validate test for required and size
+* Remove _sequence on ModelSQL
+* Use gzip in pysocket
+* Add gzip encoding for XML-RPC
+* Add report name in the result of Report.execute
+* Add ir.action.wizard_size to store prefered wizard size
+* Add delete_all action on One2Many field
+* Read, write, create, delete permission on record rules
+* Add reset_default method to ir.default
+* Doesn't append '%' to "like", "ilike" clauses
+* Handle database dump and restore with password
+* Add float_time attribute in fields view
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add delete of foreign keys with ondelete CASCADE
+* Add write for foreign keys with ondelete SET NULL
+* Add datetime_field on Many2One to use a specific _datetime when reading the related record
+* Use _datetime in context to read record value at specific datetime
+* Add _history_table on ModelSQL to historize change on records
+* Allow to use related fields (many2one and reference) in read
+* Use rec_name function field instead of name_get and name_search
+* Use a new Pool for objects
+* Move workflow in ModelWorkflow and the workflow module
+* Remove Service and LocalService objects
+* New netrpc/xmlrpc syntax
+* copy on ModelStorage copies one2many directly on the right record
+* Search on translated field will search only on translated value
+* Add active field on ir.action to allow better override of reports
+* Add depends attributes on Column
+* Make Modified Preorder Tree Traversal respects the default order of the model
+* Add replace_attributes for xpath tag
+* Add email parameter on report action
+* Allow to inherit views from an other model
+* Add user warnings
+* Allow to use a list of id for copy method
+* Use one lock per database
+* Improve netrpc communication speed
+* Add contextual domain on inherited views
+* Allow to use globals in domain and states
+* Add translate attribute on Selection field
+* Use explicit join in search SQL query
+* Fix for host with IPv6 enable but without default IPv6 route
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
