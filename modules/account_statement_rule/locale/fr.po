@@ -1,0 +1,186 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.statement.rule,amount_high:"
+msgid "Amount High"
+msgstr "Montant maximum"
+
+msgctxt "field:account.statement.rule,amount_low:"
+msgid "Amount Low"
+msgstr "Montant minimum"
+
+msgctxt "field:account.statement.rule,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.rule,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.statement.rule,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:account.statement.rule,information_rules:"
+msgid "Information Rules"
+msgstr "Règles sur les informations"
+
+msgctxt "field:account.statement.rule,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.statement.rule,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.statement.rule,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.rule.information,boolean:"
+msgid "Boolean"
+msgstr "Booléen"
+
+msgctxt "field:account.statement.rule.information,char:"
+msgid "Char"
+msgstr "Caractères"
+
+msgctxt "field:account.statement.rule.information,float_high:"
+msgid "Float High"
+msgstr "Flottant supérieur"
+
+msgctxt "field:account.statement.rule.information,float_low:"
+msgid "Float Low"
+msgstr "Flottant inférieur"
+
+msgctxt "field:account.statement.rule.information,integer_high:"
+msgid "Integer High"
+msgstr "Entier supérieur"
+
+msgctxt "field:account.statement.rule.information,integer_low:"
+msgid "Integer Low"
+msgstr "Entier inférieur"
+
+msgctxt "field:account.statement.rule.information,key:"
+msgid "Key"
+msgstr "Clé"
+
+msgctxt "field:account.statement.rule.information,key_type:"
+msgid "Key Type"
+msgstr "Type de clé"
+
+msgctxt "field:account.statement.rule.information,number_high:"
+msgid "Numeric High"
+msgstr "Nombre supérieur"
+
+msgctxt "field:account.statement.rule.information,number_low:"
+msgid "Numeric Low"
+msgstr "Nombre inférieur"
+
+msgctxt "field:account.statement.rule.information,rule:"
+msgid "Rule"
+msgstr "Règle"
+
+msgctxt "field:account.statement.rule.information,selection:"
+msgid "Selection"
+msgstr "Sélection"
+
+msgctxt "field:account.statement.rule.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.rule.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.statement.rule.line,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.statement.rule.line,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.statement.rule.line,rule:"
+msgid "Rule"
+msgstr "Règle"
+
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"The regular expression the description is searched with.\n"
+"It may define the groups named:\n"
+"'party', 'bank_account', 'invoice'."
+msgstr ""
+"L'expression régulière avec laquelle la description est recherchée.\n"
+"Elle peut définir les groupes nommés :\n"
+"'party', 'bank_account', 'invoice'."
+
+msgctxt "help:account.statement.rule.information,char:"
+msgid ""
+"The regular expression the key information is searched with.\n"
+"It may define the groups named:\n"
+"party, bank_account, invoice."
+msgstr ""
+"L'expression régulière avec laquelle l'information clé est recherchée.\n"
+"Elle peut définir les groupes nommés :\n"
+"party, bank_account, invoice."
+
+msgctxt "help:account.statement.rule.line,account:"
+msgid ""
+"Leave empty to use the party's receivable or payable account.\n"
+"The rule must have a company to use this field."
+msgstr ""
+"Laisser vide pour utiliser le compte client ou fournisseur du tiers.\n"
+"La règle doit avoir une société pour utiliser ce champ."
+
+msgctxt "help:account.statement.rule.line,amount:"
+msgid "A Python expression evaluated with 'amount' and 'pending'."
+msgstr "Une expression Python évaluée avec 'amount' et 'pending'."
+
+msgctxt "help:account.statement.rule.line,party:"
+msgid ""
+"Leave empty to use the group named 'party' from the regular expressions."
+msgstr ""
+"Laisser vide pour utiliser le groupe nommé 'party' de l'expression "
+"régulière."
+
+msgctxt "model:account.statement.rule,name:"
+msgid "Account Statement Rule"
+msgstr "Règle de relevé comptable"
+
+msgctxt "model:account.statement.rule.information,name:"
+msgid "Account Statement Rule Information"
+msgstr "Règle sur les informations de relevé comptable"
+
+msgctxt "model:account.statement.rule.line,name:"
+msgid "Account Statement Rule Line"
+msgstr "Ligne de règle de relevé comptable"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Rules"
+msgstr "Règles"
+
+msgctxt "model:ir.model.button,string:statement_apply_rules_button"
+msgid "Apply Rules"
+msgstr "Appliquer les règles"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Rules"
+msgstr "Règles"
+
+msgctxt "view:account.statement.rule.information:"
+msgid "-"
+msgstr "-"
+
+msgctxt "view:account.statement.rule:"
+msgid "-"
+msgstr "-"
+
+msgctxt "view:account.statement.rule:"
+msgid "Between"
+msgstr "Intervalle"
+
+msgctxt "view:account.statement.rule:"
+msgid "Criteria"
+msgstr "Critères"

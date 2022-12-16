@@ -1,0 +1,211 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Nummernkreis Einstandskosten"
+
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Nummernkreis Einstandskosten"
+
+msgctxt "field:account.invoice.line,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:account.landed_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Zuordnungsmethode"
+
+msgctxt "field:account.landed_cost,categories:"
+msgid "Categories"
+msgstr "Kategorien"
+
+msgctxt "field:account.landed_cost,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.landed_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "field:account.landed_cost,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.landed_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Festschreibungsdatum"
+
+msgctxt "field:account.landed_cost,products:"
+msgid "Products"
+msgstr "Artikel"
+
+msgctxt "field:account.landed_cost,shipments:"
+msgid "Shipments"
+msgstr "Lieferposten"
+
+msgctxt "field:account.landed_cost,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.landed_cost-product.category,category:"
+msgid "Category"
+msgstr "Kategorie"
+
+msgctxt "field:account.landed_cost-product.category,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:account.landed_cost-product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:account.landed_cost-product.product,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
+msgid "Shipment"
+msgstr "Lieferposten"
+
+msgctxt "field:product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:product.template,landed_cost:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "field:stock.move,unit_landed_cost:"
+msgid "Unit Landed Cost"
+msgstr "Einheit Einstandskosten"
+
+msgctxt "help:account.landed_cost,categories:"
+msgid "Apply only to products of these categories."
+msgstr "Nur auf Artikel dieser Kategorien anwenden."
+
+msgctxt "help:account.landed_cost,products:"
+msgid "Apply only to these products."
+msgstr "Nur auf diese Artikel anwenden."
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Einstellungen Buchhaltung Nummernkreis Einstandskosten"
+
+msgctxt "model:account.landed_cost,name:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "model:account.landed_cost-product.category,name:"
+msgid "Landed Cost - Product Category"
+msgstr "Einstandskosten - Artikelkategorie"
+
+msgctxt "model:account.landed_cost-product.product,name:"
+msgid "Landed Cost - Product"
+msgstr "Einstandskosten - Artikel"
+
+msgctxt "model:account.landed_cost-stock.shipment.in,name:"
+msgid "Landed Cost - Shipment"
+msgstr "Einstandskosten - Lieferposten"
+
+msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Einstandskosten"
+
+msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
+msgid "Landed Costs"
+msgstr "Einstandskosten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
+msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
+msgstr "Die Einstandskostenposition \"%(landed_cost)s\" hat keine Lagerbewegung."
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
+msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+"Die Kategorie \"%(category)s\" auf Einstandskostenposition "
+"\"%(landed_cost)s\" wird nicht genutzt."
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
+msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+"Der Artikel \"%(product)s\" auf Einstandkostenposition \"%(landed_cost)s\" "
+"wird nicht genutzt."
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Festschreiben"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.sequence,name:sequence_landed_cost"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "model:ir.ui.menu,name:menu_landed_cost"
+msgid "Landed Costs"
+msgstr "Einstandskosten"
+
+msgctxt "selection:account.landed_cost,allocation_method:"
+msgid "By Value"
+msgstr "Nach Wert"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:account.landed_cost,state:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "view:account.configuration:"
+msgid "Landed Cost"
+msgstr "Einstandskosten"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Nummernkreis"

@@ -1,0 +1,342 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "سطر های تحلیلی"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "وضعیت تجزیه و تحلیل"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "تجزیه و تحلیل ریشه"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr "توزیع منابع"
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr "توزیع"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "ریشه"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "نسبت"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "ریشه"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "حساب خط جابجایی"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "اندازه تجزیه و تحلیل حساب ها"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "نهاد/سازمان قابل مشاهده"
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "ورودی تجزیه و تحلیل حساب"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "تجزیه و تحلیل حساب"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr "توزیع تجزیه و تحلیل حساب"
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "خط تحلیلی"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "بازکردن نمودار حساب ها"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "قانون تجزیه و تحلیل"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "سطر های تحلیلی"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "سطرهای تحلیلی برای تکمیل"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "بازکردن حساب‌"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "بازکردن نمودار تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "قوانین تحلیلی"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr "برای ذخیره حساب : \"%(account)s\" مجموع توزیع آنها باید %100 باشد."
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr "در هر تجزیه و تحلیل ریشه و مبدأ فقط یک حساب مجاز است."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "قوانین تحلیلی"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "تجزیه و تحلیل حساب"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "سطرهای تحلیلی برای تکمیل"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "بازکردن نمودار تجزیه و تحلیل حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "قوانین تحلیلی"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "مدیریت تجزیه و تحلیل"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "معتبر"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "بسته شده"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "باز"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr "توزیع"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "عادی"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "ریشه"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "مشاهده"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "تحلیلی"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "بدهی"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "اطلاعات عمومی"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "یادداشت ها"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "باز"

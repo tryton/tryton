@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Configuration" parent="menu_sale" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_sale_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_sale_configuration_form">
+            <field name="name">Sales Configuration</field>
+            <field name="res_model">sale.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="sale_configuration_view_form"/>
+            <field name="act_window" ref="act_sale_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_sale_configuration_form"
+            id="menu_sale_configuration" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_sale_configuration">
+            <field name="model" search="[('model', '=', 'sale.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_configuration_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.configuration')]"/>
+            <field name="group" ref="group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

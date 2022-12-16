@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Preu de llista"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Línies de compra"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr "Temps del treball"
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr "Afegiu al cost del Projecte/Tasca."
+
+msgctxt "view:project.work:"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "Projecte"

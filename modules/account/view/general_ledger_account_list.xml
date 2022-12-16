@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="account" expand="1"/>
+    <field name="start_balance" sum="Start Balance" symbol="currency"/>
+    <field name="debit" sum="Debit" symbol="currency"/>
+    <field name="credit" sum="Credit" symbol="currency"/>
+    <field name="end_balance" sum="End Balance" symbol="currency"/>
+</tree>

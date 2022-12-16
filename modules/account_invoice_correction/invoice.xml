@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="correct_start_view_form">
+            <field name="model">account.invoice.correct.start</field>
+            <field name="type">form</field>
+            <field name="name">correct_start_view_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_invoice_correct">
+            <field name="name">Correct</field>
+            <field name="wiz_name">account.invoice.correct</field>
+            <field name="model">account.invoice</field>
+        </record>
+        <record model="ir.model.button" id="invoice_correct_button">
+            <field name="name">correct</field>
+            <field name="string">Correct</field>
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+        </record>
+    </data>
+</tryton>

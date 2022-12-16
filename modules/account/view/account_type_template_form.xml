@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="statement"/>
+    <group col="-1" id="statement">
+        <field name="statement"/>
+        <label name="assets"/>
+        <field name="assets"/>
+    </group>
+    <label name="parent"/>
+    <field name="parent"/>
+    <group colspan="4" col="-1" id="checkboxes">
+        <label name="receivable"/>
+        <field name="receivable" xexpand="0" width="25"/>
+        <label name="stock"/>
+        <field name="stock" xexpand="0" width="25"/>
+        <label name="payable"/>
+        <field name="payable" xexpand="0" width="25"/>
+        <label name="revenue"/>
+        <field name="revenue" xexpand="0" width="25"/>
+        <label name="expense"/>
+        <field name="expense" xexpand="0" width="25"/>
+    </group>
+</form>
