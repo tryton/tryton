@@ -1,0 +1,4 @@
+image: python:all
+script:
+  - pip install tox pydot
+  - tox -e "py27,py33,py34,py35" --skip-missing-interpreters
