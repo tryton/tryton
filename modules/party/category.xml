@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">party.category</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Category">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="category_view_tree">
+            <field name="model">party.category</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Categories" fill="1">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_category_tree">
+            <field name="name">Categories</field>
+            <field name="res_model">party.category</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_tree"/>
+        </record>
+        <menuitem parent="menu_party"
+            action="act_category_tree" id="menu_category_tree"/>
+
+        <record model="ir.action.act_window" id="act_category_form">
+            <field name="name">Categories</field>
+            <field name="res_model">party.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_category_form" id="menu_category_form" sequence="10"/>
+        <record model="ir.action.act_window" id="act_category_form2">
+            <field name="name">Categories</field>
+            <field name="res_model">party.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <menuitem name="New category" parent="menu_category_form"
+              action="act_category_form2" id="menu_category_form2"/>
+
+        <record model="ir.model.access" id="access_party_category">
+            <field name="model" search="[('model', '=', 'party.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_party_category_admin">
+            <field name="model" search="[('model', '=', 'party.category')]"/>
+            <field name="group" ref="group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
