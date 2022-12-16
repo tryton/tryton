@@ -1,0 +1,160 @@
+type,name,res_id,src,value,fuzzy
+error,res.group,0,The name of the group must be unique!,Наименование группы должно быть уникальным!,0
+error,res.user,0,Wrong password!,Ошибка пароля!,0
+error,res.user,0,You can not have two users with the same login!,Такое имя пользователя уже есть !,0
+error,res.user,0,"You can not remove the root user
+as it is used internally for resources
+created by the system (updates, module installation, ...)","Вы не можете удалить основного пользователя системы
+т.к. он используется во внутренних процессах системы
+(обновление, установка модулей, ...)",0
+field,"ir.action-res.group,action_id",0,Action,Действие,0
+field,"ir.action-res.group,gid",0,Group,Группа,0
+field,"ir.action-res.group,rec_name",0,Name,Наименование,0
+field,"ir.model.field-res.group,field_id",0,Model Field,Поле шаблона,0
+field,"ir.model.field-res.group,group_id",0,Group,Группа,0
+field,"ir.model.field-res.group,rec_name",0,Name,Наименование,0
+field,"ir.rule.group-res.group,group_id",0,Group,Группа,0
+field,"ir.rule.group-res.group,rec_name",0,Name,Наименование,0
+field,"ir.rule.group-res.group,rule_group_id",0,Rule Group,Правила Группы,0
+field,"ir.rule.group-res.user,rec_name",0,Name,Наименование,0
+field,"ir.rule.group-res.user,rule_group_id",0,Rule Group,Правила Группы,0
+field,"ir.rule.group-res.user,user_id",0,User,Пользователь,0
+field,"ir.ui.menu-res.group,gid",0,Group,Группа,0
+field,"ir.ui.menu-res.group,menu_id",0,Menu,Меню,0
+field,"ir.ui.menu-res.group,rec_name",0,Name,Наименование,0
+field,"res.group,menu_access",0,Access Menu,Меню доступа,0
+field,"res.group,model_access",0,Access Model,Шаблон доступа,0
+field,"res.group,name",0,Name,Наименование,0
+field,"res.group,rec_name",0,Name,Наименование,0
+field,"res.group,rule_groups",0,Rules,Правила,0
+field,"res.group,users",0,Users,Пользователи,0
+field,"res.request,act_from",0,From,От кого,0
+field,"res.request,active",0,Active,Действительный,0
+field,"res.request,act_to",0,To,Кому,0
+field,"res.request,body",0,Body,Сообщение,0
+field,"res.request,date_sent",0,Date,Дата,0
+field,"res.request,history",0,History,Архив,0
+field,"res.request.history,act_from",0,From,От кого,0
+field,"res.request.history,act_to",0,To,Кому,0
+field,"res.request.history,body",0,Body,Сообщение,0
+field,"res.request.history,date_sent",0,Date sent,Дата отправки,0
+field,"res.request.history,name",0,Summary,Резюме,0
+field,"res.request.history,number_references",0,References,Ссылки,0
+field,"res.request.history,priority",0,Priority,Приоретет,0
+field,"res.request.history,rec_name",0,Name,Наименование,0
+field,"res.request.history,request",0,Request,Сообщение,0
+field,"res.request.history,state",0,State,Статус,0
+field,"res.request.history,subject",0,Subject,Тема,0
+field,"res.request.link,model",0,Model,Шаблон,0
+field,"res.request.link,name",0,Name,Наименование,0
+field,"res.request.link,priority",0,Priority,Приоритет,0
+field,"res.request.link,rec_name",0,Name,Наименование,0
+field,"res.request,name",0,Subject,Тема,0
+field,"res.request,number_references",0,Number of References,Кол-во ссылок,0
+field,"res.request,priority",0,Priority,Приоритер,0
+field,"res.request,rec_name",0,Name,Наименование,0
+field,"res.request.reference,rec_name",0,Name,Наименование,0
+field,"res.request.reference,reference",0,Reference,Ссылка,0
+field,"res.request.reference,request",0,Request,Сообщение,0
+field,"res.request,references",0,References,Ссылки,0
+field,"res.request,state",0,State,Статус,0
+field,"res.request,trigger_date",0,Trigger Date,Дата сообщения,0
+field,"res.user,action",0,Home Action,Началое действие,0
+field,"res.user,active",0,Active,Действительный,0
+field,"res.user,connections",0,Connections,Соединения,0
+field,"res.user,email",0,Email,Эл.почта,0
+field,"res.user,groups",0,Groups,Группы,0
+field,"res.user,language",0,Language,Язык,0
+field,"res.user,language_direction",0,Language Direction,Направления языка,0
+field,"res.user,login",0,Login,Регистрация,0
+field,"res.user,menu",0,Menu Action,Действия Меню,0
+field,"res.user,name",0,Name,Наименование,0
+field,"res.user,password",0,Password,Пароль,0
+field,"res.user,rec_name",0,Name,Наименование,0
+field,"res.user-res.group,gid",0,Group,Группа,0
+field,"res.user-res.group,rec_name",0,Name,Наименование,0
+field,"res.user-res.group,uid",0,User,Пользователь,0
+field,"res.user,rule_groups",0,Rules,Правила,0
+field,"res.user,salt",0,Salt,Бывалый,0
+field,"res.user,signature",0,Signature,Подпись,0
+field,"res.user,status_bar",0,Status Bar,Строка состояния,0
+field,"res.user,timezone",0,Timezone,Зона времени,0
+field,"res.user.warning,always",0,Always,Всегда,0
+field,"res.user.warning,name",0,Name,Наименование,0
+field,"res.user.warning,rec_name",0,Name,Наименование,0
+field,"res.user,warnings",0,Warnings,Внимания,0
+field,"res.user.warning,user",0,User,Пользователь,0
+model,"ir.action,name",act_group_form,Groups,Грыппы,0
+model,"ir.action,name",act_request_link_form,Request Links,Ссылки сообщения,0
+model,"ir.action,name",act_request_form,Requests,Сообщения,0
+model,"ir.action,name",act_user_form,Users,Пользователи,0
+model,"ir.action-res.group,name",0,Action - Group,Действия - Группы,0
+model,"ir.model.field-res.group,name",0,Model Field Group Rel,Шаблон Поля Группа Связь,0
+model,"ir.rule.group-res.group,name",0,Rule Group - Group,Правило группы - Группа,0
+model,"ir.rule.group-res.user,name",0,Rule Group - User,Правило группы - Пользователь,0
+model,"ir.ui.menu,name",menu_group_form,Groups,Группы,0
+model,"ir.ui.menu,name",menu_request_link_form,Request Links,Ссылки сообщения,0
+model,"ir.ui.menu,name",menu_request_form,Requests,Сообщения,0
+model,"ir.ui.menu,name",menu_res,Users,Пользователи,0
+model,"ir.ui.menu,name",menu_user_form,Users,Пользователи,0
+model,"ir.ui.menu-res.group,name",0,UI Menu - Group, Пол.инт. Меню - Группа,0
+model,"res.group,name",group_admin,Administration,группа Управление,0
+model,"res.group,name",0,Group,Группа,0
+model,"res.request.history,name",0,Request history,Архив сообщений,0
+model,"res.request.link,name",0,Request link,Ссылка сообщения,0
+model,"res.request.link,name",request_link_cron,Scheduler,Планировщик,0
+model,"res.request,name",0,Request,Сообщение,0
+model,"res.request.reference,name",0,Request Reference,Параметры сообщения,0
+model,"res.user.config.init,name",0,User Config Init,Настройка пользователя - инициализация,0
+model,"res.user,name",user_admin,Administrator,Администратор,0
+model,"res.user,name",0,User,Пользователь,0
+model,"res.user-res.group,name",0,User - Group,Пользователь - Группа,0
+model,"res.user.warning,name",0,User Warning,Внимание Пользователь,0
+selection,"res.request.history,priority",0,High,Высокий,0
+selection,"res.request.history,priority",0,Low,Низкий,0
+selection,"res.request.history,priority",0,Normal,Нормально,0
+selection,"res.request.history,state",0,Chatting,Переписка,0
+selection,"res.request.history,state",0,Closed,Закрыто,0
+selection,"res.request.history,state",0,Draft,Черновик,0
+selection,"res.request.history,state",0,Waiting,Ожидание,0
+selection,"res.request,priority",0,High,Высокий,0
+selection,"res.request,priority",0,Low,Низкий,0
+selection,"res.request,priority",0,Normal,Нормально,0
+selection,"res.request,state",0,Chatting,Переписка,0
+selection,"res.request,state",0,Closed,Закрыто,0
+selection,"res.request,state",0,Draft,Черновик,0
+selection,"res.request,state",0,Waiting,Ожидание,0
+view,ir.module.module,0,Cancel Installation,Отменить установку,0
+view,ir.module.module,0,Cancel Uninstallation,Отменить удаление,0
+view,ir.module.module,0,Cancel Upgrade, Отменить обновление,0
+view,ir.module.module,0,Mark for Installation,Установить,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Удалить (beta),0
+view,ir.module.module,0,Mark for Upgrade,Обновить,0
+view,res.group,0,Group,Группы,0
+view,res.group,0,Groups,Группы,0
+view,res.group,0,Security,Доступ,0
+view,res.request,0,Close,Закрыть,0
+view,res.request,0,Description,Описание,0
+view,res.request,0,History,Переписка,0
+view,res.request,0,References,Ссылки,0
+view,res.request,0,Reply,Ответить,0
+view,res.request,0,Request,Сообщение,0
+view,res.request,0,Requests,Сообщения,0
+view,res.request,0,Send,Послать,0
+view,res.request.history,0,Request History,Переписка,0
+view,res.request.link,0,Request Link,Ссылка сообщения,0
+view,res.request.reference,0,Request Reference,Ссылка сообщения,0
+view,res.request.reference,0,Request References,Ссылки сообщения,0
+view,res.user,0,Preferences,Ссылки,0
+view,res.user,0,Security,Доступ,0
+view,res.user,0,User,Пользователь,0
+view,res.user,0,Users,Пользователи,0
+view,res.user.config.init,0,Add Users,Добавить пользователей,0
+view,res.user.config.init,0,Be careful that the login must be unique!,Внимание Имя Пользователя должно быть уникальным!,0
+view,res.user.config.init,0,You can now add some users into the system.,Вы можете добавить пользователей в систему.,0
+view,res.user.warning,0,Warning,Внимание,0
+view,res.user.warning,0,Warnings,Внимания,0
+wizard_button,"res.user.config,init,end",0,Cancel,Отмена,0
+wizard_button,"res.user.config,init,user",0,Ok,Ок,0
+wizard_button,"res.user.config,user,add",0,Add,Добавить,0
+wizard_button,"res.user.config,user,end",0,End,Закончить,0
