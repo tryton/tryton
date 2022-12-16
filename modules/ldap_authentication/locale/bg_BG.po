@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user:"
+msgid "You can not set a password to a ldap user!"
+msgstr "Не може да зададете парола на LDAP потребител!"
+
+msgctxt "field:ldap.connection,auth_base_dn:"
+msgid "Base DN"
+msgstr "Base DN"
+
+msgctxt "field:ldap.connection,auth_create_user:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:ldap.connection,auth_require_filter:"
+msgid "Require Filter"
+msgstr "Допълнителен филтър"
+
+msgctxt "field:ldap.connection,auth_scope:"
+msgid "Scope"
+msgstr "Обсег"
+
+msgctxt "field:ldap.connection,auth_uid:"
+msgid "UID"
+msgstr "UID"
+
+msgctxt "help:ldap.connection,auth_base_dn:"
+msgid "Base DN for authentication"
+msgstr "Base DN за проверка"
+
+msgctxt "help:ldap.connection,auth_create_user:"
+msgid "Create user if not in database"
+msgstr "Създаване на потребител ако го няма в базата данни"
+
+msgctxt "help:ldap.connection,auth_uid:"
+msgid "UID Attribute for authentication"
+msgstr "UID атрибут за проверка"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Base"
+msgstr "Основа"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "OneLevel"
+msgstr "Едно ниво"
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Subtree"
+msgstr "Поддърво"
+
+msgctxt "view:ldap.connection:"
+msgid "Authentication"
+msgstr "Проверка"

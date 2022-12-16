@@ -1,0 +1,76 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Начин на остойностяване на превоз"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Продукт за превозване"
+
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:carrier,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Метод за излисляване на разходи за превоз"
+
+#, fuzzy
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Превозвач"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Превозвачи"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier Management"
+msgstr "Управление на превозвачи"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Превозвачи"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Управление на превози"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Цена на продукт"
+
+msgctxt "view:carrier:"
+msgid "Carrier"
+msgstr "Превозвач"
+
+msgctxt "view:carrier:"
+msgid "Carriers"
+msgstr "Превозвачи"

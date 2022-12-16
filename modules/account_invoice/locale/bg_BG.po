@@ -1,0 +1,1574 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.fiscalyear:"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the fiscalyear"
+msgstr ""
+"Не може а променяте последователност на фактура ако има вече отворена "
+"фактура за финансовата година"
+
+msgctxt "error:account.fiscalyear:"
+msgid "You must have different invoice sequences per fiscal year!"
+msgstr ""
+"За финансова година трябва да имате различни последователности за фактура  "
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund an invoice that is not opened!"
+msgstr "Не можете да кредитиратe с обезщетение фактура която не е отворена!"
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund an invoice with payments!"
+msgstr "Не можете да кредитиратe с обезщетение фактура по която има плащане!"
+
+msgctxt "error:account.invoice.line:"
+msgid "Line with \"line\" type must have an account!"
+msgstr "Ред от вид \"line\" трябва да има сметка!"
+
+msgctxt "error:account.invoice.line:"
+msgid "Line without \"line\" type must have an invoice!"
+msgstr "Ред без \"ред\" трябва да има фактура!"
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"Не може да добавяте ред към фактура която е отворена/платена/отказана!"
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not create invoice line\n"
+"with account with a different invoice company!"
+msgstr ""
+"Не може да създавате ред от фактура\n"
+"със сметка от различна фактурираща фирма!"
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not modify line from an invoice that is opened, paid!"
+msgstr "Не може да променяте ред от фактура която е отворена и/или платена!"
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not use the same account\n"
+"as on the invoice!"
+msgstr ""
+"Не може да използвате същата сметка\n"
+"като тази на фактурата!"
+
+msgctxt "error:account.invoice.pay:"
+msgid ""
+"You can not create a partial payment with an amount greater then the amount "
+"to pay!"
+msgstr ""
+"Не може да създавате частично плащане за сума по-голяма от сумата за "
+"плащане!"
+
+msgctxt "error:account.invoice.payment_term.line:"
+msgid "Day of month must be between 1 and 31."
+msgstr "Деня от месеца трябва да бъде между 1 и 31."
+
+msgctxt "error:account.invoice.payment_term.line:"
+msgid "Percentage and Divisor values are not consistent."
+msgstr "Процент и Делител не съотвестват"
+
+msgctxt "error:account.invoice.payment_term:"
+msgid "Invalid payment term line!"
+msgstr "Невалиден ред от условие за плащане!"
+
+msgctxt "error:account.invoice.payment_term:"
+msgid "Payment term missing a remainder line!"
+msgstr "В условието за плащане липсва ред от напомняне!"
+
+msgctxt "error:account.invoice.tax:"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"Не може да добавяте ред към фактура която е отворена/платена/отказана!"
+
+msgctxt "error:account.invoice.tax:"
+msgid "You can not modify tax from an invoice that is opened, paid!"
+msgstr "Не може да променяте данък от фактура която е отворена и/или платена!"
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Base taxes different from invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Данъчната основа е различна от тази на редовете на фактурата!\n"
+"Наново изчислете фактурата."
+
+msgctxt "error:account.invoice:"
+msgid "Invoice \"%s\" must be cancelled before deletion!"
+msgstr "Преди да бъде изтрита фактура \"%s\" трябва да бъде прекратена!"
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Taxes defined but not on invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Зададени са данъци но не за редове на фактура!\n"
+"Преизчислете фактурата."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Taxes defined on invoice lines but not on invoice!\n"
+"Re-compute the invoice."
+msgstr ""
+"Данъци са зададени върху редовете на фактурата но не на фактурата!\n"
+"Преизчислете фактурата"
+
+msgctxt "error:account.invoice:"
+msgid "The credit account on journal is missing!"
+msgstr "Лиспва кредитна сметка за дневника!"
+
+msgctxt "error:account.invoice:"
+msgid "The credit account on journal is the same than the invoice account!"
+msgstr "Кредитната сметка на дневника е същата като сметката на фактурата!"
+
+msgctxt "error:account.invoice:"
+msgid "The debit account on journal is missing!"
+msgstr "Липсва дебитна сметка за дневник!"
+
+msgctxt "error:account.invoice:"
+msgid "The debit account on journal is the same than the invoice account!"
+msgstr "Дебитната сметка на дневника е същата като сметката на фактурата!"
+
+msgctxt "error:account.invoice:"
+msgid "There is no invoice sequence on the period/fiscal year!"
+msgstr "Няма последователност за фактура върху период/финансова година!"
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not create an invoice\n"
+"with account from a different invoice company!"
+msgstr ""
+"Не може да създадете фактура\n"
+"със сметка на друга фактурираща фирма!"
+
+msgctxt "error:account.invoice:"
+msgid "You can not modify an invoice that is opened, paid!"
+msgstr "Не може да променяте фактура която е отворена или платена!"
+
+msgctxt "error:account.invoice:"
+msgid "You can not reset to draft an invoice that has move!"
+msgstr "Не може да прехвърлите в проект фактура която има движение!"
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not use the same account\n"
+"as on invoice line!"
+msgstr ""
+"Не може да ползвате съшата сметка\n"
+"като тази на реда от фактурата!"
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the period"
+msgstr ""
+"Не може а променяте последователност на фактура ако има вече отворена "
+"фактура за финансовата година"
+
+msgctxt "error:account.period:"
+msgid ""
+"You must have different invoice sequences per fiscal year and in the same "
+"company!"
+msgstr ""
+"За финансова година и една и съща фирма трябва да имате различни "
+"последователности за фактура !"
+
+msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Последователност за кредитно известие на доставчик"
+
+msgctxt "field:account.fiscalyear,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Последователност на фактура за доставчик"
+
+msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Последователност за кредитно известие на клиент"
+
+msgctxt "field:account.fiscalyear,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Последователност за фактура на клиент"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "Дата на осчетоводяване"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "Сума за плащане"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "Сума за плащане днес"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "Коментар"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.invoice,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "Текуща дата"
+
+msgctxt "field:account.invoice,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.invoice,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "Адрес за фактура"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "Дата на фактура"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Справка за фактура"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Формат на спавка за фактура"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Редове за плащане"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "Движение"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "Номер"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr "Език на партньор"
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "Редове от плащане"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "field:account.invoice,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr "Съгласуван"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "Отпратка"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "Ред на данъци"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "Общо"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Необложен с данък"
+
+msgctxt "field:account.invoice,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice-account.move.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice-account.move.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice-account.move.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "Ред от плащане"
+
+msgctxt "field:account.invoice-account.move.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice-account.move.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice-account.move.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.credit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr "С обещетение"
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.invoice.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr "Данъци на фактура"
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr "Вид фактура"
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "Бележка"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr "Език на партньор"
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Категория мер. ед. на продукт"
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "field:account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice.line,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Единица"
+
+msgctxt "field:account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Единична цена"
+
+msgctxt "field:account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.line-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.line-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.line-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "Ред от фактура"
+
+msgctxt "field:account.invoice.line-account.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:account.invoice.line-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.line-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.pay.ask,account_writeoff:"
+msgid "Write-Off Account"
+msgstr "Сметка на отписване"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr "Платена сума"
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr "Сума за отписване"
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "Валута при плащане"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits:"
+msgid "Payment Currency Digits"
+msgstr "Цифри на валута за плащане"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
+msgid "Write-Off Currency Digits"
+msgstr "Цифри на валута за отписване"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr "Валута на отписване"
+
+msgctxt "field:account.invoice.pay.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
+msgid "Write-Off Journal"
+msgstr "Дневник на отписване"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Редове за плащане"
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "Редове от плащане"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.invoice.pay.start,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.invoice.pay.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.pay.start,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.invoice.payment_term,active:"
+msgid "Active"
+msgstr "Активен"
+
+msgctxt "field:account.invoice.payment_term,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.payment_term,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.invoice.payment_term,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "field:account.invoice.payment_term,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice.payment_term,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.payment_term,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.invoice.payment_term.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.payment_term.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.invoice.payment_term.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.invoice.payment_term.line,day:"
+msgid "Day of Month"
+msgstr "Ден от месеца"
+
+msgctxt "field:account.invoice.payment_term.line,days:"
+msgid "Number of Days"
+msgstr "Брой дни"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr "Делител"
+
+msgctxt "field:account.invoice.payment_term.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line,month:"
+msgid "Month"
+msgstr "Месец"
+
+msgctxt "field:account.invoice.payment_term.line,months:"
+msgid "Number of Months"
+msgstr "Брой месеци"
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "field:account.invoice.payment_term.line,percentage:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "field:account.invoice.payment_term.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice.payment_term.line,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:account.invoice.payment_term.line,weekday:"
+msgid "Day of Week"
+msgstr "Ден от седмицата"
+
+msgctxt "field:account.invoice.payment_term.line,weeks:"
+msgid "Number of Weeks"
+msgstr "Брой седмици"
+
+msgctxt "field:account.invoice.payment_term.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.payment_term.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.invoice.print.warning,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr "Основа"
+
+msgctxt "field:account.invoice.tax,base_code:"
+msgid "Base Code"
+msgstr "Основен код"
+
+msgctxt "field:account.invoice.tax,base_sign:"
+msgid "Base Sign"
+msgstr "Основен знак"
+
+msgctxt "field:account.invoice.tax,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:account.invoice.tax,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.invoice.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr "Ръчно"
+
+msgctxt "field:account.invoice.tax,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.invoice.tax,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "Номер на последователност"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "field:account.invoice.tax,tax_code:"
+msgid "Tax Code"
+msgstr "Код на данък"
+
+msgctxt "field:account.invoice.tax,tax_sign:"
+msgid "Tax Sign"
+msgstr "Знак на данък"
+
+msgctxt "field:account.invoice.tax,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:account.invoice.tax,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:account.period,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Последователност за кредитно известие на доставчик"
+
+msgctxt "field:account.period,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Последователност на фактура за доставчик"
+
+msgctxt "field:account.period,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Последователност за кредитно известие на клиент"
+
+msgctxt "field:account.period,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Последователност за фактура на клиент"
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Условие за плащане на клиент"
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Условие за плащане на доставчик"
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be paid."
+msgstr "Ако е истина текущата(те) сметка(и) ще бъдат платена(и)."
+
+msgctxt "help:account.invoice.payment_term.line,sequence:"
+msgid "Use to order lines in ascending order"
+msgstr "За подреждане на редовете във възходящ ред"
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "Фактура - Ред от плащане"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice Init"
+msgstr "Начало на кредитна фактура"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "Ред от фактура"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "Ред от фактура - Данък"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr "Плащане на фактура"
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr "Плащане на фактура"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "Ред от условие за плащане"
+
+msgctxt "model:account.invoice.print.warning,name:"
+msgid "Print Invoice Report Warning"
+msgstr "Предупреждение при отпечатване на справка за фактура"
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr "Данък към фактура"
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "All Invoices"
+msgstr "Всичко фактури"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Фактури"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Кредитно известие на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Проект на кредитно известие на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "ПРО-ФОРМА на кредитни известия на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Отворени кредитни известия на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Фактури на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Шаблон на фактури за доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "ПРО-ФОРМА фактури за доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Отворени фактури за доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Кредитни известия"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Проект на кредитно известие"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "ПРО-ФОРМА на кредитни известия"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Отворени кредитни известия"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Фактури"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Проект на фактури"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "ПРО-ФОРМА фактури"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Отворени фактури"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Условия за плащане"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "model:ir.action,name:print"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr "Плащане на фактура"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_form"
+msgid "All Invoices"
+msgstr "Всичко фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Кредитно известие на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Проект на кредитно известие на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "ПРО-ФОРМА на кредитни известия на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Отворени кредитни известия на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Фактури на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Проект на фактури за доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "ПРО-ФОРМА фактури за доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Отворени фактури за доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Кредитни известия"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Проект на кредитно известие"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "ПРО-ФОРМА на кредитни известия"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Отворени кредитни известия"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Проект на фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "ПРО-ФОРМА фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Отворени фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Фактури"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "Условия за плащане"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "Условия за плащане"
+
+msgctxt "odt:account.invoice:"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "odt:account.invoice:"
+msgid "Base"
+msgstr "Основа"
+
+msgctxt "odt:account.invoice:"
+msgid "Credit Note N°:"
+msgstr "Кредитно известие N°:"
+
+msgctxt "odt:account.invoice:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "odt:account.invoice:"
+msgid "Date:"
+msgstr "Дата:"
+
+msgctxt "odt:account.invoice:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "odt:account.invoice:"
+msgid "Description:"
+msgstr "Описание:"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Credit Note"
+msgstr "Проект на кредитно известие"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Invoice"
+msgstr "Проект на фактура"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Supplier Credit Note"
+msgstr "Проект на кредитно известие на доставчик"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Supplier Invoice"
+msgstr "Проект на фактура за доставчик"
+
+msgctxt "odt:account.invoice:"
+msgid "E-Mail:"
+msgstr "E-Mail:"
+
+msgctxt "odt:account.invoice:"
+msgid "Invoice N°:"
+msgstr "Фактура N°:"
+
+msgctxt "odt:account.invoice:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "odt:account.invoice:"
+msgid "Phone:"
+msgstr "Телефон:"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Credit Note"
+msgstr "ПРО-ФОРМА на кредитно известие"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr "ПРО-ФОРМА фактура"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Supplier Credit Note"
+msgstr "ПРО-ФОРМА на кредитно известие на доставчик"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Supplier Invoice"
+msgstr "ПРО-ФОРМА фактура за доставчик"
+
+msgctxt "odt:account.invoice:"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "odt:account.invoice:"
+msgid "Supplier Credit Note N°:"
+msgstr "Кредитно известие на доставчик N°:"
+
+msgctxt "odt:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "Фактура за доставчик N°:"
+
+msgctxt "odt:account.invoice:"
+msgid "Tax"
+msgstr "Данък"
+
+msgctxt "odt:account.invoice:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "odt:account.invoice:"
+msgid "Taxes:"
+msgstr "Данъци:"
+
+msgctxt "odt:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "Общо (без данъци):"
+
+msgctxt "odt:account.invoice:"
+msgid "Total:"
+msgstr "Общо:"
+
+msgctxt "odt:account.invoice:"
+msgid "Unit Price"
+msgstr "Единична цена"
+
+msgctxt "odt:account.invoice:"
+msgid "VAT Number:"
+msgstr "ДДС номер:"
+
+msgctxt "odt:account.invoice:"
+msgid "VAT:"
+msgstr "ДДС:"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Canceled"
+msgstr "Отказан"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Opened"
+msgstr "Отворен"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "Платен"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Pro forma"
+msgstr "ПРО-ФОРМА"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Credit Note"
+msgstr "Кредитно известие"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier Credit Note"
+msgstr "Кредитно известие на доставчик"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier Invoice"
+msgstr "Фактура за доставчик"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Credit Note"
+msgstr "Кредитно известие"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Supplier Credit Note"
+msgstr "Кредитно известие на доставчик"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Supplier Invoice"
+msgstr "Фактура за доставчик"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "Коментар"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr "Ред"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr "Междинна сума"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr "Заглавие"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr "Частично плащане"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr "Анулиран"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "April"
+msgstr "Април"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "August"
+msgstr "Август"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "December"
+msgstr "Декември"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "February"
+msgstr "Февруари"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "January"
+msgstr "Януари"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "July"
+msgstr "Юли"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "June"
+msgstr "Юни"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "March"
+msgstr "Март"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "May"
+msgstr "Май"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "November"
+msgstr "Ноември"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "October"
+msgstr "Октомври"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "September"
+msgstr "Септември"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr "Фиксирана"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr "Процент от остъчна стойност"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr "Процент от общата сума"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr "Напомняне"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Friday"
+msgstr "Петък"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Monday"
+msgstr "Понеделник"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Saturday"
+msgstr "Събота"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Sunday"
+msgstr "Неделя"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Thursday"
+msgstr "Четвъртък"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Tuesday"
+msgstr "Вторник"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Wednesday"
+msgstr "Сряда"
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit those/this invoice(s)?"
+msgstr "Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?"
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Credit Invoice"
+msgstr "Кредитна фактура"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "Основен"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Line"
+msgstr "Ред от фактура"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Редове от фактура"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr "Бележки"
+
+msgctxt "view:account.invoice.line:"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "view:account.invoice.pay.ask:"
+msgid "Pay Invoice"
+msgstr "Плащане на фактура"
+
+msgctxt "view:account.invoice.pay.start:"
+msgid "Pay Invoice"
+msgstr "Плащане на фактура"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "Payment Term Line"
+msgstr "Ред от условие за плащане"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "Payment Term Lines"
+msgstr "Ред от условие за плащане"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Term"
+msgstr "Условие за плащане"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Term Line"
+msgstr "Ред от условие за плащане"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Term Lines"
+msgstr "Ред от условие за плащане"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Terms"
+msgstr "Условия за плащане"
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "Print Invoice"
+msgstr "Отпечатване на фактура"
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "The invoices will be sent <i>directly</i> to the printer."
+msgstr "Фактурите ще бъдет изпратени <i>директно</i> на принтера."
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "You have selected more than one invoice to print."
+msgstr "Избрали сте за печат повече от една фактура"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Invoice Tax"
+msgstr "Данък към фактура"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Invoice Taxes"
+msgstr "Данъци на фактура"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Tax Code"
+msgstr "Код на данък"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "view:account.invoice:"
+msgid "Amount Second Currency"
+msgstr "Сума в допълнителна валута"
+
+msgctxt "view:account.invoice:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "view:account.invoice:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "view:account.invoice:"
+msgid "Invoices"
+msgstr "Фактури"
+
+msgctxt "view:account.invoice:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "Друга информация"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "Плащане"
+
+msgctxt "view:account.invoice:"
+msgid "Payment Lines"
+msgstr "Редове от плащане"
+
+msgctxt "view:account.invoice:"
+msgid "Pro For_ma"
+msgstr "ПРО ФОРМА"
+
+msgctxt "view:account.invoice:"
+msgid "Taxes"
+msgstr "Данъци"
+
+msgctxt "view:account.invoice:"
+msgid "_Cancel"
+msgstr "Отказ"
+
+msgctxt "view:account.invoice:"
+msgid "_Draft"
+msgstr "Проект"
+
+msgctxt "view:account.invoice:"
+msgid "_Open"
+msgstr "Отваряне"
+
+msgctxt "view:account.invoice:"
+msgid "_Pay"
+msgstr "Плащане"
+
+msgctxt "view:account.invoice:"
+msgid "_Reset to Draft"
+msgstr "Изпращане в проект"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr "Сума в допълнителна валута"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Дебит"
+
+msgctxt "view:account.move.line:"
+msgid "Lines to Pay"
+msgstr "Редове за плащане"
+
+msgctxt "view:account.move.line:"
+msgid "Payment Lines"
+msgstr "Редове от плащане"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr "Условия за плащане"
+
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "Кредит"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "Ok"
+msgstr "Добре"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "Ok"
+msgstr "Добре"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.invoice.print,warning,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:account.invoice.print,warning,print_:"
+msgid "Print"
+msgstr "Печат"

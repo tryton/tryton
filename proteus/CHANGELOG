@@ -1,0 +1,35 @@
+Version 2.6.5 - 2015-02-16
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.4 - 2014-12-03
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.3 - 2014-07-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.2 - 2013-05-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.1 - 2012-11-05
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Use loading attribute
+* Add support of _buttons
+* Add support of fields.Time
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Change license to LGPL-3
+* Drop support of Python 2.5
+
+Version 2.0.0 - 2011-04-28
+* Bug fixes (see mercurial logs for details)
+* Manage default values of trytond configuration
+
+Version 1.8.0 - 2010-12-24
+* Initial release

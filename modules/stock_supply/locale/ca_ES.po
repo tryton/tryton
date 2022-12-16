@@ -1,0 +1,417 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "Purchase price is missing for product: %s (id: %s)!"
+msgstr "Falta el preu de compra per al producte: %s (id: %s)"
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "This price is necessary for creating purchase."
+msgstr "Es necessita aquest preu per crear la compra."
+
+msgctxt "error:purchase.request:"
+msgid "Purchase requests are only created by the system."
+msgstr "Les sol·licituds de compra només les crea el sistema."
+
+msgctxt "error:purchase.request:"
+msgid "The requested quantity must be greater than 0"
+msgstr "La quantitat sol·licitada ha de ser més gran que 0."
+
+msgctxt "error:stock.order_point:"
+msgid "Maximal quantity must be bigger than Minimal quantity"
+msgstr "La quantitat màxima ha de ser major que la mínima"
+
+msgctxt "error:stock.order_point:"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Només es permet una regla d'estoc mínim per cada parell de producte-"
+"ubicació."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define two order points on the same product with opposite "
+"locations."
+msgstr ""
+"No pot definir dues regles d'estoc mínim en el mateix producte amb "
+"ubicacions oposades."
+
+msgctxt "field:product.product,order_points:"
+msgid "Order Points"
+msgstr "Regles d'estoc mínim"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "Quantitat calculada"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "UdM calculada"
+
+msgctxt "field:purchase.request,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:purchase.request,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:purchase.request,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "Millor data de compra"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "Línia de compra"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:purchase.request,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr "Existències a la data del subministrament"
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "Data estimada de subministrament"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "UdM"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Magatzem requerit"
+
+msgctxt "field:purchase.request,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:purchase.request,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:purchase.request.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,party:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:stock.order_point,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.order_point,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:stock.order_point,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:stock.order_point,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.order_point,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:stock.order_point,max_quantity:"
+msgid "Maximal Quantity"
+msgstr "Quantitat màxima"
+
+msgctxt "field:stock.order_point,min_quantity:"
+msgid "Minimal Quantity"
+msgstr "Quantitat mínima"
+
+msgctxt "field:stock.order_point,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.order_point,provisioning_location:"
+msgid "Provisioning Location"
+msgstr "Ubicació de l'aprovisionament"
+
+msgctxt "field:stock.order_point,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:stock.order_point,storage_location:"
+msgid "Storage Location"
+msgstr "Ubicació del magatzem"
+
+msgctxt "field:stock.order_point,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:stock.order_point,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.order_point,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "field:stock.order_point,warehouse_location:"
+msgid "Warehouse Location"
+msgstr "Ubicació del magatzem"
+
+msgctxt "field:stock.order_point,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:stock.order_point,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Regles d'estoc mínim"
+
+msgctxt "model:ir.action,name:act_purchase_form"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordres de producció"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Sol·licituds de compra"
+
+msgctxt "model:ir.action,name:act_purchase_request_form_draft"
+msgid "Draft Purchase Requests"
+msgstr "Ordres de producció en esborrany"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "Crear una compra"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Purchase Requests"
+msgstr "Generar peticions de compra"
+
+msgctxt "model:ir.cron,name:cron_shipment_iternal"
+msgid "Generate Internal Shipments"
+msgstr "Generar enviaments interns"
+
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Regles d'estoc mínim"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordres de producció"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Sol·licituds de compra"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
+msgid "Draft Purchase Requests"
+msgstr "Ordres de producció en esborrany"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "Sol·licitud de compra"
+
+msgctxt "model:purchase.request.create.start,name:"
+msgid "Create Purchase Request"
+msgstr "Crear sol·licitud de compra"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr "Crear una compra - Petició de tercer"
+
+msgctxt "model:purchase.request.create_purchase.ask_term,name:"
+msgid "Create Purchase Ask Term"
+msgstr "Crear una compra - Petició de termini"
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "Sol·licitud de compra"
+
+msgctxt "model:res.user,name:user_generate_request"
+msgid "Cron Purchase Request"
+msgstr "Programador de tasques de sol·licituds de compra"
+
+msgctxt "model:res.user,name:user_generate_shipment_internal"
+msgid "Cron Intenal Shipment"
+msgstr "Programador de tasques d'enviament intern"
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Regla d'estoc mínim"
+
+msgctxt "selection:purchase.request,origin:"
+msgid "Order Point"
+msgstr "Regla d'estoc mínim"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "Acabada"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "Comprat"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Intern"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Request"
+msgstr "Crear sol·licituds de compra?"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Request?"
+msgstr "Crear sol·licituds de compra?"
+
+msgctxt "view:purchase.request.create_purchase.ask_party:"
+msgid "Create Purchase: Missing Supplier"
+msgstr "Crear una compra: falta el proveïdor"
+
+msgctxt "view:purchase.request.create_purchase.ask_term:"
+msgid "Create Purchase: Missing Payment Term"
+msgstr "Crear una compra: falta el termini de pagament"
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "Informació del producte"
+
+msgctxt "view:purchase.request:"
+msgid "Purchase Request"
+msgstr "Sol·licitud de compra"
+
+msgctxt "view:purchase.request:"
+msgid "Purchase Requests"
+msgstr "Sol·licituds de compra"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "Informació del subministrament"
+
+msgctxt "view:stock.order_point:"
+msgid "Locations"
+msgstr "Ubicacions"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point"
+msgstr "Regla d'estoc mínim"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Tipus d'ordre de pagament"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Points"
+msgstr "Regles d'estoc mínim"
+
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Informació del producte"
+
+msgctxt "wizard_button:purchase.request.create,start,create_:"
+msgid "Create"
+msgstr "Crear"
+
+msgctxt "wizard_button:purchase.request.create,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "Continuar"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
+msgid "Continue"
+msgstr "Continuar"

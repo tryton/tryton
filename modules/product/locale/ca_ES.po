@@ -1,0 +1,711 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.category:"
+msgid "You can not create recursive categories!"
+msgstr "No pot crear categories recursives."
+
+msgctxt "error:product.uom:"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Si no s'ha usat la UdM, pot esborrar-la, en cas contrari, pot desactivar-la "
+"i crear-ne una de nova."
+
+msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values!"
+msgstr ""
+"No pot canviar la conversió, el factor o la categoria d'una unitat de "
+"mesura."
+
+msgctxt "error:product.uom:"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Conversió i factor no poden ser zero simultàniament."
+
+msgctxt "error:product.uom:"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
+msgstr ""
+"No pot canviar la conversió, el factor o la categoria d'una unitat de "
+"mesura."
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:product.category,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.category,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:product.category,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.category,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.category,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.product,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.product,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:product.product,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.product,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "Plantilla de producte"
+
+msgctxt "field:product.product,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.product,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.template,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:product.template,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "Consumible"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Method"
+msgstr "Mètode de cost"
+
+msgctxt "field:product.template,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:product.template,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.template,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "UdM per defecte"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoria per defecte UdM"
+
+msgctxt "field:product.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "Preu de venda"
+
+msgctxt "field:product.template,list_price_uom:"
+msgid "List Price"
+msgstr "Preu de venda"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.template,products:"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "field:product.template,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:product.template,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.uom,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:product.uom,category:"
+msgid "UOM Category"
+msgstr "Categoria d'UdM"
+
+msgctxt "field:product.uom,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.uom,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "Decimals a mostrar"
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "field:product.uom,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "Conversió"
+
+msgctxt "field:product.uom,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "Precisió d'arrodoniment"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "Símbol"
+
+msgctxt "field:product.uom,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.uom,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:product.uom.category,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:product.uom.category,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:product.uom.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.uom.category,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Unit of Measures"
+msgstr "Unitats de mesura"
+
+msgctxt "field:product.uom.category,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:product.uom.category,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"El coeficient de la fórmula:\n"
+"coeficient (unitat base) = 1 (aquesta unitat)"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"El coeficient de la fórmula:\n"
+"1 (unitat base) = coeficient (aquesta unitat)"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "model:ir.action,name:act_product_by_category"
+msgid "Product by Category"
+msgstr "Producte per categoria"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Categories de la unitat de mesura"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Unitats de mesura"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Productes"
+
+msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Unitats de mesura"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "Categoria de producte"
+
+msgctxt "model:product.product,name:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "Plantilla de producte"
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of measure"
+msgstr "Unitat de mesura"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Àrea"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Quirat"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "centímetre"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "Centímetre cúbic"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "Peu cúbic"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "Polzada cúbica"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Metre cúbic"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Peu"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "Galó"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Gram"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Hectàrea"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Hora"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "Polzada"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Quilogram"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Quilòmetre"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Litre"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Metre"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Milla"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Mil·límetre"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Minut"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Unça"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Lliura"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Segon"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "Centímetre quadrat"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "Peu quadrat"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "Polzada quadrada"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Metre quadrat"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "Iarda quadrada"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Dia de treball"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "Iarda"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "peu³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "pul³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "peu"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "pul"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lbs"
+msgstr "lbs"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "peu²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "pul²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "o"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "wd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Product uom category"
+msgstr "Categoria d'UdM de producte"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Superfície"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Temps"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Unitats"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Volum"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Pes"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Administració de productes"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "Mitjana"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "Servei"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "Servei"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "view:product.category:"
+msgid "Product Categories"
+msgstr "Categories de producte"
+
+msgctxt "view:product.category:"
+msgid "Product Category"
+msgstr "Categoria de producte"
+
+msgctxt "view:product.product:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:product.product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "view:product.product:"
+msgid "Product Suppliers"
+msgstr "Proveïdors de productes"
+
+msgctxt "view:product.product:"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:product.template:"
+msgid "Product Template"
+msgstr "Plantilla de producte"
+
+msgctxt "view:product.template:"
+msgid "Product Templates"
+msgstr "Plantilles de producte"
+
+msgctxt "view:product.uom.category:"
+msgid "Categories of Unit of Measure"
+msgstr "Categories d'unitats de mesura"
+
+msgctxt "view:product.uom.category:"
+msgid "Category of Unit of Measure"
+msgstr "Categoria d'unitat de mesura"
+
+msgctxt "view:product.uom:"
+msgid "Unit of Measure"
+msgstr "Unitat de mesura"
+
+msgctxt "view:product.uom:"
+msgid "Units of Measure"
+msgstr "Unitats de mesura"
