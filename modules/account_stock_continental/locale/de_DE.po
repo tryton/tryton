@@ -1,0 +1,125 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal Lager"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Konto Lager Kunde"
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Verwendetes Konto Lager Kunde"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Konto Lager Lieferant"
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Verwendetes Konto Lager Lieferant"
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Verwendetes Konto Lager"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Konto Lager Kunde"
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Verwendetes Konto Lager Kunde"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Konto Lager Lieferant"
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Verwendetes Konto Lager Lieferant"
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Verwendetes Konto Lager"
+
+msgctxt "field:stock.move,account_move:"
+msgid "Account Move"
+msgstr "Buchungssatz"
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
+"ist."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
+"ist."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
+"ist."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
+"ist."
+
+msgctxt "model:account.account.template,name:account_template_stock"
+msgid "Stock"
+msgstr "Lager"
+
+msgctxt "model:account.account.template,name:account_template_stock_customer"
+msgid "Stock Customer"
+msgstr "Lager Kunde"
+
+msgctxt ""
+"model:account.account.template,name:account_template_stock_lost_found"
+msgid "Stock Lost and Found"
+msgstr "Lager Inventurdifferenz"
+
+msgctxt "model:account.account.template,name:account_template_stock_supplier"
+msgid "Stock Supplier"
+msgstr "Lager Lieferant"
+
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgid "Inventories"
+msgstr "Bestandskorrekturen"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "Einstellungen Buchhaltung"

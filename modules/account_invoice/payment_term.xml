@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Payment Terms" parent="account.menu_account_configuration"
+            id="menu_payment_terms_configuration"/>
+        <record model="ir.ui.view" id="payment_term_view_form">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Payment Term">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page name="lines">
+                            <field name="lines" colspan="4"
+                                view_ids="account_invoice.payment_term_line_view_list_sequence"/>
+                        </page>
+                        <page name="description">
+                            <field name="description" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="payment_term_view_tree">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Terms">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_payment_term_form">
+            <field name="name">Payment Terms</field>
+            <field name="res_model">account.invoice.payment_term</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_term_view_tree"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_term_view_form"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <menuitem parent="menu_payment_terms_configuration"
+            action="act_payment_term_form" id="menu_payment_term_form"/>
+
+        <record model="ir.model.access" id="access_payment_term">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_account_admin">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Term Line">
+                    <field name="payment"/>
+                    <field name="type"/>
+                    <field name="percentage"/>
+                    <field name="amount"/>
+                    <field name="currency"/>
+                    <field name="months"/>
+                    <field name="month"/>
+                    <field name="weeks"/>
+                    <field name="weekday"/>
+                    <field name="days"/>
+                    <field name="day"/>
+                    <field name="sequence" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list_sequence">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Term Line" sequence="sequence">
+                    <field name="type"/>
+                    <field name="percentage"/>
+                    <field name="amount"/>
+                    <field name="currency"/>
+                    <field name="months"/>
+                    <field name="month"/>
+                    <field name="weeks"/>
+                    <field name="weekday"/>
+                    <field name="days"/>
+                    <field name="day"/>
+                    <field name="sequence" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_form">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Payment Term Lines">
+                    <label name="type"/>
+                    <field name="type"/>
+                    <newline/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <newline/>
+                    <label name="percentage"/>
+                    <field name="percentage"/>
+                    <label name="divisor"/>
+                    <field name="divisor"/>
+                    <label name="months"/>
+                    <field name="months"/>
+                    <label name="month"/>
+                    <field name="month"/>
+                    <label name="weeks"/>
+                    <field name="weeks"/>
+                    <label name="weekday"/>
+                    <field name="weekday"/>
+                    <label name="days"/>
+                    <field name="days"/>
+                    <label name="day"/>
+                    <field name="day"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_payment_term_line">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_line_account_admin">
+            <field name="model"
+                search="[('model', '=', 'account.invoice.payment_term.line')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

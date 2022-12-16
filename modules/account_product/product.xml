@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;childs&quot;]"
+                        position="before">
+                        <page string="Accounting" col="4" id="accounting">
+                            <separator string="Accounts" id="accounts" colspan="4"/>
+                            <label name="account_parent"/>
+                            <field name="account_parent"/>
+                            <newline/>
+                            <label name="account_revenue"/>
+                            <field name="account_revenue"/>
+                            <label name="account_expense"/>
+                            <field name="account_expense"/>
+                            <separator string="Taxes" id="taxes" colspan="4"/>
+                            <label name="taxes_parent"/>
+                            <field name="taxes_parent"/>
+                            <newline/>
+                            <field name="customer_taxes" colspan="2"/>
+                            <field name="supplier_taxes" colspan="2"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
+                        position="after">
+                        <page string="Accounting" col="4" id="accounting">
+                            <separator string="Accounts" id="accounts" colspan="4"/>
+                            <label name="account_category"/>
+                            <field name="account_category"/>
+                            <newline/>
+                            <label name="account_revenue"/>
+                            <field name="account_revenue"/>
+                            <label name="account_expense"/>
+                            <field name="account_expense"/>
+                            <separator string="Taxes" id="taxes" colspan="4"/>
+                            <label name="taxes_category"/>
+                            <field name="taxes_category"/>
+                            <newline/>
+                            <field name="customer_taxes" colspan="2"/>
+                            <field name="supplier_taxes" colspan="2"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
