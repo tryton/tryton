@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr ""
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "子项"
+
+#, fuzzy
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "语言编码"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "类型"
+
+#, fuzzy
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Package Types"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Package Labels"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Stock Package"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Stock Package"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Package Types"
+
+#, fuzzy
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Stock Package"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr ""
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr ""
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""
