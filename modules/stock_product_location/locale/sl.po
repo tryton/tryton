@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Privzete lokacije"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Shramba"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Lokacija izdelkov"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr "Lokacija izdelkov"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr "Lokacije izdelkov"
