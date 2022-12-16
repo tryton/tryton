@@ -1,0 +1,393 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:0"
+msgid "Hours field must be positive"
+msgstr "Het veld uren moet positief zijn"
+
+msgctxt "error:timesheet.work:0"
+msgid "Every work must be in the same company as it's parent work!"
+msgstr ""
+"Ieder werk moet onder hetzelfde bedrijf vallen als het bovenliggende werk!"
+
+msgctxt "error:timesheet.work:0"
+msgid "You can not create recursive works!"
+msgstr "U kunt een werk niet naar zichzelf laten verwijzen!"
+
+msgctxt "field:timesheet.enter_lines.init,date:0"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:timesheet.enter_lines.init,employee:0"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:timesheet.hours_employee,employee:0"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:timesheet.hours_employee,hours:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "field:timesheet.hours_employee,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:0"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:timesheet.hours_employee_monthly,hours:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:0"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:0"
+msgid "Year"
+msgstr "Jaar"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:0"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:timesheet.hours_employee_weekly,hours:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:0"
+msgid "Week"
+msgstr "Week"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:0"
+msgid "Year"
+msgstr "Jaar"
+
+msgctxt "field:timesheet.line,date:0"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:timesheet.line,description:0"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:timesheet.line,employee:0"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:timesheet.line,hours:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "field:timesheet.line,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.line,work:0"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "field:timesheet.open_hours_employee.init,end_date:0"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:timesheet.open_hours_employee.init,start_date:0"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:timesheet.work,active:0"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "field:timesheet.work,children:0"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:timesheet.work,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:timesheet.work,hours:0"
+msgid "Timesheet Hours"
+msgstr "Tijdregistratie uren"
+
+msgctxt "field:timesheet.work,left:0"
+msgid "Left"
+msgstr "Links"
+
+msgctxt "field:timesheet.work,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.work,parent:0"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:timesheet.work,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:timesheet.work,right:0"
+msgid "Right"
+msgstr "Rechts"
+
+msgctxt "field:timesheet.work,timesheet_available:0"
+msgid "Available on timesheets"
+msgstr "Beschikbaar in tijdregistartie"
+
+#, fuzzy
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "field:timesheet.work.open.init,from_date:0"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:timesheet.work.open.init,to_date:0"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "help:timesheet.work,hours:0"
+msgid "Total time spent on this work"
+msgstr "Tijd besteed aan dit werk"
+
+msgctxt "help:timesheet.work,timesheet_available:0"
+msgid "Allow to fill in timesheets with this work"
+msgstr "Sta het boeken van uren op dit werk toe"
+
+msgctxt "model:ir.action,name:act_enter_lines"
+msgid "Enter Timesheet"
+msgstr "Naar tijdregistratie"
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "model:ir.action,name:act_open_hours_employee"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:ir.action,name:act_open_work"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "model:ir.action,name:act_open_work_graph"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "model:ir.action,name:act_work_form2"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "model:ir.action,name:act_work_form3"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.action,name:act_work_tree2"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_enter_lines"
+msgid "Enter Timesheet"
+msgstr "Naar tijdregistratie"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "model:ir.ui.menu,name:menu_open_hours_employee"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:ir.ui.menu,name:menu_open_hours_employee_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "model:ir.ui.menu,name:menu_open_hours_employee_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapportage"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Tijdverantwoording"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree2"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Tijdregistratie"
+
+msgctxt "model:timesheet.enter_lines.init,name:0"
+msgid "Enter Lines Init"
+msgstr "Naar tijdregistratie gaan"
+
+msgctxt "model:timesheet.hours_employee,name:0"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:0"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:0"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "model:timesheet.line,name:0"
+msgid "Timesheet Line"
+msgstr "Tijdregistratieregel"
+
+msgctxt "model:timesheet.open_hours_employee.init,name:0"
+msgid "Open Hours Employee Init"
+msgstr "Uren werknemer gaan openen"
+
+msgctxt "model:timesheet.work,name:0"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "model:timesheet.work.open.init,name:0"
+msgid "Open Work Init"
+msgstr "Werk gaan openen"
+
+msgctxt "view:timesheet.enter_lines.init:0"
+msgid "Enter Timesheet"
+msgstr "Naar tijdregistratie"
+
+msgctxt "view:timesheet.hours_employee:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "view:timesheet.hours_employee:0"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "view:timesheet.hours_employee_monthly:0"
+msgid "Hours per Employee per Month"
+msgstr "Uren per werknemer per maand"
+
+msgctxt "view:timesheet.hours_employee_weekly:0"
+msgid "Hours per Employee per Week"
+msgstr "Uren per werknemer per week"
+
+msgctxt "view:timesheet.line:0"
+msgid "Hours"
+msgstr "Uren"
+
+msgctxt "view:timesheet.line:0"
+msgid "Timesheet Line"
+msgstr "Tijdregistratieregel"
+
+msgctxt "view:timesheet.line:0"
+msgid "Timesheet Lines"
+msgstr "Tijdregistratieregels"
+
+msgctxt "view:timesheet.open_hours_employee.init:0"
+msgid "Hours per Employee"
+msgstr "Uren per werknemer"
+
+msgctxt "view:timesheet.work.open.init:0"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "view:timesheet.work:0"
+msgid "Hours per Work"
+msgstr "Uren per werk"
+
+msgctxt "view:timesheet.work:0"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "view:timesheet.work:0"
+msgid "Works"
+msgstr "Werken"
+
+msgctxt "wizard_button:timesheet.enter_lines,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.enter_lines,init,enter:0"
+msgid "Enter"
+msgstr "Bevestigen"
+
+msgctxt "wizard_button:timesheet.open_hours_employee,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.open_hours_employee,init,open:0"
+msgid "Open"
+msgstr "Open"
+
+msgctxt "wizard_button:timesheet.work.open,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.work.open,init,open:0"
+msgid "Open"
+msgstr "Open"
+
+msgctxt "wizard_button:timesheet.work.open2,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:timesheet.work.open2,init,open:0"
+msgid "Open"
+msgstr "Open"
