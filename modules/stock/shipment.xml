@@ -1,0 +1,1579 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <!--Shipment in view-->
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Supplier Shipment" col="4" cursor="supplier">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="supplier"/>
+                        <field name="supplier"/>
+                        <label name="contact_address"/>
+                        <field name="contact_address"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <notebook colspan="6">
+                            <page string="Incoming Moves" id="incoming_moves">
+                                <field name="incoming_moves" colspan="4">
+                                    <tree string="Moves">
+                                        <field name="product" select="1"/>
+                                        <field name="from_location" select="2"/>
+                                        <field name="to_location" select="2"/>
+                                        <field name="quantity" select="1"/>
+                                        <field name="uom" select="1"/>
+                                        <field name="planned_date" select="1"/>
+                                        <field name="state" select="2"/>
+                                        <field name="unit_digits" tree_invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Inventory Moves" id="inventory_moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <group col="4" colspan="6" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="5" colspan="2" id="buttons">
+                                <button string="Cancel" name="cancel"
+                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-cancel"/>
+                                <button string="Received" name="received"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-go-next"/>
+                                <button string="Done" name="done"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-ok"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                    type="object"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-clear"/>
+                            </group>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="shipment_in_view_tree">
+            <field name="model">stock.shipment.in</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Supplier Shipments">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="1"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="supplier" select="2"/>
+                        <field name="contact_address" select="2"/>
+                        <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_in_form">
+            <field name="name">Supplier Shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="20"
+            action="act_shipment_in_form" id="menu_shipment_in_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_in_form2">
+            <field name="name">New Supplier Shipment</field>
+            <field name="res_model">stock.shipment.in</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form2_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form2"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form2_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form2"/>
+        </record>
+        <menuitem parent="menu_shipment_in_form" sequence="10"
+            action="act_shipment_in_form2" id="menu_shipment_in_form2"/>
+
+        <record model="ir.action.act_window" id="act_shipment_in_form_received">
+            <field name="name">Received Supplier shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="domain">[('state', '=', 'received')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_received_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form_received"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_in_received_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form_received"/>
+        </record>
+        <menuitem parent="menu_shipment_in_form" sequence="20"
+            action="act_shipment_in_form_received"
+            id="menu_shipment_in_received"/>
+
+        <!-- Shipment In Return view-->
+        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
+            <field name="name">Assign Purchase Return Shipment</field>
+            <field name="wiz_name">stock.shipment.in.return.assign</field>
+            <field name="model">stock.shipment.in.return</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Supplier Return Shipment" col="4" cursor="from_location">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="4"/>
+                        <field name="moves"  colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2" id="buttons">
+                            <button string="Cancel" name="cancel"
+                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-cancel"/>
+                            <button string="Draft" name="draft"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-go-previous"/>
+                            <button string="Waiting" name="waiting"
+                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', ''))}"/>
+                            <button string="Assign" name="%(wizard_shipment_in_return_assign)d"
+                                type="action"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-go-next"/>
+                            <button string="Reset to Draft" name="button_draft"
+                                type="object"
+                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-clear"/>
+                            <button string="Done" name="done"
+                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-ok"/>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="shipment_in_return_view_tree">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Supplier Return Shipments">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="2"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="from_location" select="2"/>
+                        <field name="to_location" select="2"/>
+                        <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_in_return_form">
+            <field name="name">Supplier Return Shipments</field>
+            <field name="res_model">stock.shipment.in.return</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_return_view_form"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_in_form" sequence="40"
+                  action="act_shipment_in_return_form"
+                  id="menu_shipment_in_return_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_in_return_new_form">
+            <field name="name">New Supplier Return Shipment</field>
+            <field name="res_model">stock.shipment.in.return</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_new_form_view1">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_return_new_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_new_form_view2">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_return_view_form"/>
+            <field name="act_window" ref="act_shipment_in_return_new_form"/>
+        </record>
+        <menuitem parent="menu_shipment_in_return_form" sequence="10"
+                  action="act_shipment_in_return_new_form"
+                  id="menu_shipment_in_return_new_form"/>
+
+        <record model="ir.ui.view" id="shipment_in_return_assign_assign_failed_view_form">
+            <field name="model">stock.shipment.in.return.assign.assign_failed</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="moves">
+                            <tree string="Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <!--Shipment out view-->
+        <record model="ir.action.wizard" id="wizard_shipment_out_assign">
+            <field name="name">Assign Shipment Out</field>
+            <field name="wiz_name">stock.shipment.out.assign</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Customer Shipment" col="4" cursor="customer">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="customer"/>
+                        <field name="customer"/>
+                        <label name="delivery_address"/>
+                        <field name="delivery_address"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <notebook colspan="4">
+                            <page string="Inventory Moves" id="inventory_moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                            <page string="Outgoing Moves" id="outgoing_moves">
+                                <field name="outgoing_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <group col="4" colspan="4" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="7" colspan="2" id="buttons">
+                                <button string="Cancel" name="cancel"
+                                        states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                        icon="tryton-cancel"/>
+                                <button string="Draft" name="draft"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                        icon="tryton-go-previous"/>
+                                <button string="Waiting" name="waiting"
+                                        states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
+                                <button string="Assign" name="%(wizard_shipment_out_assign)d"
+                                        type="action"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                        icon="tryton-go-next"/>
+                                <button string="Make shipment" name="packed"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                        icon="tryton-go-next"/>
+                                <button string="Done" name="done"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'packed')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
+                                        icon="tryton-ok"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                        type="object"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                        icon="tryton-clear"/>
+                            </group>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="shipment_out_view_tree">
+            <field name="model">stock.shipment.out</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Customer Shipments">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="1"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="customer"/>
+                        <field name="delivery_address"/>
+                        <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="create_shipment_out_return">
+            <field name="name">Create Return Shipment</field>
+            <field name="wiz_name">stock.shipment.out.return.create</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.keyword" id="create_shipment_out_return_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="create_shipment_out_return"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form">
+            <field name="name">Customer Shipments</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_out_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="30"
+            action="act_shipment_out_form" id="menu_shipment_out_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form_waiting">
+            <field name="name">Customer Shipments Waiting Assignation</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_waiting_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_waiting"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_out_waiting_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_waiting"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="10"
+                  action="act_shipment_out_form_waiting"
+                  id="menu_shipment_out_waiting"/>
+
+        <record model="ir.action.act_window"
+                  id="act_shipment_out_form_assigned">
+            <field name="name">Assigned Customer Shipments</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_assigned_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_assigned"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_out_assigned_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_assigned"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="20"
+            action="act_shipment_out_form_assigned"
+            id="menu_shipment_out_assigned"/>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form_ready">
+            <field name="name">Customer Shipments Ready for Shipping</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="domain">[('state', '=', 'packed')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_ready_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_ready"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_out_ready_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_ready"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="30"
+            action="act_shipment_out_form_ready" id="menu_shipment_out_ready"/>
+
+        <record model="ir.ui.view" id="shipment_out_assign_assign_failed_view_form">
+            <field name="model">stock.shipment.out.assign.assign_failed</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="inventory_moves">
+                            <tree string="Inventory Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <!--Internal Shipment view-->
+        <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
+            <field name="name">Assign Shipment Internal</field>
+            <field name="wiz_name">stock.shipment.internal.assign</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Internal Shipment" col="4" cursor="from_location">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="4"/>
+                        <field name="moves"  colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2" id="buttons">
+                            <button string="Cancel" name="cancel"
+                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-cancel"/>
+                            <button string="Draft" name="draft"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-go-previous"/>
+                            <button string="Waiting" name="waiting"
+                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
+                            <button string="Assign" name="%(wizard_shipment_internal_assign)d"
+                                type="action"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-go-next"/>
+                            <button string="Reset to Draft" name="button_draft"
+                                type="object"
+                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-clear"/>
+                            <button string="Done" name="done"
+                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
+                                icon="tryton-ok"/>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="shipment_internal_view_tree">
+            <field name="model">stock.shipment.internal</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Internal Shipments">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="2"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="from_location" select="2"/>
+                        <field name="to_location" select="2"/>
+                        <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_internal_form">
+            <field name="name">Internal Shipments</field>
+            <field name="res_model">stock.shipment.internal</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="35"
+                  action="act_shipment_internal_form"
+                  id="menu_shipment_internal_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_internal_new_form">
+            <field name="name">New Internal Shipment</field>
+            <field name="res_model">stock.shipment.internal</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_new_form_view1">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_new_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_new_form_view2">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_new_form"/>
+        </record>
+        <menuitem parent="menu_shipment_internal_form" sequence="10"
+                  action="act_shipment_internal_new_form"
+                  id="menu_shipment_internal_new_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_internal_draft_form">
+            <field name="name">Draft Internal Shipments</field>
+            <field name="res_model">stock.shipment.internal</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_draft_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_draft_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_draft_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_draft_form"/>
+        </record>
+        <menuitem parent="menu_shipment_internal_form" sequence="20"
+                  action="act_shipment_internal_draft_form"
+                  id="menu_shipment_internal_draft_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_internal_waiting_form">
+            <field name="name">Internal Shipments Waiting Assignation</field>
+            <field name="res_model">stock.shipment.internal</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_waiting_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_waiting_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
+        </record>
+        <menuitem parent="menu_shipment_internal_form" sequence="30"
+                  action="act_shipment_internal_waiting_form"
+                  id="menu_shipment_internal_waiting_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_internal_assigned_form">
+            <field name="name">Assigned Internal Shipments</field>
+            <field name="res_model">stock.shipment.internal</field>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_assigned_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_assigned_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
+        </record>
+        <menuitem parent="menu_shipment_internal_form" sequence="40"
+                  action="act_shipment_internal_assigned_form"
+                  id="menu_shipment_internal_assigned_form"/>
+
+        <record model="ir.ui.view" id="shipment_internal_assign_assign_failed_view_form">
+            <field name="model">stock.shipment.internal.assign.assign_failed</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="moves">
+                            <tree string="Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <!--Return Shipment Out view-->
+        <record model="ir.ui.view" id="shipment_out_return_view_form">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Customer Return Shipment" col="4" cursor="customer">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="customer"/>
+                        <field name="customer"/>
+                        <label name="delivery_address"/>
+                        <field name="delivery_address"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <notebook colspan="6">
+                            <page string="Incoming Moves" id="incoming_moves">
+                                <field name="incoming_moves" colspan="4">
+                                    <tree string="Moves">
+                                        <field name="product" select="1"/>
+                                        <field name="from_location" select="2"/>
+                                        <field name="to_location" select="2"/>
+                                        <field name="quantity" select="1"/>
+                                        <field name="uom" select="1"/>
+                                        <field name="planned_date" select="1"/>
+                                        <field name="state" select="2"/>
+                                        <field name="unit_digits" tree_invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Inventory Moves" id="inventory_moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <group col="4" colspan="6" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="5" colspan="2" id="buttons">
+                                <button string="Cancel" name="cancel"
+                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-cancel"/>
+                                <button string="Received" name="received"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-go-next"/>
+                                <button string="Done" name="done"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-ok"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                    type="object"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="tryton-clear"/>
+                            </group>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="shipment_out_return_view_tree">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Customer Return Shipments">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="customer" select="2"/>
+                        <field name="delivery_address" select="2"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_return_form">
+            <field name="name">Customer Return Shipments</field>
+            <field name="res_model">stock.shipment.out.return</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_return_view_form"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="40"
+                  action="act_shipment_out_return_form"
+                  id="menu_shipment_out_return_form"/>
+
+        <record model="ir.action.act_window" id="act_shipment_out_return_form2">
+            <field name="name">New Customer Return Shipment</field>
+            <field name="res_model">stock.shipment.out.return</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form2_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_return_view_form"/>
+            <field name="act_window" ref="act_shipment_out_return_form2"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form2_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_return_form2"/>
+        </record>
+        <menuitem parent="menu_shipment_out_return_form" sequence="10"
+            action="act_shipment_out_return_form2" id="menu_shipment_out_return_form2"/>
+
+        <!-- Workflow shipment in -->
+        <record model="workflow" id="wkf_shipmentin">
+            <field name="name">Supplier Shipment</field>
+            <field name="model">stock.shipment.in</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="shipmentin_act_draft">
+            <field name="workflow" ref="wkf_shipmentin"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="shipmentin_act_cancel">
+            <field name="workflow" ref="wkf_shipmentin"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Canceled</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentin_act_done">
+            <field name="workflow" ref="wkf_shipmentin"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentin_act_received">
+            <field name="name">Received</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentin"/>
+            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="shipmentin_trans_draft_received">
+            <field name="act_from" ref="shipmentin_act_draft"/>
+            <field name="act_to" ref="shipmentin_act_received"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">received</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentin_trans_received_draft">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition" id="shipmentin_trans_received_done">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="shipmentin_trans_draft_cancel">
+            <field name="act_from" ref="shipmentin_act_draft"/>
+            <field name="act_to" ref="shipmentin_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentin_trans_received_cancel">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+
+        <!-- Workflow shipment out -->
+        <record model="workflow" id="wkf_shipmentout">
+            <field name="name">Customer Shipment</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_draft">
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="flow_start">True</field>
+            <field name="name">Draft</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_cancel">
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Canceled</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_done">
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_waiting">
+            <field name="name">Waiting</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="action">set_state_waiting()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_assigned">
+            <field name="name">Assigned</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="action">set_state_assigned()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentout_act_packed">
+            <field name="name">Packed</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentout"/>
+            <field name="action">set_state_packed()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="shipmentout_trans_waiting_assigned">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_assigned"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">assign</field>
+            <field name="condition">assign_try()</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_assigned_waiting">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_waiting_waiting">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_assigned"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+            <field name="signal">force_assign</field>
+            <field name="condition">assign_force()</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_draft_waiting">
+            <field name="act_from" ref="shipmentout_act_draft"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_waiting_draft">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_waiting_cancel">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_draft_cancel">
+            <field name="act_from" ref="shipmentout_act_draft"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_assigned_packed">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_packed"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">packed</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_packed_done">
+            <field name="act_from" ref="shipmentout_act_packed"/>
+            <field name="act_to" ref="shipmentout_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_assigned_cancel">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentout_trans_packed_cancel">
+            <field name="act_from" ref="shipmentout_act_packed"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+
+        <record model="ir.action.report" id="report_shipment_out_delivery_note">
+            <field name="name">Delivery Note</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.delivery_note</field>
+            <field name="report">stock/delivery_note.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_delivery_note_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="report_shipment_out_delivery_note"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_out_picking_list">
+            <field name="name">Picking List</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.picking_list</field>
+            <field name="report">stock/picking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_picking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="report_shipment_out_picking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_in_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.shipment.in</field>
+            <field name="report_name">stock.shipment.in.restocking_list</field>
+            <field name="report">stock/supplier_restocking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_in_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.in,0</field>
+            <field name="action" ref="report_shipment_in_restocking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_out_return_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.shipment.out.return</field>
+            <field name="report_name">stock.shipment.out.return.restocking_list</field>
+            <field name="report">stock/customer_return_restocking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_return_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out.return,0</field>
+            <field name="action" ref="report_shipment_out_return_restocking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_internal">
+            <field name="name">Internal Shipment</field>
+            <field name="model">stock.shipment.internal</field>
+            <field name="report_name">stock.shipment.internal.report</field>
+            <field name="report">stock/internal_shipment.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_internal_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.internal,0</field>
+            <field name="action" ref="report_shipment_internal"/>
+        </record>
+
+        <!-- Workflow internal shipment -->
+        <record model="workflow" id="wkf_shipmentinternal">
+            <field name="name">Internal Shipment</field>
+            <field name="model">stock.shipment.internal</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="shipmentinternal_act_draft">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="shipmentinternal_act_cancel">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Canceled</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentinternal_act_done">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentinternal_act_waiting">
+            <field name="name">Waiting</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentinternal"/>
+            <field name="action">set_state_waiting()</field>
+        </record>
+        <record model="workflow.activity" id="shipmentinternal_act_assigned">
+            <field name="name">Assigned</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipmentinternal"/>
+            <field name="action">set_state_assigned()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_draft_waiting">
+            <field name="act_from" ref="shipmentinternal_act_draft"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_waiting_draft">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_waiting_waiting">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_waiting_assigned">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_assigned"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">assign</field>
+            <field name="condition">assign_try()</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_assigned_waiting">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_assigned"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+            <field name="signal">force_assign</field>
+            <field name="condition">assign_force()</field>
+        </record>
+        <record model="workflow.transition" id="shipmentinternal_trans_assigned_done">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="shipmentinternal_trans_draft_cancel">
+            <field name="act_from" ref="shipmentinternal_act_draft"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_waiting_cancel">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipmentinternal_trans_assigned_cancel">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <!-- Workflow shipment out return -->
+        <record model="workflow" id="wkf_shipment_out_return">
+            <field name="name">Customer Return Shipment</field>
+            <field name="model">stock.shipment.out.return</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="shipment_out_return_act_draft">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="shipment_out_return_act_cancel">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Canceled</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="shipment_out_return_act_done">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="shipment_out_return_act_received">
+            <field name="name">Received</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipment_out_return"/>
+            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="shipment_out_return_trans_draft_received">
+            <field name="act_from" ref="shipment_out_return_act_draft"/>
+            <field name="act_to" ref="shipment_out_return_act_received"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">received</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_out_return_trans_received_draft">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition" id="shipment_out_return_trans_received_done">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="shipment_out_return_trans_draft_cancel">
+            <field name="act_from" ref="shipment_out_return_act_draft"/>
+            <field name="act_to" ref="shipment_out_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_out_return_trans_received_cancel">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <!-- Workflow purchase return shipment -->
+        <record model="workflow" id="wkf_shipment_in_return">
+            <field name="name">Supplier Return Shipment</field>
+            <field name="model">stock.shipment.in.return</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="shipment_in_return_act_draft">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="shipment_in_return_act_cancel">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Canceled</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="shipment_in_return_act_done">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="shipment_in_return_act_waiting">
+            <field name="name">Waiting</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipment_in_return"/>
+            <field name="action">set_state_waiting()</field>
+        </record>
+        <record model="workflow.activity" id="shipment_in_return_act_assigned">
+            <field name="name">Assigned</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_shipment_in_return"/>
+            <field name="action">set_state_assigned()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_draft_waiting">
+            <field name="act_from" ref="shipment_in_return_act_draft"/>
+            <field name="act_to" ref="shipment_in_return_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_waiting_draft">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_waiting_assigned">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_assigned"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">assign</field>
+            <field name="condition">assign_try()</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_assigned_waiting">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_assigned"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+            <field name="signal">force_assign</field>
+            <field name="condition">assign_force()</field>
+        </record>
+        <record model="workflow.transition" id="shipment_in_return_trans_assigned_done">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="shipment_in_return_trans_draft_cancel">
+            <field name="act_from" ref="shipment_in_return_act_draft"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_waiting_cancel">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="shipment_in_return_trans_assigned_cancel">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <!-- Sequence shipment out -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_out">
+            <field name="name">Customer Shipment</field>
+            <field name="code">stock.shipment.out</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
+        </record>
+        <record model="ir.sequence" id="sequence_shipment_out">
+                <field name="name">Customer Shipment</field>
+                <field name="code">stock.shipment.out</field>
+        </record>
+
+        <!-- Sequence shipment in -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_in">
+            <field name="name">Supplier Shipment</field>
+            <field name="code">stock.shipment.in</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
+        </record>
+        <record model="ir.sequence" id="sequence_shipment_in">
+                <field name="name">Supplier Shipment</field>
+                <field name="code">stock.shipment.in</field>
+        </record>
+
+        <!-- Sequence shipment internal -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_internal">
+            <field name="name">Internal Shipment</field>
+            <field name="code">stock.shipment.internal</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
+        </record>
+        <record model="ir.sequence" id="sequence_shipment_internal">
+                <field name="name">Internal Shipment</field>
+                <field name="code">stock.shipment.internal</field>
+        </record>
+
+        <!-- Sequence shipment out return-->
+        <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
+            <field name="name">Customer Return Shipment</field>
+            <field name="code">stock.shipment.out.return</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
+        </record>
+        <record model="ir.sequence" id="sequence_shipment_out_return">
+                <field name="name">Customer Return Shipment</field>
+                <field name="code">stock.shipment.out.return</field>
+        </record>
+
+        <!-- Sequence shipment in return -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_in_return">
+                <field name="name">Supplier Return Shipment</field>
+                <field name="code">stock.shipment.in.return</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
+        </record>
+        <record model="ir.sequence" id="sequence_shipment_in_return">
+                <field name="name">Supplier Return Shipment</field>
+                <field name="code">stock.shipment.in.return</field>
+        </record>
+
+        <!-- Add delivery field on address -->
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;active&quot;]" position="after">
+                        <field name="delivery" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group/field[@name=&quot;active&quot;]"
+                        position="after">
+                        <label name="delivery"/>
+                        <field name="delivery" xexpand="0" width="25"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <!-- Model Access -->
+        <record model="ir.model.access" id="access_shipment_in">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_internal">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
