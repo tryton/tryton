@@ -1,0 +1,41 @@
+# extracted from introduction.rst
+msgid ""
+msgstr ""
+"Project-Id-Version: Tryton\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-04 16:33+0200\n"
+"PO-Revision-Date: 2010-05-06 18:55+0100\n"
+"Last-Translator: Tobias Paepke <tryton@paepke.net>\n"
+"Language-Team: http://tryton.origo.ethz.ch/forum/8\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+"X-Poedit-Language: german\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: introduction.rst:1
+msgid ""
+"Introduction\n"
+"############"
+msgstr ""
+"Einleitung\n"
+"##########"
+
+#: introduction.rst:4
+msgid ""
+"Tryton is a Graphical User Interface to the Tryton Framework\n"
+"based on GTK__ and Python__."
+msgstr ""
+"Tryton ist eine grafische Benutzeroberfläche zur Tryton\n"
+"Anwendungs-Plattform basierend auf GTK__ und Python__."
+
+#: introduction.rst:7
+msgid ""
+"__ http://www.gtk.org\n"
+"__ http://www.python.org"
+msgstr ""
+"__ http://www.gtk.org\n"
+"__ http://www.python.org"
+

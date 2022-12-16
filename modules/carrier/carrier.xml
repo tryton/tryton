@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_carrier_admin">
+            <field name="name">Carrier Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_carrier_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_carrier_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_carrier_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_carrier_admin"/>
+        </record>
+
+        <menuitem name="Carrier" sequence="2" id="menu_carrier"/>
+
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>
+            <field name="priority">10</field>
+            <field name="name">carrier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="carrier_view_tree">
+            <field name="model">carrier</field>
+            <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
+            <field name="priority">10</field>
+            <field name="name">carrier_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_carrier_form">
+            <field name="name">Carriers</field>
+            <field name="res_model">carrier</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="carrier_view_tree"/>
+            <field name="act_window" ref="act_carrier_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="carrier_view_form"/>
+            <field name="act_window" ref="act_carrier_form"/>
+        </record>
+        <menuitem parent="menu_carrier" action="act_carrier_form"
+            id="menu_carrier_form"/>
+    </data>
+</tryton>
