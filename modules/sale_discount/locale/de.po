@@ -1,0 +1,27 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.line,base_price:"
+msgid "Base Price"
+msgstr "Basispreis"
+
+msgctxt "field:sale.line,discount:"
+msgid "Discount"
+msgstr "Rabatt"
+
+msgctxt "field:sale.line,discount_amount:"
+msgid "Discount Amount"
+msgstr "Rabattbetrag"
+
+msgctxt "field:sale.line,discount_rate:"
+msgid "Discount Rate"
+msgstr "Rabattsatz"
+
+msgctxt "view:sale.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.line:"
+msgid "Discount"
+msgstr "Rabatt"
