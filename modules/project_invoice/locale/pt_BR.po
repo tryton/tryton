@@ -1,0 +1,151 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "Não há preço para a tarefa \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "Não há pessoa na tarefa \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "Não há produto na tarefa \"%s\"."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "Você não pode apagar uma linha já faturada."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Você não pode modificar uma linha já faturada."
+
+msgctxt "field:project.work,duration_to_invoice:"
+msgid "Duration to Invoice"
+msgstr "Tempo a Faturar"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha da Fatura"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Fatura"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Montante de Fatura"
+
+msgctxt "field:project.work,invoiced_duration:"
+msgid "Invoiced Duration"
+msgstr "Tempo Faturado"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Progresso Faturado"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Faturamento"
+
+msgctxt "field:project.work.invoiced_progress,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:project.work.invoiced_progress,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:project.work.invoiced_progress,effort_duration:"
+msgid "Effort"
+msgstr "Esforço"
+
+msgctxt "field:project.work.invoiced_progress,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha de Fatura"
+
+msgctxt "field:project.work.invoiced_progress,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Tarefa"
+
+msgctxt "field:project.work.invoiced_progress,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:project.work.invoiced_progress,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha de Fatura"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Linhas de Horário de Trabalho"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Faturas"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Progresso Faturado de Tarefas"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Faturar Projeto"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Por esforço estimado"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Progress"
+msgstr "Em Progesso"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Pelas Horas Utilizadas"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Por Esforço"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Sobre o Progresso"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Sobre o Horário de Trabalho"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progress"
+msgstr "Progresso Faturado do Trabalho"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "Work Invoiced Progresses"
+msgstr "Progresso Faturado do Trabalho"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Fatura"

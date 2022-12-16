@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Tax Code" col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <notebook colspan="6">
+        <page string="Children" id="children">
+            <field name="childs" colspan="6"/>
+        </page>
+        <page string="Description" id="description">
+            <field name="description" colspan="6"/>
+        </page>
+    </notebook>
+</form>

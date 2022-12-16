@@ -1,0 +1,313 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr ""
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr ""
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr ""
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr ""
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.product,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr ""
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Kostprijs"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr ""
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+#, fuzzy
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr ""
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr ""
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr ""
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "view:product.update_cost_price.ask:"
+msgid "Update Cost Price"
+msgstr ""
+
+msgctxt "view:product.update_cost_price.show_move:"
+msgid "Update Cost Price - Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "Oké"
+
+#, fuzzy
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "Oké"
+
+#, fuzzy
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Annuleren"
