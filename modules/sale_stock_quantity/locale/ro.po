@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.message,text:msg_sale_stock_quantity"
+msgid ""
+"The forcast quantity (%(forecast_quantity)s%(default_uom)s) for line "
+"\"%(line)s\" is lower than its quantity (%(quantity)s%(unit)s)."
+msgstr ""
+"Cantitatea estimata (%(forecast_quantity)s%(default_uom)s) pentru rândul "
+"\"%(line)s\" este mai mică decât cantitatea proprie (%(quantity)s%(unit)s)."
+
+msgctxt "model:res.group,name:group_sale_stock_quantity"
+msgid "Sale Stock Quantity"
+msgstr "Vânzare Cantitate Stoc"
