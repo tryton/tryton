@@ -1,0 +1,324 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Töötajad"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Jalus"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Päis"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Ajavöönd"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Osapool"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Praegune ettevõte"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Praegune töötaja"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Töötajad"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Peamine ettevõte"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Kasutaja"
+
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Lisa ettevõttele alamjaotus"
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Ettevõtte peamine valuuta"
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Lisa ettevõtte töötajad"
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Aruande jaluses kuvatav tekst"
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Aruande päises kuvatav tekst"
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Lisa ettevõte ülemjaotus ealla"
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Kasutatakse tänase kuupäeva tekitamiseks"
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Ettevõte kuhu töötaja kuulub"
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Kui töötaja ettevõttest lahkub"
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Osapool kes töötajat esindab"
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Kui töötaja ettevõttes alustab"
+
+#, fuzzy
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Osapool kes töötajat esindab"
+
+#, fuzzy
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Osapool kes töötajat esindab"
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr ""
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Piira järjestuse kasutamist ettevõtte puhul"
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Piira järjestuse kasutamist ettevõtte puhul"
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Vali ettevõte millega töötada"
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Vali töötaja, et määrata kasutajale õigused"
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Lisa töötaja et anda kasutajale õigused selle haldamiseks"
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Ligipääsu lubamine ettevõttesse ja selle alamjaotustesse"
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Ettevõtte seadistus"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Seadista ettevõte"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Töötajad"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Letter"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Cron - ettevõte"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Ettevõtted"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Töötajad"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Corn - töölin"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "Parimate soovidega,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Lugupeetud daamid ja härrad,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Teema:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Võid lisada oma ettevõtte süsteemi."
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Aruanded"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Lisa"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
