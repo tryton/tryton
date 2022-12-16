@@ -1,0 +1,270 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,cost_shipment_carriages:"
+msgid "Cost of Shipment Carriages"
+msgstr "Beförderungskosten"
+
+msgctxt "field:incoterm.incoterm,after_carrier:"
+msgid "After Carrier"
+msgstr "Nach der Hauptbeförderung"
+
+msgctxt "field:incoterm.incoterm,before_carrier:"
+msgid "Before Carrier"
+msgstr "Vor der Hauptbeförderung"
+
+msgctxt "field:sale.carriage,available_carriers:"
+msgid "Available Carriers"
+msgstr "Verfügbare Versanddienstleister"
+
+msgctxt "field:sale.carriage,carrier:"
+msgid "Carrier"
+msgstr "Versanddienstleister"
+
+msgctxt "field:sale.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Lieferkostenmethode"
+
+msgctxt "field:sale.carriage,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:sale.carriage,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:sale.carriage,sale_state:"
+msgid "Sale State"
+msgstr "Verkaufsstatus"
+
+msgctxt "field:sale.carriage,to:"
+msgid "To"
+msgstr "An"
+
+msgctxt "field:sale.carriage,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:sale.sale,after_carriages:"
+msgid "After Carriages"
+msgstr "Beförderungen nach der Hauptbeförderung"
+
+msgctxt "field:sale.sale,before_carriages:"
+msgid "Before Carriages"
+msgstr "Beförderungen vor der Hauptbeförderung"
+
+msgctxt "field:sale.sale,carriages:"
+msgid "Carriages"
+msgstr "Beförderungen"
+
+msgctxt "field:stock.shipment.carriage,carrier:"
+msgid "Carrier"
+msgstr "Versanddienstleister"
+
+msgctxt "field:stock.shipment.carriage,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:stock.shipment.carriage,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_currency:"
+msgid "Cost Currency"
+msgstr "Währung Kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_currency_used:"
+msgid "Cost Currency"
+msgstr "Währung Kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_edit:"
+msgid "Edit Cost"
+msgstr "Kosten Bearbeiten"
+
+msgctxt "field:stock.shipment.carriage,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Rechnungsposition Kosten"
+
+msgctxt "field:stock.shipment.carriage,cost_method:"
+msgid "Cost Method"
+msgstr "Lieferkostenmethode"
+
+msgctxt "field:stock.shipment.carriage,cost_sale:"
+msgid "Cost Sale"
+msgstr "Kosten Verkauf"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Währung Kosten Verkauf"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Währung Kosten Verkauf"
+
+msgctxt "field:stock.shipment.carriage,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Kosten Verkauf"
+
+msgctxt "field:stock.shipment.carriage,cost_used:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:stock.shipment.carriage,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:stock.shipment.carriage,shipment:"
+msgid "Shipment"
+msgstr "Lieferung"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_readonly:"
+msgid "Shipment Cost Read Only"
+msgstr "Lieferkosten Schreibgeschützt"
+
+msgctxt "field:stock.shipment.carriage,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr "Lieferkosten Verkauf Schreibgeschützt"
+
+msgctxt "field:stock.shipment.carriage,to:"
+msgid "To"
+msgstr "An"
+
+msgctxt "field:stock.shipment.carriage,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:stock.shipment.in,after_carriages:"
+msgid "After Carriages"
+msgstr "Beförderungen nach der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.in,before_carriages:"
+msgid "Before Carriages"
+msgstr "Beförderungen vor der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.in,carriages:"
+msgid "Carriages"
+msgstr "Beförderungen"
+
+msgctxt "field:stock.shipment.out,after_carriages:"
+msgid "After Carriages"
+msgstr "Beförderungen nach der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.out,before_carriages:"
+msgid "Before Carriages"
+msgstr "Beförderungen vor der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.out,carriages:"
+msgid "Carriages"
+msgstr "Beförderungen"
+
+msgctxt "field:stock.shipment.out.return,after_carriages:"
+msgid "After Carriages"
+msgstr "Beförderungen nach der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.out.return,before_carriages:"
+msgid "Before Carriages"
+msgstr "Beförderungen vor der Hauptbeförderung"
+
+msgctxt "field:stock.shipment.out.return,carriages:"
+msgid "Carriages"
+msgstr "Beförderungen"
+
+msgctxt "help:incoterm.incoterm,after_carrier:"
+msgid "Who contracts carriages after main carriage."
+msgstr "Der Auftraggeber für die Beförderungen nach der Hauptbeförderung."
+
+msgctxt "help:incoterm.incoterm,before_carrier:"
+msgid "Who contracts carriages before main carriage."
+msgstr "Der Auftraggeber für die Beförderungen vor der Hauptbeförderung."
+
+msgctxt "help:sale.sale,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr "Beförderungen nach der Hauptbeförderung."
+
+msgctxt "help:sale.sale,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr ""
+"Beförderungen vor der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.carriage,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Aktivieren um die Kosten zu bearbeiten."
+
+msgctxt "help:stock.shipment.in,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr ""
+"Beförderungen nach der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.in,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr ""
+"Beförderungen vor der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.out,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr ""
+"Beförderungen nach der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.out,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr ""
+"Beförderungen vor der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.out.return,after_carriages:"
+msgid "Carriages after the main carrier."
+msgstr ""
+"Beförderungen nach der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "help:stock.shipment.out.return,before_carriages:"
+msgid "Carriages before the main carrier."
+msgstr ""
+"Beförderungen vor der Hauptbeförderung durch den Versanddienstleister."
+
+msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
+msgid "You cannot delete the carriage \"%(carriage)s\"."
+msgstr "Die Beförderung \"%(carriage)s\" kann nicht gelöscht werden."
+
+msgctxt "model:sale.carriage,name:"
+msgid "Sale Carriage"
+msgstr "Verkauf Beförderung"
+
+msgctxt "model:stock.shipment.carriage,name:"
+msgid "Shipment Carriage"
+msgstr "Lieferung Beförderung"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Buyer"
+msgstr "Käufer"
+
+msgctxt "selection:incoterm.incoterm,after_carrier:"
+msgid "Seller"
+msgstr "Verkäufer"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Buyer"
+msgstr "Käufer"
+
+msgctxt "selection:incoterm.incoterm,before_carrier:"
+msgid "Seller"
+msgstr "Verkäufer"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "After"
+msgstr "Nachgelagert"
+
+msgctxt "selection:sale.carriage,type:"
+msgid "Before"
+msgstr "Vorgelagert"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "After"
+msgstr "Nachgelagert"
+
+msgctxt "selection:stock.shipment.carriage,type:"
+msgid "Before"
+msgstr "Vorgelagert"
+
+msgctxt "view:sale.sale:"
+msgid "Carriages"
+msgstr "Beförderungen"

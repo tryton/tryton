@@ -1,0 +1,56 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "metodo di raggruppamento della spedizione"
+
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Metodo di raggruppamento delle spedizioni"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Controparte"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Metodo di raggruppamento delle spedizioni"
+
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Metodo di raggruppamento dela spedizione"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Metodo di raggruppamento della spedizione"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"Il metodo di raggruppamento delle spedizioni predefinito per i nuovi "
+"clienti."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"Il metodo di raggruppamento delle spedizioni predefinito per i nuovi "
+"clienti."
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Metodo di raggruppamento della spedizione alle controparti"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:party.party,sale_shipment_grouping_method:"
+msgid "Standard"
+msgstr "Standard"
+
+msgctxt "view:party.party:"
+msgid "Shipments"
+msgstr "Spedizioni"

@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,incoterms:"
+msgid "Incoterms"
+msgstr "Incoterms"
+
+msgctxt "field:carrier,mode:"
+msgid "Mode"
+msgstr "Mode"
+
+msgctxt "field:company.company,incoterms:"
+msgid "Incoterms"
+msgstr "Incoterms"
+
+msgctxt "field:incoterm.incoterm,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:incoterm.incoterm,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:incoterm.incoterm,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:incoterm.incoterm,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:incoterm.incoterm,mode:"
+msgid "Mode"
+msgstr "Mode"
+
+msgctxt "field:incoterm.incoterm,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:incoterm.incoterm,risk:"
+msgid "Risk"
+msgstr "Risc"
+
+msgctxt "field:incoterm.incoterm,version:"
+msgid "Version"
+msgstr "Versió"
+
+msgctxt "field:incoterm.incoterm-company.company,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:incoterm.incoterm-company.company,incoterm:"
+msgid "Incoterm"
+msgstr "Incoterm"
+
+msgctxt "field:party.address,is_incoterm_related:"
+msgid "Is Incoterm Related"
+msgstr "Està relacionat amb l'Incoterm"
+
+msgctxt "field:party.incoterm,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.incoterm,incoterm:"
+msgid "Incoterm"
+msgstr "Incoterm"
+
+msgctxt "field:party.incoterm,incoterm_location:"
+msgid "Incoterm Location"
+msgstr "Ubicació incoterm"
+
+msgctxt "field:party.incoterm,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.incoterm,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:party.party,purchase_incoterms:"
+msgid "Purchase Incoterms"
+msgstr "Incoterms compra"
+
+msgctxt "field:party.party,sale_incoterms:"
+msgid "Sale Incoterms"
+msgstr "Incoterms venda"
+
+msgctxt "field:purchase.purchase,available_incoterms:"
+msgid "Available Incoterms"
+msgstr "Incoterms disponibles"
+
+msgctxt "field:sale.sale,available_incoterms:"
+msgid "Available Incoterms"
+msgstr "Incoterms disponibles"
+
+msgctxt "help:carrier,mode:"
+msgid "The transport mode used by the carrier."
+msgstr "El métode de transport utiltizat pel transportista."
+
+msgctxt "help:company.company,incoterms:"
+msgid "Incoterms available for use by the company."
+msgstr "Els incoterms que disponibles per utilizar a l'empresa."
+
+msgctxt "help:incoterm.incoterm,carrier:"
+msgid "Who contracts the main carriage."
+msgstr "Qui contracta el transportista principal."
+
+msgctxt "help:incoterm.incoterm,companies:"
+msgid "The companies that can use the incoterm."
+msgstr "Les empreses que utilitzen el incoterm."
+
+msgctxt "help:incoterm.incoterm,location:"
+msgid "If checked then a location is required."
+msgstr "Si es marca la ubicació és obligatoria."
+
+msgctxt "help:incoterm.incoterm,mode:"
+msgid "The transport mode for which the term is available."
+msgstr "El métode de transport pel que està disponible el term."
+
+msgctxt "help:incoterm.incoterm,risk:"
+msgid "When the risk is transferred relative to the main carriage."
+msgstr "Quan es transfereix el risk relatiu al transportista principal."
+
+msgctxt "help:party.party,purchase_incoterms:"
+msgid ""
+"Incoterms available for use with the supplier.\n"
+"Leave empty for all."
+msgstr ""
+"Els incoterms que s'utilitzen amb el proveïdor.\n"
+"Deixe-ho en blanc per a tots."
+
+msgctxt "help:party.party,sale_incoterms:"
+msgid ""
+"Incoterms available for use with the customer.\n"
+"Leave empty for all."
+msgstr ""
+"Els incoterms que s'utilitzen amb el client.\n"
+"Deixe-ho en blanc per a tots."
+
+msgctxt "model:incoterm.incoterm,name:"
+msgid "Incoterm"
+msgstr "Incoterm"
+
+msgctxt "model:incoterm.incoterm-company.company,name:"
+msgid "Incoterm - Company"
+msgstr "Incoterm - Empresa"
+
+msgctxt "model:ir.action,name:act_incoterm_form"
+msgid "Incoterms"
+msgstr "Incoterms"
+
+msgctxt "model:ir.message,text:msg_incoterm"
+msgid "Incoterm"
+msgstr "Incoterm"
+
+msgctxt "model:ir.message,text:msg_incoterm_location"
+msgid "Incoterm Location"
+msgstr "Ubicació incoterm"
+
+msgctxt "model:ir.message,text:msg_incoterm_location_required"
+msgid "Incoterm Location Required"
+msgstr "Ubicació Incoterm obligatoria"
+
+msgctxt "model:ir.message,text:msg_purchase_incoterm_required_for_quotation"
+msgid "To get a quote for purchase \"%(purchase)s\" you must enter an incoterm."
+msgstr ""
+"Es necessita un incoterm per obternir un pressupost de la compra "
+"\"%(purchase)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_incoterm_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an incoterm."
+msgstr ""
+"Es necessita un incoterm per obternir un pressupost de la venda "
+"\"%(sale)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_party_incoterm_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_incoterm"
+msgid "Incoterms"
+msgstr "Incoterms"
+
+msgctxt "model:party.incoterm,name:"
+msgid "Party Incoterm"
+msgstr "Incoterms tercer"
+
+msgctxt "selection:carrier,mode:"
+msgid "Sea and Inland Waterway"
+msgstr "Mar i canals marítims interiors"
+
+msgctxt "selection:incoterm.incoterm,carrier:"
+msgid "Buyer"
+msgstr "Comprador"
+
+msgctxt "selection:incoterm.incoterm,carrier:"
+msgid "Seller"
+msgstr "Venedor"
+
+msgctxt "selection:incoterm.incoterm,mode:"
+msgid "Any"
+msgstr "Qualsevol"
+
+msgctxt "selection:incoterm.incoterm,mode:"
+msgid "Sea and Inland Waterway"
+msgstr "Mar i canals marítims interiors"
+
+msgctxt "selection:incoterm.incoterm,risk:"
+msgid "After"
+msgstr "Desprès"
+
+msgctxt "selection:incoterm.incoterm,risk:"
+msgid "Before"
+msgstr "Abans"
+
+msgctxt "selection:party.incoterm,type:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "selection:party.incoterm,type:"
+msgid "Sale"
+msgstr "Venda"
