@@ -1,0 +1,23 @@
+type,name,res_id,src,value,fuzzy
+error,ir.attachment,0,"You can not create a attachment
+on a collection that have the same name
+than a child collection!","Vous ne pouvez pas créer un attachement
+sur une collection qui a le même nom
+qu'une collection enfant !",0
+error,webdav.collection,0,"You can not create a collection
+with the same name of an existing file
+inside the same collection!","Vous ne pouvez pas créer une collection
+avec le même nom qu'un fichier existant
+dans la même collection !",0
+error,webdav.collection,0,You can not create recursive collections!,Vous ne pouvez pas créer de collections récursives !,0
+field,"webdav.collection,childs",0,Childs,Enfants,0
+field,"webdav.collection,domain",0,Domain,Domaine,0
+field,"webdav.collection,model",0,Model,Modèle,0
+field,"webdav.collection,name",0,Name,Nom,0
+field,"webdav.collection,parent",0,Parent,Parent,0
+model,"ir.ui.menu,name",menu_collection_tree,Collections,Collections,0
+model,"ir.ui.menu,name",menu_collection_form,Edit Collections,Editer les collections,0
+model,"ir.ui.menu,name",menu_collection_form2,New Collection,Nouvelle collection,0
+model,"ir.ui.menu,name",menu_webdav,WebDAV,WebDAV,0
+view,webdav.collection,0,Collection,Collection,0
+view,webdav.collection,0,Collections,Collections,0
