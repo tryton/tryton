@@ -1,0 +1,357 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.request.create_purchase:0"
+msgid "Purchase price is missing for product: %s (id: %s)!"
+msgstr "Le prix d'achat est absent pour le produit : %s (id: %s) !"
+
+msgctxt "error:purchase.request.create_purchase:0"
+msgid "This price is necessary for creating purchase."
+msgstr "Ce prix est nécessaire pour créer les achats."
+
+msgctxt "error:purchase.request:0"
+msgid "Purchase requests are only created by the system."
+msgstr "Les demandes d'achat sont uniquement crées par le sytème"
+
+msgctxt "error:stock.order_point:0"
+msgid "Maximal quantity must be bigger than Minimal quantity"
+msgstr "La Quantité maximale doit être supérieure à la quantité minimale"
+
+msgctxt "error:stock.order_point:0"
+msgid "Only one order point is allowed for each product-location pair."
+msgstr ""
+"Une seule règle d'approvisionnement est autorisée par paire produit-"
+"emplacement"
+
+msgctxt "error:stock.order_point:0"
+msgid ""
+"You can not define two order points on the same product with opposite "
+"locations."
+msgstr ""
+"Vous ne pouvez pas définir deux règles d'approvisionnement sur le même "
+"produit avec des emplacement opposés"
+
+msgctxt "field:product.product,order_points:0"
+msgid "Order Points"
+msgstr "Règles d'approvisionnements"
+
+msgctxt "field:purchase.request,company:0"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request,computed_quantity:0"
+msgid "Computed Quantity"
+msgstr "Quantité calculée"
+
+msgctxt "field:purchase.request,computed_uom:0"
+msgid "Computed UOM"
+msgstr "UDM calculée"
+
+msgctxt "field:purchase.request,origin:0"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:purchase.request,party:0"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:purchase.request,product:0"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:purchase.request,purchase:0"
+msgid "Purchase"
+msgstr "Achat"
+
+msgctxt "field:purchase.request,purchase_date:0"
+msgid "Best Purchase Date"
+msgstr "Meilleur date d'achat"
+
+msgctxt "field:purchase.request,purchase_line:0"
+msgid "Purchase Line"
+msgstr "Ligne d'achat"
+
+msgctxt "field:purchase.request,quantity:0"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:purchase.request,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.request,state:0"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:purchase.request,stock_level:0"
+msgid "Stock at Supply Date"
+msgstr "Stock à la date de livraison"
+
+msgctxt "field:purchase.request,supply_date:0"
+msgid "Expected Supply Date"
+msgstr "Date de livraison attendue"
+
+msgctxt "field:purchase.request,uom:0"
+msgid "UOM"
+msgstr "UDM"
+
+msgctxt "field:purchase.request,warehouse:0"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:0"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:0"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:0"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,company:0"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,party:0"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:0"
+msgid "Payment Term"
+msgstr "Condition de paiement"
+
+msgctxt "field:stock.order_point,company:0"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.order_point,location:0"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.order_point,max_quantity:0"
+msgid "Maximal Quantity"
+msgstr "Quantité maximale"
+
+msgctxt "field:stock.order_point,min_quantity:0"
+msgid "Minimal Quantity"
+msgstr "Quantité minimale"
+
+msgctxt "field:stock.order_point,product:0"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.order_point,provisioning_location:0"
+msgid "Provisioning Location"
+msgstr "Emplacement d'appro."
+
+msgctxt "field:stock.order_point,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:stock.order_point,storage_location:0"
+msgid "Storage Location"
+msgstr "Emplacement de stockage"
+
+msgctxt "field:stock.order_point,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:stock.order_point,unit:0"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.order_point,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:stock.order_point,warehouse_location:0"
+msgid "Warehouse Location"
+msgstr "Entrepôt"
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Règles d'approvisionnement"
+
+msgctxt "model:ir.action,name:act_purchase_form"
+msgid "Purchases"
+msgstr "Achats"
+
+msgctxt "model:ir.action,name:act_purchase_request_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr "Créer les demandes d'achat"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "model:ir.action,name:act_purchase_request_form_draft"
+msgid "Draft Purchase Requests"
+msgstr "Demandes d'achat en brouillon"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "Créer achat"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Purchase Requests"
+msgstr "Générer les demandes d'achat"
+
+msgctxt "model:ir.cron,name:cron_shipment_iternal"
+msgid "Generate Internal Shipments"
+msgstr "Générer les expéditions internes"
+
+msgctxt "model:ir.ui.menu,name:menu_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr "Créer les demandes d'achat"
+
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Règles d'approvisionnement"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
+msgid "Draft Purchase Requests"
+msgstr "Demandes d'achat en brouillon"
+
+msgctxt "model:purchase.request,name:0"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:0"
+msgid "Create Purchase Ask Party"
+msgstr "Créer l'achat - Demande de tiers"
+
+msgctxt "model:purchase.request.create_purchase.ask_term,name:0"
+msgid "Create Purchase Ask Term"
+msgstr "Créer l'achat - Demande de condition de paiment"
+
+msgctxt "model:purchase.request.create_purchase_request.init,name:0"
+msgid "Create Purchase Request Init"
+msgstr "Créer les demandes d'achat - Init"
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "model:res.user,name:user_generate_request"
+msgid "Cron Purchase Request"
+msgstr "Cron Demande d'achat"
+
+msgctxt "model:res.user,name:user_generate_shipment_internal"
+msgid "Cron Intenal Shipment"
+msgstr "Cron expédition interne"
+
+msgctxt "model:stock.order_point,name:0"
+msgid "Order Point"
+msgstr "Règle d'approvisionnement"
+
+msgctxt "selection:purchase.request,origin:0"
+msgid "Order Point"
+msgstr "Règle d'approvisionnement"
+
+msgctxt "selection:purchase.request,state:0"
+msgid "Cancel"
+msgstr "Annulé"
+
+msgctxt "selection:purchase.request,state:0"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "selection:purchase.request,state:0"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:purchase.request,state:0"
+msgid "Purchased"
+msgstr "Commandé"
+
+msgctxt "selection:stock.order_point,type:0"
+msgid "Internal"
+msgstr "Interne"
+
+msgctxt "selection:stock.order_point,type:0"
+msgid "Purchase"
+msgstr "Achat"
+
+msgctxt "view:purchase.request.create_purchase.ask_party:0"
+msgid "Create Purchase: Missing Supplier"
+msgstr "Création de la commande: fournisseur absent"
+
+msgctxt "view:purchase.request.create_purchase.ask_term:0"
+msgid "Create Purchase: Missing Payment Term"
+msgstr "Création de la commande: règle d'appro. absente"
+
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request"
+msgstr "Créer les demandes d'achat"
+
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request?"
+msgstr "Créer les demandes d'achat ?"
+
+msgctxt "view:purchase.request:0"
+msgid "Product Info"
+msgstr "Info produit"
+
+msgctxt "view:purchase.request:0"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "view:purchase.request:0"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "view:purchase.request:0"
+msgid "Supply Info"
+msgstr "Information d'approvisionnement"
+
+msgctxt "view:stock.order_point:0"
+msgid "Locations"
+msgstr "Emplacements"
+
+msgctxt "view:stock.order_point:0"
+msgid "Order Point"
+msgstr "Règle d'approvisionnement"
+
+msgctxt "view:stock.order_point:0"
+msgid "Order Point Type"
+msgstr "Type de Règle d'approvisionnement"
+
+msgctxt "view:stock.order_point:0"
+msgid "Order Points"
+msgstr "Règles d'approvisionnements"
+
+msgctxt "view:stock.order_point:0"
+msgid "Product Info"
+msgstr "Info produit"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,end:0"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,init:0"
+msgid "Continue"
+msgstr "Continuer"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,end:0"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:0"
+msgid "Continue"
+msgstr "Continuer"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:0"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:0"
+msgid "Cancel"
+msgstr "Annuler"
