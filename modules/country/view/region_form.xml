@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code_numeric"/>
+    <field name="code_numeric"/>
+
+    <label name="parent"/>
+    <field name="parent"/>
+
+    <field name="subregions" colspan="4"/>
+
+    <field name="countries" colspan="4"/>
+</form>

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="campaign_view_list">
+            <field name="model">marketing.campaign</field>
+            <field name="type">tree</field>
+            <field name="name">parameter_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="campaign_view_form">
+            <field name="model">marketing.campaign</field>
+            <field name="type">form</field>
+            <field name="name">parameter_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_campaign_form">
+            <field name="name">Campaigns</field>
+            <field name="res_model">marketing.campaign</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_campaign_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="campaign_view_list"/>
+            <field name="act_window" ref="act_campaign_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_campaign_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="campaign_view_form"/>
+            <field name="act_window" ref="act_campaign_form"/>
+        </record>
+        <menuitem
+            parent="marketing.menu_marketing"
+            action="act_campaign_form"
+            sequence="50"
+            id="menu_campaign_form"/>
+
+        <record model="ir.ui.view" id="medium_view_list">
+            <field name="model">marketing.medium</field>
+            <field name="type">tree</field>
+            <field name="name">parameter_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="medium_view_form">
+            <field name="model">marketing.medium</field>
+            <field name="type">form</field>
+            <field name="name">parameter_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_medium_form">
+            <field name="name">Mediums</field>
+            <field name="res_model">marketing.medium</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_medium_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="medium_view_list"/>
+            <field name="act_window" ref="act_medium_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_medium_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="medium_view_form"/>
+            <field name="act_window" ref="act_medium_form"/>
+        </record>
+        <menuitem
+            parent="marketing.menu_marketing"
+            action="act_medium_form"
+            sequence="50"
+            id="menu_medium_form"/>
+
+        <record model="ir.ui.view" id="source_view_list">
+            <field name="model">marketing.source</field>
+            <field name="type">tree</field>
+            <field name="name">parameter_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="source_view_form">
+            <field name="model">marketing.source</field>
+            <field name="type">form</field>
+            <field name="name">parameter_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_source_form">
+            <field name="name">Sources</field>
+            <field name="res_model">marketing.source</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_source_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="source_view_list"/>
+            <field name="act_window" ref="act_source_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_source_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="source_view_form"/>
+            <field name="act_window" ref="act_source_form"/>
+        </record>
+        <menuitem
+            parent="marketing.menu_marketing"
+            action="act_source_form"
+            sequence="50"
+            id="menu_source_form"/>
+
+    </data>
+</tryton>
