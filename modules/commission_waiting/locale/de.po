@@ -1,0 +1,16 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:commission,waiting_move:"
+msgid "Waiting Move"
+msgstr "Sammelbuchung"
+
+msgctxt "field:commission.agent,waiting_account:"
+msgid "Waiting Account"
+msgstr "Sammelkonto"
+
+msgctxt "help:commission.agent,waiting_account:"
+msgid "The account the agent's waiting commission amounts are posted to."
+msgstr ""
+"Das Konto, auf dem die auszuzahlenden Provisionsbeträge gesammelt werden."
