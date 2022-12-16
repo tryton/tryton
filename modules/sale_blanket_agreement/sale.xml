@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_sale_blanket_agreement">
+            <field name="name">Sale Blanket Agreement</field>
+            <field name="parent" ref="sale.group_sale"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_sale_blanket_agreement">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_blanket_agreement"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">sale_configuration_form</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_blanket_agreement">
+            <field name="name">Sale Blanket Agreement</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_blanket_agreement_group_admin">
+            <field name="sequence_type" ref="sequence_type_blanket_agreement"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_blanket_agreement"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_blanket_agreement">
+            <field name="name">Sale Blanket Agreement</field>
+            <field name="sequence_type" ref="sequence_type_blanket_agreement"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_blanket_agreement_view_form">
+            <field name="model">sale.blanket_agreement</field>
+            <field name="type">form</field>
+            <field name="name">sale_blanket_agreement_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_blanket_agreement_view_list">
+            <field name="model">sale.blanket_agreement</field>
+            <field name="type">tree</field>
+            <field name="name">sale_blanket_agreement_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_blanket_agreement">
+            <field name="name">Blanket Agreements</field>
+            <field name="res_model">sale.blanket_agreement</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_blanket_agreement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_blanket_agreement_view_list"/>
+            <field name="act_window" ref="act_sale_blanket_agreement"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_blanket_agreement_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_blanket_agreement_view_form"/>
+            <field name="act_window" ref="act_sale_blanket_agreement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_blanket_agreement_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_blanket_agreement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_blanket_agreement_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_blanket_agreement"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_blanket_agreement_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"/>
+            <field name="act_window" ref="act_sale_blanket_agreement"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_sale_blanket_agreement"
+            sequence="20"
+            id="menu_sale_blanket_agreement"/>
+
+        <record model="ir.model.button" id="sale_blanket_agreement_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_blanket_agreement_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_blanket_agreement_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_blanket_agreement_create_sale_button">
+            <field name="name">create_sale</field>
+            <field name="string">Create a sale</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_blanket_agreement_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale_blanket_agreement">
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale_blanket_agreement_for_group_sale">
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale_blanket_agreement_for_group_sale_blanket_agreement">
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="group" ref="group_sale_blanket_agreement"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sale_blanket_agreement_companies">
+            <field name="name">Sales Blanket Agreement</field>
+            <field name="model" search="[('model', '=', 'sale.blanket_agreement')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale_blanket_agreement_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sale_blanket_agreement_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_blanket_agreement_line_view_form">
+            <field name="model">sale.blanket_agreement.line</field>
+            <field name="type">form</field>
+            <field name="name">sale_blanket_agreement_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_blanket_agreement_line_view_list">
+            <field name="model">sale.blanket_agreement.line</field>
+            <field name="type">tree</field>
+            <field name="name">sale_blanket_agreement_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_form_blanket_agreement">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[('blanket_agreements', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_sale_form_blanket_agreement_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.blanket_agreement,-1</field>
+            <field name="action" ref="act_sale_form_blanket_agreement"/>
+        </record>
+
+        <record model="ir.action.wizard" id="sale_blanket_agreement_create_sale_wizard">
+            <field name="name">Create a Sale</field>
+            <field name="wiz_name">sale.blanket_agreement.create_sale</field>
+            <field name="model">sale.blanket_agreement</field>
+        </record>
+        <record model="ir.action-res.group" id="sale_blanket_agreement_create_sale_wizard-group_sale">
+            <field name="action" ref="sale_blanket_agreement_create_sale_wizard"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_blanket_agreement_create_sale_start_form_view">
+            <field name="model">sale.blanket_agreement.create_sale.start</field>
+            <field name="type">form</field>
+            <field name="name">sale_blanket_agreement_create_sale_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_form_view">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_form"/>
+            <field name="name">sale_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_list_view">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree"/>
+            <field name="name">sale_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_list_view_sequence">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
+            <field name="name">sale_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_line_form_blanket_agreement">
+            <field name="name">Sale Lines</field>
+            <field name="res_model">sale.line</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('blanket_agreement_line.id', '=', Eval('active_id')), ('blanket_agreement_line.id', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('sale.state', 'not in', ['cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_sale_line_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.blanket_agreement.line,-1</field>
+            <field name="action" ref="act_sale_line_form_blanket_agreement"/>
+        </record>
+    </data>
+</tryton>
