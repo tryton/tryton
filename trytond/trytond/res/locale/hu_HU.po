@@ -1,0 +1,714 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.group:"
+msgid "The name of the group must be unique!"
+msgstr "Egy csoport neve csak egyszer adható ki"
+
+msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "Wrong password!"
+msgstr "Hibás jelszó"
+
+msgctxt "error:res.user:"
+msgid "You can not have two users with the same login!"
+msgstr "A felhasználónév egy felhasználónak egyszer adható ki"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "field:ir.action-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.action-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:ir.action-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.action-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó mdosítás dátuma"
+
+msgctxt "field:ir.action-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.model.button-res.group,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "Gomb"
+
+msgctxt "field:ir.model.button-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.model.button-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:ir.model.button-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.model.button-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.model.button-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.model.field-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.model.field-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.model.field-res.group,field:"
+msgid "Model Field"
+msgstr "Minta mező"
+
+msgctxt "field:ir.model.field-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:ir.model.field-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.field-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.model.field-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.model.field-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.rule.group-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.rule.group-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:ir.rule.group-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.rule.group-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "Szabályos csoport"
+
+msgctxt "field:ir.rule.group-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.rule.group-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.rule.group-res.user,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.rule.group-res.user,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.rule.group-res.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.rule.group-res.user,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.rule.group-res.user,rule_group:"
+msgid "Rule Group"
+msgstr "Szabályos csoport"
+
+msgctxt "field:ir.rule.group-res.user,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:ir.rule.group-res.user,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.rule.group-res.user,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.sequence,groups:"
+msgid "User Groups"
+msgstr "Felhasználócsoport"
+
+msgctxt "field:ir.sequence.strict,groups:"
+msgid "User Groups"
+msgstr "Felhasználócsoport"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "Felhasználócsoport"
+
+msgctxt "field:ir.sequence.type-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.sequence.type-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "Felhasználócsoport"
+
+msgctxt "field:ir.sequence.type-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.sequence.type-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "Típus pontos számcsoportja"
+
+msgctxt "field:ir.sequence.type-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.sequence.type-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:ir.ui.menu-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:ir.ui.menu-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:ir.ui.menu-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "Menü"
+
+msgctxt "field:ir.ui.menu-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.ui.menu-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:ir.ui.menu-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "Hozzáférési engedély mező"
+
+msgctxt "field:res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "Menü engedélyek"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "Hozzáférési engedély"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "Adatszabályok"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "Felhasználók"
+
+msgctxt "field:res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "Műveletek"
+
+msgctxt "field:res.user,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:res.user,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "Csoportok"
+
+msgctxt "field:res.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "Nyelv"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "Nyelv irányzat"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "Menü műveletek"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "Jelszó"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Jelszó Hash"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "PySON Menü"
+
+msgctxt "field:res.user,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user,rule_groups:"
+msgid "Rules"
+msgstr "Adat szabályok"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "Szakaszok"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "Aláírás"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "Állapot "
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "Figyelmeztetések"
+
+msgctxt "field:res.user,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "field:res.user-ir.action,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user-ir.action,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.user-ir.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user-ir.action,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:res.user-ir.action,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user-ir.action,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.user-res.group,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user-res.group,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "field:res.user-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user-res.group,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:res.user-res.group,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.user.config.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.attempt,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user.login.attempt,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.user.login.attempt,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgctxt "field:res.user.login.attempt,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user.login.attempt,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user.login.attempt,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "Mindig"
+
+msgctxt "field:res.user.warning,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:res.user.warning,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:res.user.warning,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user.warning,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:res.user.warning,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:res.user.warning,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type"
+msgstr "A típus számkörének feldolgozásához jogosult csoport"
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login"
+msgstr "A művelet a bejelentkezés után hajtható végre"
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Csoportok"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "Felhasználó beállítása"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Felhasználó"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "Műveletcsoport"
+
+msgctxt "model:ir.cron,name:cron_trigger_time"
+msgid "Run On Time Triggers"
+msgstr "Időzített kidolgozás Tigger"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "Minta gomb- csoport"
+
+msgctxt "model:ir.model.field-res.group,name:"
+msgid "Model Field Group Rel"
+msgstr "Minta mező- csoport"
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "Csoportszabály- csoport"
+
+msgctxt "model:ir.rule.group-res.user,name:"
+msgid "Rule Group - User"
+msgstr "Csoportszabály- felhasználó"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "Számkörtípus- csoport"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Csoportok"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Felhasználó"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Felhasználó"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "Menüfelület- csoport"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "Adminisztráció"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "model:res.user,name:user_admin"
+msgid "Administrator"
+msgstr "Adminisztrátor"
+
+msgctxt "model:res.user,name:user_trigger"
+msgid "Cron Trigger"
+msgstr "Időterv Tigger"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "Felhasználói művelet"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "Felhasználócsoport"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "Felhasználó beállítások Init"
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "Bejelentkezés kísérlet"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "Felhasználó figyelmeztetés"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.group:"
+msgid "Group"
+msgstr "Csoport"
+
+msgctxt "view:res.group:"
+msgid "Groups"
+msgstr "Csoportok"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "Add Users"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique!"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr ""
+
+#, fuzzy
+msgctxt "view:res.user.warning:"
+msgid "Warning"
+msgstr "Figyelmeztetések"
+
+msgctxt "view:res.user.warning:"
+msgid "Warnings"
+msgstr "Figyelmeztetések"
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "Műveletek"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "view:res.user:"
+msgid "Users"
+msgstr "Felhasználók"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "Hozzáad"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "Befejezés"

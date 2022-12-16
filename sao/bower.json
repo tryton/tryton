@@ -1,0 +1,29 @@
+{
+  "name": "sao",
+  "version": "0.0.0",
+  "authors": [
+    "Tryton"
+  ],
+  "description": "Web client for Tryton",
+  "license": "GPL",
+  "homepage": "http://www.tryton.org/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.4",
+    "moment": "~2.10.2",
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
+    "gettext.js": "~0.5.0",
+    "d3": "~3.5.0",
+    "c3": "~0.4.10"
+  },
+  "devDependencies": {
+    "qunit": "~1.18.0"
+  }
+}
