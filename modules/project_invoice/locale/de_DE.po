@@ -1,0 +1,87 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "Fehlender Listenpreis für Aufgabe \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "Fehlende Partei für Aufgabe \"%s\"."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "Fehlender Artikel für Aufgabe \"%s\"."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "Abgrechnete Zeilen können nicht gelöscht werden."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Eine abgerechnete Zeile kann nicht geändert werden."
+
+msgctxt "field:project.work,hours_to_invoice:"
+msgid "Hours to Invoice"
+msgstr "Abrechenbare Stunden"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Abgerechneter Betrag"
+
+msgctxt "field:project.work,invoiced_hours:"
+msgid "Invoiced Hours"
+msgstr "Abgerechnete Stunden"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Rechnungsausgang"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Projekt Fakturierung"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Nach veranschlagtem Aufwand"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Nach erfasstem Aufwand"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Nach veranschlagtem Aufwand"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Nach erfasstem Aufwand"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
