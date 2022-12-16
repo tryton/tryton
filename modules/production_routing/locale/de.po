@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr "Stücklisten"
+
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr "Fertigungsschritte"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr "Stückliste"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Arbeitsvorgang"
+
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Arbeitsvorgang"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Arbeitsvorgänge"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "Fertigungspläne"
+
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Arbeitsvorgänge"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "Fertigungspläne"
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "Fertigungsplan"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr "Fertigungsplan - Stückliste"
+
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Arbeitsvorgang"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr "Fertigungsplan"
