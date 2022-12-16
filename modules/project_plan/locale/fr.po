@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Employé"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Prédécesseur"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Successeur"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Fin réelle"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Heure de fin réelle"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Début réel"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Heure de début réelle"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Répartitions"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Délais rétro-décalage"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Fin imposée"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Heure de fin imposée"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Début imposé"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Heure de début imposée"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Durée"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Fin au plus tôt"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Heure de fin au plus tôt"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Début au plus tôt"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Heure de début au plus tôt"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Fin au plus tard"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Heure de fin au plus tard"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Début au plus tard"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Heure de début au plus tard"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Délais décalage"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Prédécesseurs"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Successeurs"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Décalage des tâches"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Répartition"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Prédécesseur - Successeur"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Répartitions"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Planification"
