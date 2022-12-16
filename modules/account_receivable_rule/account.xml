@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="account_receivable_rule_view_form">
+            <field name="model">account.account.receivable.rule</field>
+            <field name="type">form</field>
+            <field name="name">account_receivable_rule_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_receivable_rule_view_list">
+            <field name="model">account.account.receivable.rule</field>
+            <field name="type">tree</field>
+            <field name="name">account_receivable_rule_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_receivable_rule_form">
+            <field name="name">Account Receivable Rules</field>
+            <field name="res_model">account.account.receivable.rule</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_receivable_rule_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_receivable_rule_view_list"/>
+            <field name="act_window" ref="act_account_receivable_rule_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_receivable_rule_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_receivable_rule_view_form"/>
+            <field name="act_window" ref="act_account_receivable_rule_form"/>
+        </record>
+        <menuitem
+            parent="account.menu_general_account_configuration"
+            action="act_account_receivable_rule_form"
+            sequence="20"
+            id="menu_account_receivable_rule_form"/>
+
+        <record model="ir.model.access" id="access_account_receivable_rule">
+            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_receivable_rule_account_admin">
+            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="account_receivable_rule_apply_button">
+            <field name="name">apply</field>
+            <field name="string">Apply</field>
+            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="account_receivable_rule_apply_button_group_account">
+            <field name="button" ref="account_receivable_rule_apply_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_receivable_rule_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'account.account.receivable.rule')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_receivable_rule_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_receivable_rule_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_receivable_rule_account_view_form">
+            <field name="model">account.account.receivable.rule.account</field>
+            <field name="type">form</field>
+            <field name="name">account_receivable_rule_account_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_receivable_rule_account_view_list">
+            <field name="model">account.account.receivable.rule.account</field>
+            <field name="type">tree</field>
+            <field name="name">account_receivable_rule_account_list</field>
+        </record>
+    </data>
+</tryton>

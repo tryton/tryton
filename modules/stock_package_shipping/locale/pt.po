@@ -1,0 +1,162 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Serviço de Envio"
+
+#, fuzzy
+msgctxt "field:stock.package,height:"
+msgid "Height"
+msgstr "Altura"
+
+#, fuzzy
+msgctxt "field:stock.package,height_digits:"
+msgid "Height Digits"
+msgstr "Dígitos decimais da altura"
+
+#, fuzzy
+msgctxt "field:stock.package,height_uom:"
+msgid "Height Unit"
+msgstr "Unidade da Altura"
+
+#, fuzzy
+msgctxt "field:stock.package,length:"
+msgid "Length"
+msgstr "Comprimento"
+
+#, fuzzy
+msgctxt "field:stock.package,length_digits:"
+msgid "Length Digits"
+msgstr "Dígitos decimais do comprimento"
+
+#, fuzzy
+msgctxt "field:stock.package,length_uom:"
+msgid "Length Unit"
+msgstr "Unidade do Comprimento"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "Etiquetas de envio"
+
+#, fuzzy
+msgctxt "field:stock.package,shipping_label_id:"
+msgid "Shipping Label ID"
+msgstr "Etiquetas de envio"
+
+#, fuzzy
+msgctxt "field:stock.package,shipping_label_mimetype:"
+msgid "Shipping Label MIME Type"
+msgstr "Etiquetas de envio"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Referência de Envio"
+
+msgctxt "field:stock.package,shipping_tracking_url:"
+msgid "Shipping Tracking URL"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,width:"
+msgid "Width"
+msgstr "Largura"
+
+#, fuzzy
+msgctxt "field:stock.package,width_digits:"
+msgid "Width Digits"
+msgstr "Dígitos decimais da largura"
+
+#, fuzzy
+msgctxt "field:stock.package,width_uom:"
+msgid "Width Unit"
+msgstr "Unidade da Largura"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Dígitos decimais da altura"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Unidade da Altura"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Comprimento"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "Dígitos decimais do comprimento"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Unidade do Comprimento"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Largura"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "Dígitos decimais da largura"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Unidade da Largura"
+
+msgctxt "field:stock.shipment.in.return,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,shipping_description:"
+msgid "Shipping Description"
+msgstr "Descrição do Envio"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Descrição do Envio"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Create Shipping"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_shipping_label"
+msgid "Shipping Label"
+msgstr "Etiquetas de envio"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_print_shipping_label"
+msgid "Shipping Labels"
+msgstr "Etiquetas de envio"
+
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "A remessa \"%(shipment)s\" não tem uma transportadora definida."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:package_print_shipping_label_button"
+msgid "Shipping Label"
+msgstr "Etiquetas de envio"
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"

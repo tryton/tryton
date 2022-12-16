@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr "Assentament de liquidació"
+
+msgctxt "field:account.payment,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Liquidació conciliada"
+
+msgctxt "field:account.payment,statement_lines:"
+msgid "Statement Lines"
+msgstr "Línies d'extracte"
+
+msgctxt "field:account.payment.group,clearing_reconciled:"
+msgid "Clearing Reconciled"
+msgstr "Liquidació conciliada"
+
+msgctxt "field:account.payment.group,statement_lines:"
+msgid "Statement Lines"
+msgstr "Línies d'extracte"
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr "Compte de liquidació"
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr "Diari de liquidació"
+
+msgctxt "field:account.payment.journal,clearing_posting_delay:"
+msgid "Clearing Posting Delay"
+msgstr "Retràs comptabilització liquidació"
+
+msgctxt "field:account.payment.succeed.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "help:account.payment,account:"
+msgid "Define the account to use for clearing move."
+msgstr "Defineix el compte a utilitzar pel moviment de liquidació."
+
+msgctxt "help:account.payment,clearing_reconciled:"
+msgid "Checked if clearing line is reconciled."
+msgstr "Marcat si l'apunt de liquidació s'ha conciliat."
+
+msgctxt "help:account.payment.group,clearing_reconciled:"
+msgid "All payments in the group are reconciled."
+msgstr "Tots els pagaments del grup s'han conciliat."
+
+msgctxt "help:account.payment.journal,clearing_posting_delay:"
+msgid ""
+"Post automatically the clearing moves after the delay.\n"
+"Leave empty for no posting."
+msgstr ""
+"Comptabilitza automàticament els asentaments de liquidació desprès del retràs.\n"
+"Deixeu-ho en blanc per no comptabilitzar."
+
+msgctxt "model:account.payment.succeed.start,name:"
+msgid "Succeed Payment"
+msgstr "Marca pagament amb èxit"
+
+msgctxt "model:ir.action,name:wizard_succeed"
+msgid "Succeed Payments"
+msgstr "Marca pagaments amb èxit"
+
+msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Amb èxit"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Post Clearing Moves"
+msgstr "Comptabilitza assentaments de liquidació"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr "Liquidació"
+
+msgctxt "wizard_button:account.payment.succeed,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.payment.succeed,start,succeed:"
+msgid "Succeed"
+msgstr "Amb èxit"

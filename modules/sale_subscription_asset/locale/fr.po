@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.subscription.line,asset_lot:"
+msgid "Asset Lot"
+msgstr "Lot d'actif"
+
+msgctxt "field:sale.subscription.line,asset_lot_required:"
+msgid "Asset Lot Required"
+msgstr "Lot d'actif requis"
+
+msgctxt "field:sale.subscription.service,asset_lots:"
+msgid "Asset Lots"
+msgstr "Lots d'actif"
+
+msgctxt "field:sale.subscription.service,asset_lots_available:"
+msgid "Available Asset Lots"
+msgstr "Lot d'actif disponible"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "field:stock.lot,subscribed:"
+msgid "Subscribed"
+msgstr "Abonné"
+
+msgctxt "field:stock.lot,subscription_lines:"
+msgid "Subscription Lines"
+msgstr "Lignes d'abonnement"
+
+msgctxt "field:stock.lot,subscription_services:"
+msgid "Services"
+msgstr "Services"
+
+msgctxt "model:ir.message,text:msg_asset_line_overlap"
+msgid ""
+"The lines \"%(line1)s\" and \"%(line2)s\" overlap, you must use different "
+"dates."
+msgstr ""
+"Les lignes « %(line1)s » et « %(line2)s » se chevauchent, vous devez "
+"utiliser des dates différentes."
+
+msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
+msgid "Subscription Service - Stock Lot Asset"
+msgstr "Service d'abonnement - Lot d'actif"
