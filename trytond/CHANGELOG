@@ -1,0 +1,112 @@
+Version 1.4.13 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.12 - 2012-03-28
+* Bug fixes (see mercurial logs for details)
+* Don't allow rpc call on ModelStorage without ModelView (CVE-2012-0215)
+
+Version 1.4.11 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.10 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.9 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.8 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.7 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.6 - 2010-07-29
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.5 - 2010-03-31
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.4 - 2010-02-16
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.3 - 2009-12-09
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.2 - 2009-11-23
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.1 - 2009-10-20
+* Add missing init.sql of SQLite
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add datetime_field on xxx2Many to use a specific _datetime when reading the related record
+* Add new tool safe_eval
+* Handle sequence and history renaming when renaming table
+* Add old_password to set_preferences of res.user on password change
+* Allow to drop constraint, index and foreign key with custom table name
+* Added column_rename on TableHandler
+* Add new tool reduce_ids
+* Add limit_clause function on cursor
+* Fill the cursor cache at search
+* Allow rpc on today of ir.date
+* Use the module dependency order to apply views that inherits
+* Allow to update database at the end of restore
+* Add ir.model.access check get and set of ir.property
+* Add ModelSingleton
+* Move login test in res.user
+* Rename osv into model on workflow
+* Add logout method
+* Move BrowseRecord cache onto the cursor except for Function fields
+* Don't order search result if order value is []
+* Add reload of modules if files have changed
+* Add salt to sha of password
+* Add strftime to ir.lang to handle locale's format
+* Add sqlite backend
+* Add validate test for required and size
+* Remove _sequence on ModelSQL
+* Use gzip in pysocket
+* Add gzip encoding for XML-RPC
+* Add report name in the result of Report.execute
+* Add ir.action.wizard_size to store prefered wizard size
+* Add delete_all action on One2Many field
+* Read, write, create, delete permission on record rules
+* Add reset_default method to ir.default
+* Doesn't append '%' to "like", "ilike" clauses
+* Handle database dump and restore with password
+* Add float_time attribute in fields view
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add delete of foreign keys with ondelete CASCADE
+* Add write for foreign keys with ondelete SET NULL
+* Add datetime_field on Many2One to use a specific _datetime when reading the related record
+* Use _datetime in context to read record value at specific datetime
+* Add _history_table on ModelSQL to historize change on records
+* Allow to use related fields (many2one and reference) in read
+* Use rec_name function field instead of name_get and name_search
+* Use a new Pool for objects
+* Move workflow in ModelWorkflow and the workflow module
+* Remove Service and LocalService objects
+* New netrpc/xmlrpc syntax
+* copy on ModelStorage copies one2many directly on the right record
+* Search on translated field will search only on translated value
+* Add active field on ir.action to allow better override of reports
+* Add depends attributes on Column
+* Make Modified Preorder Tree Traversal respects the default order of the model
+* Add replace_attributes for xpath tag
+* Add email parameter on report action
+* Allow to inherit views from an other model
+* Add user warnings
+* Allow to use a list of id for copy method
+* Use one lock per database
+* Improve netrpc communication speed
+* Add contextual domain on inherited views
+* Allow to use globals in domain and states
+* Add translate attribute on Selection field
+* Use explicit join in search SQL query
+* Fix for host with IPv6 enable but without default IPv6 route
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
