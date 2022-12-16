@@ -1,0 +1,165 @@
+Version 6.4.5 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.4 - 2022-10-17
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.3 - 2022-08-17
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.2 - 2022-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.1 - 2022-06-03
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Add customer currency on party
+* Add support for Python 3.10
+* Remove support for Python 3.6
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+* Define default invoice and shipment methods by party
+* Split process method
+* Add general reporting
+* Add reporting per customer category
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Add default lead time for products
+* Add summary to sale line list
+* Add TaxableMixin to sale line
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Use original cost price for returned move
+* Add shipping date
+* Rename sale state from cancel to cancelled
+* Add window tab for exception states
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Add actual quantity on line
+* Add employee on sales for some states
+* Add contact and invoice party on sale
+* Add salable products menu entry
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Use sale_uom as default for Product.get_sale_price
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Add configured delay for processing sale
+* Allow to reset to draft confirmed but not processed sale
+* Show number and reference in sale rec_name
+* Remove support for Python 2.7
+* Invoice sold product instead of shipped product
+* Prevent delete lines if sale is not draft or canceled
+* Use today as fallback for sale date report
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Add reporting
+* Check pending sale to erase party
+* Add wizard to modify sale header after filling lines
+* Make description on sale line optional
+* Invoice shipped product instead of sold product
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Plan backorder moves to today
+* Add cron task to process confirmed sale
+* Add report_address property on sale
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Add sale price on product view from line
+* Allow no lead time on product
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Manage readonly state on Sale Line
+* Allow sale without payment term
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Sale reference into number and add reference
+* Add Python3 support
+* Replace Delivery Time by Lead Time on Product Template
+* Rename Delivery Date of Sale Line into Shipping Date
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Delivery Date of Line shows effective date if possible
+* Add shipment party
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add origin on sale
+* Support mixed invoice type by line in invoiced quantity calculation
+* Use TaxableMixin
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Add link between stock moves and invoice lines
+* Add warning for customer moves without origin
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Replace reference copying by relate
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Use origin Reference on Invoice Line and Stock Move
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Manage negative amounts in sale
+* Add cache on amount fields in readonly states
+* Confirmed state split into Confirmed and Processing
+* Add a Function field delivery_date to sale line
+* Sale date is required only at confirmation
+* warehouse is not always required
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Add delivery time on product
+* Use compute delivery date for stock moves
+* Group stock moves on shipment using a key
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Use a modelsingleton to define which sale sequence to use
+* Add default search value on sale
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add buttons to handle invoice and packing exceptions
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
