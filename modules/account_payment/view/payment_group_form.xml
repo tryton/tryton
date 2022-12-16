@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="kind"/>
+    <field name="kind"/>
+    <separator id="payments" string="Payments Info" colspan="4"/>
+    <label name="payment_count" string="Count"/>
+    <field name="payment_count"/>
+    <label name="payment_amount" string="Total Amount"/>
+    <field name="payment_amount"/>
+    <label name="payment_amount_succeeded" string="Succeeded"/>
+    <field name="payment_amount_succeeded"/>
+    <label name="payment_complete" string="Complete"/>
+    <field name="payment_complete"/>
+</form>
