@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="payment_journal_view_form">
+            <field name="model">account.payment.journal</field>
+            <field name="inherit"
+                ref="account_payment.payment_journal_view_form"/>
+            <field name="name">payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_form"/>
+            <field name="name">payment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_list"/>
+            <field name="name">payment_list</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_succeed">
+            <field name="name">Succeed Payments</field>
+            <field name="wiz_name">account.payment.succeed</field>
+            <field name="model">account.payment</field>
+        </record>
+
+        <record model="ir.ui.view" id="succeed_start_view_form">
+            <field name="model">account.payment.succeed.start</field>
+            <field name="type">form</field>
+            <field name="name">succeed_start_form</field>
+        </record>
+    </data>
+</tryton>

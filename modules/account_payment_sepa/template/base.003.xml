@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/">
+    <!-- only ASCII -->
+    <py:def function="PartyIdentification(party, id=True, with_name=True, with_address=True)">
+        <!-- EPC limits to 70 instead of 140 -->
+        <Nm py:if="with_name">${normalize('NFKD', party.name).encode('ascii', 'replace')[:70]}</Nm>
+        <py:if test="with_address">
+            <py:with vars="address = party.address_get()">
+                <PstlAdr py:if="address">
+                    ${PostalAddress(address)}
+                </PstlAdr>
+            </py:with>
+        </py:if>
+        <Id py:if="id and party.sepa_creditor_identifier_used">
+            <PrvtId>
+                <Othr>
+                    <Id>${party.sepa_creditor_identifier_used}</Id>
+                    <SchmeNm>
+                        <Prtry>SEPA</Prtry>
+                    </SchmeNm>
+                    <!-- Issr -->
+                </Othr>
+            </PrvtId>
+        </Id>
+        <!-- CtryOfRes -->
+        <!-- CtctDtls -->
+    </py:def>
+    <py:def function="PostalAddress(address)">
+        <Ctry py:if="address.country">${normalize('NFKD', address.country.code).encode('ascii', 'replace')}</Ctry>
+        <AdrLine py:if="address.street">${normalize('NFKD', ' '.join(address.street.splitlines()[0:1])).encode('ascii', 'replace')[:70]}</AdrLine>
+        <AdrLine py:if="address.street and len(address.street.splitlines()) > 1">${normalize('NFKD', ' '.join(address.street.splitlines()[1:])).encode('ascii', 'replace')[:70]}</AdrLine>
+    </py:def>
+    <py:def function="Account(account_number, with_ccy=True)">
+        <Id>
+            <!-- EPC only IBAN is allowed -->
+            <IBAN>${account_number.compact_iban}</IBAN>
+        </Id>
+        <!-- Tp -->
+        <Ccy py:if="with_ccy and account_number.account.currency">${account_number.account.currency.code}</Ccy>
+        <!-- Nm -->
+    </py:def>
+    <!-- uses BIC instead of BICFI -->
+    <py:def function="FinancialInstitution(bank, only_bic=False)">
+        <FinInstnId>
+            <BIC py:if="bank.bic">${bank.bic}</BIC>
+            <Othr py:if="not bank.bic">
+                <Id>NOTPROVIDED</Id>
+            </Othr>
+        </FinInstnId>
+    </py:def>
+</py:strip>
