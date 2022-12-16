@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="4">
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="destination"/>
+    <field name="destination"/>
+    <label name="from_date"/>
+    <field name="from_date"/>
+    <label name="to_date"/>
+    <field name="to_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <button string="Complete Forecast" name="complete"
+        colspan="2"
+        help="Add forecast line based on past data."/>
+    <field name="lines" colspan="4"/>
+    <group col="4" colspan="4" id="state_buttons">
+        <label name="state"/>
+        <field name="state"/>
+        <group colspan="2" col="-1" id="buttons">
+            <button name="draft" icon="tryton-clear"/>
+            <button name="cancel" icon="tryton-cancel"/>
+            <button name="confirm" icon="tryton-ok"/>
+        </group>
+    </group>
+</form>
