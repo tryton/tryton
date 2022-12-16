@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "雇员"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "百分比"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "工作"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "前驱"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "后继"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "实际完成"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "实际完成时间"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "实际开始"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "实际开始时间"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "资源分配"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "约束完成"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "约束完成时间"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "约束开始"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "约束开始时间"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "持续时间"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "最早完成"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "最早完成时间"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "最早开始"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "最早开始时间"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "最迟完成"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "最迟完成时间"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "最迟开始"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "最迟开始时间"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "资源调配延迟"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "前驱"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "后继"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "任务资源调配"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "资源分配"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "前驱 - 后继"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "资源分配"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "规划"
