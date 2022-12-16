@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="braintree_account"/>
+    <field name="braintree_account"/>
+    <newline/>
+
+    <label name="braintree_customer_id"/>
+    <field name="braintree_customer_id"/>
+
+    <group id="buttons" col="-1" colspan="4">
+        <button name="braintree_checkout"/>
+        <button name="delete_payment_method"/>
+    </group>
+
+    <label name="braintree_error_message"/>
+    <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
+</form>
