@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@name='lot_required']"
+        position="inside">
+        <separator id="sled" string="Shelf Life" colspan="4"/>
+        <label name="shelf_life_state"/>
+        <field name="shelf_life_state"/>
+        <label name="shelf_life_time"/>
+        <field name="shelf_life_time"/>
+        <label name="expiration_state"/>
+        <field name="expiration_state"/>
+        <label name="expiration_time"/>
+        <field name="expiration_time"/>
+    </xpath>
+</data>
