@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='consumption_delay']" position="after">
+        <field name="asset_lots" colspan="4"/>
+        <field name="asset_lots_available" colspan="4"/>
+    </xpath>
+</data>
