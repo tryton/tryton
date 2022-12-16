@@ -1,0 +1,99 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not delete invoice lines that comes from a purchase!"
+msgstr ""
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:purchase.purchase-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:purchase.purchase-account.invoice.line,name:"
+msgid "Purchase - Invoice Line"
+msgstr ""
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr ""
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr ""
