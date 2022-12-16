@@ -1,0 +1,21 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Aktion,0
+field,"dashboard.action,rec_name",0,Name,Name,0
+field,"dashboard.action,sequence",0,Sequence,Reihenfolge,0
+field,"dashboard.action,user",0,User,Benutzer,0
+field,"res.user,dashboard_actions",0,Dashboard Actions,Dashboard Aktionen,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Dashboard Anordnung,0
+model,"dashboard.action,name",0,dashboard.action,Dashboard Aktion,0
+model,"ir.action,name",act_dashboard,Dashboard,Dashboard,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Dashboard,0
+selection,"res.user,dashboard_layout",0,Square,Rechtecke,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,Stapel unten,0
+selection,"res.user,dashboard_layout",0,Stack Left,Stapel links,0
+selection,"res.user,dashboard_layout",0,Stack Right,Stapel rechts,0
+selection,"res.user,dashboard_layout",0,Stack Top,Stapel oben,0
+view,dashboard.action,0,Dashboard,Dashboard,0
+view,dashboard.action,0,Dashboard Action,Dashboard Aktion,0
+view,dashboard.action,0,Dashboard Actions,Dashboard Aktionen,0
+view,res.user,0,Dashboard,Dashboard,0
+view,res.user,0,Dashboard Action,Dashboard Aktion,0
+view,res.user,0,Dashboard Actions,Dashboard Aktionen,0
