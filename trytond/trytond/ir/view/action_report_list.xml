@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="name" expand="2"/>
+    <field name="type" expand="1"/>
+    <field name="model" expand="1"/>
+    <field name="report_name" expand="1"/>
+</tree>
+
