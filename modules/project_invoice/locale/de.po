@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,amount_to_invoice:"
+msgid "Amount to Invoice"
+msgstr "Fakturierbarer Betrag"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Abgerechneter Betrag"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Fakturierter Forstschritt"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Methode Rechnungsstellung"
+
+msgctxt "field:project.work,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Fakturierbare Menge"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:project.work.invoiced_progress,progress:"
+msgid "Progress"
+msgstr "Fortschritt"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Tätigkeit"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Zeiterfassungspositionen"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Rechnungen"
+
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr "Festgeschriebene Rechnungspositionen können nicht gelöscht werden."
+
+msgctxt "model:ir.message,text:msg_missing_account_revenue"
+msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
+msgstr ""
+"Damit Projekt \"%(work)s\" fakturiert werden kann, muss ein "
+"Standardertragskonto konfiguriert werden."
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr "Fehlender Listenpreis für Aufgabe \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr "Fehlende Partei für Aufgabe \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr "Eine festgeschriebene Rechnungsposition kann nicht geändert werden."
+
+msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
+msgid ""
+"To invoice work \"%(work)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Damit Projekt \"%(work)s\" fakturiert werden kann, muss ein Ertragskonto für"
+" Artikel \"%(product)s\" konfiguriert werden."
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Rechnung erstellen"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Nach Forstschritt fakturierte Aufgabe"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Projekt Fakturierung"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Nach veranschlagtem Aufwand"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Nach Fortschritt"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Nach erfasstem Aufwand"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "%"
+msgstr "%"
