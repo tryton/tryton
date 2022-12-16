@@ -1,0 +1,11 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,percentage:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Percentage"
+msgstr "Процент"
