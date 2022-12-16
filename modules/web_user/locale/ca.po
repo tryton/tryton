@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:web.user.session:"
+msgid "Key must be unique"
+msgstr "La clau ha de ser única."
+
+msgctxt "error:web.user:"
+msgid "E-mail must be unique"
+msgstr "El correu electrònic ha de ser únic."
+
+msgctxt "field:web.user,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:web.user,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:web.user,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "Correu electrònic"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "Token del correu electrònic"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "Correu electrònic vàlid"
+
+msgctxt "field:web.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "Contrasenya"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "Hash de la contrasenya"
+
+msgctxt "field:web.user,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "Token restableix la contrasenya"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "Expiració token restableix contrasenya"
+
+msgctxt "field:web.user,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:web.user,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:web.user.authenticate.attempt,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:web.user.authenticate.attempt,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:web.user.authenticate.attempt,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr "Adreça IP"
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr "Xarxa IP"
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "Nom usuari"
+
+msgctxt "field:web.user.authenticate.attempt,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:web.user.authenticate.attempt,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:web.user.authenticate.attempt,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:web.user.session,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:web.user.session,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:web.user.session,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "Clau"
+
+msgctxt "field:web.user.session,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:web.user.session,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:web.user.session,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Usuaris web"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Restableix la contrasenya"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "Validació correu electrònic"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Restableix la contrasenya"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Valida correu electrònic"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Usuaris web"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Usuari web"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "Intent d'autenticació usuari web"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "Sessió usuari web"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Copia i enganxa això en el teu navegador web:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "Si no heu fet aquesta petició, podeu ignorar aquest correu."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Restableix la contrasenya"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr "Hem rebut una petició per restablir la contrasenya del vostre compte."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Copia i enganxa això en el teu navegador web:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Validació correu electrònic"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Si heu rebut aquest correu per error, ignoreu-lo."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "Només un pas més..."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "Valida"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Restableix la contrasenya"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "Valida correu electrònic"
