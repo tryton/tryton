@@ -1,0 +1,159 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr ""
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr ""
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr ""
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr ""
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr ""
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr ""
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr ""
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr ""
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr ""
