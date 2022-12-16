@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "子项"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "纳木"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "上级"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Classifications"
+
+#, fuzzy
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Classifications"
+
+msgctxt "help:product.classification.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.classification_tree.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Classifications"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr ""
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr ""
