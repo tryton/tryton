@@ -1,0 +1,244 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,action_model_name:"
+msgid "Action Model Name"
+msgstr "Nom del model de l'acció"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "Notificació per correu electrònic"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "Adjunts"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Mitjà de contacte"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "Contingut"
+
+msgctxt "field:notification.email,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:notification.email,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris ocults"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris secundaris"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:notification.email,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:notification.email,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "Destinataris"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataris ocults"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataris secundaris"
+
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "Disparadors"
+
+msgctxt "field:notification.email,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:notification.email,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:notification.email.attachment,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:notification.email.attachment,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:notification.email.attachment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "Notificació"
+
+msgctxt "field:notification.email.attachment,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "Informe"
+
+msgctxt "field:notification.email.attachment,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:notification.email.attachment,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:notification.email.log,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:notification.email.log,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:notification.email.log,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:notification.email.log,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinataris"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataris ocults"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataris secundaris"
+
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "Disparador"
+
+msgctxt "field:notification.email.log,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:notification.email.log,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "El informes que s'utilitzaran com a adjunts."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+"Defineix quin correu electrònic dels mitjans de contacte del tercer "
+"s'utilitzarà"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "El informes utilitzat com a plantilla del correu electrònic."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris ocults"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris secundaris"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr ""
+"Deixeu en blanc per a utilitzar el valor definit al fitxer de configuració."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "El camp que conté el recipient(s)."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "El camp que conté el recipient(s) ocults."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "El camp que conté el recipient(s) secundaris."
+
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "Afegir un disparador per la notificació."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "Notificacions per correu electrònic"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "Registres"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "Notificacions per correu electrònic"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notitification"
+msgstr "Notificacions per correu electrònic"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "Adjunts notificacions per correu electrònic"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notitification Email Log"
+msgstr "Registre notificacions per correu electrònic"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "Hora"
