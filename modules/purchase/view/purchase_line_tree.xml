@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="purchase" expand="1"/>
+    <field name="type" optional="1"/>
+    <field name="product" expand="1" optional="0"/>
+    <field name="product_supplier" expand="1" optional="1"/>
+    <field name="summary" expand="1" optional="1"/>
+    <field name="quantity" symbol="unit"/>
+    <field name="unit_price"/>
+    <field name="taxes" optional="0"/>
+    <field name="amount"/>
+</tree>
