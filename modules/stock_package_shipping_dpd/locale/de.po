@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:carrier.credential.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"Der Aufruf des DPD Webservice schlug fehl mit der folgenden Fehlermeldung:\n"
+"\n"
+"%(message)s"
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"Der Aufruf des DPD Webservice schlug fehl mit der folgenden Fehlermeldung:\n"
+"\n"
+"%(message)s"
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid "Shipment \"%(shipment)s\" already has a reference number."
+msgstr "Lieferposten \"%(shipment)s\" verfügt bereits über eine Belegnummer."
+
+msgctxt "error:stock.shipment.out:"
+msgid "An address is required for warehouse \"%(warehouse)s\"."
+msgstr "Für Warenlager \"%(warehouse)s\" ist eine Adresse erforderlich."
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:carrier.credential.dpd,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:carrier.credential.dpd,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Depot"
+
+msgctxt "field:carrier.credential.dpd,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Passwort"
+
+msgctxt "field:carrier.credential.dpd,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Server"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "Benutzer ID"
+
+msgctxt "field:carrier.credential.dpd,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:carrier.credential.dpd,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "DPD Anmeldedaten"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "DPD Versand für Pakete erstellen"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Anmeldedaten"
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Anmeldedaten"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "Testbetrieb"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Informations"
+msgstr "Anmeldedaten"
