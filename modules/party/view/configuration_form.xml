@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Party Configuration">
+    <label name="party_sequence"/>
+    <field name="party_sequence"/>
+    <label name="party_lang" />
+    <field name="party_lang" widget="selection" />
+</form>

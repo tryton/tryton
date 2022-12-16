@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="party_configuration_view_form">
+            <field name="model">party.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_party_configuration_form">
+            <field name="name">Party Configuration</field>
+            <field name="res_model">party.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_party_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="party_configuration_view_form"/>
+            <field name="act_window" ref="act_party_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_party_configuration_form"
+            id="menu_party_configuration"
+            sequence="0" icon="tryton-list"/>
+
+        <record model="ir.property" id="property_party_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'party.configuration'), ('name', '=', 'party_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_party'))"/>
+        </record>
+    </data>
+</tryton>
