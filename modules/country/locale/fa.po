@@ -1,0 +1,1083 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr "کد 3 حرفی"
+
+msgctxt "field:country.country,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr "کد عددی"
+
+msgctxt "field:country.country,flag:"
+msgid "Flag"
+msgstr ""
+
+msgctxt "field:country.country,members:"
+msgid "Members"
+msgstr ""
+
+msgctxt "field:country.country,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:country.country,organizations:"
+msgid "Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.country,region:"
+msgid "Region"
+msgstr "منطقه"
+
+msgctxt "field:country.country,subdivisions:"
+msgid "Subdivisions"
+msgstr "تقسیمات کشوری"
+
+#, fuzzy
+msgctxt "field:country.organization,code:"
+msgid "Code"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "field:country.organization,countries:"
+msgid "Countries"
+msgstr "کشورها"
+
+msgctxt "field:country.organization,members:"
+msgid "Members"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.organization,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:country.organization.member,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:country.organization.member,country:"
+msgid "Country"
+msgstr "کشور"
+
+#, fuzzy
+msgctxt "field:country.organization.member,from_date:"
+msgid "From Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:country.organization.member,organization:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "field:country.organization.member,to_date:"
+msgid "To Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "شهر"
+
+#, fuzzy
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "زیربخش"
+
+#, fuzzy
+msgctxt "field:country.region,code_numeric:"
+msgid "Numeric Code"
+msgstr "کد عددی"
+
+#, fuzzy
+msgctxt "field:country.region,countries:"
+msgid "Countries"
+msgstr "کشورها"
+
+#, fuzzy
+msgctxt "field:country.region,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:country.region,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:country.region,subregions:"
+msgid "Subregions"
+msgstr "منطقه جنوبی"
+
+msgctxt "field:country.subdivision,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:country.subdivision,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:country.subdivision,flag:"
+msgid "Flag"
+msgstr ""
+
+msgctxt "field:country.subdivision,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:country.subdivision,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:country.subdivision,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "help:country.country,code3:"
+msgid "The 3 chars ISO country code."
+msgstr "کد ایزو 3 حرفی کشور."
+
+msgctxt "help:country.country,code:"
+msgid "The 2 chars ISO country code."
+msgstr "کد ایزو 2 حرفی کشور."
+
+msgctxt "help:country.country,code_numeric:"
+msgid "The ISO numeric country code."
+msgstr "کد ایزو عددی کشور."
+
+msgctxt "help:country.country,name:"
+msgid "The main identifier of the country."
+msgstr "شناسه اصلی کشور."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr ""
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "زیربخش مربوطه به این کد پستی."
+
+msgctxt "help:country.region,code_numeric:"
+msgid "UN M49 region code."
+msgstr ""
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr "کد ایزو زیربخش."
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr "کشور مربوطه این زیربخش."
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr "شناسه اصلی زیر بخش."
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr "زیر بخش را در زیر مجموعه کشور اضافه کنید."
+
+msgctxt "model:country.country,name:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "model:country.organization,name:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_amu"
+msgid "Arab Maghreb Union"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_apec"
+msgid "Asia-Pacific Economic Cooperation"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_asean"
+msgid "Association of Southeast Asian Nations"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_benelux"
+msgid "Benelux Union"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_can"
+msgid "Andean Community"
+msgstr "اجتماع مستقل"
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_caricom"
+msgid "Caribbean Community"
+msgstr "اجتماع مستقل"
+
+msgctxt "model:country.organization,name:organization_cemac"
+msgid "Economic and Monetary Community of Central Africa"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_cen-sad"
+msgid "Community of Sahel–Saharan States"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_comesa"
+msgid "Common Market for Eastern and Southern Africa"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_eac"
+msgid "East African Community"
+msgstr "اجتماع مستقل"
+
+msgctxt "model:country.organization,name:organization_eccas"
+msgid "Economic Community of Central African States"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_ecowas"
+msgid "Economic Community of West African States"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_eu"
+msgid "European Union"
+msgstr "لائونیون"
+
+msgctxt "model:country.organization,name:organization_gcc"
+msgid "Cooperation Council for the Arab States of the Gulf"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_igad"
+msgid "Intergovernmental Authority on Development"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.organization,name:organization_mercosur"
+msgid "Southern Common Market"
+msgstr "جنوب لی ته"
+
+msgctxt "model:country.organization,name:organization_nafta"
+msgid "North American Free Trade Agreement"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_sadc"
+msgid "Southern African Development Community"
+msgstr ""
+
+msgctxt "model:country.organization,name:organization_safta"
+msgid "South Asian Free Trade Area"
+msgstr ""
+
+msgctxt "model:country.organization.member,name:"
+msgid "Organization Member"
+msgstr ""
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:"
+msgid "Region"
+msgstr "منطقه"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_africa"
+msgid "Africa"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_americas"
+msgid "Americas"
+msgstr "ساموآی آمریکایی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_antarctica"
+msgid "Antarctica"
+msgstr "جنوبگان"
+
+msgctxt "model:country.region,name:region_asia"
+msgid "Asia"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:region_australia_new_zealand"
+msgid "Australia and New Zealand"
+msgstr "نیوزیلند"
+
+msgctxt "model:country.region,name:region_caribbean"
+msgid "Caribbean"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:region_central_america"
+msgid "Central America"
+msgstr "آباکو مرکزی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_central_asia"
+msgid "Central Asia"
+msgstr "آباکو مرکزی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_channel_islands"
+msgid "Channel Islands"
+msgstr "جزایر کِیمن"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_eastern_africa"
+msgid "Eastern Africa"
+msgstr "شرق اکواتوریا"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_eastern_asia"
+msgid "Eastern Asia"
+msgstr "کیپ شرقی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_eastern_europe"
+msgid "Eastern Europe"
+msgstr "کیپ شرقی"
+
+msgctxt "model:country.region,name:region_europe"
+msgid "Europe"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:region_latin_america_caribbean"
+msgid "Latin America and the Caribbean"
+msgstr "سن وینسنت و گرنادین"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_melanesia"
+msgid "Melanesia"
+msgstr "مالاكا"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_micronesia"
+msgid "Micronesia"
+msgstr "میسیونز"
+
+msgctxt "model:country.region,name:region_middle_africa"
+msgid "Middle Africa"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:country.region,name:region_north_america"
+msgid "North America"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_northern_africa"
+msgid "Northern Africa"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_northern_america"
+msgid "Northern America"
+msgstr "صحرای شمالی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_northern_europe"
+msgid "Northern Europe"
+msgstr "کیپ شمالی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_oceania"
+msgid "Oceania"
+msgstr "خانیا"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_polynesia"
+msgid "Polynesia"
+msgstr "پلی‌نزی فرانسه"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_south-eastern_asia"
+msgid "South-eastern Asia"
+msgstr "شمال- غرب"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_south_america"
+msgid "South America"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_southern_africa"
+msgid "Southern Africa"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_southern_asia"
+msgid "Southern Asia"
+msgstr "‌جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_southern_europe"
+msgid "Southern Europe"
+msgstr "‌جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_sub-saharan_africa"
+msgid "Sub-Saharan Africa"
+msgstr "آفریقای جنوبی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_western_africa"
+msgid "Western Africa"
+msgstr "استرالیای غربی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_western_asia"
+msgid "Western Asia"
+msgstr "استرالیای غربی"
+
+#, fuzzy
+msgctxt "model:country.region,name:region_western_europe"
+msgid "Western Europe"
+msgstr "کیپ غربی"
+
+msgctxt "model:country.region,name:region_world"
+msgid "World"
+msgstr ""
+
+msgctxt "model:country.subdivision,name:"
+msgid "Subdivision"
+msgstr "تقسیمات"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_country_by_region"
+msgid "Countries by Region"
+msgstr "منطقۀ مرکزی"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "کشورها"
+
+msgctxt "model:ir.action,name:act_organization_form"
+msgid "Organizations"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_region_form"
+msgid "Regions"
+msgstr "منطقه"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_region_tree"
+msgid "Areas"
+msgstr "ناحیه"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_country"
+msgid "Countries"
+msgstr "کشورها"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "کشورها"
+
+msgctxt "model:ir.ui.menu,name:menu_organization_form"
+msgid "Organizations"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_region_form"
+msgid "Regions"
+msgstr "منطقه"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_region_tree"
+msgid "Areas"
+msgstr "ناحیه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administration"
+msgstr "مدیریت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Region"
+msgstr "منطقه اداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Territory"
+msgstr "قلمرو اداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative area"
+msgstr "ناحیه اداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative atoll"
+msgstr "جزایر اداری"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "منطقه اداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Arctic Region"
+msgstr "منطقه قطب شمال"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Area"
+msgstr "ناحیه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Atoll"
+msgstr "جزایر"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous City"
+msgstr "شهر مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Commune"
+msgstr "بخش مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous District"
+msgstr "حوزه مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Province"
+msgstr "استان مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Region"
+msgstr "منطقه مستقل"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "حوزه مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous communities"
+msgstr "جوامع مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous community"
+msgstr "اجتماع مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous island"
+msgstr "جزیره مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous monastic state"
+msgstr "استان مستقل مدرن"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous municipality"
+msgstr "شهرداری مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous republic"
+msgstr "جمهوری مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous sector"
+msgstr "ناحیه مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territorial unit"
+msgstr "واحد ارضی مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territory"
+msgstr "اراضی مستقل"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Borough"
+msgstr "قصبه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Canton"
+msgstr "کانتون"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "شهر پایتخت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital District"
+msgstr "حوزه پایتخت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Metropolitan City"
+msgstr "کلان شهر پایتخت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Territory"
+msgstr "اراضی پایتخت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital city"
+msgstr "شهر پایتخت"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "زنجیره جزایر"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chains (of islands)"
+msgstr "زنجیره جزایر"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City"
+msgstr "شهر"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City corporation"
+msgstr "شهر صنعتی"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "شهرداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City with county rights"
+msgstr "شهر با حقوق شهرستان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Commune"
+msgstr "بخش"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Constitutional province"
+msgstr "استان قانونی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Council area"
+msgstr "منطقه شورایی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "County"
+msgstr "شهرستان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Department"
+msgstr "گروه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Dependency"
+msgstr "وابسته"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Development region"
+msgstr "منطقه توسعه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District"
+msgstr "حوزه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District council area"
+msgstr "حوزه ناحیه مشورتی"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "نایروبی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Division"
+msgstr "تقسیمات"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic Prefecture"
+msgstr "ریاست اقتصادی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic region"
+msgstr "منطقه اقتصادی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Emirate"
+msgstr "امارات"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Entity"
+msgstr "وجود"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Dependency"
+msgstr "فدرال وابسته"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal District"
+msgstr "حوزه فدرال"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territories"
+msgstr "اراضی فدرال"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "اراضی فدرال"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "قلمرو سرمایه استرالیا"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical entity"
+msgstr "موجودیت جغرافیایی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical region"
+msgstr "منطقه جغرافیایی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical unit"
+msgstr "واحد جغرافیایی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Governorate"
+msgstr "استان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Included for completeness"
+msgstr "تمامیت ارضی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Indigenous region"
+msgstr "منطقه بومی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island"
+msgstr "جزیره"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island council"
+msgstr "جزیره شورایی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island group"
+msgstr "گروه جزیره"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "گروه جزیره"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "لاوند"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Local council"
+msgstr "شورای محلی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "London borough"
+msgstr "منطقه لندن"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "منطقه متروپولیتن"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan cities"
+msgstr "شهرهای بزرگ"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "شهرهای بزرگ"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan department"
+msgstr "بخش متروپولیتن"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan district"
+msgstr "منطقه متروپولیتن"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan region"
+msgstr "منطقه متروپولیتن"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipalities"
+msgstr "شهرداری ها"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipality"
+msgstr "شهرداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Nation"
+msgstr "ملت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Oblast"
+msgstr "استان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Outlying area"
+msgstr "منطقه خارج از محدوده"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "جمعيت ارضی خارجي"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas department"
+msgstr "بخش خارجی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region"
+msgstr "منطقه خارجی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region/department"
+msgstr "منطقه خارج از کشور / بخش"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territorial collectivity"
+msgstr "جمعيت ارضی خارجي"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "منطقه خارجی"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "ناحیه اداری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Parish"
+msgstr "پاریش"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "محبوبیت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularates"
+msgstr "محبوبیت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Prefecture"
+msgstr "ولاية"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Principality"
+msgstr "قلمرو شاهزاده"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Province"
+msgstr "استان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Quarter"
+msgstr "ربع"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rayon"
+msgstr "ریون"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Region"
+msgstr "منطقه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional council"
+msgstr "شورای منطقه ای"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "شورای منطقه ای"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republic"
+msgstr "جمهوری"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republican City"
+msgstr "شهر جمهوری خواه"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "شهرداری ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Self-governed part"
+msgstr "بخش خودگردان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special District"
+msgstr "منطقه ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Municipality"
+msgstr "شهرداری ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Region"
+msgstr "منطقه ویژه"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "منطقه اداری ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative region"
+msgstr "منطقه اداری ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special city"
+msgstr "شهر ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special island authority"
+msgstr "مجوز ویژه جزیره"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "شهر ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special zone"
+msgstr "منطقه ویژه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "State"
+msgstr "استان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territorial unit"
+msgstr "واحد قلمروی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territory"
+msgstr "قلمرو"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "هوپ تاون"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town council"
+msgstr "شورای شهر"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Two-tier county"
+msgstr "دوطرفه شهرستان"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Union territory"
+msgstr "قلمرو اتحادیه"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority"
+msgstr "قدرت وحدت"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (england)"
+msgstr "قدرت واحد(انگلستان)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (wales)"
+msgstr "قدرت واحد(ولز)"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "اجتماع مستقل"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "نایروبی"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "وارداک"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "zone"
+msgstr "منطقه"

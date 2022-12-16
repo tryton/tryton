@@ -1,0 +1,108 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_account_owner_transaction_identification"
+msgid "Account Owner Transaction Identification"
+msgstr "Identificació del compte del propietari de la transacció"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_account_service_reference"
+msgid "Account Service Reference"
+msgstr "Cuenta referència del servei"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_account_servicer_transaction_identification"
+msgid "Account Servicer Transaction Identification"
+msgstr "Identificaació del compte del administrador de la transacció"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_additional_transaction_information"
+msgid "Additional Transaction Information"
+msgstr "Informació adicional de la transacció"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_cheque_number"
+msgid "Cheque Number"
+msgstr "Número de xec"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_clearing_system_reference"
+msgid "Clearing System Reference"
+msgstr "Referència del sistema de liquidació"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_creditor_iban"
+msgid "Creditor IBAN"
+msgstr "IBAN del acreedor"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_creditor_name"
+msgid "Creditor Name"
+msgstr "Nom del acreedor"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_debtor_iban"
+msgid "Debtor IBAN"
+msgstr "IBAN del deudor"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_debtor_name"
+msgid "Debtor Name"
+msgstr "Nom del deudor"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_end_to_end_identification"
+msgid "End to End Identification"
+msgstr "Identificació Fi a Fi"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_instruction_identification"
+msgid "Instruction Identification"
+msgstr "Identificació de la instrucció"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_mandate_identification"
+msgid "Mandate Identification"
+msgstr "Identificació del mandat"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_market_infrastructure_transaction_identification"
+msgid "Market Infrastructure Transaction Identification"
+msgstr "Identificació de la transacció de la infrastructura de merca"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_message_identification"
+msgid "Message Identification"
+msgstr "Idetificació del missatge"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_payment_information_identification"
+msgid "Payment Information Identification"
+msgstr "Identificació de la informació del pagament"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_processing_identification"
+msgid "Processing Identification"
+msgstr "Identificació del procès"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_remittance_information"
+msgid "Remittance Information"
+msgstr "Informació remeses"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_transaction_identification"
+msgid "Transaction Identification"
+msgstr "Identificació de la transacció"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_ultimate_creditor_name"
+msgid "Ultimate Creditor Name"
+msgstr "Nom del acreedor final"
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_ultimate_debtor_name"
+msgid "Ultimate Debtor Name"
+msgstr "Nom del deudor final"
