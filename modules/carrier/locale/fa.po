@@ -1,0 +1,105 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "روش هزینه حمل و نقل"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "حمل و نقل محصول"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "انتخاب حمل ونقل"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "پست"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "از کشور"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "به کشور"
+
+#, fuzzy
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost."
+msgstr "روش محاسبه هزینه حمل ونقل"
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "صورتحساب خدمات حمل ونقل محصول."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "نهاد/سازمان که نماینده حمل ونقل است."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "حمل ونقل انتخاب شده."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"فقط هنگام حمل ونقل از این کشور اعمال کنید.\n"
+"برای کشورهای دیگر خالی بگذارید."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"فقط هنگام حمل ونقل از این کشور اعمال کنید.\n"
+"برای کشورهای دیگر خالی بگذارید."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "حمل و نقل"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "انتخاب حمل ونقل"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "حمل کننده ها"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "انتخاب حمل ونقل"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "حمل و نقل"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "حمل کننده ها"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "انتخاب حمل ونقل"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "مدیریت حمل ونقل"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "قیمت محصول"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "شاخص"

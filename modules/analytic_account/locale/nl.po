@@ -1,0 +1,343 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Analytische lijnen"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "Analytische status"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Root analytisch"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Balans"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr "Distributie bovenliggend niveau"
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr "distributies"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Aantekening"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Root"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "Verhouding"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Root"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Boekingsregel"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Analytische rekeningen"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Relaties"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Relatie zichtbaar"
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "ingave analytische rekening"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr "Analytische rekening distributie(verdeling)"
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Analytische lijn"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Grootboek openen"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Analytische regel"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Analytische lijnen"
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "te vervolledigen analytische lijnen"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Open Account"
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Analytisch rekeningschema"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytische regels"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+"Om de rekening \"%(account)s\" te bewaren moet de som van hun "
+"distributies(verdelingen) 100%% zijn."
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr "Slechts één account is toegestaan door analytische root en oorsprong."
+
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Pas analytische regels toe"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Analytische rekeningen"
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "te vervolledigen analytische lijnen"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Analytisch rekeningschema"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytische regels"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Analytische Administratie"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "Geldig"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Sluiten"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Geopend"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr "Distributie"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "normaal"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Root"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Overzicht"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "analytisch"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Algemene informatie"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Aantekeningen"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Open"

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="from_"/>
+    <field name="from_"/>
+    <label name="content"/>
+    <field name="content"/>
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
+    <label name="recipients"/>
+    <field name="recipients"/>
+    <label name="fallback_recipients"/>
+    <field name="fallback_recipients"/>
+    <label name="recipients_secondary"/>
+    <field name="recipients_secondary"/>
+    <label name="fallback_recipients_secondary"/>
+    <field name="fallback_recipients_secondary"/>
+    <label name="recipients_hidden"/>
+    <field name="recipients_hidden"/>
+    <label name="fallback_recipients_hidden"/>
+    <field name="fallback_recipients_hidden"/>
+    <label name="contact_mechanism"/>
+    <field name="contact_mechanism"/>
+    <field name="attachments" colspan="4"/>
+    <field name="triggers" colspan="4"/>
+</form>
