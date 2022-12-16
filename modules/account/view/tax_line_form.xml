@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="move_line"/>
+    <field name="move_line" colspan="3"/>
+    <label name="tax"/>
+    <field name="tax"/>
+    <newline/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="type"/>
+    <field name="type"/>
+</form>

@@ -1,0 +1,36 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.correct.start,invoice:"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "field:account.invoice.correct.start,lines:"
+msgid "Invoice Lines"
+msgstr "Arve read"
+
+msgctxt "model:account.invoice.correct.start,name:"
+msgid "Correct Invoice"
+msgstr "Arve parandamine"
+
+msgctxt "model:ir.action,name:wizard_invoice_correct"
+msgid "Correct"
+msgstr "Paranda"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Paranda"
+
+#, fuzzy
+msgctxt "view:account.invoice.correct.start:"
+msgid "Choose lines to correct:"
+msgstr "Vali read, mida parandada"
+
+msgctxt "wizard_button:account.invoice.correct,start,correct:"
+msgid "Correct"
+msgstr "Paranda"
+
+msgctxt "wizard_button:account.invoice.correct,start,end:"
+msgid "Cancel"
+msgstr "Tühista"

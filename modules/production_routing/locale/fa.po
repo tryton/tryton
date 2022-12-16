@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr "BOMs"
+
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr "مراحل"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr "BOM"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "عملگر"
+
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "عملگر"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "عملیات"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "مسیرها"
+
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "عملیات"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "مسیرها"
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "مسیر یابی"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr "مسیر یابی - BOM"
+
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "عملگر"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr "مسیر"
