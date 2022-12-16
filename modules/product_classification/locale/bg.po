@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Активен"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Активен"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Класификация"
+
+#, fuzzy
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Класификация"
+
+msgctxt "help:product.classification.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.classification_tree.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Класификация"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr ""
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Класификация"

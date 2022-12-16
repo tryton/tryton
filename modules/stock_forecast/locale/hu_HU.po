@@ -1,0 +1,348 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"."
+msgstr "A \"Dátumtól\" a \"Dátumig\" előtti idő legyen"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity"
+msgstr "A mennyiség a soron nagyobb legyen mint a minimum mennyiség."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive"
+msgstr "A mennyiség a soron egy pozitív értéknek kell lenni."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forecast"
+msgstr "Egy variáció csak egyszer írható be ."
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\""
+msgstr "A \"Dátumtól\" a \"Dátumig\" előtti idő legyen"
+
+msgctxt "error:stock.forecast:"
+msgid ""
+"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
+" same location."
+msgstr ""
+"Előrejelzés \"%(first)s\" átfedi a dátumokat ugyan azon a raktárhelyiségen "
+"\"%(second)s\""
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion."
+msgstr "Előrejelzés \"%s\" nullázni kell, mielőtt törölve van."
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:stock.forecast,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.forecast,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Cél"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Dátumtól"
+
+msgctxt "field:stock.forecast,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Pozíció"
+
+msgctxt "field:stock.forecast,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Dátumig"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Hely"
+
+msgctxt "field:stock.forecast,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.forecast,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Dátumtól"
+
+msgctxt "field:stock.forecast.complete.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Dátumig"
+
+msgctxt "field:stock.forecast.complete.choose,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Termékek"
+
+msgctxt "field:stock.forecast.line,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.forecast.line,create_uid:"
+msgid "Create User"
+msgstr "Által lérehozva"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Előrejelzés"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Minimum mennyiség"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Lépések"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Mértékegység kategória"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Mennyiség kész"
+
+msgctxt "field:stock.forecast.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző után"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "Mértékegység"
+
+msgctxt "field:stock.forecast.line,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.forecast.line,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.forecast.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.forecast.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.forecast.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Lépések"
+
+msgctxt "field:stock.forecast.line-stock.move,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.forecast.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:stock.forecast.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Előrejelzés"
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Összes"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Előrejelzés"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Stock Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+#, fuzzy
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr ""
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Kész"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Kész"
+
+#, fuzzy
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Complete Forecast"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr ""
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
+#, fuzzy
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr "Mégse"
