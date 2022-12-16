@@ -1,0 +1,151 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.promotion.coupon.number:"
+msgid "The coupon numbered '%(numbers)s' are duplicated."
+msgstr "Der Coupon Nummer \"%(numbers)s' existiert doppelt."
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.promotion.coupon,create_date:"
+msgid "Create Date"
+msgstr "Erstellt am"
+
+msgctxt "field:sale.promotion.coupon,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.promotion.coupon,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "Genutzte Anzahl"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "Nummern"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "Pro Partei"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "Verkaufsaktion"
+
+msgctxt "field:sale.promotion.coupon,rec_name:"
+msgid "Record Name"
+msgstr "Name des Datensatzes"
+
+msgctxt "field:sale.promotion.coupon,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.promotion.coupon,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "Coupon"
+
+msgctxt "field:sale.promotion.coupon.number,create_date:"
+msgid "Create Date"
+msgstr "Erstellt am"
+
+msgctxt "field:sale.promotion.coupon.number,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.promotion.coupon.number,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.promotion.coupon.number,rec_name:"
+msgid "Record Name"
+msgstr "Name des Datensatzes"
+
+msgctxt "field:sale.promotion.coupon.number,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.promotion.coupon.number,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
+msgid "Create Date"
+msgstr "Erstellt am"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
+msgid "Record Name"
+msgstr "Name des Datensatzes"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+"Wie oft eine Coupon-Nummer genutzt werden kann.0 oder weniger für kein "
+"Limit."
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr "Aktivieren um die Anzahl der Nutzungen pro Partei zu zählen."
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "Aktions-Coupon"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "Aktions-Coupon-Nummer"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "Verkauf - Aktions-Coupon-Nummer"
