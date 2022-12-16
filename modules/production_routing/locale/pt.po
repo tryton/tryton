@@ -1,0 +1,83 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "Roteamento"
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "Roteamento"
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Roteamento"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr "Listas de Materiais"
+
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr "Etapas"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr "Lista de Materiais"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "Roteamento"
+
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operação"
+
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Operação"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "Roteamento"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Operations"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "Routings"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Operations"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "Routings"
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "Roteamento"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr "Roteamento - Lista de Materiais"
+
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operação"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr "Rota"
