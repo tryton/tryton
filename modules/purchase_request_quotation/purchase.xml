@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_view_list">
+            <field name="model">purchase.request.quotation</field>
+            <field name="type">tree</field>
+            <field name="name">purchase_request_quotation_list</field>
+        </record>
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_view_form">
+            <field name="model">purchase.request.quotation</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_quotation_form</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_purchase_request_quotation_form">
+            <field name="name">Purchase Request Quotations</field>
+            <field name="res_model">purchase.request.quotation</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_request_quotation_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view"
+                ref="purchase_request_quotation_view_list"/>
+            <field name="act_window" ref="act_purchase_request_quotation_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_request_quotation_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view"
+                ref="purchase_request_quotation_view_form"/>
+            <field name="act_window" ref="act_purchase_request_quotation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_quotation_form_view1_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_request_quotation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_quotation_form_view1_domain_sent">
+            <field name="name">Sent</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'sent')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_request_quotation_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_quotation_form_view1_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_request_quotation_form"/>
+        </record>
+
+        <menuitem parent="purchase.menu_purchase" sequence="40"
+            action="act_purchase_request_quotation_form"
+            id="menu_purchase_request_quotation_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_quotation_group_purchase_request">
+            <field name="menu" ref="menu_purchase_request_quotation_form"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_quotation_group_purchase">
+            <field name="menu" ref="menu_purchase_request_quotation_form"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="quotation_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quotation_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quotation_send_button">
+            <field name="name">send</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quotation_receive_button">
+            <field name="name">receive</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quotation_reject_button">
+            <field name="name">reject</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+        </record>
+
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_create_succeed">
+            <field name="model">purchase.request.quotation.create.succeed</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_quotation_create_succeed_form</field>
+        </record>
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_create_ask_suppliers">
+            <field name="model">purchase.request.quotation.create.ask_suppliers</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_quotation_create_ask_suppliers_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_create_quotation">
+            <field name="name">Create Quotation</field>
+            <field name="wiz_name">purchase.request.quotation.create</field>
+        </record>
+        <record model="ir.action.keyword" id="create_quotation_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.request,-1</field>
+            <field name="action" ref="wizard_create_quotation"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_request_quotation">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_request_quotation">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_request_quotation"/>
+        </record>
+        <record model="ir.model.access" id="access_request_quotation">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_request_quotation_purchase_request">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_request_quotation_purchase">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation')]"/>
+            <field name="group" ref="purchase.group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_line_view_form">
+            <field name="model">purchase.request.quotation.line</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_quotation_line_form</field>
+        </record>
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_line_view_list">
+            <field name="model">purchase.request.quotation.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">purchase_request_quotation_line_list</field>
+        </record>
+        <record model="ir.ui.view"
+            id="purchase_request_quotation_line_view_list_request">
+            <field name="model">purchase.request.quotation.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">purchase_request_quotation_line_list_request</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_request_quotation_line">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_request_quotation_line">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_request_quotation_line_purchase_request">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation.line')]"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_request_quotation_line_purchase">
+            <field name="model"
+                search="[('model', '=', 'purchase.request.quotation.line')]"/>
+            <field name="group" ref="purchase.group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_request_view_form">
+            <field name="model">purchase.request</field>
+            <field name="inherit"
+                ref="purchase_request.purchase_request_view_form"/>
+            <field name="name">purchase_request_form</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="inherit"
+                ref="purchase.purchase_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_purchase_request_quotation">
+            <field name="name">Purchase Request Quotation</field>
+            <field name="model">purchase.request.quotation</field>
+            <field name="report_name">purchase.request.quotation</field>
+            <field name="report">purchase_request_quotation/quotation.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_purchase_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">purchase.request.quotation,-1</field>
+            <field name="action" ref="report_purchase_request_quotation"/>
+        </record>
+        <record model="ir.sequence.type"
+            id="sequence_type_purchase_request_quotation">
+            <field name="name">Purchase Request Quotation</field>
+            <field name="code">purchase.request.quotation</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_request_quotation_group_admin">
+            <field name="sequence_type"
+                ref="sequence_type_purchase_request_quotation"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_request_quotation_group_purchase_admin">
+            <field name="sequence_type"
+                ref="sequence_type_purchase_request_quotation"/>
+            <field name="group" ref="purchase.group_purchase_admin"/>
+        </record>
+        <record model="ir.sequence"
+            id="sequence_purchase_request_quotation">
+            <field name="name">Purchase Request Quotation</field>
+            <field name="code">purchase.request.quotation</field>
+        </record>
+    </data>
+</tryton>
