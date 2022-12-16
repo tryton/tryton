@@ -1,0 +1,183 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:"
+msgid ""
+"You can not create an attachment named \"%(attachment)s\" in collection "
+"\"%(collection)s\" because there is already a collection with that name."
+msgstr ""
+
+msgctxt "error:webdav.collection:"
+msgid "The collection name must be unique inside a collection!"
+msgstr "Името на колекцията трябва да уникално вътре в колекцията!"
+
+msgctxt "error:webdav.collection:"
+msgid ""
+"You can not create a collection named \"%(parent)s\" in collection "
+"\"%(child)s\" because there is already a file with that name."
+msgstr ""
+
+msgctxt "field:ir.attachment,path:"
+msgid "Path"
+msgstr "Път"
+
+msgctxt "field:ir.attachment,shares:"
+msgid "Shares"
+msgstr "Споделени папки"
+
+msgctxt "field:ir.attachment,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.collection,childs:"
+msgid "Children"
+msgstr "Наследници"
+
+msgctxt "field:webdav.collection,complete_name:"
+msgid "Complete Name"
+msgstr "Пълно име"
+
+msgctxt "field:webdav.collection,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:webdav.collection,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:webdav.collection,domain:"
+msgid "Domain"
+msgstr "Домейн"
+
+msgctxt "field:webdav.collection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.collection,model:"
+msgid "Model"
+msgstr "Модел"
+
+msgctxt "field:webdav.collection,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:webdav.collection,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+msgctxt "field:webdav.collection,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:webdav.collection,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:webdav.collection,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:webdav.share,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:webdav.share,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:webdav.share,expiration_date:"
+msgid "Expiration Date"
+msgstr "Крайна дата"
+
+msgctxt "field:webdav.share,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.share,key:"
+msgid "Key"
+msgstr "Ключ"
+
+msgctxt "field:webdav.share,note:"
+msgid "Note"
+msgstr "Бележка"
+
+msgctxt "field:webdav.share,path:"
+msgid "Path"
+msgstr "Път"
+
+msgctxt "field:webdav.share,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:webdav.share,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.share,user:"
+msgid "User"
+msgstr "Потребител"
+
+msgctxt "field:webdav.share,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:webdav.share,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.action,name:act_share_list"
+msgid "Shares"
+msgstr "Споделени папки"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "model:ir.ui.menu,name:menu_share_list"
+msgid "Shares"
+msgstr "Споделени папки"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:"
+msgid "Collection"
+msgstr "Колекция"
+
+msgctxt "model:webdav.share,name:"
+msgid "Share"
+msgstr "Споделена папка"
+
+msgctxt "view:ir.attachment:"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "view:webdav.collection:"
+msgid "Collection"
+msgstr "Колекция"
+
+msgctxt "view:webdav.collection:"
+msgid "Collections"
+msgstr "Колекции"
+
+msgctxt "view:webdav.share:"
+msgid "Share"
+msgstr "Споделена папка"
+
+msgctxt "view:webdav.share:"
+msgid "Shares"
+msgstr "Споделени папки"
