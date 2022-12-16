@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="stock_configuration_form">
+            <field name="model">stock.configuration</field>
+            <field name="inherit" ref="stock.stock_configuration_view_form"/>
+            <field name="name">stock_configuration_form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="stock.act_stock_configuration_view1">
+            <field name="view" ref="stock_configuration_form"/>
+        </record>
+    </data>
+</tryton>
