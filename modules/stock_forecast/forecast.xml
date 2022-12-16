@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_stock_forecast">
+            <field name="name">Stock Forecast</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_forecast">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_forecast">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_forecast_complete">
+            <field name="name">Complete Forecast</field>
+            <field name="wiz_name">stock.forecast.complete</field>
+            <field name="model">stock.forecast</field>
+        </record>
+
+        <record model="ir.ui.view" id="forecast_view_form">
+            <field name="model">stock.forecast</field>
+            <field name="type">form</field>
+            <field name="name">forecast_form</field>
+        </record>
+        <record model="ir.ui.view" id="forecast_view_tree">
+            <field name="model">stock.forecast</field>
+            <field name="type">tree</field>
+            <field name="name">forecast_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_forecast_form">
+            <field name="name">Forecasts</field>
+            <field name="res_model">stock.forecast</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-2))]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_forecast_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="forecast_view_tree"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_forecast_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="forecast_view_form"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_forecast_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_forecast_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="50"
+            action="act_forecast_form" id="menu_forecast_form"/>
+
+        <record model="ir.ui.view" id="forecast_line_view_form">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">form</field>
+            <field name="name">forecast_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="forecast_line_view_tree">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">tree</field>
+            <field name="name">forecast_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="forecast_complete_ask_view_form">
+            <field name="model">stock.forecast.complete.ask</field>
+            <field name="type">form</field>
+            <field name="name">forecast_complete_ask_form</field>
+        </record>
+        <record model="ir.ui.view" id="forecast_complete_choose_view_form">
+            <field name="model">stock.forecast.complete.choose</field>
+            <field name="type">form</field>
+            <field name="name">forecast_complete_choose_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_forecast">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_forecast_line">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_line_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_cancel_button_group_stock_forecast">
+            <field name="button" ref="forecast_cancel_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_draft_button_group_stock_forecast">
+            <field name="button" ref="forecast_draft_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_confirm_button_group_stock_forecast">
+            <field name="button" ref="forecast_confirm_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+    </data>
+</tryton>
