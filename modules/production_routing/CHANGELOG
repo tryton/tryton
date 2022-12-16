@@ -1,0 +1,12 @@
+Version 4.2.2 - 2017-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.1 - 2017-09-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add routing as Lead Time parameter
+
+Version 4.0.0 - 2016-05-02
+* Initial release
