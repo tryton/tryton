@@ -1,0 +1,387 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:analytic_account.account:"
+msgid "You can not create recursive accounts!"
+msgstr "No pot crear comptes recursius"
+
+msgctxt "error:purchase.line:"
+msgid "It misses an \"Account Expense\" on product \"%s\"!"
+msgstr "Falta el «Compte de despeses» en el producte «%s»"
+
+msgctxt "error:purchase.line:"
+msgid "The supplier location is required!"
+msgstr "Es necessita la ubicació del proveïdor"
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required on line \"%s\" (%d)!"
+msgstr "Es necessita un compte analític en la línia «%s» (%d)"
+
+msgctxt "error:purchase.purchase:"
+msgid "Invoice addresses must be defined for the quotation."
+msgstr "Es necessita l'adreça de facturació per al pressupost."
+
+msgctxt "error:purchase.purchase:"
+msgid "It misses an \"Account Payable\" on the party \"%s\"!"
+msgstr "Falta el «Compte per pagar» en el tercer «%s»"
+
+msgctxt "field:analytic_account.account,active:"
+msgid "Active"
+msgstr "Activa"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Balanç"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la divisa"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "field:analytic_account.account,display_balance:"
+msgid "Display Balance"
+msgstr "Mostrar balanç"
+
+msgctxt "field:analytic_account.account,mandatory:"
+msgid "Mandatory"
+msgstr "Obligatori"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:analytic_account.account,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:purchase.line,amount:"
+msgid "Amount"
+msgstr "Quantitat"
+
+msgctxt "field:purchase.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "field:purchase.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:purchase.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:purchase.line,move_done:"
+msgid "Moves Done"
+msgstr "Moviments acabats"
+
+msgctxt "field:purchase.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Excepció de moviments"
+
+msgctxt "field:purchase.line,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:purchase.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Moviments ignorats"
+
+msgctxt "field:purchase.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Moviments recreats"
+
+msgctxt "field:purchase.line,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:purchase.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.line,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:purchase.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.line,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:purchase.line,taxes:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "field:purchase.line,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:purchase.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:purchase.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "field:purchase.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "field:purchase.purchase,comment:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:purchase.purchase,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.purchase,currency:"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "field:purchase.purchase,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la divisa"
+
+msgctxt "field:purchase.purchase,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:purchase.purchase,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adreça de facturació"
+
+msgctxt "field:purchase.purchase,invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:purchase.purchase,invoice_state:"
+msgid "Invoice State"
+msgstr "Estat de factura"
+
+msgctxt "field:purchase.purchase,invoices:"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "field:purchase.purchase,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Factures ignorades"
+
+msgctxt "field:purchase.purchase,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Factures recreades"
+
+msgctxt "field:purchase.purchase,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:purchase.purchase,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:purchase.purchase,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:purchase.purchase,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercer"
+
+msgctxt "field:purchase.purchase,payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:purchase.purchase,purchase_date:"
+msgid "Purchase Date"
+msgstr "Data de compra"
+
+msgctxt "field:purchase.purchase,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.purchase,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:purchase.purchase,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:purchase.purchase,supplier_reference:"
+msgid "Supplier Reference"
+msgstr "Referència del proveïdor"
+
+msgctxt "field:purchase.purchase,tax_amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:purchase.purchase,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:purchase.purchase,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Sense Impostos"
+
+msgctxt "field:purchase.purchase,warehouse:"
+msgid "Warehouse"
+msgstr "Dipòsit"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:purchase.line,name:"
+msgid "Purchase Line"
+msgstr "Línia de compra"
+
+msgctxt "model:purchase.purchase,name:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Credit - Debit"
+msgstr "Haver - Deure"
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Debit - Credit"
+msgstr "Deure - Haver"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Oberta"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Vista"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgctxt "selection:purchase.line,type:"
+msgid "Title"
+msgstr "Títol"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Order"
+msgstr "Basat en l'ordre"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Based On Shipment"
+msgstr "Basat en l'enviament"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Exception"
+msgstr "Excepció"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Paid"
+msgstr "Pagada"
+
+msgctxt "selection:purchase.purchase,invoice_state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Canceled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Confirmed"
+msgstr "Confirmada"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Done"
+msgstr "Acabada"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:purchase.purchase,state:"
+msgid "Quotation"
+msgstr "Pressupost"
