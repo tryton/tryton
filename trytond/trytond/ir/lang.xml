@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Localization"
+            parent="menu_administration"
+            sequence="30"
+            id="menu_localization"/>
+         <record model="ir.lang" id="lang_bg">
+            <field name="code">bg</field>
+            <field name="name">Bulgarian</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_ca">
+            <field name="code">ca</field>
+            <field name="name">Català</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am">a. m.</field>
+            <field name="pm">p. m.</field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_cs">
+            <field name="code">cs</field>
+            <field name="name">Czech</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_de">
+            <field name="code">de</field>
+            <field name="name">German</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <!--
+        lang_en is defined in ir.xml
+        -->
+        <record model="ir.lang" id="lang_es">
+            <field name="code">es</field>
+            <field name="name">Spanish</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_es_419">
+            <field name="code">es_419</field>
+            <field name="name">Spanish (Latin American)</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep">,</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_et">
+            <field name="code">et</field>
+            <field name="name">Estonian</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="grouping">[3, 3]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_fa">
+            <field name="code">fa</field>
+            <field name="name">Persian</field>
+            <field name="direction">rtl</field>
+            <field name="date">%Y/%m/%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+            <field name="mon_grouping">[3, 0]</field>
+            <field name="mon_decimal_point">٫</field>
+            <field name="mon_thousands_sep">٬</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_fi">
+            <field name="code">fi</field>
+            <field name="name">Finnish</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_fr">
+            <field name="code">fr</field>
+            <field name="name">French</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_hu">
+            <field name="code">hu</field>
+            <field name="name">Hungarian</field>
+            <field name="date">%Y-%m-%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_id">
+            <field name="code">id</field>
+            <field name="name">Indonesian</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="False"/>
+            <field name="n_sep_by_space" eval="False"/>
+        </record>
+        <record model="ir.lang" id="lang_it">
+            <field name="code">it</field>
+            <field name="name">Italian</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"></field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_lo">
+            <field name="code">lo</field>
+            <field name="name">Lao</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am">AM</field>
+            <field name="pm">PM</field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep">,</field>
+            <field name="p_sign_posn" eval="4"/>
+            <field name="n_sign_posn" eval="4"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_lt">
+            <field name="code">lt</field>
+            <field name="name">Lithuanian</field>
+            <field name="date">%Y-%m-%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_nl">
+            <field name="code">nl</field>
+            <field name="name">Dutch</field>
+            <field name="date">%d-%m-%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"></field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="2"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_pl">
+            <field name="code">pl</field>
+            <field name="name">Polish</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 0, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_pt">
+            <field name="code">pt</field>
+            <field name="name">Portuguese</field>
+            <field name="date">%d-%m-%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"></field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_ro">
+            <field name="code">ro</field>
+            <field name="name">Romanian</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3,3]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3,3]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_ru">
+            <field name="code">ru</field>
+            <field name="name">Russian</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_sl">
+            <field name="code">sl</field>
+            <field name="name">Slovenian</field>
+            <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep"> </field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_tr">
+            <field name="code">tr</field>
+            <field name="name">Turkish</field>
+            <field name="date">%d-%m-%Y</field>
+            <field name="grouping">[3, 3, 0]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+        </record>
+        <record model="ir.lang" id="lang_zh_CN">
+            <field name="code">zh_CN</field>
+            <field name="name">Chinese Simplified</field>
+            <field name="date">%Y-%m-%d</field>
+            <field name="am">上午</field>
+            <field name="pm">下午</field>
+            <field name="grouping">[3, 0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+            <field name="mon_grouping">[3, 0]</field>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep">,</field>
+            <field name="p_sign_posn" eval="4"/>
+            <field name="n_sign_posn" eval="4"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="False"/>
+            <field name="n_sep_by_space" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="lang_view_tree">
+            <field name="model">ir.lang</field>
+            <field name="type">tree</field>
+            <field name="name">lang_list</field>
+        </record>
+        <record model="ir.ui.view" id="lang_view_form">
+            <field name="model">ir.lang</field>
+            <field name="type">form</field>
+            <field name="name">lang_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_lang_form">
+            <field name="name">Languages</field>
+            <field name="res_model">ir.lang</field>
+            <field name="context"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_lang_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="lang_view_tree"/>
+            <field name="act_window" ref="act_lang_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_lang_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="lang_view_form"/>
+            <field name="act_window" ref="act_lang_form"/>
+        </record>
+        <menuitem
+            parent="ir.menu_localization"
+            action="act_lang_form"
+            sequence="10"
+            id="menu_lang_form"/>
+
+        <record model="ir.model.button" id="lang_load_translations_button">
+            <field name="name">load_translations</field>
+            <field name="string">Load translations</field>
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+            <field name="confirm">Are you sure you want to load languages' translations?</field>
+        </record>
+        <record model="ir.model.button" id="lang_unload_translations_button">
+            <field name="name">unload_translations</field>
+            <field name="string">Unload translations</field>
+            <field name="confirm">Are you sure you want to remove languages' translations?</field>
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="lang_config_start_view_form">
+            <field name="model">ir.lang.config.start</field>
+            <field name="type">form</field>
+            <field name="name">lang_config_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_lang_config">
+            <field name="name">Configure Languages</field>
+            <field name="wiz_name">ir.lang.config</field>
+            <field name="window" eval="True"/>
+        </record>
+
+        <record model="ir.module.config_wizard.item" id="config_wizard_item_lang">
+            <field name="action" ref="act_lang_config"/>
+        </record>
+    </data>
+</tryton>
