@@ -1,0 +1,17 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:commission,waiting_move:"
+msgid "Waiting Move"
+msgstr "Assentament d'espera"
+
+msgctxt "field:commission.agent,waiting_account:"
+msgid "Waiting Account"
+msgstr "Compte d'espera"
+
+msgctxt "help:commission.agent,waiting_account:"
+msgid "The account the agent's waiting commission amounts are posted to."
+msgstr ""
+"El compte on es contabilitzarant els imports de ocmisions en espera de "
+"l'agent."

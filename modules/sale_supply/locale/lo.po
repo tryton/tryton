@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "ສະໜອງການຂາຍ"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "ສະໜອງການຂາຍ"
+
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "ລາຍການຂາຍ"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "ຕ້ອງການສັ່ງຊື້"
+
+#, fuzzy
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "ສະໜອງການຂາຍ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Requested"
+msgstr "ສັ່ງແລ້ວ"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr ""
