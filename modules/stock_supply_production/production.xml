@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="production_configuration_view_form">
+            <field name="model">production.configuration</field>
+            <field name="inherit"
+                ref="production.production_configuration_view_form"/>
+            <field name="name">production_configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_production_request">
+            <field name="name">Request Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value"
+                eval="[('state', '=', 'request')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production.production_view_list"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production.production_view_form"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+
+    </data>
+</tryton>
