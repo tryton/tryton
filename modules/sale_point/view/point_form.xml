@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="tax_included"/>
+    <field name="tax_included"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <newline/>
+    <label name="address"/>
+    <field name="address"/>
+    <newline/>
+    <label name="storage_location"/>
+    <field name="storage_location"/>
+    <label name="return_location"/>
+    <field name="return_location"/>
+    <label name="customer_location"/>
+    <field name="customer_location"/>
+</form>
