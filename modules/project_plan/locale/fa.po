@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "کارمند"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "درصد"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "کارمند اسبق"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "جانشین"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "پایان واقعی"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "زمان پایان واقعی"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "شروع واقعی"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "زمان شروع واقعی"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "تخصیص ها"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "سطح تاخیر به عقب"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "پایان محدودیت"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "زمان پایان محدودیت"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "شروع محدودیت"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "زمان شروع محدودیت"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "مدت زمان"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "پایان زودهنگام"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "زمان پایان زودهنگام"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "شروع زودهنگام"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "زمان شروع زودهنگام"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "پایان تأخییر افتاده"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "زمان پایان تأخییر افتاده"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "شروع با تأخییر"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "زمان شروع با تأخییر"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "سطح تاخیر"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "پیشینیان"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "جانشین ها"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "سطح وظایف"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "تخصیص"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "کارمند اسبق - جانشین"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "تخصیص ها"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "طرح"
