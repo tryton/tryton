@@ -1,0 +1,364 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "Séquence de devis de demande d'achat"
+
+msgctxt ""
+"field:purchase.configuration.sequence,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "Séquence de devis de demande d'achat"
+
+msgctxt "field:purchase.request,best_quotation_line:"
+msgid "Best Quotation Line"
+msgstr "Meilleure ligne de devis"
+
+msgctxt "field:purchase.request,preferred_quotation_line:"
+msgid "Preferred Quotation Line"
+msgstr "Ligne de devis préférée"
+
+msgctxt "field:purchase.request,quotation_lines:"
+msgid "Quotation Lines"
+msgstr "Lignes de devis"
+
+msgctxt "field:purchase.request,quotation_lines_active:"
+msgid "Active Quotation Lines"
+msgstr "Lignes de devis actives"
+
+msgctxt "field:purchase.request.quotation,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request.quotation,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:purchase.request.quotation,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:purchase.request.quotation,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:purchase.request.quotation,revision:"
+msgid "Revision"
+msgstr "Révision"
+
+msgctxt "field:purchase.request.quotation,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:purchase.request.quotation,supplier:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:purchase.request.quotation,supplier_address:"
+msgid "Supplier Address"
+msgstr "Adresse du fournisseur"
+
+msgctxt "field:purchase.request.quotation,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
+msgid "Number of Created Quotations"
+msgstr "Nombre de devis créés"
+
+msgctxt "field:purchase.request.quotation.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:purchase.request.quotation.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:purchase.request.quotation.line,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:purchase.request.quotation.line,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:purchase.request.quotation.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Catégorie d'unité de mesure de produit"
+
+msgctxt "field:purchase.request.quotation.line,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:purchase.request.quotation.line,quotation:"
+msgid "Quotation"
+msgstr "Devis"
+
+msgctxt "field:purchase.request.quotation.line,quotation_state:"
+msgid "Quotation State"
+msgstr "État de devis"
+
+msgctxt "field:purchase.request.quotation.line,request:"
+msgid "Request"
+msgstr "Demande"
+
+msgctxt "field:purchase.request.quotation.line,supplier:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:purchase.request.quotation.line,supply_date:"
+msgid "Supply Date"
+msgstr "Date d'approvisionnement"
+
+msgctxt "field:purchase.request.quotation.line,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:purchase.request.quotation.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:purchase.request.quotation.line,unit_price:"
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+msgctxt "help:purchase.request,preferred_quotation_line:"
+msgid ""
+"The quotation that will be chosen to create the purchase\n"
+"otherwise first ordered received quotation line will be selected."
+msgstr ""
+"Le devis qui sera choisi pour créer l'achat\n"
+"sinon le premier devis reçu sera sélectionné."
+
+msgctxt "help:purchase.request.quotation,number:"
+msgid "The unique identifier of the quotation."
+msgstr "L'identifiant unique du devis."
+
+msgctxt "help:purchase.request.quotation,reference:"
+msgid "The reference used by the supplier."
+msgstr "La référence utilisée par le fournisseur."
+
+msgctxt "help:purchase.request.quotation,revision:"
+msgid "Number incremented each time the quotation is sent."
+msgstr "Un nombre incrémenté chaque fois que le devis est envoyé."
+
+msgctxt "help:purchase.request.quotation.line,request:"
+msgid "The request which this line belongs to."
+msgstr "La demande à laquelle la ligne appartient."
+
+msgctxt "help:purchase.request.quotation.line,supply_date:"
+msgid "When it should be delivered."
+msgstr "Quand elle doit être livrée."
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Quotations"
+msgstr "Devis"
+
+msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "Devis de demande d'achat"
+
+msgctxt "model:ir.action,name:report_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
+
+msgctxt "model:ir.action,name:wizard_create_quotation"
+msgid "Create Quotation"
+msgstr "Créer les devis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
+msgid "Sent"
+msgstr "Envoyé"
+
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "Un devis a déjà été fait pour la demande « %(request)s »."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "Devis de demande d'achat"
+
+msgctxt "model:purchase.request.quotation,name:"
+msgid "Purchase Request For Quotation"
+msgstr "Demande de devis d'achat"
+
+msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
+msgid "Create Purchase Request Quotation Ask Suppliers"
+msgstr "Créer devis de demande d'achat Demande de fournisseurs"
+
+msgctxt "model:purchase.request.quotation.create.succeed,name:"
+msgid "Create Purchase Request Quotation Succeed"
+msgstr "Créer devis de demande d'achat Réussi"
+
+msgctxt "model:purchase.request.quotation.line,name:"
+msgid "Purchase Request For Quotation Line"
+msgstr "Ligne de devis de demande d'achat"
+
+msgctxt "report:purchase.request.quotation:"
+msgid ":"
+msgstr " : "
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Customer Code:"
+msgstr "Code client :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Delivery Address:"
+msgstr "Adresse de livraison :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Expected Supply Date"
+msgstr "Date d'approvisionnement attendue"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Purchase"
+msgstr "Achat"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "Devis"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Reference:"
+msgstr "Référence :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Request for Quotation N°:"
+msgstr "Demande pour le devis n° :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Revision:"
+msgstr "Révision :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Quotation"
+msgstr "Devis"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Received"
+msgstr "Reçu"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Cancelled"
+msgstr "Annulée"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Received"
+msgstr "Reçu"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Rejected"
+msgstr "Rejetée"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Sent"
+msgstr "Envoyé"
+
+msgctxt "view:purchase.request.quotation.line:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "Devis"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Receive"
+msgstr "Recevoir"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Reject"
+msgstr "Rejeter"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Send"
+msgstr "Envoyer"
+
+msgctxt "view:purchase.request:"
+msgid "Preferred Quotation:"
+msgstr "Devis préféré :"
+
+msgctxt "view:purchase.request:"
+msgid "Quotations"
+msgstr "Devis"
+
+msgctxt ""
+"wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
+msgid "Process"
+msgstr "Traiter"
+
+msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
+msgid "Close"
+msgstr "Clôturer"
