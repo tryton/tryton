@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="inherit" ref="account.fiscalyear_view_form"/>
+            <field name="name">fiscalyear_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_form"/>
+            <field name="name">period_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_line_view_form">
+            <field name="model">account.tax.line</field>
+            <field name="inherit" ref="account.tax_line_view_form"/>
+            <field name="name">tax_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+    </data>
+</tryton>

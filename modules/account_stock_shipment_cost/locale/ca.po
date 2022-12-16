@@ -1,0 +1,255 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,shipment_cost_sequence:"
+msgid "Shipment Cost Sequence"
+msgstr "Seqüència de costos d'enviament"
+
+msgctxt "field:account.configuration.shipment_cost_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.shipment_cost_sequence,shipment_cost_sequence:"
+msgid "Shipment Cost Sequence"
+msgstr "Seqüència de costos d'albarà"
+
+msgctxt "field:account.invoice.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:account.shipment_cost,allocation_method:"
+msgid "Allocation Method"
+msgstr "Mètode d'assignació"
+
+msgctxt "field:account.shipment_cost,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.shipment_cost,factors:"
+msgid "Factors"
+msgstr "Factors"
+
+msgctxt "field:account.shipment_cost,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:account.shipment_cost,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.shipment_cost,posted_date:"
+msgid "Posted Date"
+msgstr "Data de comptabilització"
+
+msgctxt "field:account.shipment_cost,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Albarans de devolució"
+
+msgctxt "field:account.shipment_cost,shipments:"
+msgid "Shipments"
+msgstr "Albarans"
+
+msgctxt "field:account.shipment_cost,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
+msgctxt "field:account.shipment_cost-stock.shipment.out.return,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:account.shipment_cost.show,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:account.shipment_cost.show,shipments:"
+msgid "Shipments"
+msgstr "Albarans"
+
+msgctxt "field:account.shipment_cost.show.shipment,cost:"
+msgid "Cost"
+msgstr "Cost"
+
+msgctxt "field:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipments"
+msgstr "Albarans"
+
+msgctxt "field:product.product,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:product.template,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "field:stock.shipment.out,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "field:stock.shipment.out.return,shipment_costs:"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "help:account.shipment_cost,company:"
+msgid "The company the shipment cost is associated with."
+msgstr "L'empresa a la que el cost d'enviament està associat."
+
+msgctxt "help:account.shipment_cost,number:"
+msgid "The main identifier for the shipment cost."
+msgstr "L'identificador principal del cost d'enviament."
+
+msgctxt "model:account.configuration.shipment_cost_sequence,name:"
+msgid "Account Configuration Shipment Cost Sequence"
+msgstr "Configuració del compte de seqüència de costos d'albarà"
+
+msgctxt "model:account.shipment_cost,name:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "model:account.shipment_cost-stock.shipment.out,name:"
+msgid "Shipment Cost - Shipment"
+msgstr "Cost d'enviament - Albarà"
+
+msgctxt "model:account.shipment_cost-stock.shipment.out.return,name:"
+msgid "Shipment Cost - Shipment Return"
+msgstr "Cost d'enviament - Devolució d'albarà"
+
+msgctxt "model:account.shipment_cost.show,name:"
+msgid "Shipment Cost Show"
+msgstr "Mostra cost d'enviament"
+
+msgctxt "model:account.shipment_cost.show.shipment,name:"
+msgid "Post Shipment Cost"
+msgstr "Comptabilitzar cost d'enviament"
+
+msgctxt "model:ir.action,name:act_shipment_cost_form"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "model:ir.action,name:act_shipment_cost_form_shipment"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_post"
+msgid "Post Shipment Cost"
+msgstr "Comptabilitzar cost d'enviament"
+
+msgctxt "model:ir.action,name:wizard_shipment_cost_show"
+msgid "Show Shipment Cost"
+msgstr "Mostrar cost d'enviament"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_posted"
+msgid "Posted"
+msgstr "Comptabilitzat"
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"
+msgid "The shipment cost \"%(shipment_cost)s\" has no shipment."
+msgstr "El cost d'enviament \"%(shipment_cost)s\" no té cap albarà."
+
+msgctxt "model:ir.message,text:msg_shipment_cost_post_same_parties"
+msgid ""
+"The shipment \"%(shipment)s\" of shipment cost \"%(shipment_cost)s\" has "
+"already shipment cost from the same party \"%(other)s\"."
+msgstr ""
+"L'albarà\"%(shipment)s\" del cost d'enviament \"%(shipment_cost)s\" ja té un"
+" cost d'enviament del mateix tercer \"%(other)s\"."
+
+msgctxt "model:ir.model.button,string:shipment_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:shipment_cost_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:shipment_cost_post_button"
+msgid "Post"
+msgstr "Comptabilitza"
+
+msgctxt "model:ir.model.button,string:shipment_cost_show_button"
+msgid "Show"
+msgstr "Mostra"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_cost_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_cost"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_cost"
+msgid "Shipment Cost"
+msgstr "Cost d'albarà"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_cost"
+msgid "Shipment Costs"
+msgstr "Costos d'enviament"
+
+msgctxt "selection:account.shipment_cost,allocation_method:"
+msgid "By Shipment"
+msgstr "Per albarà"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.shipment_cost,state:"
+msgid "Posted"
+msgstr "Comptabilitzat"
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment"
+msgstr "Albarà"
+
+msgctxt "selection:account.shipment_cost.show.shipment,shipment:"
+msgid "Shipment Return"
+msgstr "Albarà de devolució"
+
+msgctxt "view:account.configuration:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "view:account.configuration:"
+msgid "Shipment Cost"
+msgstr "Cost d'enviament"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.shipment_cost.post,show,post:"
+msgid "Post"
+msgstr "Comptabilitza"
+
+msgctxt "wizard_button:account.shipment_cost.show,show,end:"
+msgid "Close"
+msgstr "Tanca"
