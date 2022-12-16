@@ -1,0 +1,353 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "VN / ECE-categoriecode"
+
+msgctxt "field:account.tax,unece_code:"
+msgid "UNECE Code"
+msgstr "VN / ECE-code"
+
+msgctxt "field:account.tax.template,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "VN / ECE-categoriecode"
+
+msgctxt "field:account.tax.template,unece_code:"
+msgid "UNECE Code"
+msgstr "VN / ECE-code"
+
+msgctxt "field:product.uom,unece_code:"
+msgid "UNECE Code"
+msgstr "VN / ECE-code"
+
+msgctxt "help:account.tax,unece_category_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Standaardcode van de Economische Commissie voor Europa van de Verenigde "
+"Naties."
+
+msgctxt "help:account.tax,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Standaardcode van de Economische Commissie voor Europa van de Verenigde "
+"Naties."
+
+msgctxt "help:product.uom,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Standaardcode van de Economische Commissie voor Europa van de Verenigde "
+"Naties."
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Canary Islands general indirect tax"
+msgstr "Algemene indirecte belasting op de Canarische eilanden"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Duty paid by supplier"
+msgstr "belasting betaald door leverancier"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt for resale"
+msgstr "Vrijgesteld voor wederverkoop"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt from tax"
+msgstr "Vrijgesteld van belasting"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Free export item, tax not charged"
+msgstr "Gratis exportartikel, belasting niet in rekening gebracht"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Higher rate"
+msgstr "Hoger tarief"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Lower rate"
+msgstr "Lager tarief"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Mixed tax rate"
+msgstr "Gemengd belastingtarief"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Services outside scope of tax"
+msgstr "Diensten buiten het bereik van de belasting"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Standard rate"
+msgstr "Standaardtarief"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Tax for production, services and importation in Ceuta and Melilla"
+msgstr "Belasting voor productie, diensten en invoer in Ceuta en Melilla"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Transferred (VAT)"
+msgstr "Overgedragen (btw)"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT Reverse Charge"
+msgstr "BTW verlegging"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT exempt for EEA intra-community supply of goods and services"
+msgstr ""
+"Btw vrijgesteld voor intracommunautaire levering van goederen en diensten in"
+" de EER"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) due from a previous invoice"
+msgstr ""
+"Belasting over de toegevoegde waarde (btw) verschuldigd op een eerdere "
+"factuur"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - collector's items and antiques"
+msgstr "Marge-regeling btw (btw) - verzamelobjecten en antiek"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - second-hand goods"
+msgstr "Marge-regeling btw (BTW) - tweedehands goederen"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - travel agents"
+msgstr "Marge-regeling btw (btw) - reisbureaus"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - works of art"
+msgstr "Marge-regeling btw (btw) - kunstwerken"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) not now due for payment"
+msgstr "Belasting toegevoegde waarde (btw) niet nu verschuldigd"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Zero rated goods"
+msgstr "Van belasting vrijgestelde goederen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural export rebate"
+msgstr "Landbouw export korting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural levy"
+msgstr "Landbouwheffing"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Alcohol mark tax"
+msgstr "Belasting op alcoholische dranken"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Anti-dumping duty"
+msgstr "Antidumpingrechten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Business license fee"
+msgstr "Zakelijke licentiekosten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Canadian provincial sales tax"
+msgstr "Canadese provinciale omzetbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Car tax"
+msgstr "Auto belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Coffee tax"
+msgstr "Koffie belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Commodity specific tax"
+msgstr "Goederenspecifieke belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Countervailing duty"
+msgstr "compenserende heffing"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Customs duty"
+msgstr "Invoerrecht"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Energy fee"
+msgstr "Energiekosten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Environmental tax"
+msgstr "Milieubelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Excise duty"
+msgstr "Accijns"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Federal excise tax"
+msgstr "Federale accijns"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Free"
+msgstr "Gratis"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "General construction tax"
+msgstr "Algemene bouwbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Goods and services tax"
+msgstr "Goederen en diensten belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Harmonised sales tax, Canadian"
+msgstr "Geharmoniseerde omzetbelasting, Canadees"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Illuminants tax"
+msgstr "Belastingen op verlichting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Import tax"
+msgstr "Import belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Individual tax"
+msgstr "Individuele belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Insurance tax"
+msgstr "Verzekeringsbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Light dues payable"
+msgstr "te betalen belasting op verlichting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local construction tax"
+msgstr "Lokale bouwbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local sales tax"
+msgstr "Lokale omzetbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Lust tax"
+msgstr "luxe tax"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Mineral oil tax"
+msgstr "Belasting op minerale olie"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Miscellaneous cash deposit"
+msgstr "Diverse contante borgsommen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Monetary compensatory amount"
+msgstr "Monetair compenserend bedrag"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Other taxes"
+msgstr "Overige belastingen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Paper consortium tax (Italy)"
+msgstr "Papieren consortiumbelasting (Italië)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Petroleum tax"
+msgstr "Aardolie belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Preference duty"
+msgstr "voorkeurtarief"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty bond"
+msgstr "Voorlopige compenserende maatregelen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty cash"
+msgstr "Voorlopige compenserende maatregelen in contanten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty bond"
+msgstr "Bepaling van compenserende rechten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty cash"
+msgstr "Voorziening in contanten"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Quebec sales tax"
+msgstr "Quebec omzetbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted social securities"
+msgstr "Verschoven sociale zekerheden"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted wage tax"
+msgstr "Verschoven loonbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special construction tax"
+msgstr "Speciale bouwbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special tax"
+msgstr "Speciale belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Stamp duty (Imposta di Bollo)"
+msgstr "Zegelrecht (Imposta di Bollo)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "State/provincial sales tax"
+msgstr "Staat / provinciale omzetbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Surtax"
+msgstr "opcentiemen(surtax)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Suspended duty"
+msgstr "uitgestelde belasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tax on replacement part"
+msgstr "Belasting op reserve onderdelen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tobacco tax"
+msgstr "Tabaksbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tonnage taxes"
+msgstr "Tonnagebelastingen"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Total"
+msgstr "Totaal"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Turnover tax"
+msgstr "Omzetbelasting"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Valuation deposit"
+msgstr "Waarborgsom"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Value added tax"
+msgstr "Belasting over de toegevoegde waarde"
+
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "VN / ECE-code"
+
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "VN / ECE-code"

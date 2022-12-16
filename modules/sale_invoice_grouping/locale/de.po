@@ -1,0 +1,52 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Gruppierungsmethode Rechnungsstellung (Verkauf)"
+
+msgctxt "field:party.party,sale_invoice_grouping_methods:"
+msgid "Sale Invoice Grouping Methods"
+msgstr "Gruppierungsmethode Rechnungsstellung (Verkauf)"
+
+msgctxt "field:party.party.sale_invoice_grouping_method,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Gruppierungsmethode Rechnungsstellung (Verkauf)"
+
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Gruppierungsmethode Rechnungsstellung (Verkauf)"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Gruppierungsmethode Rechnungsstellung (Verkauf)"
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr "Die Standard-Methode für gruppierte Rechnungen an neue Kunden."
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr "Die Standard-Methode für gruppierte Rechnungen an neue Kunden."
+
+msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgid "Party Sale Invoice Grouping Method"
+msgstr "Gruppierungsmethode Rechnungsstellung Partei (Verkauf)"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr "Keine"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr "Standard"
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr "Rechnungsstellung"
