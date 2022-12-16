@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Cenik"
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "ME za težo"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr "Decimalke za težo"
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Špediter"
+
+msgctxt "field:carrier.weight_price_list,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:carrier.weight_price_list,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:carrier.weight_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr "Cena"
+
+msgctxt "field:carrier.weight_price_list,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Teža"
+
+msgctxt "field:carrier.weight_price_list,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:carrier.weight_price_list,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "help:carrier,weight_currency:"
+msgid "The currency of the price."
+msgstr ""
+
+msgctxt "help:carrier,weight_price_list:"
+msgid "Add price to the carrier service."
+msgstr ""
+
+msgctxt "help:carrier,weight_uom:"
+msgid "The unit of weight criteria of the price list."
+msgstr ""
+
+msgctxt "help:carrier.weight_price_list,carrier:"
+msgid "The carrier that the price list belongs to."
+msgstr ""
+
+msgctxt "help:carrier.weight_price_list,price:"
+msgid "The price of the carrier service."
+msgstr ""
+
+msgctxt "help:carrier.weight_price_list,weight:"
+msgid "The upper limit for the price."
+msgstr ""
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr "Ceniki po teži"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Teža"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price List"
+msgstr "Cenik po teži"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price Lists"
+msgstr "Ceniki po teži"

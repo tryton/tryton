@@ -1,0 +1,66 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr "ບັນຊີ \"%(account)s\" ສຳລັບພາກສ່ວນ \"%(party)s\" ມີຍອດມັດຈໍາບໍ່ພຽງພໍ."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has deposit for the "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "ເງິນມັດຈໍາ"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "ຮຽກເງິນມັດຈໍາໃນໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "Recall Deposit"
+
+msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
+msgid "Recall Deposit"
+msgstr "Recall Deposit"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "ເງິນມັດຈໍາ"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "ເງິນມັດຈໍາ"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "ຮຽກຄືນ"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "ຮຽກເງິນມັດຈໍາຄືນ"

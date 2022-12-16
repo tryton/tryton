@@ -1,0 +1,68 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr ""
+"A conta \"%(account)s\" para a pessoa \"%(party)s\" não possuem depósito "
+"suficiente."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has deposit for the "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "Conta"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "Depósito"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "Recuperar o depósito na fatura"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "Recall Deposit"
+
+msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
+msgid "Recall Deposit"
+msgstr "Recall Deposit"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "Depósito"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "Depósito"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "Recuperar"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "Recuperar o depósito"

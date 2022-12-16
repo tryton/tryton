@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record id="account_type_template_minimal_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Pla de tipus de compte mínim</field>
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Actiu</field>
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_minimal_ca"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_current_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Banc</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_ca"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_cash_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Banc</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_ca"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_receivable_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Banc</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_ca"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_asset_long_term_ca" model="account.account.type.template">
+            
+            
+            <field name="name">A llarg termini</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_ca"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Passiu</field>
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_minimal_ca"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record id="account_type_template_liability_current_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Banc</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_ca"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_liability_current_payable_ca" model="account.account.type.template">
+            
+            
+            <field name="name">A pagar</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_ca"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_liability_current_tax_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Impost</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_ca"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_long_term_ca" model="account.account.type.template">
+            
+            
+            <field name="name">A llarg termini</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_ca"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_equity_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Patrimoni</field>
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_minimal_ca"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record id="account_type_template_income_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Benefici</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_equity_ca"/>
+            <field name="sequence" eval="40"/>
+            <field name="income_statement" eval="True"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record id="account_type_template_revenue_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Ingressos</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_ca"/>
+            <field name="sequence" eval="10"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record id="account_type_template_expense_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Despesa</field>
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_ca"/>
+            <field name="sequence" eval="20"/>
+            <field name="display_balance">credit-debit</field>
+        </record>
+        <record id="account_type_template_off_balance_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Fora de balanç</field>
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_minimal_ca"/>
+        </record>
+
+        <record id="account_template_root_ca" model="account.account.template">
+            
+            
+            <field name="name">Pla de comptes mínim</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_minimal_ca"/>
+        </record>
+        <record id="account_template_receivable_ca" model="account.account.template">
+            
+            
+            <field name="name">A cobrar principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_receivable_ca"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">receivable</field>
+        </record>
+        <record id="account_template_payable_ca" model="account.account.template">
+            
+            
+            <field name="name">A pagar principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_payable_ca"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">payable</field>
+        </record>
+        <record id="account_template_revenue_ca" model="account.account.template">
+            
+            
+            <field name="name">Ingrés principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_revenue_ca"/>
+            <field name="deferral" eval="False"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">revenue</field>
+        </record>
+        <record id="account_template_expense_ca" model="account.account.template">
+            
+            
+            <field name="name">Despesa principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_expense_ca"/>
+            <field name="deferral" eval="False"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">expense</field>
+        </record>
+        <record id="account_template_cash_ca" model="account.account.template">
+            
+            
+            <field name="name">Efectiu principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_cash_ca"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">other</field>
+        </record>
+        <record id="account_template_tax_ca" model="account.account.template">
+            
+            
+            <field name="name">Impost principal</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_tax_ca"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account_template_root_ca"/>
+            <field name="kind">other</field>
+        </record>
+    </data>
+</tryton>
