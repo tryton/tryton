@@ -1,0 +1,98 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.shipment.assign.manual.show,move:"
+msgid "Move"
+msgstr "Boekingen/bewegingen"
+
+msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
+msgid "Move Quantity"
+msgstr "Verplaats hoeveelheid"
+
+msgctxt "field:stock.shipment.assign.manual.show,place:"
+msgid "Place"
+msgstr "Plaats"
+
+msgctxt "field:stock.shipment.assign.manual.show,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:stock.shipment.assign.manual.show,skipped:"
+msgid "Skipped"
+msgstr "Overgeslagen"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "help:stock.shipment.assign.manual.show,quantity:"
+msgid ""
+"The maximum quantity to assign from the place.\n"
+"Leave empty for the full quantity of the move."
+msgstr ""
+"Het maximale aantal dat vanaf de plaats kan worden toegewezen.\n"
+"Laat leeg voor de volledige hoeveelheid van de beweging."
+
+msgctxt "model:ir.action,name:wizard_production_assign_manual"
+msgid "Manual Assign Production"
+msgstr "Handmatige toewijzing van productie"
+
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign_manual"
+msgid "Manual Assign Supplier Return Shipment"
+msgstr "Handmatig leverancier retourzending toewijzen"
+
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign_manual"
+msgid "Manual Assign Internal Shipment"
+msgstr "Handmatig interne zending toewijzen"
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
+msgid "Manual Assign Customer Shipment"
+msgstr "Handmatig klantzending toewijzen"
+
+msgctxt "model:ir.message,text:msg_assign_failed"
+msgid "Failed to assign of %(move)s from %(place)s, please retry."
+msgstr "Kan %(move)s van %(place)s niet toewijzen, probeer het opnieuw."
+
+msgctxt "model:ir.message,text:msg_invalid_quantity"
+msgid "The quantity must be between 0 and %(quantity)s."
+msgstr "De hoeveelheid moet tussen 0 en %(quantity)s liggen."
+
+msgctxt "model:ir.model.button,string:production_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Handmatig toewijzen"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Handmatig toewijzen"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Handmatig toewijzen"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_out_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Handmatig toewijzen"
+
+msgctxt "model:stock.shipment.assign.manual.show,name:"
+msgid "Manual Assign Shipment"
+msgstr "Handmatig zending toewijzen"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
+msgid "Assign"
+msgstr "Toewijzen"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
+msgid "Skip"
+msgstr "Overslaan"

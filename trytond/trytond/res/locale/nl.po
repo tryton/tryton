@@ -1,0 +1,612 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr "Modificatie groepen"
+
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr "Exporteren"
+
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr "Exporteren"
+
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "Knop"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "Regelgroep"
+
+msgctxt "field:ir.sequence,groups:"
+msgid "User Groups"
+msgstr "gebruikersgroepen"
+
+msgctxt "field:ir.sequence.strict,groups:"
+msgid "User Groups"
+msgstr "gebruikersgroepen"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "gebruikersgroepen"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "gebruikersgroepen"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "Reeks type"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Knop"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "Toegangsrechten veld"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "Toegang tot Menu"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "rechtenbeheer"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "Regels"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "Gebruikers"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "Acties"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "toepassingen"
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "Taal"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "Taalrichting(language direction)"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "Inlognaam"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "Menu Actie"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "Paswoord"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Wachtwoord Hash"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "Reset wachtwoord"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "Reset wachtwoord Verlopen"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "PySON-menu"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "Sessies"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "Handtekening"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "Statusbalk"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "Waarschuwing"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "toepassingen"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Sleutel"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "IP Adres"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "IP-netwerk"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "Inlognaam"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "Altijd"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr "De gebruikersgroepen die de export kunnen gebruiken."
+
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr "De gebruikersgroepen die de export kunnen wijzigen."
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr "Groepen mogen de reeksen (sequences) van dit type bewerken."
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login."
+msgstr "Deze acties worden na het inloggen uitgevoerd."
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "Gebruikers configureren"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Gebruikers"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "Aktie - Groep"
+
+msgctxt "model:ir.export-res.group,name:"
+msgid "Export Group"
+msgstr "Export groep"
+
+msgctxt "model:ir.export-write-res.group,name:"
+msgid "Export Modification Group"
+msgstr "Exportmodificatiegroep"
+
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr ""
+"Het wachtwoord mag niet hetzelfde zijn als het e-mailadres van de gebruiker."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "Dezelfde tekens verschijnen te vaak in het wachtwoord."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "Dit paswoord is verboden."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "Het paswoord is te kort."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr ""
+"Het wachtwoord mag niet hetzelfde zijn als de gebruikersnaam van de "
+"gebruiker."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "Het wachtwoord mag niet hetzelfde zijn als de gebruikersnaam."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"Voor logboekdoeleinden kunnen gebruikers niet worden verwijderd, maar moeten"
+" ze worden gedeactiveerd."
+
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr "Wachtwoord voor %(login)s"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Stuur per e-mail een nieuw tijdelijk wachtwoord naar de gebruiker"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "bevestigen"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "Modelknop - groep"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_any"
+msgid "Any export"
+msgstr "Elke export"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
+msgid "Any export"
+msgstr "Elke export"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
+msgid "User in modification groups"
+msgstr "Gebruiker in modificatiegroepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_read"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_write"
+msgid "User in modification groups"
+msgstr "Gebruiker in modificatiegroepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr "Gebruiker in groepen"
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr "Eigen sessie"
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr "Eigen sessie"
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr "Eigen favoriet(en)"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr "Eigen gebruikersapplicatie"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr "Elke gebruikerstoepassing"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr "Eigen waarschuwing"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr "Eigen zoekfunctie"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr "Elke weergave zoeken"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr "Gemeenschappelijke zoekfunctie"
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "Regelgroep - Groep"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "Volgorde Type - Groep"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Gebruikers"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Gebruikers"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "UI-menu - Groep"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "Systeembeheer"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "Gebruiker - Actie"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "Gebruiker - Groep"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "Gebruikerstoepassing"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "Gebruiker configuratie init"
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "Aanmeldpoging"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "Gebruikerswaarschuwing"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Reset wachtwoord"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+"Her wachtwoord voor uw account, [1:%(login)s], is opnieuw ingesteld.[2:]\n"
+"                U moet er een nieuw aanmaken in de gebruikers voorkeuren[3:]\n"
+"               U kunt verbinding maken met dit tijdelijke wachtwoord [4:%(password)s] op[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "Het wachtwoord verloopt op[1:%(datetime)s UTC]."
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Aangevraagd"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Goedgekeurd"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "Toegangsrechten"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "leden"
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique."
+msgstr "Opgelet: De login moet uniek zijn."
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "U kunt nu gebruikers toevoegen aan het systeem."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "Toegangsrechten"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "Acties"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "Groepslidmaatschap"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "Ok"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "Toevoegen"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "Einde"

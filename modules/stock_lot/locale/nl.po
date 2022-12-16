@@ -1,0 +1,219 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Lot vereist"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Lot vereist"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Verwachte hoeveelheid"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "Op datum van"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "Op datum van"
+
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "Op datum van"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "locaties"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "Op datum van"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Lot Caches"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Interne hoeveelheid"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Plaats"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "Het type locatie waarvoor een lot vereist is."
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "Het type locatie waarvoor een lot vereist is."
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Laat de verwachte voorraadhoeveelheden voor deze datum berekenen.\n"
+"* Een lege waarde is een oneindige datum in de toekomst.\n"
+"* Een datum in het verleden levert historische waarden op."
+
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Laat de verwachte voorraadhoeveelheden voor deze datum berekenen.\n"
+"* Een lege waarde is een oneindige datum in de toekomst.\n"
+"* Een datum in het verleden levert historische waarden op."
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Hoeveelheidslijst per locatie"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "boomstructuur hoeveelheden per locatie"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Loten"
+
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lots"
+msgstr "Loten"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse"
+msgid "Lots By Warehouse"
+msgstr "Loten per magazijn"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Boekingen/ bewegingen"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"U kunt het product van een lot die voorraadbewegingen heeft niet wijzigen."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+"Om product \"%(product)s\" te verplaatsen, moet u een stockpartij opgeven."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+"U moet een stock lot selecteren in plaats van een product voor "
+"\"%(product)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Loten"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Stock Lot"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "lot per locatie"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr "Loten per magazijn"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Voorraadperiode Cache per partij"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "inventaris verschil"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "magazijn"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "inventaris verschil"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "magazijn"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Loten"
