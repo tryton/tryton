@@ -1,0 +1,209 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Cuenta de gastos"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Utilizar las cuentas del padre"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Cuenta de ingresos"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr ""
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr ""
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr ""
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Impuestos de cliente utilizados"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr ""
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Impuestos de proveedor utilizados"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Utilizar los impuestos del padre"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "Cuenta de gastos"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "Cuenta de ingresos"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr ""
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr ""
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "Utilizar las cuentas definidas en la categoria padre."
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr ""
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr ""
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr ""
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "Utilizar los impuestos definidos en la categoría padre."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr ""
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr ""
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr ""
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr ""
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr ""
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr ""
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr ""
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr ""

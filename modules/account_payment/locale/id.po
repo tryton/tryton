@@ -1,0 +1,558 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr ""
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr ""
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr ""
+
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr "Diblokir"
+
+#, fuzzy
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Pembayaran"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Debit Langsung"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr ""
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
+msgstr ""
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "Kelompok"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "Jenis"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "Baris"
+
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr "Asal"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "Metode proses"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "Jenis"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr ""
+
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Pembayaran"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Pembayaran"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr ""
+
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Debit Langsung"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr ""
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Debit Langsung"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr ""
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr ""
+
+msgctxt "help:account.move.line.pay.start,date:"
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr ""
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr ""
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr ""
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr ""
+
+msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr ""
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr ""
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "Pembayaran"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr ""
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr ""
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "Utang"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "Piutang"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "Disetujui"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "Gagal"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Setuju"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Gagal"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Berhasil"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "Pembayaran"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr ""
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "Pembayaran"
+
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr ""
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "Utang"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "Piutang"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "Utang"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "Piutang"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "Disetujui"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "Gagal"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr ""
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "Utang"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "Piutang"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Pembayaran"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "Jumlah"
+
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Info Pembayaran"
+
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Berhasil"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Jumlah"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "Proses Pembayaran?"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "Info Lain"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Bayar"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
+msgid "Pay"
+msgstr "Bayar"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "Proses"

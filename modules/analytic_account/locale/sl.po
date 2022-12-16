@@ -1,0 +1,358 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr "Analitične postavke"
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr "Analitično stanje"
+
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr "Koren"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Podkonti"
+
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr "Matične porazdelitve"
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr "Porazdelitve"
+
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Opomba"
+
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Matični konto"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr "Koren"
+
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Matična porazdelitev"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr "Delež"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr "Koren"
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Postavka knjižbe"
+
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Končni datum"
+
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
+
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Analitični konti"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Število analitičnih kontov"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Partner viden"
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr "Vnos analitičnega konta"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr "Analitični konto"
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr "Porazdelitev analitičnih kontov"
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr "Analitična postavka"
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Odpri kontni načrt"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Analitično pravilo"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Analytic Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Analytic Lines to Complete"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Open Account"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytic Rules"
+
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr "Dovoljen je samo en konto na analitični koren in poreklo."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Analytic Rules"
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Analytic Account"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr "Analytic Lines to Complete"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Open Chart of Analytic Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Analytic Rules"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Analytic Administration"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr "Odobreno"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Zaprto"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Odprto"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr "Porazdelitev"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Normalno"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr "Koren"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Vpogled"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr "Analitično"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debet"
+
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Splošno"
+
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Opombe"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Odpri"

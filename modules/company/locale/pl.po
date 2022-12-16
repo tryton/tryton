@@ -1,0 +1,323 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "Firmy podrzędne"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "Pracownicy"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "Stopka"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "Nagłówek"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "Firma nadrzędna"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "Strona"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Strefa czasowa"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr "Data zakończenia"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "Strona"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr "Data rozpoczęcia"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr "Podwładni"
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr "Przełożony"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:res.user,companies:"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "Obecna firma"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr "Obecny pracownik"
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "Pracownicy"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "Główna firma"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "Pracownik"
+
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Dodaj firmy podrzędne."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Główna waluta firmy."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Dodaj pracowników do firmy."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Tekst w stopkach raportów."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Tekst w nagłówkach raportów."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Dodaj firmę podrzędną."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Służy do wyznaczenia dzisiejszej daty."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Firma, do której należą pracownicy."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Data opuszczenia firmy przez pracownika."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Strona reprezentująca pracownika."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Data przyjęcia pracownika do firmy."
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Pracownicy nadzorowani przez tego pracownika."
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Pracownik nadzorujący tego pracownika."
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron."
+msgstr "Firmy zarejestrowane dla crona."
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
+"\n"
+"- \"pracownik\" będący obecnym użytkownikiem"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Ograniczenie użycia sekwencji do firmy."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Ograniczenie użycia sekwencji do firmy."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Wybór firmy, w której pracuje użytkownik."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Wybierz pracownika, który będzie użytkownikiem systemu."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Dodaj pracowników, do których użytkownik będzie miał dostęp."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Przyznanie dostępu do firmy i jej firm podrzędnych."
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "Konfiguracja ustawień firmy"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "Pracownik"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "Konfiguruj ustawienia firmy"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Pracownicy"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr "Nadzorowany przez"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Letter"
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr "Cron - Firma"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "Użytkownik w firmie"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "Użytkownik w firmie"
+
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Firmy"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Pracownicy"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr "Administracja ustawieniami firmy"
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr "Administracja ustawieniami pracowników"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr "Użytkownik - Pracownik"
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "Z pozdrowieniami,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Szanowni Państwo,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "Temat:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr "Możesz dodać swoją firmę do systemu."
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Raporty"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "Dodaj"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"

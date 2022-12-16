@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="number"/>
+    <field name="journal"/>
+    <field name="kind"/>
+    <field name="payment_count"/>
+    <field name="payment_amount"/>
+    <field name="payment_amount_succeeded"/>
+    <field name="payment_complete"/>
+</tree>

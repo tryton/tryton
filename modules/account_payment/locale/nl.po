@@ -1,0 +1,562 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Volgorde van de betalingsgroepen"
+
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Volgorde van de betalingsgroepen"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Automatische incasso"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "Te betalen bedrag"
+
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr "geblokkeerd"
+
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Betalingsvaluta"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Automatische incasso"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "Betaling Soort"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "betalingen"
+
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
+msgstr "Dagboeken"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "Soort"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "Regel"
+
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "Uitvoeringsmethode"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "Soort"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Betaling Totaalbedrag"
+
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Betaling geslaagd"
+
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Betaling voltooid"
+
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Aantal betalingen"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "betalingen"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "Uitvoeringsmethode"
+
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Automatische incasso"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "Automatische incasso"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Automatische incasso"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "Vink aan als de factuur per automatische incasso wordt betaald."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "Vink aan als de regel via automatische incasso wordt betaald."
+
+msgctxt "help:account.move.line.pay.start,date:"
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
+msgstr ""
+"Wanneer de uitvoering van de betalingen gepland is.\n"
+"Laat dit leeg om de vervaldatum te gebruiken ."
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr "De som van alle betalingsbedragen."
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr "De som van de bedragen van de succesvolle betalingen."
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr "Alle betalingen in de groep zijn voltooid."
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr "Het aantal betalingen in de groep."
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Controleer of de leverancier een automatische incasso uitvoert."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Controleer of de leverancier een automatische incasso uitvoert."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Rekeningconfiguratie Betalingsgroepvolgorde"
+
+msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "Betaallijn"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "Betaallijn"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "Betalingsgroep"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "Betalingsdagboek"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "Verwerk betalingen"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "Te betalen boekingen"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "Betaallijnen"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "Betalingsgroepen"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Betalingsdagboeken"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "Verwerk betalingen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "Te betalen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "Te ontvangen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "Verwerking"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+"U kunt de relatie \"% (party) s\" niet verwijderen terwijl ze facturen in "
+"behandeling hebben bij bedrijf \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr "Regel \"%(line)s\" is geblokkeerd voor betaling."
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+"De lijnen \"%(names)s\" voor %(party)s kunnen worden gegroepeerd met de lijn"
+" \"%(line s\"."
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+"Om betaling \"%(payment)s\" te verwijderen, moet u het terugzetten naar de "
+"conceptstatus."
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr ""
+"Het betaalde bedrag \"%(payment)s\" is hoger dan \"%(line)s\" (te veel "
+"betaald) ."
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Betaallijnen"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Block"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "deblokkeren"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Goedkeuren"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "mislukt"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "geslaagd"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "Standaard rekening betalingsgroep"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "Rekeningbetalingsgroep"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "Te betalen lijnen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "Betalingsgroepen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Betalingsdagboeken"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "Betalingen"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr "Betaling met automatische incasso"
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr "Betalingsgoedkeuring"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "Te betalen"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "Te ontvangen"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "Te betalen"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "Te ontvangen"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "Verwerking"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "Te betalen"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "Te ontvangen"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "Groepsvolgorde"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr "Voltooien"
+
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "tellen"
+
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Betalings Info"
+
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Totaal bedrag"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "Verwerk betalingen ?"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "Overige informatie"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Betalen"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
+msgid "Pay"
+msgstr "Betalen"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "Uitvoeren"

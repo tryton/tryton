@@ -1,0 +1,565 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Mokėjimo grupės numeruotė"
+
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Mokėjimo grupės numeruotė"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Tiesioginis debetas"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "Mokėjimo suma"
+
+msgctxt "field:account.move.line,payment_blocked:"
+msgid "Blocked"
+msgstr "Blokuoti"
+
+#, fuzzy
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Mokėjimo suma"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Tiesioginis debetas"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "Mokėjimo tipas"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "field:account.move.line.pay.ask_journal,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.move.line.pay.ask_journal,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.move.line.pay.ask_journal,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+msgctxt "field:account.move.line.pay.ask_journal,journals:"
+msgid "Journals"
+msgstr "Žurnalai"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "Suma"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "Rūšis"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "Eilutė"
+
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr "Šaltinis"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "Vykdymo būdas"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "Būsena"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "Žurnalas"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "Rūšis"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "Numeris"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Mokėjimo suma"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Sėkminga"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Mokėjimų grupė"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Mokėjimo suma"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "Vykdymo būdas"
+
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Tiesioginis debetas"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "Tiesioginis debetas"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Tiesioginis debetas"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "Pažymėkite, jei sąskaita faktūra yra apmokama tiesioginiu debetu."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "Pažymėkite, jei eilutė bus apmokama tiesioginiu debetu."
+
+msgctxt "help:account.move.line.pay.start,date:"
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
+msgstr ""
+"Kada numatytas mokėjimo įvykdymas.\n"
+"Palikite tuščią, kad naudoti eilučių mokėjimo data."
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr ""
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Pažymėkite, jei tiekėjas teikia tiesioginį debetą."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Pažymėkite, jei tiekėjas teikia tiesioginį debetą."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Sąskaitos valdymo mokėjimo grupės numeruotė"
+
+msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "Apmokėti eilutes"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "Apmokėti eilutes"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "Mokėjimas"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "Mokėjimų grupė"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "Mokėjimų žurnalas"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "Mokėti"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "Mokėtinos eilutės"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "Apmokėti eilutes"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Payments"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "Mokėjimų grupės"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Mokėjimų žurnalai"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "Mokėti"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "Mokėtina"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "Gautina"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "Visi"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "Patvirtinta"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "Nepavyko"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "Vykdoma"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Sėkminga"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Apmokėti eilutes"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Blokuoti"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "Atblokuoti"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Patvirtinti"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Nepavyko"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Sėkmingai"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "Default Account Payment Group"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "Account Payment Group"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "Eilutės apmokėjimui"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "Mokėjimų grupės"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Mokėjimų žurnalai"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "Mokėjimai"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr ""
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "Mokėjimas"
+
+msgctxt "model:res.group,name:group_payment_approval"
+msgid "Payment Approval"
+msgstr "Mokėjimo patvirtinimas"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "Mokėtina"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "Gautina"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "Mokėtina"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "Gautina"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "Patvirtinta"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "Juodraštis"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "Nepavyko"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "Vykdoma"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "Sėkminga"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "Mokėtina"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "Gautina"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "Rankiniu būdu"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "Grupės numeruotė"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Mokėjimas"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "Suma"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Mokėjimai"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Sėkminga"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Suma"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "Mokėti?"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "Aprašymas"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "Kita informacija"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Mokėti"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
+msgid "Pay"
+msgstr "Mokėti"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "Process"
