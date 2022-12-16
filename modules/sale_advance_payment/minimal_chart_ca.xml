@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="ca">
+        <record id="account_type_template_unearned_revenue_ca" model="account.account.type.template">
+            
+            
+            <field name="name">Ingressos no consumits</field>
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account.account_type_template_liability_current_ca"/>
+            <field name="statement">balance</field>
+            <field name="unearned_revenue" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <record id="account_template_advance_payment_ca" model="account.account.template">
+            
+            
+            <field name="name">Pagament avançat</field>
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_unearned_revenue_ca"/>
+            <field name="parent" ref="account.account_template_root_ca"/>
+        </record>
+    </data>
+</tryton>
