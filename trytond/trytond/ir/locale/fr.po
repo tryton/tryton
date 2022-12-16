@@ -1,0 +1,4359 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:access_error:"
+msgid ""
+"You try to bypass an access rule.\n"
+"(Document type: %s)"
+msgstr ""
+"Vous essayez d'enfreindre une règle d'accès.\n"
+"(Type du document : %s)"
+
+msgctxt "error:delete_xml_record:"
+msgid "You are not allowed to delete this record."
+msgstr "Vous n'êtes pas autorisé à supprimer cet enregistrement."
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
+msgstr ""
+"La valeur « %(value)s » du champ « %(field)s » sur « %(model)s » dépasse la "
+"limite de « %(digits)s » décimales."
+
+msgctxt "error:domain_validation_record:"
+msgid ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
+msgstr ""
+"La valeur du champ « %(field)s » sur « %(model)s » n'est pas valide selon "
+"son domaine."
+
+msgctxt "error:foreign_model_exist:"
+msgid ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
+msgstr ""
+"Impossible de supprimer les enregistrements car ils sont utilisés dans le "
+"champ « %(field)s » de « %(model)s »."
+
+msgctxt "error:foreign_model_missing:"
+msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
+"La valeur « %(value)s » du champ « %(field)s » sur « %(model)s » n'existe "
+"pas."
+
+msgctxt "error:ir.action.act_window.domain:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr ""
+"Le domaine ou critère de recherche « %(domain)s » de l'action « %(action)s »"
+" est invalide."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
+msgstr "Le contexte « %(context)s » de l'action « %(action)s » est invalide."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr ""
+"Le critère de recherche ou le domaine « %(domain)s » de l'action "
+"« %(action)s » est invalide."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "La vue « %(view)s » de l'action « %(action)s » est invalide."
+
+msgctxt "error:ir.action.keyword:"
+msgid "Wrong wizard model in keyword action \"%s\"."
+msgstr "Modèle d'assistant incorrect pour le mot-clé d'action « %s »."
+
+msgctxt "error:ir.action.report:"
+msgid "Invalid email definition on report \"%s\"."
+msgstr "Définition de mail incorrecte sur le rapport « %s »."
+
+msgctxt "error:ir.cron:"
+msgid "Scheduled action failed"
+msgstr "L'action planifiée a échoué"
+
+msgctxt "error:ir.cron:"
+msgid ""
+"The following action failed to execute properly: \"%s\"\n"
+"%s\n"
+" Traceback: \n"
+"\n"
+"%s\n"
+msgstr ""
+"L'action suivante n'a pas pu s'exécuter correctement: « %s »\n"
+"%s\n"
+" Retraçage : \n"
+"\n"
+"%s\n"
+
+msgctxt "error:ir.lang:"
+msgid "Default language can not be deleted."
+msgstr "Le langage par défaut ne peut pas être supprimé."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
+msgstr ""
+"Le format de date « %(format)s » du langage « %(language)s » est invalide."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
+msgstr ""
+"Le groupement « %(grouping)s » de la langye « %(language)s » est invalide."
+
+msgctxt "error:ir.lang:"
+msgid "The default language must be translatable."
+msgstr "Le langage par défaut doit être traduisible."
+
+msgctxt "error:ir.lang:"
+msgid "decimal_point and thousands_sep must be different!"
+msgstr ""
+"Le séparateur de décimale et le séparateur des centaines doivent être "
+"différents !"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not create this kind of document! (%s)"
+msgstr "Vous ne pouvez pas créer ce type de document ! (%s)"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not delete this document! (%s)"
+msgstr "Vous ne pouvez pas supprimer ce document ! (%s)"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not read this document! (%s)"
+msgstr "Vous ne pouvez pas lire ce document ! (%s)"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not write in this document! (%s)"
+msgstr "Vous ne pouvez pas écrire dans ce document ! (%s)"
+
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+"La condition « %(condition)s » n'est pas une expression PYSON valide sur la "
+"règle de bouton « %(rule)s »."
+
+msgctxt "error:ir.model.button:"
+msgid "The button name in model must be unique!"
+msgstr "Le nom du bouton dans le modèle doit être unique !"
+
+msgctxt "error:ir.model.data:"
+msgid "The triple (fs_id, module, model) must be unique!"
+msgstr "Le triplet (fs_id, module, model) doit être unique !"
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not read the field! (%s.%s)"
+msgstr "Vous ne pouvez lire le champs ! (%s.%s)"
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not write on the field! (%s.%s)"
+msgstr "Vous ne pouvez écrire sur le champs ! (%s.%s)"
+
+msgctxt "error:ir.model.field:"
+msgid "The field name in model must be unique!"
+msgstr "Le nom du champ doit être unique sur le modèle !"
+
+msgctxt "error:ir.model:"
+msgid "The model must be unique!"
+msgstr "Le modèle doit être unique !"
+
+msgctxt "error:ir.module.dependency:"
+msgid "Dependency must be unique by module!"
+msgstr "Une dépendance doit être unique par module !"
+
+msgctxt "error:ir.module:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Certains modules activés dépendent de ceux que vous essayez de désactiver :"
+
+msgctxt "error:ir.module:"
+msgid "The name of the module must be unique!"
+msgstr "Le nom du module doit être unique !"
+
+msgctxt "error:ir.module:"
+msgid "You can not remove a module that is activated or will be activated"
+msgstr "Vous ne pouvez pas supprimer un module qui est activé ou qui le sera"
+
+msgctxt "error:ir.rule.group:"
+msgid "Global and Default are mutually exclusive!"
+msgstr "Global et Défaut sont exclusifs !"
+
+msgctxt "error:ir.rule:"
+msgid "Invalid domain in rule \"%s\"."
+msgstr "Domaine invalide sur la règle « %s »."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr ""
+"Le préfixe « %(prefix)s » de la séquence « %(sequence)s » est invalide."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr ""
+"Le suffixe « %(suffix)s » de la séquence « %(sequence)s » est invalide."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr ""
+"La dernière estampille ne peut pas être dans le futur pour la séquence "
+"« %s »."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Missing sequence."
+msgstr "La séquence est manquante."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "L'estampille doit être plus grande que 0"
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr ""
+"Le préfixe « %(prefix)s » de la séquence « %(sequence)s » est invalide."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr ""
+"Le suffixe « %(suffix)s » de la séquence « %(sequence)s » est invalide."
+
+msgctxt "error:ir.sequence:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr ""
+"La dernière estampille ne peut pas être dans le futur pour la séquence "
+"« %s »."
+
+msgctxt "error:ir.sequence:"
+msgid "Missing sequence."
+msgstr "La séquence est manquante."
+
+msgctxt "error:ir.sequence:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "L'estampille doit être plus grande que 0"
+
+msgctxt "error:ir.translation:"
+msgid "Translation must be unique"
+msgstr "La traduction doit être unique"
+
+msgctxt "error:ir.translation:"
+msgid ""
+"You can not export translation %(name)s because it is an overridden "
+"translation by module %(overriding_module)s"
+msgstr ""
+"Vous ne pouvez pas exporter la traduction %(name)s car c'est une traduction "
+"surchargée par le module %(overriding_module)s"
+
+msgctxt "error:ir.trigger:"
+msgid "\"On Time\" and others are mutually exclusive!"
+msgstr "« À temps » exclus les autres type de déclencheurs !"
+
+msgctxt "error:ir.trigger:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
+"\"%(trigger)s\"."
+msgstr ""
+"La condition \"%(condition)s\" n'est pas une expression valide PYSON sur le "
+"déclencheur \"%(trigger)s\"."
+
+msgctxt "error:ir.ui.view:"
+msgid "Invalid XML for view \"%s\"."
+msgstr "XML invalide sur la vue « %s »."
+
+msgctxt "error:read_error:"
+msgid ""
+"You try to read records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"Vous essayez de lire des enregistrements qui n'existent plus.\n"
+"(Type du document: %s)"
+
+msgctxt "error:recursion_error:"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"Erreur de récursion: L'enregistrement « %(rec_name)s » avec le parent "
+"« %(parent_rec_name)s » a été configuré comme ancêtre de lui même."
+
+msgctxt "error:reference_syntax_error:"
+msgid "Syntax error for reference %r in %s"
+msgstr "Erreur de syntaxe pour la référence %r de %s"
+
+msgctxt "error:relation_not_found:"
+msgid "Relation not found: %r in %s"
+msgstr "Relation non trouvée : %r dans %s"
+
+msgctxt "error:required_field:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "Le champ « %(field)s » sur « %(model)s » est requis."
+
+msgctxt "error:required_validation_record:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "Le champ « %(field)s » sur « %(model)s » est requis."
+
+msgctxt "error:search_function_missing:"
+msgid "Missing search function on field \"%s\"."
+msgstr "Fonction de recherche absente pour le champ « %s »."
+
+msgctxt "error:selection_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
+msgstr ""
+"La valeur « %(value)s » du champ « %(field)s » sur « %(model)s » n'est pas "
+"dans la sélection."
+
+msgctxt "error:selection_value_notfound:"
+msgid "Value not in the selection for field \"%s\"."
+msgstr "Valeur absente de la sélection pour le champ « %s »."
+
+msgctxt "error:size_validation_record:"
+msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
+msgstr ""
+"La taille « %(size)s » du champ « %(field)s » sur « %(model)s » est trop "
+"longue."
+
+msgctxt "error:time_format_validation_record:"
+msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
+msgstr ""
+"L'heure « %(value)s » du champ « %(field)s » sur « %(model)s » n'est pas "
+"valide."
+
+msgctxt "error:too_many_relations_found:"
+msgid "Too many relations found: %r in %s"
+msgstr "Trop de relations pour : %r dans %s"
+
+msgctxt "error:write_error:"
+msgid ""
+"You try to write on records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"Vous essayez d'écrire sur des enregistrements qui n'existent plus.\n"
+"(Type du document: %s)"
+
+msgctxt "error:write_xml_record:"
+msgid "You are not allowed to modify this record."
+msgstr "Vous n'êtes pas autorisé à modifier cet enregistrement."
+
+msgctxt "error:xml_id_syntax_error:"
+msgid "Syntax error for XML id %r in %s"
+msgstr "Erreur de syntaxe XML pour l'ID %r de %s"
+
+msgctxt "error:xml_record_desc:"
+msgid "This record is part of the base configuration."
+msgstr "Cet enregistrement fait partie de la configuration de base."
+
+msgctxt "field:ir.action,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action,keywords:"
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgctxt "field:ir.action,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.action,usage:"
+msgid "Usage"
+msgstr "Utilisation"
+
+msgctxt "field:ir.action,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.act_window,act_window_domains:"
+msgid "Domains"
+msgstr "Domaines"
+
+msgctxt "field:ir.action.act_window,act_window_views:"
+msgid "Views"
+msgstr "Vues"
+
+msgctxt "field:ir.action.act_window,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.act_window,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.act_window,context:"
+msgid "Context Value"
+msgstr "Valeur du contexte"
+
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Contexte du domaine"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr "Modèle de context"
+
+msgctxt "field:ir.action.act_window,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.act_window,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.act_window,domain:"
+msgid "Domain Value"
+msgstr "Valeur du domaine"
+
+msgctxt "field:ir.action.act_window,domains:"
+msgid "Domains"
+msgstr "Domaines"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action.act_window,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.action.act_window,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.act_window,keywords:"
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgctxt "field:ir.action.act_window,limit:"
+msgid "Limit"
+msgstr "Limite"
+
+msgctxt "field:ir.action.act_window,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action.act_window,order:"
+msgid "Order Value"
+msgstr "Valeur de l'ordre"
+
+msgctxt "field:ir.action.act_window,pyson_context:"
+msgid "PySON Context"
+msgstr "Contexte PySON"
+
+msgctxt "field:ir.action.act_window,pyson_domain:"
+msgid "PySON Domain"
+msgstr "Domaine PySON"
+
+msgctxt "field:ir.action.act_window,pyson_order:"
+msgid "PySON Order"
+msgstr "Ordre PySON"
+
+msgctxt "field:ir.action.act_window,pyson_search_value:"
+msgid "PySON Search Criteria"
+msgstr "Critère de recherche PySON"
+
+msgctxt "field:ir.action.act_window,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.action.act_window,search_value:"
+msgid "Search Criteria"
+msgstr "Critères de recherche"
+
+msgctxt "field:ir.action.act_window,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.action.act_window,usage:"
+msgid "Usage"
+msgstr "Utilisation"
+
+msgctxt "field:ir.action.act_window,views:"
+msgid "Views"
+msgstr "Vues"
+
+msgctxt "field:ir.action.act_window,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.act_window,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.act_window.domain,act_window:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.act_window.domain,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "Compter"
+
+msgctxt "field:ir.action.act_window.domain,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.act_window.domain,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.act_window.domain,domain:"
+msgid "Domain"
+msgstr "Domaine"
+
+msgctxt "field:ir.action.act_window.domain,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.act_window.domain,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action.act_window.domain,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.act_window.domain,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.action.act_window.domain,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.act_window.domain,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.act_window.view,act_window:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.act_window.view,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.act_window.view,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.act_window.view,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.act_window.view,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.act_window.view,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.action.act_window.view,view:"
+msgid "View"
+msgstr "Vue"
+
+msgctxt "field:ir.action.act_window.view,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.act_window.view,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.keyword,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.keyword,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.keyword,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action.keyword,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.keyword,keyword:"
+msgid "Keyword"
+msgstr "Mot-clé"
+
+msgctxt "field:ir.action.keyword,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.action.keyword,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.keyword,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.keyword,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.report,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.report,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.report,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.report,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.report,direct_print:"
+msgid "Direct Print"
+msgstr "Imprimer directement"
+
+msgctxt "field:ir.action.report,email:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "field:ir.action.report,extension:"
+msgid "Extension"
+msgstr "Extension"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action.report,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.action.report,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Est personnalisé"
+
+msgctxt "field:ir.action.report,keywords:"
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgctxt "field:ir.action.report,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.action.report,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action.report,pyson_email:"
+msgid "PySON Email"
+msgstr "E-mail PySON"
+
+msgctxt "field:ir.action.report,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.report,report:"
+msgid "Path"
+msgstr "Chemin"
+
+msgctxt "field:ir.action.report,report_content:"
+msgid "Content"
+msgstr "Contenu"
+
+msgctxt "field:ir.action.report,report_content_custom:"
+msgid "Content"
+msgstr "Contenu"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "Nom du contenu"
+
+msgctxt "field:ir.action.report,report_name:"
+msgid "Internal Name"
+msgstr "Nom interne"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr "Unique"
+
+msgctxt "field:ir.action.report,template_extension:"
+msgid "Template Extension"
+msgstr "Extension du modèle"
+
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Traduisible"
+
+msgctxt "field:ir.action.report,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.action.report,usage:"
+msgid "Usage"
+msgstr "Utilisation"
+
+msgctxt "field:ir.action.report,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.report,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.url,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.url,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.url,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.url,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action.url,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.action.url,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.url,keywords:"
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action.url,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.url,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.action.url,url:"
+msgid "Action Url"
+msgstr "Url"
+
+msgctxt "field:ir.action.url,usage:"
+msgid "Usage"
+msgstr "Utilisation"
+
+msgctxt "field:ir.action.url,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.url,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.action.wizard,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.action.wizard,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.action.wizard,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.action.wizard,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.action.wizard,email:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.action.wizard,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.action.wizard,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.action.wizard,keywords:"
+msgid "Keywords"
+msgstr "Mots-clés"
+
+msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.action.wizard,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.action.wizard,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.action.wizard,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.action.wizard,usage:"
+msgid "Usage"
+msgstr "Utilisation"
+
+msgctxt "field:ir.action.wizard,window:"
+msgid "Window"
+msgstr "Onglet"
+
+msgctxt "field:ir.action.wizard,wiz_name:"
+msgid "Wizard name"
+msgstr "Nom de l'assistant"
+
+msgctxt "field:ir.action.wizard,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.action.wizard,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.attachment,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.attachment,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.attachment,data:"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "field:ir.attachment,data_size:"
+msgid "Data size"
+msgstr "Taille des données"
+
+msgctxt "field:ir.attachment,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr "ID du fichier"
+
+msgctxt "field:ir.attachment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.attachment,last_modification:"
+msgid "Last Modification"
+msgstr "Dernière modification"
+
+msgctxt "field:ir.attachment,last_user:"
+msgid "Last User"
+msgstr "Dernier utilisateur"
+
+msgctxt "field:ir.attachment,link:"
+msgid "Link"
+msgstr "Lien"
+
+msgctxt "field:ir.attachment,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.attachment,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.attachment,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+msgctxt "field:ir.attachment,summary:"
+msgid "Summary"
+msgstr "Résumé"
+
+msgctxt "field:ir.attachment,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.attachment,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.attachment,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.cache,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.cache,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.cache,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.cache,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.cache,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.cache,timestamp:"
+msgid "Timestamp"
+msgstr "Estampille"
+
+msgctxt "field:ir.cache,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.cache,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.configuration,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.configuration,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Nom d'hôte"
+
+msgctxt "field:ir.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.configuration,language:"
+msgid "language"
+msgstr "Langue"
+
+msgctxt "field:ir.configuration,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.configuration,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.configuration,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.cron,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.cron,args:"
+msgid "Arguments"
+msgstr "Arguments"
+
+msgctxt "field:ir.cron,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.cron,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.cron,function:"
+msgid "Function"
+msgstr "Fonction"
+
+msgctxt "field:ir.cron,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.cron,interval_number:"
+msgid "Interval Number"
+msgstr "Nombre d'intervalles"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Unit"
+msgstr "Unité d'intervalle"
+
+msgctxt "field:ir.cron,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.cron,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.cron,next_call:"
+msgid "Next Call"
+msgstr "Appel suivant"
+
+msgctxt "field:ir.cron,number_calls:"
+msgid "Number of Calls"
+msgstr "Nombre d'appels"
+
+msgctxt "field:ir.cron,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.cron,repeat_missed:"
+msgid "Repeat Missed"
+msgstr "Répéter si échec"
+
+msgctxt "field:ir.cron,request_user:"
+msgid "Request User"
+msgstr "Utilisateur de la demande"
+
+msgctxt "field:ir.cron,user:"
+msgid "Execution User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.cron,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.cron,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.date,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.export,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.export,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.export,export_fields:"
+msgid "Fields"
+msgstr "Champs"
+
+msgctxt "field:ir.export,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.export,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.export,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.export,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+msgctxt "field:ir.export,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.export,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.export.line,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.export.line,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.export.line,export:"
+msgid "Export"
+msgstr "Exports"
+
+msgctxt "field:ir.export.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.export.line,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.export.line,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.export.line,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.export.line,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.lang,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.lang,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:ir.lang,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.lang,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.lang,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:ir.lang,decimal_point:"
+msgid "Decimal Separator"
+msgstr "Séparateur de décimale"
+
+msgctxt "field:ir.lang,direction:"
+msgid "Direction"
+msgstr "Direction"
+
+msgctxt "field:ir.lang,grouping:"
+msgid "Grouping"
+msgstr "Groupement"
+
+msgctxt "field:ir.lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Séparateur de décimale"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Groupement"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Séparateur des milliers"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Symbole négatif en premier"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Négatif séparé par un espace"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Position du signe négatif"
+
+msgctxt "field:ir.lang,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "Signe négatif"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Symbole positif en premier"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Positif séparé par un espace"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Position du signe positif"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "Code parent"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "Signe positif"
+
+msgctxt "field:ir.lang,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.lang,thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Séparateur des centaines"
+
+msgctxt "field:ir.lang,translatable:"
+msgid "Translatable"
+msgstr "Traduisible"
+
+msgctxt "field:ir.lang,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.lang,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model,fields:"
+msgid "Fields"
+msgstr "Champs"
+
+msgctxt "field:ir.model,global_search_p:"
+msgid "Global Search"
+msgstr "Recherche globale"
+
+msgctxt "field:ir.model,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model,info:"
+msgid "Information"
+msgstr "Information"
+
+msgctxt "field:ir.model,model:"
+msgid "Model Name"
+msgstr "Nom du modèle"
+
+msgctxt "field:ir.model,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.model,name:"
+msgid "Model Description"
+msgstr "Description du modèle"
+
+msgctxt "field:ir.model,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.access,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.access,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.access,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:ir.model.access,group:"
+msgid "Group"
+msgstr "Groupe"
+
+msgctxt "field:ir.model.access,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.model.access,perm_create:"
+msgid "Create Access"
+msgstr "Accès en creation"
+
+msgctxt "field:ir.model.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Accès en suppression"
+
+msgctxt "field:ir.model.access,perm_read:"
+msgid "Read Access"
+msgstr "Accès en lecture"
+
+msgctxt "field:ir.model.access,perm_write:"
+msgid "Write Access"
+msgstr "Accès en écriture"
+
+msgctxt "field:ir.model.access,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.access,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.access,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "Clics"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "Confirmer"
+
+msgctxt "field:ir.model.button,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.button,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Aide"
+
+msgctxt "field:ir.model.button,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.model.button,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.model.button,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "Réinitialiser"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "Réinitialiser par"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Règles"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "Label"
+
+msgctxt "field:ir.model.button,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Bouton"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "Bouton réglé"
+
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Bouton"
+
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "ID du record"
+
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Bouton"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Condition"
+
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "Nombre d'utilisateur"
+
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.button.rule,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.data,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.data,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.data,db_id:"
+msgid "Resource ID"
+msgstr "ID de la ressource"
+
+msgctxt "field:ir.model.data,fs_id:"
+msgid "Identifier on File System"
+msgstr "Identifiant sur le système de fichier"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Valeurs sur le système de fichier"
+
+msgctxt "field:ir.model.data,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.data,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.model.data,noupdate:"
+msgid "No Update"
+msgstr "Pas de mise à jour"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Désynchronisé"
+
+msgctxt "field:ir.model.data,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.data,values:"
+msgid "Values"
+msgstr "Valeurs"
+
+msgctxt "field:ir.model.data,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.data,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.field,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.field,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.field,field_description:"
+msgid "Field Description"
+msgstr "Description du champ"
+
+msgctxt "field:ir.model.field,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.model.field,help:"
+msgid "Help"
+msgstr "Aide"
+
+msgctxt "field:ir.model.field,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.field,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.model.field,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.model.field,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.field,relation:"
+msgid "Model Relation"
+msgstr "Modèle associé"
+
+msgctxt "field:ir.model.field,ttype:"
+msgid "Field Type"
+msgstr "Type de champ"
+
+msgctxt "field:ir.model.field,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.field,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.field.access,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.model.field.access,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.model.field.access,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:ir.model.field.access,field:"
+msgid "Field"
+msgstr "Champ"
+
+msgctxt "field:ir.model.field.access,group:"
+msgid "Group"
+msgstr "Groupe"
+
+msgctxt "field:ir.model.field.access,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.field.access,perm_create:"
+msgid "Create Access"
+msgstr "Accès en creation"
+
+msgctxt "field:ir.model.field.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Accès en suppression"
+
+msgctxt "field:ir.model.field.access,perm_read:"
+msgid "Read Access"
+msgstr "Accès en lecture"
+
+msgctxt "field:ir.model.field.access,perm_write:"
+msgid "Write Access"
+msgstr "Accès en écriture"
+
+msgctxt "field:ir.model.field.access,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.model.field.access,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.model.field.access,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.model.print_model_graph.start,filter:"
+msgid "Filter"
+msgstr "Filtre"
+
+msgctxt "field:ir.model.print_model_graph.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.model.print_model_graph.start,level:"
+msgid "Level"
+msgstr "Niveau"
+
+msgctxt "field:ir.module,childs:"
+msgid "Childs"
+msgstr "Enfants"
+
+msgctxt "field:ir.module,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.module,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.module,dependencies:"
+msgid "Dependencies"
+msgstr "Dépendances"
+
+msgctxt "field:ir.module,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.module,parents:"
+msgid "Parents"
+msgstr "Parents"
+
+msgctxt "field:ir.module,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.module,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:ir.module,version:"
+msgid "Version"
+msgstr "Version"
+
+msgctxt "field:ir.module,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.module,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Modules à mettre à jour"
+
+msgctxt "field:ir.module.config_wizard.done,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.config_wizard.first,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.config_wizard.item,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.module.config_wizard.item,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.module.config_wizard.item,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.module.config_wizard.item,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.config_wizard.item,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.module.config_wizard.item,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.module.config_wizard.item,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:ir.module.config_wizard.item,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.module.config_wizard.item,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.module.config_wizard.other,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.config_wizard.other,percentage:"
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgctxt "field:ir.module.dependency,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.module.dependency,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.module.dependency,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.module.dependency,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.module.dependency,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.module.dependency,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.module.dependency,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:ir.module.dependency,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.module.dependency,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Dernière modification"
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Dernier utilisateur"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr "Message"
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr "Message"
+
+msgctxt "field:ir.note,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr "Non-lu"
+
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr "Note"
+
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Enlevé de la file à"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "Ajouté à la file à"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Attendu à"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Fini à"
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Prévu à"
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.rule,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.rule,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.rule,domain:"
+msgid "Domain"
+msgstr "Domaine"
+
+msgctxt "field:ir.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.rule,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.rule,rule_group:"
+msgid "Group"
+msgstr "Groupe"
+
+msgctxt "field:ir.rule,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.rule,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.rule.group,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.rule.group,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.rule.group,default_p:"
+msgid "Default"
+msgstr "Défaut"
+
+msgctxt "field:ir.rule.group,global_p:"
+msgid "Global"
+msgstr "Global"
+
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.rule.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.rule.group,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.rule.group,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.rule.group,perm_create:"
+msgid "Create Access"
+msgstr "Accès en creation"
+
+msgctxt "field:ir.rule.group,perm_delete:"
+msgid "Delete Access"
+msgstr "Accès en suppression"
+
+msgctxt "field:ir.rule.group,perm_read:"
+msgid "Read Access"
+msgstr "Accès en lecture"
+
+msgctxt "field:ir.rule.group,perm_write:"
+msgid "Write Access"
+msgstr "Accès en écriture"
+
+msgctxt "field:ir.rule.group,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.rule.group,rules:"
+msgid "Tests"
+msgstr "Tests"
+
+msgctxt "field:ir.rule.group,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.rule.group,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.sequence,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.sequence,code:"
+msgid "Sequence Code"
+msgstr "Code de séquence"
+
+msgctxt "field:ir.sequence,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.sequence,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.sequence,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Dernière estampille"
+
+msgctxt "field:ir.sequence,name:"
+msgid "Sequence Name"
+msgstr "Nom de séquence"
+
+msgctxt "field:ir.sequence,number_increment:"
+msgid "Increment Number"
+msgstr "Nombre d'incrément"
+
+msgctxt "field:ir.sequence,number_next:"
+msgid "Next Number"
+msgstr "Numéro suivant"
+
+msgctxt "field:ir.sequence,number_next_internal:"
+msgid "Next Number"
+msgstr "Numéro suivant"
+
+msgctxt "field:ir.sequence,padding:"
+msgid "Number padding"
+msgstr "Nombre de chiffres"
+
+msgctxt "field:ir.sequence,prefix:"
+msgid "Prefix"
+msgstr "Préfixe"
+
+msgctxt "field:ir.sequence,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.sequence,suffix:"
+msgid "Suffix"
+msgstr "Suffixe"
+
+msgctxt "field:ir.sequence,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Décalage estampille"
+
+msgctxt "field:ir.sequence,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Arrondi de l'estampille"
+
+msgctxt "field:ir.sequence,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.sequence,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.sequence,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.sequence.strict,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.sequence.strict,code:"
+msgid "Sequence Code"
+msgstr "Type de séquence"
+
+msgctxt "field:ir.sequence.strict,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.sequence.strict,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.sequence.strict,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.sequence.strict,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Dernière estampille"
+
+msgctxt "field:ir.sequence.strict,name:"
+msgid "Sequence Name"
+msgstr "Nom de séquence"
+
+msgctxt "field:ir.sequence.strict,number_increment:"
+msgid "Increment Number"
+msgstr "Incrément"
+
+msgctxt "field:ir.sequence.strict,number_next:"
+msgid "Next Number"
+msgstr "Nombre suivant"
+
+msgctxt "field:ir.sequence.strict,number_next_internal:"
+msgid "Next Number"
+msgstr "Numéro suivant"
+
+msgctxt "field:ir.sequence.strict,padding:"
+msgid "Number padding"
+msgstr "Nombre de chiffes"
+
+msgctxt "field:ir.sequence.strict,prefix:"
+msgid "Prefix"
+msgstr "Préfixe"
+
+msgctxt "field:ir.sequence.strict,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.sequence.strict,suffix:"
+msgid "Suffix"
+msgstr "Suffixe"
+
+msgctxt "field:ir.sequence.strict,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Décalage d'estampille"
+
+msgctxt "field:ir.sequence.strict,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Arrondi de l'estampille"
+
+msgctxt "field:ir.sequence.strict,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.sequence.strict,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.sequence.strict,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.sequence.type,code:"
+msgid "Sequence Code"
+msgstr "Code de séquence"
+
+msgctxt "field:ir.sequence.type,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.sequence.type,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.sequence.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.sequence.type,name:"
+msgid "Sequence Name"
+msgstr "Nom de séquence"
+
+msgctxt "field:ir.sequence.type,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.sequence.type,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.sequence.type,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.session,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.session,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.session,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.session,key:"
+msgid "Key"
+msgstr "Clé"
+
+msgctxt "field:ir.session,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.session,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.session,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.session.wizard,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.session.wizard,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.session.wizard,data:"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "field:ir.session.wizard,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.session.wizard,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.session.wizard,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.session.wizard,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.translation,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.translation,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.translation,fuzzy:"
+msgid "Fuzzy"
+msgstr "Floue"
+
+msgctxt "field:ir.translation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation,lang:"
+msgid "Language"
+msgstr "Langue"
+
+msgctxt "field:ir.translation,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.translation,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.translation,name:"
+msgid "Field Name"
+msgstr "Nom du champ"
+
+msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "Module surchargeant"
+
+msgctxt "field:ir.translation,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.translation,res_id:"
+msgid "Resource ID"
+msgstr "ID de la ressource"
+
+msgctxt "field:ir.translation,src:"
+msgid "Source"
+msgstr "Source"
+
+msgctxt "field:ir.translation,src_md5:"
+msgid "Source MD5"
+msgstr "MD5 de la source"
+
+msgctxt "field:ir.translation,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:ir.translation,value:"
+msgid "Translation Value"
+msgstr "Traduction"
+
+msgctxt "field:ir.translation,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.translation,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.translation.clean.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.clean.succeed,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.export.result,file:"
+msgid "File"
+msgstr "Fichier"
+
+msgctxt "field:ir.translation.export.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.export.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.export.start,language:"
+msgid "Language"
+msgstr "Langues"
+
+msgctxt "field:ir.translation.export.start,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.translation.set.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.set.succeed,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.update.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.translation.update.start,language:"
+msgid "Language"
+msgstr "Langue"
+
+msgctxt "field:ir.trigger,action_function:"
+msgid "Action Function"
+msgstr "Fonction de l'action"
+
+msgctxt "field:ir.trigger,action_model:"
+msgid "Action Model"
+msgstr "Modèle de l'action"
+
+msgctxt "field:ir.trigger,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.trigger,condition:"
+msgid "Condition"
+msgstr "Condition"
+
+msgctxt "field:ir.trigger,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.trigger,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.trigger,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.trigger,limit_number:"
+msgid "Limit Number"
+msgstr "Nombre limite"
+
+msgctxt "field:ir.trigger,minimum_time_delay:"
+msgid "Minimum Delay"
+msgstr "Délai minimal"
+
+msgctxt "field:ir.trigger,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.trigger,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.trigger,on_create:"
+msgid "On Create"
+msgstr "À la création"
+
+msgctxt "field:ir.trigger,on_delete:"
+msgid "On Delete"
+msgstr "À la suppression"
+
+msgctxt "field:ir.trigger,on_time:"
+msgid "On Time"
+msgstr "À temps"
+
+msgctxt "field:ir.trigger,on_write:"
+msgid "On Write"
+msgstr "À l'écriture"
+
+msgctxt "field:ir.trigger,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.trigger,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.trigger,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.trigger.log,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.trigger.log,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.trigger.log,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.trigger.log,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.trigger.log,record_id:"
+msgid "Record ID"
+msgstr "ID du record"
+
+msgctxt "field:ir.trigger.log,trigger:"
+msgid "Trigger"
+msgstr "Déclencheur"
+
+msgctxt "field:ir.trigger.log,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.trigger.log,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.icon,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.icon,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.icon,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.ui.icon,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.icon,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.ui.icon,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.ui.icon,path:"
+msgid "SVG Path"
+msgstr "Chemin vers le fichier SVG"
+
+msgctxt "field:ir.ui.icon,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.icon,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.ui.icon,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.icon,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.menu,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Mots-clés d'action"
+
+msgctxt "field:ir.ui.menu,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:ir.ui.menu,childs:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:ir.ui.menu,complete_name:"
+msgid "Complete Name"
+msgstr "Nom complet"
+
+msgctxt "field:ir.ui.menu,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.menu,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.menu,favorite:"
+msgid "Favorite"
+msgstr "Favori"
+
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Groupes"
+
+msgctxt "field:ir.ui.menu,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:ir.ui.menu,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.menu,name:"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "field:ir.ui.menu,parent:"
+msgid "Parent Menu"
+msgstr "Menu parent"
+
+msgctxt "field:ir.ui.menu,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.menu,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.ui.menu,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.menu,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.menu.favorite,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.menu.favorite,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.menu.favorite,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.menu.favorite,menu:"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "field:ir.ui.menu.favorite,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.menu.favorite,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:ir.ui.menu.favorite,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.ui.menu.favorite,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.menu.favorite,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.view,arch:"
+msgid "View Architecture"
+msgstr "Architecture de la vue"
+
+msgctxt "field:ir.ui.view,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.view,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.view,data:"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "field:ir.ui.view,domain:"
+msgid "Domain"
+msgstr "Domaine"
+
+msgctxt "field:ir.ui.view,field_childs:"
+msgid "Children Field"
+msgstr "Champs enfants"
+
+msgctxt "field:ir.ui.view,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.view,inherit:"
+msgid "Inherited View"
+msgstr "Vue héritée"
+
+msgctxt "field:ir.ui.view,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "field:ir.ui.view,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.ui.view,priority:"
+msgid "Priority"
+msgstr "Priorité"
+
+msgctxt "field:ir.ui.view,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.view,type:"
+msgid "View Type"
+msgstr "Type de vue"
+
+msgctxt "field:ir.ui.view,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.view,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.view.show.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.view_search,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.view_search,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.view_search,domain:"
+msgid "Domain"
+msgstr "Domaine"
+
+msgctxt "field:ir.ui.view_search,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.view_search,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.ui.view_search,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.ui.view_search,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.view_search,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.ui.view_search,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.view_search,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.view_tree_state,child_name:"
+msgid "Child Name"
+msgstr "Nom enfant"
+
+msgctxt "field:ir.ui.view_tree_state,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.view_tree_state,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.view_tree_state,domain:"
+msgid "Domain"
+msgstr "Domaine"
+
+msgctxt "field:ir.ui.view_tree_state,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.ui.view_tree_state,nodes:"
+msgid "Expanded Nodes"
+msgstr "Nœuds développés"
+
+msgctxt "field:ir.ui.view_tree_state,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
+msgid "Selected Nodes"
+msgstr "Nœuds sélectionnés"
+
+msgctxt "field:ir.ui.view_tree_state,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.ui.view_tree_state,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.view_tree_state,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:ir.ui.view_tree_width,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:ir.ui.view_tree_width,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:ir.ui.view_tree_width,field:"
+msgid "Field"
+msgstr "Champ"
+
+msgctxt "field:ir.ui.view_tree_width,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:ir.ui.view_tree_width,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:ir.ui.view_tree_width,user:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:ir.ui.view_tree_width,width:"
+msgid "Width"
+msgstr "Largeur"
+
+msgctxt "field:ir.ui.view_tree_width,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:ir.ui.view_tree_width,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "La partie du domaine qui sera évaluée à chaque rafraîchissement"
+
+msgctxt "help:ir.action.act_window,limit:"
+msgid "Default limit for the list view"
+msgstr "Limite par défaut pour la vue liste"
+
+msgctxt "help:ir.action.act_window,search_value:"
+msgid "Default search criteria for the list view"
+msgstr "Critères de recherche par défaut pour la vue liste"
+
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.report,email:"
+msgid ""
+"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
+"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
+msgstr ""
+"Dictionnaire Python définissant « to », « cc » et « subject »\n"
+"Exemple: {'to': 'test@example.com', 'cc': 'user@example.com'}"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see LibreOffice documentation for "
+"compatible format"
+msgstr ""
+"Laisser vide pour la même que le modèle, voir la documentation de "
+"LibreOffice pour la compatibilité de format."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr ""
+"Cocher si le modèle fonctionne uniquement avec un seul enregistrement."
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Décocher pour désactiver la traduction pour ce rapport."
+
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.wizard,window:"
+msgid "Run wizard in a new window"
+msgstr "Lancer l'assistant dans un nouvel onglet"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.cron,number_calls:"
+msgid ""
+"Number of times the function is called, a negative number indicates that the"
+" function will always be called"
+msgstr ""
+"Le nombre de fois que la fonction est appelée, un nombre négatif indique que"
+" la fonction sera toujours appelée"
+
+msgctxt "help:ir.cron,request_user:"
+msgid "The user who will receive requests in case of failure"
+msgstr "L'utilisateur qui recevra les requêtes en cas d'échec."
+
+msgctxt "help:ir.cron,user:"
+msgid "The user used to execute this action"
+msgstr "L'utilisateur qui exécutera l'action."
+
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.lang,code:"
+msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "Code du parent exceptionnel"
+
+msgctxt "help:ir.model,module:"
+msgid "Module in which this model is defined"
+msgstr "Le module dans lequel ce modèle est défini"
+
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+"Le texte pour demander confirmation à l'utilisateur quand il clique sur le "
+"bouton."
+
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr "Les boutons qui doivent réinitialiser les règles"
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Une expression PYSON évaluée avec l'enregistrement représenté par « self »\n"
+"Elle déclenche la règle si elle est vrai."
+
+msgctxt "help:ir.model.data,db_id:"
+msgid "The id of the record in the database."
+msgstr "L'id de l'enregistrement dans la base de données"
+
+msgctxt "help:ir.model.data,fs_id:"
+msgid "The id of the record as known on the file system."
+msgstr "L'id de l'enregistrement sur le système de fichier"
+
+msgctxt "help:ir.model.field,module:"
+msgid "Module in which this field is defined"
+msgstr "Le module dans lequel ce champ est défini"
+
+msgctxt "help:ir.model.print_model_graph.start,filter:"
+msgid ""
+"Entering a Python Regular Expression will exclude matching models from the "
+"graph."
+msgstr ""
+"Une expression Python utilisée pour exclure les modèles correspondant du "
+"graphe"
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Quand la tâche doit être effectuée."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Quand la tâche peut démarrer."
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user"
+msgstr ""
+"Le domaine est évalué avec un context PYSON contenant:\n"
+"- « user » comme utilisateur courant"
+
+msgctxt "help:ir.rule.group,default_p:"
+msgid "Add this rule to all users by default"
+msgstr "Ajouter cette règle à tout les utilisateurs par défaut"
+
+msgctxt "help:ir.rule.group,global_p:"
+msgid ""
+"Make the rule global \n"
+"so every users must follow this rule"
+msgstr ""
+"Rend la règle globale de sorte \n"
+"que tout utilisateur doive la respecter"
+
+msgctxt "help:ir.rule.group,rules:"
+msgid "The rule is satisfied if at least one test is True"
+msgstr "La règle est satisfaite si au moins un test est vrai"
+
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.trigger,condition:"
+msgid ""
+"A PYSON statement evaluated with record represented by \"self\"\n"
+"It triggers the action if true."
+msgstr ""
+"Une expression PYSON évaluée avec l'enregistrement représentée par « self »\n"
+"Elle déclenche l'action si elle est vrai."
+
+msgctxt "help:ir.trigger,limit_number:"
+msgid ""
+"Limit the number of call to \"Action Function\" by records.\n"
+"0 for no limit."
+msgstr ""
+"Limite le nombre d'appel aux « Fonction action » par enregistrement.\n"
+"0 signifie pas de limite."
+
+msgctxt "help:ir.trigger,minimum_time_delay:"
+msgid ""
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
+msgstr ""
+"Défini un delai minimal entre l'appel à la « fonction de l'action » pour le même enregistrement.\n"
+"Vide pour aucun délai."
+
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.ui.view_search,domain:"
+msgid "The PYSON domain"
+msgstr "Domaine PYSON"
+
+msgctxt "model:ir.action,name:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "model:ir.action,name:act_action_act_window_form"
+msgid "Window Actions"
+msgstr "Actions de la fenêtre"
+
+msgctxt "model:ir.action,name:act_action_form"
+msgid "Actions"
+msgstr "Actions"
+
+msgctxt "model:ir.action,name:act_action_report_form"
+msgid "Reports"
+msgstr "Rapports"
+
+msgctxt "model:ir.action,name:act_action_url_form"
+msgid "URLs"
+msgstr "URLs"
+
+msgctxt "model:ir.action,name:act_action_wizard_form"
+msgid "Wizards"
+msgstr "Assistants"
+
+msgctxt "model:ir.action,name:act_attachment_form"
+msgid "Attachments"
+msgstr "Attachements"
+
+msgctxt "model:ir.action,name:act_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Éléments de l'assistant de configuration"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Actions"
+msgstr "Actions planifiées"
+
+msgctxt "model:ir.action,name:act_export_form"
+msgid "Exports"
+msgstr "Exports"
+
+msgctxt "model:ir.action,name:act_icon_form"
+msgid "Icons"
+msgstr "Icônes"
+
+msgctxt "model:ir.action,name:act_lang_form"
+msgid "Languages"
+msgstr "Langues"
+
+msgctxt "model:ir.action,name:act_menu_list"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "model:ir.action,name:act_menu_tree"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "model:ir.action,name:act_model_access_form"
+msgid "Models Access"
+msgstr "Accès aux modèles"
+
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr "Accès"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "Clics"
+
+msgctxt "model:ir.action,name:act_model_button_form"
+msgid "Buttons"
+msgstr "Boutons"
+
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "model:ir.action,name:act_model_field_access_form"
+msgid "Fields Access"
+msgstr "Droits d'accès au champs"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr "Accès"
+
+msgctxt "model:ir.action,name:act_model_fields_form"
+msgid "Fields"
+msgstr "Champs"
+
+msgctxt "model:ir.action,name:act_model_form"
+msgid "Models"
+msgstr "Modèles"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Lancer l'activation/mise à jour en attente"
+
+msgctxt "model:ir.action,name:act_module_config"
+msgid "Configure Modules"
+msgstr "Configurer les modules"
+
+msgctxt "model:ir.action,name:act_module_config_wizard"
+msgid "Module Configuration"
+msgstr "Configuration du module"
+
+msgctxt "model:ir.action,name:act_module_form"
+msgid "Modules"
+msgstr "Modules"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr "Notes"
+
+msgctxt "model:ir.action,name:act_rule_group_form"
+msgid "Record Rules"
+msgstr "Règles des enregistrements"
+
+msgctxt "model:ir.action,name:act_sequence_form"
+msgid "Sequences"
+msgstr "Séquences"
+
+msgctxt "model:ir.action,name:act_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Séquences strictes"
+
+msgctxt "model:ir.action,name:act_sequence_type_form"
+msgid "Sequence Types"
+msgstr "Types de séquence"
+
+msgctxt "model:ir.action,name:act_translation_clean"
+msgid "Clean Translations"
+msgstr "Nettoyer les traductions"
+
+msgctxt "model:ir.action,name:act_translation_export"
+msgid "Export Translations"
+msgstr "Exporter les traductions"
+
+msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Traductions"
+
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "Traductions"
+
+msgctxt "model:ir.action,name:act_translation_set"
+msgid "Set Translations"
+msgstr "Définir les traductions"
+
+msgctxt "model:ir.action,name:act_translation_update"
+msgid "Synchronize Translations"
+msgstr "Synchroniser les traductions"
+
+msgctxt "model:ir.action,name:act_trigger_form"
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+msgctxt "model:ir.action,name:act_view_form"
+msgid "Views"
+msgstr "Vues"
+
+msgctxt "model:ir.action,name:act_view_search"
+msgid "View Search"
+msgstr "Recherches des vues"
+
+msgctxt "model:ir.action,name:act_view_show"
+msgid "Show View"
+msgstr "Montrer la vue"
+
+msgctxt "model:ir.action,name:act_view_tree_state"
+msgid "Tree State"
+msgstr "État d'arbre"
+
+msgctxt "model:ir.action,name:act_view_tree_width_form"
+msgid "View Tree Width"
+msgstr "Largeur des vues arbres"
+
+msgctxt "model:ir.action,name:print_model_graph"
+msgid "Graph"
+msgstr "Graphique"
+
+msgctxt "model:ir.action,name:report_model_graph"
+msgid "Graph"
+msgstr "Graphique"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr "Graphique de flux de travail"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Traductions"
+
+msgctxt "model:ir.action.act_window,name:"
+msgid "Action act window"
+msgstr "Action ouvrir fenêtre"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Action act window domain"
+msgstr "Action domaine de fenêtre"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Désynchronisé"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Locale"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Modules"
+
+msgctxt "model:ir.action.act_window.view,name:"
+msgid "Action act window view"
+msgstr "Action ouvrir fenêtre vue"
+
+msgctxt "model:ir.action.keyword,name:"
+msgid "Action keyword"
+msgstr "Action de mots clés"
+
+msgctxt "model:ir.action.report,name:"
+msgid "Action report"
+msgstr "Action rapport"
+
+msgctxt "model:ir.action.url,name:"
+msgid "Action URL"
+msgstr "Action URL"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Action wizard"
+msgstr "Action assistant"
+
+msgctxt "model:ir.attachment,name:"
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+msgctxt "model:ir.cache,name:"
+msgid "Cache"
+msgstr "Cache"
+
+msgctxt "model:ir.configuration,name:"
+msgid "Configuration"
+msgstr "Configuration"
+
+msgctxt "model:ir.cron,name:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "model:ir.date,name:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "model:ir.export,name:"
+msgid "Export"
+msgstr "Export"
+
+msgctxt "model:ir.export.line,name:"
+msgid "Export line"
+msgstr "Ligne d'export"
+
+msgctxt "model:ir.lang,name:"
+msgid "Language"
+msgstr "Langue"
+
+msgctxt "model:ir.lang,name:lang_bg"
+msgid "Bulgarian"
+msgstr "Bulgare"
+
+msgctxt "model:ir.lang,name:lang_ca"
+msgid "Català"
+msgstr "Catalan"
+
+msgctxt "model:ir.lang,name:lang_cs"
+msgid "Czech"
+msgstr "Tchèque"
+
+msgctxt "model:ir.lang,name:lang_de"
+msgid "German"
+msgstr "Allemand"
+
+msgctxt "model:ir.lang,name:lang_en"
+msgid "English"
+msgstr "Anglais"
+
+msgctxt "model:ir.lang,name:lang_es"
+msgid "Spanish"
+msgstr "Espagnol"
+
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "Espagnol (Amérique latine)"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "Persan"
+
+msgctxt "model:ir.lang,name:lang_fr"
+msgid "French"
+msgstr "Français"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr "Hongrois"
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr "Italien"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "Lao"
+
+msgctxt "model:ir.lang,name:lang_lt"
+msgid "Lithuanian"
+msgstr "Lituanien"
+
+msgctxt "model:ir.lang,name:lang_nl"
+msgid "Dutch"
+msgstr "Néerlandais"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Polonais"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr "Portugais (Brésil)"
+
+msgctxt "model:ir.lang,name:lang_ru"
+msgid "Russian"
+msgstr "Russe"
+
+msgctxt "model:ir.lang,name:lang_sl"
+msgid "Slovenian"
+msgstr "Slovène"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "Chinois Simplifié"
+
+msgctxt "model:ir.model,name:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "model:ir.model.access,name:"
+msgid "Model access"
+msgstr "Accès au modèle"
+
+msgctxt "model:ir.model.button,name:"
+msgid "Model Button"
+msgstr "Bouton de modèle"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Lancer une fois"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Synchroniser"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Marquer pour activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Annuler l'activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Marquer pour inactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Annuler l'inactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Marquer pour mise à niveau"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Annuler la mise à jour"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Afficher"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "Réinitialisation de modèle de bouton"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "Clic de modèle de bouton"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "Règle de modèle de bouton"
+
+msgctxt "model:ir.model.data,name:"
+msgid "Model data"
+msgstr "Données de modèle"
+
+msgctxt "model:ir.model.field,name:"
+msgid "Model field"
+msgstr "Champ de modèle"
+
+msgctxt "model:ir.model.field.access,name:"
+msgid "Model Field Access"
+msgstr "Droit d'accès au champ de modèle"
+
+msgctxt "model:ir.model.print_model_graph.start,name:"
+msgid "Print Model Graph"
+msgstr "Imprimer le graphe de modèles"
+
+msgctxt "model:ir.module,name:"
+msgid "Module"
+msgstr "Module"
+
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Mise à jour / activation de module terminée"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Début d'activation et mise à jour de module"
+
+msgctxt "model:ir.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "Assistant de configuration de module - Fin"
+
+msgctxt "model:ir.module.config_wizard.first,name:"
+msgid "Module Config Wizard First"
+msgstr "Assistant de configuration de module - Première"
+
+msgctxt "model:ir.module.config_wizard.item,name:"
+msgid "Config wizard to run after activating a module"
+msgstr "Assistant de configuration à exécuter après l'activation d'un module"
+
+msgctxt "model:ir.module.config_wizard.other,name:"
+msgid "Module Config Wizard Other"
+msgstr "Assistant configuration module Autre"
+
+msgctxt "model:ir.module.dependency,name:"
+msgid "Module dependency"
+msgstr "Dépendance de module"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr "Note"
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr "Note lue"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "File"
+
+msgctxt "model:ir.rule,name:"
+msgid "Rule"
+msgstr "Règle"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "Rule group"
+msgstr "Groupe de règle"
+
+msgctxt "model:ir.sequence,name:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "model:ir.sequence.strict,name:"
+msgid "Sequence Strict"
+msgstr "Séquence stricte"
+
+msgctxt "model:ir.sequence.type,name:"
+msgid "Sequence type"
+msgstr "Type de séquence"
+
+msgctxt "model:ir.session,name:"
+msgid "Session"
+msgstr "Session"
+
+msgctxt "model:ir.session.wizard,name:"
+msgid "Session Wizard"
+msgstr "Assistant de session"
+
+msgctxt "model:ir.translation,name:"
+msgid "Translation"
+msgstr "Traduction"
+
+msgctxt "model:ir.translation.clean.start,name:"
+msgid "Clean translation"
+msgstr "Netoyer les traductions - Début"
+
+msgctxt "model:ir.translation.clean.succeed,name:"
+msgid "Clean translation"
+msgstr "Netoyer les traductions - Début"
+
+msgctxt "model:ir.translation.export.result,name:"
+msgid "Export translation"
+msgstr "Export de traduction - Fichier"
+
+msgctxt "model:ir.translation.export.start,name:"
+msgid "Export translation"
+msgstr "Export de traduction - Fichier"
+
+msgctxt "model:ir.translation.set.start,name:"
+msgid "Set Translation"
+msgstr "Définir les traductions"
+
+msgctxt "model:ir.translation.set.succeed,name:"
+msgid "Set Translation"
+msgstr "Définir les traductions"
+
+msgctxt "model:ir.translation.update.start,name:"
+msgid "Update translation"
+msgstr "Mise à jour des traduction"
+
+msgctxt "model:ir.trigger,name:"
+msgid "Trigger"
+msgstr "Déclencheur"
+
+msgctxt "model:ir.trigger.log,name:"
+msgid "Trigger Log"
+msgstr "Journal des déclencheurs"
+
+msgctxt "model:ir.ui.icon,name:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "UI menu"
+msgstr "Menu de l'IU"
+
+msgctxt "model:ir.ui.menu,name:menu_act_action"
+msgid "Actions"
+msgstr "Actions"
+
+msgctxt "model:ir.ui.menu,name:menu_action"
+msgid "Actions"
+msgstr "Actions"
+
+msgctxt "model:ir.ui.menu,name:menu_action_act_window"
+msgid "Window Actions"
+msgstr "Actions de la fenêtre"
+
+msgctxt "model:ir.ui.menu,name:menu_action_report_form"
+msgid "Reports"
+msgstr "Rapports"
+
+msgctxt "model:ir.ui.menu,name:menu_action_url"
+msgid "URLs"
+msgstr "URLs"
+
+msgctxt "model:ir.ui.menu,name:menu_action_wizard"
+msgid "Wizards"
+msgstr "Assistants"
+
+msgctxt "model:ir.ui.menu,name:menu_administration"
+msgid "Administration"
+msgstr "Administration"
+
+msgctxt "model:ir.ui.menu,name:menu_attachment_form"
+msgid "Attachments"
+msgstr "Attachements"
+
+msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Éléments de l'assistant de configuration"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Actions"
+msgstr "Actions planifiées"
+
+msgctxt "model:ir.ui.menu,name:menu_export_form"
+msgid "Exports"
+msgstr "Exports"
+
+msgctxt "model:ir.ui.menu,name:menu_icon_form"
+msgid "Icons"
+msgstr "Icônes"
+
+msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
+msgid "Sequence Types"
+msgstr "Types de séquence"
+
+msgctxt "model:ir.ui.menu,name:menu_lang_form"
+msgid "Languages"
+msgstr "Langues"
+
+msgctxt "model:ir.ui.menu,name:menu_localization"
+msgid "Localization"
+msgstr "Localisation"
+
+msgctxt "model:ir.ui.menu,name:menu_menu_list"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "model:ir.ui.menu,name:menu_model_access_form"
+msgid "Models Access"
+msgstr "Accès aux modèles"
+
+msgctxt "model:ir.ui.menu,name:menu_model_button_form"
+msgid "Buttons"
+msgstr "Boutons"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
+msgid "Fields Access"
+msgstr "Droits d'accès au champs"
+
+msgctxt "model:ir.ui.menu,name:menu_model_form"
+msgid "Models"
+msgstr "Modèles"
+
+msgctxt "model:ir.ui.menu,name:menu_models"
+msgid "Models"
+msgstr "Modèles"
+
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Lancer l'activation/mise à jour en attente"
+
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
+msgstr "Modules"
+
+msgctxt "model:ir.ui.menu,name:menu_modules"
+msgid "Modules"
+msgstr "Modules"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr "Notes"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
+msgid "Record Rules"
+msgstr "Règles des enregistrements"
+
+msgctxt "model:ir.ui.menu,name:menu_scheduler"
+msgid "Scheduler"
+msgstr "Planificateur"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_form"
+msgid "Sequences"
+msgstr "Séquences"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Séquences strictes"
+
+msgctxt "model:ir.ui.menu,name:menu_sequences"
+msgid "Sequences"
+msgstr "Séquences"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_clean"
+msgid "Clean Translations"
+msgstr "Nettoyer les traductions"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_export"
+msgid "Export Translations"
+msgstr "Exporter les traductions"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_form"
+msgid "Translations"
+msgstr "Traductions"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_set"
+msgid "Set Translations"
+msgstr "Définir les traductions"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_update"
+msgid "Synchronize Translations"
+msgstr "Synchroniser les traductions"
+
+msgctxt "model:ir.ui.menu,name:menu_trigger_form"
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+msgctxt "model:ir.ui.menu,name:menu_ui"
+msgid "User Interface"
+msgstr "Interface utilisateur"
+
+msgctxt "model:ir.ui.menu,name:menu_view"
+msgid "Views"
+msgstr "Vues"
+
+msgctxt "model:ir.ui.menu,name:menu_view_search"
+msgid "View Search"
+msgstr "Recherches des vues"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
+msgid "Tree State"
+msgstr "État d'arbre"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
+msgid "View Tree Width"
+msgstr "Largeur des vues arbres"
+
+msgctxt "model:ir.ui.menu,name:model_model_fields_form"
+msgid "Fields"
+msgstr "Champs"
+
+msgctxt "model:ir.ui.menu.favorite,name:"
+msgid "Menu Favorite"
+msgstr "Favoris menu"
+
+msgctxt "model:ir.ui.view,name:"
+msgid "View"
+msgstr "Vue"
+
+msgctxt "model:ir.ui.view.show.start,name:"
+msgid "Show view"
+msgstr "Montrer la vue"
+
+msgctxt "model:ir.ui.view_search,name:"
+msgid "View Search"
+msgstr "Recherches des vues"
+
+msgctxt "model:ir.ui.view_tree_state,name:"
+msgid "View Tree State"
+msgstr "État de vue arbre"
+
+msgctxt "model:ir.ui.view_tree_width,name:"
+msgid "View Tree Width"
+msgstr "Largeur de vue arbre"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Action form"
+msgstr "Formulaire"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Form relate"
+msgstr "Formulaire relié"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open Graph"
+msgstr "Ouvrir le graphique"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open tree"
+msgstr "Ouvrir l'arbre"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Print form"
+msgstr "Imprimer le formulaire"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Data"
+msgstr "Données"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Link"
+msgstr "Lien"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Days"
+msgstr "Jours"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Hours"
+msgstr "Heures"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Minutes"
+msgstr "Minutes"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Months"
+msgstr "Mois"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Weeks"
+msgstr "Semaines"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Left-to-right"
+msgstr "Gauche-à-droite"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Right-to-left"
+msgstr "Droite-à-gauche"
+
+msgctxt "selection:ir.module,state:"
+msgid "Activated"
+msgstr "Activé"
+
+msgctxt "selection:ir.module,state:"
+msgid "Not Activated"
+msgstr "Inactif"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be activated"
+msgstr "À être activé"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be removed"
+msgstr "À être enlevé"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be upgraded"
+msgstr "À être mis à jour"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Done"
+msgstr "Effectué"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Open"
+msgstr "Ouvert"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Activated"
+msgstr "Activée"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Not Activated"
+msgstr "Inactive"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be activated"
+msgstr "À être activée"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be removed"
+msgstr "À être enlevé"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be upgraded"
+msgstr "À être mis à jour"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Unknown"
+msgstr "Inconnu"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Decimal Timestamp"
+msgstr "Estampille décimale"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Estampille hexadécimale"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Incremental"
+msgstr "Incrémental"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Decimal Timestamp"
+msgstr "Estampille décimale"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Estampille hexadécimale"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Incremental"
+msgstr "Incrémental"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Error"
+msgstr "Erreur"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Field"
+msgstr "Champ"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Help"
+msgstr "Aide"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Report"
+msgstr "Rapport"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Selection"
+msgstr "Sélection"
+
+msgctxt "selection:ir.translation,type:"
+msgid "View"
+msgstr "Vue"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Wizard Button"
+msgstr "Bouton de l'assistant"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.act_window"
+msgstr "ir.action.act_window"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.report"
+msgstr "ir.action.report"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.url"
+msgstr "ir.action.url"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.wizard"
+msgstr "ir.action.wizard"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Board"
+msgstr "Tableau"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Calendar"
+msgstr "Calendrier"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Form"
+msgstr "Formulaire"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Graph"
+msgstr "Graphique"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Tree"
+msgstr "Arbre"
+
+msgctxt "view:ir.action.act_window:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:ir.action.report:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:ir.action.url:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:ir.action.wizard:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:ir.action:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr "Heure de dernière modification"
+
+msgctxt "view:ir.cron:"
+msgid "Action to trigger"
+msgstr "Action à déclencher"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "Lancer une fois"
+
+msgctxt "view:ir.lang:"
+msgid "Date Formatting"
+msgstr "Formatage des dates"
+
+msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "Format monétaire"
+
+msgctxt "view:ir.lang:"
+msgid "Numbers Formatting"
+msgstr "Formatage des nombres"
+
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "Les modules ont été mis à niveau / activés."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Cette opération peut prendre quelques minutes."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "Votre système va être mis à niveau."
+
+msgctxt "view:ir.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "La configuration est faite."
+
+msgctxt "view:ir.module.config_wizard.first:"
+msgid ""
+"You will be able to configure your installation depending on the modules you"
+" have installed."
+msgstr ""
+"Vous pourrez configurer votre installation en fonction des modules que vous "
+"avez installés."
+
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "Annuler l'activation"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Deactivation"
+msgstr "Annuler l'inactivation"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Upgrade"
+msgstr "Annuler la mise à jour"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Activation"
+msgstr "Marquer pour activation"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Deactivation (beta)"
+msgstr "Marquer pour inactivation (beta)"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Upgrade"
+msgstr "Marquer pour mise à niveau"
+
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr "Heure"
+
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "view:ir.rule.group:"
+msgid ""
+"If there is no test defined, the rule is always satisfied if not global"
+msgstr ""
+"Si il n'y a pas de test défini, la règle est toujours satisfaite s'elle "
+"n'est pas globale"
+
+msgctxt "view:ir.rule.group:"
+msgid "The rule is satisfied if at least one test is True"
+msgstr "La règle est satisfaite si au moins un test est vrai"
+
+msgctxt "view:ir.sequence:"
+msgid "${day}"
+msgstr "${day}"
+
+msgctxt "view:ir.sequence:"
+msgid "${month}"
+msgstr "${month}"
+
+msgctxt "view:ir.sequence:"
+msgid "${year}"
+msgstr "${year}"
+
+msgctxt "view:ir.sequence:"
+msgid "Day:"
+msgstr "Jour:"
+
+msgctxt "view:ir.sequence:"
+msgid "Incremental"
+msgstr "Incrémental"
+
+msgctxt "view:ir.sequence:"
+msgid "Legend (Placeholders for prefix, suffix)"
+msgstr "Légende (charactère pour le préfixe, le suffixe)"
+
+msgctxt "view:ir.sequence:"
+msgid "Month:"
+msgstr "Mois :"
+
+msgctxt "view:ir.sequence:"
+msgid "Timestamp"
+msgstr "Estampille"
+
+msgctxt "view:ir.sequence:"
+msgid "Year:"
+msgstr "Année :"
+
+msgctxt "view:ir.translation.clean.start:"
+msgid "Clean Translations?"
+msgstr "Nettoyer les traductions ?"
+
+msgctxt "view:ir.translation.clean.succeed:"
+msgid "Clean Translations Succeed!"
+msgstr "Nettoyage des traductions réussi !"
+
+msgctxt "view:ir.translation.set.start:"
+msgid "Synchronize Translations?"
+msgstr "Synchroniser les traductions ?"
+
+msgctxt "view:ir.translation.set.succeed:"
+msgid "Set Succeed!"
+msgstr "Mise à jour réussie !"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
+msgid "Print"
+msgstr "Imprimer"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Démarrer la mise à jour"
+
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
+msgid "Next"
+msgstr "Suivant"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.translation.clean,start,clean:"
+msgid "Clean"
+msgstr "Nettoyer"
+
+msgctxt "wizard_button:ir.translation.clean,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.translation.clean,succeed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.translation.export,result,end:"
+msgid "Close"
+msgstr "Fermer"
+
+msgctxt "wizard_button:ir.translation.export,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.translation.export,start,export:"
+msgid "Export"
+msgstr "Exports"
+
+msgctxt "wizard_button:ir.translation.set,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.translation.set,start,set_:"
+msgid "Set"
+msgstr "Mise à jour"
+
+msgctxt "wizard_button:ir.translation.set,succeed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.translation.update,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:ir.translation.update,start,update:"
+msgid "Update"
+msgstr "Mise à jour"
+
+msgctxt "wizard_button:ir.ui.view.show,start,end:"
+msgid "Close"
+msgstr "Fermer"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds its limit."
+msgstr ""
+"Le nombre de décimales « %(digits)s » du champ « %(field)s » pour "
+"« %(value)s » dépasse sa limite."
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr ""
+"Laisser vide pour la même que le modèle, voir la documentation d'unoconv "
+"pour la compatibilité de format."
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Synchroniser"
+
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "Afficher"
