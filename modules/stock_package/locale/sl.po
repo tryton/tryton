@@ -1,0 +1,163 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.in.return:"
+msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
+msgstr "Izhodni promet vrnjene prevzemnice \"%s\" ni v celoti zapakiran."
+
+msgctxt "error:stock.shipment.out:"
+msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
+msgstr "Izhodni promet odpremnice \"%s\" ni v celoti zapakiran."
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Štetje paketov"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Paket"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Podpaketi"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:stock.package,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.package,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.package,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Promet"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Matični paket"
+
+msgctxt "field:stock.package,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Pošiljka"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:stock.package,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.package,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:stock.package.type,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.package.type,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.package.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:stock.package.type,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:stock.package.type,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.package.type,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Paketi"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Paketi"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Paketi"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Paketi"
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Vrste paketov"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Nalepke paketov"
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Paket"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Paket"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Vrste paketov"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Paket"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Vrsta paketa"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "Paket:"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "Pošiljka:"
+
+msgctxt "view:stock.package.type:"
+msgid "Package Type"
+msgstr "Vrsta paketa"
+
+msgctxt "view:stock.package.type:"
+msgid "Package Types"
+msgstr "Vrste paketov"
+
+msgctxt "view:stock.package:"
+msgid "Package"
+msgstr "Paket"
+
+msgctxt "view:stock.package:"
+msgid "Packages"
+msgstr "Paketi"
