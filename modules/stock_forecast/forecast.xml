@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_stock_forecast">
+            <field name="name">Stock Forecast</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups"
+                   eval="[('add', ref('group_stock_forecast'))]"/>
+        </record>
+        <record model="ir.action.wizard" id="wizard_forecast_complete">
+            <field name="name">Complete Forecast</field>
+            <field name="wiz_name">stock.forecast.complete</field>
+            <field name="model">stock.forecast</field>
+        </record>
+
+        <record model="ir.ui.view" id="forecast_view_form">
+            <field name="model">stock.forecast</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Forecast" col="4">
+                        <label name="location"/>
+                        <field name="location"/>
+                        <label name="destination"/>
+                        <field name="destination"/>
+                        <label name="from_date"/>
+                        <field name="from_date"/>
+                        <label name="to_date"/>
+                        <field name="to_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                        <button string="Complete Forecast" type="action"
+                            name="%(wizard_forecast_complete)d"
+                            states="{'readonly': '''state != 'draft' '''}"
+                            colspan="2"
+                            help="Add forecast line based on past data."/>
+                        <field name="lines" colspan="4"/>
+                        <group col="4" colspan="4" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group colspan="2" col="3" id="buttons">
+                                <button string="Reset to Draft"
+                                        name="button_draft"
+                                        type="object"
+                                        states="{'invisible': '''state == 'draft' ''', 'readonly': '''%(group_stock_forecast)d not in groups'''}"
+                                        icon="tryton-clear"/>
+                                <button string="Cancel"
+                                        name="cancel"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock_forecast)d not in groups'''}"
+                                        icon="tryton-cancel"/>
+                                <button string="Confirm"
+                                        name="done"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock_forecast)d not in groups'''}"
+                                        icon="tryton-ok"/>
+                            </group>
+                        </group>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="forecast_view_tree">
+            <field name="model">stock.forecast</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Forecasts">
+                        <field name="location" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="company" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_forecast_form">
+            <field name="name">Forecasts</field>
+            <field name="res_model">stock.forecast</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_forecast_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="forecast_view_tree"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_forecast_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="forecast_view_form"/>
+            <field name="act_window" ref="act_forecast_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="50"
+            action="act_forecast_form" id="menu_forecast_form"/>
+
+        <record model="ir.ui.view" id="forecast_line_view_form">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Forecast Line" col="4">
+                        <label name="forecast"/>
+                        <field name="forecast"/>
+                        <newline/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="minimal_quantity"/>
+                        <field name="minimal_quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <separator name="moves" colspan="4"/>
+                        <field name="moves" colspan="4"/>
+                        <field name="unit_digits" invisible="1" colspan="4"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="forecast_line_view_tree">
+            <field name="model">stock.forecast.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Forecast Lines" editable="bottom">
+                        <field name="product" select="1"/>
+                        <field name="quantity" select="1"/>
+                        <field name="minimal_quantity" select="2"/>
+                        <field name="uom" select="1"/>
+                        <field name="forecast" select="2"/>
+                        <field name="unit_digits" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <!-- Workflow forecast -->
+        <record model="workflow" id="wkf_forecast">
+            <field name="name">Forecast</field>
+            <field name="model">stock.forecast</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="forecast_act_draft">
+            <field name="workflow" ref="wkf_forecast"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="forecast_act_cancel">
+            <field name="workflow" ref="wkf_forecast"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="forecast_act_done">
+            <field name="workflow" ref="wkf_forecast"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.transition"
+                id="forecast_trans_draft_cancel">
+            <field name="act_from" ref="forecast_act_draft"/>
+            <field name="act_to" ref="forecast_act_cancel"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="forecast_trans_draft_done">
+            <field name="act_from" ref="forecast_act_draft"/>
+            <field name="act_to" ref="forecast_act_done"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="signal">done</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_forecast_comlete_ask_view_form">
+            <field name="model">stock.forecast.complete.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Choose dates" col="2">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="stock_forecast_comlete_choose_view_form">
+            <field name="model">stock.forecast.complete.choose</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Choose products" col="1" >
+                    <separator name="products"/>
+                    <field name="products" width="600" height="300"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+
+        <record model="ir.model.access" id="access_forecast">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_forecast_line">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_forecast_line_group_stock">
+            <field name="model" search="[('model', '=', 'stock.forecast.line')]"/>
+            <field name="group" ref="group_stock_forecast"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>
