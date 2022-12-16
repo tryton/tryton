@@ -1,0 +1,39 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Dobava ob prodaji"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Dobava ob prodaji"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Nabavni zahtevek"
+
+msgctxt "field:sale.line,purchase_request_state:"
+msgid "Purchase Request State"
+msgstr "Stanje nabavnega zahtevka"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Nabavni zahtevki"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Cancel"
+msgstr "Preklicano"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Purchased"
+msgstr "Nabavljeno"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Requested"
+msgstr "Zahtevano"

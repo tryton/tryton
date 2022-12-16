@@ -1,0 +1,257 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project."
+msgstr "Должен быть только один рабочий табель у задачи/проекта."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done."
+msgstr ""
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened."
+msgstr ""
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Комментарии"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Организация"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr ""
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr ""
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Предок"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Контрагент"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Контактный адрес"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr ""
+
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr ""
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Нумерация"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Доступно в табелях"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Общие затраты"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr ""
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Работа"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work"
+msgstr ""
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr ""
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Предположительные общие затраты для этой работы и подчиненных работ"
+
+#, fuzzy
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "Предположительные общие затраты для этой работы и подчиненных работ"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Проекты"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Проекты"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Рабочие затраты"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Рабочие затраты"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Открыт"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Открыт"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Открыт"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Проектирование"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Проекты"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Проекты"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Задачи"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Рабочие затраты"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Рабочие затраты"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Рабочие затраты"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Администрирование проектирования"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Открыт"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Проект"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Задача"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Основной"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Рабочие затраты"

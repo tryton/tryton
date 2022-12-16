@@ -1,0 +1,52 @@
+Version 4.0.1 - 2016-05-11
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Opportunity reference into number and add reference
+* Add Python3 support
+* Replace history by revision on client
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Fix origin migration from 3.4
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Allow to set manually end date
+* Update of opportunity amount based on linked sales
+* Add a state 'won'
+* Allow to edit the probability after conversion
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Make party optional in leads
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Remove warehouse
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-09-07
+* Initial release
