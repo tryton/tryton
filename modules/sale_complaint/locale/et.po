@@ -1,0 +1,390 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.complaint,actions:"
+msgid "Actions"
+msgstr "Toimingud"
+
+msgctxt "field:sale.complaint,address:"
+msgid "Address"
+msgstr "Aadress"
+
+msgctxt "field:sale.complaint,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.complaint,customer:"
+msgid "Customer"
+msgstr "Klient"
+
+msgctxt "field:sale.complaint,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:sale.complaint,description:"
+msgid "Description"
+msgstr "Kirjeldus"
+
+msgctxt "field:sale.complaint,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:sale.complaint,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:sale.complaint,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:sale.complaint,origin_id:"
+msgid "Origin ID"
+msgstr "Päritolu ID"
+
+msgctxt "field:sale.complaint,origin_model:"
+msgid "Origin Model"
+msgstr "Päritplu mudel"
+
+msgctxt "field:sale.complaint,reference:"
+msgid "Reference"
+msgstr "Viide"
+
+msgctxt "field:sale.complaint,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:sale.complaint,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:sale.complaint.action,action:"
+msgid "Action"
+msgstr "Toiming"
+
+msgctxt "field:sale.complaint.action,complaint:"
+msgid "Complaint"
+msgstr "Kaebus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
+msgctxt "field:sale.complaint.action,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Arve read"
+
+msgctxt "field:sale.complaint.action,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:sale.complaint.action,result:"
+msgid "Result"
+msgstr "Tulemus"
+
+msgctxt "field:sale.complaint.action,sale_lines:"
+msgid "Sale Lines"
+msgstr "Müügiread"
+
+msgctxt "field:sale.complaint.action,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:sale.complaint.action,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+msgctxt "field:sale.complaint.action,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,action:"
+msgid "Action"
+msgstr "Toiming"
+
+#, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Päritolu ID"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Arve rida"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
+
+msgctxt "field:sale.complaint.action-sale.line,action:"
+msgid "Action"
+msgstr "Toiming"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Päritolu ID"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
+msgctxt "field:sale.complaint.action-sale.line,line:"
+msgid "Sale Line"
+msgstr "Müügi rida"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
+
+msgctxt "field:sale.complaint.type,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:sale.complaint.type,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Kaebuse järjestus"
+
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Kaebuse järjestus"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,invoice_lines:"
+msgid "Leave empty for all lines."
+msgstr "Kõikide ridade jaosk jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,quantity:"
+msgid "Leave empty for the same quantity."
+msgstr "Sama koguse jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,sale_lines:"
+msgid "Leave empty for all lines."
+msgstr "Kõikide ridade jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Sama hinna jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Sama hinna jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Sama hinna jaoks jäta tühjaks"
+
+msgctxt "model:ir.action,name:act_complaint_form"
+msgid "Complaints"
+msgstr "Kaebused"
+
+msgctxt "model:ir.action,name:act_complaint_relate_party"
+msgid "Customer Complaints"
+msgstr "Kliendikaebused"
+
+msgctxt "model:ir.action,name:act_complaint_relate_sale"
+msgid "Complaints"
+msgstr "Kaebused"
+
+msgctxt "model:ir.action,name:act_type_form"
+msgid "Types"
+msgstr "Tüübid"
+
+msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
+msgid "Approved"
+msgstr "Kinnitatud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"Kaebuse \"%(complaint)s\" kustutamiseks tuleb selle staatus muuta "
+"mustandiks."
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Kinnita"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Töötle"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Lükka tagasi"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Oota"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Kliendikaebuse ettevõte"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Kliendikaebuse ettevõte"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "Kliendikaebuse ettevõte"
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.sequence,name:sequence_complaint"
+msgid "Customer Complaint"
+msgstr "Kliendikaebus"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
+msgid "Customer Complaint"
+msgstr "Kliendikaebus"
+
+msgctxt "model:ir.ui.menu,name:menu_complaint"
+msgid "Complaints"
+msgstr "Kaebused"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Customer Complaint"
+msgstr "Kliendikaebus"
+
+msgctxt "model:ir.ui.menu,name:menu_type"
+msgid "Types"
+msgstr "Tüübid"
+
+msgctxt "model:sale.complaint,name:"
+msgid "Customer Complaint"
+msgstr "Kliendikaebus"
+
+msgctxt "model:sale.complaint.action,name:"
+msgid "Customer Complaint Action"
+msgstr "Kliendikaebuse toiming"
+
+msgctxt "model:sale.complaint.action-account.invoice.line,name:"
+msgid "Customer Complaint Action - Invoice Line"
+msgstr "Kliendikaebuse toiming - arverida"
+
+msgctxt "model:sale.complaint.action-sale.line,name:"
+msgid "Customer Complaint Action - Sale Line"
+msgstr "Kliendikaebuse toiming - müügirida"
+
+msgctxt "model:sale.complaint.type,name:"
+msgid "Customer Complaint Type"
+msgstr "Kliendikaebuse tüüp"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Approved"
+msgstr "Kinnitatud"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Rejected"
+msgstr "Tagasi lükatud"
+
+msgctxt "selection:sale.complaint,state:"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Credit Note"
+msgstr "Loo kreeditarve"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Create Sale Return"
+msgstr "Loo tagastus"
+
+msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Kaebus"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Töötle"
