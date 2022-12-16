@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="subscription_view_form">
+            <field name="model">sale.subscription</field>
+            <field name="type">form</field>
+            <field name="name">subscription_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_view_list">
+            <field name="model">sale.subscription</field>
+            <field name="type">tree</field>
+            <field name="name">subscription_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_subscription_form">
+            <field name="name">Subscriptions</field>
+            <field name="res_model">sale.subscription</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_subscription_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="subscription_view_list"/>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_subscription_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="subscription_view_form"/>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_subscription_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_subscription_form_domain_quotation">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_subscription_form_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_subscription_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_subscription_form"/>
+        </record>
+        <menuitem parent="sale.menu_sale" action="act_subscription_form"
+            id="menu_subscription_form" sequence="20"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_subscription_form_group_sale">
+            <field name="menu" ref="menu_subscription_form"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_subscription_party_relate">
+            <field name="name">Subscriptions</field>
+            <field name="res_model">sale.subscription</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_subscription_party_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_subscription_party_relate"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_subscription_party_relate-group_sale">
+            <field name="action" ref="act_subscription_party_relate"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.access" id="access_subscription">
+            <field name="model" search="[('model', '=', 'sale.subscription')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_subscription_sale">
+            <field name="model" search="[('model', '=', 'sale.subscription')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="subscription_draft_button_group_sale">
+            <field name="button" ref="subscription_draft_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="subscription_run_button_group_sale">
+            <field name="button" ref="subscription_run_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_quote_button">
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_view_form">
+            <field name="model">sale.subscription.line</field>
+            <field name="type">form</field>
+            <field name="name">subscription_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_view_list">
+            <field name="model">sale.subscription.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">subscription_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_view_list_sequence">
+            <field name="model">sale.subscription.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">subscription_line_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_subscription_line">
+            <field name="model"
+                search="[('model', '=', 'sale.subscription.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_subscription_line_sale">
+            <field name="model"
+                search="[('model', '=', 'sale.subscription.line')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_consumption_view_form">
+            <field name="model">sale.subscription.line.consumption</field>
+            <field name="type">form</field>
+            <field name="name">subscription_line_consumption_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_consumption_view_list">
+            <field name="model">sale.subscription.line.consumption</field>
+            <field name="type">tree</field>
+            <field name="name">subscription_line_consumption_list</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_subscription_line_consumption_form">
+            <field name="name">Consumptions</field>
+            <field name="res_model">sale.subscription.line.consumption</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_subscription_line_consumption_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="subscription_line_consumption_view_list"/>
+            <field name="act_window"
+                ref="act_subscription_line_consumption_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_subscription_line_consumption_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="subscription_line_consumption_view_form"/>
+            <field name="act_window"
+                ref="act_subscription_line_consumption_form"/>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_subscription_line_consumption_subscription_relate">
+            <field name="name">Consumptions</field>
+            <field name="res_model">sale.subscription.line.consumption</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line.subscription', '=', Eval('active_id')), ('line.subscription', 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_subscription_line_consumption_subscription_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.subscription,-1</field>
+            <field name="action"
+                ref="act_subscription_line_consumption_subscription_relate"/>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_subscription_line_consumption_subscription_line_relate">
+            <field name="name">Consumptions</field>
+            <field name="res_model">sale.subscription.line.consumption</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line', '=', Eval('active_id')), ('line', 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_subscription_line_consumption_subscription_line_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.subscription.line,-1</field>
+            <field name="action"
+                ref="act_subscription_line_consumption_subscription_line_relate"/>
+        </record>
+
+        <record model="ir.model.access"
+            id="access_subscription_line_consumption">
+            <field name="model"
+                search="[('model', '=', 'sale.subscription.line.consumption')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_subscription_line_consumption_sale">
+            <field name="model"
+                search="[('model', '=', 'sale.subscription.line.consumption')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_line_consumption_create">
+            <field name="name">Create Line Consumptions</field>
+            <field name="wiz_name">sale.subscription.line.consumption.create</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_line_consumption_create_group_sale">
+            <field name="action" ref="act_line_consumption_create"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <menuitem parent="menu_subscription_form" sequence="10"
+            action="act_line_consumption_create"
+            id="menu_line_consumption_create"/>
+
+        <record model="ir.ui.view"
+            id="line_consumption_create_start_view_form">
+            <field name="model">sale.subscription.line.consumption.create.start</field>
+            <field name="type">form</field>
+            <field name="name">line_consumption_create_start_form</field>
+        </record>
+
+        <record model="res.user" id="user_generate_line_consumption">
+            <field name="login">user_cron_subscription_line_consumption</field>
+            <field name="name">Cron Subscription Line Consumption</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_line_consumption_group_sale">
+            <field name="user" ref="user_generate_line_consumption"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.cron" id="cron_generate_line_consumption">
+            <field name="name">Generate Subscription Line Consumptions</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_line_consumption"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">sale.subscription.line</field>
+            <field name="function">generate_consumption</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_create_invoice">
+            <field name="name">Create Subscription Invoices</field>
+            <field name="wiz_name">sale.subscription.create_invoice</field>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_create_invoice_create_group_sale">
+            <field name="action" ref="act_create_invoice"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <menuitem parent="menu_subscription_form" sequence="20"
+            action="act_create_invoice"
+            id="menu_create_invoice"/>
+
+        <record model="ir.ui.view" id="create_invoice_start_view_form">
+            <field name="model">sale.subscription.create_invoice.start</field>
+            <field name="type">form</field>
+            <field name="name">create_invoice_start_form</field>
+        </record>
+
+        <record model="res.user" id="user_generate_invoice">
+            <field name="login">user_cron_subscription_invoice</field>
+            <field name="name">Cron Subscription Invoice</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_invoice_group_sale">
+            <field name="user" ref="user_generate_invoice"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_invoice_group_account">
+            <field name="user" ref="user_generate_invoice"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.cron" id="cron_generate_invoice">
+            <field name="name">Generate Subscription Invoices</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_invoice"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">sale.subscription</field>
+            <field name="function">generate_invoice</field>
+        </record>
+
+    </data>
+</tryton>
