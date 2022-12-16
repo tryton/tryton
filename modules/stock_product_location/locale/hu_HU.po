@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Alapértelmezett raktár hely"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Raktár helye"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "Sorrend"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Raktár"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Termék raktárhelye"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Location"
+msgstr "Termék raktárhelye"
+
+msgctxt "view:stock.product.location:"
+msgid "Product Locations"
+msgstr "Termék raktárhelye"
