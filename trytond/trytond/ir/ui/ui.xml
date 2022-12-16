@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="board_icon">
+            <field name="name">tryton-board</field>
+            <field name="path">ui/icons/tryton-board.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="calendar_icon">
+            <field name="name">tryton-calendar</field>
+            <field name="path">ui/icons/tryton-calendar.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="folder_icon">
+            <field name="name">tryton-folder</field>
+            <field name="path">ui/icons/tryton-folder.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="form_icon">
+            <field name="name">tryton-form</field>
+            <field name="path">ui/icons/tryton-form.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="graph_icon">
+            <field name="name">tryton-graph</field>
+            <field name="path">ui/icons/tryton-graph.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="list_icon">
+            <field name="name">tryton-list</field>
+            <field name="path">ui/icons/tryton-list.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="settings_icon">
+            <field name="name">tryton-settings</field>
+            <field name="path">ui/icons/tryton-settings.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="tree_icon">
+            <field name="name">tryton-tree</field>
+            <field name="path">ui/icons/tryton-tree.svg</field>
+        </record>
+
+        <menuitem
+            name="Administration"
+            sequence="9999"
+            id="menu_administration"
+            icon="tryton-settings"/>
+        <menuitem
+            name="User Interface"
+            parent="menu_administration"
+            sequence="50"
+            id="menu_ui"/>
+    </data>
+</tryton>
