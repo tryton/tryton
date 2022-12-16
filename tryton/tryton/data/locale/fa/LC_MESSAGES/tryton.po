@@ -1,0 +1,1536 @@
+# Translations template for tryton.
+# Copyright (C) 2018 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#: tryton/config.py:74
+msgid "specify alternate config file"
+msgstr "فایل پیکربندی جایگزین را مشخص کنید"
+
+#: tryton/config.py:77
+msgid "development mode"
+msgstr "حالت پیشرفته"
+
+#: tryton/config.py:80
+msgid "logging everything at INFO level"
+msgstr "گزارشگیری همه چیز در سطح اطلاعات"
+
+#: tryton/config.py:82
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "تعیین سطح گزارش : اشکال زدایی، اطلاعات، هشدار، خطا، بحرانی"
+
+#: tryton/config.py:85
+msgid "specify the login user"
+msgstr "تعیین ورود به سیستم کاربر"
+
+#: tryton/config.py:87
+msgid "specify the server hostname:port"
+msgstr "تعیین نام میزبان سرور : درگاه"
+
+#: tryton/config.py:127
+#, python-format
+msgid "Unable to write config file %s."
+msgstr "قادر به نوشتن در فایل پیکربندی \"%s\" نیست."
+
+#: tryton/translate.py:185
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "قادر به تنظیم محلی: \"%s\" نیست"
+
+#: tryton/action/main.py:89 tryton/common/button.py:54
+msgid ", "
+msgstr "، "
+
+#: tryton/action/main.py:91
+msgid ",…"
+msgstr ",…"
+
+#: tryton/action/main.py:92
+#, python-format
+msgid "%s (%s)"
+msgstr "\"%s\" (%s)"
+
+#: tryton/action/main.py:187
+msgid "Select your action"
+msgstr "انتخاب اقدام شما"
+
+#: tryton/action/main.py:193
+msgid "No action defined."
+msgstr "اقدامی تعریف نشده."
+
+#: tryton/common/button.py:54
+msgid "By: "
+msgstr "توسط : "
+
+#: tryton/common/common.py:307 tryton/gui/window/shortcuts.py:64
+msgid "Selection"
+msgstr "انتخاب"
+
+#: tryton/common/common.py:309 tryton/common/common.py:365
+#: tryton/common/common.py:368 tryton/common/common.py:642
+#: tryton/common/common.py:693 tryton/common/common.py:796
+#: tryton/gui/window/email.py:23 tryton/gui/window/limit.py:24
+#: tryton/gui/window/preference.py:35 tryton/gui/window/revision.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:149
+#: tryton/gui/window/view_form/view/graph.py:106
+#: tryton/gui/window/win_csv.py:173 tryton/gui/window/win_form.py:68
+#: tryton/gui/window/win_search.py:54
+#, fuzzy
+msgid "Cancel"
+msgstr "_انصراف"
+
+#: tryton/common/common.py:310 tryton/common/common.py:797
+#: tryton/gui/window/email.py:28 tryton/gui/window/limit.py:29
+#: tryton/gui/window/preference.py:40 tryton/gui/window/revision.py:30
+#: tryton/gui/window/shortcuts.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:154
+#: tryton/gui/window/view_form/view/graph.py:111
+#: tryton/gui/window/win_csv.py:178 tryton/gui/window/win_form.py:97
+#: tryton/gui/window/win_search.py:72
+msgid "OK"
+msgstr ""
+
+#: tryton/common/common.py:315
+msgid "Your selection:"
+msgstr "انتخاب شما:"
+
+#: tryton/common/common.py:366 tryton/gui/window/form.py:114
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:83
+msgid "Select"
+msgstr "انتخاب"
+
+#: tryton/common/common.py:369 tryton/gui/window/win_export.py:83
+msgid "Save"
+msgstr "ذخیره"
+
+#: tryton/common/common.py:447
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:31
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:116
+#: tryton/gui/window/view_form/view/graph.py:171
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:493
+#: tryton/gui/window/win_export.py:305
+msgid "Save As..."
+msgstr "ذخیره با نام..."
+
+#: tryton/common/common.py:592
+msgid "Always ignore this warning."
+msgstr "همیشه این هشدار را نادیده بگیر."
+
+#: tryton/common/common.py:597
+msgid "Do you want to proceed?"
+msgstr "آیا می خواهید پردازش شود؟"
+
+#: tryton/common/common.py:643
+msgid "No"
+msgstr ""
+
+#: tryton/common/common.py:644 tryton/common/domain_parser.py:239
+msgid "Yes"
+msgstr "بله"
+
+#: tryton/common/common.py:689 tryton/common/common.py:983
+msgid "Concurrency Exception"
+msgstr "همزمانی استثنا"
+
+#: tryton/common/common.py:691
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+#: tryton/common/common.py:694
+msgid "Cancel saving"
+msgstr ""
+
+#: tryton/common/common.py:696
+msgid "Compare"
+msgstr "مقایسه"
+
+#: tryton/common/common.py:697
+msgid "See the modified version"
+msgstr ""
+
+#: tryton/common/common.py:699
+msgid "Write Anyway"
+msgstr "نوشتن بهرحال"
+
+#: tryton/common/common.py:700
+msgid "Save your current version"
+msgstr ""
+
+#: tryton/common/common.py:729
+#, fuzzy
+msgid "Application Error"
+msgstr "خطای برنامه."
+
+#: tryton/common/common.py:732
+msgid "Report Bug"
+msgstr "گزارش اشکال(باگ)"
+
+#: tryton/common/common.py:733 tryton/gui/window/dblogin.py:36
+msgid "Close"
+msgstr ""
+
+#: tryton/common/common.py:751
+msgid "Error: "
+msgstr "خطا: "
+
+#: tryton/common/common.py:768
+#, python-format, fuzzy, python-format
+msgid "To report bugs you must have an account on %s"
+msgstr "برای گزارش اشکالات باید یک حساب کاربری داشته باشید در <u> \"%s\" </u>"
+
+#: tryton/common/common.py:794
+msgid "Bug Tracker"
+msgstr "ردیابی اشکال(باگ)"
+
+#: tryton/common/common.py:811
+msgid "User:"
+msgstr "کاربر:"
+
+#: tryton/common/common.py:819
+msgid "Password:"
+msgstr "کلمه عبور:"
+
+#: tryton/common/common.py:875
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"همین اشکال قبلا توسط کاربر دیگری گزارش شده است.\n"
+"برای نگهداری اطلاعات شما نام کاربریتان به ناز-لیست این شماره افزوده می شود"
+
+#: tryton/common/common.py:886
+msgid "Created new bug with ID "
+msgstr "اشکال(باگ) جدید با شناسه ایجاد شد "
+
+#: tryton/common/common.py:894
+msgid ""
+"Connection error.\n"
+"Bad username or password."
+msgstr ""
+"خطای اتصال.\n"
+" نام کاربری یا کلمه عبور اشتباه."
+
+#: tryton/common/common.py:899
+msgid "Exception:"
+msgstr "اعتراض:"
+
+#: tryton/common/common.py:926
+#, python-format
+msgid "Check URL: %s"
+msgstr "بررسی URL :  %s"
+
+#: tryton/common/common.py:934
+msgid "Unable to check for new version"
+msgstr "قادر به بررسی نسخه جدید نیست"
+
+#: tryton/common/common.py:940
+msgid "A new version is available!"
+msgstr "نسخه جدید در دسترس است!"
+
+#: tryton/common/common.py:942
+msgid "Download"
+msgstr "دانلود"
+
+#: tryton/common/common.py:1323
+msgid "..."
+msgstr "..."
+
+#: tryton/common/completion.py:25
+msgid "<i>Search...</i>"
+msgstr "<i>جستجو...</i>"
+
+#: tryton/common/completion.py:27
+msgid "<i>Create...</i>"
+msgstr "<i>ایجاد...</i>"
+
+#: tryton/common/completion.py:70
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "قادر به جستجو برای تکمیل : \"%s\" نیست"
+
+#: tryton/common/datetime_.py:32 tryton/common/datetime_.py:238
+#: tryton/common/datetime_.py:391
+msgid "Value"
+msgstr "مقدار"
+
+#: tryton/common/datetime_.py:33 tryton/common/datetime_.py:239
+#: tryton/common/datetime_.py:392
+msgid "Displayed value"
+msgstr "مقدار نمایش داده شده"
+
+#: tryton/common/datetime_.py:37 tryton/common/datetime_.py:195
+#: tryton/common/datetime_.py:242 tryton/common/datetime_.py:347
+msgid "Format"
+msgstr "قالب"
+
+#: tryton/common/datetime_.py:38 tryton/common/datetime_.py:196
+#: tryton/common/datetime_.py:243 tryton/common/datetime_.py:348
+msgid "Display format"
+msgstr "فرمت نمایش"
+
+#: tryton/common/datetime_.py:63
+msgid "Open the calendar"
+msgstr "بازکردن تقویم"
+
+#: tryton/common/datetime_.py:396 tryton/common/datetime_.py:401
+msgid "Date Format"
+msgstr "فرمت تاریخ"
+
+#: tryton/common/datetime_.py:397 tryton/common/datetime_.py:402
+msgid "Displayed date format"
+msgstr "فرمت تاریخ تمایش داده شده"
+
+#: tryton/common/domain_parser.py:239
+msgid "y"
+msgstr "y"
+
+#: tryton/common/domain_parser.py:239 tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "True"
+msgstr "درست"
+
+#: tryton/common/domain_parser.py:239
+msgid "t"
+msgstr "t"
+
+#: tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "False"
+msgstr "غلط"
+
+#: tryton/common/popup_menu.py:84
+msgid "Edit..."
+msgstr "ویرایش..."
+
+#: tryton/common/popup_menu.py:89
+msgid "Attachments..."
+msgstr "پیوست ها..."
+
+#: tryton/common/popup_menu.py:95
+msgid "Notes..."
+msgstr "یادداشت ها..."
+
+#: tryton/common/popup_menu.py:107
+msgid "Actions..."
+msgstr "اقدامات..."
+
+#: tryton/common/popup_menu.py:108
+msgid "Relate..."
+msgstr "مرتبط..."
+
+#: tryton/common/popup_menu.py:109
+msgid "Report..."
+msgstr "گزارش..."
+
+#: tryton/common/popup_menu.py:110
+msgid "E-Mail..."
+msgstr "ایمیل..."
+
+#: tryton/common/popup_menu.py:111
+msgid "Print..."
+msgstr "چاپ..."
+
+#: tryton/common/timedelta.py:26
+msgid "Y"
+msgstr "Y"
+
+#: tryton/common/timedelta.py:27
+msgid "M"
+msgstr "M"
+
+#: tryton/common/timedelta.py:28
+msgid "w"
+msgstr "w"
+
+#: tryton/common/timedelta.py:29
+msgid "d"
+msgstr "d"
+
+#: tryton/common/timedelta.py:30
+msgid "h"
+msgstr "h"
+
+#: tryton/common/timedelta.py:31
+msgid "m"
+msgstr "m"
+
+#: tryton/common/timedelta.py:32
+msgid "s"
+msgstr "s"
+
+#: tryton/gui/main.py:123
+#, fuzzy
+msgid "Preferences..."
+msgstr "_ظاهر برنامه..."
+
+#: tryton/gui/main.py:127
+#, fuzzy
+msgid "Toolbar"
+msgstr "_نوارابزار"
+
+#: tryton/gui/main.py:128
+#, fuzzy
+msgid "Default"
+msgstr "_پیش فرض"
+
+#: tryton/gui/main.py:129
+#, fuzzy
+msgid "Text and Icons"
+msgstr "_متن و آیکون ها"
+
+#: tryton/gui/main.py:130
+#, fuzzy
+msgid "Text"
+msgstr "_متن"
+
+#: tryton/gui/main.py:131
+#, fuzzy
+msgid "Icons"
+msgstr "_آیکون ها"
+
+#: tryton/gui/main.py:134
+#, fuzzy
+msgid "Form"
+msgstr "_فرم"
+
+#: tryton/gui/main.py:135
+msgid "Save Width/Height"
+msgstr "ذخیره عرض/ارتفاع"
+
+#: tryton/gui/main.py:136
+msgid "Save Tree State"
+msgstr "ذخیره حالت درختی"
+
+#: tryton/gui/main.py:137
+msgid "Fast Tabbing"
+msgstr "برگه کردن سریع"
+
+#: tryton/gui/main.py:138
+msgid "Spell Checking"
+msgstr "غلط ‌یاب املایی"
+
+#: tryton/gui/main.py:140
+msgid "PDA Mode"
+msgstr ""
+
+#: tryton/gui/main.py:141
+msgid "Search Limit..."
+msgstr "جستجو محدود..."
+
+#: tryton/gui/main.py:142
+#, fuzzy
+msgid "Email..."
+msgstr "_ایمیل..."
+
+#: tryton/gui/main.py:143
+msgid "Check Version"
+msgstr "بررسی نسخه"
+
+#: tryton/gui/main.py:145
+#, fuzzy
+msgid "Options"
+msgstr "_گزینه‌ها"
+
+#: tryton/gui/main.py:148
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "_میانبرهای صفحه کلید..."
+
+#: tryton/gui/main.py:149
+#, fuzzy
+msgid "About..."
+msgstr "_درباره..."
+
+#: tryton/gui/main.py:150
+#, fuzzy
+msgid "Help"
+msgstr "_راهنما"
+
+#: tryton/gui/main.py:153
+msgid "Quit"
+msgstr ""
+
+#: tryton/gui/main.py:395
+msgid "No result found."
+msgstr "نتیجه ای پیدا نشد."
+
+#: tryton/gui/main.py:447
+#, fuzzy
+msgid "Favorites"
+msgstr "_علاقمندی ها"
+
+#: tryton/gui/main.py:464 tryton/gui/window/dblogin.py:438
+#: tryton/gui/window/form.py:139
+msgid "Manage..."
+msgstr ""
+
+#: tryton/gui/main.py:541 tryton/gui/window/form.py:559
+msgid "Action"
+msgstr "اقدام"
+
+#: tryton/gui/main.py:563
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"اقدام زیر نیاز به بستن همه برگه ها دارد.\n"
+"می خواهید ادامه دهید؟"
+
+#: tryton/gui/main.py:747
+msgid "Close Tab"
+msgstr "بستن برگه"
+
+#: tryton/gui/window/about.py:37
+msgid "modularity, scalability and security"
+msgstr "مدولاربودن، مقیاس پذیری و امنیت"
+
+#: tryton/gui/window/about.py:43
+msgid "translator-credits"
+msgstr "پرویز همایون نژاد"
+
+#: tryton/gui/window/attachment.py:24
+#, python-format
+msgid "Attachments (%s)"
+msgstr "پیوستها (%s)"
+
+#: tryton/gui/window/dblogin.py:33
+msgid "Profile Editor"
+msgstr "ویرایشگر پروفایل"
+
+#: tryton/gui/window/dblogin.py:49
+msgid "Profile"
+msgstr "پروفایل"
+
+#: tryton/gui/window/dblogin.py:58
+msgid "Add new profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:63
+msgid "Remove selected profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:77 tryton/gui/window/dblogin.py:450
+msgid "Host:"
+msgstr "هاست:"
+
+#: tryton/gui/window/dblogin.py:88 tryton/gui/window/dblogin.py:462
+msgid "Database:"
+msgstr "پایگاه داده:"
+
+#: tryton/gui/window/dblogin.py:108
+msgid "Fetching databases list"
+msgstr "وارد کردن فهرست های پایگاه داده"
+
+#: tryton/gui/window/dblogin.py:122
+msgid "Username:"
+msgstr "نام کاربری:"
+
+#: tryton/gui/window/dblogin.py:309 tryton/gui/window/dblogin.py:619
+msgid "Incompatible version of the server"
+msgstr "نسخه ناسازگار سرور"
+
+#: tryton/gui/window/dblogin.py:311 tryton/gui/window/dblogin.py:623
+msgid "Could not connect to the server"
+msgstr "نمی تواند به سرور متصل شود"
+
+#: tryton/gui/window/dblogin.py:390
+msgid "Login"
+msgstr "ورود به سیستم"
+
+#: tryton/gui/window/dblogin.py:396
+msgid "_Cancel"
+msgstr "_انصراف"
+
+#: tryton/gui/window/dblogin.py:398
+msgid "Cancel connection to the Tryton server"
+msgstr "لغو اتصال به سرور تریتون"
+
+#: tryton/gui/window/dblogin.py:400
+msgid "C_onnect"
+msgstr "_ارتباط"
+
+#: tryton/gui/window/dblogin.py:404
+msgid "Connect the Tryton server"
+msgstr "اتصال سرور تریتون"
+
+#: tryton/gui/window/dblogin.py:432
+msgid "Profile:"
+msgstr "پروفایل:"
+
+#: tryton/gui/window/dblogin.py:447
+msgid "Host / Database information"
+msgstr "اطلاعات میزبان / پایگاه داده"
+
+#: tryton/gui/window/dblogin.py:478
+msgid "User name:"
+msgstr "نام کاربر:"
+
+#: tryton/gui/window/email.py:19
+msgid "Email"
+msgstr "ایمیل"
+
+#: tryton/gui/window/email.py:36
+msgid "Email Program Settings"
+msgstr "تنظیمات برنامه ایمیل"
+
+#: tryton/gui/window/email.py:39
+msgid "Command Line:"
+msgstr "خط فرمان:"
+
+#: tryton/gui/window/email.py:49
+msgid "Legend of Available Placeholders:"
+msgstr "مشروح متغیرهای موجود:"
+
+#: tryton/gui/window/email.py:56
+msgid "To:"
+msgstr "به:"
+
+#: tryton/gui/window/email.py:60
+msgid "CC:"
+msgstr "CC:"
+
+#: tryton/gui/window/email.py:64
+msgid "Subject:"
+msgstr "موضوع :"
+
+#: tryton/gui/window/email.py:68
+msgid "Body:"
+msgstr "بدنه:"
+
+#: tryton/gui/window/email.py:72
+msgid "Attachment:"
+msgstr "پیوست:"
+
+#: tryton/gui/window/form.py:135
+msgid "Add..."
+msgstr ""
+
+#: tryton/gui/window/form.py:155
+#, python-format
+msgid "Attachment(%d)"
+msgstr "پیوست(%d)"
+
+#: tryton/gui/window/form.py:185
+#, python-format
+msgid "Note(%d)"
+msgstr "یاداشت(%d)"
+
+#: tryton/gui/window/form.py:207
+msgid "You have to select one record."
+msgstr "شما باید یک پرونده را انتخاب کنید."
+
+#: tryton/gui/window/form.py:211
+msgid "ID:"
+msgstr "شناسه:"
+
+#: tryton/gui/window/form.py:212
+msgid "Creation User:"
+msgstr "ایجاد کاربر:"
+
+#: tryton/gui/window/form.py:213
+msgid "Creation Date:"
+msgstr "تاريخ ايجاد:"
+
+#: tryton/gui/window/form.py:214
+msgid "Latest Modification by:"
+msgstr "آخرین تغییرات بوسیله:"
+
+#: tryton/gui/window/form.py:215
+msgid "Latest Modification Date:"
+msgstr "تاریخ آخرین تغییرات:"
+
+#: tryton/gui/window/form.py:234
+msgid "Model:"
+msgstr "مدل:"
+
+#: tryton/gui/window/form.py:312
+msgid "Are you sure to remove this record?"
+msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
+
+#: tryton/gui/window/form.py:314
+msgid "Are you sure to remove those records?"
+msgstr "برای حذف این پرونده ها اطمینان کامل دارید؟"
+
+#: tryton/gui/window/form.py:317
+msgid "Records not removed."
+msgstr "پرونده ها حذف نشدند."
+
+#: tryton/gui/window/form.py:319
+msgid "Records removed."
+msgstr "پرونده ها حذف شدند."
+
+#: tryton/gui/window/form.py:356
+msgid "Working now on the duplicated record(s)."
+msgstr "هم اکنون کار بر روی پرونده(ها) تکثیر شده انجام می شود."
+
+#: tryton/gui/window/form.py:368
+msgid "Record saved."
+msgstr "پرونده ذخیره شد."
+
+#: tryton/gui/window/form.py:485
+msgid " of "
+msgstr " از "
+
+#: tryton/gui/window/form.py:505
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"این پرونده هنوز اصلاح نشده است.\n"
+"می‌خواهید آن را ذخیره کنید ؟"
+
+#: tryton/gui/window/form.py:559
+msgid "Launch action"
+msgstr "انجام اقدام"
+
+#: tryton/gui/window/form.py:560
+msgid "Relate"
+msgstr "مرتبط"
+
+#: tryton/gui/window/form.py:560
+msgid "Open related records"
+msgstr "بازکردن پرونده های مرتبط"
+
+#: tryton/gui/window/form.py:562
+msgid "Report"
+msgstr "گزارش"
+
+#: tryton/gui/window/form.py:562
+msgid "Open report"
+msgstr "باز کردن گزارش"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail"
+msgstr "ایمیل"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail report"
+msgstr "گزارش ایمیل"
+
+#: tryton/gui/window/form.py:564
+msgid "Print"
+msgstr "چاپ"
+
+#: tryton/gui/window/form.py:564
+msgid "Print report"
+msgstr "چاپ گزارش"
+
+#: tryton/gui/window/form.py:590
+msgid "_Copy URL"
+msgstr "_رونوشت URL"
+
+#: tryton/gui/window/form.py:593
+msgid "Copy URL into clipboard"
+msgstr "کپی URL درون کلیپبورد"
+
+#: tryton/gui/window/form.py:652
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:932
+msgid "Unknown"
+msgstr "نامعلوم"
+
+#: tryton/gui/window/limit.py:20
+msgid "Limit"
+msgstr "محدود"
+
+#: tryton/gui/window/limit.py:37
+msgid "Search Limit Settings"
+msgstr "تنظیمات جستجو محدود"
+
+#: tryton/gui/window/limit.py:40
+msgid "Limit:"
+msgstr "محدودیت:"
+
+#: tryton/gui/window/note.py:17
+#, python-format
+msgid "Notes (%s)"
+msgstr "یادداشت ها(%s)"
+
+#: tryton/gui/window/preference.py:25
+msgid "Preferences"
+msgstr "ظاهر برنامه"
+
+#: tryton/gui/window/preference.py:58
+msgid "Edit User Preferences"
+msgstr "ویرایش ظاهر برنامه کاربر"
+
+#: tryton/gui/window/preference.py:85
+msgid "Preference"
+msgstr "ظاهر"
+
+#: tryton/gui/window/revision.py:21
+msgid "Revision"
+msgstr "تجدید نظر"
+
+#: tryton/gui/window/revision.py:38
+msgid "Select a revision"
+msgstr "انتخاب یک تجدید نظر"
+
+#: tryton/gui/window/revision.py:41
+msgid "Revision:"
+msgstr "تجدید نظر:"
+
+#: tryton/gui/window/shortcuts.py:20
+msgid "Keyboard Shortcuts"
+msgstr "میانبرهای صفحه کلید"
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Text Entries Shortcuts"
+msgstr "نوشته های متنی میانبر"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Cut selected text"
+msgstr "برش متن انتخابی"
+
+#: tryton/gui/window/shortcuts.py:37
+msgid "Copy selected text"
+msgstr "کپی متن انتخابی"
+
+#: tryton/gui/window/shortcuts.py:38
+msgid "Paste copied text"
+msgstr "چسباندن متن کپی شده"
+
+#: tryton/gui/window/shortcuts.py:39
+msgid "Next widget"
+msgstr "ویجت بعدی"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Previous widget"
+msgstr "ویجت قبلی"
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Relation Entries Shortcuts"
+msgstr "رابطه ها کلید های میانبر"
+
+#: tryton/gui/window/shortcuts.py:42
+msgid "Create new relation"
+msgstr "ایجاد رابطه جدید"
+
+#: tryton/gui/window/shortcuts.py:43
+msgid "Open/Search relation"
+msgstr "بازکردن / ارتباط جستجو"
+
+#: tryton/gui/window/shortcuts.py:44
+msgid "List Entries Shortcuts"
+msgstr "فهرست محتوای میانبرهای"
+
+#: tryton/gui/window/shortcuts.py:45
+msgid "Create new line"
+msgstr "ایجاد سطر جدید"
+
+#: tryton/gui/window/shortcuts.py:46
+msgid "Open relation"
+msgstr "بازکردن رابطه"
+
+#: tryton/gui/window/shortcuts.py:47
+msgid "Mark line for deletion"
+msgstr "برای حذف سطر را علامتگذاری کنید"
+
+#: tryton/gui/window/shortcuts.py:48
+msgid "Unmark line for deletion"
+msgstr "برای حذف علامت سطر را بردارید"
+
+#: tryton/gui/window/shortcuts.py:51
+msgid "Edition Widgets"
+msgstr "ویرایش ویجت ها"
+
+#: tryton/gui/window/shortcuts.py:54
+msgid "Move Cursor"
+msgstr "حرکت مکان نما"
+
+#: tryton/gui/window/shortcuts.py:55
+msgid "Move to right"
+msgstr "حرکت به راست"
+
+#: tryton/gui/window/shortcuts.py:56
+msgid "Move to left"
+msgstr "حرکت به چپ"
+
+#: tryton/gui/window/shortcuts.py:57
+msgid "Move up"
+msgstr "حرکت به بالا"
+
+#: tryton/gui/window/shortcuts.py:58
+msgid "Move down"
+msgstr "حرکت به پایین"
+
+#: tryton/gui/window/shortcuts.py:59
+msgid "Move up of one page"
+msgstr "حرکت به بالای یک صفحه"
+
+#: tryton/gui/window/shortcuts.py:60
+msgid "Move down of one page"
+msgstr "حرکت به پایین یک صفحه"
+
+#: tryton/gui/window/shortcuts.py:61
+msgid "Move to top"
+msgstr "حرکت به بالا"
+
+#: tryton/gui/window/shortcuts.py:62
+msgid "Move to bottom"
+msgstr "حرکت به انتها"
+
+#: tryton/gui/window/shortcuts.py:63
+msgid "Move to parent"
+msgstr "انتقال به منبع"
+
+#: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
+msgid "Select all"
+msgstr "انتخاب همه"
+
+#: tryton/gui/window/shortcuts.py:67 tryton/gui/window/shortcuts.py:68
+msgid "Unselect all"
+msgstr "انتخاب نکردن همه"
+
+#: tryton/gui/window/shortcuts.py:69
+msgid "Select parent"
+msgstr "انتخاب منبع"
+
+#: tryton/gui/window/shortcuts.py:70 tryton/gui/window/shortcuts.py:71
+#: tryton/gui/window/shortcuts.py:72 tryton/gui/window/shortcuts.py:73
+msgid "Select/Activate current row"
+msgstr "انتخاب/فعال کردن ردیف جاری"
+
+#: tryton/gui/window/shortcuts.py:74
+msgid "Toggle selection"
+msgstr "انتخاب زنجیر"
+
+#: tryton/gui/window/shortcuts.py:75
+msgid "Expand/Collapse"
+msgstr "گشودن - بستن"
+
+#: tryton/gui/window/shortcuts.py:76
+msgid "Expand row"
+msgstr "گسترش ردیف"
+
+#: tryton/gui/window/shortcuts.py:77
+msgid "Collapse row"
+msgstr "بستن ردیف"
+
+#: tryton/gui/window/shortcuts.py:78
+msgid "Toggle row"
+msgstr "زنجیر ردیف"
+
+#: tryton/gui/window/shortcuts.py:79
+msgid "Collapse all rows"
+msgstr "بستن همه ردیف ها"
+
+#: tryton/gui/window/shortcuts.py:80
+msgid "Expand all rows"
+msgstr "گشودن همه ردیف ها"
+
+#: tryton/gui/window/shortcuts.py:83
+msgid "Tree view"
+msgstr "نمایش درختی"
+
+#: tryton/gui/window/tabcontent.py:43
+msgid "_Switch View"
+msgstr "_تعویض نمایه"
+
+#: tryton/gui/window/tabcontent.py:44
+msgid "Switch View"
+msgstr "تعویض نمایه"
+
+#: tryton/gui/window/tabcontent.py:49
+msgid "_Previous"
+msgstr "_قبلی"
+
+#: tryton/gui/window/tabcontent.py:50
+msgid "Previous Record"
+msgstr "پرونده قبلی"
+
+#: tryton/gui/window/tabcontent.py:55
+msgid "_Next"
+msgstr "_بعدی"
+
+#: tryton/gui/window/tabcontent.py:56
+msgid "Next Record"
+msgstr "پرونده بعدی"
+
+#: tryton/gui/window/tabcontent.py:61
+msgid "_Search"
+msgstr "_جستجو"
+
+#: tryton/gui/window/tabcontent.py:67
+msgid "_New"
+msgstr "_جدید"
+
+#: tryton/gui/window/tabcontent.py:68
+msgid "Create a new record"
+msgstr "ایجاد پرونده جدید"
+
+#: tryton/gui/window/tabcontent.py:73 tryton/gui/window/win_form.py:85
+msgid "_Save"
+msgstr "_ذخیره"
+
+#: tryton/gui/window/tabcontent.py:74
+msgid "Save this record"
+msgstr "ذخیره این پرونده"
+
+#: tryton/gui/window/tabcontent.py:79
+msgid "_Reload/Undo"
+msgstr "_بارگیری مجدد / واگرد"
+
+#: tryton/gui/window/tabcontent.py:80
+msgid "Reload/Undo"
+msgstr "بارگیری مجدد / واگرد"
+
+#: tryton/gui/window/tabcontent.py:85
+msgid "_Duplicate"
+msgstr "_تکثیر"
+
+#: tryton/gui/window/tabcontent.py:90
+msgid "_Delete..."
+msgstr "_حذف..."
+
+#: tryton/gui/window/tabcontent.py:96
+msgid "View _Logs..."
+msgstr "_مشاهده گزارشات..."
+
+#: tryton/gui/window/tabcontent.py:100
+msgid "Show revisions..."
+msgstr "مشاهده تجدیدنظرها..."
+
+#: tryton/gui/window/tabcontent.py:105
+msgid "A_ttachments..."
+msgstr "_پیوست..."
+
+#: tryton/gui/window/tabcontent.py:106
+msgid "Add an attachment to the record"
+msgstr "پیوست را به پرونده اضافه کنید"
+
+#: tryton/gui/window/tabcontent.py:112
+msgid "_Notes..."
+msgstr "_یادداشت ها..."
+
+#: tryton/gui/window/tabcontent.py:113
+msgid "Add a note to the record"
+msgstr "یک یادداشت به پرونده اضافه کنید"
+
+#: tryton/gui/window/tabcontent.py:118
+msgid "_Actions..."
+msgstr "_اقدامات..."
+
+#: tryton/gui/window/tabcontent.py:123
+msgid "_Relate..."
+msgstr "_مرتبط..."
+
+#: tryton/gui/window/tabcontent.py:129
+msgid "_Report..."
+msgstr "_گزارش..."
+
+#: tryton/gui/window/tabcontent.py:134
+msgid "_E-Mail..."
+msgstr "_ایمیل..."
+
+#: tryton/gui/window/tabcontent.py:139
+msgid "_Print..."
+msgstr "_چاپ..."
+
+#: tryton/gui/window/tabcontent.py:145
+msgid "_Export Data..."
+msgstr "_صادرات داده ها..."
+
+#: tryton/gui/window/tabcontent.py:150
+msgid "_Import Data..."
+msgstr "_واردات داده ها..."
+
+#: tryton/gui/window/tabcontent.py:155
+msgid "Copy _URL..."
+msgstr "_رونوشت URL..."
+
+#: tryton/gui/window/tabcontent.py:161
+msgid "_Close Tab"
+msgstr "_بستن برگه"
+
+#: tryton/gui/window/win_csv.py:60
+msgid "<b>All fields</b>"
+msgstr "<b>همه فیلد ها</b>"
+
+#: tryton/gui/window/win_csv.py:69
+msgid "_Add"
+msgstr "_افزودن"
+
+#: tryton/gui/window/win_csv.py:77
+msgid "_Remove"
+msgstr "_حذف"
+
+#: tryton/gui/window/win_csv.py:85
+msgid "_Clear"
+msgstr "_پاکسازی"
+
+#: tryton/gui/window/win_csv.py:105
+msgid "<b>Fields selected</b>"
+msgstr "<b>فیلد های انتخابی</b>"
+
+#: tryton/gui/window/win_csv.py:124
+msgid "CSV Parameters"
+msgstr "مولفه های CSV"
+
+#: tryton/gui/window/win_csv.py:132
+msgid "Delimiter:"
+msgstr "جدا کننده:"
+
+#: tryton/gui/window/win_csv.py:146
+msgid "Quote char:"
+msgstr "کاراکترنقل قول:"
+
+#: tryton/gui/window/win_csv.py:155
+msgid "Encoding:"
+msgstr "رمزگذاری:"
+
+#: tryton/gui/window/win_csv.py:195 tryton/gui/window/win_csv.py:199
+msgid "Field name"
+msgstr "نام فیلد"
+
+#: tryton/gui/window/win_export.py:28
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:32
+msgid "_Save Export"
+msgstr "_ذخیره استخراج"
+
+#: tryton/gui/window/win_export.py:40
+msgid "_Delete Export"
+msgstr "_حذف استخراج"
+
+#: tryton/gui/window/win_export.py:55
+msgid "<b>Predefined exports</b>"
+msgstr "<b>استخراج از پیش تعریف شده</b>"
+
+#: tryton/gui/window/win_export.py:62
+msgid "Name"
+msgstr "نام"
+
+#: tryton/gui/window/win_export.py:82
+msgid "Open"
+msgstr "باز کردن"
+
+#: tryton/gui/window/win_export.py:87
+msgid "Add _field names"
+msgstr "_اضافه کردن نام فیلدها"
+
+#: tryton/gui/window/win_export.py:103
+#, python-format
+msgid "%s (string)"
+msgstr "متنی %s"
+
+#: tryton/gui/window/win_export.py:106
+#, python-format
+msgid "%s (model name)"
+msgstr "نام مدل %s"
+
+#: tryton/gui/window/win_export.py:108
+#, python-format
+msgid "%s (record name)"
+msgstr "نام پرونده %s"
+
+#: tryton/gui/window/win_export.py:207
+msgid "What is the name of this export?"
+msgstr "نام این فایل استخراجی چیست؟"
+
+#: tryton/gui/window/win_export.py:213
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "بازنویسی %s تعاریف؟"
+
+#: tryton/gui/window/win_export.py:328
+#, python-format
+msgid "%d record saved."
+msgstr "%d پرونده ذخیره شد."
+
+#: tryton/gui/window/win_export.py:330
+#, python-format
+msgid "%d records saved."
+msgstr "%d پرونده های ذخیره شده."
+
+#: tryton/gui/window/win_export.py:333
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"عملیات ناموفق بود.\n"
+"پیام خطا:\n"
+"%s"
+
+#: tryton/gui/window/win_export.py:334 tryton/gui/window/win_import.py:112
+#: tryton/gui/window/win_import.py:139
+msgid "Error"
+msgstr "خطا"
+
+#: tryton/gui/window/win_form.py:38
+msgid "Link"
+msgstr "پیوند"
+
+#: tryton/gui/window/win_form.py:66
+msgid "Delete"
+msgstr ""
+
+#: tryton/gui/window/win_form.py:78 tryton/gui/window/win_search.py:65
+#, fuzzy
+msgid "New"
+msgstr "_جدید"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:48
+#: tryton/gui/window/win_form.py:140
+msgid "Switch"
+msgstr "تعویض"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:56
+#: tryton/gui/window/view_form/view/screen_container.py:222
+#: tryton/gui/window/win_form.py:148
+msgid "Previous"
+msgstr "قبلی"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:67
+#: tryton/gui/window/view_form/view/screen_container.py:231
+#: tryton/gui/window/win_form.py:159
+msgid "Next"
+msgstr "بعدی"
+
+#: tryton/gui/window/win_form.py:176
+msgid "Add"
+msgstr "افزودن"
+
+#: tryton/gui/window/win_form.py:186
+msgid "Remove <Del>"
+msgstr "حذف <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:118
+#: tryton/gui/window/win_form.py:198
+msgid "Create a new record <F3>"
+msgstr "ایجاد یک پرونده جدید <F3>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:134
+#: tryton/gui/window/win_form.py:208
+msgid "Delete selected record <Del>"
+msgstr "حذف پرونده انتخابی <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:142
+#: tryton/gui/window/win_form.py:219
+msgid "Undelete selected record <Ins>"
+msgstr "بازگردانی فایل انتخابی <Ins>"
+
+#: tryton/gui/window/win_import.py:26
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#: tryton/gui/window/win_import.py:30
+msgid "_Auto-Detect"
+msgstr "_شناسایی - خودکار"
+
+#: tryton/gui/window/win_import.py:41
+msgid "File to Import:"
+msgstr "فایل برای واردکردن:"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:200
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:466
+#: tryton/gui/window/win_import.py:43
+msgid "Open..."
+msgstr "باز کردن..."
+
+#: tryton/gui/window/win_import.py:48
+msgid "Lines to Skip:"
+msgstr "چشم پوشی از سطرهای:"
+
+#: tryton/gui/window/win_import.py:101
+msgid "You must select an import file first."
+msgstr "شما باید ابتدا فایل ورودی را انتخاب کنید."
+
+#: tryton/gui/window/win_import.py:112
+msgid "Error opening CSV file"
+msgstr "خطا در بازگشایی فایل CSV"
+
+#: tryton/gui/window/win_import.py:138
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "خطای پردازش فایل واقع در فیلد : \"%s\"."
+
+#: tryton/gui/window/win_import.py:198
+#, python-format
+msgid "%d record imported."
+msgstr "%d پرونده وارد شد."
+
+#: tryton/gui/window/win_import.py:200
+#, python-format
+msgid "%d records imported."
+msgstr "%d پرونده ها وارد شدند."
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:344
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:46
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:81
+#: tryton/gui/window/view_form/view/screen_container.py:146
+#: tryton/gui/window/win_search.py:36 tryton/gui/window/win_search.py:59
+msgid "Search"
+msgstr "جستجو"
+
+#: tryton/gui/window/win_search.py:91
+#, python-format
+msgid "Search %s"
+msgstr "جستجو %s"
+
+#: tryton/gui/window/wizard.py:160
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "قادر به حذف دستیار \"%s\" نیست"
+
+#: tryton/gui/window/wizard.py:317
+msgid "Wizard"
+msgstr "دستیار"
+
+#: tryton/gui/window/view_form/screen/screen.py:206
+msgid "ID"
+msgstr "شناسه"
+
+#: tryton/gui/window/view_form/screen/screen.py:207
+msgid "Creation User"
+msgstr "ایجاد کاربر"
+
+#: tryton/gui/window/view_form/screen/screen.py:208
+msgid "Creation Date"
+msgstr "تاریخ ایجاد"
+
+#: tryton/gui/window/view_form/screen/screen.py:209
+msgid "Modification User"
+msgstr "کاربر اصلاح کننده"
+
+#: tryton/gui/window/view_form/screen/screen.py:210
+msgid "Modification Date"
+msgstr "تاریخ اصلاح"
+
+#: tryton/gui/window/view_form/screen/screen.py:806
+#, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "قادربه دریافت حالت نمایش درختی نیست برای %s"
+
+#: tryton/gui/window/view_form/screen/screen.py:867
+msgid "Unable to set view tree state"
+msgstr "قادر به تنظیم حالت نمایش درختی نیست"
+
+#: tryton/gui/window/view_form/screen/screen.py:1054
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "با توجه به دامنه : \"%s\" معتبر نیست"
+
+#: tryton/gui/window/view_form/screen/screen.py:1061
+#, python-format
+msgid "\"%s\" is required"
+msgstr "\"%s\" مورد نیاز است"
+
+#: tryton/gui/window/view_form/screen/screen.py:1065
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "مقادیر \"%s\" معتبر نیستند"
+
+#: tryton/gui/window/view_form/screen/screen.py:1114
+msgid "Pre-validation"
+msgstr "پیش-اعتبارسنجی"
+
+#: tryton/gui/window/view_form/view/form.py:261
+#: tryton/gui/window/view_form/view/form.py:263
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:476
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:478
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:172
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:174
+#: tryton/gui/window/view_form/view/list.py:530
+#: tryton/gui/window/view_form/view/list.py:532
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:102
+msgid "Image Size"
+msgstr "اندازه تصویر"
+
+#: tryton/gui/window/view_form/view/graph.py:121
+msgid "Width:"
+msgstr "عرض:"
+
+#: tryton/gui/window/view_form/view/graph.py:129
+msgid "Height:"
+msgstr "ارتفاع:"
+
+#: tryton/gui/window/view_form/view/graph.py:140
+msgid "PNG image (*.png)"
+msgstr "PNG image (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:149
+msgid "Save As"
+msgstr "ذخیره با نام"
+
+#: tryton/gui/window/view_form/view/graph.py:161
+msgid "Image size too large."
+msgstr "اندازه تصویر بیش از حد بزرگ است."
+
+#: tryton/gui/window/view_form/view/screen_container.py:23
+msgid ".."
+msgstr ".."
+
+#: tryton/gui/window/view_form/view/screen_container.py:152
+msgid "Open filters"
+msgstr "بازکردن فیلترها"
+
+#: tryton/gui/window/view_form/view/screen_container.py:209
+msgid "Show bookmarks of filters"
+msgstr "نمایش بوک مارک های فیلترها"
+
+#: tryton/gui/window/view_form/view/screen_container.py:371
+msgid "Remove this bookmark"
+msgstr "حذف این بوک مارک"
+
+#: tryton/gui/window/view_form/view/screen_container.py:379
+msgid "Bookmark this filter"
+msgstr "بوک مارک این فیلتر"
+
+#: tryton/gui/window/view_form/view/screen_container.py:396
+msgid "Show active records"
+msgstr "نمایش پرونده های فعال"
+
+#: tryton/gui/window/view_form/view/screen_container.py:398
+msgid "Show inactive records"
+msgstr "نمایش پرونده های غیرفعال"
+
+#: tryton/gui/window/view_form/view/screen_container.py:479
+msgid "Bookmark Name:"
+msgstr "نام بوک مارک :"
+
+#: tryton/gui/window/view_form/view/screen_container.py:599
+msgid "Find"
+msgstr "یافتن"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:22
+msgid "Today"
+msgstr "امروز"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:32
+msgid "go back"
+msgstr "بازگشت"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:73
+msgid "go forward"
+msgstr "برو جلو"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:82
+msgid "previous year"
+msgstr "سال قبل"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:96
+msgid "next year"
+msgstr "سال بعد"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:107
+msgid "Week View"
+msgstr "نمایش هفته"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:117
+msgid "Month View"
+msgstr "نمایش ماه"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:142
+msgid "Week"
+msgstr "هفته"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:39
+msgid "Select..."
+msgstr "انتخاب..."
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:47
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:60
+msgid "All files"
+msgstr "همه فایل ها"
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:169
+msgid "Show plain text"
+msgstr "نمایش متن ساده"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:369
+msgid "Add value"
+msgstr "افزودن مقدار"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:490
+#, python-format
+msgid "Remove \"%s\""
+msgstr "حذف \"%s\""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:50
+msgid "Images"
+msgstr "تصاویر"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:99
+msgid "Add existing record"
+msgstr "افزودن پرونده موجود"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:74
+msgid "Remove selected record <Del>"
+msgstr "حذف پرونده انتخابی <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:305
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:582
+msgid "Open the record <F2>"
+msgstr "بازکردن پرونده <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:306
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:583
+msgid "Clear the field <Del>"
+msgstr "پاکسازی فیلد <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:309
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:586
+msgid "Search a record <F2>"
+msgstr "جستجوی یک پرونده <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:108
+msgid "Remove selected record"
+msgstr "حذف پرونده انتخابی"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:126
+msgid "Edit selected record <F2>"
+msgstr "ویرایش پرونده انتخابی <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:908
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:85
+msgid "Foreground"
+msgstr "پیش زمینه"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:328
+msgid "Select a color"
+msgstr "انتخاب یک رنگ"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:136
+msgid "Translation"
+msgstr "ترجمه"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:209
+msgid "Edit"
+msgstr "ویرایش"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:214
+msgid "Fuzzy"
+msgstr "نامانوس"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:285
+msgid "You need to save the record before adding translations."
+msgstr "قبل از اضافه کردن ترجمه ها شما باید پرونده را ذخیره کنید."
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:296
+msgid "No other language available."
+msgstr "هیچ زبان دیگری در دسترس نیست."
+
+#: tryton/plugins/translation/__init__.py:17
+#: tryton/plugins/translation/__init__.py:24
+msgid "Translate view"
+msgstr "نمایش ترجمه"
