@@ -1,0 +1,15 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,quantity_digits:"
+msgid "Quantity Digits"
+msgstr "Decimali della quantità"
+
+msgctxt "field:purchase.product_supplier,quantity_minimal:"
+msgid "Minimal Quantity"
+msgstr "Quantità minima"
+
+msgctxt "field:purchase.product_supplier,quantity_rounding:"
+msgid "Rounding Quantity"
+msgstr "Arrotondamento della quantità"
