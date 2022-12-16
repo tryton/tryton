@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_sale_point">
+            <field name="name">POS</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_sale_point">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_point"/>
+        </record>
+
+        <record model="res.group" id="group_sale_point_posting">
+            <field name="name">POS Posting</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_sale_point_posting">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_point_posting"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_sale">
+            <field name="name">POS</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="point_view_form">
+            <field name="model">sale.point</field>
+            <field name="type">form</field>
+            <field name="name">point_form</field>
+        </record>
+        <record model="ir.ui.view" id="point_view_list">
+            <field name="model">sale.point</field>
+            <field name="type">tree</field>
+            <field name="name">point_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_point_form">
+            <field name="name">Points of Sale</field>
+            <field name="res_model">sale.point</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_point_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="point_view_list"/>
+            <field name="act_window" ref="act_point_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_point_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="point_view_form"/>
+            <field name="act_window" ref="act_point_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_configuration"
+            action="act_point_form"
+            sequence="10"
+            id="menu_point_form"/>
+
+        <record model="ir.model.access" id="access_point">
+            <field name="model" search="[('model', '=', 'sale.point')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_point_sale_point">
+            <field name="model" search="[('model', '=', 'sale.point')]"/>
+            <field name="group" ref="group_sale_point"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_point_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.point')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_point_sale_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_point_sale_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_point_sale_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.point.sale</field>
+            <field name="type">form</field>
+            <field name="name">sale_form</field>
+        </record>
+        <record model="ir.ui.view" id="sale_view_list">
+            <field name="model">sale.point.sale</field>
+            <field name="type">tree</field>
+            <field name="name">sale_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_form">
+            <field name="name">POS Sales</field>
+            <field name="res_model">sale.point.sale</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_list"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_open">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_sale_form"
+            sequence="10"
+            id="menu_sale_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_form_group_sale_point">
+            <field name="menu" ref="menu_sale_form"/>
+            <field name="group" ref="group_sale_point"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale">
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_sale_point">
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="group" ref="group_sale_point"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_pay_button">
+            <field name="name">pay</field>
+            <field name="string">Pay</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_open_button">
+            <field name="name">open</field>
+            <field name="string">Re-Open</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="confirm">Are you sure you want to post the sales?</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_post_button_group_sale_point_posting">
+            <field name="button" ref="sale_post_button"/>
+            <field name="group" ref="group_sale_point_posting"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sale_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sale_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.point.sale.line</field>
+            <field name="type">form</field>
+            <field name="name">sale_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="sale_line_view_list">
+            <field name="model">sale.point.sale.line</field>
+            <field name="type">tree</field>
+            <field name="name">sale_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="cash_session_view_form">
+            <field name="model">sale.point.cash.session</field>
+            <field name="type">form</field>
+            <field name="name">cash_session_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="cash_session_view_list">
+            <field name="model">sale.point.cash.session</field>
+            <field name="type">tree</field>
+            <field name="name">cash_session_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_cash_session_form">
+            <field name="name">POS Cash Sessions</field>
+            <field name="res_model">sale.point.cash.session</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cash_session_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="cash_session_view_list"/>
+            <field name="act_window" ref="act_cash_session_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cash_session_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="cash_session_view_form"/>
+            <field name="act_window" ref="act_cash_session_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_cash_session_form_domain_open">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="act_window" ref="act_cash_session_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_cash_session_form_domain_closed">
+            <field name="name">Closed</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'closed')]" pyson="1"/>
+            <field name="act_window" ref="act_cash_session_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_cash_session_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_cash_session_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_cash_session_form"
+            sequence="20"
+            id="menu_cash_session_form"/>
+
+        <record model="ir.model.access" id="access_cash_session">
+            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cash_session_sale_point">
+            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
+            <field name="group" ref="group_sale_point"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="cash_session_open_button">
+            <field name="name">open</field>
+            <field name="string">Re-Open</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
+        </record>
+
+        <record model="ir.model.button" id="cash_session_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
+        </record>
+
+        <record model="ir.model.button" id="cash_session_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="confirm">Are you sure you want to post the sessions?</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.session')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="cash_session_post_button_group_sale_point_posting">
+            <field name="button" ref="cash_session_post_button"/>
+            <field name="group" ref="group_sale_point_posting"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_cash_session_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point.sale')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_cash_session_companies">
+            <field name="domain"
+                eval="[('point.company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_cash_session_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_method_view_form">
+            <field name="model">sale.point.payment.method</field>
+            <field name="type">form</field>
+            <field name="name">payment_method_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_method_view_list">
+            <field name="model">sale.point.payment.method</field>
+            <field name="type">tree</field>
+            <field name="name">payment_method_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_payment_method_form">
+            <field name="name">POS Payment Methods</field>
+            <field name="res_model">sale.point.payment.method</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_method_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_method_view_list"/>
+            <field name="act_window" ref="act_payment_method_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_method_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_method_view_form"/>
+            <field name="act_window" ref="act_payment_method_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_configuration"
+            action="act_payment_method_form"
+            sequence="50"
+            id="menu_payment_method_form"/>
+
+        <record model="ir.model.access" id="access_payment_method">
+            <field name="model" search="[('model', '=', 'sale.point.payment.method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_method_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.point.payment.method')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_payment_method_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point.payment.method')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_payment_method_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_payment_method_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">sale.point.payment</field>
+            <field name="type">form</field>
+            <field name="name">payment_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_view_form_wizard">
+            <field name="model">sale.point.payment</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">payment_form_wizard</field>
+        </record>
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">sale.point.payment</field>
+            <field name="type">tree</field>
+            <field name="name">payment_list</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_pay">
+            <field name="name">Pay POS Sale</field>
+            <field name="wiz_name">sale.point.sale.pay</field>
+            <field name="model">sale.point.sale</field>
+        </record>
+
+        <record model="ir.ui.view" id="cash_transfer_view_form">
+            <field name="model">sale.point.cash.transfer</field>
+            <field name="type">form</field>
+            <field name="name">cash_transfer_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="cash_transfer_view_list">
+            <field name="model">sale.point.cash.transfer</field>
+            <field name="type">tree</field>
+            <field name="name">cash_transfer_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_cash_transfer">
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cash_transfer_sale_point">
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
+            <field name="group" ref="group_sale_point"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="cash_transfer_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="confirm">Are you sure you want to post the transfer?</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="cash_transfer_post_button_group_sale_point_posting">
+            <field name="button" ref="cash_transfer_post_button"/>
+            <field name="group" ref="group_sale_point_posting"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_cash_transfer_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_cash_transfer_companies">
+            <field name="domain"
+                eval="[('point.company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_cash_transfer_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="cash_transfer_type_view_form">
+            <field name="model">sale.point.cash.transfer.type</field>
+            <field name="type">form</field>
+            <field name="name">cash_transfer_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="cash_transfer_type_view_list">
+            <field name="model">sale.point.cash.transfer.type</field>
+            <field name="type">tree</field>
+            <field name="name">cash_transfer_type_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_cash_transfer_type_form">
+            <field name="name">POS Cash Transfer Types</field>
+            <field name="res_model">sale.point.cash.transfer.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cash_transfer_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="cash_transfer_type_view_list"/>
+            <field name="act_window" ref="act_cash_transfer_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cash_transfer_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="cash_transfer_type_view_form"/>
+            <field name="act_window" ref="act_cash_transfer_type_form"/>
+        </record>
+
+        <menuitem
+            parent="sale.menu_configuration"
+            action="act_cash_transfer_type_form"
+            sequence="50"
+            id="menu_cash_transfer_type_form"/>
+
+        <record model="ir.model.access" id="access_cash_transfer_type">
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cash_transfer_type_sale_admin">
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer.type')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_cash_transfer_type_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.point.cash.transfer.type')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_cash_transfer_type_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_cash_transfer_type_companies"/>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,693 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "Are your sure to leave?"
+msgstr "Sigur iesiti?"
+
+msgid "Favorites"
+msgstr "Favorite"
+
+msgid "Manage..."
+msgstr "Gestionare..."
+
+msgid "Logout"
+msgstr "Deconectare"
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Save"
+msgstr "Salvare"
+
+msgid "Switch"
+msgstr "Schimba"
+
+msgid "Reload/Undo"
+msgstr "Reincarcare/Desfacere"
+
+msgid "Duplicate"
+msgstr "Duplicat"
+
+msgid "Delete"
+msgstr "Ștergere"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Următor"
+
+msgid "Search"
+msgstr "Căutare"
+
+msgid "Close Tab"
+msgstr "Închidere fila"
+
+msgid "Attachment"
+msgstr "Atașament"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Relate"
+msgstr "Relata"
+
+msgid "Print"
+msgstr "Tiparire"
+
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgid "Previous tab"
+msgstr "Fila anterioară"
+
+msgid "Next tab"
+msgstr "Fila următoare"
+
+msgid "Global search"
+msgstr "Căutare globală"
+
+msgid "Show this help"
+msgstr "Arătați acest ajutor"
+
+msgid "Show/Hide access keys"
+msgstr "Arata/Ascunde taste de access"
+
+msgid "Keyboard shortcuts"
+msgstr "Comenzi rapide"
+
+msgid "Close"
+msgstr "Închidere"
+
+msgid "Global shortcuts"
+msgstr "Comenzile rapide globale"
+
+msgid "Tab shortcuts"
+msgstr "Comenzile rapide pentru file"
+
+msgid "Unable to reach the server."
+msgstr "Serverul nu se poate accessa."
+
+msgid "Too many requests. Try again later."
+msgstr "Prea multe cereri. Încercați mai târziu."
+
+msgid "Login"
+msgstr "Autentificare"
+
+msgid "User name"
+msgstr "Utilizator"
+
+msgid "Database"
+msgstr "Bază de date"
+
+msgid "Your selection:"
+msgstr "Selecția dvs.:"
+
+msgid "Cancel"
+msgstr "Anulare"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "De: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "y"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "True"
+msgstr "Adevărat"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "Fals"
+
+msgid "Message: "
+msgstr "Mesaj: "
+
+msgid "Warning: "
+msgstr "Avertizare: "
+
+msgid "Always ignore this warning."
+msgstr "Ignorați întotdeauna acest avertisment."
+
+msgid "Do you want to proceed?"
+msgstr "Doriți să continuați?"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "Confirmation: "
+msgstr "Confirmare: "
+
+msgid "Concurrency Exception"
+msgstr "Excepție de concurgență"
+
+msgid "Write Concurrency Warning: "
+msgstr "Avertizare de scriere simultană: "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Această înregistrare a fost modificată în timp ce o editați."
+
+msgid "Choose:"
+msgstr "Alegere:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "„Anulare” pentru a anula salvarea;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Comparație\" pentru a vedea versiunea modificată;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Scrie Oricum\" pentru a salva versiunea curentă."
+
+msgid "Compare"
+msgstr "Comparaţie"
+
+msgid "Compare: %1"
+msgstr "Comparație:% 1"
+
+msgid "Write Anyway"
+msgstr "Scrie oricum"
+
+msgid "Application Error"
+msgstr "Eroare de aplicație"
+
+msgid "Report Bug"
+msgstr "Raporteati eroare"
+
+msgid "Processing"
+msgstr "Se prelucreaza"
+
+msgid "Search..."
+msgstr "Căutare..."
+
+msgid "Create..."
+msgstr "Creare..."
+
+msgid "Download"
+msgstr "Descarca"
+
+msgid "..."
+msgstr "..."
+
+msgid "Bold"
+msgstr "Text ingroșat"
+
+msgid "Italic"
+msgstr "Cursiv"
+
+msgid "Underline"
+msgstr "Subliniere"
+
+msgid "Font"
+msgstr "Font"
+
+msgid "Size"
+msgstr "Mărime"
+
+msgid "Justify Right"
+msgstr "Aliniere Dreapta"
+
+msgid "Justify Left"
+msgstr "Aliniere Stânga"
+
+msgid "Justify Center"
+msgstr "Aliniere Margini"
+
+msgid "Justify Full"
+msgstr "Aliniere Plin"
+
+msgid "Switch view"
+msgstr "Comutare vedere"
+
+msgid "Previous Record"
+msgstr "Înregistrare anterioară"
+
+msgid "Next Record"
+msgstr "Următoarea înregistrare"
+
+msgid "Create a new record"
+msgstr "Creați o înregistrare nouă"
+
+msgid "Save this record"
+msgstr "Salvare înregistrare"
+
+msgid "Reload"
+msgstr "Reîncare"
+
+msgid "View Logs..."
+msgstr "Vizualizare jurnalele ..."
+
+msgid "Show revisions..."
+msgstr "Afișați revizii..."
+
+msgid "Add an attachment to the record"
+msgstr "Adăugați un atașament la înregistrare"
+
+msgid "Add a note to the record"
+msgstr "Adăugați o notă la înregistrare"
+
+msgid "E-Mail..."
+msgstr "E-Mail..."
+
+msgid "Send an e-mail using the record"
+msgstr "Trimiteți un e-mail folosind înregistrarea"
+
+msgid "Export"
+msgstr "Export"
+
+msgid "Import"
+msgstr "Import"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Următoarea acțiune necesită închiderea tuturor filelor.\n"
+"Doriți să continuați?"
+
+msgid "Launch action"
+msgstr "Lansare acțiune"
+
+msgid "Open related records"
+msgstr "Deschidere înregistrări conexe"
+
+msgid "Print report"
+msgstr "Tipărire raport"
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Această înregistrare a fost modificată\n"
+"vrei sa o salvezi?"
+
+msgid "Record saved."
+msgstr "Înregistrare salvată."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Lucrează acum la înregistrările duplicate."
+
+msgid "Are you sure to remove this record?"
+msgstr "Sigur eliminați această înregistrare?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Sigur eliminați această înregistrare?"
+
+msgid "Records removed."
+msgstr "Înregistrările au fost eliminate."
+
+msgid "Records not removed."
+msgstr "Înregistrările nu au fost eliminate."
+
+msgid "You have to select one record."
+msgstr "Trebuie selectaa o singura înregistrare."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Creat de:"
+
+msgid "Created at:"
+msgstr "Creat la:"
+
+msgid "Edited by:"
+msgstr "Editat de:"
+
+msgid "Edited at:"
+msgstr "Editat la:"
+
+msgid "Model: "
+msgstr "Model: "
+
+msgid "Add..."
+msgstr "Adăuga..."
+
+msgid "Preview"
+msgstr "Previzualizare"
+
+msgid "Template"
+msgstr "Șablon"
+
+msgid "Attachment (%1)"
+msgstr "Atachment (%1)"
+
+msgid "Note (%1/%2)"
+msgstr "Notă (%1/%2)"
+
+msgid "Filters"
+msgstr "Filtre"
+
+msgid "Clear Search"
+msgstr "Ștergeți Căutarea"
+
+msgid "Bookmarks"
+msgstr "Marcaje"
+
+msgid "Remove this bookmark"
+msgstr "Eliminare marcaj"
+
+msgid "Bookmark this filter"
+msgstr "Marcare filtru"
+
+msgid "Bookmark Name:"
+msgstr "Denumire marcaj:"
+
+msgid "Show active records"
+msgstr "Afișează înregistrări active"
+
+msgid "Show inactive records"
+msgstr "Afișează înregistrări active"
+
+msgid "Find"
+msgstr "Căutare"
+
+msgid "From"
+msgstr "De la"
+
+msgid "To"
+msgstr "La"
+
+msgid "Open the calendar"
+msgstr "Deschidere calendar"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Created by"
+msgstr "Creat de"
+
+msgid "Created at"
+msgstr "Creat la"
+
+msgid "Modified by"
+msgstr "Modificat de"
+
+msgid "Modified at"
+msgstr "Modificat la"
+
+msgid "\"%1\" is required."
+msgstr "\"%1\" este necesar."
+
+msgid "\"%1\" is not valid according to its domain."
+msgstr "\"%1\" nu este valabil dupa domeniul sau."
+
+msgid "The values of \"%1\" are not valid."
+msgstr "Valorile lui \"%s\" nu sunt valide."
+
+msgid "Pre-validation"
+msgstr "Pre-validare"
+
+msgid ":"
+msgstr ":"
+
+msgid "Translate"
+msgstr "Traducere"
+
+msgid "Edit"
+msgstr "Editare"
+
+msgid "Fuzzy"
+msgstr "Cautare aproximativa"
+
+msgid "You need to save the record before adding translations."
+msgstr "Trebuie să salvați înregistrarea înainte de a adăuga traduceri."
+
+msgid "No other language available."
+msgstr "Nu există altă limbă disponibilă."
+
+msgid "Show"
+msgstr "Afișare"
+
+msgid "Hide"
+msgstr "Ascunde"
+
+msgid "Open the record"
+msgstr "Deschidere inregistrare"
+
+msgid "Clear the field"
+msgstr "Golire câmp"
+
+msgid "Search a record"
+msgstr "Cautare in inregistrare"
+
+msgid "Add"
+msgstr "Adăuga"
+
+msgid "Remove"
+msgstr "Eliminare"
+
+msgid "Open"
+msgstr "Deschidere"
+
+msgid "Undelete"
+msgstr "Anulați ștergerea"
+
+msgid "Save As"
+msgstr "Salvează ca"
+
+msgid "Save As..."
+msgstr "Salvare că..."
+
+msgid "Select"
+msgstr "Selectați"
+
+msgid "Select..."
+msgstr "Selectare..."
+
+msgid "Clear"
+msgstr "Golire"
+
+msgid "Open..."
+msgstr "Deschidere..."
+
+msgid "Choose a language"
+msgstr "Alegere limbă"
+
+#, javascript-format
+msgid "%1%"
+msgstr "%1%"
+
+msgid ": "
+msgstr ": "
+
+msgid "Customize"
+msgstr ""
+
+msgid "More"
+msgstr "Mai multe"
+
+msgid "Today"
+msgstr "Astăzi"
+
+msgid "Month"
+msgstr "Lună"
+
+msgid "Week"
+msgstr "Săptămână"
+
+msgid "Day"
+msgstr "Zi"
+
+msgid ",..."
+msgstr ",..."
+
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+msgid "Select your action"
+msgstr "Selectați acțiunea"
+
+msgid "No action defined."
+msgstr "Nicio acțiune definită."
+
+msgid "Attachments (%1)"
+msgstr "Atașamente (%1)"
+
+msgid "Notes (%1)"
+msgstr "Note (%1)"
+
+msgid "Search %1"
+msgstr "Căutare %1"
+
+msgid "Revision"
+msgstr "Revizuire"
+
+msgid "All Fields"
+msgstr "Toate câmpurile"
+
+msgid "Fields Selected"
+msgstr "Câmpuri selectate"
+
+msgid "CSV Parameters"
+msgstr "Parametri CSV"
+
+msgid "Delimiter:"
+msgstr "Delimitator:"
+
+msgid "Quote Char:"
+msgstr "Caracter de cotatie:"
+
+msgid "CSV Import: %1"
+msgstr "Import CSV: %1"
+
+msgid "Auto-Detect"
+msgstr "Auto-detectare"
+
+msgid "File to Import"
+msgstr "Fișier de importat"
+
+msgid "Encoding:"
+msgstr "Codifiere:"
+
+msgid "Lines to Skip:"
+msgstr "Rânduri de sarit:"
+
+msgid "You must select an import file first."
+msgstr "Mai întâi trebuie să selectați un fișier de import."
+
+msgid "Detection failed"
+msgstr ""
+
+msgid "Error processing the file at field %1."
+msgstr "Eroare la procesarea fișierului la câmpul %1."
+
+msgid "Error"
+msgstr "Eroare"
+
+#, fuzzy
+msgid "Import failed"
+msgstr "Import"
+
+#, fuzzy
+msgid "%1 record imported"
+msgid_plural "%1 records imported"
+msgstr[0] "%1 (denmire inregistrare)"
+msgstr[1] "%1 (denmire inregistrare)"
+msgstr[2] "%1 (denmire inregistrare)"
+
+msgid "CSV Export: %1"
+msgstr "Export CSV: %1"
+
+msgid "Save Export"
+msgstr "Salvare Export"
+
+msgid "URL Export"
+msgstr "Export URL"
+
+msgid "Delete Export"
+msgstr "Ștergere Export"
+
+msgid "Predefined Exports"
+msgstr "Exporturi predefinite"
+
+msgid "Selected Records"
+msgstr "Înregistrări selectate"
+
+msgid "Listed Records"
+msgstr "Înregistrări enumerate"
+
+msgid "Export:"
+msgstr "Export:"
+
+msgid "Ignore search limit"
+msgstr "Ignorați limita de căutare"
+
+msgid "Use locale format"
+msgstr "Utilizați formatul local"
+
+msgid "Add Field Names"
+msgstr "Adăugare denumire de câmp"
+
+msgid "%1 (string)"
+msgstr "%1 (șir)"
+
+msgid "%1 (model name)"
+msgstr "%1 (denumire model)"
+
+msgid "%1 (record name)"
+msgstr "%1 (denmire inregistrare)"
+
+msgid "What is the name of this export?"
+msgstr "Care este numele acestui export?"
+
+msgid "Override %1 definition?"
+msgstr "Trece peste definiţia %1?"
+
+#, fuzzy
+msgid "%1 record saved"
+msgid_plural "%1 records saved"
+msgstr[0] "Înregistrare salvată."
+msgstr[1] "Înregistrare salvată."
+msgstr[2] "Înregistrare salvată."
+
+msgid "E-mail %1"
+msgstr "E-mail %1"
+
+msgid "To:"
+msgstr "Destinatar:"
+
+msgid "Cc:"
+msgstr "CC:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
+
+msgid "Subject:"
+msgstr "Subiect:"
+
+msgid "Reports"
+msgstr "Raport"
+
+msgid "Attachments"
+msgstr "Atașamente"
+
+msgid "Files"
+msgstr "Fişiere"
+
+msgid "Send"
+msgstr "Trimite"
+
+msgid "Remove File"
+msgstr "Eliminare Fişier"
+
+msgid "Wizard"
+msgstr "Asistent"
+
+msgid "Translate view"
+msgstr "Traducere vedere"
