@@ -1,0 +1,90 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.supply:"
+msgid "There are some late productions."
+msgstr "Existem algumas produções atrasadas."
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Período de Abastecimento"
+
+msgctxt "field:production.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:production.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:production.configuration.supply_period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:production.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Período de Abastecimento"
+
+msgctxt "field:production.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:production.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "Request Productions"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
+msgstr "Configurações de Produção Período de Abastecimento"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "Produção"
+
+msgctxt "help:production.configuration,supply_period:"
+msgid "In number of days"
+msgstr "Em número de dias"
+
+msgctxt "model:ir.action,name:act_production_request_create"
+msgid "Create Production Requests"
+msgstr "Criar Solicitação de Produção"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Production Requests"
+msgstr "Gerar Solicitação de Produção "
+
+msgctxt "model:ir.ui.menu,name:menu_production_request_create"
+msgid "Create Production Requests"
+msgstr "Criar Solicitações de Produção"
+
+msgctxt "model:production.create_request.start,name:"
+msgid "Create Production Request"
+msgstr "Criar Solicitação de Produção"
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Requests?"
+msgstr "Criar Solicitação de Produção?"
+
+msgctxt "wizard_button:production.create_request,start,create_:"
+msgid "Create"
+msgstr "Criar"
+
+msgctxt "wizard_button:production.create_request,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
