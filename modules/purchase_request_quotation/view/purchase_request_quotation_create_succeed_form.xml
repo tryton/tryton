@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form >
+    <image name="tryton-info" xexpand="0" xfill="0"/>
+    <label name="number_quotations"/>
+    <field name="number_quotations"/>
+</form>
