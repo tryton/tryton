@@ -1,0 +1,39 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Approvisionnement sur vente"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Approvisionnement sur vente"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "field:sale.line,purchase_request_state:"
+msgid "Purchase Request State"
+msgstr "État demande d'achat"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Cancel"
+msgstr "Annulée"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Purchased"
+msgstr "Commandée"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Requested"
+msgstr "Demandée"
