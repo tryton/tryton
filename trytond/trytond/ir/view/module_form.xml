@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Module" on_write="on_write">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="version"/>
+    <field name="version"/>
+    <field name="dependencies" colspan="4"/>
+    <label name="state"/>
+    <field name="state" readonly="1"/>
+    <group col="2" colspan="2" id="button">
+        <button string="Mark for Upgrade" name="upgrade"/>
+        <button string="Mark for Uninstallation (beta)" name="uninstall"/>
+        <button string="Mark for Installation" name="install"/>
+        <button string="Cancel Installation" name="install_cancel"/>
+        <button string="Cancel Upgrade" name="upgrade_cancel"/>
+        <button string="Cancel Uninstallation" name="uninstall_cancel"/>
+    </group>
+</form>

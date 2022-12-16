@@ -1,0 +1,187 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:ir.attachment:"
+msgid ""
+"You can not create an attachment named \"%(attachment)s\" in collection "
+"\"%(collection)s\" because there is already a collection with that name."
+msgstr ""
+"Priloge \"%(attachment)s\" ni možno pripeti v zbirko \"%(collection)s\", ker"
+" že obstaja zbirka s tem imenom."
+
+msgctxt "error:webdav.collection:"
+msgid "The collection name must be unique inside a collection!"
+msgstr "Ime zbirke mora biti edinstveno znotraj zbirke."
+
+msgctxt "error:webdav.collection:"
+msgid ""
+"You can not create a collection named \"%(parent)s\" in collection "
+"\"%(child)s\" because there is already a file with that name."
+msgstr ""
+"Zbirke z imenom \"%(parent)s\" v zbirki \"%(child)s\" ni možno izdelati, ker"
+" že obstaja datoteka z istim imenom."
+
+msgctxt "field:ir.attachment,path:"
+msgid "Path"
+msgstr "Pot"
+
+msgctxt "field:ir.attachment,shares:"
+msgid "Shares"
+msgstr "Skupne rabe"
+
+msgctxt "field:ir.attachment,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.collection,childs:"
+msgid "Children"
+msgstr "Podzbirke"
+
+msgctxt "field:webdav.collection,complete_name:"
+msgid "Complete Name"
+msgstr "Polno ime"
+
+msgctxt "field:webdav.collection,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:webdav.collection,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:webdav.collection,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:webdav.collection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.collection,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:webdav.collection,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:webdav.collection,parent:"
+msgid "Parent"
+msgstr "Prednik"
+
+msgctxt "field:webdav.collection,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:webdav.collection,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:webdav.collection,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:webdav.share,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:webdav.share,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:webdav.share,expiration_date:"
+msgid "Expiration Date"
+msgstr "Datum veljavnosti"
+
+msgctxt "field:webdav.share,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:webdav.share,key:"
+msgid "Key"
+msgstr "Ključ"
+
+msgctxt "field:webdav.share,note:"
+msgid "Note"
+msgstr "Opomba"
+
+msgctxt "field:webdav.share,path:"
+msgid "Path"
+msgstr "Pot"
+
+msgctxt "field:webdav.share,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:webdav.share,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:webdav.share,user:"
+msgid "User"
+msgstr "Uporabnik"
+
+msgctxt "field:webdav.share,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:webdav.share,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "model:ir.action,name:act_collection_list"
+msgid "Collections"
+msgstr "Zbirke"
+
+msgctxt "model:ir.action,name:act_collection_tree"
+msgid "Collections"
+msgstr "Zbirke"
+
+msgctxt "model:ir.action,name:act_share_list"
+msgid "Shares"
+msgstr "Skupne rabe"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_list"
+msgid "Collections"
+msgstr "Zbirke"
+
+msgctxt "model:ir.ui.menu,name:menu_collection_tree"
+msgid "Collections"
+msgstr "Zbirke"
+
+msgctxt "model:ir.ui.menu,name:menu_share_list"
+msgid "Shares"
+msgstr "Skupne rabe"
+
+msgctxt "model:ir.ui.menu,name:menu_webdav"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "model:webdav.collection,name:"
+msgid "Collection"
+msgstr "Zbirka"
+
+msgctxt "model:webdav.share,name:"
+msgid "Share"
+msgstr "Skupna raba"
+
+msgctxt "view:ir.attachment:"
+msgid "WebDAV"
+msgstr "WebDAV"
+
+msgctxt "view:webdav.collection:"
+msgid "Collection"
+msgstr "Zbirka"
+
+msgctxt "view:webdav.collection:"
+msgid "Collections"
+msgstr "Zbirke"
+
+msgctxt "view:webdav.share:"
+msgid "Share"
+msgstr "Skupna raba"
+
+msgctxt "view:webdav.share:"
+msgid "Shares"
+msgstr "Skupne rabe"
