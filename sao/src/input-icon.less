@@ -1,0 +1,96 @@
+/* This file is part of Tryton.  The COPYRIGHT file at the top level of
+   this repository contains the full copyright notices and license terms. */
+@import "variables";
+
+.input-icon {
+    position: relative;
+
+    & .icon-input {
+        position: absolute;
+        top: 0;
+        z-index: 4; // Ensure icon is above input
+        display: block;
+        width: @input-height-base;
+        height: @input-height-base;
+        line-height: @input-height-base;
+        text-align: center;
+    }
+    [dir="ltr"] & .icon-primary {
+        left: 0px;
+    }
+    [dir="rtl"] & .icon-primary {
+        right: 0px;
+    }
+    [dir="ltr"] & .icon-secondary {
+        right: 0px;
+    }
+    [dir="rtl"] & .icon-secondary {
+        left: 0px;
+    }
+}
+.input-lg .icon-input,
+.input-group-lg .icon-input {
+  width: @input-height-large;
+  height: @input-height-large;
+  line-height: @input-height-large;
+}
+.input-sm .icon-input,
+.input-group-sm .icon-input {
+  width: @input-height-small;
+  height: @input-height-small;
+  line-height: @input-height-small;
+}
+
+[dir="ltr"] {
+    .input-icon-primary > .form-control {
+        padding-left: @input-height-base;
+    }
+    .input-lg.input-icon-primary > .form-control,
+    .input-group-lg.input-icon-primary > .form-control {
+        padding-left: @input-height-large;
+    }
+    .input-sm.input-icon-primary > .form-control,
+    .input-group-sm.input-icon-primary > .form-control {
+        padding-left: @input-height-small;
+    }
+}
+[dir="rtl"] {
+    .input-icon-primary > .form-control {
+        padding-right: @input-height-base;
+    }
+    .input-lg.input-icon-primary > .form-control,
+    .input-group-lg.input-icon-primary > .form-control {
+        padding-right: @input-height-large;
+    }
+    .input-sm.input-icon-primary > .form-control,
+    .input-group-sm.input-icon-primary > .form-control {
+        padding-right: @input-height-small;
+    }
+}
+
+[dir="ltr"] {
+    .input-icon-secondary > .form-control {
+        padding-right: @input-height-base;
+    }
+    .input-lg.input-icon-secondary > .form-control,
+    .input-group-lg.input-icon-secondary > .form-control {
+        padding-right: @input-height-large;
+    }
+    .input-sm.input-icon-secondary > .form-control,
+    .input-group-sm.input-icon-secondary > .form-control {
+        padding-right: @input-height-small;
+    }
+}
+[dir="rtl"] {
+    .input-icon-secondary > .form-control {
+        padding-left: @input-height-base;
+    }
+    .input-lg.input-icon-secondary > .form-control,
+    .input-group-lg.input-icon-secondary > .form-control {
+        padding-left: @input-height-large;
+    }
+    .input-sm.input-icon-secondary > .form-control,
+    .input-group-sm.input-icon-secondary > .form-control {
+        padding-left: @input-height-small;
+    }
+}
