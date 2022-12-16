@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,purchase_price_list:"
+msgid "Purchase Price List"
+msgstr "Liste de prix d'achat"
+
+msgctxt "field:party.party,purchase_price_lists:"
+msgid "Purchase Price Lists"
+msgstr "Listes de prix d'achat"
+
+msgctxt "field:party.party.purchase_price_list,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:party.party.purchase_price_list,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:party.party.purchase_price_list,purchase_price_list:"
+msgid "Purchase Price List"
+msgstr "Liste de prix d'achat"
+
+msgctxt "help:party.party,purchase_price_list:"
+msgid "The price list for new purchases."
+msgstr "La liste de prix pour les nouveaux achats."
+
+msgctxt "model:party.party.purchase_price_list,name:"
+msgid "Party Purchase Price List"
+msgstr "Liste de prix d'achat tiers"
+
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Purchase"
+msgstr "Achat de produits"
