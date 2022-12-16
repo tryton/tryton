@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="from_date"/>
+    <group id="dates" col="-1">
+        <field name="from_date"/>
+        <label name="to_date"/>
+        <field name="to_date"/>
+    </group>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+
+    <label string="Group by:" id="group_by"/>
+    <group colspan="3" col="-1" id="group_by">
+        <label name="group_by_marketing_campaign"/>
+        <field name="group_by_marketing_campaign" xexpand="0" width="25"/>
+        <label name="group_by_marketing_medium"/>
+        <field name="group_by_marketing_medium" xexpand="0" width="25"/>
+        <label name="group_by_marketing_source"/>
+        <field name="group_by_marketing_source" xexpand="0" width="25"/>
+    </group>
+</form>
