@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="work"/>
+    <field name="work" colspan="4"/>
+    <label name="duration"/>
+    <field name="duration"/>
+    <newline/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="run" icon="tryton-launch"/>
+        <button name="do" icon="tryton-ok"/>
+    </group>
+</form>
