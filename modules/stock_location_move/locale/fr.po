@@ -1,0 +1,60 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.internal:"
+msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
+msgstr ""
+"L'emplacement « %(location)s » est déjà assigné par « %(assigned_by)s »."
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr "Assigné par"
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr "Mobile"
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr "Emplacements"
+
+msgctxt "field:stock.shipment.internal-location,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:stock.shipment.internal-location,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:stock.shipment.internal-location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.shipment.internal-location,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr "Expédition"
+
+msgctxt "field:stock.shipment.internal-location,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:stock.shipment.internal-location,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "Emplacement de stockage déplaçable"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr "Expédition interne - Emplacement"
