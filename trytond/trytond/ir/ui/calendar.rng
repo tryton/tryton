@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="calendar">
+    <element name="calendar">
+      <ref name="attlist.calendar"/>
+      <zeroOrMore>
+        <ref name="field"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <attribute name="dtstart"/>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="dtend"/>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="mode">
+        <choice>
+          <value>week</value>
+          <value>month</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="color" a:defaultValue="black"/>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="background_color" a:defaultValue="lightblue"/>
+    </optional>
+  </define>
+  <define name="field">
+    <element name="field">
+      <ref name="attlist.field"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <attribute name="name"/>
+  </define>
+  <define name="data">
+    <element name="data">
+      <ref name="attlist.data"/>
+      <zeroOrMore>
+        <ref name="xpath"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <empty/>
+  </define>
+  <define name="xpath">
+    <element name="xpath">
+      <ref name="attlist.xpath"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="field"/>
+          <ref name="calendar"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <attribute name="expr"/>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <optional>
+      <attribute name="position" a:defaultValue="inside">
+        <choice>
+          <value>inside</value>
+          <value>replace</value>
+          <value>replace_attributes</value>
+          <value>after</value>
+          <value>before</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <start>
+    <choice>
+      <ref name="data"/>
+      <ref name="calendar"/>
+    </choice>
+  </start>
+</grammar>
