@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="carrier"/>
+    <field name="carrier"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <separator string="Criteria" id="criteria" colspan="4"/>
+    <label name="from_country"/>
+    <field name="from_country"/>
+    <label name="to_country"/>
+    <field name="to_country"/>
+</form>
