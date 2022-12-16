@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.message,text:msg_product_forecast_quantity_lower"
+msgid ""
+"The forecast quantity (%(forecast_quantity)s) of product \"%(product)s\" is "
+"lower than the quantity (%(quantity)s)."
+msgstr ""
+"La quantitat prevista %(forecast_quantity)s)s del producte\"%(product)s\" és"
+" menor que la seva quantitat (%(quantity)s)."
+
+msgctxt "model:ir.message,text:msg_sale_stock_quantity"
+msgid ""
+"The forcast quantity (%(forecast_quantity)s) for line \"%(line)s\" is lower "
+"than its quantity (%(quantity)s)."
+msgstr ""
+"La quantitat prevista %(forecast_quantity)s de la línia \"%(line)s\" és "
+"menor que la seva quantitat (%(quantity)s)."
+
+msgctxt "model:res.group,name:group_sale_stock_quantity"
+msgid "Sale Stock Quantity"
+msgstr "Força quantitat d'existències en venda"
