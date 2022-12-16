@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="de">
+
+        <record id="account_template_cogs_de" model="account.account.template">
+            
+            
+            
+            <field name="name">Kosten der verkauften Waren (COGS)</field>
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account.account_type_template_expense_de"/>
+            <field name="reconcile" eval="True"/>
+            <field name="parent" ref="account.account_template_root_de"/>
+        </record>
+
+    </data>
+</tryton>
