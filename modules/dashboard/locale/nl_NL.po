@@ -1,0 +1,104 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:dashboard.action,rec_name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:dashboard.action,sequence:"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Prikbord indeling"
+
+#, fuzzy
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Prikbord actie"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Rechthoek"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Stapel onder"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Stapel links"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Stapel rechts"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Stapel boven"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Action"
+msgstr "Prikbord actie"
+
+msgctxt "view:dashboard.action:"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "view:res.user:"
+msgid "Dashboard Action"
+msgstr "Prikbord actie"
+
+msgctxt "view:res.user:"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
