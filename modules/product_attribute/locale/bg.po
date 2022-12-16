@@ -1,0 +1,258 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Избор"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr ""
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr ""
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr ""
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Attributes"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Attribute Sets"
+
+#, fuzzy
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Attributes"
+
+#, fuzzy
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Attribute Sets"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr ""
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr ""
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Attributes"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Attributes"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Attribute Sets"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr ""
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr ""
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr ""
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Избор"
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "Attributes"
