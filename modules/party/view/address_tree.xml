@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="party" expand="1"/>
+    <field name="party_name" optional="0"/>
+    <field name="name" optional="0"/>
+    <field name="street_single_line" expand="2"/>
+    <field name="postal_code"/>
+    <field name="city"/>
+    <field name="country" optional="0"/>
+    <field name="subdivision" optional="0"/>
+</tree>

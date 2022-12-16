@@ -1,0 +1,158 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.move,grouped_lines:"
+msgid "Grouped Lines"
+msgstr ""
+
+msgctxt "field:account.move.line.group,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:account.move.line.group,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.move.line.group,amount_currency:"
+msgid "Amount Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.group,amount_reconciled:"
+msgid "Amount Reconciled"
+msgstr ""
+
+msgctxt "field:account.move.line.group,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.group,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.move.line.group,credit:"
+msgid "Credit"
+msgstr ""
+
+msgctxt "field:account.move.line.group,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.group,date:"
+msgid "Effective Date"
+msgstr ""
+
+msgctxt "field:account.move.line.group,debit:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "field:account.move.line.group,delegated_amount:"
+msgid "Delegated Amount"
+msgstr ""
+
+msgctxt "field:account.move.line.group,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:account.move.line.group,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:account.move.line.group,maturity_date:"
+msgid "Maturity Date"
+msgstr ""
+
+msgctxt "field:account.move.line.group,move:"
+msgid "Move"
+msgstr ""
+
+msgctxt "field:account.move.line.group,move_description:"
+msgid "Move Description"
+msgstr ""
+
+msgctxt "field:account.move.line.group,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
+msgctxt "field:account.move.line.group,move_state:"
+msgid "Move State"
+msgstr ""
+
+msgctxt "field:account.move.line.group,partially_reconciled:"
+msgid "Partially Reconciled"
+msgstr ""
+
+msgctxt "field:account.move.line.group,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:account.move.line.group,period:"
+msgid "Period"
+msgstr ""
+
+msgctxt "field:account.move.line.group,reconciled:"
+msgid "Reconciled"
+msgstr ""
+
+msgctxt "field:account.move.line.group,second_currency:"
+msgid "Second Currency"
+msgstr ""
+
+msgctxt "field:account.move.line.group,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.move.line.group-move.line,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:account.move.line.group-move.line,line:"
+msgid "Line"
+msgstr ""
+
+msgctxt "model:account.move.line.group,name:"
+msgid "Account Move Line Group"
+msgstr ""
+
+msgctxt "model:account.move.line.group-move.line,name:"
+msgid "Account Move Line Group - Move Line"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_group_form"
+msgid "Account Move Lines (Grouped)"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_group_payable_receivable"
+msgid "Payable/Receivable Lines (Grouped)"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account (Grouped)"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_group_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr ""
+
+msgctxt "view:account.move.line.group:"
+msgid "Credit"
+msgstr ""
+
+msgctxt "view:account.move.line.group:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "view:account.move.line.group:"
+msgid "Other Info"
+msgstr ""
