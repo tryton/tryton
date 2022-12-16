@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="account_type_view_form">
+            <field name="model">account.account.type</field>
+            <field name="inherit" ref="account.account_type_view_form"/>
+            <field name="name">account_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_type_view_list">
+            <field name="model">account.account.type</field>
+            <field name="inherit" ref="account.account_type_view_list"/>
+            <field name="name">account_type_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="inherit" ref="account.move_view_form"/>
+            <field name="name">move_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_list">
+            <field name="model">account.move</field>
+            <field name="inherit" ref="account.move_view_tree"/>
+            <field name="name">move_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_list">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_tree"/>
+            <field name="name">move_line_list</field>
+        </record>
+
+         <record model="ir.ui.view" id="consolidation_view_form">
+            <field name="model">account.consolidation</field>
+            <field name="type">form</field>
+            <field name="name">consolidation_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="consolidation_view_tree">
+            <field name="model">account.consolidation</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">consolidation_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="consolidation_view_list">
+            <field name="model">account.consolidation</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">consolidation_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_consolidation_tree">
+            <field name="name">Account Consolidations</field>
+            <field name="res_model">account.consolidation</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="consolidation_view_tree"/>
+            <field name="act_window" ref="act_consolidation_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="consolidation_view_form"/>
+            <field name="act_window" ref="act_consolidation_tree"/>
+        </record>
+        <menuitem
+            parent="account.menu_general_account_configuration"
+            action="act_consolidation_tree"
+            sequence="10"
+            id="menu_consolidation_tree"/>
+
+        <record model="ir.action.act_window" id="act_consolidation_list">
+            <field name="name">Account Consolidations</field>
+            <field name="res_model">account.consolidation</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="consolidation_view_list"/>
+            <field name="act_window" ref="act_consolidation_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="consolidation_view_form"/>
+            <field name="act_window" ref="act_consolidation_list"/>
+        </record>
+        <menuitem
+            parent="menu_consolidation_tree"
+            action="act_consolidation_list"
+            sequence="10"
+            id="menu_consolidation_list"/>
+
+        <record model="ir.model.access" id="access_consolidation">
+            <field name="model" search="[('model', '=', 'account.consolidation')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_consolidation_account">
+            <field name="model" search="[('model', '=', 'account.consolidation')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_consolidation_account_admin">
+            <field name="model" search="[('model', '=', 'account.consolidation')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="consolidation_balance_sheet_view_tree">
+            <field name="model">account.consolidation</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="name">consolidation_balance_sheet_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_consolidation_balance_sheet_tree">
+            <field name="name">Consolidated Balance Sheet</field>
+            <field name="res_model">account.consolidation</field>
+            <field name="context_model">account.consolidation.balance_sheet.context</field>
+            <field name="domain"
+                eval="[('statement', '=', 'balance'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'balance'), ('parent.statement', '=', None)]]"
+                pyson="1"/>
+            <field name="context" eval="{'cumulate': True}" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_balance_sheet_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="consolidation_balance_sheet_view_tree"/>
+            <field name="act_window" ref="act_consolidation_balance_sheet_tree"/>
+        </record>
+
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_consolidation_balance_sheet_tree"
+            sequence="40"
+            id="menu_open_consolidation_balance_sheet"/>
+
+        <record model="ir.ui.view" id="consolidation_balance_sheet_context_view_form">
+            <field name="model">account.consolidation.balance_sheet.context</field>
+            <field name="type">form</field>
+            <field name="name">consolidation_balance_sheet_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="consolidation_income_statement_view_tree">
+            <field name="model">account.consolidation</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="name">consolidation_income_statement_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_consolidation_income_statement_tree">
+            <field name="name">Consolidated Income Statement</field>
+            <field name="res_model">account.consolidation</field>
+            <field name="context_model">account.consolidation.income_statement.context</field>
+            <field name="domain"
+                eval="[('statement', '=', 'income'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'income'), ('parent.statement', '=', None)]]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_consolidation_income_statement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="consolidation_income_statement_view_tree"/>
+            <field name="act_window" ref="act_consolidation_income_statement_tree"/>
+        </record>
+
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_consolidation_income_statement_tree"
+            sequence="40"
+            id="menu_open_consolidation_income_statement"/>
+
+        <record model="ir.ui.view" id="consolidation_income_statement_context_view_form">
+            <field name="model">account.consolidation.income_statement.context</field>
+            <field name="type">form</field>
+            <field name="name">consolidation_income_statement_context_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_consolidation_statement">
+            <field name="name">Statement</field>
+            <field name="records">listed</field>
+            <field name="model">account.consolidation</field>
+            <field name="report_name">account.consolidation.statement</field>
+            <field name="report">account_consolidation/consolidation_statement.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_consolidation_statement_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.consolidation,-1</field>
+            <field name="action" ref="report_consolidation_statement"/>
+        </record>
+        <record model="ir.action-res.group" id="report_consolidation_statement_group_account">
+            <field name="action" ref="report_consolidation_statement"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+    </data>
+    <data depends="account_invoice">
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+    </data>
+</tryton>

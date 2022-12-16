@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="party_view_tree">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_tree"/>
+            <field name="name">party_tree</field>
+        </record>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_accounts">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'accounts')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_accounts_account_party">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'accounts')]"/>
+            <field name="group" ref="group_account_party"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_account_payable">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'account_payable')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_account_payable_account_party">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'account_payable')]"/>
+            <field name="group" ref="group_account_party"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_account_receivable">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'account_receivable')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_account_receivable_account_party">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'account_receivable')]"/>
+            <field name="group" ref="group_account_party"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_customer_tax_rule">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_tax_rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_customer_tax_rule_account_party">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'customer_tax_rule')]"/>
+            <field name="group" ref="group_account_party"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_supplier_tax_rule">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'supplier_tax_rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_supplier_tax_rule_account_party">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'supplier_tax_rule')]"/>
+            <field name="group" ref="group_account_party"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+</tryton>

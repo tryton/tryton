@@ -1,0 +1,381 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.budget,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.budget,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.budget,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.budget,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.budget,root_lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.budget.context,budget:"
+msgid "Budget"
+msgstr "Budget"
+
+msgctxt "field:account.budget.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.budget.context,periods:"
+msgid "Periods"
+msgstr "Périodes"
+
+msgctxt "field:account.budget.context,posted:"
+msgid "Posted"
+msgstr "Posté"
+
+msgctxt "field:account.budget.copy.start,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.budget.copy.start,factor:"
+msgid "Factor"
+msgstr "Facteur"
+
+msgctxt "field:account.budget.copy.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.budget.copy.start,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.budget.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.budget.line,account_type:"
+msgid "Account Type"
+msgstr "Type de compte"
+
+msgctxt "field:account.budget.line,actual_amount:"
+msgid "Actual Amount"
+msgstr "Montant réel"
+
+msgctxt "field:account.budget.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.budget.line,budget:"
+msgid "Budget"
+msgstr "Budget"
+
+msgctxt "field:account.budget.line,children:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:account.budget.line,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.budget.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.budget.line,current_name:"
+msgid "Current Name"
+msgstr "Nom actuel"
+
+msgctxt "field:account.budget.line,left:"
+msgid "Left"
+msgstr "Gauche"
+
+msgctxt "field:account.budget.line,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.budget.line,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:account.budget.line,parent_account_type:"
+msgid "Parent Account Type"
+msgstr "Type de compte parent"
+
+msgctxt "field:account.budget.line,percentage:"
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgctxt "field:account.budget.line,periods:"
+msgid "Periods"
+msgstr "Périodes"
+
+msgctxt "field:account.budget.line,right:"
+msgid "Right"
+msgstr "Droite"
+
+msgctxt "field:account.budget.line,total_amount:"
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgctxt "field:account.budget.line.create_periods.start,method:"
+msgid "Method"
+msgstr "Méthode"
+
+msgctxt "field:account.budget.line.period,actual_amount:"
+msgid "Actual Amount"
+msgstr "Montant réel"
+
+msgctxt "field:account.budget.line.period,budget_line:"
+msgid "Budget Line"
+msgstr "Ligne budgétaire"
+
+msgctxt "field:account.budget.line.period,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.budget.line.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.budget.line.period,percentage:"
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgctxt "field:account.budget.line.period,period:"
+msgid "Period"
+msgstr "Période"
+
+msgctxt "field:account.budget.line.period,ratio:"
+msgid "Ratio"
+msgstr "Ratio"
+
+msgctxt "field:account.budget.line.period,total_amount:"
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgctxt "help:account.budget,company:"
+msgid "The company that the budget is associated with."
+msgstr "La société à laquelle le budget est associé."
+
+msgctxt "help:account.budget,fiscalyear:"
+msgid "The fiscal year the budget applies to."
+msgstr "L'année fiscale auquel le budget s'applique."
+
+msgctxt "help:account.budget.context,posted:"
+msgid "Only include posted moves."
+msgstr "Inclure seulement les mouvements postés."
+
+msgctxt "help:account.budget.copy.start,factor:"
+msgid "The percentage to apply to the budget line amounts."
+msgstr "Le pourcentage à appliquer aux montants des lignes budgétaires."
+
+msgctxt "help:account.budget.copy.start,fiscalyear:"
+msgid "The fiscal year during which the new budget will apply."
+msgstr "L'année fiscale au cours de laquelle le nouveau budget s'appliquera."
+
+msgctxt "help:account.budget.line,account:"
+msgid "The account the budget applies to."
+msgstr "Le compte auquel le budget s'applique."
+
+msgctxt "help:account.budget.line,account_type:"
+msgid "The account type the budget applies to."
+msgstr "Le type de compte auquel s'applique le budget."
+
+msgctxt "help:account.budget.line,actual_amount:"
+msgid "The total amount booked against the budget line."
+msgstr "Le montant total comptabilisé sur la ligne budgétaire."
+
+msgctxt "help:account.budget.line,amount:"
+msgid "The amount allocated to the budget line."
+msgstr "Le montant alloué à la ligne budgétaire."
+
+msgctxt "help:account.budget.line,children:"
+msgid "Used to add structure below the budget."
+msgstr "Utilisé pour ajouter une structure sous le budget."
+
+msgctxt "help:account.budget.line,parent:"
+msgid "Used to add structure above the budget."
+msgstr "Utilisé pour ajouter une structure au-dessus du budget."
+
+msgctxt "help:account.budget.line,percentage:"
+msgid "The percentage of booked amount of the budget line."
+msgstr "Le pourcentage du montant comptabilisé de la ligne budgétaire."
+
+msgctxt "help:account.budget.line,periods:"
+msgid "The periods that contain details of the budget."
+msgstr "Les périodes qui contiennent les détails du budget."
+
+msgctxt "help:account.budget.line,total_amount:"
+msgid "The total amount allocated to the budget line and its children."
+msgstr "Le montant total alloué à la ligne budgétaire et à ses enfants."
+
+msgctxt "help:account.budget.line.period,actual_amount:"
+msgid "The total amount booked against the budget line."
+msgstr "Le montant total comptabilisé sur la ligne budgétaire."
+
+msgctxt "help:account.budget.line.period,budget_line:"
+msgid "The line that the budget period is part of."
+msgstr "La ligne dont fait partie la période budgétaire."
+
+msgctxt "help:account.budget.line.period,percentage:"
+msgid "The percentage of booked amount of the budget line."
+msgstr "Le pourcentage du montant comptabilisé de la ligne budgétaire."
+
+msgctxt "help:account.budget.line.period,ratio:"
+msgid "The percentage allocated to the budget."
+msgstr "Le pourcentage alloué au budget."
+
+msgctxt "help:account.budget.line.period,total_amount:"
+msgid "The total amount allocated to the budget and its children."
+msgstr "Le montant total alloué à la ligne budgétaire et à ses enfants."
+
+msgctxt "model:account.budget,name:"
+msgid "Account Budget"
+msgstr "Budget comptable"
+
+msgctxt "model:account.budget.context,name:"
+msgid "Account Budget Context"
+msgstr "Contexte de budget comptable"
+
+msgctxt "model:account.budget.copy.start,name:"
+msgid "Copy Budget"
+msgstr "Copier le budget"
+
+msgctxt "model:account.budget.line,name:"
+msgid "Account Budget Line"
+msgstr "Ligne budgétaire comptable"
+
+msgctxt "model:account.budget.line.create_periods.start,name:"
+msgid "Create Periods"
+msgstr "Créer les périodes"
+
+msgctxt "model:account.budget.line.period,name:"
+msgid "Account Budget Line Period"
+msgstr "Période de ligne budgétaire comptable"
+
+msgctxt "model:ir.action,name:act_budget_form"
+msgid "Budgets"
+msgstr "Budgets"
+
+msgctxt "model:ir.action,name:act_budget_line_form"
+msgid "Budget Lines"
+msgstr "Lignes budgétaires"
+
+msgctxt "model:ir.action,name:act_budget_report"
+msgid "Budgets"
+msgstr "Budgets"
+
+msgctxt "model:ir.action,name:wizard_budget_copy"
+msgid "Copy Budget"
+msgstr "Copier le budget"
+
+msgctxt "model:ir.action,name:wizard_budget_line_create_periods"
+msgid "Create Periods"
+msgstr "Créer les périodes"
+
+msgctxt "model:ir.message,text:msg_budget_line_budget_account_unique"
+msgid "The account must be unique for each budget."
+msgstr "Le compte doit être unique pour chaque budget."
+
+msgctxt ""
+"model:ir.message,text:msg_budget_line_period_budget_line_period_unique"
+msgid "The period must be unique for each budget line."
+msgstr "La période doit être unique pour chaque ligne budgétaire."
+
+msgctxt "model:ir.message,text:msg_budget_line_period_ratio"
+msgid ""
+"The sum of period ratios for the budget line \"%(budget_line)s\" must be "
+"less or equal to 100%%."
+msgstr ""
+"La somme des ratios de période pour la ligne budgétaire « %(budget_line)s » "
+"doit être inférieure ou égale à 100%%."
+
+msgctxt "model:ir.model.button,string:budget_copy_button"
+msgid "Copy"
+msgstr "Copier"
+
+msgctxt "model:ir.model.button,string:budget_line_create_periods_button"
+msgid "Create Periods"
+msgstr "Créer les périodes"
+
+msgctxt "model:ir.model.button,string:budget_update_lines_button"
+msgid "Update Lines"
+msgstr "Mettre à jour les lignes"
+
+msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.ui.menu,name:menu_budget"
+msgid "Budgets"
+msgstr "Budgets"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_form"
+msgid "Budgets"
+msgstr "Budgets"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_report"
+msgid "Budgets"
+msgstr "Budgets"
+
+msgctxt "model:res.group,name:group_budget"
+msgid "Account Budget"
+msgstr "Budget comptable"
+
+msgctxt "selection:account.budget.line.create_periods.start,method:"
+msgid "Evenly"
+msgstr "Uniformément"
+
+msgctxt "view:account.budget.copy.start:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.budget.line.period:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.budget.line.period:"
+msgid "Actual Amount"
+msgstr "Montant réel"
+
+msgctxt "view:account.budget.line.period:"
+msgid "Ratio"
+msgstr "Ratio"
+
+msgctxt "view:account.budget.line.period:"
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgctxt "view:account.budget.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.budget.line:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "view:account.budget.line:"
+msgid "Name:"
+msgstr "Nom :"
+
+msgctxt "wizard_button:account.budget.copy,start,copy:"
+msgid "Copy"
+msgstr "Copier"
+
+msgctxt "wizard_button:account.budget.copy,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt ""
+"wizard_button:account.budget.line.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:account.budget.line.create_periods,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
