@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="number"/>
+    <field name="reference"/>
+    <field name="purchase_date"/>
+    <field name="party"/>
+    <field name="warehouse"/>
+    <field name="currency"/>
+    <field name="untaxed_amount"/>
+    <field name="state"/>
+    <field name="invoice_state"/>
+    <field name="shipment_state"/>
+    <field name="description"/>
+    <field name="currency_digits" tree_invisible="1"/>
+</tree>
