@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "Cupones"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "Nombre de usos"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "Números"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "Por tercero"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "Promoción"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "Cupón"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "Cupones"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "Venta"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+"El número de veces que se puede utilizar el cupón.\n"
+"0 o menos indica sin límite."
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr "Marcar para contar el uso por tercero."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "Los cupones con numeración \"%(numbers)s\" están duplicados."
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "Cupón promocional"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "Número de cupón promocional"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "Venta - Número de cupón promocional"
