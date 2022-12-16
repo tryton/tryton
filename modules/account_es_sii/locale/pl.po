@@ -1,0 +1,198 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,es_sii_environment:"
+msgid "SII Environment"
+msgstr ""
+
+msgctxt "field:account.configuration,es_sii_url:"
+msgid "SII URL"
+msgstr ""
+
+msgctxt "field:account.credential.sii,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.credential.sii,es_sii_environment:"
+msgid "SII Environment"
+msgstr ""
+
+msgctxt "field:account.credential.sii,es_sii_url:"
+msgid "SII URL"
+msgstr ""
+
+msgctxt "field:account.fiscalyear,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr ""
+
+msgctxt "field:account.invoice.sii,csv:"
+msgid "CSV"
+msgstr ""
+
+msgctxt "field:account.invoice.sii,error_code:"
+msgid "Error Code"
+msgstr ""
+
+msgctxt "field:account.invoice.sii,error_description:"
+msgid "Error Description"
+msgstr ""
+
+msgctxt "field:account.invoice.sii,invoice:"
+msgid "Invoice"
+msgstr ""
+
+msgctxt "field:account.invoice.sii,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.period,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr ""
+
+msgctxt "field:account.tax,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr ""
+
+msgctxt "field:account.tax,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr ""
+
+msgctxt "field:account.tax,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr ""
+
+msgctxt "field:account.tax.template,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr ""
+
+msgctxt "field:account.tax.template,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr ""
+
+msgctxt "field:account.tax.template,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr ""
+
+msgctxt "help:account.configuration,es_sii_url:"
+msgid "The URL where the invoices should be sent."
+msgstr ""
+
+msgctxt "help:account.invoice.sii,csv:"
+msgid ""
+"A secure validation code that confirms the delivery of the related invoice."
+msgstr ""
+
+msgctxt "help:account.period,es_sii_send_invoices:"
+msgid "Check to create SII records for the invoices in the period."
+msgstr ""
+
+msgctxt "model:account.credential.sii,name:"
+msgid "Account Credential SII"
+msgstr ""
+
+msgctxt "model:account.invoice.sii,name:"
+msgid "Invoice SII"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_sii_form"
+msgid "Spanish SII"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_errors"
+msgid "Wrong"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_rejected"
+msgid "Rejected"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_delete_sent"
+msgid ""
+"You cannot delete SII invoice \"%(invoice)s\" because it has already been "
+"sent."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_unique"
+msgid "Only one SII invoice can be created for each invoice."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_es_sii_posted_invoices"
+msgid ""
+"You can not change the SII setting for period \"%(period)s\" because there "
+"are already posted invoices."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_sii_url"
+msgid ""
+"To send invoices to SII service, you need to set an URL on the account "
+"configuration."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_sii_form"
+msgid "Spanish SII"
+msgstr ""
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Production"
+msgstr ""
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Staging"
+msgstr ""
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Production"
+msgstr ""
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Staging"
+msgstr ""
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Pending"
+msgstr ""
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Rejected"
+msgstr ""
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Sent"
+msgstr ""
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Wrong"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to SII"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Spanish Immediate Information Supply"
+msgstr ""
+
+msgctxt "view:account.fiscalyear:"
+msgid "Spanish SII"
+msgstr ""
+
+msgctxt "view:account.tax.template:"
+msgid "Spanish SII"
+msgstr ""
+
+msgctxt "view:account.tax:"
+msgid "Spanish SII"
+msgstr ""

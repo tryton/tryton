@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,consolidation:"
+msgid "Consolidation"
+msgstr ""
+
+msgctxt "field:account.consolidation,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.consolidation,amount_cmp:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.consolidation,assets:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "field:account.consolidation,children:"
+msgid "Children"
+msgstr ""
+
+msgctxt "field:account.consolidation,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.consolidation,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:account.consolidation,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:account.consolidation,statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "field:account.consolidation,types:"
+msgid "Types"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,companies:"
+msgid "Companies"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,comparison:"
+msgid "Comparison"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.consolidation.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,companies:"
+msgid "Companies"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,from_date:"
+msgid "From Date"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,to_date:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "field:account.invoice,consolidation_company:"
+msgid "Consolidation Company"
+msgstr ""
+
+msgctxt "field:account.move,consolidation_company:"
+msgid "Consolidation Company"
+msgstr ""
+
+msgctxt "field:account.move.line,consolidation_company:"
+msgid "Consolidation Company"
+msgstr ""
+
+msgctxt "help:account.consolidation.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr ""
+
+msgctxt "help:account.consolidation.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr ""
+
+msgctxt "model:account.consolidation,name:"
+msgid "Account Consolidation"
+msgstr ""
+
+msgctxt "model:account.consolidation.balance_sheet.context,name:"
+msgid "Consolidation Balance Sheet Context"
+msgstr ""
+
+msgctxt "model:account.consolidation.income_statement.context,name:"
+msgid "Consolidation Income Statement Context"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"
+msgid "Consolidated Balance Sheet"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_consolidation_income_statement_tree"
+msgid "Consolidated Income Statement"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_consolidation_list"
+msgid "Account Consolidations"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_consolidation_tree"
+msgid "Account Consolidations"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_consolidation_statement"
+msgid "Statement"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_list"
+msgid "Account Consolidations"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_consolidation_tree"
+msgid "Account Consolidations"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_balance_sheet"
+msgid "Consolidated Balance Sheet"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_consolidation_income_statement"
+msgid "Consolidated Income Statement"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "/"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Balance Sheet"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Companies:"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Date:"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "From Date:"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Income Statement"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Print Date:"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "To"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "User:"
+msgstr ""
+
+msgctxt "report:account.consolidation.statement:"
+msgid "at"
+msgstr ""
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Balance"
+msgstr ""
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Income"
+msgstr ""
+
+msgctxt "selection:account.consolidation,statement:"
+msgid "Off-Balance"
+msgstr ""
+
+msgctxt "view:account.consolidation:"
+msgid "Comparison"
+msgstr ""

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_journal_bank_account_unique">
+            <field name="text">Only one journal is allowed per bank account.</field>
+        </record>
+        <record model="ir.message" id="msg_import_no_journal">
+            <field name="text">To import statement, you must create a journal for account "%(account)s".</field>
+        </record>
+        <record model="ir.message" id="msg_import_wrong_currency">
+            <field name="text">To import statement, the journal "%(journal)s" must have the currency "%(currency)s" instead of "%(journal_currency)s".</field>
+        </record>
+        <record model="ir.message" id="msg_statement_wrong_end_balance">
+            <field name="text">To validate statement "%(statement)s" you must change lines to have end balance of %(end_balance)s instead of %(amount)s.</field>
+        </record>
+        <record model="ir.message" id="msg_statement_wrong_total_amount">
+            <field name="text">To validate statement "%(statement)s" you must change lines to have total amount of %(total_amount)s instead of %(amount)s.</field>
+        </record>
+        <record model="ir.message" id="msg_statement_wrong_number_of_lines_add">
+            <field name="text">To validate statement "%(statement)s" you must add %(n)s line(s).</field>
+        </record>
+        <record model="ir.message" id="msg_statement_wrong_number_of_lines_remove">
+            <field name="text">To validate statement "%(statement)s" you must remove %(n)s line(s).</field>
+        </record>
+        <record model="ir.message" id="msg_statement_delete_cancel">
+            <field name="text">To delete statement "%(statement)s" you must cancel it.</field>
+        </record>
+        <record model="ir.message" id="msg_statement_invoice_paid_cancelled">
+            <field name="text">The validation of the statements will remove already paid or cancelled invoices from the statements' lines.</field>
+        </record>
+        <record model="ir.message" id="msg_statement_paid_invoice_draft">
+            <field name="text">The validation of the statements will remove paid invoices from other statements.</field>
+        </record>
+        <record model="ir.message" id="msg_statement_post_pending_amount">
+            <field name="text">To post statement "%(statement)s" you must create lines for pending %(amount)s of origin "%(origin)s".</field>
+        </record>
+        <record model="ir.message" id="msg_line_amount_non_zero">
+            <field name="text">Statement line amount cannot be zero.</field>
+        </record>
+        <record model="ir.message" id="msg_post_statement_move">
+            <field name="text">To post the move "%(move)s" you must post the statement "%(statement)s".</field>
+        </record>
+    </data>
+</tryton>

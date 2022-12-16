@@ -1,0 +1,129 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,receivable_rules:"
+msgid "Receivable Rules"
+msgstr "Ontvangst regels"
+
+msgctxt "field:account.account.receivable.rule,account:"
+msgid "Account"
+msgstr "Grootboekrekening"
+
+msgctxt "field:account.account.receivable.rule,account_party_required:"
+msgid "Account Party Required"
+msgstr "Grootboekrekening relatie verplicht"
+
+msgctxt "field:account.account.receivable.rule,account_payable:"
+msgid "Account Payable"
+msgstr "Grootboekrekening te betalen"
+
+msgctxt "field:account.account.receivable.rule,account_receivable:"
+msgid "Account Receivable"
+msgstr "Grootboekrekening te ontvangen"
+
+msgctxt "field:account.account.receivable.rule,accounts:"
+msgid "Accounts"
+msgstr "Grootboekrekeningen"
+
+msgctxt "field:account.account.receivable.rule,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.account.receivable.rule,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.account.receivable.rule,overflow_account:"
+msgid "Overflow Account"
+msgstr "Overloop grootboekrekening"
+
+msgctxt "field:account.account.receivable.rule,priorities:"
+msgid "Priorities"
+msgstr "Prioriteiten"
+
+msgctxt "field:account.account.receivable.rule.account,account:"
+msgid "Account"
+msgstr "Grootboekrekening"
+
+msgctxt ""
+"field:account.account.receivable.rule.account,account_party_required:"
+msgid "Account Party Required"
+msgstr "Grootboekrekening relatie verplicht"
+
+msgctxt "field:account.account.receivable.rule.account,account_payable:"
+msgid "Account Payable"
+msgstr "Grootboekrekening te betalen"
+
+msgctxt "field:account.account.receivable.rule.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "Grootboekrekening te ontvangen"
+
+msgctxt "field:account.account.receivable.rule.account,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.account.receivable.rule.account,only_reconcile:"
+msgid "Only Reconcile"
+msgstr "Alleen afletteren"
+
+msgctxt "field:account.account.receivable.rule.account,rule:"
+msgid "Rule"
+msgstr "Regel"
+
+msgctxt "help:account.account.receivable.rule,overflow_account:"
+msgid ""
+"The account to move exceeded amount.\n"
+"Leave empty to keep it in the current account."
+msgstr ""
+"De grootboekrekening waarop het overschreden bedrag wordt geboekt.\n"
+"Laat leeg om het op het huidige grootboekrekening te boeken."
+
+msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
+msgid "Distribute only to fully reconcile."
+msgstr "Verdeel alleen om volledig af te letteren."
+
+msgctxt "model:account.account.receivable.rule,name:"
+msgid "Account Receivable Rule"
+msgstr "Grootboekrekening te ontvangen regel"
+
+msgctxt "model:account.account.receivable.rule.account,name:"
+msgid "Account Receivable Rule Account"
+msgstr "Grootboekrekening te ontvangen regel grootboekrekening"
+
+msgctxt "model:ir.action,name:act_account_receivable_rule_form"
+msgid "Account Receivable Rules"
+msgstr "Grootboekrekening te ontvangen regels"
+
+msgctxt "model:ir.message,text:msg_account_unique"
+msgid "Only one active rule is allowed by account."
+msgstr "Per grootboekrekening is één actieve regel toegestaan."
+
+msgctxt "model:ir.message,text:msg_rule_account_unique"
+msgid "Only one account is allowed by rule."
+msgstr "Per regel is één grootboekrekening toegestaan."
+
+msgctxt "model:ir.model.button,string:account_receivable_rule_apply_button"
+msgid "Apply"
+msgstr "Toepassen"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_receivable_rule_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_account_receivable_rule_form"
+msgid "Account Receivable Rules"
+msgstr "Grootboekrekening te ontvangen regels"
+
+msgctxt "selection:account.account.receivable.rule,priorities:"
+msgid "Account, Maturity Date"
+msgstr "Grootboekrekening, vervaldatum"
+
+msgctxt "selection:account.account.receivable.rule,priorities:"
+msgid "Maturity Date, Account"
+msgstr "Vervaldatum, grootboekrekening"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Apply Account Receivable Rules"
+msgstr "Pas grootboekrekening te ontvangen regels toe"

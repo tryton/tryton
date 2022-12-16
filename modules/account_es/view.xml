@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="tax_code_template_view_form">
+            <field name="model">account.tax.code.template</field>
+            <field name="inherit" ref="account.tax_code_template_view_form"/>
+            <field name="name">tax_code_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_view_form">
+            <field name="model">account.tax.code</field>
+            <field name="inherit" ref="account.tax_code_view_form"/>
+            <field name="name">tax_code_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_template_view_form">
+            <field name="model">account.tax.template</field>
+            <field name="inherit" ref="account.tax_template_view_form"/>
+            <field name="name">tax_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_view_form">
+            <field name="model">account.tax</field>
+            <field name="inherit" ref="account.tax_view_form"/>
+            <field name="name">tax_form</field>
+        </record>
+    </data>
+</tryton>

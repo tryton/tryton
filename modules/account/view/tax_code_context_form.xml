@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="company"/>
+    <field name="company"/>
+    <label name="method"/>
+    <field name="method"/>
+    <group id="method" col="-1" colspan="2">
+        <field name="fiscalyear"/>
+        <field name="period"/>
+        <field name="start_period"/>
+        <field name="end_period"/>
+    </group>
+
+    <field name="periods" colspan="6" invisible="1"/>
+</form>

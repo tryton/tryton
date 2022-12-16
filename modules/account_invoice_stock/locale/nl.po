@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,shipments:"
+msgid "Shipments"
+msgstr "Zendingen"
+
+msgctxt "field:account.invoice.line,correction:"
+msgid "Correction"
+msgstr "Correctie"
+
+msgctxt "field:account.invoice.line,shipments:"
+msgid "Shipments"
+msgstr "Zendingen"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Voorraad beweging"
+
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Factuur regel"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Voorraad beweging"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Factuur regels"
+
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Factuur soorten"
+
+msgctxt "help:account.invoice.line,correction:"
+msgid "Check to correct price of already posted invoice."
+msgstr "Vink aan om de prijs van de reeds geboekte factuur te corrigeren."
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Factuur regel - voorraad beweging"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Voorraad"
