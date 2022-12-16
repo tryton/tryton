@@ -1,0 +1,34 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,fifo_quantity:"
+msgid "FIFO Quantity"
+msgstr "FIFO količina"
+
+msgctxt "model:ir.message,text:msg_move_delete_fifo"
+msgid ""
+"You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
+"calculation."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_fifo_quantity_greater"
+msgid "The FIFO quantity on move cannot be greater than its quantity."
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.product,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "FIFO"
+msgstr "FIFO"
+
+msgctxt "error:stock.move:"
+msgid "FIFO quantity can not be greater than quantity."
+msgstr "FIFO količina ne more biti večja od same količine."
+
+msgctxt "error:stock.move:"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
+msgstr "Prometa \"%s\", ki se uporablja za FIFO nabavno ceno, ni možno brisati."
