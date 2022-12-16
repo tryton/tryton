@@ -1,0 +1,211 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
+"used on a move \"%(move)s\" in a closed period"
+msgstr ""
+"شما نمیتوانید تاریخ های انقضاء کالاهای: \"%s\" را تغییر دهید چونکه در "
+"جابجایی : \"%s\" در دوره بسته شده استفاده شده است"
+
+msgctxt "error:stock.move:"
+msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
+msgstr "تاریخ مصرف کالای : \"%s\" در جابجایی : \"%s\" منقضی شده است"
+
+msgctxt "error:stock.period:"
+msgid ""
+"You can not close a period before the Shelf Live Expiration Date "
+"\"%(date)s\" of Lot \"%(lot)s\""
+msgstr ""
+"قبل از اتمام عمر مفید تاریخ انقضاء : \"%s\" از کالای : \"%s\" شما نمی توانید"
+" یک دوره را ببندید.\""
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "وضعیت انقضاء"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "زمان انقضاء"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "وضعیت عمر مفید مصرف"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "عمر مفید مصرف"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "وضعیت انقضاء"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "زمان انقضاء"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "وضعیت عمر مفید مصرف"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "عمر مفید مصرف"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "عمر مفید تاخیر"
+
+msgctxt "field:stock.location.lot.shelf_life,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.location.lot.shelf_life,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.location.lot.shelf_life,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.location.lot.shelf_life,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "عمر مفید تاخیر"
+
+msgctxt "field:stock.location.lot.shelf_life,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.location.lot.shelf_life,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "تاریخ انقضاء"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "وضعیت انقضاء"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "عمر مفید تاریخ انقضاء"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "وضعیت مفید تاریخ انقضاء"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr "در تعداد روزها"
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr "در تعداد روزها"
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days"
+msgstr "در تعداد روزها"
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days"
+msgstr "در تعداد روزها"
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "تاخیر قبل از حذف از پیش بینی."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "تاخیر قبل از حذف از پیش بینی."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "تاریخ انقضاء موجودی"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "پیکربندی موجودی ؛ عمرمفید مصرف"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "اختیاری"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "مورد نیاز"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "عمر مفید مصرف"

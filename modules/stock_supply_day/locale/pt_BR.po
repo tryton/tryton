@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:"
+msgid "Week Days"
+msgstr "Dias da semana"
+
+msgctxt "field:purchase.product_supplier.day,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:purchase.product_supplier.day,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:purchase.product_supplier.day,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
+msgid "Supplier"
+msgstr "Fornecedor"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:purchase.product_supplier.day,weekday:"
+msgid "Week Day"
+msgstr "Dia da semana"
+
+msgctxt "field:purchase.product_supplier.day,write_date:"
+msgid "Write Date"
+msgstr "Dia da semana"
+
+msgctxt "field:purchase.product_supplier.day,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "model:purchase.product_supplier.day,name:"
+msgid "Product Supplier Day"
+msgstr "Dia do fornecedor do produto"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Friday"
+msgstr "Sexta"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Monday"
+msgstr "Segunda"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Saturday"
+msgstr "Sábado"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Sunday"
+msgstr "Domingo"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Thursday"
+msgstr "Quinta"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Tuesday"
+msgstr "Terça"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Wednesday"
+msgstr "Quarta"
+
+msgctxt "view:purchase.product_supplier.day:"
+msgid "Week Day"
+msgstr "Dia da semana"

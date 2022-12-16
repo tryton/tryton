@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="export_view_form">
+            <field name="model">ir.export</field>
+            <field name="type">form</field>
+            <field name="name">export_form</field>
+        </record>
+        <record model="ir.ui.view" id="export_view_tree">
+            <field name="model">ir.export</field>
+            <field name="type">tree</field>
+            <field name="name">export_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_export_form">
+            <field name="name">Exports</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.export</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_export_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="export_view_tree"/>
+            <field name="act_window" ref="act_export_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_export_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="export_view_form"/>
+            <field name="act_window" ref="act_export_form"/>
+        </record>
+        <menuitem parent="ir.menu_models"
+            action="act_export_form" id="menu_export_form"/>
+    </data>
+</tryton>
