@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="date" widget="date"/>
+    <field name="date" widget="time" string="Time"/>
+    <field name="notification" expand="2"/>
+    <field name="recipients" expand="1"/>
+    <field name="recipients_secondary" expand="1"/>
+    <field name="recipients_hidden" expand="1"/>
+    <field name="resource" expand="1"/>
+</tree>

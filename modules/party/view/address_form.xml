@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="party"/>
+    <field name="party" colspan="5"/>
+    <label name="party_name"/>
+    <field name="party_name"/>
+    <group colspan="2" col="-1" id="checkboxes">
+        <label name="active"/>
+        <field name="active"
+            xexpand="0" width="25"/>
+        <!-- Add here some checkboxes ! -->
+        <label name="sequence"/>
+        <field name="sequence"/>
+    </group>
+    <newline/>
+    <label name="name"/>
+    <field name="name"/>
+    <newline/>
+    <label name="street"/>
+    <field name="street" colspan="3"/>
+    <newline/>
+    <label name="postal_code"/>
+    <field name="postal_code"/>
+    <label name="city"/>
+    <field name="city"/>
+    <newline/>
+    <label name="country"/>
+    <field name="country" widget="selection"/>
+    <label name="subdivision"/>
+    <field name="subdivision" widget="selection"/>
+</form>
