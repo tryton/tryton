@@ -1,0 +1,21 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Actie,0
+field,"dashboard.action,rec_name",0,Name,Naam,0
+field,"dashboard.action,sequence",0,Sequence,Reeks,0
+field,"dashboard.action,user",0,User,Gebruiker,0
+field,"res.user,dashboard_actions",0,Dashboard Actions,Prikbord acties,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Prikbord indeling,0
+model,"dashboard.action,name",0,dashboard.action,,0
+model,"ir.action,name",act_dashboard,Dashboard,Prikbord,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Prikbord,0
+selection,"res.user,dashboard_layout",0,Square,Rechthoek,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,Stapel onder,0
+selection,"res.user,dashboard_layout",0,Stack Left,Stapel links,0
+selection,"res.user,dashboard_layout",0,Stack Right,Stapel rechts,0
+selection,"res.user,dashboard_layout",0,Stack Top,Stapel boven,0
+view,dashboard.action,0,Dashboard,Prikbord,0
+view,dashboard.action,0,Dashboard Action,Prikbord actie,0
+view,dashboard.action,0,Dashboard Actions,Prikbord acties,0
+view,res.user,0,Dashboard,Prikbord,0
+view,res.user,0,Dashboard Action,Prikbord actie,0
+view,res.user,0,Dashboard Actions,Prikbord acties,0

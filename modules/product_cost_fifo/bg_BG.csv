@@ -1,0 +1,5 @@
+type,name,res_id,src,value,fuzzy
+error,stock.move,0,FIFO quantity can not be greater than quantity!,FIFO-количество не може да е по-голямо от количеството!,0
+error,stock.move,0,You can not delete move that is used for FIFO cost price!,Не може да изтривате движение което се използва за изчисляване на FIFO цена!,0
+field,"stock.move,fifo_quantity",0,FIFO Quantity,FIFO количество,0
+selection,"product.template,cost_price_method",0,FIFO,FIFO,0
