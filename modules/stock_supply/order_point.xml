@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="order_point_view_form">
+            <field name="model">stock.order_point</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Order Point" cursor="product">
+                        <separator string="Product Info" colspan="4"
+                            id="info"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                        <newline/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="unit"/>
+                        <field name="unit"/>
+                        <label name="min_quantity"/>
+                        <field name="min_quantity"/>
+                        <label name="max_quantity"/>
+                        <field name="max_quantity"/>
+                        <separator string="Order Point Type" colspan="4"
+                            id="type"/>
+                        <label name="type"/>
+                        <field name="type"/>
+                        <newline/>
+                        <label name="warehouse_location"/>
+                        <field name="warehouse_location"/>
+                        <newline/>
+                        <label name="storage_location"/>
+                        <field name="storage_location"/>
+                        <label name="provisioning_location"/>
+                        <field name="provisioning_location"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="order_point_view_tree">
+            <field name="model">stock.order_point</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Order Points">
+                        <field name="product" select="1"/>
+                        <field name="location" select="1"/>
+                        <field name="type" select="1"/>
+                        <field name="company"/>
+                        <field name="min_quantity" select="2"/>
+                        <field name="max_quantity" select="2"/>
+                        <field name="unit"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_order_point_form">
+            <field name="name">Order Points</field>
+            <field name="res_model">stock.order_point</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="order_point_view_tree"/>
+            <field name="act_window" ref="act_order_point_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="order_point_view_form"/>
+            <field name="act_window" ref="act_order_point_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="60"
+            action="act_order_point_form" id="menu_order_point_form"/>
+
+        <record model="ir.action.act_window" id="act_order_point_form2">
+            <field name="name">Order Points</field>
+            <field name="res_model">stock.order_point</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="order_point_view_form"/>
+            <field name="act_window" ref="act_order_point_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_order_point_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="order_point_view_tree"/>
+            <field name="act_window" ref="act_order_point_form2"/>
+        </record>
+        <menuitem name="New Order Point" parent="menu_order_point_form"
+            action="act_order_point_form2" id="menu_order_point_form_new"
+            sequence="10"/>
+
+        <record model="ir.model.access" id="access_order_point">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_order_point_admin">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_order_point">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_order_point">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.order_point')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_order_point"/>
+        </record>
+    </data>
+</tryton>
