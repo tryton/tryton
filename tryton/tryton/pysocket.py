@@ -1,0 +1,253 @@
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+import socket
+# can't use/fall-back pickle due to different interface :-(
+import cPickle
+try:
+    import cStringIO as StringIO
+except ImportError:
+    import StringIO
+try:
+    import ssl
+except ImportError:
+    ssl = None
+import gzip
+try:
+    import hashlib
+except ImportError:
+    hashlib = None
+    import sha
+import os
+
+DNS_CACHE = {}
+MAX_SIZE = 999999999
+MAX_LENGHT = len(str(MAX_SIZE))
+CONNECT_TIMEOUT = 5
+TIMEOUT = 3600
+GZIP_THRESHOLD = 1400 # common MTU
+
+_ALLOWED_MODULES = {'datetime': ['datetime', 'date'], 'decimal': ['Decimal']}
+
+def checkfunction(module, klass):
+    if module in _ALLOWED_MODULES and klass in _ALLOWED_MODULES[module]:
+        mod = __import__(module, {}, {}, ['__all__'])
+        _class = getattr(mod, klass)
+        return _class
+    raise ValueError('Not supported: %s/%s' % (module, klass))
+
+
+class PySocket:
+
+    def __init__(self, sock=None, fingerprints=None, ca_certs=None):
+        self.sock = sock
+        self.host = None
+        self.hostname = None
+        self.port = None
+        self.ssl = False
+        self.ssl_sock = None
+        self.connected = False
+        self.buffer = ''
+        self.fingerprints = fingerprints
+        if os.path.isfile(ca_certs):
+            self.ca_certs = ca_certs
+        else:
+            self.ca_certs = None
+
+    def connect(self, host, port=False):
+        if not port:
+            buf = host.split('//')[1]
+            host, port = buf.rsplit(':', 1)
+        hostname = host
+        if host in DNS_CACHE:
+            host = DNS_CACHE[host]
+        self.sock = None
+        if socket.has_ipv6:
+            try:
+                socket.getaddrinfo(host, int(port), socket.AF_INET6)
+                self.sock = socket.socket(socket.AF_INET6,
+                        socket.SOCK_STREAM)
+                self.sock.settimeout(CONNECT_TIMEOUT)
+                self.sock.connect((host, int(port)))
+            except:
+                self.sock = None
+        if self.sock is None:
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.sock.settimeout(CONNECT_TIMEOUT)
+            self.sock.connect((host, int(port)))
+        DNS_CACHE[hostname], port = self.sock.getpeername()[:2]
+        try:
+            sock = None
+            if socket.has_ipv6:
+                try:
+                    socket.getaddrinfo(host, int(port), socket.AF_INET6)
+                    sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+                    sock.settimeout(CONNECT_TIMEOUT)
+                    sock.connect((host, int(port)))
+                except:
+                    sock = None
+            if sock is None:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(CONNECT_TIMEOUT)
+                sock.connect((host, int(port)))
+            if ssl:
+                ssl_sock = ssl.wrap_socket(sock)
+                self.ssl = True
+            elif hasattr(socket, 'ssl'):
+                ssl_sock = socket.ssl(sock)
+                self.ssl = True
+        except:
+            pass
+        self.sock.settimeout(TIMEOUT)
+        fingerprint = None
+        if self.ssl:
+            if ssl:
+                self.ssl_sock = ssl.wrap_socket(self.sock,
+                        ca_certs=self.ca_certs, cert_reqs=(self.ca_certs and
+                            ssl.CERT_REQUIRED or ssl.CERT_NONE))
+            elif hasattr(socket, 'ssl'):
+                self.ssl_sock = socket.ssl(self.sock, certfile=self.ca_certs)
+            try:
+                peercert = self.ssl_sock.getpeercert(True)
+            except Exception:
+                peercert = None
+            def format_hash(value):
+                return reduce(lambda x, (i, y): x + y.upper() +
+                        ((i % 2 and i + 1 < len(value)) and ':' or ''),
+                        enumerate(value), '')
+            if peercert and hashlib:
+                fingerprint = format_hash(hashlib.sha1(peercert).hexdigest())
+            elif peercert:
+                fingerprint = format_hash(sha1.new(peercert).hexdigest())
+        self.host = host
+        self.hostname = hostname
+        self.port = port
+        self.connected = True
+        self.buffer = ''
+        if self.fingerprints is not None:
+            key = (self.hostname, str(self.port))
+            if key in self.fingerprints:
+                if self.fingerprints[key] != fingerprint:
+                    self.disconnect()
+                    raise Exception('BadFingerprint')
+            elif fingerprint:
+                self.fingerprints[key] = fingerprint
+
+    def disconnect(self):
+        try:
+            sock = self.sock
+            if self.ssl:
+                sock = self.ssl_sock
+            try:
+                shutdown_value = 2
+                if hasattr(socket, 'SHUT_RDWR'):
+                    shutdown_value = socket.SHUT_RDWR
+                if hasattr(sock, 'sock_shutdown'):
+                    sock.sock_shutdown(shutdown_value)
+                else:
+                    sock.shutdown(shutdown_value)
+            except:
+                pass
+            sock.close()
+        except:
+            pass
+        self.sock = None
+        self.ssl = False
+        self.ssl_sock = None
+        self.connected = False
+        self.buffer = ''
+
+    def reconnect(self):
+        if self.hostname and self.port:
+            self.disconnect()
+            self.connect(self.hostname, self.port)
+
+    def send(self, msg, exception=False, traceback=None):
+        msg = cPickle.dumps([msg, traceback], protocol=2)
+        gzip_p = False
+        if len(msg) > GZIP_THRESHOLD:
+            buffer = StringIO.StringIO()
+            output = gzip.GzipFile(mode='wb', fileobj=buffer)
+            output.write(msg)
+            output.close()
+            buffer.seek(0)
+            msg = buffer.getvalue()
+            gzip_p = True
+        size = len(msg)
+        msg = str(size) + ' ' + (exception and "1" or "0") \
+                + (gzip_p and "1" or "0") + msg
+        size = len(msg)
+
+        totalsent = 0
+        while totalsent < size:
+            if self.ssl:
+                sent = self.ssl_sock.write(msg[totalsent:])
+            else:
+                sent = self.sock.send(msg[totalsent:])
+            if sent == 0:
+                raise RuntimeError, "socket connection broken"
+            totalsent = totalsent + sent
+
+    def receive(self):
+        buf = self.buffer
+        L = []
+        size_remaining = MAX_LENGHT
+        while size_remaining:
+            chunk_size = min(size_remaining, 4096)
+            if self.ssl:
+                chunk = self.ssl_sock.read(chunk_size)
+            else:
+                chunk = self.sock.recv(chunk_size)
+            if chunk == '':
+                raise RuntimeError, "socket connection broken"
+            L.append(chunk)
+            size_remaining -= len(chunk)
+            if ' ' in chunk:
+                break
+        if size_remaining < 0:
+            raise RuntimeError, "socket connection broken"
+        buf += ''.join(L)
+        size, msg = buf.split(' ', 1)
+        size = int(size)
+        if size > MAX_SIZE:
+            raise RuntimeError, "socket connection broken"
+        while len(msg) < 2:
+            chunk_size = min(size + 2, 4096)
+            if self.ssl:
+                msg += self.ssl_sock.read(chunk_size)
+            else:
+                msg += self.sock.recv(chunk_size)
+            if msg == '':
+                raise RuntimeError, "socket connection broken"
+        exception = msg[0] != "0"
+        gzip_p = msg[1] != "0"
+        L = [msg[2:]]
+        size_remaining = size - len(L[0])
+        while size_remaining:
+            chunk_size = min(size_remaining, 4096)
+            if self.ssl:
+                chunk = self.ssl_sock.read(chunk_size)
+            else:
+                chunk = self.sock.recv(chunk_size)
+            if chunk == '':
+                raise RuntimeError, "socket connection broken"
+            L.append(chunk)
+            size_remaining -= len(chunk)
+        msg = ''.join(L)
+        if len(msg) > size:
+            self.buffer = msg[size:]
+            msg = msg[:size]
+        else:
+            self.buffer = ''
+        msgio = StringIO.StringIO(msg)
+        if gzip_p:
+            output = gzip.GzipFile(mode='r', fileobj=msgio)
+            msgio = StringIO.StringIO(output.read(-1))
+            output.close()
+        unpickler = cPickle.Unpickler(msgio)
+        # cPickle mechanism to import instances (pickle differs here)
+        unpickler.find_global = checkfunction
+        res = unpickler.load()
+        if exception:
+            raise Exception(*(list(res[0]) + [res[1]]))
+        else:
+            return res[0]
