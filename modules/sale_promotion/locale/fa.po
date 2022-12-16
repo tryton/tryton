@@ -1,0 +1,113 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.line,draft_unit_price:"
+msgid "Draft Unit Price"
+msgstr "پیش نویس واحد قیمت"
+
+msgctxt "field:sale.line,promotion:"
+msgid "Promotion"
+msgstr "تبلیغ و ترویج"
+
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:sale.promotion,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.promotion,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:sale.promotion,formula:"
+msgid "Formula"
+msgstr "فرمول"
+
+msgctxt "field:sale.promotion,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:sale.promotion,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "field:sale.promotion,products:"
+msgid "Products"
+msgstr "محصولات"
+
+msgctxt "field:sale.promotion,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:sale.promotion,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:sale.promotion,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:sale.promotion,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "تبلیغ و ترویج"
+
+msgctxt "field:sale.promotion-product.product,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.promotion-product.product,promotion:"
+msgid "Promotion"
+msgstr "تبلیغ و ترویج"
+
+msgctxt "help:sale.promotion,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"عبارت پایتون که با آن ارزیابی می شود:\n"
+"- واحد_قیمت: واحد_قیمت اصلی"
+
+msgctxt "model:ir.action,name:act_promotion_form"
+msgid "Promotions"
+msgstr "ترویج ها و تبلیغات"
+
+msgctxt "model:ir.action,name:act_promotion_relate"
+msgid "Sale Promotions"
+msgstr "ترویج ها و تبلیغات فروش"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در ترویج وتبلیع : \"%s\" با شرایط :\"%s\" نامعتبر میباشد."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_promotion"
+msgid "Promotions"
+msgstr "ترویج ها و تبلیغات"
+
+msgctxt "model:sale.promotion,name:"
+msgid "Sale Promotion"
+msgstr "تبلیغ و ترویج فروش"
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr "دسته بندی محصولات - تبلیغ و ترویج فروش"
+
+msgctxt "model:sale.promotion-product.product,name:"
+msgid "Sale Promotion - Product"
+msgstr "محصولات - تبلیغ و ترویج فروش"
