@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="view_dashboard">
+            <field name="model"></field>
+            <field name="type">board</field>
+            <field name="name">dashboard</field>
+        </record>
+        <record model="ir.action.act_window" id="act_dashboard">
+            <field name="name">Dashboard</field>
+            <field name="res_model"></field>
+            <field name="type">ir.action.act_window</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dashboard_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="view_dashboard"/>
+            <field name="act_window" ref="act_dashboard"/>
+        </record>
+
+        <menuitem id="menu_dashboard" action="act_dashboard"
+            sequence="9" icon="tryton-board"/>
+
+    </data>
+</tryton>

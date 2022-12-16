@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <notebook colspan="4">
+        <page string="User" id="user">
+            <label name="login"/>
+            <field name="login"/>
+            <label name="email"/>
+            <field name="email" widget="email"/>
+            <label name="password"/>
+            <field name="password" widget="password"/>
+            <button name="reset_password" colspan="2" />
+            <separator name="signature" colspan="4"/>
+            <field name="signature" colspan="4" widget="richtext"/>
+        </page>
+        <page string="Actions" id="actions">
+            <label name="menu"/>
+            <field name="menu"/>
+            <field name="actions" colspan="4"/>
+        </page>
+        <page string="Access Permissions" col="1" id="permissions">
+            <field name="groups"/>
+        </page>
+        <page name="applications" col="1">
+            <field name="applications"/>
+        </page>
+        <page string="Preferences" col="2" id="preferences">
+            <label name="language"/>
+            <field name="language" widget="selection"/>
+        </page>
+    </notebook>
+</form>

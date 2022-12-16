@@ -1,0 +1,253 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "申请"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "计算的数量"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "计算计量单位"
+
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "默认计量单位有效数字"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "默认计量单位有效数字"
+
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:purchase.request,exception_ignored:"
+msgid "Ignored Exception"
+msgstr "已忽略的异常"
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "起源"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "产品计量单位类别"
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "采购"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "最佳购买日期"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "采购订单行"
+
+#, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "已采购"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr "供应日库存"
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "预计供货日期"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "计量单位"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "计量单位有效数字"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "仓库"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "要求的仓库"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "供应商"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "采购申请"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "创建采购"
+
+msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
+msgid "Handle Purchase Cancellation"
+msgstr "取消采购处理"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
+msgid "Exception"
+msgstr "异常"
+
+msgctxt "model:ir.message,text:msg_purchase_delete_request"
+msgid ""
+"You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
+" requests."
+msgstr "你无法删除采购 \"%(purchase)s\" ，因为有采购申请与其对应."
+
+msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
+msgid ""
+"Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
+"different to warehouse \"%(request_warehouse)s\" on linked purchase request "
+"\"%(request)s\"."
+msgstr ""
+"采购 \"%(purchase)s\"对应的仓库\"%(purchase_warehouse)s\"和采购申请  \"%(request)s\" "
+"对应的仓库 \"%(request_warehouse)s\"不一致."
+
+msgctxt "model:ir.message,text:msg_request_delete_purchased"
+msgid ""
+"You cannot delete purchase request \"%(request)s\" because it is purchased."
+msgstr "无法删除采购申请  \"%(request)s\"， 因为已经完成对应采购."
+
+msgctxt "model:ir.message,text:msg_request_no_create"
+msgid "Purchase requests can only be created by the system."
+msgstr "采购申请只能由系统创建。"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "取消采购处理"
+
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
+msgid "User in company"
+msgstr "公司中的用户"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "采购申请"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "采购申请"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr "创建采购邀请方"
+
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
+msgid "Handle Purchase Cancellation Exception - Start"
+msgstr "处理采购取消异常 - 开始"
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "采购申请"
+
+#, fuzzy
+msgctxt "selection:purchase.request,state:"
+msgid "Cancelled"
+msgstr "取消"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "完成"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Exception"
+msgstr "异常"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "已采购"
+
+msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
+msgid "Do you want to cancel the request or to reset it to draft?"
+msgstr "是否要取消请求或将其重置为草案?"
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "产品信息"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "供应信息"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "继续"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
+msgid "Cancel Request"
+msgstr "取消申请"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
+msgid "Reset to draft"
+msgstr "重置为草案"

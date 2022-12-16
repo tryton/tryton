@@ -1,0 +1,599 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr ""
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,address:"
+msgid "Address"
+msgstr "ທີ່ຢູ່"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,comment:"
+msgid "Comment"
+msgstr "ຄໍາເຫັນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.opportunity,conversion_probability:"
+msgid "Conversion Probability"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,currency_digits:"
+msgid "Currency Digits"
+msgstr "ໂຕເລກສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,lines:"
+msgid "Lines"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:sale.opportunity,lost_reason:"
+msgid "Reason for loss"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,payment_term:"
+msgid "Payment Term"
+msgstr "ໄລຍະຊໍາລະ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "ເອກະສານອ້າງອີງ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,sales:"
+msgid "Sales"
+msgstr "Sales"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,opportunity:"
+msgid "Opportunity"
+msgstr "Opportunities"
+
+msgctxt "field:sale.opportunity.line,opportunity_state:"
+msgid "Opportunity State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,quantity:"
+msgid "Quantity"
+msgstr "ຈຳນວນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,unit:"
+msgid "Unit"
+msgstr "ໜ່ວຍ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "ຫົວໜ່ວຍເສດ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,converted:"
+msgid "Converted"
+msgstr "Converted"
+
+msgctxt "field:sale.opportunity_employee,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,currency_digits:"
+msgid "Currency Digits"
+msgstr "ໂຕເລກສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,lost:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee,won:"
+msgid "Won"
+msgstr "ວອນ ເກົາຫຼີໃຕ້"
+
+msgctxt "field:sale.opportunity_employee,won_amount:"
+msgid "Won Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee.context,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee.context,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,converted:"
+msgid "Converted"
+msgstr "Converted"
+
+msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "ໂຕເລກສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,lost:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,month:"
+msgid "Month"
+msgstr "ເດືອນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_employee_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,won:"
+msgid "Won"
+msgstr "ວອນ ເກົາຫຼີໃຕ້"
+
+msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
+msgid "Won Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_employee_monthly,year:"
+msgid "Year"
+msgstr "ປີ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
+msgid "Conversion Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,conversion_rate:"
+msgid "Conversion Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,converted:"
+msgid "Converted"
+msgstr "Converted"
+
+msgctxt "field:sale.opportunity_monthly,converted_amount:"
+msgid "Converted Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,currency_digits:"
+msgid "Currency Digits"
+msgstr "ໂຕເລກສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,lost:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,month:"
+msgid "Month"
+msgstr "ເດືອນ"
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
+msgid "Winning Amount Rate"
+msgstr ""
+
+msgctxt "field:sale.opportunity_monthly,winning_rate:"
+msgid "Winning Rate"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,won:"
+msgid "Won"
+msgstr "ວອນ ເກົາຫຼີໃຕ້"
+
+msgctxt "field:sale.opportunity_monthly,won_amount:"
+msgid "Won Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity_monthly,year:"
+msgid "Year"
+msgstr "ປີ"
+
+msgctxt "field:sale.opportunity_monthly,year_month:"
+msgid "Year-Month"
+msgstr ""
+
+msgctxt "help:sale.opportunity,amount:"
+msgid "Estimated revenue amount."
+msgstr ""
+
+msgctxt "help:sale.opportunity,conversion_probability:"
+msgid "Percentage between 0 and 100."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_sale_form"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_form"
+msgid "Opportunities per Employee"
+msgstr "Opportunities per Employee"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Opportunities per Employee per Month"
+
+msgctxt "model:ir.action,name:act_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Leads and Opportunities"
+
+msgctxt "model:ir.action,name:act_opportunity_form2"
+msgid "Sales Leads/Opportunities"
+msgstr "Sales Leads/Opportunities"
+
+msgctxt "model:ir.action,name:act_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Opportunities per Month"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Cancelled"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Converted"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Leads"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Lost"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
+msgid "Won"
+msgstr "ວອນ ເກົາຫຼີໃຕ້"
+
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
+msgid "Opportunities per Employee per Month"
+msgstr "Opportunities per Employee per Month"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "Opportunities per Employee"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
+msgid "Leads and Opportunities"
+msgstr "Leads and Opportunities"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
+msgid "Opportunities per Month"
+msgstr "Opportunities per Month"
+
+msgctxt "model:res.group,name:group_opportunity"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity,name:"
+msgid "Sale Opportunity"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity.line,name:"
+msgid "Sale Opportunity Line"
+msgstr "Sale Opportunity"
+
+#, fuzzy
+msgctxt "model:sale.opportunity_employee,name:"
+msgid "Sale Opportunity per Employee"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity_employee.context,name:"
+msgid "Sale Opportunity per Employee Context"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity_employee_monthly,name:"
+msgid "Sale Opportunity per Employee per Month"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "model:sale.opportunity_monthly,name:"
+msgid "Sale Opportunity per Month"
+msgstr "Opportunities per Employee per Month"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Converted"
+msgstr "Converted"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lead"
+msgstr "Leads"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Lost"
+msgstr "Lost"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Opportunity"
+msgstr "Opportunities"
+
+#, fuzzy
+msgctxt "selection:sale.opportunity,state:"
+msgid "Won"
+msgstr "ວອນ ເກົາຫຼີໃຕ້"
+
+#, fuzzy
+msgctxt "view:sale.opportunity:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lead/Opportunity"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"

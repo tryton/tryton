@@ -1,0 +1,103 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Preisliste"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Verkaufsbetrag"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Gratis"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Maßeinheitenkategorie"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Verkaufsbetrag"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Verkaufsextras"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr "Benutzer in Unternehmen des Extras"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Verkaufsextra"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "Verkaufsextrazeile"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Verkaufsposition"

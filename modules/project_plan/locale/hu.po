@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+#, fuzzy
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Százalék:"
+
+#, fuzzy
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Tevékenység"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr ""
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr ""
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr ""
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr ""
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Időtartam"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr ""
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr ""
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr ""
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr ""
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr ""
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Tasks Leveling"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr ""
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr ""
