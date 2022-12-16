@@ -1,0 +1,452 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:"
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr ""
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr ""
+
+msgctxt "error:timesheet.work:"
+msgid "The origin must be unique per company."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.context,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr ""
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+#, fuzzy
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "日期格式"
+
+#, fuzzy
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "日期格式"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:timesheet.work,active:"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,rec_name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr ""
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr ""
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work.context,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr ""
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr ""
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr ""
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr ""
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr ""
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr ""
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr ""
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr ""
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr ""
