@@ -1,0 +1,202 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "Notification par e-mail"
+
+msgctxt "field:ir.trigger,notification_email_required:"
+msgid "Notification Email Required"
+msgstr "E-mail de notification requis"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "Attachements"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Moyen de contact"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "Contenu"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Destinataire de secours"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Destinataire caché de secours"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Destinataire secondaire de secours"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "Destinataires"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataires cachés"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataires secondaires"
+
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr "Objet"
+
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "Notification"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "Rapport"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr "Notification"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinataires"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataires cachés"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataires secondaires"
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "Déclencheur"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "Les rapports utilisés comme attachements."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr "Définit quel e-mail utiliser des mécanismes de contact du tiers"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "Le rapport utilisé comme modèle d'e-mail."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr "Utilisateur notifié quand l'e-mail du destinataire n'est pas trouvé"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+"Utilisateur notifié quand l'e-mail du destinataire caché ne peut être trouvé"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"Utilisateur notifié quand l'e-mail du destinataire secondaire ne peut être "
+"trouvé"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Laisser vide pour la valeur définie dans le fichier de configuration."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Le champ qui contient le(s) destinataire(s)."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "Le champ qui contient le(s) destinataire(s) caché(s)."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Le champ qui contient le(s) destinataire(s) secondaire(s)."
+
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+"La syntaxe Genshi peut être utilisée avec « record » dans le contexte d'évaluation.\n"
+"S'il est vide, le nom du rapport sera utilisé."
+
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "Ajouter un déclencheur pour la notification."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "E-mails de notification"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "Journaux"
+
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr "E-mails de notification"
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Objet de l'e-mail non valide dans la notification « %(notification)s » avec "
+"l'exception « %(exception)s »."
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "E-mails de notification"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notification"
+msgstr "Notification par e-mail"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "Attachement d'e-mail de notification"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notification Email Log"
+msgstr "Journal d'e-mail de notification"
+
+msgctxt "selection:ir.trigger,action:"
+msgid "Email Notification"
+msgstr "Notification par e-mail"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "Heure"

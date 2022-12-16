@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="purchase">
+
+        <record model="ir.ui.view" id="purchase_line_view_form">
+            <field name="model">purchase.line</field>
+            <field name="inherit" ref="purchase.purchase_line_view_form"/>
+            <field name="name">purchase_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_component_view_list">
+            <field name="model">purchase.line.component</field>
+            <field name="type">tree</field>
+            <field name="name">purchase_line_component_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_line_component_view_form">
+            <field name="model">purchase.line.component</field>
+            <field name="type">form</field>
+            <field name="name">purchase_line_component_form</field>
+        </record>
+
+    </data>
+</tryton>

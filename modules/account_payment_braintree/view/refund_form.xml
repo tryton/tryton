@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="payment"/>
+    <field name="payment"/>
+    <label name="amount"/>
+    <field name="amount"/>
+
+    <label name="braintree_error_message"/>
+    <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="draft"/>
+        <button name="approve"/>
+    </group>
+</form>

@@ -1,0 +1,54 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas"
+
+msgctxt "field:party.party,sale_invoice_grouping_methods:"
+msgid "Sale Invoice Grouping Methods"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdai"
+
+msgctxt "field:party.party.sale_invoice_grouping_method,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas"
+
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas"
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+"Numatytasis pardavimo sąskaitų faktūrų grupavimo būdas naujiems pirkėjams."
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+"Numatytasis pardavimo sąskaitų faktūrų grupavimo būdas naujiems pirkėjams."
+
+msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgid "Party Sale Invoice Grouping Method"
+msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas kontrahentui"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr ""

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="company_tax_identifier" tree_invisible="1"/>
+    <field name="party" expand="2"/>
+    <field name="party_tax_identifier" expand="1"/>
+    <field name="code"/>
+    <field name="province_code"/>
+    <field name="amount"/>
+    <field name="first_period_amount"/>
+    <field name="second_period_amount"/>
+    <field name="third_period_amount"/>
+    <field name="fourth_period_amount"/>
+    <field name="currency"/>
+</tree>
