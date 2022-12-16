@@ -1,0 +1,21 @@
+Version 1.4.4 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.3 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.2 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.1 - 2009-11-24
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
