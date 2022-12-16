@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="type">form</field>
+            <field name="name">location_form</field>
+        </record>
+        <record model="ir.ui.view" id="location_view_tree">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">location_tree</field>
+        </record>
+        <record model="ir.ui.view" id="location_view_list">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">location_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_tree">
+            <field name="name">Locations</field>
+            <field name="res_model">stock.location</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_tree"/>
+            <field name="act_window" ref="act_location_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_form"/>
+            <field name="act_window" ref="act_location_tree"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="10"
+            action="act_location_tree" id="menu_location_tree"/>
+
+        <record model="ir.action.act_window" id="act_location_form">
+            <field name="name">Locations</field>
+            <field name="res_model">stock.location</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_list"/>
+            <field name="act_window" ref="act_location_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_form"/>
+            <field name="act_window" ref="act_location_form"/>
+        </record>
+        <menuitem parent="menu_configuration" sequence="10"
+            action="act_location_form" id="menu_location_form"/>
+        <menuitem parent="menu_location_tree" sequence="10"
+            action="act_location_form" id="menu_location_form2"/>
+
+        <record model="ir.ui.view"
+                id="products_by_locations_context_view_form">
+            <field
+                name="model">stock.products_by_locations.context</field>
+            <field name="type">form</field>
+            <field name="name">products_by_locations_context_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_products_by_locations">
+            <field name="name">Products</field>
+            <field name="res_model">product.product</field>
+            <field name="context" eval="{'locations': Eval('active_ids')}"
+                pyson="1"/>
+            <field name="domain"
+                eval="['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('consumable', '=', False)]"
+                pyson="1"/>
+            <field name="context_model">stock.products_by_locations.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view2">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree_qty"/>
+            <field name="act_window" ref="act_products_by_locations"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product.product_view_form"/>
+            <field name="act_window" ref="act_products_by_locations"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_products_by_locations_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.location,-1</field>
+            <field name="action" ref="act_products_by_locations"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_products_by_locations_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.location,-1</field>
+            <field name="action" ref="act_products_by_locations"/>
+        </record>
+
+        <record model="ir.model.access" id="access_location">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_location_admin">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="location_lead_time_view_list">
+            <field name="model">stock.location.lead_time</field>
+            <field name="type">tree</field>
+            <field name="name">location_lead_time_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="location_lead_time_view_form">
+            <field name="model">stock.location.lead_time</field>
+            <field name="type">form</field>
+            <field name="name">location_lead_time_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_lead_time_form">
+            <field name="name">Location Lead Times</field>
+            <field name="res_model">stock.location.lead_time</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_location_lead_time_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_lead_time_view_list"/>
+            <field name="act_window" ref="act_location_lead_time_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_location_lead_time_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_lead_time_view_form"/>
+            <field name="act_window" ref="act_location_lead_time_form"/>
+        </record>
+
+        <menuitem parent="menu_location_form"
+            action="act_location_lead_time_form"
+            id="menu_location_lead_time_form"/>
+
+        <record model="ir.model.access" id="access_location_lead_time">
+            <field name="model"
+                search="[('model', '=', 'stock.location.lead_time')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_location_lead_time_admin">
+            <field name="model"
+                search="[('model', '=', 'stock.location.lead_time')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <!-- Default locations -->
+        <record model="stock.location" id="location_input">
+            <field name="name">Input Zone</field>
+            <field name="code">IN</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_output">
+            <field name="name">Output Zone</field>
+            <field name="code">OUT</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_storage">
+            <field name="name">Storage Zone</field>
+            <field name="code">STO</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_lost_found">
+            <field name="name">Lost and Found</field>
+            <field name="type">lost_found</field>
+        </record>
+        <record model="stock.location" id="location_warehouse">
+            <field name="name">Warehouse</field>
+            <field name="code">WH</field>
+            <field name="type">warehouse</field>
+            <field name="input_location" ref="location_input"/>
+            <field name="output_location" ref="location_output"/>
+            <field name="storage_location" ref="location_storage"/>
+            <field name="lost_found_location" ref="location_lost_found"/>
+        </record>
+        <record model="stock.location" id="location_supplier">
+            <field name="name">Supplier</field>
+            <field name="code">SUP</field>
+            <field name="type">supplier</field>
+        </record>
+        <record model="stock.location" id="location_customer">
+            <field name="name">Customer</field>
+            <field name="code">CUS</field>
+            <field name="type">customer</field>
+        </record>
+        <record model="stock.location" id="location_transit">
+            <field name="name">Transit</field>
+            <field name="type">storage</field>
+        </record>
+    </data>
+</tryton>
