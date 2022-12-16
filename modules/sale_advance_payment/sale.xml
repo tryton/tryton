@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_advance_invoice_form">
+            <field name="name">Advance Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.advance_payment.condition')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_advance_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_advance_invoice_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="advance_payment_condition_form">
+            <field name="model">sale.advance_payment.condition</field>
+            <field name="type">form</field>
+            <field name="name">advance_payment_condition_form</field>
+        </record>
+        <record model="ir.ui.view" id="advance_payment_condition_list">
+            <field name="model">sale.advance_payment.condition</field>
+            <field name="type">tree</field>
+            <field name="name">advance_payment_condition_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="advance_payment_term_form">
+            <field name="model">sale.advance_payment_term</field>
+            <field name="type">form</field>
+            <field name="name">advance_payment_term_form</field>
+        </record>
+        <record model="ir.ui.view" id="advance_payment_term_list">
+            <field name="model">sale.advance_payment_term</field>
+            <field name="type">tree</field>
+            <field name="name">advance_payment_term_list</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_advance_payment_term_form">
+            <field name="name">Advance Payment Terms</field>
+            <field name="res_model">sale.advance_payment_term</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_advance_payment_term_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view"
+                ref="sale_advance_payment.advance_payment_term_list"/>
+            <field name="act_window"
+                ref="sale_advance_payment.act_advance_payment_term_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_advance_payment_term_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view"
+                ref="sale_advance_payment.advance_payment_term_form"/>
+            <field name="act_window"
+                ref="sale_advance_payment.act_advance_payment_term_form"/>
+        </record>
+        <menuitem parent="sale.menu_configuration"
+            action="act_advance_payment_term_form"
+            id="menu_advance_payment_term"/>
+
+        <record model="ir.ui.view" id="advance_payment_term_line_form">
+            <field name="model">sale.advance_payment_term.line</field>
+            <field name="type">form</field>
+            <field name="name">advance_payment_term_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="advance_payment_term_line_list">
+            <field name="model">sale.advance_payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="name">advance_payment_term_line_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_advance_payment_condition">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment.condition')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_advance_payment_condition_sale_admin">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment.condition')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_advance_payment_term">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment_term')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_advance_payment_term_sale_admin">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment_term')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_advance_payment_term_line">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment_term.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_advance_payment_term_line_sale_admin">
+            <field name="model"
+                search="[('model', '=', 'sale.advance_payment_term.line')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

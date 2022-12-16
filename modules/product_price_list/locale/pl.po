@@ -1,0 +1,159 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr "Błąd \"%(exception)s\" w formule \"%(formula)s\" w wierszu \"%(line)s\" cennika."
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:product.price_list,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.price_list,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Wiersze"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:product.price_list,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.price_list,tax_included:"
+msgid "Tax Included"
+msgstr "Z podatkiem"
+
+msgctxt "field:product.price_list,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.price_list,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Kategoria"
+
+msgctxt "field:product.price_list.line,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.price_list.line,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Formuła"
+
+msgctxt "field:product.price_list.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Cennik"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Produkt"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Ilość"
+
+msgctxt "field:product.price_list.line,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.price_list.line,sequence:"
+msgid "Sequence"
+msgstr "Sekwencja"
+
+msgctxt "field:product.price_list.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:product.price_list.line,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.price_list.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr ""
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "Główny identyfikator cennika."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr ""
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr ""
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr ""
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr ""
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Price Lists"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Price Lists"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Cennik"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Wiersz cennika"
