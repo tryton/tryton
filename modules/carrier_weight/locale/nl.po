@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr "Gewicht valuta cijfers"
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Prijslijst"
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "maateenheid gewicht"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr "maateenheid gewicht decimalen"
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr "Prijs"
+
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "help:carrier,weight_currency:"
+msgid "The currency of the price."
+msgstr "De valuta van de prijs."
+
+msgctxt "help:carrier,weight_price_list:"
+msgid "Add price to the carrier service."
+msgstr "Prijs toevoegen aan de koeriersdienst."
+
+msgctxt "help:carrier,weight_uom:"
+msgid "The unit of weight criteria of the price list."
+msgstr "De gewichtseenheid criteria van de prijslijst."
+
+msgctxt "help:carrier.weight_price_list,carrier:"
+msgid "The carrier that the price list belongs to."
+msgstr "De koerier waartoe de prijslijst behoort."
+
+msgctxt "help:carrier.weight_price_list,price:"
+msgid "The price of the carrier service."
+msgstr "De prijs van de koeriersdienst."
+
+msgctxt "help:carrier.weight_price_list,weight:"
+msgid "The lower limit for the price."
+msgstr "De ondergrens voor de prijs."
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr "Prijslijst vervoerder gewicht"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Gewicht"

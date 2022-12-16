@@ -1,0 +1,38 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.message,text:msg_payment_sale_cancel"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"cancelled sale."
+msgstr ""
+"Vous ne pouvez pas utiliser la vente « %(sale)s » pour le paiement "
+"« %(payment)s » car la vente est annulée."
+
+msgctxt "model:ir.message,text:msg_payment_sale_draft"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"draft sale."
+msgstr ""
+"Vous ne pouvez pas utiliser la vente « %(sale)s » pour le paiement "
+"« %(payment)s » car la vente est en brouillon."
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr ""
+"Vous ne pouvez pas annuler la vente « %(sale)s » car elle a des paiements."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr ""
+"Vous ne pouvez pas réinitialiser à l'état brouillon la vente « %(sale)s » "
+"car elle a des paiements."
