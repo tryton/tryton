@@ -1,0 +1,126 @@
+Version 3.6.11 - 2017-11-08
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.10 - 2017-10-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.9 - 2017-08-08
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.8 - 2016-12-17
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.7 - 2016-10-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.6 - 2016-09-03
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.5 - 2016-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.4 - 2016-03-14
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.3 - 2015-12-22
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.2 - 2015-09-19
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.1 - 2015-07-13
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Add move template
+* Improve payable/receivable lines
+* Enforce same sign between amount_second_currency and debit - credit
+* Allow tax modifying the unit price
+* Add reverse_compute on Tax
+* Add fix_party script
+* Allow to display only the balance in the General Ledger
+* Add TaxableMixin
+* Allow to set a description to cancel move
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add option on Account for party required
+* Add wizard to reconcile all accounts
+* Add cancel to Account Move
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Add start/end date to tax
+* Use account of write-off journal as default
+* Add write-off journal type
+* Add description on write-off move
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Add balance non-deferral wizard
+* Display write-off amount in reconciliation
+* Enforce same company for a chart of account
+* Change tax percentage into rate
+* Autoreconcile posted move with just one line of zero
+* Remove centralised counterpart option and functionality
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Make period's post_move_sequence optional and use fiscal year's one if empty
+* Add sale, purchase or other kind on Tax Rule and Tax Group
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Rename:
+    - Move.name into number
+    - Move.reference into post_number
+    - MoveLine.reference into description
+* Remove name and active on move line
+* Add origin field on Move
+* Compute the aged balance over all fiscalyears and reverse dates order
+* Add cumulate option for Debit/Credit on Account
+* Allow to open accounts from balance sheet
+* Add start/end balance to Trial balance
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Add new account type stock
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+* Add test creation of minimal chart of accounts
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
+* Add description field on account.tax.code.template and account.tax.code
+* Add tax field on account.tax.line
+* Remove unique constraint on tax group code column
+* Add default search value on account move
+* Remove egenix-mx-base and replace it by python-dateutil
+* Improve General Ledger to compute lines for each accounts at once
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add origin_tax field on account.tax.rule
+* Change get_receivable_payable on party.party to work with a list of name
+* Remove blocked field on account.move.line
+* Fix digits of amount on tax and tax line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add tax rule to replace vat and supplier_vat on party
+  Previous vat configuration will be lost
+* Allow to update chart of account from template
+* Change sequence on Journal into Property for multi-company
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

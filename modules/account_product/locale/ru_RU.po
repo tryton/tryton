@@ -1,0 +1,283 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.category:"
+msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgstr "Отсутствует расходный/доходный счет для категории %s (%d)"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "Отсутствует расходный/доходный счет для продукта %s (%d)"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Счет расходов"
+
+msgctxt "field:product.category,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Использованный счет расходов"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Использовать родительский счет"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Счет доходов"
+
+msgctxt "field:product.category,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Использованный счет доходов"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Налоги заказчика"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Используемые налоги заказчика"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Налоги поставщика"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Используемые налоги поставщика"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Использовать родительские налоги"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:product.category-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:product.category-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:product.category-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:product.category-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Категория"
+
+msgctxt "field:product.category-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:product.category-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:product.category-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:product.category-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:product.category-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.template,account_category:"
+msgid "Use Category's accounts"
+msgstr "Использовать счет категории"
+
+msgctxt "field:product.template,account_expense:"
+msgid "Account Expense"
+msgstr "Счет расходов"
+
+msgctxt "field:product.template,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Использованный счет расходов"
+
+msgctxt "field:product.template,account_revenue:"
+msgid "Account Revenue"
+msgstr "Счет доходов"
+
+msgctxt "field:product.template,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Использованный счет доходов"
+
+msgctxt "field:product.template,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Налоги заказчика"
+
+msgctxt "field:product.template,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Используемые налоги заказчика"
+
+msgctxt "field:product.template,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Налоги поставщика"
+
+msgctxt "field:product.template,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Используемые налоги поставщика"
+
+msgctxt "field:product.template,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "Использовать налоги категории"
+
+msgctxt "field:product.template-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:product.template-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:product.template-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-customer-account.tax,product:"
+msgid "Product Template"
+msgstr "Шаблон продукта"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.template-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:product.template-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.template-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:product.template-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:product.template-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-supplier-account.tax,product:"
+msgid "Product Template"
+msgstr "Шаблон продукта"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.template-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "field:product.template-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:product.template-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category"
+msgstr "Использовать счета указанные для родительской категории"
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category"
+msgstr "Использовать налоги указанные для родительской категории"
+
+msgctxt "help:product.template,account_category:"
+msgid "Use the accounts defined on the category"
+msgstr "Использовать счета указанные для категории"
+
+msgctxt "help:product.template,account_expense:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Этот счет будет использован вместо указанного в категории."
+
+msgctxt "help:product.template,account_revenue:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Этот счет будет использован вместо указанного в категории."
+
+msgctxt "help:product.template,taxes_category:"
+msgid "Use the taxes defined on the category"
+msgstr "Использовать налоги указанные для категории"
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Категория - Налоги заказчика"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Категория - Налоги поставщика"
+
+msgctxt "model:product.template-customer-account.tax,name:"
+msgid "Product Template - Customer Tax"
+msgstr "Шаблон продукта - Налоги заказчика"
+
+msgctxt "model:product.template-supplier-account.tax,name:"
+msgid "Product Template - Supplier Tax"
+msgstr "Шаблон продукта - Налоги поставщика"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Счета"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Налоги"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Регистрационные данные"
+
+msgctxt "view:product.template:"
+msgid "Accounts"
+msgstr "Счета"
+
+msgctxt "view:product.template:"
+msgid "Taxes"
+msgstr "Налоги"
