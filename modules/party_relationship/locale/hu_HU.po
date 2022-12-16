@@ -1,0 +1,162 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "Kapcsolatok"
+
+msgctxt "field:party.relation,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.relation,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "-tól; -től"
+
+msgctxt "field:party.relation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.relation,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "-hoz; -höz"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:party.relation,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.relation,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.relation.all,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.relation.all,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "-tól; től"
+
+msgctxt "field:party.relation.all,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.relation.all,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "-hoz; -höz"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:party.relation.all,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.relation.all,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.relation.type,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.relation.type,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.relation.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.relation.type,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "Fordított kapcsolat"
+
+msgctxt "field:party.relation.type,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.relation.type,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Party Relations"
+msgstr "Partner kapcsolat"
+
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "Kapcsolat típusa"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Party Relations"
+msgstr "Partner kapcsolat"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "Kapcsolat típusa"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "Partner kapcsolat"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "Partner kapcsolat"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "Kapcsolat típusa"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "Kapcsolatok"
+
+#, fuzzy
+msgctxt "view:party.relation.all:"
+msgid "Relation"
+msgstr "Kapcsolatok"
+
+msgctxt "view:party.relation.all:"
+msgid "Relations"
+msgstr "Kapcsolatok"
+
+#, fuzzy
+msgctxt "view:party.relation.type:"
+msgid "Party Relation Type"
+msgstr "Partner kapcsolat"
+
+#, fuzzy
+msgctxt "view:party.relation.type:"
+msgid "Party Relation Types"
+msgstr "Partner kapcsolat"
