@@ -1,0 +1,161 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.0 - 2022-05-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Forbid to decrease digits of unit of measure
+* Add support for Python 3.10
+* Remove support for Python 3.6
+
+Version 6.2.0 - 2021-11-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Prevent editing list and cost prices without a company
+* Make list price not required on product
+* Provide digits from unit of measure
+* Allow only fixed cost price as method for service
+
+Version 6.0.0 - 2021-05-03
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Deactivate variants when product is deactivated
+* Allow multiple templates to be added/removed on a category
+
+Version 5.8.0 - 2020-11-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+* Allow the product template code to be set from a sequence
+* Set code column first in template tree view
+* Add default order on product and template
+* Check price_decimal configuration
+
+Version 5.6.0 - 2020-05-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add round_price
+* Make product code unique
+* Add code to template as variant prefix code
+* Hide product fields inherited from template when empty
+* Skip default products when template is created from product
+* Search also on variant name when searching on template record name
+
+Version 5.4.0 - 2019-11-04
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Allow the product code to be set by a sequence
+* Allow UoM conversion between different categories
+* Add product identifiers
+
+Version 5.2.0 - 2019-05-06
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove starting wildcard when searching on codes and numbers
+
+Version 5.0.0 - 2018-10-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Enforce digits length on Rounding Precision on Unit of Measure
+
+Version 4.6.0 - 2017-10-30
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Show all products by category
+* Limit cost method to fixed for service
+* Move cost_price from Template to Product
+
+Version 4.4.0 - 2017-05-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add ceil and floor as uom rounding
+
+Version 4.2.0 - 2016-11-28
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add relate from Template to Products
+
+Version 4.0.0 - 2016-05-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Replace category by categories on Template
+* Add Python3 support
+* Add configuration for default cost price method
+* Change Uom.round into an instance method
+* Add Function fields on Product from Template
+
+Version 3.8.0 - 2015-11-02
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Be more strict on unit of measure conversion
+
+Version 3.6.0 - 2015-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+* Ensure that uom rouding is always greather than zero
+* Add price_digits
+* Add parameter price_decimal
+
+Version 3.4.0 - 2014-10-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.0 - 2013-10-21
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.8.0 - 2013-04-22
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Remove special uom search clause
+* New product types: Goods, Assets and Service
+* Category is no more required on product
+
+Version 2.2.0 - 2011-10-24
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 2.0.0 - 2011-04-26
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-09
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Improve computation precision of UOM convertion
+
+Version 1.4.0 - 2009-10-19
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+--------------------------
+* Initial release
