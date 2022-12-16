@@ -1,0 +1,12 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+calendar = element calendar { attlist.calendar, field* }
+attlist.calendar &=
+  attribute dtstart { text }
+attlist.calendar &=
+  attribute dtend { text }?
+attlist.calendar &=
+  [ a:defaultValue = "Unknown" ] attribute string { text }?
+field = element field { attlist.field, empty }
+attlist.field &= attribute name { text }
+start = calendar
