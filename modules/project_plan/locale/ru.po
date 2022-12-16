@@ -1,0 +1,188 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Сотрудник"
+
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Работа"
+
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Предок"
+
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Потомок"
+
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Фактически завершен"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Фактически завершен (время)"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Фактически начат"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Фактически начат (время)"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Распределения"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Обратная выравнивающая задержка"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Порог завершения"
+
+#, fuzzy
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Порог завершения (время)"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Порог начала"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Порог начала (время)"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Досрочное завершение"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Досрочное завершение (время)"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Досрочное начало"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Досрочное начало (время)"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Позднее завершение"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Позднее завершение (время)"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Позднее начало"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Позднее начало (время)"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Выравнивающая задержка"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Предки"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Потомки"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Выравнивание задач"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Распределение"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Предок - Потомок"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Распределения"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "План"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Распределение"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Распределения"
