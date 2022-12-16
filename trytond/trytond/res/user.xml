@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.user" id="user_admin">
+            <field name="login">admin</field>
+            <field name="name">Administrator</field>
+            <field name="signature">Administrator</field>
+            <field name="action" ref="ir.act_module_config_wizard"/>
+            <field name="menu" ref="ir.act_menu_tree"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_admin">
+            <field name="user" ref="user_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <form string="User">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <notebook colspan="4">
+                        <page string="User" id="user">
+                            <label name="login"/>
+                            <field name="login"/>
+                            <label name="password"/>
+                            <field name="password"/>
+                            <label name="email"/>
+                            <field name="email" widget="email"/>
+                            <newline/>
+                            <label name="action"/>
+                            <field name="action"/>
+                            <label name="menu"/>
+                            <field name="menu"/>
+                            <separator name="signature" colspan="4"/>
+                            <field name="signature" colspan="4"/>
+                        </page>
+                        <page string="Access Permissions" col="1" id="permissions">
+                            <field name="groups"/>
+                            <field name="rule_groups"/>
+                        </page>
+                        <page string="Preferences" col="2" id="preferences">
+                            <label name="language"/>
+                            <field name="language" widget="selection"/>
+                            <label name="timezone"/>
+                            <field name="timezone"/>
+                        </page>
+                    </notebook>
+                </form>
+              ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="user_view_form_preferences">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="User">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <notebook colspan="4">
+                        <page string="User" id="user">
+                            <label name="email"/>
+                            <field name="email" widget="email"/>
+                            <label name="password"/>
+                            <field name="password"/>
+                            <label name="action"/>
+                            <field name="action" widget="selection"/>
+                            <label name="menu"/>
+                            <field name="menu" widget="selection"/>
+                            <separator name="signature" colspan="4"/>
+                            <field name="signature" colspan="4"/>
+                        </page>
+                        <page string="Group Membership" col="1" id="membership">
+                            <field name="groups"/>
+                        </page>
+                        <page string="Preferences" col="2" id="preferences">
+                            <label name="language"/>
+                            <field name="language" widget="selection"/>
+                            <label name="timezone"/>
+                            <field name="timezone"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="user_view_tree">
+            <field name="model">res.user</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <![CDATA[
+                <tree string="Users">
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="connections"/>
+                    <field name="active"/>
+                </tree>
+              ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_user_form">
+            <field name="name">Users</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">res.user</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_user_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="user_view_tree"/>
+            <field name="act_window" ref="act_user_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_user_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="user_view_form"/>
+            <field name="act_window" ref="act_user_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_user_form" id="menu_user_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_user_form_group_admin">
+            <field name="menu" ref="menu_user_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_user">
+            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_user_admin">
+            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.ui.view" id="user_config_init_view_form">
+            <field name="model">res.user.config.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Add Users" col="2">
+                    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
+                    <group col="1" id="labels">
+                        <label string="You can now add some users into the system."
+                            id="add"
+                            yalign="0.0" xalign="0.0" xexpand="1"/>
+                        <label string="Be careful that the login must be unique!"
+                            id="carefull"
+                            yalign="0.0" xalign="0.0" xexpand="1"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.module.module.config_wizard.item"
+            id="config_wizard_item_user">
+            <field name="name">res.user.config</field>
+        </record>
+
+        <record model="ir.ui.view" id="user_warning_view_form">
+            <field name="model">res.user.warning</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Warning">
+                    <label name="user"/>
+                    <field name="user"/>
+                    <newline/>
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="always"/>
+                    <field name="always"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="user_warning_view_tree">
+            <field name="model">res.user.warning</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Warnings">
+                    <field name="user"/>
+                    <field name="name"/>
+                    <field name="always"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_warning">
+            <field name="model" search="[('model', '=', 'res.user.warning')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_user_warning1">
+            <field name="field" search="[('name', '=', 'user'), ('model.model', '=', 'res.user.warning')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User</field>
+            <field name="rule_group" ref="rule_group_user_warning"/>
+        </record>
+
+    </data>
+</tryton>

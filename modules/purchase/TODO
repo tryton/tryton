@@ -1,0 +1,3 @@
+- Add historization of quotation
+- Allow to customize purchase.product_supplier to handle delivery_time depending of quantity
+- Cancel draft moves and draft invoices when canceling purchase order
