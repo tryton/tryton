@@ -1,0 +1,1162 @@
+# Translations template for tryton.
+# Copyright (C) 2016 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "备选配置文件"
+
+msgid "development mode"
+msgstr "开发模式"
+
+msgid "logging everything at INFO level"
+msgstr "INFO级别记录日志"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "设置日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "设置登录用户"
+
+msgid "specify the server hostname:port"
+msgstr "设置服务器名称：端口号"
+
+#, python-format, python-format, python-format, python-format
+msgid "Unable to write config file %s."
+msgstr "无法写入配置文件 %s!"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "无法设置语言地域 %s"
+
+msgid ", "
+msgstr ", "
+
+msgid ",…"
+msgstr ",…"
+
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+msgid "Select your action"
+msgstr "选择一项操作"
+
+msgid "No action defined."
+msgstr "没有定义任何操作 ！"
+
+msgid "By: "
+msgstr "By: "
+
+msgid "Selection"
+msgstr "选择"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "取消(_C)"
+
+msgid "OK"
+msgstr ""
+
+msgid "Your selection:"
+msgstr "已选择:"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Save As..."
+msgstr "另存为..."
+
+msgid "Always ignore this warning."
+msgstr "下次不再提示."
+
+msgid "Do you want to proceed?"
+msgstr "继续此项操作 ?"
+
+msgid "No"
+msgstr ""
+
+msgid "Yes"
+msgstr "是"
+
+msgid "Concurrency Exception"
+msgstr "并行操作异常"
+
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+msgid "Cancel saving"
+msgstr ""
+
+msgid "Compare"
+msgstr "对比"
+
+msgid "See the modified version"
+msgstr ""
+
+msgid "Write Anyway"
+msgstr "覆写"
+
+msgid "Save your current version"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+#, fuzzy
+msgid "Application Error"
+msgstr "程序错误 !"
+
+msgid "Report Bug"
+msgstr "报告Bug"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+msgid "Unable to check for new version"
+msgstr ""
+
+msgid "A new version is available!"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>查找...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>创建...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "无法找到“ %s ”的匹配项"
+
+msgid "Value"
+msgstr "值"
+
+msgid "Displayed value"
+msgstr "显示"
+
+msgid "Format"
+msgstr "格式"
+
+msgid "Display format"
+msgstr "显示格式"
+
+msgid "Open the calendar"
+msgstr "打开日历"
+
+msgid "Date Format"
+msgstr "日期格式"
+
+msgid "Displayed date format"
+msgstr "日期显示格式"
+
+msgid "y"
+msgstr "y"
+
+msgid "True"
+msgstr "True"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "False"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+msgid "Edit..."
+msgstr "编辑..."
+
+msgid "Attachments..."
+msgstr "附件文档..."
+
+msgid "Notes..."
+msgstr "注释..."
+
+msgid "Actions..."
+msgstr "操作..."
+
+msgid "Relate..."
+msgstr "关联..."
+
+msgid "Report..."
+msgstr "报告..."
+
+msgid "E-Mail..."
+msgstr "用电子邮件发送..."
+
+msgid "Print..."
+msgstr "打印..."
+
+msgid "Y"
+msgstr "年"
+
+msgid "M"
+msgstr "月"
+
+msgid "w"
+msgstr "星期"
+
+msgid "d"
+msgstr "日"
+
+msgid "h"
+msgstr "时"
+
+msgid "m"
+msgstr "分"
+
+msgid "s"
+msgstr "秒"
+
+#, fuzzy
+msgid "Preferences..."
+msgstr "设置偏好(_P)..."
+
+#, fuzzy
+msgid "Toolbar"
+msgstr "工具栏(_T)"
+
+#, fuzzy
+msgid "Default"
+msgstr "默认设置(_D)"
+
+#, fuzzy
+msgid "Text and Icons"
+msgstr "图标文字(_R)"
+
+#, fuzzy
+msgid "Text"
+msgstr "显示文字(_T)"
+
+#, fuzzy
+msgid "Icons"
+msgstr "显示图标(_I)"
+
+#, fuzzy
+msgid "Form"
+msgstr "表单视图(_F)"
+
+msgid "Save Width/Height"
+msgstr "保存窗体大小"
+
+msgid "Save Tree State"
+msgstr "保存导航状态"
+
+msgid "Fast Tabbing"
+msgstr "快速切换标签"
+
+msgid "Spell Checking"
+msgstr "开启拼写检查"
+
+msgid "PDA Mode"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr "数据查询..."
+
+#, fuzzy
+msgid "Email..."
+msgstr "电子邮件(_E)..."
+
+msgid "Check Version"
+msgstr ""
+
+#, fuzzy
+msgid "Options"
+msgstr "选项(_O)"
+
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "快捷键(K)..."
+
+#, fuzzy
+msgid "About..."
+msgstr "关于(_A)..."
+
+#, fuzzy
+msgid "Help"
+msgstr "帮助(_H)"
+
+msgid "Quit"
+msgstr ""
+
+msgid "No result found."
+msgstr "无符合条件的数据."
+
+#, fuzzy
+msgid "Favorites"
+msgstr "收藏(_V)"
+
+msgid "Manage..."
+msgstr ""
+
+msgid "Action"
+msgstr "操作"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"该操作需要关闭打开的项目\n"
+"是否继续？"
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+#, fuzzy
+msgid "Previous tab"
+msgstr "上一标签(_P)"
+
+#, fuzzy
+msgid "Next tab"
+msgstr "下一标签(_N)"
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr "剪切"
+
+msgid "Copy selected text"
+msgstr "复制"
+
+msgid "Paste copied text"
+msgstr "粘贴"
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr "新建关联"
+
+msgid "Open/Search relation"
+msgstr "打开. 查找关联"
+
+msgid "List Entries"
+msgstr ""
+
+msgid "Switch view"
+msgstr "切换视图"
+
+msgid "Create/Select new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr "打开关联项"
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr "取消删除选择"
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr "光标移动"
+
+#, fuzzy
+msgid "Move right"
+msgstr "右移"
+
+#, fuzzy
+msgid "Move left"
+msgstr "左移"
+
+msgid "Move up"
+msgstr "上移"
+
+msgid "Move down"
+msgstr "下移"
+
+msgid "Move up of one page"
+msgstr "上移一页"
+
+msgid "Move down of one page"
+msgstr "下移一页"
+
+msgid "Move to top"
+msgstr "移到顶端"
+
+msgid "Move to bottom"
+msgstr "移到底部"
+
+msgid "Move to parent"
+msgstr "上一级"
+
+msgid "Select all"
+msgstr "全选"
+
+msgid "Unselect all"
+msgstr "全不选"
+
+msgid "Select parent"
+msgstr "选择上一级"
+
+msgid "Select/Activate current row"
+msgstr "选择/激活当前行"
+
+msgid "Toggle selection"
+msgstr "切换状态"
+
+msgid "Expand/Collapse"
+msgstr "展开/收起"
+
+msgid "Expand row"
+msgstr "展开"
+
+msgid "Collapse row"
+msgstr "收起"
+
+msgid "Toggle row"
+msgstr "切换状态"
+
+msgid "Collapse all rows"
+msgstr "收起所有"
+
+msgid "Expand all rows"
+msgstr "展开所有"
+
+msgid "Close Tab"
+msgstr "关闭标签"
+
+msgid "modularity, scalability and security"
+msgstr ""
+
+msgid "translator-credits"
+msgstr ""
+
+#, python-format, python-format, python-format, python-format
+msgid "Attachments (%s)"
+msgstr "附件文档(%s)"
+
+msgid "Profile Editor"
+msgstr "数据服务配置器"
+
+msgid "Profile"
+msgstr "配置列表"
+
+msgid "Add new profile"
+msgstr ""
+
+msgid "Remove selected profile"
+msgstr ""
+
+msgid "Host:"
+msgstr "主机:"
+
+msgid "Database:"
+msgstr "服务标识:"
+
+msgid "Fetching databases list"
+msgstr "获取服务列表..."
+
+msgid "Username:"
+msgstr "用户名:"
+
+msgid "Incompatible version of the server"
+msgstr "服务器版本与客户端不兼容"
+
+msgid "Could not connect to the server"
+msgstr "无法连接服务器"
+
+msgid "Login"
+msgstr "登录"
+
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "取消与服务器的连接"
+
+msgid "C_onnect"
+msgstr "连机(_O)"
+
+msgid "Connect the Tryton server"
+msgstr "连接数据服务器"
+
+msgid "Profile:"
+msgstr "配置:"
+
+msgid "Host / Database information"
+msgstr "数据服务器:"
+
+msgid "User name:"
+msgstr "用户:"
+
+msgid "Email"
+msgstr "邮件"
+
+msgid "Email Program Settings"
+msgstr "电子邮件相关设置"
+
+msgid "Command Line:"
+msgstr "电子邮件程序命令行"
+
+msgid "Legend of Available Placeholders:"
+msgstr "替换变量列表："
+
+msgid "To:"
+msgstr "收件人:"
+
+msgid "CC:"
+msgstr "抄送："
+
+msgid "Subject:"
+msgstr "主题:"
+
+msgid "Body:"
+msgstr "内容:"
+
+msgid "Attachment:"
+msgstr "附件:"
+
+msgid "Add..."
+msgstr ""
+
+#, python-format, fuzzy, python-format
+msgid "Attachment (%s)"
+msgstr "附件文档(%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+msgid "You have to select one record."
+msgstr "选择需要操作的项目"
+
+msgid "ID:"
+msgstr "标识:"
+
+msgid "Creation User:"
+msgstr "创建者:"
+
+msgid "Creation Date:"
+msgstr "创建日期:"
+
+msgid "Latest Modification by:"
+msgstr "最近更改:"
+
+msgid "Latest Modification Date:"
+msgstr "最近更改日期:"
+
+msgid "Model:"
+msgstr "模型:"
+
+msgid "Are you sure to remove this record?"
+msgstr "确定要删除此项吗？"
+
+msgid "Are you sure to remove those records?"
+msgstr "确定要删除这些项目？"
+
+msgid "Records not removed."
+msgstr "所选项目未删除成功."
+
+msgid "Records removed."
+msgstr "项目已成功删除"
+
+msgid "Working now on the duplicated record(s)."
+msgstr "当前处理的是项目的副本."
+
+msgid "Record saved."
+msgstr "保存成功."
+
+msgid " of "
+msgstr "of"
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr "记录有改动, 是否保存？"
+
+msgid "Launch action"
+msgstr "执行操作"
+
+msgid "Relate"
+msgstr "关联"
+
+msgid "Open related records"
+msgstr "打开关联项目"
+
+msgid "Report"
+msgstr "报告(_R)..."
+
+msgid "Open report"
+msgstr "打开报表"
+
+msgid "E-Mail"
+msgstr "邮件发送"
+
+msgid "E-Mail report"
+msgstr "用电子邮件发送报表"
+
+msgid "Print"
+msgstr "打印"
+
+msgid "Print report"
+msgstr "打印报表"
+
+msgid "_Copy URL"
+msgstr "复制（_C）URL"
+
+msgid "Copy URL into clipboard"
+msgstr "将URL复制到粘贴板"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Limit"
+msgstr "限制"
+
+msgid "Search Limit Settings"
+msgstr "查询限制..."
+
+msgid "Limit:"
+msgstr "限制:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr "注释(%s)"
+
+msgid "Preferences"
+msgstr "偏好"
+
+msgid "Edit User Preferences"
+msgstr "设置用户偏好..."
+
+msgid "Preference"
+msgstr "偏好"
+
+msgid "Revision"
+msgstr "版本"
+
+msgid "Select a revision"
+msgstr "选择版本"
+
+msgid "Revision:"
+msgstr "版本:"
+
+msgid "_Switch View"
+msgstr "切换视图(_S)"
+
+msgid "Switch View"
+msgstr "切换视图"
+
+msgid "_Previous"
+msgstr "向前(_P)"
+
+msgid "Previous Record"
+msgstr "前一项"
+
+msgid "_Next"
+msgstr "向后(_N)"
+
+msgid "Next Record"
+msgstr "后一项"
+
+msgid "_Search"
+msgstr "查找(_S)"
+
+msgid "_New"
+msgstr "新建(_N)"
+
+msgid "Create a new record"
+msgstr "新建项目"
+
+msgid "_Save"
+msgstr "保存(_S)"
+
+msgid "Save this record"
+msgstr "保存项目"
+
+msgid "_Reload/Undo"
+msgstr "刷新/撤销(_R)"
+
+msgid "Reload/Undo"
+msgstr "刷新/撤销"
+
+msgid "_Duplicate"
+msgstr "复制(_D)"
+
+msgid "_Delete..."
+msgstr "删除(_D)..."
+
+msgid "View _Logs..."
+msgstr "日志(_V)..."
+
+msgid "Show revisions..."
+msgstr "显示版本..."
+
+msgid "A_ttachments..."
+msgstr "附件(_T)..."
+
+msgid "Add an attachment to the record"
+msgstr "给当前项添加附件"
+
+msgid "_Notes..."
+msgstr "注释（_N）..."
+
+msgid "Add a note to the record"
+msgstr "给当前项添加注释"
+
+msgid "_Actions..."
+msgstr "操作(_A)..."
+
+msgid "_Relate..."
+msgstr "关联(_L)..."
+
+msgid "_Report..."
+msgstr "报告(_R)..."
+
+msgid "_E-Mail..."
+msgstr "邮件发送(_E)..."
+
+msgid "_Print..."
+msgstr "打印(_P)..."
+
+msgid "_Export Data..."
+msgstr "导出数据(_X)"
+
+msgid "_Import Data..."
+msgstr "导入数据(_I)"
+
+msgid "Copy _URL..."
+msgstr "复制URL（_U）..."
+
+msgid "_Close Tab"
+msgstr "关闭标签页(_C)"
+
+msgid "<b>All fields</b>"
+msgstr "<b>数据项</b>"
+
+msgid "_Add"
+msgstr "添加(_A)"
+
+msgid "_Remove"
+msgstr "删除(_R)"
+
+msgid "_Clear"
+msgstr "清除（_C）"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>选中字段</b>"
+
+msgid "CSV Parameters"
+msgstr "CSV 参数"
+
+msgid "Delimiter:"
+msgstr "分隔符:"
+
+msgid "Quote char:"
+msgstr "限定符:"
+
+msgid "Encoding:"
+msgstr "编码:"
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr "列名"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+msgid "_Save Export"
+msgstr "保存设定（_S）"
+
+msgid "_Delete Export"
+msgstr "删除设定（_D）"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>导出设定</b>"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Open"
+msgstr "打开"
+
+#, fuzzy
+msgid "Add field names"
+msgstr "添加列名称(_F)"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (模型名称)"
+
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (记录名称)"
+
+msgid "What is the name of this export?"
+msgstr "导出设定的名称"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "替换设定 '%s' ?"
+
+#, python-format, python-format, python-format, python-format
+msgid "%d record saved."
+msgstr "%d 项保存成功!"
+
+#, python-format, python-format, python-format, python-format
+msgid "%d records saved."
+msgstr "%d 记录保存成功!"
+
+#, python-format, python-format, python-format, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"操作失败!\n"
+"相关错误信息:\n"
+"%s"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Link"
+msgstr "链接"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "New"
+msgstr "新建"
+
+msgid "Switch"
+msgstr "切换"
+
+msgid "Previous"
+msgstr "向前"
+
+msgid "Next"
+msgstr "向后"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Remove <Del>"
+msgstr "删除 <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "新建项目 <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "删除选择项 <Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "回滚删除项 <Ins>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+msgid "_Auto-Detect"
+msgstr "自动设置（_A）"
+
+msgid "File to Import:"
+msgstr "数据文件:"
+
+msgid "Open..."
+msgstr "打开..."
+
+msgid "Lines to Skip:"
+msgstr "跳过行:"
+
+msgid "You must select an import file first."
+msgstr "必须先选择要导入的文件！"
+
+msgid "Error opening CSV file"
+msgstr "打开CSV出错 !"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "处理数值 %s 时出错"
+
+#, python-format, python-format, python-format, python-format
+msgid "%d record imported."
+msgstr "%d 项记录导入成功!"
+
+#, python-format, python-format, python-format, python-format
+msgid "%d records imported."
+msgstr "%d 项记录导入成功!"
+
+msgid "Search"
+msgstr "查找"
+
+#, python-format
+msgid "Search %s"
+msgstr "查找 %s"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "无法删除向导 %s"
+
+msgid "Wizard"
+msgstr "向导"
+
+msgid "ID"
+msgstr "标识"
+
+msgid "Creation User"
+msgstr "创建者"
+
+msgid "Creation Date"
+msgstr "创建日期"
+
+msgid "Modification User"
+msgstr "修改者"
+
+msgid "Modification Date"
+msgstr "修改日期"
+
+#, python-format, python-format, python-format, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "无法获取视图树状态： %s"
+
+msgid "Unable to set view tree state"
+msgstr "无法设置视图树状态"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "根据域设置，\"%s\"不可用"
+
+#, python-format
+msgid "\"%s\" is required"
+msgstr "\"%s\" 是必填项"
+
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "无法获得\"%s\" 的值"
+
+msgid "Pre-validation"
+msgstr "预校验"
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "图片尺寸"
+
+msgid "Width:"
+msgstr "宽:"
+
+msgid "Height:"
+msgstr "高:"
+
+msgid "PNG image (*.png)"
+msgstr "PNG 图片格式 (*.png)"
+
+msgid "Save As"
+msgstr "另存为"
+
+msgid "Image size too large."
+msgstr "图片尺寸过大 !"
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr "打开过滤器"
+
+msgid "Show bookmarks of filters"
+msgstr "显示筛选器书签"
+
+msgid "Remove this bookmark"
+msgstr "移除书签"
+
+msgid "Bookmark this filter"
+msgstr "收藏筛选器"
+
+msgid "Show active records"
+msgstr ""
+
+msgid "Show inactive records"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr "书签名称:"
+
+msgid "Find"
+msgstr "查找"
+
+msgid "Today"
+msgstr "今天"
+
+msgid "go back"
+msgstr "回退"
+
+msgid "go forward"
+msgstr "前进"
+
+msgid "previous year"
+msgstr "上年度"
+
+msgid "next year"
+msgstr "下年度"
+
+msgid "Day View"
+msgstr ""
+
+msgid "Week View"
+msgstr "周视图"
+
+msgid "Month View"
+msgstr "月视图"
+
+msgid "Week"
+msgstr "周"
+
+msgid "Select..."
+msgstr "选择..."
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "All files"
+msgstr "所有文件"
+
+msgid "Show plain text"
+msgstr "显示纯文本"
+
+msgid "Add value"
+msgstr "添加条目"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "删除\"%s\""
+
+msgid "Images"
+msgstr "图片"
+
+msgid "Add existing record"
+msgstr "添加现存条目"
+
+msgid "Remove selected record"
+msgstr "删除所选条目"
+
+msgid "Open the record <F2>"
+msgstr "打开条目 <F2>"
+
+#, fuzzy
+msgid "Clear the field <Del>"
+msgstr "删除记录 <Del>"
+
+msgid "Search a record <F2>"
+msgstr "查找条目 <F2>"
+
+#, fuzzy
+msgid "Edit selected record"
+msgstr "编辑所选条目<F2>"
+
+#, fuzzy
+msgid "Delete selected record"
+msgstr "删除所选条目"
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr "选择颜色"
+
+msgid "Choose a language"
+msgstr ""
+
+msgid "Translation"
+msgstr "翻译"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Fuzzy"
+msgstr "模糊"
+
+msgid "You need to save the record before adding translations."
+msgstr "请先保存已翻译条目，再增加新翻译 !"
+
+msgid "No other language available."
+msgstr "没有其他可翻译语言！"
+
+msgid "Translate view"
+msgstr "翻译视图"
