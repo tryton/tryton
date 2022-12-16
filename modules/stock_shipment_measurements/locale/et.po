@@ -1,0 +1,281 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,measurement_volume_uom:"
+msgid "Measurement Volume Uom"
+msgstr ""
+
+msgctxt "field:stock.configuration,measurement_weight_uom:"
+msgid "Measurement Weight Uom"
+msgstr ""
+
+msgctxt "field:stock.configuration.measurement,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:stock.configuration.measurement,measurement_volume_uom:"
+msgid "Measurement Volume Uom"
+msgstr ""
+
+msgctxt "field:stock.configuration.measurement,measurement_weight_uom:"
+msgid "Measurement Weight Uom"
+msgstr ""
+
+msgctxt "field:stock.move,internal_volume:"
+msgid "Internal Volume"
+msgstr "Sisemine maht"
+
+msgctxt "field:stock.move,internal_weight:"
+msgid "Internal Weight"
+msgstr "Sisemine kaal"
+
+msgctxt "field:stock.package,additional_weight:"
+msgid "Additional Weight"
+msgstr "Täiendav kaal"
+
+#, fuzzy
+msgctxt "field:stock.package,additional_weight_uom:"
+msgid "Additional Weight Uom"
+msgstr "Täiendav kaal"
+
+msgctxt "field:stock.package,total_volume:"
+msgid "Total Volume"
+msgstr "Maht kokku"
+
+msgctxt "field:stock.package,total_weight:"
+msgid "Total Weight"
+msgstr "Kaal kokku"
+
+msgctxt "field:stock.package,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "field:stock.package,volume_uom:"
+msgid "Volume Uom"
+msgstr "Maht"
+
+msgctxt "field:stock.package,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+#, fuzzy
+msgctxt "field:stock.package,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaal"
+
+msgctxt "field:stock.shipment.in,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,volume_uom:"
+msgid "Volume Uom"
+msgstr "Maht"
+
+msgctxt "field:stock.shipment.in,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaal"
+
+msgctxt "field:stock.shipment.in.return,packages_volume:"
+msgid "Packages Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,packages_weight:"
+msgid "Packages Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,volume_uom:"
+msgid "Volume Uom"
+msgstr "Maht"
+
+msgctxt "field:stock.shipment.in.return,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+#, fuzzy
+msgctxt "field:stock.shipment.in.return,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaal"
+
+msgctxt "field:stock.shipment.out,packages_volume:"
+msgid "Packages Volume"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,packages_weight:"
+msgid "Packages Weight"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,volume_uom:"
+msgid "Volume Uom"
+msgstr "Maht"
+
+msgctxt "field:stock.shipment.out,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaal"
+
+msgctxt "field:stock.shipment.out.return,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,volume_uom:"
+msgid "Volume Uom"
+msgstr "Maht"
+
+msgctxt "field:stock.shipment.out.return,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out.return,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaal"
+
+msgctxt "help:stock.move,internal_volume:"
+msgid "The volume of the moved product in liter."
+msgstr "Liigutatud kauba maht liitrites."
+
+msgctxt "help:stock.move,internal_weight:"
+msgid "The weight of the moved product in kg."
+msgstr "Liigutatud kauba kaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.package,additional_weight:"
+msgid "The weight to add to the packages."
+msgstr "Pakenditele lisatav kaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.package,total_volume:"
+msgid "The total volume of the packages."
+msgstr "Pakendite kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.package,total_weight:"
+msgid "The total weight of the packages."
+msgstr "Pakendite kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.package,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Kirjete kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.package,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Kirje kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Kirjete kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Kirje kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in.return,packages_volume:"
+msgid "The total volume of the packages."
+msgstr "Pakendite kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in.return,packages_weight:"
+msgid "The total weight of the packages."
+msgstr "Pakendite kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in.return,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Kirjete kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.in.return,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Kirje kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out,packages_volume:"
+msgid "The total volume of the packages."
+msgstr "Pakendite kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out,packages_weight:"
+msgid "The total weight of the packages."
+msgstr "Pakendite kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Kirjete kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Kirje kogukaal kilogrammides."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Kirjete kogumaht liitrites."
+
+#, fuzzy
+msgctxt "help:stock.shipment.out.return,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Kirje kogukaal kilogrammides."
+
+msgctxt "model:stock.configuration.measurement,name:"
+msgid "Stock Configuration Measurement"
+msgstr ""
+
+msgctxt "view:stock.configuration:"
+msgid "Measurements"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Volume"
+msgstr "Maht"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Weight"
+msgstr "Kaal"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.shipment.in:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.shipment.out:"
+msgid "Measurements"
+msgstr ""
