@@ -1,0 +1,1605 @@
+# Japanese (Japan) translations for tryton.
+# Copyright (C) 2010 B2CK
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#: tryton/config.py:74
+msgid "specify alternate config file"
+msgstr "代替設定ファイルを指定"
+
+#: tryton/config.py:77
+msgid "development mode"
+msgstr ""
+
+#: tryton/config.py:80
+msgid "logging everything at INFO level"
+msgstr "全てをINFOレベルでログを取る"
+
+#: tryton/config.py:82
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr ""
+
+#: tryton/config.py:85
+msgid "specify the login user"
+msgstr "ログインユーザーを指定"
+
+#: tryton/config.py:87
+#, fuzzy
+msgid "specify the server hostname:port"
+msgstr "サーバーホスト名を指定"
+
+#: tryton/config.py:127
+#, python-format, python-format, fuzzy, python-format
+msgid "Unable to write config file %s."
+msgstr "設定ファイル %s が書きこめません!"
+
+#: tryton/translate.py:185
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "%s ロケールに設定できません"
+
+#: tryton/action/main.py:89 tryton/common/button.py:54
+#, fuzzy
+msgid ", "
+msgstr ", "
+
+#: tryton/action/main.py:91
+#, fuzzy
+msgid ",…"
+msgstr ",…"
+
+#: tryton/action/main.py:92
+#, python-format
+msgid "%s (%s)"
+msgstr ""
+
+#: tryton/action/main.py:187
+msgid "Select your action"
+msgstr "動作を選択する"
+
+#: tryton/action/main.py:193
+#, fuzzy
+msgid "No action defined."
+msgstr "動作が定義されていません!"
+
+#: tryton/common/button.py:54
+msgid "By: "
+msgstr ""
+
+#: tryton/common/common.py:307 tryton/gui/window/shortcuts.py:64
+msgid "Selection"
+msgstr "選択"
+
+#: tryton/common/common.py:309 tryton/common/common.py:365
+#: tryton/common/common.py:368 tryton/common/common.py:642
+#: tryton/common/common.py:693 tryton/common/common.py:796
+#: tryton/gui/window/email.py:23 tryton/gui/window/limit.py:24
+#: tryton/gui/window/preference.py:35 tryton/gui/window/revision.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:149
+#: tryton/gui/window/view_form/view/graph.py:106
+#: tryton/gui/window/win_csv.py:173 tryton/gui/window/win_form.py:68
+#: tryton/gui/window/win_search.py:54
+#, fuzzy
+msgid "Cancel"
+msgstr "キャンセル(_C)"
+
+#: tryton/common/common.py:310 tryton/common/common.py:797
+#: tryton/gui/window/email.py:28 tryton/gui/window/limit.py:29
+#: tryton/gui/window/preference.py:40 tryton/gui/window/revision.py:30
+#: tryton/gui/window/shortcuts.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:154
+#: tryton/gui/window/view_form/view/graph.py:111
+#: tryton/gui/window/win_csv.py:178 tryton/gui/window/win_form.py:97
+#: tryton/gui/window/win_search.py:72
+msgid "OK"
+msgstr ""
+
+#: tryton/common/common.py:315
+msgid "Your selection:"
+msgstr "あなたの選択:"
+
+#: tryton/common/common.py:366 tryton/gui/window/form.py:114
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:83
+msgid "Select"
+msgstr ""
+
+#: tryton/common/common.py:369 tryton/gui/window/win_export.py:83
+msgid "Save"
+msgstr "保存"
+
+#: tryton/common/common.py:447
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:31
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:116
+#: tryton/gui/window/view_form/view/graph.py:171
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:493
+#: tryton/gui/window/win_export.py:305
+msgid "Save As..."
+msgstr "名前を付けて保存"
+
+#: tryton/common/common.py:592
+msgid "Always ignore this warning."
+msgstr "常にこの警告を無視する。"
+
+#: tryton/common/common.py:597
+msgid "Do you want to proceed?"
+msgstr ""
+
+#: tryton/common/common.py:643
+msgid "No"
+msgstr ""
+
+#: tryton/common/common.py:644 tryton/common/domain_parser.py:239
+msgid "Yes"
+msgstr ""
+
+#: tryton/common/common.py:689 tryton/common/common.py:983
+msgid "Concurrency Exception"
+msgstr "並列性例外"
+
+#: tryton/common/common.py:691
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+#: tryton/common/common.py:694
+msgid "Cancel saving"
+msgstr ""
+
+#: tryton/common/common.py:696
+msgid "Compare"
+msgstr "比較"
+
+#: tryton/common/common.py:697
+msgid "See the modified version"
+msgstr ""
+
+#: tryton/common/common.py:699
+msgid "Write Anyway"
+msgstr "とにかく書き込む"
+
+#: tryton/common/common.py:700
+msgid "Save your current version"
+msgstr ""
+
+#: tryton/common/common.py:729
+#, fuzzy
+msgid "Application Error"
+msgstr "アプリケーションエラー!"
+
+#: tryton/common/common.py:732
+msgid "Report Bug"
+msgstr "バグ報告"
+
+#: tryton/common/common.py:733 tryton/gui/window/dblogin.py:36
+msgid "Close"
+msgstr ""
+
+#: tryton/common/common.py:751
+msgid "Error: "
+msgstr "エラー:"
+
+#: tryton/common/common.py:768
+#, python-format, fuzzy
+msgid "To report bugs you must have an account on %s"
+msgstr "記録しておきたいバグを報告<u>%s</u>"
+
+#: tryton/common/common.py:794
+msgid "Bug Tracker"
+msgstr "バグトラッカー"
+
+#: tryton/common/common.py:811
+msgid "User:"
+msgstr "ユーザー:"
+
+#: tryton/common/common.py:819
+msgid "Password:"
+msgstr "パスワード:"
+
+#: tryton/common/common.py:875
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"別のユーザーに同じバグが報告されています。\n"
+"お知らせするためにこの問題の通知リストにあなたのユーザー名を追加しました。"
+
+#: tryton/common/common.py:886
+msgid "Created new bug with ID "
+msgstr "新しいバグがID番号と一緒に作成されました"
+
+#: tryton/common/common.py:894
+#, fuzzy
+msgid ""
+"Connection error.\n"
+"Bad username or password."
+msgstr ""
+"接続エラー!\n"
+"ユーザー名またはパスワードが違います!"
+
+#: tryton/common/common.py:899
+msgid "Exception:"
+msgstr "例外:"
+
+#: tryton/common/common.py:926
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+#: tryton/common/common.py:934
+msgid "Unable to check for new version"
+msgstr ""
+
+#: tryton/common/common.py:940
+msgid "A new version is available!"
+msgstr ""
+
+#: tryton/common/common.py:942
+msgid "Download"
+msgstr ""
+
+#: tryton/common/common.py:1323
+#, fuzzy
+msgid "..."
+msgstr "..."
+
+#: tryton/common/completion.py:25
+msgid "<i>Search...</i>"
+msgstr ""
+
+#: tryton/common/completion.py:27
+msgid "<i>Create...</i>"
+msgstr ""
+
+#: tryton/common/completion.py:70
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr ""
+
+#: tryton/common/datetime_.py:32 tryton/common/datetime_.py:238
+#: tryton/common/datetime_.py:391
+#, fuzzy
+msgid "Value"
+msgstr "偽"
+
+#: tryton/common/datetime_.py:33 tryton/common/datetime_.py:239
+#: tryton/common/datetime_.py:392
+msgid "Displayed value"
+msgstr ""
+
+#: tryton/common/datetime_.py:37 tryton/common/datetime_.py:195
+#: tryton/common/datetime_.py:242 tryton/common/datetime_.py:347
+#, fuzzy
+msgid "Format"
+msgstr "ノーマル(_N)"
+
+#: tryton/common/datetime_.py:38 tryton/common/datetime_.py:196
+#: tryton/common/datetime_.py:243 tryton/common/datetime_.py:348
+msgid "Display format"
+msgstr ""
+
+#: tryton/common/datetime_.py:63
+#, fuzzy
+msgid "Open the calendar"
+msgstr "カレンダーを開く"
+
+#: tryton/common/datetime_.py:396 tryton/common/datetime_.py:401
+msgid "Date Format"
+msgstr ""
+
+#: tryton/common/datetime_.py:397 tryton/common/datetime_.py:402
+msgid "Displayed date format"
+msgstr ""
+
+#: tryton/common/domain_parser.py:239
+msgid "y"
+msgstr ""
+
+#: tryton/common/domain_parser.py:239 tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "True"
+msgstr "真"
+
+#: tryton/common/domain_parser.py:239
+msgid "t"
+msgstr ""
+
+#: tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "False"
+msgstr "偽"
+
+#: tryton/common/popup_menu.py:84
+#, fuzzy
+msgid "Edit..."
+msgstr "終了(_Q)"
+
+#: tryton/common/popup_menu.py:89
+#, fuzzy
+msgid "Attachments..."
+msgstr "添付:"
+
+#: tryton/common/popup_menu.py:95
+msgid "Notes..."
+msgstr ""
+
+#: tryton/common/popup_menu.py:107
+#, fuzzy
+msgid "Actions..."
+msgstr "実行(_A)"
+
+#: tryton/common/popup_menu.py:108
+#, fuzzy
+msgid "Relate..."
+msgstr "削除(_D)"
+
+#: tryton/common/popup_menu.py:109
+#, fuzzy
+msgid "Report..."
+msgstr "データのインポート(_I)"
+
+#: tryton/common/popup_menu.py:110
+#, fuzzy
+msgid "E-Mail..."
+msgstr "Eメール(_E)"
+
+#: tryton/common/popup_menu.py:111
+#, fuzzy
+msgid "Print..."
+msgstr "印刷(_P)"
+
+#: tryton/common/timedelta.py:26
+msgid "Y"
+msgstr "年"
+
+#: tryton/common/timedelta.py:27
+msgid "M"
+msgstr "月"
+
+#: tryton/common/timedelta.py:28
+msgid "w"
+msgstr "週"
+
+#: tryton/common/timedelta.py:29
+msgid "d"
+msgstr "日"
+
+#: tryton/common/timedelta.py:30
+msgid "h"
+msgstr "時"
+
+#: tryton/common/timedelta.py:31
+msgid "m"
+msgstr "分"
+
+#: tryton/common/timedelta.py:32
+msgid "s"
+msgstr ""
+
+#: tryton/gui/main.py:123
+#, fuzzy
+msgid "Preferences..."
+msgstr "設定(_P)"
+
+#: tryton/gui/main.py:127
+#, fuzzy
+msgid "Toolbar"
+msgstr "ツールバー(_T)"
+
+#: tryton/gui/main.py:128
+#, fuzzy
+msgid "Default"
+msgstr "デフォルト(_D)"
+
+#: tryton/gui/main.py:129
+#, fuzzy
+msgid "Text and Icons"
+msgstr "テキストとアイコン(_T)"
+
+#: tryton/gui/main.py:130
+#, fuzzy
+msgid "Text"
+msgstr "テキスト(_T)"
+
+#: tryton/gui/main.py:131
+#, fuzzy
+msgid "Icons"
+msgstr "アイコン(_I)"
+
+#: tryton/gui/main.py:134
+#, fuzzy
+msgid "Form"
+msgstr "フォーム(_F)"
+
+#: tryton/gui/main.py:135
+msgid "Save Width/Height"
+msgstr "幅/高さを保存"
+
+#: tryton/gui/main.py:136
+msgid "Save Tree State"
+msgstr ""
+
+#: tryton/gui/main.py:137
+msgid "Fast Tabbing"
+msgstr ""
+
+#: tryton/gui/main.py:138
+msgid "Spell Checking"
+msgstr "スペルチェック"
+
+#: tryton/gui/main.py:140
+msgid "PDA Mode"
+msgstr ""
+
+#: tryton/gui/main.py:141
+msgid "Search Limit..."
+msgstr ""
+
+#: tryton/gui/main.py:142
+#, fuzzy
+msgid "Email..."
+msgstr "Eメール(_E)"
+
+#: tryton/gui/main.py:143
+msgid "Check Version"
+msgstr ""
+
+#: tryton/gui/main.py:145
+#, fuzzy
+msgid "Options"
+msgstr "オプション(_O)"
+
+#: tryton/gui/main.py:148
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "キーボードショートカット(_K)"
+
+#: tryton/gui/main.py:149
+#, fuzzy
+msgid "About..."
+msgstr "Trytonについて"
+
+#: tryton/gui/main.py:150
+#, fuzzy
+msgid "Help"
+msgstr "ヘルプ(_H)"
+
+#: tryton/gui/main.py:153
+msgid "Quit"
+msgstr ""
+
+#: tryton/gui/main.py:395
+msgid "No result found."
+msgstr ""
+
+#: tryton/gui/main.py:447
+msgid "Favorites"
+msgstr ""
+
+#: tryton/gui/main.py:464 tryton/gui/window/dblogin.py:438
+#: tryton/gui/window/form.py:139
+msgid "Manage..."
+msgstr ""
+
+#: tryton/gui/main.py:541 tryton/gui/window/form.py:559
+msgid "Action"
+msgstr "実行"
+
+#: tryton/gui/main.py:563
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+
+#: tryton/gui/main.py:747
+msgid "Close Tab"
+msgstr "タブを閉じる"
+
+#: tryton/gui/window/about.py:37
+msgid "modularity, scalability and security"
+msgstr ""
+
+#: tryton/gui/window/about.py:43
+msgid "translator-credits"
+msgstr ""
+
+#: tryton/gui/window/attachment.py:24
+#, python-format, python-format, fuzzy, python-format
+msgid "Attachments (%s)"
+msgstr "添付(%s)"
+
+#: tryton/gui/window/dblogin.py:33
+msgid "Profile Editor"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:49
+msgid "Profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:58
+msgid "Add new profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:63
+msgid "Remove selected profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:77 tryton/gui/window/dblogin.py:450
+#, fuzzy
+msgid "Host:"
+msgstr "ポート番号:"
+
+#: tryton/gui/window/dblogin.py:88 tryton/gui/window/dblogin.py:462
+msgid "Database:"
+msgstr "データベース:"
+
+#: tryton/gui/window/dblogin.py:108
+#, fuzzy
+msgid "Fetching databases list"
+msgstr "新規データベースセットアップ:"
+
+#: tryton/gui/window/dblogin.py:122
+#, fuzzy
+msgid "Username:"
+msgstr "ユーザー名:"
+
+#: tryton/gui/window/dblogin.py:309 tryton/gui/window/dblogin.py:619
+#, fuzzy
+msgid "Incompatible version of the server"
+msgstr "サーバのバージョンが非互換です!"
+
+#: tryton/gui/window/dblogin.py:311 tryton/gui/window/dblogin.py:623
+#, fuzzy
+msgid "Could not connect to the server"
+msgstr "サーバーに接続できませんでした!"
+
+#: tryton/gui/window/dblogin.py:390
+msgid "Login"
+msgstr "ログイン"
+
+#: tryton/gui/window/dblogin.py:396
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+#: tryton/gui/window/dblogin.py:398
+msgid "Cancel connection to the Tryton server"
+msgstr "Trytonサーバへの接続を中止する"
+
+#: tryton/gui/window/dblogin.py:400
+msgid "C_onnect"
+msgstr "接続(_N)"
+
+#: tryton/gui/window/dblogin.py:404
+msgid "Connect the Tryton server"
+msgstr "Trytonサーバーへ接続する"
+
+#: tryton/gui/window/dblogin.py:432
+msgid "Profile:"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:447
+msgid "Host / Database information"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:478
+msgid "User name:"
+msgstr "ユーザー名:"
+
+#: tryton/gui/window/email.py:19
+msgid "Email"
+msgstr "Eメール"
+
+#: tryton/gui/window/email.py:36
+msgid "Email Program Settings"
+msgstr "Emailプログラムの設定"
+
+#: tryton/gui/window/email.py:39
+msgid "Command Line:"
+msgstr "コマンドライン:"
+
+#: tryton/gui/window/email.py:49
+msgid "Legend of Available Placeholders:"
+msgstr "利用できるプレースホルダーの凡例:"
+
+#: tryton/gui/window/email.py:56
+msgid "To:"
+msgstr "宛先:"
+
+#: tryton/gui/window/email.py:60
+msgid "CC:"
+msgstr "CC:"
+
+#: tryton/gui/window/email.py:64
+msgid "Subject:"
+msgstr "題名:"
+
+#: tryton/gui/window/email.py:68
+msgid "Body:"
+msgstr "本文:"
+
+#: tryton/gui/window/email.py:72
+msgid "Attachment:"
+msgstr "添付:"
+
+#: tryton/gui/window/form.py:135
+msgid "Add..."
+msgstr ""
+
+#: tryton/gui/window/form.py:155
+#, python-format
+msgid "Attachment(%d)"
+msgstr "添付(%d)"
+
+#: tryton/gui/window/form.py:185
+#, python-format
+msgid "Note(%d)"
+msgstr ""
+
+#: tryton/gui/window/form.py:207
+#, fuzzy
+msgid "You have to select one record."
+msgstr "レコードを一つ選択して下さい!"
+
+#: tryton/gui/window/form.py:211
+msgid "ID:"
+msgstr "ID:"
+
+#: tryton/gui/window/form.py:212
+msgid "Creation User:"
+msgstr "作成ユーザー:"
+
+#: tryton/gui/window/form.py:213
+msgid "Creation Date:"
+msgstr "作成日:"
+
+#: tryton/gui/window/form.py:214
+msgid "Latest Modification by:"
+msgstr "最終更新ユーザー:"
+
+#: tryton/gui/window/form.py:215
+msgid "Latest Modification Date:"
+msgstr "最終更新日:"
+
+#: tryton/gui/window/form.py:234
+msgid "Model:"
+msgstr "モデル:"
+
+#: tryton/gui/window/form.py:312
+msgid "Are you sure to remove this record?"
+msgstr "このレコードを削除しますか?"
+
+#: tryton/gui/window/form.py:314
+msgid "Are you sure to remove those records?"
+msgstr "このレコードを削除しますか?"
+
+#: tryton/gui/window/form.py:317
+#, fuzzy
+msgid "Records not removed."
+msgstr "レコードが削除されませんでした!"
+
+#: tryton/gui/window/form.py:319
+#, fuzzy
+msgid "Records removed."
+msgstr "レコードが削除されました!"
+
+#: tryton/gui/window/form.py:356
+#, fuzzy
+msgid "Working now on the duplicated record(s)."
+msgstr "重複したレコードで作業中です!"
+
+#: tryton/gui/window/form.py:368
+#, fuzzy
+msgid "Record saved."
+msgstr "レコードが保存されました!"
+
+#: tryton/gui/window/form.py:485
+msgid " of "
+msgstr " 中 "
+
+#: tryton/gui/window/form.py:505
+#, fuzzy
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"レコードが変更されています\n"
+"保存しますか?"
+
+#: tryton/gui/window/form.py:559
+msgid "Launch action"
+msgstr ""
+
+#: tryton/gui/window/form.py:560
+#, fuzzy
+msgid "Relate"
+msgstr "作成(_C)"
+
+#: tryton/gui/window/form.py:560
+#, fuzzy
+msgid "Open related records"
+msgstr "レコードを開く"
+
+#: tryton/gui/window/form.py:562
+#, fuzzy
+msgid "Report"
+msgstr "レポート"
+
+#: tryton/gui/window/form.py:562
+#, fuzzy
+msgid "Open report"
+msgstr "レコードを開く"
+
+#: tryton/gui/window/form.py:563
+#, fuzzy
+msgid "E-Mail"
+msgstr "Eメール"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail report"
+msgstr ""
+
+#: tryton/gui/window/form.py:564
+msgid "Print"
+msgstr "印刷"
+
+#: tryton/gui/window/form.py:564
+msgid "Print report"
+msgstr ""
+
+#: tryton/gui/window/form.py:590
+msgid "_Copy URL"
+msgstr ""
+
+#: tryton/gui/window/form.py:593
+msgid "Copy URL into clipboard"
+msgstr ""
+
+#: tryton/gui/window/form.py:652
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:932
+msgid "Unknown"
+msgstr "未知"
+
+#: tryton/gui/window/limit.py:20
+#, fuzzy
+msgid "Limit"
+msgstr "リミット:"
+
+#: tryton/gui/window/limit.py:37
+msgid "Search Limit Settings"
+msgstr ""
+
+#: tryton/gui/window/limit.py:40
+msgid "Limit:"
+msgstr "リミット:"
+
+#: tryton/gui/window/note.py:17
+#, python-format
+msgid "Notes (%s)"
+msgstr ""
+
+#: tryton/gui/window/preference.py:25
+msgid "Preferences"
+msgstr "設定"
+
+#: tryton/gui/window/preference.py:58
+msgid "Edit User Preferences"
+msgstr "個人設定の編集"
+
+#: tryton/gui/window/preference.py:85
+msgid "Preference"
+msgstr "設定"
+
+#: tryton/gui/window/revision.py:21
+#, fuzzy
+msgid "Revision"
+msgstr "前"
+
+#: tryton/gui/window/revision.py:38
+#, fuzzy
+msgid "Select a revision"
+msgstr "選択"
+
+#: tryton/gui/window/revision.py:41
+#, fuzzy
+msgid "Revision:"
+msgstr "前"
+
+#: tryton/gui/window/shortcuts.py:20
+msgid "Keyboard Shortcuts"
+msgstr "キーボードショートカット"
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Text Entries Shortcuts"
+msgstr "テキストエントリショートカット"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Cut selected text"
+msgstr "選択されたテキストを切り取り"
+
+#: tryton/gui/window/shortcuts.py:37
+msgid "Copy selected text"
+msgstr "選択されたテキストをコピー"
+
+#: tryton/gui/window/shortcuts.py:38
+msgid "Paste copied text"
+msgstr "コピーされたテキストを貼り付け"
+
+#: tryton/gui/window/shortcuts.py:39
+msgid "Next widget"
+msgstr "次のウィジェット"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Previous widget"
+msgstr "前のウィジェット"
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Relation Entries Shortcuts"
+msgstr "リレーションエントリショートカット"
+
+#: tryton/gui/window/shortcuts.py:42
+msgid "Create new relation"
+msgstr "新しいリレーションを作る"
+
+#: tryton/gui/window/shortcuts.py:43
+msgid "Open/Search relation"
+msgstr "リレーションを開く/検索"
+
+#: tryton/gui/window/shortcuts.py:44
+#, fuzzy
+msgid "List Entries Shortcuts"
+msgstr "テキストエントリショートカット"
+
+#: tryton/gui/window/shortcuts.py:45
+#, fuzzy
+msgid "Create new line"
+msgstr "新しいリレーションを作る"
+
+#: tryton/gui/window/shortcuts.py:46
+#, fuzzy
+msgid "Open relation"
+msgstr "リレーションを開く/検索"
+
+#: tryton/gui/window/shortcuts.py:47
+msgid "Mark line for deletion"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:48
+msgid "Unmark line for deletion"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:51
+msgid "Edition Widgets"
+msgstr "エディションウィジェット"
+
+#: tryton/gui/window/shortcuts.py:54
+msgid "Move Cursor"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:55
+msgid "Move to right"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:56
+msgid "Move to left"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:57
+msgid "Move up"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:58
+msgid "Move down"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:59
+msgid "Move up of one page"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:60
+msgid "Move down of one page"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:61
+msgid "Move to top"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:62
+msgid "Move to bottom"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:63
+msgid "Move to parent"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
+msgid "Select all"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:67 tryton/gui/window/shortcuts.py:68
+msgid "Unselect all"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:69
+msgid "Select parent"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:70 tryton/gui/window/shortcuts.py:71
+#: tryton/gui/window/shortcuts.py:72 tryton/gui/window/shortcuts.py:73
+msgid "Select/Activate current row"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:74
+msgid "Toggle selection"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:75
+msgid "Expand/Collapse"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:76
+msgid "Expand row"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:77
+msgid "Collapse row"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:78
+msgid "Toggle row"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:79
+msgid "Collapse all rows"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:80
+msgid "Expand all rows"
+msgstr ""
+
+#: tryton/gui/window/shortcuts.py:83
+msgid "Tree view"
+msgstr ""
+
+#: tryton/gui/window/tabcontent.py:43
+msgid "_Switch View"
+msgstr "ビューの切替(_S)"
+
+#: tryton/gui/window/tabcontent.py:44
+#, fuzzy
+msgid "Switch View"
+msgstr "ビューの切替(_S)"
+
+#: tryton/gui/window/tabcontent.py:49
+msgid "_Previous"
+msgstr "前(_P)"
+
+#: tryton/gui/window/tabcontent.py:50
+msgid "Previous Record"
+msgstr "前のレコード"
+
+#: tryton/gui/window/tabcontent.py:55
+msgid "_Next"
+msgstr "次(_N)"
+
+#: tryton/gui/window/tabcontent.py:56
+msgid "Next Record"
+msgstr "次のレコード"
+
+#: tryton/gui/window/tabcontent.py:61
+#, fuzzy
+msgid "_Search"
+msgstr "検索"
+
+#: tryton/gui/window/tabcontent.py:67
+msgid "_New"
+msgstr "新規(_N)"
+
+#: tryton/gui/window/tabcontent.py:68
+msgid "Create a new record"
+msgstr "レコードの新規作成"
+
+#: tryton/gui/window/tabcontent.py:73 tryton/gui/window/win_form.py:85
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: tryton/gui/window/tabcontent.py:74
+msgid "Save this record"
+msgstr "レコードの保存"
+
+#: tryton/gui/window/tabcontent.py:79
+msgid "_Reload/Undo"
+msgstr "再読み込み/やり直し(_R)"
+
+#: tryton/gui/window/tabcontent.py:80
+#, fuzzy
+msgid "Reload/Undo"
+msgstr "再読み込み/やり直し(_R)"
+
+#: tryton/gui/window/tabcontent.py:85
+msgid "_Duplicate"
+msgstr "複製(_D)"
+
+#: tryton/gui/window/tabcontent.py:90
+msgid "_Delete..."
+msgstr "削除(_D)"
+
+#: tryton/gui/window/tabcontent.py:96
+msgid "View _Logs..."
+msgstr "ログの閲覧(_L)"
+
+#: tryton/gui/window/tabcontent.py:100
+msgid "Show revisions..."
+msgstr ""
+
+#: tryton/gui/window/tabcontent.py:105
+#, fuzzy
+msgid "A_ttachments..."
+msgstr "添付:"
+
+#: tryton/gui/window/tabcontent.py:106
+msgid "Add an attachment to the record"
+msgstr "レコードに添付を追加する"
+
+#: tryton/gui/window/tabcontent.py:112
+msgid "_Notes..."
+msgstr ""
+
+#: tryton/gui/window/tabcontent.py:113
+msgid "Add a note to the record"
+msgstr ""
+
+#: tryton/gui/window/tabcontent.py:118
+msgid "_Actions..."
+msgstr "実行(_A)"
+
+#: tryton/gui/window/tabcontent.py:123
+#, fuzzy
+msgid "_Relate..."
+msgstr "削除(_D)"
+
+#: tryton/gui/window/tabcontent.py:129
+#, fuzzy
+msgid "_Report..."
+msgstr "データのインポート(_I)"
+
+#: tryton/gui/window/tabcontent.py:134
+#, fuzzy
+msgid "_E-Mail..."
+msgstr "Eメール(_E)"
+
+#: tryton/gui/window/tabcontent.py:139
+msgid "_Print..."
+msgstr "印刷(_P)"
+
+#: tryton/gui/window/tabcontent.py:145
+msgid "_Export Data..."
+msgstr "データのエクスポート(_E)"
+
+#: tryton/gui/window/tabcontent.py:150
+msgid "_Import Data..."
+msgstr "データのインポート(_I)"
+
+#: tryton/gui/window/tabcontent.py:155
+msgid "Copy _URL..."
+msgstr ""
+
+#: tryton/gui/window/tabcontent.py:161
+msgid "_Close Tab"
+msgstr "タブを閉じる(_C)"
+
+#: tryton/gui/window/win_csv.py:60
+msgid "<b>All fields</b>"
+msgstr "<b>全てのフィールド</b>"
+
+#: tryton/gui/window/win_csv.py:69
+msgid "_Add"
+msgstr "追加(_A)"
+
+#: tryton/gui/window/win_csv.py:77
+msgid "_Remove"
+msgstr "削除(_R)"
+
+#: tryton/gui/window/win_csv.py:85
+#, fuzzy
+msgid "_Clear"
+msgstr "クリア"
+
+#: tryton/gui/window/win_csv.py:105
+msgid "<b>Fields selected</b>"
+msgstr ""
+
+#: tryton/gui/window/win_csv.py:124
+msgid "CSV Parameters"
+msgstr "CSVパラメータ"
+
+#: tryton/gui/window/win_csv.py:132
+msgid "Delimiter:"
+msgstr ""
+
+#: tryton/gui/window/win_csv.py:146
+msgid "Quote char:"
+msgstr ""
+
+#: tryton/gui/window/win_csv.py:155
+msgid "Encoding:"
+msgstr "エンコーディング:"
+
+#: tryton/gui/window/win_csv.py:195 tryton/gui/window/win_csv.py:199
+msgid "Field name"
+msgstr "フィールド名"
+
+#: tryton/gui/window/win_export.py:28
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:32
+#, fuzzy
+msgid "_Save Export"
+msgstr "エクスポートを保存"
+
+#: tryton/gui/window/win_export.py:40
+#, fuzzy
+msgid "_Delete Export"
+msgstr "エクスポートを削除"
+
+#: tryton/gui/window/win_export.py:55
+msgid "<b>Predefined exports</b>"
+msgstr "<b>定義済みエキスポート</b>"
+
+#: tryton/gui/window/win_export.py:62
+msgid "Name"
+msgstr "名前"
+
+#: tryton/gui/window/win_export.py:82
+msgid "Open"
+msgstr "開く"
+
+#: tryton/gui/window/win_export.py:87
+msgid "Add _field names"
+msgstr "フィールド名を追加(_F)"
+
+#: tryton/gui/window/win_export.py:103
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:106
+#, python-format
+msgid "%s (model name)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:108
+#, python-format
+msgid "%s (record name)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:207
+msgid "What is the name of this export?"
+msgstr "このエクスポートの名前は何ですか?"
+
+#: tryton/gui/window/win_export.py:213
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:328
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record saved."
+msgstr "%d レコード保存されました!"
+
+#: tryton/gui/window/win_export.py:330
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records saved."
+msgstr "%d レコード保存されました!"
+
+#: tryton/gui/window/win_export.py:333
+#, python-format, python-format, fuzzy, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"操作が失敗しました!\n"
+"エラーメッセージ:\n"
+"%s"
+
+#: tryton/gui/window/win_export.py:334 tryton/gui/window/win_import.py:112
+#: tryton/gui/window/win_import.py:139
+msgid "Error"
+msgstr "エラー"
+
+#: tryton/gui/window/win_form.py:38
+msgid "Link"
+msgstr "リンク"
+
+#: tryton/gui/window/win_form.py:66
+msgid "Delete"
+msgstr "削除"
+
+#: tryton/gui/window/win_form.py:78 tryton/gui/window/win_search.py:65
+msgid "New"
+msgstr "新規(_N)"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:48
+#: tryton/gui/window/win_form.py:140
+msgid "Switch"
+msgstr "切替"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:56
+#: tryton/gui/window/view_form/view/screen_container.py:222
+#: tryton/gui/window/win_form.py:148
+msgid "Previous"
+msgstr "前"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:67
+#: tryton/gui/window/view_form/view/screen_container.py:231
+#: tryton/gui/window/win_form.py:159
+msgid "Next"
+msgstr "次"
+
+#: tryton/gui/window/win_form.py:176
+msgid "Add"
+msgstr "追加"
+
+#: tryton/gui/window/win_form.py:186
+msgid "Remove <Del>"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:118
+#: tryton/gui/window/win_form.py:198
+#, fuzzy
+msgid "Create a new record <F3>"
+msgstr "レコードの新規作成"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:134
+#: tryton/gui/window/win_form.py:208
+#, fuzzy
+msgid "Delete selected record <Del>"
+msgstr "選択したレコードを削除"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:142
+#: tryton/gui/window/win_form.py:219
+#, fuzzy
+msgid "Undelete selected record <Ins>"
+msgstr "選択したレコードを削除"
+
+#: tryton/gui/window/win_import.py:26
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#: tryton/gui/window/win_import.py:30
+#, fuzzy
+msgid "_Auto-Detect"
+msgstr "自動検出"
+
+#: tryton/gui/window/win_import.py:41
+msgid "File to Import:"
+msgstr "インポートするファイル:"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:200
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:466
+#: tryton/gui/window/win_import.py:43
+msgid "Open..."
+msgstr "開く"
+
+#: tryton/gui/window/win_import.py:48
+msgid "Lines to Skip:"
+msgstr "スキップする行:"
+
+#: tryton/gui/window/win_import.py:101
+#, fuzzy
+msgid "You must select an import file first."
+msgstr "最初にインポートするファイルを選択して下さい!"
+
+#: tryton/gui/window/win_import.py:112
+msgid "Error opening CSV file"
+msgstr "CSVファイルを開くときにエラーが起こりました"
+
+#: tryton/gui/window/win_import.py:138
+#, python-format, python-format, fuzzy, python-format
+msgid "Error processing the file at field %s."
+msgstr "ファイルの%sフィールドの処理でエラーが起こりました。"
+
+#: tryton/gui/window/win_import.py:198
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record imported."
+msgstr "%d レコードをインポートしました!"
+
+#: tryton/gui/window/win_import.py:200
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records imported."
+msgstr "%d レコードをインポートしました。"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:344
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:46
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:81
+#: tryton/gui/window/view_form/view/screen_container.py:146
+#: tryton/gui/window/win_search.py:36 tryton/gui/window/win_search.py:59
+msgid "Search"
+msgstr "検索"
+
+#: tryton/gui/window/win_search.py:91
+#, python-format
+msgid "Search %s"
+msgstr ""
+
+#: tryton/gui/window/wizard.py:160
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+#: tryton/gui/window/wizard.py:317
+msgid "Wizard"
+msgstr "ウィザード"
+
+#: tryton/gui/window/view_form/screen/screen.py:206
+#, fuzzy
+msgid "ID"
+msgstr "日"
+
+#: tryton/gui/window/view_form/screen/screen.py:207
+#, fuzzy
+msgid "Creation User"
+msgstr "作成ユーザー:"
+
+#: tryton/gui/window/view_form/screen/screen.py:208
+#, fuzzy
+msgid "Creation Date"
+msgstr "作成日:"
+
+#: tryton/gui/window/view_form/screen/screen.py:209
+#, fuzzy
+msgid "Modification User"
+msgstr "最終更新日:"
+
+#: tryton/gui/window/view_form/screen/screen.py:210
+#, fuzzy
+msgid "Modification Date"
+msgstr "最終更新日:"
+
+#: tryton/gui/window/view_form/screen/screen.py:806
+#, python-format, python-format, fuzzy
+msgid "Unable to get view tree state for %s"
+msgstr "%s ロケールに設定できません"
+
+#: tryton/gui/window/view_form/screen/screen.py:867
+#, fuzzy
+msgid "Unable to set view tree state"
+msgstr "%s ロケールに設定できません"
+
+#: tryton/gui/window/view_form/screen/screen.py:1054
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr ""
+
+#: tryton/gui/window/view_form/screen/screen.py:1061
+#, python-format
+msgid "\"%s\" is required"
+msgstr ""
+
+#: tryton/gui/window/view_form/screen/screen.py:1065
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr ""
+
+#: tryton/gui/window/view_form/screen/screen.py:1114
+msgid "Pre-validation"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form.py:261
+#: tryton/gui/window/view_form/view/form.py:263
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:476
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:478
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:172
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:174
+#: tryton/gui/window/view_form/view/list.py:530
+#: tryton/gui/window/view_form/view/list.py:532
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:102
+msgid "Image Size"
+msgstr "画像サイズ"
+
+#: tryton/gui/window/view_form/view/graph.py:121
+msgid "Width:"
+msgstr "幅:"
+
+#: tryton/gui/window/view_form/view/graph.py:129
+msgid "Height:"
+msgstr "高さ:"
+
+#: tryton/gui/window/view_form/view/graph.py:140
+msgid "PNG image (*.png)"
+msgstr "PNG画像 (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:149
+msgid "Save As"
+msgstr "名前をつけて保存"
+
+#: tryton/gui/window/view_form/view/graph.py:161
+#, fuzzy
+msgid "Image size too large."
+msgstr "画像サイズが大きすぎます!"
+
+#: tryton/gui/window/view_form/view/screen_container.py:23
+msgid ".."
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:152
+msgid "Open filters"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:209
+msgid "Show bookmarks of filters"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:371
+msgid "Remove this bookmark"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:379
+msgid "Bookmark this filter"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:396
+msgid "Show active records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:398
+msgid "Show inactive records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:479
+msgid "Bookmark Name:"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:599
+msgid "Find"
+msgstr "検索"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:22
+#, fuzzy
+msgid "Today"
+msgstr "本文:"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:32
+msgid "go back"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:73
+msgid "go forward"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:82
+msgid "previous year"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:96
+msgid "next year"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:107
+#, fuzzy
+msgid "Week View"
+msgstr "ビューの切替"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:117
+#, fuzzy
+msgid "Month View"
+msgstr "ビューの切替"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:142
+msgid "Week"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:39
+msgid "Select..."
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:47
+msgid "Clear"
+msgstr "クリア"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:60
+msgid "All files"
+msgstr "全てのファイル"
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:169
+msgid "Show plain text"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:369
+msgid "Add value"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:490
+#, python-format
+msgid "Remove \"%s\""
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:50
+msgid "Images"
+msgstr "画像"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:99
+#, fuzzy
+msgid "Add existing record"
+msgstr "レコードの保存"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:74
+#, fuzzy
+msgid "Remove selected record <Del>"
+msgstr "選択したレコードを削除"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:305
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:582
+#, fuzzy
+msgid "Open the record <F2>"
+msgstr "レコードを開く"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:306
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:583
+msgid "Clear the field <Del>"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:309
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:586
+#, fuzzy
+msgid "Search a record <F2>"
+msgstr "レコードを検索する"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:108
+#, fuzzy
+msgid "Remove selected record"
+msgstr "選択したレコードを削除"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:126
+#, fuzzy
+msgid "Edit selected record <F2>"
+msgstr "選択したレコードを編集"
+
+#: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:908
+#, python-format
+msgid "%s%%"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:85
+msgid "Foreground"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:328
+msgid "Select a color"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:136
+#, fuzzy
+msgid "Translation"
+msgstr "翻訳を追加"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:209
+msgid "Edit"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:214
+msgid "Fuzzy"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:285
+#, fuzzy
+msgid "You need to save the record before adding translations."
+msgstr "翻訳を追加する前にレコードを保存して下さい!"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:296
+#, fuzzy
+msgid "No other language available."
+msgstr "他の利用できる言語はありません"
+
+#: tryton/plugins/translation/__init__.py:17
+#: tryton/plugins/translation/__init__.py:24
+msgid "Translate view"
+msgstr "翻訳ビュー"
