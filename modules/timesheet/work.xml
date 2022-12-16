@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">timesheet.work</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Work">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <label name="timesheet_available"/>
+                    <field name="timesheet_available"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="work_view_list">
+            <field name="model">timesheet.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Works">
+                    <field name="rec_name"/>
+                    <field name="name" tree_invisible="1"/>
+                    <field name="active" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="work_view_tree">
+            <field name="model">timesheet.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="16"/>
+            <field name="field_childs">children</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Works">
+                    <field name="name"/>
+                    <field name="timesheet_available"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="children" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_work_tree">
+            <field name="name">Works</field>
+            <field name="res_model">timesheet.work</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_work_tree"
+            id="menu_work_tree"/>
+
+        <record model="ir.action.act_window" id="act_work_list">
+            <field name="name">Works</field>
+            <field name="res_model">timesheet.work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <menuitem parent="menu_work_tree"
+            action="act_work_list" id="menu_work_list"/>
+
+        <record model="ir.ui.view" id="work_view_tree2">
+            <field name="model">timesheet.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="16"/>
+            <field name="field_childs">children</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Works">
+                    <field name="name"/>
+                    <field name="hours" widget="float_time"
+                        float_time="company_work_time"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_tree2">
+            <field name="name">Works</field>
+            <field name="res_model">timesheet.work</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree2"/>
+            <field name="act_window" ref="act_work_tree2"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_graph">
+            <field name="model">timesheet.work</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <graph string="Hours per Work" type="pie">
+                    <x>
+                        <field name="name"/>
+                    </x>
+                    <y>
+                        <field name="hours" widget="float_time"
+                            float_time="company_work_time"/>
+                    </y>
+                </graph>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_form2">
+            <field name="name">Hours per Work</field>
+            <field name="res_model">timesheet.work</field>
+            <field name="domain" eval="'[(\'parent\', \'=\', Get(Eval(\'_active_%s\', {}), \'id\', False))]' % ref('act_work_tree2')"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_graph"/>
+            <field name="act_window" ref="act_work_form2"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_hours_board">
+            <field name="type">board</field>
+            <field name="model"></field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <board string="Hours per Work">
+                    <hpaned id="hours_per_work">
+                        <child id="tree">
+                            <action name="%(act_work_tree2)s"/>
+                        </child>
+                        <child id="graph">
+                            <action name="%(act_work_form2)s"/>
+                        </child>
+                    </hpaned>
+                </board>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_hours_board">
+            <field name="name">Hours per Work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_hours_board_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_hours_board"/>
+            <field name="act_window" ref="act_work_hours_board"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_open_start_view_form">
+            <field name="model">timesheet.work.open.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Hours per Work">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_work">
+            <field name="name">Hours per Work</field>
+            <field name="wiz_name">timesheet.work.open</field>
+        </record>
+        <menuitem parent="menu_reporting" action="act_open_work"
+            id="menu_work_tree2" icon="tryton-graph"/>
+
+
+        <record model="ir.action.act_window" id="act_work_form3">
+            <field name="name">Hours per Work</field>
+            <field name="res_model">timesheet.work</field>
+            <field name="domain">[('parent', 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_graph"/>
+            <field name="act_window" ref="act_work_form3"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_work_graph">
+            <field name="name">Hours per Work</field>
+            <field name="wiz_name">timesheet.work.open_graph</field>
+        </record>
+        <record model="ir.action.keyword" id="act_work_keyword">
+            <field name="keyword">graph_open</field>
+            <field name="model">timesheet.work,-1</field>
+            <field name="action" ref="act_open_work_graph"/>
+        </record>
+
+        <record model="ir.model.access" id="access_work">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_admin">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="group" ref="group_timesheet_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_work">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_work1">
+            <field name="field" search="[('name', '=', 'company'),
+                                        ('model.model', '=', 'timesheet.work')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_work"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_work_admin">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_work_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_work_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
+    </data>
+</tryton>
