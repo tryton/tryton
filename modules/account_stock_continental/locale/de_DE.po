@@ -1,0 +1,303 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Der Kostenpreis kann nicht direkt aktualisiert werden für Artikel, die Lagerbewegungen zugeordnet sind.\n"
+"Es muss die Aktion \"Kostenpreis aktualisieren\" gewählt werden."
+
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr "Lagerkonto und Gegenkonto können nicht dasselbe Konto sein"
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Gegenkonto Kostenpreis"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal Lager"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Lagerbewertungsmethode"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Konto Lager Kunde"
+
+msgctxt "field:product.category,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Verwendetes Konto Lager Kunde"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.category,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Konto Lager Produktion"
+
+msgctxt "field:product.category,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Verwendetes Konto Lager Produktion"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Konto Lager Lieferant"
+
+msgctxt "field:product.category,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Verwendetes Konto Lager Lieferant"
+
+msgctxt "field:product.category,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Verwendetes Konto Lager"
+
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr "Lagerkonto"
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Lagerkonto Kunde"
+
+msgctxt "field:product.product,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Verwendetes Lagerkonto Kunde"
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.product,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Lagerkonto Produktion"
+
+msgctxt "field:product.product,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Verwendetes Konto Lager Produktion"
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Lagerkonto Lieferant"
+
+msgctxt "field:product.product,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Verwendetes Konto Lager Lieferant"
+
+msgctxt "field:product.product,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Verwendetes Lagerkonto"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Konto Lager Kunde"
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Verwendetes Konto Lager Kunde"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Konto Lager Produktion"
+
+msgctxt "field:product.template,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Verwendetes Konto Lager Produktion"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Konto Lager Lieferant"
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Verwendetes Konto Lager Lieferant"
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Verwendetes Konto Lager"
+
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Kostenpreis"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Gegenkonto"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Preisdifferenz"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Lagerkonto"
+
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
+"eingestellt ist."
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Kostenpreis aktualisieren"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Nachfrage Kostenpreisaktualisierung"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Kostenpreis Aktualisierung Anzeige Buchungssatz"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Kontinental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Keine"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Lagerbewertung"
+
+msgctxt "view:product.update_cost_price.ask:"
+msgid "Update Cost Price"
+msgstr "Kostenpreis aktualisieren"
+
+msgctxt "view:product.update_cost_price.show_move:"
+msgid "Update Cost Price - Move"
+msgstr "Aktualisierung Kostenpreis - Lagerbewegung"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
