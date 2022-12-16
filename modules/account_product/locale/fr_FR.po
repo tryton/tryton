@@ -1,0 +1,168 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:0"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+"Il n'y a pas de compte charges/produits définit sur le produit %s (%d)"
+
+msgctxt "field:product.category,account_expense:0"
+msgid "Account Expense"
+msgstr "Compte de charges"
+
+msgctxt "field:product.category,account_revenue:0"
+msgid "Account Revenue"
+msgstr "Compte de produits"
+
+msgctxt "field:product.category,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr "Taxes client"
+
+msgctxt "field:product.category,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr "Taxes fournisseur"
+
+msgctxt "field:product.category-customer-account.tax,category:0"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.category-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "field:product.category-supplier-account.tax,category:0"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.category-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "field:product.template,account_category:0"
+msgid "Use Category's accounts"
+msgstr "Utiliser les comptes de la catégorie"
+
+msgctxt "field:product.template,account_expense:0"
+msgid "Account Expense"
+msgstr "Compte de charge"
+
+msgctxt "field:product.template,account_expense_used:0"
+msgid "Account Expense Used"
+msgstr "Compte de charges utilisé"
+
+msgctxt "field:product.template,account_revenue:0"
+msgid "Account Revenue"
+msgstr "Compte de produits"
+
+msgctxt "field:product.template,account_revenue_used:0"
+msgid "Account Revenue Used"
+msgstr "Compte de produits utilisé"
+
+msgctxt "field:product.template,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr "Taxes Client"
+
+msgctxt "field:product.template,customer_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr "Taxes utilisées"
+
+msgctxt "field:product.template,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr "Taxes Fournisseur"
+
+msgctxt "field:product.template,supplier_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr "Taxes client utilisées"
+
+msgctxt "field:product.template,taxes_category:0"
+msgid "Use Category's Taxes"
+msgstr "Utiliser les taxes de la catégorie"
+
+msgctxt "field:product.template-customer-account.tax,product:0"
+msgid "Product Template"
+msgstr "Modèle produit"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.template-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "field:product.template-supplier-account.tax,product:0"
+msgid "Product Template"
+msgstr "Modèle produit"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.template-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr "Taxe"
+
+msgctxt "help:product.template,account_category:0"
+msgid "Use the accounts defined on the category"
+msgstr "Utiliser les comptes définis sur la catégorie"
+
+msgctxt "help:product.template,account_expense:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,account_revenue:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "help:product.template,taxes_category:0"
+msgid "Use the taxes defined on the category"
+msgstr "Utiliser les taxes de la catégorie"
+
+msgctxt "model:product.category-customer-account.tax,name:0"
+msgid "Category - Customer Tax"
+msgstr "Catégorie - Taxe client"
+
+msgctxt "model:product.category-supplier-account.tax,name:0"
+msgid "Category - Supplier Tax"
+msgstr "Catégorie - Taxe fournisseur"
+
+msgctxt "model:product.template-customer-account.tax,name:0"
+msgid "Product Template - Customer Tax"
+msgstr "Modèle du produit - Taxe client"
+
+msgctxt "model:product.template-supplier-account.tax,name:0"
+msgid "Product Template - Supplier Tax"
+msgstr "Modèle du produit - Taxe fournisseur"
+
+msgctxt "view:product.category:0"
+msgid "Accounting"
+msgstr "Comptabilité"
+
+msgctxt "view:product.category:0"
+msgid "Taxes"
+msgstr "Taxes"
+
+msgctxt "view:product.product:0"
+msgid "Accounting"
+msgstr "Comptabilité"
+
+msgctxt "view:product.template:0"
+msgid "Accounting"
+msgstr "Comptabilité"
+
+msgctxt "view:product.template:0"
+msgid "Accounts"
+msgstr "Comptes"
+
+msgctxt "view:product.template:0"
+msgid "Taxes"
+msgstr "Taxes"

@@ -1,0 +1,285 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:0"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr "Сумата (%s) е по-голяма от сумата за плащане по фактурата!"
+
+msgctxt "error:account.statement.line:0"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+"Кредитната/дебитната сметка на дневника е същата сметката като на ред от "
+"отчета!"
+
+msgctxt "error:account.statement.line:0"
+msgid "Please provide debit and credit account on statement journal."
+msgstr "Моля укажете дебитна и кредитна сметка за дневника за отчети."
+
+msgctxt "error:account.statement:0"
+msgid "End Balance must be %s!"
+msgstr "Крайния баланс трябва да е %s!"
+
+#, fuzzy
+msgctxt "field:account.statement,balance:0"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "field:account.statement,company:0"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.statement,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.statement,date:0"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.statement,end_balance:0"
+msgid "End Balance"
+msgstr "Краен баланс"
+
+msgctxt "field:account.statement,journal:0"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.statement,lines:0"
+msgid "Transactions"
+msgstr "Транзакции"
+
+msgctxt "field:account.statement,move_lines:0"
+msgid "Move Lines"
+msgstr "Редове на движение"
+
+msgctxt "field:account.statement,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.statement,start_balance:0"
+msgid "Start Balance"
+msgstr "Начален баланс"
+
+msgctxt "field:account.statement,state:0"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:account.statement.journal,company:0"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:account.statement.journal,currency:0"
+msgid "Currency"
+msgstr "Валута"
+
+msgctxt "field:account.statement.journal,journal:0"
+msgid "Journal"
+msgstr "Дневник"
+
+msgctxt "field:account.statement.journal,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.statement.journal,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.statement.line,account:0"
+msgid "Account"
+msgstr "Сметка"
+
+msgctxt "field:account.statement.line,amount:0"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "field:account.statement.line,date:0"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.statement.line,description:0"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "field:account.statement.line,invoice:0"
+msgid "Invoice"
+msgstr "Фактура"
+
+msgctxt "field:account.statement.line,move:0"
+msgid "Account Move"
+msgstr "Движение по сметка"
+
+msgctxt "field:account.statement.line,party:0"
+msgid "Party"
+msgstr "Партньор"
+
+msgctxt "field:account.statement.line,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:account.statement.line,statement:0"
+msgid "Statement"
+msgstr "Отчет"
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr "Отчет"
+
+msgctxt "model:account.statement,name:0"
+msgid "Account Statement"
+msgstr "Отчет за сметка"
+
+msgctxt "model:account.statement.journal,name:0"
+msgid "Statement Journal"
+msgstr "Дневник за отчети"
+
+msgctxt "model:account.statement.line,name:0"
+msgid "Account Statement Line"
+msgstr "Ред от отчет за сметка"
+
+msgctxt "model:ir.action,name:act_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Проект на отчет"
+
+msgctxt "model:ir.action,name:act_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Публикувани отчети"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "All Statement"
+msgstr "Всички отчети"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Дневник за отчети"
+
+msgctxt "model:ir.action,name:act_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Проверен отчет"
+
+msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Проект на отчет"
+
+msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Публикувани отчети"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Отчети"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "All Statement"
+msgstr "Всички отчети"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Дневник за отчети"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Отчети"
+
+msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Проверен отчет"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Отчет"
+
+msgctxt "model:workflow,name:wkf_statement"
+msgid "Statement"
+msgstr "Отчет"
+
+msgctxt "model:workflow.activity,name:statement_act_cancel"
+msgid "Canceled"
+msgstr "Отказан"
+
+msgctxt "model:workflow.activity,name:statement_act_draft"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "model:workflow.activity,name:statement_act_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+msgctxt "model:workflow.activity,name:statement_act_validated"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt "selection:account.statement,state:0"
+msgid "Canceled"
+msgstr "Отказан"
+
+msgctxt "selection:account.statement,state:0"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "selection:account.statement,state:0"
+msgid "Posted"
+msgstr "Публикуван"
+
+msgctxt "selection:account.statement,state:0"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt "view:account.statement.journal:0"
+msgid "Statement Journal"
+msgstr "Дневник за отчети"
+
+msgctxt "view:account.statement.journal:0"
+msgid "Statement Journals"
+msgstr "Дневник за отчети"
+
+msgctxt "view:account.statement.line:0"
+msgid "Statement Line"
+msgstr "Ред от отчет"
+
+msgctxt "view:account.statement.line:0"
+msgid "Statement Lines"
+msgstr "Редове от отчет"
+
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Сума"
+
+msgctxt "view:account.statement:0"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "view:account.statement:0"
+msgid "Move Lines"
+msgstr "Редове от движение"
+
+msgctxt "view:account.statement:0"
+msgid "Other Info"
+msgstr "Друга информация"
+
+msgctxt "view:account.statement:0"
+msgid "Post"
+msgstr "Публикуван"
+
+msgctxt "view:account.statement:0"
+msgid "Reset to Draft"
+msgstr "Изпращане в проект"
+
+msgctxt "view:account.statement:0"
+msgid "Statement"
+msgstr "Отчет"
+
+msgctxt "view:account.statement:0"
+msgid "Statement Lines"
+msgstr "Редове от отчет"
+
+msgctxt "view:account.statement:0"
+msgid "Statements"
+msgstr "Отчети"
+
+msgctxt "view:account.statement:0"
+msgid "Validate"
+msgstr "Проверка"
