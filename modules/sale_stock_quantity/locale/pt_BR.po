@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.sale:"
+msgid ""
+"The forcast quantity %(forecast_quantity)s%(default_uom)s of \"%(line)s\" is"
+" lower than %(quantity)s%(unit)s."
+msgstr ""
+"A quantidade prevista %(forecast_quantity)s%(default_uom)s da \"%(line)s\" é"
+" menor do que %(quantity)s%(unit)s."
+
+msgctxt "model:res.group,name:group_sale_stock_quantity"
+msgid "Sale Stock Quantity"
+msgstr "Quantidade de estoque de venda"
