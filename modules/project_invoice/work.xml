@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">project.work</field>
+            <field name="inherit" ref="project.work_view_form"/>
+            <field name="name">work_form</field>
+        </record>
+
+        <record model="ir.model.button" id="work_invoice_button">
+            <field name="name">invoice</field>
+            <field name="string">Invoice</field>
+            <field name="model" search="[('model', '=', 'project.work')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="work_invoice_button_group_project_invoice">
+            <field name="button" ref="work_invoice_button"/>
+            <field name="group" ref="group_project_invoice"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_invoiced_progress_view_form">
+            <field name="model">project.work.invoiced_progress</field>
+            <field name="type">form</field>
+            <field name="name">work_invoiced_progress_form</field>
+        </record>
+        <record model="ir.ui.view" id="work_invoiced_progress_view_list">
+            <field name="model">project.work.invoiced_progress</field>
+            <field name="type">tree</field>
+            <field name="name">work_invoiced_progress_list</field>
+        </record>
+        <record model="ir.model.access" id="access_work_invoiced_progress">
+            <field name="model"
+                search="[('model', '=', 'project.work.invoiced_progress')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.wizard" id="open_invoice">
+            <field name="name">Invoices</field>
+            <field name="wiz_name">project.open_invoice</field>
+            <field name="model">project.work</field>
+        </record>
+        <record model="ir.action.keyword" id="open_invoice_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">project.work,-1</field>
+            <field name="action" ref="open_invoice"/>
+        </record>
+        <record model="ir.action-res.group" id="open_invoice-group_invoice">
+            <field name="action" ref="open_invoice"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+    </data>
+</tryton>
