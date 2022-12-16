@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">template_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_category_customer_taxes">
+            <field name="model"
+                search="[('model', '=', 'product.category-customer-account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_category_customer_taxes">
+            <field name="domain"
+                eval="[('tax.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_category_customer_taxes"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_category_supplier_taxes">
+            <field name="model"
+                search="[('model', '=', 'product.category-supplier-account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_category_supplier_taxes">
+            <field name="domain"
+                eval="[('tax.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_category_supplier_taxes"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_template_customer_taxes">
+            <field name="model"
+                search="[('model', '=', 'product.template-customer-account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_template_customer_taxes">
+            <field name="domain"
+                eval="[('tax.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_template_customer_taxes"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_template_supplier_taxes">
+            <field name="model"
+                search="[('model', '=', 'product.template-supplier-account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_template_supplier_taxes">
+            <field name="domain"
+                eval="[('tax.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_template_supplier_taxes"/>
+        </record>
+
+    </data>
+</tryton>

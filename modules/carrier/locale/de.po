@@ -1,0 +1,163 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Frachtführer Kostenmethode"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Variante Frachtführer"
+
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:carrier,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:carrier.selection,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:carrier.selection,carrier:"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "field:carrier.selection,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:carrier.selection,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:carrier.selection,from_country:"
+msgid "From Country"
+msgstr "Ursprungsland"
+
+msgctxt "field:carrier.selection,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.selection,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:carrier.selection,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:carrier.selection,to_country:"
+msgid "To Country"
+msgstr "Bestimmungsland"
+
+msgctxt "field:carrier.selection,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:carrier.selection,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Methode für die Berechnung der Frachtkosten"
+
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "Der an den Frachführer zu verrechnende Artikel."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "Die Partei die den Frachtführer repräsentiert."
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "Der ausgewählte Frachtführer."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr "Gilt nur für Sendungen aus diesem Land.Für alle Länder frei lassen."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr "Gilt nur für Sendungen in dieses Land.Für alle Länder frei lassen."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "model:carrier.selection,name:"
+msgid "Carrier Selection"
+msgstr "Zuordnung Frachtführer"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.action,name:act_carrier_selection_form"
+msgid "Carrier Selection"
+msgstr "Zuordnung Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
+msgid "Carrier Selection"
+msgstr "Zuordnung Frachtführer"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Frachtführer Administration"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Variantenpreis"
+
+msgctxt "view:carrier.selection:"
+msgid "Criteria"
+msgstr "Kriterien"
+
+msgctxt "view:carrier:"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "view:carrier:"
+msgid "Carriers"
+msgstr "Frachtführer"
