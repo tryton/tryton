@@ -1,0 +1,253 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakketvolgorde"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Pakketvolgorde"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Pakket"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Boekingen/bewegingen"
+
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr "Hoogte verpakking"
+
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Maateenheid hoogte verpakking"
+
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr "Lengte verpakking"
+
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Maateenheid lengte verpakking"
+
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Volume verpakking"
+
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Maateenheid volume verpakking"
+
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Gewicht verpakking"
+
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Maateenheid gewicht verpakking"
+
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr "Breedte verpakking"
+
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Maateenheid breedte verpakking"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "levering"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr "Hoogte verpakking"
+
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Maateenheid hoogte verpakking"
+
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr "Lengte verpakking"
+
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Maateenheid lengte verpakking"
+
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Volume verpakking"
+
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Maateenheid volume verpakking"
+
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Gewicht verpakking"
+
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Maateenheid gewicht verpakking"
+
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr "Breedte verpakking"
+
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Maateenheid breedte verpakking"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "pakketten"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "pakketten"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "pakketten"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "pakketten"
+
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr "De hoogte van de verpakking."
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr "De lengte van de verpakking."
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr "Het volume van de verpakking."
+
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "Het gewicht van het pakket wanneer het leeg is."
+
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr "De breedte van de verpakking."
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr "De hoogte van de verpakking."
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr "De lengte van de verpakking."
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr "Het volume van de verpakking."
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "Het gewicht van het pakket wanneer het leeg is."
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
+msgstr "De breedte van de verpakking."
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Pakkettypen"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"Om verzending \"%(shipment)s\" te verwerken, moet u alle bewegingen "
+"inpakken."
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
+msgstr ""
+"Het volume (%(volume)s) van verpakking \"%(package)s\" is te klein voor het "
+"totale volume (%(children_volume)s) van de onderliggende verpakkingen."
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "verpakking voorraad"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "verpakking voorraad"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Pakkettypen"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "verpakking voorraad"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Type voorraadpakket"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Afgesloten"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Open"
+
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "Verpakking"
+
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr "Afmetingen"
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr "Afmetingen"

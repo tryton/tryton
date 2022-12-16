@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_category_default">
+            <field name="name">Not accounting category</field>
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="default_p" eval="True"/>
+            <field name="global_p" eval="False"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_category_default_non_accounting">
+            <field name="domain" eval="[('accounting', '=', False)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_category_default"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_category_accounting">
+            <field name="name">Any category</field>
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_category_account-account_product_admin">
+            <field name="rule_group" ref="rule_group_category_accounting"/>
+            <field name="group" ref="group_account_product_admin"/>
+        </record>
+        <record model="ir.rule" id="rule_category_accounting_accounting">
+            <field name="domain" eval="[('accounting', '=', True)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_category_accounting"/>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">template_tree</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_template_account_category">
+            <field name="field" search="[('model.model', '=', 'product.template'), ('name', '=', 'account_category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_template_account_category_account_product_admin">
+            <field name="field" search="[('model.model', '=', 'product.template'), ('name', '=', 'account_category')]"/>
+            <field name="group" ref="group_account_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+</tryton>

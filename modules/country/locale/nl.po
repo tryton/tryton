@@ -1,0 +1,671 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr "3-letters code"
+
+msgctxt "field:country.country,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr "Numerieke code"
+
+msgctxt "field:country.country,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:country.country,subdivisions:"
+msgid "Subdivisions"
+msgstr "Indelingen"
+
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Stad"
+
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr "Postcode"
+
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Nationale indeling"
+
+msgctxt "field:country.subdivision,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:country.subdivision,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.subdivision,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:country.subdivision,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:country.subdivision,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "help:country.country,code3:"
+msgid "The 3 chars ISO country code."
+msgstr "ISO landcode van 3 tekens."
+
+msgctxt "help:country.country,code:"
+msgid "The 2 chars ISO country code."
+msgstr "ISO landcode van 2 tekens."
+
+msgctxt "help:country.country,code_numeric:"
+msgid "The ISO numeric country code."
+msgstr "ISO numerieke landcode."
+
+msgctxt "help:country.country,name:"
+msgid "The main identifier of the country."
+msgstr "De hoofdidentificatie van het land."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr "De stad die bij de postcode hoort."
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr "Het land dat de postcode bevat."
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "De regio waar de postcode is."
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr "ISO-code van de regio."
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr "Het land waar deze regio zich bevind."
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr "De hoofdidentificatie van de regio."
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr "Regio onder het bovenliggende toevoegen."
+
+msgctxt "model:country.country,name:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr "Postcode"
+
+msgctxt "model:country.subdivision,name:"
+msgid "Subdivision"
+msgstr "Regio"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "Landen"
+
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr "Postcodes"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "Landen"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administration"
+msgstr "Administratie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Region"
+msgstr "Administratieve regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Territory"
+msgstr "Administratief gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative area"
+msgstr "Administratief gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative atoll"
+msgstr "Administratief atol"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Administratieve regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Arctic Region"
+msgstr "Arctische regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Area"
+msgstr "Gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Atoll"
+msgstr "Atol"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous City"
+msgstr "Autonome stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Commune"
+msgstr "Autonome gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous District"
+msgstr "Autonoom district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Province"
+msgstr "Autonome provincie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Region"
+msgstr "Autonome regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Autonome stad in Noord-Afrika"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous communities"
+msgstr "Autonome gemeenschappen"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous community"
+msgstr "Autonome gemeenschap"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous island"
+msgstr "Autonoom eiland"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous monastic state"
+msgstr "Autonome kloosterstaat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous municipality"
+msgstr "Autonome gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous republic"
+msgstr "Autonome republiek"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous sector"
+msgstr "Autonome sector"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territorial unit"
+msgstr "Autonome territoriale eenheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territory"
+msgstr "Autonoom territorium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Borough"
+msgstr "Stadsdeel / wijk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Canton"
+msgstr "Kanton"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Hoofdstad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital District"
+msgstr "Hoofdstedelijk district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Metropolitan City"
+msgstr "Hoofdstad Metropolitan City"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Territory"
+msgstr "Hoofdstedelijk Territorium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital city"
+msgstr "Hoofdstad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Groep (van eilanden)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chains (of islands)"
+msgstr "Groep (van eilanden)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City"
+msgstr "Stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City corporation"
+msgstr "Stadscorporatie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City with county rights"
+msgstr "Stad met provincierechten"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Commune"
+msgstr "Gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Constitutional province"
+msgstr "Constitutionele provincie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Council area"
+msgstr "Raadsgebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "County"
+msgstr "Provincie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr "Decentrale regionale entiteit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Department"
+msgstr "Departement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Dependency"
+msgstr "Onderhorig"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Development region"
+msgstr "Ontwikkelingsregio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District"
+msgstr "District"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District council area"
+msgstr "Districtsraadsgebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Kanton gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr "District met speciale status"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr "Districten onder republiek administratie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Division"
+msgstr "Divisie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic Prefecture"
+msgstr "Economische prefectuur"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic region"
+msgstr "Economische regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Emirate"
+msgstr "Emiraat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Entity"
+msgstr "Eenheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Dependency"
+msgstr "Federale afhankelijkheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal District"
+msgstr "Federaal district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territories"
+msgstr "Federale gebieden"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Federale gebieden"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Federaal hoofdstedelijk gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr "Vrij gemeentelijk gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical entity"
+msgstr "Geografische eenheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical region"
+msgstr "Geografische regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical unit"
+msgstr "Geografische eenheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Governorate"
+msgstr "Gouvernement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr "Eilandengroep (20 bewoonde eilanden)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Included for completeness"
+msgstr "Voor de volledigheid inbegrepen"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Indigenous region"
+msgstr "Inheemse regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island"
+msgstr "Eiland"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island council"
+msgstr "Eilandraad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island group"
+msgstr "Eilanden groep"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Eilanden, groep van eilanden"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Local council"
+msgstr "Gemeenteraad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "London borough"
+msgstr "London stadsdeel"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Groot-stedelijk district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan cities"
+msgstr "Grote steden"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Metropool"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr "Metropool samenwerking met speciale status"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan department"
+msgstr "Groot-stedelijk rechtsgebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan district"
+msgstr "Groot-stedelijk district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan region"
+msgstr "Groot-stedelijke regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipalities"
+msgstr "Gemeenten"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipality"
+msgstr "Gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Nation"
+msgstr "Natie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Oblast"
+msgstr "Gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Outlying area"
+msgstr "Buurt (buitenwijk)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "Overzeese territoriale collectiviteit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr "Overzeese territoriale collectiviteit met speciale status"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas department"
+msgstr "Overzees rechtsgebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region"
+msgstr "Overzeese regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region/department"
+msgstr "Overzeese regio/rechtsgebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territorial collectivity"
+msgstr "Overzeese territoriale collectiviteit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Overzees gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Door Pakistan bestuurd gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Parish"
+msgstr "Parochie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "District"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularates"
+msgstr "District"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Prefecture"
+msgstr "Prefectuur"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Principality"
+msgstr "Vorstendom"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Province"
+msgstr "Provincie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Quarter"
+msgstr "Wijk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rayon"
+msgstr "Rayon"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Region"
+msgstr "Regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional council"
+msgstr "Regionale raad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Regionale staat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republic"
+msgstr "Republiek"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republican City"
+msgstr "Republikeinse stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Landelijke gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Self-governed part"
+msgstr "Autonoom deel"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special District"
+msgstr "Speciaal district"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Municipality"
+msgstr "Speciale gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Region"
+msgstr "Speciale regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Speciale administratieve stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative region"
+msgstr "Speciale administratieve regio"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special city"
+msgstr "Bijzondere stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special island authority"
+msgstr "Speciale eiland autoriteit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Bijzondere zelf-bestuurde stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr "Speciale zelf-bestuurde provincie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special zone"
+msgstr "Speciale zone"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "State"
+msgstr "Staat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territorial unit"
+msgstr "Territoriale eenheid"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territory"
+msgstr "Gebied"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Stad"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town council"
+msgstr "Stadsbestuur"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Two-tier county"
+msgstr "Provincie met twee niveaus"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Union territory"
+msgstr "Grondgebied van de Unie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority"
+msgstr "Unitaire autoriteit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (england)"
+msgstr "Unitaire autoriteit (Engeland)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (wales)"
+msgstr "Unitaire autoriteit (Wales)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Stedelijke gemeenschap"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Stedelijke gemeente"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr "woiwodschap"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Wijk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "zone"
+msgstr "zone"
