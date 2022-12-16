@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data language="bg">
+        <record id="account_type_template_minimal_bg" model="account.account.type.template">
+            
+            <field name="name">Минимален сметкоплан</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
+        </record>
+        <record id="account_type_template_asset_bg" model="account.account.type.template">
+            
+            <field name="name">Притежание</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_minimal_bg"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_current_bg" model="account.account.type.template">
+            
+            <field name="name">Текущ</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_bg"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_cash_bg" model="account.account.type.template">
+            
+            <field name="name">В брой</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_bg"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_asset_current_receivable_bg" model="account.account.type.template">
+            
+            <field name="name">В брой</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_current_bg"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="account_type_template_asset_long_term_bg" model="account.account.type.template">
+            
+            <field name="name">Дългосрочен</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_asset_bg"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_bg" model="account.account.type.template">
+            
+            <field name="name">Дълг</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_minimal_bg"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_liability_current_bg" model="account.account.type.template">
+            
+            <field name="name">Текущ</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_bg"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_liability_current_payable_bg" model="account.account.type.template">
+            
+            <field name="name">Разходен</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_bg"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="account_type_template_liability_current_tax_bg" model="account.account.type.template">
+            
+            <field name="name">Данък</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_current_bg"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_liability_long_term_bg" model="account.account.type.template">
+            
+            <field name="name">Дългосрочен</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_liability_bg"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_equity_bg" model="account.account.type.template">
+            
+            <field name="name">Капитал</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_minimal_bg"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_income_bg" model="account.account.type.template">
+            
+            <field name="name">Приход</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_equity_bg"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="40"/>
+        </record>
+        <record id="account_type_template_revenue_bg" model="account.account.type.template">
+            
+            <field name="name">Приход</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_bg"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_expense_bg" model="account.account.type.template">
+            
+            <field name="name">Разход</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="parent" ref="account_type_template_income_bg"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_off_balance_bg" model="account.account.type.template">
+            
+            <field name="name">Неутрално салдо</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_minimal_bg"/>
+            <field name="statement">off-balance</field>
+        </record>
+
+        <record id="account_template_root_bg" model="account.account.template">
+            
+            <field name="name">Минимална графика на сметката</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_minimal_bg"/>
+            <field name="closed" eval="True"/>
+        </record>
+        <record id="account_template_receivable_bg" model="account.account.template">
+            
+            <field name="name">Основна приходна сметка</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_receivable_bg"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+        <record id="account_template_payable_bg" model="account.account.template">
+            
+            <field name="name">Основна разходна сметка</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_payable_bg"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+        <record id="account_template_revenue_bg" model="account.account.template">
+            
+            <field name="name">Основна приходи</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_revenue_bg"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+        <record id="account_template_expense_bg" model="account.account.template">
+            
+            <field name="name">Основена разходи</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_expense_bg"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+        <record id="account_template_cash_bg" model="account.account.template">
+            
+            <field name="name">Основна наличност</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_asset_current_cash_bg"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+        <record id="account_template_tax_bg" model="account.account.template">
+            
+            <field name="name">Основна данъци</field>
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account_type_template_liability_current_tax_bg"/>
+            <field name="parent" ref="account_template_root_bg"/>
+        </record>
+    </data>
+</tryton>
