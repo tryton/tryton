@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="type" eval="None"/>
+            <field name="inherit" ref="stock.shipment_in_view_form"/>
+            <field name="name">shipment_in_form</field>
+        </record>
+    </data>
+</tryton>

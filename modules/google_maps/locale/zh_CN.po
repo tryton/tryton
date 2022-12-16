@@ -1,0 +1,7 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,google_maps_url:"
+msgid "Google Maps"
+msgstr "谷歌地图"
