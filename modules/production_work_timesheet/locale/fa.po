@@ -1,0 +1,24 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.routing.operation,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "موجود در جدول زمانی"
+
+msgctxt "field:production.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "موجود در جدول زمانی"
+
+msgctxt "field:production.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "خطوط جدول زمانی"
+
+#, fuzzy
+msgctxt "field:production.work,timesheet_work:"
+msgid "Timesheet Work"
+msgstr "جدول زمانی کارها"
+
+msgctxt "field:production.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "جدول زمانی کارها"
