@@ -1,0 +1,48 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "Strošek"
+
+#, fuzzy
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "Decimalke"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Nabavne postavke"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "Prihodki"
+
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr "Ocena naloge"
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Purchases"
+msgstr "Nabavni nalogi"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "Projekt"

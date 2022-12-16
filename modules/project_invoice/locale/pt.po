@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:project.work,amount_to_invoice:"
+msgid "Amount to Invoice"
+msgstr "Tempo a Faturar"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha da Fatura"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Fatura"
+
+#, fuzzy
+msgctxt "field:project.work,invoice_timesheet_up_to:"
+msgid "Invoice up to"
+msgstr "Método de Fatura"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Montante de Fatura"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "Progresso Faturado"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Método de Faturamento"
+
+#, fuzzy
+msgctxt "field:project.work,project_invoice_timesheet_up_to:"
+msgid "Invoice up to"
+msgstr "Método de Fatura"
+
+#, fuzzy
+msgctxt "field:project.work,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Tempo a Faturar"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha de Fatura"
+
+#, fuzzy
+msgctxt "field:project.work.invoiced_progress,progress:"
+msgid "Progress"
+msgstr "Em Progesso"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "Tarefa"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Linha de Fatura"
+
+msgctxt "help:project.work,project_invoice_timesheet_up_to:"
+msgid ""
+"Limits which timesheet lines get invoiced to only those before the date."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "Linhas da Folha de Ponto"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Faturas"
+
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr "Você não pode apagar uma linha já faturada."
+
+msgctxt "model:ir.message,text:msg_missing_account_revenue"
+msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr "Não há preço para a tarefa \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr "Não há pessoa na tarefa \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr "Você não pode modificar uma linha já faturada."
+
+msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
+msgid ""
+"To invoice work \"%(work)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "Progresso Faturado de Tarefas"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Fatura do Projeto"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Por Esforço"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "Sobre o Progresso"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Na Folha de Ponto"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "%"
+msgstr ""

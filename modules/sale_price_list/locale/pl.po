@@ -1,0 +1,68 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Cennik sprzedaży"
+
+msgctxt "field:party.party,sale_price_lists:"
+msgid "Sale Price Lists"
+msgstr "Cenniki sprzedaży"
+
+msgctxt "field:party.party.sale_price_list,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:party.party.sale_price_list,party:"
+msgid "Party"
+msgstr "Strona"
+
+msgctxt "field:party.party.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Cennik sprzedaży"
+
+#, fuzzy
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "Cennik"
+
+msgctxt "field:sale.configuration,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Cennik sprzedaży"
+
+msgctxt "field:sale.configuration.sale_price_list,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
+msgid "Sale Price List"
+msgstr "Cennik sprzedaży"
+
+msgctxt "field:sale.sale,price_list:"
+msgid "Price List"
+msgstr "Cennik"
+
+msgctxt "help:party.party,sale_price_list:"
+msgid "The default price list for new sales."
+msgstr "Domyślny cennik dla nowych sprzedaży."
+
+msgctxt "help:sale.configuration,sale_price_list:"
+msgid "The default price list for new parties."
+msgstr "Domyślny cennika dla nowych stron."
+
+msgctxt "help:sale.sale,price_list:"
+msgid "Use to compute the unit price of lines."
+msgstr "Użyj, aby wyliczyć cenę jednostkową wierszy."
+
+msgctxt "model:party.party.sale_price_list,name:"
+msgid "Party Sale Price List"
+msgstr "Cennik sprzedaży strony"
+
+msgctxt "model:sale.configuration.sale_price_list,name:"
+msgid "Sale Configuration Sale PriceList"
+msgstr ""
+
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Sale"
+msgstr ""
