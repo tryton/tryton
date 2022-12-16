@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="production">
+        <record model="ir.ui.view" id="production_view_form">
+            <field name="model">production</field>
+            <field name="inherit" ref="production.production_view_form"/>
+            <field name="name">shipment_form</field>
+        </record>
+
+        <record model="ir.model.button" id="production_assign_manual_wizard_button">
+            <field name="name">assign_manual_wizard</field>
+            <field name="string">Manual Assign</field>
+            <field name="model" search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="production_assign_manual_wizard_button_group_stock">
+            <field name="button" ref="production_assign_manual_wizard_button"/>
+            <field name="group" ref="production.group_production"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_production_assign_manual">
+            <field name="name">Manual Assign Production</field>
+            <field name="wiz_name">stock.shipment.assign.manual</field>
+            <field name="model">production</field>
+        </record>
+    </data>
+</tryton>
