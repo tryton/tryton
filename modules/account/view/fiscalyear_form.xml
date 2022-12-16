@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="state"/>
+    <field name="state"/>
+    <notebook colspan="4">
+        <page string="Periods" id="periods">
+            <field name="periods" colspan="4"/>
+            <group col="-1" colspan="4" id="buttons">
+                <button name="create_period"/>
+                <button name="create_period_3"/>
+            </group>
+        </page>
+        <page string="Sequences" id="sequences">
+            <label name="post_move_sequence"/>
+            <field name="post_move_sequence"/>
+        </page>
+    </notebook>
+</form>
