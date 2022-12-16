@@ -1,0 +1,278 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project."
+msgstr ""
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done."
+msgstr ""
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+#, fuzzy
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Opmerking"
+
+#, fuzzy
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr ""
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+#, fuzzy
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Relaties"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr ""
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Reeks"
+
+#, fuzzy
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Status"
+
+#, fuzzy
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Beschikbaar in tijdregistartie"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr ""
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Werk"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work"
+msgstr ""
+
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr ""
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr ""
+
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Klaar"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Geopend"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Klaar"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Geopend"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Klaar"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Geopend"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr ""
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr ""
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Klaar"
+
+#, fuzzy
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Geopend"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr ""
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+#, fuzzy
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr ""
