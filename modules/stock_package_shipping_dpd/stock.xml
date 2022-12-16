@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="act_create_shipping_dpd_wizard">
+            <field name="name">Create DPD Shipping for Packages</field>
+            <field name="wiz_name">stock.shipment.create_shipping.dpd</field>
+        </record>
+    </data>
+</tryton>

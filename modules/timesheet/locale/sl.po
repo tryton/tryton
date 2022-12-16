@@ -1,0 +1,509 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:"
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr "Trajanje na postavki \"%(line)s\" mora biti nenegativno."
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different than the origin's company"
+msgstr "Družba naloge \"%(work)s\" je različna od družbe porekla"
+
+msgctxt "error:timesheet.work:"
+msgid "The origin must be unique per company."
+msgstr "Poreklo mora biti unikatno po družbi."
+
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Konec"
+
+msgctxt "field:timesheet.hours_employee.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Začetek"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Mesec"
+
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Mesec"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Leto"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Teden"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Teden"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Leto"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Zaposlenec"
+
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,active:"
+msgid "Active"
+msgstr "Aktivno"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Trajanje"
+
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:timesheet.work,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Konec evidence"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Evidenca dela"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Začetek evidence"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "Od"
+
+msgctxt "field:timesheet.work.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "Do"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "Družba, za katero se evidentira čas."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Dan evidentiranja časa."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Dodaten opis opravljene naloge."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "Zaposlenec, katerega čas se evidentira."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "Naloga, za katero se evidentira čas."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Dan evidentiranja časa."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "Zaposlenec, katerega čas se evidentira."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Odznačite za izklop nadaljne uporabe naloge."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Poveži nalogo z družbo."
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr "Skupen čas, porabljen na nalogi."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "Glavni identifikator naloge."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Povezuje porabljen čas z drugimi zapisi."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Evidentiranje časa po tem datumu je onemogočeno."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Evidentiranje časa, porabljenega na nalogi."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Evidentiranje časa pred tem datumom je onemogočeno."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Evidenca časa pred tem datumom se ne upošteva."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Evidenca časa po tem datumu se ne upošteva."
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Ure po zaposlencu"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Mesečne ure po zaposlencu"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Tedenske ure po zaposlencu"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Vnos dela"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Evidenca dela"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Evidenca dela"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Naloge"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Naloge"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Nastavitve"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Ure po zaposlencu"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Mesečne ure po zaposlencu"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Tedenske ure po zaposlencu"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Vnos dela"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Evidenca dela"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Poročila"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Evidenca dela"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Naloge"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Naloge"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Evidenca dela - vodenje"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Ure po zaposlencu"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "Ure po kontekstu zaposlenca"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Mesečne ure po zaposlencu"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Tedenske ure po zaposlencu"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Evidenca dela"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Vnos postavk"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "Kontekst naloge"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Evidenca dela"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Vnos"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr "Družba naloge \"%(work)s\" je različna od družbe porekla"
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which is the time is spent."
+msgstr "Naloga, za katero se evidentira čas."
+
+msgctxt "view:timesheet.hours_employee_monthly:"
+msgid "Hours per Employee per Month"
+msgstr "Mesečne ure po zaposlencu"
+
+msgctxt "view:timesheet.hours_employee_weekly:"
+msgid "Hours per Employee per Week"
+msgstr "Tedenske ure po zaposlencu"
+
+msgctxt "view:timesheet.line.enter.start:"
+msgid "Enter Timesheet"
+msgstr "Vnos dela"
+
+msgctxt "view:timesheet.work:"
+msgid "Hours per Work"
+msgstr "Ure po nalogi"
+
+msgctxt "view:timesheet.work:"
+msgid "Work"
+msgstr "Naloga"
+
+msgctxt "view:timesheet.work:"
+msgid "Works"
+msgstr "Naloge"
