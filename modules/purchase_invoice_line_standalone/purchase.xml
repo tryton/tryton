@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_line_invoice_type">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="30"/>
+            <field name="name">invoice_line_tree_invoice_type</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_invoice_line_relate">
+            <field name="name">Invoice Lines</field>
+            <field name="res_model">account.invoice.line</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.purchase.id', '=', Eval('active_id'), 'purchase.line'), ('origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_invoice_line_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_purchase_invoice_line_relate"/>
+        </record>
+    </data>
+</tryton>

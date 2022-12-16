@@ -1,0 +1,57 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:party.party,sale_invoice_grouping_methods:"
+msgid "Sale Invoice Grouping Methods"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+msgctxt "field:party.party.sale_invoice_grouping_method,party:"
+msgid "Party"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgid "Party Sale Invoice Grouping Method"
+msgstr "ວິທີຮວມກຸ່ມໃບເກັບເງິນ"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr "ມາດຕະຖານ"
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr "ການສ້າງໃບເກັບເງິນ"
