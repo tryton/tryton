@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='buttons']" position="inside">
+        <button name="stripe_checkout"/>
+        <button name="stripe_do_capture"/>
+    </xpath>
+    <xpath expr="//field[@name='date']" position="after">
+        <group id="stripe" string="Stripe" colspan="4">
+            <label name="stripe_charge_id" string="Charge ID:"/>
+            <field name="stripe_charge_id" colspan="3"/>
+            <label name="stripe_customer" string="Customer:"/>
+            <field name="stripe_customer" colspan="3"/>
+            <field name="stripe_customer_source" colspan="4" invisible="1"/>
+            <label name="stripe_customer_source_selection" string="Source:"/>
+            <field name="stripe_customer_source_selection" colspan="3"/>
+            <field name="stripe_customer_payment_method" colspan="4" invisible="1"/>
+            <label name="stripe_customer_payment_method_selection" string="Payment Method:"/>
+            <field name="stripe_customer_payment_method_selection" colspan="3"/>
+            <label name="stripe_token" string="Token:"/>
+            <field name="stripe_token" colspan="3"/>
+            <label name="stripe_payment_intent_id" string="Payment Intent:"/>
+            <field name="stripe_payment_intent_id" colspan="3"/>
+            <label name="stripe_capture" string="Capture:"/>
+            <field name="stripe_capture"/>
+            <label name="stripe_capturable" string="Capturable:"/>
+            <field name="stripe_capturable"/>
+            <label name="stripe_chargeable" string="Chargeable:"/>
+            <field name="stripe_chargeable"/>
+        </group>
+    </xpath>
+    <xpath expr="//field[@name='description']" position="after">
+        <label name="stripe_error_message"/>
+        <field name="stripe_error_message"/>
+        <newline/>
+        <label name="stripe_error_code"/>
+        <field name="stripe_error_code"/>
+        <label name="stripe_error_param"/>
+        <field name="stripe_error_param"/>
+        <label name="stripe_dispute_status"/>
+        <field name="stripe_dispute_status"/>
+        <label name="stripe_dispute_reason"/>
+        <field name="stripe_dispute_reason"/>
+    </xpath>
+    <xpath expr="//page[@id='description']" position="after">
+        <page name="stripe_refunds" col="1">
+            <field name="stripe_refunds"/>
+        </page>
+    </xpath>
+</data>

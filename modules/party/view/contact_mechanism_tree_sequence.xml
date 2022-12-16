@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence" editable="1">
+    <field name="type"/>
+    <field name="value" expand="1"/>
+    <field name="name" expand="1" optional="0"/>
+    <field name="party" expand="2" optional="0"/>
+    <field name="address" expand="1" optional="0"/>
+    <field name="language" widget="selection" optional="1"/>
+    <field name="url" widget="url"/>
+</tree>
