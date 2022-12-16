@@ -1,0 +1,688 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "Are your sure to leave?"
+msgstr "Ben je zeker dat je weggaat?"
+
+msgid "Favorites"
+msgstr "Favorieten"
+
+msgid "Manage..."
+msgstr "Beheren..."
+
+msgid "Logout"
+msgstr "Uitloggen"
+
+msgid "Action"
+msgstr "Actie"
+
+msgid "New"
+msgstr "Nieuw"
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Switch"
+msgstr "Omschakelen"
+
+msgid "Reload/Undo"
+msgstr "Ongedaan maken / herladen"
+
+msgid "Duplicate"
+msgstr "Duplicaat"
+
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Next"
+msgstr "Volgende"
+
+msgid "Search"
+msgstr "Zoeken"
+
+msgid "Close Tab"
+msgstr "Tabblad sluiten"
+
+msgid "Attachment"
+msgstr "Bijlage"
+
+msgid "Note"
+msgstr "Aantekening"
+
+msgid "Relate"
+msgstr "Gerelateerd"
+
+msgid "Print"
+msgstr "Afdrukken"
+
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgid "Previous tab"
+msgstr "Vorig tabblad"
+
+msgid "Next tab"
+msgstr "Volgend tabblad"
+
+msgid "Global search"
+msgstr "Algemeen zoeken"
+
+msgid "Show this help"
+msgstr "Toon deze hulp"
+
+msgid "Show/Hide access keys"
+msgstr "Toegangssleutels tonen/verbergen"
+
+msgid "Keyboard shortcuts"
+msgstr "Toetsenbord sneltoetsen"
+
+msgid "Close"
+msgstr "Sluiten"
+
+msgid "Global shortcuts"
+msgstr "algemene snelkoppeling"
+
+msgid "Tab shortcuts"
+msgstr "Tab snelkoppelingen"
+
+msgid "Unable to reach the server."
+msgstr "Kan geen verbinding maken met server."
+
+msgid "Too many requests. Try again later."
+msgstr "Te veel verzoeken. Probeer het later nog eens."
+
+msgid "Login"
+msgstr "Inlognaam"
+
+msgid "User name"
+msgstr "Gebruikersnaam"
+
+msgid "Database"
+msgstr "Database"
+
+msgid "Your selection:"
+msgstr "Uw selectie:"
+
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Y"
+msgstr "J"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "u"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "By: "
+msgstr "Door: "
+
+msgid ", "
+msgstr ", "
+
+msgid "y"
+msgstr "J"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "True"
+msgstr "Waar"
+
+msgid "t"
+msgstr "w (t)"
+
+msgid "False"
+msgstr "Onwaar"
+
+msgid "Message: "
+msgstr "Bericht: "
+
+msgid "Warning: "
+msgstr "Waarschuwing: "
+
+msgid "Always ignore this warning."
+msgstr "Deze waarschuwing altijd negeren."
+
+msgid "Do you want to proceed?"
+msgstr "Doorgaan?"
+
+msgid "No"
+msgstr "Nee"
+
+msgid "Confirmation: "
+msgstr "Bevestiging: "
+
+msgid "Concurrency Exception"
+msgstr "Simultaan gebruik error"
+
+msgid "Write Concurrency Warning: "
+msgstr "Aandacht, schrijftoegang concurrenten (Write Concurrency) : "
+
+msgid "This record has been modified while you were editing it."
+msgstr "Dit record werd gewijzigd terwijl u het aan het bewerken was."
+
+msgid "Choose:"
+msgstr "Kiezen:"
+
+msgid "\"Cancel\" to cancel saving;"
+msgstr "\"Annuleren\" om het opslaan te annuleren;"
+
+msgid "\"Compare\" to see the modified version;"
+msgstr "\"Vergelijken\" om de gewijzigde versie te zien;"
+
+msgid "\"Write Anyway\" to save your current version."
+msgstr "\"Overschrijven\" om de huidige versie te bewaren."
+
+msgid "Compare"
+msgstr "Vergelijk"
+
+msgid "Compare: %1"
+msgstr "Vergelijk:% 1"
+
+msgid "Write Anyway"
+msgstr "Overschrijven"
+
+msgid "Application Error"
+msgstr "Applicatiefout"
+
+msgid "Report Bug"
+msgstr "Programmafout melden"
+
+msgid "Processing"
+msgstr "Verwerking"
+
+msgid "Search..."
+msgstr "Zoeken..."
+
+msgid "Create..."
+msgstr "Maak ..."
+
+msgid "Download"
+msgstr "Download"
+
+msgid "..."
+msgstr "..."
+
+msgid "Bold"
+msgstr "Vet"
+
+msgid "Italic"
+msgstr "Cursief"
+
+msgid "Underline"
+msgstr "Onderstrepen"
+
+msgid "Font"
+msgstr "lettertype"
+
+msgid "Size"
+msgstr "Grootte"
+
+msgid "Justify Right"
+msgstr "Uitvullen rechts"
+
+msgid "Justify Left"
+msgstr "Links uitvullen"
+
+msgid "Justify Center"
+msgstr "Uitvullen centrum"
+
+msgid "Justify Full"
+msgstr "Volledig uitvullen"
+
+msgid "Switch view"
+msgstr "Wissel van weergave"
+
+msgid "Previous Record"
+msgstr "Vorig record"
+
+msgid "Next Record"
+msgstr "Volgend record"
+
+msgid "Create a new record"
+msgstr "Maak een nieuw record"
+
+msgid "Save this record"
+msgstr "Record opslaan"
+
+msgid "Reload"
+msgstr "Herladen"
+
+msgid "View Logs..."
+msgstr "Bekijk logregister..."
+
+msgid "Show revisions..."
+msgstr "Revisies weergeven ..."
+
+msgid "Add an attachment to the record"
+msgstr "Voeg een bijlage toe aan het record"
+
+msgid "Add a note to the record"
+msgstr "Voeg een notitie toe aan het record"
+
+msgid "E-Mail..."
+msgstr "E-mail..."
+
+msgid "Send an e-mail using the record"
+msgstr "Stuur een e-mail met behulp van het record"
+
+msgid "Export"
+msgstr "Exporteren"
+
+msgid "Import"
+msgstr "Importeren"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"De volgende actie vereist het sluiten van alle tabbladen.\n"
+"Verder gaan?"
+
+msgid "Launch action"
+msgstr "Actie uitvoeren"
+
+msgid "Open related records"
+msgstr "Open gerelateerde records"
+
+msgid "Print report"
+msgstr "Rapport afdrukken"
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Dit record is aangepast.\n"
+"Wilt u de wijzigingen opslaan?"
+
+msgid "Record saved."
+msgstr "Record opgeslagen."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Aan het werk op het(de) gekopieerde record(s)."
+
+msgid "Are you sure to remove this record?"
+msgstr "Weet u zeker dat u dit record wilt verwijderen?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Weet u zeker dat u deze records wilt verwijderen?"
+
+msgid "Records removed."
+msgstr "Records verwijderd."
+
+msgid "Records not removed."
+msgstr "Records niet verwijderd."
+
+msgid "You have to select one record."
+msgstr "U moet één record selecteren."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Aangemaakt door:"
+
+msgid "Created at:"
+msgstr "Aanmaakdatum:"
+
+msgid "Edited by:"
+msgstr "Bewerkt door:"
+
+msgid "Edited at:"
+msgstr "Bewerkt op:"
+
+msgid "Model: "
+msgstr "Model: "
+
+msgid "Add..."
+msgstr "Toevoegen..."
+
+msgid "Preview"
+msgstr "Voorbeeld"
+
+msgid "Template"
+msgstr "Sjabloon"
+
+msgid "Attachment (%1)"
+msgstr "Bijlage (%1)"
+
+msgid "Note (%1/%2)"
+msgstr "Opmerking (%1/%2)"
+
+msgid "Filters"
+msgstr "filters"
+
+msgid "Clear Search"
+msgstr "Wis zoeken"
+
+msgid "Bookmarks"
+msgstr "bladwijzers"
+
+msgid "Remove this bookmark"
+msgstr "Verwijder deze bladwijzer"
+
+msgid "Bookmark this filter"
+msgstr "Maak een bladwijzer voor dit filter"
+
+msgid "Bookmark Name:"
+msgstr "Bladwijzer naam:"
+
+msgid "Show active records"
+msgstr "Geef actieve records weer"
+
+msgid "Show inactive records"
+msgstr "Geef niet-actieve records weer"
+
+msgid "Find"
+msgstr "Zoeken"
+
+msgid "From"
+msgstr "Van"
+
+msgid "To"
+msgstr "Aan"
+
+msgid "Open the calendar"
+msgstr "Open kalender"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+msgid "Created at"
+msgstr "Aanmaakdatum"
+
+msgid "Modified by"
+msgstr "Aangepast door"
+
+msgid "Modified at"
+msgstr "Gewijzigd om"
+
+msgid "\"%1\" is required."
+msgstr "\"%1\" is vereist."
+
+msgid "\"%1\" is not valid according to its domain."
+msgstr "\"%1\" is niet geldig volgens zijn domein."
+
+msgid "The values of \"%1\" are not valid."
+msgstr "De waarden van \"%1\" zijn niet geldig."
+
+msgid "Pre-validation"
+msgstr "Pre-validatie"
+
+msgid ":"
+msgstr ":"
+
+msgid "Translate"
+msgstr "Vertalen"
+
+msgid "Edit"
+msgstr "Bewerken"
+
+msgid "Fuzzy"
+msgstr "Onzeker"
+
+msgid "You need to save the record before adding translations."
+msgstr "U moet de record opslaan voordat u vertalingen kunt toevoegen."
+
+msgid "No other language available."
+msgstr "Geen andere taal beschikbaar."
+
+msgid "Show"
+msgstr "Toon"
+
+msgid "Hide"
+msgstr "Verbergen"
+
+msgid "Open the record"
+msgstr "Open het record"
+
+msgid "Clear the field"
+msgstr "Wis het veld"
+
+msgid "Search a record"
+msgstr "Zoek een record"
+
+msgid "Add"
+msgstr "Toevoegen"
+
+msgid "Remove"
+msgstr "Verwijderen"
+
+msgid "Open"
+msgstr "Openen"
+
+msgid "Undelete"
+msgstr "wissen ongedaan maken"
+
+msgid "Save As"
+msgstr "Opslaan als"
+
+msgid "Save As..."
+msgstr "Opslaan als..."
+
+msgid "Select"
+msgstr "Selecteer"
+
+msgid "Select..."
+msgstr "Selecteer ..."
+
+msgid "Clear"
+msgstr "Wissen"
+
+msgid "Open..."
+msgstr "Openen..."
+
+msgid "Choose a language"
+msgstr "Kies een taal"
+
+#, javascript-format
+msgid "%1%"
+msgstr "%1%"
+
+msgid ": "
+msgstr ": "
+
+msgid "Customize"
+msgstr "Aanpassen"
+
+msgid "More"
+msgstr "Meer"
+
+msgid "Today"
+msgstr "Vandaag"
+
+msgid "Month"
+msgstr "Maand"
+
+msgid "Week"
+msgstr "Week"
+
+msgid "Day"
+msgstr "Dag"
+
+msgid ",..."
+msgstr ",..."
+
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+msgid "Select your action"
+msgstr "Selecteer een actie"
+
+msgid "No action defined."
+msgstr "Geen actie gedefinieerd."
+
+msgid "Attachments (%1)"
+msgstr "Bijlagen (%1)"
+
+msgid "Notes (%1)"
+msgstr "Notities (%1)"
+
+msgid "Search %1"
+msgstr "Zoek %1"
+
+msgid "Revision"
+msgstr "Revisie"
+
+msgid "All Fields"
+msgstr "Alle velden"
+
+msgid "Fields Selected"
+msgstr "Geselecteerde Velden"
+
+msgid "CSV Parameters"
+msgstr "CSV parameters"
+
+msgid "Delimiter:"
+msgstr "Scheidingsteken:"
+
+msgid "Quote Char:"
+msgstr "aanhalingstekens :"
+
+msgid "CSV Import: %1"
+msgstr "CSV-Import: %1"
+
+msgid "Auto-Detect"
+msgstr "Automatische detectie"
+
+msgid "File to Import"
+msgstr "Bestand om te importeren"
+
+msgid "Encoding:"
+msgstr "Codering:"
+
+msgid "Lines to Skip:"
+msgstr "Regels overslaan:"
+
+msgid "You must select an import file first."
+msgstr "U moet eerst een importbestand selecteren."
+
+msgid "Detection failed"
+msgstr "Detecteren faalde"
+
+msgid "Error processing the file at field %1."
+msgstr "Fout bij verwerken van het bestand op veld %1."
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Import failed"
+msgstr "Importeren faalde"
+
+msgid "%1 record imported"
+msgid_plural "%1 records imported"
+msgstr[0] "%1 record geïmporteerd"
+msgstr[1] "%1 records geïmporteerd"
+
+msgid "CSV Export: %1"
+msgstr "Exporteer CSV: %1"
+
+msgid "Save Export"
+msgstr "Export opslaan"
+
+msgid "URL Export"
+msgstr "URL Exporteren"
+
+msgid "Delete Export"
+msgstr "Export verwijderen"
+
+msgid "Predefined Exports"
+msgstr "Vooraf gedefinieerde exports"
+
+msgid "Selected Records"
+msgstr "Geselecteerde records"
+
+msgid "Listed Records"
+msgstr "Weergegeven records"
+
+msgid "Export:"
+msgstr "Exporteer:"
+
+msgid "Ignore search limit"
+msgstr "Zoeklimiet negeren"
+
+msgid "Use locale format"
+msgstr "Gebruik taalinstellingen"
+
+msgid "Add Field Names"
+msgstr "Voeg veldnamen toe"
+
+msgid "%1 (string)"
+msgstr "%1 (string)"
+
+msgid "%1 (model name)"
+msgstr "%1 (model naam)"
+
+msgid "%1 (record name)"
+msgstr "%1 (recordnaam)"
+
+msgid "What is the name of this export?"
+msgstr "Wat is de naam voor deze export?"
+
+msgid "Override %1 definition?"
+msgstr "Definitie van %1 overschrijven?"
+
+msgid "%1 record saved"
+msgid_plural "%1 records saved"
+msgstr[0] "%1 record opgeslagen"
+msgstr[1] "%1 records opgeslagen"
+
+msgid "E-mail %1"
+msgstr "E-mail %1"
+
+msgid "To:"
+msgstr "Aan:"
+
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
+
+msgid "Subject:"
+msgstr "Onderwerp:"
+
+msgid "Reports"
+msgstr "Rapporten"
+
+msgid "Attachments"
+msgstr "Bijlagen"
+
+msgid "Files"
+msgstr "Bestanden"
+
+msgid "Send"
+msgstr "Verzenden"
+
+msgid "Remove File"
+msgstr "Bestand verwijderen"
+
+msgid "Wizard"
+msgstr "Assistent"
+
+msgid "Translate view"
+msgstr "Vertaal weergave"
