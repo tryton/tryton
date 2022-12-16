@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='weight']" position="after">
+        <label name="packages_weight"/>
+        <field name="packages_weight"/>
+    </xpath>
+    <xpath expr="//field[@name='volume']" position="after">
+        <label name="packages_volume"/>
+        <field name="packages_volume"/>
+    </xpath>
+</data>
