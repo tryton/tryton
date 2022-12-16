@@ -1,0 +1,274 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Emplacement de livraison directe d'achat"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Emplacement de livraison directe d'achat"
+
+msgctxt "field:purchase.product_supplier,drop_shipment:"
+msgid "Drop Shipment"
+msgstr "Livraison directe"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "Livraison directe disponible"
+
+msgctxt "field:purchase.purchase,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:purchase.purchase,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adresse de livraison"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "Emplacement de livraison directe"
+
+msgctxt "field:purchase.purchase,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "field:purchase.request,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:purchase.request,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adresse de livraison"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Emplacement de livraison directe de vente"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Emplacement de livraison directe de vente"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "Emplacement de livraison directe"
+
+msgctxt "field:sale.sale,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Séquence de livraison directe"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Séquence de livraison directe"
+
+msgctxt "field:stock.move,customer_drop:"
+msgid "Drop Customer"
+msgstr "Livraison directe cliente"
+
+msgctxt "field:stock.shipment.drop,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.shipment.drop,contact_address:"
+msgid "Contact Address"
+msgstr "Adresse de contact"
+
+msgctxt "field:stock.shipment.drop,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "Mouvements clients"
+
+msgctxt "field:stock.shipment.drop,delivery_address:"
+msgid "Delivery Address"
+msgstr "Adresse de livraison"
+
+msgctxt "field:stock.shipment.drop,effective_date:"
+msgid "Effective Date"
+msgstr "Date effective"
+
+msgctxt "field:stock.shipment.drop,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:stock.shipment.drop,planned_date:"
+msgid "Planned Date"
+msgstr "Date planifiée"
+
+msgctxt "field:stock.shipment.drop,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:stock.shipment.drop,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:stock.shipment.drop,supplier:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "Mouvements fournisseurs"
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr "Quand le stock a été effectivement envoyé."
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr "L'identifiant principal de l'expédition."
+
+msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Achats"
+
+msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Ventes"
+
+msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "Livrées"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
+msgid "Waiting"
+msgstr "En attentes"
+
+msgctxt ""
+"model:ir.message,text:msg_delivery_address_required_quotation_purchase"
+msgid ""
+"To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
+" address."
+msgstr ""
+"Pour avoir un devis de l'achat « %(purchase)s », vous devez fournir une "
+"adresse de livraison."
+
+msgctxt "model:ir.message,text:msg_drop_shipment_delete_cancel"
+msgid "To delete drop shipment \"%(shipment)s\" you must cancel it."
+msgstr ""
+"Pour supprimer la livraison directes « %(shipment)s », vous devez l'annuler."
+
+msgctxt "model:ir.message,text:msg_reset_move"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale or a purchase."
+msgstr ""
+"Vous ne pouvez pas réinitialiser à l'état brouillon le mouvement "
+"« %(move)s » car il a été généré par une vente ou un achat."
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr "Êtes-vous sûr de vouloir terminer l'expédition ?"
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Effectuée"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Livrer"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Attendre"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Livraison directe"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Livraison directe"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Livraisons directes"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "Configuration d'achat Emplacement de livraison directe d'achat"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "Configuration de vente Emplacement de livraison directe de vente"
+
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Livraison directe"
+
+msgctxt "model:stock.shipment.drop,name:"
+msgid "Drop Shipment"
+msgstr "Livraison directe"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Cancelled"
+msgstr "Annulée"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Done"
+msgstr "Effectué"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "Livré"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Waiting"
+msgstr "En attente"
