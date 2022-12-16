@@ -1,0 +1,353 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount (%s) greater than the amount to pay of invoice!"
+msgstr "¡El valor (%s) es mayor que lo que se debe pagar en la factura!"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value!"
+msgstr "La cantidad debe ser un valor positivo o negativo!"
+
+msgctxt "error:account.statement.line:"
+msgid ""
+"Credit or debit account on journal is the same than the statement line "
+"account!"
+msgstr ""
+"¡Las cuentas crédito o débito en un diario son las mismas que las líneas de "
+"estado de cuenta!"
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal."
+msgstr ""
+"Por favor indique las cuentas débito y crédito en el libro de estado de "
+"cuentas."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be %s!"
+msgstr "El Balance debe ser %s!"
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion!"
+msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado!"
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr "Crear usuario"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de Moneda"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Balance Final"
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.statement,lines:"
+msgid "Transactions"
+msgstr "Transacciones"
+
+msgctxt "field:account.statement,move_lines:"
+msgid "Move Lines"
+msgstr "Líneas de Movimiento"
+
+msgctxt "field:account.statement,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Balance Inicial"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr "Crear usuario"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement.journal,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Cantidad"
+
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr "Crear usuario"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Movimiento de Cuenta"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:account.statement.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Estado de Cuenta"
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr "Estado de Cuenta"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Estado de Cuentas"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Diario de Estados de Cuenta"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Línea de Estado de Cuenta"
+
+msgctxt "model:ir.action,name:act_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Borrador de Estados de Cuenta"
+
+msgctxt "model:ir.action,name:act_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Estados de Cuenta Autorizados"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "All Statement"
+msgstr "Todos los Estados de Cuenta"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Libros de Estados de Cuenta"
+
+msgctxt "model:ir.action,name:act_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Estados de Cuenta Validados"
+
+msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
+msgid "Draft Statements"
+msgstr "Estados de Cuenta en Borrador"
+
+msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
+msgid "Posted Statements"
+msgstr "Estados de Cuenta Autorizados"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Estados de Cuenta"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "All Statement"
+msgstr "Todos los estados de cuenta"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Diarios de Estados de Cuenta"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Estados de Cuenta"
+
+msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
+msgid "Validated Statement"
+msgstr "Estados de Cuenta Válidos"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Estado de Cuenta"
+
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr "Libro de Estados de Cuenta"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr "Libros de Estados de Cuenta"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Cantidad"
+
+msgctxt "view:account.statement.line:"
+msgid "Bank Statement Line"
+msgstr "Línea de extracto bancario"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr "Libros de Estados de Cuenta"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr "Líneas de Estado de Cuenta"
+
+msgctxt "view:account.statement:"
+msgid "Amount"
+msgstr "Cantidad"
+
+msgctxt "view:account.statement:"
+msgid "Bank Statement"
+msgstr "Extractos Bancarios"
+
+msgctxt "view:account.statement:"
+msgid "Bank Statement Lines"
+msgstr "Líneas de extracto bancario"
+
+msgctxt "view:account.statement:"
+msgid "Bank Statements"
+msgstr "Extractos Bancarios"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.statement:"
+msgid "Move Lines"
+msgstr "Líneas de Movimiento"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Info Adicional"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Confirmar"
+
+msgctxt "view:account.statement:"
+msgid "Reset to Draft"
+msgstr "Revertir a Borrador"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr "Estado de Cuenta"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Líneas de Estado de Cuenta"
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr "Estados de Cuenta"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Validar"

@@ -1,0 +1,84 @@
+Version 2.6.12 - 2015-05-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.11 - 2015-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.10 - 2014-09-29
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.9 - 2014-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.8 - 2014-07-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.7 - 2014-05-07
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.6 - 2014-01-18
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.5 - 2013-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.4 - 2013-07-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.3 - 2013-06-09
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.2 - 2013-05-02
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.1 - 2013-02-12
+* Bug fixes (see mercurial logs for details)
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Add Product Quantities By Warehouse
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Remove special to_location_warehouse search clause
+* Remove default from and to location and instead use domain
+* Update cost_price only from supplier to storage
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Ensure coherence between planned date of shipments and moves
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+* Add period to reduce data computation
+* Add internal_quantity on move to speedup computation
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
+* Use model singleton to define shipment sequences
+* Add default search value on inventory, move and shipments
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add new group "Stock Force Assignment"
+* Migrate packing* objects and tables to shipment*
+* Return move id in create_move of inventory line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Added return packings and a wizard to create customer return packing.
+* Make assign_try to assign as much possible
+* Move assign_try and pick_product from product.product to stock.move
+* Added stock_skip_warehouse keyword for products_by_location
+  method. The default behaviour is now to compute quantities on all
+  child locations for a warehouse.
+* Handle average price for products return to supplier
+* Added stock_destinations keyword on products_by_location context to
+  filter moves to a set of destinations.
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

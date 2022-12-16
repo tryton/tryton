@@ -1,0 +1,35 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Anglo-Saxon quantity can not be greater than quantity!"
+msgstr "La quantité \"anglo-saxonne\" ne peut être supérieur à la quantité !"
+
+msgctxt "field:product.category,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Compte \"coût des marchandises vendues\""
+
+msgctxt "field:product.category,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Compte \"coût des marchandises vendues\" utilisé"
+
+msgctxt "field:product.template,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Compte \"coût des marchandises vendues\""
+
+msgctxt "field:product.template,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Compte \"coût des marchandises vendues\" utilisé"
+
+msgctxt "field:stock.move,anglo_saxon_quantity:"
+msgid "Anglo-Saxon Quantity"
+msgstr "Quantité \"anglo-saxonne\""
+
+msgctxt "help:product.template,account_cogs:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
+
+msgctxt "model:account.account.template,name:account_template_cogs"
+msgid "COGS"
+msgstr "Prix du bien vendu"

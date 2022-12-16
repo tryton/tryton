@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="price_list_view_form">
+            <field name="model">product.price_list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Price List">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <field name="lines" colspan="4"
+                        view_ids="product_price_list.price_list_line_view_tree_sequence"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_view_tree">
+            <field name="model">product.price_list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Price Lists">
+                    <field name="name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_price_list_form">
+            <field name="name">Price Lists</field>
+            <field name="res_model">product.price_list</field>
+            <field name="domain">[('company', '=', Eval('company'))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_price_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="price_list_view_tree"/>
+            <field name="act_window" ref="act_price_list_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_price_list_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="price_list_view_form"/>
+            <field name="act_window" ref="act_price_list_form"/>
+        </record>
+        <menuitem parent="product.menu_main_product"
+            sequence="20" id="menu_price_list"
+            action="act_price_list_form"/>
+
+        <record model="ir.model.access" id="access_price_list">
+            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_price_list_admin">
+            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_product_list">
+            <field name="model" search="[('model', '=', 'product.price_list')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_list1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'product.price_list')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_product_list"/>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_form">
+            <field name="model">product.price_list.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Price List Line">
+                    <label name="price_list"/>
+                    <field name="price_list"/>
+                    <newline/>
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <newline/>
+                    <label name="formula"/>
+                    <field name="formula" colspan="3"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_tree">
+            <field name="model">product.price_list.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Price List Lines">
+                    <field name="price_list"/>
+                    <field name="sequence"/>
+                    <field name="product"/>
+                    <field name="quantity"/>
+                    <field name="formula"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_tree_sequence">
+            <field name="model">product.price_list.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Price List Lines" sequence="sequence">
+                    <field name="product"/>
+                    <field name="quantity"/>
+                    <field name="formula"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_price_list_line">
+            <field name="model" search="[('model', '=', 'product.price_list.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_price_list_line_admin">
+            <field name="model" search="[('model', '=', 'product.price_list.line')]"/>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

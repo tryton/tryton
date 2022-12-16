@@ -1,0 +1,99 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not delete invoice lines that comes from a purchase!"
+msgstr "¡No puede borrar líneas que vienen de una compra!"
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr "Líneas de factura ignoradas"
+
+msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:purchase.purchase-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.purchase-account.invoice.line,line:"
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+msgctxt "field:purchase.purchase-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.purchase-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:purchase.purchase-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:purchase.purchase-account.invoice.line,name:"
+msgid "Purchase - Invoice Line"
+msgstr "Compra - Línea de factura"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Compra - Línea de factura ignorada"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Aceptar"

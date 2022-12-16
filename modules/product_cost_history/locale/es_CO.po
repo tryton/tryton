@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product.cost_history,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de Costo"
+
+msgctxt "field:product.product.cost_history,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.product.cost_history,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.product.cost_history,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:product.product.cost_history,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.product.cost_history,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.product.cost_history,template:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.product.cost_history,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.product.cost_history,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "model:ir.action,name:act_product_cost_history_form"
+msgid "Product Cost History"
+msgstr "Historico de Costos de Productos"
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "Historico de Costos"
+
+msgctxt "model:product.product.cost_history,name:"
+msgid "History of Product Cost"
+msgstr "Historico de Costos de Productos"
+
+msgctxt "view:product.product.cost_history:"
+msgid "Product Cost History"
+msgstr "Historico de Costos de Productos"
