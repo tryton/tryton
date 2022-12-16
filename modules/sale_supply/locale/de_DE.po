@@ -1,0 +1,31 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Lieferung bei Verkauf"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Bestellvorschlag"
+
+msgctxt "field:sale.line,purchase_request_state:"
+msgid "Purchase Request State"
+msgstr "Bestellvorschlag Status"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Cancel"
+msgstr "Annulliert"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Purchased"
+msgstr "Auftrag erteilt"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Requested"
+msgstr "Angefragt"
