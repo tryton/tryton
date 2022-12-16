@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "groepen (sets)"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Attribuut"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "groep (set)"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "attributen"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Attribute Set"
+msgstr "Set attributen"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "attributen"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Attribute Set"
+msgstr "Set attributen"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "voet sets toe aan attributen."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Voeg attributen toe aan de set."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "De hoofdidentificatie van de attributenset."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecteer een set kenmerken die u op de varianten wilt toepassen."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Voeg attributen toe aan de variant."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecteer een set kenmerken die u op de varianten wilt toepassen."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "attributen"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Attribuutsets"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "attributen"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Attribuutsets"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Productkenmerk"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Productkenmerk - Set"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Productkenmerk Set"
+
+msgctxt "view:product.template:"
+msgid "Attributes"
+msgstr "attributen"
