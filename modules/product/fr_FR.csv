@@ -1,0 +1,161 @@
+type,name,res_id,src,value,fuzzy
+error,product.category,0,You can not create recursive categories!,Vous ne pouvez pas créer des catégories récursives !,1
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait l'objet de mouvements de stock,0
+error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une nouvelle.",0
+error,product.uom,0,Invalid Factor and Rate values!,valeurs de facteur et de taux invalides !,0
+error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuvent pas être égaux à zéro.,0
+error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité de mesure.",0
+field,"product.category,childs",0,Children,Enfants,0
+field,"product.category,name",0,Name,Nom,0
+field,"product.category,parent",0,Parent,Parent,0
+field,"product.category,rec_name",0,Name,Nom,0
+field,"product.product,code",0,Code,Code,0
+field,"product.product,description",0,Description,Description,0
+field,"product.product,rec_name",0,Name,Nom,0
+field,"product.product,template",0,Product Template,Modèle produit,0
+field,"product.template,active",0,Active,Actif,0
+field,"product.template,category",0,Category,Catégorie,0
+field,"product.template,cost_price",0,Cost Price,Prix de revient,0
+field,"product.template,cost_price_method",0,Cost Method,Méthode de coût,0
+field,"product.template,cost_price_uom",0,Cost Price,Prix de revient,0
+field,"product.template,default_uom",0,Default UOM,UDM par défaut,0
+field,"product.template,list_price",0,List Price,Prix listé,0
+field,"product.template,list_price_uom",0,List Price,Prix listé,0
+field,"product.template,name",0,Name,Nom,0
+field,"product.template,products",0,Products,Produits,0
+field,"product.template,rec_name",0,Name,Nom,0
+field,"product.template,type",0,Type,Type,0
+field,"product.uom,active",0,Active,Actif,0
+field,"product.uom,category",0,UOM Category,Catégorie d'UDM,0
+field,"product.uom,digits",0,Display Digits,Décimales affichées,0
+field,"product.uom,factor",0,Factor,Facteur,0
+field,"product.uom,name",0,Name,Nom,0
+field,"product.uom,rate",0,Rate,Taux,0
+field,"product.uom,rec_name",0,Name,Nom,0
+field,"product.uom,rounding",0,Rounding Precision,Précision d'arrondi,0
+field,"product.uom,symbol",0,Symbol,Symbole,0
+field,"product.uom.category,name",0,Name,Nom,0
+field,"product.uom.category,rec_name",0,Name,Nom,0
+field,"product.uom.category,uoms",0,Unit of Measures,Unité de mesure,0
+help,"product.uom,factor",0,"The coefficient for the formula:
+coef (base unit) = 1 (this unit)","Le coefficient pour la formule:
+coef (unité de base) = 1 (cette unité)",0
+help,"product.uom,rate",0,"The coefficient for the formula:
+1 (base unit) = coef (this unit)","Le coefficient pour la formule:
+1 (unité de base) = coef (cette unité)",0
+model,"ir.action,name",act_category_form,Product Categories,Catégories de produit,0
+model,"ir.action,name",act_category_list,Categories,Catégories,1
+model,"ir.action,name",act_category_tree,Categories,Catégories,0
+model,"ir.action,name",act_product_by_category,Product by Category,Produits par catégories,0
+model,"ir.action,name",act_product_form,Products,Produits,0
+model,"ir.action,name",act_product_form2,Products,Produits,0
+model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Catégories d'unité de mesure,0
+model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Catégories d'Unité de mesure,0
+model,"ir.action,name",act_uom_form,Units of Measure,Unités de mesure,0
+model,"ir.action,name",act_uom_form2,Units of Measure,Unités de mesure,0
+model,"ir.ui.menu,name",menu_category_form_new,New Category,Nouvelle catégorie,0
+model,"ir.ui.menu,name",menu_category_list,Categories,Catégories,1
+model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
+model,"ir.ui.menu,name",menu_main_product,Product,Produit,0
+model,"ir.ui.menu,name",menu_product_product,Products,Produits,0
+model,"ir.ui.menu,name",menu_product_product_new,New Product,Nouveau produit,0
+model,"ir.ui.menu,name",menu_uom_category_form,Categories,Catégories,0
+model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Nouvelle catégorie,0
+model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Unités de mesure,0
+model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nouvelle unité de mesure,0
+model,"product.category,name",0,Product Category,Catégorie de produit,0
+model,"product.product,name",0,Product,Produit,0
+model,"product.template,name",0,Product Template,Modèle produit,0
+model,"product.uom,name",0,Unit of measure,Unité de mesure,0
+model,"product.uom,name",uom_are,Are,Are,0
+model,"product.uom,name",uom_carat,Carat,Carat,0
+model,"product.uom,name",uom_centimeter,centimeter,Centimètre,0
+model,"product.uom,name",uom_cubic_centimeter,Cubic centimeter,Centimètre cube,0
+model,"product.uom,name",uom_cubic_foot,Cubic foot,Pied cubique,0
+model,"product.uom,name",uom_cubic_inch,Cubic inch,Pouce cubique,0
+model,"product.uom,name",uom_cubic_meter,Cubic meter,Mètre cube,0
+model,"product.uom,name",uom_day,Day,Jour,0
+model,"product.uom,name",uom_foot,Foot,Pied,0
+model,"product.uom,name",uom_gallon,Gallon,Gallon,0
+model,"product.uom,name",uom_gram,Gram,Gram,0
+model,"product.uom,name",uom_hectare,Hectare,Hectare,0
+model,"product.uom,name",uom_hour,Hour,Heure,0
+model,"product.uom,name",uom_inch,Inch,Pouce,0
+model,"product.uom,name",uom_kilogram,Kilogram,Kilogramme,0
+model,"product.uom,name",uom_kilometer,Kilometer,Kilomètre,0
+model,"product.uom,name",uom_liter,Liter,Litre,0
+model,"product.uom,name",uom_meter,Meter,Mètre,0
+model,"product.uom,name",uom_mile,Mile,Mille,0
+model,"product.uom,name",uom_millimeter,Millimeter,Millimètre,0
+model,"product.uom,name",uom_minute,Minute,Minute,0
+model,"product.uom,name",uom_ounce,Ounce,Once,0
+model,"product.uom,name",uom_pound,Pound,Livre,0
+model,"product.uom,name",uom_second,Second,Seconde,0
+model,"product.uom,name",uom_square_centimeter,Square centimeter,Centimètre carré,0
+model,"product.uom,name",uom_square_foot,Square foot,Pied carré,0
+model,"product.uom,name",uom_square_inch,Square inch,Pouce carré,0
+model,"product.uom,name",uom_square_meter,Square meter,Mètre carré,0
+model,"product.uom,name",uom_square_yard,Square yard,Yard carré,0
+model,"product.uom,name",uom_unit,Unit,Unité,0
+model,"product.uom,name",uom_work_day,Work Day,Jour de travail,0
+model,"product.uom,name",uom_yard,Yard,Yard,0
+model,"product.uom,symbol",uom_are,a,un,0
+model,"product.uom,symbol",uom_carat,c,c,0
+model,"product.uom,symbol",uom_centimeter,cm,cm,0
+model,"product.uom,symbol",uom_cubic_centimeter,cm³,cm ³,0
+model,"product.uom,symbol",uom_cubic_foot,ft³,ft ³,0
+model,"product.uom,symbol",uom_cubic_inch,in³,in ³,0
+model,"product.uom,symbol",uom_cubic_meter,m³,m³,0
+model,"product.uom,symbol",uom_day,d,d,0
+model,"product.uom,symbol",uom_foot,ft,p,0
+model,"product.uom,symbol",uom_gallon,gal,gal,0
+model,"product.uom,symbol",uom_gram,g,g,0
+model,"product.uom,symbol",uom_hectare,ha,ha,0
+model,"product.uom,symbol",uom_hour,h,h,0
+model,"product.uom,symbol",uom_inch,in,in,0
+model,"product.uom,symbol",uom_kilogram,kg,kg,0
+model,"product.uom,symbol",uom_kilometer,km,km,0
+model,"product.uom,symbol",uom_liter,l,l,0
+model,"product.uom,symbol",uom_meter,m,m,0
+model,"product.uom,symbol",uom_mile,mi,mi,0
+model,"product.uom,symbol",uom_millimeter,mm,mm,0
+model,"product.uom,symbol",uom_minute,min,min,0
+model,"product.uom,symbol",uom_ounce,oz,oz,0
+model,"product.uom,symbol",uom_pound,lbs,lbs,0
+model,"product.uom,symbol",uom_second,s,s,0
+model,"product.uom,symbol",uom_square_centimeter,cm²,cm ²,0
+model,"product.uom,symbol",uom_square_foot,ft²,pi ²,0
+model,"product.uom,symbol",uom_square_inch,in²,in ²,0
+model,"product.uom,symbol",uom_square_meter,m²,m²,0
+model,"product.uom,symbol",uom_square_yard,yd²,yd ²,0
+model,"product.uom,symbol",uom_unit,u,u,0
+model,"product.uom,symbol",uom_work_day,wd,wd,0
+model,"product.uom,symbol",uom_yard,yd,yd,0
+model,"product.uom.category,name",0,Product uom category,Catégorie d'UDM de produit,0
+model,"product.uom.category,name",uom_cat_length,Length,Longueur,0
+model,"product.uom.category,name",uom_cat_surface,Surface,Surface,0
+model,"product.uom.category,name",uom_cat_time,Time,Heure,0
+model,"product.uom.category,name",uom_cat_unit,Units,Unités,0
+model,"product.uom.category,name",uom_cat_volume,Volume,Volume,0
+model,"product.uom.category,name",uom_cat_weight,Weight,Poids,0
+model,"res.group,name",group_product_admin,Product Administration,Administration de produits,0
+selection,"product.template,cost_price_method",0,Average,Moyen,0
+selection,"product.template,cost_price_method",0,Fixed,Fixe,0
+selection,"product.template,type",0,Consumable,Consommable,0
+selection,"product.template,type",0,Service,Service,0
+selection,"product.template,type",0,Stockable,Stockable,0
+view,product.category,0,Children,Enfants,0
+view,product.category,0,Product Categories,Catégories de produit,0
+view,product.category,0,Product Category,Catégorie de produit,0
+view,product.category,0,Properties,Propriétés,0
+view,product.product,0,General,Général,0
+view,product.product,0,Product,Produit,0
+view,product.product,0,Products,Produits,0
+view,product.product,0,Properties,Propriétés,0
+view,product.template,0,General,Général,0
+view,product.template,0,Product Template,Modèle produit,0
+view,product.template,0,Product Templates,Modèles de produit,0
+view,product.uom,0,Unit of Measure,Unité de mesure,0
+view,product.uom,0,Units of Measure,Unités de mesure,0
+view,product.uom.category,0,Categories of Unit of Measure,Catégories d'Unité de mesure,0
+view,product.uom.category,0,Category of Unit of Measure,Catégorie d'unité de mesure,0
