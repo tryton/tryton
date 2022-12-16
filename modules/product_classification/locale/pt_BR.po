@@ -1,0 +1,129 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,active:"
+msgid "Active"
+msgstr "Ativo"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuário de Criação"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_date:"
+msgid "Write Date"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "field:product.classification.dummy,write_uid:"
+msgid "Write User"
+msgstr "Gravado por"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,active:"
+msgid "Active"
+msgstr "Ativo"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Filhos"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,create_uid:"
+msgid "Create User"
+msgstr "Usuário de Criação"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Parente"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_date:"
+msgid "Write Date"
+msgstr "Editado por"
+
+#, fuzzy
+msgctxt "field:product.classification_tree.dummy,write_uid:"
+msgid "Write User"
+msgstr "Gravado por"
+
+#, fuzzy
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Classificação"
+
+#, fuzzy
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Classificação"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Classificação"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr ""
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.classification.dummy:"
+msgid "Classification"
+msgstr "Classificação"
