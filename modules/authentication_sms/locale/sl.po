@@ -1,0 +1,67 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user.login.sms_code:"
+msgid "%(name)s code %(code)s"
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "Wrong mobile."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user,mobile:"
+msgid "Mobile"
+msgstr "Mobilni"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,code:"
+msgid "Code"
+msgstr "Šifra"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.login.sms_code,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,user:"
+msgid "User"
+msgstr "Uporabnik"
+
+msgctxt "field:res.user.login.sms_code,user_id:"
+msgid "User ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:res.user.login.sms_code,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "help:res.user,mobile:"
+msgid "Phone number that supports receiving SMS"
+msgstr ""
+
+msgctxt "model:res.user.login.sms_code,name:"
+msgid "SMS Code"
+msgstr ""
