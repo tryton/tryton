@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='children']" position="after">
+        <page string="Plan" id="plan">
+            <label name="constraint_start_date"/>
+            <field name="constraint_start_date"/>
+            <label name="constraint_finish_date"/>
+            <field name="constraint_finish_date"/>
+            <label name="early_start_date"/>
+            <field name="early_start_date"/>
+            <label name="early_finish_date"/>
+            <field name="early_finish_date"/>
+            <label name="late_start_date"/>
+            <field name="late_start_date"/>
+            <label name="late_finish_date"/>
+            <field name="late_finish_date"/>
+            <label name="actual_start_date"/>
+            <field name="actual_start_date"/>
+            <label name="actual_finish_date"/>
+            <field name="actual_finish_date"/>
+            <label name="duration"/>
+            <field name="duration" widget="float_time" float_time="company_work_time"/>
+            <newline/>
+            <field name="predecessors" colspan="2"/>
+            <field name="successors" colspan="2"/>
+        </page>
+        <page string="Allocations" id="allocations"
+            states="{'invisible': Not(Equal(Eval('type'), 'task'))}" >
+            <field name="allocations" colspan="4"/>
+        </page>
+        <page string="Requests" id="requests">
+            <field name="requests"/>
+        </page>
+    </xpath>
+</data>
