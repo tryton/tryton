@@ -1,0 +1,637 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "Veiksmas"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr ""
+
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr "Eksportas"
+
+#, fuzzy
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr "Eksportas"
+
+#, fuzzy
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "Mygtukas"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "Taisyklė grupei"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "Numeruotės tipas"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "Meniu"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Mygtukai"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "Lauko prieiga"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "Meniu prieiga"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "Modelio prieiga"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "Taisyklės"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "Naudotojai"
+
+#, fuzzy
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "Veiksmai"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "Programos"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "El.paštas"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "Kalba"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "Rašymo kryptis"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "Registracijos vardas"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "Meniu veiksmas"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "Vardas"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "Slaptažodis"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Slaptažodžio santrauka"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "Iš naujo nustatyti slaptažodį"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "Atstatyto slaptažodžio galiojimo trukmė"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "PySON meniu"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "Sesijos"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "Parašas"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "Būsenos juosta"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "Perspėjimai"
+
+#, fuzzy
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "Veiksmai"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "Grupės"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "Programa"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Raktas"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "Būsena"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Registracijos vardas"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "IP adresas"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "IP tinklas"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "Registracija"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "Visada"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr "Naudotojo grupės galinčios naudoti eksportavimą."
+
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr "Naudotojo grupės galinčios keisti eksportavimą."
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr "Grupės galinčios keisti šio tipo numeruotes."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login."
+msgstr "Veiksmai, kurie bus atliekami registruojantis."
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "Naudotojų valdymas"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Naudotojai"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Atstatyti slaptažodį"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "Veiksmai - Grupės"
+
+msgctxt "model:ir.export-res.group,name:"
+msgid "Export Group"
+msgstr "Galinčių eksportuoti grupė"
+
+msgctxt "model:ir.export-write-res.group,name:"
+msgid "Export Modification Group"
+msgstr "Galinčių taisyti eksportavimą grupė"
+
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "Slaptažodis negali būti toks pat, kaip naudotojo el.pašto adresas."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "Tas pats simbolis slaptažodyje pasikartoja per dažnai."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "Slaptažodis neleidžiamas."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "Slaptažodis per trumpas."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "Slaptažodis negali būti toks pats kaip naudotojo vardas."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "Slaptažodis negali būti toks pats kaip naudotojo prisijungimo vardas."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"Dėl duomenų registravimo naudotojas negali būti ištrintas, vietoj to jis "
+"turi būti išjungtas."
+
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr ""
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Siųsti naudotojui el.laišku naują laikiną slaptažodį"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Patvirtinti"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Atstatyti slaptažodį"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "Modelio mygtukas - Grupė"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_any"
+msgid "Any export"
+msgstr "Bet koks eksportavimas"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
+msgid "Any export"
+msgstr "Bet koks eksportavimas"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
+msgid "User in modification groups"
+msgstr "Naudotojo grupės su taisymo teise"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_export_read"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_write"
+msgid "User in modification groups"
+msgstr "Naudotojo grupės su taisymo teise"
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr "Naudotojo grupės"
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr "Bet kuri naudotojo programa"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "Grupės taisyklė - grupė"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "Numeruotės tipas - grupė"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Grupės"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Naudotojai"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Naudotojai"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "Naudotojo meniu - grupė"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "Grupė"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "Valdymas"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "Naudotojas - Veiksmas"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "Naudotojas - Grupė"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "Naudotojo taikomoji programa"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr ""
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "Bandymas prisijungti"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "Perspėjimai naudotojui"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Atstatyti slaptažodį"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "Slaptažodžio galiojimas baigsis"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Pabaigta"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Užklausta"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Patvirtinta"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "Prieigos leidimai"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "Nariai"
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique."
+msgstr "Įsitikinkite, kad prisijungimo vardas yra unikalus."
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "Galite pridėti sistemos naudotojus."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "Prieigos leidimai"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "Veiksmai"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "Priklauso grupei"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "Nustatymai"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "Naudotojas"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "Gerai"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "Pridėti"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "Pabaigti"
