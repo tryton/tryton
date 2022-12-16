@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Locații Implicite"
+
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Locații Implicite"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Locație de Depozitare"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr "Varianta"
+
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Depozit"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Locația Produs"
