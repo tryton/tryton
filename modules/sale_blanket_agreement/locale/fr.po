@@ -1,0 +1,265 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.blanket_agreement,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.blanket_agreement,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.blanket_agreement,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.blanket_agreement,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.blanket_agreement,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:sale.blanket_agreement,from_date:"
+msgid "From Date"
+msgstr "Date de début"
+
+msgctxt "field:sale.blanket_agreement,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:sale.blanket_agreement,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:sale.blanket_agreement,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:sale.blanket_agreement,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:sale.blanket_agreement,to_date:"
+msgid "To Date"
+msgstr "Date de fin"
+
+msgctxt "field:sale.blanket_agreement.create_sale.start,blanket_agreement:"
+msgid "Agreement"
+msgstr "Contrat"
+
+msgctxt "field:sale.blanket_agreement.create_sale.start,lines:"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:sale.blanket_agreement.line,agreement_state:"
+msgid "Agreement State"
+msgstr "État du contrat"
+
+msgctxt "field:sale.blanket_agreement.line,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:sale.blanket_agreement.line,blanket_agreement:"
+msgid "Blanket Agreement"
+msgstr "Contrat-cadre"
+
+msgctxt "field:sale.blanket_agreement.line,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:sale.blanket_agreement.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:sale.blanket_agreement.line,processed_quantity:"
+msgid "Processed quantity"
+msgstr "Quantité traitée"
+
+msgctxt "field:sale.blanket_agreement.line,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:sale.blanket_agreement.line,product_uom_category:"
+msgid "Product UOM Category"
+msgstr "Catégorie d'UdM de produit"
+
+msgctxt "field:sale.blanket_agreement.line,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:sale.blanket_agreement.line,remaining_quantity:"
+msgid "Remaining quantity"
+msgstr "Quantité restante"
+
+msgctxt "field:sale.blanket_agreement.line,sale_lines:"
+msgid "Sale Lines"
+msgstr "Lignes de vente"
+
+msgctxt "field:sale.blanket_agreement.line,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:sale.blanket_agreement.line,unit_price:"
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+msgctxt "field:sale.configuration,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Séquence de contrat-cadre"
+
+msgctxt "field:sale.configuration.sequence,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Séquence de contrat-cadre"
+
+msgctxt "field:sale.line,blanket_agreement_line:"
+msgid "Blanket Agreement Line"
+msgstr "Ligne de contrat-cadre"
+
+msgctxt "field:sale.sale,blanket_agreements:"
+msgid "Blanket Agreements"
+msgstr "Contrats-cadres"
+
+msgctxt "model:ir.action,name:act_sale_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Contrats-cadres"
+
+msgctxt "model:ir.action,name:act_sale_form_blanket_agreement"
+msgid "Sales"
+msgstr "Ventes"
+
+msgctxt "model:ir.action,name:act_sale_line_form_blanket_agreement"
+msgid "Sale Lines"
+msgstr "Lignes de vente"
+
+msgctxt "model:ir.action,name:sale_blanket_agreement_create_sale_wizard"
+msgid "Create a Sale"
+msgstr "Créer une vente"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_blanket_agreement_domain_running"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "model:ir.message,text:msg_agreement_closed_remaining_quantity"
+msgid ""
+"The agreement \"%(agreement)s\" to be closed has still remaining quantities."
+msgstr ""
+"Le contrat « %(agreement)s » à clôturer a encore des quantités restantes."
+
+msgctxt "model:ir.message,text:msg_agreement_line_incompatible_unit"
+msgid ""
+"To change the unit of agreement line \"%(line)s\", you must choose one "
+"compatible with the existing sale lines."
+msgstr ""
+"Pour changer l'unité de la ligne contrat « %(line)s », vous devez en choisir"
+" une compatible avec les lignes de vente existantes."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_remaining"
+msgid ""
+"The quantity of line \"%(line)s\" is greater than the remaining quantity "
+"(%(remaining)s) of agreement \"%(agreement)s\"."
+msgstr ""
+"La quantité de la ligne « %(line)s » est supérieure à la quantité restante "
+"(%(remaining)s) du contrat « %(agreement)s »."
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_close_button"
+msgid "Close"
+msgstr "Clôturer"
+
+msgctxt ""
+"model:ir.model.button,string:sale_blanket_agreement_create_sale_button"
+msgid "Create a sale"
+msgstr "Créer une vente"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.model.button,string:sale_blanket_agreement_run_button"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_blanket_agreement_companies"
+msgid "Sales Blanket Agreement"
+msgstr "Contrat-cadre de ventes"
+
+msgctxt "model:ir.sequence,name:sequence_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Contrat-cadre de vente"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Contrat-cadre de vente"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Contrats-cadres"
+
+msgctxt "model:res.group,name:group_sale_blanket_agreement"
+msgid "Sale Blanket Agreement"
+msgstr "Contrat-cadre de vente"
+
+msgctxt "model:sale.blanket_agreement,name:"
+msgid "Sale Blanket Agreement"
+msgstr "Contrat-cadre de vente"
+
+msgctxt "model:sale.blanket_agreement.create_sale.start,name:"
+msgid "Create Sale"
+msgstr "Créer une vente"
+
+msgctxt "model:sale.blanket_agreement.line,name:"
+msgid "Sale Blanket Agreement Line"
+msgstr "Ligne de contrat-cadre de vente"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Cancelled"
+msgstr "Annulés"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Closed"
+msgstr "Clôturés"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:sale.blanket_agreement,state:"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "view:sale.blanket_agreement.line:"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:sale.blanket_agreement:"
+msgid "Agreement"
+msgstr "Contrat"
+
+msgctxt "view:sale.blanket_agreement:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "wizard_button:sale.blanket_agreement.create_sale,start,create_sale:"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:sale.blanket_agreement.create_sale,start,end:"
+msgid "Cancel"
+msgstr "Annuler"

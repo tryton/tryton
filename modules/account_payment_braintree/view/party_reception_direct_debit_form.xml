@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='currency']" position="after">
+            <label name="braintree_customer" string="Customer:"/>
+            <field name="braintree_customer" colspan="3"/>
+
+            <label name="braintree_customer_method_selection" string="Payment Method:"/>
+            <field name="braintree_customer_method_selection" colspan="3"/>
+
+            <field name="braintree_customer_method" colspan="4" invisible="1"/>
+    </xpath>
+</data>
+
