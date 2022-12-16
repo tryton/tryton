@@ -1,0 +1,387 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.configuration,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr "Secuencia de lote por defecto"
+
+msgctxt ""
+"field:product.configuration.default_lot_sequence,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr "Secuencia de lote por defecto"
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Lote obligatorio"
+
+msgctxt "field:product.product,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "Secuencia de lote"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Lote obligatorio"
+
+msgctxt "field:product.template,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "Secuencia de lote"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.lot,default_uom:"
+msgid "Default UOM"
+msgstr "UdM por defecto"
+
+msgctxt "field:stock.lot,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Decimales de unidad por defecto"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Cantidad prevista"
+
+msgctxt "field:stock.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr "Tiene secuencia"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_locations,default_uom:"
+msgid "Default UOM"
+msgstr "UdM por defecto"
+
+msgctxt "field:stock.lots_by_locations,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Decimales de la UdM por defecto"
+
+msgctxt "field:stock.lots_by_locations,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Cantidad prevista"
+
+msgctxt "field:stock.lots_by_locations,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.lots_by_locations,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.lots_by_locations,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "Ubicaciones"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "Duplicate Lot Number"
+msgstr "Duplicar número de lote"
+
+msgctxt "field:stock.move.add.lots.start,lots:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "field:stock.move.add.lots.start,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.move.add.lots.start,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.move.add.lots.start,quantity_remaining:"
+msgid "Quantity Remaining"
+msgstr "Cantidad restante"
+
+msgctxt "field:stock.move.add.lots.start,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr "Tiene secuencia"
+
+msgctxt "field:stock.move.add.lots.start.lot,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:stock.move.add.lots.start.lot,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:stock.move.add.lots.start.lot,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.move.add.lots.start.lot,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "Lote precalculado"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Cantidad interna"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "El tipo de ubicación en la que el lote es obligatorio."
+
+msgctxt "help:product.product,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr "La secuencia usada para numerar automáticamente los lotes."
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr "El tipo de ubicación en la que el lote es obligatorio."
+
+msgctxt "help:product.template,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr "La secuencia usada para numerar automáticamente los lotes."
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permite calcular las cantidades previstas para esta fecha.\n"
+"* Un valor vacío es una fecha infinita en el futuro.\n"
+"* Una fecha en el pasado proporcionará valores históricos."
+
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permite calcular las cantidades previstas para esta fecha.\n"
+"* Un valor vacío es una fecha infinita en el futuro.\n"
+"* Una fecha en el pasado proporcionará valores históricos."
+
+msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "The number of times the lot must be duplicated."
+msgstr "El número de veces que el lote debe ser duplicado."
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Cantidad por ubicaciones (listado)"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Cantidad por ubicaciones"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:ir.action,name:act_lots_by_locations_relate"
+msgid "Lots by Locations"
+msgstr "Lotes por ubicación"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
+msgid "Lots By Warehouse"
+msgstr "Lotes por almacén"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Movimientos"
+
+msgctxt "model:ir.action,name:wizard_move_add_lots"
+msgid "Add Lots"
+msgstr "Añadir lotes"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"No puede cambiar el producto de un lote que ya tiene movimientos de "
+"existencias."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr "Para mover el producto \"%(product)s\" debe especificar su lote."
+
+msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
+msgid ""
+"The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
+"equal to the quantity \"%(move_quantity)s\" of the move."
+msgstr ""
+"La cantidad total \"%(lot_quantity)s\" de los lotes debe ser menor o igual "
+"que la cantidad \"%(move_quantity)s\" del movimiento."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr "Debe seleccionar un lote en lugar de un producto en \"%(product)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
+msgid "Duplicate Lot"
+msgstr "Duplicar lote"
+
+msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
+msgid "Add Lots"
+msgstr "Añadir lotes"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
+msgid "Stock Lot"
+msgstr "Lote"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:product.configuration.default_lot_sequence,name:"
+msgid "Product Configuration Default Lot Sequence"
+msgstr "Configuración de las secuencias de lotes"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Lote"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr "Lote por ubicación"
+
+msgctxt "model:stock.lots_by_locations,name:"
+msgid "Lots by Locations"
+msgstr "Lotes por ubicación"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr "Lote por almacén"
+
+msgctxt "model:stock.move.add.lots.start,name:"
+msgid "Add Lots"
+msgstr "Añadir lotes"
+
+msgctxt "model:stock.move.add.lots.start.lot,name:"
+msgid "Add Lots"
+msgstr "Añadir lotes"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr "Período de existencias precalculado por lote"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdido y encontrado"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "Interno"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdido y encontrado"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Producción"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "Interno"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "Remaining:"
+msgstr "Restante:"
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "times"
+msgstr "veces"
+
+msgctxt "wizard_button:stock.move.add.lots,start,add:"
+msgid "Add"
+msgstr "Añadir"
+
+msgctxt "wizard_button:stock.move.add.lots,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
