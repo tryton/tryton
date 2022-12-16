@@ -1,0 +1,128 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "货币代码"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "有效数字位数"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "数字编号"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "当日汇率"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "汇率"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "舍入系数"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "符号"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "汇率"
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "三字符 ISO 货币代码."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "小数点后要显示的位数."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "当前货币的主标识符."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "三字符 ISO 货币代码."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "为货币添加浮动汇率."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "可以用这种货币表示的最低金额."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "用于货币格式化的符号."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "适用汇率的货币."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "从费率适用时开始."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "用于转换货币的浮动汇率."
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "当日汇率"
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "货币"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "货币汇率必须为正数."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "按日期，一种货币只能有一个汇率."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr "按日期 \"%(date)s\"， 没有发现货币 \"%(currency)s\" 对应的汇率."
+
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currency"
+msgstr "Currency"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "货币"
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "货币管理"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "汇率"

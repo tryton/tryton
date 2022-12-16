@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Einkaufspositionen"
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr "Dienstleistung"
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr "Service des Lieferanten"
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr "Positionen die zu den Produktionskosten addiert werden."
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr "Der Lieferant zu dem die Produktion ausgelagert wird."
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr "Die zu beschaffende Menge, um die Stückliste einmal zu produzieren."
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr "Die vom Lieferanten zu beziehende Dienstleistung für die Produktion."
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr "Die vom Lieferanten zu beziehende Dienstleistung für die Produktion."
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr "Zu den Produktionskosten hinzufügen."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"Die Produktionsaufträge \"%(productions)s\" können nicht ausgeführt werden, "
+"weil zugehörige Einkäufe noch nicht erledigt sind."
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr "Lieferant"
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr "Produktion"

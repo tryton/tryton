@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_party_code_unique">
+            <field name="text">The code on party must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_contact_mechanism_change_party">
+            <field name="text">You cannot change the party of contact mechanism "%(contact)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_phone_number">
+            <field name="text">The phone number "%(phone)s" for party "%(party)s" is not valid.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_code">
+            <field name="text">The %(type)s "%(code)s" for party "%(party)s" is not valid.</field>
+        </record>
+        <record model="ir.message" id="msg_vies_unavailable">
+            <field name="text">The VIES service is unavailable, try again later.</field>
+        </record>
+        <record model="ir.message" id="msg_different_name">
+            <field name="text">Parties have different names: "%(source_name)s" vs "%(destination_name)s".</field>
+        </record>
+        <record model="ir.message" id="msg_different_tax_identifier">
+            <field name="text">Parties have different tax identifiers: "%(source_code)s" vs "%(destination_code)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_active_party">
+            <field name="text">Party "%(party)s" cannot be erased because they are still active.</field>
+        </record>
+        <record model="ir.message" id="msg_address_change_party">
+            <field name="text">You cannot change the party of address "%(address)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_format">
+            <field name="text">Invalid format "%(format)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_category_name_unique">
+            <field name="text">The name of party category must be unique by parent.</field>
+        </record>
+        <record model="ir.message" id="msg_address_subdivision_country_code_unique">
+            <field name="text">The country code on subdivision type must be unique.</field>
+        </record>
+    </data>
+</tryton>
