@@ -1,0 +1,33 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Alapértelmezett raktár hely"
+
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Alapértelmezett raktár hely"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Raktár helye"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Raktár"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Termék raktárhelye"
