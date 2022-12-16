@@ -1,0 +1,207 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.allocation:"
+msgid "Percentage must be greater than zero"
+msgstr ""
+
+msgctxt "error:project.work:"
+msgid "You can not create recursive dependencies!"
+msgstr "Не може да създавате взаимно вложени зависимости!"
+
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Служител"
+
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Процент"
+
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Задача"
+
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Предшественик"
+
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Наследник"
+
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Действително завършване"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Време на действително завършване"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Действително започване"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Време на действително започване"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Разпределения"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Изравняване на закъснение"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Ограничение за край"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint  Finish Time"
+msgstr "Ограничение за време на завършване"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Ограничение за начало"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Ограничение за начално време"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Продължителност"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "По-рано завършване"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Време на по-рано приключване"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "По-рано начало"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "По-ранно време на започване"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "По-късно завършване"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Време на по-късно завършване"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "По-късно начало "
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Време на по-късно начало"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Изравняване на закъснение"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Предшественици"
+
+msgctxt "field:project.work,requests:"
+msgid "Requests"
+msgstr "Заявки"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Наследници"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Изравняване на задачи"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Разпределние"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Предшественик - Наследник"
+
+msgctxt "model:res.request.link,name:request_link_work"
+msgid "Work"
+msgstr "Задача"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Разпределение"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Разпределения"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Разпределения"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "План"
+
+msgctxt "view:project.work:"
+msgid "Requests"
+msgstr "Заявки"
