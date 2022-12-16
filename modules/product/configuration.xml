@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_configuration_view_form">
+            <field name="model">product.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_product_configuration_form">
+            <field name="name">Product Configuration</field>
+            <field name="res_model">product.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_configuration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_configuration_view_form"/>
+            <field name="act_window" ref="act_product_configuration_form"/>
+        </record>
+        <menuitem parent="menu_configuration"
+            action="act_product_configuration_form"
+            id="menu_product_configuration" sequence="0" icon="tryton-list"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_product_configuration_group_product_admin">
+            <field name="menu" ref="menu_product_configuration"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_configuration">
+            <field name="model" search="[('model', '=', 'product.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_configuration_product_admin">
+            <field name="model" search="[('model', '=', 'product.configuration')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="product.configuration.default_cost_price_method"
+            id="cost_price_method">
+            <field name="default_cost_price_method">fixed</field>
+        </record>
+    </data>
+</tryton>

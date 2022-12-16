@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="string"/>
+    <field name="string"/>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="type_"/>
+    <field name="type_"/>
+    <label name="digits"/>
+    <field name="digits"/>
+    <label name="help" yalign="0"/>
+    <field name="help" colspan="3" yexpand="0" height="80"/>
+    <label name="selection" yalign="0"/>
+    <field name="selection" yexpand="0" height="80"/>
+    <label name="selection_sorted" yalign="0"/>
+    <field name="selection_sorted" yalign="0"/>
+</form>
