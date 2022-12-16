@@ -1,0 +1,89 @@
+type,name,res_id,src,value,fuzzy
+error,workflow,0,No workflow defined!,Не е зададен работен процес!,0
+error,workflow.instance,0,No workflow instance defined!,Не е зададен екземпляр на работен процес!,0
+field,"workflow,activities",0,Activities,Дейности,0
+field,"workflow,model",0,Resource Model,Модел на ресурс,0
+field,"workflow,name",0,Name,Име,0
+field,"workflow,on_create",0,On Create,При създаване,0
+field,"workflow,rec_name",0,Name,Име,0
+field,"workflow.activity,action",0,Action,Действие,0
+field,"workflow.activity,flow_start",0,Flow Start,Стартиране на процес,0
+field,"workflow.activity,flow_stop",0,Flow Stop,Спиране на процес,0
+field,"workflow.activity,in_transitions",0,Incoming transitions,Входящи преходи,0
+field,"workflow.activity,join_mode",0,Join Mode,Режим на свързаване,0
+field,"workflow.activity,kind",0,Kind,Вид,0
+field,"workflow.activity,name",0,Name,Име,0
+field,"workflow.activity,out_transitions",0,Outgoing transitions,Изходящи преходи,0
+field,"workflow.activity,rec_name",0,Name,Име,0
+field,"workflow.activity,signal_send",0,Signal (subflow.*),Сигнал (subflow.*),0
+field,"workflow.activity,split_mode",0,Split Mode,Режим на разделяне,0
+field,"workflow.activity,subflow",0,Subflow,Подпоток,0
+field,"workflow.activity,workflow",0,Workflow,Работен процес,0
+field,"workflow.instance,overflows",0,Overflow,Препълване,0
+field,"workflow.instance,rec_name",0,Name,Име,0
+field,"workflow.instance,res_id",0,Resource ID,ID на ресурс,0
+field,"workflow.instance,res_type",0,Resource Model,Модел на ресурс,0
+field,"workflow.instance,state",0,State,Състояние,0
+field,"workflow.instance,transitions",0,Transitions,Преходи,0
+field,"workflow.instance,uid",0,User ID,Потребителско ID,0
+field,"workflow.instance,workflow",0,Workflow,Работен процес,0
+field,"workflow.instance,workitems",0,Workitems,Задачи,0
+field,"workflow.transition,act_from",0,Source Activity,Източник на действие,0
+field,"workflow.transition,act_to",0,Destination Activity,Активност на местонахождение-цел,0
+field,"workflow.transition,condition",0,Condition,Условие,0
+field,"workflow.transition,group",0,Group Required,Групата е задължителна,0
+field,"workflow.transition,instances",0,Instances,Екземпляри,0
+field,"workflow.transition,rec_name",0,Name,Име,0
+field,"workflow.transition,signal",0,Signal (button Name),Сигнал (име на бутон),0
+field,"workflow.transition,trigger_expr_id",0,Trigger Expr ID,ID на израз на задействащ механизъм,0
+field,"workflow.transition,trigger_model",0,Trigger Type,Вид превключвател,0
+field,"workflow.transition-workflow.instance,inst_id",0,Instance,Екземпляр,0
+field,"workflow.transition-workflow.instance,rec_name",0,Name,Име,0
+field,"workflow.transition-workflow.instance,trans_id",0,Transition,Преход,0
+field,"workflow.trigger,instance",0,Destination Instance,Ексемплят на местонахождение-цел,0
+field,"workflow.trigger,model",0,Model,Модел,0
+field,"workflow.trigger,rec_name",0,Name,Име,0
+field,"workflow.trigger,res_id",0,Resource ID,ID на ресурс,0
+field,"workflow.trigger,workitem",0,Workitem,Задача,0
+field,"workflow.workitem,activity",0,Activity,Дейност,0
+field,"workflow.workitem,instance",0,Instance,Екземпляр,0
+field,"workflow.workitem,rec_name",0,Name,Име,0
+field,"workflow.workitem,state",0,State,Състояние,0
+field,"workflow.workitem,subflow",0,Subflow,Подпоток,0
+model,"ir.action,name",act_activity_form,Activities,Дейности,0
+model,"ir.action,name",act_instance_form,Instances,Екземпляри,0
+model,"ir.action,name",act_transition_form,Transitions,Преходи,0
+model,"ir.action,name",act_workflow_form,Workflows,Работни процеси,0
+model,"ir.action,name",act_workitem_form,Workitems,Задачи,0
+model,"ir.ui.menu,name",menu_activity_form,Activities,Дейности,0
+model,"ir.ui.menu,name",menu_instance_form,Instances,Екземпляри,0
+model,"ir.ui.menu,name",menu_transition_form,Transitions,Преходи,0
+model,"ir.ui.menu,name",menu_workflow,Workflow,Работен процес,0
+model,"ir.ui.menu,name",menu_workflow_form,Workflows,Работни процеси,0
+model,"ir.ui.menu,name",menu_workitem_form,Workitems,Задачи,0
+model,"workflow,name",0,Workflow,Работен процес,0
+model,"workflow.activity,name",0,Workflow activity,Дейности,0
+model,"workflow.instance,name",0,Workflow instance,Екземплят на работен процес,0
+model,"workflow.transition,name",0,Workflow transition,Преход на работен процес,0
+model,"workflow.transition-workflow.instance,name",0,Workflow Transition - Instance,Преход на работен процес - екземпляр,0
+model,"workflow.trigger,name",0,Workflow trigger,Задействане на работен процес,0
+model,"workflow.workitem,name",0,Workflow workitem,Задачи от работен процес,0
+selection,"workflow.activity,join_mode",0,And,и,0
+selection,"workflow.activity,join_mode",0,Xor,Xor,0
+selection,"workflow.activity,kind",0,Dummy,Фиктивен,0
+selection,"workflow.activity,kind",0,Function,Функция,0
+selection,"workflow.activity,kind",0,Stop All,Спиране на всички,0
+selection,"workflow.activity,kind",0,Subflow,Подпоток,0
+selection,"workflow.activity,split_mode",0,And,и,0
+selection,"workflow.activity,split_mode",0,Or,Или,0
+selection,"workflow.activity,split_mode",0,Xor,Xor,0
+view,workflow,0,Workflow,Работен процес,0
+view,workflow.activity,0,Activity,Дейност,0
+view,workflow.activity,0,Transition,Преход,0
+view,workflow.activity,0,Transitions,Преходи,0
+view,workflow.instance,0,Instance,Екземпляр,0
+view,workflow.instance,0,Instances,Екземпляри,0
+view,workflow.transition,0,Transition,Преход,0
+view,workflow.transition,0,Transitions,Преходи,0
+view,workflow.workitem,0,Workitem,Задача,0
+view,workflow.workitem,0,Workitems,Задачи,0
