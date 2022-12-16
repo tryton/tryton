@@ -1,0 +1,124 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.price_list,tax_included:"
+msgid "Tax Included"
+msgstr "مشمول مالیات"
+
+msgctxt "field:product.price_list,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "فرمول"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"ساختن لیست قیمت متعلق به شرکت.\n"
+"این ارز از لیست قیمت تعریف می کند."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "فرمول قیمت را برای معیارهای مختلف اضافه کنید."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "شناسه اصلی لیست قیمت."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "اگر نتایج فرمول شامل مالیات ها باشد، کادر را تیک بزنید."
+
+msgctxt "help:product.price_list,unit:"
+msgid "The unit in which the quantity is expressed."
+msgstr ""
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "فقط به محصولات این دسته اعمال می شود."
+
+#, fuzzy
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price\n"
+"- cost_price: the cost price of the product"
+msgstr ""
+"عبارت پایتون که با آن ارزیابی می شود:\n"
+"- واحد_قیمت: واحد_قیمت اصلی"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "لیست قیمت که خط متعلق به آن میباشد."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "فقط به این محصول اعمال می شود."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "هنگامی که مقدار بزرگتر است فقط اعمال می شود."
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "لیست های قیمت"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در سطر لیست قیمت: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "لیست های قیمت"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "خط لیست قیمت"
+
+#, fuzzy
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Default"
+msgstr "محصول"
