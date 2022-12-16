@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_order_point_unique">
+            <field name="text">Only one order point is allowed for each product-location pair.</field>
+        </record>
+        <record model="ir.message" id="msg_order_point_concurrent_provisioning_location_internal">
+            <field name="text">You cannot define for the same product two order points with opposite locations
+(from "Storage Location" to "Provisioning Location" and vice versa).</field>
+        </record>
+        <record model="ir.message" id="msg_order_point_concurrent_overflowing_location_internal">
+            <field name="text">You cannot define for the same product two order points with opposite locations
+(from "Overflowing Location" to "Provisioning Location" and vice versa).</field>
+        </record>
+        <record model="ir.message" id="msg_late_supplier_moves">
+            <field name="text">There are some supplier moves that are late.</field>
+        </record>
+        <record model="ir.message" id="msg_late_customer_moves">
+            <field name="text">There are some customer moves that are late.</field>
+        </record>
+    </data>
+</tryton>

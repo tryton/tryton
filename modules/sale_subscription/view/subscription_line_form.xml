@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="subscription"/>
+    <field name="subscription"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="service"/>
+            <field name="service"/>
+            <label name="unit_price"/>
+            <field name="unit_price" symbol="currency"/>
+
+            <label name="description"/>
+            <field name="description" colspan="3" yexpand="0"/>
+
+            <label name="consumption_recurrence"/>
+            <field name="consumption_recurrence"/>
+            <label name="consumption_delay"/>
+            <field name="consumption_delay"/>
+
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="unit"/>
+            <field name="unit"/>
+
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+
+            <label name="consumed_until"/>
+            <field name="consumed_until"/>
+        </page>
+    </notebook>
+</form>
