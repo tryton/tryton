@@ -1,0 +1,266 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,work_center:"
+msgid "Work Center"
+msgstr "Töökoht"
+
+msgctxt "field:production,works:"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "field:production.routing.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Töökoha kategooria"
+
+#, fuzzy
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr "Tsüklis"
+
+msgctxt "field:production.work,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:production.work,cycles:"
+msgid "Cycles"
+msgstr "Tsükkel"
+
+msgctxt "field:production.work,operation:"
+msgid "Operation"
+msgstr "Operatsioon"
+
+msgctxt "field:production.work,production:"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "field:production.work,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:production.work,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:production.work,work_center:"
+msgid "Work Center"
+msgstr "Töökoht"
+
+msgctxt "field:production.work,work_center_category:"
+msgid "Work Center Category"
+msgstr "Töökoha kategooria"
+
+msgctxt "field:production.work.center,category:"
+msgid "Category"
+msgstr "Kategooria"
+
+msgctxt "field:production.work.center,children:"
+msgid "Children"
+msgstr "Alamjaotus"
+
+msgctxt "field:production.work.center,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:production.work.center,cost_method:"
+msgid "Cost Method"
+msgstr "Kulumeetod"
+
+msgctxt "field:production.work.center,cost_price:"
+msgid "Cost Price"
+msgstr "Ostuhind"
+
+msgctxt "field:production.work.center,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:production.work.center,parent:"
+msgid "Parent"
+msgstr "Ülem"
+
+msgctxt "field:production.work.center,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:production.work.center.category,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:production.work.cycle,cost:"
+msgid "Cost"
+msgstr "Kulu"
+
+msgctxt "field:production.work.cycle,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:production.work.cycle,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:production.work.cycle,work:"
+msgid "Work"
+msgstr "Töö"
+
+msgctxt "model:ir.action,name:act_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Töökoha kategooria"
+
+msgctxt "model:ir.action,name:act_work_center_list"
+msgid "Work Centers"
+msgstr "Töökohad"
+
+msgctxt "model:ir.action,name:act_work_center_tree"
+msgid "Work Centers"
+msgstr "Töökohad"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Päringud"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "Töös"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Teha"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Käivita"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Töökoha kategooriad"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_list"
+msgid "Work Centers"
+msgstr "Töökohad"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
+msgid "Work Centers"
+msgstr "Töökohad"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Tööd"
+
+msgctxt "model:production.work,name:"
+msgid "Production Work"
+msgstr "Tootmise töö"
+
+msgctxt "model:production.work.center,name:"
+msgid "Work Center"
+msgstr "Töökoht"
+
+msgctxt "model:production.work.center.category,name:"
+msgid "Work Center Category"
+msgstr "Töökoha kategooria"
+
+msgctxt "model:production.work.cycle,name:"
+msgid "Work Cycle"
+msgstr "Töötsükkel"
+
+msgctxt "selection:production.work,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:production.work,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:production.work,state:"
+msgid "Finished"
+msgstr "Lõpetatud"
+
+msgctxt "selection:production.work,state:"
+msgid "Request"
+msgstr "Päring"
+
+msgctxt "selection:production.work,state:"
+msgid "Running"
+msgstr "Jooksev"
+
+msgctxt "selection:production.work,state:"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Cycle"
+msgstr "Tsüklis"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Hour"
+msgstr "Tunnis"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Running"
+msgstr "Jooksev"

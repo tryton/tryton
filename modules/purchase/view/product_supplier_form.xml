@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="template"/>
+    <field name="template" colspan="3"/>
+    <label name="product"/>
+    <field name="product" colspan="3"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="lead_time"/>
+    <field name="lead_time"/>
+    <newline/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <field name="prices" colspan="4"
+        view_ids="purchase.product_supplier_price_view_list_sequence"/>
+    <field name="uom" colspan="4" invisible="1"/>
+</form>
