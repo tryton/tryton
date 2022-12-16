@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Utilisateur"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Actions tableau de bord"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Mise en page de tableau de bord"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr "Action tableau de bord"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Carré"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Pile bas"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "Pile gauche"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "Pile droite"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "Pile haut"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Action tableau de bord"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Actions tableau de bord"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Action tableau de bord"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Actions tableau de bord"
