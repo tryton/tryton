@@ -1,0 +1,87 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There is no list price on work \"%s\"."
+msgstr "Pri dejavnosti \"%s\" ni cenika."
+
+msgctxt "error:project.work:"
+msgid "There is no party on work \"%s\"."
+msgstr "Pri dejavnosti \"%s\" ni partnerja."
+
+msgctxt "error:project.work:"
+msgid "There is no product on work \"%s\"."
+msgstr "Pri dejavnosti \"%s\" ni izdelka."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not delete invoiced line."
+msgstr "Obračunane postavke ni možne brisati."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Obračunane postavke ni možne popraviti."
+
+msgctxt "field:project.work,hours_to_invoice:"
+msgid "Hours to Invoice"
+msgstr "Ure za obračun"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "Način obračuna"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "Zaračunan znesek"
+
+msgctxt "field:project.work,invoiced_hours:"
+msgid "Invoiced Hours"
+msgstr "Zaračunane ure"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "Način obračuna"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "Postavka računa"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "Računi"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "Projekt - obračun"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "Manual"
+msgstr "Ročno"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Effort"
+msgstr "Po oceni dela"
+
+msgctxt "selection:project.work,invoice_method:"
+msgid "On Timesheet"
+msgstr "Po dejanskem delu"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "Ročno"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "Po oceni dela"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "Po dejanskem delu"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Račun"
