@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_party_sale_shipment_cost_method">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_cost_method')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_party_sale_shipment_cost_method_group_sale">
+            <field name="field" search="[('model.model', '=', 'party.party'), ('name', '=', 'sale_shipment_cost_method')]"/>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+    </data>
+</tryton>

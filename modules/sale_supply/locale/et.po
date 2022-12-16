@@ -1,0 +1,42 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Müügitarne"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Müügitarne"
+
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "Müügirida"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Ostupäring"
+
+#, fuzzy
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "Müügitarne"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Ostupäringud"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
+msgstr "Tühista"
+
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Requested"
+msgstr "Päritud"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr ""
