@@ -1,0 +1,191 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Uporabnost"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Rok"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Trajanje"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Rok"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Uporabnost"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Rok"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Trajanje"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Rok"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Zakasnitev roka trajanja"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Zakasnitev roka trajanja"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Rok uporabe"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Uporabnost"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Rok trajanja"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Trajanje"
+
+#, fuzzy
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days."
+msgstr "V dnevih"
+
+#, fuzzy
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days."
+msgstr "V dnevih"
+
+#, fuzzy
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days."
+msgstr "V dnevih"
+
+#, fuzzy
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days."
+msgstr "V dnevih"
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Zakasnitev pred odstranitvijo iz napovedi."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Zakasnitev pred odstranitvijo iz napovedi."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+"Rokov uporabe serije \"%(lot)s\" ni možno popravljati, ker so v knjižbi "
+"\"%(move)s\" zaključenega obdobja."
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Stock Force Expiration"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Konfiguracija roka trajanja serije"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Brez"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Neobvezno"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Obvezno"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Rok trajanja"
