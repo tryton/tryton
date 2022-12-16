@@ -1,0 +1,74 @@
+/* This file is part of Tryton.  The COPYRIGHT file at the top level of
+   this repository contains the full copyright notices and license terms. */
+@import "variables";
+
+@offcanvas-md: @screen-md-max;
+
+body {
+    overflow-x: hidden;
+}
+
+.row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+}
+
+.row-offcanvas-right {
+    right: 0;
+}
+
+.row-offcanvas-left {
+    left: 0;
+}
+
+.row-offcanvas:not(.active) .main-offcanvas {
+    width: 100%;
+}
+
+.sidebar-offcanvas {
+    position: absolute !important;
+    top: 0;
+}
+
+.make-offcanvas(@size) {
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        right: -@size;
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -@size;
+    }
+
+    .row-offcanvas-right.active {
+        right: @size;
+    }
+
+    .row-offcanvas-left.active {
+        left: @size;
+    }
+
+    .sidebar-offcanvas {
+        width: @size;
+    }
+}
+
+
+@media (min-width: @screen-lg-min) {
+    .make-offcanvas(25%);
+}
+
+@media (max-width: @screen-md-max) {
+    .make-offcanvas(33.3333%);
+}
+
+@media (max-width: (@screen-sm-max)) {
+    .make-offcanvas(50%);
+}
+
+@media (max-width: (@screen-xs-max)) {
+    .make-offcanvas(100%);
+}
