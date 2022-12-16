@@ -1,0 +1,700 @@
+type,name,res_id,src,value,fuzzy
+error,access_error,0,"You try to bypass an access rule!
+(Document type: %s)",¡Está intentando sobrepasar una regla de acceso!,0
+error,delete_workflow_record,0,You cannot delete a record with a running workflow.,No puede borrar un registro involucrado en un flujo activo.,0
+error,delete_xml_record,0,You are not allowed to delete this record.,No esta autorizado a eliminar este registro.,0
+error,digits_validation_record,0,"The field ""%s"" on ""%s"" has too many decimal digits.","El campo ""%s"" en ""%s"" tiene muchos dígitos decimales.",0
+error,domain_validation_record,0,"The value of the field ""%s"" on ""%s"" is not valid according to its domain.","El valor del campo ""%s"" en ""%s no es válido ",0
+error,foreign_model_exist,0,"Could not delete ""%s"" records because they are used on field ""%s"" of ""%s"".","No se pudo borrar ""%s"" regisros porque se usan en el campo ""%s"" de ""%s"".",0
+error,foreign_model_missing,0,"The value of field ""%s"" on ""%s"" doesn't exist.","El valor del campo ""%s"" no existe.",0
+error,ir.action.act_window,0,Invalid context!,¡Contexto inválido!,0
+error,ir.action.act_window,0,Invalid domain!,¡Dominio inválido!,0
+error,ir.action.act_window,0,Invalid search criteria!,¡Criterio de búsqueda inválido!,0
+error,ir.action.keyword,0,Wrong wizard model!,¡Modelo de asistente erróneo!,0
+error,ir.action.report,0,The internal name must be unique by module!,¡El nombre interno de los módulos debe ser único!,0
+error,ir.attachment,0,The  names of attachments must be unique by resource!,¡Los nombres por recurso de adjuntos deben ser unicos!,0
+error,ir.cron,0,Scheduled action failed,La acción agendada falló,0
+error,ir.cron,0,"The following action failed to execute properly: ""%s""
+ Traceback: 
+
+%s
+","La siguiente acción no se ejecutó correctamente: ""%s""
+ Traza:
+
+%s
+",0
+error,ir.lang,0,decimal_point and thousands_sep must be different!,El punto_decimal y el separador_de_miles NO pueden coincidir!,0
+error,ir.lang,0,Invalid Grouping!,Agrupamiento Inválido!,0
+error,ir.lang,0,The date format is not valid!,El formato de fecha no es válido!,0
+error,ir.model,0,Module Name must be a python identifier!,El Nombre del Módulo debe ser un identificador de Python!,0
+error,ir.model,0,The model must be unique!,El modelo debe ser único!,0
+error,ir.model.access,0,Only one record by model and group is allowed!,Sólo se permite un registro por modelo y grupo!,0
+error,ir.model.access,0,You can not create this kind of document! (%s),No puede crear esta clase de documento! (%s),0
+error,ir.model.access,0,You can not delete this document! (%s),No puede borrar este documento! (%s),0
+error,ir.model.access,0,You can not read this document! (%s),No puede leer este documento! (%s),0
+error,ir.model.access,0,You can not write in this document! (%s),No puede escribir en este documento! (%s),0
+error,ir.model.data,0,"The triple (fs_id, module, model) must be unique!","La tripla(fs_id, módulo, modelo) debe ser única!",0
+error,ir.model.field,0,Model Field Name must be a python identifier!,El campo del Nombre del Modelo debe ser un identificador de Python!,0
+error,ir.model.field,0,The field name in model must be unique!,El nombre del campo en el modelo debe ser único!,0
+error,ir.module.module,0,"Missing dependencies %s for module ""%s""","Dependencias faltantes %s para el módulo ""%s""",0
+error,ir.module.module,0,The modules you are trying to uninstall depends on installed modules:,Los módulos que está tratando de desinstalar dependen de módulos instalados:,0
+error,ir.module.module,0,The name of the module must be unique!,El nombre del módulo debe ser único!,0
+error,ir.module.module,0,You can not remove a module that is installed or will be installed,No puede eliminar un módulo que está instalado o que va a ser instalado,0
+error,ir.module.module.dependency,0,Dependency must be unique by module!,¡Las dependencias por módulo deben ser únicas!,0
+error,ir.rule.group,0,Global and Default are mutually exclusive!,Global y Predeterminado son mutuamente excluyentes!,0
+error,ir.sequence,0,Invalid prefix/suffix!,prefijo/sufijo inválidos!,0
+error,ir.sequence,0,Missing sequence!,Falta la secuencia!,0
+error,ir.sequence.strict,0,Invalid prefix/suffix!,prefijo/sufijo inválidos!,0
+error,ir.sequence.strict,0,Missing sequence!,Falta la secuencia!,0
+error,ir.translation,0,Translation must be unique,La traducción debe ser única,0
+error,ir.ui.view,0,Invalid XML for View!,XML inválido para la Vista!,0
+error,not_found_in_selection,0,Key %r not found in selection field %r,No encontró la llave %r en el campo seleccionado %r,0
+error,read_error,0,"You try to read records that don't exist anymore!
+(Document type: %s)",¡Está intentando leer registros que ya no existen!,0
+error,reference_syntax_error,0,Syntax error for reference %r in %s,Error de sintaxis para la referencia %r en %s,0
+error,relation_not_found,0,Relation not found: %r in %s,Relación no encontrada: %r en %s,0
+error,required_field,0,"The field ""%s"" on ""%s"" is required.","Se requiere el campo ""%s"" en ""%s"".",0
+error,required_validation_record,0,"The field ""%s"" on ""%s"" is required.","Se requiere el campo ""%s"" en ""%s"".",0
+error,search_function_missing,0,"Missing search function on field ""%s"".","Búsqueda faltante en el campo ""%s"".",0
+error,size_validation_record,0,"The field ""%s"" on ""%s"" is too long.","El campo ""%s"" en ""%s"" es demasiado largo.",0
+error,too_many_relations_found,0,Too many relations found: %r in %s,Muchas relaciones encontradas: %r en %s,0
+error,write_error,0,"You try to write on records that don't exist anymore!
+(Document type: %s)",¡Está tratando de escribir registros que ya no existen!,0
+error,write_xml_record,0,You are not allowed to modify this record.,No esta autorizado para modificar este registro.,0
+error,xml_id_syntax_error,0,Syntax error for XML id %r in %s,Error de sintaxis para el id XML %r en %s,0
+error,xml_record_desc,0,This record is part of the base configuration.,Este registro es parte de la configuración base.,0
+field,"ir.action,active",0,Active,Activo,0
+field,"ir.action.act_window,action",0,Action,Acción,0
+field,"ir.action.act_window,act_window_views",0,Views,Vistas,0
+field,"ir.action.act_window,auto_refresh",0,Auto-Refresh,Auto-Refrescar,0
+field,"ir.action.act_window,context",0,Context Value,Valor en Contexto,0
+field,"ir.action.act_window,domain",0,Domain Value,Valor de Dominio,0
+field,"ir.action.act_window,limit",0,Limit,Límite,0
+field,"ir.action.act_window,pyson_context",0,PySON Context,Contexto PySON,0
+field,"ir.action.act_window,pyson_domain",0,PySON Domain,Dominio de PySON,0
+field,"ir.action.act_window,pyson_search_value",0,PySON Search Criteria,Criterio de búsqueda de PySON,0
+field,"ir.action.act_window,rec_name",0,Name,Nombre,0
+field,"ir.action.act_window,res_model",0,Model,Modelo,0
+field,"ir.action.act_window,search_value",0,Search Criteria,Criterio de Búsqueda,0
+field,"ir.action.act_window.view,act_window",0,Action,Acción,0
+field,"ir.action.act_window.view,rec_name",0,Name,Nombre,0
+field,"ir.action.act_window,views",0,Views,Vistas,0
+field,"ir.action.act_window.view,sequence",0,Sequence,Secuencia,0
+field,"ir.action.act_window,view_type",0,Type of view,Tipo de Vista,0
+field,"ir.action.act_window.view,view",0,View,Vista,0
+field,"ir.action.act_window,window_name",0,Window Name,Nombre de Ventana,0
+field,"ir.action,groups",0,Groups,Grupos,0
+field,"ir.action.keyword,action",0,Action,Acción,0
+field,"ir.action.keyword,keyword",0,Keyword,Palabra Clave,0
+field,"ir.action.keyword,model",0,Model,Modelo,0
+field,"ir.action.keyword,rec_name",0,Name,Nombre,0
+field,"ir.action,keywords",0,Keywords,Palabras Clave,0
+field,"ir.action,name",0,Name,Nombre,0
+field,"ir.action,rec_name",0,Name,Nombre,0
+field,"ir.action.report,action",0,Action,Acción,0
+field,"ir.action.report,direct_print",0,Direct Print,Impresión Directa,0
+field,"ir.action.report,email",0,Email,Correo Electrónico,0
+field,"ir.action.report,extension",0,Extension,Extensión,0
+field,"ir.action.report,model",0,Model,Modelo,0
+field,"ir.action.report,module",0,Module,Módulo,0
+field,"ir.action.report,rec_name",0,Name,Nombre,0
+field,"ir.action.report,report",0,Path,Camino,0
+field,"ir.action.report,report_content",0,Content,Contenido,0
+field,"ir.action.report,report_content_data",0,Content,Contenido,0
+field,"ir.action.report,report_name",0,Internal Name,Número Interno,0
+field,"ir.action.report,style",0,Style,Estilo,0
+field,"ir.action.report,style_content",0,Style,Estilo,0
+field,"ir.action,type",0,Type,Tipo,0
+field,"ir.action.url,action",0,Action,Acción,0
+field,"ir.action.url,rec_name",0,Name,Nombre,0
+field,"ir.action.url,url",0,Action Url,Url de Acción,0
+field,"ir.action,usage",0,Usage,Uso,0
+field,"ir.action.wizard,action",0,Action,Acción,0
+field,"ir.action.wizard,email",0,Email,Correo Electrónico,0
+field,"ir.action.wizard,model",0,Model,Modelo,0
+field,"ir.action.wizard,rec_name",0,Name,Nombre,0
+field,"ir.action.wizard_size,height",0,Height,Altura,0
+field,"ir.action.wizard_size,model",0,Model,Modelo,0
+field,"ir.action.wizard_size,rec_name",0,Name,Nombre,0
+field,"ir.action.wizard_size,user",0,User,Usuario,0
+field,"ir.action.wizard_size,width",0,Width,Ancho,0
+field,"ir.action.wizard_size,wizard",0,Wizard,Asistente,0
+field,"ir.action.wizard,window",0,Window,,0
+field,"ir.action.wizard,wiz_name",0,Wizard name,Nombre del Asistente,0
+field,"ir.attachment,collision",0,Collision,Colisión,0
+field,"ir.attachment,datas",0,Datas,Datos,0
+field,"ir.attachment,datas_size",0,Datas size,Tamaño de los Datos,0
+field,"ir.attachment,description",0,Description,Descripción,0
+field,"ir.attachment,digest",0,Digest,Resumen,0
+field,"ir.attachment,link",0,Link,Enlace,0
+field,"ir.attachment,name",0,Attachment Name,Nombre de Adjunto,0
+field,"ir.attachment,rec_name",0,Name,Nombre,0
+field,"ir.attachment,resource",0,Resource,Recurso,1
+field,"ir.cache,name",0,Name,Nombre,0
+field,"ir.cache,rec_name",0,Name,Nombre,0
+field,"ir.cache,timestamp",0,Timestamp,Estampa de Tiempo,0
+field,"ir.cron,active",0,Active,Activo,0
+field,"ir.cron,args",0,Arguments,Argumentos,0
+field,"ir.cron,doall",0,Repeat missed,Fallo al repetir,0
+field,"ir.cron,function",0,Function,Función,0
+field,"ir.cron,interval_number",0,Interval Number,Número de Intervalo,0
+field,"ir.cron,interval_type",0,Interval Unit,Unidad de Intervalo,0
+field,"ir.cron,model",0,Model,Modelo,0
+field,"ir.cron,name",0,Name,Nombre,0
+field,"ir.cron,nextcall",0,Next call date,Fecha de próxima llamada,0
+field,"ir.cron,numbercall",0,Number of calls,Cantidad de llamados,0
+field,"ir.cron,priority",0,Priority,Prioridad,0
+field,"ir.cron,rec_name",0,Name,Nombre,0
+field,"ir.cron,request_user",0,Request User,Solicitante,0
+field,"ir.cron,running",0,Running,Corriendo,0
+field,"ir.cron,user",0,Execution User,Usuario que Ejecuta,0
+field,"ir.default,clause",0,Clause,Claúsula,0
+field,"ir.default,field",0,Field,Campo,0
+field,"ir.default,model",0,Model,Modelo,0
+field,"ir.default,rec_name",0,Name,Nombre,0
+field,"ir.default,user",0,User,Usuario,0
+field,"ir.default,value",0,Value,Valor,0
+field,"ir.export,export_fields",0,Fields,Campos,0
+field,"ir.export.line,export",0,Export,Exportación,0
+field,"ir.export.line,name",0,Name,Nombre,0
+field,"ir.export.line,rec_name",0,Name,Nombre,0
+field,"ir.export,name",0,Name,Nombre,0
+field,"ir.export,rec_name",0,Name,Nombre,0
+field,"ir.export,resource",0,Resource,Recurso,0
+field,"ir.lang,active",0,Active,Activo,0
+field,"ir.lang,code",0,Code,Código,0
+field,"ir.lang,date",0,Date,Fecha,0
+field,"ir.lang,decimal_point",0,Decimal Separator,Separador Decimal,0
+field,"ir.lang,direction",0,Direction,Dirección,0
+field,"ir.lang,grouping",0,Grouping,Grupo,0
+field,"ir.lang,name",0,Name,Nombre,0
+field,"ir.lang,rec_name",0,Name,Nombre,0
+field,"ir.lang,thousands_sep",0,Thousands Separator,Separador de Miles,0
+field,"ir.lang,translatable",0,Translatable,Traducible,0
+field,"ir.model.access,description",0,Description,Descripción,0
+field,"ir.model.access,group",0,Group,Grupo,0
+field,"ir.model.access,model",0,Model,Modelo,0
+field,"ir.model.access,perm_create",0,Create Access,Crear Acceso,0
+field,"ir.model.access,perm_delete",0,Delete Access,Permiso para Eliminar,0
+field,"ir.model.access,perm_read",0,Read Access,Acceso de Lectura,0
+field,"ir.model.access,perm_write",0,Write Access,Acceso de Escritura,0
+field,"ir.model.access,rec_name",0,Name,Nombre,0
+field,"ir.model.data,date_init",0,Init Date,Fecha Inicial,0
+field,"ir.model.data,date_update",0,Update Date,Fecha de Actualización,0
+field,"ir.model.data,db_id",0,Resource ID,ID del Recurso,0
+field,"ir.model.data,fs_id",0,Identifier on File System,Identificador en el Sistema de Archivos,0
+field,"ir.model.data,inherit",0,Inherit,Hereda,0
+field,"ir.model.data,model",0,Model,Modelo,0
+field,"ir.model.data,module",0,Module,Módulo,0
+field,"ir.model.data,noupdate",0,No Update,No Actualizar,0
+field,"ir.model.data,rec_name",0,Name,Nombre,0
+field,"ir.model.data,values",0,Values,Valores,0
+field,"ir.model.field,field_description",0,Field Description,Descripción del Campo,0
+field,"ir.model.field,groups",0,Groups,Grupos,0
+field,"ir.model.field,help",0,Help,Ayuda,0
+field,"ir.model.field,model",0,Model,Modelo,0
+field,"ir.model.field,module",0,Module,Módulo,0
+field,"ir.model.field,name",0,Name,Nombre,0
+field,"ir.model.field,rec_name",0,Name,Nombre,0
+field,"ir.model.field,relation",0,Model Relation,Relación con Modelo,0
+field,"ir.model,fields",0,Fields,Campos,0
+field,"ir.model.field,ttype",0,Field Type,Tipo de Campo,0
+field,"ir.model,info",0,Information,Información,0
+field,"ir.model,model",0,Model Name,Nombre del Modelo,0
+field,"ir.model,module",0,Module,Módulo,0
+field,"ir.model,name",0,Model Description,Descripción del Modelo,0
+field,"ir.model.print_model_graph.init,filter",0,Filter,Filtro,0
+field,"ir.model.print_model_graph.init,level",0,Level,Nivel,0
+field,"ir.model,rec_name",0,Name,Nombre,0
+field,"ir.module.module,author",0,Author,Autor,0
+field,"ir.module.module.config_wizard.item,name",0,Name,Nombre,0
+field,"ir.module.module.config_wizard.item,rec_name",0,Name,Nombre,0
+field,"ir.module.module.config_wizard.item,sequence",0,Sequence,Secuencia,0
+field,"ir.module.module.config_wizard.item,state",0,State,Estado,0
+field,"ir.module.module,dependencies",0,Dependencies,Dependencias,0
+field,"ir.module.module.dependency,module",0,Module,Módulo,0
+field,"ir.module.module.dependency,name",0,Name,Nombre,0
+field,"ir.module.module.dependency,rec_name",0,Name,Nombre,0
+field,"ir.module.module.dependency,state",0,State,Estado,0
+field,"ir.module.module,description",0,Description,Descripción,0
+field,"ir.module.module.install_upgrade.init,module_info",0,Modules to update,Módulos a actualizar,0
+field,"ir.module.module,name",0,Name,Nombre,0
+field,"ir.module.module,rec_name",0,Name,Nombre,0
+field,"ir.module.module,shortdesc",0,Short description,Descripción Corta,0
+field,"ir.module.module,state",0,State,Estado,0
+field,"ir.module.module,version",0,Version,Versión,0
+field,"ir.module.module,website",0,Website,Sitio Web,0
+field,"ir.property,field",0,Field,Campo,0
+field,"ir.property,name",0,Name,Nombre,0
+field,"ir.property,rec_name",0,Name,Nombre,0
+field,"ir.property,res",0,Resource,Recurso,0
+field,"ir.property,value",0,Value,Valor,0
+field,"ir.rule,field",0,Field,Campo,0
+field,"ir.rule.group,default_p",0,Default,Predeterminado,0
+field,"ir.rule.group,global_p",0,Global,Global,0
+field,"ir.rule.group,groups",0,Groups,Grupos,0
+field,"ir.rule.group,model",0,Model,Modelo,0
+field,"ir.rule.group,name",0,Name,Nombre,0
+field,"ir.rule.group,perm_create",0,Create Access,Permiso para Crear,0
+field,"ir.rule.group,perm_delete",0,Delete Access,Permiso para Eliminar,0
+field,"ir.rule.group,perm_read",0,Read Access,Permiso de Lectura,0
+field,"ir.rule.group,perm_write",0,Write Access,Permiso de Escritura,0
+field,"ir.rule.group,rec_name",0,Name,Nombre,0
+field,"ir.rule.group,rules",0,Tests,Pruebas,0
+field,"ir.rule.group,users",0,Users,Usuarios,0
+field,"ir.rule,operand",0,Operand,Operando,0
+field,"ir.rule,operator",0,Operator,Operador,0
+field,"ir.rule,rec_name",0,Name,Nombre,0
+field,"ir.rule,rule_group",0,Group,Grupo,0
+field,"ir.sequence,active",0,Active,Activo,0
+field,"ir.sequence,code",0,Sequence Type,Tipo de Secuencia,0
+field,"ir.sequence,name",0,Sequence Name,Nombre de Secuencia,0
+field,"ir.sequence,number_increment",0,Increment Number,Número de Incremento,0
+field,"ir.sequence,number_next",0,Next Number,Próximo Número,0
+field,"ir.sequence,padding",0,Number padding,Cantidad de corrimiento,0
+field,"ir.sequence,prefix",0,Prefix,Prefijo,0
+field,"ir.sequence,rec_name",0,Name,Nombre,0
+field,"ir.sequence.strict,active",0,Active,Activo,0
+field,"ir.sequence.strict,code",0,Sequence Type,Tipo de Secuencia,0
+field,"ir.sequence.strict,name",0,Sequence Name,Nombre de Secuencia,0
+field,"ir.sequence.strict,number_increment",0,Increment Number,Número de Incremento,0
+field,"ir.sequence.strict,number_next",0,Next Number,Próximo Número,0
+field,"ir.sequence.strict,padding",0,Number padding,Cantidad de corrimiento,0
+field,"ir.sequence.strict,prefix",0,Prefix,Prefijo,0
+field,"ir.sequence.strict,rec_name",0,Name,Nombre,0
+field,"ir.sequence.strict,suffix",0,Suffix,Sufijo,0
+field,"ir.sequence,suffix",0,Suffix,Sufijo,0
+field,"ir.sequence.type,code",0,Sequence Code,Secuencia,0
+field,"ir.sequence.type,name",0,Sequence Name,Nombre de Secuencia,0
+field,"ir.sequence.type,rec_name",0,Name,Nombre,0
+field,"ir.translation.export.init,lang",0,Language,Idioma,0
+field,"ir.translation.export.init,module",0,Module,Módulo,0
+field,"ir.translation.export.start,file",0,File,Archivo,0
+field,"ir.translation,fuzzy",0,Fuzzy,Por Revisar,0
+field,"ir.translation,lang",0,Language,Idioma,0
+field,"ir.translation,model",0,Model,Modelo,0
+field,"ir.translation,module",0,Module,Módulo,0
+field,"ir.translation,name",0,Field Name,Nombre del Campo,0
+field,"ir.translation,rec_name",0,Name,Nombre,0
+field,"ir.translation,res_id",0,Resource ID,ID del Recurso,0
+field,"ir.translation,src",0,Source,Fuente,0
+field,"ir.translation,type",0,Type,Tipo,0
+field,"ir.translation.update.init,lang",0,Language,Idioma,0
+field,"ir.translation,value",0,Translation Value,Valor de Traducción,0
+field,"ir.ui.menu,action",0,Action,Acción,0
+field,"ir.ui.menu,active",0,Active,Activo,0
+field,"ir.ui.menu,childs",0,Children,Hij@s,0
+field,"ir.ui.menu,complete_name",0,Complete Name,Nombre Completo,0
+field,"ir.ui.menu,groups",0,Groups,Grupos,0
+field,"ir.ui.menu,icon",0,Icon,Ícono,0
+field,"ir.ui.menu,name",0,Menu,Menú,0
+field,"ir.ui.menu,parent",0,Parent Menu,Menú Padre,0
+field,"ir.ui.menu,rec_name",0,Name,Nombre,0
+field,"ir.ui.menu,sequence",0,Sequence,Secuencia,0
+field,"ir.ui.view,arch",0,View Architecture,Ver Arquitectura,0
+field,"ir.ui.view,domain",0,Domain,Dominio,0
+field,"ir.ui.view,field_childs",0,Children Field,Campos Hijos,0
+field,"ir.ui.view,inherit",0,Inherited View,Vista heredada,0
+field,"ir.ui.view,model",0,Model,Modelo,0
+field,"ir.ui.view,module",0,Module,Módulo,0
+field,"ir.ui.view,priority",0,Priority,Prioridad,0
+field,"ir.ui.view,rec_name",0,Name,Nombre,0
+field,"ir.ui.view_sc,name",0,Shortcut Name,Nombre Corto,0
+field,"ir.ui.view_sc,rec_name",0,Name,Nombre,0
+field,"ir.ui.view_sc,res_id",0,Resource Ref.,Ref. de Recurso,0
+field,"ir.ui.view_sc,resource",0,Resource Name,Nombre del Recurso,0
+field,"ir.ui.view_sc,sequence",0,Sequence,Secuencia,0
+field,"ir.ui.view_sc,user_id",0,User Ref.,Ref. de Usuario,0
+field,"ir.ui.view_tree_width,field",0,Field,Campo,0
+field,"ir.ui.view_tree_width,model",0,Model,Modelo,0
+field,"ir.ui.view_tree_width,rec_name",0,Name,Nombre,0
+field,"ir.ui.view_tree_width,user",0,User,Usuario,0
+field,"ir.ui.view_tree_width,width",0,Width,Ancho,0
+field,"ir.ui.view,type",0,View Type,Tipo de Vista,0
+help,"ir.action.act_window,auto_refresh",0,Add an auto-refresh on the view,Adicionar un auto-refresco en la vista,0
+help,"ir.action.act_window,limit",0,Default limit for the list view,Límite predeterminado para la lista de vista,0
+help,"ir.action.act_window,search_value",0,Default search criteria for the list view,Criterio de Búsqueda predeterminado para la vista de lista,0
+help,"ir.action.act_window,window_name",0,Use the action name as window name,Usar el nombre de la acción como el nombre de la ventana,0
+help,"ir.action.report,style",0,Define the style to apply on the report.,Definir el estilo para aplicar al reporte.,0
+help,"ir.action.wizard,window",0,Run wizard in a new window,,0
+help,"ir.cron,numbercall",0,"Number of times the function is called,
+a negative number indicates that the function will always be called","Cantidad de Veces que la función ha sido llamada,
+un número negativo indica que la función siempre será llamada.",0
+help,"ir.cron,priority",0,"0=Very Urgent
+10=Not urgent",0=Muy Urgente,0
+help,"ir.cron,request_user",0,The user who will receive requests in case of failure,El usuario que recibirá la solicitud en caso de error,0
+help,"ir.cron,user",0,The user used to execute this action,El usuario que ejecuta esta acción,0
+help,"ir.lang,code",0,RFC 4646 tag: http://tools.ietf.org/html/rfc4646,RFC 4646 tag: http://tools.ietf.org/html/rfc4646,0
+help,"ir.model.data,db_id",0,The id of the record in the database.,El id del registro en la base de datos.,0
+help,"ir.model.data,fs_id",0,The id of the record as known on the file system.,El id del registro tal como lo conoce el sistema de archivos.,0
+help,"ir.model.field,module",0,Module in which this field is defined,Módulo en el que este campo fue definido,0
+help,"ir.model,module",0,Module in which this model is defined,Módulo en el que esta modelo fue definido,0
+help,"ir.model.print_model_graph.init,filter",0,Entering a Python Regular Expression will exclude matching models from the graph.,Al usar una expresión regular de Python se excluirá los modelos que coincidan de la gráfica.,0
+help,"ir.rule.group,default_p",0,Add this rule to all users by default,Añadir esta regla para todos los usuarios de forma predeterminada,0
+help,"ir.rule.group,global_p",0,"Make the rule global 
+so every users must follow this rule","Hacer global la regla
+de tal forma que todo usuario la siga",0
+help,"ir.rule.group,rules",0,The rule is satisfied if at least one test is True,La regla se satisface si por lo menos una condición es Verdadera,0
+model,"ir.action.act_window,name",0,Action act window,Ventana de acciones,0
+model,"ir.action.act_window.view,name",0,Action act window view,Vista de ventana de acción,0
+model,"ir.action.keyword,name",0,Action keyword,Palabra clave de acción,0
+model,"ir.action,name",0,Action,Acción,0
+model,"ir.action,name",act_action_form,Actions,Acciones,0
+model,"ir.action,name",act_attachment_form,Attachments,Adjuntos,0
+model,"ir.action,name",act_translation_clean,Clean Translations,Limpiar Traducciones,0
+model,"ir.action,name",act_config_wizard_item_form,Config Wizard Items,Configurar los elementos del Asistente,0
+model,"ir.action,name",act_property_form_default,Default Properties,Propiedades predeterminadas,0
+model,"ir.action,name",act_default_form,Defaults,Predeterminados,0
+model,"ir.action,name",act_export_form,Exports,Exportes,0
+model,"ir.action,name",act_translation_export,Export Translations,Exportar Traducciones,0
+model,"ir.action,name",act_model_fields_form,Fields,Campos,0
+model,"ir.action,name",report_model_graph,Graph,Gráfica,0
+model,"ir.action,name",print_model_graph,Graph,Gráfica,0
+model,"ir.action,name",act_lang_form,Languages,Idiomas,0
+model,"ir.action,name",act_menu_tree,Menu,Menú,0
+model,"ir.action,name",act_menu_form,Menus,Menús,0
+model,"ir.action,name",act_model_form,Models,Modelos,0
+model,"ir.action,name",act_model_access_form,Models Access,Acceso a los Modelos,0
+model,"ir.action,name",act_module_config_wizard,Module Configuration,Configuración de Módulo,0
+model,"ir.action,name",act_module_form,Modules,Módulos,0
+model,"ir.action,name",act_module_install_upgrade,Perform Pending Installation/Upgrade,Aplicar Instalaciones/Actualizaciones Pendientes,0
+model,"ir.action,name",act_property_form,Properties,Propiedades,0
+model,"ir.action,name",act_rule_group_form,Record Rules,Grabar reglas,0
+model,"ir.action,name",act_action_report_form,Reports,Reportes,0
+model,"ir.action,name",act_cron_form,Scheduled Actions,Acciones agendadas,0
+model,"ir.action,name",act_sequence_form,Sequences,Secuencias,0
+model,"ir.action,name",act_sequence_strict_form,Sequences Strict,Secuencias Estrictas,0
+model,"ir.action,name",act_sequence_type_form,Sequence Types,Tipos de Secuencia,0
+model,"ir.action,name",act_translation_set_report,Set Report Translations,Establecer Traducciones de Reporte,0
+model,"ir.action,name",act_translation_update,Synchronize Translations,Actualizar Traducción,0
+model,"ir.action,name",act_translation_form,Translations,Traducciones,0
+model,"ir.action,name",act_action_url_form,URLs,URLs,0
+model,"ir.action,name",act_view_form,Views,Vistas,0
+model,"ir.action,name",act_view_sc_form,View Shortcuts,Ver Atajos,0
+model,"ir.action,name",act_view_tree_width_form,View Tree Width,Ancho de Vista de Árbol,0
+model,"ir.action,name",act_action_act_window_form,Window Actions,Acciones de Ventana,0
+model,"ir.action,name",act_action_wizard_form,Wizards,Asistentes,0
+model,"ir.action,name",act_action_wizard_size_form,Wizard Sizes,Tamaños del Asistente,0
+model,"ir.action.report,name",0,Action report,Acción de reporte,0
+model,"ir.action.url,name",0,Action URL,Acción URL,0
+model,"ir.action.wizard,name",0,Action wizard,Acción de asistente,0
+model,"ir.action.wizard_size,name",0,Action Wizard Size,Tamaño de la Acción del Asistente,0
+model,"ir.attachment,name",0,Attachment,Adjunto,0
+model,"ir.cache,name",0,Cache,Caché,0
+model,"ir.cron,name",0,Cron,Cron,0
+model,"ir.date,name",0,Date,Fecha,0
+model,"ir.default,name",0,Default,Predeterminado,0
+model,"ir.export.line,name",0,Export line,Exportar línea,0
+model,"ir.export,name",0,Export,Exporte,0
+model,"ir.lang,name",lang_cs,Czech,,0
+model,"ir.lang,name",lang_en,English,,0
+model,"ir.lang,name",lang_fr,French,,0
+model,"ir.lang,name",lang_de,German,,0
+model,"ir.lang,name",0,Language,Idioma,0
+model,"ir.lang,name",lang_ru,Russian,Rus@,0
+model,"ir.lang,name",lang_es_CO,Spanish (Colombia),,0
+model,"ir.lang,name",lang_es,Spanish (Spain),,0
+model,"ir.model.access,name",0,Model access,Modelo de acceso,0
+model,"ir.model.data,name",0,Model data,Modelo de dato,0
+model,"ir.model.field,name",0,Model field,Modelo de campo,0
+model,"ir.model,name",0,Model,Modelo,0
+model,"ir.model.print_model_graph.init,name",0,Print Model Graph Init,Imprime Inicio de Modelo de Gráfica,0
+model,"ir.module.module.config_wizard.first,name",0,Module Config Wizard First,Primero configure el Módulo con el Asistente,0
+model,"ir.module.module.config_wizard.item,name",0,Config wizard to run after installing module,Configure el asistente a ejecutar después de la instalación del módulo,0
+model,"ir.module.module.dependency,name",0,Module dependency,Dependencia del módulo,0
+model,"ir.module.module.install_upgrade.init,name",0,Module Install Upgrade Init,Inicio de actualización de Instalación del Módulo,0
+model,"ir.module.module.install_upgrade.start,name",0,Module Install Upgrade Start,Comienzo de actualización de Instalación del Módulo,0
+model,"ir.module.module,name",0,Module,Módulo,0
+model,"ir.property,name",0,Property,Propiedad,0
+model,"ir.rule.group,name",0,Rule group,Regla de grupo,0
+model,"ir.rule,name",0,Rule,Regla,0
+model,"ir.sequence,name",0,Sequence,Secuencia,0
+model,"ir.sequence.strict,name",0,Sequence Strict,Secuencia Estricta,0
+model,"ir.sequence.type,name",0,Sequence type,Secuencia tipo,0
+model,"ir.translation.clean.init,name",0,Clean translation init,Inicio de limpieza de traducción,0
+model,"ir.translation.clean.start,name",0,Clean translation start,Comienzo de limpieza de traducción,0
+model,"ir.translation.export.init,name",0,Export translation - language and module,Exportar traducción - idioma y módulo,0
+model,"ir.translation.export.start,name",0,Export translation - file,Exportar traducción - archivo,0
+model,"ir.translation,name",0,Translation,Traducción,0
+model,"ir.translation.set_report.init,name",0,Update Report Translation,Actualiza Reporte de Traducción,0
+model,"ir.translation.set_report.start,name",0,Update Report Translation,Actualiza Reporte de Traducción,0
+model,"ir.translation.update.init,name",0,Update translation - language,Actualiza traducción - lenguaje,0
+model,"ir.ui.menu,name",menu_action,Actions,Acciones,0
+model,"ir.ui.menu,name",menu_act_action,Actions,Acciones,0
+model,"ir.ui.menu,name",menu_administration,Administration,Administración,0
+model,"ir.ui.menu,name",menu_attachment_form,Attachments,Adjuntos,0
+model,"ir.ui.menu,name",menu_translation_clean,Clean Translations,Limpiar Traducciones,0
+model,"ir.ui.menu,name",menu_config_wizard_item_form,Config Wizard Items,Configurar los elementos del Asistente,0
+model,"ir.ui.menu,name",menu_property_form_default,Default Properties,Propiedades predeterminadas,0
+model,"ir.ui.menu,name",menu_default_form,Defaults,Predeterminados,0
+model,"ir.ui.menu,name",menu_export_form,Exports,Exportes,0
+model,"ir.ui.menu,name",menu_translation_export,Export Translations,Exportar Traducciones,0
+model,"ir.ui.menu,name",model_model_fields_form,Fields,Campos,0
+model,"ir.ui.menu,name",menu_lang_form,Languages,Idiomas,0
+model,"ir.ui.menu,name",menu_localization,Localization,Localización,0
+model,"ir.ui.menu,name",menu_menu_form,Menus,Menús,0
+model,"ir.ui.menu,name",menu_models,Models,Modelos,0
+model,"ir.ui.menu,name",menu_model_form,Models,Modelos,0
+model,"ir.ui.menu,name",menu_model_access_form,Models Access,Acceso a los Modelos,0
+model,"ir.ui.menu,name",menu_modules,Modules,Módulos,0
+model,"ir.ui.menu,name",menu_module_form,Modules,Módulos,0
+model,"ir.ui.menu,name",menu_module_install_upgrade,Perform Pending Installation/Upgrade,Instalar / Actualizar Módulos Pendientes,0
+model,"ir.ui.menu,name",menu_property_form,Properties,Propiedades,0
+model,"ir.ui.menu,name",menu_rule_group_form,Record Rules,Grabar Reglas,0
+model,"ir.ui.menu,name",menu_action_report_form,Reports,Reportes,0
+model,"ir.ui.menu,name",menu_cron_form,Scheduled Actions,Acciones agendadas,0
+model,"ir.ui.menu,name",menu_scheduler,Scheduler,Agendador,0
+model,"ir.ui.menu,name",menu_sequences,Sequences,Secuencias,0
+model,"ir.ui.menu,name",menu_sequence_form,Sequences,Secuencias,0
+model,"ir.ui.menu,name",menu_sequence_strict_form,Sequences Strict,Secuencias Estrictas,0
+model,"ir.ui.menu,name",menu_ir_sequence_type,Sequence Types,Tipos de Secuencia,0
+model,"ir.ui.menu,name",menu_translation_set_report,Set Report Translations,Establecer Traducciones de Reporte,0
+model,"ir.ui.menu,name",menu_translation_update,Synchronize Translations,Actualizar Traducción,0
+model,"ir.ui.menu,name",menu_translation_form,Translations,Traducciones,0
+model,"ir.ui.menu,name",0,UI menu,Menú UI,0
+model,"ir.ui.menu,name",menu_action_url,URLs,URLs,0
+model,"ir.ui.menu,name",menu_ui,User Interface,Interfaz de Usuario,0
+model,"ir.ui.menu,name",menu_view,Views,Vistas,0
+model,"ir.ui.menu,name",menu_view_sc,View Shortcuts,Ver Atajos,0
+model,"ir.ui.menu,name",menu_view_tree_width,View Tree Width,Ancho de Vista de Árbol,0
+model,"ir.ui.menu,name",menu_action_act_window,Window Actions,Acciones de Ventana,0
+model,"ir.ui.menu,name",menu_action_wizard,Wizards,Asistentes,0
+model,"ir.ui.menu,name",menu_action_wizard_size,Wizard Sizes,Tamaños del Asistente,0
+model,"ir.ui.view,name",0,View,Vista,0
+model,"ir.ui.view_sc,name",0,View shortcut,Ver atajo,0
+model,"ir.ui.view_tree_width,name",0,View Tree Width,Ancho de Vista de Árbol,0
+selection,"ir.action.act_window,view_type",0,Board,Tablero,0
+selection,"ir.action.act_window,view_type",0,Form,Formulario,0
+selection,"ir.action.act_window,view_type",0,Tree,Árbol,0
+selection,"ir.action.keyword,keyword",0,Action form,Formulario de Acción,0
+selection,"ir.action.keyword,keyword",0,Action tree,Árbol de Acciones,0
+selection,"ir.action.keyword,keyword",0,Form relate,Formulario relacionado,0
+selection,"ir.action.keyword,keyword",0,Open Graph,Abrir Gráfica,0
+selection,"ir.action.keyword,keyword",0,Open tree,Desplegar árbol,0
+selection,"ir.action.keyword,keyword",0,Print form,Formulario de Impresión,0
+selection,"ir.action.report,extension",0,ODT Document,Documento ODT,0
+selection,"ir.action.report,extension",0,PDF Document,Documento PDF,0
+selection,"ir.cron,interval_type",0,Days,Días,0
+selection,"ir.cron,interval_type",0,Hours,Horas,0
+selection,"ir.cron,interval_type",0,Minutes,Minutos,0
+selection,"ir.cron,interval_type",0,Months,Meses,0
+selection,"ir.cron,interval_type",0,Weeks,Semanas,0
+selection,"ir.cron,interval_type",0,Work Days,Días de Trabajo,0
+selection,"ir.lang,direction",0,Left-to-right,De Izquierda a Derecha,0
+selection,"ir.lang,direction",0,Right-to-left,Derecha-a-izquierda,0
+selection,"ir.module.module.config_wizard.item,state",0,Done,Hecho,0
+selection,"ir.module.module.config_wizard.item,state",0,Open,Abrir,0
+selection,"ir.module.module.dependency,state",0,Installed,Instalado,0
+selection,"ir.module.module.dependency,state",0,Not Installed,No instalado,0
+selection,"ir.module.module.dependency,state",0,To be installed,Por instalar,0
+selection,"ir.module.module.dependency,state",0,To be removed,Por eliminar,0
+selection,"ir.module.module.dependency,state",0,To be upgraded,Por Actualizar,0
+selection,"ir.module.module.dependency,state",0,Unknown,Desconocido,0
+selection,"ir.module.module,state",0,Installed,Instalado,0
+selection,"ir.module.module,state",0,Not Installed,No instalado,0
+selection,"ir.module.module,state",0,To be installed,Por instalar,0
+selection,"ir.module.module,state",0,To be removed,Por eliminar,0
+selection,"ir.module.module,state",0,To be upgraded,Por Actualizar,0
+selection,"ir.rule,operator",0,<=,<=,0
+selection,"ir.rule,operator",0,<>,<>,0
+selection,"ir.rule,operator",0,=,=,0
+selection,"ir.rule,operator",0,>=,>=,0
+selection,"ir.rule,operator",0,child_of,hij@_de,0
+selection,"ir.rule,operator",0,in,en,0
+selection,"ir.translation,type",0,Error,Error,0
+selection,"ir.translation,type",0,Field,Campo,0
+selection,"ir.translation,type",0,Help,Ayuda,0
+selection,"ir.translation,type",0,Model,Modelo,0
+selection,"ir.translation,type",0,ODT,ODT,0
+selection,"ir.translation,type",0,Selection,Selección,0
+selection,"ir.translation,type",0,View,Vista,0
+selection,"ir.translation,type",0,Wizard Button,Botón del Asistente,0
+selection,"ir.ui.menu,action",0,ir.action.act_window,ir.action.act_window,0
+selection,"ir.ui.menu,action",0,ir.action.report,ir.action.report,0
+selection,"ir.ui.menu,action",0,ir.action.url,ir.action.url,0
+selection,"ir.ui.menu,action",0,ir.action.wizard,ir.action.wizard,0
+selection,"ir.ui.menu,icon",0,tryton-accessories,accesorios de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-attachment,Adjunto de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-calculator,Caluladora Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-calendar,Calendario Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-clear,Limpia Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-clock,Reloj Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-close,Cerrar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-connect,Conectar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-copy,Copiar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-currency,Moneda Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-delete,Borrar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-development,Desarrollo Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-dialog-error,Diálogo de Error de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-dialog-information,Diálogo Informativo de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-dialog-warning,Diálogo de Alerta de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-disconnect,Desconexión de Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-executable,Ejecutable Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-find,Encontrar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-find-replace,Encontrar Reemplazar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-folder-new,Nuevo Directorio Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-folder-saved-search,Directorio de Búsquedas Guardadas Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-fullscreen,Pantalla Completa Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-go-home,Ir a Inicio Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-go-jump,Saltar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-go-next,Siguiente Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-go-previous,Anterior Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-graph,Gráfica Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-help,Ayuda Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-image-missing,Imagen Faltante Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-information,Información Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-list,Lista Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-list-add,Adicionar Lista Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-list-remove,Remover Lista Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-locale,Local Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-lock,Bloquear Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-log-out,Salir Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-mail-message-new,Nuevo Mensaje de Correo Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-new,Nuevo Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-noimage,Sin Imagen Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-open,Abrir Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-package,Paquete Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-preferences,Preferencias Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-preferences-system,Sistema de Preferencias Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-preferences-system-session,Preferencias sistema sesión Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-presentation,Presentación Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-print,Imprimir Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-readonly,Sólo lectura Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-refresh,Refrescar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-save,Guardar Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-save-as,Guardar Como Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-spreadsheet,Hoja de Cálculo Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-start-here,Comenzar Aquí Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-system,Sistema Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-system-file-manager,Sistema Manejo de Archivos Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-tree,Árbol Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-users,Usuarios Tryton,0
+selection,"ir.ui.menu,icon",0,tryton-web-browser,Navegador Web Tryton,0
+selection,"ir.ui.view,type",0,,,0
+selection,"ir.ui.view,type",0,Board,Tablero,0
+selection,"ir.ui.view,type",0,Form,Formulario,0
+selection,"ir.ui.view,type",0,Graph,Gráfico,0
+selection,"ir.ui.view,type",0,Tree,Árbol,0
+view,ir.action,0,Action,Acción,0
+view,ir.action,0,General,General,0
+view,ir.action,0,Keyword,Palabra Clave,0
+view,ir.action,0,Keywords,Palabras Clave,0
+view,ir.action.act_window,0,General,General,0
+view,ir.action.act_window,0,Keyword,Palabra Clave,0
+view,ir.action.act_window,0,Keywords,Palabras Clave,0
+view,ir.action.act_window,0,Open a Window,Abrir una Ventana,0
+view,ir.action.act_window,0,Open Window,Abrir Ventana,0
+view,ir.action.act_window,0,Views,Vistas,0
+view,ir.action.report,0,General,General,0
+view,ir.action.report,0,Keyword,Palabra Clave,0
+view,ir.action.report,0,Keywords,Palabras Clave,0
+view,ir.action.report,0,Report,Reporte,0
+view,ir.action.report,0,Report xml,Reporte xml,0
+view,ir.action.url,0,General,General,0
+view,ir.action.url,0,Keyword,Palabra Clave,0
+view,ir.action.url,0,Keywords,Palabras Clave,0
+view,ir.action.url,0,URL,URL,0
+view,ir.action.wizard,0,General,General,0
+view,ir.action.wizard,0,Keyword,Palabra Clave,0
+view,ir.action.wizard,0,Keywords,Palabras Clave,0
+view,ir.action.wizard,0,Wizard,Asistente,0
+view,ir.action.wizard_size,0,Wizard Size,Tamaño del Asistente,0
+view,ir.action.wizard_size,0,Wizard Sizes,Tamaños del Asistente,0
+view,ir.attachment,0,Attachments,Adjuntos,0
+view,ir.attachment,0,Preview,Vista previa,0
+view,ir.cron,0,Action to trigger,Acción a ejecutarse,0
+view,ir.cron,0,Scheduled Action,Acción agendada,0
+view,ir.cron,0,Scheduled Actions,Acciones agendadas,0
+view,ir.default,0,Default,Predeterminado,0
+view,ir.default,0,Defaults,Predeterminados,0
+view,ir.export,0,Exports,Exportes,0
+view,ir.lang,0,Date Formatting,Formato de Fecha,0
+view,ir.lang,0,Language,Idioma,0
+view,ir.lang,0,Languages,Idiomas,0
+view,ir.lang,0,Numbers Formatting,Formateo de número,0
+view,ir.model,0,Fields Description,Descripción de Campos,0
+view,ir.model,0,Model Description,Descripción del Modelo,0
+view,ir.model.access,0,Access controls,Controles de Acceso,0
+view,ir.model.field,0,Fields,Campos,0
+view,ir.model.print_model_graph.init,0,Print Model Graph,Imprimir Gráfica del Modelo,0
+view,ir.module.module,0,Cancel Installation,Cancelar Instalación,0
+view,ir.module.module,0,Cancel Uninstallation,Cancelar la no instalación,0
+view,ir.module.module,0,Cancel Upgrade,Cancelar actualización,0
+view,ir.module.module,0,Dependencies,Dependencias,0
+view,ir.module.module,0,Mark for Installation,Marcar para Instalación,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Marcar para Desinstalar,0
+view,ir.module.module,0,Mark for Upgrade,Marcar para Actualizar,0
+view,ir.module.module,0,Module,Módulo,0
+view,ir.module.module,0,Modules,Módulos,0
+view,ir.module.module.config_wizard.first,0,depending on the modules you have installed.,dependiendo de los módulos que haya instalado.,0
+view,ir.module.module.config_wizard.first,0,Welcome to the module configuration wizard!,Bienvenido al Asistente de configuración del módulo!,0
+view,ir.module.module.config_wizard.first,0,You will be able to configure your installation,Tendrá oportunidad de configurar su instalación,0
+view,ir.module.module.config_wizard.item,0,Config Wizard Items,Configurar los elementos del Asistente,0
+view,ir.module.module.install_upgrade.init,0,Note that this operation my take a few minutes.,Tenga en cuenta que esta operación puede durar varios minutos.,0
+view,ir.module.module.install_upgrade.init,0,System Upgrade,Actualización del Sistema,0
+view,ir.module.module.install_upgrade.init,0,Your system will be upgraded.,Su sistema se actualizará,0
+view,ir.module.module.install_upgrade.start,0,System upgrade done,Actualización del Sistema finalizada,0
+view,ir.module.module.install_upgrade.start,0,The modules have been upgraded / installed !,Los módulos se actualizaron/instalaron!,0
+view,ir.module.module.install_upgrade.start,0,We suggest you to reload the menu tab (Ctrl+t Ctrl+r).,Le sugerimos recargar la barra de menú(Ctrl+t Ctrlr).,0
+view,ir.module.module.install_upgrade.start,0,You may have to reinstall some language pack.,Es posible que necesite reinstalar un paquete de idioma,0
+view,ir.property,0,Properties,Propiedades,0
+view,ir.property,0,Property,Propiedad,0
+view,ir.rule,0,Test,Prueba,0
+view,ir.rule.group,0,"If there is no test defined, the rule is always satisfied if not global","Si no hay prueba definida, la regla se aplica siempre que no sea global",0
+view,ir.rule.group,0,Record rules,Grabar Reglas,0
+view,ir.rule.group,0,The rule is satisfied if at least one test is True,La regla se satisface si por lo menos una condición es Verdadera,0
+view,ir.sequence,0,${day},${day},0
+view,ir.sequence,0,Day:,Día:,0
+view,ir.sequence,0,"Legend (for prefix, suffix)","Letras (para prefijo, sufijo)",0
+view,ir.sequence,0,"Legend (Placeholders for prefix, suffix)","Leyenda (Lugares para prefijos, sufijos)",0
+view,ir.sequence,0,${month},${month},0
+view,ir.sequence,0,Month:,Mes:,0
+view,ir.sequence,0,Sequences,Secuencias,0
+view,ir.sequence,0,${year},${year},0
+view,ir.sequence,0,Year:,Año:,0
+view,ir.sequence.strict,0,${day},${day},0
+view,ir.sequence.strict,0,Day:,Día:,0
+view,ir.sequence.strict,0,"Legend (for prefix, suffix)","Letras (para prefijo, sufijo)",0
+view,ir.sequence.strict,0,${month},${month},0
+view,ir.sequence.strict,0,Month:,Mes:,0
+view,ir.sequence.strict,0,Sequences Strict,Secuencias Estrictas,0
+view,ir.sequence.strict,0,${year},${year},0
+view,ir.sequence.strict,0,Year:,Año:,0
+view,ir.sequence.type,0,Sequence Type,Tipo de Secuencia,0
+view,ir.translation,0,Translations,Traducciones,0
+view,ir.translation.clean.init,0,Clean Translations,Limpiar Traducciones,0
+view,ir.translation.clean.init,0,Clean Translations?,¿Limpiar Traducciones?,0
+view,ir.translation.clean.start,0,Clean Translations,Limpiar Traducciones,0
+view,ir.translation.clean.start,0,Clean Translations Succeed!,Las traducciones se limpiaron!,0
+view,ir.translation.export.init,0,Export Translation,Exportar Traducción,0
+view,ir.translation.export.start,0,Export Translation,Exportar Traducción,0
+view,ir.translation.set_report.init,0,Set Report Translations,Establecer Traducciones de Reporte,0
+view,ir.translation.set_report.init,0,Synchronize Report Translations?,¿Sincronizar las traducciones de reportes?,0
+view,ir.translation.set_report.init,0,Update Report Translations?,Actualizar Traducciones de Reportes?,0
+view,ir.translation.set_report.start,0,Set Report Translations,Establecer Traducciones de Reporte,0
+view,ir.translation.set_report.start,0,Set Translations Succeed!,Establecimiento de Traducciones exitoso!,0
+view,ir.translation.update.init,0,Synchronize Translations,Sincronizar Traducciones,0
+view,ir.translation.update.init,0,Update Translations,Actualizar Traducción,0
+view,ir.ui.menu,0,Menu,Menú,0
+view,ir.ui.view,0,View,Vista,0
+view,ir.ui.view_sc,0,Shortcut,Atajo,0
+view,ir.ui.view_tree_width,0,Views Tree Width,Ancho de Vista de Árbol,0
+view,ir.ui.view_tree_width,0,View Tree Width,Ancho de Vista de Árbol,0
+wizard_button,"ir.model.print_model_graph,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.model.print_model_graph,init,print",0,Print,Imprimir,0
+wizard_button,"ir.module.module.config_wizard,first,end",0,Cancel,Cancelar,0
+wizard_button,"ir.module.module.config_wizard,first,wizard",0,Ok,Aceptar,0
+wizard_button,"ir.module.module.install_upgrade,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.module.module.install_upgrade,init,start",0,Start Upgrade,Iniciar Actualización,0
+wizard_button,"ir.module.module.install_upgrade,start,menu",0,Ok,Aceptar,0
+wizard_button,"ir.translation.clean,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.translation.clean,init,start",0,Start,Comenzar,0
+wizard_button,"ir.translation.clean,start,end",0,Ok,Aceptar,0
+wizard_button,"ir.translation.export,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.translation.export,init,start",0,Start Export,Comenzar a Exportar,0
+wizard_button,"ir.translation.export,start,end",0,Close,Cerrar,0
+wizard_button,"ir.translation.set_report,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.translation.set_report,init,start",0,Start Update,Iniciar Actualización,0
+wizard_button,"ir.translation.set_report,start,end",0,Ok,Aceptar,0
+wizard_button,"ir.translation.update,init,end",0,Cancel,Cancelar,0
+wizard_button,"ir.translation.update,init,start",0,Start Update,Iniciar Actualización,0
