@@ -1,0 +1,25 @@
+Version 4.6.5 - 2019-08-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.4 - 2019-06-10
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.3 - 2019-03-15
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.2 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.1 - 2018-01-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add webhook for charge and source
+* Allow to select customer source on payment
+* Allow to create customer with ID
+* Allow to create manual payment
+* Add capture
+
+Version 4.4.0 - 2017-05-01
+* Initial release
