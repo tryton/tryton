@@ -1,0 +1,178 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
+"used on a move \"%(move)s\" in a closed period"
+msgstr ""
+"Das Ablaufdatum von Charge \"%(lot)s\" kann nicht verändert werden, weil sie"
+" in Lagerbewegung \"%(move)s\" in einer geschlossenen Lagerperiode verwendet"
+" wird"
+
+msgctxt "error:stock.move:"
+msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
+msgstr "Die Charge \"%(lot)s\" von Lagerbewegung \"%(move)s\" ist abgelaufen"
+
+msgctxt "error:stock.period:"
+msgid ""
+"You can not close a period before the Shelf Live Expiration Date "
+"\"%(date)s\" of Lot \"%(lot)s\""
+msgstr ""
+"Die Lagerperiode kann nicht vor dem Ablaufdatum \"%(date)s\" der Charge "
+"\"%(lot)s\" geschlossen werden"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Ablaufstatus"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Ablaufzeit"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Lagerzeitstatus"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Lagerzeit"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Ablaufstatus"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Ablaufzeit"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Lagerzeitstatus"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Lagerzeit"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Lagerzeit Wartedauer"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Ablaufstatus"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Lagerzeit Ablaufdatum"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Lagerzeit Ablaufdatum"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr ""
+"Die Anzahl von Tagen für die Wartezeit bis zur Entfernung aus der "
+"voraussichtlichen Verfügbarkeit"
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Lager Ablauferzwingung"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Lagerzeit"

@@ -1,0 +1,19 @@
+Version 4.2.4 - 2018-11-16
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.3 - 2017-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.2 - 2017-11-07
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.1 - 2017-07-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Allow request without product
+* Group requests of same product and unit into one purchase line
+
+Version 4.0.0 - 2016-05-02
+* Initial release
