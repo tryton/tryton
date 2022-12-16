@@ -1,0 +1,268 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,gift_card:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "field:account.account.type.template,gift_card:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "field:account.configuration,gift_card_account_expense:"
+msgid "Gift Card Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,gift_card_account_revenue:"
+msgid "Gift Card Revenue"
+msgstr ""
+
+msgctxt "field:account.configuration.gift_card_account,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.gift_card_account,gift_card_account_expense:"
+msgid "Gift Card Expense"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.gift_card_account,gift_card_account_revenue:"
+msgid "Gift Card Revenue"
+msgstr ""
+
+msgctxt "field:product.product,gift_card:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "field:product.template,gift_card:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "field:sale.configuration,gift_card_sequence:"
+msgid "Gift Card Sequence"
+msgstr ""
+
+msgctxt "field:sale.configuration.gift_card.sequence,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.configuration.gift_card.sequence,gift_card_sequence:"
+msgid "Gift Card Sequence"
+msgstr ""
+
+msgctxt "field:sale.gift_card,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.gift_card,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.gift_card,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:sale.gift_card,origin:"
+msgid "Origin"
+msgstr ""
+
+msgctxt "field:sale.gift_card,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.gift_card,spent_on:"
+msgid "Spent On"
+msgstr ""
+
+msgctxt "field:sale.gift_card,value:"
+msgid "Value"
+msgstr ""
+
+msgctxt "field:sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr ""
+
+msgctxt "field:sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr ""
+
+msgctxt "field:sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr ""
+
+msgctxt "field:sale.point.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,gift_card_email:"
+msgid "Gift Card Email"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,is_gift_card:"
+msgid "Is Gift Card"
+msgstr ""
+
+msgctxt "field:sale.point.sale.line,is_gift_card_service:"
+msgid "Is Gift Card Service"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,email:"
+msgid "Email"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.point.sale.pay.gift_card,sale:"
+msgid "Sale"
+msgstr ""
+
+msgctxt "field:sale.sale,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:stock.move,gift_cards:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "field:stock.move,gift_cards_required:"
+msgid "Gift Cards Required"
+msgstr ""
+
+msgctxt "help:sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr ""
+
+msgctxt "help:sale.point.sale.line,gift_card_email:"
+msgid "Leave empty for the customer email."
+msgstr ""
+
+msgctxt "model:account.configuration.gift_card_account,name:"
+msgid "Account Configuration Gift Card Account"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_gift_card_form"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_gift_card"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_gift_card_email"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_gift_card_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_gift_card_form_domain_pending"
+msgid "Pending"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_gift_card_form_domain_sent"
+msgid "Sent"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_gift_card_invalid_uom"
+msgid "The default UOM for the gift card \"%(template)s\" must be \"%(unit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_gift_card_move_quantity"
+msgid ""
+"To do the move \"%(move)s\", you must use exactly %(quantity)d gift card(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_gift_card_number_unique"
+msgid "The numbers for each company's gift cards must be unique."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_gift_card_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_gift_card"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_gift_card_form"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "model:res.group,name:group_gift_card_admin"
+msgid "Gift Card Administration"
+msgstr ""
+
+msgctxt "model:sale.configuration.gift_card.sequence,name:"
+msgid "Gift Card Configuration Sequence"
+msgstr ""
+
+msgctxt "model:sale.gift_card,name:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "model:sale.point.sale.pay.gift_card,name:"
+msgid "POS Pay - Gift Card"
+msgstr ""
+
+msgctxt "report:sale.gift_card.email:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "report:sale.gift_card.email:"
+msgid "Here is your code:"
+msgstr ""
+
+msgctxt "report:sale.gift_card.email:"
+msgid "You received a gift card of %(value)s for %(company)s."
+msgstr ""
+
+msgctxt "report:sale.gift_card:"
+msgid "Value:"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Gift Card"
+msgstr ""
+
+msgctxt "view:sale.line:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "view:sale.point.sale.line:"
+msgid "Gift Cards"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,add_gift_card:"
+msgid "Add"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,gift_card,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,gift_card:"
+msgid "Gift Card"
+msgstr ""
