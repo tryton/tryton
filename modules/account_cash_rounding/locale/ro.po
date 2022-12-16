@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Rotunjire Cash"
+
+msgctxt "field:account.configuration,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Rotunjire Cash Cont Credit"
+
+msgctxt "field:account.configuration,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Rotunjire Cash Cont Debit"
+
+msgctxt "field:account.configuration.cash_rounding_account,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Rotunjire Cash"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Rotunjire Cash Cont Credit"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Rotunjire Cash Cont Debit"
+
+msgctxt "field:account.configuration.cash_rounding_account,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:account.invoice,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Rotunjire Cash"
+
+msgctxt "field:currency.currency,cash_rounding:"
+msgid "Cash Rounding Factor"
+msgstr "Rotunjire Cash Factor"
+
+msgctxt "field:purchase.purchase,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Rotunjire Cash"
+
+msgctxt "model:account.configuration.cash_rounding_account,name:"
+msgid "Account Configuration Cash Rounding Account"
+msgstr "Configurare Cont Rotunjire Cash"
+
+msgctxt "model:ir.message,text:msg_missing_cash_rounding_account"
+msgid "There is not cash rounding account configured."
+msgstr "Nu exista un cont configurat pentru rotunjire cash."

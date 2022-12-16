@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="payment"/>
+    <field name="payment" colspan="3"/>
+
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="reason"/>
+    <field name="reason"/>
+
+    <label name="stripe_error_message"/>
+    <field name="stripe_error_message"/>
+    <newline/>
+
+    <label name="stripe_error_code"/>
+    <field name="stripe_error_code"/>
+    <label name="stripe_error_param"/>
+    <field name="stripe_error_param"/>
+
+    <label name="submitted_by"/>
+    <field name="submitted_by"/>
+    <label name="approved_by"/>
+    <field name="approved_by"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="draft"/>
+        <button name="submit"/>
+        <button name="approve"/>
+    </group>
+</form>

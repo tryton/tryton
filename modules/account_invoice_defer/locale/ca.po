@@ -1,0 +1,203 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Compte de despeses diferides"
+
+msgctxt "field:account.configuration,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Compte d'ingressos diferits"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr "Compte de despeses diferides"
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr "Compte d'ingressos diferits"
+
+msgctxt "field:account.invoice.deferred,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.invoice.deferred,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.deferred,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.deferred,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.invoice.deferred,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:account.invoice.deferred,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.invoice.deferred,moves:"
+msgid "Moves"
+msgstr "Asentaments"
+
+msgctxt "field:account.invoice.deferred,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:account.invoice.deferred,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.invoice.deferred,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice.line,defer_from:"
+msgid "Defer From"
+msgstr "Diferir de"
+
+msgctxt "field:account.invoice.line,defer_to:"
+msgid "Defer To"
+msgstr "Diferit fins"
+
+msgctxt "field:account.invoice.line,deferrable:"
+msgid "Deferrable"
+msgstr "Diferible"
+
+msgctxt "model:account.invoice.deferred,name:"
+msgid "Invoice Deferred"
+msgstr "Factura diferida"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Factures de proveïdor diferides"
+
+msgctxt "model:ir.action,name:act_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Factures de client diferides"
+
+msgctxt "model:ir.action,name:wizard_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Crea assentaments de factures diferides"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_running"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_running"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
+msgid "Invoice line can be deferred only once."
+msgstr "La línia de factura només es pot diferir una vegada."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
+msgid ""
+"You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
+"\"draft\" state."
+msgstr ""
+"No podeu eliminar la factura diferida \"%(deferral)s\" perquè no es troba en"
+" estat \"esborrany\"."
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some invoices deferred "
+"\"%(deferrals)s\" do not have yet move for the period."
+msgstr ""
+"No podeu tancar el període \"%(period)s\" perquè algunes factures diferides "
+"\"%(deferrals)s\" encara no tenen assentament en el període."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr "No hi ha cap compte de despeses diferides configurat."
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr "No hi ha cap compte d'ingressos diferits configurat."
+
+msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
+msgid "Are you sure you want to defer the invoices?"
+msgstr "Esteu segur que voleu diferir les factures?"
+
+msgctxt "model:ir.model.button,help:invoice_deferred_run_button"
+msgid "Start deferring the invoice"
+msgstr "Comença a diferir la factura"
+
+msgctxt "model:ir.model.button,string:invoice_deferred_run_button"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_deferred_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr "Crea assentaments de factures diferides"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr "Factures de proveïdor diferides"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr "Factures de client diferides"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "view:account.configuration:"
+msgid "Deferred"
+msgstr "Diferit"
+
+msgctxt "view:account.invoice.deferred:"
+msgid "Other Info"
+msgstr "Informació addicional"

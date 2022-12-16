@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="period"/>
+    <field name="period"/>
+    <label name="budget_line"/>
+    <field name="budget_line"/>
+
+    <label name="ratio"/>
+    <group col="-1" id="ratio">
+        <field name="ratio" factor="100" xexpand="0"/>
+        <label name="ratio" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+    <label name="total_amount"/>
+    <field name="total_amount"/>
+</form>
