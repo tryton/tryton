@@ -1,0 +1,4329 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:access_error:"
+msgid ""
+"You try to bypass an access rule.\n"
+"(Document type: %s)"
+msgstr ""
+"شما سعی میکنید قانون دسترسی را دور بزنید\n"
+"( نوع سند : \"%s\" )"
+
+msgctxt "error:delete_xml_record:"
+msgid "You are not allowed to delete this record."
+msgstr "شما اجازه حذف این پرونده را ندارید."
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
+msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
+
+msgctxt "error:domain_validation_record:"
+msgid ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
+msgstr "مقدار فیلد: \"%s\" در مدل: \"%s\" باتوجه به دامنه آن معتبر نیست."
+
+msgctxt "error:foreign_model_exist:"
+msgid ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
+msgstr ""
+"پرونده ها را نمی توان حذف کرد چرا که در فیلد: \"٪s\" از مدل: \"٪s\" از آنها "
+"استفاده می شود."
+
+msgctxt "error:foreign_model_missing:"
+msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr "مقدار: \"%s\" فیلد: \"%s\" در مدل: \"%s\" ایجاد نشده است."
+
+msgctxt "error:ir.action.act_window.domain:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr "نام دامنه یا معیارهای جستجوی: \"%s\" در اقدام: \"%s\" معتبر نیست."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
+msgstr "مفاد : \"%s\" در اقدام : \"%s\" نامعتبر است."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr "نام دامنه یا معیارهای جستجوی: \"%s\" در اقدام: \"%s\" معتبر نیست."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "مشاهده: \"%s\" از اقدام: \"%s\" معتبر نمیباشد."
+
+msgctxt "error:ir.action.keyword:"
+msgid "Wrong wizard model in keyword action \"%s\"."
+msgstr "اشتباه دستیارمدل در کلیدواژه اقدام \"%s\"."
+
+msgctxt "error:ir.action.report:"
+msgid "Invalid email definition on report \"%s\"."
+msgstr "ایمیل تعریف شده در گزارش : \"%s\" معتبر نمیباشد."
+
+msgctxt "error:ir.cron:"
+msgid "Scheduled action failed"
+msgstr "اقدام برنامه ریزی شده انجام نشد"
+
+msgctxt "error:ir.cron:"
+msgid ""
+"The following action failed to execute properly: \"%s\"\n"
+"%s\n"
+" Traceback: \n"
+"\n"
+"%s\n"
+msgstr ""
+"عملیات زیر اجرا نشد : \"%s\"\n"
+"\"%s\"\n"
+"ردیابی:\n"
+"\n"
+"\"%s\"\n"
+
+msgctxt "error:ir.lang:"
+msgid "Default language can not be deleted."
+msgstr "زبان پیش فرض قابل حذف نیست."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
+msgstr "فرمت تاریخ : \"%s\" در زبان : \"%s\" معتبر نیست."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
+msgstr "گروه بندی : \"%s\" در زبان : \"%s\" معتبر نیست."
+
+msgctxt "error:ir.lang:"
+msgid "The default language must be translatable."
+msgstr "زبان پیش فرض باید قابل ترجمه باشد."
+
+msgctxt "error:ir.lang:"
+msgid "decimal_point and thousands_sep must be different!"
+msgstr "نقطه اعشار و جداکننده یکان باید متفاوت باشند!"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not create this kind of document! (%s)"
+msgstr "شما نمیتوانید این نوع سند: \"%s\" را ایجاد کنید"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not delete this document! (%s)"
+msgstr "شما نمیتوانید این سند: \"%s\" را حذف کنید"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not read this document! (%s)"
+msgstr "شما نمیتوانید این سند: \"%s\" را بخوانید"
+
+msgctxt "error:ir.model.access:"
+msgid "You can not write in this document! (%s)"
+msgstr "شما نمیتوانید دراین سند: \"%s\" چیزی بنویسید"
+
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr "شرط : \"%s\" یک عبارت PYSON معتبر نیست در قانون دکمه :\"%s\" ."
+
+msgctxt "error:ir.model.button:"
+msgid "The button name in model must be unique!"
+msgstr "نام دکمه در مدل باید منحصربفرد باشد!"
+
+msgctxt "error:ir.model.data:"
+msgid "The triple (fs_id, module, model) must be unique!"
+msgstr "سه گانه [شناسه،مدل،ماژول] باید منحصربفرد باشد!"
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not read the field! (%s.%s)"
+msgstr "شما نمیتوانید فیلد!(\"%s\"،\"%s\") رابخوانید"
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not write on the field! (%s.%s)"
+msgstr "شما نمیتوانید در فیلد!(\"%s\"،\"%s\") بنویسید"
+
+msgctxt "error:ir.model.field:"
+msgid "The field name in model must be unique!"
+msgstr "نام فیلد در مدل باید منحصربفرد باشد!"
+
+msgctxt "error:ir.model:"
+msgid "The model must be unique!"
+msgstr "مدل باید منحصر به فرد باشد!"
+
+msgctxt "error:ir.module.dependency:"
+msgid "Dependency must be unique by module!"
+msgstr "وابستگی توسط ماژول باید منحصر به فرد باشد!"
+
+msgctxt "error:ir.module:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr "تعداد ماژول های فعال بستگی دارد به آن هایی که غیرفعال می کنید:"
+
+msgctxt "error:ir.module:"
+msgid "The name of the module must be unique!"
+msgstr "نام مدل باید منحصر به فرد باشد!"
+
+msgctxt "error:ir.module:"
+msgid "You can not remove a module that is activated or will be activated"
+msgstr "شما نمیتوانید یک ماژول فعال شده یا فعال خواهد شد را حذف کنید"
+
+msgctxt "error:ir.rule.group:"
+msgid "Global and Default are mutually exclusive!"
+msgstr "سراسری و پیش فرض متقابلاً انحصاری میباشند!"
+
+msgctxt "error:ir.rule:"
+msgid "Invalid domain in rule \"%s\"."
+msgstr "نام دامنه در قانون: \"%s\" معتبر نیست."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "پیشوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "پسوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "آخرین برچسب زمان نباید در آینده ادامه: \"%s\" باشد."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Missing sequence."
+msgstr "ادامه گمشده."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "راندینگ برچسب زمان باید یک عدد بزرگتر از صفر باشد"
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "پیشوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "پسوند: \"%s\" در ادامه: \"%s\" نامعتبر است."
+
+msgctxt "error:ir.sequence:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "آخرین برچسب زمان نباید در آینده ادامه: \"%s\" باشد."
+
+msgctxt "error:ir.sequence:"
+msgid "Missing sequence."
+msgstr "ادامه گمشده."
+
+msgctxt "error:ir.sequence:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "راندینگ برچسب زمان باید یک عدد بزرگتر از صفر باشد"
+
+msgctxt "error:ir.translation:"
+msgid "Translation must be unique"
+msgstr "ترجمه باید منحصر به فرد باشد"
+
+msgctxt "error:ir.translation:"
+msgid ""
+"You can not export translation %(name)s because it is an overridden "
+"translation by module %(overriding_module)s"
+msgstr ""
+"شما نمیتوانید ترجمه: \"%s\" را صادر کنید، چراکه آن ترجمه توسط ماژول: \"%s\" "
+"بازنویسی میشود"
+
+msgctxt "error:ir.trigger:"
+msgid "\"On Time\" and others are mutually exclusive!"
+msgstr "\"سر وقت\" و دیگران متقابلاً انحصاری میباشند!"
+
+msgctxt "error:ir.trigger:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
+"\"%(trigger)s\"."
+msgstr "شرط : \"%s\" یک عبارت PYSON معتبر نیست در trigger :\"%s\"."
+
+msgctxt "error:ir.ui.view:"
+msgid "Invalid XML for view \"%s\"."
+msgstr "XML غیرمعتبر برای مشاهده \"%s\"."
+
+msgctxt "error:read_error:"
+msgid ""
+"You try to read records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"شما سعی دارید پرونده ایی که دیگر وجود ندارد را بخوانید.\n"
+"(نوع سند: %s)"
+
+msgctxt "error:recursion_error:"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"توابع بازگشتی خطا: پرونده: \"%s\" با مرجعیت: \"%s\" به عنوان والد خود "
+"پیکربندی شده است."
+
+msgctxt "error:reference_syntax_error:"
+msgid "Syntax error for reference %r in %s"
+msgstr "خطای نحوی برای ارجاع : \"%s\" در \"%s\" s"
+
+msgctxt "error:relation_not_found:"
+msgid "Relation not found: %r in %s"
+msgstr "ارتباط یافت نشد : ٪ r در ٪ s"
+
+msgctxt "error:required_field:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "فیلد : \"%s\" در مدل : \"%s\" مورد نیاز است."
+
+msgctxt "error:required_validation_record:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "فیلد : \"%s\" در مدل : \"%s\" مورد نیاز است."
+
+msgctxt "error:search_function_missing:"
+msgid "Missing search function on field \"%s\"."
+msgstr "فاقد تابع جستجو در فیلد \"٪ s\"."
+
+msgctxt "error:selection_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
+msgstr "مقدار : \"%s\" فیلد : \"%s\" در مدل : \"%s\" در انتخاب نیست."
+
+msgctxt "error:selection_value_notfound:"
+msgid "Value not in the selection for field \"%s\"."
+msgstr "مقدار فیلد : \"%s\" در انتخاب نیست."
+
+msgctxt "error:size_validation_record:"
+msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
+msgstr "اندازه : \"%s\" از فیلد : \"%s\" درمدل : \"%s\" خیلی طولانی است."
+
+msgctxt "error:time_format_validation_record:"
+msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
+msgstr "مقدار زمان: \"%s\" فیلد : \"%s\" در مدل : \"%s\" معتبر نیست."
+
+msgctxt "error:too_many_relations_found:"
+msgid "Too many relations found: %r in %s"
+msgstr "روابط بسیار زیاد یافت شد: ٪ r در ٪ s"
+
+msgctxt "error:write_error:"
+msgid ""
+"You try to write on records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"شما سعی دارید درپرونده ایی که دیگر وجود ندارد بنویسید.\n"
+"(نوع سند: %s)"
+
+msgctxt "error:write_xml_record:"
+msgid "You are not allowed to modify this record."
+msgstr "شما مجاز به تغییر این پرونده نیستید."
+
+msgctxt "error:xml_id_syntax_error:"
+msgid "Syntax error for XML id %r in %s"
+msgstr "خطای نحوی از شناسه XML %r in %s"
+
+msgctxt "error:xml_record_desc:"
+msgid "This record is part of the base configuration."
+msgstr "این پرونده بخشی از پیکره بندی پایه میباشد."
+
+msgctxt "field:ir.action,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.action,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:ir.action,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.action,usage:"
+msgid "Usage"
+msgstr "استفاده"
+
+msgctxt "field:ir.action,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.act_window,act_window_domains:"
+msgid "Domains"
+msgstr "دامنه ها"
+
+msgctxt "field:ir.action.act_window,act_window_views:"
+msgid "Views"
+msgstr "مشاهدات"
+
+msgctxt "field:ir.action.act_window,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.act_window,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.act_window,context:"
+msgid "Context Value"
+msgstr "ارزش مفاد"
+
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "دامنه مفاد"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr "مدل مفاد"
+
+msgctxt "field:ir.action.act_window,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.act_window,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.act_window,domain:"
+msgid "Domain Value"
+msgstr "ارزش دامنه"
+
+msgctxt "field:ir.action.act_window,domains:"
+msgid "Domains"
+msgstr "دامنه ها"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action.act_window,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.action.act_window,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.act_window,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:ir.action.act_window,limit:"
+msgid "Limit"
+msgstr "محدود"
+
+msgctxt "field:ir.action.act_window,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action.act_window,order:"
+msgid "Order Value"
+msgstr "ارزش سفارش"
+
+msgctxt "field:ir.action.act_window,pyson_context:"
+msgid "PySON Context"
+msgstr "مفاد PySON"
+
+msgctxt "field:ir.action.act_window,pyson_domain:"
+msgid "PySON Domain"
+msgstr "دامنه PySON"
+
+msgctxt "field:ir.action.act_window,pyson_order:"
+msgid "PySON Order"
+msgstr "دستور PySON"
+
+msgctxt "field:ir.action.act_window,pyson_search_value:"
+msgid "PySON Search Criteria"
+msgstr "معیار جستجوی PySON"
+
+msgctxt "field:ir.action.act_window,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.action.act_window,search_value:"
+msgid "Search Criteria"
+msgstr "معیارهای جستجوی"
+
+msgctxt "field:ir.action.act_window,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.action.act_window,usage:"
+msgid "Usage"
+msgstr "استفاده"
+
+msgctxt "field:ir.action.act_window,views:"
+msgid "Views"
+msgstr "مشاهدات"
+
+msgctxt "field:ir.action.act_window,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.act_window,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.act_window.domain,act_window:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.act_window.domain,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "شمارش"
+
+msgctxt "field:ir.action.act_window.domain,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.act_window.domain,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.act_window.domain,domain:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "field:ir.action.act_window.domain,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.act_window.domain,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action.act_window.domain,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.act_window.domain,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.action.act_window.domain,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.act_window.domain,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.act_window.view,act_window:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.act_window.view,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.act_window.view,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.act_window.view,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.act_window.view,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.act_window.view,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.action.act_window.view,view:"
+msgid "View"
+msgstr "مشاهده"
+
+msgctxt "field:ir.action.act_window.view,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.act_window.view,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.keyword,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.keyword,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.keyword,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action.keyword,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.keyword,keyword:"
+msgid "Keyword"
+msgstr "کلمه کلیدی"
+
+msgctxt "field:ir.action.keyword,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.action.keyword,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.keyword,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.keyword,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.report,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.report,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.report,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.report,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.report,direct_print:"
+msgid "Direct Print"
+msgstr "چاپ مستقیم"
+
+msgctxt "field:ir.action.report,email:"
+msgid "Email"
+msgstr "ایمیل"
+
+msgctxt "field:ir.action.report,extension:"
+msgid "Extension"
+msgstr "توسعه"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action.report,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.action.report,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "سفارشی است"
+
+msgctxt "field:ir.action.report,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:ir.action.report,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.action.report,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action.report,pyson_email:"
+msgid "PySON Email"
+msgstr "ایمیل PySON"
+
+msgctxt "field:ir.action.report,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.report,report:"
+msgid "Path"
+msgstr "مسیر"
+
+msgctxt "field:ir.action.report,report_content:"
+msgid "Content"
+msgstr "محتوا"
+
+msgctxt "field:ir.action.report,report_content_custom:"
+msgid "Content"
+msgstr "محتوا"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "نام محتوا"
+
+msgctxt "field:ir.action.report,report_name:"
+msgid "Internal Name"
+msgstr "نام داخلی"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr "مجرد"
+
+msgctxt "field:ir.action.report,template_extension:"
+msgid "Template Extension"
+msgstr "الگوی افزونه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "قابل ترجمه"
+
+msgctxt "field:ir.action.report,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.action.report,usage:"
+msgid "Usage"
+msgstr "استفاده"
+
+msgctxt "field:ir.action.report,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.report,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.url,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.url,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.url,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.url,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action.url,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.action.url,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.url,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action.url,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.url,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.action.url,url:"
+msgid "Action Url"
+msgstr "نشانی اینترنتی اقدام"
+
+msgctxt "field:ir.action.url,usage:"
+msgid "Usage"
+msgstr "استفاده"
+
+msgctxt "field:ir.action.url,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.url,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.action.wizard,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.action.wizard,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.action.wizard,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.action.wizard,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.action.wizard,email:"
+msgid "Email"
+msgstr "ایمیل"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.action.wizard,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.action.wizard,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.action.wizard,keywords:"
+msgid "Keywords"
+msgstr "کلیدواژه‌ها"
+
+msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.action.wizard,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.action.wizard,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.action.wizard,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.action.wizard,usage:"
+msgid "Usage"
+msgstr "استفاده"
+
+msgctxt "field:ir.action.wizard,window:"
+msgid "Window"
+msgstr "پنجره"
+
+msgctxt "field:ir.action.wizard,wiz_name:"
+msgid "Wizard name"
+msgstr "نام دستیار"
+
+msgctxt "field:ir.action.wizard,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.action.wizard,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.attachment,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.attachment,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.attachment,data:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "field:ir.attachment,data_size:"
+msgid "Data size"
+msgstr "سایز اطلاعات"
+
+msgctxt "field:ir.attachment,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr "کد فایل"
+
+msgctxt "field:ir.attachment,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.attachment,last_modification:"
+msgid "Last Modification"
+msgstr "آخرین به روز رسانی"
+
+msgctxt "field:ir.attachment,last_user:"
+msgid "Last User"
+msgstr "آخرین کاربر"
+
+msgctxt "field:ir.attachment,link:"
+msgid "Link"
+msgstr "پیوند"
+
+msgctxt "field:ir.attachment,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.attachment,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.attachment,resource:"
+msgid "Resource"
+msgstr "منبع"
+
+msgctxt "field:ir.attachment,summary:"
+msgid "Summary"
+msgstr "خلاصه"
+
+msgctxt "field:ir.attachment,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.attachment,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.attachment,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.cache,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.cache,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.cache,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.cache,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.cache,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.cache,timestamp:"
+msgid "Timestamp"
+msgstr "برچسب زمان"
+
+msgctxt "field:ir.cache,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.cache,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.configuration,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.configuration,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
+
+msgctxt "field:ir.configuration,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.configuration,language:"
+msgid "language"
+msgstr "زبان"
+
+msgctxt "field:ir.configuration,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.configuration,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.configuration,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.cron,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.cron,args:"
+msgid "Arguments"
+msgstr "استدلال ها"
+
+msgctxt "field:ir.cron,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.cron,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.cron,function:"
+msgid "Function"
+msgstr "عملکرد"
+
+msgctxt "field:ir.cron,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.cron,interval_number:"
+msgid "Interval Number"
+msgstr "شماره فاصله"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Unit"
+msgstr "واحد فاصله"
+
+msgctxt "field:ir.cron,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.cron,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.cron,next_call:"
+msgid "Next Call"
+msgstr "تماس بعدی"
+
+msgctxt "field:ir.cron,number_calls:"
+msgid "Number of Calls"
+msgstr "شماره تماس"
+
+msgctxt "field:ir.cron,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.cron,repeat_missed:"
+msgid "Repeat Missed"
+msgstr "تکرار ناموفق"
+
+msgctxt "field:ir.cron,request_user:"
+msgid "Request User"
+msgstr "درخواست کاربر"
+
+msgctxt "field:ir.cron,user:"
+msgid "Execution User"
+msgstr "اجرای کاربر"
+
+msgctxt "field:ir.cron,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.cron,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.date,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.export,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.export,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.export,export_fields:"
+msgid "Fields"
+msgstr "فیلدها"
+
+msgctxt "field:ir.export,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.export,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.export,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.export,resource:"
+msgid "Resource"
+msgstr "منبع"
+
+msgctxt "field:ir.export,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.export,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.export.line,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.export.line,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.export.line,export:"
+msgid "Export"
+msgstr "صادرات"
+
+msgctxt "field:ir.export.line,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.export.line,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.export.line,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.export.line,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.export.line,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.lang,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.lang,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:ir.lang,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.lang,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.lang,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:ir.lang,decimal_point:"
+msgid "Decimal Separator"
+msgstr "جداکننده دهگان"
+
+msgctxt "field:ir.lang,direction:"
+msgid "Direction"
+msgstr "جهت"
+
+msgctxt "field:ir.lang,grouping:"
+msgid "Grouping"
+msgstr "گروه بندی"
+
+msgctxt "field:ir.lang,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "جداکننده دهگان"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "گروه بندی"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "جداکننده هزاراگان"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "علامت منفی ارز قبل از عدد وارد شود"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "منفی را با فضای خالی جدا کنید"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "موقعیت علامت منفی"
+
+msgctxt "field:ir.lang,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "علامت منفی"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "نماد مثبت ارز قبل از عدد وارد شود"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "مثبت را با فضای خالی جدا کنید"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "موقعیت نشانۀ مثبت"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "کد مرجع"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "علامت مثبت"
+
+msgctxt "field:ir.lang,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.lang,thousands_sep:"
+msgid "Thousands Separator"
+msgstr "جداکننده هزاراگان"
+
+msgctxt "field:ir.lang,translatable:"
+msgid "Translatable"
+msgstr "قابل ترجمه"
+
+msgctxt "field:ir.lang,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.lang,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model,fields:"
+msgid "Fields"
+msgstr "فیلدها"
+
+msgctxt "field:ir.model,global_search_p:"
+msgid "Global Search"
+msgstr "جستجوی سراسری"
+
+msgctxt "field:ir.model,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model,info:"
+msgid "Information"
+msgstr "اطلاعات"
+
+msgctxt "field:ir.model,model:"
+msgid "Model Name"
+msgstr "نام مدل"
+
+msgctxt "field:ir.model,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.model,name:"
+msgid "Model Description"
+msgstr "شرح مدل"
+
+msgctxt "field:ir.model,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.access,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.access,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.access,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:ir.model.access,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.access,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.model.access,perm_create:"
+msgid "Create Access"
+msgstr "دسترسی ایجاد کردن"
+
+msgctxt "field:ir.model.access,perm_delete:"
+msgid "Delete Access"
+msgstr "دسترسی حذف کردن"
+
+msgctxt "field:ir.model.access,perm_read:"
+msgid "Read Access"
+msgstr "دسترسی خواندن"
+
+msgctxt "field:ir.model.access,perm_write:"
+msgid "Write Access"
+msgstr "دسترسی نوشتن"
+
+msgctxt "field:ir.model.access,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.access,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.access,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "کلیک ها"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "تایید"
+
+msgctxt "field:ir.model.button,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.button,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "کمک"
+
+msgctxt "field:ir.model.button,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.model.button,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.model.button,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "تنظیم مجدد"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "تنظیم مجدد براساس"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "قوانین"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "برچسب"
+
+msgctxt "field:ir.model.button,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.button,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "دکمه"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "دکمه فشرده شده"
+
+msgctxt "field:ir.model.button-button.reset,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.button-button.reset,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.button-button.reset,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.button-button.reset,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.button-button.reset,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.button-button.reset,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button.click,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "دکمه"
+
+msgctxt "field:ir.model.button.click,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.button.click,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.button.click,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.button.click,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "شناسه رکورد"
+
+msgctxt "field:ir.model.button.click,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.button.click,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "دکمه"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "شرط"
+
+msgctxt "field:ir.model.button.rule,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.button.rule,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:ir.model.button.rule,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "تعداد کاربر"
+
+msgctxt "field:ir.model.button.rule,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.button.rule,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.button.rule,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.data,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.data,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.data,db_id:"
+msgid "Resource ID"
+msgstr "شناسه مرجع"
+
+msgctxt "field:ir.model.data,fs_id:"
+msgid "Identifier on File System"
+msgstr "شناسه در سیستم فایل"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "مقادیر در سیستم فایل"
+
+msgctxt "field:ir.model.data,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.data,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.model.data,noupdate:"
+msgid "No Update"
+msgstr "بدون بروزرسانی"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "خارج از همگام سازی"
+
+msgctxt "field:ir.model.data,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.data,values:"
+msgid "Values"
+msgstr "مقادیر"
+
+msgctxt "field:ir.model.data,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.data,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.field,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.field,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.field,field_description:"
+msgid "Field Description"
+msgstr "فیلد توضیحات"
+
+msgctxt "field:ir.model.field,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.model.field,help:"
+msgid "Help"
+msgstr "کمک"
+
+msgctxt "field:ir.model.field,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.field,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.model.field,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.model.field,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.field,relation:"
+msgid "Model Relation"
+msgstr "رابطه مدل"
+
+msgctxt "field:ir.model.field,ttype:"
+msgid "Field Type"
+msgstr "نوع فیلد"
+
+msgctxt "field:ir.model.field,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.field,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.field.access,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.model.field.access,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.model.field.access,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:ir.model.field.access,field:"
+msgid "Field"
+msgstr "فیلد"
+
+msgctxt "field:ir.model.field.access,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.model.field.access,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.field.access,perm_create:"
+msgid "Create Access"
+msgstr "دسترسی ایجاد کردن"
+
+msgctxt "field:ir.model.field.access,perm_delete:"
+msgid "Delete Access"
+msgstr "دسترسی حذف کردن"
+
+msgctxt "field:ir.model.field.access,perm_read:"
+msgid "Read Access"
+msgstr "دسترسی خواندن"
+
+msgctxt "field:ir.model.field.access,perm_write:"
+msgid "Write Access"
+msgstr "دسترسی نوشتن"
+
+msgctxt "field:ir.model.field.access,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.model.field.access,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.model.field.access,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.model.print_model_graph.start,filter:"
+msgid "Filter"
+msgstr "فیلتر"
+
+msgctxt "field:ir.model.print_model_graph.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.model.print_model_graph.start,level:"
+msgid "Level"
+msgstr "سطح"
+
+msgctxt "field:ir.module,childs:"
+msgid "Childs"
+msgstr "زیرمجموعه ها"
+
+msgctxt "field:ir.module,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.module,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.module,dependencies:"
+msgid "Dependencies"
+msgstr "وابستگی ها"
+
+msgctxt "field:ir.module,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.module,parents:"
+msgid "Parents"
+msgstr "مراجع"
+
+msgctxt "field:ir.module,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.module,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:ir.module,version:"
+msgid "Version"
+msgstr "نسخه"
+
+msgctxt "field:ir.module,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.module,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.module.activate_upgrade.done,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.activate_upgrade.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "ماژول ها برای بروزرسانی"
+
+msgctxt "field:ir.module.config_wizard.done,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.config_wizard.first,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.config_wizard.item,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.module.config_wizard.item,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.module.config_wizard.item,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.module.config_wizard.item,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.config_wizard.item,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.module.config_wizard.item,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.module.config_wizard.item,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:ir.module.config_wizard.item,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.module.config_wizard.item,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.module.config_wizard.other,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.config_wizard.other,percentage:"
+msgid "Percentage"
+msgstr "درصد"
+
+msgctxt "field:ir.module.dependency,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.module.dependency,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.module.dependency,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.module.dependency,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.module.dependency,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.module.dependency,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.module.dependency,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:ir.module.dependency,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.module.dependency,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.note,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.note,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.note,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "آخرین اصلاحیه"
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "آخرین کاربر"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr "پیام"
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr "پیام"
+
+msgctxt "field:ir.note,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "منبع"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr "خوانده نشده"
+
+msgctxt "field:ir.note,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.note,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.note.read,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.note.read,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.note.read,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "field:ir.note.read,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.note.read,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.rule,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.rule,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.rule,domain:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "field:ir.rule,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.rule,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.rule,rule_group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:ir.rule,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.rule,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.rule.group,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.rule.group,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.rule.group,default_p:"
+msgid "Default"
+msgstr "پیش فرض"
+
+msgctxt "field:ir.rule.group,global_p:"
+msgid "Global"
+msgstr "سراسری"
+
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.rule.group,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.rule.group,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.rule.group,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.rule.group,perm_create:"
+msgid "Create Access"
+msgstr "دسترسی ایجاد کردن"
+
+msgctxt "field:ir.rule.group,perm_delete:"
+msgid "Delete Access"
+msgstr "دسترسی حذف کردن"
+
+msgctxt "field:ir.rule.group,perm_read:"
+msgid "Read Access"
+msgstr "دسترسی خواندن"
+
+msgctxt "field:ir.rule.group,perm_write:"
+msgid "Write Access"
+msgstr "دسترسی نوشتن"
+
+msgctxt "field:ir.rule.group,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.rule.group,rules:"
+msgid "Tests"
+msgstr "آزمایشات"
+
+msgctxt "field:ir.rule.group,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.rule.group,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.sequence,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.sequence,code:"
+msgid "Sequence Code"
+msgstr "کد توالی"
+
+msgctxt "field:ir.sequence,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.sequence,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.sequence,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.sequence,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "آخرین برچسب زمان"
+
+msgctxt "field:ir.sequence,name:"
+msgid "Sequence Name"
+msgstr "نام توالی"
+
+msgctxt "field:ir.sequence,number_increment:"
+msgid "Increment Number"
+msgstr "شماره افزایش"
+
+msgctxt "field:ir.sequence,number_next:"
+msgid "Next Number"
+msgstr "شماره بعدی"
+
+msgctxt "field:ir.sequence,number_next_internal:"
+msgid "Next Number"
+msgstr "شماره بعدی"
+
+msgctxt "field:ir.sequence,padding:"
+msgid "Number padding"
+msgstr "تعداد پدینگ"
+
+msgctxt "field:ir.sequence,prefix:"
+msgid "Prefix"
+msgstr "پیشوند"
+
+msgctxt "field:ir.sequence,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.sequence,suffix:"
+msgid "Suffix"
+msgstr "پسوند"
+
+msgctxt "field:ir.sequence,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "فاصله برچسب زمانی"
+
+msgctxt "field:ir.sequence,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "دوران برچسب زمانی"
+
+msgctxt "field:ir.sequence,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.sequence,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.sequence,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.sequence.strict,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.sequence.strict,code:"
+msgid "Sequence Code"
+msgstr "کد توالی"
+
+msgctxt "field:ir.sequence.strict,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.sequence.strict,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.sequence.strict,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.sequence.strict,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "آخرین برچسب زمان"
+
+msgctxt "field:ir.sequence.strict,name:"
+msgid "Sequence Name"
+msgstr "نام توالی"
+
+msgctxt "field:ir.sequence.strict,number_increment:"
+msgid "Increment Number"
+msgstr "شماره افزایش"
+
+msgctxt "field:ir.sequence.strict,number_next:"
+msgid "Next Number"
+msgstr "شماره بعدی"
+
+msgctxt "field:ir.sequence.strict,number_next_internal:"
+msgid "Next Number"
+msgstr "شماره بعدی"
+
+msgctxt "field:ir.sequence.strict,padding:"
+msgid "Number padding"
+msgstr "تعداد پدینگ"
+
+msgctxt "field:ir.sequence.strict,prefix:"
+msgid "Prefix"
+msgstr "پیشوند"
+
+msgctxt "field:ir.sequence.strict,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.sequence.strict,suffix:"
+msgid "Suffix"
+msgstr "پسوند"
+
+msgctxt "field:ir.sequence.strict,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "فاصله برچسب زمانی"
+
+msgctxt "field:ir.sequence.strict,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "دوران برچسب زمانی"
+
+msgctxt "field:ir.sequence.strict,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.sequence.strict,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.sequence.strict,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.sequence.type,code:"
+msgid "Sequence Code"
+msgstr "کد توالی"
+
+msgctxt "field:ir.sequence.type,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.sequence.type,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.sequence.type,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.sequence.type,name:"
+msgid "Sequence Name"
+msgstr "نام توالی"
+
+msgctxt "field:ir.sequence.type,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.sequence.type,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.sequence.type,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.session,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.session,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.session,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.session,key:"
+msgid "Key"
+msgstr "کلید"
+
+msgctxt "field:ir.session,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.session,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.session,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.session.wizard,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.session.wizard,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.session.wizard,data:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "field:ir.session.wizard,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.session.wizard,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.session.wizard,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.session.wizard,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.translation,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.translation,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.translation,fuzzy:"
+msgid "Fuzzy"
+msgstr "نامانوس"
+
+msgctxt "field:ir.translation,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation,lang:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:ir.translation,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.translation,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.translation,name:"
+msgid "Field Name"
+msgstr "نام فیلد"
+
+msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "بازنویسی کردن ماژول"
+
+msgctxt "field:ir.translation,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.translation,res_id:"
+msgid "Resource ID"
+msgstr "شناسه مرجع"
+
+msgctxt "field:ir.translation,src:"
+msgid "Source"
+msgstr "منبع"
+
+msgctxt "field:ir.translation,src_md5:"
+msgid "Source MD5"
+msgstr "منبع MD5"
+
+msgctxt "field:ir.translation,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:ir.translation,value:"
+msgid "Translation Value"
+msgstr "ارزش ترجمه"
+
+msgctxt "field:ir.translation,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.translation,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.translation.clean.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.clean.succeed,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.export.result,file:"
+msgid "File"
+msgstr "فایل"
+
+msgctxt "field:ir.translation.export.result,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.export.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.export.start,language:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:ir.translation.export.start,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.translation.set.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.set.succeed,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.update.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.translation.update.start,language:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "field:ir.trigger,action_function:"
+msgid "Action Function"
+msgstr "عملکرد اقدام"
+
+msgctxt "field:ir.trigger,action_model:"
+msgid "Action Model"
+msgstr "مدل اقدام"
+
+msgctxt "field:ir.trigger,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.trigger,condition:"
+msgid "Condition"
+msgstr "شرط"
+
+msgctxt "field:ir.trigger,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.trigger,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.trigger,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.trigger,limit_number:"
+msgid "Limit Number"
+msgstr "شماره محدود"
+
+msgctxt "field:ir.trigger,minimum_time_delay:"
+msgid "Minimum Delay"
+msgstr "حداقل تاخیر"
+
+msgctxt "field:ir.trigger,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.trigger,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.trigger,on_create:"
+msgid "On Create"
+msgstr "درایجاد"
+
+msgctxt "field:ir.trigger,on_delete:"
+msgid "On Delete"
+msgstr "درحذف"
+
+msgctxt "field:ir.trigger,on_time:"
+msgid "On Time"
+msgstr "در زمان"
+
+msgctxt "field:ir.trigger,on_write:"
+msgid "On Write"
+msgstr "در نوشتن"
+
+msgctxt "field:ir.trigger,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.trigger,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.trigger,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.trigger.log,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.trigger.log,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.trigger.log,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.trigger.log,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.trigger.log,record_id:"
+msgid "Record ID"
+msgstr "شناسه پرونده"
+
+msgctxt "field:ir.trigger.log,trigger:"
+msgid "Trigger"
+msgstr "تریگر"
+
+msgctxt "field:ir.trigger.log,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.trigger.log,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.icon,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.icon,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.icon,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.ui.icon,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.icon,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.ui.icon,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.ui.icon,path:"
+msgid "SVG Path"
+msgstr "مسیر SVG"
+
+msgctxt "field:ir.ui.icon,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.icon,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.ui.icon,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.icon,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.menu,action:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "کلید واژه های اقدام"
+
+msgctxt "field:ir.ui.menu,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:ir.ui.menu,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:ir.ui.menu,complete_name:"
+msgid "Complete Name"
+msgstr "نام کامل"
+
+msgctxt "field:ir.ui.menu,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.menu,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.menu,favorite:"
+msgid "Favorite"
+msgstr "مورد علاقه"
+
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:ir.ui.menu,icon:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "field:ir.ui.menu,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.menu,name:"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "field:ir.ui.menu,parent:"
+msgid "Parent Menu"
+msgstr "منو مادر"
+
+msgctxt "field:ir.ui.menu,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.menu,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.ui.menu,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.menu,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.menu.favorite,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.menu.favorite,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.menu.favorite,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.menu.favorite,menu:"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "field:ir.ui.menu.favorite,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.menu.favorite,sequence:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "field:ir.ui.menu.favorite,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.ui.menu.favorite,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.menu.favorite,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.view,arch:"
+msgid "View Architecture"
+msgstr "نمای معماری"
+
+msgctxt "field:ir.ui.view,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.view,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.view,data:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "field:ir.ui.view,domain:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "field:ir.ui.view,field_childs:"
+msgid "Children Field"
+msgstr "فیلد زیرمجموعه"
+
+msgctxt "field:ir.ui.view,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.view,inherit:"
+msgid "Inherited View"
+msgstr "نمای ارث بری"
+
+msgctxt "field:ir.ui.view,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "field:ir.ui.view,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.ui.view,priority:"
+msgid "Priority"
+msgstr "اولویت"
+
+msgctxt "field:ir.ui.view,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.view,type:"
+msgid "View Type"
+msgstr "نوع نمایش"
+
+msgctxt "field:ir.ui.view,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.view,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.view.show.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.view_search,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.view_search,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.view_search,domain:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "field:ir.ui.view_search,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.view_search,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.ui.view_search,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:ir.ui.view_search,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.view_search,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.ui.view_search,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.view_search,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.view_tree_state,child_name:"
+msgid "Child Name"
+msgstr "نام فرزند"
+
+msgctxt "field:ir.ui.view_tree_state,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.view_tree_state,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.view_tree_state,domain:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "field:ir.ui.view_tree_state,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.ui.view_tree_state,nodes:"
+msgid "Expanded Nodes"
+msgstr "گره های گسترش یافته"
+
+msgctxt "field:ir.ui.view_tree_state,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
+msgid "Selected Nodes"
+msgstr "گره های انتخاب شده"
+
+msgctxt "field:ir.ui.view_tree_state,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.ui.view_tree_state,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.view_tree_state,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:ir.ui.view_tree_width,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:ir.ui.view_tree_width,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.ui.view_tree_width,field:"
+msgid "Field"
+msgstr "فیلد"
+
+msgctxt "field:ir.ui.view_tree_width,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "field:ir.ui.view_tree_width,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.ui.view_tree_width,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:ir.ui.view_tree_width,width:"
+msgid "Width"
+msgstr "عرض"
+
+msgctxt "field:ir.ui.view_tree_width,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:ir.ui.view_tree_width,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "بخشی از دامنه که در هر تازه سازی باید ارزیابی شود"
+
+msgctxt "help:ir.action.act_window,limit:"
+msgid "Default limit for the list view"
+msgstr "محدودیت پیش فرض برای لیست نمایش"
+
+msgctxt "help:ir.action.act_window,search_value:"
+msgid "Default search criteria for the list view"
+msgstr "معیارهای جستجوی پیش فرض برای لیست نمایش"
+
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.report,email:"
+msgid ""
+"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
+"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
+msgstr ""
+"فرهنگ لغت پایتون که در آن کلیدها تعریف می شوند \"to\" \"cc\" \"subject\"\n"
+"برای مثال : {'to': 'test@example.com', 'cc': 'user@example.com'}"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see LibreOffice documentation for "
+"compatible format"
+msgstr ""
+"برای همان قالب، خالی بگذارید،اسناد LibreOffice را برای فرمت سازگار مشاهده "
+"کنید"
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr "اگر قالب تنها برای یک پرونده کار می کند، تیک بزنید ."
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.action.wizard,window:"
+msgid "Run wizard in a new window"
+msgstr "اجرای دستیار در پنجره جدید"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.cron,number_calls:"
+msgid ""
+"Number of times the function is called, a negative number indicates that the"
+" function will always be called"
+msgstr ""
+"تعداد دفعاتی که تابع فراخوانده می شود،یک عدد منفی نشان می دهد که تابع همواره"
+" فراخوانده می شود"
+
+msgctxt "help:ir.cron,request_user:"
+msgid "The user who will receive requests in case of failure"
+msgstr "کاربری که درخواست ها را در صورت شکست دریافت خواهد کرد"
+
+msgctxt "help:ir.cron,user:"
+msgid "The user used to execute this action"
+msgstr "کاربر برای اجرای این عمل استفاده کرد"
+
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.lang,code:"
+msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "کد منبع استثنایی"
+
+msgctxt "help:ir.model,module:"
+msgid "Module in which this model is defined"
+msgstr "ماژولی که این مدل در آن تعریف شده است"
+
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr "متن برای دریافت تایید کاربر هنگام کلیک کردن بر روی دکمه."
+
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules"
+msgstr "دکمه ای که باید قوانین را بازنشانی کند"
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"یک حکم PYSON ارزیابی شده با رکورد ارائه شده توسط \"خود\"\n"
+"این قانون اگر درست باشد فعال می شود."
+
+msgctxt "help:ir.model.data,db_id:"
+msgid "The id of the record in the database."
+msgstr "شناسه پرونده در پایگاه داده."
+
+msgctxt "help:ir.model.data,fs_id:"
+msgid "The id of the record as known on the file system."
+msgstr "شناسه پرونده در سیستم فایل شناخته شده است."
+
+msgctxt "help:ir.model.field,module:"
+msgid "Module in which this field is defined"
+msgstr "ماژولی که این فیلد در آن تعریف شده است"
+
+msgctxt "help:ir.model.print_model_graph.start,filter:"
+msgid ""
+"Entering a Python Regular Expression will exclude matching models from the "
+"graph."
+msgstr ""
+"وارد کردن عبارات منظم پایتون، مدلهای تطبیقی را از نمودار حذف خواهد کرد."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr ""
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user"
+msgstr ""
+"دامنه ارزیابی شده با یک متن PYSON حاوی :\n"
+"- \"کاربر\" بعنوان کاربر جاری"
+
+msgctxt "help:ir.rule.group,default_p:"
+msgid "Add this rule to all users by default"
+msgstr "این قانون را به صورت پیش فرض برای همه کاربران اضافه کنید"
+
+msgctxt "help:ir.rule.group,global_p:"
+msgid ""
+"Make the rule global \n"
+"so every users must follow this rule"
+msgstr ""
+"ساختن قانون سراسری\n"
+"بنابراین هر کاربر باید این قانون را دنبال کند"
+
+msgctxt "help:ir.rule.group,rules:"
+msgid "The rule is satisfied if at least one test is True"
+msgstr "اگر حداقل یک آزمون درست باشد،این قانون راضی کننده است"
+
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.trigger,condition:"
+msgid ""
+"A PYSON statement evaluated with record represented by \"self\"\n"
+"It triggers the action if true."
+msgstr ""
+"یک حکم PYSON ارزیابی شده با رکورد ارائه شده توسط \"خود\"\n"
+"اگر درست باشد این اقدامات پیگیری میشود."
+
+msgctxt "help:ir.trigger,limit_number:"
+msgid ""
+"Limit the number of call to \"Action Function\" by records.\n"
+"0 for no limit."
+msgstr ""
+"محدودیت تعداد تماس هابرای \"عملکرد اقدام\" بوسیله پرونده.\n"
+"0 برای نامحدود."
+
+msgctxt "help:ir.trigger,minimum_time_delay:"
+msgid ""
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
+msgstr ""
+"تنظیم حداقل تاخیر زمانی بین تماس به \"عملکرد اقدام\" برای یک رکورد مشابه.\n"
+"خالی برای بدون تأخیر."
+
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:ir.ui.view_search,domain:"
+msgid "The PYSON domain"
+msgstr "دامنه PySON"
+
+msgctxt "model:ir.action,name:"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "model:ir.action,name:act_action_act_window_form"
+msgid "Window Actions"
+msgstr "پنجره اقدامات‌"
+
+msgctxt "model:ir.action,name:act_action_form"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "model:ir.action,name:act_action_report_form"
+msgid "Reports"
+msgstr "گزارش ها"
+
+msgctxt "model:ir.action,name:act_action_url_form"
+msgid "URLs"
+msgstr "آدرس های اینترنتی"
+
+msgctxt "model:ir.action,name:act_action_wizard_form"
+msgid "Wizards"
+msgstr "دستیارها"
+
+msgctxt "model:ir.action,name:act_attachment_form"
+msgid "Attachments"
+msgstr "پیوست ها"
+
+msgctxt "model:ir.action,name:act_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "تنظیم گزینه های دستیار"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Actions"
+msgstr "اقدامات برنامه ریزی شده"
+
+msgctxt "model:ir.action,name:act_export_form"
+msgid "Exports"
+msgstr "صادرات"
+
+msgctxt "model:ir.action,name:act_icon_form"
+msgid "Icons"
+msgstr "آیکون ها"
+
+msgctxt "model:ir.action,name:act_lang_form"
+msgid "Languages"
+msgstr "زبان ها"
+
+msgctxt "model:ir.action,name:act_menu_list"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "model:ir.action,name:act_menu_tree"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "model:ir.action,name:act_model_access_form"
+msgid "Models Access"
+msgstr "مدل های دسترسی"
+
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr "دسترسی"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "کلیک ها"
+
+msgctxt "model:ir.action,name:act_model_button_form"
+msgid "Buttons"
+msgstr "دکمه ها"
+
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "model:ir.action,name:act_model_field_access_form"
+msgid "Fields Access"
+msgstr "دسترسی فیلدها"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr "دسترسی"
+
+msgctxt "model:ir.action,name:act_model_fields_form"
+msgid "Fields"
+msgstr "فیلدها"
+
+msgctxt "model:ir.action,name:act_model_form"
+msgid "Models"
+msgstr "مدل ها"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "انجام در انتظار فعال سازی / ارتقاء"
+
+msgctxt "model:ir.action,name:act_module_config"
+msgid "Configure Modules"
+msgstr "پیکربندی ماژول ها"
+
+msgctxt "model:ir.action,name:act_module_config_wizard"
+msgid "Module Configuration"
+msgstr "پیکربندی ماژول"
+
+msgctxt "model:ir.action,name:act_module_form"
+msgid "Modules"
+msgstr "ماژول ها"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr "یادداشت ها"
+
+msgctxt "model:ir.action,name:act_rule_group_form"
+msgid "Record Rules"
+msgstr "پرونده قوانین"
+
+msgctxt "model:ir.action,name:act_sequence_form"
+msgid "Sequences"
+msgstr "ادامه ها"
+
+msgctxt "model:ir.action,name:act_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "دنباله های سخت"
+
+msgctxt "model:ir.action,name:act_sequence_type_form"
+msgid "Sequence Types"
+msgstr "انواع ادامه"
+
+msgctxt "model:ir.action,name:act_translation_clean"
+msgid "Clean Translations"
+msgstr "پاک کردن ترجمه ها"
+
+msgctxt "model:ir.action,name:act_translation_export"
+msgid "Export Translations"
+msgstr "صادرکردن ترجمه ها"
+
+msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "ترجمه ها"
+
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "ترجمه ها"
+
+msgctxt "model:ir.action,name:act_translation_set"
+msgid "Set Translations"
+msgstr "تنظیمات ترجمه ها"
+
+msgctxt "model:ir.action,name:act_translation_update"
+msgid "Synchronize Translations"
+msgstr "همگام سازی ترجمه ها"
+
+msgctxt "model:ir.action,name:act_trigger_form"
+msgid "Triggers"
+msgstr "تریگرها"
+
+msgctxt "model:ir.action,name:act_view_form"
+msgid "Views"
+msgstr "بازدید"
+
+msgctxt "model:ir.action,name:act_view_search"
+msgid "View Search"
+msgstr "دیدن جستجو"
+
+msgctxt "model:ir.action,name:act_view_show"
+msgid "Show View"
+msgstr "مشاهده نمایش"
+
+msgctxt "model:ir.action,name:act_view_tree_state"
+msgid "Tree State"
+msgstr "حالت درختی"
+
+msgctxt "model:ir.action,name:act_view_tree_width_form"
+msgid "View Tree Width"
+msgstr "عرض نمایش درختی"
+
+msgctxt "model:ir.action,name:print_model_graph"
+msgid "Graph"
+msgstr "نمودار"
+
+msgctxt "model:ir.action,name:report_model_graph"
+msgid "Graph"
+msgstr "نمودار"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr "نمودار جریان کار"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "ترجمه ها"
+
+msgctxt "model:ir.action.act_window,name:"
+msgid "Action act window"
+msgstr "پنجره اقدامات‌ درحال اجرا"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Action act window domain"
+msgstr "دامنه پنجره اقدامات‌ درحال اجرا"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "خارج از همگام سازی"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "محلی"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "ماژول ها"
+
+msgctxt "model:ir.action.act_window.view,name:"
+msgid "Action act window view"
+msgstr "نمایش پنجره اقدامات‌ درحال اجرا"
+
+msgctxt "model:ir.action.keyword,name:"
+msgid "Action keyword"
+msgstr "کلیدواژه اقدامات"
+
+msgctxt "model:ir.action.report,name:"
+msgid "Action report"
+msgstr "اجرای گزارش"
+
+msgctxt "model:ir.action.url,name:"
+msgid "Action URL"
+msgstr "آدرس اینترنتی اقدام"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Action wizard"
+msgstr "اجرای دستیار"
+
+msgctxt "model:ir.attachment,name:"
+msgid "Attachment"
+msgstr "پیوست"
+
+msgctxt "model:ir.cache,name:"
+msgid "Cache"
+msgstr "کش"
+
+msgctxt "model:ir.configuration,name:"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.cron,name:"
+msgid "Cron"
+msgstr "برنامه وظایف"
+
+msgctxt "model:ir.date,name:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "model:ir.export,name:"
+msgid "Export"
+msgstr "صادرات"
+
+msgctxt "model:ir.export.line,name:"
+msgid "Export line"
+msgstr "خط صادرات"
+
+msgctxt "model:ir.lang,name:"
+msgid "Language"
+msgstr "زبان"
+
+msgctxt "model:ir.lang,name:lang_bg"
+msgid "Bulgarian"
+msgstr "بلغاری"
+
+msgctxt "model:ir.lang,name:lang_ca"
+msgid "Català"
+msgstr "کاتالانیا"
+
+msgctxt "model:ir.lang,name:lang_cs"
+msgid "Czech"
+msgstr "چک"
+
+msgctxt "model:ir.lang,name:lang_de"
+msgid "German"
+msgstr "آلمانی"
+
+msgctxt "model:ir.lang,name:lang_en"
+msgid "English"
+msgstr "انگلیسی"
+
+msgctxt "model:ir.lang,name:lang_es"
+msgid "Spanish"
+msgstr "اسپانیایی"
+
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "اسپانیایی (آمریکای لاتین)"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "پارسی"
+
+msgctxt "model:ir.lang,name:lang_fr"
+msgid "French"
+msgstr "فرانسوی"
+
+msgctxt "model:ir.lang,name:lang_hu_HU"
+msgid "Hungarian"
+msgstr "مجارستانی"
+
+msgctxt "model:ir.lang,name:lang_it_IT"
+msgid "Italian"
+msgstr "ایتالیایی"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "لائوای"
+
+msgctxt "model:ir.lang,name:lang_lt"
+msgid "Lithuanian"
+msgstr "لیتوانیایی"
+
+msgctxt "model:ir.lang,name:lang_nl"
+msgid "Dutch"
+msgstr "هلندی"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "لهستانی"
+
+msgctxt "model:ir.lang,name:lang_pt_BR"
+msgid "Portuguese (Brazil)"
+msgstr "پرتغالی (برزیل)"
+
+msgctxt "model:ir.lang,name:lang_ru"
+msgid "Russian"
+msgstr "روسی"
+
+msgctxt "model:ir.lang,name:lang_sl"
+msgid "Slovenian"
+msgstr "اسلوونیایی"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "چینی Simplified"
+
+msgctxt "model:ir.model,name:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "model:ir.model.access,name:"
+msgid "Model access"
+msgstr "دسترسی به مدل"
+
+msgctxt "model:ir.model.button,name:"
+msgid "Model Button"
+msgstr "مدل دکمه"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Run Once"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Sync"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Mark for Activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Cancel Activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Mark for Deactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Cancel Deactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Mark for Upgrade"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Cancel Upgrade"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Show"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "تنظیم مجدد مدل دکمه"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "مدل کلیک دکمه"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "مدل قانون دکمه"
+
+msgctxt "model:ir.model.data,name:"
+msgid "Model data"
+msgstr "مدل داده"
+
+msgctxt "model:ir.model.field,name:"
+msgid "Model field"
+msgstr "مدل فیلد"
+
+msgctxt "model:ir.model.field.access,name:"
+msgid "Model Field Access"
+msgstr "مدل دسترسی فیلد"
+
+msgctxt "model:ir.model.print_model_graph.start,name:"
+msgid "Print Model Graph"
+msgstr "چاپ مدل نمودار"
+
+msgctxt "model:ir.module,name:"
+msgid "Module"
+msgstr "ماژول"
+
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "فعال سازی و ارتقاء ماژول انجام شد"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "شروع فعال سازی و ارتقاء ماژول"
+
+msgctxt "model:ir.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "دستیار پیکره بند ماژول انجام شد"
+
+msgctxt "model:ir.module.config_wizard.first,name:"
+msgid "Module Config Wizard First"
+msgstr "دستیار پیکره بند ماژول نخست"
+
+msgctxt "model:ir.module.config_wizard.item,name:"
+msgid "Config wizard to run after activating a module"
+msgstr "دستیار پیکربندی پس از فعال کردن یک ماژول اجرا می شود"
+
+msgctxt "model:ir.module.config_wizard.other,name:"
+msgid "Module Config Wizard Other"
+msgstr "دستیار پیکره بند ماژول سایر"
+
+msgctxt "model:ir.module.dependency,name:"
+msgid "Module dependency"
+msgstr "وابستگی ماژول"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr "یاداشت خوانده شد"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr ""
+
+msgctxt "model:ir.rule,name:"
+msgid "Rule"
+msgstr "قانون"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "Rule group"
+msgstr "گروه قوانین"
+
+msgctxt "model:ir.sequence,name:"
+msgid "Sequence"
+msgstr "ادامه"
+
+msgctxt "model:ir.sequence.strict,name:"
+msgid "Sequence Strict"
+msgstr "دنباله های سخت"
+
+msgctxt "model:ir.sequence.type,name:"
+msgid "Sequence type"
+msgstr "نوع ادامه"
+
+msgctxt "model:ir.session,name:"
+msgid "Session"
+msgstr "جلسه"
+
+msgctxt "model:ir.session.wizard,name:"
+msgid "Session Wizard"
+msgstr "دستیار جلسه"
+
+msgctxt "model:ir.translation,name:"
+msgid "Translation"
+msgstr "ترجمه"
+
+msgctxt "model:ir.translation.clean.start,name:"
+msgid "Clean translation"
+msgstr "پاک کردن ترجمه"
+
+msgctxt "model:ir.translation.clean.succeed,name:"
+msgid "Clean translation"
+msgstr "پاک کردن ترجمه"
+
+msgctxt "model:ir.translation.export.result,name:"
+msgid "Export translation"
+msgstr "صادرکردن ترجمه"
+
+msgctxt "model:ir.translation.export.start,name:"
+msgid "Export translation"
+msgstr "صادرکردن ترجمه"
+
+msgctxt "model:ir.translation.set.start,name:"
+msgid "Set Translation"
+msgstr "تنظیمات ترجمه"
+
+msgctxt "model:ir.translation.set.succeed,name:"
+msgid "Set Translation"
+msgstr "تنظیمات ترجمه"
+
+msgctxt "model:ir.translation.update.start,name:"
+msgid "Update translation"
+msgstr "بروزرسانی ترجمه"
+
+msgctxt "model:ir.trigger,name:"
+msgid "Trigger"
+msgstr "تریگر"
+
+msgctxt "model:ir.trigger.log,name:"
+msgid "Trigger Log"
+msgstr "تریگر لاگ"
+
+msgctxt "model:ir.ui.icon,name:"
+msgid "Icon"
+msgstr "آیکون"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "UI menu"
+msgstr "منوی رابط کاربر"
+
+msgctxt "model:ir.ui.menu,name:menu_act_action"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "model:ir.ui.menu,name:menu_action"
+msgid "Actions"
+msgstr "اقدامات"
+
+msgctxt "model:ir.ui.menu,name:menu_action_act_window"
+msgid "Window Actions"
+msgstr "پنجره اقدامات‌"
+
+msgctxt "model:ir.ui.menu,name:menu_action_report_form"
+msgid "Reports"
+msgstr "گزارش ها"
+
+msgctxt "model:ir.ui.menu,name:menu_action_url"
+msgid "URLs"
+msgstr "آدرس های اینترنتی"
+
+msgctxt "model:ir.ui.menu,name:menu_action_wizard"
+msgid "Wizards"
+msgstr "دستیارها"
+
+msgctxt "model:ir.ui.menu,name:menu_administration"
+msgid "Administration"
+msgstr "مدیریت"
+
+msgctxt "model:ir.ui.menu,name:menu_attachment_form"
+msgid "Attachments"
+msgstr "پیوست ها"
+
+msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "گزینه های دستیارپیکره بندی"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Actions"
+msgstr "اقدامات برنامه ریزی شده"
+
+msgctxt "model:ir.ui.menu,name:menu_export_form"
+msgid "Exports"
+msgstr "صادرات"
+
+msgctxt "model:ir.ui.menu,name:menu_icon_form"
+msgid "Icons"
+msgstr "آیکون ها"
+
+msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
+msgid "Sequence Types"
+msgstr "انواع ادامه"
+
+msgctxt "model:ir.ui.menu,name:menu_lang_form"
+msgid "Languages"
+msgstr "زبان ها"
+
+msgctxt "model:ir.ui.menu,name:menu_localization"
+msgid "Localization"
+msgstr "بومی سازی"
+
+msgctxt "model:ir.ui.menu,name:menu_menu_list"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "model:ir.ui.menu,name:menu_model_access_form"
+msgid "Models Access"
+msgstr "مدل های دسترسی"
+
+msgctxt "model:ir.ui.menu,name:menu_model_button_form"
+msgid "Buttons"
+msgstr "دکمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
+msgid "Fields Access"
+msgstr "دسترسی فیلدها"
+
+msgctxt "model:ir.ui.menu,name:menu_model_form"
+msgid "Models"
+msgstr "مدل ها"
+
+msgctxt "model:ir.ui.menu,name:menu_models"
+msgid "Models"
+msgstr "مدل ها"
+
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "انجام در انتظار فعال سازی / ارتقاء"
+
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
+msgstr "ماژول ها"
+
+msgctxt "model:ir.ui.menu,name:menu_modules"
+msgid "Modules"
+msgstr "ماژول ها"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr "یادداشت ها"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
+msgid "Record Rules"
+msgstr "پرونده قوانین"
+
+msgctxt "model:ir.ui.menu,name:menu_scheduler"
+msgid "Scheduler"
+msgstr "زمان بندی"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_form"
+msgid "Sequences"
+msgstr "ادامه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "دنباله های سخت"
+
+msgctxt "model:ir.ui.menu,name:menu_sequences"
+msgid "Sequences"
+msgstr "ادامه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_clean"
+msgid "Clean Translations"
+msgstr "پاک کردن ترجمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_export"
+msgid "Export Translations"
+msgstr "صادرکردن ترجمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_form"
+msgid "Translations"
+msgstr "ترجمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_set"
+msgid "Set Translations"
+msgstr "تنظیمات ترجمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_update"
+msgid "Synchronize Translations"
+msgstr "همگام سازی ترجمه ها"
+
+msgctxt "model:ir.ui.menu,name:menu_trigger_form"
+msgid "Triggers"
+msgstr "تریگرها"
+
+msgctxt "model:ir.ui.menu,name:menu_ui"
+msgid "User Interface"
+msgstr "رابط کاربری"
+
+msgctxt "model:ir.ui.menu,name:menu_view"
+msgid "Views"
+msgstr "مشاهدات"
+
+msgctxt "model:ir.ui.menu,name:menu_view_search"
+msgid "View Search"
+msgstr "دیدن جستجو"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
+msgid "Tree State"
+msgstr "حالت درختی"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
+msgid "View Tree Width"
+msgstr "عرض نمایش درختی"
+
+msgctxt "model:ir.ui.menu,name:model_model_fields_form"
+msgid "Fields"
+msgstr "فیلدها"
+
+msgctxt "model:ir.ui.menu.favorite,name:"
+msgid "Menu Favorite"
+msgstr "منو مورد علاقه ها"
+
+msgctxt "model:ir.ui.view,name:"
+msgid "View"
+msgstr "مشاهده"
+
+msgctxt "model:ir.ui.view.show.start,name:"
+msgid "Show view"
+msgstr "نمایش مشاهده"
+
+msgctxt "model:ir.ui.view_search,name:"
+msgid "View Search"
+msgstr "دیدن جستجو"
+
+msgctxt "model:ir.ui.view_tree_state,name:"
+msgid "View Tree State"
+msgstr "نمایش حالت درختی"
+
+msgctxt "model:ir.ui.view_tree_width,name:"
+msgid "View Tree Width"
+msgstr "عرض نمایش درختی"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Action form"
+msgstr "فرم اقدام"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Form relate"
+msgstr "فرم ارتباط"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open Graph"
+msgstr "بازکردن نمودار"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open tree"
+msgstr "باز کردن درخت"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Print form"
+msgstr "چاپ فرم"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Link"
+msgstr "پیوند"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Days"
+msgstr "روزها"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Hours"
+msgstr "ساعات"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Minutes"
+msgstr "دقایق"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Months"
+msgstr "ماه ها"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Weeks"
+msgstr "هفته ها"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Left-to-right"
+msgstr "چپ به راست"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Right-to-left"
+msgstr "راست به چپ"
+
+msgctxt "selection:ir.module,state:"
+msgid "Activated"
+msgstr "فعال شده"
+
+msgctxt "selection:ir.module,state:"
+msgid "Not Activated"
+msgstr "فعال نشده"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be activated"
+msgstr "باید فعال شود"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be removed"
+msgstr "باید حذف شود"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be upgraded"
+msgstr "باید ارتقاء یابد"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Open"
+msgstr "باز"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Activated"
+msgstr "فعال شده"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Not Activated"
+msgstr "فعال نشده"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be activated"
+msgstr "باید فعال شود"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be removed"
+msgstr "باید حذف شود"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be upgraded"
+msgstr "باید ارتقاء یابد"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Unknown"
+msgstr "نامعلوم"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Decimal Timestamp"
+msgstr "برچسب زمان دسیمال"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "برچسب زمان هگزادسیمال"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Incremental"
+msgstr "افزایشی"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Decimal Timestamp"
+msgstr "برچسب زمان دسیمال"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "برچسب زمان هگزادسیمال"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Incremental"
+msgstr "افزایشی"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Error"
+msgstr "خطا"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Field"
+msgstr "فیلد"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Help"
+msgstr "کمک"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Model"
+msgstr "مدل"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Report"
+msgstr "گزارش"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Selection"
+msgstr "انتخاب"
+
+msgctxt "selection:ir.translation,type:"
+msgid "View"
+msgstr "مشاهده"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Wizard Button"
+msgstr "دکمه دستیار"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid ""
+msgstr "اقدام"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.act_window"
+msgstr "پنجره اقدامات درحال اجرا"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.report"
+msgstr "گزارش اقدامات"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.url"
+msgstr "آدرس اینترنتی اقدام"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.wizard"
+msgstr "دستیار اقدام"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid ""
+msgstr "نوع"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Board"
+msgstr "برد"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Calendar"
+msgstr "تقویم"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Form"
+msgstr "فرم"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Graph"
+msgstr "نمودار"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Tree"
+msgstr "درخت"
+
+msgctxt "view:ir.action.act_window:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:ir.action.report:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:ir.action.url:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:ir.action.wizard:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:ir.action:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr "زمان آخرین تغییرات"
+
+msgctxt "view:ir.cron:"
+msgid "Action to trigger"
+msgstr "رهگیری اقدام"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "یکبار اجرا"
+
+msgctxt "view:ir.lang:"
+msgid "Date Formatting"
+msgstr "قالب بندی تاریخ"
+
+msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "قالب بندی الزامی"
+
+msgctxt "view:ir.lang:"
+msgid "Numbers Formatting"
+msgstr "قالب بندی اعداد"
+
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "ماژول ها فعال شده / ارتقاء یافته هستند."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "توجه داشته باشید که این عملیات ممکن است چند دقیقه طول بکشد."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "سیستم شما به روز رسانی خواهد شد."
+
+msgctxt "view:ir.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "پیکره بندی انجام شد."
+
+msgctxt "view:ir.module.config_wizard.first:"
+msgid ""
+"You will be able to configure your installation depending on the modules you"
+" have installed."
+msgstr ""
+"شما می توانید نصب خود را بسته به ماژول هایی که نصب کرده اید پیکربندی کنید."
+
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "لغو فعال سازی"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Deactivation"
+msgstr "لغو غیر فعال سازی"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Upgrade"
+msgstr "لغو ارتقاء"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Activation"
+msgstr "علامت برای فعال سازی"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Deactivation (beta)"
+msgstr "علامت برای غیرفعال سازی (beta)"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Upgrade"
+msgstr "علامت برای ارتقاء"
+
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr "زمان"
+
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "view:ir.rule.group:"
+msgid ""
+"If there is no test defined, the rule is always satisfied if not global"
+msgstr ""
+"اگر هیچ آزمایشی تعریف نشده باشد، قانون همیشه راضی کننده است اگر سراسری نباشد"
+
+msgctxt "view:ir.rule.group:"
+msgid "The rule is satisfied if at least one test is True"
+msgstr "اگر حداقل یک آزمون درست باشد،این قانون راضی کننده است"
+
+msgctxt "view:ir.sequence:"
+msgid "${day}"
+msgstr "${day}"
+
+msgctxt "view:ir.sequence:"
+msgid "${month}"
+msgstr "${month}"
+
+msgctxt "view:ir.sequence:"
+msgid "${year}"
+msgstr "${year}"
+
+msgctxt "view:ir.sequence:"
+msgid "Day:"
+msgstr "روز:"
+
+msgctxt "view:ir.sequence:"
+msgid "Incremental"
+msgstr "افزایشی"
+
+msgctxt "view:ir.sequence:"
+msgid "Legend (Placeholders for prefix, suffix)"
+msgstr "افسانه (متغیرهایی برای پیشوند، پسوند)"
+
+msgctxt "view:ir.sequence:"
+msgid "Month:"
+msgstr "ماه:"
+
+msgctxt "view:ir.sequence:"
+msgid "Timestamp"
+msgstr "برچسب زمان"
+
+msgctxt "view:ir.sequence:"
+msgid "Year:"
+msgstr "سال:"
+
+msgctxt "view:ir.translation.clean.start:"
+msgid "Clean Translations?"
+msgstr "پاک کردن ترجمه؟"
+
+msgctxt "view:ir.translation.clean.succeed:"
+msgid "Clean Translations Succeed!"
+msgstr "پاک کردن ترجمه ها باموفقیت!"
+
+msgctxt "view:ir.translation.set.start:"
+msgid "Synchronize Translations?"
+msgstr "همگام سازی ترجمه ها؟"
+
+msgctxt "view:ir.translation.set.succeed:"
+msgid "Set Succeed!"
+msgstr "تنظیمات موفق!"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
+msgid "Print"
+msgstr "چاپ"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "شروع ارتقاء"
+
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
+msgid "Next"
+msgstr "بعدی"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.translation.clean,start,clean:"
+msgid "Clean"
+msgstr "پاک‌سازی"
+
+msgctxt "wizard_button:ir.translation.clean,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.translation.clean,succeed,end:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:ir.translation.export,result,end:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "wizard_button:ir.translation.export,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.translation.export,start,export:"
+msgid "Export"
+msgstr "صادرات"
+
+msgctxt "wizard_button:ir.translation.set,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.translation.set,start,set_:"
+msgid "Set"
+msgstr "تنظیم"
+
+msgctxt "wizard_button:ir.translation.set,succeed,end:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:ir.translation.update,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:ir.translation.update,start,update:"
+msgid "Update"
+msgstr "بروزرسانی"
+
+msgctxt "wizard_button:ir.ui.view.show,start,end:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds its limit."
+msgstr "تعداد رقم ها: \"%s\" فیلد : \"%s\" در مقدار : \"%s\" بیش از حد آن است."
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "کاربران"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr ""
+"برای همان قالب، خالی بگذارید، مستندات unoconv را برای فرمت سازگار مشاهده "
+"کنید"
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "همگام سازی"
+
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "نمایش"
