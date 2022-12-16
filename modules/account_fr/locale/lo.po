@@ -1,0 +1,77 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "ແຟ້ມ"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr "ຊື່ແຟັມ"
+
+msgctxt "field:account.fr.fec.result,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.fr.fec.start,deferral_journal:"
+msgid "Deferral Journal"
+msgstr "ບັນຊີເລື່ອນຊໍາລະປະຈຳວັນ"
+
+msgctxt "field:account.fr.fec.start,deferral_post_number:"
+msgid "Deferral Number"
+msgstr "ເລກບັນຊີເລື່ອນຊໍາລະ"
+
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.fr.fec.start,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "help:account.fr.fec.start,deferral_journal:"
+msgid "Journal used for pseudo deferral move"
+msgstr "ບັນຊີປະຈຳວັນທີ່ນໍາໃຊ້ສໍາລັບເຄື່ອນໄຫວເລື່ອນຊໍາລະຊົ່ວຄາວ"
+
+msgctxt "help:account.fr.fec.start,deferral_post_number:"
+msgid "Post number used for pseudo deferral move"
+msgstr "ປະກາດເລກບັນຊີທີ່ໃຊ້ສຳລັບເຄື່ອນໄຫວເລື່ອນຊຳລະຊົ່ວຄາວ"
+
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "ສ້າງ FEC"
+
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "ສ້າງ FEC"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr "IS-BIC"
+
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "ອັດ"
+
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr "ສ້າງ"

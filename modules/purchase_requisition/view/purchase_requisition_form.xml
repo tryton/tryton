@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="employee"/>
+    <field name="employee"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <notebook>
+        <page string="Requisition" id="requisition">
+            <label name="supply_date"/>
+            <field name="supply_date"/>
+            <newline/>
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <field name="lines" colspan="4"
+                view_ids="purchase_requisition.purchase_requisition_line_view_list_sequence"/>
+            <group col="2" colspan="2" id="states" yfill="1">
+                <label name="state"/>
+                <field name="state"/>
+            </group>
+            <group col="2" colspan="2" id="amount" yfill="1">
+                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                <field name="total_amount" xalign="1.0" xexpand="0"/>
+                <group col="-1" colspan="2" id="buttons">
+                    <button name="cancel" icon="tryton-cancel"/>
+                    <button name="reject" icon="tryton-close"/>
+                    <button name="draft"/>
+                    <button name="wait" icon="tryton-go-next"/>
+                    <button name="approve" icon="tryton-ok"/>
+                </group>
+            </group>
+        </page>
+        <page string="Other Info" id="other_info">
+            <label name="company"/>
+            <field name="company"/>
+        </page>
+    </notebook>
+</form>

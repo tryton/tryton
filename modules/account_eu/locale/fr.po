@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Identifiant de taxe de la société"
+
+msgctxt "field:account.ec_sales_list,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.ec_sales_list,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.ec_sales_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "Identifiant de taxe du tiers"
+
+msgctxt "field:account.ec_sales_list,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:account.ec_sales_list,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.ec_sales_list,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.ec_sales_list.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "Période"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Code de la liste des ventes CE"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "Code de la liste des ventes CE"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "Liste des ventes CE"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "Contexte de la liste des ventes CE"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "Liste EC des ventes"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "Liste EC des ventes"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "Liste des ventes CE"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "Liste des ventes CE"
