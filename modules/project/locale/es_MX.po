@@ -1,0 +1,270 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:"
+msgid "There should be only one timesheet work by task/project."
+msgstr "Debe haber sólo un parte de horas de trabajo por tarea/proyecto."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done."
+msgstr ""
+"El trabajo \"%(child)s\" no se puede abrir porque el trabajo padre "
+"\"%(parent)s\" ya está finalizado."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened."
+msgstr ""
+"El trabajo \"%(parent)s\" no puede finalizar porque el trabajo hijo "
+"\"%(child)s\" todavía se encuentra abierto."
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Comentario"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.work,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:project.work,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Esfuerzo"
+
+msgctxt "field:project.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Entidad"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Dirección de contacto"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr ""
+
+msgctxt "field:project.work,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr ""
+
+msgctxt "field:project.work,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:project.work,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en partes de trabajo"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Tiempo"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Total esfuerzo"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr ""
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:project.work,work:"
+msgid "Work"
+msgstr "Trabajo"
+
+msgctxt "field:project.work,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:project.work,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work"
+msgstr "Tiempo estimado para este trabajo."
+
+#, fuzzy
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work"
+msgstr "Tiempo estimado para este trabajo."
+
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works"
+msgstr ""
+
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "El esfuerzo total estimado para este trabajo y sus subtrabajos."
+
+#, fuzzy
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works"
+msgstr "El esfuerzo total estimado para este trabajo y sus subtrabajos."
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
+msgid "Done"
+msgstr "Finalizado"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
+msgid "Opened"
+msgstr "Abierto"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
+msgid "Done"
+msgstr "Finalizado"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
+msgid "Opened"
+msgstr "Abierto"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
+msgid "Done"
+msgstr "Finalizado"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
+msgid "Opened"
+msgstr "Abierto"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Proyectos"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tareas"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Proyecto y tarea"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administración de proyectos"
+
+msgctxt "selection:project.work,state:"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt "selection:project.work,state:"
+msgid "Opened"
+msgstr "Abierto"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Proyecto"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Tarea"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:project.work:"
+msgid "Works Efforts"
+msgstr "Proyectos y tareas"

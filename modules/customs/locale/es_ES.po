@@ -1,0 +1,423 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:customs.duty.rate,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:customs.duty.rate,computation_type:"
+msgid "Computation Type"
+msgstr "Tipo de cálculo"
+
+msgctxt "field:customs.duty.rate,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:customs.duty.rate,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:customs.duty.rate,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:customs.duty.rate,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:customs.duty.rate,end_date:"
+msgid "End Date"
+msgstr "Fecha final"
+
+msgctxt "field:customs.duty.rate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:customs.duty.rate,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:customs.duty.rate,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+msgctxt "field:customs.duty.rate,tariff_code:"
+msgid "Tariff Code"
+msgstr "Código arancelario"
+
+msgctxt "field:customs.duty.rate,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:customs.duty.rate,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:customs.duty.rate,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:customs.duty.rate,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:customs.tariff.code,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:customs.tariff.code,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:customs.tariff.code,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:customs.tariff.code,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:customs.tariff.code,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:customs.tariff.code,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:customs.tariff.code,duty_rates:"
+msgid "Duty Rates"
+msgstr "Tasas de arancel"
+
+msgctxt "field:customs.tariff.code,end_day:"
+msgid "End Day"
+msgstr "Día final"
+
+msgctxt "field:customs.tariff.code,end_month:"
+msgid "End Month"
+msgstr "Mes final"
+
+msgctxt "field:customs.tariff.code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:customs.tariff.code,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:customs.tariff.code,start_day:"
+msgid "Start Day"
+msgstr "Día inicial"
+
+msgctxt "field:customs.tariff.code,start_month:"
+msgid "Start Month"
+msgstr "Mes inicial"
+
+msgctxt "field:customs.tariff.code,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:customs.tariff.code,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product-customs.tariff.code,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:product-customs.tariff.code,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:product-customs.tariff.code,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product-customs.tariff.code,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product-customs.tariff.code,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product-customs.tariff.code,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:product-customs.tariff.code,tariff_code:"
+msgid "Tariff Code"
+msgstr "Código arancelario"
+
+msgctxt "field:product-customs.tariff.code,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product-customs.tariff.code,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.category,customs:"
+msgid "Customs"
+msgstr "Aduanas"
+
+msgctxt "field:product.category,tariff_codes:"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "field:product.category,tariff_codes_parent:"
+msgid "Use Parent's Tariff Codes"
+msgstr "Usar los códigos arancelarios del padre"
+
+msgctxt "field:product.product,customs_category:"
+msgid "Customs Category"
+msgstr "Categoría de aduanas"
+
+msgctxt "field:product.product,tariff_codes:"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "field:product.product,tariff_codes_category:"
+msgid "Use Category's Tariff Codes"
+msgstr "Usar los códigos arancelarios de la categoría"
+
+msgctxt "field:product.template,customs_category:"
+msgid "Customs Category"
+msgstr "Categoría de aduanas"
+
+msgctxt "field:product.template,tariff_codes:"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "field:product.template,tariff_codes_category:"
+msgid "Use Category's Tariff Codes"
+msgstr "Usar los códigos arancelarios de la categoría"
+
+msgctxt "help:customs.tariff.code,code:"
+msgid "The code from Harmonized System of Nomenclature"
+msgstr "El código del sistema armonizado de nomenclatura."
+
+msgctxt "help:product.category,tariff_codes_parent:"
+msgid "Use the tariff codes defined on the parent category"
+msgstr "Usar los códigos arancelarios definidos en la categoría padre."
+
+msgctxt "help:product.product,tariff_codes_category:"
+msgid "Use the tariff codes defined on the category"
+msgstr "Usar los códigos arancelarios definidos en la categoría."
+
+msgctxt "help:product.template,tariff_codes_category:"
+msgid "Use the tariff codes defined on the category"
+msgstr "Usar los códigos arancelarios definidos en la categoría."
+
+msgctxt "model:customs.duty.rate,name:"
+msgid "Duty Rate"
+msgstr "Tasa de arancel"
+
+msgctxt "model:customs.tariff.code,name:"
+msgid "Tariff Code"
+msgstr "Código arancelario"
+
+msgctxt "model:ir.action,name:act_duty_rate_form"
+msgid "Duty Rates"
+msgstr "Tasas de arancel"
+
+msgctxt "model:ir.action,name:act_tariff_code_form"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
+msgid "Export"
+msgstr "Exportación"
+
+msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
+msgid "Import"
+msgstr "Importación"
+
+msgctxt "model:ir.ui.menu,name:menu_customs"
+msgid "Customs"
+msgstr "Aduanas"
+
+msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
+msgid "Duty Rates"
+msgstr "Tasas de arancel"
+
+msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "model:product-customs.tariff.code,name:"
+msgid "Product - Tariff Code"
+msgstr "Producto - Código arancelario"
+
+msgctxt "model:res.group,name:group_customs_admin"
+msgid "Customs Administration"
+msgstr "Administración de aduanas"
+
+msgctxt "selection:customs.duty.rate,computation_type:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "selection:customs.duty.rate,computation_type:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "selection:customs.duty.rate,type:"
+msgid "Export"
+msgstr "Exportación"
+
+msgctxt "selection:customs.duty.rate,type:"
+msgid "Import"
+msgstr "Importación"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "August"
+msgstr "Agosto"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "December"
+msgstr "Diciembre"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "February"
+msgstr "Febrero"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "January"
+msgstr "Enero"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "July"
+msgstr "Julio"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "June"
+msgstr "Junio"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "March"
+msgstr "Marzo"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "May"
+msgstr "Mayo"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "November"
+msgstr "Noviembre"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:customs.tariff.code,end_month:"
+msgid "September"
+msgstr "Septiembre"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "August"
+msgstr "Agosto"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "December"
+msgstr "Diciembre"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "February"
+msgstr "Febrero"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "January"
+msgstr "Enero"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "July"
+msgstr "Julio"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "June"
+msgstr "Junio"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "March"
+msgstr "Marzo"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "May"
+msgstr "Mayo"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "November"
+msgstr "Noviembre"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:customs.tariff.code,start_month:"
+msgid "September"
+msgstr "Septiembre"
+
+msgctxt "selection:product-customs.tariff.code,product:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "selection:product-customs.tariff.code,product:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "view:customs.duty.rate:"
+msgid "Computation"
+msgstr "Cálculo"
+
+msgctxt "view:customs.duty.rate:"
+msgid "Duty Rate"
+msgstr "Tasa de arancel"
+
+msgctxt "view:customs.duty.rate:"
+msgid "Duty Rates"
+msgstr "Tasas de arancel"
+
+msgctxt "view:customs.tariff.code:"
+msgid "From"
+msgstr "Desde"
+
+msgctxt "view:customs.tariff.code:"
+msgid "Tariff Code"
+msgstr "Código arancelario"
+
+msgctxt "view:customs.tariff.code:"
+msgid "Tariff Codes"
+msgstr "Códigos arancelarios"
+
+msgctxt "view:customs.tariff.code:"
+msgid "To"
+msgstr "Hasta"
+
+msgctxt "view:product-customs.tariff.code:"
+msgid "Product - Tariff Code"
+msgstr "Producto - Código arancelario"
+
+msgctxt "view:product.category:"
+msgid "Customs"
+msgstr "Aduanas"
+
+msgctxt "view:product.template:"
+msgid "Customs"
+msgstr "Aduanas"
