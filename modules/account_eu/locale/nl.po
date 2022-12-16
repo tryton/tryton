@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.ec_sales_list,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.ec_sales_list,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.ec_sales_list,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Bedrijf Belasting Identifier (Company Tax Identifier)"
+
+msgctxt "field:account.ec_sales_list,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.ec_sales_list,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr "Relaties"
+
+msgctxt "field:account.ec_sales_list,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "relatie tax identificatie"
+
+msgctxt "field:account.ec_sales_list.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.ec_sales_list.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Boekjaar"
+
+msgctxt "field:account.ec_sales_list.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:account.tax,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "EG-verkoopregistratiecode"
+
+msgctxt "field:account.tax.template,ec_sales_list_code:"
+msgid "EC Sales List Code"
+msgstr "EG-verkoopregistratiecode"
+
+msgctxt "model:account.ec_sales_list,name:"
+msgid "EC Sales List"
+msgstr "EU-verkooplijst"
+
+msgctxt "model:account.ec_sales_list.context,name:"
+msgid "EC Sales List Context"
+msgstr "EU-verkooplijstcontext"
+
+msgctxt "model:ir.action,name:act_ec_sales_list_form"
+msgid "EC Sales List"
+msgstr "EU-verkooplijst"
+
+msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
+msgid "EC Sales List"
+msgstr "EU-verkooplijst"
+
+msgctxt "view:account.tax.template:"
+msgid "EC Sales List"
+msgstr "EC-verkooplijst"
+
+msgctxt "view:account.tax:"
+msgid "EC Sales List"
+msgstr "EU Sales List"

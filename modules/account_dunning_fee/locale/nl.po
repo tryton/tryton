@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Kosten"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Berekenings Methode"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Percentage"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "aanmaning"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Niveau"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Aanmaningskosten"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Methode om het bedrag van de vergoeding te berekenen"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Aanmanings rekening"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Herinneringskosten Herinnering - Herinneringsniveau"
+
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Aanmaningskosten"
+
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "De vergoeding moet uniek zijn voor aanmaning en niveau."
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Aanmaningskosten"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Catalogusprijs"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Percentage"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"
