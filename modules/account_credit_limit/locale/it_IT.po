@@ -1,0 +1,147 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the credit limit amount (%s)"
+msgstr "\"%s\" ha raggiunto il livello di fido (%s)"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the dunning credit limit (%s)"
+msgstr "\"%s\" ha raggiunto il livello di sollecito (%s)"
+
+msgctxt "field:account.configuration,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Importo predeterminato del fido cliente"
+
+msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "posizioni valuta"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Importo predeterminato del fido cliente"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "posizioni valuta"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning.level,credit_limit:"
+msgid "Credit Limit"
+msgstr "fido cliente"
+
+msgctxt "field:party.party,credit_amount:"
+msgid "Credit Amount"
+msgstr "importo credito"
+
+msgctxt "field:party.party,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "importo fido cliente"
+
+#, fuzzy
+msgctxt "field:party.party,credit_limit_amounts:"
+msgid "Credit Limit Amounts"
+msgstr "importo fido cliente"
+
+msgctxt "field:party.party,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "posizioni valuta"
+
+msgctxt "field:party.party.credit_limit_amount,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "importo fido cliente"
+
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "posizioni valuta"
+
+msgctxt "field:party.party.credit_limit_amount,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:account.dunning.level,credit_limit:"
+msgid "Has reached the credit limit"
+msgstr "limite fido cliente raggiunto"
+
+msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+msgid "Account Configuration Default Credit Limit Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:party.party.credit_limit_amount,name:"
+msgid "Party Credit Limit Amount"
+msgstr "Importo predeterminato del fido cliente"
+
+msgctxt "model:res.group,name:group_credit_limit"
+msgid "Account Credit Limit"
+msgstr "conto fido cliente"
+
+msgctxt "view:account.configuration:"
+msgid "Credit Limit"
+msgstr "Fido Cliente"
+
+msgctxt "view:party.party:"
+msgid "Credit Limit"
+msgstr "Fido Cliente"

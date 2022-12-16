@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_line_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="inherit" ref="account_invoice.invoice_line_view_form"/>
+            <field name="domain"
+                eval="Eval('context', {}).get('standalone', False)" pyson="1"/>
+            <field name="name">invoice_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_line_view_tree">
+            <field name="model">account.invoice.line</field>
+            <field name="inherit" ref="account_invoice.invoice_line_view_tree"/>
+            <field name="domain"
+                eval="Eval('context', {}).get('standalone', False)" pyson="1"/>
+            <field name="name">invoice_line_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_invoice_line_out_form">
+            <field name="name">Invoice Lines</field>
+            <field name="res_model">account.invoice.line</field>
+            <field name="domain"
+                eval="[('invoice_type', '=', 'out'), ('invoice', '=', None)]"
+                pyson="1"/>
+            <field name="context"
+                eval="{'invoice_type': 'out', 'standalone': True}"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_line_out_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
+            <field name="act_window" ref="act_invoice_line_out_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_line_out_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_invoice.invoice_line_view_form"/>
+            <field name="act_window" ref="act_invoice_line_out_form"/>
+        </record>
+        <menuitem parent="account_invoice.menu_invoice_out_form"
+            action="act_invoice_line_out_form"
+            id="menu_invoice_line_out_form" sequence="5"/>
+
+        <record model="ir.action.act_window" id="act_invoice_line_in_form">
+            <field name="name">Supplier Invoice Lines</field>
+            <field name="res_model">account.invoice.line</field>
+            <field name="domain"
+                eval="[('invoice_type', '=', 'in'), ('invoice', '=', None)]"
+                pyson="1"/>
+            <field name="context"
+                eval="{'invoice_type': 'in', 'standalone': True}"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_line_in_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
+            <field name="act_window" ref="act_invoice_line_in_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_line_in_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_invoice.invoice_line_view_form"/>
+            <field name="act_window" ref="act_invoice_line_in_form"/>
+        </record>
+        <menuitem parent="account_invoice.menu_invoice_in_form"
+            action="act_invoice_line_in_form"
+            id="menu_invoice_line_in_form" sequence="5"/>
+    </data>
+</tryton>

@@ -1,0 +1,145 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the credit limit amount (%s)"
+msgstr ""
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the dunning credit limit (%s)"
+msgstr ""
+
+msgctxt "field:account.configuration,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.dunning.level,credit_limit:"
+msgid "Credit Limit"
+msgstr ""
+
+msgctxt "field:party.party,credit_amount:"
+msgid "Credit Amount"
+msgstr ""
+
+msgctxt "field:party.party,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr ""
+
+msgctxt "field:party.party,credit_limit_amounts:"
+msgid "Credit Limit Amounts"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:party.party.credit_limit_amount,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
+msgctxt "field:party.party.credit_limit_amount,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.party.credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:account.dunning.level,credit_limit:"
+msgid "Has reached the credit limit"
+msgstr ""
+
+msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+msgid "Account Configuration Default Credit Limit Amount"
+msgstr ""
+
+msgctxt "model:party.party.credit_limit_amount,name:"
+msgid "Party Credit Limit Amount"
+msgstr ""
+
+msgctxt "model:res.group,name:group_credit_limit"
+msgid "Account Credit Limit"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Credit Limit"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Credit Limit"
+msgstr ""
