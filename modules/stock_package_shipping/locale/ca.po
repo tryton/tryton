@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.out:"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set"
+msgstr "L'albarà \"%(shipment)s\" no té assignat un transportista."
+
+msgctxt "error:stock.shipment.out:"
+msgid ""
+"The shipment \"%(shipment)s\" must be packed before creating the shipping "
+"labels"
+msgstr ""
+"L'albarà \"%(shipment)s\" ha d'estar empaquetat abans de crear les etiquetes"
+" d'enviament."
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Servei d'enviament"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "Etiqueta d'enviament"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Referència d'enviament"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Decimals de l'altura"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Unitat de l'altura"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "Decimals de la longitud"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Unitat de la longitud"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Amplada"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "Decimals de l'amplada"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Unitat de l'amplada"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Descripció d'enviament"
+
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Crea enviament"
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Crea enviament per paquets"
+
+msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
+msgid "Shipping"
+msgstr "Enviament"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid ""
+msgstr ""
+
+msgctxt "view:stock.package.type:"
+msgid "Dimensions"
+msgstr "Dimensions"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Create Shipping for Packages"
+msgstr "Crea enviament per paquets"

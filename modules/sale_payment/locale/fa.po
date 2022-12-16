@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment:"
+msgid "Payment cannot be approved because sale \"%(sale)s\" is cancelled."
+msgstr "پرداخت نمیتواند تصویب شود چراکه فروش : \"%s\" لغو شده است!."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be canceled because it has payments."
+msgstr "فروش : \"%s\" نمیتواند لغو شود! چونکه پرداختی دارد."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be reset to draft because it has payments."
+msgstr "فروش : \"%s\" نمیتواند بعنوان پیش نویس بازنشانی شود! چونکه پرداختی دارد."
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "پرداخت ها"
