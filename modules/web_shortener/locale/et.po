@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.shortened_url,count:"
+msgid "Click Count"
+msgstr "Klikid"
+
+msgctxt "field:web.shortened_url,method:"
+msgid "Method"
+msgstr "Meetod"
+
+msgctxt "field:web.shortened_url,record:"
+msgid "Record"
+msgstr "Kirje"
+
+msgctxt "field:web.shortened_url,redirect_url:"
+msgid "Redirect URL"
+msgstr "Suunatud URL"
+
+msgctxt "field:web.shortened_url,shortened_url:"
+msgid "Shortened URL"
+msgstr "Lühendatud URL"
+
+msgctxt "field:web.shortened_url.access,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "model:ir.action,name:act_shortened_url"
+msgid "Shortened URLs"
+msgstr "Lühendatud URL"
+
+msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
+msgid "Shortened URLs"
+msgstr "Lühendatud URL"
+
+msgctxt "model:web.shortened_url,name:"
+msgid "Short URL"
+msgstr "Lühike URL"
+
+msgctxt "model:web.shortened_url.access,name:"
+msgid "URL Access"
+msgstr "URL-i juurdepääs"
