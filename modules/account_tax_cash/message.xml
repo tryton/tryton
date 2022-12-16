@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_close_period_line_payment">
+            <field name="text">To close period "%(period)s" you must link all payable/receivable lines to invoices.</field>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,7 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.shop,stripe_journal:"
+msgid "Stripe Journal"
+msgstr "Diari Stripe"
