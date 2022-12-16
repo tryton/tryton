@@ -1,0 +1,228 @@
+Version 6.6.0 - 2022-10-31
+--------------------------
+* Bug fixes (see mercurial logs for details)
+* Support authentication services
+* Check server version
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Support notification message
+* Allow Reference to be edited from tree view
+* Set ECMAScript version to 6
+* Manage optional column
+* Display the number of selected records
+* Humanize the count result
+* Add limit to search_count
+* Call view_get for board view
+* Limit board action domain to active id and ids
+* Manage creatable attribute of view
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+* Support grouping attribute
+* Add expander on tree to fold or unfold selected rows
+* Support monetary and symbol field attributes
+* Support digits from relation field
+* Add accesskey to widgets and buttons
+* Support Binary field in CSV import/export
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+* Use appropriate types for email and url widgets
+* Add completion on xxx2Many and Dict
+* Add attachment preview
+* Support document widget
+* Support icon of type URL
+* Allow sending email with existing attachments
+* Add paths and model context to action data
+* Add indentation in CSV export of tree
+* Manage which records to use for actions
+* Add drag and drop on CSV export and import
+* Remove tempusdominus dependency
+* Handle device cookie
+* Add breadcrumb as title of window form
+* Manage help for each selection
+* Display revision on dialog
+* Support empty value for timedelta converter
+* Unify PYSON string format
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Format timedelta in CSV export
+* Manage symbol widget
+* Fallback to model name as title
+* Set treeview footer sticky on bottom
+* Add get, in_ and contains methods to PYSON
+* Manage deletable and writable state
+* Support e-mail template
+* Always encode CSV export in UTF-8
+* Use tempusdominus and Popper for date time picker
+* Support PYSON comparison of date and datetime
+* Customize bootstrap default style
+* Set field's name as input's name attribute
+* Position copied records based on order
+* Sanitize translated RichtText fields content (issue9453)
+* Allow configuration of default colors for graph and calendar
+* Sanitize RichtText fields content (issue9405)
+* Escape external string (issue9394)
+* Keep context in sessionStorage
+* Use existing context for get_preferences
+* Escape external strings (issue9351)
+* Add context to export URL
+* Allow changes to editable tree checkboxes without first selecting the line
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Support link button on form
+* Add URL for the current export
+* Add option to export listed records
+* Set treeview header sticky on top
+* Add noreferrer noopener to external URL (issue9089)
+* Manage readonly dates in calendar view
+* Manage editable on calendar view
+* Manage named separator as label
+* Add MultiSelection entry to Dict field
+* Position new record based on order
+* Reset display_size of TreeView when group is cleared or changed
+* Allow relation field to be selected in CSV export
+* Hide empty cell on small screen
+* Support validate attribute of wizard's Button
+* Add infinite scroll
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Support visual context on tree view
+* Support multiselection field
+* Support dot notation on PYSON Eval
+* Manage sequence
+* Add drag and drop on tree views
+* Support expand on column
+* Set minimal width for columns
+* Order Dict keys by sequence
+* Support relation fields in domain parser
+* Add view modified
+* Add Dict widget for tree view
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add domain inversion for reference fields
+* Add list-form view
+* Support HTML widget
+* Use locale format for data export
+* Add day view on calendar
+* Add CSV exports into print toolbar
+* Display unread and total of notes
+* Use resources method
+* Rename roundup.url configuration to bug.url
+* Use separate XML parser in Views
+* Add range selection with Shift-click
+* Use between numbers in filter box
+* Fill 'to' with 'from' value on filter box
+* Add tab domain in URL
+* Use properties
+* Allow sao classes to use javascript properties
+* Improve layout of CSV import/export
+* Add support for height and width on notebook
+* Use tab key for tab navigation
+* Use record and field properties of widget instead of method arguments
+* Reduce offset when no search result
+* Add support for plugins
+* Add support for expand, height and width attributes
+* Add drag & drop support on attachment button
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Prevent similar tab
+* Remove dialog for input file
+* Use dropdown for attachment
+* Manage icons in input
+* Support RTL language direction
+* Apply factor on domain parser
+* Use tab name in CSV Export/Import
+* Add bus management
+* Load custom CSS and Javascript
+* New icons
+* Support timestamp field
+* Validate dictionary items
+* Add (i)like support to domain inversion
+* Improve loading strategy by using views
+* Add support of width attribute on tree view
+* Use non conflicting keyboard shortcuts
+* Use the context to get the suffix of window name
+* Call on_change methods after setting default dtstart on calendar view
+* Allow to open in new tab Many2One and Reference with CTRL key
+* Store session in browser storage
+* Increase the space available for tab list
+* Allow to toggle menu on large screen
+* Manage URL and history
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Manage active field on search widget
+* Add position and length on list view
+* Reset record to its original state when discarding the popup window
+* Add support of expand attribute on group tag
+* Add the context model name in the screen context
+* Add sum of records on list view
+* Add shortcuts to Date and DateTime widgets
+* Use limit to expand tree
+* Use spellcheck and lang attributes for textbox widget
+* Support icon on page
+* Add keyword attribute to button tag
+* Support field name on image tag
+* Use input number and toLocaleString for numeric fields
+* Show related record names for all windows
+* Allow to edit Many2One from tree view
+* Use translated values when exporting Reference and Selection fields
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Allow to export model and record name of Reference fields
+* Re-position buttons on Binary/Image widget
+* Set focus on first visible input when modal is shown
+* Improve treeview headers
+* Add keyboard shortcuts
+* Update states of both toolbar and menu
+* Improve toolbar order
+* Use login details in title
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Manage help attribute on tree views
+* Manage color attribute on graph view
+* Add support for size on Many2Many
+* Allow to show plain text in password field
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Add PYSON Widget
+* Add CSV Import/Export
+* Manage translated field
+* Add favorites menu
+* Show records names in wizard title
+* Add support for datetime_field to Many2One, Reference
+* Add calendar view
+* Move info-bar to the top
+* Add noeval to PYSONDecoder
+* Add support for pyson_order on action window
+* Make datetimepicker locale aware
+* Restore tab default order when no manual change
+* Add support for column sorting
+* Manage confirm attribute on buttons
+* Call autocompletion when setting record value
+* Limit readonly state for xxx2Many
+* Simplify login with single database
+* Show records names in relate window title
+* Add support for count on Action Window Domains
+* Manage custom login process
+* Add erase on Many2One
+* Re-position icons on Many2One widget
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Timedelta uses 30 days for month
+* Manage context model of ir.action.act_window
+* Add Note
+
+Version 3.8.0 - 2015-11-02
+* Initial release
