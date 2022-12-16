@@ -1,0 +1,79 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:"
+msgid "Week Days"
+msgstr "Dies de la setmana"
+
+msgctxt "field:purchase.product_supplier.day,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:purchase.product_supplier.day,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:purchase.product_supplier.day,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.product_supplier.day,weekday:"
+msgid "Week Day"
+msgstr "Dia de la setmana"
+
+msgctxt "field:purchase.product_supplier.day,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:purchase.product_supplier.day,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:purchase.product_supplier.day,name:"
+msgid "Product Supplier Day"
+msgstr "Dia del proveïdor del producte"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Friday"
+msgstr "Divendres"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Monday"
+msgstr "Dilluns"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Saturday"
+msgstr "Dissabte"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Sunday"
+msgstr "Diumenge"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Thursday"
+msgstr "Dijous"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Tuesday"
+msgstr "Dimarts"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Wednesday"
+msgstr "Dimecres"
+
+msgctxt "view:purchase.product_supplier.day:"
+msgid "Week Day"
+msgstr "Dia de la setmana"
+
+msgctxt "view:purchase.product_supplier:"
+msgid "Week Days"
+msgstr "Dies de la setmana"
