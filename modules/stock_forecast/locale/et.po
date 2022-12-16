@@ -1,0 +1,216 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Sihtkoht"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Kuupäevast"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Kuupäevani"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Asukoht"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Kuupäevast"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Luupäevani"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Tooted"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Prognoos"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr "Prognoosi olek"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Vähim kogus"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Liikumised"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Toote mõõtühiku kategooria"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "Ühik"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Prognoosi rida"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Liikumine"
+
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Prognoosid"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Täielik prognoos"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Kinnita"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Prognoosid"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Laoprognoos"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Laoprognoos"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Täielik prognoos"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Täielik prognoos"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Lao prognoosi rida"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Prognoosirida - kanne"
+
+#, fuzzy
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancelled"
+msgstr "Tühista"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr ""
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Täielik prognoos"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Vali tooted"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Lõpetatud"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Määra kuupäevad"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Lõpetatud"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Tühista"
