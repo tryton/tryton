@@ -1,0 +1,322 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"!"
+msgstr "Стойността на \"От дата\" трябва да е по-малка от тази на  \"До дата\"!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity!"
+msgstr "Количество на ред трябва да е по-голямо от минималното количество!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive!"
+msgstr "Количеството на реда трябва да е положително число!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forcast!"
+msgstr "Продукта трябва да уникален по прогноза!"
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\"!"
+msgstr "Стойността на \"До дата\" трябва да е по-голяма от тази на  \"От дата\"!"
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion!"
+msgstr "Преди да бъде изтрита прогноза \"%s\" трябва да бъде прекратена!"
+
+msgctxt "error:stock.forecast:"
+msgid ""
+"You can not create forecasts for the same locations with overlapping dates"
+msgstr ""
+"Не може да създавате прогнози за еднао и също местонахиждение за "
+"припокриващи се периоди"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:stock.forecast,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.forecast,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Местонахождение-цел"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "От дата"
+
+msgctxt "field:stock.forecast,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:stock.forecast,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Състояние"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "До дата"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Местоположение"
+
+msgctxt "field:stock.forecast,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:stock.forecast,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "От дата"
+
+msgctxt "field:stock.forecast.complete.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "До дата"
+
+msgctxt "field:stock.forecast.complete.choose,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Продукти"
+
+msgctxt "field:stock.forecast.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.forecast.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Прогноза"
+
+msgctxt "field:stock.forecast.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Мин, к-во"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Движения"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Категория мер. ед. на продукт"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Изпълнено количество"
+
+msgctxt "field:stock.forecast.line,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "Мер. ед."
+
+msgctxt "field:stock.forecast.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:stock.forecast.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:stock.forecast.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.forecast.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:stock.forecast.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Ред от прогноза"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Движение"
+
+msgctxt "field:stock.forecast.line-stock.move,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.forecast.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:stock.forecast.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Прогнози"
+
+msgctxt "model:ir.action,name:act_forecast_form_draft"
+msgid "Draft Forecasts"
+msgstr "Проект на прогноза"
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Изготвяне на прогноза"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Прогнози"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
+msgid "Draft Forecasts"
+msgstr "Проект на прогноза"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Прогноза за наличност"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Прогноза за наличност"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Изготвяне на прогноза"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Изготвяне на прогноза"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Ред от прогноза за наличност"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Ред от прогноза - Движение"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Приключен"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "view:stock.forecast.complete.ask:"
+msgid "Choose dates"
+msgstr "Избор на дати"
+
+msgctxt "view:stock.forecast.complete.choose:"
+msgid "Choose products"
+msgstr "Избор на продукти"
+
+msgctxt "view:stock.forecast.line:"
+msgid "Forecast Line"
+msgstr "Ред от прогноза"
+
+msgctxt "view:stock.forecast.line:"
+msgid "Forecast Lines"
+msgstr "Редове от прогноза"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr "Добавяне на ред от прогноза въз основа на минали данни"
+
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Изготвяне на прогноза"
+
+msgctxt "view:stock.forecast:"
+msgid "Confirm"
+msgstr "Потвърждаване"
+
+msgctxt "view:stock.forecast:"
+msgid "Forecast"
+msgstr "Прогноза"
+
+msgctxt "view:stock.forecast:"
+msgid "Forecasts"
+msgstr "Прогнози"
+
+msgctxt "view:stock.forecast:"
+msgid "Reset to Draft"
+msgstr "Изпращане в проект"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Избот на продукти"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Изпълнен"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Избор на дати"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Пълен"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Отказ"

@@ -1,0 +1,146 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:"
+msgid "Invalid formula!"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:product.price_list,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.price_list,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.price_list,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Строки"
+
+#, fuzzy
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:product.price_list,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:product.price_list,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.price_list,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.price_list.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.price_list.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr ""
+
+msgctxt "field:product.price_list.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,sequence:"
+msgid "Sequence"
+msgstr "Последовательность"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Группа цифр"
+
+msgctxt "field:product.price_list.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.price_list.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr ""
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Line"
+msgstr ""
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Lines"
+msgstr ""
+
+msgctxt "view:product.price_list:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "view:product.price_list:"
+msgid "Price List Lines"
+msgstr ""
+
+msgctxt "view:product.price_list:"
+msgid "Price Lists"
+msgstr ""
