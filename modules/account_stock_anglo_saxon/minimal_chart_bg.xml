@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record id="account_template_cogs_bg" model="account.account.template">
+            
+            <field name="name">COGS</field>
+            
+            
+            
+            
+            
+            
+            
+            <field name="type" ref="account.account_type_template_expense_bg"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="account.account_template_root_bg"/>
+            <field name="kind">other</field>
+        </record>
+
+    </data>
+</tryton>
