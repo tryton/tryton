@@ -1,0 +1,130 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Dígitos"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Código numérico"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Taxa de câmbio atual"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Taxas de câmbio"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Fator de arredondamento"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Símbolo"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Taxa"
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "O código ISO de 3 caracteres da moeda."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "Número de dígitos a serem exibidos após o separador decimal."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "O principal identificador da moeda."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "O código ISO de 3 dígitos da moeda."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Adicionar taxas de câmbio flutuantes para a moeda."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "A quantidade mínima que pode ser representada nesta moeda."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "O símbolo utilizado para formatar a moeda."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "A moeda a qual a taxa se aplica."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "Desde quando a taxa se aplica."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "A taxa de câmbio flutuante utilizada para converter a moeda."
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Moeda"
+
+#, fuzzy
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Taxa de câmbio atual"
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "Moedas"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "A taxa da moeda deve ser positiva."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Uma moeda só pode ter uma taxa de conversão por dia."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+"Nenhuma taxa de câmbio encontrada para a moeda \"%(currency)s\" em "
+"\"%(date)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "Moedas"
+
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "Administração de moedas"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Taxas de câmbio"
