@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Dunning Letter"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Дата:"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Дата на изпълнение"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr ""
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr ""
+
+#, fuzzy
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Препратка"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr ""

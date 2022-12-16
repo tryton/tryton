@@ -1,0 +1,629 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "Acțiune"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr "Modificare Grupuri"
+
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr "Export"
+
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr "Export"
+
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "Buton"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "Grup de Reguli"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "Grupuri de utilizatori"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "Grupuri de utilizatori"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "Tip de secvență"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "Meniul"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Butoane"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "Acces la Câmp"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "Acces Menu"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "Acces Model"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "Reguli"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "Utilizatori"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "Acţiuni"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "Aplicații"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr "URL Avatar"
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "Email"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "Limba"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "Direcția limbii"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "Autentificare"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "Meniu Acțiune"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "Parola"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Valoarea de distribuire al Parolei"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "Reseteaza parola"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "Resetare Parola Expira"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "Meniul PySON"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "Sesiuni"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "Semnătură"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "Bara de stare"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "Avertizări"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "Acțiune"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "Aplicația"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "Cheie"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "Stat"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr "Cookie"
+
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "Autentificare"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr "Cookie de dispozitiv"
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "Adresa IP"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "Rețea IP"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "Autentificare"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "Mereu"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr "Grupurile de utilizatori care pot utiliza exportul."
+
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr "Grupuri de utilizatori care pot modifica exportul."
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr "Grupuri permise să editeze secvențele de acest tip."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr "Grupul de la care se moştenesc permisiuni."
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login."
+msgstr "Acțiuni care vor fi rulate la conectare."
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "Configurați utilizatorii"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "Utilizatori"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Resetare parola"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "Acțiune - Grup"
+
+msgctxt "model:ir.export-res.group,name:"
+msgid "Export Group"
+msgstr "Grup de export"
+
+msgctxt "model:ir.export-write-res.group,name:"
+msgid "Export Modification Group"
+msgstr "Grupul de modificare a exportului"
+
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "Parola nu poate fi aceeași cu adresa de e-mail a utilizatorului."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "Aceleași caractere apar în parolă de prea multe ori."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "Parola este interzisă."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "Parola este prea scurtă."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "Parola nu poate fi aceeași cu utilizatorul."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "Parola nu poate fi aceeași cu utilizatorul."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"În scopuri de înregistrare, utilizatorii nu pot fi șterse, ci trebuie "
+"dezactivați."
+
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr "Parola pentru %(login)s"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Trimitere utilizatorului o parola temporara"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Validare"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Resetare Parola"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "Buton Model - Grup"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_any"
+msgid "Any export"
+msgstr "Orice export"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
+msgid "Any export"
+msgstr "Orice export"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
+msgid "User in modification groups"
+msgstr "Utilizator în grupuri de modificare"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_read"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_write"
+msgid "User in modification groups"
+msgstr "Utilizator în grupuri de modificare"
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr "Utilizator în grupuri"
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr "Sesiune proprie"
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr "Sesiune proprie"
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr "Favorit propriu"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr "Aplicație de utilizator proprie"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr "Orice aplicație de utilizator"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr "Avertisment propriu"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr "Căutare proprie vedere"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr "Orice căutare a vizualizărilor"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr "Căutare vizuală comună"
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "Grup de Reguli - Grup"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "Tipul secvenței - grup"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "Grupuri"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "Utilizatori"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "Utilizatori"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "Meniu UI - Grup"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "Administrare"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "Utilizator - Acțiune"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "Utilizator - Grup"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "Aplicație utilizator"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "Config Utilizator - Init"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr "Dispozitiv al Utilizatorului"
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "Încercare de conectare"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "Avertisment utilizator"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Resetare parola"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+"Parolă pentru contul dvs, [1:%(login)s], a fost resetat.[2:]\n"
+"Trebuie să setaţi o parolă noua de la preferinţele al utilizătorului.[3:]\n"
+"Vă puteţi autentifica cu aceasta parolă temporară: [4:%(password)s] până la [5:]\n"
+"[6:tryton://%(host)s/%(database)s][7:]\n"
+"[8:%(host)s/#%(database)s]"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "Parola va expira la [1:%(datetime)s UTC]."
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "Anulat"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "Solicitat"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "Validat"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "Permisiuni de acces"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "Membri"
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique."
+msgstr "Atenție, datele de logare trebuie să fie unice."
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "Acum se pot adaugă utilizatori în sistem."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "Permisiuni de acces"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "Acţiuni"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "Membru al grupului"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "Preferințe"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "Utilizator"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "Adăuga"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "Sfârșit"
