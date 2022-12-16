@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.message,text:msg_ldap_user_change_password"
+msgid "You cannot change the password of LDAP user \"%(user)s\"."
+msgstr "شما نمی توانید رمز عبور LDAP کاربر:\"%(user)s\" را تغییر دهید."
+
+msgctxt "error:res.user:"
+msgid "You can not set the password of ldap user \"%s\"."
+msgstr "شما نمیتوانید گذرواژه ldap کاربر: \"%s\" تنظیم کنید."
