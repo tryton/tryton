@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/field[@name='vat_number']"
+        position="after">
+        <separator string="Dunning" colspan="4" id="dunning"/>
+        <label name="dunning_procedure"/>
+        <field name="dunning_procedure"/>
+    </xpath>
+</data>
