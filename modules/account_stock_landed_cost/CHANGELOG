@@ -1,0 +1,26 @@
+Version 4.8.2 - 2019-02-19
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.1 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Move landed_cost inside checkboxes group
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Landed Cost code into number
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Initial release

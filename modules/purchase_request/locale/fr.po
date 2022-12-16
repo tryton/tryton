@@ -1,0 +1,280 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:purchase.purchase:"
+msgid ""
+"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
+"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
+"request."
+msgstr ""
+"L'entrepôt « %(purchase_warehouse)s » de l'achat « %(purchase)s » est "
+"différent de l'entrepôt « %(request_warehouse)s » de la demande d'achat "
+"liée."
+
+msgctxt "error:purchase.purchase:"
+msgid ""
+"You can not delete the purchase \"%(purchase)s\" because it is linked to at "
+"least one purchase request."
+msgstr ""
+"Vous ne pouvez supprimer l'achat « %(purchase)s » car il est lié à au moins "
+"une demande d'achat."
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "Purchase price is missing for product \"%s\"."
+msgstr "Le prix d'achat du produit « %s » est manquant."
+
+msgctxt "error:purchase.request.create_purchase:"
+msgid "This price is necessary for creating purchases."
+msgstr "Le prix est nécessaire pour créer des achats."
+
+msgctxt "error:purchase.request:"
+msgid "Purchase requests are only created by the system."
+msgstr "Les demandes d'achat sont uniquement crées par le système."
+
+msgctxt "error:purchase.request:"
+msgid "You can not delete purchased request."
+msgstr "Vous ne pouvez pas supprimer des demandes d'achat commandées."
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Demandes"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "Quantité calculée"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "UDM calculée"
+
+msgctxt "field:purchase.request,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:purchase.request,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Décimales d'UDM par défaut"
+
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:purchase.request,exception_ignored:"
+msgid "Ignored Exception"
+msgstr "Exception ignorée"
+
+msgctxt "field:purchase.request,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "Achat"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "Meilleur date d'achat"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "Ligne d'achat"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:purchase.request,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr "Stock à la date d’approvisionnement"
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "Date d'approvisionnement attendue"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "UDM"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "Décimales d'UDM"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Entrepôt requis"
+
+msgctxt "field:purchase.request,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:purchase.request,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "Fournisseur"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "Créer l'achat"
+
+msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
+msgid "Handle Purchase Cancellation"
+msgstr "Gérer l'annulation d'achat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
+msgid "Exception"
+msgstr "Exception"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Gérer l'annulation d'achat"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Demandes d'achat"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr "Créer les achats - Demander le tiers"
+
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
+msgid "Handle Purchase Cancellation Exception - Start"
+msgstr "Gérer l'exception d'annulation d'achat - Début"
+
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "Demande d'achat"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "Fait"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Exception"
+msgstr "Exception"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "Achetée"
+
+msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
+msgid "Do you want to cancel the request or to reset it to draft?"
+msgstr "Voulez-vous annuler la demande ou la remettre en brouillon ?"
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "Info produit"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "Info d'approvisionnement"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "Continuer"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
+msgid "Cancel Request"
+msgstr "Annuler la demande"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
+msgid "Reset to draft"
+msgstr "Remettre en brouillon"
+
+msgctxt "view:purchase.request:"
+msgid "Handle Purchase Cancellation"
+msgstr "Gérer l'annulation d'achat"
