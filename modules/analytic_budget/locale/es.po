@@ -1,0 +1,223 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:analytic_account.budget,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget,end_date:"
+msgid "End Date"
+msgstr "Fecha fin"
+
+msgctxt "field:analytic_account.budget,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:analytic_account.budget,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:analytic_account.budget,root:"
+msgid "Root"
+msgstr "Raíz"
+
+msgctxt "field:analytic_account.budget,root_lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:analytic_account.budget,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+msgctxt "field:analytic_account.budget.context,budget:"
+msgid "Budget"
+msgstr "Presupuesto"
+
+msgctxt "field:analytic_account.budget.copy.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget.copy.start,end_date:"
+msgid "End Date"
+msgstr "Fecha fin"
+
+msgctxt "field:analytic_account.budget.copy.start,factor:"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "field:analytic_account.budget.copy.start,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:analytic_account.budget.copy.start,start_date:"
+msgid "Start Date"
+msgstr "Fecha inicio"
+
+msgctxt "field:analytic_account.budget.line,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:analytic_account.budget.line,actual_amount:"
+msgid "Actual Amount"
+msgstr "Importe real"
+
+msgctxt "field:analytic_account.budget.line,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:analytic_account.budget.line,budget:"
+msgid "Budget"
+msgstr "Presupuesto"
+
+msgctxt "field:analytic_account.budget.line,children:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:analytic_account.budget.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.budget.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:analytic_account.budget.line,current_name:"
+msgid "Current Name"
+msgstr "Nombre actual"
+
+msgctxt "field:analytic_account.budget.line,left:"
+msgid "Left"
+msgstr "Izquierda"
+
+msgctxt "field:analytic_account.budget.line,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:analytic_account.budget.line,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:analytic_account.budget.line,percentage:"
+msgid "Percentage"
+msgstr "Porcentaje"
+
+msgctxt "field:analytic_account.budget.line,right:"
+msgid "Right"
+msgstr "Derecha"
+
+msgctxt "field:analytic_account.budget.line,root:"
+msgid "Root"
+msgstr "Raíz"
+
+msgctxt "field:analytic_account.budget.line,total_amount:"
+msgid "Total Amount"
+msgstr "Importe total"
+
+msgctxt "help:analytic_account.budget,company:"
+msgid "The company that the budget is associated with."
+msgstr "La empresa con la que el presupuesto está asociado."
+
+msgctxt "help:analytic_account.budget.copy.start,factor:"
+msgid "The percentage to apply to the budget line amounts."
+msgstr "El porcentaje a aplicar a los importes de la línea de presupuesto."
+
+msgctxt "help:analytic_account.budget.line,actual_amount:"
+msgid "The total amount booked against the budget line."
+msgstr "El importe total contabilizado en la línea de presupuesto."
+
+msgctxt "help:analytic_account.budget.line,amount:"
+msgid "The amount allocated to the budget line."
+msgstr "El importe asignado a la línea de presupuesto."
+
+msgctxt "help:analytic_account.budget.line,children:"
+msgid "Used to add structure below the budget."
+msgstr "Utilizado para agregar estructura por debajo del presupuesto."
+
+msgctxt "help:analytic_account.budget.line,parent:"
+msgid "Used to add structure above the budget."
+msgstr "Utilizado para agregar estructura por encima del presupuesto."
+
+msgctxt "help:analytic_account.budget.line,percentage:"
+msgid "The percentage of booked amount of the budget line."
+msgstr "El porcentaje de importe contabilizado de la línea de presupuesto."
+
+msgctxt "help:analytic_account.budget.line,total_amount:"
+msgid "The total amount allocated to the budget line and its children."
+msgstr "El importe total asignado a la línea de presupuesto y a sus hijos."
+
+msgctxt "model:analytic_account.budget,name:"
+msgid "Analytic Budget"
+msgstr "Presupuesto analítico"
+
+msgctxt "model:analytic_account.budget.context,name:"
+msgid "Analytic Budget Context"
+msgstr "Contexto presupuesto analítico"
+
+msgctxt "model:analytic_account.budget.copy.start,name:"
+msgid "Copy Analytic Budget"
+msgstr "Copiar presupuesto analítico"
+
+msgctxt "model:analytic_account.budget.line,name:"
+msgid "Analytic Budget"
+msgstr "Presupuesto analítico"
+
+msgctxt "model:ir.action,name:act_budget_form"
+msgid "Analytic Budgets"
+msgstr "Presupuestos analíticos"
+
+msgctxt "model:ir.action,name:act_budget_line_form"
+msgid "Budget Lines"
+msgstr "Líneas de presupuesto"
+
+msgctxt "model:ir.action,name:act_budget_report"
+msgid "Analytic Budgets"
+msgstr "Presupuestos analíticos"
+
+msgctxt "model:ir.action,name:wizard_budget_copy"
+msgid "Copy Budget"
+msgstr "Copiar presupuesto"
+
+msgctxt "model:ir.model.button,string:budget_copy_button"
+msgid "Copy"
+msgstr "Copiar"
+
+msgctxt "model:ir.model.button,string:budget_update_lines_button"
+msgid "Update Lines"
+msgstr "Actualizar líneas"
+
+msgctxt "model:ir.rule.group,name:rule_group_budget_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_form"
+msgid "Analytic Budgets"
+msgstr "Presupuestos analíticos"
+
+msgctxt "model:ir.ui.menu,name:menu_budget_report"
+msgid "Analytic Budgets"
+msgstr "Presupuestos analíticos"
+
+msgctxt "view:analytic_account.budget.copy.start:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "view:analytic_account.budget.line:"
+msgid "Name:"
+msgstr "Nombre:"
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,copy:"
+msgid "Copy"
+msgstr "Copiar"
+
+msgctxt "wizard_button:analytic_account.budget.copy,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
