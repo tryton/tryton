@@ -1,0 +1,502 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:analytic.account.entry:"
+msgid "Only one account is allowed per analytic root and origin."
+msgstr ""
+
+msgctxt "error:analytic_account.account:"
+msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgstr ""
+
+#, fuzzy
+msgctxt "error:analytic_account.line:"
+msgid "Wrong credit/debit values."
+msgstr "Debet - credit bedrag niet gelijk"
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using inactive account \"%s\"."
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using view account \"%s\"."
+msgstr ""
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "field:account.move.line,analytic_state:"
+msgid "Analytic State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,required:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "field:analytic.account.entry,root:"
+msgid "Root Analytic"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:analytic.account.entry,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,active:"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr "Balans"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Code"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr "Credit"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr "Debit"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,display_balance:"
+msgid "Display Balance"
+msgstr "Toon balans"
+
+msgctxt "field:analytic_account.account,distribution_parents:"
+msgid "Distribution Parents"
+msgstr ""
+
+msgctxt "field:analytic_account.account,distributions:"
+msgid "Distributions"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.account,mandatory:"
+msgid "Mandatory"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr "Aantekening"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Status"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Type"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:analytic_account.account.distribution,ratio:"
+msgid "Ratio"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:analytic_account.account.distribution,root:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:analytic_account.account.distribution,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr "Rekeningen"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr "Credit"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Vervaldatum"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr "Debit"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr "Boekingsregel"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+#, fuzzy
+msgctxt "field:analytic_account.open_chart.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "help:analytic_account.account,mandatory:"
+msgid "Make this account mandatory when filling documents"
+msgstr ""
+
+msgctxt "model:analytic.account.entry,name:"
+msgid "Analytic Account Entry"
+msgstr ""
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "model:analytic_account.account.distribution,name:"
+msgid "Analytic Account Distribution"
+msgstr ""
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "Grootboek openen"
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_form_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_completion"
+msgid "Analytic Lines to Complete"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.move.line,analytic_state:"
+msgid "Valid"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Credit - Debit"
+msgstr "Credit - Debit"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Debit - Credit"
+msgstr "Debit - Credit"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Sluiten"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Concept"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr "Geopend"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Distribution"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Overzicht"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Credit"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debit"
+
+#, fuzzy
+msgctxt "view:analytic_account.account.distribution:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr "Algemene informatie"
+
+#, fuzzy
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Aantekeningen"
+
+#, fuzzy
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Open"
