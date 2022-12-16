@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="work_center_view_tree">
+            <field name="model">production.work.center</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">work_center_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_center_view_list">
+            <field name="model">production.work.center</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">work_center_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_center_view_list_simple">
+            <field name="model">production.work.center</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">work_center_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_center_view_form">
+            <field name="model">production.work.center</field>
+            <field name="type">form</field>
+            <field name="name">work_center_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_work_center_tree">
+            <field name="name">Work Centers</field>
+            <field name="res_model">production.work.center</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_center_view_tree"/>
+            <field name="act_window" ref="act_work_center_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_center_view_form"/>
+            <field name="act_window" ref="act_work_center_tree"/>
+        </record>
+        <menuitem parent="production.menu_configuration" sequence="40"
+            action="act_work_center_tree" id="menu_work_center_tree"/>
+
+        <record model="ir.action.act_window" id="act_work_center_list">
+            <field name="name">Work Centers</field>
+            <field name="res_model">production.work.center</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_center_view_list"/>
+            <field name="act_window" ref="act_work_center_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_center_view_form"/>
+            <field name="act_window" ref="act_work_center_list"/>
+        </record>
+        <menuitem parent="menu_work_center_tree" sequence="10"
+            action="act_work_center_list" id="menu_work_center_list"/>
+
+        <record model="ir.model.access" id="access_work_center">
+            <field name="model"
+                search="[('model', '=', 'production.work.center')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_center_admin">
+            <field name="model"
+                search="[('model', '=', 'production.work.center')]"/>
+            <field name="group" ref="production.group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_work_center">
+            <field name="name">User in company</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.center')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_work_center">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_work_center"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_center_category_view_list">
+            <field name="model">production.work.center.category</field>
+            <field name="type">tree</field>
+            <field name="name">work_center_category_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_center_category_view_form">
+            <field name="model">production.work.center.category</field>
+            <field name="type">form</field>
+            <field name="name">work_center_category_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_work_center_category_list">
+            <field name="name">Work Center Categories</field>
+            <field name="res_model">production.work.center.category</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_category_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_center_category_view_list"/>
+            <field name="act_window" ref="act_work_center_category_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_center_category_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_center_category_view_form"/>
+            <field name="act_window" ref="act_work_center_category_list"/>
+        </record>
+        <menuitem parent="production.menu_configuration" sequence="30"
+            action="act_work_center_category_list"
+            id="menu_work_center_category_list"/>
+
+        <record model="ir.model.access" id="access_work_center_category">
+            <field name="model"
+                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_center_category_admin">
+            <field name="model"
+                search="[('model', '=', 'production.work.center.category')]"/>
+            <field name="group" ref="production.group_production_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_list">
+            <field name="model">production.work</field>
+            <field name="type">tree</field>
+            <field name="name">work_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_list_sequence">
+            <field name="model">production.work</field>
+            <field name="type">tree</field>
+            <field name="name">work_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">production.work</field>
+            <field name="type">form</field>
+            <field name="name">work_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_work_list">
+            <field name="name">Works</field>
+            <field name="res_model">production.work</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_work_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_work_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_request">
+            <field name="name">Request</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'request')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'running')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_work_list_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <menuitem parent="production.menu_production" sequence="20"
+            action="act_work_list" id="menu_work_list"/>
+
+        <record model="ir.model.access" id="access_work">
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_group_production">
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="group" ref="production.group_production"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="work_start_button">
+            <field name="name">start</field>
+            <field name="string">Start</field>
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_stop_button">
+            <field name="name">stop</field>
+            <field name="string">Stop</field>
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_work">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_work">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_work"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_cycle_view_list">
+            <field name="model">production.work.cycle</field>
+            <field name="type">tree</field>
+            <field name="name">work_cycle_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_cycle_view_form">
+            <field name="model">production.work.cycle</field>
+            <field name="type">form</field>
+            <field name="name">work_cycle_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_work_cycle">
+            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_cycle_group_production">
+            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="group" ref="production.group_production"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="work_cycle_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_cycle_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_cycle_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_work_cycle">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_work_cycle">
+            <field name="domain"
+                eval="[('work.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_work_cycle"/>
+        </record>
+
+    </data>
+</tryton>
