@@ -1,0 +1,448 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:analytic_account.account.selection:"
+msgid ""
+"Can not have many accounts with the same root or a missing mandatory root "
+"account!"
+msgstr ""
+
+msgctxt "error:analytic_account.account:"
+msgid "You can not create recursive accounts!"
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "Wrong credit/debit values!"
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid ""
+"You can not create move line\n"
+"on view/inactive account!"
+msgstr ""
+
+msgctxt "field:account.move.line,analytic_lines:"
+msgid "Analytic Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,active:"
+msgid "Active"
+msgstr "Действительный"
+
+msgctxt "field:analytic_account.account,balance:"
+msgid "Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,childs:"
+msgid "Children"
+msgstr "Подчиненый"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,code:"
+msgid "Code"
+msgstr "Код страны"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+msgctxt "field:analytic_account.account,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:analytic_account.account,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:analytic_account.account,credit:"
+msgid "Credit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+msgctxt "field:analytic_account.account,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:analytic_account.account,debit:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "field:analytic_account.account,display_balance:"
+msgid "Display Balance"
+msgstr ""
+
+msgctxt "field:analytic_account.account,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:analytic_account.account,mandatory:"
+msgid "Mandatory"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:analytic_account.account,note:"
+msgid "Note"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,parent:"
+msgid "Parent"
+msgstr "Основной"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:analytic_account.account,root:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account,state:"
+msgid "State"
+msgstr "Статус"
+
+#, fuzzy
+msgctxt "field:analytic_account.account,type:"
+msgid "Type"
+msgstr "Тип"
+
+msgctxt "field:analytic_account.account,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:analytic_account.account,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt ""
+"field:analytic_account.account-"
+"analytic_account.account.selection,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt ""
+"field:analytic_account.account-"
+"analytic_account.account.selection,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,selection:"
+msgid "Selection"
+msgstr "Выбор"
+
+msgctxt ""
+"field:analytic_account.account-"
+"analytic_account.account.selection,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:analytic_account.account.selection,accounts:"
+msgid "Accounts"
+msgstr ""
+
+msgctxt "field:analytic_account.account.selection,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:analytic_account.account.selection,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:analytic_account.account.selection,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.account.selection,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:analytic_account.account.selection,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:analytic_account.account.selection,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:analytic_account.line,account:"
+msgid "Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.line,active:"
+msgid "Active"
+msgstr "Действительный"
+
+msgctxt "field:analytic_account.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:analytic_account.line,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:analytic_account.line,credit:"
+msgid "Credit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.line,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+msgctxt "field:analytic_account.line,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.line,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:analytic_account.line,debit:"
+msgid "Debit"
+msgstr ""
+
+msgctxt "field:analytic_account.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:analytic_account.line,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:analytic_account.line,move_line:"
+msgid "Account Move Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.line,name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,party:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:analytic_account.line,reference:"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:analytic_account.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:analytic_account.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.open_chart.start,end_date:"
+msgid "End Date"
+msgstr "Дата окончания"
+
+msgctxt "field:analytic_account.open_chart.start,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.open_chart.start,start_date:"
+msgid "Start Date"
+msgstr "Дата начала"
+
+msgctxt "model:analytic_account.account,name:"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt ""
+"model:analytic_account.account-analytic_account.account.selection,name:"
+msgid "Analytic Account - Analytic Account Selection"
+msgstr ""
+
+msgctxt "model:analytic_account.account.selection,name:"
+msgid "Analytic Account Selection"
+msgstr ""
+
+msgctxt "model:analytic_account.line,name:"
+msgid "Analytic Line"
+msgstr ""
+
+msgctxt "model:analytic_account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Credit - Debit"
+msgstr ""
+
+msgctxt "selection:analytic_account.account,display_balance:"
+msgid "Debit - Credit"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:"
+msgid "Closed"
+msgstr "Закрыто"
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,state:"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:analytic_account.account,state:"
+msgid "Opened"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,type:"
+msgid "Normal"
+msgstr "Нормально"
+
+msgctxt "selection:analytic_account.account,type:"
+msgid "Root"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:analytic_account.account,type:"
+msgid "View"
+msgstr "Просмотр"
+
+msgctxt "view:account.move.line:"
+msgid "Analytic"
+msgstr ""
+
+msgctxt "view:account.move:"
+msgid "Analytic"
+msgstr ""
+
+msgctxt "view:analytic_account.account:"
+msgid "Analytic Account"
+msgstr ""
+
+msgctxt "view:analytic_account.account:"
+msgid "Analytic Accounts"
+msgstr ""
+
+msgctxt "view:analytic_account.account:"
+msgid "General Information"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:analytic_account.account:"
+msgid "Notes"
+msgstr "Комментарии"
+
+msgctxt "view:analytic_account.line:"
+msgid "Analytic Line"
+msgstr ""
+
+msgctxt "view:analytic_account.line:"
+msgid "Analytic Lines"
+msgstr ""
+
+msgctxt "view:analytic_account.line:"
+msgid "General Information"
+msgstr ""
+
+msgctxt "view:analytic_account.open_chart.start:"
+msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:analytic_account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+#, fuzzy
+msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
+msgid "Open"
+msgstr "Открыть"
