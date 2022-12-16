@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user:"
+msgid "You can not set a password to a ldap user!"
+msgstr ""
+
+msgctxt "field:ldap.connection,auth_base_dn:"
+msgid "Base DN"
+msgstr ""
+
+msgctxt "field:ldap.connection,auth_create_user:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ldap.connection,auth_require_filter:"
+msgid "Require Filter"
+msgstr ""
+
+msgctxt "field:ldap.connection,auth_scope:"
+msgid "Scope"
+msgstr ""
+
+msgctxt "field:ldap.connection,auth_uid:"
+msgid "UID"
+msgstr ""
+
+msgctxt "help:ldap.connection,auth_base_dn:"
+msgid "Base DN for authentication"
+msgstr ""
+
+msgctxt "help:ldap.connection,auth_create_user:"
+msgid "Create user if not in database"
+msgstr ""
+
+msgctxt "help:ldap.connection,auth_uid:"
+msgid "UID Attribute for authentication"
+msgstr ""
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Base"
+msgstr ""
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "OneLevel"
+msgstr ""
+
+msgctxt "selection:ldap.connection,auth_scope:"
+msgid "Subtree"
+msgstr ""
+
+msgctxt "view:ldap.connection:"
+msgid "Authentication"
+msgstr ""
