@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "Lieferzeitraum"
+
+msgctxt "field:production.create_request.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:production.configuration,supply_period:"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
+msgctxt "model:ir.action,name:act_production_request_create"
+msgid "Create Production Requests"
+msgstr "Produktionsanforderung erstellen"
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Production Requests"
+msgstr "Produktionsanforderungen Erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_production_request_create"
+msgid "Create Production Requests"
+msgstr "Produktionsanforderung erstellen"
+
+msgctxt "model:production.create_request.start,name:"
+msgid "Create Production Request"
+msgstr "Produktionsanforderung erstellen"
+
+msgctxt "model:res.user,name:user_generate_request"
+msgid "Cron Production Request"
+msgstr "Zeitplaner Produktionsanforderung"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "Produktion"
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Request"
+msgstr "Produktionsanforderung erstellen"
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Request?"
+msgstr "Produktionsanforderung erstellen?"
+
+msgctxt "wizard_button:production.create_request,start,create_:"
+msgid "Create"
+msgstr "Erstellen"
+
+msgctxt "wizard_button:production.create_request,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
