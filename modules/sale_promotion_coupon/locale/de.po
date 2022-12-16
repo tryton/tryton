@@ -1,0 +1,81 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.promotion,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.promotion.coupon,name:"
+msgid "Name"
+msgstr "Name"
+
+# For a condensed but talking representation in list view it seems better to
+# put 'Anzahl' at the first place.
+msgctxt "field:sale.promotion.coupon,number_of_use:"
+msgid "Number of Use"
+msgstr "Maximale Anzahl Verwendung"
+
+msgctxt "field:sale.promotion.coupon,numbers:"
+msgid "Numbers"
+msgstr "Nummern"
+
+msgctxt "field:sale.promotion.coupon,per_party:"
+msgid "Per Party"
+msgstr "Pro Partei"
+
+msgctxt "field:sale.promotion.coupon,promotion:"
+msgid "Promotion"
+msgstr "Verkaufsaktion"
+
+msgctxt "field:sale.promotion.coupon.number,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:sale.promotion.coupon.number,coupon:"
+msgid "Coupon"
+msgstr "Coupon"
+
+msgctxt "field:sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.sale,coupons:"
+msgid "Coupons"
+msgstr "Coupons"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "help:sale.promotion.coupon,number_of_use:"
+msgid ""
+"How much times a coupon number can be used.\n"
+"0 or below for no limit."
+msgstr ""
+"Wie oft eine Coupon-Nummer genutzt werden kann.\n"
+"0 oder weniger für kein Limit."
+
+msgctxt "help:sale.promotion.coupon,per_party:"
+msgid "Check to count usage per party."
+msgstr "Aktivieren um die Anzahl der Verwendungen pro Partei zu zählen."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "Die Coupon Nummern \"%(numbers)s' sind doppelt."
+
+msgctxt "model:sale.promotion.coupon,name:"
+msgid "Promotion Coupon"
+msgstr "Aktions-Coupon"
+
+msgctxt "model:sale.promotion.coupon.number,name:"
+msgid "Promotion Coupon Number"
+msgstr "Aktions-Coupon-Nummer"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
+msgid "Sale - Promotion Coupon Number"
+msgstr "Verkauf - Aktions-Coupon-Nummer"
