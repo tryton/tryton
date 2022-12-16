@@ -1,0 +1,49 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:"
+msgid "Week Days"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+msgctxt "field:purchase.product_supplier.day,day:"
+msgid "Day"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+msgctxt "model:purchase.product_supplier.day,name:"
+msgid "Product Supplier Day"
+msgstr ""
