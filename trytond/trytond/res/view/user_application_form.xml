@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="user"/>
+    <field name="user"/>
+    <newline/>
+    <label name="key"/>
+    <field name="key"/>
+    <label name="application"/>
+    <field name="application"/>
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" colspan="2" col="-1">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="validate_" icon="tryton-ok"/>
+    </group>
+</form>
