@@ -1,0 +1,522 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr "O montante \"%s\" é maior do que o montante a pagar da fatura."
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
+msgstr "O montante deve ser um valor positivo ou negativo."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be \"%s\"."
+msgstr "O saldo final deve ser \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr "O número de linhas deve ser \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr "Favor fornecer contas de débito e crédito no diário \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion."
+msgstr "O extrato \"%s\" deve ser cancelado antes da exclusão."
+
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements."
+msgstr "Existem faturas pafas em extratos no estado rascunho."
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
+msgstr "O montante total deve ser \"%s\"."
+
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "Saldo Final"
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "Linhas"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Número de linhas"
+
+msgctxt "field:account.statement,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "Saldo Inicial"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Montante Total"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Validação"
+
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.journal,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Tipo de Validação"
+
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "Contas"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "Faturar"
+
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "Lançamento Contábil"
+
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:account.statement.line,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
+msgstr "Sequência"
+
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.line.group,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement.line.group,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos da moeda"
+
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.line.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "Lançamento"
+
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "field:account.statement.line.group,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.line.group,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement.line.group,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "model:account.journal.type,name:journal_type_statement"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr "Extrato Bancário"
+
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Diário de Extratos"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr "Linha de Extrato Bancário"
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr "Grupo de Linhas do Extrato"
+
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grupos de Linhas do Extrato"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Grupos de Linha"
+
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Linhas de Lançamento"
+
+msgctxt "model:ir.action,name:act_move_lines_form2"
+msgid "Move Lines"
+msgstr "Linhas de Lançamento"
+
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "Lançamentos"
+
+msgctxt "model:ir.action,name:act_moves_form2"
+msgid "Moves"
+msgstr "Lançamentos"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr "Todos os Extratos"
+
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Diários de Extrato"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Linhas de Extrato Bancário"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Linhas de Extrato Bancário"
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Statement Line Groups"
+msgstr "Grupos de Linhas de Extrato"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Extratos"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr "Extratos"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Diários de Extrato"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Extratos"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr "Diário:"
+
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr "Parceiro"
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "selection:account.statement,state:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Número de linhas"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journal"
+msgstr "Diário de Extrato"
+
+msgctxt "view:account.statement.journal:"
+msgid "Statement Journals"
+msgstr "Diários de Extrato"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Group"
+msgstr "Grupos de Linha de Extrato"
+
+msgctxt "view:account.statement.line.group:"
+msgid "Statement Line Groups"
+msgstr "Grupos de Linha de Extrato"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Line"
+msgstr "Linha do Extrato Bancário"
+
+msgctxt "view:account.statement.line:"
+msgid "Statement Lines"
+msgstr "Linhas do Extrato Bancário"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Outras informações"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Confirmar"
+
+msgctxt "view:account.statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Linhas do Extrato"
+
+msgctxt "view:account.statement:"
+msgid "Statements"
+msgstr "Extratos"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Validar"

@@ -1,0 +1,713 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.group:"
+msgid "The name of the group must be unique!"
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid ""
+"Users can not be deleted for logging purpose.\n"
+"Instead you must inactivate them."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "Wrong password!"
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "You can not have two users with the same login!"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.action-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.model.button-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,field:"
+msgid "Model Field"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.model.field-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,rule_group:"
+msgid "Rule Group"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.sequence,groups:"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.strict,groups:"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.sequence.type-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.ui.menu-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr ""
+
+msgctxt "field:res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr ""
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr ""
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr ""
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr ""
+
+msgctxt "field:res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr ""
+
+msgctxt "field:res.user,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:res.user,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr ""
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr ""
+
+msgctxt "field:res.user,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr ""
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr ""
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr ""
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr ""
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr ""
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr ""
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr ""
+
+msgctxt "field:res.user,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user,rule_groups:"
+msgid "Rules"
+msgstr ""
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr ""
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr ""
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr ""
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr ""
+
+msgctxt "field:res.user,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user-ir.action,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user-res.group,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user-res.group,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "field:res.user-res.group,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user-res.group,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:res.user-res.group,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user-res.group,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user.config.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr ""
+
+msgctxt "field:res.user.warning,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:res.user.warning,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:res.user.warning,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user.warning,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:res.user.warning,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:res.user.warning,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type"
+msgstr ""
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr ""
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr ""
+
+msgctxt "model:ir.cron,name:cron_trigger_time"
+msgid "Run On Time Triggers"
+msgstr ""
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr ""
+
+msgctxt "model:ir.model.field-res.group,name:"
+msgid "Model Field Group Rel"
+msgstr ""
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr ""
+
+msgctxt "model:ir.rule.group-res.user,name:"
+msgid "Rule Group - User"
+msgstr ""
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr ""
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr ""
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr ""
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr ""
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr ""
+
+msgctxt "model:res.user,name:user_admin"
+msgid "Administrator"
+msgstr ""
+
+msgctxt "model:res.user,name:user_trigger"
+msgid "Cron Trigger"
+msgstr ""
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr ""
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr ""
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr ""
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr ""
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr ""
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.group:"
+msgid "Group"
+msgstr ""
+
+msgctxt "view:res.group:"
+msgid "Groups"
+msgstr ""
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "Add Users"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique!"
+msgstr ""
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr ""
+
+msgctxt "view:res.user.warning:"
+msgid "Warning"
+msgstr ""
+
+msgctxt "view:res.user.warning:"
+msgid "Warnings"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr ""
+
+msgctxt "view:res.user:"
+msgid "Users"
+msgstr ""
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr ""
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr ""
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr ""

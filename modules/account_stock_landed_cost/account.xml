@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.sequence.type" id="sequence_type_landed_cost">
+            <field name="name">Landed Cost</field>
+            <field name="code">account.landed_cost</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_landed_code_group_admin">
+            <field name="sequence_type" ref="sequence_type_landed_cost"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_landed_code_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_landed_cost"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_landed_cost">
+            <field name="name">Landed Cost</field>
+            <field name="code">account.landed_cost</field>
+        </record>
+
+        <record model="ir.property" id="property_landed_cost_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'landed_cost_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('sequence_landed_cost'))"/>
+        </record>
+
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="landed_cost_view_form">
+            <field name="model">account.landed_cost</field>
+            <field name="type">form</field>
+            <field name="name">landed_cost_form</field>
+        </record>
+        <record model="ir.ui.view" id="landed_cost_view_list">
+            <field name="model">account.landed_cost</field>
+            <field name="type">tree</field>
+            <field name="name">landed_cost_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_landed_cost_form">
+            <field name="name">Landed Costs</field>
+            <field name="res_model">account.landed_cost</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_landed_cost_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="landed_cost_view_list"/>
+            <field name="act_window" ref="act_landed_cost_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_landed_cost_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="landed_cost_view_form"/>
+            <field name="act_window" ref="act_landed_cost_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_landed_cost_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="act_window" ref="act_landed_cost_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_landed_cost_form_domain_posted">
+            <field name="name">Posted</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'posted')]" pyson="1"/>
+            <field name="act_window" ref="act_landed_cost_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_landed_cost_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"/>
+            <field name="act_window" ref="act_landed_cost_form"/>
+        </record>
+
+        <menuitem parent="account_invoice.menu_invoices" id="menu_landed_cost"
+            sequence="50" action="act_landed_cost_form"/>
+
+        <record model="ir.model.access" id="access_landed_cost">
+            <field name="model" search="[('model', '=', 'account.landed_cost')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_landed_cost_account">
+            <field name="model" search="[('model', '=', 'account.landed_cost')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_landed_cost">
+            <field name="model" search="[('model', '=', 'account.landed_cost')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_landed_cost1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_landed_cost"/>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_line_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="inherit" ref="account_invoice.invoice_line_view_form"/>
+            <field name="name">invoice_line_form</field>
+        </record>
+    </data>
+</tryton>
