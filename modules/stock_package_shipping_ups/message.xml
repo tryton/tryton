@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_ups_webservice_error">
+            <field name="text">UPS webservice call failed with the following error message:
+%(message)s</field>
+        </record>
+        <record model="ir.message" id="msg_warehouse_address_required">
+            <field name="text">To validate shipment "%(shipment)s" you must set an address on warehouse "%(warehouse)s".</field>
+        </record>
+        <record model="ir.message" id="msg_phone_required">
+            <field name="text">To validate shipment "%(shipment)s" you must add phone number to party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_shipping_description_required">
+            <field name="text">To validate shipment "%(shipment)s" you must fill its shipping description.</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_has_reference_number">
+            <field name="text">You cannot create shipping for shipment "%(shipment)s" because it has already a reference number.</field>
+        </record>
+    </data>
+</tryton>
