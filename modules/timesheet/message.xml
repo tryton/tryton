@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_work_company_different_origin">
+            <field name="text">The companies associated with work "%(work)s" and its origin differ.</field>
+        </record>
+        <record model="ir.message" id="msg_line_duration_positive">
+            <field name="text">The duration of line "%(line)s" must be positive.</field>
+        </record>
+        <record model="ir.message" id="msg_work_origin_unique_company">
+            <field name="text">Work origin must be unique by company.</field>
+        </record>
+        <record model="ir.message" id="msg_line_uuid_unique">
+            <field name="text">The UUID of timesheet line must be unique.</field>
+        </record>
+    </data>
+</tryton>
