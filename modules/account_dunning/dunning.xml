@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_dunning">
+            <field name="name">Dunning</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_dunning">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_dunning"/>
+        </record>
+
+        <menuitem name="Dunnings" parent="account.menu_account_configuration"
+            sequence="70" id="menu_dunning_configuration"/>
+        <menuitem name="Dunnings" parent="account.menu_account" sequence="40"
+            id="menu_dunnings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_dunnings_group_account_admin">
+            <field name="menu" ref="menu_dunnings"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group"
+            id="menu_dunnings_group_dunning">
+            <field name="menu" ref="menu_dunnings"/>
+            <field name="group" ref="group_dunning"/>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_procedure_view_form">
+            <field name="model">account.dunning.procedure</field>
+            <field name="type">form</field>
+            <field name="name">dunning_procedure_form</field>
+        </record>
+        <record model="ir.ui.view" id="dunning_procedure_view_list">
+            <field name="model">account.dunning.procedure</field>
+            <field name="type">tree</field>
+            <field name="name">dunning_procedure_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_dunning_procedure_form">
+            <field name="name">Dunning Procedures</field>
+            <field name="res_model">account.dunning.procedure</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_dunning_procedure_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="dunning_procedure_view_list"/>
+            <field name="act_window" ref="act_dunning_procedure_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_dunning_procedure_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="dunning_procedure_view_form"/>
+            <field name="act_window" ref="act_dunning_procedure_form"/>
+        </record>
+        <menuitem parent="menu_dunning_configuration" sequence="10"
+            action="act_dunning_procedure_form"
+            id="menu_dunning_procedure_form"/>
+
+        <record model="ir.model.access"
+            id="access_dunning_procedure">
+            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_procedure_account_admin">
+            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_procedure_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning.procedure')]"/>
+            <field name="group" ref="group_dunning"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_form">
+            <field name="model">account.dunning.level</field>
+            <field name="type">form</field>
+            <field name="name">dunning_level_form</field>
+        </record>
+        <record model="ir.ui.view" id="dunning_level_view_list">
+            <field name="model">account.dunning.level</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+        <record model="ir.ui.view" id="dunning_level_view_list_sequence">
+            <field name="model">account.dunning.level</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">dunning_level_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_dunning_level">
+            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_level_account_admin">
+            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_level_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning.level')]"/>
+            <field name="group" ref="group_dunning"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_view_form">
+            <field name="model">account.dunning</field>
+            <field name="type">form</field>
+            <field name="name">dunning_form</field>
+        </record>
+        <record model="ir.ui.view" id="dunning_view_list">
+            <field name="model">account.dunning</field>
+            <field name="type">tree</field>
+            <field name="name">dunning_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_dunning_form">
+            <field name="name">Dunnings</field>
+            <field name="res_model">account.dunning</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dunning_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="dunning_view_list"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dunning_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="dunning_view_form"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_dunning_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_dunning_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_dunning_form_domain_final">
+            <field name="name">Final</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'final')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_dunning_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+
+        <menuitem parent="menu_dunnings" sequence="20"
+            action="act_dunning_form"
+            id="menu_dunning_form"/>
+
+        <record model="ir.action.act_window" id="act_dunning_party">
+            <field name="name">Dunnings</field>
+            <field name="res_model">account.dunning</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line.party', '=', Eval('active_id')), ('line.party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dunning_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="dunning_view_list"/>
+            <field name="act_window" ref="act_dunning_party"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_dunning_party_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="dunning_view_form"/>
+            <field name="act_window" ref="act_dunning_party"/>
+        </record>
+        <record model="ir.action.keyword" id="act_dunning_party_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_dunning_party"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_dunning_party-group_dunning">
+            <field name="action" ref="act_dunning_party"/>
+            <field name="group" ref="group_dunning"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_dunning">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_dunning1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_dunning"/>
+        </record>
+
+        <record model="ir.model.access" id="access_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_account_admin">
+            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_dunning_dunning">
+            <field name="model" search="[('model', '=', 'account.dunning')]"/>
+            <field name="group" ref="group_dunning"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_create_start_view_form">
+            <field name="model">account.dunning.create.start</field>
+            <field name="type">form</field>
+            <field name="name">dunning_create_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_dunning_create">
+            <field name="name">Create Dunnings</field>
+            <field name="wiz_name">account.dunning.create</field>
+        </record>
+        <menuitem parent="menu_dunnings" sequence="10"
+            action="wizard_dunning_create" id="menu_dunning_create"/>
+
+        <record model="ir.ui.view" id="dunning_process_start_view_form">
+            <field name="model">account.dunning.process.start</field>
+            <field name="type">form</field>
+            <field name="name">dunning_process_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_dunning_process">
+            <field name="name">Process Dunning</field>
+            <field name="wiz_name">account.dunning.process</field>
+            <field name="model">account.dunning</field>
+        </record>
+        <record model="ir.action.keyword" id="dunning_process_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.dunning,-1</field>
+            <field name="action" ref="wizard_dunning_process"/>
+        </record>
+
+    </data>
+</tryton>

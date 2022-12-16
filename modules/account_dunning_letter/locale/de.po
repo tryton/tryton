@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Auf Mahnschreiben drucken"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Mahnschreiben"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Fälligkeitsdatum"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Gebühren:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Nicht zugeordnete erhaltene Zahlungen"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Belegnummer"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Erinnerung"
