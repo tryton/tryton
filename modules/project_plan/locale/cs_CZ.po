@@ -1,0 +1,163 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:0"
+msgid "You can not create recursive dependencies!"
+msgstr ""
+
+msgctxt "field:project.allocation,employee:0"
+msgid "Employee"
+msgstr ""
+
+msgctxt "field:project.allocation,percentage:0"
+msgid "Percentage"
+msgstr ""
+
+msgctxt "field:project.allocation,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:project.allocation,work:0"
+msgid "Work"
+msgstr ""
+
+msgctxt "field:project.predecessor_successor,predecessor:0"
+msgid "Predecessor"
+msgstr ""
+
+msgctxt "field:project.predecessor_successor,rec_name:0"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:project.predecessor_successor,successor:0"
+msgid "Successor"
+msgstr ""
+
+msgctxt "field:project.work,actual_finish_date:0"
+msgid "Actual Finish"
+msgstr ""
+
+msgctxt "field:project.work,actual_finish_time:0"
+msgid "Actual Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_date:0"
+msgid "Actual Start"
+msgstr ""
+
+msgctxt "field:project.work,actual_start_time:0"
+msgid "Actual Start Time"
+msgstr ""
+
+msgctxt "field:project.work,allocations:0"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "field:project.work,back_leveling_delay:0"
+msgid "Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_date:0"
+msgid "Constraint Finish"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_time:0"
+msgid "Constraint  Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_date:0"
+msgid "Constraint Start"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_time:0"
+msgid "Constraint Start Time"
+msgstr ""
+
+msgctxt "field:project.work,duration:0"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:project.work,early_finish_date:0"
+msgid "Early Finish"
+msgstr ""
+
+msgctxt "field:project.work,early_finish_time:0"
+msgid "Early Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,early_start_date:0"
+msgid "Early Start"
+msgstr ""
+
+msgctxt "field:project.work,early_start_time:0"
+msgid "Early Start Time"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_date:0"
+msgid "Late Finish"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_time:0"
+msgid "Late Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,late_start_date:0"
+msgid "Late Start"
+msgstr ""
+
+msgctxt "field:project.work,late_start_time:0"
+msgid "Late Start Time"
+msgstr ""
+
+msgctxt "field:project.work,leveling_delay:0"
+msgid "Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,predecessors:0"
+msgid "Predecessors"
+msgstr ""
+
+msgctxt "field:project.work,requests:0"
+msgid "Requests"
+msgstr ""
+
+msgctxt "field:project.work,successors:0"
+msgid "Successors"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr ""
+
+msgctxt "model:project.allocation,name:0"
+msgid "Allocation"
+msgstr ""
+
+msgctxt "model:project.predecessor_successor,name:0"
+msgid "Predecessor - Successor"
+msgstr ""
+
+msgctxt "model:res.request.link,name:request_link_work"
+msgid "Work"
+msgstr ""
+
+msgctxt "view:project.allocation:0"
+msgid "Allocation"
+msgstr ""
+
+msgctxt "view:project.allocation:0"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "view:project.work:0"
+msgid "Allocations"
+msgstr ""
+
+msgctxt "view:project.work:0"
+msgid "Plan"
+msgstr ""
+
+msgctxt "view:project.work:0"
+msgid "Requests"
+msgstr ""

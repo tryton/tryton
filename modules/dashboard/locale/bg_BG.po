@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Потребител"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Действия на табло"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Подреждане на табло"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Каре"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Подравнени отдолу"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "Подарнение отляво"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "Подравнение отдясно"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "Подравнени отгоре"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Действие на таблото"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Действия на табло"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Действие на таблото"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Действия на табло"
