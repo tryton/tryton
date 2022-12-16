@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Share">
+    <label name="path"/>
+    <field name="path"/>
+    <label name="key"/>
+    <field name="key"/>
+    <label name="user"/>
+    <field name="user"/>
+    <label name="expiration_date"/>
+    <field name="expiration_date"/>
+    <label name="url"/>
+    <group id="url" colspan="2">
+        <field name="url"/>
+        <field name="url" widget="url"/>
+    </group>
+    <notebook>
+        <page name="note">
+            <field name="note" colspan="4"/>
+        </page>
+    </notebook>
+</form>

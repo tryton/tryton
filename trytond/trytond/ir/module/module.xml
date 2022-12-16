@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Modules" parent="menu_administration" id="menu_modules"/>
+        <record model="ir.ui.view" id="module_view_form">
+            <field name="model">ir.module.module</field>
+            <field name="type">form</field>
+            <field name="name">module_form</field>
+        </record>
+        <record model="ir.ui.view" id="module_view_tree">
+            <field name="model">ir.module.module</field>
+            <field name="type">tree</field>
+            <field name="name">module_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_module_form">
+            <field name="name">Modules</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.module.module</field>
+            <field name="domain">[('name', '!=', 'test')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_module_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="module_view_tree"/>
+            <field name="act_window" ref="act_module_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_module_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="module_view_form"/>
+            <field name="act_window" ref="act_module_form"/>
+        </record>
+        <menuitem parent="menu_modules"
+            action="act_module_form" id="menu_module_form"/>
+
+        <record model="ir.ui.view" id="module_dependency_view_form">
+            <field name="model">ir.module.module.dependency</field>
+            <field name="type">form</field>
+            <field name="name">module_dependency_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="module_dependency_view_list">
+            <field name="model">ir.module.module.dependency</field>
+            <field name="type">tree</field>
+            <field name="name">module_dependency_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="config_wizard_item_view_tree">
+            <field name="model">ir.module.module.config_wizard.item</field>
+            <field name="type">tree</field>
+            <field name="name">module_config_wizard_item_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_config_wizard_item_form">
+            <field name="name">Config Wizard Items</field>
+            <field name="res_model">ir.module.module.config_wizard.item</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_config_wizard_item_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="config_wizard_item_view_tree"/>
+            <field name="act_window" ref="act_config_wizard_item_form"/>
+        </record>
+        <menuitem parent="menu_modules"
+            action="act_config_wizard_item_form"
+            id="menu_config_wizard_item_form"/>
+
+        <record model="ir.action.wizard" id="act_module_config_wizard">
+            <field name="name">Module Configuration</field>
+            <field name="wiz_name">ir.module.module.config_wizard</field>
+        </record>
+        <record model="ir.action.keyword" id="act_module_config_wizard_keyword">
+            <field name="action" ref="act_module_config_wizard"/>
+            <field name="keyword">form_action</field>
+            <field name="model">ir.module.module.config_wizard.item,-1</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="module_config_wizard_first_view_form">
+            <field name="model">ir.module.module.config_wizard.first</field>
+            <field name="type">form</field>
+            <field name="name">module_config_wizard_first_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="module_config_wizard_other_view_form">
+            <field name="model">ir.module.module.config_wizard.other</field>
+            <field name="type">form</field>
+            <field name="name">module_config_wizard_other_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_module_install_upgrade">
+            <field name="name">Perform Pending Installation/Upgrade</field>
+            <field name="wiz_name">ir.module.module.install_upgrade</field>
+        </record>
+        <record model="ir.action.keyword" id="act_module_install_upgrade_keyword1">
+            <field name="action" ref="act_module_install_upgrade"/>
+            <field name="keyword">form_action</field>
+            <field name="model">ir.module.module,-1</field>
+        </record>
+
+        <record model="ir.ui.view" id="module_install_upgrade_start_view_form">
+            <field name="model">ir.module.module.install_upgrade.start</field>
+            <field name="type">form</field>
+            <field name="name">module_install_upgrade_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="module_install_upgrade_done_view_form">
+            <field name="model">ir.module.module.install_upgrade.done</field>
+            <field name="type">form</field>
+            <field name="name">module_install_upgrade_done_form</field>
+        </record>
+
+        <menuitem name="Perform Pending Installation/Upgrade"
+            parent="menu_modules"
+            action="act_module_install_upgrade"
+            id="menu_module_install_upgrade"/>
+
+        <record model="ir.action.wizard" id="act_module_config">
+            <field name="name">Configure Modules</field>
+            <field name="wiz_name">ir.module.module.config</field>
+        </record>
+
+        <record model="ir.module.module.config_wizard.item"
+            id="config_wizard_item_module">
+            <field name="action" ref="act_module_config"/>
+            <field name="sequence" eval="10000"/>
+        </record>
+    </data>
+</tryton>
