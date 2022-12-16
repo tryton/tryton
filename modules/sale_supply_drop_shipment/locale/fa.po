@@ -1,0 +1,275 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "مکان دراپ شیپینگ"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "مکان خرید دراپ"
+
+msgctxt "field:purchase.product_supplier,drop_shipment:"
+msgid "Drop Shipment"
+msgstr "دراپ شیپینگ"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "دراپ شیپینگ در دسترس"
+
+msgctxt "field:purchase.purchase,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:purchase.purchase,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr "مکان دراپ"
+
+msgctxt "field:purchase.purchase,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt "field:purchase.request,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:purchase.request,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "محل فروش دراپ"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "محل فروش دراپ"
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr "مکان دراپ"
+
+msgctxt "field:sale.sale,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "ادامه دراپ شیپینگ"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "ادامه دراپ شیپینگ"
+
+msgctxt "field:stock.move,customer_drop:"
+msgid "Drop Customer"
+msgstr "مشتری دراپ"
+
+msgctxt "field:stock.shipment.drop,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:stock.shipment.drop,contact_address:"
+msgid "Contact Address"
+msgstr "آدرس تماس"
+
+msgctxt "field:stock.shipment.drop,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr "جابجایی های مشتری"
+
+msgctxt "field:stock.shipment.drop,delivery_address:"
+msgid "Delivery Address"
+msgstr "آدرس تحویل"
+
+msgctxt "field:stock.shipment.drop,effective_date:"
+msgid "Effective Date"
+msgstr "تاریخ موثر"
+
+msgctxt "field:stock.shipment.drop,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:stock.shipment.drop,planned_date:"
+msgid "Planned Date"
+msgstr "تاریخ برنامه ریزی شده"
+
+msgctxt "field:stock.shipment.drop,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:stock.shipment.drop,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:stock.shipment.drop,supplier:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr "جابجایی های تامین کننده"
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "ارسال شد"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt ""
+"model:ir.message,text:msg_delivery_address_required_quotation_purchase"
+msgid ""
+"To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
+" address."
+msgstr ""
+"برای دریافت یک نقل قول برای خرید :\"%(purchase)s\" شما باید یک آدرس تحویل "
+"ارائه دهید."
+
+msgctxt "model:ir.message,text:msg_drop_shipment_delete_cancel"
+msgid "To delete drop shipment \"%(shipment)s\" you must cancel it."
+msgstr "برای حذف حمل و نقل قطره :\"%(shipment)s\" شما باید ابتدا آنرا لغو کنید."
+
+msgctxt "model:ir.message,text:msg_reset_move"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale or a purchase."
+msgstr ""
+"شما نمیتوانید جابجایی :\"%(move)s\"را به حالت پیش نویس بازنشانی کنید، چراکه "
+"آن توسط یک فروش یا خرید تولید شده است."
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_shipment_drop"
+msgid "Drop Shipment"
+msgstr "دراپ شیپینگ"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
+msgid "Drop Shipment"
+msgstr "دراپ شیپینگ"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "دراپ شیپینگ ها"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "پیکربندی خرید ؛ مکان خرید دراپ"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "پیکربندی فروش : مکان فروش دراپ"
+
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "دراپ"
+
+msgctxt "model:stock.shipment.drop,name:"
+msgid "Drop Shipment"
+msgstr "دراپ شیپینگ"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "ارسال شد"
+
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Waiting"
+msgstr "در انتظار"
