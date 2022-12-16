@@ -1,0 +1,102 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Lieferposten Kostenmethode Verkauf"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Lieferposten Kostenmethode Verkauf"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "Lieferposten Kosten"
+
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr "Betrag inklusive Lieferkosten"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr "Verfügbare Versanddienstleister"
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "Versanddienstleister"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "Lieferposten Kostenmethode"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "Versanddienstleister"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "field:stock.shipment.out,cost_edit:"
+msgid "Edit Cost"
+msgstr "Kosten Bearbeiten"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "Rechnungsposition Kosten"
+
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr "Währung Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Währung Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Kosten Verkauf"
+
+msgctxt "field:stock.shipment.out,cost_used:"
+msgid "Cost"
+msgstr "Kosten"
+
+msgctxt "help:stock.shipment.out,cost_edit:"
+msgid "Check to edit the cost."
+msgstr "Aktivieren um die Kosten zu bearbeiten."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+"Damit der Verkauf \"%(sale)s\" bestätigt werden kann, muss der "
+"Versanddienstleister \"%(carrier)s\" geändert werden."
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+"Damit die Versandkosten von \"%(shipment)s\" abgerechnet werden können, muss"
+" zuerst einer Ertragskonto für Artikel \"%(product)s\" konfiguriert werden."
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr "Keine"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "Pro Auftrag"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "Pro Lieferposten"
+
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr "Lieferkosten Inklusive"

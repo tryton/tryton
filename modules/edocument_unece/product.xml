@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_uom_view_tree">
+            <field name="model">product.uom</field>
+            <field name="inherit" ref="product.uom_view_tree"/>
+            <field name="name">product_uom_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_uom_view_form">
+            <field name="model">product.uom</field>
+            <field name="inherit" ref="product.uom_view_form"/>
+            <field name="name">product_uom_form</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_unit">
+            <field name="unece_code">C62</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_kilogram">
+            <field name="unece_code">KGM</field>
+        </record>
+        <record model="product.uom" id="product.uom_gram">
+            <field name="unece_code">GRM</field>
+        </record>
+        <record model="product.uom" id="product.uom_carat">
+            <field name="unece_code">CTM</field>
+        </record>
+        <record model="product.uom" id="product.uom_pound">
+            <field name="unece_code">LBR</field>
+        </record>
+        <record model="product.uom" id="product.uom_ounce">
+            <field name="unece_code">ONZ</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_second">
+            <field name="unece_code">SEC</field>
+        </record>
+        <record model="product.uom" id="product.uom_minute">
+            <field name="unece_code">MIN</field>
+        </record>
+        <record model="product.uom" id="product.uom_hour">
+            <field name="unece_code">HUR</field>
+        </record>
+        <record model="product.uom" id="product.uom_day">
+            <field name="unece_code">DAY</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_meter">
+            <field name="unece_code">MTR</field>
+        </record>
+        <record model="product.uom" id="product.uom_kilometer">
+            <field name="unece_code">KMT</field>
+        </record>
+        <record model="product.uom" id="product.uom_centimeter">
+            <field name="unece_code">CMT</field>
+        </record>
+        <record model="product.uom" id="product.uom_millimeter">
+            <field name="unece_code">MMT</field>
+        </record>
+        <record model="product.uom" id="product.uom_foot">
+            <field name="unece_code">FOT</field>
+        </record>
+        <record model="product.uom" id="product.uom_yard">
+            <field name="unece_code">YRD</field>
+        </record>
+        <record model="product.uom" id="product.uom_inch">
+            <field name="unece_code">INH</field>
+        </record>
+        <record model="product.uom" id="product.uom_mile">
+            <field name="unece_code">SMI</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_cubic_meter">
+            <field name="unece_code">MTQ</field>
+        </record>
+        <record model="product.uom" id="product.uom_liter">
+            <field name="unece_code">LTR</field>
+        </record>
+        <record model="product.uom" id="product.uom_cubic_centimeter">
+            <field name="unece_code">CMQ</field>
+        </record>
+        <record model="product.uom" id="product.uom_cubic_inch">
+            <field name="unece_code">INQ</field>
+        </record>
+        <record model="product.uom" id="product.uom_cubic_foot">
+            <field name="unece_code">FTQ</field>
+        </record>
+        <record model="product.uom" id="product.uom_gallon">
+            <field name="unece_code">GLL</field>
+        </record>
+
+        <record model="product.uom" id="product.uom_square_meter">
+            <field name="unece_code">MTK</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_centimeter">
+            <field name="unece_code">CMK</field>
+        </record>
+        <record model="product.uom" id="product.uom_are">
+            <field name="unece_code">ARE</field>
+        </record>
+        <record model="product.uom" id="product.uom_hectare">
+            <field name="unece_code">HAR</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_inch">
+            <field name="unece_code">INK</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_foot">
+            <field name="unece_code">FTK</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_yard">
+            <field name="unece_code">YDK</field>
+        </record>
+    </data>
+</tryton>

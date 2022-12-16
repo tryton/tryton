@@ -1,0 +1,1232 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Mecanism de contact"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Oraș"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Țară"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Adresa completa"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "Numele Cladirii"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "Nume Parte"
+
+msgctxt "field:party.address,postal_code:"
+msgid "Postal Code"
+msgstr "Cod Poştal"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Stradă"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Subdiviziune"
+
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Tipuri de subdiviziuni"
+
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Codul tarii"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Format"
+
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Codul limbii"
+
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Codul tarii"
+
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Tipuri de subdiviziuni"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Părțile eșuate"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Părțile cu succes"
+
+msgctxt "field:party.configuration,identifier_types:"
+msgid "Identifier Types"
+msgstr "Identificatori"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Limba Părții"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Secvență Părții"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Limba Părții"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Secvență Părții"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Cometariu"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.contact_mechanism,language:"
+msgid "Language"
+msgstr "Limbă"
+
+msgctxt "field:party.contact_mechanism,languages:"
+msgid "Languages"
+msgstr "Limbi"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Valoare"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Valoare"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Valoare compactă"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Site web"
+
+msgctxt "field:party.contact_mechanism.language,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Mecanism de Contact"
+
+msgctxt "field:party.contact_mechanism.language,language:"
+msgid "Language"
+msgstr "Limba"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Adrese"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Cod numai pentru citit"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Mecanisme de contact"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr "Distanţă"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Numele complet"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identificatorii"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Limba"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Limbi"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Mobil"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Nume"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Inlocuit de"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificator fiscal"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Site web"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Limba"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Destinaţie"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Sursă"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Definiți ce adresă de e-mail să utilizați din mecanismele de contact ale "
+"părții."
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+"Dacă este completat, înlocuișe numele părții pentru formatarea adresei"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${postal_code}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Variabile disponibile (și cu majuscule):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Adăugați copii sub categorie."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "Principalul identificator al categoriei."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Adăugați categoria de sub părinte."
+
+msgctxt "help:party.configuration,identifier_types:"
+msgid ""
+"Defines which identifier types are available.\n"
+"Leave empty for all of them."
+msgstr ""
+"Defineşte ce tipuri de identificatori sunt disponibile.\n"
+"Lăsați gol pentru toate."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "Limba implicită pentru noile părți."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Folosit pentru a genera codul părți."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "Limba implicită pentru noile părți."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Folosit pentru a genera codul părți."
+
+msgctxt "help:party.contact_mechanism,language:"
+msgid ""
+"Used to translate communication made using the contact mechanism.\n"
+"Leave empty for the party language."
+msgstr ""
+"Folosit pentru a traduce comunicarea făcută utilizând mecanismul de contact.\n"
+"Lăsați gol pentru limba părţii."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "Partea care urmează să fie ștearsă."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "Partea identificată prin această înregistrare."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Categoriile în care este inclusa partea."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "Identificatorul unic al părți."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Adăugați identificatori adiționali pentru parte."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Folosit pentru a traduce comunicările cu partea."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "Principalul identificator al părți."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "Partea care înlocuieste pe acesta."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "Identificatorul utilizat pentru raportul fiscal."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "Partea care înlocuiește."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "Partea care urmează să fie înlocuită."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Adrese"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Formate de adresă"
+
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipuri de subdiviziune de adresă"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Mecanisme de contact"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Părți pe categorii"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Părți"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Etichete"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Verificare VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Şterge"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Inlocuire"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "Adresa \"%(address)s\" al parți nu se poate schimba."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "Codul de țăra de tipul subdiviziunii trebuie să fie unic."
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "Numele categoriei de parte trebuie să fie unic pe părinte."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr "Nu se poate schimba partea a mecanismului de contact \"%(contact)s\"."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr "Părțile au nume diferite: \"%(source_name)s\" vs \"%(destination_name)s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"Părțile au identificatori fiscali diferiți: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "Partea \"%(party)s\" nu poate fi șters pentru ca este inca activ."
+
+msgctxt "model:ir.message,text:msg_identifier_type_remove"
+msgid ""
+"To remove the identifier type \"%(type)s\" from the configuration, you must "
+"change it on \"%(identifier)s\"."
+msgstr ""
+"Pentru a şterge tipul de identificator \"%(type)s\" de la configurarea "
+"trebuie schimbat la \"%(identifier)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "Tipul %(type)s \"%(code)s\" pentru parte \"%(party)s\" este invalid."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Formatul \"%(format)s\" este invalid cu exceptia \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "Numărul de telefon \"%(phone)s\" al parti \"%(party)s\" nu este valid."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "Codul parții trebuie să fie unic."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "Serviciul VIES nu este disponibil, încercați din nou mai târziu."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Adrese"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Formate al adresei"
+
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipuri de subdiviziune de adresă"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Mecanisme de contact"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Părți"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Adresa"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Format Adresa"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Tipuri de subdiviziune de adresă"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Verificare VIES"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Configurare Parte"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Configurare Parte Limba"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Configurare Secventa parte"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Mecanism de contact"
+
+msgctxt "model:party.contact_mechanism.language,name:"
+msgid "Contact Mechanism Language"
+msgstr "Mecanism de Contact"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Ștergere Parte"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identificator Parte"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Parte - Categorie"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Parte Limba"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Înlocuire Parte"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Administrare Parte"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Albanian VAT Number"
+msgstr "Albania, Cod TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Andorra Tax Number"
+msgstr "Andorra, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian National Identity Number"
+msgstr "Argentina, Cod National de Identitate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian Tax Number"
+msgstr "Argentina, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Business Number"
+msgstr "Australia, Număr de Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Company Number"
+msgstr "Australia, Număr de Companie (ACN)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Tax File Number"
+msgstr "Australia, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Company Register"
+msgstr "Austria, Registru Comerţului"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Social Security Number"
+msgstr "Austria, Cod Numierc Personal (SSN)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Tax Identification"
+msgstr "Austria, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belarus VAT Number"
+msgstr "Belarus, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Enterprise Number"
+msgstr "Belgia, Număr de Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian Company Identifier"
+msgstr "Brazilia, Identificator Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian National Identifier"
+msgstr "Brazilia, Identificator Naţional"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr "Belgia, Numar de Imigrant"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr "Bulgaria, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian VAT Number"
+msgstr "Bulgaria, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Business Number"
+msgstr "Canada, Număr Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Social Insurance Number"
+msgstr "Canada, Număr de Asigurare Socială"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chilean National Tax Number"
+msgstr "Chile, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Resident Identity Card Number"
+msgstr "China, Număr Cetaţean"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Unified Social Credit Code"
+msgstr "China, Cod Unit de Credit Social"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Business Tax Number"
+msgstr "Colombia, Cod Fiscal Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Identity Code"
+msgstr "Columbia, Cod de Identitate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Cista Rica, ID Imigranţi"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Costa Rica, Număr Persoana Fizică"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Tax Number"
+msgstr "Costa Rica, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Croatian Identification Number"
+msgstr "Croatia, Număr de Identificare"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cuban Identity Card Number"
+msgstr "Cuba,"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cypriot VAT Number"
+msgstr "Cipru, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech National Identifier"
+msgstr "Ceh, Identificator Naţional"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech VAT Number"
+msgstr "Ceh, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish Citizen Number"
+msgstr "Danemarcă, Număr Cetaţean"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish VAT Number"
+msgstr "Danemarcă, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic National Identification Number"
+msgstr "Republică Dominicană, Număr Naţional de Identificare"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic Tax"
+msgstr "Republică Dominicana, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Citizen Identification Number"
+msgstr "Olanda, Număr de Identificare Cetaţean"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch School Identification Number"
+msgstr "Olanda, Număr de Identificare Şcoala"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Student Identification Number"
+msgstr "Olanda, Număr de Identificare Student"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch VAT Number"
+msgstr "Olanda, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr "Ecuador, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Tax Identification"
+msgstr "Ecuador, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "English Unique Pupil Number"
+msgstr "Anglia, Număr Unic de Elev"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Organisation Registration Code"
+msgstr "Estonia, Cod de Înregistrare Organizatie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Personal ID Number"
+msgstr "Estonia, Număr ID"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian VAT Number"
+msgstr "Estonia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European VAT Number"
+msgstr "Europa, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Association Identifier"
+msgstr "Finlanda, Identificator de Asociaţie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Business Identifier"
+msgstr "Finlanda, Identificator Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Individual Tax Number"
+msgstr "Finlanda, Cod Fiscal Individual"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Personal Identity Code"
+msgstr "Finlanda, Cod numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish VAT Number"
+msgstr "Finlanda, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Personal Identification Number"
+msgstr "Franţa, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Tax Identification Number"
+msgstr "Franţa, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French VAT Number"
+msgstr "Franţa, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Company Register Number"
+msgstr "Germania, Număr Registru Companii"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Personal Tax Number"
+msgstr "Germania, Număr Personal Impozite"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Tax Number"
+msgstr "Germania, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German VAT Number"
+msgstr "Germania, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek Social Security Number"
+msgstr "Grecia, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek VAT Number"
+msgstr "Grecia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Guatemala Tax Number"
+msgstr "Guatemala, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Hungarian VAT Number"
+msgstr "Ungaria, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr "Islanda, Cod de Identitate Personala si de Organizaţie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic VAT Number"
+msgstr "Islanda, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr "India, Cod Numeric Personal Digital"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Income Tax Identifier"
+msgstr "India, Cod Împozitare Venit"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indonesian VAT Number"
+msgstr "Indonezia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish Personal Number"
+msgstr "Irlandă, Cod Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish VAT Number"
+msgstr "Irlandă, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Company Number"
+msgstr "Israel, Numar Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Identity Number"
+msgstr "Israel, Număr de Identitate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian Tax Code for Individuals"
+msgstr "Italia, Cod Fiscal pentru Persoane Fizice"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian VAT Number"
+msgstr "Italia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Japanese Corporate Number"
+msgstr "Japonia, Număr de Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Latvian VAT Number"
+msgstr "Latvia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Personal Number"
+msgstr "Lituania, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian VAT Number"
+msgstr "Lituania, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Luxembourgian VAT Number"
+msgstr "Luxemburg, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr "Malaysia, Număr Naţional de card de Înregistrare"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Maltese VAT Number"
+msgstr "Malta, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mauritian National Identifier"
+msgstr "Mauritius, Identificator Naţional"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mexican Tax Number"
+msgstr "Mexico, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Moldavian Company Identification Number"
+msgstr "Moldova, Numpr de Identificare Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Monacan VAT Number"
+msgstr "Monaco, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Noua Zeelandă, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Birth Number, the National Identity Number"
+msgstr "Norvegia, Număr de Naştere"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Organisation Number"
+msgstr "Norvegia, Număt de Organizaţie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian VAT Number"
+msgstr "Norvegia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Paraguay Tax Number"
+msgstr "Paraguai, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Company Tax Number"
+msgstr "Peru, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Identity Number"
+msgstr "Peru, Număr de Identitate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish National Identification Number"
+msgstr "Polonia, Număr Naţional de Identificare"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish Register of Economic Units"
+msgstr "Polonia, Registru de Unitaţi Economice"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish VAT Number"
+msgstr "Polonia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Portuguese VAT Number"
+msgstr "Portugalia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian Numerical Personal Code"
+msgstr "Romania, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian ONRC Number"
+msgstr "Romania, Număr Oficiul Naţional Registru Comerţului"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian VAT Number"
+msgstr "Romania, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Tax identifier"
+msgstr "Rusia, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr "SEPA Identificator al Creditorului (AT02)"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "San Marino National Tax Number"
+msgstr "San Marino, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Serbian Tax Identification"
+msgstr "Serbia, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak Birth Number"
+msgstr "Slovacia, Număr de Naştere"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak VAT Number"
+msgstr "Slovacia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovenian VAT Number"
+msgstr "Slovenia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Identity Document Number"
+msgstr "Africa de Sud, Număr Act de Identitate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Tax Identification Number"
+msgstr "Africa de Sud, Cod de Identificare Fiscală"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korea Business Registration Number"
+msgstr "Korea de Sud, Număr de Inregistrare Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korean Resident Registration Number"
+msgstr "Korea de Sud, Număr Înregistrare Rezident"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Company Tax"
+msgstr "Spania, Număr Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Foreigner Number"
+msgstr "Spania, Număr Imigrant"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Personal Identity Codes"
+msgstr "Spania, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish VAT Number"
+msgstr "Spania, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Company Number"
+msgstr "Suedia, Număr de Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Personal Number"
+msgstr "Suedia, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish VAT Number"
+msgstr "Suedia, Număr de TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Business Identifier"
+msgstr "Elveţia, Identificator de Companie"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Social Security Number"
+msgstr "Elveţia, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss VAT Number"
+msgstr "Elveţia, Număr TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Personal Identification Number"
+msgstr "Turcia, Cod Numeric Personal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr "SUA, Număr de Identificare Contribuabil Adoptiv"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Employer Identification Number"
+msgstr "SUA, Număr de Identificare Angajator"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr "SUA, Număr Individual de Identificare al Contribuabilului"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr "SUA, Număr de Identificare al Pregătitorului"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Social Security Number"
+msgstr "SUA, Număr de Securitate Socială"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr "SUA, Număr de Identificare al Contribuabilului"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr "Regatul Unit (şi Isle of Man), Număr de TVA"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr "Regatul Unit, Identificator Pacient al Serviciul National de Sănatate"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Uruguay Tax Number"
+msgstr "Uruguay, Cod Fiscal"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Venezuelan VAT Number"
+msgstr "Venezuela, Număr TVA"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Mobil"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Alte"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Site web"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Parte"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Înlocuire cu"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Ştergere"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Înlocuire"

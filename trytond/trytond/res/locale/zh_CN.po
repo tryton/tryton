@@ -1,0 +1,628 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr "修改组"
+
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr "导出"
+
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr "导出"
+
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "按钮"
+
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "组"
+
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "规则组"
+
+msgctxt "field:ir.sequence.type,groups:"
+msgid "User Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "User Groups"
+msgstr "用户组"
+
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "序列类型"
+
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "按钮"
+
+msgctxt "field:res.group,field_access:"
+msgid "Access Field"
+msgstr "字段访问权限"
+
+msgctxt "field:res.group,menu_access:"
+msgid "Access Menu"
+msgstr "菜单访问权限"
+
+msgctxt "field:res.group,model_access:"
+msgid "Access Model"
+msgstr "模型访问权限"
+
+msgctxt "field:res.group,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:res.group,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:res.group,rule_groups:"
+msgid "Rules"
+msgstr "规则"
+
+msgctxt "field:res.group,users:"
+msgid "Users"
+msgstr "用户"
+
+msgctxt "field:res.user,actions:"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "field:res.user,applications:"
+msgid "Applications"
+msgstr "应用"
+
+msgctxt "field:res.user,avatar_badge_url:"
+msgid "Avatar Badge URL"
+msgstr ""
+
+msgctxt "field:res.user,email:"
+msgid "Email"
+msgstr "电子邮件"
+
+msgctxt "field:res.user,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+msgctxt "field:res.user,language:"
+msgid "Language"
+msgstr "语言"
+
+msgctxt "field:res.user,language_direction:"
+msgid "Language Direction"
+msgstr "语言书写方向"
+
+msgctxt "field:res.user,login:"
+msgid "Login"
+msgstr "登录"
+
+msgctxt "field:res.user,menu:"
+msgid "Menu Action"
+msgstr "菜单动作"
+
+msgctxt "field:res.user,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:res.user,password:"
+msgid "Password"
+msgstr "密码"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "密码HASH"
+
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "重置密码过期"
+
+msgctxt "field:res.user,pyson_menu:"
+msgid "PySON Menu"
+msgstr "PySON 菜单"
+
+msgctxt "field:res.user,sessions:"
+msgid "Sessions"
+msgstr "会话"
+
+msgctxt "field:res.user,signature:"
+msgid "Signature"
+msgstr "签名"
+
+msgctxt "field:res.user,status_bar:"
+msgid "Status Bar"
+msgstr "状态栏"
+
+msgctxt "field:res.user,warnings:"
+msgid "Warnings"
+msgstr "警告"
+
+msgctxt "field:res.user-ir.action,action:"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "field:res.user-ir.action,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:res.user-res.group,group:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "field:res.user-res.group,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:res.user.application,application:"
+msgid "Application"
+msgstr "应用"
+
+msgctxt "field:res.user.application,key:"
+msgid "Key"
+msgstr "密钥"
+
+msgctxt "field:res.user.application,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:res.user.application,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:res.user.device,cookie:"
+msgid "Cookie"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.user.device,login:"
+msgid "Login"
+msgstr "登录"
+
+msgctxt "field:res.user.login.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "IP地址"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "IP网络"
+
+msgctxt "field:res.user.login.attempt,login:"
+msgid "Login"
+msgstr "登录"
+
+msgctxt "field:res.user.warning,always:"
+msgid "Always"
+msgstr "总是"
+
+msgctxt "field:res.user.warning,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:res.user.warning,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr "可以使用导出功能的用户组."
+
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr "可以调整导出功能的用户组."
+
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr "允许编辑此类型序列的用户组."
+
+msgctxt "help:res.group,parent:"
+msgid "The group to inherit accesses from."
+msgstr ""
+
+msgctxt "help:res.user,actions:"
+msgid "Actions that will be run at login."
+msgstr "用户登录后自动运行的操作."
+
+msgctxt "model:ir.action,name:act_group_form"
+msgid "Groups"
+msgstr "组"
+
+msgctxt "model:ir.action,name:act_user_config"
+msgid "Configure Users"
+msgstr "设置用户"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Users"
+msgstr "用户"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "model:ir.action-res.group,name:"
+msgid "Action - Group"
+msgstr "操作 - 组"
+
+msgctxt "model:ir.export-res.group,name:"
+msgid "Export Group"
+msgstr "导出组"
+
+msgctxt "model:ir.export-write-res.group,name:"
+msgid "Export Modification Group"
+msgstr "导出功能调整组"
+
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "密码不能与用户的电子邮件地址相同."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "相同的字符出现在密码中的次数太多."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "密码已被禁止."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "密码太短."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "密码不能与用户登录名相同."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "密码不能与用户登录名相同."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr "由于日志记录的原因，用户不能删除，只能停用."
+
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr "%(login)s 的密码"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "通过电子邮件向用户发送新的临时密码"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "验证"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "model:ir.model.button-res.group,name:"
+msgid "Model Button - Group"
+msgstr "模型按钮 - 组"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_any"
+msgid "Any export"
+msgstr "任意导出"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
+msgid "Any export"
+msgstr "任意导出"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
+msgid "User in groups"
+msgstr "组用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
+msgid "User in modification groups"
+msgstr "修改组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_read"
+msgid "User in groups"
+msgstr "用户组"
+
+msgctxt "model:ir.rule.group,name:rule_group_export_write"
+msgid "User in modification groups"
+msgstr "修改组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr "组中的用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr "自己的会话"
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr "自己的会话"
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr "自己的爱好"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr "自己的用户应用程序"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr "任意的用户应用程序"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr "自己的警告"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr "自己的视图搜索"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr "任意的视图搜索"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr "公共的视图搜索"
+
+msgctxt "model:ir.rule.group-res.group,name:"
+msgid "Rule Group - Group"
+msgstr "规则组 - 组"
+
+msgctxt "model:ir.sequence.type-res.group,name:"
+msgid "Sequence Type - Group"
+msgstr "序列类别 - 组"
+
+msgctxt "model:ir.ui.menu,name:menu_group_form"
+msgid "Groups"
+msgstr "组"
+
+msgctxt "model:ir.ui.menu,name:menu_res"
+msgid "Users"
+msgstr "用户"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Users"
+msgstr "用户"
+
+msgctxt "model:ir.ui.menu-res.group,name:"
+msgid "UI Menu - Group"
+msgstr "UI 菜单 - 组"
+
+msgctxt "model:res.group,name:"
+msgid "Group"
+msgstr "用户组"
+
+msgctxt "model:res.group,name:group_admin"
+msgid "Administration"
+msgstr "管理"
+
+msgctxt "model:res.user,name:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "model:res.user-ir.action,name:"
+msgid "User - Action"
+msgstr "用户 - 操作"
+
+msgctxt "model:res.user-res.group,name:"
+msgid "User - Group"
+msgstr "用户 - 组"
+
+msgctxt "model:res.user.application,name:"
+msgid "User Application"
+msgstr "用户应用"
+
+msgctxt "model:res.user.config.start,name:"
+msgid "User Config Init"
+msgstr "用户初始化配置"
+
+msgctxt "model:res.user.device,name:"
+msgid "User Device"
+msgstr ""
+
+msgctxt "model:res.user.login.attempt,name:"
+msgid "Login Attempt"
+msgstr "登录次数"
+
+msgctxt "model:res.user.warning,name:"
+msgid "User Warning"
+msgstr "用户警告"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "重置密码"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+"你的账户 [1:%(login)s] 的密码已经重置.[2:]\n"
+"                你必须使用用户偏好功能设置一个新的密码.[3:]\n"
+"                你可以使用临时密码 [4:%(password)s] 连接到[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "密码将在 [1:%(datetime)s UTC] 过期."
+
+msgctxt "selection:res.user.application,state:"
+msgid "Cancelled"
+msgstr "已取消"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Requested"
+msgstr "已申请"
+
+msgctxt "selection:res.user.application,state:"
+msgid "Validated"
+msgstr "已确认"
+
+msgctxt "view:res.group:"
+msgid "Access Permissions"
+msgstr "访问权限"
+
+msgctxt "view:res.group:"
+msgid "Members"
+msgstr "成员"
+
+msgctxt "view:res.user.config.start:"
+msgid "Be careful that the login must be unique."
+msgstr "注意登录不能重复."
+
+msgctxt "view:res.user.config.start:"
+msgid "You can now add some users into the system."
+msgstr "现在可以给系统添加用户了."
+
+msgctxt "view:res.user:"
+msgid "Access Permissions"
+msgstr "访问权限"
+
+msgctxt "view:res.user:"
+msgid "Actions"
+msgstr "动作"
+
+msgctxt "view:res.user:"
+msgid "Group Membership"
+msgstr "组成员"
+
+msgctxt "view:res.user:"
+msgid "Preferences"
+msgstr "偏好"
+
+msgctxt "view:res.user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "wizard_button:res.user.config,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:res.user.config,start,user:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:res.user.config,user,add:"
+msgid "Add"
+msgstr "添加"
+
+msgctxt "wizard_button:res.user.config,user,end:"
+msgid "End"
+msgstr "结束"

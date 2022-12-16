@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.inventory.create.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.inventory.create.start,complete_lines:"
+msgid "Complete"
+msgstr "Completa"
+
+msgctxt "field:stock.inventory.create.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:stock.inventory.create.start,empty_quantity:"
+msgid "Empty Quantity"
+msgstr "Quantitat en blanc"
+
+msgctxt "field:stock.inventory.create.start,locations:"
+msgid "Locations"
+msgstr "Ubicacions"
+
+msgctxt "help:stock.inventory.create.start,complete_lines:"
+msgid "Add an inventory line for each missing product."
+msgstr "Afegeix una línia d'inventary per a cada producte que falta."
+
+msgctxt "help:stock.inventory.create.start,empty_quantity:"
+msgid "How lines without a quantity are handled."
+msgstr "Com es gestionen les línies sense quantitat."
+
+msgctxt "model:ir.action,name:wizard_create_inventory"
+msgid "Create Inventories"
+msgstr "Crea inventaris"
+
+msgctxt "model:ir.ui.menu,name:menu_create_inventory"
+msgid "Create Inventories"
+msgstr "Crea inventaris"
+
+msgctxt "model:stock.inventory.create.start,name:"
+msgid "Create Inventories"
+msgstr "Crea inventaris"
+
+msgctxt "wizard_button:stock.inventory.create,start,create_:"
+msgid "Create"
+msgstr "Crea"
+
+msgctxt "wizard_button:stock.inventory.create,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
