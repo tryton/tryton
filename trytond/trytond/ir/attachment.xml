@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="attachment_view_form">
+            <field name="model">ir.attachment</field>
+            <field name="type">form</field>
+            <field name="name">attachment_form</field>
+        </record>
+        <record model="ir.ui.view" id="attachment_view_form_preview">
+            <field name="model">ir.attachment</field>
+            <field name="type">form</field>
+            <field name="priority" eval="50"/>
+            <field name="name">attachment_form_preview</field>
+        </record>
+        <record model="ir.ui.view" id="attachment_view_tree">
+            <field name="model">ir.attachment</field>
+            <field name="type">tree</field>
+            <field name="name">attachment_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_attachment_form">
+            <field name="name">Attachments</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">ir.attachment</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_attachment_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="attachment_view_tree"/>
+            <field name="act_window" ref="act_attachment_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_attachment_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="attachment_view_form"/>
+            <field name="act_window" ref="act_attachment_form"/>
+        </record>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_attachment_form"
+            sequence="50"
+            id="menu_attachment_form"/>
+    </data>
+</tryton>

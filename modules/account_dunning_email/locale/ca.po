@@ -1,0 +1,120 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "Usuari enviament de fallada"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Reclamació"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Nivell"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinataris"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataris ocults"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataris secundaris"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Mitjà de contacte"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Plantilla de correu electrònic"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Envia correu electrònic"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+"El usuari a notificar quan no es trobi cap correu electrònic per enviar la "
+"reclamació"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+"Defineix quin correu electrònic dels mitjans de contactes del tercer es vol "
+"utilitzar"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr ""
+"Deixeu en blanc per a utilitzar el valor definit al fitxer de configuració."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Registres de correus electrònics de reclamació"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Registre de correus electrònics"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Correu electrònic de reclamació"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Data de venciment"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Despeses:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagaments pendents rebuts"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avís de recordatori"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "Correu electrònic"

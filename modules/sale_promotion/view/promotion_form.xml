@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="price_list"/>
+    <field name="price_list"/>
+
+    <label name="formula"/>
+    <field name="formula" colspan="5"/>
+    <separator id="pattern" colspan="6"/>
+
+    <label name="amount"/>
+    <field name="amount" symbol=""/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <group id="amount" col="-1" colspan="2">
+        <label name="untaxed_amount"/>
+        <field name="untaxed_amount" xexpand="0" width="25"/>
+    </group>
+
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="unit"/>
+    <field name="unit"/>
+    <newline/>
+
+    <group id="categories_products" col="-1" colspan="6" yexpand="1">
+        <field name="categories"/>
+        <field name="products" view_ids="product.product_view_tree_simple"/>
+    </group>
+</form>

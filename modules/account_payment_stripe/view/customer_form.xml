@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="stripe_account"/>
+    <field name="stripe_account"/>
+    <newline/>
+    <label name="stripe_customer_id"/>
+    <field name="stripe_customer_id"/>
+    <group id="buttons" col="-1" colspan="4">
+        <button name="stripe_checkout"/>
+        <button name="detach_source"/>
+        <button name="find_identical"/>
+    </group>
+    <label name="stripe_error_message"/>
+    <field name="stripe_error_message"/>
+    <newline/>
+    <label name="stripe_error_code"/>
+    <field name="stripe_error_code"/>
+    <label name="stripe_error_param"/>
+    <field name="stripe_error_param"/>
+
+    <field name="identical_customers" colspan="4"/>
+</form>
