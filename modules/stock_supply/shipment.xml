@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.user" id="user_generate_shipment_internal">
+            <field name="login">user_cron_internal_shipment</field>
+            <field name="name">Cron Intenal Shipment</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_shipment_internal_group_stock">
+            <field name="user" ref="user_generate_shipment_internal"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.cron" id="cron_shipment_iternal">
+            <field name="name">Generate Internal Shipments</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_shipment_internal"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">stock.shipment.internal</field>
+            <field name="function">generate_internal_shipment</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_shipment_internal_create">
+            <field name="name">Create Internal Shipments</field>
+            <field name="wiz_name">stock.shipment.internal.create</field>
+        </record>
+        <record model="ir.ui.view"
+            id="shipment_internal_create_start_view_form">
+            <field name="model">stock.shipment.internal.create.start</field>
+            <field name="type">form</field>
+            <field name="name">stock_shipment_internal_create_start_form</field>
+        </record>
+        <menuitem parent="stock.menu_shipment_internal_form" sequence="10"
+            action="act_shipment_internal_create"
+            id="menu_shipment_internal_create"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_shipment_internal_form_group_purchase_request">
+            <field name="menu" ref="menu_shipment_internal_create"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+    </data>
+</tryton>

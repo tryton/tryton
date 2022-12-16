@@ -1,0 +1,287 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.category:"
+msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgstr "No hay una cuenta gastos/ingresos definida para la categoria %s (%d)"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "No hay una cuenta gastos/ingresos definida para el producto %s (%d)"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Cuenta de Gastos"
+
+msgctxt "field:product.category,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Cuenta de Gastos Usada"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Usar Cuenta Padre"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Cuenta de Ingresos"
+
+msgctxt "field:product.category,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Cuenta de Ingresos Usada"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Impuestos del Cliente"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Impuestos del Cliente Aplicados"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Impuestos del Proveedor"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Impuestos del Proveedor Aplicados"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Usar Impuestos del Padre"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.category-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.category-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.category-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "field:product.category-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.category-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.category-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.category-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.category-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "field:product.category-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.category-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.template,account_category:"
+msgid "Use Category's accounts"
+msgstr "Use Cuentas de la Categoría"
+
+msgctxt "field:product.template,account_expense:"
+msgid "Account Expense"
+msgstr "Cuenta de Gastos"
+
+msgctxt "field:product.template,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Cuenta de Gastos Usada"
+
+msgctxt "field:product.template,account_revenue:"
+msgid "Account Revenue"
+msgstr "Cuenta de Ingresos"
+
+msgctxt "field:product.template,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Cuenta de Ingresos Usada"
+
+msgctxt "field:product.template,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Impuestos del Cliente"
+
+msgctxt "field:product.template,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Impuestos del Cliente Aplicados"
+
+msgctxt "field:product.template,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Impuestos del Proveedor"
+
+msgctxt "field:product.template,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Impuestos del Proveedor Aplicados"
+
+msgctxt "field:product.template,taxes_category:"
+msgid "Use Category's Taxes"
+msgstr "Usar Impuestos de la Categoría"
+
+msgctxt "field:product.template-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.template-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.template-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-customer-account.tax,product:"
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "field:product.template-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.template-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.template-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.template-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-supplier-account.tax,product:"
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "field:product.template-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.template-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category"
+msgstr "Usar las cuentas definidas en la categoria padre"
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category"
+msgstr "Usar los impuestos definidos en la categoria padre"
+
+msgctxt "help:product.template,account_category:"
+msgid "Use the accounts defined on the category"
+msgstr "Use las cuentas definidas en la categoría"
+
+msgctxt "help:product.template,account_expense:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "help:product.template,account_revenue:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "Esta cuenta se usará en lugar de la definida en la categoría."
+
+msgctxt "help:product.template,taxes_category:"
+msgid "Use the taxes defined on the category"
+msgstr "Usar los impuestos definidos en la categoría"
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Categoría - Impuestos de Cliente"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Categoría - Impuesto de Proveedor"
+
+msgctxt "model:product.template-customer-account.tax,name:"
+msgid "Product Template - Customer Tax"
+msgstr "Plantilla Producto - Impuestos Cliente"
+
+msgctxt "model:product.template-supplier-account.tax,name:"
+msgid "Product Template - Supplier Tax"
+msgstr "Plantilla Producto - Impuestos Proveedor"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Cuentas"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Impuestos"
+
+msgctxt "view:product.product:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+msgctxt "view:product.template:"
+msgid "Accounts"
+msgstr "Cuentas"
+
+msgctxt "view:product.template:"
+msgid "Taxes"
+msgstr "Impuestos"
