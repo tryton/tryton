@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="company" optional="1"/>
+    <field name="type"/>
+    <field name="number"/>
+    <field name="reference"/>
+    <field name="invoice_date" optional="0"/>
+    <field name="party" expand="2" optional="0"/>
+    <field name="untaxed_amount" optional="0"/>
+    <field name="tax_amount" optional="0"/>
+    <field name="total_amount" optional="0"/>
+    <field name="state" optional="0"/>
+    <field name="amount_to_pay_today" optional="0"/>
+    <field name="description" expand="1" optional="1"/>
+    <button name="cancel" tree_invisible="1"/>
+    <button name="draft" tree_invisible="1"/>
+    <button name="validate_invoice" tree_invisible="1"/>
+    <button name="post" tree_invisible="1"/>
+</tree>
