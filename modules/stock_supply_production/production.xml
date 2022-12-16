@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="production_configuration_view_form">
+            <field name="model">production.configuration</field>
+            <field name="inherit"
+                ref="production.production_configuration_view_form"/>
+            <field name="name">production_configuration_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_production_request_create">
+            <field name="name">Create Production Requests</field>
+            <field name="wiz_name">production.create_request</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="production_create_request_start_view_form">
+            <field name="model">production.create_request.start</field>
+            <field name="type">form</field>
+            <field name="name">production_create_request_start_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_production_request">
+            <field name="name">Request Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'request')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production.production_view_list"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production.production_view_form"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+
+        <menuitem parent="production.menu_production_list" sequence="5"
+            action="act_production_request_create"
+            id="menu_production_request_create"/>
+
+        <record model="res.user" id="user_generate_request">
+            <field name="login">user_cron_production_request</field>
+            <field name="name">Cron Production Request</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_request_group_production">
+            <field name="user" ref="user_generate_request"/>
+            <field name="group" ref="production.group_production"/>
+        </record>
+
+        <record model="ir.cron" id="cron_generate_request">
+            <field name="name">Generate Production Requests</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_request"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="number_calls">-1</field>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">production</field>
+            <field name="function">generate_requests</field>
+        </record>
+
+    </data>
+</tryton>
