@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="start_date"/>
+    <field name="end_date"/>
+    <field name="group"/>
+    <field name="origin_tax" expand="2"/>
+    <field name="tax" expand="2"/>
+    <field name="keep_origin"/>
+</tree>

@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,shipments:"
+msgid "Shipments"
+msgstr "Lieferungen"
+
+msgctxt "field:account.invoice.line,correction:"
+msgid "Correction"
+msgstr "Korrektur"
+
+msgctxt "field:account.invoice.line,shipments:"
+msgid "Shipments"
+msgstr "Lieferungen"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Warenbewegungen"
+
+msgctxt "field:account.invoice.line,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Warenbewegung"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Rechnungstypen"
+
+msgctxt "help:account.invoice.line,correction:"
+msgid "Check to correct price of already posted invoice."
+msgstr ""
+"Aktivieren um den Preis von bereits festgeschriebenen Rechnungen zu "
+"korrigieren."
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Rechnungsposition - Warenbewegung"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Lager"

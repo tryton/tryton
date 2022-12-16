@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_template_view_form">
+            <field name="model">account.move.template</field>
+            <field name="type">form</field>
+            <field name="name">move_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_template_view_list">
+            <field name="model">account.move.template</field>
+            <field name="type">tree</field>
+            <field name="name">move_template_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_template_form">
+            <field name="name">Moves</field>
+            <field name="res_model">account.move.template</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_move_template_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_template_view_list"/>
+            <field name="act_window" ref="act_move_template_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_move_template_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_template_view_form"/>
+            <field name="act_window" ref="act_move_template_form"/>
+        </record>
+        <menuitem
+            parent="menu_templates"
+            action="act_move_template_form"
+            sequence="10"
+            id="menu_move_template_form"/>
+
+        <record model="ir.rule.group" id="rule_group_move_template_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'account.move.template')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_move_template_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_move_template_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_template">
+            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_template_account">
+            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_template_account_admin">
+            <field name="model" search="[('model', '=', 'account.move.template')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_template_keyword_view_form">
+            <field name="model">account.move.template.keyword</field>
+            <field name="type">form</field>
+            <field name="name">move_template_keyword_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_template_keyword_view_list">
+            <field name="model">account.move.template.keyword</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">move_template_keyword_list</field>
+        </record>
+        <record model="ir.ui.view" id="move_template_keyword_view_list_sequence">
+            <field name="model">account.move.template.keyword</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_template_keyword_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_template_view_form">
+            <field name="model">account.move.line.template</field>
+            <field name="type">form</field>
+            <field name="name">move_line_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="move_line_template_view_list">
+            <field name="model">account.move.line.template</field>
+            <field name="type">tree</field>
+            <field name="name">move_line_template_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_line_template_view_form">
+            <field name="model">account.tax.line.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_line_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_line_template_view_list">
+            <field name="model">account.tax.line.template</field>
+            <field name="type">tree</field>
+            <field name="name">tax_line_template_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_template_create_template_view_form">
+            <field name="model">account.move.template.create.template</field>
+            <field name="type">form</field>
+            <field name="name">move_template_create_template_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_move_template_create">
+            <field name="name">Create Move from Template</field>
+            <field name="wiz_name">account.move.template.create</field>
+        </record>
+        <menuitem
+            parent="menu_entries"
+            action="act_move_template_create"
+            sequence="20"
+            id="menu_move_template_create"/>
+
+        <record model="ir.action.act_window" id="act_move_from_template">
+            <field name="name">Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_from_template_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_from_template"/>
+        </record>
+    </data>
+</tryton>
