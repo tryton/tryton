@@ -1,0 +1,157 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "aankoop secundaire maateenheid"
+
+msgctxt "field:product.product,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "aankoop secundaire maateenheid factor"
+
+msgctxt "field:product.product,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "aankoop secundaire maateenheid tarief"
+
+msgctxt "field:product.template,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "aankoop secundaire maateenheid"
+
+msgctxt "field:product.template,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "aankoop secundaire maateenheid factor"
+
+msgctxt "field:product.template,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "aankoop secundaire maateenheid tarief"
+
+msgctxt "field:purchase.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Product secundaire maateenheid categorie"
+
+msgctxt "field:purchase.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Secundaire hoeveelheid"
+
+msgctxt "field:purchase.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Secundaire eenheid"
+
+msgctxt "field:purchase.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "decimalen secondaire eenheid"
+
+msgctxt "field:purchase.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "secundaire eenheidsprijs"
+
+msgctxt "field:purchase.line,secondary_uom_factor:"
+msgid "Secondary UOM Factor"
+msgstr "secundaire maateenheid factor"
+
+msgctxt "field:purchase.line,secondary_uom_rate:"
+msgid "Secondary UOM Rate"
+msgstr "secundaire maateenheid factor"
+
+msgctxt "field:purchase.product_supplier,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Standaard maateenheid-categorie"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "aankoop secundaire maateenheid"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "aankoop secundaire maateenheid factor"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "aankoop secundaire maateenheid tarief"
+
+msgctxt "field:purchase.requisition.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Product secundaire maateenheid categorie"
+
+msgctxt "help:product.product,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (inkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:product.product,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (inkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "help:product.template,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (inkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:product.template,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (inkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (inkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:purchase.product_supplier,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (inkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "model:ir.message,text:msg_secondary_uom_incompatible_factor_rate"
+msgid "Incompatible secondary factor and rate values for \"%(record)s\"."
+msgstr ""
+"Incompatibele secundaire factor en waardebeoordeling (rate values ) voor "
+"\"%(record)s\"."
+
+msgctxt "view:product.template:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:product.template:"
+msgid "Rate:"
+msgstr "Waarde:"
+
+msgctxt "view:purchase.line:"
+msgid "Quantity:"
+msgstr "Hoeveelheid:"
+
+msgctxt "view:purchase.line:"
+msgid "Unit Price:"
+msgstr "Eenheid prijs:"
+
+msgctxt "view:purchase.line:"
+msgid "Unit:"
+msgstr "Eenheid:"
+
+msgctxt "view:purchase.product_supplier:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:purchase.product_supplier:"
+msgid "Rate:"
+msgstr "Waarde:"

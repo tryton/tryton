@@ -1,0 +1,195 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr ""
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr ""
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr ""
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr ""
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr ""
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr ""
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr ""
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr ""
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr ""
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr ""
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr ""
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr ""
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr ""
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr ""
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days."
+msgstr ""
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days."
+msgstr ""
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days."
+msgstr ""
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days."
+msgstr ""
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr ""
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
+msgstr ""
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Stock Force Expiration"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+#, fuzzy
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+#, fuzzy
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+#, fuzzy
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+#, fuzzy
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Nessuno"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Obbligatorio"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr ""
