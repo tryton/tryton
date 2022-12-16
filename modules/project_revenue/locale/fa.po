@@ -1,0 +1,48 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,cost:"
+msgid "Cost"
+msgstr "هزینه"
+
+#, fuzzy
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:project.work,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:project.work,list_price:"
+msgid "List Price"
+msgstr "لیست قیمت"
+
+msgctxt "field:project.work,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:project.work,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "خطوط خرید"
+
+msgctxt "field:project.work,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "field:purchase.line,work:"
+msgid "Work Effort"
+msgstr "تلاش کار"
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr "اضافه کردن هزینه تلاش کار."
+
+msgctxt "view:project.work:"
+msgid "Purchases"
+msgstr "خریدها"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "پروژه"
