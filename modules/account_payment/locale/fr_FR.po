@@ -1,0 +1,469 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment.process:"
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "Le paiement « %(payment)s » surpaye la ligne « %(line)s »."
+
+msgctxt "error:account.payment:"
+msgid "Payment \"%s\" must be in draft before deletion."
+msgstr "Le paiement « %s » doit être en brouillon avant suppression."
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Séquence de groupe de paiements"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "Montant du paiement"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "Genre de paiement"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.line.pay.start,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.payment,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.payment,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "Groupe"
+
+msgctxt "field:account.payment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "Genre"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "Ligne"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.payment,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.payment,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.payment,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.payment.group,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.payment.group,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.payment.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "Genre"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "field:account.payment.group,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.payment.group,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.payment.group,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.payment.journal,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.payment.journal,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.payment.journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "Méthode de traitement"
+
+msgctxt "field:account.payment.journal,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.payment.journal,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.payment.journal,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:account.payment.process.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "Payer la ligne"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "Paiement"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "Groupe de paiements"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "Journal de paiement"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "Traiter les paiements"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "Lignes à payer"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "Payer les lignes"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "Groupes de paiements"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Journaux de paiement"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "Traiter les paiements"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "À payer"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "À recevoir"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "Approuvé"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "Échoué"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "Traitement"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Réussi"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "Groupe de paiements comptable par défaut"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "Groupe de paiements comptable"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "Lignes à payer"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "Groupes de paiements"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "Journaux de paiement"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "Paiement"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "Fournisseur"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "Compte client"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "Fournisseur"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "Compte client"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "Approuvé"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "Échoué"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "Traitement"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "Réussi"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "Fournisseur"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "Compte client"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "Manuelle"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "Séquence de groupe"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "Paiement"
+
+msgctxt "view:account.move.line.pay.start:"
+msgid "Pay Line"
+msgstr "Payer la ligne"
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Lines"
+msgstr "Lignes de mouvement comptable"
+
+msgctxt "view:account.move.line:"
+msgid "Pay Lines"
+msgstr "Payer les lignes"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Group"
+msgstr "Groupe de paiements"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Groups"
+msgstr "Groupes de paiements"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journal"
+msgstr "Journal de paiement"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journals"
+msgstr "Journaux de paiement"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments"
+msgstr "Traitement des paiements"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "Traiter les paiements ?"
+
+msgctxt "view:account.payment:"
+msgid "Approve"
+msgstr "Approuver"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.payment:"
+msgid "Fail"
+msgstr "Échouer"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Paiement"
+
+msgctxt "view:account.payment:"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "view:account.payment:"
+msgid "Succeed"
+msgstr "Réussir"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.move.line.pay,start,pay:"
+msgid "Pay"
+msgstr "Payer"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "Traiter"

@@ -1,0 +1,43 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "ພິມໃສ່ຈົດໝາຍ"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "ຈົດໝາຍເລັ່ງທວງ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "ວັນທີ:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "ວັນທີຕ້ອງຈ່າຍ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "ຈຳນວນເງິນຄ້າງຊໍາລະທີ່ໄດ້ຮັບ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "ເອກະສານອ້າງອີງ"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "ໜັງສືແຈ້ງເຕືອນ"

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Account Configuration">
+    <separator id="party" string="Party" colspan="4"/>
+    <label name="default_account_receivable"/>
+    <field name="default_account_receivable"/>
+    <label name="default_account_payable"/>
+    <field name="default_account_payable"/>
+    <separator id="invoice" string="Invoice" colspan="4"/>
+    <label name="tax_rounding"/>
+    <field name="tax_rounding"/>
+    <field name="tax_roundings" colspan="2" yexpand="0"/>
+</form>

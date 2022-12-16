@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Aged Balance">
+    <field name="party"/>
+    <field name="term0" expand="1"/>
+    <field name="term1" expand="1"/>
+    <field name="term2" expand="1"/>
+    <field name="term3" expand="1"/>
+    <field name="balance" expand="1"/>
+</tree>
