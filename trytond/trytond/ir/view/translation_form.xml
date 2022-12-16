@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="res_id"/>
+    <field name="res_id"/>
+    <label name="fuzzy"/>
+    <field name="fuzzy"/>
+    <label name="lang"/>
+    <field name="lang"/>
+    <label name="module"/>
+    <field name="module"/>
+    <label name="overriding_module"/>
+    <field name="overriding_module"/>
+    <group col="2" colspan="6" yexpand="1" yfill="1" id="src_value">
+        <separator name="src"/>
+        <separator name="value"/>
+        <field name="src"/>
+        <field name="value"/>
+    </group>
+</form>
