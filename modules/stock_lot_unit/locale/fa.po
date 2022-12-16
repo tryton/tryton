@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,lot_unit:"
+msgid "Lot Unit"
+msgstr "واحد قطعه"
+
+msgctxt "field:product.template,lot_unit:"
+msgid "Lot Unit"
+msgstr "واحد قطعه"
+
+msgctxt "field:stock.lot,product_default_uom_category:"
+msgid "Default Product UoM Category"
+msgstr "دسته بندی واحد اندازه گیری محصول پیشفرض"
+
+msgctxt "field:stock.lot,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:stock.lot,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:stock.lot,unit_quantity:"
+msgid "Quantity"
+msgstr "مقدار"
+
+msgctxt "help:product.product,lot_unit:"
+msgid "The default unit for lot."
+msgstr "واحد پیشفرض قطعه."
+
+msgctxt "help:product.template,lot_unit:"
+msgid "The default unit for lot."
+msgstr "واحد پیشفرض قطعه."
+
+msgctxt "help:stock.lot,unit:"
+msgid "The biggest unit for the lot."
+msgstr "بزرگترین واحد برای قطعه"
+
+msgctxt "help:stock.lot,unit_quantity:"
+msgid "The maximal quantity for the lot."
+msgstr "حداکثر مقدار برای قطعه."
+
+msgctxt "model:ir.message,text:msg_change_unit"
+msgid "You cannot change the unit of a stock lot which has stock moves."
+msgstr "شما نمی توانید یک واحد جنس را تغییر دهید که جابجایی اجناس داشته باشد."
+
+msgctxt "model:ir.message,text:msg_change_unit_quantity"
+msgid "You cannot change the quantity of a stock lot which has stock moves."
+msgstr "شما نمی توانید مقدار جنس را تغییر دهید که جابجایی اجناس داشته باشد."
+
+msgctxt "model:ir.message,text:msg_lot_unit_quantity_greater"
+msgid ""
+"You cannot use more than %(quantity)s%(unit)s of lot \"%(lot)s\" in "
+"\"%(name)s\"."
+msgstr ""
+"شما نمی توانید بیش از:\"%(quantity)s%(unit)s\" از قطعه :\"%(lot)s\" "
+"در:\"%(name)s\" استفاده کنید."
