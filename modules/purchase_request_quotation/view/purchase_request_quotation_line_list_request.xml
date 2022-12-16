@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="quotation" expand="1"/>
+    <field name="supply_date" optional="0"/>
+    <field name="supplier" expand="1" optional="0"/>
+    <field name="quantity" symbol="unit"/>
+    <field name="unit_price"/>
+    <field name="quotation_state"/>
+</tree>

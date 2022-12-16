@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@name='warehouses']" position="after">
+        <page name="shopify_warehouses">
+            <field name="shopify_warehouses" colspan="4" view_ids="web_shop_shopify.shop_stock_location_view_list,web_shop_shopify.shop_stock_location_view_form"/>
+        </page>
+    </xpath>
+    <xpath expr="//page[@id='products']" position="after">
+        <page string="Shopify" id="shopify" col="6">
+            <label name="shopify_url"/>
+            <field name="shopify_url"/>
+            <label name="shopify_password"/>
+            <field name="shopify_password" widget="password"/>
+            <label name="shopify_version"/>
+            <field name="shopify_version"/>
+
+            <label name="shopify_webhook_shared_secret"/>
+            <field name="shopify_webhook_shared_secret"/>
+            <label name="shopify_webhook_endpoint_order"/>
+            <field name="shopify_webhook_endpoint_order"/>
+
+            <field name="shopify_payment_journals" colspan="6"/>
+        </page>
+    </xpath>
+</data>
