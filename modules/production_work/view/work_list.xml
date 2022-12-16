@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="production" expand="1"/>
+    <field name="operation" expand="1"/>
+    <field name="work_center" expand="1"/>
+    <field name="state"/>
+</tree>
