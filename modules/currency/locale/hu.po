@@ -1,0 +1,227 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:currency.cron,currencies:"
+msgid "Currencies"
+msgstr "Pénznemek"
+
+msgctxt "field:currency.cron,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:currency.cron,day:"
+msgid "Day of Month"
+msgstr "A hónap napja"
+
+msgctxt "field:currency.cron,frequency:"
+msgid "Frequency"
+msgstr "Rendszeresség"
+
+msgctxt "field:currency.cron,last_update:"
+msgid "Last Update"
+msgstr "Utolsó frissítés"
+
+msgctxt "field:currency.cron,source:"
+msgid "Source"
+msgstr "Forrás"
+
+msgctxt "field:currency.cron,weekday:"
+msgid "Day of Week"
+msgstr "A hét napja"
+
+msgctxt "field:currency.cron-currency.currency,cron:"
+msgid "Cron"
+msgstr ""
+
+msgctxt "field:currency.cron-currency.currency,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:currency.currency,code:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Digits"
+msgstr "Tizedesjegyek"
+
+msgctxt "field:currency.currency,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:currency.currency,numeric_code:"
+msgid "Numeric Code"
+msgstr "Numerikus kód"
+
+msgctxt "field:currency.currency,rate:"
+msgid "Current rate"
+msgstr "Aktuális árfolyam"
+
+msgctxt "field:currency.currency,rates:"
+msgid "Rates"
+msgstr "Árfolyamok"
+
+msgctxt "field:currency.currency,rounding:"
+msgid "Rounding factor"
+msgstr "Kerekítési mód"
+
+msgctxt "field:currency.currency,symbol:"
+msgid "Symbol"
+msgstr "Szimbólum"
+
+msgctxt "field:currency.currency.rate,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:currency.currency.rate,date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:currency.currency.rate,rate:"
+msgid "Rate"
+msgstr "Árfolyam"
+
+msgctxt "help:currency.cron,currencies:"
+msgid "The currencies to update the rate."
+msgstr ""
+
+msgctxt "help:currency.cron,currency:"
+msgid "The base currency to fetch rate."
+msgstr ""
+
+msgctxt "help:currency.cron,frequency:"
+msgid "How frequently rates must be updated."
+msgstr ""
+
+msgctxt "help:currency.cron,source:"
+msgid "The external source for rates."
+msgstr "A szolgáltató, ahonnan a rendszer az árfolyamokat letölti."
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "A tizedesvessző után ennyi számjegyet jelenít meg a rendszer."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "A legkisebb összeg, amit ebben a pénznemben ki lehet fejezni."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr ""
+"Ezt a szimbólumot használja a rendszer a pénzösszegek megjelenítéséhez."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:currency.cron,name:"
+msgid "Currency Cron"
+msgstr "Pénznem"
+
+msgctxt "model:currency.cron-currency.currency,name:"
+msgid "Currency Cron - Currency"
+msgstr ""
+
+msgctxt "model:currency.currency,name:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "model:currency.currency.rate,name:"
+msgid "Currency Rate"
+msgstr "Aktuális árfolyam"
+
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Időzített árfolyamletöltések"
+
+msgctxt "model:ir.action,name:act_currency_form"
+msgid "Currencies"
+msgstr "Pénznemek"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Egy dátumon csak egy árfolyam adható meg pénznemenként."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr "Hiányos árfolyam \"%(currency)s\" pénznemhez \"%(date)s\"-kor"
+
+msgctxt "model:ir.model.button,string:cron_run_button"
+msgid "Run"
+msgstr "Frissítés indítása"
+
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Scheduled Rate Updates"
+msgstr "Időzített árfolyamletöltések"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_currency"
+msgid "Currencies"
+msgstr "Pénznemek"
+
+msgctxt "model:ir.ui.menu,name:menu_currency_form"
+msgid "Currencies"
+msgstr "Pénznemek"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_currency_admin"
+msgid "Currency Administration"
+msgstr "Currency Administration"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Daily"
+msgstr "napi"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Monthly"
+msgstr "havi"
+
+msgctxt "selection:currency.cron,frequency:"
+msgid "Weekly"
+msgstr "heti"
+
+msgctxt "selection:currency.cron,source:"
+msgid "European Central Bank"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Update Currency Rates"
+msgstr "Aktuális árfolyam"
+
+msgctxt "view:currency.currency:"
+msgid "Rates"
+msgstr "Árfolyamok"
