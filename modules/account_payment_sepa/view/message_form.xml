@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="type"/>
+    <field name="type"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="origin"/>
+    <field name="origin"/>
+    <label name="message"/>
+    <field name="message" widget="binary" filename="filename"/>
+    <field name="message" colspan="6"/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="4" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="wait" icon="tryton-forward"/>
+        <button name="do" icon="tryton-ok"/>
+    </group>
+    <field name="filename" invisible="1" colspan="6"/>
+</form>

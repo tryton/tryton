@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="secret_key"/>
+    <field name="secret_key" colspan="3"/>
+    <label name="publishable_key"/>
+    <field name="publishable_key" colspan="3"/>
+    <label name="webhook_endpoint"/>
+    <field name="webhook_endpoint" colspan="2"/>
+    <button name="new_identifier"/>
+    <label name="webhook_signing_secret"/>
+    <field name="webhook_signing_secret" colspan="3"/>
+    <label name="zip_code"/>
+    <field name="zip_code"/>
+</form>

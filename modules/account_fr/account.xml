@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="act_fec">
+            <field name="name">Generate FEC</field>
+            <field name="wiz_name">account.fr.fec</field>
+        </record>
+        <menuitem parent="account.menu_reporting" action="act_fec"
+            id="menu_fec"/>
+
+        <record model="ir.ui.view" id="fec_start_view_form">
+            <field name="model">account.fr.fec.start</field>
+            <field name="type">form</field>
+            <field name="name">fec_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="fec_result_view_form">
+            <field name="model">account.fr.fec.result</field>
+            <field name="type">form</field>
+            <field name="name">fec_result_form</field>
+        </record>
+    </data>
+</tryton>
