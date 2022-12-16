@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_sale_invalid_carrier">
+            <field name="text">To confirm sale "%(sale)s" you must change the carrier "%(carrier)s".</field>
+        </record>
+        <record model="ir.message" id="msg_shipment_cost_invoice_missing_account_revenue">
+            <field name="text">To invoice shipment cost of "%(shipment)s", you must define an account revenue for product "%(product)s".</field>
+        </record>
+    </data>
+</tryton>
