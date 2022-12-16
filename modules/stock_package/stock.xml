@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.sequence.type" id="sequence_type_package">
+            <field name="name">Stock Package</field>
+            <field name="code">stock.package</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_package_group_admin">
+            <field name="sequence_type" ref="sequence_type_package"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_package_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_package"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_package">
+            <field name="name">Stock Package</field>
+            <field name="code">stock.package</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_configuration_view_form">
+            <field name="model">stock.configuration</field>
+            <field name="inherit" ref="stock.stock_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="package_view_form">
+            <field name="model">stock.package</field>
+            <field name="type">form</field>
+            <field name="name">package_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="package_view_tree">
+            <field name="model">stock.package</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="name">package_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="package_view_list">
+            <field name="model">stock.package</field>
+            <field name="type">tree</field>
+            <field name="name">package_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_package">
+            <field name="model" search="[('model', '=', 'stock.package')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_package_group_stock">
+            <field name="model" search="[('model', '=', 'stock.package')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="package_type_view_form">
+            <field name="model">stock.package.type</field>
+            <field name="type">form</field>
+            <field name="name">package_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="package_type_view_list">
+            <field name="model">stock.package.type</field>
+            <field name="type">tree</field>
+            <field name="name">package_type_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_package_type_form">
+            <field name="name">Package Types</field>
+            <field name="res_model">stock.package.type</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_package_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="package_type_view_list"/>
+            <field name="act_window" ref="act_package_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_package_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="package_type_view_form"/>
+            <field name="act_window" ref="act_package_type_form"/>
+        </record>
+        <menuitem parent="stock.menu_configuration" sequence="30"
+            action="act_package_type_form" id="menu_package_form"/>
+
+        <record model="ir.model.access" id="access_package_type">
+            <field name="model"
+                search="[('model', '=', 'stock.package.type')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_package_type_group_stock">
+            <field name="model"
+                search="[('model', '=', 'stock.package.type')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="name">shipment_out_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_form"/>
+            <field name="name">shipment_in_return_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_package_label">
+            <field name="name">Package Labels</field>
+            <field name="report_name">stock.package.label</field>
+            <field name="report">stock_package/label.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="report_package_label_shipment_out_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="report_package_label"/>
+        </record>
+
+        <record model="ir.action.keyword"
+            id="report_package_label_shipment_in_return_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="report_package_label"/>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,190 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Verfallsstatus"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Verfallsdauer"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Mindesthaltbarkeitsstatus"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Mindesthaltbarkeitsdauer"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Verfallsstatus"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Verfallsdauer"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Mindesthaltbarkeitsstatus"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Haltbarkeitsdauer"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Aufschub Mindesthaltbarkeitsablauf"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Aufschub Mindesthaltbarkeitsablauf"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Verfallsdatum"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Verfallsstatus"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Mindesthaltbarkeitsdatum"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Mindesthaltbarkeitsstatus"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days."
+msgstr "In Tagen."
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days."
+msgstr "In Tagen."
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days."
+msgstr "In Tagen."
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days."
+msgstr "In Tagen."
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Der Aufschub vor dem Entfernen aus der Bedarfsermittlung."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Der Aufschub vor dem Entfernen aus der Bedarfsermittlung."
+
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+"Das Verfallsdatum von Charge \"%(lot)s\" kann nicht verändert werden, weil "
+"sie in Lagerbewegung \"%(move)s\" in einer geschlossenen Lagerperiode "
+"verwendet wird."
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+"Die Lagerbewegung \"%(move)s\" kann nicht ausgeführt werden, weil die "
+"zugewiesene Charge \"%(lot)s\" abgelaufen ist."
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
+msgstr ""
+"Lagerperioden können nicht vor Erreichen des Mindesthaltbarkeitsdatums der "
+"Charge \"%(lot)s\" (%(date)s) geschlossen werden."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Lager Erzwingen bei Ablauf Mindesthaltbarkeit"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Einstellungen Lager Charge Mindesthaltbarkeit"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Keiner"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Optional"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Erforderlich"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Mindesthaltbarkeit"
