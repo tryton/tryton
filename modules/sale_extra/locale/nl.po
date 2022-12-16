@@ -1,0 +1,181 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:sale.extra,active:"
+msgid "Active"
+msgstr "Actief"
+
+#, fuzzy
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:sale.extra,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:sale.extra,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+#, fuzzy
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+#, fuzzy
+msgctxt "field:sale.extra,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Transacties"
+
+#, fuzzy
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr ""
+
+msgctxt "field:sale.extra,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+#, fuzzy
+msgctxt "field:sale.extra,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:sale.extra,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Extras"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Producten"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.extra.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.extra.line,sequence:"
+msgid "Sequence"
+msgstr "Reeks"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:sale.extra.line,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Extras"
+
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Sale Extras"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
+
+#, fuzzy
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Sale Extras"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Offerteregel"

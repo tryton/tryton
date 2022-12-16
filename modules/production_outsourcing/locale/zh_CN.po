@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:production:"
+msgid "The productions \"%s\" can not be done as they have pending purchases"
+msgstr ""
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr ""
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr ""
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr ""
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr ""
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr ""
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr ""
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr ""
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr ""
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr ""
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr ""
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr ""
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr ""
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr ""

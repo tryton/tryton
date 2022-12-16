@@ -1,0 +1,151 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.in.return:"
+msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
+msgstr "محموله بسته بندی شده مرجوعی به تأمین کننده: \"%s\" کاملاً جابجا نشده است."
+
+msgctxt "error:stock.shipment.out:"
+msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
+msgstr "محموله بسته بندی شده مشتری: \"%s\" کاملاً جابجا و خارج نشده است."
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "ادامه بسته"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "ادامه بسته"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "بسته"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:stock.package,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.package,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.package,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:stock.package,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:stock.package,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.package,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.package.type,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.package.type,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.package.type,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:stock.package.type,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.package.type,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.package.type,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "بسته ها"
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "انواع بسته"
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "برچسب های بسته"
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "انواع بسته"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "بسته کالا"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "نوع بسته کالا"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "بسته :"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "محموله :"
