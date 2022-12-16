@@ -1,0 +1,1037 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.uom:"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"اگرواحد اندازه گیری هنوز استفاده نشده است، شما می توانید آن را حذف کنید "
+"همجنین می توانید آن را غیر فعال کرده و یا یک جدید ایجاد کنید."
+
+msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "ضریب عامل و ارزش مقادیر نامعتبراست در واحد اندازه گیری : \"%s\"."
+
+msgctxt "error:product.uom:"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "نرخ و عامل هر دو برابر صفر نمی توانند باشند."
+
+msgctxt "error:product.uom:"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
+msgstr ""
+"شما نمیتوانید میزان، عامل یا زیرمجموعه واحد اندازه گیری را تغییر دهید."
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:product.category,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.category,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.category,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:product.category,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.category,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.category,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.configuration,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.configuration,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "روش هزینه پیش فرض"
+
+msgctxt "field:product.configuration,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.configuration,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.configuration,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.configuration,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.configuration.default_cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "روش هزینه پیش فرض"
+
+msgctxt "field:product.configuration.default_cost_price_method,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "field:product.cost_price,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.cost_price,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.cost_price,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.cost_price,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.cost_price,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.cost_price_method,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.cost_price_method,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "روش ارزش بها"
+
+msgctxt "field:product.cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.cost_price_method,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.cost_price_method,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.cost_price_method,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:product.list_price,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.list_price,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.list_price,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "لیست قیمت"
+
+msgctxt "field:product.list_price,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.list_price,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.list_price,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:product.product,categories_all:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "کد"
+
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "مصرفی"
+
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "روش ارزش بها"
+
+msgctxt "field:product.product,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr "روش های ارزش بها"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
+msgstr "قیمت های هزینه"
+
+msgctxt "field:product.product,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.product,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "واحد اندازه گیری پیش فرض"
+
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "زیرمجموعه واحد اندازه گیری پیش فرض"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:product.product,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "لیست قیمت"
+
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "لیست قیمت"
+
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
+msgstr "لیست قیمت ها"
+
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.product,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "الگوی محصول"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:product.product,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.product,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:product.template,categories_all:"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "مصرفی"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "ارزش بها"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "روش ارزش بها"
+
+msgctxt "field:product.template,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr "روش های ارزش بها"
+
+msgctxt "field:product.template,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "واحد اندازه گیری پیش فرض"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "زیرمجموعه واحد اندازه گیری پیش فرض"
+
+msgctxt "field:product.template,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "لیست قیمت"
+
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
+msgstr "لیست قیمت ها"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.template,products:"
+msgid "Variants"
+msgstr "متغیرها"
+
+msgctxt "field:product.template,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:product.template,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.template-product.category,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-product.category,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-product.category,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-product.category,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template-product.category,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.template-product.category.all,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.template-product.category.all,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.template-product.category.all,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.template-product.category.all,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.template-product.category.all,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.template-product.category.all,template:"
+msgid "Template"
+msgstr "الگو"
+
+msgctxt "field:product.template-product.category.all,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.template-product.category.all,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.uom,active:"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "field:product.uom,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+msgctxt "field:product.uom,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.uom,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "نمایش ارقام"
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "عامل"
+
+msgctxt "field:product.uom,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "نرخ"
+
+msgctxt "field:product.uom,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "گرد کردن دقیق"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "نماد"
+
+msgctxt "field:product.uom,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.uom,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "field:product.uom.category,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:product.uom.category,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:product.uom.category,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.uom.category,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Unit of Measures"
+msgstr "واحد اندازه گیری"
+
+msgctxt "field:product.uom.category,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:product.uom.category,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"ضریب برای فرمول: \n"
+"coef (واحد پایه) = 1 (این واحد)"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"ضریب برای فرمول:\n"
+"1 (واحد پایه) = coef (این واحد)"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Product Configuration"
+msgstr "پیکربندی محصول"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "متغیرها"
+
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "متغیرها"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "محصول بوسیله زیرمجموعه"
+
+msgctxt "model:ir.action,name:act_template_form"
+msgid "Products"
+msgstr "محصولات"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "زیرمجموعه های واحد اندازه گیری"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "واحدهای اندازه گیری"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "متغیرها"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Product Configuration"
+msgstr "پیکربندی محصول"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Products"
+msgstr "محصولات"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "واحدهای اندازه گیری"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "زیرمجموعه محصولات"
+
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr "پیکربندی محصول"
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr "پیکربندی محصول روش ارزش بها پیش فرض"
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr "ارزش بها محصول"
+
+msgctxt "model:product.cost_price_method,name:"
+msgid "Product Cost Price Method"
+msgstr "روش ارزش بها محصول"
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
+msgstr "لیست قیمت محصول"
+
+msgctxt "model:product.product,name:"
+msgid "Product Variant"
+msgstr "تنوع محصول"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "الگوی محصول"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr "الگوی - زیرمجموعه"
+
+msgctxt "model:product.template-product.category.all,name:"
+msgid "Template - Category All"
+msgstr "الگوی - تمام زیرمجموعه"
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of measure"
+msgstr "واحد اندازه گیری"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "هست"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "عیار"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "سانتی متر"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "سانتی متر مکعب"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "فوت مکعب"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "اینچ مکعب"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "متر مکعب"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "روز"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "فوت"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "گالن"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "گرم"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "هکتار"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "ساعت"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "اینچ"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "کیلوگرم"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "کیلومتر"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "لیتر"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "متر"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "مایل"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "میلیمتر"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "دقیقه"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "اونس"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "پوند"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "ثانیه"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "سانتی متر مربع"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "فوت مربع"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "اینچ مربع"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "متر مربع"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "یارد مربع"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "روز کاری"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "یارد"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "ft³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "in³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "ft"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "in"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lb"
+msgstr "lb"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "ft²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "in²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "u"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "wd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Product uom category"
+msgstr "زیرمجموعه واحد اندازه گیری محصول"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "طول"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "سطح"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "زمان"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "واحدها"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "حجم/اندازه"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "وزن"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "مدیریت محصول"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "متوسط"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "درست شد"
+
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "دارایی های"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "کالاها"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "خدمات"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "متوسط"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "درست شد"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "دارایی های"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "کالاها"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "خدمات"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "عمومی"

@@ -1,0 +1,333 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"No podeu canviar el preu de cost d'un producte que està associat amb moviments d'existències.\n"
+"Per actualitzar el cost heu d'utilitzar l'assistent \"Actualitza preu de cost\"."
+
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr ""
+"El compte d'existències i la contrapartida no poden ser el mateix compte."
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Compte contrapartida preu de cost"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Diari d'existències"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Compte contrapartida preu de cost"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:account.configuration.stock_journal,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.configuration.stock_journal,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.configuration.stock_journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.stock_journal,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Diari d'existències"
+
+msgctxt "field:account.configuration.stock_journal,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.configuration.stock_journal,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Mètode comptabilització de les existències"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Compte d'existències"
+
+msgctxt "field:product.category,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte d'existències de client"
+
+msgctxt "field:product.category,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte d'existències de perdut-trobat"
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte d'existències de producció"
+
+msgctxt "field:product.category,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte d'existències de proveïdor"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "Compte d'existències"
+
+msgctxt "field:product.category.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte d'existències de client"
+
+msgctxt "field:product.category.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte d'existències de perdut-trobat"
+
+msgctxt "field:product.category.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte d'existències de producció"
+
+msgctxt "field:product.category.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte d'existències de proveïdor"
+
+msgctxt "field:product.product,account_stock:"
+msgid "Account Stock"
+msgstr "Compte d'existències"
+
+msgctxt "field:product.product,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte d'existències de client"
+
+msgctxt "field:product.product,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte d'existències de perdut-trobat"
+
+msgctxt "field:product.product,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte d'existències de producció"
+
+msgctxt "field:product.product,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte d'existències de proveïdor"
+
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Compte d'existències"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte d'existències de client"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte d'existències de perdut-trobat"
+
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte d'existències de producció"
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte d'existències de proveïdor"
+
+msgctxt "field:product.template.account,account_stock:"
+msgid "Account Stock"
+msgstr "Compte d'existències"
+
+msgctxt "field:product.template.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte d'existències de client"
+
+msgctxt "field:product.template.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte d'existències de perdut-trobat"
+
+msgctxt "field:product.template.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Compte d'existències de producció"
+
+msgctxt "field:product.template.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte d'existències de proveïdor"
+
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Preu de cost"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Contrapartida"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Diferència de preu"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Compte d'existències"
+
+msgctxt "help:product.product,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.product,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.product,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.product,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.product,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_stock:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_stock_customer:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_stock_lost_found:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "help:product.template,account_stock_supplier:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
+
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr "Configuració del compte contrapartida de preu de cost"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Configuració del diari d'existències"
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Actualitza preu de cost"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Demana actualitzar preu de cost"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Mostra assentament d'actualització del preu de cost"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Logística"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Comptabilització de l'existències"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
