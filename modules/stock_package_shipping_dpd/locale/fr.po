@@ -1,0 +1,89 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Dépôt"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Mot de passe"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Serveur"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Jeton"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "ID d'utilisateur"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "Accréditation de DPD"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Créer la livraison DPD pour les emballages"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Accréditations de DPD"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr ""
+"La connexion DPD a échoué avec les informations d'identification "
+"« %(credential)s »."
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"L'appel au service web de DPD a échoué avec le message d'erreur suivant :\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+"Vous ne pouvez pas créer de livraison pour l'expédition « %(shipment)s » car"
+" elle a déjà un numéro de référence."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
+"Pour valider la livraison « %(shipment)s », vous devez définir une adresse "
+"pour l'entrepôt « %(warehouse)s »."
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Accréditations de DPD"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "Essai"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Information"
+msgstr "Informations d'accréditation"
