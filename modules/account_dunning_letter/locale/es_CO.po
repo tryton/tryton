@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Imprimir en Carta"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Carta de Cobro"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Amount"
+msgstr "Valor"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Date:"
+msgstr "Fecha:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Fecha Esperada"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "E-Mail:"
+msgstr "Correo electrónico:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagos Pendientes Recibidos"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Phone:"
+msgstr "Teléfono:"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Aviso Recordatorio"
+
+msgctxt "odt:account.dunning.letter:"
+msgid "VAT Number:"
+msgstr "Número Identificación:"
