@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Cobros"
+
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Cobros"
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr "No puede cancelar la venta \"%(sale)s\" porque tiene pagos."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr "No puede restablecer a borrador la venta \"%(sale)s\" porque tiene pagos."
