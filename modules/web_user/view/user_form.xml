@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="party"/>
+    <field name="party"/>
+    <newline/>
+    <label name="email"/>
+    <field name="email"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="password"/>
+    <field name="password" widget="password"/>
+    <button name="reset_password" colspan="2"/>
+    <label name="email_valid"/>
+    <field name="email_valid"/>
+    <button name="validate_email" colspan="2"/>
+    <field name="secondary_parties" colspan="4"/>
+</form>

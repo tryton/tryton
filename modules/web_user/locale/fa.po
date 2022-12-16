@@ -1,0 +1,162 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "ایمیل"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr "نشانه(Token) ایمیل"
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "ایمیل معتبر است"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "کلمه عبور"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "کلمه عبور درهم"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr "بازنشانی نشانه(Token) کلمه عبور"
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr "بازنشانی انقضای نشانه(Token) کلمه عبور"
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr "آدرس آی پی"
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr "آی پی شبکه"
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "ورود به سیستم"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "کلید"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "کاربر"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "کاربران وب"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "بازنشانی رمز عبور"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "اعتبار سنجی ایمیل"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "پست الکترونیکی کاربر فعال وب سایت باید منحصر به فرد باشد."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr "کلید جلسه کاربر وب باید منحصر به فرد باشد."
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "کاربران وب"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "کاربر وب"
+
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "جلسه کاری کاربر وب"
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr "تلاش برای هوّیت سنجی کاربر وب"
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr "جلسه کاری کاربر وب"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "اگراین درخواست را نکرده باشید، می توانید این ایمیل را نادیده بگیرید."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "بازنشانی کلمه عبور"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "We received a request to reset the password for your account,"
+msgstr "مایک درخواست برای بازنشانی کلمه عبور حساب کاربری شما دریافت کردیم،"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "اعتبار سنجی ایمیل"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "اگر این ایمیل را به اشتباه دریافت کردید، فقط آن را نادیده بگیرید."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "فقط یک گام دیگه.."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "تایید اعتبار"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "بازنشانی کلمه عبور"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "ایمیل معتبر است"
