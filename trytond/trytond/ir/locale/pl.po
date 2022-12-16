@@ -1,0 +1,3764 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.action,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.action,keywords:"
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgctxt "field:ir.action,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:ir.action,records:"
+msgid "Records"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.action,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.action,usage:"
+msgid "Usage"
+msgstr "Użycie"
+
+msgctxt "field:ir.action.act_window,act_window_domains:"
+msgid "Domains"
+msgstr "Domeny"
+
+msgctxt "field:ir.action.act_window,act_window_views:"
+msgid "Views"
+msgstr "Widoki"
+
+msgctxt "field:ir.action.act_window,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.act_window,context:"
+msgid "Context Value"
+msgstr "Wartość kontekstu"
+
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Domena kontekstu"
+
+msgctxt "field:ir.action.act_window,context_model:"
+msgid "Context Model"
+msgstr "Model kontekstu"
+
+msgctxt "field:ir.action.act_window,domain:"
+msgid "Domain Value"
+msgstr "Wartość domeny"
+
+msgctxt "field:ir.action.act_window,domains:"
+msgid "Domains"
+msgstr "Domeny"
+
+msgctxt "field:ir.action.act_window,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.action.act_window,keywords:"
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgctxt "field:ir.action.act_window,limit:"
+msgid "Limit"
+msgstr "Limit"
+
+msgctxt "field:ir.action.act_window,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.action.act_window,order:"
+msgid "Order Value"
+msgstr "Wartość porządkowa"
+
+msgctxt "field:ir.action.act_window,pyson_context:"
+msgid "PySON Context"
+msgstr "Kontekst PySON"
+
+msgctxt "field:ir.action.act_window,pyson_domain:"
+msgid "PySON Domain"
+msgstr "Domena PySON"
+
+msgctxt "field:ir.action.act_window,pyson_order:"
+msgid "PySON Order"
+msgstr "Porządek PySON"
+
+msgctxt "field:ir.action.act_window,pyson_search_value:"
+msgid "PySON Search Criteria"
+msgstr "Kryteria wyszukiwania PySON"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,records:"
+msgid "Records"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.action.act_window,res_model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.action.act_window,search_value:"
+msgid "Search Criteria"
+msgstr "Kryteria wyszukiwania"
+
+msgctxt "field:ir.action.act_window,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.action.act_window,usage:"
+msgid "Usage"
+msgstr "Użycie"
+
+msgctxt "field:ir.action.act_window,views:"
+msgid "Views"
+msgstr "Widoki"
+
+msgctxt "field:ir.action.act_window.domain,act_window:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.act_window.domain,count:"
+msgid "Count"
+msgstr "Licznik"
+
+msgctxt "field:ir.action.act_window.domain,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:ir.action.act_window.domain,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.action.act_window.view,act_window:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.act_window.view,view:"
+msgid "View"
+msgstr "Widok"
+
+msgctxt "field:ir.action.keyword,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.keyword,keyword:"
+msgid "Keyword"
+msgstr "Słowo kluczowe"
+
+msgctxt "field:ir.action.keyword,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.action.report,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.report,direct_print:"
+msgid "Direct Print"
+msgstr "Druk bezpośredni"
+
+msgctxt "field:ir.action.report,extension:"
+msgid "Extension"
+msgstr "Rozszerzenie"
+
+msgctxt "field:ir.action.report,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Jest typowy"
+
+msgctxt "field:ir.action.report,keywords:"
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgctxt "field:ir.action.report,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.action.report,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.action.report,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:ir.action.report,records:"
+msgid "Records"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.action.report,report:"
+msgid "Path"
+msgstr "Ścieżka"
+
+msgctxt "field:ir.action.report,report_content:"
+msgid "Content"
+msgstr "Treść"
+
+msgctxt "field:ir.action.report,report_content_custom:"
+msgid "Content"
+msgstr "Treść"
+
+msgctxt "field:ir.action.report,report_content_html:"
+msgid "Content HTML"
+msgstr "Zawartość HTML"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "Nazwa kontentu"
+
+msgctxt "field:ir.action.report,report_name:"
+msgid "Internal Name"
+msgstr "Nazwa wewnętrzna"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr "Pojedynczy"
+
+msgctxt "field:ir.action.report,template_extension:"
+msgid "Template Extension"
+msgstr "Rozszerzenie szablonu"
+
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Przetłumaczalny"
+
+msgctxt "field:ir.action.report,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.action.report,usage:"
+msgid "Usage"
+msgstr "Użycie"
+
+msgctxt "field:ir.action.url,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.url,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.action.url,keywords:"
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgctxt "field:ir.action.url,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:ir.action.url,records:"
+msgid "Records"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.action.url,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.action.url,url:"
+msgid "Action Url"
+msgstr "Url akcji"
+
+msgctxt "field:ir.action.url,usage:"
+msgid "Usage"
+msgstr "Użycie"
+
+msgctxt "field:ir.action.wizard,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.action.wizard,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.action.wizard,keywords:"
+msgid "Keywords"
+msgstr "Słowa kluczowe"
+
+msgctxt "field:ir.action.wizard,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.action.wizard,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,records:"
+msgid "Records"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.action.wizard,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.action.wizard,usage:"
+msgid "Usage"
+msgstr "Użycie"
+
+msgctxt "field:ir.action.wizard,window:"
+msgid "Window"
+msgstr "Okno"
+
+msgctxt "field:ir.action.wizard,wiz_name:"
+msgid "Wizard name"
+msgstr "Nazwa kreatora"
+
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Skopiuj do zasobów"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Kopiuj do widocznych zasobów"
+
+msgctxt "field:ir.attachment,data:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "field:ir.attachment,data_size:"
+msgid "Data size"
+msgstr "Rozmiar danych"
+
+msgctxt "field:ir.attachment,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:ir.attachment,file_id:"
+msgid "File ID"
+msgstr "ID pliku"
+
+msgctxt "field:ir.attachment,last_modification:"
+msgid "Last Modification"
+msgstr "Ostatnia modyfikacja"
+
+msgctxt "field:ir.attachment,last_user:"
+msgid "Last User"
+msgstr "Ostatnio używał"
+
+msgctxt "field:ir.attachment,link:"
+msgid "Link"
+msgstr "Odnośnik"
+
+msgctxt "field:ir.attachment,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.attachment,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.attachment,summary:"
+msgid "Summary"
+msgstr "Skrót opisu"
+
+msgctxt "field:ir.attachment,type:"
+msgid "Type"
+msgstr "Typ"
+
+#, fuzzy
+msgctxt "field:ir.avatar,cache:"
+msgid "Cache"
+msgstr "Pamięć podręczna"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Skopiuj do zasobów"
+
+#, fuzzy
+msgctxt "field:ir.avatar,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Kopiuj do widocznych zasobów"
+
+msgctxt "field:ir.avatar,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar,image_id:"
+msgid "Image ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_modification:"
+msgid "Last Modification"
+msgstr "Ostatnia modyfikacja"
+
+#, fuzzy
+msgctxt "field:ir.avatar,last_user:"
+msgid "Last User"
+msgstr "Ostatnio używał"
+
+#, fuzzy
+msgctxt "field:ir.avatar,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.avatar,uuid:"
+msgid "UUID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,avatar:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image:"
+msgid "Image"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,image_id:"
+msgid "Image ID"
+msgstr ""
+
+msgctxt "field:ir.avatar.cache,size:"
+msgid "Size"
+msgstr ""
+
+msgctxt "field:ir.cache,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.cache,timestamp:"
+msgid "Timestamp"
+msgstr "Znak czasu"
+
+msgctxt "field:ir.calendar.day,abbreviation:"
+msgid "Abbreviation"
+msgstr "Skrót"
+
+msgctxt "field:ir.calendar.day,index:"
+msgid "Index"
+msgstr "Indeks"
+
+msgctxt "field:ir.calendar.day,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.calendar.month,abbreviation:"
+msgid "Abbreviation"
+msgstr "Skrót"
+
+msgctxt "field:ir.calendar.month,index:"
+msgid "Index"
+msgstr "Indeks"
+
+msgctxt "field:ir.calendar.month,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Nazwa hosta"
+
+msgctxt "field:ir.configuration,language:"
+msgid "language"
+msgstr "język"
+
+msgctxt "field:ir.cron,day:"
+msgid "Day"
+msgstr "Dzień"
+
+msgctxt "field:ir.cron,hour:"
+msgid "Hour"
+msgstr "Godzina"
+
+msgctxt "field:ir.cron,interval_number:"
+msgid "Interval Number"
+msgstr "Interwał"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Type"
+msgstr "Typ interwału"
+
+msgctxt "field:ir.cron,method:"
+msgid "Method"
+msgstr "Metoda"
+
+msgctxt "field:ir.cron,minute:"
+msgid "Minute"
+msgstr "Minuta"
+
+msgctxt "field:ir.cron,next_call:"
+msgid "Next Call"
+msgstr "Kolejne wywołanie"
+
+msgctxt "field:ir.cron,weekday:"
+msgid "Day of Week"
+msgstr "Dzień tygodnia"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr "Adresy"
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "W"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr "Treść"
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr "Temat"
+
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr "Adres"
+
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "E-mail"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr "Treść"
+
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Nazwa modelu"
+
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Raporty"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr "Temat"
+
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Raport"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Szablon"
+
+msgctxt "field:ir.export,export_fields:"
+msgid "Fields"
+msgstr "Pola"
+
+msgctxt "field:ir.export,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.export,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.export.line,export:"
+msgid "Export"
+msgstr "Wyeksportuj"
+
+msgctxt "field:ir.export.line,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.lang,am:"
+msgid "AM"
+msgstr "rano"
+
+msgctxt "field:ir.lang,code:"
+msgid "Code"
+msgstr "Kod"
+
+msgctxt "field:ir.lang,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:ir.lang,decimal_point:"
+msgid "Decimal Separator"
+msgstr "Separator dziesiętny"
+
+msgctxt "field:ir.lang,direction:"
+msgid "Direction"
+msgstr "Kierunek"
+
+msgctxt "field:ir.lang,grouping:"
+msgid "Grouping"
+msgstr "Grupowanie"
+
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Separator dziesiętny"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Grupowanie"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Separator tysięcy"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Symbol waluty przed wartością ujemną"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Oddzielenie symbolu waluty od wartości ujemnej"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Pozycja znaku ujemnego"
+
+msgctxt "field:ir.lang,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "Znak ujemny"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Symbol waluty przed wartością dodatnią"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Oddzielenie symbolu waluty od wartości dodatniej"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Pozycja znaku dodatniego"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "Kod elementu nadrzędnego"
+
+msgctxt "field:ir.lang,pg_text_search:"
+msgid "PostgreSQL Text Search Configuration"
+msgstr ""
+
+msgctxt "field:ir.lang,pm:"
+msgid "PM"
+msgstr "po południu"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "Znak dodatni"
+
+msgctxt "field:ir.lang,thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Separator tysięcy"
+
+msgctxt "field:ir.lang,translatable:"
+msgid "Translatable"
+msgstr "Przetłumaczalny"
+
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Języki"
+
+msgctxt "field:ir.message,text:"
+msgid "Text"
+msgstr "Tekst"
+
+msgctxt "field:ir.model,fields:"
+msgid "Fields"
+msgstr "Pola"
+
+msgctxt "field:ir.model,global_search_p:"
+msgid "Global Search"
+msgstr "Globalne przeszukiwanie"
+
+msgctxt "field:ir.model,info:"
+msgid "Information"
+msgstr "Informacje"
+
+msgctxt "field:ir.model,model:"
+msgid "Model Name"
+msgstr "Nazwa modelu"
+
+msgctxt "field:ir.model,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.model,name:"
+msgid "Model Description"
+msgstr "Opis modelu"
+
+msgctxt "field:ir.model.access,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:ir.model.access,group:"
+msgid "Group"
+msgstr "Grupa"
+
+msgctxt "field:ir.model.access,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.model.access,perm_create:"
+msgid "Create Access"
+msgstr "Tworzenie"
+
+msgctxt "field:ir.model.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Usuwanie"
+
+msgctxt "field:ir.model.access,perm_read:"
+msgid "Read Access"
+msgstr "Odczyt"
+
+msgctxt "field:ir.model.access,perm_write:"
+msgid "Write Access"
+msgstr "Zapis"
+
+msgctxt "field:ir.model.button,clicks:"
+msgid "Clicks"
+msgstr "Kliknięcia"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "Potwierdź"
+
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Grupy"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Pomoc"
+
+msgctxt "field:ir.model.button,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.model.button,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.model.button,reset:"
+msgid "Reset"
+msgstr "Przywróć"
+
+msgctxt "field:ir.model.button,reset_by:"
+msgid "Reset by"
+msgstr "Przywróć według"
+
+msgctxt "field:ir.model.button,rules:"
+msgid "Rules"
+msgstr "Reguły"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "Etykieta"
+
+msgctxt "field:ir.model.button-button.reset,button:"
+msgid "Button"
+msgstr "Przyciski"
+
+msgctxt "field:ir.model.button-button.reset,button_ruled:"
+msgid "Button Ruled"
+msgstr "Przycisk z regułą"
+
+msgctxt "field:ir.model.button.click,button:"
+msgid "Button"
+msgstr "Przycisk"
+
+msgctxt "field:ir.model.button.click,record_id:"
+msgid "Record ID"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.model.button.rule,button:"
+msgid "Button"
+msgstr "Przycisk"
+
+msgctxt "field:ir.model.button.rule,condition:"
+msgid "Condition"
+msgstr "Warunek"
+
+msgctxt "field:ir.model.button.rule,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:ir.model.button.rule,number_user:"
+msgid "Number of User"
+msgstr "Liczba użytkownika"
+
+msgctxt "field:ir.model.data,db_id:"
+msgid "Resource ID"
+msgstr "ID zasobu"
+
+msgctxt "field:ir.model.data,fs_id:"
+msgid "Identifier on File System"
+msgstr "Identyfikator w systemie plików"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Wartości w systemie plików"
+
+msgctxt "field:ir.model.data,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.model.data,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.model.data,noupdate:"
+msgid "No Update"
+msgstr "Brak aktualizacji"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Niezsynchronizowany"
+
+msgctxt "field:ir.model.data,values:"
+msgid "Values"
+msgstr "Wartości"
+
+#, fuzzy
+msgctxt "field:ir.model.field,access:"
+msgid "Access"
+msgstr "Dostęp"
+
+msgctxt "field:ir.model.field,field_description:"
+msgid "Field Description"
+msgstr "Opis pola"
+
+msgctxt "field:ir.model.field,help:"
+msgid "Help"
+msgstr "Pomoc"
+
+msgctxt "field:ir.model.field,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.model.field,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.model.field,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.model.field,relation:"
+msgid "Model Relation"
+msgstr "Relacja modelu"
+
+msgctxt "field:ir.model.field,ttype:"
+msgid "Field Type"
+msgstr "Typ pola"
+
+msgctxt "field:ir.model.field.access,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:ir.model.field.access,field:"
+msgid "Field"
+msgstr "Pole"
+
+msgctxt "field:ir.model.field.access,group:"
+msgid "Group"
+msgstr "Grupa"
+
+msgctxt "field:ir.model.field.access,perm_create:"
+msgid "Create Access"
+msgstr "Utworzenie"
+
+msgctxt "field:ir.model.field.access,perm_delete:"
+msgid "Delete Access"
+msgstr "Usunięcie"
+
+msgctxt "field:ir.model.field.access,perm_read:"
+msgid "Read Access"
+msgstr "Odczyt"
+
+msgctxt "field:ir.model.field.access,perm_write:"
+msgid "Write Access"
+msgstr "Zapis"
+
+msgctxt "field:ir.model.print_model_graph.start,filter:"
+msgid "Filter"
+msgstr "Filtr"
+
+msgctxt "field:ir.model.print_model_graph.start,level:"
+msgid "Level"
+msgstr "Poziom"
+
+msgctxt "field:ir.module,childs:"
+msgid "Childs"
+msgstr "Elementy podrzędne"
+
+msgctxt "field:ir.module,dependencies:"
+msgid "Dependencies"
+msgstr "Zależności"
+
+msgctxt "field:ir.module,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.module,parents:"
+msgid "Parents"
+msgstr "Elementy nadrzędne"
+
+msgctxt "field:ir.module,state:"
+msgid "State"
+msgstr "Stan"
+
+msgctxt "field:ir.module,version:"
+msgid "Version"
+msgstr "Wersja"
+
+msgctxt "field:ir.module.activate_upgrade.start,module_info:"
+msgid "Modules to update"
+msgstr "Moduły przeznaczone do aktualizacji"
+
+msgctxt "field:ir.module.config_wizard.item,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.module.config_wizard.item,state:"
+msgid "State"
+msgstr "Stan"
+
+msgctxt "field:ir.module.config_wizard.other,percentage:"
+msgid "Percentage"
+msgstr "Odsetek"
+
+msgctxt "field:ir.module.dependency,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.module.dependency,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.module.dependency,state:"
+msgid "State"
+msgstr "Stan"
+
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Skopiuj do zasobów"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Kopiuj do widocznych zasobów"
+
+msgctxt "field:ir.note,last_modification:"
+msgid "Last Modification"
+msgstr "Ostatnia modyfikacja"
+
+msgctxt "field:ir.note,last_user:"
+msgid "Last User"
+msgstr "Ostatnio używał"
+
+msgctxt "field:ir.note,message:"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "field:ir.note,message_wrapped:"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "field:ir.note,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.note,unread:"
+msgid "Unread"
+msgstr "Nieprzeczytane"
+
+msgctxt "field:ir.note.read,note:"
+msgid "Note"
+msgstr "Notatka"
+
+msgctxt "field:ir.note.read,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Usunięto z kolejki o"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "Dodano do kolejki o"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Oczekiwany o"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Ukończony o"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Zaplanowany na"
+
+msgctxt "field:ir.rule,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:ir.rule,rule_group:"
+msgid "Group"
+msgstr "Grupa"
+
+msgctxt "field:ir.rule.group,default_p:"
+msgid "Default"
+msgstr "Domyślne"
+
+msgctxt "field:ir.rule.group,global_p:"
+msgid "Global"
+msgstr "Globalne"
+
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Grupy"
+
+msgctxt "field:ir.rule.group,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.rule.group,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.rule.group,perm_create:"
+msgid "Create Access"
+msgstr "Utworzenie"
+
+msgctxt "field:ir.rule.group,perm_delete:"
+msgid "Delete Access"
+msgstr "Usunięcie"
+
+msgctxt "field:ir.rule.group,perm_read:"
+msgid "Read Access"
+msgstr "Odczyt"
+
+msgctxt "field:ir.rule.group,perm_write:"
+msgid "Write Access"
+msgstr "Zapis"
+
+msgctxt "field:ir.rule.group,rules:"
+msgid "Tests"
+msgstr "Testy"
+
+msgctxt "field:ir.sequence,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Ostatni znak czasu"
+
+msgctxt "field:ir.sequence,name:"
+msgid "Sequence Name"
+msgstr "Nazwa sekwencji"
+
+msgctxt "field:ir.sequence,number_increment:"
+msgid "Increment Number"
+msgstr "Numer przyrostu"
+
+msgctxt "field:ir.sequence,number_next:"
+msgid "Next Number"
+msgstr "Kolejny numer"
+
+msgctxt "field:ir.sequence,number_next_internal:"
+msgid "Next Number"
+msgstr "Kolejny numer"
+
+msgctxt "field:ir.sequence,padding:"
+msgid "Number padding"
+msgstr "Dopełnienie numeru"
+
+msgctxt "field:ir.sequence,prefix:"
+msgid "Prefix"
+msgstr "Prefiks"
+
+#, fuzzy
+msgctxt "field:ir.sequence,sequence_type:"
+msgid "Sequence Type"
+msgstr "Typy sekwencji"
+
+msgctxt "field:ir.sequence,suffix:"
+msgid "Suffix"
+msgstr "Sufiks"
+
+msgctxt "field:ir.sequence,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Offset znaku czasu"
+
+msgctxt "field:ir.sequence,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Zaokrąglenie znaku czasu"
+
+msgctxt "field:ir.sequence,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.sequence.strict,last_timestamp:"
+msgid "Last Timestamp"
+msgstr "Ostatni znak czasu"
+
+msgctxt "field:ir.sequence.strict,name:"
+msgid "Sequence Name"
+msgstr "Nazwa sekwencji"
+
+msgctxt "field:ir.sequence.strict,number_increment:"
+msgid "Increment Number"
+msgstr "Numer przyrostu"
+
+msgctxt "field:ir.sequence.strict,number_next:"
+msgid "Next Number"
+msgstr "Kolejny numer"
+
+msgctxt "field:ir.sequence.strict,number_next_internal:"
+msgid "Next Number"
+msgstr "Kolejny numer"
+
+msgctxt "field:ir.sequence.strict,padding:"
+msgid "Number padding"
+msgstr "Dopełnienie numeru"
+
+msgctxt "field:ir.sequence.strict,prefix:"
+msgid "Prefix"
+msgstr "Prefiks"
+
+#, fuzzy
+msgctxt "field:ir.sequence.strict,sequence_type:"
+msgid "Sequence Type"
+msgstr "Typy sekwencji"
+
+msgctxt "field:ir.sequence.strict,suffix:"
+msgid "Suffix"
+msgstr "Sufiks"
+
+msgctxt "field:ir.sequence.strict,timestamp_offset:"
+msgid "Timestamp Offset"
+msgstr "Offset znaku czasu"
+
+msgctxt "field:ir.sequence.strict,timestamp_rounding:"
+msgid "Timestamp Rounding"
+msgstr "Zaokrąglenie znaku czasu"
+
+msgctxt "field:ir.sequence.strict,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.sequence.type,name:"
+msgid "Sequence Name"
+msgstr "Nazwa sekwencji"
+
+msgctxt "field:ir.session,key:"
+msgid "Key"
+msgstr "Klucz"
+
+msgctxt "field:ir.session.wizard,data:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "field:ir.translation,fuzzy:"
+msgid "Fuzzy"
+msgstr "Niepewne"
+
+msgctxt "field:ir.translation,lang:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "field:ir.translation,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.translation,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.translation,name:"
+msgid "Field Name"
+msgstr "Nazwa pola"
+
+msgctxt "field:ir.translation,overriding_module:"
+msgid "Overriding Module"
+msgstr "Nadpisany moduł"
+
+msgctxt "field:ir.translation,res_id:"
+msgid "Resource ID"
+msgstr "ID zasobu"
+
+msgctxt "field:ir.translation,src:"
+msgid "Source"
+msgstr "Źródło"
+
+msgctxt "field:ir.translation,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:ir.translation,value:"
+msgid "Translation Value"
+msgstr "Wartość tłumaczenia"
+
+msgctxt "field:ir.translation.export.result,file:"
+msgid "File"
+msgstr "Plik"
+
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Nazwa pliku"
+
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.translation.export.start,language:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "field:ir.translation.export.start,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.translation.update.start,language:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.trigger,condition:"
+msgid "Condition"
+msgstr "Warunek"
+
+msgctxt "field:ir.trigger,limit_number:"
+msgid "Limit Number"
+msgstr "Wartość limitu"
+
+msgctxt "field:ir.trigger,minimum_time_delay:"
+msgid "Minimum Delay"
+msgstr "Minimalne opóźnienie"
+
+msgctxt "field:ir.trigger,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.trigger,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.trigger,on_create:"
+msgid "On Create"
+msgstr "Przy utworzeniu"
+
+msgctxt "field:ir.trigger,on_delete:"
+msgid "On Delete"
+msgstr "Przy usunięciu"
+
+msgctxt "field:ir.trigger,on_time:"
+msgid "On Time"
+msgstr "O czasie"
+
+msgctxt "field:ir.trigger,on_write:"
+msgid "On Write"
+msgstr "Przy zapisie"
+
+msgctxt "field:ir.trigger.log,record_id:"
+msgid "Record ID"
+msgstr "ID rekordu"
+
+msgctxt "field:ir.trigger.log,trigger:"
+msgid "Trigger"
+msgstr "Wyzwalacz"
+
+msgctxt "field:ir.ui.icon,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.ui.icon,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.ui.icon,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.ui.icon,path:"
+msgid "SVG Path"
+msgstr "Ścieżka SVG"
+
+msgctxt "field:ir.ui.menu,action:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Słowa kluczowe akcji"
+
+msgctxt "field:ir.ui.menu,childs:"
+msgid "Children"
+msgstr "Elementy podrzędne"
+
+msgctxt "field:ir.ui.menu,complete_name:"
+msgid "Complete Name"
+msgstr "Pełna nazwa"
+
+msgctxt "field:ir.ui.menu,favorite:"
+msgid "Favorite"
+msgstr "Ulubione"
+
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Grupy"
+
+msgctxt "field:ir.ui.menu,icon:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "field:ir.ui.menu,name:"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "field:ir.ui.menu,parent:"
+msgid "Parent Menu"
+msgstr "Menu nadrzędne"
+
+msgctxt "field:ir.ui.menu.favorite,menu:"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "field:ir.ui.menu.favorite,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.ui.view,arch:"
+msgid "View Architecture"
+msgstr "Architektura widoku"
+
+msgctxt "field:ir.ui.view,data:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "field:ir.ui.view,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:ir.ui.view,field_childs:"
+msgid "Children Field"
+msgstr "Pole elementów podrzędnych"
+
+msgctxt "field:ir.ui.view,inherit:"
+msgid "Inherited View"
+msgstr "Widok odziedziczony"
+
+msgctxt "field:ir.ui.view,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view,module:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "field:ir.ui.view,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.ui.view,priority:"
+msgid "Priority"
+msgstr "Priorytet"
+
+msgctxt "field:ir.ui.view,type:"
+msgid "View Type"
+msgstr "Typ widoku"
+
+msgctxt "field:ir.ui.view_search,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:ir.ui.view_search,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view_search,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.ui.view_search,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.ui.view_tree_state,child_name:"
+msgid "Child Name"
+msgstr "Nazwa elementu podrzędnego"
+
+msgctxt "field:ir.ui.view_tree_state,domain:"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "field:ir.ui.view_tree_state,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view_tree_state,nodes:"
+msgid "Expanded Nodes"
+msgstr "Rozszerzone węzły"
+
+msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
+msgid "Selected Nodes"
+msgstr "Zaznaczone węzły"
+
+msgctxt "field:ir.ui.view_tree_state,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.ui.view_tree_width,field:"
+msgid "Field"
+msgstr "Pole"
+
+msgctxt "field:ir.ui.view_tree_width,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.ui.view_tree_width,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.ui.view_tree_width,width:"
+msgid "Width"
+msgstr "Szerokość"
+
+#, fuzzy
+msgctxt "help:ir.action,records:"
+msgid "The records on which the action runs."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh."
+msgstr "Część domeny, która będzie ewaluowana przy każdym odświeżeniu."
+
+msgctxt "help:ir.action.act_window,limit:"
+msgid "Default limit for the list view."
+msgstr "Domyślny limit dla widoku listy."
+
+#, fuzzy
+msgctxt "help:ir.action.act_window,records:"
+msgid "The records on which the action runs."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+msgctxt "help:ir.action.act_window,search_value:"
+msgid "Default search criteria for the list view."
+msgstr "Domyślne kryteria wyszukiwania dla widoku listy."
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see LibreOffice documentation for "
+"compatible format."
+msgstr ""
+"Pozostaw puste jako szablon. Sprawdź dokumentację LibreOffice dla właściwego"
+" formatu."
+
+#, fuzzy
+msgctxt "help:ir.action.report,records:"
+msgid "The records on which the action runs."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr "Sprawdź, czy szablon pracuje tylko dla jednego rekordu."
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Odznacz, aby wyłączyć tłumaczenie dla tego raportu."
+
+#, fuzzy
+msgctxt "help:ir.action.url,records:"
+msgid "The records on which the action runs."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+#, fuzzy
+msgctxt "help:ir.action.wizard,records:"
+msgid "The records on which the action runs."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+msgctxt "help:ir.action.wizard,window:"
+msgid "Run wizard in a new window."
+msgstr "Uruchom kreatora w nowym oknie."
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Pole zawierające odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Pole zawierające dodatkowego odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę ukrytych odbiorców reprezentujących rekord "
+"przez „self”."
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę odbiorców z rekordem reprezentowanym przez "
+"„self”."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Pole zawierające dodatkowego odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę dodatkowych odbiorców z rekordem "
+"reprezentowanym przez „self”."
+
+msgctxt "help:ir.lang,code:"
+msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "Kod elementu nadrzędnego powodującego wyjątek"
+
+msgctxt "help:ir.model,module:"
+msgid "Module in which this model is defined."
+msgstr "Moduł, w którym ten model jest zdefiniowany."
+
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+"Tekst umożliwiający użytkownikowi potwierdzenie po wciśnięciu przycisku."
+
+msgctxt "help:ir.model.button,reset_by:"
+msgid "Button that should reset the rules."
+msgstr "Przycisk resetujący reguły."
+
+msgctxt "help:ir.model.button.rule,condition:"
+msgid ""
+"A PYSON statement evaluated with the record represented by \"self\"\n"
+"It activate the rule if true."
+msgstr ""
+"Wyrażenie PYSON odnoszące się do rekordu reprezentowanego przez \"self\"\n"
+"Jeśli wyrażenie jest prawdziwe to prowadzi do uaktywnienia reguły."
+
+msgctxt "help:ir.model.data,db_id:"
+msgid "The id of the record in the database."
+msgstr "Identyfikator rekordu w bazie danych."
+
+msgctxt "help:ir.model.data,fs_id:"
+msgid "The id of the record as known on the file system."
+msgstr "Identyfikator rekordu znany w systemie plików."
+
+msgctxt "help:ir.model.field,access:"
+msgid ""
+"If checked, the access right on the model of the field is also tested "
+"against the relation of the field."
+msgstr ""
+
+msgctxt "help:ir.model.field,module:"
+msgid "Module in which this field is defined."
+msgstr "Moduł, w którym to pole jest zdefiniowane."
+
+msgctxt "help:ir.model.print_model_graph.start,filter:"
+msgid ""
+"Entering a Python Regular Expression will exclude matching models from the "
+"graph."
+msgstr ""
+"Podanie regularnego wyrażenia w Pythonie spowoduje usunięcie pasujących "
+"modeli z grafu."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Kiedy zadanie powinno zostać ukończone."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Kiedy zadanie może zostać rozpoczęte."
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"Domain is evaluated with a PYSON context containing:\n"
+"- \"user\" as the current user"
+msgstr ""
+"Domena jest ewaluowana przez kontekst PYSON zawierający:\n"
+"- \"user\" jako aktualny użytkownik"
+
+msgctxt "help:ir.rule.group,default_p:"
+msgid "Add this rule to all users by default."
+msgstr "Dodaj domyślnie tę regułę do wszystkich użytkowników."
+
+msgctxt "help:ir.rule.group,global_p:"
+msgid ""
+"Make the rule global \n"
+"so every users must follow this rule."
+msgstr ""
+"Określ regułę jako globalną,\n"
+"aby wpływała na każdego użytkownika."
+
+msgctxt "help:ir.rule.group,name:"
+msgid "Displayed to users when access error is raised for this rule."
+msgstr ""
+"Wyświetlane użytkownikom, gdy dla tej reguły zostanie zgłoszony błąd "
+"dostępu."
+
+msgctxt "help:ir.rule.group,rules:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr ""
+"Reguła spełnia wymagania jeśli wynik przynajmniej jednego testu jest True."
+
+msgctxt "help:ir.trigger,condition:"
+msgid ""
+"A PYSON statement evaluated with record represented by \"self\"\n"
+"It triggers the action if true."
+msgstr ""
+"Wyrażenie PYSON odnoszące się do rekordu reprezentowanego przez \"self\"\n"
+"Jeśli wyrażenie jest prawdziwe to nastąpi wywołanie akcji."
+
+msgctxt "help:ir.trigger,limit_number:"
+msgid ""
+"Limit the number of call to \"Action Function\" by records.\n"
+"0 for no limit."
+msgstr ""
+"Limit wywołań \"Funkcji akcji\" przez rekordy.\n"
+"0 oznacza bez limitu."
+
+msgctxt "help:ir.trigger,minimum_time_delay:"
+msgid ""
+"Set a minimum time delay between call to \"Action Function\" for the same record.\n"
+"empty for no delay."
+msgstr ""
+"Ustaw minimalny czas opóźnienia pomiędzy wywołaniami \"Funkcji akcji\" dla tego samego rekordu.\n"
+"Puste oznacza brak opóźnień."
+
+msgctxt "help:ir.ui.view_search,domain:"
+msgid "The PYSON domain."
+msgstr "Domena PYSON."
+
+msgctxt "model:ir.action,name:"
+msgid "Action"
+msgstr "Akcja"
+
+msgctxt "model:ir.action,name:act_action_act_window_form"
+msgid "Window Actions"
+msgstr "Okno akcji"
+
+msgctxt "model:ir.action,name:act_action_form"
+msgid "Actions"
+msgstr "Akcje"
+
+msgctxt "model:ir.action,name:act_action_report_form"
+msgid "Reports"
+msgstr "Raporty"
+
+msgctxt "model:ir.action,name:act_action_url_form"
+msgid "URLs"
+msgstr "Adresy URL"
+
+msgctxt "model:ir.action,name:act_action_wizard_form"
+msgid "Wizards"
+msgstr "Kreatory"
+
+msgctxt "model:ir.action,name:act_attachment_form"
+msgid "Attachments"
+msgstr "Załączniki"
+
+msgctxt "model:ir.action,name:act_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Elementy kreatora konfiguracji"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cron_form"
+msgid "Actions"
+msgstr "Akcje"
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "E-mail"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mail Archives"
+msgstr "Adres e-mail"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr "Szablony e-maili"
+
+msgctxt "model:ir.action,name:act_export_form"
+msgid "Exports"
+msgstr "Wyeksportowania"
+
+msgctxt "model:ir.action,name:act_icon_form"
+msgid "Icons"
+msgstr "Ikony"
+
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Skonfiguruj języki"
+
+msgctxt "model:ir.action,name:act_lang_form"
+msgid "Languages"
+msgstr "Języki"
+
+msgctxt "model:ir.action,name:act_menu_list"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "model:ir.action,name:act_menu_tree"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "model:ir.action,name:act_model_access_form"
+msgid "Models Access"
+msgstr "Dostęp do modeli"
+
+msgctxt "model:ir.action,name:act_model_access_form_relate_model"
+msgid "Access"
+msgstr "Dostęp"
+
+msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
+msgid "Clicks"
+msgstr "Kliki"
+
+msgctxt "model:ir.action,name:act_model_button_form"
+msgid "Buttons"
+msgstr "Przyciski"
+
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "model:ir.action,name:act_model_field_access_form"
+msgid "Fields Access"
+msgstr "Dostęp do pól"
+
+msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
+msgid "Access"
+msgstr "Dostęp"
+
+msgctxt "model:ir.action,name:act_model_fields_form"
+msgid "Fields"
+msgstr "Pola"
+
+msgctxt "model:ir.action,name:act_model_form"
+msgid "Models"
+msgstr "Modele"
+
+msgctxt "model:ir.action,name:act_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Wykonaj aktywację/aktualizację"
+
+msgctxt "model:ir.action,name:act_module_config"
+msgid "Configure Modules"
+msgstr "Skonfiguruj moduły"
+
+msgctxt "model:ir.action,name:act_module_config_wizard"
+msgid "Module Configuration"
+msgstr "Konfiguracja modułu"
+
+msgctxt "model:ir.action,name:act_module_form"
+msgid "Modules"
+msgstr "Moduły"
+
+msgctxt "model:ir.action,name:act_note_form"
+msgid "Notes"
+msgstr "Notatki"
+
+msgctxt "model:ir.action,name:act_rule_group_form"
+msgid "Record Rules"
+msgstr "Reguły rekordu"
+
+msgctxt "model:ir.action,name:act_sequence_form"
+msgid "Sequences"
+msgstr "Sekwencje"
+
+msgctxt "model:ir.action,name:act_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Sekwencje ścisłe"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sequence_type_form"
+msgid "Types"
+msgstr "Typ"
+
+msgctxt "model:ir.action,name:act_translation_clean"
+msgid "Clean Translations"
+msgstr "Oczyść tłumaczenia"
+
+msgctxt "model:ir.action,name:act_translation_export"
+msgid "Export Translations"
+msgstr "Wyeksportuj tłumaczenia"
+
+msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Tłumaczenia"
+
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "Tłumaczenia"
+
+msgctxt "model:ir.action,name:act_translation_set"
+msgid "Set Translations"
+msgstr "Ustaw tłumaczenia"
+
+msgctxt "model:ir.action,name:act_translation_update"
+msgid "Synchronize Translations"
+msgstr "Synchronizuj tłumaczenia"
+
+msgctxt "model:ir.action,name:act_trigger_form"
+msgid "Triggers"
+msgstr "Wyzwalacze"
+
+msgctxt "model:ir.action,name:act_view_form"
+msgid "Views"
+msgstr "Widoki"
+
+msgctxt "model:ir.action,name:act_view_search"
+msgid "View Search"
+msgstr "Wyszukiwanie widoku"
+
+msgctxt "model:ir.action,name:act_view_show"
+msgid "Show View"
+msgstr "Pokaż widok"
+
+msgctxt "model:ir.action,name:act_view_tree_state"
+msgid "Tree State"
+msgstr "Stan drzewa"
+
+msgctxt "model:ir.action,name:act_view_tree_width_form"
+msgid "View Tree Width"
+msgstr "Szerokość drzewa widoku"
+
+msgctxt "model:ir.action,name:print_model_graph"
+msgid "Graph"
+msgstr "Wykres"
+
+msgctxt "model:ir.action,name:report_model_graph"
+msgid "Graph"
+msgstr "Wykres"
+
+msgctxt "model:ir.action,name:report_model_workflow_graph"
+msgid "Workflow Graph"
+msgstr "Wykres przepływu pracy"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Tłumaczenia"
+
+msgctxt "model:ir.action.act_window,name:"
+msgid "Action act window"
+msgstr "Okno działania akcji"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Action act window domain"
+msgstr "Domena okna działania akcji"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Wszystko"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Niezsynchronizowany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Lokalny"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Moduły"
+
+msgctxt "model:ir.action.act_window.view,name:"
+msgid "Action act window view"
+msgstr "Widok okna działania akcji"
+
+msgctxt "model:ir.action.keyword,name:"
+msgid "Action keyword"
+msgstr "Słowo kluczowe akcji"
+
+msgctxt "model:ir.action.report,name:"
+msgid "Action report"
+msgstr "Raport akcji"
+
+msgctxt "model:ir.action.url,name:"
+msgid "Action URL"
+msgstr "Adres URL akcji"
+
+msgctxt "model:ir.action.wizard,name:"
+msgid "Action wizard"
+msgstr "Kreator akcji"
+
+msgctxt "model:ir.attachment,name:"
+msgid "Attachment"
+msgstr "Załącznik"
+
+msgctxt "model:ir.avatar,name:"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.avatar.cache,name:"
+msgid "Avatar Cache"
+msgstr ""
+
+msgctxt "model:ir.cache,name:"
+msgid "Cache"
+msgstr "Pamięć podręczna"
+
+msgctxt "model:ir.calendar.day,abbreviation:Friday"
+msgid "Fri"
+msgstr "Pią"
+
+msgctxt "model:ir.calendar.day,abbreviation:Monday"
+msgid "Mon"
+msgstr "Pon"
+
+msgctxt "model:ir.calendar.day,abbreviation:Saturday"
+msgid "Sat"
+msgstr "Sob"
+
+msgctxt "model:ir.calendar.day,abbreviation:Sunday"
+msgid "Sun"
+msgstr "Nie"
+
+msgctxt "model:ir.calendar.day,abbreviation:Thursday"
+msgid "Thu"
+msgstr "Czw"
+
+msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
+msgid "Tue"
+msgstr "Wto"
+
+msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
+msgid "Wed"
+msgstr "Śro"
+
+msgctxt "model:ir.calendar.day,name:"
+msgid "Day"
+msgstr "Dzień"
+
+msgctxt "model:ir.calendar.day,name:Friday"
+msgid "Friday"
+msgstr "Piątek"
+
+msgctxt "model:ir.calendar.day,name:Monday"
+msgid "Monday"
+msgstr "Poniedziałek"
+
+msgctxt "model:ir.calendar.day,name:Saturday"
+msgid "Saturday"
+msgstr "Sobota"
+
+msgctxt "model:ir.calendar.day,name:Sunday"
+msgid "Sunday"
+msgstr "Niedziela"
+
+msgctxt "model:ir.calendar.day,name:Thursday"
+msgid "Thursday"
+msgstr "Czwartek"
+
+msgctxt "model:ir.calendar.day,name:Tuesday"
+msgid "Tuesday"
+msgstr "Wtorek"
+
+msgctxt "model:ir.calendar.day,name:Wednesday"
+msgid "Wednesday"
+msgstr "Środa"
+
+msgctxt "model:ir.calendar.month,abbreviation:April"
+msgid "Apr"
+msgstr "Kwi"
+
+msgctxt "model:ir.calendar.month,abbreviation:August"
+msgid "Aug"
+msgstr "Sie"
+
+msgctxt "model:ir.calendar.month,abbreviation:December"
+msgid "Dec"
+msgstr "Gru"
+
+msgctxt "model:ir.calendar.month,abbreviation:February"
+msgid "Feb"
+msgstr "Lut"
+
+msgctxt "model:ir.calendar.month,abbreviation:January"
+msgid "Jan"
+msgstr "Sty"
+
+msgctxt "model:ir.calendar.month,abbreviation:July"
+msgid "Jul"
+msgstr "Lip"
+
+msgctxt "model:ir.calendar.month,abbreviation:June"
+msgid "Jun"
+msgstr "Cze"
+
+msgctxt "model:ir.calendar.month,abbreviation:March"
+msgid "Mar"
+msgstr "Mar"
+
+msgctxt "model:ir.calendar.month,abbreviation:May"
+msgid "May"
+msgstr "Maj"
+
+msgctxt "model:ir.calendar.month,abbreviation:November"
+msgid "Nov"
+msgstr "Lis"
+
+msgctxt "model:ir.calendar.month,abbreviation:October"
+msgid "Oct"
+msgstr "Paź"
+
+msgctxt "model:ir.calendar.month,abbreviation:September"
+msgid "Sep"
+msgstr "Wrz"
+
+msgctxt "model:ir.calendar.month,name:"
+msgid "Month"
+msgstr "Miesiąc"
+
+msgctxt "model:ir.calendar.month,name:April"
+msgid "April"
+msgstr "Kwiecień"
+
+msgctxt "model:ir.calendar.month,name:August"
+msgid "August"
+msgstr "Sierpień"
+
+msgctxt "model:ir.calendar.month,name:December"
+msgid "December"
+msgstr "Grudzień"
+
+msgctxt "model:ir.calendar.month,name:February"
+msgid "February"
+msgstr "Luty"
+
+msgctxt "model:ir.calendar.month,name:January"
+msgid "January"
+msgstr "Styczeń"
+
+msgctxt "model:ir.calendar.month,name:July"
+msgid "July"
+msgstr "Lipiec"
+
+msgctxt "model:ir.calendar.month,name:June"
+msgid "June"
+msgstr "Czerwiec"
+
+msgctxt "model:ir.calendar.month,name:March"
+msgid "March"
+msgstr "Marzec"
+
+msgctxt "model:ir.calendar.month,name:May"
+msgid "May"
+msgstr "Maj"
+
+msgctxt "model:ir.calendar.month,name:November"
+msgid "November"
+msgstr "Listopad"
+
+msgctxt "model:ir.calendar.month,name:October"
+msgid "October"
+msgstr "Październik"
+
+msgctxt "model:ir.calendar.month,name:September"
+msgid "September"
+msgstr "Wrzesień"
+
+msgctxt "model:ir.configuration,name:"
+msgid "Configuration"
+msgstr "Konfiguracja"
+
+msgctxt "model:ir.cron,name:"
+msgid "Cron"
+msgstr "Cron"
+
+msgctxt "model:ir.date,name:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr "Adres e-mail"
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr "Szablon e-maili"
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr "Szablon e-maili - Raport"
+
+msgctxt "model:ir.export,name:"
+msgid "Export"
+msgstr "Eksport"
+
+msgctxt "model:ir.export.line,name:"
+msgid "Export line"
+msgstr "Wiersz eksportu"
+
+msgctxt "model:ir.lang,name:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "model:ir.lang,name:lang_bg"
+msgid "Bulgarian"
+msgstr "Bułgarski"
+
+msgctxt "model:ir.lang,name:lang_ca"
+msgid "Català"
+msgstr "Kataloński"
+
+msgctxt "model:ir.lang,name:lang_cs"
+msgid "Czech"
+msgstr "Czeski"
+
+msgctxt "model:ir.lang,name:lang_de"
+msgid "German"
+msgstr "Niemiecki"
+
+msgctxt "model:ir.lang,name:lang_en"
+msgid "English"
+msgstr "Angielski"
+
+msgctxt "model:ir.lang,name:lang_es"
+msgid "Spanish"
+msgstr "Hiszpański"
+
+msgctxt "model:ir.lang,name:lang_es_419"
+msgid "Spanish (Latin American)"
+msgstr "Hiszpański (Ameryka Łacińska)"
+
+msgctxt "model:ir.lang,name:lang_et"
+msgid "Estonian"
+msgstr "Estoński"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "Perski"
+
+msgctxt "model:ir.lang,name:lang_fi"
+msgid "Finnish"
+msgstr "Fiński"
+
+msgctxt "model:ir.lang,name:lang_fr"
+msgid "French"
+msgstr "Francuski"
+
+msgctxt "model:ir.lang,name:lang_hu"
+msgid "Hungarian"
+msgstr "Węgierski"
+
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr "Indonezyjski"
+
+msgctxt "model:ir.lang,name:lang_it"
+msgid "Italian"
+msgstr "Włoski"
+
+msgctxt "model:ir.lang,name:lang_lo"
+msgid "Lao"
+msgstr "Laotański"
+
+msgctxt "model:ir.lang,name:lang_lt"
+msgid "Lithuanian"
+msgstr "Litewski"
+
+msgctxt "model:ir.lang,name:lang_nl"
+msgid "Dutch"
+msgstr "Holenderski"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Polski"
+
+msgctxt "model:ir.lang,name:lang_pt"
+msgid "Portuguese"
+msgstr "Portugalski"
+
+msgctxt "model:ir.lang,name:lang_ru"
+msgid "Russian"
+msgstr "Rosyjski"
+
+msgctxt "model:ir.lang,name:lang_sl"
+msgid "Slovenian"
+msgstr "Słoweński"
+
+msgctxt "model:ir.lang,name:lang_tr"
+msgid "Turkish"
+msgstr "Turecki"
+
+msgctxt "model:ir.lang,name:lang_zh_CN"
+msgid "Chinese Simplified"
+msgstr "Chiński uproszczony"
+
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Rozpoczęcie konfiguracji języka"
+
+msgctxt "model:ir.message,name:"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "model:ir.message,text:msg_ID"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:ir.message,text:msg_access_button_error"
+msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
+msgstr ""
+"Uruchomienie przycisku \"%(button)s\" w modelu \"%(model)s\" jest "
+"niedozwolone."
+
+msgctxt "model:ir.message,text:msg_access_rule_error"
+msgid "You are not allowed to access \"%(model)s\"."
+msgstr "Nie masz dostępu do \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_access_rule_field_error"
+msgid "You are not allowed to access \"%(model)s.%(field)s\"."
+msgstr "Nie masz dostępu do \"%(model)s.%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr ""
+"Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\" w modelu "
+"\"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_context"
+msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
+msgstr "Nieprawidłowy kontekst \"%(context)s\" dla akcji \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
+msgstr ""
+"Nieprawidłowa domena lub kryteria wyszukiwania \"%(domain)s\" dla akcji "
+"\"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_views"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "Nieprawidłowy widok \"%(view)s\" dla akcji \"%(action)s\"."
+
+msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
+msgid "Wrong wizard model in keyword action \"%(name)s\"."
+msgstr "Nieprawidłowy model kreatora w akcji \"%(name)s\" dot. słów kluczowych."
+
+msgctxt "model:ir.message,text:msg_active"
+msgid "Active"
+msgstr "Aktywny"
+
+msgctxt "model:ir.message,text:msg_active_help"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Załączniki"
+
+msgctxt "model:ir.message,text:msg_avatar"
+msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_resource_unique"
+msgid "Only one avatar is allowed per resource."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_avatar_size_unique"
+msgid "The size of an avatar must be unique."
+msgstr "Nazwa modelu musi być unikalna!"
+
+msgctxt "model:ir.message,text:msg_avatar_url"
+msgid "Avatar URL"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatars"
+msgid "Avatars"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_base_config_record"
+msgid "This record is part of the base configuration."
+msgstr "Ten rekord jest częścią podstawowej konfiguracji."
+
+msgctxt "model:ir.message,text:msg_create_rule_error"
+msgid ""
+"You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Nie masz uprawnień do utworzenia rekordów w \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_created_at"
+msgid "Created at"
+msgstr "Data utworzenia"
+
+msgctxt "model:ir.message,text:msg_created_by"
+msgid "Created by"
+msgstr "Utworzył"
+
+msgctxt "model:ir.message,text:msg_delete_rule_error"
+msgid ""
+"You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
+"%(rules)s"
+msgstr ""
+"Nie masz uprawnień do usunięcia rekordów \"%(ids)s\" z modelu \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_delete_xml_record"
+msgid "You are not allowed to delete this record."
+msgstr "Nie masz uprawnień do usunięcia tego rekordu."
+
+msgctxt "model:ir.message,text:msg_dict_schema_boolean"
+msgid "Boolean"
+msgstr "Boolean"
+
+msgctxt "model:ir.message,text:msg_dict_schema_char"
+msgid "Char"
+msgstr "Char"
+
+msgctxt "model:ir.message,text:msg_dict_schema_date"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "model:ir.message,text:msg_dict_schema_datetime"
+msgid "DateTime"
+msgstr "DateTime"
+
+msgctxt "model:ir.message,text:msg_dict_schema_digits"
+msgid "Digits"
+msgstr "Digits"
+
+msgctxt "model:ir.message,text:msg_dict_schema_domain"
+msgid "Domain"
+msgstr "Domena"
+
+msgctxt "model:ir.message,text:msg_dict_schema_float"
+msgid "Float"
+msgstr "Float"
+
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Pomoc"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection"
+msgid "Help Selection"
+msgstr "Zaznaczenie"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_help"
+msgid "The key followed by the help text separated by a \":\", one per line."
+msgstr "Para klucza i etykiety rozdzielone w linii przez \":\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help_selection_json"
+msgid "Help Selection JSON"
+msgstr "Zaznaczenie JSON"
+
+msgctxt "model:ir.message,text:msg_dict_schema_integer"
+msgid "Integer"
+msgstr "Integer"
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Nieprawidłowa domena w schemacie \"%(schema)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_help_selection"
+msgid "Invalid help selection in schema \"%(schema)s\"."
+msgstr "Nieprawidłowe zaznaczenie w schemacie \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
+msgid "Invalid selection in schema \"%(schema)s\"."
+msgstr "Nieprawidłowe zaznaczenie w schemacie \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Wielokrotne zaznaczenie"
+
+msgctxt "model:ir.message,text:msg_dict_schema_name"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "model:ir.message,text:msg_dict_schema_numeric"
+msgid "Numeric"
+msgstr "Numeric"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection"
+msgid "Selection"
+msgstr "Zaznaczenie"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
+msgid "A couple of key and label separated by \":\" per line."
+msgstr "Para klucza i etykiety rozdzielone w linii przez \":\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
+msgid "Selection JSON"
+msgstr "Zaznaczenie JSON"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
+msgid "Selection Sorted"
+msgstr "Zaznaczenie posortowane"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
+msgid "If the selection must be sorted on label."
+msgstr "Aktywuj, jeśli zaznaczenie ma być posortowane według etykiety."
+
+msgctxt "model:ir.message,text:msg_dict_schema_string"
+msgid "String"
+msgstr "String"
+
+msgctxt "model:ir.message,text:msg_dict_schema_type"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "model:ir.message,text:msg_digits_validation_record"
+msgid ""
+"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
+"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+msgstr ""
+"Liczba cyfr w wartości \"%(value)s\" w polu \"%(field)s\" modelu "
+"\"%(model)s\" przekroczyła limit \"%(digits)i\"."
+
+msgctxt "model:ir.message,text:msg_domain_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
+" its domain."
+msgstr ""
+"Wartość w polu \"%(field)s\" dla \"%(model)s\" jest nieprawidłowa względem "
+"swojej domeny."
+
+msgctxt "model:ir.message,text:msg_edited_at"
+msgid "Edited at"
+msgstr "Data utworzenia"
+
+msgctxt "model:ir.message,text:msg_edited_by"
+msgid "Edited by"
+msgstr "Zmodyfikował"
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowa treść w szablonie e-mail \"%(template)s\" generująca wyjątek "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowe wyrażenie PYSON %(field)s w szablonie e-mail \"%(template)s\" "
+"generujące wyjątek \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr "PYSON %(field)s w szablonie e-mail \"%(template)s\" musi generować listę."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowy temat w szablonie e-mail \"%(template)s\" generujący wyjątek "
+"\"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forbidden_char_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" contains "
+"some invalid chars \"%(chars)s\"."
+msgstr ""
+"Niepoprawna wartość czasu \"%(value)s\" pola \"%(field)s\" w modelu "
+"\"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_exist"
+msgid ""
+"The records could not be deleted because they are used by field "
+"\"%(field)s\" of \"%(model)s\"."
+msgstr ""
+"Rekordy nie mogą zostać usunięte ponieważ są używane w polu \"%(field)s\" "
+"modelu \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_missing"
+msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
+msgstr "Wartość \"%(value)s\" pola \"%(field)s\" w modelu \"%(model)s\" nie istnieje."
+
+msgctxt "model:ir.message,text:msg_html_editor_save_fail"
+msgid "Failed to save, please retry."
+msgstr "Problem z zapisem, spróbuj ponownie."
+
+msgctxt "model:ir.message,text:msg_id_positive"
+msgid "ID must be positive."
+msgstr "ID musi być dodatnie."
+
+msgctxt "model:ir.message,text:msg_language_default_translatable"
+msgid "The default language \"%(language)s\" must be translatable."
+msgstr "Domyślny język \"%(language)s\" musi być przetłumaczalny."
+
+msgctxt "model:ir.message,text:msg_language_delete_default"
+msgid "The default language \"%(language)s\" can not be deleted."
+msgstr "Domyślny język \"%(language)s\" nie może zostać usunięty."
+
+msgctxt "model:ir.message,text:msg_language_invalid_date"
+msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
+msgstr "Niewłaściwy format daty \"%(format)s\" w języku \"%(language)s\"."
+
+msgctxt "model:ir.message,text:msg_language_invalid_grouping"
+msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
+msgstr "Niewłaściwe grupowanie \"%(grouping)s\" w języku \"%(language)s\"."
+
+msgctxt "model:ir.message,text:msg_model_invalid_condition"
+msgid ""
+"The condition \"%(condition)s\" is not a valid PYSON expression for button "
+"rule \"%(rule)s\"."
+msgstr ""
+"Warunek \"%(condition)s\" nie jest poprawnym wyrażeniem PYSON dla przycisku "
+"w regule \"%s(rule)s\"."
+
+msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Niektóre aktywne moduły zależą od modułów, które próbujesz dezaktywować:"
+
+msgctxt "model:ir.message,text:msg_module_delete_state"
+msgid ""
+"You can not remove a module that is activated or that is about to be "
+"activated."
+msgstr "Nie możesz usunąć modułu, który jest aktywny lub będzie aktywny."
+
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Notatki"
+
+msgctxt "model:ir.message,text:msg_read_error"
+msgid ""
+"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
+" anymore."
+msgstr ""
+"Próbujesz odczytać rekordy \"%(ids)s\" modelu \"%(model)s\", które już nie "
+"istnieją."
+
+msgctxt "model:ir.message,text:msg_read_rule_error"
+msgid ""
+"You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Nie masz uprawnień do odczytu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednej z reguł:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_record_name"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "model:ir.message,text:msg_recursion_error"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"Błąd rekurencji: Rekord \"%(rec_name)s\" z elementem nadrzędnym "
+"\"%(parent_rec_name)s\" został skonfigurowany jako element nadrzędny siebie "
+"samego."
+
+msgctxt "model:ir.message,text:msg_reference_syntax_error"
+msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
+msgstr "Błąd składni dla referencji: \"%(value)r\" w \"%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_relation_not_found"
+msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
+msgstr "Brak relacji: \"%(value)r\" w \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_report_invalid_email"
+msgid "Invalid email definition for report \"%(name)s\"."
+msgstr "Nieprawidłowe określenie e-maila w raporcie \"%s\"."
+
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "W polu \"%(fields)s\" w modelu \"%(model)s\" wymagana jest wartość."
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
+msgstr "Zasoby, do których należy skopiować ten rekord."
+
+msgctxt "model:ir.message,text:msg_rule_invalid_domain"
+msgid "Invalid domain in rule \"%(name)s\"."
+msgstr "Nieprawidłowa domena w regule \"%s\"."
+
+msgctxt "model:ir.message,text:msg_search_function_missing"
+msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Brak funkcji wyszukiwania w polu \"%s\"."
+
+msgctxt "model:ir.message,text:msg_selection_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
+"of the allowed options."
+msgstr ""
+"Brak w elementach wyboru wartości \"%(value)s\" pola \"%(field)s\" dla "
+"modelu \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence"
+msgid "Sequence"
+msgstr "Sekwencja"
+
+msgctxt "model:ir.message,text:msg_sequence_change_sequence_type"
+msgid ""
+"You cannot change the sequence type of a sequence instead create a new "
+"sequence."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
+msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "Niewłaściwy prefiks \"%(prefix)s\" w sekwencji \"%(sequence)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
+msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "Niewłaściwy sufiks \"%(suffix)s\" w sekwencji \"%(sequence)s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
+msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
+msgstr "Ostatni znak czasu nie może wystąpić w przyszłości w sekwencji \"%s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_missing"
+msgid "Missing sequence."
+msgstr "Brakująca sekwencja."
+
+msgctxt "model:ir.message,text:msg_setter_function_missing"
+msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Brakująca funkcja setter dla pola \"%(field)s\" w \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
+"%(max_size)i)."
+msgstr ""
+"Wartość pola \"%(field)s\" w \"%(model)s\" jest zbyt długa (%(size)i > "
+"%(max_size)i)."
+
+msgctxt "model:ir.message,text:msg_time_format_validation_record"
+msgid ""
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
+" valid."
+msgstr ""
+"Niepoprawna wartość czasu \"%(value)s\" pola \"%(field)s\" w modelu "
+"\"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_timedelta_M"
+msgid "M"
+msgstr "M"
+
+msgctxt "model:ir.message,text:msg_timedelta_Y"
+msgid "Y"
+msgstr "R"
+
+msgctxt "model:ir.message,text:msg_timedelta_d"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:ir.message,text:msg_timedelta_h"
+msgid "h"
+msgstr "g"
+
+msgctxt "model:ir.message,text:msg_timedelta_m"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:ir.message,text:msg_timedelta_s"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:ir.message,text:msg_timedelta_w"
+msgid "w"
+msgstr "t"
+
+msgctxt "model:ir.message,text:msg_too_many_relations_found"
+msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
+msgstr "Znaleziono zbyt wiele relacji: \"%(value)r\" w \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_translation_overridden"
+msgid ""
+"You can not export translation \"%(name)s\" because it has been overridden "
+"by module \"%(overriding_module)s\"."
+msgstr ""
+"Nie możesz eksportować tłumaczenia %(name)s ponieważ jest ono nadpisane "
+"przez moduł %(overriding_module)s."
+
+msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
+"\"%(trigger)s\"."
+msgstr ""
+"Warunek \"%(condition)s\" nie jest poprawnym wyrażeniem PYSON dla wyzwalacza"
+" \"%(trigger)s\"."
+
+msgctxt "model:ir.message,text:msg_view_invalid_xml"
+msgid "Invalid XML for view \"%(name)s\"."
+msgstr "Niewłaściwy XML dla widoku \"%s\"."
+
+msgctxt "model:ir.message,text:msg_write_error"
+msgid ""
+"You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
+"exist anymore."
+msgstr ""
+"Próbujesz zapisać rekordy \"%(ids)s\" z modelu \"%(model)s\", które już nie "
+"istnieją."
+
+msgctxt "model:ir.message,text:msg_write_rule_error"
+msgid ""
+"You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"Nie masz uprawnień do zapisu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednego z reguł:\n"
+"%(rules)s"
+
+msgctxt "model:ir.message,text:msg_write_xml_record"
+msgid "You are not allowed to modify this record."
+msgstr "Nie masz uprawnień do modyfikacji tego rekordu."
+
+msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
+msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgstr "Błąd składni w XML id: \"%(value)r\" w \"%(field)s\"."
+
+msgctxt "model:ir.model,name:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "model:ir.model.access,name:"
+msgid "Model access"
+msgstr "Dostęp do modelu"
+
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr "Czy na pewno chcesz przesłać tłumaczenia językowe?"
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr "Czy na pewno chcesz usunąć tłumaczenia językowe?"
+
+msgctxt "model:ir.model.button,name:"
+msgid "Model Button"
+msgstr "Przycisk modelu"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Uruchom jednokrotnie"
+
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Prześlij tłumaczenia"
+
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Usuń tłumaczenia"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Synchronizacja"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Zaznacz, aby aktywować"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Anuluj aktywację"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Zaznacz do dezaktywacji (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Anuluj dezaktywację"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Zaznacz, aby aktualizować"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Anuluj aktualizację"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Pokaż"
+
+msgctxt "model:ir.model.button-button.reset,name:"
+msgid "Model Button Reset"
+msgstr "Reset przycisku modelu"
+
+msgctxt "model:ir.model.button.click,name:"
+msgid "Model Button Click"
+msgstr "Kliknięcie przycisku modelu"
+
+msgctxt "model:ir.model.button.rule,name:"
+msgid "Model Button Rule"
+msgstr "Reguła przycisku modelu"
+
+msgctxt "model:ir.model.data,name:"
+msgid "Model data"
+msgstr "Dane modelu"
+
+msgctxt "model:ir.model.field,name:"
+msgid "Model field"
+msgstr "Pole modelu"
+
+msgctxt "model:ir.model.field.access,name:"
+msgid "Model Field Access"
+msgstr "Dostęp do pola modelu"
+
+msgctxt "model:ir.model.print_model_graph.start,name:"
+msgid "Print Model Graph"
+msgstr "Wykres modelu druku"
+
+msgctxt "model:ir.module,name:"
+msgid "Module"
+msgstr "Moduł"
+
+msgctxt "model:ir.module.activate_upgrade.done,name:"
+msgid "Module Activate Upgrade Done"
+msgstr "Uruchomiono aktywację/aktualizację modułu"
+
+msgctxt "model:ir.module.activate_upgrade.start,name:"
+msgid "Module Activate Upgrade Start"
+msgstr "Rozpoczęcie aktywacji/aktualizacji modułu"
+
+msgctxt "model:ir.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "Uruchomiono kreatora konfiguracji modułu"
+
+msgctxt "model:ir.module.config_wizard.first,name:"
+msgid "Module Config Wizard First"
+msgstr "Pierwszy kreator konfiguracji modułu"
+
+msgctxt "model:ir.module.config_wizard.item,name:"
+msgid "Config wizard to run after activating a module"
+msgstr "Kreator konfiguracji do uruchomienia po aktywacji modułu"
+
+msgctxt "model:ir.module.config_wizard.other,name:"
+msgid "Module Config Wizard Other"
+msgstr "Inny kreator konfiguracji modułu"
+
+msgctxt "model:ir.module.dependency,name:"
+msgid "Module dependency"
+msgstr "Zależność modułu"
+
+msgctxt "model:ir.note,name:"
+msgid "Note"
+msgstr "Notatka"
+
+msgctxt "model:ir.note.read,name:"
+msgid "Note Read"
+msgstr "Notatka przeczytana"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "Kolejka"
+
+msgctxt "model:ir.rule,name:"
+msgid "Rule"
+msgstr "Reguła"
+
+msgctxt "model:ir.rule.group,name:"
+msgid "Rule group"
+msgstr "Grupa reguł"
+
+msgctxt "model:ir.sequence,name:"
+msgid "Sequence"
+msgstr "Sekwencja"
+
+msgctxt "model:ir.sequence.strict,name:"
+msgid "Sequence Strict"
+msgstr "Sekwencja ścisła"
+
+msgctxt "model:ir.sequence.type,name:"
+msgid "Sequence type"
+msgstr "Typ sekwencji"
+
+msgctxt "model:ir.session,name:"
+msgid "Session"
+msgstr "Sesja"
+
+msgctxt "model:ir.session.wizard,name:"
+msgid "Session Wizard"
+msgstr "Kreator sesji"
+
+msgctxt "model:ir.translation,name:"
+msgid "Translation"
+msgstr "Tłumaczenie"
+
+msgctxt "model:ir.translation.clean.start,name:"
+msgid "Clean translation"
+msgstr "Oczyść tłumaczenie"
+
+msgctxt "model:ir.translation.clean.succeed,name:"
+msgid "Clean translation"
+msgstr "Oczyść tłumaczenie"
+
+msgctxt "model:ir.translation.export.result,name:"
+msgid "Export translation"
+msgstr "Wyeksportuj tłumaczenie"
+
+msgctxt "model:ir.translation.export.start,name:"
+msgid "Export translation"
+msgstr "Wyeksportuj tłumaczenie"
+
+msgctxt "model:ir.translation.set.start,name:"
+msgid "Set Translation"
+msgstr "Dodaj tłumaczenie"
+
+msgctxt "model:ir.translation.set.succeed,name:"
+msgid "Set Translation"
+msgstr "Dodaj tłumaczenie"
+
+msgctxt "model:ir.translation.update.start,name:"
+msgid "Update translation"
+msgstr "Aktualizuj tłumaczenie"
+
+msgctxt "model:ir.trigger,name:"
+msgid "Trigger"
+msgstr "Wyzwalacz"
+
+msgctxt "model:ir.trigger.log,name:"
+msgid "Trigger Log"
+msgstr "Dziennik wyzwalaczy"
+
+msgctxt "model:ir.ui.icon,name:"
+msgid "Icon"
+msgstr "Ikona"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "UI menu"
+msgstr "UI menu"
+
+msgctxt "model:ir.ui.menu,name:menu_act_action"
+msgid "Actions"
+msgstr "Akcje"
+
+msgctxt "model:ir.ui.menu,name:menu_action"
+msgid "Actions"
+msgstr "Akcje"
+
+msgctxt "model:ir.ui.menu,name:menu_action_act_window"
+msgid "Window Actions"
+msgstr "Okno akcji"
+
+msgctxt "model:ir.ui.menu,name:menu_action_report_form"
+msgid "Reports"
+msgstr "Raporty"
+
+msgctxt "model:ir.ui.menu,name:menu_action_url"
+msgid "URLs"
+msgstr "Adresy URL"
+
+msgctxt "model:ir.ui.menu,name:menu_action_wizard"
+msgid "Wizards"
+msgstr "Kreatory"
+
+msgctxt "model:ir.ui.menu,name:menu_administration"
+msgid "Administration"
+msgstr "Administracja"
+
+msgctxt "model:ir.ui.menu,name:menu_attachment_form"
+msgid "Attachments"
+msgstr "Załączniki"
+
+msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
+msgid "Config Wizard Items"
+msgstr "Elementy kreatora konfiguracji"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_cron_form"
+msgid "Actions"
+msgstr "Akcje"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "E-mails"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "Szablony e-maili"
+
+msgctxt "model:ir.ui.menu,name:menu_export_form"
+msgid "Exports"
+msgstr "Wyeksportowania"
+
+msgctxt "model:ir.ui.menu,name:menu_icon_form"
+msgid "Icons"
+msgstr "Ikony"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
+msgid "Types"
+msgstr "Typ"
+
+msgctxt "model:ir.ui.menu,name:menu_lang_form"
+msgid "Languages"
+msgstr "Języki"
+
+msgctxt "model:ir.ui.menu,name:menu_localization"
+msgid "Localization"
+msgstr "Lokalizacja"
+
+msgctxt "model:ir.ui.menu,name:menu_menu_list"
+msgid "Menu"
+msgstr "Menu"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "Message"
+msgstr "Wiadomość"
+
+msgctxt "model:ir.ui.menu,name:menu_model_access_form"
+msgid "Models Access"
+msgstr "Dostęp do modeli"
+
+msgctxt "model:ir.ui.menu,name:menu_model_button_form"
+msgid "Buttons"
+msgstr "Przyciski"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
+msgid "Fields Access"
+msgstr "Dostęp do pól"
+
+msgctxt "model:ir.ui.menu,name:menu_model_form"
+msgid "Models"
+msgstr "Modele"
+
+msgctxt "model:ir.ui.menu,name:menu_models"
+msgid "Models"
+msgstr "Modele"
+
+msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
+msgid "Perform Pending Activation/Upgrade"
+msgstr "Wykonaj aktywację/aktualizację"
+
+msgctxt "model:ir.ui.menu,name:menu_module_form"
+msgid "Modules"
+msgstr "Moduły"
+
+msgctxt "model:ir.ui.menu,name:menu_modules"
+msgid "Modules"
+msgstr "Moduły"
+
+msgctxt "model:ir.ui.menu,name:menu_note_form"
+msgid "Notes"
+msgstr "Notatki"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
+msgid "Record Rules"
+msgstr "Reguły rekordu"
+
+msgctxt "model:ir.ui.menu,name:menu_scheduler"
+msgid "Scheduler"
+msgstr "Harmonogram"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_form"
+msgid "Sequences"
+msgstr "Sekwencje"
+
+msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
+msgid "Sequences Strict"
+msgstr "Sekwencje ścisłe"
+
+msgctxt "model:ir.ui.menu,name:menu_sequences"
+msgid "Sequences"
+msgstr "Sekwencje"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_clean"
+msgid "Clean Translations"
+msgstr "Oczyść tłumaczenia"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_export"
+msgid "Export Translations"
+msgstr "Wyeksportuj tłumaczenia"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_form"
+msgid "Translations"
+msgstr "Tłumaczenia"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_set"
+msgid "Set Translations"
+msgstr "Ustaw tłumaczenia"
+
+msgctxt "model:ir.ui.menu,name:menu_translation_update"
+msgid "Synchronize Translations"
+msgstr "Synchronizuj tłumaczenia"
+
+msgctxt "model:ir.ui.menu,name:menu_trigger_form"
+msgid "Triggers"
+msgstr "Wyzwalacze"
+
+msgctxt "model:ir.ui.menu,name:menu_ui"
+msgid "User Interface"
+msgstr "Interfejs użytkownika"
+
+msgctxt "model:ir.ui.menu,name:menu_view"
+msgid "Views"
+msgstr "Widoki"
+
+msgctxt "model:ir.ui.menu,name:menu_view_search"
+msgid "View Search"
+msgstr "Wyszukiwanie widoku"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
+msgid "Tree State"
+msgstr "Stan drzewa"
+
+msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
+msgid "View Tree Width"
+msgstr "Szerokość drzewa widoku"
+
+msgctxt "model:ir.ui.menu,name:model_model_fields_form"
+msgid "Fields"
+msgstr "Pola"
+
+msgctxt "model:ir.ui.menu.favorite,name:"
+msgid "Menu Favorite"
+msgstr "Menu ulubionych"
+
+msgctxt "model:ir.ui.view,name:"
+msgid "View"
+msgstr "Widok"
+
+msgctxt "model:ir.ui.view.show.start,name:"
+msgid "Show view"
+msgstr "Pokaż widok"
+
+msgctxt "model:ir.ui.view_search,name:"
+msgid "View Search"
+msgstr "Wyszukiwanie widoku"
+
+msgctxt "model:ir.ui.view_tree_state,name:"
+msgid "View Tree State"
+msgstr "Stan drzewa widoku"
+
+msgctxt "model:ir.ui.view_tree_width,name:"
+msgid "View Tree Width"
+msgstr "Szerokość drzewa widoku"
+
+msgctxt "selection:ir.action,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action,records:"
+msgid "Selected"
+msgstr "Zaznaczone węzły"
+
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.act_window,records:"
+msgid "Selected"
+msgstr "Zaznaczone węzły"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Action form"
+msgstr "Formularz akcji"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Form relate"
+msgstr "Relacja formularza"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open Graph"
+msgstr "Otwórz wykres"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Open tree"
+msgstr "Otwórz drzewo"
+
+msgctxt "selection:ir.action.keyword,keyword:"
+msgid "Print form"
+msgstr "Drukuj formularz"
+
+msgctxt "selection:ir.action.report,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.report,records:"
+msgid "Selected"
+msgstr "Zaznaczone węzły"
+
+msgctxt "selection:ir.action.url,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.url,records:"
+msgid "Selected"
+msgstr "Zaznaczone węzły"
+
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Listed"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:ir.action.wizard,records:"
+msgid "Selected"
+msgstr "Zaznaczone węzły"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "selection:ir.attachment,type:"
+msgid "Link"
+msgstr "Odnośnik"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Days"
+msgstr "Dni"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Hours"
+msgstr "Godziny"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Minutes"
+msgstr "Minuty"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Months"
+msgstr "Miesiące"
+
+msgctxt "selection:ir.cron,interval_type:"
+msgid "Weeks"
+msgstr "Tygodnie"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "Wyczyść kolejkę zadań"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Run On Time Triggers"
+msgstr "Wyzwalacze uruchamiane o określonym czasie"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Left-to-right"
+msgstr "Od lewej do prawej"
+
+msgctxt "selection:ir.lang,direction:"
+msgid "Right-to-left"
+msgstr "Od prawej do lewej"
+
+msgctxt "selection:ir.module,state:"
+msgid "Activated"
+msgstr "Aktywny"
+
+msgctxt "selection:ir.module,state:"
+msgid "Not Activated"
+msgstr "Nieaktywny"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be activated"
+msgstr "Do aktywacji"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be removed"
+msgstr "Do usunięcia"
+
+msgctxt "selection:ir.module,state:"
+msgid "To be upgraded"
+msgstr "Do aktualizacji"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Done"
+msgstr "Wykonano"
+
+msgctxt "selection:ir.module.config_wizard.item,state:"
+msgid "Open"
+msgstr "Otwórz"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Activated"
+msgstr "Aktywny"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Not Activated"
+msgstr "Nieaktywny"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be activated"
+msgstr "Do aktywacji"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be removed"
+msgstr "Do usunięcia"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "To be upgraded"
+msgstr "Do aktualizacji"
+
+msgctxt "selection:ir.module.dependency,state:"
+msgid "Unknown"
+msgstr "Nieznany"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Decimal Timestamp"
+msgstr "Dziesiętny znak czasu"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Szesnastkowy znak czasu"
+
+msgctxt "selection:ir.sequence,type:"
+msgid "Incremental"
+msgstr "Przyrostowo"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Decimal Timestamp"
+msgstr "Dziesiętny znak czasu"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Hexadecimal Timestamp"
+msgstr "Szesnastkowy znak czasu"
+
+msgctxt "selection:ir.sequence.strict,type:"
+msgid "Incremental"
+msgstr "Przyrostowo"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Field"
+msgstr "Pole"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Help"
+msgstr "Pomoc"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Report"
+msgstr "Raport"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Selection"
+msgstr "Zaznaczenie"
+
+msgctxt "selection:ir.translation,type:"
+msgid "View"
+msgstr "Widok"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Wizard Button"
+msgstr "Przycisk kreatora"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Board"
+msgstr "Tablica"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Calendar"
+msgstr "Kalendarz"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Form"
+msgstr "Formularz"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Graph"
+msgstr "Wykres"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "List Form"
+msgstr "Formularz listy"
+
+msgctxt "selection:ir.ui.view,type:"
+msgid "Tree"
+msgstr "Drzewo"
+
+msgctxt "view:ir.action.act_window:"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "view:ir.action.report:"
+msgid "Edit"
+msgstr "Edytuj"
+
+msgctxt "view:ir.action.report:"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "view:ir.action.url:"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "view:ir.action.wizard:"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "view:ir.action:"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "view:ir.attachment:"
+msgid "Document"
+msgstr ""
+
+msgctxt "view:ir.attachment:"
+msgid "Last Modification Time"
+msgstr "Czas ostatniej modyfikacji"
+
+msgctxt "view:ir.cron:"
+msgid "At"
+msgstr "O"
+
+msgctxt "view:ir.cron:"
+msgid "Every"
+msgstr "Każdy"
+
+msgctxt "view:ir.cron:"
+msgid "Run Once"
+msgstr "Uruchom jednorazowo"
+
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr "Ukryci odbiorcy:"
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr "Odbiorcy:"
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr "Dodatkowi odbiorcy:"
+
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr "Możesz przesłać teraz do systemu dodatkowe tłumaczenia."
+
+msgctxt "view:ir.lang:"
+msgid "Date Formatting"
+msgstr "Formatowanie daty"
+
+msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "Formatowanie pieniężne"
+
+msgctxt "view:ir.lang:"
+msgid "Numbers Formatting"
+msgstr "Formatowanie liczb"
+
+msgctxt "view:ir.module.activate_upgrade.done:"
+msgid "The modules have been upgraded / activated."
+msgstr "Moduły zostały zaktualizowane / aktywowane."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Note that this operation may take a few minutes."
+msgstr "Wykonanie operacji może zająć kilka minut."
+
+msgctxt "view:ir.module.activate_upgrade.start:"
+msgid "Your system will be upgraded."
+msgstr "System zostanie zaktualizowany."
+
+msgctxt "view:ir.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "Konfiguracja została ukończona."
+
+msgctxt "view:ir.module.config_wizard.first:"
+msgid ""
+"You will be able to configure your installation depending on the modules you"
+" have installed."
+msgstr ""
+"Będziesz mógł skonfigurować swoją instalację w zależności od modułów, które "
+"zainstalowałeś."
+
+msgctxt "view:ir.module:"
+msgid "Cancel Activation"
+msgstr "Anuluj aktywację"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Deactivation"
+msgstr "Anuluj deaktywację"
+
+msgctxt "view:ir.module:"
+msgid "Cancel Upgrade"
+msgstr "Anuluj aktualizację"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Activation"
+msgstr "Oznacz do aktywacji"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Deactivation (beta)"
+msgstr "Oznacz do dezaktywacji (beta)"
+
+msgctxt "view:ir.module:"
+msgid "Mark for Upgrade"
+msgstr "Oznacz do uaktualnienia"
+
+msgctxt "view:ir.note:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "view:ir.note:"
+msgid "Time"
+msgstr "Czas"
+
+msgctxt "view:ir.note:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "view:ir.rule.group:"
+msgid ""
+"If there is no test defined, the rule is always satisfied if not global."
+msgstr ""
+"Jeśli brak jest zdefiniowanego testu, reguła jeśli nie jest globalna zawsze "
+"spełnia wymagania."
+
+msgctxt "view:ir.rule.group:"
+msgid "The rule is satisfied if at least one test is True."
+msgstr ""
+"Reguła spełnia wymagania jeśli wynik przynajmniej jednego testu jest True."
+
+msgctxt "view:ir.sequence:"
+msgid "${day}"
+msgstr "${day}"
+
+msgctxt "view:ir.sequence:"
+msgid "${month}"
+msgstr "${month}"
+
+msgctxt "view:ir.sequence:"
+msgid "${year}"
+msgstr "${year}"
+
+msgctxt "view:ir.sequence:"
+msgid "Day:"
+msgstr "Dzień:"
+
+msgctxt "view:ir.sequence:"
+msgid "Incremental"
+msgstr "Przyrostowo"
+
+msgctxt "view:ir.sequence:"
+msgid "Legend (Placeholders for prefix, suffix)"
+msgstr "Legenda (Placeholders dla prefiksu, sufiksu)"
+
+msgctxt "view:ir.sequence:"
+msgid "Month:"
+msgstr "Miesiąc:"
+
+msgctxt "view:ir.sequence:"
+msgid "Timestamp"
+msgstr "Znak czasu"
+
+msgctxt "view:ir.sequence:"
+msgid "Year:"
+msgstr "Rok:"
+
+msgctxt "view:ir.translation.clean.start:"
+msgid "Clean Translations?"
+msgstr "Oczyścić tłumaczenia?"
+
+msgctxt "view:ir.translation.clean.succeed:"
+msgid "Translations cleaned successfully."
+msgstr "Tłumaczenia zostały pomyślnie wyczyszczone."
+
+msgctxt "view:ir.translation.set.start:"
+msgid "Synchronize Translations?"
+msgstr "Zsynchronizować tłumaczenia?"
+
+msgctxt "view:ir.translation.set.succeed:"
+msgid "Translations set successfully."
+msgstr "Tłumaczenia zostały pomyślnie zdefiniowane."
+
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr "Prześlij"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
+msgid "Print"
+msgstr "Wydruk"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
+msgid "Start Upgrade"
+msgstr "Rozpocznij aktualizację"
+
+msgctxt "wizard_button:ir.module.config_wizard,done,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,action:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.module.config_wizard,first,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,action:"
+msgid "Next"
+msgstr "Następne"
+
+msgctxt "wizard_button:ir.module.config_wizard,other,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.translation.clean,start,clean:"
+msgid "Clean"
+msgstr "Wyczyść"
+
+msgctxt "wizard_button:ir.translation.clean,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.translation.clean,succeed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.translation.export,result,end:"
+msgid "Close"
+msgstr "Zamknij"
+
+msgctxt "wizard_button:ir.translation.export,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.translation.export,start,export:"
+msgid "Export"
+msgstr "Eksportuj"
+
+msgctxt "wizard_button:ir.translation.set,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.translation.set,start,set_:"
+msgid "Set"
+msgstr "Ustaw"
+
+msgctxt "wizard_button:ir.translation.set,succeed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:ir.translation.update,start,end:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "wizard_button:ir.translation.update,start,update:"
+msgid "Update"
+msgstr "Zaktualizuj"
+
+msgctxt "wizard_button:ir.ui.view.show,start,end:"
+msgid "Close"
+msgstr "Zamknij"

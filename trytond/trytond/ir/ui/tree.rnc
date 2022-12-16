@@ -1,0 +1,103 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+tree = element tree { attlist.tree,
+    (field
+     | button)*
+  }
+attlist.tree &= attribute on_write { text }?
+attlist.tree &= attribute editable { "0" | "1" }?
+attlist.tree &= attribute sequence { text }?
+attlist.tree &=
+  [ a:defaultValue = "0" ] attribute keyword_open { "0" | "1" }?
+attlist.tree &=
+  [ a:defaultValue = "0" ] attribute tree_state { "0" | "1" }?
+attlist.tree &= attribute visual { text }?
+field = element field { attlist.field, (prefix | suffix)* }
+attlist.field &= attribute name { text }
+attlist.field &= attribute readonly { "0" | "1" }?
+attlist.field &=
+  attribute widget {
+    "binary"
+    | "boolean"
+    | "callto"
+    | "char"
+    | "date"
+    | "datetime"
+    | "email"
+    | "float"
+    | "image"
+    | "integer"
+    | "many2many"
+    | "many2one"
+    | "multiselection"
+    | "numeric"
+    | "one2many"
+    | "one2one"
+    | "progressbar"
+    | "reference"
+    | "selection"
+    | "sip"
+    | "text"
+    | "time"
+    | "timedelta"
+    | "url"
+  }?
+attlist.field &=
+  [ a:defaultValue = "0" ] attribute tree_invisible { text }?
+attlist.field &=
+  [ a:defaultValue = "0" ] attribute expand { xsd:integer }?
+attlist.field &= attribute visual { text }?
+attlist.field &= attribute icon { text }?
+attlist.field &= attribute sum { text }?
+attlist.field &= attribute width { text }?
+attlist.field &= attribute height { text }?
+attlist.field &=
+  [ a:defaultValue = "left_to_right" ] attribute orientation {
+    "left_to_right"
+    | "right_to_left"
+    | "bottom_to_top"
+    | "top_to_bottom"
+  }?
+attlist.field &= [a:defaultValue = "0"] attribute pre_validate { "0" | "1" }?
+attlist.field &= [a:defaultValue = "1"] attribute completion { "0" | "1" }?
+attlist.field &= attribute string { text }?
+attlist.field &= [a:defaultValue = "1"] attribute factor { text }?
+attlist.field &= attribute filename { text }?
+attlist.field &= attribute help_field { text }?
+attlist.field &= attribute view_ids { text }?
+attlist.field &= attribute symbol { text }?
+prefix = element prefix { attlist.affix, empty }
+suffix = element suffix { attlist.affix, empty }
+attlist.affix &= attribute string { text }?
+attlist.affix &= ( attribute name { text } | attribute id { text } )
+attlist.affix &= attribute icon { text }?
+attlist.affix &= [a:defaultValue = "icon"] attribute icon_type { "icon" | "url" }?
+attlist.affix &= attribute url_size { text }?
+button = element button { attlist.button, empty }
+attlist.button &= attribute help { text }?
+attlist.button &= attribute string { text }?
+attlist.button &= attribute confirm { text }?
+attlist.button &= attribute name { text }
+attlist.button &= attribute states { text }?
+attlist.button &=
+    [ a:defaultValue="action" ]
+    attribute keyword { "relate" | "print" | "action" }?
+attlist.button &= attribute change { text }?
+attlist.button &= attribute type { "class" | "instance" }?
+attlist.button &=
+  [ a:defaultValue = "0" ] attribute tree_invisible { text }?
+data = element data { attlist.data, xpath* }
+attlist.data &= empty
+xpath = element xpath { attlist.xpath,
+    (field
+    | prefix
+    | suffix
+    | button
+    | tree
+    )*
+  }
+attlist.xpath &= attribute expr { text }
+attlist.xpath &=
+  [ a:defaultValue = "inside" ]
+  attribute position { "inside" | "replace" | "replace_attributes" | "after" | "before" }?
+start = tree | data
