@@ -1,0 +1,94 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning,fees:"
+msgid "Fees"
+msgstr "Ücretler"
+
+msgctxt "field:account.dunning.fee,compute_method:"
+msgid "Compute Method"
+msgstr "Hesaplama Metodu"
+
+msgctxt "field:account.dunning.fee,journal:"
+msgid "Journal"
+msgstr "Yevmiye Defteri"
+
+msgctxt "field:account.dunning.fee,name:"
+msgid "Name"
+msgstr "Ad"
+
+msgctxt "field:account.dunning.fee,percentage:"
+msgid "Percentage"
+msgstr "Yüzde"
+
+msgctxt "field:account.dunning.fee,product:"
+msgid "Product"
+msgstr "Ürün"
+
+msgctxt "field:account.dunning.fee.dunning_level,amount:"
+msgid "Amount"
+msgstr "Miktar"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency:"
+msgid "Currency"
+msgstr "Para Birimi"
+
+msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
+msgid "Currency Digits"
+msgstr "Para Birimi Basamakları"
+
+msgctxt "field:account.dunning.fee.dunning_level,dunning:"
+msgid "Dunning"
+msgstr "İhtarname"
+
+msgctxt "field:account.dunning.fee.dunning_level,level:"
+msgid "Level"
+msgstr "Seviye"
+
+msgctxt "field:account.dunning.fee.dunning_level,moves:"
+msgid "Moves"
+msgstr "Hareketler"
+
+msgctxt "field:account.dunning.level,fee:"
+msgid "Fee"
+msgstr "Ücret"
+
+msgctxt "help:account.dunning.fee,compute_method:"
+msgid "Method to compute the fee amount"
+msgstr "Ücret miktarını hesaplamak için metot"
+
+msgctxt "model:account.dunning.fee,name:"
+msgid "Account Dunning Fee"
+msgstr "Hesap İhtarname Ücreti"
+
+msgctxt "model:account.dunning.fee.dunning_level,name:"
+msgid "Account Dunning Fee Dunning-Level"
+msgstr "Hesap İhtarname Ücreti İhtarname Seviyesi"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "Ücret her bir ihtarname ve seviye için özgün olmalı."
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
+msgid "Dunning Fees"
+msgstr "Dunning Fees"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "List Price"
+msgstr "Liste Fiyatı"
+
+msgctxt "selection:account.dunning.fee,compute_method:"
+msgid "Percentage"
+msgstr "Yüzde"
+
+msgctxt "view:account.dunning.fee:"
+msgid "%"
+msgstr "%"
