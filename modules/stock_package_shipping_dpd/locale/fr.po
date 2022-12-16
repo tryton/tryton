@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:carrier.credential.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"L'appel au service web de DPD a échoué avec le message d'erreur suivant :\n"
+"\n"
+"%(message)s"
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"\n"
+"%(message)s"
+msgstr ""
+"L'appel au service web de DPD a échoué avec le message d'erreur suivant :\n"
+"\n"
+"%(message)s "
+
+msgctxt "error:stock.shipment.create_shipping.dpd:"
+msgid "Shipment \"%(shipment)s\" already has a reference number."
+msgstr "L'expédition « %(shipment)s » a déjà un numéro de référence."
+
+msgctxt "error:stock.shipment.out:"
+msgid "An address is required for warehouse \"%(warehouse)s\"."
+msgstr "Une adresse est requise sur l'entrepôt « %(warehouse)s »."
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:carrier.credential.dpd,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:carrier.credential.dpd,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Dépôt"
+
+msgctxt "field:carrier.credential.dpd,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Mot de passe"
+
+msgctxt "field:carrier.credential.dpd,rec_name:"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Serveur"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Jeton"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "ID d'utilisateur"
+
+msgctxt "field:carrier.credential.dpd,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:carrier.credential.dpd,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "Accréditation de DPD"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Créer la livraison DPD pour les emballages"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Accréditations de DPD"
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "Accréditations de DPD"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "Essai"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Informations"
+msgstr "Informations d'accréditation"
