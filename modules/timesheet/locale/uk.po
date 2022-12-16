@@ -1,0 +1,368 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Кінцева дата"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Початкова дата"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Місяць"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Рік"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Тиждень"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Рік"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Опис"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Робота"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Працівник"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Компанія"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Тривалість табеля"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Назва"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Походження"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Кінець табеля"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Рядки табеля"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Початок табеля"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "Робота"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "З дати"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "До дати"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "Компанія, на яку витрачається час."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Коли час витрачено."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Додатковий опис виконаної роботи."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "Працівник, який витрачає час."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "Робота, на яку витрачається час."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Коли час витрачено."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "Працівник, який витрачає час."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Зробіть роботу належною компанії."
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work."
+msgstr "Загальний час, витрачений на цю роботу."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "Основний ідентифікатор роботи."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Використовуйте, щоб пов'язати витрачений час з іншими записами."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Обмежити додавання рядків після дати."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Витратити час на цю роботу."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Обмежити додавання рядків перед датою."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Не брати до уваги рядки перед датою."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Не брати до уваги рядки після дати."
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Години на одного працівника"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Години на одного працівника на місяць"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Години на одного працівника на тиждень"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Ввести табель"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Lines"
+msgstr "Рядки"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Рядки табеля"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Роботи"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "Роботи"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Усі"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
+msgid "Open"
+msgstr "Відкриті"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "Тривалість рядка \"%(line)s\" має бути додатною."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "UUID рядка табеля має бути унікальним."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+"Компанії, пов'язані з роботою \"%(work)s\" та її походження відрізняються."
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "Походження роботи має бути унікальним для компанії."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr "Будь-які години працівника"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
+msgid "Own employee hours"
+msgstr "Власні години працівника"
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr "Власний рядок табеля"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr "Будь-який рядок табеля"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_companies"
+msgid "User in companies"
+msgstr "Користувач у компаніях"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_companies"
+msgid "User in companies"
+msgstr "Користувач у компаніях"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Налаштування"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Години на одного працівника"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Години на одного працівника на місяць"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Години на одного працівника на тиждень"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Ввести табель"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Lines"
+msgstr "Рядки"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Звітність"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Табель"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Роботи"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Роботи"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Адміністрування табелів"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Години на одного працівника"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "Контекст годин на одного працівника"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Години на одного працівника на місяць"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Години на одного працівника на тиждень"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Рядок табеля"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Введіть рядки"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Робота"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "Контекст роботи"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Табель"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Тривалість"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Введіть"

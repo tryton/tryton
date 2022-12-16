@@ -1,0 +1,115 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,chorus_login:"
+msgid "Chorus Login"
+msgstr "Chorus kasutajanimi"
+
+msgctxt "field:account.configuration,chorus_password:"
+msgid "Chorus Password"
+msgstr "Chorus parool"
+
+msgctxt "field:account.configuration,chorus_service:"
+msgid "Chorus Service"
+msgstr "Chorus teenus"
+
+msgctxt "field:account.configuration,chorus_syntax:"
+msgid "Chorus Syntax"
+msgstr "Chorus süntaks"
+
+msgctxt "field:account.credential.chorus,chorus_login:"
+msgid "Login"
+msgstr "Logi sisse"
+
+msgctxt "field:account.credential.chorus,chorus_password:"
+msgid "Password"
+msgstr "Parool"
+
+msgctxt "field:account.credential.chorus,chorus_service:"
+msgid "Service"
+msgstr "Teenus"
+
+msgctxt "field:account.credential.chorus,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:account.invoice.chorus,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.invoice.chorus,invoice:"
+msgid "Invoice"
+msgstr "Arve"
+
+msgctxt "field:account.invoice.chorus,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:account.invoice.chorus,syntax:"
+msgid "Syntax"
+msgstr "Süntaks"
+
+msgctxt "field:party.party,chorus:"
+msgid "Chorus Pro"
+msgstr "Chorus pro"
+
+msgctxt "help:party.party,chorus:"
+msgid "Send documents for this party through Chorus Pro"
+msgstr "Saada dokumendid sellele osapoolele läbi Chprus Pro"
+
+msgctxt "model:account.credential.chorus,name:"
+msgid "Account Credential Chorus"
+msgstr "Konto mandaat Chorus"
+
+msgctxt "model:account.invoice.chorus,name:"
+msgid "Invoice Chorus"
+msgstr "Konto Chorus"
+
+msgctxt "model:ir.action,name:act_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
+msgid ""
+"To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
+"address \"%(address)s\"."
+msgstr ""
+"Chorus arve \"&(arve)te\" loomiseks tuleb esmalt määrata SIERT (SIRET kood) "
+"aadressile \"%(aadressitele)\""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_sent"
+msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
+msgstr "Chorus arvet \"%(arveid)\" ei saa kustutada kuna see \"(%need)\" on saadetud"
+
+msgctxt "model:ir.message,text:msg_invoice_unique"
+msgid "You can create only one Chorus invoice per invoice."
+msgstr "Luua saab ainult ühe Chorus arve programmi arve kohta"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Qualification"
+msgstr "Kvalifikatsioon"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Qualification"
+msgstr "Kvalifikatsioon"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to Chorus"
+msgstr "Saada arved Chorusesse"
+
+msgctxt "view:account.configuration:"
+msgid "Chorus"
+msgstr "Chorus"

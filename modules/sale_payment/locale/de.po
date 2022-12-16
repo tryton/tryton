@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr ""
+"Der Verkauf \"%(sale)s\" kann nicht annulliert werden, weil es zugehörige "
+"Zahlungen gibt."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr ""
+"Der Verkauf \"%(sale)s\" kann nicht auf den Entwurfsstatus zurückgesetzt "
+"werden, weil es zu ihm gehörende Zahlungen gibt."
