@@ -1,0 +1,1167 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "tentukan file konfigurasi alternatif"
+
+msgid "development mode"
+msgstr "mode pengembangan"
+
+msgid "logging everything at INFO level"
+msgstr "mencatat semua pada level INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "tentukan tingkatan log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "tentukan user login"
+
+msgid "specify the server hostname:port"
+msgstr "tentukan nama host server:port"
+
+#, python-format
+msgid "Unable to write config file %s."
+msgstr "Tidak dapat menulis file konfigurasi %s."
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr ""
+
+msgid ", "
+msgstr ", "
+
+msgid ",..."
+msgstr ",..."
+
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+msgid "Select your action"
+msgstr "Pilih tindakan Anda"
+
+msgid "No action defined."
+msgstr "Tidak ada tindakan yang ditentukan."
+
+msgid "By: "
+msgstr "Oleh: "
+
+msgid "Selection"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Your selection:"
+msgstr "Pilihan anda:"
+
+msgid "Select"
+msgstr "Pilih"
+
+msgid "Save"
+msgstr "Simpan"
+
+msgid "Save As..."
+msgstr "Simpan Sebagai..."
+
+msgid "Do you want to proceed?"
+msgstr "Apakah Anda ingin melanjutkan?"
+
+msgid "Always ignore this warning."
+msgstr "Selalu abaikan peringatan ini."
+
+msgid "No"
+msgstr "Tidak"
+
+msgid "Yes"
+msgstr "Ya"
+
+msgid "Concurrency Exception"
+msgstr ""
+
+msgid "This record has been modified while you were editing it."
+msgstr "Rekaman ini telah diubah selagi anda menyuntingnya."
+
+msgid "Cancel saving"
+msgstr "Batalkan penyimpanan"
+
+msgid "Compare"
+msgstr "Bandingkan"
+
+msgid "See the modified version"
+msgstr "Lihat versi yang diubah"
+
+msgid "Write Anyway"
+msgstr "Tetap Menulis"
+
+msgid "Save your current version"
+msgstr "Simpan versi anda saat ini"
+
+#, python-format
+msgid "Compare: %s"
+msgstr "Bandingkan: %s"
+
+msgid "Close"
+msgstr "Tutup"
+
+msgid "Application Error"
+msgstr ""
+
+msgid "Report Bug"
+msgstr "Melaporkan Kesalahan"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr "Periksa URL: %s"
+
+msgid "Unable to check for new version."
+msgstr "Tidak dapat memeriksa versi baru."
+
+msgid "A new version is available!"
+msgstr "Versi baru tersedia!"
+
+msgid "Download"
+msgstr "Unduh"
+
+msgid "Too many requests. Try again later."
+msgstr "Terlalu banyak permintaan. Coba lagi nanti."
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>Cari...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Buat...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "Tidak dapat mencari penyelesaian %s"
+
+msgid "Value"
+msgstr "Nilai"
+
+msgid "Displayed value"
+msgstr "Nilai yang ditampilkan"
+
+msgid "Format"
+msgstr ""
+
+msgid "Display format"
+msgstr ""
+
+msgid "Open the calendar"
+msgstr "Buka kalender"
+
+msgid "Date Format"
+msgstr "Format Tanggal"
+
+msgid "Displayed date format"
+msgstr ""
+
+msgid "y"
+msgstr "y"
+
+msgid "True"
+msgstr "Benar"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "Salah"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+msgid "Template"
+msgstr "Templat"
+
+msgid "Edit..."
+msgstr "Sunting..."
+
+msgid "Attachments..."
+msgstr ""
+
+msgid "Notes..."
+msgstr ""
+
+msgid "Actions..."
+msgstr ""
+
+msgid "Relate..."
+msgstr ""
+
+msgid "Report..."
+msgstr ""
+
+msgid "Print..."
+msgstr "Cetak..."
+
+msgid "E-Mail..."
+msgstr "E-Mail..."
+
+msgid "Bold"
+msgstr "Tulisan Tebal"
+
+msgid "Italic"
+msgstr "Tulisan Miring"
+
+msgid "Underline"
+msgstr "Tulisan Garis Bawah"
+
+msgid "Align Left"
+msgstr "Rata Kiri"
+
+msgid "Align Center"
+msgstr "Rata Tengah"
+
+msgid "Align Right"
+msgstr "Rata Kanan"
+
+msgid "Justify"
+msgstr "Sama Rata"
+
+msgid "Foreground Color"
+msgstr "Warna Latar Depan"
+
+msgid "Select a color"
+msgstr "Pilih satu warna"
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "Preferences..."
+msgstr ""
+
+msgid "Toolbar"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Text and Icons"
+msgstr ""
+
+msgid "Text"
+msgstr "Teks"
+
+msgid "Icons"
+msgstr "Ikon"
+
+msgid "Form"
+msgstr ""
+
+msgid "Save Column Width"
+msgstr ""
+
+msgid "Save Tree State"
+msgstr ""
+
+msgid "Spell Checking"
+msgstr ""
+
+msgid "PDA Mode"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr ""
+
+msgid "Check Version"
+msgstr "Periksa Versi"
+
+msgid "Options"
+msgstr ""
+
+msgid "Keyboard Shortcuts..."
+msgstr ""
+
+msgid "About..."
+msgstr ""
+
+msgid "Help"
+msgstr "Bantuan"
+
+msgid "No result found."
+msgstr ""
+
+msgid "Favorites"
+msgstr ""
+
+msgid "Manage..."
+msgstr ""
+
+msgid "Action"
+msgstr "Tindakan"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Tindakan berikut ini perlu untuk menutup semua tab.\n"
+"Apakah Anda ingin melanjutkan?"
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Preferences"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+msgid "Previous tab"
+msgstr ""
+
+msgid "Next tab"
+msgstr ""
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Quit"
+msgstr "Keluar"
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr ""
+
+msgid "Copy selected text"
+msgstr ""
+
+msgid "Paste copied text"
+msgstr ""
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr ""
+
+msgid "Open/Search relation"
+msgstr ""
+
+msgid "List Entries"
+msgstr ""
+
+msgid "Switch view"
+msgstr ""
+
+msgid "Create/Select new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr ""
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr ""
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr ""
+
+msgid "Move right"
+msgstr ""
+
+msgid "Move left"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up of one page"
+msgstr ""
+
+msgid "Move down of one page"
+msgstr ""
+
+msgid "Move to top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid "Move to parent"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Unselect all"
+msgstr ""
+
+msgid "Select parent"
+msgstr ""
+
+msgid "Select/Activate current row"
+msgstr ""
+
+msgid "Toggle selection"
+msgstr ""
+
+msgid "Expand/Collapse"
+msgstr ""
+
+msgid "Expand row"
+msgstr ""
+
+msgid "Collapse row"
+msgstr ""
+
+msgid "Toggle row"
+msgstr ""
+
+msgid "Collapse all rows"
+msgstr ""
+
+msgid "Expand all rows"
+msgstr ""
+
+msgid "Close Tab"
+msgstr ""
+
+msgid "modularity, scalability and security"
+msgstr ""
+
+msgid "translator-credits"
+msgstr "Ferry"
+
+#, python-format
+msgid "Attachments (%s)"
+msgstr ""
+
+msgid "Profile Editor"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Add new profile"
+msgstr ""
+
+msgid "Remove selected profile"
+msgstr ""
+
+msgid "Host:"
+msgstr ""
+
+msgid "Database:"
+msgstr ""
+
+msgid "Fetching databases list"
+msgstr ""
+
+msgid "Username:"
+msgstr ""
+
+msgid "Incompatible version of the server."
+msgstr ""
+
+msgid "Could not connect to the server."
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "_Cancel"
+msgstr ""
+
+msgid "Cancel connection to the Tryton server"
+msgstr ""
+
+msgid "C_onnect"
+msgstr ""
+
+msgid "Connect the Tryton server"
+msgstr ""
+
+msgid "Profile:"
+msgstr ""
+
+msgid "Host / Database information"
+msgstr ""
+
+msgid "User name:"
+msgstr ""
+
+msgid "Unable to complete email entry"
+msgstr ""
+
+#, python-format
+msgid "E-mail %s"
+msgstr "E-mail %s"
+
+msgid "To:"
+msgstr "Kepada:"
+
+msgid "Cc:"
+msgstr ""
+
+msgid "Bcc:"
+msgstr ""
+
+msgid "Subject:"
+msgstr "Subject:"
+
+msgid "Body"
+msgstr "Body"
+
+#, fuzzy
+msgid "Reports"
+msgstr "Laporan"
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Send"
+msgstr "Kirim"
+
+#, fuzzy
+msgid "Select File"
+msgstr "Pilih"
+
+#, fuzzy
+msgid "Remove File"
+msgstr "Hapus <Del>"
+
+msgid "Add..."
+msgstr ""
+
+#, fuzzy
+msgid "Preview"
+msgstr "Sebelumnya"
+
+msgid "Previous"
+msgstr "Sebelumnya"
+
+msgid "Next"
+msgstr "Berikutnya"
+
+#, python-format
+msgid "Attachment (%s)"
+msgstr "Lampiran (%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+msgid "You have to select one record."
+msgstr ""
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Created by:"
+msgstr "Dibuat oleh:"
+
+msgid "Created at:"
+msgstr "Dibuat pada:"
+
+msgid "Edited by:"
+msgstr "Disunting oleh:"
+
+msgid "Edited at:"
+msgstr "Disunting pada:"
+
+msgid "Model:"
+msgstr ""
+
+msgid "Are you sure to remove this record?"
+msgstr ""
+
+msgid "Are you sure to remove those records?"
+msgstr ""
+
+msgid "Records not removed."
+msgstr ""
+
+msgid "Records removed."
+msgstr ""
+
+msgid "Working now on the duplicated record(s)."
+msgstr ""
+
+msgid "Record saved."
+msgstr ""
+
+msgid " of "
+msgstr ""
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+
+msgid "Launch action"
+msgstr ""
+
+msgid "Relate"
+msgstr ""
+
+msgid "Open related records"
+msgstr ""
+
+msgid "Report"
+msgstr "Laporan"
+
+msgid "Open report"
+msgstr ""
+
+msgid "Print"
+msgstr "Cetak"
+
+msgid "Print report"
+msgstr "Cetak laporan"
+
+msgid "_Copy URL"
+msgstr ""
+
+msgid "Copy URL into clipboard"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Limit"
+msgstr "Batasan"
+
+msgid "Search Limit Settings"
+msgstr ""
+
+msgid "Limit:"
+msgstr ""
+
+#, python-format
+msgid "Notes (%s)"
+msgstr ""
+
+msgid "Edit User Preferences"
+msgstr ""
+
+msgid "Preference"
+msgstr ""
+
+msgid "Revision"
+msgstr "Revisi"
+
+msgid "Select a revision"
+msgstr ""
+
+msgid "Revision:"
+msgstr ""
+
+msgid "_Switch View"
+msgstr ""
+
+msgid "Switch View"
+msgstr ""
+
+msgid "_Previous"
+msgstr ""
+
+msgid "Previous Record"
+msgstr ""
+
+msgid "_Next"
+msgstr ""
+
+msgid "Next Record"
+msgstr ""
+
+msgid "_Search"
+msgstr ""
+
+msgid "_New"
+msgstr ""
+
+msgid "Create a new record"
+msgstr ""
+
+msgid "_Save"
+msgstr ""
+
+msgid "Save this record"
+msgstr ""
+
+msgid "_Reload/Undo"
+msgstr ""
+
+msgid "Reload/Undo"
+msgstr ""
+
+msgid "_Duplicate"
+msgstr ""
+
+msgid "_Delete..."
+msgstr ""
+
+msgid "View _Logs..."
+msgstr ""
+
+msgid "Show revisions..."
+msgstr ""
+
+msgid "A_ttachments..."
+msgstr ""
+
+msgid "Add an attachment to the record"
+msgstr ""
+
+msgid "_Notes..."
+msgstr ""
+
+msgid "Add a note to the record"
+msgstr ""
+
+msgid "_Actions..."
+msgstr ""
+
+msgid "_Relate..."
+msgstr ""
+
+msgid "_Report..."
+msgstr ""
+
+msgid "_Print..."
+msgstr ""
+
+msgid "_E-Mail..."
+msgstr ""
+
+msgid "Send an e-mail using the record"
+msgstr ""
+
+msgid "_Export Data..."
+msgstr ""
+
+msgid "_Import Data..."
+msgstr ""
+
+msgid "Copy _URL..."
+msgstr ""
+
+msgid "_Close Tab"
+msgstr ""
+
+msgid "<b>All fields</b>"
+msgstr ""
+
+msgid "_Add"
+msgstr ""
+
+msgid "_Remove"
+msgstr ""
+
+msgid "_Clear"
+msgstr ""
+
+msgid "<b>Fields selected</b>"
+msgstr ""
+
+msgid "CSV Parameters"
+msgstr ""
+
+msgid "Delimiter:"
+msgstr ""
+
+msgid "Quote char:"
+msgstr ""
+
+msgid "Encoding:"
+msgstr ""
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr ""
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+msgid "_Save Export"
+msgstr ""
+
+msgid "_URL Export"
+msgstr ""
+
+msgid "_Delete Export"
+msgstr ""
+
+msgid "<b>Predefined exports</b>"
+msgstr ""
+
+msgid "Name"
+msgstr "Nama"
+
+msgid "Open"
+msgstr "Buka"
+
+msgid "Listed Records"
+msgstr ""
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "Pilih satu warna"
+
+msgid "Ignore search limit"
+msgstr ""
+
+msgid "Add field names"
+msgstr ""
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (nama model)"
+
+#, python-format
+msgid "%s (record name)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr ""
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#, python-format
+msgid "%d record saved."
+msgstr ""
+
+#, python-format
+msgid "%d records saved."
+msgstr ""
+
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Link"
+msgstr "Tautan"
+
+msgid "Delete"
+msgstr "Hapus"
+
+msgid "New"
+msgstr "Baru"
+
+msgid "Switch"
+msgstr ""
+
+msgid "Add"
+msgstr "Tambahkan"
+
+msgid "Remove <Del>"
+msgstr "Hapus <Del>"
+
+msgid "Create a new record <F3>"
+msgstr ""
+
+msgid "Delete selected record <Del>"
+msgstr ""
+
+msgid "Undelete selected record <Ins>"
+msgstr ""
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+msgid "_Auto-Detect"
+msgstr ""
+
+msgid "File to Import:"
+msgstr ""
+
+msgid "Open..."
+msgstr ""
+
+msgid "Lines to Skip:"
+msgstr ""
+
+msgid "You must select an import file first."
+msgstr ""
+
+msgid "Error opening CSV file"
+msgstr ""
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr ""
+
+#, python-format
+msgid "%d record imported."
+msgstr ""
+
+#, python-format
+msgid "%d records imported."
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+#, python-format
+msgid "Search %s"
+msgstr ""
+
+msgid "Wizard"
+msgstr "Wisaya"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create by"
+msgstr ""
+
+msgid "Created at"
+msgstr "Dibuat pada"
+
+msgid "Edited by"
+msgstr ""
+
+msgid "Edited at"
+msgstr ""
+
+#, python-format
+msgid "Unable to get view tree state for %s"
+msgstr ""
+
+msgid "Unable to set view tree state"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain."
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is required."
+msgstr "\"%s\" diperlukan."
+
+#, python-format
+msgid "The values of \"%s\" are not valid."
+msgstr ""
+
+msgid "Pre-validation"
+msgstr ""
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Ukuran Gambar"
+
+msgid "Width:"
+msgstr ""
+
+msgid "Height:"
+msgstr ""
+
+msgid "PNG image (*.png)"
+msgstr ""
+
+msgid "Save As"
+msgstr "Simpan Sebagai"
+
+msgid "Image size too large."
+msgstr "Ukuran gambar terlalu besar."
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr ""
+
+msgid "Show bookmarks of filters"
+msgstr ""
+
+msgid "Remove this bookmark"
+msgstr ""
+
+msgid "Bookmark this filter"
+msgstr ""
+
+msgid "Show active records"
+msgstr ""
+
+msgid "Show inactive records"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr ""
+
+msgid "Find"
+msgstr ""
+
+msgid "Today"
+msgstr "Hari ini"
+
+msgid "go back"
+msgstr "kembali"
+
+msgid "go forward"
+msgstr "maju"
+
+msgid "previous year"
+msgstr "tahun sebelumnya"
+
+msgid "next year"
+msgstr "tahun berikutnya"
+
+msgid "Day View"
+msgstr ""
+
+msgid "Week View"
+msgstr ""
+
+msgid "Month View"
+msgstr ""
+
+msgid "Week"
+msgstr "Pekan"
+
+msgid "Select..."
+msgstr "Pilih..."
+
+msgid "Clear"
+msgstr "Bersihkan"
+
+msgid "All files"
+msgstr ""
+
+msgid "Show plain text"
+msgstr ""
+
+msgid "Add value"
+msgstr ""
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Add existing record"
+msgstr ""
+
+msgid "Remove selected record"
+msgstr ""
+
+msgid "Open the record <F2>"
+msgstr ""
+
+msgid "Clear the field <Del>"
+msgstr ""
+
+msgid "Search a record <F2>"
+msgstr ""
+
+msgid "Edit selected record"
+msgstr ""
+
+msgid "Delete selected record"
+msgstr ""
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Choose a language"
+msgstr "Pilih bahasa"
+
+msgid "Translation"
+msgstr "Terjemahan"
+
+msgid "Edit"
+msgstr "Sunting"
+
+msgid "Fuzzy"
+msgstr ""
+
+msgid "You need to save the record before adding translations."
+msgstr ""
+
+msgid "No other language available."
+msgstr "Tidak ada bahasa lain yang tersedia."
+
+msgid "Translate view"
+msgstr ""
