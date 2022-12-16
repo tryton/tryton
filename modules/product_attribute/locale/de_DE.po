@@ -1,0 +1,219 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Auswahl"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "Auswahl JSON"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Sortierte Auswahl"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Sätze"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "Zeichenkette"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Eigenschaft"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Eigenschaftssatz"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Eigenschaften"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:product.product,attribute_set:"
+msgid "Set"
+msgstr "Eigenschaftssatz"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Eigenschaften"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Set"
+msgstr "Eigenschaftssatz"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Ein Paar pro Zeile für Schlüssel und Bezeichner getrennt durch \":\" "
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Ob die Auswahl nach Bezeichner sortiert werden soll"
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Eigenschaften"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Eigenschaftssätze"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attributes"
+msgstr "Eigenschaften"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Eigenschaftssätze"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Artikel Eigenschaft"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Artikel Eigenschaft - Satz"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Artikel Eigenschaftssatz"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr "Boole"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "Zeichen"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "Datum mit Zeit"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr "Fließkommazahl"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "Ganzzahl"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "Numerisch"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Auswahl"
+
+msgctxt "view:product.attribute.set:"
+msgid "Attribute Set"
+msgstr "Eigenschaftssatz"
+
+msgctxt "view:product.attribute.set:"
+msgid "Attribute Sets"
+msgstr "Eigenschaftssätze"
+
+msgctxt "view:product.attribute:"
+msgid "Attribute"
+msgstr "Eigenschaft"
+
+msgctxt "view:product.attribute:"
+msgid "Attributes"
+msgstr "Eigenschaften"
