@@ -1,0 +1,24 @@
+type,name,res_id,src,value,fuzzy
+error,company.employee_cost_price,0,A employee can only have one cost price by date!,,0
+field,"company.employee,cost_price",0,Cost Price,Precio de Costo,1
+field,"company.employee_cost_price,cost_price",0,Cost Price,Precio de Costo,1
+field,"company.employee_cost_price,currency_digits",0,Currency Digits,Gestión de Moneda,1
+field,"company.employee_cost_price,date",0,Date,Fecha,1
+field,"company.employee_cost_price,employee",0,Employee,Empleado,1
+field,"company.employee_cost_price,rec_name",0,Name,Nombre de Contacto,1
+field,"company.employee,cost_prices",0,Cost Prices,,0
+field,"company.employee,currency_digits",0,Currency Digits,Gestión de Moneda,1
+field,"project.work,cost",0,Cost,,0
+field,"project.work,currency_digits",0,Currency Digits,Gestión de Moneda,1
+field,"project.work,list_price",0,List Price,Precio de Lista,1
+field,"project.work,product",0,Product,Productos,1
+field,"project.work,revenue",0,Revenue,Ingresos,1
+help,"company.employee,cost_price",0,Hourly cost price for this Employee,,0
+help,"company.employee_cost_price,cost_price",0,Hourly cost price,,0
+help,"company.employee,cost_prices",0,List of hourly cost price over time,,0
+model,"company.employee_cost_price,name",0,Employee Cost Price,,0
+view,company.employee,0,Cost,,0
+view,company.employee,0,Services,Servicios,0
+view,company.employee_cost_price,0,Cost Prices,,0
+view,project.work,0,Cost,,0
+view,project.work,0,Revenue,Ingresos,1
