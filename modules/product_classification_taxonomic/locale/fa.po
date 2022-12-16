@@ -1,0 +1,159 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.cultivar,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+msgctxt "field:product.cultivar,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.cultivar,selectable:"
+msgid "Selectable"
+msgstr "قابل انتخاب"
+
+msgctxt "field:product.cultivar,taxon:"
+msgid "Taxon"
+msgstr "تاکسون"
+
+msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
+msgid "Cultivar"
+msgstr "ارقام"
+
+msgctxt "field:product.cultivar-product.cultivar.group,group:"
+msgid "Group"
+msgstr "گروه"
+
+msgctxt "field:product.cultivar.group,cultivars:"
+msgid "Cultivars"
+msgstr "ارقام"
+
+msgctxt "field:product.cultivar.group,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.taxon,childs:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:product.taxon,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:product.taxon,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:product.taxon,rank:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:product.taxon,selectable:"
+msgid "Selectable"
+msgstr "قابل انتخاب"
+
+msgctxt "model:ir.action,name:act_cultivar_form"
+msgid "Cultivars"
+msgstr "ارقام"
+
+msgctxt "model:ir.action,name:act_cultivar_group_form"
+msgid "Cultivar Groups"
+msgstr "گروه ارقام"
+
+msgctxt "model:ir.action,name:act_taxon_form"
+msgid "Taxons"
+msgstr "تاکسون"
+
+msgctxt "model:ir.action,name:act_taxon_tree"
+msgid "Taxons"
+msgstr "تاکسون ها"
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar"
+msgid "Cultivars"
+msgstr "ارقام"
+
+msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
+msgid "Cultivar Groups"
+msgstr "گروه های ارقام"
+
+msgctxt "model:ir.ui.menu,name:menu_taxon"
+msgid "Taxons"
+msgstr "تاکسون ها"
+
+msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
+msgid "Taxons"
+msgstr "تاکسون ها"
+
+msgctxt "model:product.cultivar,name:"
+msgid "Cultivar"
+msgstr "ارقام"
+
+msgctxt "model:product.cultivar-product.cultivar.group,name:"
+msgid "Cultivar-CultivarGroup"
+msgstr "ارقام - گروه ارقام"
+
+msgctxt "model:product.cultivar.group,name:"
+msgid "Cultivar Group"
+msgstr "گروه ارقام"
+
+msgctxt "model:product.taxon,name:"
+msgid "Taxon"
+msgstr "تاکسون"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Class"
+msgstr "کلاس"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Division"
+msgstr "بخش"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Domain"
+msgstr "دامنه"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Family"
+msgstr "خانواده"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Form"
+msgstr "فرم"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Genus"
+msgstr "جنس"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Kingdom"
+msgstr "پادشاهی"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Order"
+msgstr "سفارش"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Phylum"
+msgstr "شاخه"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Section"
+msgstr "بخش"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Series"
+msgstr "سری ها"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Species"
+msgstr "گونه‌(ها)"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Tribe"
+msgstr "تبار"
+
+msgctxt "selection:product.taxon,rank:"
+msgid "Variety"
+msgstr "تنوع"

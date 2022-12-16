@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr ""
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Baris Faktur"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Perpindahan Persediaan"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Baris Faktur"
+
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Jenis Faktur"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Baris Faktur - Perpindahan Stok"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Persediaan"
