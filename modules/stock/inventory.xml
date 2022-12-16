@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="inventory_view_form">
+            <field name="model">stock.inventory</field>
+            <field name="type">form</field>
+            <field name="name">inventory_form</field>
+        </record>
+        <record model="ir.ui.view" id="inventory_view_tree">
+            <field name="model">stock.inventory</field>
+            <field name="type">tree</field>
+            <field name="name">inventory_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_inventory_form">
+            <field name="name">Inventories</field>
+            <field name="res_model">stock.inventory</field>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_inventory_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="inventory_view_tree"/>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_inventory_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="inventory_view_form"/>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_inventory_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_inventory_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="50"
+            action="act_inventory_form" id="menu_inventory_form"/>
+
+        <record model="ir.ui.view" id="inventory_line_view_form">
+            <field name="model">stock.inventory.line</field>
+            <field name="type">form</field>
+            <field name="name">inventory_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="inventory_line_view_tree">
+            <field name="model">stock.inventory.line</field>
+            <field name="type">tree</field>
+            <field name="name">inventory_line_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_inventory">
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_inventory_group_stock">
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_inventory_line">
+            <field name="model" search="[('model', '=', 'stock.inventory.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_inventory_line_group_stock">
+            <field name="model" search="[('model', '=', 'stock.inventory.line')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="inventory_confirm_button_group_stock">
+            <field name="button" ref="inventory_confirm_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="inventory_cancel_button_group_stock">
+            <field name="button" ref="inventory_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_inventory">
+            <field name="name">Inventory</field>
+            <field name="code">stock.inventory</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_inventory_group_admin">
+            <field name="sequence_type" ref="sequence_type_inventory"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_inventory_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_inventory"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_inventory">
+            <field name="name">Inventory</field>
+            <field name="code">stock.inventory</field>
+        </record>
+
+    </data>
+</tryton>
