@@ -1,0 +1,75 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:"
+msgid "Carrier Cost Method"
+msgstr "Mètode del cost de transportista"
+
+msgctxt "field:carrier,carrier_product:"
+msgid "Carrier Product"
+msgstr "Producte del transportista"
+
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:carrier,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Mètode per processar el cost del transportista."
+
+msgctxt "model:carrier,name:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Transportistes"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier Management"
+msgstr "Transportistes"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Transportistes"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Administració transportistes"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Product Price"
+msgstr "Preu producte"
+
+msgctxt "view:carrier:"
+msgid "Carrier"
+msgstr "Transportistes"
+
+msgctxt "view:carrier:"
+msgid "Carriers"
+msgstr "Transportistes"

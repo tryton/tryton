@@ -1,0 +1,180 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"!"
+msgstr ""
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr ""
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Sjabloon"
+
+#, fuzzy
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Nummer"
+
+#, fuzzy
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "field:stock.lot,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr ""
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr ""
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr ""
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr ""
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr ""
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "view:product.product:"
+msgid "Lots"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr ""
