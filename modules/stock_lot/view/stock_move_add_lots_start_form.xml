@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="product"/>
+    <field name="product" colspan="3"/>
+
+    <label name="quantity"/>
+    <field name="quantity" symbol="unit"/>
+    <label name="quantity_remaining" string="Remaining:"/>
+    <field name="quantity_remaining" symbol="unit"/>
+
+    <field name="lots" colspan="4"/>
+
+    <group col="-1" colspan="2" id="duplicate_lot">
+        <button name="duplicate_lot" icon="tryton-copy"/>
+        <field name="duplicate_lot_number" xexpand="0"/>
+        <label name="duplicate_lot_number" string="times"/>
+    </group>
+</form>
