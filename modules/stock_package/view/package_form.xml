@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="type"/>
+    <field name="type" widget="selection"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="shipment"/>
+    <field name="shipment"/>
+    <notebook colspan="4">
+        <page name="moves">
+            <field name="moves" colspan="4" widget="many2many"/>
+        </page>
+        <page name="children">
+            <field name="children" colspan="4"/>
+        </page>
+        <page string="Measurements" col="3" id="measurements">
+            <label name="packaging_length"/>
+            <field name="packaging_length"/>
+            <field name="packaging_length_uom" widget="selection"/>
+
+            <label name="packaging_height"/>
+            <field name="packaging_height"/>
+            <field name="packaging_height_uom" widget="selection"/>
+
+            <label name="packaging_width"/>
+            <field name="packaging_width"/>
+            <field name="packaging_width_uom" widget="selection"/>
+
+            <label name="packaging_volume"/>
+            <field name="packaging_volume"/>
+            <field name="packaging_volume_uom" widget="selection"/>
+
+            <label name="packaging_weight"/>
+            <field name="packaging_weight"/>
+            <field name="packaging_weight_uom"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+</form>

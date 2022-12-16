@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="point"/>
+    <field name="point"/>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="date"/>
+    <field name="date"/>
+    <notebook colspan="4">
+        <page string="Sale" id="sale">
+            <field name="lines" colspan="4"/>
+            <group col="2" colspan="2" id="states" yfill="1" yalign="1">
+                <label name="state"/>
+                <field name="state"/>
+            </group>
+            <group col="2" colspan="2" id="amounts" yfill="1">
+                <label name="total_tax" xalign="1.0" xexpand="1"/>
+                <field name="total_tax" xalign="1.0" xexpand="0"/>
+                <label name="total" xalign="1.0" xexpand="1"/>
+                <field name="total" xalign="1.0" xexpand="0"/>
+                <label name="amount_to_pay" xalign="1.0" xexpand="1"/>
+                <field name="amount_to_pay" xalign="1.0" xexpand="0"/>
+            </group>
+        </page>
+        <page string="Payments" id="payments">
+            <field name="payments" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="employee"/>
+            <field name="employee"/>
+            <label name="move"/>
+            <field name="move"/>
+        </page>
+    </notebook>
+    <label id="empty" colspan="2"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="open" icon="tryton-back"/>
+        <button name="pay" icon="tryton-forward"/>
+        <button name="process" icon="tryton-forward"/>
+        <button name="post" icon="tryton-ok"/>
+    </group>
+</form>
