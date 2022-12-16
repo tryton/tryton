@@ -1,0 +1,70 @@
+Version 6.4.2 - 2022-11-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.1 - 2022-06-03
+* Bug fixes (see mercurial logs for details)
+
+Version 6.4.0 - 2022-05-02
+* Bug fixes (see mercurial logs for details)
+* Prevent to select reconciled payment or group on draft statement line
+* Reconcile payment clearing line with all statement lines
+* Use reference field for statement line relation
+* Add support for Python 3.10
+* Remove support for Python 3.6
+
+Version 6.2.0 - 2021-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 6.0.0 - 2021-05-03
+* Bug fixes (see mercurial logs for details)
+
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 3.5
+
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
+* Use the date of the statement line as date for the clearing move
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+* Relax Account domain on Payment
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add support for payment and payment_group on Statement Rule
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Add cron task to post clearing move after journal delay
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Allow to use account instead of line for clearing
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Allow to set the date of the clearing move
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Mark Payment as succeded or failed when imported in statement
+* Allow to link statement line to group of payments
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Initial release

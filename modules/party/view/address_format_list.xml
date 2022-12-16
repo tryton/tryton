@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="country_code"/>
+    <field name="language_code"/>
+</tree>

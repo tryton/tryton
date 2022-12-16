@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="budget_context_view_form">
+            <field name="model">analytic_account.budget.context</field>
+            <field name="type">form</field>
+            <field name="name">budget_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_view_form">
+            <field name="model">analytic_account.budget</field>
+            <field name="type">form</field>
+            <field name="name">budget_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_view_list">
+            <field name="model">analytic_account.budget</field>
+            <field name="type">tree</field>
+            <field name="name">budget_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_budget_form">
+            <field name="name">Analytic Budgets</field>
+            <field name="res_model">analytic_account.budget</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="budget_view_list"/>
+            <field name="act_window" ref="act_budget_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="budget_view_form"/>
+            <field name="act_window" ref="act_budget_form"/>
+        </record>
+        <menuitem
+            parent="account_budget.menu_budget"
+            action="act_budget_form"
+            sequence="10"
+            id="menu_budget_form"/>
+
+        <record model="ir.model.button" id="budget_update_lines_button">
+            <field name="name">update_lines</field>
+            <field name="string">Update Lines</field>
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+        </record>
+
+        <record model="ir.model.button" id="budget_copy_button">
+            <field name="name">copy_button</field>
+            <field name="string">Copy</field>
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_budget">
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_budget_account">
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_budget_budget">
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="group" ref="account_budget.group_budget"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_budget_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'analytic_account.budget')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_budget_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_budget_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="budget_line_view_form">
+            <field name="model">analytic_account.budget.line</field>
+            <field name="type">form</field>
+            <field name="name">budget_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_line_view_list">
+            <field name="model">analytic_account.budget.line</field>
+            <field name="type">tree</field>
+            <field name="name">budget_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_line_view_tree">
+            <field name="model">analytic_account.budget.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">budget_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_line_view_form_amount">
+            <field name="model">analytic_account.budget.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">budget_line_form_amount</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_line_view_tree_amount">
+            <field name="model">analytic_account.budget.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">budget_line_tree_amount</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_budget_line_form">
+            <field name="name">Budget Lines</field>
+            <field name="res_model">analytic_account.budget.line</field>
+            <field name="domain" eval="[('budget', '=', Eval('active_id')), ('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_line_form_view1">
+            <field name="view" ref="budget_line_view_tree"/>
+            <field name="sequence" eval="10"/>
+            <field name="act_window" ref="act_budget_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_line_form_view2">
+            <field name="view" ref="budget_line_view_form"/>
+            <field name="sequence" eval="20"/>
+            <field name="act_window" ref="act_budget_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_open_budget_line_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">analytic_account.budget,-1</field>
+            <field name="action" ref="act_budget_line_form"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_budget_report">
+            <field name="name">Analytic Budgets</field>
+            <field name="res_model">analytic_account.budget.line</field>
+            <field name="context_model">analytic_account.budget.context</field>
+            <field name="context_domain" eval="[('budget', '=', Eval('budget', -1))]" pyson="1"/>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_report_view1">
+            <field name="view" ref="budget_line_view_tree_amount"/>
+            <field name="sequence" eval="10"/>
+            <field name="act_window" ref="act_budget_report"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_report_view2">
+            <field name="view" ref="budget_line_view_form_amount"/>
+            <field name="sequence" eval="20"/>
+            <field name="act_window" ref="act_budget_report"/>
+        </record>
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_budget_report"
+            sequence="30"
+            id="menu_budget_report"/>
+
+        <record model="ir.action.wizard" id="wizard_budget_copy">
+            <field name="wiz_name">analytic_account.budget.copy</field>
+            <field name="name">Copy Budget</field>
+        </record>
+
+        <record model="ir.ui.view" id="budget_copy_start_view_form">
+            <field name="model">analytic_account.budget.copy.start</field>
+            <field name="type">form</field>
+            <field name="name">budget_copy_start_form</field>
+        </record>
+    </data>
+</tryton>

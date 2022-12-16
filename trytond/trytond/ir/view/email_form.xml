@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="user"/>
+    <field name="user"/>
+    <label name="at"/>
+    <field name="at"/>
+    <label name="recipients"/>
+    <field name="recipients" colspan="3"/>
+    <label name="recipients_secondary"/>
+    <field name="recipients_secondary" colspan="3"/>
+    <label name="recipients_hidden"/>
+    <field name="recipients_hidden" colspan="3"/>
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
+    <separator name="body" colspan="4"/>
+    <field name="body" colspan="4" widget="richtext" toolbar="0"/>
+</form>
