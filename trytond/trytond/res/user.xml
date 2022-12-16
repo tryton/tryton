@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data noupdate="1">
+        <record model="res.user" id="user_admin">
+            <field name="login">admin</field>
+            <field name="name">Administrator</field>
+            <field name="menu" ref="ir.act_menu_tree"/>
+        </record>
+    </data>
+    <data>
+        <record model="res.user-res.group" id="user_admin_group_admin">
+            <field name="user" ref="user_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="name">user_form</field>
+        </record>
+        <record model="ir.ui.view" id="user_view_form_preferences">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">user_form_preferences</field>
+        </record>
+        <record model="ir.ui.view" id="user_view_tree">
+            <field name="model">res.user</field>
+            <field name="type">tree</field>
+            <field name="name">user_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_user_form">
+            <field name="name">Users</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">res.user</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_user_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="user_view_tree"/>
+            <field name="act_window" ref="act_user_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_user_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="user_view_form"/>
+            <field name="act_window" ref="act_user_form"/>
+        </record>
+        <menuitem parent="res.menu_res"
+            action="act_user_form" id="menu_user_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_user_form_group_admin">
+            <field name="menu" ref="menu_user_form"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_user">
+            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_user_admin">
+            <field name="model" search="[('model', '=', 'res.user')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="user_reset_password_button">
+            <field name="name">reset_password</field>
+            <field name="string">Reset Password</field>
+            <field name="help">Send by email a new temporary password to the user</field>
+            <field name="model"
+                search="[('model', '=', 'res.user')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="user_config_start_view_form">
+            <field name="model">res.user.config.start</field>
+            <field name="type">form</field>
+            <field name="name">user_config_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_user_config">
+            <field name="name">Configure Users</field>
+            <field name="wiz_name">res.user.config</field>
+            <field name="window" eval="True"/>
+        </record>
+
+        <record model="ir.module.config_wizard.item"
+            id="config_wizard_item_user">
+            <field name="action" ref="act_user_config"/>
+        </record>
+
+        <record model="ir.ui.view" id="user_warning_view_form">
+            <field name="model">res.user.warning</field>
+            <field name="type">form</field>
+            <field name="name">user_warning_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="user_warning_view_tree">
+            <field name="model">res.user.warning</field>
+            <field name="type">tree</field>
+            <field name="name">user_warning_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_warning">
+            <field name="name">Own warning</field>
+            <field name="model" search="[('model', '=', 'res.user.warning')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_user_warning1">
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_warning"/>
+        </record>
+
+        <record model="ir.ui.view" id="user_application_view_form">
+            <field name="model">res.user.application</field>
+            <field name="type">form</field>
+            <field name="name">user_application_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="user_application_view_list">
+            <field name="model">res.user.application</field>
+            <field name="type">tree</field>
+            <field name="name">user_application_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_application">
+            <field name="name">Own user application</field>
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_user_application1">
+            <field name="domain"
+                eval="[('user', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_application"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_user_application_admin">
+            <field name="name">Any user application</field>
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_user_application_admin1">
+            <field name="domain" eval="[]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_application_admin"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_user_application_admin_admin">
+            <field name="rule_group" ref="rule_group_user_application_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.action.report" id="report_email_reset_password">
+            <field name="name">Reset Password</field>
+            <field name="model">res.user</field>
+            <field name="report_name">res.user.email_reset_password</field>
+            <field name="report">res/email_reset_password.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.model.button" id="user_application_validate_button">
+            <field name="name">validate_</field>
+            <field name="string">Validate</field>
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+        </record>
+        <record model="ir.model.button" id="user_application_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'res.user.application')]"/>
+        </record>
+    </data>
+</tryton>
