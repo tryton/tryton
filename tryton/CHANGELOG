@@ -1,0 +1,246 @@
+Version 3.0.17 - 2016-07-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.16 - 2016-03-14
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.15 - 2016-02-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.14 - 2016-01-11
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.13 - 2015-11-09
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.12 - 2015-09-08
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.11 - 2015-05-19
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.10 - 2015-03-30
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.9 - 2015-02-16
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.8 - 2014-11-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.7 - 2014-09-29
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.6 - 2014-08-03
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.5 - 2014-07-02
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.4 - 2014-05-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.3 - 2014-04-07
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.2 - 2013-12-04
+* Bug fixes (see mercurial logs for details)
+
+Version 3.0.1 - 2013-11-03
+* Bug fixes (see mercurial logs for details)
+* Sanitize report file extension
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Add factor on number widgets
+* Add calendar view
+* Add URL entry
+* Remove request
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Manage dynamic label
+* Manage prefix, suffix on tree view
+* Manage selection_change_with on Selection and Reference fields
+* Add Dict fields on form
+* Remove Goto
+* Add global search
+* Add toggle button for menu
+* Replace shortcuts by menu favorites
+* Move Plugins into toolbar Actions
+* Add url to list view
+* Add dynamic icon for url
+* Add completion on Many2One, Many2Many and One2Many
+* Add bookmark on search widget
+* Manage domains on Action Window
+* Use range for Date/Time fields in filter box
+* Allow multi-selection for Selection field in filter box
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+* Allow to paste in editable list view
+* Manage readonly state on group
+* Remove "Please wait" box
+* Refactorize date widgets
+* Manage tuple on Reference
+* Add constant interpolation on line graph
+* Make Import/Export Data no-modal
+* Deactivate switch view button when there is only 1 view
+* Manage create/delete field access
+* Add dynamic size limit on the One2Many, Many2Many and Char
+* Search only on fields in XML view
+* Cache action keyword
+* Always use cached views
+* Manage model access
+* Manage time format
+* Deactivate attachment button when record is not created
+
+Version 2.4.0 - 2012-04-23
+* Bug fixes (see mercurial logs for details)
+* Remove workflow
+* Improve contextual menu:
+    - Actions for all relation fields on list view
+    - Use icons
+    - Add attachments entry
+* Use RPCProgress almost everywhere
+* Add a simple search box
+* New domain parser using shlex
+* Better translation dialog box
+* Add the richtext widget for WYSIWYG Editor on text fields
+* Add a record pool to prefetch more records
+* Add Time widget
+* Add support for fuzzy_translation
+* Activate save button on editing
+* Refactor set/get and set/get_client of fields
+* Display binary size alongside the buttons in treeview
+* Set correctly the focus on tab switching
+* Add shortcut to focus search entry
+* Add binary field to tree views
+* Improve board view:
+    - use the same search widget as form
+    - link double click to open popup
+
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
+* New search widget
+* Improve memory management of Binary fields
+* Support buffer for Binary fields
+* Remove delete on Escape in editable tree
+* Use JSON-RPC
+* Limit size of field when possible
+* Add xalign and yalign as fields attributes
+* Convert many popup to be no-modal
+* Add window manager for:
+    - replace current window
+    - prevent simmilar window
+* Merge and review toolbars in form and board
+* Drop support of Python 2.5
+* Use the same design for Many2Many than One2Many
+* Allow resize columns smaller than the header
+
+Version 2.0.0 - 2011-04-26
+* Bug fixes (see mercurial logs for details)
+* Popup form dialog has 3 buttons (close, ok, new)
+* New UI layout
+* Add DnD on tree view
+* Merge tree and list views
+* Remove generic default value on right-click
+* Made numpad locale aware
+* Selection widget used for many2one dynamically change their content following
+  the domain specification
+* Add open button on binary and image widgets
+* Hide buttons on image widget if readonly
+* Added a connection manager à la gajim
+* Fix warning in wizards
+* Added possibility to use server-side icons
+* Added additional gtk.Entry for filename on BinaryField
+* Display deleted lines in One2Many and Many2Many
+* Handle URL
+* Add communication between boards
+* Added domain inversion feature
+* Handle loading attribute on fields
+* Use default format for value in wizard form
+* Add One2One field
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+* More fully integrate GTK menubar for Mac OS
+* Allow to configure search limit
+* Add Previous/Next on list view
+* Set non-applicable form controls in one2many view to be insensitive
+
+Version 1.6.0 - 2010-05-08
+* Bug fixes (see mercurial logs for details)
+* Don't stop wizard execution when exception occurs
+* Use ir.attachment view instead of a custom one
+* Add fingerprint and CA check for SSL connection
+* Use lazy load in Import/Export windows
+* Validate record before switching view
+* Refactoring:
+    * Better naming in model
+    * Group extends list
+    * Add an index to Group
+    * New common windows for dialog of many2one, one2many and many2many
+    * one2many and many2many dialog use the same screen than the widget
+    * Reduce the number of option in Screen
+    * Remove RPCProxy to handle logout exception on every server call
+    * Better naming of event signals
+    * Fix on_change detection for many2many for issue1400
+* Add PySON to replace python string evaluation
+* Don't show "Spell Checking" option if gtkspell is not present
+* Use the same internal model for many2many and one2many fields
+* Remove egenix-mx-base and replace it by python-dateutil
+* Add cache to safe_eval
+* Use versioned configuration directory
+* Next and Previous scroll per page on list and don't loop
+* Add AccelGroup on search windows (CTRL+Return)
+* Use same keyboard shortcut for xxx2many than for other fields
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Handle datetime_field in xxx2Many
+* Add new safe_eval
+* Ask previous password for set_preferences on password change
+* Add "Statusbar" option
+* Add default filename for database backup
+* Add checkbox on restore to update database
+* Add 'login.host' options to hide server connection
+* Handle required attribute with local domains
+* Allow to run wizard in tabs
+* Remove statusbar on form for more space
+* Add "Change Accelerators" option
+* Use gzip in pysocket
+* Use the report name to create the temporary file to open it
+* Allow to store wizard size
+* Add reset default on fields
+* Store in config default width and height of main window
+* Added arrow navigation if supported by gtk
+* Add 'starts with' and 'ends with' on char search
+* Handle domain with '=' or '!=' as operator on selection
+* Extend fields domain with local domains
+* Improve float time widget to handle year, month, week and day
+  and handle float_time attribute for contextual time convertion
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Make graph works also with datetime
+* Add edition on Many2Many
+* Fix open in csv export to use file actions
+* Update client labels at language change
+* Handle datetime_field in Many2One
+* Set readonly on records with _datetime in the context
+* Display values of reference fields even if there is no model
+* Allow to directly print or create email with reports
+* Handle invisible states on list view
+* Add user warnings
+* Add Model in logs
+* Allow to duplicate many records at once
+* Improve netrpc communication speed
+* Improve date widget to display mask only when having focus
+* Fix for host with IPv6 enable but without default IPv6 route
+* Add desktop entry
+* Add win32 single executable
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
