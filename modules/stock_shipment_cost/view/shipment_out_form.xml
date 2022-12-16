@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='warehouse']" position="after">
+        <label name="carrier"/>
+        <field name="carrier"/>
+    </xpath>
+    <xpath expr="//page[@id='other']" position="before">
+        <page id="costs" string="Costs">
+            <label name="cost_used"/>
+            <group id="cost_used" col="-1" colspan="3">
+                <field name="cost_used" xexpand="0"/>
+                <field name="cost_currency_used"/>
+                <field name="cost_edit" xexpand="0" xalign="0"/>
+            </group>
+        </page>
+    </xpath>
+</data>
