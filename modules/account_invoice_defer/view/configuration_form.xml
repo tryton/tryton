@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator id="deferred" string="Deferred" colspan="4"/>
+        <label name="deferred_account_revenue"/>
+        <field name="deferred_account_revenue"/>
+        <label name="deferred_account_expense"/>
+        <field name="deferred_account_expense"/>
+    </xpath>
+</data>

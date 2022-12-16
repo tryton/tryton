@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree editable="1" sequence="sequence">
+    <field name="statement" expand="1"/>
+    <field name="number"/>
+    <field name="date"/>
+    <field name="amount" sum="Amount"/>
+    <field name="party" expand="1"/>
+    <field name="related_to" expand="1"/>
+    <field name="account" expand="1"/>
+    <field name="description" expand="1"/>
+</tree>
