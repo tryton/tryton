@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr "LdMs"
+
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr "Etapes"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr "LdM"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operació"
+
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Operació"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Operacions"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "Rutes"
+
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Operacions"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "Rutes"
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "Ruta"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr "Ruta - LdM"
+
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operació"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr "Ruta"
