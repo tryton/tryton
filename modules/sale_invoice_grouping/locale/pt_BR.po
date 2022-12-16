@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método de Agrupamento de Fatura de Venda"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "None"
+msgstr "Nenhum"
+
+msgctxt "selection:party.party,sale_invoice_grouping_method:"
+msgid "Standard"
+msgstr "Padrão"
+
+msgctxt "view:party.party:"
+msgid "Invoicing"
+msgstr "Faturamento"
