@@ -1,0 +1,1290 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_exception_state:"
+msgid "Exception State"
+msgstr "Uitzonderingstoestand"
+
+msgctxt "field:account.invoice,sales:"
+msgid "Sales"
+msgstr "verkoop"
+
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr "Doorlooptijd"
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Verkoopbaar"
+
+msgctxt "field:product.product,sale_price_uom:"
+msgid "Sale Price"
+msgstr "Verkoopprijs"
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "Maateenheid verkoop"
+
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "Magazijnen"
+
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "Verkoopsdatum"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr "Einddatum voorraad"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr "Doorlooptijd"
+
+msgctxt "field:product.template,salable:"
+msgid "Salable"
+msgstr "Verkoopbaar"
+
+msgctxt "field:product.template,sale_uom:"
+msgid "Sale UOM"
+msgstr "Maateenheid verkoop"
+
+msgctxt "field:sale.configuration,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Verkoopfactuurmethode"
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
+msgstr "Procesverkoop na"
+
+msgctxt "field:sale.configuration,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Verkoopvolgorde"
+
+msgctxt "field:sale.configuration,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Verkoop Verzendmethode"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Verkoopfactuurmethode"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Verkoop Verzendmethode"
+
+msgctxt "field:sale.configuration.sequence,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.configuration.sequence,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Verkoopvolgorde"
+
+msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "Domein facturen"
+
+msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "Facturen opnieuw aanmaken"
+
+msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "Domein boekingen"
+
+msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "Boekingen opnieuw aanmaken"
+
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Werkelijke hoeveelheid"
+
+msgctxt "field:sale.line,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.line,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:sale.line,from_location:"
+msgid "From Location"
+msgstr "Van locatie"
+
+msgctxt "field:sale.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Factuurregels"
+
+msgctxt "field:sale.line,move_done:"
+msgid "Moves Done"
+msgstr "Boekingen klaar"
+
+msgctxt "field:sale.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Boekingen uitzondering"
+
+msgctxt "field:sale.line,moves:"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "field:sale.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Genegeerde boekingen"
+
+msgctxt "field:sale.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Opnieuw aangemaakte boekingen"
+
+msgctxt "field:sale.line,note:"
+msgid "Note"
+msgstr "Aantekening"
+
+msgctxt "field:sale.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categorie eenheidsmaten (Catégorie d'unité de mesure)"
+
+msgctxt "field:sale.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.line,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr "Verkoop status"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr "Verzendingsdatum"
+
+msgctxt "field:sale.line,taxes:"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "field:sale.line,to_location:"
+msgid "To Location"
+msgstr "Naar locatie"
+
+msgctxt "field:sale.line,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:sale.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.line,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:sale.line-account.tax,line:"
+msgid "Sale Line"
+msgstr "Offerteregel"
+
+msgctxt "field:sale.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:sale.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Boeking"
+
+msgctxt "field:sale.line-ignored-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Offerteregel"
+
+msgctxt "field:sale.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Boeking"
+
+msgctxt "field:sale.line-recreated-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Offerteregel"
+
+msgctxt "field:sale.reporting.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:sale.reporting.category,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:sale.reporting.category.time_series,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:sale.reporting.category.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.reporting.category.tree,children:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:sale.reporting.category.tree,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:sale.reporting.category.tree,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:sale.reporting.category.tree,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:sale.reporting.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Omzet"
+
+msgctxt "field:sale.reporting.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:sale.reporting.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:sale.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Einddatum"
+
+msgctxt "field:sale.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:sale.reporting.country,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:sale.reporting.country,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:sale.reporting.country.subdivision,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:sale.reporting.country.subdivision,subdivision:"
+msgid "Subdivision"
+msgstr "Onderverdeling"
+
+msgctxt "field:sale.reporting.country.subdivision,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
+msgid "Subdivision"
+msgstr "Onderverdeling"
+
+msgctxt "field:sale.reporting.country.time_series,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:sale.reporting.country.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.reporting.customer,customer:"
+msgid "Customer"
+msgstr "Klanten"
+
+msgctxt "field:sale.reporting.customer,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:sale.reporting.customer.time_series,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.reporting.product,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.reporting.product,time_series:"
+msgid "Time Series"
+msgstr "Tijdreeksen"
+
+msgctxt "field:sale.reporting.product.time_series,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.reporting.region,children:"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:sale.reporting.region,parent:"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:sale.reporting.region,region:"
+msgid "Region"
+msgstr "Regio"
+
+msgctxt "field:sale.sale,comment:"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "field:sale.sale,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Bevestigd door"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr "Contact"
+
+msgctxt "field:sale.sale,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.sale,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:sale.sale,description:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:sale.sale,invoice_address:"
+msgid "Invoice Address"
+msgstr "Factuuradres"
+
+msgctxt "field:sale.sale,invoice_method:"
+msgid "Invoice Method"
+msgstr "Factuur afhandeling"
+
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "Factuur relatie (Invoice Party)"
+
+msgctxt "field:sale.sale,invoice_state:"
+msgid "Invoice State"
+msgstr "Factuur status"
+
+msgctxt "field:sale.sale,invoices:"
+msgid "Invoices"
+msgstr "Facturen"
+
+msgctxt "field:sale.sale,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Genegeerde facturen"
+
+msgctxt "field:sale.sale,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Opnieuw aangemaakte facturen"
+
+msgctxt "field:sale.sale,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.sale,moves:"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:sale.sale,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:sale.sale,party_lang:"
+msgid "Party Language"
+msgstr "Taal relatie"
+
+msgctxt "field:sale.sale,payment_term:"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Offerte gemaakt door"
+
+msgctxt "field:sale.sale,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:sale.sale,sale_date:"
+msgid "Sale Date"
+msgstr "Verkoopdatum"
+
+msgctxt "field:sale.sale,shipment_address:"
+msgid "Shipment Address"
+msgstr "Afleveradres"
+
+msgctxt "field:sale.sale,shipment_method:"
+msgid "Shipment Method"
+msgstr "Levering afhandeling"
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "courierdienst (shipment paty)"
+
+msgctxt "field:sale.sale,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Retourzendingen"
+
+msgctxt "field:sale.sale,shipment_state:"
+msgid "Shipment State"
+msgstr "Levering status"
+
+msgctxt "field:sale.sale,shipments:"
+msgid "Shipments"
+msgstr "Leveringen"
+
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "Verzendingsdatum"
+
+msgctxt "field:sale.sale,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.sale,tax_amount:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:sale.sale,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Belastingcache"
+
+msgctxt "field:sale.sale,total_amount:"
+msgid "Total"
+msgstr "Totaal"
+
+msgctxt "field:sale.sale,total_amount_cache:"
+msgid "Total Tax"
+msgstr "Totaal belastingen"
+
+msgctxt "field:sale.sale,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Onbelast"
+
+msgctxt "field:sale.sale,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "onbelaste contanten"
+
+msgctxt "field:sale.sale,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "field:sale.sale-ignored-account.invoice,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "field:sale.sale-recreated-account.invoice,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:stock.move,sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "field:stock.move,sale_exception_state:"
+msgid "Exception State"
+msgstr "Uitzonderingstoestand"
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
+msgstr ""
+"De respijtperiode waarin bevestigde aankoop nog steeds kan worden gereset naar concept.\n"
+"Alleen toegepast als een wachtrij voor werknemers is geactiveerd."
+
+msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+"De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
+"genegeerd."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr "Wanneer de verzending van goederen zou moet beginnen."
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Facturen"
+
+msgctxt "model:ir.action,name:act_open_customer"
+msgid "Parties associated to Sales"
+msgstr "Relaties gekoppeld aan de verkoop"
+
+msgctxt "model:ir.action,name:act_product"
+msgid "Salable Products"
+msgstr "Verkoopbare producten"
+
+msgctxt "model:ir.action,name:act_reporting_category"
+msgid "Sales per Category"
+msgstr "Verkoop per categorie"
+
+msgctxt "model:ir.action,name:act_reporting_category_time_series"
+msgid "Sales per Category"
+msgstr "Verkoop per categorie"
+
+msgctxt "model:ir.action,name:act_reporting_category_tree"
+msgid "Sales per Category"
+msgstr "Verkoop per categorie"
+
+msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
+msgid "Sales per Subdivision"
+msgstr "Verkoop per subdivisie"
+
+msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Verkoop per land"
+
+msgctxt "model:ir.action,name:act_reporting_customer"
+msgid "Sales per Customer"
+msgstr "Verkoop per klant"
+
+msgctxt "model:ir.action,name:act_reporting_customer_time_series"
+msgid "Sales per Customer"
+msgstr "Verkoop per klant"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Sales per Product"
+msgstr "Verkoop per product"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Sales per Product"
+msgstr "Verkoop per product"
+
+msgctxt "model:ir.action,name:act_reporting_region"
+msgid "Sales per Region"
+msgstr "Verkoop per regio"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "Retours"
+
+msgctxt "model:ir.action,name:act_sale_configuration_form"
+msgid "Sales Configuration"
+msgstr "Verkoops instellingen"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "Leveringen"
+
+msgctxt "model:ir.action,name:report_sale"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "Uitzondering factuur afhandeling"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Wijzig koptekst"
+
+msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgid "Open Region"
+msgstr "Open Region"
+
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Return Sale"
+msgstr "Terug te nemen (retour)"
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "uitzondering verzendings afhandeling"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Bevestigd"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Uitzondering"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr "Verwerking"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending sales with "
+"company \"%(company)s\"."
+msgstr ""
+"U kunt de relatie \"% (party) s\" niet verwijderen terwijl ze facturen in "
+"behandeling hebben bij bedrijf \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_customer_location_required"
+msgid ""
+"To process sale \"%(sale)s\" you must set a customer location on party "
+"\"%(party)s\"."
+msgstr ""
+"Om verkoop \"%(sale)s\" te verwerken, moet u een klantlocatie instellen op "
+"relatie\"% \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_delete_cancel"
+msgid "To delete sale \"%(sale)s\" you must cancel it."
+msgstr "Om de verkoop \"%(sale)s\" te verwijderen, moet u deze annuleren."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and shipment "
+"\"%(shipment_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+"U kunt factuur \"%(invoice_method)s\" en zending \"%(invoice_method)s\" op "
+"de verkoop \"%(sale)s\" niet samen gebruiken."
+
+msgctxt ""
+"model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
+msgstr ""
+"Om een offerte voor verkoop \"%(sale)s\" te krijgen, moet u een factuuradres"
+" invoeren."
+
+msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a sale."
+msgstr ""
+"U kunt de factuur \"%(invoice)s\" niet opnieuw instellen omdat ze is "
+"gegenereerd door een verkoop."
+
+msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft sale "
+"\"%(sale)s\"."
+msgstr ""
+"Om lijn \"%(line)s\" te verwijderen, moet u deze annuleren of terug zetten "
+"naar concept verkoop \"%(sale)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
+msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
+msgstr ""
+"Om verkoop \"%(sale)s\"\" te factureren, moet u een "
+"standaardopbrengstrekening configureren."
+
+msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
+msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
+msgstr ""
+"Om de hoofding van de verkoop \"%(sale)s\" te wijzigen, moet deze in de "
+"\"ontwerp\" -modus staan."
+
+msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale."
+msgstr ""
+"U kunt boeking \"%(move)s\" niet terug zetten naar concept omdat deze is "
+"gegenereerd door een verkoop."
+
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
+msgid ""
+"To invoice sale \"%(sale)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Om de factuur voor de verkoop \"%(sale)s\" te genereren, moet u eerst een "
+"omzetaccount configureren voor het artikel \"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr "Aantal verkopen"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "Omzet"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "Inkomsten trend"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
+msgstr ""
+"Om een offerte voor verkoop \"%(sale)s\" te krijgen, moet u een verzendadres"
+" invoeren."
+
+msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgstr ""
+"Om een offerte voor verkoop \"%(sale)s\" te krijgen, moet u een magazijn "
+"invoeren."
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "model:ir.model.button,string:sale_confirm_button"
+msgid "Confirm"
+msgstr "Bevestigen"
+
+msgctxt "model:ir.model.button,string:sale_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Uitzondering factuur afhandeling"
+
+msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "uitzondering verzendings afhandeling"
+
+msgctxt "model:ir.model.button,string:sale_modify_header_button"
+msgid "Modify Header"
+msgstr "Wijzig koptekst"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:sale_quote_button"
+msgid "Quote"
+msgstr "offerte"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.sequence,name:sequence_sale"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_customer"
+msgid "Parties associated to Sales"
+msgstr "Relaties gekoppeld aan verkoop"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Salable Products"
+msgstr "Verkoopbare producten"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapporten"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr "Verkoop"
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr "Verkopen"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Sales Configuration"
+msgstr "Verkoops instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr "Verkopen"
+
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr "Productverkoopcontext"
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr "Verkopen"
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr "Verkoop beheerder"
+
+msgctxt "model:sale.configuration,name:"
+msgid "Sale Configuration"
+msgstr "Verkoop instellingen"
+
+msgctxt "model:sale.configuration.sale_method,name:"
+msgid "Sale Configuration Sale Method"
+msgstr "Verkoopconfiguratie verkoopmethode"
+
+msgctxt "model:sale.configuration.sequence,name:"
+msgid "Sale Configuration Sequence"
+msgstr "Volgorde verkoopconfiguratie"
+
+msgctxt "model:sale.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "Factuur uitzondering vragen"
+
+msgctxt "model:sale.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "Afleveren uitzondering vragen"
+
+msgctxt "model:sale.line,name:"
+msgid "Sale Line"
+msgstr "Offerteregel"
+
+msgctxt "model:sale.line-account.tax,name:"
+msgid "Sale Line - Tax"
+msgstr "Offerteregel - belasting"
+
+msgctxt "model:sale.line-ignored-stock.move,name:"
+msgid "Sale Line - Ignored Move"
+msgstr "Offerteregel - genegeerde boeking"
+
+msgctxt "model:sale.line-recreated-stock.move,name:"
+msgid "Sale Line - Recreated Move"
+msgstr "Offerteregel - boeking opnieuw aanmaken"
+
+msgctxt "model:sale.reporting.category,name:"
+msgid "Sale Reporting per Category"
+msgstr "Verkooprapportage per categorie"
+
+msgctxt "model:sale.reporting.category.time_series,name:"
+msgid "Sale Reporting per Category"
+msgstr "Verkooprapportage per categorie"
+
+msgctxt "model:sale.reporting.category.tree,name:"
+msgid "Sale Reporting per Category"
+msgstr "Verkooprapportage per categorie"
+
+msgctxt "model:sale.reporting.context,name:"
+msgid "Sale Reporting Context"
+msgstr "Verkooprapportagecontext"
+
+msgctxt "model:sale.reporting.country,name:"
+msgid "Sale Reporting per Country"
+msgstr "Verkooprapportage per land"
+
+msgctxt "model:sale.reporting.country.subdivision,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Verkooprapportage per subdivisie"
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Verkooprapportage per subdivisie"
+
+msgctxt "model:sale.reporting.country.time_series,name:"
+msgid "Sale Reporting per Country"
+msgstr "Verkooprapportage per land"
+
+msgctxt "model:sale.reporting.customer,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Verkooprapportage per klant"
+
+msgctxt "model:sale.reporting.customer.time_series,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Verkooprapportage per klant"
+
+msgctxt "model:sale.reporting.product,name:"
+msgid "Sale Reporting per Product"
+msgstr "Verkooprapportage per product"
+
+msgctxt "model:sale.reporting.product.time_series,name:"
+msgid "Sale Reporting per Product"
+msgstr "Verkooprapportage per product"
+
+msgctxt "model:sale.reporting.region,name:"
+msgid "Sale Reporting per Region"
+msgstr "Verkooprapportage per regio"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Terug te nemen (retour)"
+
+msgctxt "model:sale.sale,name:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "model:sale.sale-ignored-account.invoice,name:"
+msgid "Sale - Ignored Invoice"
+msgstr "Verkoop - genereerde factuur"
+
+msgctxt "model:sale.sale-recreated-account.invoice,name:"
+msgid "Sale - Recreated Invoice"
+msgstr "Verkoop - factuur opnieuw aanmaken"
+
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "report:sale.sale:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:sale.sale:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "report:sale.sale:"
+msgid "Description:"
+msgstr "Omschrijving:"
+
+msgctxt "report:sale.sale:"
+msgid "Draft Sale Order"
+msgstr "Ontwerp verkooporder"
+
+msgctxt "report:sale.sale:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "report:sale.sale:"
+msgid "Quotation N°:"
+msgstr "Offerte N °:"
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Referentie:"
+
+msgctxt "report:sale.sale:"
+msgid "Sale Order N°:"
+msgstr "Verkooporder nr:"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes:"
+msgstr "Belastingen:"
+
+msgctxt "report:sale.sale:"
+msgid "Total (excl. taxes):"
+msgstr "Totaal (excl. belasting):"
+
+msgctxt "report:sale.sale:"
+msgid "Total:"
+msgstr "Totaal:"
+
+msgctxt "report:sale.sale:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Ignored"
+msgstr "Genegeerd"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Recreated"
+msgstr "Opnieuw aangemaakt"
+
+msgctxt "selection:sale.line,type:"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "selection:sale.line,type:"
+msgid "Line"
+msgstr "Regel"
+
+msgctxt "selection:sale.line,type:"
+msgid "Subtotal"
+msgstr "Subtotaal"
+
+msgctxt "selection:sale.line,type:"
+msgid "Title"
+msgstr "Titel"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Day"
+msgstr "Dag"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Month"
+msgstr "Maand"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Year"
+msgstr "Jaar"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Order Processed"
+msgstr "Op bestelling verwerkt(On Order Processed)"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Shipment Sent"
+msgstr "Na verzending"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Exception"
+msgstr "Uitzondering"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Paid"
+msgstr "Betaald"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Waiting"
+msgstr "In afwachting"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Invoice Paid"
+msgstr "Na factuur betaald"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Order Processed"
+msgstr "Op bestelling verwerkt(On Order Processed)"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Exception"
+msgstr "Uitzondering"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Sent"
+msgstr "Verzonden"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Waiting"
+msgstr "In afwachting"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Confirmed"
+msgstr "Bevestigd"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Done"
+msgstr "Klaar"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Processing"
+msgstr "Verwerking"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Ignored"
+msgstr "Genegeerd"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Recreated"
+msgstr "Opnieuw aangemaakt"
+
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "view:product.template:"
+msgid "Customers"
+msgstr "Klanten"
+
+msgctxt "view:sale.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "Kies facturen om opnieuw aan te maken:"
+
+msgctxt "view:sale.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "Kies boeking om opnieuw aan te maken:"
+
+msgctxt "view:sale.line:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:sale.line:"
+msgid "Notes"
+msgstr "Aantekeningen"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return these/this sale(s)?"
+msgstr "Weet u zeker dat u deze verko(o)p(en) retourneert?"
+
+msgctxt "view:sale.sale:"
+msgid "Other Info"
+msgstr "Aanvullende informatie"
+
+msgctxt "view:sale.sale:"
+msgid "Sale"
+msgstr "Verkoop"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "Ok"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "Ok"
+
+msgctxt "wizard_button:sale.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:sale.modify_header,start,modify:"
+msgid "Modify"
+msgstr "Wijzigen"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Retours"
