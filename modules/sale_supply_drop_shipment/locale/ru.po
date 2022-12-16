@@ -1,0 +1,296 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr ""
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier,drop_shipment:"
+msgid "Drop Shipment"
+msgstr "Drop Shipment"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,customer:"
+msgid "Customer"
+msgstr "Заказчик"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,delivery_address:"
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+msgctxt "field:purchase.purchase,drop_location:"
+msgid "Drop Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+#, fuzzy
+msgctxt "field:purchase.request,customer:"
+msgid "Customer"
+msgstr "Заказчик"
+
+#, fuzzy
+msgctxt "field:purchase.request,delivery_address:"
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+msgctxt "field:sale.configuration,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr ""
+
+msgctxt "field:sale.sale,drop_location:"
+msgid "Drop Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.sale,drop_shipments:"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.move,customer_drop:"
+msgid "Drop Customer"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,contact_address:"
+msgid "Contact Address"
+msgstr "Контактный адрес"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,customer:"
+msgid "Customer"
+msgstr "Заказчик"
+
+msgctxt "field:stock.shipment.drop,customer_moves:"
+msgid "Customer Moves"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,delivery_address:"
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,effective_date:"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,moves:"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.drop,number:"
+msgid "Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,planned_date:"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,reference:"
+msgid "Reference"
+msgstr "Ссылка"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,state:"
+msgid "State"
+msgstr "Штат"
+
+#, fuzzy
+msgctxt "field:stock.shipment.drop,supplier:"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "field:stock.shipment.drop,supplier_moves:"
+msgid "Supplier Moves"
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,effective_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.drop,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.action,name:act_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_shipment_drop_relate_party"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
+msgid "All"
+msgstr "Все"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
+msgid "Shipped"
+msgstr "Shipped"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt ""
+"model:ir.message,text:msg_delivery_address_required_quotation_purchase"
+msgid ""
+"To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
+" address."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_drop_shipment_delete_cancel"
+msgid "To delete drop shipment \"%(shipment)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reset_move"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale or a purchase."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_drop_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_drop_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Drop Shipment"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
+msgid "Drop Shipment"
+msgstr "Drop Shipment"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
+msgid "Drop Shipments"
+msgstr "Drop Shipments"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr ""
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr ""
+
+msgctxt "model:stock.location,name:location_drop"
+msgid "Drop"
+msgstr "Drop"
+
+#, fuzzy
+msgctxt "model:stock.shipment.drop,name:"
+msgid "Drop Shipment"
+msgstr "Drop Shipment"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Cancelled"
+msgstr "Отменено"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Done"
+msgstr "Выполнено"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Draft"
+msgstr "Черновик"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Shipped"
+msgstr "Shipped"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.drop,state:"
+msgid "Waiting"
+msgstr "Ожидание"
