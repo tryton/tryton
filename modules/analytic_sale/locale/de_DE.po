@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Erforderliches Wurzelkonto für \"%(name)s\" fehlt"
+
+msgctxt "field:sale.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Kostenstellen"
+
+msgctxt "field:sale.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Kostenstellengröße"

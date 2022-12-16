@@ -1,0 +1,43 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Na izpisu"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Opomin"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Zapadlost"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Dosedanja plačila"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Sklic"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Opomin"

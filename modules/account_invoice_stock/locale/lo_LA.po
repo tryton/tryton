@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "ເຄື່ອນຍ້າຍສາງ"
+
+msgctxt "field:account.invoice.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+msgctxt "field:account.invoice.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:account.invoice.line-stock.move,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.invoice.line-stock.move,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "ເຄື່ອນຍ້າຍສາງ"
+
+msgctxt "field:account.invoice.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+msgctxt "field:account.invoice.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "ລາຍການ"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "ລາຍການ - ເຄື່ອນຍ້າຍສາງ"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "ສາງ"

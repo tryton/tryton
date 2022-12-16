@@ -1,0 +1,187 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
+"used on a move \"%(move)s\" in a closed period"
+msgstr ""
+"A Charge \"%(lot)s\" lejárati dátuma nem módosítható, egy zárt raktár "
+"időszakban raktármozgás \"%(move)s\"  van."
+
+msgctxt "error:stock.move:"
+msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
+msgstr "A raktármozgás \"%(move)s\" Charge \"%(lot)s\"-ja lejárt."
+
+msgctxt "error:stock.period:"
+msgid ""
+"You can not close a period before the Shelf Live Expiration Date "
+"\"%(date)s\" of Lot \"%(lot)s\""
+msgstr ""
+"A raktár időszakot nem lehet a Charge \"%(lot)s\" lejárati dátuma "
+"\"%(date)s\" előtt bezárni."
+
+#, fuzzy
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Lejárat dátuma"
+
+#, fuzzy
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Lejárat időpontja"
+
+#, fuzzy
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Raktáridő állapota"
+
+#, fuzzy
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Raktáridő"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Lejárat dátuma"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Lejárat időpontja"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "Raktáridő állapota"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Raktáridő"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Raktáridő várakozás időtartama"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "Lejárati dátuma"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Lejárati állapot"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr "Raktáridő lejárati dátum"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr "Raktáridő lejárati dátum"
+
+#, fuzzy
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days"
+msgstr "Napok száma"
+
+#, fuzzy
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days"
+msgstr "Napok száma"
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days"
+msgstr "Napok száma"
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days"
+msgstr "Napok száma"
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay in number of days before removal from the forecast"
+msgstr "Az előrelátható várakozási idő napokban az elérhetőségig."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Raktár időbeni lefutása"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Nincs"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+#, fuzzy
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Nincs"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+#, fuzzy
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Nincs"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Nincs"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Nincs"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Nincs"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "Opcionális"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Szükséges"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Raktár idő"
