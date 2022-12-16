@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.purchase,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Wiersze faktury"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:"
+msgid "Invoice Lines Ignored"
+msgstr "Wiersze faktury zignorowane"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
+msgid "Invoice Line"
+msgstr "Wiersz faktury"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "Zakup"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Zakup - Zignorowany wiersz faktury"
