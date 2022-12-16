@@ -1,0 +1,118 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,ups_label_height:"
+msgid "Label Height"
+msgstr ""
+
+msgctxt "field:carrier,ups_label_image_format:"
+msgid "Label Image Format"
+msgstr ""
+
+msgctxt "field:carrier,ups_service_type:"
+msgid "Service Type"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,account_number:"
+msgid "Account Number"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:carrier.credential.ups,license:"
+msgid "License"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,password:"
+msgid "Password"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,server:"
+msgid "Server"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,use_metric:"
+msgid "Use Metric"
+msgstr ""
+
+msgctxt "field:carrier.credential.ups,user_id:"
+msgid "User ID"
+msgstr "Naudotojo ID"
+
+msgctxt "field:stock.package.type,ups_code:"
+msgid "UPS Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:carrier.credential.ups,name:"
+msgid "UPS Credential"
+msgstr "UPS Credentials"
+
+msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
+msgid "Create UPS Shipping for Packages"
+msgstr "Create UPS Shipping for Packages"
+
+msgctxt "model:ir.action,name:act_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS Credentials"
+
+msgctxt "model:ir.message,text:msg_phone_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add phone number to party "
+"\"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipping_description_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must fill its shipping "
+"description."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_ups_webservice_error"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
+msgid "UPS Credentials"
+msgstr "UPS Credentials"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "UPS"
+msgstr ""
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Production"
+msgstr ""
+
+msgctxt "selection:carrier.credential.ups,server:"
+msgid "Testing"
+msgstr ""
+
+msgctxt "view:carrier.credential.ups:"
+msgid "Credential Information"
+msgstr ""
+
+msgctxt "view:carrier:"
+msgid "UPS"
+msgstr ""
+
+msgctxt "view:stock.package.type:"
+msgid "UPS"
+msgstr ""
