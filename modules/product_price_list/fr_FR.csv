@@ -1,0 +1,28 @@
+type,name,res_id,src,value,fuzzy
+error,product.price_list.line,0,Invalid formula!,Formule non-valide !,0
+field,"product.price_list,company",0,Company,Société,0
+field,"product.price_list,lines",0,Lines,Lignes,0
+field,"product.price_list,name",0,Name,Nom,0
+field,"product.price_list,rec_name",0,Name,Nom,0
+field,"product.price_list.line,formula",0,Formula,Formule,0
+field,"product.price_list.line,price_list",0,Price List,Liste de prix,0
+field,"product.price_list.line,product",0,Product,Produit,0
+field,"product.price_list.line,quantity",0,Quantity,Quantité,0
+field,"product.price_list.line,rec_name",0,Name,Nom,0
+field,"product.price_list.line,sequence",0,Sequence,Séquence,0
+field,"product.price_list.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
+help,"product.price_list.line,formula",0,"Python expression that will be evaluated with:
+- unit_price: the original unit_price","Une expression Python qui sera évaluée avec:
+- unit_price: le prix unitaire original",0
+model,"ir.action,name",act_price_list_form,Price Lists,Listes de prix,0
+model,"ir.action,name",act_price_list_form2,Price Lists,Listes de prix,0
+model,"ir.ui.menu,name",menu_price_list,Price Lists,Listes de prix,0
+model,"ir.ui.menu,name",menu_price_list_new,New Price List,Nouvelle liste de prix,0
+model,"product.price_list,name",0,Price List,Liste de prix,0
+model,"product.price_list.line,name",0,Price List Line,Ligne de liste de prix,0
+view,party.party,0,Price List,Liste de prix,0
+view,product.price_list,0,Price List,Liste de prix,0
+view,product.price_list,0,Price List Lines,Lignes de liste de prix,0
+view,product.price_list,0,Price Lists,Listes de prix,0
+view,product.price_list.line,0,Price List Line,Ligne de liste de prix,0
+view,product.price_list.line,0,Price List Lines,Lignes de liste de prix,0
