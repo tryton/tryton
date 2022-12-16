@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton. The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <group col="-1" colspan="2" id="parents">
+        <label name="parent_template"/>
+        <field name="parent_template"/>
+        <label name="parent_product"/>
+        <field name="parent_product"/>
+    </group>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <label name="product"/>
+    <field name="product"/>
+    <label name="fixed"/>
+    <field name="fixed"/>
+
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="unit"/>
+    <field name="unit"/>
+</form>

@@ -1,0 +1,33 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "مکان های پیشفرض"
+
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "مکان های پیشفرض"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "محل انبار"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "مکان محصول"

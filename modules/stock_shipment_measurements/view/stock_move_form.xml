@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='other']" position="inside">
+        <separator string="Measurements" id="measurements" colspan="4"/>
+        <label name="internal_weight"/>
+        <field name="internal_weight"/>
+        <label name="internal_volume"/>
+        <field name="internal_volume"/>
+    </xpath>
+</data>
