@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Taxes" sequence="sequence">
+    <field name="description"/>
+    <field name="base"/>
+    <field name="amount" expand="1"/>
+    <field name="sequence" tree_invisible="1"/>
+    <field name="manual" tree_invisible="1"/>
+    <field name="base_code" tree_invisible="1"/>
+    <field name="base_sign" tree_invisible="1"/>
+    <field name="tax_code" tree_invisible="1"/>
+    <field name="tax_sign" tree_invisible="1"/>
+    <field name="account" tree_invisible="1"/>
+    <field name="tax" tree_invisible="1"/>
+</tree>
