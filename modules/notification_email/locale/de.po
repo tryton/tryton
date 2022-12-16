@@ -1,0 +1,207 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+msgctxt "field:ir.trigger,notification_email_required:"
+msgid "Notification Email Required"
+msgstr "E-Mail Benachrichtigung Erforderlich"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "Anhänge"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontaktinformation"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "Inhalt"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Empfänger im Ausweichfall"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Versteckte Emfänger im Ausweichfall"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Sekundäre Empfänger im Ausweichfall"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "Empfänger"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Versteckte Empfänger"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Sekundäre Empfänger"
+
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr "Betreff"
+
+# https://de.wikipedia.org/wiki/Datenbanktrigger
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "Trigger"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "Benachrichtigung"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "Bericht"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr "Benachrichtigung"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "Empfänger"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Versteckte Empfänger"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Sekundäre Empfänger"
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
+msgstr "Ressource"
+
+# https://de.wikipedia.org/wiki/Datenbanktrigger
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "Trigger"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "Der als Anhang genutzte Bericht."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr "Auswahl der E-Mail-Adresse aus den Kontaktinformationen der Partei"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "Der als E-Mail-Vorlage genutzte Bericht."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine E-Mail-Adresse vorhanden ist"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine versteckte E-Mail-Adresse "
+"vorhanden ist"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"Zu benachrichtigender Benutzer wenn keine sekundäre E-Mail-Adresse vorhanden"
+" ist"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Leer lassen, um den Wert aus der Konfigurationsdatei zu verwenden."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Das Feld das den/die Empfänger enthält."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "Das Feld das den/die versteckten Empfänger enthält."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Das Feld das den/die sekundären Empfänger enthält."
+
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+"Die Genshi Syntax kann mit 'record' im Evaluierungskontext verwendet werden.\n"
+"Sofern nicht angegeben wird die Bezeichnung des Datensatzes verwendet."
+
+# https://de.wikipedia.org/wiki/Datenbanktrigger
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "Einen Trigger für die Benachrichtigung hinzufügen."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "Logs"
+
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr "E-Mail Benachrichtigungen"
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Ungültiger E-Mail-Betreff in Benachrichtigung \"%(notification)s\" mit "
+"Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "Anhang für die E-Mail-Benachrichtigung"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notification Email Log"
+msgstr "Log der E-Mail-Benachrichtigung"
+
+msgctxt "selection:ir.trigger,action:"
+msgid "Email Notification"
+msgstr "E-Mail-Benachrichtigung"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "Zeit"
