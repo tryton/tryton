@@ -1,0 +1,27 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr "Movimento di compensazione"
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr "Conto di compensazione"
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr "Registro di compensazione"
+
+msgctxt "field:account.statement.line,payment:"
+msgid "Payment"
+msgstr "Pagamento"
+
+msgctxt "field:account.statement.line,payment_group:"
+msgid "Payment Group"
+msgstr "Raggruppamento pagamenti"
+
+msgctxt "view:account.payment.journal:"
+msgid "Clearing"
+msgstr "Compensazione"
