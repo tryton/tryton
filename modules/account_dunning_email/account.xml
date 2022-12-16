@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="configuration_view_form">
+            <field name="model">account.configuration</field>
+            <field name="inherit" ref="account.configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_form">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_form"/>
+            <field name="name">dunning_level_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_list"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list_sequence">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit"
+                ref="account_dunning.dunning_level_view_list_sequence"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="log_view_form">
+            <field name="model">account.dunning.email.log</field>
+            <field name="type">form</field>
+            <field name="name">log_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="log_view_list">
+            <field name="model">account.dunning.email.log</field>
+            <field name="type">tree</field>
+            <field name="name">log_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_log">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.email.log')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_log_admin">
+            <field name="model"
+                search="[('model', '=', 'account.dunning.email.log')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_log">
+            <field name="name">Email Logs</field>
+            <field name="res_model">account.dunning.email.log</field>
+            <field name="domain"
+                eval="[('dunning', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_log_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.dunning,-1</field>
+            <field name="action" ref="act_log"/>
+        </record>
+
+        <record model="ir.action.report" id="report_email">
+            <field name="name">Dunning Email</field>
+            <field name="model">account.dunning</field>
+            <field name="report_name">account.dunning.letter</field>
+            <field name="report">account_dunning_email/email.html</field>
+            <field name="template_extension">html</field>
+        </record>
+    </data>
+</tryton>

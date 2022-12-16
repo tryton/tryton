@@ -1,0 +1,9 @@
+include CHANGELOG
+include COPYRIGHT
+include LICENSE
+include README.rst
+include doc/*
+include trytond/ir/ui/icons/LICENSE
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot

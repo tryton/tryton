@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Protsent"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Töö"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Eelkäija"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Järeltulija"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Tegelik lõpp"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Tegelik lõpp aeg"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Tegelik algus"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Tegelik algus aeg"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Allokatsioon"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr ""
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr ""
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr ""
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Kestvus"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr ""
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr ""
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr ""
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr ""
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr ""
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Eelkäija"
+
+#, fuzzy
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Järeltulija"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Allokatsioon"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Allokatsioon"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Plaan"
