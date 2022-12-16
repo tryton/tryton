@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="direction"/>
+    <field name="direction"/>
+    <label name="translatable"/>
+    <field name="translatable"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <separator string="Date Formatting" colspan="6" id="date"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="am"/>
+    <field name="am"/>
+    <label name="pm"/>
+    <field name="pm"/>
+    <separator string="Numbers Formatting" colspan="6" id="number"/>
+    <label name="grouping"/>
+    <field name="grouping"/>
+    <label name="thousands_sep"/>
+    <field name="thousands_sep"/>
+    <label name="decimal_point"/>
+    <field name="decimal_point"/>
+    <separator string="Monetary Formatting" colspan="6" id="monetary"/>
+    <label name="mon_grouping"/>
+    <field name="mon_grouping"/>
+    <label name="mon_thousands_sep"/>
+    <field name="mon_thousands_sep"/>
+    <label name="mon_decimal_point"/>
+    <field name="mon_decimal_point"/>
+    <newline/>
+    <label name="positive_sign"/>
+    <field name="positive_sign"/>
+    <label name="negative_sign"/>
+    <field name="negative_sign"/>
+    <newline/>
+    <label name="p_sign_posn"/>
+    <field name="p_sign_posn"/>
+    <label name="n_sign_posn"/>
+    <field name="n_sign_posn"/>
+    <newline/>
+    <label name="p_cs_precedes"/>
+    <field name="p_cs_precedes"/>
+    <label name="n_cs_precedes"/>
+    <field name="n_cs_precedes"/>
+    <newline/>
+    <label name="p_sep_by_space"/>
+    <field name="p_sep_by_space"/>
+    <label name="n_sep_by_space"/>
+    <field name="n_sep_by_space"/>
+    <group id="buttons" colspan="6" col="-1">
+        <button name="load_translations" icon="tryton-launch"/>
+        <button name="unload_translations" icon="tryton-launch"/>
+    </group>
+</form>
