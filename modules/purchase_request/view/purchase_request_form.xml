@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <notebook colspan="4">
+        <page string="Product Info" id="product">
+            <label name="product"/>
+            <field name="product"/>
+            <newline/>
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="uom"/>
+            <field name="uom"/>
+            <label name="computed_quantity"/>
+            <field name="computed_quantity"/>
+            <label name="computed_uom"/>
+            <field name="computed_uom"/>
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
+        </page>
+        <page string="Supply Info" id="supply">
+            <label name="party"/>
+            <field name="party"/>
+            <newline/>
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="company"/>
+            <field name="company"/>
+            <label name="purchase_date"/>
+            <field name="purchase_date"/>
+            <label name="supply_date"/>
+            <field name="supply_date"/>
+            <label name="purchased_by"/>
+            <field name="purchased_by"/>
+            <label name="purchase"/>
+            <field name="purchase"/>
+            <label name="stock_level"/>
+            <field name="stock_level" symbol="default_uom"/>
+            <label name="origin"/>
+            <field name="origin"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="handle_purchase_cancellation_exception"
+            icon="tryton-forward"/>
+    </group>
+</form>

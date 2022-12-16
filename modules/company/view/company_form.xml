@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="timezone"/>
+    <field name="timezone"/>
+    <notebook colspan="6">
+        <page name="employees" col="1">
+            <field name="employees"/>
+        </page>
+        <page string="Reports" col="1" id="reports">
+            <separator name="header"/>
+            <field name="header"/>
+            <separator name="footer"/>
+            <field name="footer"/>
+        </page>
+    </notebook>
+</form>
