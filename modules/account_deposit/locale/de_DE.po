@@ -1,0 +1,59 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice:"
+msgid "The account \"%(account)s\" for party \"%(party)s\" has not enough deposit."
+msgstr "Unzureichendes Guthaben auf Konto \"%(account)s\" von Partei \"%(party)s\""
+
+msgctxt "field:account.invoice.recall_deposit.start,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:account.invoice.recall_deposit.start,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.invoice.recall_deposit.start,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.invoice.recall_deposit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,deposit:"
+msgid "Deposit"
+msgstr "Anzahlung"
+
+msgctxt "model:account.invoice.recall_deposit.start,name:"
+msgid "Recall deposit on Invoice"
+msgstr "Anzahlung auf Rechnung verrechnen"
+
+msgctxt "model:ir.action,name:wizard_recall_deposit"
+msgid "Recall Deposit"
+msgstr "Anzahlung verrechnen"
+
+msgctxt "selection:account.account,kind:"
+msgid "Deposit"
+msgstr "Anzahlung"
+
+msgctxt "selection:account.account.template,kind:"
+msgid "Deposit"
+msgstr "Anzahlung"
+
+msgctxt "view:account.invoice.recall_deposit.start:"
+msgid "Recall Deposit"
+msgstr "Anzahlung verrechnen"
+
+msgctxt "view:account.invoice:"
+msgid "Recall Deposit"
+msgstr "Anzahlung verrechnen"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
+msgid "Recall"
+msgstr "Verrechnen"

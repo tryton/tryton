@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- this file is part of tryton.  the copyright file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Dunning">
+    <label name="line"/>
+    <field name="line"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="procedure"/>
+    <field name="procedure"/>
+    <label name="level"/>
+    <field name="level"/>
+    <label name="blocked"/>
+    <field name="blocked"/>
+    <label name="state"/>
+    <field name="state"/>
+</form>
