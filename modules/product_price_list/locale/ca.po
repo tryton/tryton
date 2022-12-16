@@ -1,0 +1,125 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list,tax_included:"
+msgid "Tax Included"
+msgstr "Impost inclòs"
+
+msgctxt "field:product.price_list,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Fórmula"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"Fes que la tarifa pertanyi a l'empresa.\n"
+"Defineix la moneda de la tarifa."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Afegiu formules de preu per diferents criteris."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "El identificador principal de la tarifa."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Marca si el resultat de la formula inclou impostos."
+
+msgctxt "help:product.price_list,unit:"
+msgid "The unit in which the quantity is expressed."
+msgstr "La unitat amb la que s'expresa la quantitat."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Aplica només als productes d'aquesta categoria."
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price\n"
+"- cost_price: the cost price of the product"
+msgstr ""
+"Expressió Python que s'avaluarà amb:\n"
+"- unit_price: El preu unitari original\n"
+"- cost_price: El preu de cost del producte"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "La tarifa a la qual pertany la línia."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Aplica només a aquest producte."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Aplica només quan la quantitat es més gran."
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Tarifes"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"La fórmula \"%(formula)s\" a la línia de tarifa \"%(line)s\" no és correcta "
+"generant l'excepció \"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Tarifes"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Línia de tarifa"
+
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Default"
+msgstr "Defecte del producte"
