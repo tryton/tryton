@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <group colspan="2" col="-1" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+        <label name="default"/>
+        <field name="default" xexpand="0" width="25"/>
+        <label name="count"/>
+        <field name="count" xexpand="0" width="25"/>
+        <label name="sequence"/>
+        <field name="sequence"/>
+    </group>
+    <label name="types"/>
+    <field name="types" yexpand="0"/>
+    <label name="progress"/>
+    <group col="-1" id="progress">
+        <field name="progress" factor="100" xexpand="0"/>
+        <label name="progress" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+</form>

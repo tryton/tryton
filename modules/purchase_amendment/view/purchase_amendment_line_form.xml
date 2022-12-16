@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="amendment"/>
+    <field name="amendment" colspan="3"/>
+    <label name="action"/>
+    <field name="action"/>
+    <label name="line"/>
+    <field name="line"/>
+    <separator colspan="4" id="separator"/>
+    <label name="payment_term"/>
+    <field name="payment_term"/>
+    <newline/>
+    <label name="party"/>
+    <field name="party"/>
+    <newline/>
+    <label name="invoice_party"/>
+    <field name="invoice_party"/>
+    <label name="invoice_address"/>
+    <field name="invoice_address"/>
+    <newline/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <newline/>
+    <label name="product"/>
+    <field name="product" view_ids="purchase.product_view_list_purchase_line"/>
+    <label name="product_supplier"/>
+    <field name="product_supplier"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="unit"/>
+    <field name="unit"/>
+    <label name="unit_price"/>
+    <field name="unit_price"/>
+    <separator name="description" colspan="4"/>
+    <field name="description" colspan="4"/>
+</form>
