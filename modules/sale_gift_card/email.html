@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/" xmlns:i18n="http://genshi.edgewall.org/i18n">
+    <head>
+        <title>Gift Card</title>
+    </head>
+    <body>
+        <py:for each="gift_card in records">
+        <div style="display: block; text-align: center">
+            <h1 i18n:msg="value,company">
+                You received a gift card of ${format_currency(gift_card.value, None, gift_card.currency)} for ${gift_card.company.rec_name}.
+            </h1>
+            <h2>Here is your code:</h2>
+            <div style="padding: 1em; font-size: 2em;
+                        width: max-content; margin-left: auto; margin-right: auto;
+                        border: 1px solid rgba(0, 0, 0, 0.125); border-radius: .25em;
+                        background-color: #FFF;">
+                ${gift_card.number}
+            </div>
+        </div>
+        </py:for>
+    </body>
+</html>
