@@ -1,0 +1,4 @@
+1349${year}${company.party.tax_identifier.code[2:]}${justify(company.rec_name.upper(), 40)}T000000000${justify('', 40)}349${year}${period_number}0001  0000000000000${period}${format_integer(len(records), 9)}${format_decimal(records_amount, 15)}${format_integer(0, 9)}${format_decimal(0), 15}${justify('', 315)}
+{% for record in records %}\
+2349${year}${justify(identifier_code(record.company_tax_identifier), 9)}${justify('', 58)}${justify(record.party_tax_identifier.code if record.party_tax_identifier else '', 17)}${justify(record.party.name.upper(), 40)}${record.code}${format_decimal(record.amount)}${justify('', 354)}
+{% end %}\

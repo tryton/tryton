@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="payment_icon">
+            <field name="name">tryton-payment</field>
+            <field name="path">icons/tryton-payment.svg</field>
+        </record>
+
+        <record model="res.group" id="group_payment">
+            <field name="name">Payment</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_payment">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="res.group" id="group_payment_approval">
+            <field name="name">Payment Approval</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_payment_approval">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_payment_approval"/>
+        </record>
+
+        <menuitem name="Payments" parent="account.menu_account" sequence="30"
+            id="menu_payments"/>
+        <menuitem name="Payments" parent="account.menu_account_configuration"
+            sequence="60" id="menu_payment_configuration"/>
+
+        <record model="ir.ui.view" id="payment_journal_view_form">
+            <field name="model">account.payment.journal</field>
+            <field name="type">form</field>
+            <field name="name">payment_journal_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_journal_view_list">
+            <field name="model">account.payment.journal</field>
+            <field name="type">tree</field>
+            <field name="name">payment_journal_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_payment_journal_form">
+            <field name="name">Payment Journals</field>
+            <field name="res_model">account.payment.journal</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_journal_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_journal_view_list"/>
+            <field name="act_window" ref="act_payment_journal_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_journal_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_journal_view_form"/>
+            <field name="act_window" ref="act_payment_journal_form"/>
+        </record>
+        <menuitem parent="menu_payment_configuration" sequence="10"
+            action="act_payment_journal_form" id="menu_payment_journal_form"/>
+
+        <record model="ir.rule.group" id="rule_group_payment_journal">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_payment_journal1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_payment_journal"/>
+        </record>
+
+        <record model="ir.model.access" id="access_payment_journal">
+            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_journal_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_journal_payment">
+            <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
+            <field name="group" ref="group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_group_view_form">
+            <field name="model">account.payment.group</field>
+            <field name="type">form</field>
+            <field name="name">payment_group_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_group_view_list">
+            <field name="model">account.payment.group</field>
+            <field name="type">tree</field>
+            <field name="name">payment_group_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_payment_group_form">
+            <field name="name">Payment Groups</field>
+            <field name="res_model">account.payment.group</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_group_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_group_view_list"/>
+            <field name="act_window" ref="act_payment_group_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_group_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_group_view_form"/>
+            <field name="act_window" ref="act_payment_group_form"/>
+        </record>
+        <menuitem parent="menu_payments" action="act_payment_group_form"
+            sequence="30" id="menu_payment_group_form"/>
+
+        <record model="ir.rule.group" id="rule_group_payment_group">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_payment_group1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_payment_group"/>
+        </record>
+
+        <record model="ir.model.access" id="access_payment_group">
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_group_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_group_payment">
+            <field name="model" search="[('model', '=', 'account.payment.group')]"/>
+            <field name="group" ref="group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.sequence.type"
+            id="sequence_type_account_payment_group">
+            <field name="name">Account Payment Group</field>
+            <field name="code">account.payment.group</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_payment_group_group_admin">
+            <field name="sequence_type"
+                ref="sequence_type_account_payment_group"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_payment_group_group_account_admin">
+            <field name="sequence_type"
+                ref="sequence_type_account_payment_group"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_account_payment_group">
+            <field name="name">Default Account Payment Group</field>
+            <field name="code">account.payment.group</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="type">form</field>
+            <field name="name">payment_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="type">tree</field>
+            <field name="name">payment_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_payment_form">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_approved">
+            <field name="name">Approved</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'approved')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_suceeded">
+            <field name="name">Succeeded</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'succeeded')]" pyson="1"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_failed">
+            <field name="name">Failed</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_payment_form"/>
+        </record>
+
+        <menuitem parent="menu_payments" action="act_payment_form"
+            sequence="20" id="menu_payment_form"/>
+
+        <record model="ir.rule.group" id="rule_group_payment">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_payment1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_payment"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_payment_form_line_relate">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line', '=', Eval('active_id')), ('line', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_line_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form_line_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_line_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form_line_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_payment_form_line_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_payment_form_line_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_payment_form_group_open">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="domain"
+                eval="[('group', '=', Eval('active_id'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_group_open_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_view_list"/>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_payment_form_group_open_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_view_form"/>
+            <field name="act_window" ref="act_payment_form_group_open"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_payment_form_group_relate_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.payment.group,-1</field>
+            <field name="action" ref="act_payment_form_group_open"/>
+        </record>
+
+        <record model="ir.model.access" id="access_payment">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_account_admin">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_payment">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="group" ref="group_payment"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_payment_approval">
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+            <field name="group" ref="group_payment_approval"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_draft_button_group_payment">
+            <field name="button" ref="payment_draft_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_approve_button">
+            <field name="name">approve</field>
+            <field name="string">Approve</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_approve_button_group_payment_approval">
+            <field name="button" ref="payment_approve_button"/>
+            <field name="group" ref="group_payment_approval"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_succeed_button">
+            <field name="name">succeed</field>
+            <field name="string">Succeed</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_succeed_button_group_payment">
+            <field name="button" ref="payment_succeed_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_fail_button">
+            <field name="name">fail</field>
+            <field name="string">Fail</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="payment_fail_button_group_payment">
+            <field name="button" ref="payment_fail_button"/>
+            <field name="group" ref="group_payment"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_process_start_view_form">
+            <field name="model">account.payment.process.start</field>
+            <field name="type">form</field>
+            <field name="name">payment_process_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_process_payments">
+            <field name="name">Process Payments</field>
+            <field name="wiz_name">account.payment.process</field>
+            <field name="model">account.payment</field>
+        </record>
+        <record model="ir.action.keyword" id="act_process_payments_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.payment,-1</field>
+            <field name="action" ref="act_process_payments"/>
+        </record>
+
+    </data>
+</tryton>
