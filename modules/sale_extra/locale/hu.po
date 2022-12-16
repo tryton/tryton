@@ -1,0 +1,106 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Tizedes vessző utáni számjegy"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Befejezési dátum"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Sor"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Árlista"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Eladási összeg"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Kezdő dátum"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Szabad"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Termék"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Mértékegység kategória"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Mennyiség"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Eladási ár"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Egység"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Tizedes vessző utáni számjegy"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Sale Extras"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Eladási extrák"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "Eladási extra sor"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Eladási sor"
