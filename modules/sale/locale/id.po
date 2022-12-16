@@ -1,0 +1,1372 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_exception_state:"
+msgid "Exception State"
+msgstr ""
+
+msgctxt "field:account.invoice,sales:"
+msgid "Sales"
+msgstr ""
+
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr ""
+
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr ""
+
+msgctxt "field:product.product,sale_price_uom:"
+msgid "Sale Price"
+msgstr ""
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "Penjualan per Pelanggan"
+
+#, fuzzy
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "Gudang"
+
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "Tanggal Penjualan"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr ""
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:product.template,salable:"
+msgid "Salable"
+msgstr ""
+
+msgctxt "field:product.template,sale_uom:"
+msgid "Sale UOM"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_sequence:"
+msgid "Sale Sequence"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr ""
+
+msgctxt "field:sale.configuration.sequence,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:sale.configuration.sequence,sale_sequence:"
+msgid "Sale Sequence"
+msgstr ""
+
+msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr ""
+
+msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr ""
+
+msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr ""
+
+msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr ""
+
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr ""
+
+msgctxt "field:sale.line,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:sale.line,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:sale.line,from_location:"
+msgid "From Location"
+msgstr ""
+
+msgctxt "field:sale.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Baris Faktur"
+
+msgctxt "field:sale.line,move_done:"
+msgid "Moves Done"
+msgstr "Perpindahan Selesai"
+
+msgctxt "field:sale.line,move_exception:"
+msgid "Moves Exception"
+msgstr ""
+
+msgctxt "field:sale.line,moves:"
+msgid "Moves"
+msgstr "Perpindahan"
+
+msgctxt "field:sale.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr ""
+
+msgctxt "field:sale.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr ""
+
+msgctxt "field:sale.line,note:"
+msgid "Note"
+msgstr "Catatan"
+
+msgctxt "field:sale.line,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:sale.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
+
+msgctxt "field:sale.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.line,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr ""
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:sale.line,taxes:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "field:sale.line,to_location:"
+msgid "To Location"
+msgstr ""
+
+msgctxt "field:sale.line,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:sale.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.line,unit_price:"
+msgid "Unit Price"
+msgstr ""
+
+msgctxt "field:sale.line,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
+
+msgctxt "field:sale.line-account.tax,line:"
+msgid "Sale Line"
+msgstr "Baris Penjualan"
+
+msgctxt "field:sale.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "field:sale.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Perpindahan"
+
+msgctxt "field:sale.line-ignored-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Baris Penjualan"
+
+msgctxt "field:sale.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Perpindahan"
+
+msgctxt "field:sale.line-recreated-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Baris Penjualan"
+
+msgctxt "field:sale.reporting.category,category:"
+msgid "Category"
+msgstr "Kategori"
+
+msgctxt "field:sale.reporting.category,time_series:"
+msgid "Time Series"
+msgstr ""
+
+msgctxt "field:sale.reporting.category.time_series,category:"
+msgid "Category"
+msgstr "Kategori"
+
+msgctxt "field:sale.reporting.category.time_series,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.reporting.category.tree,children:"
+msgid "Children"
+msgstr "Cabang"
+
+msgctxt "field:sale.reporting.category.tree,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:sale.reporting.category.tree,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:sale.reporting.category.tree,parent:"
+msgid "Parent"
+msgstr "Induk"
+
+msgctxt "field:sale.reporting.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Pendapatan"
+
+msgctxt "field:sale.reporting.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:sale.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Dari Tanggal"
+
+msgctxt "field:sale.reporting.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:sale.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Ke Tanggal"
+
+msgctxt "field:sale.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
+
+msgctxt "field:sale.reporting.country,country:"
+msgid "Country"
+msgstr "Negara"
+
+msgctxt "field:sale.reporting.country,time_series:"
+msgid "Time Series"
+msgstr ""
+
+msgctxt "field:sale.reporting.country.subdivision,country:"
+msgid "Country"
+msgstr "Negara"
+
+msgctxt "field:sale.reporting.country.subdivision,subdivision:"
+msgid "Subdivision"
+msgstr ""
+
+msgctxt "field:sale.reporting.country.subdivision,time_series:"
+msgid "Time Series"
+msgstr ""
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
+msgid "Subdivision"
+msgstr ""
+
+msgctxt "field:sale.reporting.country.time_series,country:"
+msgid "Country"
+msgstr "Negara"
+
+msgctxt "field:sale.reporting.country.time_series,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.reporting.customer,customer:"
+msgid "Customer"
+msgstr ""
+
+msgctxt "field:sale.reporting.customer,time_series:"
+msgid "Time Series"
+msgstr ""
+
+msgctxt "field:sale.reporting.customer.time_series,customer:"
+msgid "Customer"
+msgstr ""
+
+msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.reporting.product,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:sale.reporting.product,time_series:"
+msgid "Time Series"
+msgstr ""
+
+msgctxt "field:sale.reporting.product.time_series,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:sale.reporting.region,children:"
+msgid "Children"
+msgstr "Cabang"
+
+msgctxt "field:sale.reporting.region,parent:"
+msgid "Parent"
+msgstr "Induk"
+
+msgctxt "field:sale.reporting.region,region:"
+msgid "Region"
+msgstr ""
+
+msgctxt "field:sale.sale,comment:"
+msgid "Comment"
+msgstr "Komentar"
+
+msgctxt "field:sale.sale,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Konfirmasi"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.sale,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:sale.sale,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:sale.sale,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:sale.sale,invoice_address:"
+msgid "Invoice Address"
+msgstr "Alamat Faktur"
+
+msgctxt "field:sale.sale,invoice_method:"
+msgid "Invoice Method"
+msgstr "Metode Faktur"
+
+#, fuzzy
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "Status Faktur"
+
+msgctxt "field:sale.sale,invoice_state:"
+msgid "Invoice State"
+msgstr "Status Faktur"
+
+msgctxt "field:sale.sale,invoices:"
+msgid "Invoices"
+msgstr "Faktur-faktur"
+
+msgctxt "field:sale.sale,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Faktur-faktur yang Diabaikan"
+
+msgctxt "field:sale.sale,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr ""
+
+msgctxt "field:sale.sale,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:sale.sale,moves:"
+msgid "Moves"
+msgstr "Perpindahan"
+
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Asal"
+
+msgctxt "field:sale.sale,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:sale.sale,party_lang:"
+msgid "Party Language"
+msgstr ""
+
+msgctxt "field:sale.sale,payment_term:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Dikutip Oleh"
+
+msgctxt "field:sale.sale,reference:"
+msgid "Reference"
+msgstr "Referensi"
+
+msgctxt "field:sale.sale,sale_date:"
+msgid "Sale Date"
+msgstr "Tanggal Penjualan"
+
+msgctxt "field:sale.sale,shipment_address:"
+msgid "Shipment Address"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_method:"
+msgid "Shipment Method"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_returns:"
+msgid "Shipment Returns"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_state:"
+msgid "Shipment State"
+msgstr ""
+
+msgctxt "field:sale.sale,shipments:"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
+
+msgctxt "field:sale.sale,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.sale,tax_amount:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "field:sale.sale,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
+msgctxt "field:sale.sale,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+#, fuzzy
+msgctxt "field:sale.sale,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Total"
+
+msgctxt "field:sale.sale,untaxed_amount:"
+msgid "Untaxed"
+msgstr ""
+
+msgctxt "field:sale.sale,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr ""
+
+msgctxt "field:sale.sale,warehouse:"
+msgid "Warehouse"
+msgstr "Gudang"
+
+msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:sale.sale-ignored-account.invoice,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:sale.sale-recreated-account.invoice,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:stock.move,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:stock.move,sale_exception_state:"
+msgid "Exception State"
+msgstr ""
+
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
+msgstr ""
+
+msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Faktur-faktur"
+
+msgctxt "model:ir.action,name:act_open_customer"
+msgid "Parties associated to Sales"
+msgstr "Pihak terkait dengan Penjualan"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product"
+msgid "Products"
+msgstr "Produk"
+
+msgctxt "model:ir.action,name:act_reporting_category"
+msgid "Sales per Category"
+msgstr "Penjualan per Kategori"
+
+msgctxt "model:ir.action,name:act_reporting_category_time_series"
+msgid "Sales per Category"
+msgstr "Penjualan per Kategori"
+
+msgctxt "model:ir.action,name:act_reporting_category_tree"
+msgid "Sales per Category"
+msgstr "Penjualan per Kategori"
+
+msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
+msgid "Sales per Subdivision"
+msgstr "Penjualan per Subdivisi"
+
+msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Penjualan per Negara"
+
+msgctxt "model:ir.action,name:act_reporting_customer"
+msgid "Sales per Customer"
+msgstr "Penjualan per Pelanggan"
+
+msgctxt "model:ir.action,name:act_reporting_customer_time_series"
+msgid "Sales per Customer"
+msgstr "Penjualan per Pelanggan"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Sales per Product"
+msgstr "Penjualan per Produk"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Sales per Product"
+msgstr "Penjualan per Produk"
+
+msgctxt "model:ir.action,name:act_reporting_region"
+msgid "Sales per Region"
+msgstr "Penjualan per Wilayah"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_configuration_form"
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "Perpindahan"
+
+msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_sale"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgid "Open Region"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Return Sale"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending sales with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_customer_location_required"
+msgid ""
+"To process sale \"%(sale)s\" you must set a customer location on party "
+"\"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_delete_cancel"
+msgid "To delete sale \"%(sale)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and shipment "
+"\"%(shipment_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a sale."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft sale "
+"\"%(sale)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
+msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
+msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
+msgid ""
+"To invoice sale \"%(sale)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "Pendapatan"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "Pendapatan"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "model:ir.model.button,string:sale_confirm_button"
+msgid "Confirm"
+msgstr "Konfirmasi"
+
+msgctxt "model:ir.model.button,string:sale_draft_button"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_modify_header_button"
+msgid "Modify Header"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Proses"
+
+msgctxt "model:ir.model.button,string:sale_quote_button"
+msgid "Quote"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_category_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_category_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.sequence,name:sequence_sale"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_customer"
+msgid "Associated to Sales"
+msgstr "Pihak terkait dengan Penjualan"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "Produk"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Pelaporan"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr ""
+
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr ""
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr ""
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr ""
+
+msgctxt "model:sale.configuration,name:"
+msgid "Sale Configuration"
+msgstr ""
+
+msgctxt "model:sale.configuration.sale_method,name:"
+msgid "Sale Configuration Sale Method"
+msgstr ""
+
+msgctxt "model:sale.configuration.sequence,name:"
+msgid "Sale Configuration Sequence"
+msgstr ""
+
+msgctxt "model:sale.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr ""
+
+msgctxt "model:sale.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr ""
+
+msgctxt "model:sale.line,name:"
+msgid "Sale Line"
+msgstr "Baris Penjualan"
+
+msgctxt "model:sale.line-account.tax,name:"
+msgid "Sale Line - Tax"
+msgstr "Baris Penjualan - Pajak"
+
+msgctxt "model:sale.line-ignored-stock.move,name:"
+msgid "Sale Line - Ignored Move"
+msgstr "Baris Penjualan - Perpindahan Diabaikan"
+
+msgctxt "model:sale.line-recreated-stock.move,name:"
+msgid "Sale Line - Recreated Move"
+msgstr ""
+
+msgctxt "model:sale.reporting.category,name:"
+msgid "Sale Reporting per Category"
+msgstr ""
+
+msgctxt "model:sale.reporting.category.time_series,name:"
+msgid "Sale Reporting per Category"
+msgstr ""
+
+msgctxt "model:sale.reporting.category.tree,name:"
+msgid "Sale Reporting per Category"
+msgstr ""
+
+msgctxt "model:sale.reporting.context,name:"
+msgid "Sale Reporting Context"
+msgstr ""
+
+msgctxt "model:sale.reporting.country,name:"
+msgid "Sale Reporting per Country"
+msgstr ""
+
+msgctxt "model:sale.reporting.country.subdivision,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr ""
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr ""
+
+msgctxt "model:sale.reporting.country.time_series,name:"
+msgid "Sale Reporting per Country"
+msgstr ""
+
+msgctxt "model:sale.reporting.customer,name:"
+msgid "Sale Reporting per Customer"
+msgstr ""
+
+msgctxt "model:sale.reporting.customer.time_series,name:"
+msgid "Sale Reporting per Customer"
+msgstr ""
+
+msgctxt "model:sale.reporting.product,name:"
+msgid "Sale Reporting per Product"
+msgstr ""
+
+msgctxt "model:sale.reporting.product.time_series,name:"
+msgid "Sale Reporting per Product"
+msgstr ""
+
+msgctxt "model:sale.reporting.region,name:"
+msgid "Sale Reporting per Region"
+msgstr ""
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr ""
+
+msgctxt "model:sale.sale,name:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "model:sale.sale-ignored-account.invoice,name:"
+msgid "Sale - Ignored Invoice"
+msgstr "Penjualan - Faktur yang Diabaikan"
+
+msgctxt "model:sale.sale-recreated-account.invoice,name:"
+msgid "Sale - Recreated Invoice"
+msgstr "Penjualan - Faktur yang Dibuat Ulang"
+
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "report:sale.sale:"
+msgid "Date:"
+msgstr "Tanggal:"
+
+msgctxt "report:sale.sale:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "report:sale.sale:"
+msgid "Description:"
+msgstr "Deskripsi:"
+
+msgctxt "report:sale.sale:"
+msgid "Draft Sale Order"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Quotation N°:"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Sale Order N°:"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Taxes:"
+msgstr ""
+
+msgctxt "report:sale.sale:"
+msgid "Total (excl. taxes):"
+msgstr "Total (di luar pajak):"
+
+msgctxt "report:sale.sale:"
+msgid "Total:"
+msgstr "Total:"
+
+msgctxt "report:sale.sale:"
+msgid "Unit Price"
+msgstr ""
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Ignored"
+msgstr ""
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Recreated"
+msgstr ""
+
+msgctxt "selection:sale.line,type:"
+msgid "Comment"
+msgstr "Komentar"
+
+msgctxt "selection:sale.line,type:"
+msgid "Line"
+msgstr ""
+
+msgctxt "selection:sale.line,type:"
+msgid "Subtotal"
+msgstr ""
+
+msgctxt "selection:sale.line,type:"
+msgid "Title"
+msgstr ""
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Day"
+msgstr "Hari"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Month"
+msgstr "Bulan"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Year"
+msgstr "Tahun"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "Manual"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Order Processed"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Shipment Sent"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Exception"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "None"
+msgstr "Tidak ada"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Waiting"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "Manual"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Invoice Paid"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Order Processed"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Exception"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "None"
+msgstr "Tidak ada"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Sent"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Waiting"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.sale,state:"
+msgid "Cancelled"
+msgstr "Batal"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Confirmed"
+msgstr ""
+
+msgctxt "selection:sale.sale,state:"
+msgid "Done"
+msgstr ""
+
+msgctxt "selection:sale.sale,state:"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:sale.sale,state:"
+msgid "Quotation"
+msgstr ""
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Ignored"
+msgstr ""
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Recreated"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "view:product.template:"
+msgid "Customers"
+msgstr ""
+
+msgctxt "view:sale.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr ""
+
+msgctxt "view:sale.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr ""
+
+msgctxt "view:sale.line:"
+msgid "General"
+msgstr "Umum"
+
+msgctxt "view:sale.line:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return these/this sale(s)?"
+msgstr ""
+
+msgctxt "view:sale.sale:"
+msgid "Other Info"
+msgstr "Info Lain"
+
+msgctxt "view:sale.sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:sale.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:sale.modify_header,start,modify:"
+msgid "Modify"
+msgstr ""
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr ""

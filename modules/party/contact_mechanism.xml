@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">contact_mechanism_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_tree_sequence">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">contact_mechanism_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_mechanism_view_form">
+            <field name="model">party.contact_mechanism</field>
+            <field name="type">form</field>
+            <field name="name">contact_mechanism_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_contact_mechanism_form">
+            <field name="name">Contact Mechanisms</field>
+            <field name="res_model">party.contact_mechanism</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_contact_mechanism_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="contact_mechanism_view_tree"/>
+            <field name="act_window" ref="act_contact_mechanism_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_contact_mechanism_form_view2">
+          <field name="sequence" eval="20"/>
+          <field name="view" ref="contact_mechanism_view_form"/>
+          <field name="act_window" ref="act_contact_mechanism_form"/>
+        </record>
+        <menuitem
+            parent="menu_party"
+            sequence="20"
+            action="act_contact_mechanism_form"
+            id="menu_contact_mechanism_form"/>
+    </data>
+</tryton>
