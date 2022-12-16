@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <label name="compute_method"/>
+    <field name="compute_method"/>
+    <newline/>
+    <label name="percentage"/>
+    <group col="2" id="percentage">
+        <field name="percentage" factor="100" xexpand="0"/>
+        <label name="percentage" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+</form>

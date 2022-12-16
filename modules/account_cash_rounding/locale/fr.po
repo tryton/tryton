@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrondi des espèces"
+
+msgctxt "field:account.configuration,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Compte de crédit d'arrondi en espèces"
+
+msgctxt "field:account.configuration,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Compte de débit d'arrondi en espèces"
+
+msgctxt "field:account.configuration.cash_rounding_account,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrondi des espèces"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Compte de crédit d'arrondi en espèces"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Compte de débit d'arrondi en espèces"
+
+msgctxt "field:account.configuration.cash_rounding_account,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.invoice,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrondi en espèces"
+
+msgctxt "field:currency.currency,cash_rounding:"
+msgid "Cash Rounding Factor"
+msgstr "Facteur d'arrondi en espèces"
+
+msgctxt "field:purchase.purchase,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrondi en espèces"
+
+msgctxt "model:account.configuration.cash_rounding_account,name:"
+msgid "Account Configuration Cash Rounding Account"
+msgstr "Configuration du comptable du compte d'arrondi en espèces"
+
+msgctxt "model:ir.message,text:msg_missing_cash_rounding_account"
+msgid "There is not cash rounding account configured."
+msgstr "Aucun compte d'arrondi en espèces n'est configuré."

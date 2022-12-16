@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="rec_name" expand="2"/>
+    <field name="company" expand="1" optional="1"/>
+    <field name="type" expand="1" optional="1"/>
+    <field name="debit_type" expand="1" optional="1"/>
+    <field name="credit_type" expand="1" optional="1"/>
+</tree>

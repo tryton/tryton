@@ -1,0 +1,118 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,chorus_login:"
+msgid "Chorus Login"
+msgstr "ورود Chorus"
+
+msgctxt "field:account.configuration,chorus_password:"
+msgid "Chorus Password"
+msgstr "رمز عبور Chorus"
+
+msgctxt "field:account.configuration,chorus_service:"
+msgid "Chorus Service"
+msgstr "خدمات Chorus"
+
+msgctxt "field:account.configuration,chorus_syntax:"
+msgid "Chorus Syntax"
+msgstr "نحو Chorus"
+
+msgctxt "field:account.credential.chorus,chorus_login:"
+msgid "Login"
+msgstr "ورود به سیستم"
+
+msgctxt "field:account.credential.chorus,chorus_password:"
+msgid "Password"
+msgstr "کلمه عبور"
+
+msgctxt "field:account.credential.chorus,chorus_service:"
+msgid "Service"
+msgstr "خدمات"
+
+msgctxt "field:account.credential.chorus,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.chorus,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:account.invoice.chorus,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice.chorus,number:"
+msgid "Number"
+msgstr "عدد"
+
+msgctxt "field:account.invoice.chorus,syntax:"
+msgid "Syntax"
+msgstr "دستور زبان"
+
+msgctxt "field:party.party,chorus:"
+msgid "Chorus Pro"
+msgstr "Chorus پیشرفته"
+
+msgctxt "help:party.party,chorus:"
+msgid "Send documents for this party through Chorus Pro"
+msgstr "ارسال مدارک برای این نهاد/سازمان از طریق Chorus پیشرفته"
+
+msgctxt "model:account.credential.chorus,name:"
+msgid "Account Credential Chorus"
+msgstr "حساب اعتبار Chorus"
+
+msgctxt "model:account.invoice.chorus,name:"
+msgid "Invoice Chorus"
+msgstr "صورتحساب Chorus"
+
+msgctxt "model:ir.action,name:act_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
+msgid ""
+"To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
+"address \"%(address)s\"."
+msgstr ""
+"برای ایجاد یک فاکتور Chorus برای : \"%(invoice)s\" شما باید یک SIRET بر روی "
+"آدرس : \"%(address)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_sent"
+msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
+msgstr ""
+"شما نمیتونید Chorus صورتحساب : \"%(invoice)s\" را حذف کنید چزاکه آن ارسال "
+"شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_unique"
+msgid "You can create only one Chorus invoice per invoice."
+msgstr "شما می توانید تنها یک صورتحساب Chorus در هر صورتحساب ایجاد کنید."
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Production"
+msgstr "تولید"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Qualification"
+msgstr "صلاحیت"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Production"
+msgstr "تولید"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Qualification"
+msgstr "صلاحیت"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to Chorus"
+msgstr "ارسال صورتحساب به Chorus"
+
+msgctxt "view:account.configuration:"
+msgid "Chorus"
+msgstr "Chorus"

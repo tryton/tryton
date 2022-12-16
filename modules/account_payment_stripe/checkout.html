@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Stripe Checkout</title>
+        <script src="https://js.stripe.com/v3/">
+        </script>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+            button {
+                background-color: #337ab7;
+                border-radius: 4px;
+                border: 1px solid #2e6da4;
+                color: #fff;
+                display: block;
+                font-size:2em;
+                margin: 0 auto;
+                padding: 0.5em 1em;
+            }
+            .wrapper {
+                width: 670px;
+                margin: 0 auto;
+                height: 100%;
+            }
+            .StripeElement {
+                background-color: white;
+                border-radius: 4px;
+                border: 1px solid transparent;
+                box-shadow: 0 1px 3px 0 #e6ebf1;
+                box-sizing: border-box;
+                height: 40px;
+                padding: 10px 12px;
+                transition: box-shadow 150ms ease;
+            }
+            .StripeElement--focus {
+                box-shadow: 0 1px 3px 0 #cfd7df;
+            }
+            .StripeElement--invalid {
+                border-color: #fa755a;
+            }
+            .StripeElement--webkit-autofill {
+                background-color: #fefde5 !important;
+            }
+            #card-errors {
+                padding: 4px 0;
+                color: #fa755a;
+            }
+        </style>
+    </head>
+    <body>
+        <py:for each="record in records[:1]">
+        <py:with vars="intent = record.stripe_intent">
+        <h1>${record.party.rec_name}</h1>
+        <div class="wrapper">
+            <form method="POST" id="form">
+                <div>
+                    <py:if test="not data.get('payment_method')">
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                    </div>
+                    </py:if>
+                    <div id="card-errors" role="alert">
+                    </div>
+                </div>
+                <button id="card-button" data-secret="${intent.client_secret}" data-model="${data['model']}">
+                    <py:choose test="data['model']">
+                    <py:when test="'account.payment'">
+                    Pay ${record.currency.symbol}${record.amount}
+                    </py:when>
+                    <py:when test="'account.payment.stripe.customer'">
+                    Register card
+                    </py:when>
+                    </py:choose>
+                </button>
+            </form>
+        </div>
+        <script>
+            var stripe = Stripe('${record.stripe_account.publishable_key}');
+            var elements = stripe.elements();
+            var style = {
+                base: {
+                    color: '#32325d',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
+            var card;
+            if (document.getElementById('card-element')) {
+                card = elements.create('card', {style: style});
+                card.mount('#card-element');
+
+                card.addEventListener('change', function(event) {
+                    var displayError = document.getElementById('card-errors');
+                    if (event.error) {
+                        displayError.textContent = event.error.message;
+                    } else {
+                        displayError.textContent = '';
+                    }
+                });
+            } else {
+                card = {payment_method: '${data.get('payment_method', '')}'}
+            }
+
+            var cardButton = document.getElementById('card-button');
+            var clientSecret = cardButton.dataset.secret;
+            var model = cardButton.dataset.model;
+            var form = document.getElementById('form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var prm;
+                if (model == 'account.payment.stripe.customer') {
+                    prm = stripe.handleCardSetup(clientSecret, card);
+                } else {
+                    prm = stripe.handleCardPayment(clientSecret, card);
+                }
+                prm.then(function(result) {
+                    if (result.error) {
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        form.submit();
+                    }
+                });
+            });
+        </script>
+        </py:with>
+        </py:for>
+    </body>
+</html>

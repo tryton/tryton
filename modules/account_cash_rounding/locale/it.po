@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrotondamento contante"
+
+msgctxt "field:account.configuration,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Conto di accredito arrotondamento contante"
+
+msgctxt "field:account.configuration,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Conto di addebito arrotondamento contante"
+
+msgctxt "field:account.configuration.cash_rounding_account,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrotondamento contante"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_credit_account:"
+msgid "Cash Rounding Credit Account"
+msgstr "Conto di accredito arrotondamento contante"
+
+msgctxt ""
+"field:account.configuration.cash_rounding_account,cash_rounding_debit_account:"
+msgid "Cash Rounding Debit Account"
+msgstr "Conto di addebito arrotondamento contante"
+
+msgctxt "field:account.configuration.cash_rounding_account,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:account.invoice,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrotondamento contante"
+
+msgctxt "field:currency.currency,cash_rounding:"
+msgid "Cash Rounding Factor"
+msgstr "Fattore di arrotondamento contante"
+
+msgctxt "field:purchase.purchase,cash_rounding:"
+msgid "Cash Rounding"
+msgstr "Arrotondamento contante"
+
+msgctxt "model:account.configuration.cash_rounding_account,name:"
+msgid "Account Configuration Cash Rounding Account"
+msgstr "Configurazione conti di arrotondamento contante"
+
+msgctxt "model:ir.message,text:msg_missing_cash_rounding_account"
+msgid "There is not cash rounding account configured."
+msgstr "Non è stato impostato alcun conto per l'arrotondamento del contante."
