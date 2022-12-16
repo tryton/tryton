@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Ubicacions predeterminades"
+
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Ubicacions per defecte"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Ubicació interna"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Ubicació de producte"
