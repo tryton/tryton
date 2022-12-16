@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="graph">
+    <element name="graph">
+      <ref name="attlist.graph"/>
+      <zeroOrMore>
+        <ref name="x"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="y"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.graph" combine="interleave">
+    <optional>
+      <attribute name="type" a:defaultValue="vbar">
+        <choice>
+          <value>vbar</value>
+          <value>hbar</value>
+          <value>line</value>
+          <value>pie</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.graph" combine="interleave">
+    <optional>
+      <attribute name="background" a:defaultValue="#f5f5f5"/>
+    </optional>
+  </define>
+  <define name="attlist.graph" combine="interleave">
+    <optional>
+      <attribute name="color" a:defaultValue="blue"/>
+    </optional>
+  </define>
+  <define name="attlist.graph" combine="interleave">
+    <optional>
+      <attribute name="legend" a:defaultValue="1">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="x">
+    <element name="x">
+      <ref name="attlist.x"/>
+      <ref name="field"/>
+    </element>
+  </define>
+  <define name="attlist.x" combine="interleave">
+    <empty/>
+  </define>
+  <define name="y">
+    <element name="y">
+      <ref name="attlist.y"/>
+      <oneOrMore>
+        <ref name="field"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.y" combine="interleave">
+    <empty/>
+  </define>
+  <define name="field">
+    <element name="field">
+      <ref name="attlist.field"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <attribute name="name"/>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="string"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="key"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="domain"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="fill">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="empty">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="color"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="timedelta"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="interpolation" a:defaultValue="linear">
+        <choice>
+          <value>constant-left</value>
+          <value>constant-right</value>
+          <value>constant-center</value>
+          <value>linear</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="data">
+    <element name="data">
+      <ref name="attlist.data"/>
+      <zeroOrMore>
+        <ref name="xpath"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.data" combine="interleave">
+    <empty/>
+  </define>
+  <define name="xpath">
+    <element name="xpath">
+      <ref name="attlist.xpath"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="graph"/>
+          <ref name="x"/>
+          <ref name="y"/>
+          <ref name="field"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <attribute name="expr"/>
+  </define>
+  <define name="attlist.xpath" combine="interleave">
+    <optional>
+      <attribute name="position" a:defaultValue="inside">
+        <choice>
+          <value>inside</value>
+          <value>replace</value>
+          <value>replace_attributes</value>
+          <value>after</value>
+          <value>before</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <start>
+    <choice>
+      <ref name="data"/>
+      <ref name="graph"/>
+    </choice>
+  </start>
+</grammar>
