@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.role,groups:"
+msgid "Groups"
+msgstr "Groepen"
+
+msgctxt "field:res.role,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:res.role-res.group,group:"
+msgid "Group"
+msgstr "Groep"
+
+msgctxt "field:res.role-res.group,role:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "field:res.user,roles:"
+msgid "Roles"
+msgstr "Rollen"
+
+msgctxt "field:res.user.role,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:res.user.role,role:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "field:res.user.role,to_date:"
+msgid "To Date"
+msgstr "Einddatum"
+
+msgctxt "field:res.user.role,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "model:ir.action,name:act_role_form"
+msgid "Roles"
+msgstr "Rollen"
+
+msgctxt "model:ir.ui.menu,name:menu_role_form"
+msgid "Roles"
+msgstr "Rollen"
+
+msgctxt "model:res.role,name:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "model:res.role-res.group,name:"
+msgid "Role - Group"
+msgstr "Rol - groep"
+
+msgctxt "model:res.user.role,name:"
+msgid "User Role"
+msgstr "Gebruikersrol"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Synchronize Users Roles"
+msgstr "Gebruikersrollen synchroniseren"
