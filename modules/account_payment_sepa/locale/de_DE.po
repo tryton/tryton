@@ -1,0 +1,244 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment.group:"
+msgid "No valid mandate for payment \"%s\""
+msgstr "Kein gültiges Mandat für Zahlung \"%s\""
+
+msgctxt "error:account.payment.sepa.mandate:"
+msgid ""
+"You can not delete mandate \"%s\" because it is not in draft or canceled "
+"state."
+msgstr ""
+"Mandat \"%s\" kann nicht gelöscht werden, da es nicht in Status 'Entwurf' "
+"oder 'Annulliert' ist."
+
+msgctxt "field:account.payment,sepa_mandate:"
+msgid "Mandate"
+msgstr "Mandat"
+
+msgctxt "field:account.payment.group,sepa_filename:"
+msgid "SEPA Filename"
+msgstr "SEPA Dateiname"
+
+msgctxt "field:account.payment.group,sepa_message:"
+msgid "SEPA Message"
+msgstr "SEPA Nachricht"
+
+msgctxt "field:account.payment.journal,company_party:"
+msgid "Company Party"
+msgstr "Unternehmen"
+
+msgctxt "field:account.payment.journal,sepa_bank_account_number:"
+msgid "Bank Account Number"
+msgstr "Kontonummer"
+
+msgctxt "field:account.payment.journal,sepa_batch_booking:"
+msgid "Batch Booking"
+msgstr "Sammelbuchung"
+
+msgctxt "field:account.payment.journal,sepa_charge_bearer:"
+msgid "Charge Bearer"
+msgstr "Gebührenträger"
+
+msgctxt "field:account.payment.journal,sepa_payable_flavor:"
+msgid "Payable Flavor"
+msgstr "SEPA-Typ Verbindlichkeiten"
+
+msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
+msgid "Receivable Flavor"
+msgstr "SEPA-Typ Forderungen"
+
+msgctxt "field:account.payment.sepa.mandate,account_number:"
+msgid "Account Number"
+msgstr "Kontonummer"
+
+msgctxt "field:account.payment.sepa.mandate,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.payment.sepa.mandate,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.payment.sepa.mandate,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.payment.sepa.mandate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.payment.sepa.mandate,identification:"
+msgid "Identification"
+msgstr "Identifikation"
+
+msgctxt "field:account.payment.sepa.mandate,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:account.payment.sepa.mandate,payments:"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "field:account.payment.sepa.mandate,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.payment.sepa.mandate,signature_date:"
+msgid "Signature Date"
+msgstr "Unterschriftsdatum"
+
+msgctxt "field:account.payment.sepa.mandate,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.payment.sepa.mandate,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:account.payment.sepa.mandate,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.payment.sepa.mandate,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:party.party,sepa_creditor_identifier:"
+msgid "SEPA Creditor Identifier"
+msgstr "SEPA Gläubiger-ID"
+
+msgctxt "field:party.party,sepa_creditor_identifier_used:"
+msgid "SEPA Creditor Identifier Used"
+msgstr "Verwendete SEPA Gläubiger-ID"
+
+msgctxt "field:party.party,sepa_mandates:"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandate"
+
+msgctxt "model:account.payment.sepa.mandate,name:"
+msgid "SEPA Mandate"
+msgstr "SEPA Mandat"
+
+msgctxt "model:ir.action,name:act_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandate"
+
+msgctxt "model:ir.action,name:act_mandate_form2"
+msgid "Mandates"
+msgstr "Mandate"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
+msgid "Receivable with Mandate"
+msgstr "Forderungen per Mandat (Lastschrift)"
+
+msgctxt "model:ir.ui.menu,name:menu_mandate_form"
+msgid "SEPA Mandates"
+msgstr "SEPA Mandate"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Creditor"
+msgstr "Gläubiger"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Debtor"
+msgstr "Schuldner"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Service Level"
+msgstr "Service Level"
+
+msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
+msgid "Shared"
+msgstr "Geteilt"
+
+msgctxt "selection:account.payment.journal,sepa_payable_flavor:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_payable_flavor:"
+msgid "pain.001.001.03"
+msgstr "pain.001.001.03"
+
+msgctxt "selection:account.payment.journal,sepa_payable_flavor:"
+msgid "pain.001.001.05"
+msgstr "pain.001.001.05"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_flavor:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_receivable_flavor:"
+msgid "pain.008.001.02"
+msgstr "pain.008.001.02"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_flavor:"
+msgid "pain.008.001.04"
+msgstr "pain.008.001.04"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Canceled"
+msgstr "Annulliert"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Requested"
+msgstr "Angefordert"
+
+msgctxt "selection:account.payment.sepa.mandate,state:"
+msgid "Validated"
+msgstr "Geprüft"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "One-off"
+msgstr "Einmalig"
+
+msgctxt "selection:account.payment.sepa.mandate,type:"
+msgid "Recurrent"
+msgstr "Wiederkehrend"
+
+msgctxt "view:account.payment.journal:"
+msgid "SEPA"
+msgstr "SEPA"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Are you sure to cancel the mandate?"
+msgstr "Mandat wirklich annullieren?"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Mandate"
+msgstr "Mandat"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Mandates"
+msgstr "Mandate"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Request"
+msgstr "Anfordern"
+
+msgctxt "view:account.payment.sepa.mandate:"
+msgid "Validate"
+msgstr "Prüfen"
+
+msgctxt "view:party.party:"
+msgid "SEPA"
+msgstr "SEPA"
