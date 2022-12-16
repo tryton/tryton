@@ -1,0 +1,116 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr "Reserv kasutaja"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Meenutus"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Tase"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Saaja"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Peidetud saaja"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Teine saaja"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontakteerumise moodus"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "Saatja"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "E-maili mall"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Saada e-mail"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr "Kasutaja, keda teavitatakse, kui puudub e-mail millele saata meenutus"
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+"Määra, kasutaja kontaktide mehanismide hulgast, missugust e-maili kasutada."
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Jäta tühjaks, et rakenduks väärtus mis on määratud seadistuse failis."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Meenutuse emaili logi"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "E-maili logi"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Meenutuse email"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Väärtus"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Kuupäev:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Nimetus"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Maksetähtaeg"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Tasud:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Saadud tasumata maksed"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Viide"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Meeldetuletuse teade"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Aeg"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr "E-mail"

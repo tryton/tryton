@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="name"/>
+    <field name="name"/>
+
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+
+    <label name="factor"/>
+    <group col="-1" id="factor">
+        <field name="factor" factor="100" xexpand="0"/>
+        <label name="factor" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+</form>

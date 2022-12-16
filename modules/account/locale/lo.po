@@ -1,0 +1,5002 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:account.account,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
+
+msgctxt "field:account.account,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "field:account.account,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "Close"
+
+msgctxt "field:account.account,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:account.account,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.account,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "field:account.account,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.account,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.account,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
+msgctxt "field:account.account,deferral:"
+msgid "Deferral"
+msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
+
+msgctxt "field:account.account,deferrals:"
+msgid "Deferrals"
+msgstr "ເຍື້ອນຊໍາລະ"
+
+#, fuzzy
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "field:account.account,left:"
+msgid "Left"
+msgstr "ຊ້າຍ"
+
+msgctxt "field:account.account,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.account,note:"
+msgid "Note"
+msgstr "ໝາຍເຫດ"
+
+msgctxt "field:account.account,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ"
+
+msgctxt "field:account.account,reconcile:"
+msgid "Reconcile"
+msgstr "ພິສູດຍອດ"
+
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+msgctxt "field:account.account,right:"
+msgid "Right"
+msgstr "ຂວາ"
+
+msgctxt "field:account.account,second_currency:"
+msgid "Secondary Currency"
+msgstr "ສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.account,taxes:"
+msgid "Default Taxes"
+msgstr "ພາສີ ເດີມ"
+
+msgctxt "field:account.account,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.account,template_override:"
+msgid "Override Template"
+msgstr ""
+
+msgctxt "field:account.account,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.account-account.tax,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.account-account.tax,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+msgctxt "field:account.account.deferral,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.account.deferral,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "field:account.account.deferral,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "field:account.account.deferral,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.account.deferral,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "field:account.account.deferral,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.account.deferral,second_currency:"
+msgid "Second Currency"
+msgstr "ສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Close"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "ສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.account.template,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "Close"
+
+msgctxt "field:account.account.template,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.account.template,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
+msgctxt "field:account.account.template,deferral:"
+msgid "Deferral"
+msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
+
+#, fuzzy
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.account.template,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "field:account.account.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.account.template,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ"
+
+msgctxt "field:account.account.template,reconcile:"
+msgid "Reconcile"
+msgstr "ພິສູດຍອດ"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.account.template,taxes:"
+msgid "Default Taxes"
+msgstr "ພາສີ ເດີມ"
+
+msgctxt "field:account.account.template,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.account.template-account.tax.template,account:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "field:account.account.template-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "ຮ່າງແບບພາສີ"
+
+msgctxt "field:account.account.type,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.account.type,amount_cmp:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "field:account.account.type,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.account.type,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.account.type,debt:"
+msgid "Debt"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "Expense"
+
+msgctxt "field:account.account.type,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.account.type,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+#, fuzzy
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "Stock"
+
+msgctxt "field:account.account.type,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.account.type,template_override:"
+msgid "Override Template"
+msgstr ""
+
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "field:account.account.type.template,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.account.type.template,debt:"
+msgid "Debt"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "Expense"
+
+msgctxt "field:account.account.type.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.account.type.template,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "Stock"
+
+msgctxt "field:account.aged_balance,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "field:account.aged_balance,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.aged_balance,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.aged_balance,term0:"
+msgid "Now"
+msgstr "ປັດຈຸບັນ"
+
+msgctxt "field:account.aged_balance,term1:"
+msgid "First Term"
+msgstr "ງວດທີໜຶ່ງ"
+
+msgctxt "field:account.aged_balance,term2:"
+msgid "Second Term"
+msgstr "ງວດທີສອງ"
+
+msgctxt "field:account.aged_balance,term3:"
+msgid "Third Term"
+msgstr "ງວດທີສາມ"
+
+msgctxt "field:account.aged_balance.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.aged_balance.context,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.aged_balance.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.aged_balance.context,term1:"
+msgid "First Term"
+msgstr "ງວດທີໜຶ່ງ"
+
+msgctxt "field:account.aged_balance.context,term2:"
+msgid "Second Term"
+msgstr "ງວດທີສອງ"
+
+msgctxt "field:account.aged_balance.context,term3:"
+msgid "Third Term"
+msgstr "ງວດທີສາມ"
+
+msgctxt "field:account.aged_balance.context,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.aged_balance.context,unit:"
+msgid "Unit"
+msgstr "ຫົວໜ່ວຍ"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,comparison:"
+msgid "Comparison"
+msgstr "ສົມທຽບ"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.balance_sheet.context,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.balance_sheet.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.configuration,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "ບັນຊີຕ້ອງສົ່ງເດີມ"
+
+msgctxt "field:account.configuration,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "ບັນຊີຕ້ອງຮັບເດີມ"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນລູກຄ້າ"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "field:account.configuration,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Reconciliation Lines"
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "ການປັບໂຕເລກພາສີມົນ"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "ບັນຊີຕ້ອງສົ່ງເດີມ"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "ບັນຊີຕ້ອງຮັບເດີມ"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_tax_rule,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນລູກຄ້າ"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
+msgid "Reconciliation Sequence"
+msgstr "Reconciliation Lines"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "ການກຳນົດຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "ວິທິການ"
+
+msgctxt "field:account.create_chart.account,account_template:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "field:account.create_chart.account,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.create_chart.properties,account_payable:"
+msgid "Default Payable Account"
+msgstr "ບັນຊີຕ້ອງຈ່າຍເດີມ"
+
+msgctxt "field:account.create_chart.properties,account_receivable:"
+msgid "Default Receivable Account"
+msgstr "ບັນຊີຕ້ອງຮັບເດີມ"
+
+msgctxt "field:account.create_chart.properties,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.fiscalyear,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.fiscalyear,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "ປຸ່ມລັດ"
+
+msgctxt "field:account.fiscalyear,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.fiscalyear,periods:"
+msgid "Periods"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.fiscalyear,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "ລໍາດັບປະກາດການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.fiscalyear,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.fiscalyear,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "ບັນຊີ ມີ"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "ບັນຊີ ໜີ້"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
+msgid "End Day"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
+msgid "Frequency"
+msgstr "ລຳດັບ"
+
+msgctxt "field:account.fiscalyear.create_periods.start,interval:"
+msgid "Interval"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Previous Fiscalyear"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
+msgid "Reset Sequences"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.general_ledger.account,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+msgctxt "field:account.general_ledger.account,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.general_ledger.account,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.general_ledger.account,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
+msgctxt "field:account.general_ledger.account,end_balance:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+msgctxt "field:account.general_ledger.account,end_credit:"
+msgid "End Credit"
+msgstr "ຍອດມີຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.general_ledger.account,end_debit:"
+msgid "End Debit"
+msgstr "ຍອດໜີ້ຍົກໄປ"
+
+msgctxt "field:account.general_ledger.account,general_ledger_balance:"
+msgid "General Ledger Balance"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "field:account.general_ledger.account,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.general_ledger.account,start_balance:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+msgctxt "field:account.general_ledger.account,start_credit:"
+msgid "Start Credit"
+msgstr "ຍອດມີຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.general_ledger.account,start_debit:"
+msgid "Start Debit"
+msgstr "ຍອດໜີ້ຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.general_ledger.account.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.general_ledger.account.context,end_period:"
+msgid "End Period"
+msgstr "ສິ້ນສຸດໄລຍະ"
+
+msgctxt "field:account.general_ledger.account.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,from_date:"
+msgid "From Date"
+msgstr "ແຕ່ວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.general_ledger.account.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.general_ledger.account.context,start_period:"
+msgid "Start Period"
+msgstr "ເລີ່ມໄລຍະ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,to_date:"
+msgid "To Date"
+msgstr "ເຖິງວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "ຍອດມີຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "ຍອດໜີ້ຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "ຍອດມີຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "ຍອດໜີ້ຍົກມາ"
+
+msgctxt "field:account.general_ledger.line,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,account_party:"
+msgid "Account Party"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
+msgctxt "field:account.general_ledger.line,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "field:account.general_ledger.line,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.general_ledger.line,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.general_ledger.line,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.general_ledger.line,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "field:account.general_ledger.line,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,internal_balance:"
+msgid "Internal Balance"
+msgstr "Trial Balance"
+
+msgctxt "field:account.general_ledger.line,move:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "field:account.general_ledger.line,move_description:"
+msgid "Move Description"
+msgstr "ລາຍລະອຽດການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.general_ledger.line,origin:"
+msgid "Origin"
+msgstr "ລາຍການຂັ້ນຕົ້ນ"
+
+msgctxt "field:account.general_ledger.line,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.general_ledger.line,party_required:"
+msgid "Party Required"
+msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "ການພິສູດຍອດ"
+
+msgctxt "field:account.general_ledger.line,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.general_ledger.line.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.general_ledger.line.context,end_period:"
+msgid "End Period"
+msgstr "ສິ້ນສຸດໄລຍະ"
+
+msgctxt "field:account.general_ledger.line.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,from_date:"
+msgid "From Date"
+msgstr "ແຕ່ວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.general_ledger.line.context,party_cumulate:"
+msgid "Cumulate per Party"
+msgstr "ລວມສະສົມຕໍ່ພາກສ່ວນ"
+
+msgctxt "field:account.general_ledger.line.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.general_ledger.line.context,start_period:"
+msgid "Start Period"
+msgstr "ເລີ່ມໄລຍະ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,to_date:"
+msgid "To Date"
+msgstr "ເຖິງວັນທີ"
+
+msgctxt "field:account.income_statement.context,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ / ອົງກອນ"
+
+msgctxt "field:account.income_statement.context,comparison:"
+msgid "Comparison"
+msgstr "ການສົມທຽບ"
+
+msgctxt "field:account.income_statement.context,end_period:"
+msgid "End Period"
+msgstr "ສິ້ນສຸດໄລຍະ"
+
+msgctxt "field:account.income_statement.context,end_period_cmp:"
+msgid "End Period"
+msgstr "ສິ້ນສຸດໄລຍະ"
+
+msgctxt "field:account.income_statement.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "ແຕ່ວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "ແຕ່ວັນທີ"
+
+msgctxt "field:account.income_statement.context,posted:"
+msgid "Posted Move"
+msgstr "ເຄື່ອນໄຫວປະກາດແລ້ວ"
+
+msgctxt "field:account.income_statement.context,start_period:"
+msgid "Start Period"
+msgstr "ເລີ່ມໄລຍະ"
+
+msgctxt "field:account.income_statement.context,start_period_cmp:"
+msgid "Start Period"
+msgstr "ເລີ່ມໄລຍະ"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "ເຖິງວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "ເຖິງວັນທີ"
+
+msgctxt "field:account.journal,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "field:account.journal,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:account.journal,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.journal,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.journal,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "field:account.journal,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.journal,sequence:"
+msgid "Sequence"
+msgstr "ລຳດັບ"
+
+#, fuzzy
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "ລຳດັບ"
+
+msgctxt "field:account.journal,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.journal.open_cash.context,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.journal.open_cash.context,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.journal.period,icon:"
+msgid "Icon"
+msgstr "ປຸ່ມລັດ"
+
+msgctxt "field:account.journal.period,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.journal.period,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.journal.period,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "ລຳດັບ"
+
+msgctxt "field:account.move,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.move,date:"
+msgid "Effective Date"
+msgstr "ວັນທີມີຜົນ"
+
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.move,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.move,lines:"
+msgid "Lines"
+msgstr "ລາຍການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "ລາຍການຂັ້ນຕົ້ນ"
+
+msgctxt "field:account.move,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.move,post_date:"
+msgid "Post Date"
+msgstr "ວັນທີປະກາດ"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr "ເລກທີປະກາດ"
+
+msgctxt "field:account.move,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.move.cancel.default,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.move.line,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.move.line,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.move.line,amount_currency:"
+msgid "Amount Currency"
+msgstr "ມູນຄ່າເປັນເງິນ"
+
+msgctxt "field:account.move.line,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.move.line,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.move.line,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.move.line,date:"
+msgid "Effective Date"
+msgstr "ວັນທີມີຜົນ"
+
+msgctxt "field:account.move.line,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.move.line,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.move.line,maturity_date:"
+msgid "Maturity Date"
+msgstr "ວັນທີຄົບກຳນົດໜີ້"
+
+msgctxt "field:account.move.line,move:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "ລາຍລະອຽດການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
+msgctxt "field:account.move.line,move_state:"
+msgid "Move State"
+msgstr "ສະຖານະເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "ລາຍການຂັ້ນຕົ້ນ"
+
+msgctxt "field:account.move.line,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ"
+
+msgctxt "field:account.move.line,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.move.line,reconciliation:"
+msgid "Reconciliation"
+msgstr "ການພິສູດຍອດ"
+
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr ""
+
+msgctxt "field:account.move.line,second_currency:"
+msgid "Second Currency"
+msgstr "ສະກຸນເງິນທີສອງ"
+
+msgctxt "field:account.move.line,second_currency_required:"
+msgid "Second Currency Required"
+msgstr "ຕ້ອງການໃຫ້ມີສະກຸນເງິນທີສອງ"
+
+msgctxt "field:account.move.line,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.move.line,tax_lines:"
+msgid "Tax Lines"
+msgstr "ລາຍການພາສີ"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.preview,terms:"
+msgid "Terms"
+msgstr "ງວດ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,frequency:"
+msgid "Frequency"
+msgstr "ລຳດັບ"
+
+msgctxt "field:account.move.line.split.start,interval:"
+msgid "Interval"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.start,total_amount:"
+msgid "Total Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.move.line.split.term,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.move.line.template,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.move.line.template,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.move.line.template,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.move.line.template,move:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "field:account.move.line.template,operation:"
+msgid "Operation"
+msgstr "ການດຳເນີນການ"
+
+msgctxt "field:account.move.line.template,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.move.line.template,party_required:"
+msgid "Party Required"
+msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ"
+
+msgctxt "field:account.move.line.template,taxes:"
+msgid "Taxes"
+msgstr "ພາສີ"
+
+msgctxt "field:account.move.open_journal.ask,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.move.open_journal.ask,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "ບັນຊີ ມີ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "ບັນຊີ ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "ເພີກຖອນ"
+
+#, fuzzy
+msgctxt "field:account.move.reconciliation,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.move.reconciliation,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr ""
+
+msgctxt "field:account.move.reconciliation,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.move.reconciliation,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.move.template,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.move.template,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.move.template,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.move.template,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.move.template,keywords:"
+msgid "Keywords"
+msgstr "ຄຳສັບລະຫັດ"
+
+msgctxt "field:account.move.template,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.move.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.move.template.create.template,period:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.move.template.create.template,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.move.template.keyword,digits:"
+msgid "Digits"
+msgstr "ເລກ"
+
+msgctxt "field:account.move.template.keyword,move:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "field:account.move.template.keyword,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.move.template.keyword,required:"
+msgid "Required"
+msgstr "ຕ້ອງມີ"
+
+msgctxt "field:account.move.template.keyword,string:"
+msgid "String"
+msgstr "ຂໍ້ຄວາມຄົ້ນຫາ"
+
+msgctxt "field:account.move.template.keyword,type_:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.open_chart.start,posted:"
+msgid "Posted Moves"
+msgstr "ການເຄື່ອນໄຫວທີ່ປະກາດແລ້ວ"
+
+msgctxt "field:account.period,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.period,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.period,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "ປຸ່ມລັດ"
+
+msgctxt "field:account.period,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.period,post_move_sequence:"
+msgid "Post Move Sequence"
+msgstr "ລຳດັບປະກາດການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.period,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.period,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.period,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write Off"
+msgstr "ເພີກຖອນ"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.tax,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.tax,credit_base_amount:"
+msgid "Credit Base Amount"
+msgstr ""
+
+msgctxt "field:account.tax,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "ບັນຊີແຈ້ງມີ"
+
+msgctxt "field:account.tax,credit_tax_amount:"
+msgid "Credit Tax Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.tax,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.tax,group:"
+msgid "Group"
+msgstr "ກຸ່ມ"
+
+msgctxt "field:account.tax,invoice_account:"
+msgid "Invoice Account"
+msgstr "ບັນຊີໃບເກັບເງິນ"
+
+msgctxt "field:account.tax,invoice_base_amount:"
+msgid "Invoice Base Amount"
+msgstr ""
+
+msgctxt "field:account.tax,invoice_tax_amount:"
+msgid "Invoice Tax Amount"
+msgstr ""
+
+msgctxt "field:account.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
+msgctxt "field:account.tax,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "ອັດຕາ"
+
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.tax,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax,template_override:"
+msgid "Override Template"
+msgstr ""
+
+msgctxt "field:account.tax,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "ປັບປຸງລາຄາຫົວໜ່ວຍ"
+
+msgctxt "field:account.tax.code,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.tax.code,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax.code,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.tax.code,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:account.tax.code,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.tax.code,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.tax.code,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.tax.code,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.code,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.tax.code,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax.code,template_override:"
+msgid "Override Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,operator:"
+msgid "Operator"
+msgstr "ການດຳເນີນການ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax.code.line,template_override:"
+msgid "Override Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,operator:"
+msgid "Operator"
+msgstr "ການດຳເນີນການ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "field:account.tax.code.open_chart.start,method:"
+msgid "Method"
+msgstr "ວິທີການ"
+
+msgctxt "field:account.tax.code.open_chart.start,periods:"
+msgid "Periods"
+msgstr "ໄລຍະ"
+
+msgctxt "field:account.tax.code.template,account:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "field:account.tax.code.template,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.tax.code.template,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:account.tax.code.template,description:"
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.tax.code.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.code.template,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+msgctxt "field:account.tax.group,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.group,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.line,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax.line,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.tax.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.tax.line,move_line:"
+msgid "Move Line"
+msgstr "ລາຍການເຄື່ອນໄຫວ"
+
+msgctxt "field:account.tax.line,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "field:account.tax.line,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.line.template,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax.line.template,line:"
+msgid "Line"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.tax.line.template,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.rule,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.rule,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.tax.rule,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.rule,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.tax.rule.line,group:"
+msgid "Tax Group"
+msgstr "ໝວດພາສີ"
+
+msgctxt "field:account.tax.rule.line,keep_origin:"
+msgid "Keep Origin"
+msgstr ""
+
+msgctxt "field:account.tax.rule.line,origin_tax:"
+msgid "Original Tax"
+msgstr "ອັດຕາພາສີເດີມ"
+
+msgctxt "field:account.tax.rule.line,rule:"
+msgid "Rule"
+msgstr "ສູດຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.tax.rule.line,tax:"
+msgid "Substitution Tax"
+msgstr "ພາສີທົດແທນ"
+
+msgctxt "field:account.tax.rule.line,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.tax.rule.line.template,group:"
+msgid "Tax Group"
+msgstr "ໝວດພາສີ"
+
+msgctxt "field:account.tax.rule.line.template,keep_origin:"
+msgid "Keep Origin"
+msgstr ""
+
+msgctxt "field:account.tax.rule.line.template,origin_tax:"
+msgid "Original Tax"
+msgstr "ອັດຕາພາສີເດີມ"
+
+msgctxt "field:account.tax.rule.line.template,rule:"
+msgid "Rule"
+msgstr "ສູດຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.tax.rule.line.template,tax:"
+msgid "Substitution Tax"
+msgstr "ພາສີທົດແທນ"
+
+msgctxt "field:account.tax.rule.template,account:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.rule.template,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.tax.rule.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.template,account:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "field:account.tax.template,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax.template,childs:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "field:account.tax.template,credit_note_account:"
+msgid "Credit Note Account"
+msgstr "ບັນຊີແຈ້ງມີ"
+
+msgctxt "field:account.tax.template,description:"
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+msgctxt "field:account.tax.template,group:"
+msgid "Group"
+msgstr "ກຸ່ມ"
+
+msgctxt "field:account.tax.template,invoice_account:"
+msgid "Invoice Account"
+msgstr "ບັນຊີໃບເກັບເງິນ"
+
+msgctxt "field:account.tax.template,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
+msgctxt "field:account.tax.template,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.tax.template,parent:"
+msgid "Parent"
+msgstr "ຮ່ວງ"
+
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "ອັດຕາ"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
+msgctxt "field:account.tax.template,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
+msgctxt "field:account.tax.template,update_unit_price:"
+msgid "Update Unit Price"
+msgstr "ປັບປຸງລາຄາຫົວໜ່ວຍ"
+
+msgctxt "field:account.tax.test,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.tax.test,quantity:"
+msgid "Quantity"
+msgstr "ຈຳນວນ"
+
+msgctxt "field:account.tax.test,result:"
+msgid "Result"
+msgstr "ຜົນຮັບ"
+
+msgctxt "field:account.tax.test,tax_date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.tax.test,taxes:"
+msgid "Taxes"
+msgstr "ພາສີ"
+
+msgctxt "field:account.tax.test,unit_price:"
+msgid "Unit Price"
+msgstr "ລາຄາຫົວໜ່ວຍ"
+
+msgctxt "field:account.tax.test.result,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.tax.test.result,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.tax.test.result,base:"
+msgid "Base"
+msgstr "ຖານຄິດໄລ່"
+
+msgctxt "field:account.tax.test.result,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+msgctxt "field:account.update_chart.start,account:"
+msgid "Root Account"
+msgstr "ບັນຊີຕົ້ນ"
+
+msgctxt "field:party.party,account_payable:"
+msgid "Account Payable"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
+msgctxt "field:party.party,account_receivable:"
+msgid "Account Receivable"
+msgstr "ບັນຊີໜີ້ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:party.party,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:party.party,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນລູກຄ້າ"
+
+msgctxt "field:party.party,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+msgctxt "field:party.party,payable_today:"
+msgid "Payable Today"
+msgstr "ຕ້ອງຈ່າຍມື້ນີ້"
+
+msgctxt "field:party.party,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+msgctxt "field:party.party,receivable_today:"
+msgid "Receivable Today"
+msgstr "ຕ້ອງຮັບມື້ນີ້"
+
+msgctxt "field:party.party,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "ບັນຊີໜີ້ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນລູກຄ້າ"
+
+#, fuzzy
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "ສູດຄິດໄລ່ອາກອນຜູ້ສະໜອງ"
+
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
+msgctxt "help:account.account,debit_type:"
+msgid "The type used if not empty and debit > credit."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.account,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "help:account.account,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"ອະນຸຍາດເອົາລາຍການຂອງບັນຊີນີ້\n"
+"ໃຫ້ສາມາດທຽບຍອດໄດ້."
+
+msgctxt "help:account.account,second_currency:"
+msgid ""
+"Force all moves for this account \n"
+"to have this secondary currency."
+msgstr "ບັງຄັບການເຄື່ອນໄຫວທັງໝົດສໍາລັບບັນຊີນີ້ ໃຫ້ມີສະກຸນເງິນທີສອງ."
+
+#, fuzzy
+msgctxt "help:account.account,taxes:"
+msgid ""
+"Default tax for manual encoding of move lines\n"
+"for journal types: \"expense\" and \"revenue\"."
+msgstr "ພາສີສຳລັບປ້ອນດ້ວຍມື ສຳລັບລາຍການປະເພດບັນຊີປະຈຳວັນ: \"ລາຍຈ່າຍ\" ແລະ \"ລາຍຮັບ\""
+
+msgctxt "help:account.account,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.account.template,general_ledger_balance:"
+msgid "Display only the balance in the general ledger report."
+msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"ອະນຸຍາດເອົາລາຍການຂອງບັນຊີນີ້\n"
+"ໃຫ້ສາມາດທຽບຍອດໄດ້."
+
+msgctxt "help:account.account.type,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+msgctxt "help:account.account.type,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.account.type.template,debt:"
+msgid "Check to allow booking debt via supplier invoice."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.aged_balance.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.comparision.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+msgctxt "help:account.configuration,default_customer_tax_rule:"
+msgid "Default customer tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.configuration,default_supplier_tax_rule:"
+msgid "Default supplier tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
+msgid ""
+"The day of the month on which periods end.\n"
+"Months with fewer days will end on the last day."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Used as reference for fiscalyear configuration."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
+msgid "If checked, new sequences will be created."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.account.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,journal:"
+msgid "Only include moves from the journal."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.general_ledger.line.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.income_statement.context,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number."
+msgstr "ນອກຈາກນັ້ນຍັງຮູ້ຈັກໃນນາມ ເລກປະຈຳເອກະສານນັ້ນໆ"
+
+#, fuzzy
+msgctxt "help:account.move.line,amount_second_currency:"
+msgid "The amount expressed in a second currency."
+msgstr "ມູນຄ່າເປັນສະກຸນເງິນທີສອງ"
+
+msgctxt "help:account.move.line,maturity_date:"
+msgid ""
+"This field is used for payable and receivable lines. \n"
+"You can put the limit date for the payment."
+msgstr ""
+"ຊ່ອງຂໍ້ມູນນີ້ໃຊ້ສຳລັບລາຍການ ໜີ້ຕ້ອງສົ່ງ ແລະ "
+"ໜີ້ຕ້ອງຮັບທ່ານສາມາດໃສ່ວັນທີເສັ້ນຕາຍສຳລັບການຈ່າຍ"
+
+#, fuzzy
+msgctxt "help:account.move.line,second_currency:"
+msgid "The second currency."
+msgstr "ສະກຸນເງິນທີສອງ"
+
+msgctxt "help:account.move.line.split.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.move.line.template,description:"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgstr "ຄຳສັບລະຫັດທີ່ເອົາມາໃຊ້ແທນ ໄດ້ລະບຸບອກໄວ້ດ້ວຍ ວົງປີກກາ ('{' and '}')"
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.move.reconciliation,date:"
+msgid "Highest date of the reconciled lines."
+msgstr "ວັນທີສູງສຸດຂອງລາຍການກວດສອບຍອດ"
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.move.template,date:"
+msgid "Leave empty for today."
+msgstr "ມື້ນີ້ໃຫ້ປະເປົ່າ"
+
+#, fuzzy
+msgctxt "help:account.move.template,description:"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
+msgstr "ຄຳສັບລະຫັດທີ່ເອົາມາໃຊ້ແທນ ໄດ້ລະບຸບອກໄວ້ດ້ວຍ ວົງປີກກາ ('{' and '}')"
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "ປະເປົ່າສຳລັບປີການບັນຊີທີ່ໄຂຢູ່ທັງໝົດ"
+
+#, fuzzy
+msgctxt "help:account.open_chart.start,posted:"
+msgid "Only include posted moves."
+msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
+
+#, fuzzy
+msgctxt "help:account.tax,amount:"
+msgid "In company's currency."
+msgstr "ຕາມສະກຸນເງິນຂອງ"
+
+#, fuzzy
+msgctxt "help:account.tax,description:"
+msgid "The name that will be used in reports."
+msgstr "ແມ່ນຊື່ທີ່ຈະໃຊ້ໃນໃບສະຫຼຸຸບລາຍງານ"
+
+msgctxt "help:account.tax,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.tax,update_unit_price:"
+msgid ""
+"If checked then the unit price for further tax computation will be modified "
+"by this tax."
+msgstr "ຖ້າໝາຍເອົາແລ້ວຫົວໜ່ວຍລາຄາສຳລັບການຄິດໄລ່ພາສີຈະຖືກແກ້ໄຂດ້ວຍພາສີນີ້"
+
+msgctxt "help:account.tax.code,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.tax.code.line,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
+msgid "Leave empty for all open fiscal year."
+msgstr "ປະເປົ່າສຳລັບປີການບັນຊີທີ່ໄຂຢູ່ທັງໝົດ"
+
+#, fuzzy
+msgctxt "help:account.tax.code.open_chart.start,periods:"
+msgid "Leave empty for all periods of all open fiscal year."
+msgstr "ປະເປົ່າ ສຳລັບທຸກໄລຍະ ຂອງ ປີການບັນຊີທີ່ໄຂຢູ່"
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
+
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.tax.rule.line,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr ""
+
+msgctxt "help:account.tax.rule.line,origin_tax:"
+msgid ""
+"If the original tax is filled, the rule will be applied only for this tax."
+msgstr ""
+"ຖ້າຫາກວ່າອັດຕາພາສີເດີມຖືກປ້ອນເຂົ້າ "
+"ສູດຄິດໄລ່ກໍຈະປັບໃຊ້ກັບອັດຕາພາສີນີ້ເທົ່ານັ້ນ."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.tax.rule.line.template,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr ""
+
+msgctxt "help:account.tax.rule.line.template,origin_tax:"
+msgid ""
+"If the original tax template is filled, the rule will be applied only for "
+"this tax template."
+msgstr "ຖ້າຫາກຮ່າງແບບພາສີຖືກຕື່ມຂໍ້ມູນໃສ່ ສູດຄິດໄລ່ຈະປັບໃຊ້ກັບຮ່າງແບບພາສີນີ້."
+
+msgctxt "help:party.party,customer_tax_rule:"
+msgid "Apply this rule on taxes when party is customer."
+msgstr "ນໍາໃຊ້ສູດຄິດໄລ່ນີ້ກັບພາສີ ເມື່ອພາກສ່ວນແມ່ນລູກຄ້າ"
+
+msgctxt "help:party.party,supplier_tax_rule:"
+msgid "Apply this rule on taxes when party is supplier."
+msgstr "ນໍາໃຊ້ສູດຄິດໄລ່ນີ້ກັບພາສີເມື່ອພາກສ່ວນແມ່ນຜູ້ສະໜອງ"
+
+msgctxt "model:account.account,name:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "model:account.account-account.tax,name:"
+msgid "Account - Tax"
+msgstr "ບັນຊີ - ອາກອນ"
+
+msgctxt "model:account.account.deferral,name:"
+msgid "Account Deferral"
+msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
+
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
+msgctxt "model:account.account.template,name:"
+msgid "Account Template"
+msgstr "ຮ່າງແບບບັນຊີ"
+
+msgctxt "model:account.account.template-account.tax.template,name:"
+msgid "Account Template - Tax Template"
+msgstr "ຮ່າງແບບບັນຊີ - ຮ່າງແບບອາກອນ"
+
+msgctxt "model:account.account.type,name:"
+msgid "Account Type"
+msgstr "ປະເພດບັນຊີ"
+
+msgctxt "model:account.account.type.template,name:"
+msgid "Account Type Template"
+msgstr "ຮ່າງແບບປະເພດບັນຊີ"
+
+msgctxt "model:account.aged_balance,name:"
+msgid "Aged Balance"
+msgstr "ສະຫຼຸບໜີ້ຕາມກຳນົດ"
+
+msgctxt "model:account.aged_balance.context,name:"
+msgid "Aged Balance Context"
+msgstr "ບໍລິບົດສະຫຼຸບໜີ້ຕາມກຳນົດ"
+
+#, fuzzy
+msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgid "Balance Sheet Context"
+msgstr "ບໍລິບົດສະຫຼຸບຊັບສົມບັດ"
+
+msgctxt "model:account.balance_sheet.context,name:"
+msgid "Balance Sheet Context"
+msgstr "ບໍລິບົດສະຫຼຸບຊັບສົມບັດ"
+
+msgctxt "model:account.configuration,name:"
+msgid "Account Configuration"
+msgstr "ການກຳນົດຄ່າບັນຊີ"
+
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,name:"
+msgid "Account Configuration Default Tax Rule"
+msgstr "ບັນຊີການກຳນົດການປັບໂຕມົນເລກພາສີ"
+
+#, fuzzy
+msgctxt "model:account.configuration.sequence,name:"
+msgid "Account Configuration Sequence"
+msgstr "ການກຳນົດຄ່າບັນຊີ"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "ບັນຊີການກຳນົດການປັບໂຕມົນເລກພາສີ"
+
+msgctxt "model:account.create_chart.account,name:"
+msgid "Create Chart"
+msgstr "ສ້າງຜັງບັນຊີ"
+
+msgctxt "model:account.create_chart.properties,name:"
+msgid "Create Chart"
+msgstr "ສ້າງຜັງບັນຊີ"
+
+msgctxt "model:account.create_chart.start,name:"
+msgid "Create Chart"
+msgstr "ສ້າງຜັງບັນຊີ"
+
+msgctxt "model:account.fiscalyear,name:"
+msgid "Fiscal Year"
+msgstr "ປີການບັນຊີ"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "ດຸນບໍ່ລໍຖ້າຕັດບັນຊີ"
+
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,name:"
+msgid "Create Periods Start"
+msgstr "Create Monthly Periods"
+
+msgctxt "model:account.fiscalyear.renew.start,name:"
+msgid "Renew Fiscal Year Start"
+msgstr ""
+
+msgctxt "model:account.general_ledger.account,name:"
+msgid "General Ledger Account"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "model:account.general_ledger.account.context,name:"
+msgid "General Ledger Account Context"
+msgstr "ບໍລິບົດບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "model:account.general_ledger.line,name:"
+msgid "General Ledger Line"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "model:account.general_ledger.line.context,name:"
+msgid "General Ledger Line Context"
+msgstr "ບໍລິບົດລາຍການບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "model:account.income_statement.context,name:"
+msgid "Income Statement Context"
+msgstr "ບໍລິບົດສະຫຼຸບຜົນໄດ້ຮັບ"
+
+msgctxt "model:account.journal,name:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_cash"
+msgid "Cash"
+msgstr "Cash"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_expense"
+msgid "Expense"
+msgstr "Expense"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_revenue"
+msgid "Revenue"
+msgstr "Revenue"
+
+#, fuzzy
+msgctxt "model:account.journal,name:journal_stock"
+msgid "Stock"
+msgstr "Stock"
+
+msgctxt "model:account.journal.open_cash.context,name:"
+msgid "Journal Cash Context"
+msgstr "ບໍລິບົດບັນຊີເງິນສົດປະຈຳວັນ"
+
+msgctxt "model:account.journal.period,name:"
+msgid "Journal - Period"
+msgstr "ບັນຊີປະຈຳວັນ - ໄລຍະ"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr ""
+
+msgctxt "model:account.move,name:"
+msgid "Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+
+msgctxt "model:account.move.cancel.default,name:"
+msgid "Cancel Moves"
+msgstr "ຍົກເລີກການເຄື່ອນໄຫວ"
+
+msgctxt "model:account.move.line,name:"
+msgid "Account Move Line"
+msgstr "ລາຍການເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.move.line.split.preview,name:"
+msgid "Split Lines"
+msgstr "ອັດປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.start,name:"
+msgid "Split Lines"
+msgstr "ອັດປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:account.move.line.split.term,name:"
+msgid "Split Lines"
+msgstr "ອັດປີການບັນຊີ"
+
+msgctxt "model:account.move.line.template,name:"
+msgid "Account Move Line Template"
+msgstr "ຮ່າງແບບລາຍການເຄຶ່ອນໄຫວບັນຊີ"
+
+msgctxt "model:account.move.open_journal.ask,name:"
+msgid "Open Journal Ask"
+msgstr "ຂໍໃຫ້ໄຂບັນຊີປະຈຳວັນ"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr ""
+
+msgctxt "model:account.move.reconcile_lines.writeoff,name:"
+msgid "Reconcile Lines Write-Off"
+msgstr "ເພີກຖອນລາຍການພິສູດຍອດ"
+
+msgctxt "model:account.move.reconciliation,name:"
+msgid "Account Move Reconciliation Lines"
+msgstr "ລາຍການພິສູດຍອດບັນຊີເຄື່ອນໄຫວ"
+
+msgctxt "model:account.move.template,name:"
+msgid "Account Move Template"
+msgstr "ຮ່າງແບບເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "model:account.move.template.create.keywords,name:"
+msgid "Create Move from Template"
+msgstr "ສ້າງການເຄື່ອນໄຫວຈາກຮ່າງແບບ"
+
+msgctxt "model:account.move.template.create.template,name:"
+msgid "Create Move from Template"
+msgstr "ສ້າງການເຄື່ອນໄຫວຈາກຮ່າງແບບ"
+
+msgctxt "model:account.move.template.keyword,name:"
+msgid "Account Move Template Keyword"
+msgstr "ຄຳສັບລະຫັດຮ່າງແບບເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "model:account.open_chart.start,name:"
+msgid "Open Chart of Accounts"
+msgstr "ໄຂຜັງບັນຊີ"
+
+msgctxt "model:account.period,name:"
+msgid "Period"
+msgstr "ໄລຍະ"
+
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "ພິສູດຍອດ"
+
+msgctxt "model:account.tax,name:"
+msgid "Account Tax"
+msgstr "ບັນຊີອາກອນ"
+
+msgctxt "model:account.tax.code,name:"
+msgid "Tax Code"
+msgstr "ລະຫັດພາສີ"
+
+#, fuzzy
+msgctxt "model:account.tax.code.line,name:"
+msgid "Tax Code Line"
+msgstr "ລາຍການສູດຄິດໄລ່ພາສີ"
+
+#, fuzzy
+msgctxt "model:account.tax.code.line.template,name:"
+msgid "Tax Code Line Template"
+msgstr "ຮ່າງແບບລາຍການສູດຄິດໄລ່ພາສີ"
+
+msgctxt "model:account.tax.code.open_chart.start,name:"
+msgid "Open Chart of Tax Codes"
+msgstr "ໄຂຜັງລະຫັດພາສີທີ່ດິນ"
+
+msgctxt "model:account.tax.code.template,name:"
+msgid "Tax Code Template"
+msgstr "ຮ່າງແບບລະຫັດພາສີ"
+
+msgctxt "model:account.tax.group,name:"
+msgid "Tax Group"
+msgstr "ໝວດພາສີ"
+
+msgctxt "model:account.tax.line,name:"
+msgid "Tax Line"
+msgstr "ລາຍການພາສີ"
+
+msgctxt "model:account.tax.line.template,name:"
+msgid "Account Tax Line Template"
+msgstr "ຮ່າງແບບລາຍການບັນຊີອາກອນ"
+
+msgctxt "model:account.tax.rule,name:"
+msgid "Tax Rule"
+msgstr "ສູດຄິດໄລ່ພາສີ"
+
+msgctxt "model:account.tax.rule.line,name:"
+msgid "Tax Rule Line"
+msgstr "ລາຍການສູດຄິດໄລ່ພາສີ"
+
+msgctxt "model:account.tax.rule.line.template,name:"
+msgid "Tax Rule Line Template"
+msgstr "ຮ່າງແບບລາຍການສູດຄິດໄລ່ພາສີ"
+
+msgctxt "model:account.tax.rule.template,name:"
+msgid "Tax Rule Template"
+msgstr "ຮ່າງແບບສູດຄິດໄລ່ພາສີ"
+
+msgctxt "model:account.tax.template,name:"
+msgid "Account Tax Template"
+msgstr "ຮ່າງແບບບັນຊີອາກອນ"
+
+msgctxt "model:account.tax.test,name:"
+msgid "Test Tax"
+msgstr "ທົດສອບອາກອນ"
+
+msgctxt "model:account.tax.test.result,name:"
+msgid "Test Tax"
+msgstr "ທົດສອບອາກອນ"
+
+msgctxt "model:account.update_chart.start,name:"
+msgid "Update Chart"
+msgstr "ປັບປຸງຜັງບັນຊີ"
+
+msgctxt "model:account.update_chart.succeed,name:"
+msgid "Update Chart"
+msgstr "ປັບປຸງຜັງບັນຊີ"
+
+msgctxt "model:ir.action,name:act_account_balance_sheet"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
+msgid "Balance Sheet"
+msgstr "Balance Sheet"
+
+msgctxt "model:ir.action,name:act_account_general_ledger"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_income_statement_tree"
+msgid "Income Statement"
+msgstr "Income Statement"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_template_tree"
+msgid "Accounts"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "Account Types"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_template_tree"
+msgid "Types"
+msgstr "ປະເພດ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_tree"
+msgid "Account Types"
+msgstr "Account Types"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_aged_balance_list"
+msgid "Aged Balance"
+msgstr "Aged Balance"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Balance Non-Deferral"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
+msgstr "Cancel Moves"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Open Chart of Tax Codes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_configuration_form"
+msgid "Configuration"
+msgstr "ການກຳນົດຄ່າ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_periods"
+msgid "Create Periods"
+msgstr "Create Monthly Periods"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "ອັດປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_form"
+msgid "General Ledger - Accounts"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form_party"
+msgid "Accounts"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_line_form"
+msgid "General Ledger - Lines"
+msgstr "General Ledger - Lines"
+
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_form"
+msgid "Journals"
+msgstr "Journals"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_open_cash"
+msgid "Journals Cash"
+msgstr "Journals Cash"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_period_form_close"
+msgid "Close Journals - Periods"
+msgstr "ອັດບັນຊີປະຈຳວັນ - ໄລຍະ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Account Moves"
+msgstr "Account Moves"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_grouping"
+msgid "Grouped Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_splitting"
+msgid "Split Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Account Move Lines"
+msgstr "Account Move Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr "Payable/Receivable Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "Reconciliation Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_template_create"
+msgid "Create Move from Template"
+msgstr "Create Move from Template"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_template_form"
+msgid "Moves"
+msgstr "ເຄື່ອນໄຫວ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Move Account"
+msgstr "Open Move Account"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Open Chart of Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_journal"
+msgid "Open Journal"
+msgstr "Open Journal"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_tax_code"
+msgid "Open Tax Code"
+msgstr "Open Tax Code"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "Open Type"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_period_form"
+msgid "Periods"
+msgstr "Periods"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "ອັດໄລຍະ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr "Reconcile Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reconcile_lines"
+msgid "Reconcile Lines"
+msgstr "Reconcile Lines"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "ໄຂ ປີການບັນຊີ ອີກ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_split_lines_wizard"
+msgid "Split Lines"
+msgstr "ອັດປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Codes"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "Tax Codes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree"
+msgid "Codes"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_tree2"
+msgid "Tax Codes"
+msgstr "Tax Codes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_group_form"
+msgid "Groups"
+msgstr "ກຸ່ມ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_line_form"
+msgid "Tax Lines"
+msgstr "Tax Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "Taxes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Tax Rules"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_rule_template_form"
+msgid "Rules"
+msgstr "ສູດຄິດໄລ່"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_template_list"
+msgid "Taxes"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_unreconcile_lines"
+msgid "Unreconcile Lines"
+msgstr "Unreconcile Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_account_type_statement"
+msgid "Statement"
+msgstr "Income Statement"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_aged_balance"
+msgid "Aged Balance"
+msgstr "Aged Balance"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_general_journal"
+msgid "General Journal"
+msgstr "General Journal"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_general_ledger"
+msgid "General Ledger"
+msgstr "General Ledger"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_trial_balance"
+msgid "Trial Balance"
+msgstr "Trial Balance"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Create Chart of Accounts from Template"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_tax_test"
+msgid "Test Tax"
+msgstr "Test Tax"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Update Chart of Accounts from Template"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "Payable"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "Receivable"
+
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_line_delegated"
+msgid ""
+"The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
+"the lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
+msgid ""
+"To close period \"%(period)s\", you must balance the inactive account "
+"\"%(account)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_company_change_currency"
+msgid ""
+"You cannot change the currency of a company which is associated with account"
+" moves."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "ທ່ານບໍ່ສາມາດ ສ້າງ ບັນຊີປະຈຳວັນ - ໄລຍະ ໃສ່ໃນ ໄລຍະ \"%s\" ທີ່ອັດແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+"ທ່ານບໍ່ສາມາດສ້າງ ໄລຍະ ໃສ່ປີການບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ "
+"ມັນໄດ້ຖືກອັດໄປແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "ການເຍື້ອນຊໍາລະຕ້ອງບໍ່ຊໍ້າກັນ ດ້ວຍບັນຊີ ແລະ ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "ທ່ານສາມາດໄຂພຽງແຕ່ບັນຊີປະຈຳວັນດຽວເທົ່ານັ້ນສຳລັບໜຶ່ງໄລຍະ"
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr "ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%s\" ແລ້ວ"
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດໄຂ ບັນຊີປະຈຳວັນ - ໄລຍະ \"%(journal_period)s\" ນີ້ໄດ້ ເພາະວ່າ "
+"ໄລຍະ \"%(period)s\" ຖືກອັດລົງແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+"ທ່ານບໍ່ສາມາດໄຂ ໄລຍະ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ ມັນເປັນ ປີການບັນຊີ "
+"\"%(fiscalyear)s\" ທີ່ໄດ້ອັດແລ້ວ."
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າບັນຊີມັນ \"%(party1)s\" "
+"ແຕກຕ່າງກັບ \"%(party2)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າ ພາກສ່ວນມັນ "
+"\"%(party1)s\" ແຕກຕ່າງກັບ \"%(party2)s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_account"
+msgid "You cannot split lines with different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_currency"
+msgid "You cannot split lines with different currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_origins"
+msgid "You cannot split lines with different origins."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_same_party"
+msgid "You cannot split lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_split_line_wrong_amount"
+msgid ""
+"To split the lines you must change the terms to have a total amount of "
+"%(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr "ທ່ານບໍ່ສາມາດແກ້ໄຂການພິສູດຍອດໄດ້."
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
+msgid "Are you sure you want to lock the fiscal year?"
+msgstr "Are you sure to lock the fiscal year?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:period_lock_button"
+msgid "Are you sure you want to lock the period?"
+msgstr "Are you sure to lock the period?"
+
+msgctxt "model:ir.model.button,string:fiscalyear_close_button"
+msgid "Close"
+msgstr "Close"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
+msgid "Create Periods"
+msgstr "Create Monthly Periods"
+
+msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
+msgid "Lock"
+msgstr "Lock"
+
+msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Open"
+
+msgctxt "model:ir.model.button,string:move_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_lock_button"
+msgid "Lock"
+msgstr "Lock"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Open"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_type_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_general_ledger_account_party_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_reconciliation_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_move_template_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reconcile_writeoff_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
+msgid "User in companies"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_account_journal"
+msgid "Default Account Journal"
+msgstr "Default Account Journal"
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
+msgid "Default Account Move Reconciliation"
+msgstr "Default Account Move Reconciliation"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
+msgid "Account Journal"
+msgstr "Account Journal"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
+msgid "Account Move"
+msgstr "Account Move"
+
+#, fuzzy
+msgctxt ""
+"model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
+msgid "Account Move Reconciliation"
+msgstr "Account Move Reconciliation"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account"
+msgid "Financial"
+msgstr "Financial"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
+msgid "Accounts"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "Account Types"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
+msgid "Types"
+msgstr "ປະເພດ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
+msgid "Account Types"
+msgstr "Account Types"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_aged_balance"
+msgid "Aged Balance"
+msgstr "Aged Balance"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Balance Non-Deferral"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_charts"
+msgid "Charts"
+msgstr "Charts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
+msgid "Close Fiscal Years"
+msgstr "ອັດປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "ອັດບັນຊີປະຈຳວັນ - ໄລຍະ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "ອັດໄລຍະ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
+msgid "Open Chart of Tax Codes"
+msgstr "Open Chart of Tax Codes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_create_chart"
+msgid "Create Chart of Accounts from Template"
+msgstr "Create Chart of Accounts from Template"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_entries"
+msgid "Entries"
+msgstr "Entries"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
+msgid "General Account"
+msgstr "General Account"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_general_ledger"
+msgid "General Ledger"
+msgstr "General Ledger"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
+msgid "Journals"
+msgstr "Journals"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_journal_form"
+msgid "Journals"
+msgstr "Journals"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
+msgid "Journals Cash"
+msgstr "Journals Cash"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Account Moves"
+msgstr "Account Moves"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_template_create"
+msgid "Create Move from Template"
+msgstr "Create Move from Template"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_template_form"
+msgid "Moves"
+msgstr "ເຄື່ອນໄຫວ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
+msgid "Balance Sheet"
+msgstr "Balance Sheet"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_open_chart"
+msgid "Open Chart of Accounts"
+msgstr "Open Chart of Accounts"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
+msgid "Income Statement"
+msgstr "Income Statement"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_open_journal"
+msgid "Open Journal"
+msgstr "Open Journal"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_period_form"
+msgid "Periods"
+msgstr "Periods"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_processing"
+msgid "Processing"
+msgstr "Processing"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr "Reconcile Accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "ໄຂ ປີການບັນຊີ ອີກ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Codes"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
+msgid "Tax Codes"
+msgstr "Tax Codes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
+msgid "Codes"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
+msgid "Groups"
+msgstr "ກຸ່ມ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "Taxes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
+msgid "Tax Rules"
+msgstr "Tax Rules"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
+msgid "Rules"
+msgstr "ສູດຄິດໄລ່"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
+msgid "Taxes"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_test"
+msgid "Test Tax"
+msgstr "Test Tax"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_taxes"
+msgid "Taxes"
+msgstr "Taxes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_templates"
+msgid "Templates"
+msgstr "Templates"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_update_chart"
+msgid "Update Chart of Accounts from Template"
+msgstr "Update Chart of Accounts from Template"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
+msgid "Configuration"
+msgstr "ການກຳນົດຄ່າ"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account"
+msgid "Account"
+msgstr "Account"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_admin"
+msgid "Account Administration"
+msgstr "Account Administration"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_account_party"
+msgid "Accounting Party"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "/"
+msgstr "/"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Balance Sheet"
+msgstr "Balance Sheet"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Company:"
+msgstr "ສຳນັກງານ/ອົງກອນ:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Date:"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Fiscal Year:"
+msgstr "ປີການບັນຊີ:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Date:"
+msgstr "ແຕ່ວັນທີ:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "From Period"
+msgstr "ແຕ່ ໄລຍະ"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Income Statement"
+msgstr "Income Statement"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Print Date:"
+msgstr "ວັນທີພິມອອກ:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "Statement"
+msgstr "Income Statement"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "To"
+msgstr "ເຖິງ"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "User:"
+msgstr "ຜູ້ໃຊ້:"
+
+#, fuzzy
+msgctxt "report:account.account.type.statement:"
+msgid "at"
+msgstr "ເວລາ"
+
+msgctxt "report:account.aged_balance:"
+msgid "+"
+msgstr "+"
+
+msgctxt "report:account.aged_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.aged_balance:"
+msgid "Aged Balance for"
+msgstr "ສະຫຼຸບໜີ້ຕາມກຳນົດ ສຳລັບ"
+
+msgctxt "report:account.aged_balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "report:account.aged_balance:"
+msgid "Company:"
+msgstr "ສຳນັກງານ/ອົງກອນ:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Date:"
+msgstr "ວັນທີ:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "report:account.aged_balance:"
+msgid "Print Date:"
+msgstr "ວັນທີພິມອອກ:"
+
+msgctxt "report:account.aged_balance:"
+msgid "Total"
+msgstr "ລວມທັງໝົດ"
+
+msgctxt "report:account.aged_balance:"
+msgid "User:"
+msgstr "ຜູ້ໃຊ້:"
+
+msgctxt "report:account.aged_balance:"
+msgid "at"
+msgstr "ເວລາ"
+
+msgctxt "report:account.general_ledger:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.general_ledger:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.general_ledger:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Company:"
+msgstr "ສຳນັກງານ/ອົງກອນ:"
+
+msgctxt "report:account.general_ledger:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "report:account.general_ledger:"
+msgid "Descr."
+msgstr "ລາຍລະອຽດ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Fiscal Year:"
+msgstr "ປີການບັນຊີ:"
+
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "From Date:"
+msgstr "ແຕ່ວັນທີ:"
+
+msgctxt "report:account.general_ledger:"
+msgid "From Period"
+msgstr "ແຕ່ ໄລຍະ"
+
+msgctxt "report:account.general_ledger:"
+msgid "General Ledger"
+msgstr "ບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "report:account.general_ledger:"
+msgid "Origin"
+msgstr "ບັນຊີຕົ້ນ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Print Date:"
+msgstr "ວັນທີພິມອອກ:"
+
+msgctxt "report:account.general_ledger:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "report:account.general_ledger:"
+msgid "To"
+msgstr "ເຖິງ"
+
+msgctxt "report:account.general_ledger:"
+msgid "Total"
+msgstr "ລວມທັງໝົດ"
+
+msgctxt "report:account.general_ledger:"
+msgid "User:"
+msgstr "ຜູ້ໃຊ້:"
+
+msgctxt "report:account.general_ledger:"
+msgid "at"
+msgstr "ເວລາ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Company:"
+msgstr "ສຳນັກງານ/ອົງກອນ:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Date:"
+msgstr "ວັນທີ:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "General Journal"
+msgstr "ບັນຊີປະຈຳວັນທົ່ວໄປ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Journal Entry:"
+msgstr "ລົງບັນຊີປະຈຳວັນ:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Origin:"
+msgstr "ບັນຊີຕົ້ນ:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Posted"
+msgstr "ປະກາດແລ້ວ"
+
+msgctxt "report:account.move.general_journal:"
+msgid "Print Date:"
+msgstr "ວັນທີພິມອອກ:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "User:"
+msgstr "ຜູ້ໃຊ້:"
+
+msgctxt "report:account.move.general_journal:"
+msgid "at"
+msgstr "ເວລາ"
+
+msgctxt "report:account.trial_balance:"
+msgid "/"
+msgstr "/"
+
+msgctxt "report:account.trial_balance:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "report:account.trial_balance:"
+msgid "Company:"
+msgstr "ສຳນັກງານ/ອົງກອນ:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "report:account.trial_balance:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "report:account.trial_balance:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+msgctxt "report:account.trial_balance:"
+msgid "Fiscal Year:"
+msgstr "ປີການບັນຊີ:"
+
+#, fuzzy
+msgctxt "report:account.trial_balance:"
+msgid "From Date:"
+msgstr "ແຕ່ວັນທີ:"
+
+msgctxt "report:account.trial_balance:"
+msgid "From Period:"
+msgstr "ແຕ່ ໄລຍະ:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Print Date:"
+msgstr "ວັນທີພິມອອກ:"
+
+msgctxt "report:account.trial_balance:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+#, fuzzy
+msgctxt "report:account.trial_balance:"
+msgid "To"
+msgstr "ເຖິງ"
+
+msgctxt "report:account.trial_balance:"
+msgid "Total"
+msgstr "ລວມທັງໝົດ"
+
+msgctxt "report:account.trial_balance:"
+msgid "Trial Balance"
+msgstr "ໃບດຸນດ່ຽງທົ່ວໄປ"
+
+msgctxt "report:account.trial_balance:"
+msgid "User:"
+msgstr "ຜູ້ໃຊ້:"
+
+msgctxt "report:account.trial_balance:"
+msgid "at"
+msgstr "ເວລາ"
+
+#, fuzzy
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr ""
+
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr ""
+
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers"
+msgstr "ລູກຄ້າ"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Customers and Suppliers"
+msgstr "ລູກຄ້າ ແລະ ຜູ້ສະໜອງ"
+
+msgctxt "selection:account.aged_balance.context,type:"
+msgid "Suppliers"
+msgstr "ຜູ້ສະໜອງ"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Days"
+msgstr "ມື້"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Months"
+msgstr "ເດືອນ"
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Weeks"
+msgstr ""
+
+msgctxt "selection:account.aged_balance.context,unit:"
+msgid "Years"
+msgstr ""
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "ຕໍ່ເອກະສານ"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "ຕໍ່ລາຍການ"
+
+#, fuzzy
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Document"
+msgstr "ຕໍ່ເອກະສານ"
+
+#, fuzzy
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
+msgid "Per Line"
+msgstr "ຕໍ່ລາຍການ"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Close"
+msgstr "ອັດ"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr ""
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Open"
+msgstr "ໄຂ"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Monthly"
+msgstr "ເດືອນ"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Other"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "selection:account.general_ledger.line,state:"
+msgid "Posted"
+msgstr "ປະກາດແລ້ວ"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "Cash"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "Expense"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "General"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "Revenue"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "Situation"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "ເພີກຖອນ"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Close"
+msgstr "ອັດ"
+
+msgctxt "selection:account.journal.period,state:"
+msgid "Open"
+msgstr "ໄຂ"
+
+msgctxt "selection:account.move,state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "selection:account.move,state:"
+msgid "Posted"
+msgstr "ປະກາດແລ້ວ"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "selection:account.move.line,state:"
+msgid "Valid"
+msgstr "ກວດສອບຄວາມຖືກຕ້ອງ"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Monthly"
+msgstr "ເດືອນ"
+
+#, fuzzy
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Other"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+msgctxt "selection:account.move.line.split.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "selection:account.move.line.template,operation:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Char"
+msgstr "ຮູບທ່ອນ"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Numeric"
+msgstr "ໂຕເລກ"
+
+msgctxt "selection:account.move.template.keyword,type_:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "selection:account.period,state:"
+msgid "Close"
+msgstr "ອັດ"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr ""
+
+msgctxt "selection:account.period,state:"
+msgid "Open"
+msgstr "ໄຂ"
+
+msgctxt "selection:account.period,type:"
+msgid "Adjustment"
+msgstr "ດັດປັບ"
+
+msgctxt "selection:account.period,type:"
+msgid "Standard"
+msgstr "ມາດຕະຖານ"
+
+msgctxt "selection:account.tax,type:"
+msgid "Fixed"
+msgstr "ຄົງທີ່"
+
+msgctxt "selection:account.tax,type:"
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgctxt "selection:account.tax,type:"
+msgid "Percentage"
+msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr "ຖານຄິດໄລ່"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr "ຖານຄິດໄລ່"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Fiscal Year"
+msgstr "ຕາມປີການບັນຊີ"
+
+msgctxt "selection:account.tax.code.open_chart.start,method:"
+msgid "By Periods"
+msgstr "ຕາມໄລຍະ"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "ທັງສອງ"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "ຈັດຊື້"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "ຂາຍ"
+
+#, fuzzy
+msgctxt "selection:account.tax.line,type:"
+msgid "Base"
+msgstr "ຖານຄິດໄລ່"
+
+#, fuzzy
+msgctxt "selection:account.tax.line,type:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+#, fuzzy
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Base"
+msgstr "ຖານຄິດໄລ່"
+
+#, fuzzy
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Tax"
+msgstr "ພາສີ"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "ທັງສອງ"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "ຈັດຊື້"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "ຂາຍ"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "ທັງສອງ"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "ຈັດຊື້"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "ຂາຍ"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Fixed"
+msgstr "ຄົງທີ່"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgctxt "selection:account.tax.template,type:"
+msgid "Percentage"
+msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+
+msgctxt "view:account.account.type:"
+msgid "Comparison"
+msgstr "ສົມທຽບ"
+
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "ລູກຮ່ວງ"
+
+msgctxt "view:account.account:"
+msgid "General Information"
+msgstr "ຂໍ້ມູນທົ່ວໄປ"
+
+msgctxt "view:account.aged_balance.context:"
+msgid "Terms"
+msgstr "ງວດ"
+
+msgctxt "view:account.configuration:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+msgctxt "view:account.configuration:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "view:account.create_chart.start:"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+"ບັດນີທ່ານສາມາດສ້າງຜັງບັນຊີສຳລັບສຳນັກງານຂອງທ່ານ "
+"ໂດຍເລືອກເອົາຕາມຜັງຮ່າງແບບບັນຊີ"
+
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "months"
+msgstr "ເດືອນ"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Periods"
+msgstr "ໄລຍະ"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Sequences"
+msgstr "ລຳດັບ"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+msgctxt "view:account.general_ledger.account:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "view:account.general_ledger.line:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "ອັດ"
+
+#, fuzzy
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr "Re-Open"
+
+msgctxt "view:account.move.line.split.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line.split.start:"
+msgid "months"
+msgstr "ເດືອນ"
+
+msgctxt "view:account.move.line.template:"
+msgid "Other Info"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "ມີ"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+msgctxt "view:account.move.template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
+msgid "General Information"
+msgstr "ຂໍ້ມູນທົ່ວໄປ"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax:"
+msgid "General Information"
+msgstr "ຂໍ້ມູນທົ່ວໄປ"
+
+msgctxt "view:account.update_chart.succeed:"
+msgid "Chart of accounts updated successfully."
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr "ການບັນຊີ"
+
+msgctxt "view:party.party:"
+msgid "Taxes"
+msgstr "ພາສີ"
+
+msgctxt "wizard_button:account.create_chart,account,create_account:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+msgctxt "wizard_button:account.create_chart,account,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.create_chart,properties,create_properties:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+msgctxt "wizard_button:account.create_chart,properties,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.create_chart,start,account:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt ""
+"wizard_button:account.fiscalyear.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.cancel,default,cancel:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+msgctxt "wizard_button:account.move.cancel,default,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "ກຸ່ມ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,preview,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.line.split,preview,split:"
+msgid "Split"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.split,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.line.split,start,preview:"
+msgid "Preview"
+msgstr ""
+
+msgctxt "wizard_button:account.move.open_journal,ask,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.open_journal,ask,open_:"
+msgid "Open"
+msgstr "ໄຂ"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
+msgid "Reconcile"
+msgstr "ພິສູດຍອດ"
+
+msgctxt "wizard_button:account.move.template.create,keywords,create_:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+msgctxt "wizard_button:account.move.template.create,keywords,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.template.create,template,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.template.create,template,keywords:"
+msgid "Next"
+msgstr "ຕໍ່ໄປ"
+
+msgctxt "wizard_button:account.open_chart,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.open_chart,start,open_:"
+msgid "Open"
+msgstr "ໄຂ"
+
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr "ຂວ້າມ"
+
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "ພິສູດຍອດ"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
+msgid "Open"
+msgstr "ໄຂ"
+
+msgctxt "wizard_button:account.tax.test,test,end:"
+msgid "Close"
+msgstr "ອັດ"
+
+msgctxt "wizard_button:account.update_chart,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.update_chart,start,update:"
+msgid "Update"
+msgstr "ປັບປຸງ"
+
+msgctxt "wizard_button:account.update_chart,succeed,end:"
+msgid "OK"
+msgstr "ຕົກລົງ"
