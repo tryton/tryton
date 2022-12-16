@@ -1,0 +1,1004 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Zecimale Preț Produs"
+
+msgctxt "field:product.category,childs:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "field:product.category,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:product.category,parent:"
+msgid "Parent"
+msgstr "Părinte"
+
+msgctxt "field:product.category,templates:"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "field:product.configuration,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Metoda cost implicit"
+
+msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Secvența produs"
+
+msgctxt "field:product.configuration,template_sequence:"
+msgid "Product Sequence"
+msgstr "Secvența produs"
+
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Metoda cost implicit"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Cost"
+
+msgctxt "field:product.cost_price,product:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:product.cost_price_method,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:product.cost_price_method,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "Metoda a pretului de cost"
+
+msgctxt "field:product.cost_price_method,template:"
+msgid "Template"
+msgstr "Șablon"
+
+msgctxt "field:product.identifier,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:product.identifier,product:"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "field:product.identifier,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr "Companie"
+
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "Lista de preturi"
+
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "Șablon"
+
+msgctxt "field:product.product,categories:"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "field:product.product,categories_all:"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "field:product.product,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:product.product,code_readonly:"
+msgid "Code Readonly"
+msgstr "Cod numai pentru citit"
+
+msgctxt "field:product.product,consumable:"
+msgid "Consumable"
+msgstr "Consumabil"
+
+msgctxt "field:product.product,cost_price:"
+msgid "Cost Price"
+msgstr "Cost"
+
+msgctxt "field:product.product,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "Metoda a pretului de cost"
+
+msgctxt "field:product.product,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr "Metode Pret cost"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Cost"
+
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
+msgstr "Costuri"
+
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "UM Implicita"
+
+msgctxt "field:product.product,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categorie implicita al UM"
+
+msgctxt "field:product.product,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Zecimale Implicite pentru Unitate"
+
+msgctxt "field:product.product,description:"
+msgid "Description"
+msgstr "Descriere"
+
+msgctxt "field:product.product,identifiers:"
+msgid "Identifiers"
+msgstr "Identificatorii"
+
+msgctxt "field:product.product,list_price:"
+msgid "List Price"
+msgstr "Lista de preturi"
+
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Lista de preturi"
+
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
+msgstr "Prețuri de lista"
+
+msgctxt "field:product.product,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:product.product,prefix_code:"
+msgid "Prefix Code"
+msgstr "Cod Prefix"
+
+msgctxt "field:product.product,suffix_code:"
+msgid "Suffix Code"
+msgstr "Cod Suffix"
+
+msgctxt "field:product.product,template:"
+msgid "Product Template"
+msgstr "Șablon Produs"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "field:product.template,categories_all:"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "field:product.template,code:"
+msgid "Code"
+msgstr "Cod"
+
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "Cod numai pentru citit"
+
+msgctxt "field:product.template,consumable:"
+msgid "Consumable"
+msgstr "Consumabil"
+
+msgctxt "field:product.template,cost_price:"
+msgid "Cost Price"
+msgstr "Cost"
+
+msgctxt "field:product.template,cost_price_method:"
+msgid "Cost Price Method"
+msgstr "Metoda a pretului de cost"
+
+msgctxt "field:product.template,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr "Metode Pret cost"
+
+msgctxt "field:product.template,default_uom:"
+msgid "Default UOM"
+msgstr "UM Implicita"
+
+msgctxt "field:product.template,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categorie implicita al UM"
+
+msgctxt "field:product.template,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "Zecimale Implicite pentru Unitate"
+
+msgctxt "field:product.template,list_price:"
+msgid "List Price"
+msgstr "Lista de preturi"
+
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
+msgstr "Prețuri de lista"
+
+msgctxt "field:product.template,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:product.template,products:"
+msgid "Variants"
+msgstr "Variante"
+
+msgctxt "field:product.template,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:product.template-product.category,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.template-product.category,template:"
+msgid "Template"
+msgstr "Șablon"
+
+msgctxt "field:product.template-product.category.all,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.template-product.category.all,template:"
+msgid "Template"
+msgstr "Șablon"
+
+msgctxt "field:product.uom,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.uom,digits:"
+msgid "Display Digits"
+msgstr "Afișare zecimale"
+
+msgctxt "field:product.uom,factor:"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "field:product.uom,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:product.uom,rate:"
+msgid "Rate"
+msgstr "Impozit"
+
+msgctxt "field:product.uom,rounding:"
+msgid "Rounding Precision"
+msgstr "Precizia rotunjire"
+
+msgctxt "field:product.uom,symbol:"
+msgid "Symbol"
+msgstr "Simbol"
+
+msgctxt "field:product.uom.category,name:"
+msgid "Name"
+msgstr "Denumire"
+
+msgctxt "field:product.uom.category,uoms:"
+msgid "Units of Measure"
+msgstr "Unități de Măsura"
+
+msgctxt "help:product.category,childs:"
+msgid "Used to add structure below the category."
+msgstr "Folosit pentru a adăuga structură sub categorie."
+
+msgctxt "help:product.category,parent:"
+msgid "Used to add structure above the category."
+msgstr "Folosit pentru a adăuga structură deasupra categoriei."
+
+msgctxt "help:product.configuration,default_cost_price_method:"
+msgid "The default cost price method for new products."
+msgstr "Metoda implicita pentru costul produselor noi."
+
+msgctxt "help:product.configuration,product_sequence:"
+msgid "Used to generate the last part of the product code."
+msgstr "Folosit pentru a genera codul produsului."
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
+msgstr "Utilizat pentru a genera prima parte al codului produsului."
+
+msgctxt ""
+"help:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "The default cost price method for new products."
+msgstr "Metoda prețului de cost implicit pentru produsele noi."
+
+msgctxt "help:product.identifier,product:"
+msgid "The product identified by the code."
+msgstr "Produsul identificat prin cod."
+
+msgctxt "help:product.product,categories:"
+msgid ""
+"The categories that the product is in.\n"
+"Used to group similar products together."
+msgstr ""
+"Categoriile în care se află produsul.\n"
+"Folosit pentru a grupa produse similare împreună."
+
+msgctxt "help:product.product,code:"
+msgid "A unique identifier for the variant."
+msgstr "Un identificator unic pentru variantă."
+
+msgctxt "help:product.product,consumable:"
+msgid "Check to allow stock moves to be assigned regardless of stock level."
+msgstr ""
+"Bifați pentru a permite mișcari de stoc indiferent de nivelul stocului."
+
+msgctxt "help:product.product,cost_price:"
+msgid ""
+"The amount it costs to purchase or make the variant, or carry out the "
+"service."
+msgstr ""
+"Suma de cost pentru a achiziționa sau a produce varianta, sau a efectua "
+"serviciul."
+
+msgctxt "help:product.product,cost_price_method:"
+msgid "The method used to calculate the cost price."
+msgstr "Metoda utilizată pentru calcularea a costului."
+
+msgctxt "help:product.product,default_uom:"
+msgid ""
+"The standard unit of measure for the product.\n"
+"Used internally when calculating the stock levels of goods and assets."
+msgstr ""
+"Unitatea standard de măsură pentru produs.\n"
+"Folosit intern la calcularea nivelului stocului de bunuri și active."
+
+msgctxt "help:product.product,identifiers:"
+msgid "Other identifiers associated with the variant."
+msgstr "Alți identificatori asociați cu varianta."
+
+msgctxt "help:product.product,list_price:"
+msgid "The standard price the product is sold at."
+msgstr "Prețul standard la care se vinde produsul."
+
+msgctxt "help:product.product,suffix_code:"
+msgid "The unique identifier for the product (aka SKU)."
+msgstr "Identificatorul unic pentru produs (adica SKU)."
+
+msgctxt "help:product.product,template:"
+msgid ""
+"The product that defines the common properties inherited by the variant."
+msgstr ""
+"Produsul care defineşte proprietăţi comune care vor fi moştenite de "
+"varianta."
+
+msgctxt "help:product.template,categories:"
+msgid ""
+"The categories that the product is in.\n"
+"Used to group similar products together."
+msgstr ""
+"Categoriile în care se află produsul.\n"
+"Folosit pentru a grupa produse similare împreună."
+
+msgctxt "help:product.template,consumable:"
+msgid "Check to allow stock moves to be assigned regardless of stock level."
+msgstr ""
+"Bifați pentru a permite mișcari de stoc indiferent de nivelul stocului."
+
+msgctxt "help:product.template,cost_price:"
+msgid ""
+"The amount it costs to purchase or make the product, or carry out the "
+"service."
+msgstr ""
+"Sumă care costă achiziţia sau producţia produsului, sau pentru a executa "
+"serviciul."
+
+msgctxt "help:product.template,cost_price_method:"
+msgid "The method used to calculate the cost price."
+msgstr "Metoda utilizată pentru calcularea a costului."
+
+msgctxt "help:product.template,default_uom:"
+msgid ""
+"The standard unit of measure for the product.\n"
+"Used internally when calculating the stock levels of goods and assets."
+msgstr ""
+"Unitatea standard de măsură pentru produs.\n"
+"Folosit intern la calcularea nivelului stocului de bunuri și active."
+
+msgctxt "help:product.template,list_price:"
+msgid "The standard price the product is sold at."
+msgstr "Prețul standard la care se vinde produsul."
+
+msgctxt "help:product.template,products:"
+msgid "The different variants the product comes in."
+msgstr "Variantele care există pentru acest produs."
+
+msgctxt "help:product.uom,category:"
+msgid ""
+"The category that contains the unit of measure.\n"
+"Conversions between different units of measure can be done if they are in the same category."
+msgstr ""
+"Categoria care conţine unitatea de măsură.\n"
+"Conversii între diferite unităţii de măsură pot fi efectuate dacă fac parte din acelaşi categorie."
+
+msgctxt "help:product.uom,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "Numărul de cifre de afişat după zecimal."
+
+msgctxt "help:product.uom,factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (base unit) = 1 (this unit)"
+msgstr ""
+"Coeficientul al formulei.\n"
+"coeficient (unitate de bază) = 1 (din această unitate)"
+
+msgctxt "help:product.uom,rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"Coeficientul pentru formulă:\n"
+"1 (unitate de bază) = coef. (această unitate)"
+
+msgctxt "help:product.uom,rounding:"
+msgid "The accuracy to which values are rounded."
+msgstr "Precizia la care sunt rotunjite valori."
+
+msgctxt "help:product.uom,symbol:"
+msgid "The symbol that represents the unit of measure."
+msgstr "Simbolul care reprezintă unitatea de măsură."
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.action,name:act_category_product"
+msgid "Add products"
+msgstr "Adăugare Produse"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.action,name:act_product_configuration_form"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Variante"
+
+msgctxt "model:ir.action,name:act_product_from_template"
+msgid "Variants"
+msgstr "Variante"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "Produs în Categorie"
+
+msgctxt "model:ir.action,name:act_template_form"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Unități de Măsura"
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
+msgstr "%(type)s \"%(code)s\" nu este valabil pentru produsul \"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_product_code_unique"
+msgid "Code of active product must be unique."
+msgstr "Codul al unui produs activ trebuie să fie unic."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_uom_decrease_digits"
+msgid "You cannot decrease the digits of UOM \"%(uom)s\"."
+msgstr "Nu se poate modifică rate al UM \"%(uom)s\"."
+
+msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
+msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
+msgstr "Factor şi rata incompatibil pentru UM \"%(uom)s\"."
+
+msgctxt "model:ir.message,text:msg_uom_modify_category"
+msgid "You cannot modify the category of UOM \"%(uom)s\"."
+msgstr "Nu se poate modifică categorie de UM \"%(uom)s\"."
+
+msgctxt "model:ir.message,text:msg_uom_modify_factor"
+msgid "You cannot modify the factor of UOM \"%(uom)s\"."
+msgstr "Nu se poate modifică factorul al Unitaţii de Masură \"%(uom)s\"."
+
+msgctxt "model:ir.message,text:msg_uom_modify_options"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Dacă UM nu este utilizată se poate şterge, altfel se poate dezactiva în "
+"vedere creării unei noi UM."
+
+msgctxt "model:ir.message,text:msg_uom_modify_rate"
+msgid "You cannot modify the rate of UOM \"%(uom)s\"."
+msgstr "Nu se poate modifică rate al UM \"%(uom)s\"."
+
+msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Rata şi factor nu pot ambele sa fii egale cu zero."
+
+msgctxt "model:ir.model.button,string:category_add_products_button"
+msgid "Add products"
+msgstr "Adăugare Produse"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Varianta"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
+msgid "Product"
+msgstr "Produs"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Variante"
+
+msgctxt "model:ir.ui.menu,name:menu_product_configuration"
+msgid "Configuration"
+msgstr "Configurare"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Raportare"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Products"
+msgstr "Produse"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Categorii"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Unitați de masura"
+
+msgctxt "model:product.category,name:"
+msgid "Product Category"
+msgstr "Categorie Produse"
+
+msgctxt "model:product.configuration,name:"
+msgid "Product Configuration"
+msgstr "Configurare Produs"
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr "Configurare de Produs Metodă Implicită pentru Cost"
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr "Cost al Produsului"
+
+msgctxt "model:product.cost_price_method,name:"
+msgid "Product Cost Price Method"
+msgstr "Metodă Cost al Produsului"
+
+msgctxt "model:product.identifier,name:"
+msgid "Product Identifier"
+msgstr "Identificator Produs"
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
+msgstr "Preţ de Lista Produs"
+
+msgctxt "model:product.product,name:"
+msgid "Product Variant"
+msgstr "Varianta Produs"
+
+msgctxt "model:product.template,name:"
+msgid "Product Template"
+msgstr "Șablon Produs"
+
+msgctxt "model:product.template-product.category,name:"
+msgid "Template - Category"
+msgstr "Şablon - Categorie"
+
+msgctxt "model:product.template-product.category.all,name:"
+msgid "Template - Category All"
+msgstr "Şablon - Categorie Toate"
+
+msgctxt "model:product.uom,name:"
+msgid "Unit of Measure"
+msgstr "Unitate de Măsură"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Sunt"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Carat"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "Centimeter"
+msgstr "Centimetru"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "Centimetru cub"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr "Picior cub"
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr "Țol cub"
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Metru cub"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Zi"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Picior"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr "Galon"
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Gram"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Hectar"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Ora"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr "Țol"
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Kilogram"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Kilometru"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Litru"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Metru"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Milă"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Milimetru"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Minut"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Uncie"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Livră"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Secunda"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "Centimetru pătrat"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr "Picior Pătrat"
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr "Ţol Pătrat"
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Metru patrat"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr "Iard Pătrat"
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Unitate"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Zi de lucru"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr "Iard"
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr "a"
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr "c"
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm"
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr "ft³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr "in³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr "d"
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr "ft"
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr "gal"
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr "g"
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha"
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "h"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr "in"
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg"
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km"
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr "l"
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m"
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr "mi"
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm"
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min"
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr "oz"
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lb"
+msgstr "lb"
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr "s"
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr "ft²"
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr "in²"
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr "yd²"
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr "buc"
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr "wd"
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr "yd"
+
+msgctxt "model:product.uom.category,name:"
+msgid "Unit of Measure Category"
+msgstr "Categorie Unitate de Măsura"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Lungime"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Suprafața"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Timp"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Unități"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Volum"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Greutate"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Administrare Produs"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Article Number"
+msgstr "Cod International Articol"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Securities Identification Number"
+msgstr "Număr internațional de identificare a valorilor mobiliare"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Audiovisual Number"
+msgstr "Număr Internațional Standard Audiovizual"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Book Number"
+msgstr "Numărul standard internațional al cărții"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Identifier for Libraries"
+msgstr "Identificator standard internațional pentru biblioteci"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Music Number"
+msgstr "Numărul de muzică standard internațional"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Average"
+msgstr "Mediu"
+
+msgctxt "selection:product.product,cost_price_method:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Active"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Marfa"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Serviciu"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Average"
+msgstr "Mediu"
+
+msgctxt "selection:product.template,cost_price_method:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "selection:product.template,type:"
+msgid "Assets"
+msgstr "Active"
+
+msgctxt "selection:product.template,type:"
+msgid "Goods"
+msgstr "Marfa"
+
+msgctxt "selection:product.template,type:"
+msgid "Service"
+msgstr "Serviciu"
+
+msgctxt "view:product.category:"
+msgid "Children"
+msgstr "Copii"
+
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Secvențe"
+
+msgctxt "view:product.template:"
+msgid "General"
+msgstr "General"

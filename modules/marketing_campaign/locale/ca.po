@@ -1,0 +1,215 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:marketing.campaign,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:marketing.medium,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:marketing.source,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.opportunity.reporting.marketing.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.opportunity.reporting.marketing.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:sale.opportunity.reporting.marketing.context,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:sale.opportunity.reporting.marketing.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:sale.reporting.marketing.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.reporting.marketing.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:sale.reporting.marketing.context,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:sale.reporting.marketing.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:sale.reporting.marketing.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "model:ir.action,name:act_campaign_form"
+msgid "Campaigns"
+msgstr "Campanyes"
+
+msgctxt "model:ir.action,name:act_medium_form"
+msgid "Mediums"
+msgstr "Medis"
+
+msgctxt "model:ir.action,name:act_sale_opportunity_reporting_marketing"
+msgid "Opportunities per Marketing"
+msgstr "Oportunitats per màrqueting"
+
+msgctxt "model:ir.action,name:act_sale_reporting_marketing"
+msgid "Sales per Marketing"
+msgstr "Vendes per màrqueting"
+
+msgctxt "model:ir.action,name:act_source_form"
+msgid "Sources"
+msgstr "Orígens"
+
+msgctxt "model:ir.message,text:msg_marketing_campaign"
+msgid "Marketing Campaign"
+msgstr "Campanyes de màrqueting"
+
+msgctxt "model:ir.message,text:msg_marketing_medium"
+msgid "Marketing Medium"
+msgstr "Medi de màrqueting"
+
+msgctxt "model:ir.message,text:msg_marketing_source"
+msgid "Marketing Source"
+msgstr "Orígen de màrqueting"
+
+msgctxt "model:ir.message,text:msg_parameter_name_unique"
+msgid "Name of active marketing parameter must be unique."
+msgstr "El nom del paràmetre del màrqueting ha de ser únic."
+
+msgctxt "model:ir.ui.menu,name:menu_campaign_form"
+msgid "Campaigns"
+msgstr "Campanyes"
+
+msgctxt "model:ir.ui.menu,name:menu_medium_form"
+msgid "Mediums"
+msgstr "Medis"
+
+msgctxt "model:ir.ui.menu,name:menu_source_form"
+msgid "Sources"
+msgstr "Orígens"
+
+msgctxt "model:marketing.campaign,name:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "model:marketing.medium,name:"
+msgid "Marketing Medium"
+msgstr "Medi de màrqueting"
+
+msgctxt "model:marketing.source,name:"
+msgid "Marketing Source"
+msgstr "Orígen de màrqueting"
+
+msgctxt "model:sale.opportunity.reporting.marketing,name:"
+msgid "Sale Opportunity Reporting per Marketing"
+msgstr "Informe d'oportunitats de venta per màrqueting"
+
+msgctxt "model:sale.opportunity.reporting.marketing.context,name:"
+msgid "Sale Opportunity Reporting Context"
+msgstr "Context informe d'oportunitats de venda"
+
+msgctxt "model:sale.reporting.marketing,name:"
+msgid "Sale Reporting per Marketing"
+msgstr "Informe de vendes per màrqueting"
+
+msgctxt "model:sale.reporting.marketing.context,name:"
+msgid "Sale Reporting Context"
+msgstr "Context informe de vendes"
+
+msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "selection:sale.reporting.marketing.context,period:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "selection:sale.reporting.marketing.context,period:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "selection:sale.reporting.marketing.context,period:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "view:sale.opportunity.reporting.context:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:sale.opportunity.reporting.marketing.context:"
+msgid "Group by:"
+msgstr "Agrupar per:"
+
+msgctxt "view:sale.opportunity:"
+msgid "Campaign"
+msgstr "Campanya"
+
+msgctxt "view:sale.opportunity:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:sale.opportunity:"
+msgid "Medium"
+msgstr "Medi"
+
+msgctxt "view:sale.opportunity:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "view:sale.point.sale:"
+msgid "Campaign"
+msgstr "Campany"
+
+msgctxt "view:sale.point.sale:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:sale.point.sale:"
+msgid "Medium"
+msgstr "Medi"
+
+msgctxt "view:sale.point.sale:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "view:sale.reporting.context:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:sale.reporting.marketing.context:"
+msgid "Group by:"
+msgstr "Agrupar per:"
+
+msgctxt "view:sale.sale:"
+msgid "Campaign"
+msgstr "Campanya"
+
+msgctxt "view:sale.sale:"
+msgid "Marketing Campaign"
+msgstr "Campanya de màrqueting"
+
+msgctxt "view:sale.sale:"
+msgid "Medium"
+msgstr "Medi"
+
+msgctxt "view:sale.sale:"
+msgid "Source"
+msgstr "Origen"
