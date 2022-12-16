@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="name"/>
+    <field name="name" xexpand="1"/>
+    <label name="code"/>
+    <field name="code"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+        <!-- Add here some checkboxes ! -->
+    </group>
+    <label name="replaced_by"/>
+    <field name="replaced_by"/>
+    <notebook colspan="6">
+        <page string="General" id="general">
+            <field name="addresses" mode="form,tree" colspan="4"
+                view_ids="party.address_view_form,party.address_view_tree_sequence"/>
+            <group col="2" colspan="4" id="lang">
+                <label name="lang"/>
+                <field name="lang" widget="selection" xexpand="0"/>
+            </group>
+            <field name="contact_mechanisms" colspan="2"
+                view_ids="party.contact_mechanism_view_tree_sequence"/>
+            <field name="categories" colspan="2"
+                view_ids="party.category_view_list"/>
+        </page>
+        <page name="identifiers">
+            <field name="identifiers" colspan="4" pre_validate="1"
+                view_ids="party.identifier_list_sequence"/>
+        </page>
+    </notebook>
+</form>
+
