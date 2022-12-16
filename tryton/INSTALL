@@ -1,0 +1,32 @@
+Installing tryton
+=================
+
+Prerequisites
+-------------
+
+ * Python 2.4 or later (http://www.python.org/)
+ * pygtk 2.0 or later (http://www.pygtk.org/)
+ * librsvg (http://librsvg.sourceforge.net/)
+ * egenix-mx-base (http://www.egenix.com/products/python/mxBase/)
+ * Optional: pytz (http://pytz.sourceforge.net/)
+
+Installation
+------------
+
+Once you've downloaded and unpacked a tryton source release, enter the
+directory where the archive was unpacked, and run:
+
+    python setup.py install
+
+Note that you may need administrator/root privileges for this step, as
+this command will by default attempt to install tryton to the Python
+site-packages directory on your system.
+
+For advanced options, please refer to the easy_install and/or the distutils
+documentation:
+
+  http://peak.telecommunity.com/DevCenter/EasyInstall
+  http://docs.python.org/inst/inst.html
+
+To use without installation, run ``bin/tryton`` from where the archive was
+unpacked.
