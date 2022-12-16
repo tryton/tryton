@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="model"/>
+    <field name="model"/>
+    <group colspan="2" col="10" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0"/>
+        <label name="on_time"/>
+        <field name="on_time" xexpand="0"/>
+        <label name="on_create"/>
+        <field name="on_create" xexpand="0"/>
+        <label name="on_write"/>
+        <field name="on_write" xexpand="0"/>
+        <label name="on_delete"/>
+        <field name="on_delete" xexpand="0"/>
+    </group>
+    <label name="condition"/>
+    <field name="condition" colspan="3" widget="pyson"/>
+    <label name="limit_number"/>
+    <field name="limit_number"/>
+    <label name="minimum_time_delay"/>
+    <field name="minimum_time_delay"/>
+    <label name="action"/>
+    <field name="action"/>
+</form>
