@@ -1,0 +1,1183 @@
+# Translations template for tryton.
+# Copyright (C) 2016 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "Alternatív beállítási adatok megadása"
+
+msgid "development mode"
+msgstr "Fejlesztői mód"
+
+msgid "logging everything at INFO level"
+msgstr "Általános belépési szint:INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "Belépési szint megadása: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "Bejelentkezési név megadása"
+
+#, fuzzy
+msgid "specify the server hostname:port"
+msgstr "Szerver név megadása"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "Unable to write config file %s."
+msgstr "Nem lehet a következő konfigurációs fájlba írni: „%s”"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Nem lehet beállítani a csoportot: %s"
+
+#, fuzzy
+msgid ", "
+msgstr ", "
+
+#, fuzzy
+msgid ",…"
+msgstr ",…"
+
+#, python-format
+msgid "%s (%s)"
+msgstr ""
+
+msgid "Select your action"
+msgstr "Válasszon műveletet"
+
+#, fuzzy
+msgid "No action defined."
+msgstr "Nincs megadva művelet"
+
+msgid "By: "
+msgstr ""
+
+msgid "Selection"
+msgstr "Kiválasztás"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "_Mégse"
+
+msgid "OK"
+msgstr ""
+
+msgid "Your selection:"
+msgstr "Kiválasztva"
+
+msgid "Select"
+msgstr ""
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Save As..."
+msgstr "Mentés másként…"
+
+msgid "Always ignore this warning."
+msgstr "Ne adja be többet ezt a figyelmeztetést"
+
+msgid "Do you want to proceed?"
+msgstr "Akarja folyatni?"
+
+msgid "No"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Concurrency Exception"
+msgstr "Aktualizálási ellentét"
+
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+msgid "Cancel saving"
+msgstr ""
+
+msgid "Compare"
+msgstr "Összehasonlítás"
+
+msgid "See the modified version"
+msgstr ""
+
+msgid "Write Anyway"
+msgstr "Felülír"
+
+msgid "Save your current version"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+#, fuzzy
+msgid "Application Error"
+msgstr "Alkalmazási hiba"
+
+msgid "Report Bug"
+msgstr "Hibabejelentés"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+msgid "Unable to check for new version"
+msgstr ""
+
+msgid "A new version is available!"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+#, fuzzy
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>keresés...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Készítve...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr ""
+
+msgid "Value"
+msgstr "Érték"
+
+msgid "Displayed value"
+msgstr "Megjelenített érték"
+
+msgid "Format"
+msgstr "Formátum"
+
+msgid "Display format"
+msgstr "Megjelenítési formátum"
+
+msgid "Open the calendar"
+msgstr "Naptár megnyitása"
+
+msgid "Date Format"
+msgstr "Dátumformátum"
+
+msgid "Displayed date format"
+msgstr "Mutatott dátumformátum"
+
+msgid "y"
+msgstr "J"
+
+msgid "True"
+msgstr "Igaz"
+
+msgid "t"
+msgstr "w"
+
+msgid "False"
+msgstr "Hamis"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+msgid "Edit..."
+msgstr "Szerkesztés…"
+
+msgid "Attachments..."
+msgstr "Mellékletek..."
+
+msgid "Notes..."
+msgstr ""
+
+msgid "Actions..."
+msgstr "Műveletek"
+
+msgid "Relate..."
+msgstr "Kapcsolatok..."
+
+msgid "Report..."
+msgstr "Jelentés..."
+
+msgid "E-Mail..."
+msgstr "E-Mail..."
+
+msgid "Print..."
+msgstr "Nyomtatás..."
+
+msgid "Y"
+msgstr "J"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "W"
+
+msgid "d"
+msgstr "t"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+#, fuzzy
+msgid "Preferences..."
+msgstr "_Beállítások…"
+
+#, fuzzy
+msgid "Toolbar"
+msgstr "_Eszköztár"
+
+#, fuzzy
+msgid "Default"
+msgstr "_Alapértelmezett"
+
+#, fuzzy
+msgid "Text and Icons"
+msgstr "Szöveg és ikonok"
+
+#, fuzzy
+msgid "Text"
+msgstr "_Szöveg"
+
+#, fuzzy
+msgid "Icons"
+msgstr "Ikonok"
+
+#, fuzzy
+msgid "Form"
+msgstr "Űrlap"
+
+msgid "Save Width/Height"
+msgstr "Szélesség/magasság mentése"
+
+msgid "Save Tree State"
+msgstr "Menünézet mentése"
+
+msgid "Fast Tabbing"
+msgstr ""
+
+msgid "Spell Checking"
+msgstr "Helyesírás ellenőrzés"
+
+msgid "PDA Mode"
+msgstr ""
+
+msgid "Search Limit..."
+msgstr "Keresés limit"
+
+#, fuzzy
+msgid "Email..."
+msgstr "E-mail..."
+
+msgid "Check Version"
+msgstr ""
+
+#, fuzzy
+msgid "Options"
+msgstr "_Beállítások"
+
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "_Gyorsbillentyűk"
+
+#, fuzzy
+msgid "About..."
+msgstr "Felett"
+
+#, fuzzy
+msgid "Help"
+msgstr "_Segítség"
+
+msgid "Quit"
+msgstr ""
+
+msgid "No result found."
+msgstr "Nincs találat"
+
+#, fuzzy
+msgid "Favorites"
+msgstr "Fa_vorit"
+
+msgid "Manage..."
+msgstr ""
+
+msgid "Action"
+msgstr "Művelet"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"A következő művelethez az összes lap bezárása szükséges\n"
+"Folytatja?"
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+#, fuzzy
+msgid "Previous tab"
+msgstr "Előző lap"
+
+#, fuzzy
+msgid "Next tab"
+msgstr "Következő lap"
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr "Kijelölt szöveg kiválasztása"
+
+msgid "Copy selected text"
+msgstr "_Kijelölt szöveg másolása"
+
+msgid "Paste copied text"
+msgstr "Kijelölt szöveg beillesztése"
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr "Új kapcsolat létrehozása"
+
+msgid "Open/Search relation"
+msgstr "Kapcsolatok keresése/megnyitása"
+
+msgid "List Entries"
+msgstr ""
+
+msgid "Switch view"
+msgstr "Nézet váltása"
+
+msgid "Create/Select new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr "Kapcsolat megnyitása"
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr "A törlési kijelölés visszavonása"
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr ""
+
+msgid "Move right"
+msgstr ""
+
+msgid "Move left"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up of one page"
+msgstr ""
+
+msgid "Move down of one page"
+msgstr ""
+
+msgid "Move to top"
+msgstr ""
+
+msgid "Move to bottom"
+msgstr ""
+
+msgid "Move to parent"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Unselect all"
+msgstr ""
+
+msgid "Select parent"
+msgstr ""
+
+msgid "Select/Activate current row"
+msgstr ""
+
+msgid "Toggle selection"
+msgstr ""
+
+msgid "Expand/Collapse"
+msgstr ""
+
+msgid "Expand row"
+msgstr ""
+
+msgid "Collapse row"
+msgstr ""
+
+msgid "Toggle row"
+msgstr ""
+
+msgid "Collapse all rows"
+msgstr ""
+
+msgid "Expand all rows"
+msgstr ""
+
+msgid "Close Tab"
+msgstr "Lap bezárása"
+
+msgid "modularity, scalability and security"
+msgstr ""
+
+msgid "translator-credits"
+msgstr ""
+
+#, python-format, python-format, fuzzy, python-format
+msgid "Attachments (%s)"
+msgstr "Melléklet(%s)"
+
+msgid "Profile Editor"
+msgstr "Profilszerkesztő"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Add new profile"
+msgstr ""
+
+msgid "Remove selected profile"
+msgstr ""
+
+msgid "Host:"
+msgstr "Host:"
+
+msgid "Database:"
+msgstr "Adatbank:"
+
+msgid "Fetching databases list"
+msgstr "Adatbanklista lekérdezése..."
+
+msgid "Username:"
+msgstr "Felhasználónév:"
+
+msgid "Incompatible version of the server"
+msgstr "Inkompatibilis szerververzió"
+
+msgid "Could not connect to the server"
+msgstr "Nem sikerült csatlakozni a kiszolgálóhoz"
+
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgid "_Cancel"
+msgstr "_Mégse"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "_Mégse"
+
+msgid "C_onnect"
+msgstr "Kapcsolódik"
+
+msgid "Connect the Tryton server"
+msgstr "Kapcsolódás helyreállítása a Tryton szerverhez."
+
+msgid "Profile:"
+msgstr "Profil:"
+
+msgid "Host / Database information"
+msgstr "Host-/adatbank adatok"
+
+msgid "User name:"
+msgstr "Felhasználónév:"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email Program Settings"
+msgstr "E-mail beállítások"
+
+msgid "Command Line:"
+msgstr "Parancssor:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Az elérhető helyettesítők jelmagyarázata:"
+
+msgid "To:"
+msgstr "-hoz, -hez"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Tárgy:"
+
+msgid "Body:"
+msgstr "Szöveg:"
+
+msgid "Attachment:"
+msgstr "Melléklet:"
+
+msgid "Add..."
+msgstr ""
+
+#, python-format, fuzzy
+msgid "Attachment (%s)"
+msgstr "Melléklet(%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+#, fuzzy
+msgid "You have to select one record."
+msgstr "Legalább egy adatot kell kiválasztani."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Által létrehozva"
+
+msgid "Creation Date:"
+msgstr "Létrehozás dátuma"
+
+msgid "Latest Modification by:"
+msgstr "Utolsó módosítás"
+
+msgid "Latest Modification Date:"
+msgstr "Módosítás dátuma "
+
+msgid "Model:"
+msgstr "Típus:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Biztos törölni szeretné?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Biztos törölni  szeretné?"
+
+#, fuzzy
+msgid "Records not removed."
+msgstr "Adat nincs törölve!"
+
+#, fuzzy
+msgid "Records removed."
+msgstr "Adat törölve"
+
+#, fuzzy
+msgid "Working now on the duplicated record(s)."
+msgstr "A másolaton dolgozik"
+
+#, fuzzy
+msgid "Record saved."
+msgstr "Adat mentve"
+
+msgid " of "
+msgstr "-tól"
+
+#, fuzzy
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Adat módosítva\n"
+"Szeretne menteni?"
+
+msgid "Launch action"
+msgstr "Művelet indítása"
+
+msgid "Relate"
+msgstr "Kapcsolat"
+
+msgid "Open related records"
+msgstr "Kapcsolat adatainak megnyitása"
+
+msgid "Report"
+msgstr "Jelentés"
+
+msgid "Open report"
+msgstr "Jelentés megnyitása"
+
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgid "E-Mail report"
+msgstr "Jelentést e-mailon küldeni"
+
+msgid "Print"
+msgstr "Nyomtatás"
+
+msgid "Print report"
+msgstr "Jelentés nyomtatása"
+
+msgid "_Copy URL"
+msgstr ""
+
+msgid "Copy URL into clipboard"
+msgstr ""
+
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+msgid "Limit"
+msgstr "Korlátozás"
+
+msgid "Search Limit Settings"
+msgstr "Keresési beállítások"
+
+msgid "Limit:"
+msgstr "Korlát:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr ""
+
+msgid "Preferences"
+msgstr "Beállítások"
+
+msgid "Edit User Preferences"
+msgstr "Felhasználói beállítások szerkesztése"
+
+msgid "Preference"
+msgstr "Beállítások"
+
+msgid "Revision"
+msgstr "Szerkesztés"
+
+msgid "Select a revision"
+msgstr "Szerkesztés kiválasztása"
+
+msgid "Revision:"
+msgstr "Szerkesztés:"
+
+msgid "_Switch View"
+msgstr "Nézet váltása"
+
+#, fuzzy
+msgid "Switch View"
+msgstr "Nézet váltása"
+
+msgid "_Previous"
+msgstr "_Előző"
+
+msgid "Previous Record"
+msgstr "Előző adat"
+
+msgid "_Next"
+msgstr "_Következő"
+
+msgid "Next Record"
+msgstr "Következő adat"
+
+msgid "_Search"
+msgstr "_Keresés"
+
+msgid "_New"
+msgstr "_Új"
+
+msgid "Create a new record"
+msgstr "Új bejegyzés létrehozása"
+
+msgid "_Save"
+msgstr "_Mentés"
+
+msgid "Save this record"
+msgstr "Bejegyzés mentése"
+
+msgid "_Reload/Undo"
+msgstr "Frissítés/ visszavonás"
+
+#, fuzzy
+msgid "Reload/Undo"
+msgstr "Frissítés/ visszavonás"
+
+msgid "_Duplicate"
+msgstr "Másolat"
+
+msgid "_Delete..."
+msgstr "_Törlés..."
+
+msgid "View _Logs..."
+msgstr "Napló megtekintése…"
+
+msgid "Show revisions..."
+msgstr "Feldolgozások megtekintése"
+
+msgid "A_ttachments..."
+msgstr "Csatolmány"
+
+msgid "Add an attachment to the record"
+msgstr "Melléklet hozzáadása az üzenethez."
+
+msgid "_Notes..."
+msgstr ""
+
+msgid "Add a note to the record"
+msgstr ""
+
+msgid "_Actions..."
+msgstr "_Műveletek"
+
+msgid "_Relate..."
+msgstr "Kapcsolat megnyitása"
+
+msgid "_Report..."
+msgstr "Jelentés megnyitása..."
+
+msgid "_E-Mail..."
+msgstr "Jelentés per e-mail"
+
+msgid "_Print..."
+msgstr "_Nyomtatás…"
+
+msgid "_Export Data..."
+msgstr "Adat exportálása"
+
+msgid "_Import Data..."
+msgstr "Adat importálása"
+
+msgid "Copy _URL..."
+msgstr ""
+
+msgid "_Close Tab"
+msgstr "Lap bezárása"
+
+msgid "<b>All fields</b>"
+msgstr "<b>összes mező</b>"
+
+msgid "_Add"
+msgstr "_Hozzáadás"
+
+msgid "_Remove"
+msgstr "_Eltávolítás"
+
+#, fuzzy
+msgid "_Clear"
+msgstr "Törlés"
+
+msgid "<b>Fields selected</b>"
+msgstr ""
+
+msgid "CSV Parameters"
+msgstr "CSV Paraméter"
+
+msgid "Delimiter:"
+msgstr ""
+
+msgid "Quote char:"
+msgstr ""
+
+msgid "Encoding:"
+msgstr "Kódolás:"
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr "Mezőnév"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#, fuzzy
+msgid "_Save Export"
+msgstr "Export mentése"
+
+#, fuzzy
+msgid "_Delete Export"
+msgstr "Export törlése"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Előre megadott export</b>"
+
+msgid "Name"
+msgstr "Név"
+
+msgid "Open"
+msgstr "Megnyitás"
+
+#, fuzzy
+msgid "Add field names"
+msgstr "Mezőnév hozzáadása"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr ""
+
+#, python-format
+msgid "%s (record name)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr "Mi legyen az export neve?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "'%s' definiálásának figyelembe vétele?"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record saved."
+msgstr "%d adat mentve"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records saved."
+msgstr "%d adatok mentve!"
+
+#, python-format, python-format, fuzzy, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Sikertelen művelet!\n"
+"Error message:\n"
+"%s"
+
+msgid "Error"
+msgstr "Hiba"
+
+msgid "Link"
+msgstr "Hivatkozás"
+
+msgid "Delete"
+msgstr "Töröl"
+
+msgid "New"
+msgstr "Új"
+
+msgid "Switch"
+msgstr "Nézet váltása"
+
+msgid "Previous"
+msgstr "Előző"
+
+msgid "Next"
+msgstr "Következő"
+
+msgid "Add"
+msgstr "Hozzáad"
+
+msgid "Remove <Del>"
+msgstr "Mező eltávolítása<Entf>"
+
+msgid "Create a new record <F3>"
+msgstr "Új adat létrehozása.<F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Kiválasztott adatok törlése<Entf>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Törlés visszavonása<Einfg>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#, fuzzy
+msgid "_Auto-Detect"
+msgstr "Automatikus felismerés"
+
+msgid "File to Import:"
+msgstr "Importadatok:"
+
+msgid "Open..."
+msgstr "Megnyitás..."
+
+msgid "Lines to Skip:"
+msgstr "Átugrandó sorok:"
+
+#, fuzzy
+msgid "You must select an import file first."
+msgstr "Először ki kell jelölni legalább egy fájlt."
+
+msgid "Error opening CSV file"
+msgstr "Hiba a CSV fájl megnyitásakor"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Hiba az adat feldolgozásnál a %s mezőben."
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d record imported."
+msgstr "%d adat importálva..."
+
+#, python-format, python-format, fuzzy, python-format
+msgid "%d records imported."
+msgstr "%d adat importálva..."
+
+msgid "Search"
+msgstr "Keresés"
+
+#, python-format
+msgid "Search %s"
+msgstr ""
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+msgid "Wizard"
+msgstr "Wizard"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Creation User"
+msgstr "Által létrehozva"
+
+msgid "Creation Date"
+msgstr "Létrehozás dátuma"
+
+msgid "Modification User"
+msgstr "Által módosítva"
+
+msgid "Modification Date"
+msgstr "Módosítás dátuma"
+
+#, python-format, python-format, fuzzy, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "A menü láthatósága nem állítható be %s"
+
+msgid "Unable to set view tree state"
+msgstr "A menü láthatósága nem állítható be"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr ""
+
+#, python-format
+msgid "\"%s\" is required"
+msgstr ""
+
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr ""
+
+msgid "Pre-validation"
+msgstr ""
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Kép mérete"
+
+msgid "Width:"
+msgstr "Szélesség:"
+
+msgid "Height:"
+msgstr "Magasság:"
+
+msgid "PNG image (*.png)"
+msgstr "PNG Kép (*.png)"
+
+msgid "Save As"
+msgstr "Mentés másként"
+
+#, fuzzy
+msgid "Image size too large."
+msgstr "Kép túl nagy!"
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr ""
+
+msgid "Show bookmarks of filters"
+msgstr "Szűrő könyvjelzők megjelenítése"
+
+msgid "Remove this bookmark"
+msgstr "Könyvjelző eltávolítása"
+
+msgid "Bookmark this filter"
+msgstr "A szűrőt könyvjelzőként hozzáadni"
+
+msgid "Show active records"
+msgstr ""
+
+msgid "Show inactive records"
+msgstr ""
+
+msgid "Bookmark Name:"
+msgstr "Könyvjelző neve:"
+
+msgid "Find"
+msgstr "Keresés"
+
+msgid "Today"
+msgstr "Ma"
+
+msgid "go back"
+msgstr ""
+
+msgid "go forward"
+msgstr ""
+
+msgid "previous year"
+msgstr ""
+
+msgid "next year"
+msgstr ""
+
+msgid "Day View"
+msgstr ""
+
+msgid "Week View"
+msgstr "Heti nézet"
+
+msgid "Month View"
+msgstr "Havi nézet"
+
+msgid "Week"
+msgstr "Hét"
+
+msgid "Select..."
+msgstr ""
+
+msgid "Clear"
+msgstr "Törlés"
+
+msgid "All files"
+msgstr "Összes fájl"
+
+msgid "Show plain text"
+msgstr "Magyarázat mutatása"
+
+msgid "Add value"
+msgstr "Érték hozzáadása"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "„%s” eltávolítása"
+
+msgid "Images"
+msgstr "Képek"
+
+msgid "Add existing record"
+msgstr "Meglévő adat hozzáadása"
+
+msgid "Remove selected record"
+msgstr "A kiválasztott adat eltávolítása<Entf>"
+
+#, fuzzy
+msgid "Open the record <F2>"
+msgstr "Adat megnyitása<F2>"
+
+msgid "Clear the field <Del>"
+msgstr ""
+
+msgid "Search a record <F2>"
+msgstr "Adat keresése<F2>"
+
+#, fuzzy
+msgid "Edit selected record"
+msgstr "A kiválasztott adat átdolgozása<F2>"
+
+#, fuzzy
+msgid "Delete selected record"
+msgstr "A kiválasztott adat eltávolítása<Entf>"
+
+#, python-format
+msgid "%s%%"
+msgstr ""
+
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr ""
+
+msgid "Choose a language"
+msgstr ""
+
+msgid "Translation"
+msgstr "Fordítás"
+
+msgid "Edit"
+msgstr "Szerkesztés"
+
+msgid "Fuzzy"
+msgstr "Életlen"
+
+#, fuzzy
+msgid "You need to save the record before adding translations."
+msgstr "Az adatot menteni kell, mielőtt egy fordítást hozzá lehet adni!"
+
+#, fuzzy
+msgid "No other language available."
+msgstr "Más nyelv nem használható!"
+
+msgid "Translate view"
+msgstr "Nézet elfordítása"
