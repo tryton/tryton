@@ -1,0 +1,336 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"."
+msgstr "\"Desde la fecha\" debe ser anterior a \"Hasta la fecha\"."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity"
+msgstr "La cantidad de la línea debe ser más grande que la cantidad mínima."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive"
+msgstr "La cantidad de la línea debe ser positiva."
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forecast"
+msgstr "El producto debe ser único en la previsión de existencias."
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\""
+msgstr "\"Hasta la fecha\" debe ser posterior a \"Desde la fecha\"."
+
+msgctxt "error:stock.forecast:"
+msgid ""
+"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
+" same location."
+msgstr ""
+"La previsión \"%(first)s\" se solapa con las fechas de la previsión "
+"%(second)s\" en la misma ubicación."
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion."
+msgstr "Debe cancelar la previsión \"%s\" antes de borrarla."
+
+msgctxt "field:stock.forecast,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:stock.forecast,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.forecast,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.forecast,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.forecast,destination:"
+msgid "Destination"
+msgstr "Destino"
+
+msgctxt "field:stock.forecast,from_date:"
+msgid "From Date"
+msgstr "Desde la fecha"
+
+msgctxt "field:stock.forecast,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:stock.forecast,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:stock.forecast,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:stock.forecast,to_date:"
+msgid "To Date"
+msgstr "Hasta la fecha"
+
+msgctxt "field:stock.forecast,warehouse:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "field:stock.forecast,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:stock.forecast,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:stock.forecast.complete.ask,from_date:"
+msgid "From Date"
+msgstr "Desde la fecha"
+
+msgctxt "field:stock.forecast.complete.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.ask,to_date:"
+msgid "To Date"
+msgstr "Hasta la fecha"
+
+msgctxt "field:stock.forecast.complete.choose,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.complete.choose,products:"
+msgid "Products"
+msgstr "Productos"
+
+msgctxt "field:stock.forecast.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.forecast.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.forecast.line,forecast:"
+msgid "Forecast"
+msgstr "Previsión"
+
+msgctxt "field:stock.forecast.line,forecast_state:"
+msgid "Forecast State"
+msgstr "Estado de la previsión"
+
+msgctxt "field:stock.forecast.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line,minimal_quantity:"
+msgid "Minimal Qty"
+msgstr "Cantidad mínima"
+
+msgctxt "field:stock.forecast.line,moves:"
+msgid "Moves"
+msgstr "Movimientos"
+
+msgctxt "field:stock.forecast.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.forecast.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categoría UdM del producto"
+
+msgctxt "field:stock.forecast.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.forecast.line,quantity_executed:"
+msgid "Quantity Executed"
+msgstr "Cantidades ejecutadas"
+
+msgctxt "field:stock.forecast.line,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:stock.forecast.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de la unidad"
+
+msgctxt "field:stock.forecast.line,uom:"
+msgid "UOM"
+msgstr "UdM"
+
+msgctxt "field:stock.forecast.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:stock.forecast.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:stock.forecast.line-stock.move,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.forecast.line-stock.move,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.forecast.line-stock.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.forecast.line-stock.move,line:"
+msgid "Forecast Line"
+msgstr "Línea de previsión"
+
+msgctxt "field:stock.forecast.line-stock.move,move:"
+msgid "Move"
+msgstr "Movimiento"
+
+msgctxt "field:stock.forecast.line-stock.move,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:stock.forecast.line-stock.move,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:stock.forecast.line-stock.move,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "model:ir.action,name:act_forecast_form"
+msgid "Forecasts"
+msgstr "Previsiones"
+
+msgctxt "model:ir.action,name:wizard_forecast_complete"
+msgid "Complete Forecast"
+msgstr "Previsión completa"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
+msgstr "Previsiones"
+
+msgctxt "model:res.group,name:group_stock_forecast"
+msgid "Stock Forecast"
+msgstr "Previsión de existencias"
+
+msgctxt "model:stock.forecast,name:"
+msgid "Stock Forecast"
+msgstr "Previsión de existencias"
+
+msgctxt "model:stock.forecast.complete.ask,name:"
+msgid "Complete Forecast"
+msgstr "Previsión completa"
+
+msgctxt "model:stock.forecast.complete.choose,name:"
+msgid "Complete Forecast"
+msgstr "Elegir previsión completa"
+
+msgctxt "model:stock.forecast.line,name:"
+msgid "Stock Forecast Line"
+msgstr "Línea de previsión de existencias"
+
+msgctxt "model:stock.forecast.line-stock.move,name:"
+msgid "ForecastLine - Move"
+msgstr "Línea de previsión - Movimiento"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Cancel"
+msgstr "Cancelada"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Done"
+msgstr "Finalizada"
+
+msgctxt "selection:stock.forecast,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Cancel"
+msgstr "Cancelado"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Done"
+msgstr "Finalizado"
+
+msgctxt "selection:stock.forecast.line,forecast_state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:stock.forecast:"
+msgid "Add forecast line based on past data."
+msgstr "Añadir línea de previsión en base a datos anteriores."
+
+msgctxt "view:stock.forecast:"
+msgid "Complete Forecast"
+msgstr "Previsión completa"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
+msgid "Choose Products"
+msgstr "Seleccionar productos"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
+msgid "Complete"
+msgstr "Completar"
+
+msgctxt "wizard_button:stock.forecast.complete,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
+msgid "Choose Dates"
+msgstr "Seleccionar fechas"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
+msgid "Complete"
+msgstr "Completar"
+
+msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:stock.forecast:"
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgctxt "view:stock.forecast:"
+msgid "Reset to Draft"
+msgstr "Restaurar a borrador"
