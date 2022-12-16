@@ -1,0 +1,68 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "Файл"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr ""
+
+msgctxt "field:account.fr.fec.start,deferral_period:"
+msgid "Deferral Period"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+#, fuzzy
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "help:account.fr.fec.start,deferral_period:"
+msgid ""
+"The period to exclude which contains the moves to balance non-deferral "
+"account"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+#, fuzzy
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "Приключен"
+
+#, fuzzy
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr ""

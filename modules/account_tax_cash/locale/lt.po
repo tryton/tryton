@@ -1,0 +1,85 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr ""
+
+msgctxt "field:account.invoice,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr ""
+
+msgctxt "field:account.invoice.tax.group.cash,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr ""
+
+msgctxt "field:account.period,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr ""
+
+msgctxt "field:account.tax.group.cash,fiscalyear:"
+msgid "Fiscal Year"
+msgstr ""
+
+msgctxt "field:account.tax.group.cash,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+msgctxt "field:account.tax.group.cash,period:"
+msgid "Period"
+msgstr ""
+
+msgctxt "field:account.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr ""
+
+msgctxt "field:account.tax.line,on_cash_basis:"
+msgid "On Cash Basis"
+msgstr ""
+
+msgctxt "field:account.tax.line,period:"
+msgid "Period"
+msgstr ""
+
+msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
+msgid "Supplier Tax Group On Cash Basis"
+msgstr ""
+
+msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this fiscal year."
+msgstr ""
+
+msgctxt "help:account.invoice,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this invoice."
+msgstr ""
+
+msgctxt "help:account.period,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this period."
+msgstr ""
+
+msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this supplier."
+msgstr ""
+
+msgctxt "model:account.invoice.tax.group.cash,name:"
+msgid "Tax Group on Cash Basis per Invoice"
+msgstr ""
+
+msgctxt "model:account.tax.group.cash,name:"
+msgid "Tax Group On Cash Basis"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_line_payment"
+msgid ""
+"To close period \"%(period)s\" you must link all payable/receivable lines to"
+" invoices."
+msgstr ""
+
+msgctxt "view:account.fiscalyear:"
+msgid "Taxes"
+msgstr ""

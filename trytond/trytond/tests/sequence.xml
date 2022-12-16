@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.sequence.type" id="sequence_type_test">
+            <field name="name">Test</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_test_group_admin">
+            <field name="sequence_type" ref="sequence_type_test"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+    </data>
+</tryton>

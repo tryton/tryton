@@ -1,0 +1,36 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.correct.start,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.correct.start,lines:"
+msgid "Invoice Lines"
+msgstr "Sąskaitos faktūros eilutės"
+
+msgctxt "model:account.invoice.correct.start,name:"
+msgid "Correct Invoice"
+msgstr "Sąskaitos faktūros taisymas"
+
+msgctxt "model:ir.action,name:wizard_invoice_correct"
+msgid "Correct"
+msgstr "Taisyti"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Taisyti"
+
+#, fuzzy
+msgctxt "view:account.invoice.correct.start:"
+msgid "Choose lines to correct:"
+msgstr "Pasirinkite eilutes taisymui"
+
+msgctxt "wizard_button:account.invoice.correct,start,correct:"
+msgid "Correct"
+msgstr "Taisyti"
+
+msgctxt "wizard_button:account.invoice.correct,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="code"/>
+    <field name="name" expand="1" optional="0"/>
+    <field name="amount" optional="0"/>
+</tree>
