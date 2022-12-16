@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="key">
+    <label name="rule"/>
+    <field name="rule"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <label name="key"/>
+    <field name="key"/>
+    <group id="values" col="-1" colspan="2">
+        <field name="boolean"/>
+        <group id="integer" col="-1">
+            <field name="integer_low"/>
+            <label id="and" string="-"/>
+            <field name="integer_high"/>
+        </group>
+        <group id="float" col="-1">
+            <field name="float_low"/>
+            <label id="and" string="-"/>
+            <field name="float_high"/>
+        </group>
+        <group id="number" col="-1">
+            <field name="number_low"/>
+            <label id="and" string="-"/>
+            <field name="number_high"/>
+        </group>
+        <field name="char"/>
+        <field name="selection"/>
+    </group>
+</form>
