@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.statement.origin.information"
+            id="information_operation_date">
+            <field name="name">aeb43_operation_date</field>
+            <field name="string">Operation Date</field>
+            <field name="type_">date</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_record_type">
+            <field name="name">aeb43_record_type</field>
+            <field name="string">Record Type</field>
+            <field name="type_">selection</field>
+            <field name="selection">01:Refunds
+02:Incomes
+03:Debits
+04:Transfers
+05:Loan Amortization
+06:Remittances
+07:Subscriptions
+08:Dividends
+09:Stock transactions
+10:Gasoline checks
+11:Cash Machines
+12:Credit Cards
+13:Foreign operations
+14:Returns and unpaids
+15:Payroll and social insurance
+16:Brokerage
+17:Interests, commissions and expenses
+98:Cancellations and seat corrections
+99:Others</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_document_number">
+            <field name="name">aeb43_document_number</field>
+            <field name="string">Document Number</field>
+            <field name="type_">integer</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_first_reference">
+            <field name="name">aeb43_first_reference</field>
+            <field name="string">First Reference</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information"
+            id="information_second_reference">
+            <field name="name">aeb43_second_reference</field>
+            <field name="string">Second Reference</field>
+            <field name="type_">char</field>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,238 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:marketing.email,email:"
+msgid "E-mail"
+msgstr "E-Mail"
+
+msgctxt "field:marketing.email,email_token:"
+msgid "E-mail Token"
+msgstr "E-Mail Token"
+
+msgctxt "field:marketing.email,list_:"
+msgid "List"
+msgstr "Liste"
+
+msgctxt "field:marketing.email,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:marketing.email,web_user:"
+msgid "Web User"
+msgstr "Webbenutzer"
+
+msgctxt "field:marketing.email.list,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:marketing.email.list,emails:"
+msgid "Emails"
+msgstr "E-Mails"
+
+msgctxt "field:marketing.email.list,language:"
+msgid "Language"
+msgstr "Sprache"
+
+msgctxt "field:marketing.email.list,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:marketing.email.message,content:"
+msgid "Content"
+msgstr "Inhalt"
+
+msgctxt "field:marketing.email.message,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:marketing.email.message,list_:"
+msgid "List"
+msgstr "Liste"
+
+msgctxt "field:marketing.email.message,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:marketing.email.message,title:"
+msgid "Title"
+msgstr "Betreff"
+
+msgctxt "field:marketing.email.message,urls:"
+msgid "URLs"
+msgstr "URLs"
+
+msgctxt "field:marketing.email.send_test,email:"
+msgid "E-Mail"
+msgstr "E-Mail"
+
+msgctxt "field:marketing.email.send_test,list_:"
+msgid "List"
+msgstr "Liste"
+
+msgctxt "field:marketing.email.send_test,message:"
+msgid "Message"
+msgstr "Nachricht"
+
+msgctxt "help:marketing.email.message,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Leer lassen, um den Wert aus der Konfigurationsdatei zu verwenden."
+
+msgctxt "model:ir.action,name:act_email_list_form"
+msgid "Mailing Lists"
+msgstr "Mailinglisten"
+
+msgctxt "model:ir.action,name:act_email_message_form"
+msgid "Messages"
+msgstr "Nachrichten"
+
+msgctxt "model:ir.action,name:act_email_relate_list"
+msgid "E-mails"
+msgstr "E-Mails"
+
+msgctxt "model:ir.action,name:report_email_subscribe"
+msgid "Subscribe Request"
+msgstr "Mailing Anmeldung"
+
+msgctxt "model:ir.action,name:report_email_unsubscribe"
+msgid "Unsubscribe Request"
+msgstr "Mailing Abmeldung"
+
+msgctxt "model:ir.action,name:wizard_send_test"
+msgid "Send Test"
+msgstr "Testversand"
+
+msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_email_message_form_sending"
+msgid "Sending"
+msgstr "Im Versand"
+
+msgctxt "model:ir.message,text:msg_email_list_unique"
+msgid "Email addresses can only be subscribed once to each list."
+msgstr "E-Mail-Adressen können nur einmal je Liste angemeldet werden."
+
+msgctxt "model:ir.message,text:msg_message_invalid_content"
+msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
+msgstr "Ungültiger Inhalt in Nachricht \"%(message)s\" mit Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:message_send_button"
+msgid "Send"
+msgstr "Senden"
+
+msgctxt "model:ir.model.button,string:message_send_test_button"
+msgid "Send Test"
+msgstr "Test versenden"
+
+msgctxt "model:ir.ui.menu,name:menu_email_list_form"
+msgid "Mailing Lists"
+msgstr "Mailinglisten"
+
+msgctxt "model:marketing.email,name:"
+msgid "Marketing E-mail"
+msgstr "Marketing E-Mail"
+
+msgctxt "model:marketing.email.list,name:"
+msgid "Marketing Mailing List"
+msgstr "Marketing Mailingliste"
+
+msgctxt "model:marketing.email.message,name:"
+msgid "Marketing E-mail Message"
+msgstr "Marketing E-Mail Nachricht"
+
+msgctxt "model:marketing.email.send_test,name:"
+msgid "Send Test E-mail"
+msgstr "Test-E-Mail versenden"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+"Wenn der Button nicht funktioniert, kopieren Sie bitte die folgende Zeile in"
+" die Adresszeile Ihres Browsers:"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr ""
+"Ignorieren Sie bitte diese E-Mail, wenn Sie sie irrtümlich erhalten haben."
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Just one more step..."
+msgstr "Nur noch ein weiterer Schritt..."
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Subscribe to"
+msgstr "Anmeldung für"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Subscription Request"
+msgstr "Anmeldeanfrage"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+"Wenn der Button nicht funktioniert, kopieren Sie bitte die folgende Zeile in"
+" die Adresszeile Ihres Browsers:"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr ""
+"Ignorieren Sie bitte diese E-Mail, wenn Sie sie irrtümlich erhalten haben."
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Just one more step..."
+msgstr "Nur noch ein weiterer Schritt..."
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Request to Unsubscribe"
+msgstr "Abmeldeanfrage"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Unsubscribe from"
+msgstr "Abmelden von"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send Marketing Messages"
+msgstr "Marketing Nachrichten versenden"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Sending"
+msgstr "Im Versand"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Sent"
+msgstr "Gesendet"
+
+msgctxt "view:marketing.email.message:"
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgctxt "view:marketing.email.message:"
+msgid "To:"
+msgstr "An:"
+
+msgctxt "view:marketing.email.send_test:"
+msgid "To:"
+msgstr "An:"
+
+msgctxt "wizard_button:marketing.email.send_test,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:marketing.email.send_test,start,send:"
+msgid "Send"
+msgstr "Senden"

@@ -1,0 +1,306 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,children:"
+msgid "Children"
+msgstr "Podnaloge"
+
+msgctxt "field:project.work,comment:"
+msgid "Comment"
+msgstr "Opomba"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:project.work,effort_duration:"
+msgid "Effort"
+msgstr "Porabljen čas"
+
+msgctxt "field:project.work,left:"
+msgid "Left"
+msgstr "Levo"
+
+msgctxt "field:project.work,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:project.work,parent:"
+msgid "Parent"
+msgstr "Matičnia dejavnost"
+
+msgctxt "field:project.work,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:project.work,party_address:"
+msgid "Contact Address"
+msgstr "Kontakt"
+
+msgctxt "field:project.work,progress:"
+msgid "Progress"
+msgstr "Napredek"
+
+msgctxt "field:project.work,right:"
+msgid "Right"
+msgstr "Desno"
+
+#, fuzzy
+msgctxt "field:project.work,status:"
+msgid "Status"
+msgstr "Stanje"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Na evidenci"
+
+msgctxt "field:project.work,timesheet_duration:"
+msgid "Duration"
+msgstr "Trajanje"
+
+msgctxt "field:project.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Konec evidence"
+
+msgctxt "field:project.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Začetek evidence"
+
+msgctxt "field:project.work,timesheet_works:"
+msgid "Timesheet Works"
+msgstr "Evidentirane naloge"
+
+msgctxt "field:project.work,total_effort:"
+msgid "Total Effort"
+msgstr "Ocena skupaj"
+
+msgctxt "field:project.work,total_progress:"
+msgid "Total Progress"
+msgstr "Napredek skupaj"
+
+msgctxt "field:project.work,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr ""
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "Naziv"
+
+#, fuzzy
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "Napredek"
+
+#, fuzzy
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "Tip"
+
+#, fuzzy
+msgctxt "help:project.work,effort_duration:"
+msgid "Estimated Effort for this work."
+msgstr "Ocenjen čas za to nalogo"
+
+#, fuzzy
+msgctxt "help:project.work,progress:"
+msgid "Estimated progress for this work."
+msgstr "Ocenjen napredek za to nalogo"
+
+#, fuzzy
+msgctxt "help:project.work,timesheet_duration:"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Skupni čas, porabljen na tej nalogi in podnalogami."
+
+#, fuzzy
+msgctxt "help:project.work,total_effort:"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Skupen čas, porabljen za to nalogo in podnaloge"
+
+#, fuzzy
+msgctxt "help:project.work,total_progress:"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "Skupen napredek za to nalogo in podnaloge"
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr ""
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr ""
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr ""
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tasks"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projects"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_project_tree"
+msgid "Projects"
+msgstr "Projects"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tasks"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Timesheet Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Works Efforts"
+
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works Efforts"
+msgstr "Works Efforts"
+
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project"
+msgstr "Project"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projects"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projects"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tasks"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
+msgstr "Works Efforts"
+
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_tree"
+msgid "Works Efforts"
+msgstr "Works Efforts"
+
+msgctxt "model:project.work,name:"
+msgid "Work Effort"
+msgstr "Ocena naloge"
+
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "Opened"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Project Administration"
+
+msgctxt "selection:project.work,type:"
+msgid "Project"
+msgstr "Projekt"
+
+msgctxt "selection:project.work,type:"
+msgid "Task"
+msgstr "Naloga"
+
+#, fuzzy
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:project.work:"
+msgid "End:"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr ""

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree_sequence"/>
+            <field name="name">address_tree_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form2">
+            <field name="name">Customer Shipments</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('customer', '=', Eval('active_id')), ('customer', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_purchase_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_shipment_out_form2"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_shipment_out_form2-group_stock">
+            <field name="action" ref="act_shipment_out_form2"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form3">
+            <field name="name">Supplier Shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('supplier', '=', Eval('active_id')), ('supplier', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_purchase_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_shipment_out_form3"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_shipment_out_form3-group_stock">
+            <field name="action" ref="act_shipment_out_form3"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+    </data>
+</tryton>

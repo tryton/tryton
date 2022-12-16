@@ -1,0 +1,263 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Zahtevki"
+
+msgctxt "field:purchase.request,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:purchase.request,computed_quantity:"
+msgid "Computed Quantity"
+msgstr "Izračunana količina"
+
+msgctxt "field:purchase.request,computed_uom:"
+msgid "Computed UOM"
+msgstr "Izračunana ME"
+
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Privzete decimalke"
+
+msgctxt "field:purchase.request,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "Privzete decimalke"
+
+msgctxt "field:purchase.request,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:purchase.request,exception_ignored:"
+msgid "Ignored Exception"
+msgstr "Izjema prezrta"
+
+msgctxt "field:purchase.request,origin:"
+msgid "Origin"
+msgstr "Poreklo"
+
+msgctxt "field:purchase.request,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:purchase.request,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
+
+msgctxt "field:purchase.request,purchase:"
+msgid "Purchase"
+msgstr "Nabavn nalog"
+
+msgctxt "field:purchase.request,purchase_date:"
+msgid "Best Purchase Date"
+msgstr "Najugodnejši datum nabave"
+
+msgctxt "field:purchase.request,purchase_line:"
+msgid "Purchase Line"
+msgstr "Nabavna postavka"
+
+#, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Nabavljeno"
+
+msgctxt "field:purchase.request,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:purchase.request,state:"
+msgid "State"
+msgstr "Stanje"
+
+msgctxt "field:purchase.request,stock_level:"
+msgid "Stock at Supply Date"
+msgstr "Zaloga na dan dobave"
+
+msgctxt "field:purchase.request,supply_date:"
+msgid "Expected Supply Date"
+msgstr "Pričakovan datum dobave"
+
+msgctxt "field:purchase.request,uom:"
+msgid "UOM"
+msgstr "ME"
+
+msgctxt "field:purchase.request,uom_digits:"
+msgid "UOM Digits"
+msgstr "Decimalke"
+
+msgctxt "field:purchase.request,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Skladišče obvezno"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,description:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
+msgid "Supplier"
+msgstr "Dobavitelj"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_create_purchase"
+msgid "Create Purchase"
+msgstr "Create Purchase"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
+msgid "Exception"
+msgstr "Exception"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_purchase_delete_request"
+msgid ""
+"You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
+" requests."
+msgstr ""
+"Nabavnega naloga \"%(purchase)s\" ni mogoče izbrisati, ker je povezan z vsaj"
+" enim nabavnim zahtevkom."
+
+msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
+msgid ""
+"Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
+"different to warehouse \"%(request_warehouse)s\" on linked purchase request "
+"\"%(request)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_request_delete_purchased"
+msgid ""
+"You cannot delete purchase request \"%(request)s\" because it is purchased."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_request_no_create"
+msgid "Purchase requests can only be created by the system."
+msgstr "Samo sistem lahko izdela nabavne zahtevke."
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
+
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
+msgid "User in company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Purchase Requests"
+
+msgctxt "model:purchase.request,name:"
+msgid "Purchase Request"
+msgstr "Nabavni zahtevek"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
+msgid "Create Purchase Ask Party"
+msgstr "Izdelava nabavnega naloga - določitev dobavitelja"
+
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
+msgid "Handle Purchase Cancellation Exception - Start"
+msgstr "Obravnava preklicanih nabav"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_purchase_request"
+msgid "Purchase Request"
+msgstr "Purchase Request"
+
+#, fuzzy
+msgctxt "selection:purchase.request,state:"
+msgid "Cancelled"
+msgstr "Preklic"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Done"
+msgstr "Zaključeno"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Exception"
+msgstr "Pridržano"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Purchased"
+msgstr "Nabavljeno"
+
+msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
+msgid "Do you want to cancel the request or to reset it to draft?"
+msgstr "Ali želite zahtevek preklicati ali ponastaviti?"
+
+msgctxt "view:purchase.request:"
+msgid "Product Info"
+msgstr "Podatek o izdelku"
+
+msgctxt "view:purchase.request:"
+msgid "Supply Info"
+msgstr "Podatki o dobavi"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "Nadaljuj"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
+msgid "Cancel Request"
+msgstr "Prekliči zahtevek"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt ""
+"wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
+msgid "Reset to draft"
+msgstr "Ponastavi"
