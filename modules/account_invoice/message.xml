@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_payment_term_missing_last_remainder">
+            <field name="text">To save payment term "%(payment_term)s", you must append a last remainder line.</field>
+        </record>
+        <record model="ir.message" id="msg_payment_term_missing_remainder">
+            <field name="text">To compute terms, you must append a remainder line on payment term "%(payment_term)s".</field>
+        </record>
+        <record model="ir.message" id="msg_payment_term_invalid_ratio_divisor">
+            <field name="text">The ratio and divisor are not consistent on line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_pending_invoice">
+            <field name="text">You cannot erase party "%(party)s" while they have pending invoices with company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_tax_invalid">
+            <field name="text">The taxes on invoice "%(invoice)s" are not valid, you must save it again to force them to be recalculated.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_no_sequence">
+            <field name="text">To post invoice "%(invoice)s", you must define a sequence on fiscal year "%(fiscalyear)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_number_after">
+            <field name="text">To number the invoice "%(invoice)s", you must set an accounting date after "%(date)s" because the sequence "%(sequence)s" has already been used for invoice "%(after_invoice)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_modify">
+            <field name="text">You cannot modify invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_same_account_line">
+            <field name="text">You cannot use the same account "%(account)s" on invoice "%(invoice)s" and on line "%(lines)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_delete_cancel">
+            <field name="text">To delete invoice "%(invoice)s" you must cancel it.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_delete_numbered">
+            <field name="text">You cannot delete invoice "%(invoice)s" because it has a number.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_customer_cancel_move">
+            <field name="text">You cannot cancel customer invoice "%(invoice)s" because it is posted and company setup does not allow it.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_payment_lines_greater_amount">
+            <field name="text">Payment lines amount on invoice "%(invoice)s" can not be greater than the invoice amount.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_payment_lines_add_remove_paid">
+            <field name="text">You cannot add/remove payment lines on paid invoice "%(invoice)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_credit_refund_not_posted">
+            <field name="text">You cannot refund invoice "%(invoice)s" because it is not posted.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_line_modify">
+            <field name="text">You cannot modify line "%(line)s" because its invoice "%(invoice)s" is posted, paid or cancelled.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_line_create">
+            <field name="text">You cannot add a line to invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_tax_modify">
+            <field name="text">You cannot modify tax "%(tax)s" because its invoice "%(invoice)s" is posted, paid or cancelled.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_tax_create">
+            <field name="text">You cannot add a tax to invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_pay_amount_greater_amount_to_pay">
+            <field name="text">You cannot add a partial payment on invoice "%(invoice)s" with an amount greater than the amount to pay "%(amount_to_pay)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_payment_line_unique">
+            <field name="text">A payment line can be linked to only one invoice.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_payment_term_date_past">
+            <field name="text">The invoice "%(invoice)s" generates a payment date "%(date)s" in the past.</field>
+        </record>
+        <record model="ir.message" id="msg_close_period_non_posted_invoices">
+            <field name="text">To close the periods you must post the invoices "%(invoices)s".</field>
+        </record>
+    </data>
+</tryton>
+
