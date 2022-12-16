@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Obere Liefertoleranz im Verkauf"
+
+msgctxt "field:sale.configuration,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Untere Liefertoleranz im Verkauf"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "Sale Over Shipment Tolerance"
+msgstr "Obere Liefertoleranz im Verkauf"
+
+msgctxt ""
+"field:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "Sale Under Shipment Tolerance"
+msgstr "Untere Liefertoleranz im Verkauf"
+
+msgctxt "help:sale.configuration,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "Die Obergrenze der akzeptierten Menge in Prozent."
+
+msgctxt "help:sale.configuration,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "Die Untergrenze der akzeptierten Menge in Prozent."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
+msgid "The upper quantity accepted in percentage."
+msgstr "Die Obergrenze der akzeptierten Menge in Prozent."
+
+msgctxt ""
+"help:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
+msgid "The lower quantity accepted in percentage."
+msgstr "Die Untergrenze der akzeptierten Menge in Prozent."
+
+msgctxt "model:ir.message,text:msg_over_shipment"
+msgid ""
+"The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "
+"shipped > %(maximal)s )."
+msgstr ""
+"Die Verkaufsposition \"%(line)s\" überschreitet die Überlieferungstoleranz "
+"(%(shipped)s shipped > %(maximal)s )."
+
+msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgid "Sale Configuration Shipment Tolerance"
+msgstr "Einstellungen Liefertoleranzen im Verkauf"
+
+msgctxt "view:sale.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.configuration:"
+msgid "Sale Shipment Tolerance"
+msgstr "Liefertoleranz im Verkauf"
