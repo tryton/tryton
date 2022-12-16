@@ -1,0 +1,178 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.amendment,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:sale.amendment,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:sale.amendment,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:sale.amendment,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:sale.amendment,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,action:"
+msgid "Action"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,amendment:"
+msgid "Amendment"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:sale.amendment.line,invoice_address:"
+msgid "Invoice Address"
+msgstr "Alamat Faktur"
+
+msgctxt "field:sale.amendment.line,line:"
+msgid "Line"
+msgstr "Baris"
+
+msgctxt "field:sale.amendment.line,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:sale.amendment.line,payment_term:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "field:sale.amendment.line,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:sale.amendment.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,sale:"
+msgid "Sale"
+msgstr "Penjualan"
+
+msgctxt "field:sale.amendment.line,shipment_address:"
+msgid "Shipment Address"
+msgstr "Alamat Pengiriman"
+
+msgctxt "field:sale.amendment.line,shipment_party:"
+msgid "Shipment Party"
+msgstr "Pihak Pengiriman"
+
+msgctxt "field:sale.amendment.line,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,unit_price:"
+msgid "Unit Price"
+msgstr ""
+
+msgctxt "field:sale.amendment.line,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "field:sale.sale,amendments:"
+msgid "Amendments"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_amendment_form"
+msgid "Amendments"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_amendment_form_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_one_sale_at_time"
+msgid ""
+"You cannot validate more than one amendment at the same time for sale "
+"\"%(sale)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,confirm:sale_amendment_validation_amendment_button"
+msgid "Are you sure you want to validate the amendments?"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:sale_amendment_validation_amendment_button"
+msgid "Validate"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_sale_amendment"
+msgid "Amendments"
+msgstr ""
+
+msgctxt "model:res.group,name:group_sale_amendment"
+msgid "Sale Amendment"
+msgstr ""
+
+msgctxt "model:sale.amendment,name:"
+msgid "Sale Amendment"
+msgstr ""
+
+msgctxt "model:sale.amendment.line,name:"
+msgid "Sale Amendment Line"
+msgstr ""
+
+msgctxt "selection:sale.amendment,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:sale.amendment,state:"
+msgid "Validated"
+msgstr ""
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Line"
+msgstr ""
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Parties and Addresses"
+msgstr ""
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Payment Term"
+msgstr ""
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Change Warehouse"
+msgstr ""
+
+msgctxt "selection:sale.amendment.line,action:"
+msgid "Recompute Taxes"
+msgstr ""

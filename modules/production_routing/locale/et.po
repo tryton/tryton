@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product-production.bom,routing:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "field:production,routing:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "field:production.lead_time,routing:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "field:production.routing,boms:"
+msgid "BOMs"
+msgstr "Retseptid"
+
+msgctxt "field:production.routing,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:production.routing,steps:"
+msgid "Steps"
+msgstr "Sammud"
+
+msgctxt "field:production.routing-production.bom,bom:"
+msgid "BOM"
+msgstr "Retsept"
+
+msgctxt "field:production.routing-production.bom,routing:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "field:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operatsioon"
+
+msgctxt "field:production.routing.step,operation:"
+msgid "Operation"
+msgstr "Operatsioon"
+
+msgctxt "field:production.routing.step,routing:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "model:ir.action,name:act_operation_list"
+msgid "Operations"
+msgstr "Operatsioonid"
+
+msgctxt "model:ir.action,name:act_routing_list"
+msgid "Routings"
+msgstr "Suunamised"
+
+msgctxt "model:ir.ui.menu,name:menu_operation_list"
+msgid "Operations"
+msgstr "Operatsioonid"
+
+msgctxt "model:ir.ui.menu,name:menu_routing_list"
+msgid "Routings"
+msgstr "Suunamised"
+
+msgctxt "model:production.routing,name:"
+msgid "Routing"
+msgstr "Suunamine"
+
+msgctxt "model:production.routing-production.bom,name:"
+msgid "Routing - BOM"
+msgstr "Suunamine - Retsept"
+
+msgctxt "model:production.routing.operation,name:"
+msgid "Operation"
+msgstr "Operatsioon"
+
+msgctxt "model:production.routing.step,name:"
+msgid "Route"
+msgstr "Marsruut"
