@@ -1,0 +1,93 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grupos de impuesto con criterio de caja"
+
+msgctxt "field:account.invoice,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grupos de impuesto con criterio de caja"
+
+msgctxt "field:account.invoice.tax.group.cash,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Grupo de impuesto"
+
+msgctxt "field:account.period,tax_group_on_cash_basis:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grupos de impuesto con criterio de caja"
+
+msgctxt "field:account.tax.group.cash,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ejercicio fiscal"
+
+msgctxt "field:account.tax.group.cash,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:account.tax.group.cash,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:account.tax.group.cash,tax_group:"
+msgid "Tax Group"
+msgstr "Grupo de impuesto"
+
+msgctxt "field:account.tax.line,on_cash_basis:"
+msgid "On Cash Basis"
+msgstr "Criterio de caja"
+
+msgctxt "field:account.tax.line,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
+msgid "Supplier Tax Group On Cash Basis"
+msgstr "Grupos de impuesto del proveedor con criterio de caja"
+
+msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this fiscal year."
+msgstr ""
+"Los grupos de impuesto que se reportan con criterio de caja en este "
+"ejercicio fiscal."
+
+msgctxt "help:account.invoice,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this invoice."
+msgstr ""
+"Los grupos de impuesto que se reportan con criterio de caja de esta factura."
+
+msgctxt "help:account.period,tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this period."
+msgstr ""
+"Los grupos de impuesto que se reportan con criterio de caja de este periodo."
+
+msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
+msgid "The tax group reported on cash basis for this supplier."
+msgstr ""
+"Los grupos de impuesto que se reportan con criterio de caja para este "
+"proveedor."
+
+msgctxt "model:account.invoice.tax.group.cash,name:"
+msgid "Tax Group on Cash Basis per Invoice"
+msgstr "Grupos de impuesto con criterio de caja por factura"
+
+msgctxt "model:account.tax.group.cash,name:"
+msgid "Tax Group On Cash Basis"
+msgstr "Grupos de impuesto con criterio de caja"
+
+msgctxt "model:ir.message,text:msg_close_period_line_payment"
+msgid ""
+"To close period \"%(period)s\" you must link all payable/receivable lines to"
+" invoices."
+msgstr ""
+"Para cerrar el periodo \"%(period)s\" debe relacionar todas las lineas a "
+"pagar/cobrar con sus facturas."
+
+msgctxt "view:account.fiscalyear:"
+msgid "Taxes"
+msgstr "Impuestos"

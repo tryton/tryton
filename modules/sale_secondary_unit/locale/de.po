@@ -1,0 +1,154 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkauf Zweitmaßeinheit"
+
+msgctxt "field:product.product,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Verkauf Zweitmaßeinheit Faktor"
+
+msgctxt "field:product.product,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
+
+msgctxt "field:product.template,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkauf Zweitmaßeinheit"
+
+msgctxt "field:product.template,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Verkauf Zweitmaßeinheit Faktor"
+
+msgctxt "field:product.template,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
+
+msgctxt "field:sale.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Artikel Zweitmaßeinheitenkategorie"
+
+msgctxt "field:sale.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Zweitmenge"
+
+msgctxt "field:sale.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Zweitmaßeinheit"
+
+msgctxt "field:sale.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "Nachkommastellen Zweitmaßeinheit"
+
+msgctxt "field:sale.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "Zweiteinzelpreis"
+
+msgctxt "field:sale.line,secondary_uom_factor:"
+msgid "Secondary UOM Factor"
+msgstr "Zweitmaßeinheit Faktor"
+
+msgctxt "field:sale.line,secondary_uom_rate:"
+msgid "Secondary UOM Rate"
+msgstr "Zweitmaßeinheit Kehrwert Faktor"
+
+msgctxt "field:sale.product_customer,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Standardkategorie Maßeinheit"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkauf Zweitmaßeinheit"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Verkauf Zweitmaßeinheit Faktor"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkauf Zweitmaßeinheit Kehrwert Faktor"
+
+msgctxt "help:product.product,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"1 (Verkaufseinheit) = Koeffizient (Zweitmaßeinheit)"
+
+msgctxt "help:product.product,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"Koeffizient (Verkaufseinheit) = 1 (Zweitmaßeinheit)"
+
+msgctxt "help:product.template,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"1 (Verkaufseinheit) = Koeffizient (Zweitmaßeinheit)"
+
+msgctxt "help:product.template,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"Koeffizient (Verkaufseinheit) = 1 (Zweitmaßeinheit)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"1 (Verkaufseinheit) = Koeffizient (Zweitmaßeinheit)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"Der Koeffizient für die Formel:\n"
+"Koeffizient (Verkaufseinheit) = 1 (Zweitmaßeinheit)"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_secondary_uom_incompatible_factor_rate"
+msgid "Incompatible sale secondary factor and rate values for \"%(record)s\"."
+msgstr ""
+"Inkompatible Werte für Faktor und Kehrwert der Zweiteinheit für "
+"\"%(record)s\"."
+
+msgctxt "view:product.template:"
+msgid "Factor:"
+msgstr "Faktor:"
+
+msgctxt "view:product.template:"
+msgid "Rate:"
+msgstr "Kehrwert Faktor:"
+
+msgctxt "view:sale.line:"
+msgid "Quantity:"
+msgstr "Menge:"
+
+msgctxt "view:sale.line:"
+msgid "Unit Price:"
+msgstr "Einzelpreis:"
+
+msgctxt "view:sale.line:"
+msgid "Unit:"
+msgstr "Einheit:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Factor:"
+msgstr "Faktor:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Rate:"
+msgstr "Kehrwert Faktor:"

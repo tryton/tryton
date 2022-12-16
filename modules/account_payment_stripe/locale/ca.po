@@ -1,0 +1,535 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,stripe_account:"
+msgid "Stripe Account"
+msgstr "Compte Stripe"
+
+msgctxt "field:account.payment,stripe_amount:"
+msgid "Stripe Amount"
+msgstr "Import Stripe"
+
+msgctxt "field:account.payment,stripe_capturable:"
+msgid "Stripe Capturable"
+msgstr "Capturable amb Stripe"
+
+msgctxt "field:account.payment,stripe_capture:"
+msgid "Stripe Capture"
+msgstr "Captura Stripe"
+
+msgctxt "field:account.payment,stripe_capture_needed:"
+msgid "Stripe Capture Needed"
+msgstr "Requereix captura Stripe"
+
+msgctxt "field:account.payment,stripe_captured:"
+msgid "Stripe Captured"
+msgstr "Capturat amb Stripe"
+
+msgctxt "field:account.payment,stripe_charge_id:"
+msgid "Stripe Charge ID"
+msgstr "Identificador càrrec Stripe"
+
+msgctxt "field:account.payment,stripe_chargeable:"
+msgid "Stripe Chargeable"
+msgstr "Cobrable amb Stripe"
+
+msgctxt "field:account.payment,stripe_checkout_id:"
+msgid "Stripe Checkout ID"
+msgstr "Identificador del procès de pagament de Stripe"
+
+msgctxt "field:account.payment,stripe_checkout_needed:"
+msgid "Stripe Checkout Needed"
+msgstr "Requerix procès de pagament de Stripe"
+
+msgctxt "field:account.payment,stripe_customer:"
+msgid "Stripe Customer"
+msgstr "Client Stripe"
+
+msgctxt "field:account.payment,stripe_customer_payment_method:"
+msgid "Stripe Payment Method"
+msgstr "Mètode de pagament de Stripe"
+
+msgctxt "field:account.payment,stripe_customer_payment_method_selection:"
+msgid "Stripe Customer Payment Method"
+msgstr "Mètode de pagament de Client de Stripe"
+
+msgctxt "field:account.payment,stripe_customer_source:"
+msgid "Stripe Customer Source"
+msgstr "Origen client Stripe"
+
+msgctxt "field:account.payment,stripe_customer_source_selection:"
+msgid "Stripe Customer Source"
+msgstr "Origen client Stripe"
+
+msgctxt "field:account.payment,stripe_dispute_reason:"
+msgid "Stripe Dispute Reason"
+msgstr "Motiu de disputa Stripe"
+
+msgctxt "field:account.payment,stripe_dispute_status:"
+msgid "Stripe Dispute Status"
+msgstr "Estat disputa Stripe"
+
+msgctxt "field:account.payment,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Codi d'error de Stripe"
+
+msgctxt "field:account.payment,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr "Missatge d'error de Stripe"
+
+msgctxt "field:account.payment,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr "Paràmetre d'error de Stripe"
+
+msgctxt "field:account.payment,stripe_idempotency_key:"
+msgid "Stripe Idempotency Key"
+msgstr "Clau idempotent de Stripe"
+
+msgctxt "field:account.payment,stripe_payment_intent_id:"
+msgid "Stripe Payment Intent"
+msgstr "Intent de pagament de Stripe"
+
+msgctxt "field:account.payment,stripe_refunds:"
+msgid "Refunds"
+msgstr "Devolucions"
+
+msgctxt "field:account.payment,stripe_token:"
+msgid "Stripe Token"
+msgstr "Token Stripe"
+
+msgctxt "field:account.payment.journal,stripe_account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.payment.stripe.account,last_event:"
+msgid "Last Event"
+msgstr "Últim event"
+
+msgctxt "field:account.payment.stripe.account,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.payment.stripe.account,publishable_key:"
+msgid "Publishable Key"
+msgstr "Clau pública"
+
+msgctxt "field:account.payment.stripe.account,secret_key:"
+msgid "Secret Key"
+msgstr "Clau secreta"
+
+msgctxt "field:account.payment.stripe.account,webhook_endpoint:"
+msgid "Webhook Endpoint"
+msgstr "Webhook Endpoint"
+
+msgctxt "field:account.payment.stripe.account,webhook_identifier:"
+msgid "Webhook Identifier"
+msgstr "Identificador Webhook"
+
+msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
+msgid "Webhook Signing Secret"
+msgstr "Secret de firma del Webhook"
+
+msgctxt "field:account.payment.stripe.account,zip_code:"
+msgid "Zip Code"
+msgstr "Codi postal"
+
+msgctxt "field:account.payment.stripe.customer,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.payment.stripe.customer,stripe_account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.payment.stripe.customer,stripe_checkout_id:"
+msgid "Stripe Checkout ID"
+msgstr "Identificador del procès de pagament de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_checkout_needed:"
+msgid "Stripe Checkout Needed"
+msgstr "Requerix procès de pagament de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_customer_id:"
+msgid "Stripe Customer ID"
+msgstr "Identificador client Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Codi d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr "Missatge d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr "Paràmetre d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_setup_intent_id:"
+msgid "Stripe SetupIntent ID"
+msgstr "Identificador del procès d'intent de pagament de Stripe"
+
+msgctxt "field:account.payment.stripe.customer,stripe_token:"
+msgid "Stripe Token"
+msgstr "Token Stripe"
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "field:account.payment.stripe.refund,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.payment.stripe.refund,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.payment.stripe.refund,payment:"
+msgid "Payment"
+msgstr "Pagament"
+
+msgctxt "field:account.payment.stripe.refund,reason:"
+msgid "Reason"
+msgstr "Motiu"
+
+msgctxt "field:account.payment.stripe.refund,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.payment.stripe.refund,stripe_amount:"
+msgid "Stripe Amount"
+msgstr "Import Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Codi d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr "Missatge d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr "Paràmetre d'error de Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_idempotency_key:"
+msgid "Stripe Idempotency Key"
+msgstr "Clau idempotent de Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
+msgid "Stripe Refund ID"
+msgstr "Identificador devolució de Stripe"
+
+msgctxt "field:party.party,stripe_customers:"
+msgid "Stripe Customers"
+msgstr "Clients Stripe"
+
+msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
+msgid "The URL to be called by Stripe."
+msgstr "La URL que es cridarà des de Stripe."
+
+msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
+msgid "The Stripe's signing secret of the webhook."
+msgstr "El secret de firma de Stripe per al Webhook."
+
+msgctxt "help:account.payment.stripe.account,zip_code:"
+msgid "Verification on checkout"
+msgstr "Verificació en el procès de pagament"
+
+msgctxt "model:account.payment.stripe.account,name:"
+msgid "Stripe Account"
+msgstr "Compte Stripe"
+
+msgctxt "model:account.payment.stripe.customer,name:"
+msgid "Stripe Customer"
+msgstr "Client Stripe"
+
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
+msgid "Detach Customer Source"
+msgstr "Separa l'origen del client"
+
+msgctxt "model:account.payment.stripe.refund,name:"
+msgid "Stripe Payment Refund"
+msgstr "Devolució de pagament de Stripe"
+
+msgctxt "model:ir.action,name:act_account_form"
+msgid "Stripe Accounts"
+msgstr "Comptes Stripe"
+
+msgctxt "model:ir.action,name:act_customer_form"
+msgid "Stripe Customers"
+msgstr "Clients Stripe"
+
+msgctxt "model:ir.action,name:act_refund_form"
+msgid "Stripe Refunds"
+msgstr "Devolucions stripe"
+
+msgctxt "model:ir.action,name:report_checkout"
+msgid "Stripe Checkout"
+msgstr "Procés de pagament de Stripe"
+
+msgctxt "model:ir.action,name:report_email_checkout"
+msgid "Checkout"
+msgstr "Pagament"
+
+msgctxt "model:ir.action,name:url_checkout"
+msgid "Stripe Checkout"
+msgstr "Procés de pagament de Stripe"
+
+msgctxt "model:ir.action,name:wizard_checkout"
+msgid "Stripe Checkout"
+msgstr "Procés de pagament de Stripe"
+
+msgctxt "model:ir.action,name:wizard_customer_source_detach"
+msgid "Detach Source"
+msgstr "Separa origen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
+msgid "Approved"
+msgstr "Aprovada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
+msgid "Failed"
+msgstr "Fallada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Amb èxit"
+
+msgctxt "model:ir.message,text:msg_no_stripe_token"
+msgid ""
+"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+msgstr ""
+"Per processar el pagament \"%(payment)s\" heu de definir-hi un client o un "
+"token de Stripe."
+
+msgctxt "model:ir.message,text:msg_stripe_receivable"
+msgid "To pay \"%(payment)s\", you cannot use a stripe journal \"%(journal)s\"."
+msgstr ""
+"No podeu utilitzar el diari de Stripe \"%(journal)s\" per pagar "
+"\"%(payment)s\"."
+
+msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
+msgid ""
+"This action will make the previous URL unusable. Do you want to continue?"
+msgstr ""
+"Aquesta acció provocarà que la URL anterior deixi de funcionar. Voleu "
+"continuar?"
+
+msgctxt "model:ir.model.button,string:account_new_identifier_button"
+msgid "New URL"
+msgstr "Nova URL"
+
+msgctxt "model:ir.model.button,string:customer_source_detach_button"
+msgid "Detach Source"
+msgstr "Separa origen"
+
+msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
+msgid "Add Card"
+msgstr "Afegeix targeta"
+
+msgctxt "model:ir.model.button,string:payment_stripe_capture_button"
+msgid "Stripe Capture"
+msgstr "Captura Stripe"
+
+msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
+msgid "Stripe Checkout"
+msgstr "Cobro por stripe"
+
+msgctxt "model:ir.model.button,string:refund_approve_button"
+msgid "Approve"
+msgstr "Aprova"
+
+msgctxt "model:ir.model.button,string:refund_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.rule.group,name:rule_group_refund"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_account_form"
+msgid "Stripe Accounts"
+msgstr "Comptes Stripe"
+
+msgctxt "model:ir.ui.menu,name:menu_customer_form"
+msgid "Stripe Customers"
+msgstr "Clients Stripe"
+
+msgctxt "model:ir.ui.menu,name:menu_refund_form"
+msgid "Stripe Refunds"
+msgstr "Devolucions stripe"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Credit or debit card"
+msgstr "Targeta de crèdit o dèbit"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Pay"
+msgstr "Paga"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Register card"
+msgstr "Registra targeta"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Stripe Checkout"
+msgstr "Procés de pagament de Stripe"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Authorization needed"
+msgstr "Es necessita autorització"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Empega això al teu navegador:"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Checkout"
+msgstr "Pagament"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "Si no heu fet aquesta petició, podeu ignorar aquest correu."
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "You need to authorize the payment"
+msgstr "Heu d'autoritzar el pagament"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Stripe"
+msgstr "Stripe"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Duplicate"
+msgstr "Duplicat"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Fraudulent"
+msgstr "Fradulent"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Requested by Customer"
+msgstr "Sol·licitada pel client"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Approved"
+msgstr "Aprovada"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Failed"
+msgstr "Fallat"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Succeeded"
+msgstr "Amb èxit"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Capture Stripe Payments"
+msgstr "Captura pagaments de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Charge Stripe Payments"
+msgstr "Carrega pagaments de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Customer"
+msgstr "Crea clients de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Refund"
+msgstr "Crea devolucions de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Delete Stripe Customer"
+msgstr "Elimina clients de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fetch Stripe Events"
+msgstr "Obté events de Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Stripe Intent Customer"
+msgstr "Actualitza els Intents de client de Stripe"
+
+msgctxt "view:account.payment.journal:"
+msgid "Stripe"
+msgstr "Stripe"
+
+msgctxt "view:account.payment:"
+msgid "Capturable:"
+msgstr "Cobrable:"
+
+msgctxt "view:account.payment:"
+msgid "Capture:"
+msgstr "Captura:"
+
+msgctxt "view:account.payment:"
+msgid "Charge ID:"
+msgstr "Identificador càrrec:"
+
+msgctxt "view:account.payment:"
+msgid "Chargeable:"
+msgstr "Cobrable:"
+
+msgctxt "view:account.payment:"
+msgid "Customer:"
+msgstr "Client:"
+
+msgctxt "view:account.payment:"
+msgid "Payment Intent:"
+msgstr "Intent de pagament:"
+
+msgctxt "view:account.payment:"
+msgid "Payment Method:"
+msgstr "Métode de pagament:"
+
+msgctxt "view:account.payment:"
+msgid "Source:"
+msgstr "Origen:"
+
+msgctxt "view:account.payment:"
+msgid "Stripe"
+msgstr "Stripe"
+
+msgctxt "view:account.payment:"
+msgid "Token:"
+msgstr "Token:"
+
+msgctxt ""
+"wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
+msgid "Detach"
+msgstr "Separa"
+
+msgctxt "wizard_button:account.payment.stripe.customer.source.detach,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"

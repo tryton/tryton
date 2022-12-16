@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_carrier_admin">
+            <field name="name">Carrier Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_carrier_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_carrier_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="carrier_icon">
+            <field name="name">tryton-carrier</field>
+            <field name="path">icons/tryton-carrier.svg</field>
+        </record>
+
+        <menuitem name="Carrier" sequence="2" id="menu_carrier" icon="tryton-carrier"/>
+
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>
+            <field name="priority" eval="10"/>
+            <field name="name">carrier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="carrier_view_tree">
+            <field name="model">carrier</field>
+            <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
+            <field name="priority" eval="10"/>
+            <field name="name">carrier_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_carrier_form">
+            <field name="name">Carriers</field>
+            <field name="res_model">carrier</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="carrier_view_tree"/>
+            <field name="act_window" ref="act_carrier_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="carrier_view_form"/>
+            <field name="act_window" ref="act_carrier_form"/>
+        </record>
+        <menuitem parent="menu_carrier" action="act_carrier_form"
+            id="menu_carrier_form"/>
+
+        <record model="ir.model.access" id="access_carrier">
+            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_carrier_carrier_admin">
+            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="group" ref="group_carrier_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="carrier_selection_view_form">
+            <field name="model">carrier.selection</field>
+            <field name="type">form</field>
+            <field name="name">selection_form</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list">
+            <field name="model">carrier.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">selection_list</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list_sequence">
+            <field name="model">carrier.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">selection_list_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_carrier_selection_form">
+            <field name="name">Carrier Selection</field>
+            <field name="res_model">carrier.selection</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_selection_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="carrier_selection_view_list_sequence"/>
+            <field name="act_window" ref="act_carrier_selection_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_carrier_selection_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="carrier_selection_view_form"/>
+            <field name="act_window" ref="act_carrier_selection_form"/>
+        </record>
+        <menuitem parent="menu_carrier" action="act_carrier_selection_form"
+            id="menu_carrier_selection"/>
+
+        <record model="ir.model.access" id="access_carrier_selection">
+            <field name="model" search="[('model', '=', 'carrier.selection')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_carrier_selection_carrier_admin">
+            <field name="model" search="[('model', '=', 'carrier.selection')]"/>
+            <field name="group" ref="group_carrier_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

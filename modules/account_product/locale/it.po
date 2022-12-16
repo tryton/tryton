@@ -1,0 +1,212 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Conto di costo predefinito"
+
+msgctxt "field:account.configuration,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Conto di ricavo predefinito"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_expense:"
+msgid "Default Account Expense"
+msgstr "Conto di costo predefinito"
+
+msgctxt ""
+"field:account.configuration.default_account,default_category_account_revenue:"
+msgid "Default Account Revenue"
+msgstr "Conto di ricavo predefinito"
+
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr "Conto di costo predefinito"
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "Conto di ricavo predefinito"
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Prodotto"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr "Categoria Prodotto"
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
+msgstr "Conto di costo"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Utilizzare i conti padre"
+
+msgctxt "field:product.category,account_revenue:"
+msgid "Account Revenue"
+msgstr "Conto di ricavo"
+
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Contabilità"
+
+msgctxt "field:product.category,accounts:"
+msgid "Accounts"
+msgstr "Conti"
+
+msgctxt "field:product.category,customer_taxes:"
+msgid "Customer Taxes"
+msgstr "Imposte Cliente"
+
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Imposte cliente utilizzate"
+
+msgctxt "field:product.category,supplier_taxes:"
+msgid "Supplier Taxes"
+msgstr "Imposte fornitore"
+
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Imposte fornitore utilizzate"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Usare le imposte del padre"
+
+msgctxt "field:product.category-customer-account.tax,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.category-customer-account.tax,tax:"
+msgid "Tax"
+msgstr "Imposta"
+
+msgctxt "field:product.category-supplier-account.tax,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.category-supplier-account.tax,tax:"
+msgid "Tax"
+msgstr "Imposta"
+
+msgctxt "field:product.category.account,account_expense:"
+msgid "Account Expense"
+msgstr "Conto di costo"
+
+msgctxt "field:product.category.account,account_revenue:"
+msgid "Account Revenue"
+msgstr "Conto di ricavo"
+
+msgctxt "field:product.category.account,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.category.account,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:product.product,account_category:"
+msgid "Account Category"
+msgstr "Categoria contabile"
+
+msgctxt "field:product.template,account_category:"
+msgid "Account Category"
+msgstr "Categoria contabile"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "Modello"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category."
+msgstr "Usare i conti definiti nella categoria padre."
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accounting category."
+msgstr "Spunta per convertire in una categoria contabile."
+
+msgctxt "help:product.category,customer_taxes:"
+msgid "The taxes to apply when selling products of this category."
+msgstr "Le tasse da applicare quando si vendono prodotti di questa categoria."
+
+msgctxt "help:product.category,supplier_taxes:"
+msgid "The taxes to apply when purchasing products of this category."
+msgstr ""
+"Le tasse da applicare al momento dell'acquisto di prodotti di questa "
+"categoria."
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category."
+msgstr "Utilizzare le imposte definite nella categoria padre."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "Non c'è \"%(field)s\" definito per \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+"Manca la definizione della categoria di conto per il prodotto \"%(name)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr "Qualsiasi categoria"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr "Utente in azienda"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr "Categoria non contabile"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr "Utente in azienda"
+
+msgctxt "model:product.category-customer-account.tax,name:"
+msgid "Category - Customer Tax"
+msgstr "Categoria - Imposta cliente"
+
+msgctxt "model:product.category-supplier-account.tax,name:"
+msgid "Category - Supplier Tax"
+msgstr "Categoria - Imposta fornitore"
+
+msgctxt "model:product.category.account,name:"
+msgid "Category Account"
+msgstr "Categoria del conto"
+
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr "Modello - Categoria del conto"
+
+msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Prodotto"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "view:product.category:"
+msgid "Accounting"
+msgstr "Contabilità"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Conti"
+
+msgctxt "view:product.category:"
+msgid "Taxes"
+msgstr "Imposte"
+
+msgctxt "view:product.template:"
+msgid "Accounting"
+msgstr "Contabilità"
