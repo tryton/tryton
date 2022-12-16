@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="invoice"/>
+    <field name="invoice" colspan="3"/>
+    <label name="tax"/>
+    <field name="tax" colspan="3"/>
+    <label name="description"/>
+    <field name="description"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="account"/>
+    <field name="account"/>
+    <label name="manual"/>
+    <field name="manual"/>
+    <label name="base"/>
+    <field name="base"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <separator name="legal_notice" colspan="4"/>
+    <field name="legal_notice" colspan="4"/>
+</form>
