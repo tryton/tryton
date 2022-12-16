@@ -1,0 +1,41 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,You can not create recursive dependencies!,¡No puede crear dependencias recursivas!,0
+field,"project.allocation,employee",0,Employee,Empleado,0
+field,"project.allocation,percentage",0,Percentage,Porcentaje,0
+field,"project.allocation,rec_name",0,Name,Nombre,0
+field,"project.allocation,work",0,Work,Trabajo,0
+field,"project.predecessor_successor,predecessor",0,Predecessor,Predecesor,0
+field,"project.predecessor_successor,rec_name",0,Name,Nombre,0
+field,"project.predecessor_successor,successor",0,Successor,Sucesor,0
+field,"project.work,actual_finish_date",0,Actual Finish,Fin Actual,0
+field,"project.work,actual_finish_time",0,Actual Finish Time,Tiempo del Actual Fin,0
+field,"project.work,actual_start_date",0,Actual Start,Comienzo Actual,0
+field,"project.work,actual_start_time",0,Actual Start Time,Tiempo del Actual Comienzo,0
+field,"project.work,allocations",0,Allocations,Cuotas,0
+field,"project.work,back_leveling_delay",0,Leveling Delay,Retardo de Escalamiento,0
+field,"project.work,constraint_finish_date",0,Constraint Finish,Final de la Restricción,0
+field,"project.work,constraint_finish_time",0,Constraint  Finish Time,Tiempo Final de la Restricción,0
+field,"project.work,constraint_start_date",0,Constraint Start,Comienzo de la Restricción,0
+field,"project.work,constraint_start_time",0,Constraint Start Time,Tiempo del Comienzo de la Restricción,0
+field,"project.work,duration",0,Duration,Duración,0
+field,"project.work,early_finish_date",0,Early Finish,Final Temprano,0
+field,"project.work,early_finish_time",0,Early Finish Time,Tiempo del Temprano Final,0
+field,"project.work,early_start_date",0,Early Start,Comienzo Temprano,0
+field,"project.work,early_start_time",0,Early Start Time,Tiempo el Temprano Comienzo,0
+field,"project.work,late_finish_date",0,Late Finish,Final Tardío,0
+field,"project.work,late_finish_time",0,Late Finish Time,Tiempo del Tardío Final,0
+field,"project.work,late_start_date",0,Late Start,Comienzo Tardío,0
+field,"project.work,late_start_time",0,Late Start Time,Tiempo del Tardío Comienzo,0
+field,"project.work,leveling_delay",0,Leveling Delay,Retardo del Escalamiento,0
+field,"project.work,predecessors",0,Predecessors,Predecesores,0
+field,"project.work,requests",0,Requests,Solicitudes,0
+field,"project.work,successors",0,Successors,Sucesores,0
+model,"ir.action,name",wizard_leveling,Tasks Leveling,Escalamiento de Tareas,0
+model,"project.allocation,name",0,Allocation,Cuotas,0
+model,"project.predecessor_successor,name",0,Predecessor - Successor,Predecesor - Sucesor,0
+model,"res.request.link,name",request_link_work,Work,Trabajo,0
+view,project.allocation,0,Allocation,Cuota,0
+view,project.allocation,0,Allocations,Cuotas,0
+view,project.work,0,Allocations,Cuotas,0
+view,project.work,0,Plan,Plan,0
+view,project.work,0,Requests,Solicitudes,0
