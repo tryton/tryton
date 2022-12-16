@@ -1,0 +1,48 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,There should be only one timesheet work by task/project!,Il ne doit y avoir qu'une seule feuille de présence par tâche/projet !,0
+field,"project.work,children",0,Children,Enfants,0
+field,"project.work,comment",0,Comment,Commentaire,0
+field,"project.work,effort",0,Effort,Effort,0
+field,"project.work,parent",0,Parent,Parent,0
+field,"project.work,party",0,Party,Tiers,0
+field,"project.work,party_address",0,Contact Address,Adresse,0
+field,"project.work,rec_name",0,Name,Nom,0
+field,"project.work,state",0,State,État,0
+field,"project.work,total_effort",0,Total Effort,Effort total,0
+field,"project.work,type",0,Type,Type,0
+field,"project.work,work",0,Work,Activité,0
+field,"timesheet.work,sequence",0,Sequence,Séquence,0
+field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Lignes de feuille de présence,0
+help,"project.work,effort",0,Estimated Effort for this work,Effort estimé pour cette activité,0
+help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Effort total estimé pour cette activité et ses sous-activités,0
+model,"ir.action,name",act_open_child_work,Tasks,Tâches,0
+model,"ir.action,name",act_project_form,Projects,Projets,0
+model,"ir.action,name",act_task_form,Tasks,Tâches,0
+model,"ir.action,name",act_work_form,Works,Activités,0
+model,"ir.action,name",act_work_form_new,Works Efforts,Activités,1
+model,"ir.action,name",act_work_list,Works Efforts,Activités,1
+model,"ir.action,name",act_work_tree,Works Efforts,Activités,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
+model,"ir.ui.menu,name",menu_project,Project Management,Gestion de projet,0
+model,"ir.ui.menu,name",menu_project_form,Projects,Projets,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Projets,0
+model,"ir.ui.menu,name",menu_task_form,Tasks,Tâches,0
+model,"ir.ui.menu,name",menu_work_form_new,New Work Effort,Nouvel Effort de travail,0
+model,"ir.ui.menu,name",menu_work_list,Works Efforts,Activités,1
+model,"ir.ui.menu,name",menu_work_tree,Works Efforts,Activités,1
+model,"project.work,name",0,Work Effort,Tâche,0
+model,"res.group,name",group_project_admin,Project Administration,Administrion de projets,0
+selection,"project.work,state",0,Done,Fait,0
+selection,"project.work,state",0,Opened,Ouvert,0
+selection,"project.work,type",0,Project,Projet,0
+selection,"project.work,type",0,Task,Tâche,0
+view,project.work,0,Children,Enfants,0
+view,project.work,0,General,General,0
+view,project.work,0,Other Info,Autre info,0
+view,project.work,0,Projects,Projets,0
+view,project.work,0,Tasks,Tâche,0
+view,project.work,0,Timesheet,Feuille de présence,0
+view,project.work,0,Work,Activités,0
+view,project.work,0,Work Efforts,Activités,0
+view,project.work,0,Works,Activités,0
+view,project.work,0,Works Efforts,Activités,0
