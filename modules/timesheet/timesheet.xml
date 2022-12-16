@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_timesheet_admin">
+            <field name="name">Timesheet Administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+
+        <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
+            icon="tryton-clock"/>
+        <menuitem name="Configuration" parent="menu_timesheet"
+            id="menu_configuration" groups="group_timesheet_admin"
+            sequence="10" icon="tryton-preferences"/>
+        <menuitem name="Reporting" parent="menu_timesheet"
+            id="menu_reporting" sequence="100"/>
+    </data>
+</tryton>
