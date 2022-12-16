@@ -1,0 +1,57 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Пользователь"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Панель действий"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Расположение на панели"
+
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Панель действия"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Квадрат"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Выровнять вниз"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Выровнять влево"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Выровнять вправо"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Выровнять вверх"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Информационная панель"
