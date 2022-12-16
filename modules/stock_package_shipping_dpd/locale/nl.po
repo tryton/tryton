@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.credential.dpd,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:carrier.credential.dpd,depot:"
+msgid "Depot"
+msgstr "Depot"
+
+msgctxt "field:carrier.credential.dpd,password:"
+msgid "Password"
+msgstr "Paswoord"
+
+msgctxt "field:carrier.credential.dpd,server:"
+msgid "Server"
+msgstr "Server"
+
+msgctxt "field:carrier.credential.dpd,token:"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "field:carrier.credential.dpd,user_id:"
+msgid "User ID"
+msgstr "Gebruiker ID"
+
+msgctxt "model:carrier.credential.dpd,name:"
+msgid "DPD Credential"
+msgstr "DPD-referentie"
+
+msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
+msgid "Create DPD Shipping for Packages"
+msgstr "Maak een DPD-verzending voor de pakketten"
+
+msgctxt "model:ir.action,name:act_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr "DPD-aanmelding is mislukt met referentie %(credential)s\"."
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"DPD webservice-oproep mislukt met het volgende foutbericht:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+"U kunt geen verzending voor zending \"%(shipment)s\" maken omdat deze al een"
+" referentienummer heeft."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
+"Om zending \"%(shipment)s\" te valideren, moet u een adres in het magazijn "
+"\"%(warehouse)s\" instellen."
+
+msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
+msgid "DPD Credentials"
+msgstr "DPD Credentials"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "DPD"
+msgstr "DPD"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:carrier.credential.dpd,server:"
+msgid "Testing"
+msgstr "testen"
+
+msgctxt "view:carrier.credential.dpd:"
+msgid "Credential Information"
+msgstr "Referentiegegevens"
