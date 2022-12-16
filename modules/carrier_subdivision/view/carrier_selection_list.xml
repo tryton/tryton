@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/tree/field[@name='from_country']" position="after">
+        <field name="from_subdivision"/>
+        <field name="from_postal_code"/>
+    </xpath>
+    <xpath expr="/tree/field[@name='to_country']" position="after">
+        <field name="to_subdivision"/>
+        <field name="to_postal_code"/>
+    </xpath>
+</data>

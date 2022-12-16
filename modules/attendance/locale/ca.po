@@ -1,0 +1,253 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:attendance.line,at:"
+msgid "At"
+msgstr "A"
+
+msgctxt "field:attendance.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:attendance.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:attendance.line,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:attendance.line,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:attendance.period,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:attendance.period,ends_at:"
+msgid "Ends at"
+msgstr "Finalitza el"
+
+msgctxt "field:attendance.period,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:attendance.sheet,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:attendance.sheet,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:attendance.sheet,duration:"
+msgid "Duration"
+msgstr "Duració"
+
+msgctxt "field:attendance.sheet,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:attendance.sheet,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:attendance.sheet,timesheet_duration:"
+msgid "Timesheet Duration"
+msgstr "Duració del full de treball"
+
+msgctxt "field:attendance.sheet.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:attendance.sheet.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:attendance.sheet.line,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:attendance.sheet.line,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:attendance.sheet.line,from_:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:attendance.sheet.line,sheet:"
+msgid "Sheet"
+msgstr "Full"
+
+msgctxt "field:attendance.sheet.line,to:"
+msgid "To"
+msgstr "A"
+
+msgctxt "help:attendance.line,company:"
+msgid "The company which the employee attended."
+msgstr "La empresa a la que ha atès l'empleat."
+
+msgctxt "help:attendance.period,company:"
+msgid "The company the period is associated with."
+msgstr "L'empresa amb la que esta associada el període."
+
+msgctxt "help:attendance.period,state:"
+msgid "The current state of the attendance period."
+msgstr "L'estat actual del període d'assistència."
+
+msgctxt "model:attendance.line,name:"
+msgid "Attendance Line"
+msgstr "Linia d'assitència"
+
+msgctxt "model:attendance.period,name:"
+msgid "Attendance Period"
+msgstr "Període d'assistència"
+
+msgctxt "model:attendance.sheet,name:"
+msgid "Attendance Sheet"
+msgstr "Full d'assistència"
+
+msgctxt "model:attendance.sheet.line,name:"
+msgid "Attendance SheetLine"
+msgstr "Línia de full d'assistència"
+
+msgctxt "model:ir.action,name:act_attendance"
+msgid "Attendances"
+msgstr "Assistències"
+
+msgctxt "model:ir.action,name:act_period_list"
+msgid "Periods"
+msgstr "Períodes"
+
+msgctxt "model:ir.action,name:act_sheet"
+msgid "Sheets"
+msgstr "Fulls"
+
+msgctxt "model:ir.message,text:msg_close_period_previous_open"
+msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
+msgstr ""
+"Per tancar el període \"%(period)s\" heu de tancar primer el període "
+"\"%(other_period)s\"."
+
+msgctxt "model:ir.message,text:msg_delete_period_close"
+msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Per eliminar l'asistència \"%(attendance)s\" heu de reobrir el període "
+"\"%(period)s\"."
+
+msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
+msgid ""
+"To change period \"%(period)s\" you must first change \"%(other_period)s\" "
+"to draft."
+msgstr ""
+"Per cambiar el període \"%(period)s\" heu d'establir primer el "
+"període\"%(other_period)s\" a esborrany."
+
+msgctxt "model:ir.message,text:msg_modify_period_close"
+msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Per modificar l'assitència \"%(attendance)s\" heu de reobrir el període "
+"\"%(period)s\"."
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance"
+msgid "Own attendance"
+msgstr "La teva propia assistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
+msgid "Any attendance"
+msgstr "Qualsevol assistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_period_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet"
+msgid "Own attendance sheet"
+msgstr "El teu propi full d'assistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
+msgid "Any attendance sheet"
+msgstr "Qualsevol full d'asistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
+msgid "Own attendance sheet line"
+msgstr "La teva propia línea del full d'asistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
+msgid "Any attendance sheet line"
+msgstr "Qualsevol linia del full d'assistència"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_attendance"
+msgid "Attendances"
+msgstr "Assistències"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_main_attendance"
+msgid "Attendance"
+msgstr "Assistència"
+
+msgctxt "model:ir.ui.menu,name:menu_period_list"
+msgid "Periods"
+msgstr "Períodes"
+
+msgctxt "model:ir.ui.menu,name:menu_sheet"
+msgid "Sheets"
+msgstr "Fulls"
+
+msgctxt "model:res.group,name:group_attendance_admin"
+msgid "Attendance Administration"
+msgstr "Administració d'assistència"
+
+msgctxt "selection:attendance.line,type:"
+msgid "In"
+msgstr "Entrada"
+
+msgctxt "selection:attendance.line,type:"
+msgid "Out"
+msgstr "Sortida"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "view:attendance.line:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "view:attendance.line:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:attendance.period:"
+msgid "Time"
+msgstr "Hora"

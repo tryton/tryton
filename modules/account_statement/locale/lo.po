@@ -1,0 +1,668 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.statement,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+#, fuzzy
+msgctxt "field:account.statement,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.statement,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+msgctxt "field:account.statement,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+msgctxt "field:account.statement,end_balance:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+msgctxt "field:account.statement,journal:"
+msgid "Journal"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+msgctxt "field:account.statement,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr ""
+
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr ""
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Origins"
+
+msgctxt "field:account.statement,start_balance:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+msgctxt "field:account.statement,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr ""
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr ""
+
+msgctxt "field:account.statement.journal,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr ""
+
+msgctxt "field:account.statement.journal,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.statement.journal,journal:"
+msgid "Journal"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+msgctxt "field:account.statement.journal,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr ""
+
+msgctxt "field:account.statement.line,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+msgctxt "field:account.statement.line,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.statement.line,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,invoice:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນພາສີທີ່ດິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,move:"
+msgid "Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Origins"
+
+#, fuzzy
+msgctxt "field:account.statement.line,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,statement:"
+msgid "Statement"
+msgstr "Statement"
+
+msgctxt "field:account.statement.line,statement_state:"
+msgid "Statement State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "ໂຕເລກສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,journal:"
+msgid "Journal"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,move:"
+msgid "Move"
+msgstr "ເຄື່ອນໄຫວ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line.group,statement:"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "ລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "Statement"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr ""
+
+msgctxt "model:account.statement,name:"
+msgid "Account Statement"
+msgstr ""
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.statement.journal,name:"
+msgid "Statement Journal"
+msgstr "Statement Journals"
+
+msgctxt "model:account.statement.line,name:"
+msgid "Account Statement Line"
+msgstr ""
+
+msgctxt "model:account.statement.line.group,name:"
+msgid "Account Statement Line Group"
+msgstr ""
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr ""
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_line_group_form"
+msgid "Line Groups"
+msgstr "Line Groups"
+
+msgctxt "model:ir.action,name:act_line_groups_form"
+msgid "Line Groups"
+msgstr "Line Groups"
+
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Move Lines"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_moves_form"
+msgid "Moves"
+msgstr "ຕັດບັນຊີສາງ"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
+msgctxt "model:ir.action,name:act_statement_form"
+msgid "Statements"
+msgstr "Statements"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Journals"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+msgctxt "model:ir.action,name:act_statement_line_move"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+msgctxt "model:ir.action,name:act_statement_line_move_line"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Origins"
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Statement"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "ແຈ້ງແລ້ວ"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "ກວດສອບແລ້ວ"
+
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
+msgid ""
+"The validation of the statements will remove already paid or cancelled "
+"invoices from the statements' lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal_companies"
+msgid "User in companies"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_line_group_form"
+msgid "Line Groups"
+msgstr "Line Groups"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
+msgid "Statements"
+msgstr "Statements"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_form"
+msgid "Statements"
+msgstr "Statements"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Import Statement"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Journals"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+msgctxt "model:ir.ui.menu,name:menu_statements"
+msgid "Statements"
+msgstr "Statements"
+
+msgctxt "model:res.group,name:group_statement"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "#"
+msgstr "#"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Cancelled"
+msgstr "ຍົກເລີກແລ້ວ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Date"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Date:"
+msgstr "ວັນທີ:"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Journal:"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "report:account.statement:"
+msgid "Total"
+msgstr "ລວມທັງໝົດ"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Statement"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Cancelled"
+msgstr "ຍົກເລີກແລ້ວ"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Posted"
+msgstr "ແຈ້ງແລ້ວ"
+
+#, fuzzy
+msgctxt "selection:account.statement,state:"
+msgid "Validated"
+msgstr "ກວດສອບແລ້ວ"
+
+#, fuzzy
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "view:account.statement.origin:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+#, fuzzy
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr ""
