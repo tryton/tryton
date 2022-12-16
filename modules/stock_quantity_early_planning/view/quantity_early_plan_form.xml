@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="origin">
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="origin"/>
+    <field name="origin" colspan="3"/>
+
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <group col="-1" colspan="2" id="early_dates">
+        <label name="earlier_date"/>
+        <field name="earlier_date"/>
+        <label name="earliest_date"/>
+        <field name="earliest_date"/>
+        <field name="earliest_percentage" widget="progressbar"/>
+    </group>
+
+    <notebook colspan="4">
+        <page name="moves">
+            <field name="moves" colspan="4"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="processed_by"/>
+            <field name="processed_by"/>
+            <label name="closed_by"/>
+            <field name="closed_by"/>
+
+            <label name="ignored_by"/>
+            <field name="ignored_by"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="open" icon="tryton-back"/>
+        <button name="process" icon="tryton-forward"/>
+        <button name="close" icon="tryton-close"/>
+        <button name="ignore" icon="tryton-cancel"/>
+    </group>
+</form>

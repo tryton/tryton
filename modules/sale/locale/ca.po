@@ -1,0 +1,1615 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_exception_state:"
+msgid "Exception State"
+msgstr "Estat d'excepció"
+
+msgctxt "field:account.invoice,sales:"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "field:party.party,customer_currencies:"
+msgid "Customer Currencies"
+msgstr "Monedes del client"
+
+msgctxt "field:party.party,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda del client"
+
+msgctxt "field:party.party,sale_invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:party.party,sale_methods:"
+msgid "Sale Methods"
+msgstr "Mètodes de venda"
+
+msgctxt "field:party.party,sale_shipment_method:"
+msgid "Shipment Method"
+msgstr "Mètode d'enviament"
+
+msgctxt "field:party.party.customer_currency,customer_currency:"
+msgid "Customer Currency"
+msgstr "Moneda del client"
+
+msgctxt "field:party.party.customer_currency,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.party.sale_method,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.sale_method,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.party.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Mètode de facturació de venda"
+
+msgctxt "field:party.party.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Mètode d'enviament de venda"
+
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Temps d'espera per defecte"
+
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "Temps d'espera per defecte"
+
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr "Temps d'espera"
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "Vendible"
+
+msgctxt "field:product.product,sale_price_uom:"
+msgid "Sale Price"
+msgstr "Preu de venda"
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "UdM de venda"
+
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "Magatzems"
+
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "Data venda"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr "Data final existències"
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr "Temps d'espera"
+
+msgctxt "field:product.template,salable:"
+msgid "Salable"
+msgstr "Vendible"
+
+msgctxt "field:product.template,sale_uom:"
+msgid "Sale UOM"
+msgstr "UdM de venda"
+
+msgctxt "field:sale.configuration,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
+msgstr "Processa les vendes desprès de"
+
+msgctxt "field:sale.configuration,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Seqüència de venda"
+
+msgctxt "field:sale.configuration,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Mètode d'enviament"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "Mètode d'enviament"
+
+msgctxt "field:sale.configuration.sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.configuration.sequence,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "Seqüència de venda"
+
+msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "Domini factures"
+
+msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "Recrea factures"
+
+msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "Domini dels moviments"
+
+msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "Recrea moviments"
+
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Quantitat actual"
+
+msgctxt "field:sale.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:sale.line,from_location:"
+msgid "From Location"
+msgstr "Des de la ubicació"
+
+msgctxt "field:sale.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:sale.line,move_done:"
+msgid "Moves Done"
+msgstr "Moviments finalitzats"
+
+msgctxt "field:sale.line,move_exception:"
+msgid "Moves Exception"
+msgstr "Moviments en excepció"
+
+msgctxt "field:sale.line,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:sale.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "Moviments ignorats"
+
+msgctxt "field:sale.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "Moviments recreats"
+
+msgctxt "field:sale.line,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:sale.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categoria UdM del producte"
+
+msgctxt "field:sale.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.line,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr "Estat de la venda"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr "Data d'enviament"
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr "Resum"
+
+msgctxt "field:sale.line,taxes:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "field:sale.line,to_location:"
+msgid "To Location"
+msgstr "A la ubicació"
+
+msgctxt "field:sale.line,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:sale.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "field:sale.line,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:sale.line-account.tax,line:"
+msgid "Sale Line"
+msgstr "Línia de venta"
+
+msgctxt "field:sale.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:sale.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.line-ignored-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Línia de venda"
+
+msgctxt "field:sale.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.line-recreated-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "Línia de venta"
+
+msgctxt "field:sale.reporting.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.reporting.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:sale.reporting.context,period:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "field:sale.reporting.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:sale.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:sale.reporting.country,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:sale.reporting.country,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.country.subdivision,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:sale.reporting.country.subdivision,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivisió"
+
+msgctxt "field:sale.reporting.country.subdivision,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivisió"
+
+msgctxt "field:sale.reporting.country.time_series,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:sale.reporting.country.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.customer,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.reporting.customer,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.customer.category,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:sale.reporting.customer.category,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.customer.category.time_series,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:sale.reporting.customer.category.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.customer.category.tree,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:sale.reporting.customer.category.tree,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.reporting.customer.category.tree,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.reporting.customer.category.tree,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:sale.reporting.customer.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "field:sale.reporting.customer.time_series,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.main,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.main.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.reporting.product,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.product.category,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:sale.reporting.product.category,time_series:"
+msgid "Time Series"
+msgstr "Sèries temporals"
+
+msgctxt "field:sale.reporting.product.category.time_series,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:sale.reporting.product.category.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product.category.tree,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:sale.reporting.product.category.tree,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.reporting.product.category.tree,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.reporting.product.category.tree,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:sale.reporting.product.category.tree,revenue:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "field:sale.reporting.product.time_series,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:sale.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.reporting.region,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:sale.reporting.region,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:sale.reporting.region,region:"
+msgid "Region"
+msgstr "Regió"
+
+msgctxt "field:sale.sale,comment:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:sale.sale,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmada per"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr "Contacte"
+
+msgctxt "field:sale.sale,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.sale,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:sale.sale,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adreça de facturació"
+
+msgctxt "field:sale.sale,invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tercer de la factura"
+
+msgctxt "field:sale.sale,invoice_state:"
+msgid "Invoice State"
+msgstr "Estat de la factura"
+
+msgctxt "field:sale.sale,invoices:"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "field:sale.sale,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "Factures ignorades"
+
+msgctxt "field:sale.sale,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "Factures recreades"
+
+msgctxt "field:sale.sale,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.sale,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:sale.sale,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:sale.sale,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercer"
+
+msgctxt "field:sale.sale,payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Pressupostada per"
+
+msgctxt "field:sale.sale,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:sale.sale,sale_date:"
+msgid "Sale Date"
+msgstr "Data venda"
+
+msgctxt "field:sale.sale,shipment_address:"
+msgid "Shipment Address"
+msgstr "Adreça d'enviament"
+
+msgctxt "field:sale.sale,shipment_method:"
+msgid "Shipment Method"
+msgstr "Mètode d'enviament"
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "Tercer de l'enviament"
+
+msgctxt "field:sale.sale,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "Albarans de devolució"
+
+msgctxt "field:sale.sale,shipment_state:"
+msgid "Shipment State"
+msgstr "Estat enviament"
+
+msgctxt "field:sale.sale,shipments:"
+msgid "Shipments"
+msgstr "Albarans"
+
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "Data d'enviament"
+
+msgctxt "field:sale.sale,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:sale.sale,tax_amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:sale.sale,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Impostos precalculats"
+
+msgctxt "field:sale.sale,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:sale.sale,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Total precalculat"
+
+msgctxt "field:sale.sale,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Base imposable"
+
+msgctxt "field:sale.sale,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Base imposable precalculada"
+
+msgctxt "field:sale.sale,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:sale.sale-ignored-account.invoice,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:sale.sale-recreated-account.invoice,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:stock.move,sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "field:stock.move,sale_exception_state:"
+msgid "Exception State"
+msgstr "Estat excepció"
+
+msgctxt "help:party.party,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "La moneda per defecte per les vendes d'aquest tercer."
+
+msgctxt "help:party.party,sale_invoice_method:"
+msgid ""
+"The default sale invoice method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El mètode de facturació de venda predeterminat per al client.\n"
+"Deixar en blanc per utilitzar el valor per defecte de la configuració."
+
+msgctxt "help:party.party,sale_shipment_method:"
+msgid ""
+"The default sale shipment method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El mètode d'enviament de venda predeterminat per al client.\n"
+"Deixar en blanc per utilitzar el valor per defecte de la configuració."
+
+msgctxt "help:party.party.customer_currency,customer_currency:"
+msgid "Default currency for sales to this party."
+msgstr "La moneda per defecte per les vendes d'aquest tercer."
+
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+"El temps desde la confirmació de la venda fins que s'envien els productes.\n"
+"Utilitzats als productes sense temps d'espera."
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+"El temps desde que es confirma la comanda fins que s'envien els productes.\n"
+"Si es deixa en blanc s'utilitza el temps d'enviament per defecte de la configuració."
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+"El temps desde que es confirma la comanda fins que s'envien els productes.\n"
+"Si es deixa en blanc s'utilitza el temps d'enviament per defecte de la configuració."
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
+msgstr ""
+"El període durant el qual una venda confirmada es pot tornar a passar a esborrany.\n"
+"Aplica només si la cua de treballs està activada."
+
+msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+"Les factures seleccionades seran recreades. Les altres seran ignorades."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr "Quan hauria de començar a enviar els bens."
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.action,name:act_open_customer"
+msgid "Parties associated to Sales"
+msgstr "Tercers amb vendes"
+
+msgctxt "model:ir.action,name:act_product"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
+msgid "Sales per Subdivision"
+msgstr "Vendes per subdivisió"
+
+msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Vendes per país"
+
+msgctxt "model:ir.action,name:act_reporting_customer"
+msgid "Sales per Customer"
+msgstr "Vendes per client"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category"
+msgid "Sales per Customer Category"
+msgstr "Vendes per categoria de client"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
+msgid "Sales per Party Category"
+msgstr "Vendes per categoria de tercer"
+
+msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
+msgid "Sales per Customer Category"
+msgstr "Vendes per categoria de client"
+
+msgctxt "model:ir.action,name:act_reporting_customer_time_series"
+msgid "Sales per Customer"
+msgstr "Vendes per client"
+
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Sales per Product"
+msgstr "Vendes per producte"
+
+msgctxt "model:ir.action,name:act_reporting_product_category"
+msgid "Sales per Product Category"
+msgstr "Vendes per categoria de producte"
+
+msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
+msgid "Sales per Product Category"
+msgstr "Vendes per categoria de producte"
+
+msgctxt "model:ir.action,name:act_reporting_product_category_tree"
+msgid "Sales per Product Category"
+msgstr "Vendes per categoria de producte"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Sales per Product"
+msgstr "Vendes per regió"
+
+msgctxt "model:ir.action,name:act_reporting_region"
+msgid "Sales per Region"
+msgstr "Vendes per regió"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "Albarans de devolució"
+
+msgctxt "model:ir.action,name:act_sale_configuration_form"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "Albarans"
+
+msgctxt "model:ir.action,name:report_sale"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "Gestiona l'excepció de factura"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modificar capçalera"
+
+msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgid "Open Region"
+msgstr "Obre regió"
+
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Return Sale"
+msgstr "Retorna la venda"
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "Gestiona l'excepció d'enviament"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Confirmada"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Excepció"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr "Pressupost"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending sales with "
+"company \"%(company)s\"."
+msgstr ""
+"No podeu eliminar el tercer \"%(party)s\" mentre tingui vendes pendents amb "
+"l'empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_customer_location_required"
+msgid ""
+"To process sale \"%(sale)s\" you must set a customer location on party "
+"\"%(party)s\"."
+msgstr ""
+"Per processar la venda \"%(sale)s\" heu de definir una ubicació de client "
+"pel tercer \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_delete_cancel"
+msgid "To delete sale \"%(sale)s\" you must cancel it."
+msgstr "Per eliminar la venda \"%(sale)s\" l'heu de cancel·lar primer."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and shipment "
+"\"%(shipment_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+"No podeu utilitzar a la vegada el mètode de facturació "
+"\"%(invoice_method)s\" i el mètode d'enviament \"%(shipment_method)s\" a la "
+"venta \"%(sale)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
+msgstr ""
+"Per obtenir un pressupost de la venda \"%(sale)s\" heu d'introduir una "
+"adreça de facturació."
+
+msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a sale."
+msgstr ""
+"No podeu restablir la factura \"%(invoice)s\" a esborrany perquè es va "
+"generar des d'una venda."
+
+msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft sale "
+"\"%(sale)s\"."
+msgstr ""
+"Per eliminar la línia \"%(line)s\" heu de cancel·lar o restablir a esborrany"
+" la venda \"%(sale)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
+msgid "A tax can be added only once to a sale line."
+msgstr "Un impost només es pot afegir una vegada a una línia de venda."
+
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
+msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
+msgstr ""
+"Per facturar la venda \"%(sale)s\" heu de configurar un compte de ingressos "
+"per defecte."
+
+msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
+msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
+msgstr ""
+"Per modificar la capçalera de la venda \"%(sale)s\" ha d'estar en estat "
+"\"esborrany\"."
+
+msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale."
+msgstr ""
+"No podeu restablir el moviment \"%(move)s\" a esborrany perquè es va generar"
+" des d'un venda."
+
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
+msgid ""
+"To invoice sale \"%(sale)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Per facturar la venda \"%(sale)s\" heu de definir un compte d'ingressos pel "
+"producte \"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr "Número de vendes"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "Tendència ingressos"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
+msgstr ""
+"Per obtenir un pressupost de la venda \"%(sale)s\" heu d'introduir una "
+"adreça d'enviament."
+
+msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgstr ""
+"Per obtenir un pressupost de la venda \"%(sale)s\" heu d'introduir un "
+"magatzem."
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:sale_confirm_button"
+msgid "Confirm"
+msgstr "Confirma"
+
+msgctxt "model:ir.model.button,string:sale_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Gestiona excepció de factura"
+
+msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Gestiona excepció d'enviament"
+
+msgctxt "model:ir.model.button,string:sale_modify_header_button"
+msgid "Modify Header"
+msgstr "Modificar capçalera"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.model.button,string:sale_quote_button"
+msgid "Quote"
+msgstr "Pressupost"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence,name:sequence_sale"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_customer"
+msgid "Associated to Sales"
+msgstr "Amb vendes"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Informes"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:party.party.customer_currency,name:"
+msgid "Party Customer Currency"
+msgstr "Monedes de client per tercer"
+
+msgctxt "model:party.party.sale_method,name:"
+msgid "Party Sale Method"
+msgstr "Mètode de venda del tercer"
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr "Temps d'enviament per defecte del producte"
+
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr "Context productes vendibles"
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr "Administració de vendes"
+
+msgctxt "model:sale.configuration,name:"
+msgid "Sale Configuration"
+msgstr "Configuració de les vendes"
+
+msgctxt "model:sale.configuration.sale_method,name:"
+msgid "Sale Configuration Sale Method"
+msgstr "Configuració del mètode de venda"
+
+msgctxt "model:sale.configuration.sequence,name:"
+msgid "Sale Configuration Sequence"
+msgstr "Configuració de les seqüencies de venda"
+
+msgctxt "model:sale.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "Gestiona excepció de factura"
+
+msgctxt "model:sale.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "Gestiona excepció d'enviament"
+
+msgctxt "model:sale.line,name:"
+msgid "Sale Line"
+msgstr "Línia de venda"
+
+msgctxt "model:sale.line-account.tax,name:"
+msgid "Sale Line - Tax"
+msgstr "Línia de venda - Impost"
+
+msgctxt "model:sale.line-ignored-stock.move,name:"
+msgid "Sale Line - Ignored Move"
+msgstr "Línia de venda - Moviment ignorat"
+
+msgctxt "model:sale.line-recreated-stock.move,name:"
+msgid "Sale Line - Recreated Move"
+msgstr "Línia de venda - Moviment recreat"
+
+msgctxt "model:sale.reporting.context,name:"
+msgid "Sale Reporting Context"
+msgstr "Context informe de vendes"
+
+msgctxt "model:sale.reporting.country,name:"
+msgid "Sale Reporting per Country"
+msgstr "Informe de vendes per país"
+
+msgctxt "model:sale.reporting.country.subdivision,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Informe de vendes per subdivisió"
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "Informe de vendes per subdivisió"
+
+msgctxt "model:sale.reporting.country.time_series,name:"
+msgid "Sale Reporting per Country"
+msgstr "Informe de vendes per país"
+
+msgctxt "model:sale.reporting.customer,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Informe de vendes per client"
+
+msgctxt "model:sale.reporting.customer.category,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Informe de vendes per categoria de client"
+
+msgctxt "model:sale.reporting.customer.category.time_series,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Informe de vendes per categoria de client"
+
+msgctxt "model:sale.reporting.customer.category.tree,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "Informe de vendes per categoria de client"
+
+msgctxt "model:sale.reporting.customer.time_series,name:"
+msgid "Sale Reporting per Customer"
+msgstr "Informe de vendes per client"
+
+msgctxt "model:sale.reporting.main,name:"
+msgid "Sale Reporting"
+msgstr "Informes de venda"
+
+msgctxt "model:sale.reporting.main.time_series,name:"
+msgid "Sale Reporting"
+msgstr "Informes de venda"
+
+msgctxt "model:sale.reporting.product,name:"
+msgid "Sale Reporting per Product"
+msgstr "Informe de vendes per producte"
+
+msgctxt "model:sale.reporting.product.category,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Informe de vendes per categoria de producte"
+
+msgctxt "model:sale.reporting.product.category.time_series,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Informe de vendes per categoria de producte"
+
+msgctxt "model:sale.reporting.product.category.tree,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "Informe de vendes per categoria de producte"
+
+msgctxt "model:sale.reporting.product.time_series,name:"
+msgid "Sale Reporting per Product"
+msgstr "Informe de vendes per producte"
+
+msgctxt "model:sale.reporting.region,name:"
+msgid "Sale Reporting per Region"
+msgstr "Informe de vendes per regió"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Retorna la venda"
+
+msgctxt "model:sale.sale,name:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "model:sale.sale-ignored-account.invoice,name:"
+msgid "Sale - Ignored Invoice"
+msgstr "Venda - Factura ignorada"
+
+msgctxt "model:sale.sale-recreated-account.invoice,name:"
+msgid "Sale - Recreated Invoice"
+msgstr "Venda - Factura recreada"
+
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "report:sale.sale:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:sale.sale:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "report:sale.sale:"
+msgid "Description:"
+msgstr "Descripció:"
+
+msgctxt "report:sale.sale:"
+msgid "Draft Sale Order"
+msgstr "Venda esborrany"
+
+msgctxt "report:sale.sale:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "report:sale.sale:"
+msgid "Quotation N°:"
+msgstr "Pressupost Núm.:"
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "Referència:"
+
+msgctxt "report:sale.sale:"
+msgid "Sale Order N°:"
+msgstr "Venta Núm.:"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes:"
+msgstr "Impostos:"
+
+msgctxt "report:sale.sale:"
+msgid "Total (excl. taxes):"
+msgstr "Base imposable:"
+
+msgctxt "report:sale.sale:"
+msgid "Total:"
+msgstr "Total:"
+
+msgctxt "report:sale.sale:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Ignored"
+msgstr "Ignorat"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Recreated"
+msgstr "Recreada"
+
+msgctxt "selection:sale.line,type:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "selection:sale.line,type:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "selection:sale.line,type:"
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgctxt "selection:sale.line,type:"
+msgid "Title"
+msgstr "Títol"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Order Processed"
+msgstr "Al processar la comanda"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Shipment Sent"
+msgstr "Al enviar-ho"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Exception"
+msgstr "Excepció"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Paid"
+msgstr "Pagada"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Invoice Paid"
+msgstr "Al pagar la factura"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Order Processed"
+msgstr "Al processar la comanda"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Exception"
+msgstr "Excepció"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Sent"
+msgstr "Enviada"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Cancelled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Confirmed"
+msgstr "Confirmada"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Done"
+msgstr "Finalitzada"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Quotation"
+msgstr "Pressupost"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Ignored"
+msgstr "Ignorat"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Recreated"
+msgstr "Recreat"
+
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "view:product.template:"
+msgid "Customers"
+msgstr "Clients"
+
+msgctxt "view:sale.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "Seleccioneu les factures a recrear:"
+
+msgctxt "view:sale.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "Seleccioneu els moviments a recrear:"
+
+msgctxt "view:sale.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.line:"
+msgid "Notes"
+msgstr "Notes"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.main:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.main:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return these/this sale(s)?"
+msgstr "Esteu segur de retornar aquestes comandes de venda?"
+
+msgctxt "view:sale.sale:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:sale.sale:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:sale.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.modify_header,start,modify:"
+msgid "Modify"
+msgstr "Modifica"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Retorna"
