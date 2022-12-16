@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="posted"/>
+    <field name="posted"/>
+    <label name="start_period"/>
+    <field name="start_period"/>
+    <label name="end_period"/>
+    <field name="end_period"/>
+    <newline/>
+    <label name="comparison"/>
+    <field name="comparison"/>
+    <newline/>
+    <separator id="comparison" colspan="6"/>
+    <label name="fiscalyear_cmp"/>
+    <field name="fiscalyear_cmp"/>
+    <newline/>
+    <label name="start_period_cmp"/>
+    <field name="start_period_cmp"/>
+    <label name="end_period_cmp"/>
+    <field name="end_period_cmp"/>
+</form>
