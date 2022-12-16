@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="shipment" expand="2"/>
+    <field name="type" optional="1"/>
+    <field name="carrier" expand="2"/>
+    <field name="cost_used" symbol="cost_currency_used"/>
+    <field name="from_" expand="1" optional="1"/>
+    <field name="to" expand="1" optional="1"/>
+</tree>

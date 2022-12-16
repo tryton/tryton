@@ -1,0 +1,107 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,cost_shipments:"
+msgid "Cost of Shipments"
+msgstr ""
+
+msgctxt "field:party.party,sale_shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:party.party.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr ""
+
+msgctxt "field:sale.promotion,amount_shipment_cost_included:"
+msgid "Amount with Shipment Cost Included"
+msgstr ""
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr ""
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,cost_method:"
+msgid "Cost Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale:"
+msgid "Cost Sale"
+msgstr "Стоимость"
+
+msgctxt "field:stock.shipment.out,cost_sale_currency:"
+msgid "Cost Sale Currency"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_currency_used:"
+msgid "Cost Sale Currency"
+msgstr "Стоимость"
+
+#, fuzzy
+msgctxt "field:stock.shipment.out,cost_sale_used:"
+msgid "Cost Sale"
+msgstr "Стоимость"
+
+msgctxt "field:stock.shipment.out,shipment_cost_sale_readonly:"
+msgid "Shipment Cost Sale Read Only"
+msgstr ""
+
+msgctxt "help:party.party,sale_shipment_cost_method:"
+msgid ""
+"The default shipment cost method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "None"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr ""
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr ""
+
+msgctxt "view:sale.promotion:"
+msgid "Shipment Cost Included"
+msgstr ""
