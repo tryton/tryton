@@ -1,0 +1,119 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.email.log,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.dunning.email.log,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Reclamació"
+
+msgctxt "field:account.dunning.email.log,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Nivell"
+
+msgctxt "field:account.dunning.email.log,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Destinataris"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinataris ocults"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinataris secundaris"
+
+msgctxt "field:account.dunning.email.log,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.dunning.email.log,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "Plantilla de correu electrònic"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "Envia correu electrònic"
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Deixeu-ho en blanc per utilitzar el valor definit a la configuració"
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "Registres de correus electrònics de reclamació"
+
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Registre de correu electrònic"
+
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Correu electrònic de reclamació"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Venciment"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Despeses:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagaments pendents rebuts"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avis recordatori"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Hora"

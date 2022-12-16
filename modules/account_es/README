@@ -1,0 +1,46 @@
+trytond_account_es
+==================
+
+The account_es module of the Tryton application platform.
+
+The module generates the chart of accounts for the normal and pyme charts.
+The XML files for each variant are generated from the same original XML file
+thanks to the create_variant.xsl XSLT script. The script will produce on the
+standard output the desired XML file. The XSLT script can be launched with the
+following commands::
+
+    xsltproc --stringparam chart <chart> create_chart.xsl account.xml
+    xsltproc --stringparam chart <chart> create_chart.xsl tax.xml
+
+where ``chart`` is `normal` or `pyme`
+
+Installing
+----------
+
+See INSTALL
+
+Support
+-------
+
+If you encounter any problems with Tryton, please don't hesitate to ask
+questions on the Tryton bug tracker, mailing list, wiki or IRC channel:
+
+  http://bugs.tryton.org/
+  http://groups.tryton.org/
+  http://wiki.tryton.org/
+  irc://irc.freenode.net/tryton
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT
+
+
+For more information please visit the Tryton web site:
+
+  http://www.tryton.org/

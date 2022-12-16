@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="type">form</field>
+            <field name="name">period_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_tree">
+            <field name="model">account.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_tree</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_list_close">
+            <field name="model">account.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_list_close</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_form">
+            <field name="name">Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form"/>
+        </record>
+        <menuitem parent="menu_fiscalyear_form"
+            action="act_period_form" id="menu_period_form"
+            sequence="20"/>
+
+        <record model="ir.model.access" id="access_period">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_account_admin">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_form_close">
+            <field name="name">Close Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_period_form_close_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_list_close"/>
+            <field name="act_window" ref="act_period_form_close"/>
+        </record>
+
+        <menuitem parent="menu_processing" sequence="30"
+            action="act_period_form_close" id="menu_close_period"/>
+
+        <record model="ir.rule.group" id="rule_group_period">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_period1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_period"/>
+        </record>
+    </data>
+</tryton>
