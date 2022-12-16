@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="trigger"/>
+    <field name="trigger"/>
+    <label name="recipients"/>
+    <field name="recipients" colspan="3"/>
+    <label name="recipients_secondary"/>
+    <field name="recipients_secondary" colspan="3"/>
+    <label name="recipients_hidden"/>
+    <field name="recipients_hidden" colspan="3"/>
+</form>
