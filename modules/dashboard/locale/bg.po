@@ -1,0 +1,58 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "field:dashboard.action,user:"
+msgid "User"
+msgstr "Потребител"
+
+msgctxt "field:res.user,dashboard_actions:"
+msgid "Dashboard Actions"
+msgstr "Действия на табло"
+
+msgctxt "field:res.user,dashboard_layout:"
+msgid "Dashboard Layout"
+msgstr "Подреждане на табло"
+
+#, fuzzy
+msgctxt "model:dashboard.action,name:"
+msgid "Dashboard Action"
+msgstr "Действие на таблото"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Square"
+msgstr "Каре"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Bottom"
+msgstr "Подравнени отдолу"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Left"
+msgstr "Подарнение отляво"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Right"
+msgstr "Подравнение отдясно"
+
+msgctxt "selection:res.user,dashboard_layout:"
+msgid "Stack Top"
+msgstr "Подравнени отгоре"
+
+msgctxt "view:res.user:"
+msgid "Dashboard"
+msgstr "Табло"

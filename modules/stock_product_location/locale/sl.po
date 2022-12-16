@@ -1,0 +1,33 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "Privzete lokacije"
+
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Privzete lokacije"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "Shramba"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "Skladišče"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "Lokacija izdelkov"
