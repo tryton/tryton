@@ -1,0 +1,106 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Končni datum"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Cenik"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Znesek prodaje"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Začetni datum"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Dodatno"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Prosto"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Izdelek"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Kategorije EM izdelka"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Količina"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Znesek prodaje"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "enota"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimalke"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Dodatno"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extras"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Sale Extras"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extras"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Dodatno"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "Dodatna prodajna postavka"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Prodajna postavka"
