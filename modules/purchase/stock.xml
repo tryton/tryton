@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_list_shipment">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_list_shipment</field>
+        </record>
+
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="inherit" ref="stock.location_view_form"/>
+            <field name="name">location_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_list_shipment_in">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_list_shipment_in"/>
+            <field name="name">move_list_shipment_in</field>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_group_stock">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_line_group_stock">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_shipments_relate">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipments_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_shipments_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipments_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_shipments_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_shipments_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="act_purchase_shipments_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_shipment_returns_relate">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain"
+                eval="[('shipment_returns', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipment_returns_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipment_returns_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_shipment_returns_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_move_relate">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('purchase', '=', Eval('active_id')), ('purchase', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_list_shipment"/>
+            <field name="act_window" ref="act_purchase_move_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="stock.move_view_form"/>
+            <field name="act_window" ref="act_purchase_move_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_purchase_move_relate"/>
+        </record>
+    </data>
+</tryton>

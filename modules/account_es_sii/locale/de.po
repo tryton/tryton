@@ -1,0 +1,208 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,es_sii_environment:"
+msgid "SII Environment"
+msgstr "SII Umgebung"
+
+msgctxt "field:account.configuration,es_sii_url:"
+msgid "SII URL"
+msgstr "SII URL"
+
+msgctxt "field:account.credential.sii,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.credential.sii,es_sii_environment:"
+msgid "SII Environment"
+msgstr "SII Umgebung"
+
+msgctxt "field:account.credential.sii,es_sii_url:"
+msgid "SII URL"
+msgstr "SII URL"
+
+msgctxt "field:account.fiscalyear,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr "Rechnungen an SII senden"
+
+msgctxt "field:account.invoice.sii,csv:"
+msgid "CSV"
+msgstr "CRV"
+
+msgctxt "field:account.invoice.sii,error_code:"
+msgid "Error Code"
+msgstr "Fehlercode"
+
+msgctxt "field:account.invoice.sii,error_description:"
+msgid "Error Description"
+msgstr "Fehlerbeschreibung"
+
+msgctxt "field:account.invoice.sii,invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "field:account.invoice.sii,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.period,es_sii_send_invoices:"
+msgid "Send invoices to SII"
+msgstr "Rechnungen an SII senden"
+
+msgctxt "field:account.tax,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr "Von SII ausschließen"
+
+msgctxt "field:account.tax,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr "SII Vorgangsschlüssel"
+
+msgctxt "field:account.tax,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr "SII Steuerschlüssel"
+
+msgctxt "field:account.tax.template,es_exclude_from_sii:"
+msgid "Exclude from SII"
+msgstr "Von SII ausschließen"
+
+msgctxt "field:account.tax.template,es_sii_operation_key:"
+msgid "SII Operation Key"
+msgstr "SII Vorgangsschlüssel"
+
+msgctxt "field:account.tax.template,es_sii_tax_key:"
+msgid "SII Tax Key"
+msgstr "SII Steuerschlüssel"
+
+msgctxt "help:account.configuration,es_sii_url:"
+msgid "The URL where the invoices should be sent."
+msgstr "Die URL an die Rechnungen versandt werden."
+
+msgctxt "help:account.invoice.sii,csv:"
+msgid ""
+"A secure validation code that confirms the delivery of the related Invoice."
+msgstr ""
+"Ein sicherer Validierungscode der den Versand der zugehörigen Rechnung "
+"bestätigt."
+
+msgctxt "help:account.period,es_sii_send_invoices:"
+msgid "Check to create SII records for the invoices in the period."
+msgstr ""
+"Auswählen um SII Datensätze für die Rechnung in diesem Buchungszeitraum zu "
+"erstellen."
+
+msgctxt "model:account.credential.sii,name:"
+msgid "Account Credential SII"
+msgstr "Kontozugangsdaten SII"
+
+msgctxt "model:account.invoice.sii,name:"
+msgid "Invoice SII"
+msgstr "Rechnung SII"
+
+msgctxt "model:ir.action,name:act_invoice_sii_form"
+msgid "Spanish SII"
+msgstr "Spanisches SII"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_errors"
+msgid "Wrong"
+msgstr "Fehlerhaft"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_pending"
+msgid "Pending"
+msgstr "Ausstehend"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_sii_form_domain_rejected"
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_delete_sent"
+msgid ""
+"You cannot delete SII invoice \"%(invoice)s\" because it has already been "
+"sent."
+msgstr ""
+"Die SII Rechnung \"%(invoice)s\" kann nicht gelöscht werden, da sie bereits "
+"versandt wurde."
+
+msgctxt "model:ir.message,text:msg_es_sii_invoice_unique"
+msgid "Only one SII invoice can be created for each invoice."
+msgstr "Es kann nur ein SII Rechnungsdatensatz pro Rechnung erstellt werden."
+
+msgctxt "model:ir.message,text:msg_es_sii_posted_invoices"
+msgid ""
+"You can not change the SII setting for period \"%(period)s\" because there "
+"are already posted invoices."
+msgstr ""
+"Die SII-Einstellungen für den Buchungszeitraum \"%(period)s\" können nicht "
+"geändert werden, da er bereit festgeschriebene Rechnungen enthält."
+
+msgctxt "model:ir.message,text:msg_missing_sii_url"
+msgid ""
+"To send invoices to SII service, you need to set an URL on the account "
+"configuration."
+msgstr ""
+"Damit Rechnungen an den SII-Service versandt werden können, muss zuerst eine"
+" URL in den Buchhaltungseinstellungen erfasst werden."
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_sii_form"
+msgid "Spanish SII"
+msgstr "Spanisches SII"
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Production"
+msgstr "Produktivumgebung"
+
+msgctxt "selection:account.configuration,es_sii_environment:"
+msgid "Staging"
+msgstr "Testumgebung"
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Production"
+msgstr "Produktivumgebung"
+
+msgctxt "selection:account.credential.sii,es_sii_environment:"
+msgid "Staging"
+msgstr "Testumgebung"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Pending"
+msgstr "Ausstehend"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Sent"
+msgstr "Gesendet"
+
+msgctxt "selection:account.invoice.sii,state:"
+msgid "Wrong"
+msgstr "Fehlerhaft"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to SII"
+msgstr "Rechnungen an SII senden"
+
+msgctxt "view:account.configuration:"
+msgid "Spanish Immediate Information Supply"
+msgstr "Spanisches SII Echtzeitinformationssystem"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Spanish SII"
+msgstr "Spanisches SII"
+
+msgctxt "view:account.tax.template:"
+msgid "Spanish SII"
+msgstr "Spanisches SII"
+
+msgctxt "view:account.tax:"
+msgid "Spanish SII"
+msgstr "Spanisches SII"

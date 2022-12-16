@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="account.tax.group" id="tax_group_sale">
+            <field name="name">Ventas de bienes</field>
+            <field name="code">Ventas de bienes</field>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_sale_service">
+            <field name="name">Ventas de servicios</field>
+            <field name="code">Ventas de servicios</field>
+            <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_purchase">
+            <field name="name">Compras de bienes</field>
+            <field name="code">Compras de bienes</field>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_purchase_service">
+            <field name="name">Compras de servicios</field>
+            <field name="code">Compras de servicios</field>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_purchase_investment">
+            <field name="name">Compras bienes de inversión</field>
+            <field name="code">Compras bienes de inversión</field>
+            <field name="kind">purchase</field>
+        </record>
+    </data>
+</tryton>

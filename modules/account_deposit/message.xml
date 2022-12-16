@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_erase_party_deposit">
+            <field name="text">You cannot erase party "%(party)s" while they have deposit at company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_deposit_not_enough">
+            <field name="text">The account "%(account)s" has not enough deposit from party "%(party)s".</field>
+        </record>
+    </data>
+</tryton>

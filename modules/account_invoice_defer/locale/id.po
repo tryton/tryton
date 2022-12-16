@@ -1,0 +1,199 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr ""
+
+msgctxt "field:account.configuration,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_expense:"
+msgid "Deferred Account Expense"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,deferred_account_revenue:"
+msgid "Deferred Account Revenue"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgctxt "field:account.invoice.deferred,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,invoice_line:"
+msgid "Invoice Line"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,moves:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:account.invoice.deferred,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:account.invoice.line,defer_from:"
+msgid "Defer From"
+msgstr ""
+
+msgctxt "field:account.invoice.line,defer_to:"
+msgid "Defer To"
+msgstr ""
+
+msgctxt "field:account.invoice.line,deferrable:"
+msgid "Deferrable"
+msgstr ""
+
+msgctxt "model:account.invoice.deferred,name:"
+msgid "Invoice Deferred"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_in_form_domain_running"
+msgid "Running"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_deferred_out_form_domain_running"
+msgid "Running"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_defer_invoice_line_unique"
+msgid "Invoice line can be deferred only once."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_delete_draft"
+msgid ""
+"You cannot delete invoice deferred \"%(deferral)s\" because it is not in "
+"\"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some invoices deferred "
+"\"%(deferrals)s\" do not have yet move for the period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_expense"
+msgid "There is no deferred account expense configured."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_deferred_account_revenue"
+msgid "There is no deferred account revenue configured."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:invoice_deferred_run_button"
+msgid "Are you sure you want to defer the invoices?"
+msgstr ""
+
+msgctxt "model:ir.model.button,help:invoice_deferred_run_button"
+msgid "Start deferring the invoice"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_deferred_run_button"
+msgid "Run"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_deferred_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_create_moves"
+msgid "Create Invoices Deferred Moves"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_in_form"
+msgid "Supplier Invoices Deferred"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_deferred_out_form"
+msgid "Customer Invoices Deferred"
+msgstr ""
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.invoice.deferred,state:"
+msgid "Running"
+msgstr ""
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Customer"
+msgstr ""
+
+msgctxt "selection:account.invoice.deferred,type:"
+msgid "Supplier"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Deferred"
+msgstr ""
+
+msgctxt "view:account.invoice.deferred:"
+msgid "Other Info"
+msgstr ""
