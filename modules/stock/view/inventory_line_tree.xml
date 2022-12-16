@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree editable="1">
+    <field name="inventory" expand="1"/>
+    <field name="inventory_location" expand="1"/>
+    <field name="inventory_date"/>
+    <field name="product" expand="2"/>
+    <field name="expected_quantity" symbol="uom"/>
+    <field name="quantity" symbol="uom"/>
+</tree>

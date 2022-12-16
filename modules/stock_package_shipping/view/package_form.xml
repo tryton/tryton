@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='measurements']" position="inside">
+        <label name="length"/>
+        <field name="length"/>
+        <field name="length_uom"/>
+
+        <label name="height"/>
+        <field name="height"/>
+        <field name="height_uom"/>
+
+        <label name="width"/>
+        <field name="width"/>
+        <field name="width_uom"/>
+    </xpath>
+    <xpath expr="//field[@name='shipment']" position="after">
+        <label name="shipping_reference"/>
+        <group col="-1" id="shipping_reference">
+            <field name="shipping_reference"/>
+            <field name="shipping_tracking_url" widget="url"/>
+        </group>
+        <label name="shipping_label"/>
+        <field name="shipping_label"/>
+    </xpath>
+</data>
