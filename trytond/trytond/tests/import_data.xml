@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="test.import_data.many2one.target"
+            id="import_data_many2one_target_test">
+            <field name="name">Test</field>
+        </record>
+
+        <record model="test.import_data.many2one.target"
+            id="import_data_many2one_target_duplicate1">
+            <field name="name">Duplicate</field>
+        </record>
+
+        <record model="test.import_data.many2one.target"
+            id="import_data_many2one_target_duplicate2">
+            <field name="name">Duplicate</field>
+        </record>
+
+        <record model="test.import_data.many2many.target"
+            id="import_data_many2many_target_test1">
+            <field name="name">Test 1</field>
+        </record>
+
+        <record model="test.import_data.many2many.target"
+            id="import_data_many2many_target_test2">
+            <field name="name">Test 2</field>
+        </record>
+
+        <record model="test.import_data.many2many.target"
+            id="import_data_many2many_target_test_comma">
+            <field name="name">Test, comma</field>
+        </record>
+
+        <record model="test.import_data.many2many.target"
+            id="import_data_many2many_target_duplicate1">
+            <field name="name">Duplicate</field>
+        </record>
+
+        <record model="test.import_data.many2many.target"
+            id="import_data_many2many_target_duplicate2">
+            <field name="name">Duplicate</field>
+        </record>
+
+        <record model="test.import_data.reference.selection"
+            id="import_data_reference_selection_test">
+            <field name="name">Test</field>
+        </record>
+
+        <record model="test.import_data.reference.selection"
+            id="import_data_reference_selection_duplicate1">
+            <field name="name">Duplicate</field>
+        </record>
+
+        <record model="test.import_data.reference.selection"
+            id="import_data_reference_selection_duplicate2">
+            <field name="name">Duplicate</field>
+        </record>
+
+    </data>
+</tryton>
