@@ -1,0 +1,2 @@
+type,name,res_id,src,value,fuzzy
+field,"account.invoice,open_date",0,Open Date,Fecha de apertura,0
