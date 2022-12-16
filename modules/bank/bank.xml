@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_bank_admin">
+            <field name="name">Bank Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_bank_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_bank_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="bank_icon">
+            <field name="name">tryton-bank</field>
+            <field name="path">icons/tryton-bank.svg</field>
+        </record>
+
+        <menuitem name="Banking" sequence="3" id="menu_banking" icon="tryton-bank"/>
+
+        <record model="ir.ui.view" id="bank_view_form">
+            <field name="model">bank</field>
+            <field name="type">form</field>
+            <field name="name">bank_form</field>
+        </record>
+        <record model="ir.ui.view" id="bank_view_list">
+            <field name="model">bank</field>
+            <field name="type">tree</field>
+            <field name="name">bank_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_bank_form">
+            <field name="name">Banks</field>
+            <field name="res_model">bank</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_bank_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="bank_view_list"/>
+            <field name="act_window" ref="act_bank_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_bank_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="bank_view_form"/>
+            <field name="act_window" ref="act_bank_form"/>
+        </record>
+
+        <menuitem parent="menu_banking" action="act_bank_form"
+            sequence="10" id="menu_bank_form"/>
+
+        <record model="ir.model.access" id="access_bank">
+            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_bank_bank_admin">
+            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="bank_account_view_form">
+            <field name="model">bank.account</field>
+            <field name="type">form</field>
+            <field name="name">bank_account_form</field>
+        </record>
+        <record model="ir.ui.view" id="bank_account_view_list">
+            <field name="model">bank.account</field>
+            <field name="type">tree</field>
+            <field name="name">bank_account_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_bank_account_form">
+            <field name="name">Accounts</field>
+            <field name="res_model">bank.account</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_bank_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="bank_account_view_list"/>
+            <field name="act_window" ref="act_bank_account_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_bank_account_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="bank_account_view_form"/>
+            <field name="act_window" ref="act_bank_account_form"/>
+        </record>
+
+        <menuitem parent="menu_banking" action="act_bank_account_form"
+            sequence="20" id="menu_bank_account_form"/>
+
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_bank_admin">
+            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="bank_account_number_view_form">
+            <field name="model">bank.account.number</field>
+            <field name="type">form</field>
+            <field name="name">bank_account_number_form</field>
+        </record>
+        <record model="ir.ui.view" id="bank_account_number_view_list">
+            <field name="model">bank.account.number</field>
+            <field name="type">tree</field>
+            <field name="name">bank_account_number_list</field>
+        </record>
+        <record model="ir.ui.view" id="bank_account_number_view_list_sequence">
+            <field name="model">bank.account.number</field>
+            <field name="type">tree</field>
+            <field name="name">bank_account_number_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_account_number">
+            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_number_bank_admin">
+            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>
