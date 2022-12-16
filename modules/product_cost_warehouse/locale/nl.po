@@ -1,0 +1,85 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Kostprijs per magazijn"
+
+msgctxt "field:ir.cron,warehouses:"
+msgid "Warehouses"
+msgstr "Magazijnen"
+
+msgctxt "field:ir.cron-stock.warehouse,cron:"
+msgid "Cron"
+msgstr "Cyclische opdracht"
+
+msgctxt "field:ir.cron-stock.warehouse,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:product.configuration,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Kostprijs per magazijn"
+
+msgctxt "field:product.configuration.cost_price_warehouse,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt ""
+"field:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Cost Price per Warehouse"
+msgstr "Kostprijs per magazijn"
+
+msgctxt "field:product.cost_price,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:product.cost_price,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Magazijn vereist"
+
+msgctxt "field:product.cost_price.revision,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:product.cost_price.revision,warehouse_required:"
+msgid "Warehouse Required"
+msgstr "Magazijn vereist"
+
+msgctxt "field:stock.location,cost_warehouse:"
+msgid "Cost Warehouse"
+msgstr "Kosten magazijn"
+
+msgctxt "help:company.company,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Bereken de kostprijs van het product voor elk magazijn."
+
+msgctxt "help:ir.cron,warehouses:"
+msgid "Warehouses registered for this cron."
+msgstr "Geregistreerde magazijnen voor deze cyclische opdracht."
+
+msgctxt "help:product.configuration,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Bereken de kostprijs van het product voor elk magazijn."
+
+msgctxt ""
+"help:product.configuration.cost_price_warehouse,cost_price_warehouse:"
+msgid "Compute product cost price for each warehouse."
+msgstr "Bereken de kostprijs van het product voor elk magazijn."
+
+msgctxt "model:ir.cron-stock.warehouse,name:"
+msgid "Cron - Warehouse"
+msgstr "Cyclische opdracht - Magazijn"
+
+msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
+msgid ""
+"To move products between \"%(from_)s\" and \"%(to)s\", you must use the "
+"internal shipment transit location."
+msgstr ""
+"Om producten te verplaatsen tussen \"%(from_)s\" en \"%(to)s\", moet u de "
+"interne transitlocatie van de zending gebruiken."
+
+msgctxt "model:product.configuration.cost_price_warehouse,name:"
+msgid "Product Configuration Cost Price per Warehouse"
+msgstr "Productconfiguratie kostprijs per magazijn"
