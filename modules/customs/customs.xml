@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_customs_admin">
+            <field name="name">Customs Administration</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_customs_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_customs_admin"/>
+        </record>
+
+        <menuitem
+            name="Customs"
+            parent="product.menu_main_product"
+            sequence="30"
+            id="menu_customs"/>
+
+        <record model="ir.ui.view" id="tariff_code_view_form">
+            <field name="model">customs.tariff.code</field>
+            <field name="type">form</field>
+            <field name="name">tariff_code_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tariff_code_view_list">
+            <field name="model">customs.tariff.code</field>
+            <field name="type">tree</field>
+            <field name="name">tariff_code_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_tariff_code_form">
+            <field name="name">Tariff Codes</field>
+            <field name="res_model">customs.tariff.code</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tariff_code_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tariff_code_view_list"/>
+            <field name="act_window" ref="act_tariff_code_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tariff_code_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tariff_code_view_form"/>
+            <field name="act_window" ref="act_tariff_code_form"/>
+        </record>
+        <menuitem
+            parent="menu_customs"
+            action="act_tariff_code_form"
+            sequence="10"
+            id="menu_tariff_code_form"/>
+
+        <record model="ir.ui.view" id="duty_rate_view_form">
+            <field name="model">customs.duty.rate</field>
+            <field name="type">form</field>
+            <field name="name">duty_rate_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="duty_rate_view_list">
+            <field name="model">customs.duty.rate</field>
+            <field name="type">tree</field>
+            <field name="name">duty_rate_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_duty_rate_form">
+            <field name="name">Duty Rates</field>
+            <field name="res_model">customs.duty.rate</field>
+            <field name="search_value"
+                eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_duty_rate_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="duty_rate_view_list"/>
+            <field name="act_window" ref="act_duty_rate_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_duty_rate_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="duty_rate_view_form"/>
+            <field name="act_window" ref="act_duty_rate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_duty_rate_domain_import">
+            <field name="name">Import</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('type', '=', 'import')]" pyson="1"/>
+            <field name="act_window" ref="act_duty_rate_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_duty_rate_domain_export">
+            <field name="name">Export</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('type', '=', 'export')]" pyson="1"/>
+            <field name="act_window" ref="act_duty_rate_form"/>
+        </record>
+        <menuitem
+            parent="menu_customs"
+            action="act_duty_rate_form"
+            sequence="20"
+            id="menu_duty_rate_form"/>
+    </data>
+</tryton>
