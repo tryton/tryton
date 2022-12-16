@@ -1,0 +1,43 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr ""
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Заявка за покупка"
+
+msgctxt "field:sale.line,purchase_request_state:"
+msgid "Purchase Request State"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Заявки за покупки"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid ""
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Cancel"
+msgstr "Отказване"
+
+#, fuzzy
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Purchased"
+msgstr "Поръчан"
+
+msgctxt "selection:sale.line,purchase_request_state:"
+msgid "Requested"
+msgstr ""

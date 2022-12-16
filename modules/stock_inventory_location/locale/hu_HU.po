@@ -1,0 +1,47 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.inventory.create.start,company:"
+msgid "Company"
+msgstr "Társaság"
+
+msgctxt "field:stock.inventory.create.start,date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:stock.inventory.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.inventory.create.start,locations:"
+msgid "Locations"
+msgstr "Raktárhely"
+
+msgctxt "field:stock.inventory.create.start,lost_found:"
+msgid "Lost and Found"
+msgstr "Készlet különbség"
+
+msgctxt "model:ir.action,name:wizard_create_inventory"
+msgid "Create Inventories"
+msgstr "Raktárkészlet meghatározása"
+
+msgctxt "model:ir.ui.menu,name:menu_create_inventory"
+msgid "Create Inventories"
+msgstr "Raktárkészlet meghatározása"
+
+msgctxt "model:stock.inventory.create.start,name:"
+msgid "Create Inventories"
+msgstr "Raktárkészlet meghatározása"
+
+msgctxt "view:stock.inventory.create.start:"
+msgid "Create Inventories"
+msgstr "Raktárkészlet meghatározása"
+
+msgctxt "wizard_button:stock.inventory.create,start,create_:"
+msgid "Create"
+msgstr "Létrehozás"
+
+msgctxt "wizard_button:stock.inventory.create,start,end:"
+msgid "Cancel"
+msgstr "Mégse"

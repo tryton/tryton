@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<html style="overflow: auto;">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Tryton</title>
+        <link rel="icon" type="image/png" href="images/tryton-icon.png">
+
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+        <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="bower_components/gettext.js/dist/gettext.min.js"></script>
+        <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+        <script type="text/javascript" src="bower_components/c3/c3.min.js"></script>
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="bower_components/c3/c3.min.css">
+        <link rel="stylesheet" href="offcanvas.css">
+
+        <script type="text/javascript" src="dist/tryton-sao.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="dist/tryton-sao.min.css"
+        media="screen"/>
+        <script type="text/javascript">
+            if (typeof Sao == 'undefined') {
+                document.write(unescape('%3cscript type="text/javascript" src="dist/tryton-sao.js"%3e%3c/script%3e'));
+                document.write(unescape('%3clink rel="stylesheet" type="text/css" href="dist/tryton-sao.css" media="screen"/%3e'));
+            }
+        </script>
+        </head>
+        <body>
+        <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 1px;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#user_menu_collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Tryton</a>
+                    <p class="pull-left visible-xs visible-sm navbar-text">
+                        <button type="button" class="btn btn-primary btn-xs"
+                            data-toggle="offcanvas">
+                            Toggle menu
+                        </button>
+                    </p>
+                </div>
+                <div class="collapse navbar-collapse" id="user_menu_collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="user-preferences"></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="user-logout"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="main" class="container-fluid">
+            <div class="row row-offcanvas row-offcanvas-left active"
+                style="height: calc(100vh - 50px - 1px - 20px);">
+                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="menu" role="navigation"
+                    style="overflow-y: auto; height: 100%;"></div>
+                <div class="col-xs-12 col-md-9" style="overflow-y: auto; height: 100%;">
+                    <div id="tabs" role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                        </ul>
+                        <div class="tab-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery(function() {
+                    jQuery('[data-toggle="offcanvas"]').click(function() {
+                        jQuery('.row-offcanvas').toggleClass('active');
+                        });
+                    jQuery('#tabs').on('ready', function() {
+                        if (jQuery(this).find('> .nav-tabs').children().length) {
+                            jQuery('.row-offcanvas').removeClass('active');
+                        } else {
+                            jQuery('.row-offcanvas').addClass('active');
+                        }
+                    });
+                    Sao.login();
+                    });
+        </script>
+    </body>
+</html>
