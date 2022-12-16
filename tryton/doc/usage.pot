@@ -1,0 +1,1685 @@
+#. extracted from usage.rst
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-06 19:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+
+#: usage.rst:2
+msgid ":tocdepth: 2"
+msgstr ""
+
+#: usage.rst:4
+msgid ""
+"Client Usage\n"
+"############\n"
+"This document is the reference about the concepts of the graphical user\n"
+"interface (also known as *Tryton client* ) of the Tryton application "
+"framework."
+msgstr ""
+
+#: usage.rst:10
+msgid ""
+"Name\n"
+"****\n"
+"tryton - Graphical user client of the Tryton application framework"
+msgstr ""
+
+#: usage.rst:15
+msgid ""
+"Synopsis\n"
+"********"
+msgstr ""
+
+#: usage.rst:18
+msgctxt "usage.rst:18"
+msgid "::"
+msgstr ""
+
+#: usage.rst:20
+msgid "  tryton [options]"
+msgstr ""
+
+#: usage.rst:22
+msgid ""
+"After startup, there raises the `login dialog`__ and optionally a\n"
+"`tips dialog`__."
+msgstr ""
+
+#: usage.rst:25
+msgid ""
+"__ Menu-File-Connect_\n"
+"__ Menu-Help-Tips_"
+msgstr ""
+
+#: usage.rst:29
+msgid ""
+"Options\n"
+"*******"
+msgstr ""
+
+#: usage.rst:32
+msgid ""
+"--version                            Show program version number and exit"
+msgstr ""
+
+#: usage.rst:34
+msgid "-h, --help                           Show help message and exit"
+msgstr ""
+
+#: usage.rst:36
+msgid ""
+"-c FILE, --config=FILE               Specify alternate `configuration file`_"
+msgstr ""
+
+#: usage.rst:38
+msgid "-v, --verbose                        Enable basic debugging"
+msgstr ""
+
+#: usage.rst:40
+msgid ""
+"-d LOG_LOGGER, --log=LOG_LOGGER      Specify channels to log (ex: "
+"rpc.request, rpc.result, ...)"
+msgstr ""
+
+#: usage.rst:42
+msgid ""
+"-l LOG_LEVEL, --log-level=LOG_LEVEL  Specify the log level: INFO, DEBUG,\n"
+"                                     WARNING, ERROR, CRITICAL"
+msgstr ""
+
+#: usage.rst:45
+msgid "-u LOGIN, --user=LOGIN               Specify the login user"
+msgstr ""
+
+#: usage.rst:47
+msgid "-p PORT, --port=PORT                 Specify the server port"
+msgstr ""
+
+#: usage.rst:49
+msgid "-s SERVER, --server=SERVER           Specify the server hostname"
+msgstr ""
+
+#: usage.rst:52
+msgid ""
+"Overview\n"
+"********\n"
+"The following schematic illustration of the Tryton client shows the names of\n"
+"all important visual parts."
+msgstr ""
+
+#: usage.rst:57
+msgid "Figure: Tryton client application::"
+msgstr ""
+
+#: usage.rst:59
+msgid ""
+"  Client Window       "
+"_______________________________________________________\n"
+"                     |                      Tryton                      _ o "
+"x|\n"
+"                     "
+"|-------------------------------------------------------|\n"
+"  Menu bar           | File User Form Options Plugins Shortcuts Help "
+"        |\n"
+"                     "
+"|_______________________________________________________|\n"
+"                     | "
+"                                                      |\n"
+"  Tool bar           | New Save | Delete | Find Previous Next Switch    v "
+"   |\n"
+"                     "
+"|-------------------------------------------------------|\n"
+"                     |          ______ "
+"                                      |\n"
+"  Tab bar            | [Menu]  |[Tab1]| [Tab2] ... "
+"                          |\n"
+"                     |---------|      | "
+"-------------------------------------|\n"
+"                     | .-------        ------------------------------------. "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"  View               | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |                                                   | "
+"|\n"
+"                     | |___________________________________________________| "
+"|\n"
+"                     "
+"|_______________________________________________________|\n"
+"  Status bar         |username company      Waiting requests...     "
+"login@...|\n"
+"                     "
+"|_______________________________________________________|"
+msgstr ""
+
+#: usage.rst:90
+msgid ""
+"Menu Bar\n"
+"^^^^^^^^\n"
+"The menu bar is the main control unit. It provides most of the "
+"functionalities\n"
+"of the client application. The menu bar is grouped into categories. It is\n"
+"controlled with mouse or keyboard. The `menu bar items`_ are explained "
+"later."
+msgstr ""
+
+#: usage.rst:97
+msgid ""
+"Mouse and Keyboard Use\n"
+"++++++++++++++++++++++\n"
+"Most functions of the Tryton client can be accessed with mouse or keyboard.\n"
+"`Key bindings`__ for all menu items are preset. Furthermore all key bindings\n"
+"are manually configurable. To change the binding of a menu item the user "
+"needs\n"
+"to put the cursor onto it and simply press the user defined key combination.\n"
+"For this purpose it is needed to activate the configuration of the key "
+"bindings\n"
+"with Options > Menubar > Change Accelerators. After the configuration it is\n"
+"preferable to disable Change Accelerators, to avoid accidental changes of "
+"key\n"
+"bindings while navigating the Menu bar with the keyboard."
+msgstr ""
+
+#: usage.rst:108
+msgid ""
+"To remove a key binding simply press the delete button while pointing the\n"
+"cursor on the menu item to change."
+msgstr ""
+
+#: usage.rst:111
+msgid ".. Note:: Usually key bindings are composed with modifier keys."
+msgstr ""
+
+#: usage.rst:113
+msgid "__ Menu-Help-Keyboard_Shortcuts_"
+msgstr ""
+
+#: usage.rst:115
+msgid ""
+"Additionally the menu bar items are accessible with the *Alt* or *Option* "
+"key.\n"
+"The user needs to hold the *Alt* or *Option* key followed by the underlined\n"
+"character of the menu bar item to choose. To dive into deeper menu levels,\n"
+"he needs to release the *Alt* or *Option* key and to simply press the\n"
+"underlined letter of the sub menu item. If there exist several menu items "
+"with\n"
+"the same shortcut, repeated activation of the shortcut key will jump to the\n"
+"next one."
+msgstr ""
+
+#: usage.rst:123
+msgid ""
+"The second mouse button (usually right mouse button) provides an additional\n"
+"contextual menu for some views and fields. In this context menu the user "
+"finds\n"
+":term:`actions` to copy and paste contents or setting up default values or\n"
+"selections for several fields."
+msgstr ""
+
+#: usage.rst:129
+msgid ""
+"Tool Bar\n"
+"^^^^^^^^\n"
+"The tool bar contains some often used menu functions mapped to icons.\n"
+"In addition to the menu bar the tool bar contains a button called\n"
+"*Attachment*."
+msgstr ""
+
+#: usage.rst:135
+msgid ""
+"Attachment\n"
+"++++++++++\n"
+"The attachment item handles the document management system of\n"
+"Tryton which is able to attach files to any arbitrary :term:`model`. On "
+"click\n"
+"it opens the attachments :term:`dialog`. The default dialog shows a list "
+"view\n"
+"of the attached files and links. "
+msgstr ""
+
+#: usage.rst:142
+msgid "A single Attachment has the following Options:"
+msgstr ""
+
+#: usage.rst:144
+msgid ""
+"* Attachment Name: The name of the attachment.\n"
+"* Datas: The attached File. The file size is displayed as text.\n"
+"* Link: Link to an external site as URL.\n"
+"* Preview tab: Shows a preview picture of the selected attachment.\n"
+"* Description tab: Shows and and provides editing of a free text description\n"
+"  for the selected attachment.\n"
+"* Actions:"
+msgstr ""
+
+#: usage.rst:152
+msgid "  - OK: Closes the Dialog and saves the attachment(s)."
+msgstr ""
+
+#: usage.rst:155
+msgid ""
+"Tabbed Main Frame\n"
+"^^^^^^^^^^^^^^^^^\n"
+"This part of the client contains all the related contents and\n"
+"functions provided by the :term:`Tryton server` :term:`modules`.\n"
+"All aspects inside the *main frame* depend at least on the individual set\n"
+"of installed modules."
+msgstr ""
+
+#: usage.rst:162
+msgid ""
+"The main frame provides a `tabbed document interface`__ to arrange different\n"
+"views side by side. New :term:`tabs` are opened by special :term:`actions`,\n"
+"like choosing a menu item or clicking some action buttons. All tabs include\n"
+"titles which show the name of the provided view."
+msgstr ""
+
+#: usage.rst:167
+msgid ":term:`Tabs` can be arranged by Drag and Drop."
+msgstr ""
+
+#: usage.rst:169
+msgid "__ TDI_"
+msgstr ""
+
+#: usage.rst:171
+msgid ".. _TDI: http://en.wikipedia.org/wiki/Tabbed_document_interface"
+msgstr ""
+
+#: usage.rst:173
+msgid ".. Note:: Inside :term:`views` there can be tabs, too."
+msgstr ""
+
+#: usage.rst:175
+msgid ""
+"Main Menu\n"
+"+++++++++\n"
+"The first left tab contains the *main menu* (... not to mix up with\n"
+"the menu bar!). The *main menu* does not contain fixed menu items.\n"
+"All of them are dynamically provided by the actual set of the installed\n"
+":term:`modules` depending on the access rules of the current user. If a menu\n"
+"item is clicked, the appropriate action will open in a new tab. As the "
+"figure\n"
+"below illustrates, the *main menu* is split up in three frames."
+msgstr ""
+
+#: usage.rst:184
+msgid ""
+"The upper left frame contains the first or top level entries of the *main\n"
+"menu*. Standard top level entries are 'Administration' and 'Tryton'."
+msgstr ""
+
+#: usage.rst:187
+msgid ""
+".. note:: The *administration* menu will be explained in the modules\n"
+"   documentation for the 'IR' module, the *information repository*."
+msgstr ""
+
+#: usage.rst:190
+msgid ""
+"The top level entry 'Tryton' connects to the website of the Tryton project."
+msgstr ""
+
+#: usage.rst:192
+msgid ""
+"The right frame is showing a :term:`tree view` substructure of menu *items*\n"
+"and *headings*. With the arrow keys it is possible to navigate inside the "
+"menu.\n"
+"By pressing *Enter* or double-clicking onto the menu item the appropriate\n"
+":term:`views` open. Use left and right arrow to expand or contract sub\n"
+"items of a heading."
+msgstr ""
+
+#: usage.rst:198
+msgid "Figure: Main Menu Tab::"
+msgstr ""
+
+#: usage.rst:200
+msgid ""
+"       ________________________________________________________\n"
+"      |                      Tryton                       _ o x|\n"
+"      |--------------------------------------------------------|\n"
+"      | File User Form Options Plugins Shortcuts Help          |\n"
+"      |________________________________________________________|\n"
+"      |                                                        |\n"
+"      | New Save | Delete | Find Previous Next Switch     v    |\n"
+"      |________________________________________________________|\n"
+"      |   ______                                               |\n"
+"      |  |[Menu]|   [Tab1]   [Tab2] ...                        |\n"
+"      |--|      | ---------------------------------------------|\n"
+"      |  |       -------------.------------------------------. |\n"
+"      |  | Top Level Entry 1  | Menu                |        | |\n"
+"      |  | Top Level Entry 2  |---------------------+--------| |\n"
+"      |  | ...                |   Item 1            |        | |\n"
+"      |  | Administration     |   Item 2            |        | |\n"
+"      |  | Tryton             | > Heading           |        | |\n"
+"      |  |____________________|     Sub Item 1      |        | |\n"
+"      |  | Shortcuts    [+][-]|     Sub Item 2      |        | |\n"
+"      |  |--------------------|     > Sub Heading   |        | |\n"
+"      |  | Sub Item 2         |         Sub Sub ... |        | |\n"
+"      |  |                    |                     |        | |\n"
+"      |  |                    |                     |        | |\n"
+"      |  |____________________|_____________________|________| |\n"
+"      |________________________________________________________|\n"
+"      |username company      Waiting requests...     login@... |\n"
+"      |________________________________________________________|"
+msgstr ""
+
+#: usage.rst:229
+msgid ""
+"The lower left menu frame shows a user adjustable *shortcuts* menu. This "
+"menu\n"
+"is for collecting often used menu items. Using a *shortcut* item will open\n"
+"the appropriate view in a new tab, just with a double mouse click.\n"
+"A menu item is added to the *shortcut* menu by pushing the plus button [+]\n"
+"in the *shortcut* menu. The minus button [-] removes a selected *shortcut*\n"
+"item from the list."
+msgstr ""
+
+#: usage.rst:236
+msgid ""
+"Home Action\n"
+"+++++++++++\n"
+"Another tab opens during the startup of the Tryton client: the home action.\n"
+"It is usually an item of the `Main Menu`_ opening when the user calls his\n"
+"`Home`__ action defined in the `preferences`__."
+msgstr ""
+
+#: usage.rst:242
+msgctxt "usage.rst:242"
+msgid "__ Menu-Form-Home_"
+msgstr ""
+
+#: usage.rst:244
+msgctxt "usage.rst:244"
+msgid "__ Menu-User-Preferences_"
+msgstr ""
+
+#: usage.rst:247
+msgid ""
+"Status bar\n"
+"++++++++++\n"
+"The status bar provides general informations of the state of the\n"
+"Tryton client. It is divided in three parts."
+msgstr ""
+
+#: usage.rst:252
+msgid ""
+"* On its left side the real name and company name of the users actual "
+"company\n"
+"  is shown.\n"
+"* In the center of the status bar the number of waiting requests for the\n"
+"  actual user are displayed.\n"
+"* On its right side are details of the server connection shown including\n"
+"  database and user informations if connected. It is also noted there, if\n"
+"  there is no connection to a Tryton server at all. The right side "
+"information\n"
+"  of the status bar is build with the following pattern::"
+msgstr ""
+
+#: usage.rst:261
+msgid "    <user-name>@<tryton-server-address>:<port>/<database-name>"
+msgstr ""
+
+#: usage.rst:263
+msgid ""
+"  If the client is connected to the server with an SSL-secured connection, "
+"an\n"
+"  additional lock icon appears rightmost some certificate details in a mouse\n"
+"  hover popup."
+msgstr ""
+
+#: usage.rst:267
+msgid ""
+"The Status bar can be enabled and disabled in the menu at\n"
+"Options > Form > Status bar"
+msgstr ""
+
+#: usage.rst:271
+msgid ""
+"Menu Bar Items\n"
+"**************\n"
+"The following section describes the function of each menu bar entry in "
+"detail.\n"
+"A rule of thumb: All items of the menu bar that are suffixed by three dots\n"
+"(...) will open an intermediate :term:`dialog` for setting up the provided\n"
+"menu action. Most dialogs provide a *Cancel* button, used to stop the\n"
+"complete dialog process."
+msgstr ""
+
+#: usage.rst:280
+msgid ""
+"File\n"
+"^^^^\n"
+"The file menu level provides functions about Tryton server login,\n"
+"Database maintenance and closing the client application."
+msgstr ""
+
+#: usage.rst:285
+msgid ".. _Menu-File-Connect:"
+msgstr ""
+
+#: usage.rst:287
+msgid ""
+"Connect...\n"
+"  By choosing this menu entry the client will be connected to an available\n"
+"  Tryton server. A :term:`dialog` opens to request credentials:"
+msgstr ""
+
+#: usage.rst:291
+msgid ""
+"  * `Server`__\n"
+"  * Database: Database to connect server side\n"
+"  * User name: Tryton user name to login\n"
+"  * Password: Tryton password to login\n"
+"  * Actions:"
+msgstr ""
+
+#: usage.rst:297
+msgid ""
+"    - Connect: Connects to the server with the given credentials.\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:300
+msgid ""
+".. note:: Depending on server configuration for session timeout, the actual\n"
+"   user may be logged out of the current session, and need to login again.\n"
+"   Default timeout for inactivity logout is six minutes."
+msgstr ""
+
+#: usage.rst:304
+msgctxt "usage.rst:304"
+msgid "__ File-Server-Connection_"
+msgstr ""
+
+#: usage.rst:307
+msgid ".. _Menu-File-Disconnect:"
+msgstr ""
+
+#: usage.rst:309
+msgid ""
+"Disconnect...\n"
+"  Disconnects the client from an active server connection. In case of "
+"unsaved\n"
+"  changes in an open tab, the Tryton client will request for saving the\n"
+"  changes."
+msgstr ""
+
+#: usage.rst:314
+msgid ""
+"Database\n"
+"++++++++\n"
+"This menu level provides tools to maintain Tryton databases.\n"
+"For all database operations the user needs to know the Tryton server "
+"password."
+msgstr ""
+
+#: usage.rst:319
+msgid ""
+".. warning:: Consider not to use this server-site maintaining functions,\n"
+"             if there are security concerns. Since there are always security\n"
+"             concerns in a multiuser environment, better disclaim to provide\n"
+"             these functions on database level."
+msgstr ""
+
+#: usage.rst:324
+msgid ".. note:: Database names are restricted by some rules:"
+msgstr ""
+
+#: usage.rst:326
+msgid ""
+"          * Allowed characters are alpha-nummeric [A-Za-z0-9] and\n"
+"            underscore (_).\n"
+"          * First character must be an alphabetic letter.\n"
+"          * The maximum length of a database name is 64 characters."
+msgstr ""
+
+#: usage.rst:331
+msgid ""
+"          Tryton automatically checks if the given database name follows\n"
+"          the rules."
+msgstr ""
+
+#: usage.rst:334
+msgid ".. _Menu-File-New_Database:"
+msgstr ""
+
+#: usage.rst:336
+msgid ""
+"New Database\n"
+"  Opens a :term:`dialog` for creating a new Tryton database with an initial\n"
+"  user called *admin*."
+msgstr ""
+
+#: usage.rst:340
+msgid "  * Server Setup:"
+msgstr ""
+
+#: usage.rst:342
+msgid ""
+"    - `Server Connection`__\n"
+"    - Tryton Server Password: The password given in the Tryton server\n"
+"      configuration."
+msgstr ""
+
+#: usage.rst:346
+msgid "  * New Database Setup:"
+msgstr ""
+
+#: usage.rst:348
+msgid ""
+"    - Database Name: The name of the new database.\n"
+"    - Default Language: The default language of the new database.\n"
+"    - Admin Password: The *admin*-user password of the new database.\n"
+"    - Confirm Admin Password: Repeat the password of the new 'admin' user."
+msgstr ""
+
+#: usage.rst:353
+msgctxt "usage.rst:353"
+msgid "  * Actions:"
+msgstr ""
+
+#: usage.rst:355
+msgid ""
+"    - Create: Creates the new database with initial user *admin* and the\n"
+"      provided password.\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:359
+msgctxt "usage.rst:359"
+msgid "__ File-Server-Connection_"
+msgstr ""
+
+#: usage.rst:361
+msgid ""
+".. note:: The appropriate Tryton database user (defined in the Tryton server\n"
+"   configuration) needs to be authorized to create databases for this step."
+msgstr ""
+
+#: usage.rst:364
+msgid ".. _Menu-File-Restore_Database:"
+msgstr ""
+
+#: usage.rst:366
+msgid ""
+"Restore Database\n"
+"  Opens a :term:`dialog` to restore a previously created database backup\n"
+"  file."
+msgstr ""
+
+#: usage.rst:370
+msgid "  * File choose menu dialog"
+msgstr ""
+
+#: usage.rst:372
+msgid ""
+"    - Choose a database backup file in the file system to be restored.\n"
+"    - Actions:"
+msgstr ""
+
+#: usage.rst:375
+msgid ""
+"      + Open: Open the chosen backup file.\n"
+"      + Cancel"
+msgstr ""
+
+#: usage.rst:378
+msgid "  * Restore Database dialog:"
+msgstr ""
+
+#: usage.rst:380
+msgid ""
+"    - `Server Connection`__\n"
+"    - Tryton Server Password: The password given in the Tryton server\n"
+"      configuration.\n"
+"    - File to Restore: Show filename and path.\n"
+"    - New Database Name: Enter a new name for the database to be restored\n"
+"    - Actions:"
+msgstr ""
+
+#: usage.rst:387
+msgid ""
+"      + Restore: Proceed database restore.\n"
+"      + Cancel"
+msgstr ""
+
+#: usage.rst:390
+msgctxt "usage.rst:390"
+msgid "__ File-Server-Connection_"
+msgstr ""
+
+#: usage.rst:392
+msgid ".. _Menu-File-Backup_Database:"
+msgstr ""
+
+#: usage.rst:394
+msgid ""
+"Backup Database\n"
+"  Open a :term:`dialog` to backup an existing database and save it as a "
+"file."
+msgstr ""
+
+#: usage.rst:397
+msgid "  * `Backup a Database` dialog"
+msgstr ""
+
+#: usage.rst:399
+msgid ""
+"    - `Server connection`__\n"
+"    - Database: Choose the Tryton database to backup.\n"
+"    - Tryton Server Password: The password given in the Tryton server\n"
+"      configuration.\n"
+"    - Actions:"
+msgstr ""
+
+#: usage.rst:405
+msgid ""
+"      + Backup: Proceed database backup.\n"
+"      + Cancel"
+msgstr ""
+
+#: usage.rst:408
+msgid "  * `Save Backup File` dialog"
+msgstr ""
+
+#: usage.rst:410
+msgid ""
+"    - Choose a filename and location for the created backup file.\n"
+"    - Save the backup file."
+msgstr ""
+
+#: usage.rst:413
+msgctxt "usage.rst:413"
+msgid "__ File-Server-Connection_"
+msgstr ""
+
+#: usage.rst:415
+msgid ".. _Menu-File-Drop_Database:"
+msgstr ""
+
+#: usage.rst:417
+msgid ""
+"Drop Database\n"
+"  Open a :term:`dialog` to delete an existing Tryton database."
+msgstr ""
+
+#: usage.rst:420
+msgid "  * `Delete a Database` dialog"
+msgstr ""
+
+#: usage.rst:422
+msgid ""
+"    - `Server Connection`__\n"
+"    - Database: Choose a database to delete.\n"
+"    - Tryton Server Password: The password given in the Tryton server\n"
+"      configuration."
+msgstr ""
+
+#: usage.rst:427
+msgid "  * Confirmation Dialog"
+msgstr ""
+
+#: usage.rst:429
+msgid ""
+"    - Yes: Drop the database\n"
+"    - No: Do not drop the database\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:433
+msgctxt "usage.rst:433"
+msgid "__ File-Server-Connection_"
+msgstr ""
+
+#: usage.rst:435
+msgid ".. _File-Server-Connection:"
+msgstr ""
+
+#: usage.rst:437
+msgid ""
+"Server (connection) dialog:\n"
+"  This :term:`dialog` is widely used to setup a Tryton server connection.\n"
+"  This dialog shows the actual state of the client/server communication.\n"
+"  It also shows when there is no connection to a Tryton server at all.\n"
+"  The *Change* button opens a dialog for connection details:"
+msgstr ""
+
+#: usage.rst:443
+msgid ""
+"  * Server: Network address or IP number of the Tryton server (protocols\n"
+"    are not supported)\n"
+"  * Port: Port where the Tryton server listens."
+msgstr ""
+
+#: usage.rst:447
+msgid ""
+".. note:: If there is no connection to a Tryton server, many items in menu "
+"bar\n"
+"   and tool bar are deactivated."
+msgstr ""
+
+#: usage.rst:451
+msgid ""
+"User\n"
+"^^^^\n"
+"This menu bar item controls the preferences of the actual user and connects\n"
+"to the *request system* in Tryton."
+msgstr ""
+
+#: usage.rst:456
+msgid ".. _Menu-User-Preferences:"
+msgstr ""
+
+#: usage.rst:458
+msgid ""
+"Preferences...\n"
+"  A preference dialog opens, where the actual user can show and edit his\n"
+"  personal settings. All user preferences are stored server side.\n"
+"  I.e. logging in with the same credentials from different computers\n"
+"  always restores the same preferences."
+msgstr ""
+
+#: usage.rst:464
+msgid ""
+"  * Name: Real name of the Tryton user.\n"
+"  * Password: Password of the Tryton user.\n"
+"  * Email: Email address of the Tryton user.\n"
+"  * Signature: Signature block for the Tryton user.\n"
+"  * Menu Action: Defines the action which is called as the\n"
+"    `main menu`_.\n"
+"  * Home Action: Defines the action which is called as `home action`__.\n"
+"  * Language: Language of the client interface.\n"
+"  * Timezone: The local timezone where the user/client resides.\n"
+"  * Groups: Displays the users membership to access groups."
+msgstr ""
+
+#: usage.rst:475
+msgctxt "usage.rst:475"
+msgid "__ Menu-Form-Home_"
+msgstr ""
+
+#: usage.rst:477
+msgid ".. _Menu-user-send-a-request:"
+msgstr ""
+
+#: usage.rst:479
+msgid ""
+"Send a Request\n"
+"  Opens a tab in :term:`form view` which enables the user to send\n"
+"  requests to other users of the same database."
+msgstr ""
+
+#: usage.rst:483
+msgid ".. _Menu-user-read-my-request:"
+msgstr ""
+
+#: usage.rst:485
+msgid ""
+"Read my Requests\n"
+"  Opens a tab in :term:`tree view` showing all requests related to the\n"
+"  actual user. Fields and actions of requests:"
+msgstr ""
+
+#: usage.rst:489
+msgid "  * On top"
+msgstr ""
+
+#: usage.rst:491
+msgid ""
+"    - From: User name of the sender\n"
+"    - To: User name of the request recipient\n"
+"    - References: Count of the attached references\n"
+"    - Subject: The subject of the request.\n"
+"    - Priority: An importance priority of the request."
+msgstr ""
+
+#: usage.rst:497
+msgid ""
+"      + High\n"
+"      + Low\n"
+"      + Normal"
+msgstr ""
+
+#: usage.rst:501
+msgid "  * *Request* tab"
+msgstr ""
+
+#: usage.rst:503
+msgid ""
+"    - Body: The textual part of the request.\n"
+"    - History: The history of past replies to this request."
+msgstr ""
+
+#: usage.rst:506
+msgid ""
+"      + From: Sender of the past request\n"
+"      + To: Receiver of the past request\n"
+"      + Summary: Summary of the body text of the past request."
+msgstr ""
+
+#: usage.rst:510
+msgid ""
+"  * Trigger Date: Defines time and date when the request will be sent\n"
+"    automatically.\n"
+"  * State: State of the request. Possible states for the request are:"
+msgstr ""
+
+#: usage.rst:514
+msgid ""
+"    - Draft: The request is saved in the system, but not posted.\n"
+"    - Waiting: The request is sent without receiving a reply message.\n"
+"    - Chatting: The message is replied or in discussion.\n"
+"    - Closed: The message is closed/fulfilled/answered."
+msgstr ""
+
+#: usage.rst:519
+msgctxt "usage.rst:519"
+msgid "  * Actions:"
+msgstr ""
+
+#: usage.rst:521
+msgid ""
+"    - Send: Sends the actual message\n"
+"    - Reply: Replies or answers the actual message\n"
+"    - close: Closes the actual message"
+msgstr ""
+
+#: usage.rst:525
+msgid "  * *References* tab"
+msgstr ""
+
+#: usage.rst:527
+msgid "    - References"
+msgstr ""
+
+#: usage.rst:529
+msgid ""
+"      + Reference: The reference type\n"
+"      + (Target): Defines an reference attached to the request."
+msgstr ""
+
+#: usage.rst:532
+msgid ""
+".. note:: When talking about requests, think of an internal system of\n"
+"   Tryton, which is very similar to email."
+msgstr ""
+
+#: usage.rst:536
+msgid ""
+"Form\n"
+"^^^^\n"
+"The form menu contains functions for the *actual form* in the tab which\n"
+"is open. Some operations are working with one record or with a selection of\n"
+":term:`records`. In :term:`form view` the actual record is selected for\n"
+"operations. In :term:`tree view` all selected records are used for "
+"operations."
+msgstr ""
+
+#: usage.rst:543
+msgid ".. _Menu-Form-New:"
+msgstr ""
+
+#: usage.rst:545
+msgid ""
+"New:\n"
+"  Creates a new record."
+msgstr ""
+
+#: usage.rst:548
+msgid ".. _Menu-Form-Save:"
+msgstr ""
+
+#: usage.rst:550
+msgid ""
+"Save:\n"
+"  Saves the actual record."
+msgstr ""
+
+#: usage.rst:553
+msgid ".. _Menu-Form-Duplicate:"
+msgstr ""
+
+#: usage.rst:555
+msgid ""
+"Duplicate:\n"
+"  Duplicates the content of the actual record in a newly created record."
+msgstr ""
+
+#: usage.rst:558
+msgid ".. _Menu-Form-Delete:"
+msgstr ""
+
+#: usage.rst:560
+msgid ""
+"Delete:\n"
+"  Deletes the selected or actual record."
+msgstr ""
+
+#: usage.rst:563
+msgid ".. _Menu-Form-Find:"
+msgstr ""
+
+#: usage.rst:565
+msgid ".. _search_widget:"
+msgstr ""
+
+#: usage.rst:567
+msgid ""
+"Find...:\n"
+"  Opens a :term:`dialog` for finding :term:`fields` with search criteria and\n"
+"  operators."
+msgstr ""
+
+#: usage.rst:571
+msgid ""
+"  * Search criteria: Defines the aspects to seek for.\n"
+"  * General search operators:"
+msgstr ""
+
+#: usage.rst:574
+msgid ""
+"    - Equals: Search for results which are exactly the same as the following\n"
+"      term.\n"
+"    - Does Not Equal: Search for results which are different from the "
+"following\n"
+"      term."
+msgstr ""
+
+#: usage.rst:579
+msgid "  * Additional search operators on numbers, amounts and strings:"
+msgstr ""
+
+#: usage.rst:581
+msgid ""
+"    - Contains: Search for results which contain the following term.\n"
+"    - Does Not Contain:  Search for results which do not include the\n"
+"      following term.\n"
+"    - Starts With: Search for results beginning with the following term.\n"
+"    - Ends With: Search for results ending with the following term."
+msgstr ""
+
+#: usage.rst:587
+msgid "  * Additional search operators for numbers and amounts:"
+msgstr ""
+
+#: usage.rst:589
+msgid ""
+"    - Is Between: Search for results inside a range (from - to).\n"
+"    - Is Not Between: Search for results outside a range (from - to).\n"
+"    - Is Different: Same as 'Does Not Equal', see above."
+msgstr ""
+
+#: usage.rst:593
+msgid "  * Advanced Search expander opens additional search criteria."
+msgstr ""
+
+#: usage.rst:595
+msgid ""
+"    - Limit: Limits the count of results.\n"
+"    - Offset: Skips a number of results and show only the following."
+msgstr ""
+
+#: usage.rst:598
+msgctxt "usage.rst:598"
+msgid "  * Actions:"
+msgstr ""
+
+#: usage.rst:600
+msgid ""
+"    - Find: Search for results of the given criteria.\n"
+"    - New: Create a new record (used when search was fruitless, to create\n"
+"      quickly a new record).\n"
+"    - Ok: Open the selected results.\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:606
+msgid ""
+".. note:: To search for deactivated records the *Active* search criteria "
+"must be\n"
+"        set to *No*."
+msgstr ""
+
+#: usage.rst:609
+msgid ".. _Menu-Form-Next:"
+msgstr ""
+
+#: usage.rst:611
+msgid ""
+"Next:\n"
+"  Goes to the next record in a list (sequence)."
+msgstr ""
+
+#: usage.rst:614
+msgid ".. _Menu-Form-Previous:"
+msgstr ""
+
+#: usage.rst:616
+msgid ""
+"Previous:\n"
+"  Goes to the last record in a list (sequence)."
+msgstr ""
+
+#: usage.rst:619
+msgid ".. _Menu-Form-Switch_View:"
+msgstr ""
+
+#: usage.rst:621
+msgid ""
+"Switch View:\n"
+"  Switches the actual view aspect to:"
+msgstr ""
+
+#: usage.rst:624
+msgid ""
+"  * :term:`Form view`\n"
+"  * :term:`Tree view`\n"
+"  * :term:`Graph view`"
+msgstr ""
+
+#: usage.rst:628
+msgid "  Not all views provide all aspects."
+msgstr ""
+
+#: usage.rst:630
+msgid ".. _Menu-Form-Menu:"
+msgstr ""
+
+#: usage.rst:632
+msgid ""
+"Menu:\n"
+"  Activates or reopens the menu tab."
+msgstr ""
+
+#: usage.rst:635
+msgid ".. _Menu-Form-Home:"
+msgstr ""
+
+#: usage.rst:637
+msgid ""
+"Home:\n"
+"  Opens a new `home`__ tab."
+msgstr ""
+
+#: usage.rst:640
+msgctxt "usage.rst:640"
+msgid "__ Menu-User-Preferences_"
+msgstr ""
+
+#: usage.rst:642
+msgid ".. _Menu-Form-Close:"
+msgstr ""
+
+#: usage.rst:644
+msgid ""
+"Close Tab:\n"
+"  Closes the current tab. A Request :term:`Dialog` opens in case of unsaved\n"
+"  changes."
+msgstr ""
+
+#: usage.rst:648
+msgid ".. _Menu-Form-Previous_Tab:"
+msgstr ""
+
+#: usage.rst:650
+msgid ""
+"Previous Tab:\n"
+"  Shows the previous (left) tab of the actual tab."
+msgstr ""
+
+#: usage.rst:653
+msgid ".. _Menu-Form-Next_Tab:"
+msgstr ""
+
+#: usage.rst:655
+msgid ""
+"Next Tab:\n"
+"  Shows the next (right) tab of the actual tab."
+msgstr ""
+
+#: usage.rst:658
+msgid ".. _Menu-Form-View_Logs:"
+msgstr ""
+
+#: usage.rst:660
+msgid ""
+"View Logs...:\n"
+"  Shows generic information of the current record."
+msgstr ""
+
+#: usage.rst:663
+msgid ".. _Menu-Form-Go_to_Record_ID:"
+msgstr ""
+
+#: usage.rst:665
+msgid ""
+"Go to Record ID...:\n"
+"  Opens specific record id in the current view."
+msgstr ""
+
+#: usage.rst:668
+msgid ".. _Menu-Form-Reload_Undo:"
+msgstr ""
+
+#: usage.rst:670
+msgid ""
+"Reload/Undo:\n"
+"  Reloads the content of the actual tab. Undoes changes, if save request for\n"
+"  the current record is denied."
+msgstr ""
+
+#: usage.rst:674
+msgid ".. _Menu-Form-Actions:"
+msgstr ""
+
+#: usage.rst:676
+msgid ""
+"Actions...:\n"
+"  Shows all actions for the actual view, model and record."
+msgstr ""
+
+#: usage.rst:679
+msgid ".. _Menu-Form-Print:"
+msgstr ""
+
+#: usage.rst:681
+msgid ""
+"Print...:\n"
+"  Shows all print actions for the actual view, model and record."
+msgstr ""
+
+#: usage.rst:684
+msgid ".. _Menu-Form-Export_Data:"
+msgstr ""
+
+#: usage.rst:686
+msgid ""
+"Export Data...:\n"
+"  Export of current/selected records into :term:`CSV`-file or open it in "
+"Excel."
+msgstr ""
+
+#: usage.rst:689
+msgid "  * Predefined exports"
+msgstr ""
+
+#: usage.rst:691
+msgid "    - Choose preferences of already saved exports."
+msgstr ""
+
+#: usage.rst:693
+msgid ""
+"  * All Fields: Fields available from the model.\n"
+"  * Fields to export: Defines the specific fields to export.\n"
+"  * Options:"
+msgstr ""
+
+#: usage.rst:697
+msgid ""
+"    - Save: Save export as a CSV file.\n"
+"    - Open: Open export in spread sheet application."
+msgstr ""
+
+#: usage.rst:700
+msgid ""
+"  * Add field names: Add a header row with field names to the export data.\n"
+"  * Actions:"
+msgstr ""
+
+#: usage.rst:703
+msgid ""
+"    - Add: Adds selected fields to *Fields to export*.\n"
+"    - Remove: Removes selected fields from *Fields to export*.\n"
+"    - Clear: Removes all fields from *Fields to export*.\n"
+"    - Save Export: Saves field mapping to a *Predefined export* with a name.\n"
+"    - Delete Export: Deletes a selected *Predefined export*.\n"
+"    - Ok: Exports the data (action depending on *Options*).\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:711
+msgid ".. _Menu-Form-Import_Data:"
+msgstr ""
+
+#: usage.rst:713
+msgid ""
+"Import Data...:\n"
+"  Import records from :term:`CSV`-file."
+msgstr ""
+
+#: usage.rst:716
+msgid ""
+"  * All Fields: Fields available in the model (required fields are marked "
+"up).\n"
+"  * Fields to Import: Exact sequence of all columns in the CSV file.\n"
+"  * File to Import: File :term:`dialog` for choosing a CSV file to import.\n"
+"  * CSV Parameters: Setup specific parameters for chosen CSV file."
+msgstr ""
+
+#: usage.rst:721
+msgid ""
+"    - Field Separator: Character which separates CSV fields.\n"
+"    - Text Delimiter: Character which encloses text in CSV.\n"
+"    - Encoding: :term:`Character encoding` of CSV file.\n"
+"    - Lines to Skip: Count of lines to skip a headline or another offset."
+msgstr ""
+
+#: usage.rst:726
+msgctxt "usage.rst:726"
+msgid "  * Actions:"
+msgstr ""
+
+#: usage.rst:728
+msgid ""
+"    - Add: Adds fields to *Fields to Import*.\n"
+"    - Remove: Deletes fields from *Fields to Import*.\n"
+"    - Clear: Removes all fields from *Fields to Import*.\n"
+"    - Auto-Detect: Tries to auto detect fields in the CSV *File to Import*.\n"
+"    - Ok: Proceeds the data import.\n"
+"    - Cancel"
+msgstr ""
+
+#: usage.rst:736
+msgid ""
+"Options\n"
+"^^^^^^^\n"
+"The Options menu sets up several visual and context depending preferences."
+msgstr ""
+
+#: usage.rst:741
+msgid ""
+"Toolbar\n"
+"+++++++"
+msgstr ""
+
+#: usage.rst:744
+msgid ".. _Menu-Options-Toolbar-Default:"
+msgstr ""
+
+#: usage.rst:746
+msgid ""
+"Default:\n"
+"  Shows labels and icons as defaulted in the GTK configuration."
+msgstr ""
+
+#: usage.rst:749
+msgid ".. _Menu-Options-Toolbar-Text_and_Icons:"
+msgstr ""
+
+#: usage.rst:751
+msgid ""
+"Text and Icons:\n"
+"  Shows labels and icons in the tool bar."
+msgstr ""
+
+#: usage.rst:754
+msgid ".. _Menu-Options-Toolbar-Icons:"
+msgstr ""
+
+#: usage.rst:756
+msgid ""
+"Icons:\n"
+"  Shows icons only in the tool bar."
+msgstr ""
+
+#: usage.rst:759
+msgid ".. _Menu-Options-Toolbar-Text:"
+msgstr ""
+
+#: usage.rst:761
+msgid ""
+"Text:\n"
+"  Shows labels only in the tool bar."
+msgstr ""
+
+#: usage.rst:764
+msgid ""
+"Menubar\n"
+"+++++++"
+msgstr ""
+
+#: usage.rst:767
+msgid ".. _Menu-Options-Menubar-Accelerators:"
+msgstr ""
+
+#: usage.rst:769
+msgid ""
+"Change Accelerators:\n"
+"  If checked, keyboard shortcuts can be defined. S. a. `mouse and keyboard "
+"use`_"
+msgstr ""
+
+#: usage.rst:772
+msgid ""
+"Mode\n"
+"++++"
+msgstr ""
+
+#: usage.rst:775
+msgid ".. _Menu-Options-Mode-Normal:"
+msgstr ""
+
+#: usage.rst:777
+msgid ""
+"Normal:\n"
+"  Shows the client in full feature mode."
+msgstr ""
+
+#: usage.rst:780
+msgid ".. _Menu-Options-Mode_PDA:"
+msgstr ""
+
+#: usage.rst:782
+msgid ""
+"PDA:\n"
+"  Shows the client in a condensed mode. The PDA (Personal Data Assistant) "
+"mode\n"
+"  hides the shortcut menu in tree views and the system status bar."
+msgstr ""
+
+#: usage.rst:786
+msgid ""
+"Form\n"
+"++++"
+msgstr ""
+
+#: usage.rst:789
+msgid ".. _Menu-Options-Form-Toolbar:"
+msgstr ""
+
+#: usage.rst:791
+msgid ""
+"Toolbar:\n"
+"  Checkbox to disable/enable the tool bar."
+msgstr ""
+
+#: usage.rst:794
+msgid ".. _Menu-Options-Form-Statusbar:"
+msgstr ""
+
+#: usage.rst:796
+msgid ""
+"Statusbar:\n"
+"  Checkbox to disable/enable the status bar."
+msgstr ""
+
+#: usage.rst:799
+msgid ".. _Menu-Options-Form-Save_Columns_Width:"
+msgstr ""
+
+#: usage.rst:801
+msgid ""
+"Save Width/Height:\n"
+"  Check box to enable saving of manually adjusted widths of columns in lists\n"
+"  and trees. Additionally saving of manually adjusted widths and heights of\n"
+"  dialog and popup windows."
+msgstr ""
+
+#: usage.rst:806
+msgid ".. _Menu-Options-Form-Spell_Checking:"
+msgstr ""
+
+#: usage.rst:808
+msgid ""
+"Spell Checking:\n"
+"  Check box to enable spell checking in fields."
+msgstr ""
+
+#: usage.rst:811
+msgid ".. _Menu-Options-Form-Tabs_Position:"
+msgstr ""
+
+#: usage.rst:813
+msgid ""
+"Tabs Position\n"
+"  Sets up the position of the :term:`tabs` inside :term:`views`:"
+msgstr ""
+
+#: usage.rst:816
+msgid ""
+"  * Top\n"
+"  * Left\n"
+"  * Right\n"
+"  * Bottom"
+msgstr ""
+
+#: usage.rst:821
+msgid ".. _Menu-Options-File_Actions:"
+msgstr ""
+
+#: usage.rst:823
+msgid ""
+"File Actions...:\n"
+"  Opens a dialog to set up file types for print and open actions.\n"
+"  Use ``\"%s\"`` as a placeholder for the document name."
+msgstr ""
+
+#: usage.rst:827
+msgid "  * Provided file types:"
+msgstr ""
+
+#: usage.rst:829
+msgid ""
+"    - ODT file: Open Office Writer Document\n"
+"    - PDF file: Adobes(TM) Portable Document Format\n"
+"    - PNG file: Portable Network Graphics format\n"
+"    - TXT file: Pure text file"
+msgstr ""
+
+#: usage.rst:834
+msgid "  * Provided actions"
+msgstr ""
+
+#: usage.rst:836
+msgid ""
+"    - Open: Setting up program system call which opens the specific file "
+"type.\n"
+"    - Print: Setting up program system call printing the specific file type."
+msgstr ""
+
+#: usage.rst:839
+msgid ".. _Menu-Options-Email:"
+msgstr ""
+
+#: usage.rst:841
+msgid ""
+"Email...:\n"
+"  Open a dialog to set up an email reader."
+msgstr ""
+
+#: usage.rst:844
+msgid ""
+"  * Command Line: The command line calling the email reader.\n"
+"  * Placeholders:"
+msgstr ""
+
+#: usage.rst:847
+msgid ""
+"    - ``${to}``: the destination email address\n"
+"    - ``${cc}``: the carbon copy email address\n"
+"    - ``${subject}``: the subject of the email\n"
+"    - ``${body}``: the body of the email\n"
+"    - ``${attachment}``: the attachment of the email"
+msgstr ""
+
+#: usage.rst:853
+msgid "  * Examples:"
+msgstr ""
+
+#: usage.rst:855
+msgid ""
+"    - Thunderbird 2 on Linux:\n"
+"      ``thunderbird -compose \"to='${to}',cc='${cc}',subject='${subject}',bod"
+"y='${body}',attachment='file://${attachment}'\"``"
+msgstr ""
+
+#: usage.rst:858
+msgid ""
+"    - Thunderbird 2 on Windows XP SP3:\n"
+"      ``\"C:\\\\Program Files\\\\Mozilla Thunderbird\\\\thunderbird.exe\" -compose t"
+"o=\"${to}\",cc=\"${cc}\",subject=\"${subject}\",body=\"${body}\",attachment=\"${attac"
+"hment}\"``"
+msgstr ""
+
+#: usage.rst:861
+msgid ""
+".. note:: The path of *Program Files* may vary dependent on the localization "
+"of your Windows version."
+msgstr ""
+
+#: usage.rst:863
+msgid ".. _Menu-Options-Save_Options:"
+msgstr ""
+
+#: usage.rst:865
+msgid ""
+"Save Options:\n"
+"  Saves all the options."
+msgstr ""
+
+#: usage.rst:869
+msgid ""
+"Plug-ins\n"
+"^^^^^^^^\n"
+"Plug-ins are client side add-ons for Tryton. There are some included plug-"
+"ins\n"
+"with the standard client."
+msgstr ""
+
+#: usage.rst:874
+msgid ""
+"Execute a Plug-in\n"
+"+++++++++++++++++\n"
+"Translate View:\n"
+"  Creates a translation table of the current view."
+msgstr ""
+
+#: usage.rst:879
+msgid ""
+"Print Workflow:\n"
+"  Creates a graph which shows the work flow of the current view."
+msgstr ""
+
+#: usage.rst:882
+msgid ""
+"Print Workflow (complex):\n"
+"  Like 'Print Workflow', with additional sub work flows inherited by the\n"
+"  current view."
+msgstr ""
+
+#: usage.rst:887
+msgid ""
+"Shortcuts\n"
+"^^^^^^^^^\n"
+"A collection of user defined shortcuts for specific resources."
+msgstr ""
+
+#: usage.rst:892
+msgid ""
+"Help\n"
+"^^^^"
+msgstr ""
+
+#: usage.rst:895
+msgid ".. _Menu-Help-Tips:"
+msgstr ""
+
+#: usage.rst:897
+msgid ""
+"Tips...:\n"
+"  Opens the tips dialog."
+msgstr ""
+
+#: usage.rst:900
+msgid ""
+"  * Display a new tip next time: If *checked*, the tips dialog will appear "
+"on\n"
+"    start.\n"
+"  * Previous: Shows last tip.\n"
+"  * Next: Shows next tip."
+msgstr ""
+
+#: usage.rst:905
+msgid ".. _Menu-Help-Keyboard_Shortcuts:"
+msgstr ""
+
+#: usage.rst:907
+msgid ""
+"Keyboard Shortcuts...:\n"
+"  Shows the information dialog of the predefined keyboard shortcut map."
+msgstr ""
+
+#: usage.rst:910
+msgid ""
+"  * Edition Widgets: Shows shortcuts working on text entries, relation "
+"entries\n"
+"    and date/time entries."
+msgstr ""
+
+#: usage.rst:913
+msgid ".. _Menu-Help-About:"
+msgstr ""
+
+#: usage.rst:915
+msgid ""
+"About...:\n"
+"  License, Contributors, Authors of Tryton"
+msgstr ""
+
+#: usage.rst:919
+msgid ""
+"Appendix\n"
+"********"
+msgstr ""
+
+#: usage.rst:923
+msgid ""
+"Configuration File\n"
+"^^^^^^^^^^^^^^^^^^"
+msgstr ""
+
+#: usage.rst:926
+msgctxt "usage.rst:926"
+msgid "::"
+msgstr ""
+
+#: usage.rst:928
+msgid ""
+"   ~/.config/tryton/x.y/tryton.conf      # General configuration\n"
+"   ~/.config/tryton/x.y/accel.map        # Accelerators configuration\n"
+"   ~/.config/tryton/x.y/known_hosts      # Fingerprints\n"
+"   ~/.config/tryton/x.y/ca_certs         # Certification Authority "
+"(http://docs.python.org/library/ssl.html#ssl-certificates)"
+msgstr ""

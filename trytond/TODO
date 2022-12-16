@@ -1,0 +1,7 @@
+- Add check on action groups when executing wizard
+- Allow to create fields from the client interface
+- Improve encoding of default properties
+- Add check for index and constraint name lenght (limit 31)
+- Change _constraint to pass a BrowseRecordList instead of a list of ids
+- Add order attribute on page tag
+- Find the on_change method for inherited fields
