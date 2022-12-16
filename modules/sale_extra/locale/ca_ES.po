@@ -1,0 +1,167 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.extra,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:sale.extra,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:sale.extra,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "field:sale.extra,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Import de la venda"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:sale.extra,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:sale.extra,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:sale.extra.line,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:sale.extra.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Gratis"
+
+msgctxt "field:sale.extra.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoria UdM del producte"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.extra.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Import de la venda"
+
+msgctxt "field:sale.extra.line,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "field:sale.extra.line,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:sale.extra.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Extres"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Extres de venda"
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Extres"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Extra de venda"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "Línia extra de venda"
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Line"
+msgstr "Línia extra"
+
+msgctxt "view:sale.extra.line:"
+msgid "Extra Lines"
+msgstr "Línies extres"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Línia de venta"
+
+msgctxt "view:sale.extra:"
+msgid "Extra"
+msgstr "Extra"
+
+msgctxt "view:sale.extra:"
+msgid "Extras"
+msgstr "Extres"
