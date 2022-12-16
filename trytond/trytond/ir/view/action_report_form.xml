@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <group id="checkboxes" colspan="2" col="-1">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+        <label name="translatable"/>
+        <field name="translatable" xexpand="0" width="25"/>
+        <label name="single"/>
+        <field name="single" xexpand="0" width="25"/>
+        <label name="direct_print"/>
+        <field name="direct_print" xexpand="0" width="25"/>
+    </group>
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="model"/>
+            <field name="model"/>
+            <label name="report_name"/>
+            <field name="report_name"/>
+            <label name="icon"/>
+            <field name="icon"/>
+            <newline/>
+            <label name="report_content"/>
+            <group col="-1" id="report_content">
+                <field name="report_content" xexpand="0"/>
+                <field name="report_content_html" string="Edit" widget="html" xexpand="0"/>
+            </group>
+            <label name="report"/>
+            <field name="report"/>
+            <label name="template_extension"/>
+            <field name="template_extension"/>
+            <label name="extension"/>
+            <field name="extension"/>
+        </page>
+        <page name="keywords">
+            <field name="keywords" colspan="4"/>
+        </page>
+        <page name="groups">
+            <field name="groups" colspan="4"/>
+        </page>
+    </notebook>
+</form>

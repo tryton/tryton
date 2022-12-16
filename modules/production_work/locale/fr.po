@@ -1,0 +1,271 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,work_center:"
+msgid "Work Center"
+msgstr "Poste de charge"
+
+msgctxt "field:production,works:"
+msgid "Works"
+msgstr "Travaux"
+
+msgctxt "field:production.routing.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Catégorie de Poste de charge"
+
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr "Cycles actifs"
+
+msgctxt "field:production.work,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:production.work,cycles:"
+msgid "Cycles"
+msgstr "Cycles"
+
+msgctxt "field:production.work,operation:"
+msgid "Operation"
+msgstr "Opération"
+
+msgctxt "field:production.work,production:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "field:production.work,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:production.work,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:production.work,work_center:"
+msgid "Work Center"
+msgstr "Poste de charge"
+
+msgctxt "field:production.work,work_center_category:"
+msgid "Work Center Category"
+msgstr "Catégorie de Poste de charge"
+
+msgctxt "field:production.work.center,category:"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:production.work.center,children:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:production.work.center,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:production.work.center,cost_method:"
+msgid "Cost Method"
+msgstr "Méthode de coût"
+
+msgctxt "field:production.work.center,cost_price:"
+msgid "Cost Price"
+msgstr "Prix de revient"
+
+msgctxt "field:production.work.center,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.work.center,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:production.work.center,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:production.work.center.category,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.work.cycle,cost:"
+msgid "Cost"
+msgstr "Coût"
+
+msgctxt "field:production.work.cycle,duration:"
+msgid "Duration"
+msgstr "Durée"
+
+msgctxt "field:production.work.cycle,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:production.work.cycle,work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "model:ir.action,name:act_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Catégories de poste de charge"
+
+msgctxt "model:ir.action,name:act_work_center_list"
+msgid "Work Centers"
+msgstr "Postes de charge"
+
+msgctxt "model:ir.action,name:act_work_center_tree"
+msgid "Work Centers"
+msgstr "Postes de charge"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Travaux"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
+msgid "Request"
+msgstr "Demandes"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
+msgid "Waiting"
+msgstr "En attentes"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+"Pour supprimer le travail « %(work)s », il doit être dans l'état « requête »"
+" ou « brouillon »."
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+"Pour terminer la production « %(production)s », le travail « %(travail)s » "
+"doit être terminé."
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
+"Impossible de trouver un poste de travail de la catégorie « %(category)s » "
+"dans « %(parent)s »."
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Effectuer"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr "Démarrer"
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr "Arrêter"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
+msgid "Work Center Categories"
+msgstr "Catégories de poste de charge"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_list"
+msgid "Work Centers"
+msgstr "Postes de charge"
+
+msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
+msgid "Work Centers"
+msgstr "Postes de charge"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Travaux"
+
+msgctxt "model:production.work,name:"
+msgid "Production Work"
+msgstr "Travail de production"
+
+msgctxt "model:production.work.center,name:"
+msgid "Work Center"
+msgstr "Poste de charge"
+
+msgctxt "model:production.work.center.category,name:"
+msgid "Work Center Category"
+msgstr "Catégorie de Poste de charge"
+
+msgctxt "model:production.work.cycle,name:"
+msgid "Work Cycle"
+msgstr "Cycle de travail"
+
+msgctxt "selection:production.work,state:"
+msgid "Done"
+msgstr "Terminé"
+
+msgctxt "selection:production.work,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:production.work,state:"
+msgid "Finished"
+msgstr "Fini"
+
+msgctxt "selection:production.work,state:"
+msgid "Request"
+msgstr "Demande"
+
+msgctxt "selection:production.work,state:"
+msgid "Running"
+msgstr "En cours"
+
+msgctxt "selection:production.work,state:"
+msgid "Waiting"
+msgstr "En attente"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Cycle"
+msgstr "Par Cycle"
+
+msgctxt "selection:production.work.center,cost_method:"
+msgid "Per Hour"
+msgstr "Par Heure"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Done"
+msgstr "Terminé"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:production.work.cycle,state:"
+msgid "Running"
+msgstr "En cours"
