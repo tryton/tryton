@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="method" expand="1"/>
+    <field name="next_call" widget="date" string="Next Call Date" optional="1"/>
+    <field name="next_call" widget="time" string="Next Call Time" optional="1"/>
+    <field name="interval_number"/>
+    <field name="interval_type"/>
+    <button name="run_once" string="Run Once" tree_invisible="1"/>
+</tree>
