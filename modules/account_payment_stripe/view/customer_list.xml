@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="party" expand="2"/>
+    <field name="stripe_account" expand="1"/>
+    <field name="stripe_customer_id"/>
+    <field name="stripe_token"/>
+    <button name="stripe_checkout"/>
+</tree>

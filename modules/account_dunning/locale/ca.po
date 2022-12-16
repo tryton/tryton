@@ -1,0 +1,282 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Procediment de reclamació per defecte"
+
+msgctxt ""
+"field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "Default Dunning Procedure"
+msgstr "Procediment de reclamació per defecte"
+
+msgctxt "field:account.dunning,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:account.dunning,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.dunning,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Import segona moneda"
+
+msgctxt "field:account.dunning,blocked:"
+msgid "Blocked"
+msgstr "Bloquejada"
+
+msgctxt "field:account.dunning,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.dunning,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.dunning,level:"
+msgid "Level"
+msgstr "Nivell"
+
+msgctxt "field:account.dunning,line:"
+msgid "Line"
+msgstr "Apunt"
+
+msgctxt "field:account.dunning,maturity_date:"
+msgid "Maturity Date"
+msgstr "Data venciment"
+
+msgctxt "field:account.dunning,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.dunning,procedure:"
+msgid "Procedure"
+msgstr "Procediment"
+
+msgctxt "field:account.dunning,second_currency:"
+msgid "Second Currency"
+msgstr "Segona moneda"
+
+msgctxt "field:account.dunning,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Decimals de la segona moneda"
+
+msgctxt "field:account.dunning,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.dunning.create.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.dunning.level,overdue:"
+msgid "Overdue"
+msgstr "Venciment"
+
+msgctxt "field:account.dunning.level,procedure:"
+msgid "Procedure"
+msgstr "Procediment"
+
+msgctxt "field:account.dunning.procedure,levels:"
+msgid "Levels"
+msgstr "Nivells"
+
+msgctxt "field:account.dunning.procedure,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.move.line,dunnings:"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "field:party.party,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Procediment de reclamació"
+
+msgctxt "field:party.party,dunning_procedures:"
+msgid "Dunning Procedures"
+msgstr "Procediments de reclamació"
+
+msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
+msgid "Dunning Procedure"
+msgstr "Procediment de reclamació"
+
+msgctxt "field:party.party.dunning_procedure,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "El procediment de reclamació per defecte pels nous clients."
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "El procediment de reclamació per defecte pels nous clients."
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr "Marqueu per bloquejar els propers nivells del procediment."
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr "Feu que el procediment de reclamació pertanyi a l'empresa."
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr "El apunt a cobrar a reclamar."
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr "Crea reclamacions fins a aquesta data."
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr "Quan s'ha d'aplicar el nivell."
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr "L'identificador principal del procediment de reclamació."
+
+msgctxt "model:account.configuration.default_dunning_procedure,name:"
+msgid "Account Configuration Default Dunning Procedure"
+msgstr "Configuració del procediment de reclamació per defecte"
+
+msgctxt "model:account.dunning,name:"
+msgid "Account Dunning"
+msgstr "Reclamació comptable"
+
+msgctxt "model:account.dunning.create.start,name:"
+msgid "Create Account Dunning"
+msgstr "Crea reclamació comptable"
+
+msgctxt "model:account.dunning.level,name:"
+msgid "Account Dunning Level"
+msgstr "Nivell de reclamació comptable"
+
+msgctxt "model:account.dunning.procedure,name:"
+msgid "Account Dunning Procedure"
+msgstr "Procediment de reclamació comptable"
+
+msgctxt "model:account.dunning.process.start,name:"
+msgid "Create Account Dunning"
+msgstr "Crea reclamació comptable"
+
+msgctxt "model:ir.action,name:act_dunning_form"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "model:ir.action,name:act_dunning_party"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "model:ir.action,name:act_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Procediments de reclamació"
+
+msgctxt "model:ir.action,name:wizard_dunning_create"
+msgid "Create Dunnings"
+msgstr "Crea reclamacions"
+
+msgctxt "model:ir.action,name:wizard_dunning_process"
+msgid "Process Dunning"
+msgstr "Processa reclamació"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr "Final"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr "L'apunt només pot ser utilitzat una vegada en les reclamacions."
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_create"
+msgid "Create Dunnings"
+msgstr "Crea reclamacions"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_form"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
+msgid "Dunning Procedures"
+msgstr "Procediments de reclamació"
+
+msgctxt "model:ir.ui.menu,name:menu_dunnings"
+msgid "Dunnings"
+msgstr "Reclamacions"
+
+msgctxt "model:party.party.dunning_procedure,name:"
+msgid "Party Dunning Procedure"
+msgstr "Procediment de reclamació per defecte"
+
+msgctxt "model:res.group,name:group_dunning"
+msgid "Dunning"
+msgstr "Reclamacions"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr "Final"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "view:account.configuration:"
+msgid "Dunning"
+msgstr "Reclamació"
+
+msgctxt "view:account.dunning.create.start:"
+msgid "Create Dunning for date"
+msgstr "Crea reclamació per data"
+
+msgctxt "view:account.dunning.process.start:"
+msgid "Process Dunning?"
+msgstr "Voleu processar la reclamació?"
+
+msgctxt "view:party.party:"
+msgid "Dunning"
+msgstr "Reclamació"
+
+msgctxt "wizard_button:account.dunning.create,start,create_:"
+msgid "Create"
+msgstr "Crea"
+
+msgctxt "wizard_button:account.dunning.create,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.dunning.process,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Processa"

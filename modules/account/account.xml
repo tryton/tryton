@@ -1,0 +1,807 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_account">
+            <field name="name">Account</field>
+        </record>
+        <record model="res.group" id="group_account_admin">
+            <field name="name">Account Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_account">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_account"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_account_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="account_icon">
+            <field name="name">tryton-account</field>
+            <field name="path">icons/tryton-account.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="account_open_icon">
+            <field name="name">tryton-account-open</field>
+            <field name="path">icons/tryton-account-open.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="account_close_icon">
+            <field name="name">tryton-account-close</field>
+            <field name="path">icons/tryton-account-close.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="account_block_icon">
+            <field name="name">tryton-account-block</field>
+            <field name="path">icons/tryton-account-block.svg</field>
+        </record>
+
+        <menuitem name="Financial" id="menu_account" sequence="2" icon="tryton-account"/>
+        <record model="ir.ui.menu-res.group" id="menu_account_group_account">
+            <field name="menu" ref="menu_account"/>
+            <field name="group" ref="group_account"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_account_group_account_admin">
+            <field name="menu" ref="menu_account"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <menuitem name="Configuration" parent="menu_account" id="menu_account_configuration" sequence="10" icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_account_configuration_group_account_admin">
+            <field name="menu" ref="menu_account_configuration"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <menuitem name="Templates" parent="menu_account_configuration"
+            id="menu_templates" sequence="5"/>
+        <menuitem name="General Account" parent="menu_account_configuration"
+            id="menu_general_account_configuration"/>
+        <menuitem name="Entries" parent="menu_account"
+            id="menu_entries" sequence="30"/>
+        <menuitem name="Charts" parent="menu_account"
+            id="menu_charts" sequence="40"/>
+        <menuitem name="Processing" parent="menu_account"
+            id="menu_processing" sequence="50"/>
+        <menuitem name="Reporting" parent="menu_account"
+            id="menu_reporting" sequence="60"/>
+
+        <record model="ir.ui.view" id="account_type_template_view_form">
+            <field name="model">account.account.type.template</field>
+            <field name="type">form</field>
+            <field name="name">account_type_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_type_template_view_list">
+            <field name="model">account.account.type.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_type_template_list</field>
+        </record>
+        <record model="ir.ui.view" id="account_type_template_view_tree">
+            <field name="model">account.account.type.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_type_template_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_type_template_tree">
+            <field name="name">Account Type Templates</field>
+            <field name="res_model">account.account.type.template</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_type_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_template_view_tree"/>
+            <field name="act_window" ref="act_account_type_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_type_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_template_view_form"/>
+            <field name="act_window" ref="act_account_type_template_tree"/>
+        </record>
+        <menuitem parent="menu_templates"
+            action="act_account_type_template_tree"
+            id="menu_account_type_template_tree"
+            sequence="10"/>
+
+
+        <record model="ir.ui.view" id="account_type_view_form">
+            <field name="model">account.account.type</field>
+            <field name="type">form</field>
+            <field name="name">account_type_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_type_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_type_tree</field>
+        </record>
+        <record model="ir.ui.view" id="account_type_view_list">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_type_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_type_tree">
+            <field name="name">Account Types</field>
+            <field name="res_model">account.account.type</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_view_tree"/>
+            <field name="act_window" ref="act_account_type_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_view_form"/>
+            <field name="act_window" ref="act_account_type_tree"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_type_tree" id="menu_account_type_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_type_list">
+            <field name="name">Account Types</field>
+            <field name="res_model">account.account.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_view_list"/>
+            <field name="act_window" ref="act_account_type_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_view_form"/>
+            <field name="act_window" ref="act_account_type_list"/>
+        </record>
+        <menuitem parent="menu_account_type_tree"
+            action="act_account_type_list" id="menu_account_type_list"
+            sequence="10"/>
+
+        <record model="ir.model.access" id="access_account_type">
+            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_type_account_admin">
+            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_type">
+            <field name="name">User in company</field>
+            <field name="model"
+                search="[('model', '=', 'account.account.type')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_type1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_type"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_template_view_form">
+            <field name="model">account.account.template</field>
+            <field name="type">form</field>
+            <field name="name">account_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_template_view_list">
+            <field name="model">account.account.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_template_list</field>
+        </record>
+        <record model="ir.ui.view" id="account_template_view_tree">
+            <field name="model">account.account.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_template_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_template_tree">
+            <field name="name">Account Templates</field>
+            <field name="res_model">account.account.template</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_template_view_tree"/>
+            <field name="act_window" ref="act_account_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_template_view_form"/>
+            <field name="act_window" ref="act_account_template_tree"/>
+        </record>
+        <menuitem parent="menu_templates"
+            action="act_account_template_tree" id="menu_account_template_tree"
+            sequence="20"/>
+        <record model="ir.model.access" id="access_account_template">
+            <field name="model" search="[('model', '=', 'account.account.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_deferral_view_form">
+            <field name="model">account.account.deferral</field>
+            <field name="type">form</field>
+            <field name="name">account_deferral_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_deferral_view_tree">
+            <field name="model">account.account.deferral</field>
+            <field name="type">tree</field>
+            <field name="name">account_deferral_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="create_chart_start_view_form">
+            <field name="model">account.create_chart.start</field>
+            <field name="type">form</field>
+            <field name="name">create_chart_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="create_chart_account_view_form">
+            <field name="model">account.create_chart.account</field>
+            <field name="type">form</field>
+            <field name="name">create_chart_account_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="create_chart_properties_view_form">
+            <field name="model">account.create_chart.properties</field>
+            <field name="type">form</field>
+            <field name="name">create_chart_properties_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_create_chart">
+            <field name="name">Create Chart of Accounts from Template</field>
+            <field name="wiz_name">account.create_chart</field>
+        </record>
+        <menuitem parent="menu_templates"
+            action="wizard_create_chart" id="menu_create_chart"
+            sequence="90"/>
+        <record model="ir.module.config_wizard.item"
+            id="config_wizard_item_chart_account">
+            <field name="action" ref="wizard_create_chart"/>
+        </record>
+
+        <record model="ir.ui.view" id="update_chart_start_view_form">
+            <field name="model">account.update_chart.start</field>
+            <field name="type">form</field>
+            <field name="name">update_chart_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="update_chart_succeed_view_form">
+            <field name="model">account.update_chart.succeed</field>
+            <field name="type">form</field>
+            <field name="name">update_chart_succeed_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_update_chart">
+            <field name="name">Update Chart of Accounts from Template</field>
+            <field name="wiz_name">account.update_chart</field>
+        </record>
+        <menuitem parent="menu_templates"
+            action="wizard_update_chart" id="menu_update_chart"
+            sequence="100"/>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">account.account</field>
+            <field name="type">form</field>
+            <field name="name">account_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">childs</field>
+            <field name="name">account_tree</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_list">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">account_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_tree">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_tree" id="menu_account_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_list">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <menuitem parent="menu_account_tree"
+            action="act_account_list" id="menu_account_list"
+            sequence="10"/>
+
+        <record model="ir.ui.view" id="account_view_list_balance_sheet">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">account_list_balance_sheet</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_balance_sheet">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="context_model">account.balance_sheet.context</field>
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field name="domain"
+                eval="[['OR', ('type', 'child_of', Eval('active_id'), 'parent'), ('debit_type', 'child_of', Eval('active_id'), 'parent')], ('type', '!=', None), ('closed', '!=', True)]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list_balance_sheet"/>
+            <field name="act_window" ref="act_account_balance_sheet"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_type">
+            <field name="name">Open Type</field>
+            <field name="wiz_name">account.account.open_type</field>
+            <field name="model">account.account.type</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_type_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="act_open_type"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_view_tree2">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="name">account_tree2</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_tree2">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="domain"
+                eval="[('parent', '=', None), ('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree2"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_chart">
+            <field name="name">Open Chart of Accounts</field>
+            <field name="wiz_name">account.open_chart</field>
+        </record>
+        <menuitem parent="menu_charts" action="act_open_chart"
+            icon="tryton-tree" id="menu_open_chart"/>
+
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_chart_start_view_form">
+            <field name="model">account.open_chart.start</field>
+            <field name="type">form</field>
+            <field name="name">open_chart_start_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_general_ledger">
+            <field name="name">General Ledger</field>
+            <field name="model">account.general_ledger.account</field>
+            <field name="report_name">account.general_ledger</field>
+            <field name="report">account/general_ledger.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_general_ledger_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="report_general_ledger"/>
+        </record>
+
+        <record model="ir.action.report" id="report_trial_balance">
+            <field name="name">Trial Balance</field>
+            <field name="model">account.general_ledger.account</field>
+            <field name="report_name">account.trial_balance</field>
+            <field name="report">account/trial_balance.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_trial_balance_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="report_trial_balance"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_account_view_list">
+            <field name="model">account.general_ledger.account</field>
+            <field name="type">tree</field>
+            <field name="name">general_ledger_account_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_general_ledger_account_form">
+            <field name="name">General Ledger - Accounts</field>
+            <field name="res_model">account.general_ledger.account</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_general_ledger_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_view_list"/>
+            <field name="act_window" ref="act_general_ledger_account_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_general_ledger_account_form"
+            id="menu_general_ledger" name="General Ledger" sequence="10"/>
+
+        <record model="ir.action.act_window" id="act_account_general_ledger">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.general_ledger.account</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+            <field
+                name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field
+                name="domain"
+                eval="['OR', ('type', 'child_of', Eval('active_id'), 'parent'), ('debit_type', 'child_of', Eval('active_id'), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_general_ledger_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_view_list"/>
+            <field name="act_window" ref="act_account_general_ledger"/>
+        </record>
+
+        <record model="ir.model.access" id="access_general_ledger_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_general_ledger_account_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_general_ledger_account">
+            <field name="name">User in company</field>
+            <field name="model"
+                search="[('model', '=', 'account.general_ledger.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_general_ledger_account1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_general_ledger_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_account_party_view_list">
+            <field name="model">account.general_ledger.account.party</field>
+            <field name="inherit" ref="general_ledger_account_view_list"/>
+            <field name="name">general_ledger_account_party_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_general_ledger_account_party_form">
+            <field name="name">General Ledger - Account Parties</field>
+            <field name="res_model">account.general_ledger.account.party</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('account', '=', Eval('active_id')), ('account', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_general_ledger_account_party_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_party_view_list"/>
+            <field name="act_window" ref="act_general_ledger_account_party_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_general_ledger_account_party_form_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="act_general_ledger_account_party_form"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_general_ledger_account_party_open">
+            <field name="name">Open General Ledger Account Parties</field>
+            <field name="wiz_name">account.general_ledger.account.party.open</field>
+        </record>
+        <record model="ir.action.keyword" id="act_general_ledger_account_party_open_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.general_ledger.account.party,-1</field>
+            <field name="action" ref="act_general_ledger_account_party_open"/>
+        </record>
+
+        <record model="ir.model.access" id="access_general_ledger_account_party">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_general_ledger_account_account_party">
+            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_general_ledger_account_party">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_general_ledger_account_party1">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_general_ledger_account_party"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_line_view_list">
+            <field name="model">account.general_ledger.line</field>
+            <field name="type">tree</field>
+            <field name="name">general_ledger_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_general_ledger_line_form">
+            <field name="name">General Ledger - Lines</field>
+            <field name="res_model">account.general_ledger.line</field>
+            <field name="context_model">account.general_ledger.line.context</field>
+            <field name="domain" eval="[('account', 'in', Eval('active_ids', []))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_general_ledger_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_line_view_list"/>
+            <field name="act_window" ref="act_general_ledger_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_general_ledger_line_form_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.general_ledger.account,-1</field>
+            <field name="action" ref="act_general_ledger_line_form"/>
+        </record>
+        <!-- TODO relate from account -->
+
+        <record model="ir.model.access" id="access_general_ledger_line">
+            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_general_ledger_line_account">
+            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_general_ledger_line">
+            <field name="name">User in company</field>
+            <field name="model"
+                search="[('model', '=', 'account.general_ledger.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_general_ledger_line1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_general_ledger_line"/>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_account_context_view_form">
+            <field name="model">account.general_ledger.account.context</field>
+            <field name="type">form</field>
+            <field name="name">general_ledger_account_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="general_ledger_line_context_view_form">
+            <field name="model">account.general_ledger.line.context</field>
+            <field name="inherit" ref="general_ledger_account_context_view_form"/>
+            <field name="name">general_ledger_line_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_balance_sheet_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">account_balance_sheet_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
+            <field name="name">Balance Sheet</field>
+            <field name="res_model">account.account.type</field>
+            <field name="context_model">account.balance_sheet.comparision.context</field>
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field name="domain"
+                eval="[('statement', '=', 'balance'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'balance'), ('parent.statement', '=', None)]]"
+                pyson="1"/>
+            <field name="context" eval="{'cumulate': True}" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_balance_sheet_view_tree"/>
+            <field name="act_window" ref="act_account_balance_sheet_tree"/>
+        </record>
+
+        <menuitem parent="menu_reporting" action="act_account_balance_sheet_tree"
+            id="menu_open_balance_sheet"/>
+
+        <record model="ir.ui.view" id="balance_sheet_context_view_form">
+            <field name="model">account.balance_sheet.context</field>
+            <field name="type">form</field>
+            <field name="name">balance_sheet_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="balance_sheet_comparision_context_view_form">
+            <field name="model">account.balance_sheet.comparision.context</field>
+            <field name="inherit" ref="balance_sheet_context_view_form"/>
+            <field name="name">balance_sheet_context_comparision_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_income_statement_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">account_income_statement_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_income_statement_tree">
+            <field name="name">Income Statement</field>
+            <field name="res_model">account.account.type</field>
+            <field name="context_model">account.income_statement.context</field>
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field name="domain"
+                eval="[('statement', '=', 'income'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'income'), ('parent.statement', '=', None)]]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_income_statement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_income_statement_view_tree"/>
+            <field name="act_window" ref="act_account_income_statement_tree"/>
+        </record>
+
+        <menuitem parent="menu_reporting" action="act_account_income_statement_tree"
+            id="menu_open_income_statement"/>
+
+        <record model="ir.ui.view" id="income_statement_context_view_form">
+            <field name="model">account.income_statement.context</field>
+            <field name="type">form</field>
+            <field name="name">income_statement_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="aged_balance_view_list">
+            <field name="model">account.aged_balance</field>
+            <field name="type">tree</field>
+            <field name="name">aged_balance_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aged_balance_list">
+            <field name="name">Aged Balance</field>
+            <field name="res_model">account.aged_balance</field>
+            <field name="context_model">account.aged_balance.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aged_balance_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aged_balance_view_list"/>
+            <field name="act_window" ref="act_aged_balance_list"/>
+        </record>
+
+        <menuitem parent="menu_reporting" action="act_aged_balance_list"
+            id="menu_aged_balance"/>
+
+        <record model="ir.model.access" id="access_aged_balance">
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aged_balance_account">
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_aged_balance">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_aged_balance1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_aged_balance"/>
+        </record>
+
+        <record model="ir.ui.view" id="aged_balance_context_view_form">
+            <field name="model">account.aged_balance.context</field>
+            <field name="type">form</field>
+            <field name="name">aged_balance_context_form</field>
+        </record>
+        <record model="ir.action.report" id="report_aged_balance">
+            <field name="name">Aged Balance</field>
+            <field name="model">account.aged_balance</field>
+            <field name="report_name">account.aged_balance</field>
+            <field name="report">account/aged_balance.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_aged_balance_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.aged_balance,-1</field>
+            <field name="action" ref="report_aged_balance"/>
+        </record>
+    </data>
+</tryton>
