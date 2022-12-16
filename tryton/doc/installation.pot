@@ -1,0 +1,79 @@
+#. extracted from installation.rst
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-06 19:37+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+
+#: installation.rst:1
+msgid ""
+"Installing tryton\n"
+"================="
+msgstr ""
+
+#: installation.rst:4
+msgid ""
+"Prerequisites\n"
+"-------------"
+msgstr ""
+
+#: installation.rst:7
+msgid ""
+" * Python 2.4 or later (http://www.python.org/)\n"
+" * pygtk 2.0 or later (http://www.pygtk.org/)\n"
+" * librsvg (http://librsvg.sourceforge.net/)\n"
+" * python-dateutil (http://labix.org/python-dateutil)\n"
+" * simplejson (http://undefined.org/python/#simplejson)\n"
+" * Optional: pytz (http://pytz.sourceforge.net/)"
+msgstr ""
+
+#: installation.rst:14
+msgid ""
+"Installation\n"
+"------------"
+msgstr ""
+
+#: installation.rst:17
+msgid ""
+"Once you've downloaded and unpacked a tryton source release, enter the\n"
+"directory where the archive was unpacked, and run:"
+msgstr ""
+
+#: installation.rst:20
+msgid "    ``python setup.py install``"
+msgstr ""
+
+#: installation.rst:22
+msgid ""
+"Note that you may need administrator/root privileges for this step, as\n"
+"this command will by default attempt to install tryton to the Python\n"
+"site-packages directory on your system."
+msgstr ""
+
+#: installation.rst:26
+msgid ""
+"For advanced options, please refer to the easy_install__ and/or the\n"
+"distutils__ documentation:"
+msgstr ""
+
+#: installation.rst:29
+msgid "__ http://peak.telecommunity.com/DevCenter/EasyInstall"
+msgstr ""
+
+#: installation.rst:31
+msgid "__ http://docs.python.org/inst/inst.html"
+msgstr ""
+
+#: installation.rst:33
+msgid ""
+"To use without installation, run ``bin/tryton`` from where the archive was\n"
+"unpacked."
+msgstr ""
