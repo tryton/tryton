@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms.
+-->
+<tryton>
+    <data>
+        <record model="res.group" id="group_purchase_requisition_approval">
+            <field name="name">Purchase Requisition Approval</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_purchase_requisition_approval">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+        <record model="res.group" id="group_purchase_requisition">
+            <field name="name">Purchase Requisition</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_purchase_requisition">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_requisition"/>
+        </record>
+
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_group_purchase_requisition">
+            <field name="menu" ref="purchase.menu_purchase"/>
+            <field name="group" ref="group_purchase_requisition"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_requisition_view_tree">
+            <field name="model">purchase.requisition</field>
+            <field name="type">tree</field>
+            <field name="name">purchase_requisition_tree</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_requisition_view_form">
+            <field name="model">purchase.requisition</field>
+            <field name="type">form</field>
+            <field name="name">purchase_requisition_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_requisition_form">
+            <field name="name">Purchase Requisitions</field>
+            <field name="res_model">purchase.requisition</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_requisition_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_requisition_view_tree"/>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_requisition_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_requisition_view_form"/>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_requisition_form_view1_domain_open">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_requisition_form_view1_domain_validated">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_requisition_form_view1_domain_sent">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain"
+                eval="[('state', 'in', ['approved', 'processing'])]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_requisition_form_view1_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_requisition_form"/>
+        </record>
+
+        <menuitem parent="purchase.menu_purchase" sequence="30"
+            action="act_purchase_requisition_form"
+            id="menu_purchase_requisition_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_requisition_group_purchase_requisition">
+            <field name="menu" ref="menu_purchase_requisition_form"/>
+            <field name="group" ref="group_purchase_requisition"/>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_open_purchase_request_form">
+            <field name="name">Requests</field>
+            <field name="res_model">purchase.request</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'purchase.requisition.line'), ('origin.id', 'in', Eval('active_ids'), 'purchase.requisition.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_open_purchase_request_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.requisition.line,-1</field>
+            <field name="action" ref="act_open_purchase_request_form"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_open_purchase_request_form_group_purchase_request">
+            <field name="action" ref="act_open_purchase_request_form"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_open_purchase_request_form2">
+            <field name="name">Requests</field>
+            <field name="res_model">purchase.request</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.requisition', '=', Eval('active_id'), 'purchase.requisition.line'), ('origin.requisition', 'in', Eval('active_ids'), 'purchase.requisition.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_open_purchase_request_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.requisition,-1</field>
+            <field name="action" ref="act_open_purchase_request_form2"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_open_purchase_request_form2_group_purchase_request">
+            <field name="action" ref="act_open_purchase_request_form2"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_requisition_line_view_form">
+            <field name="model">purchase.requisition.line</field>
+            <field name="type">form</field>
+            <field name="name">purchase_requisition_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_requisition_line_view_list">
+            <field name="model">purchase.requisition.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">purchase_requisition_line_list</field>
+        </record>
+        <record model="ir.ui.view" id="purchase_requisition_line_view_list_sequence">
+            <field name="model">purchase.requisition.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">purchase_requisition_line_list_sequence</field>
+        </record>
+
+        <record model="ir.sequence.type"
+            id="sequence_type_purchase_requisition">
+            <field name="name">Purchase Requisition</field>
+            <field name="code">purchase.requisition</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_requisition_group_admin">
+            <field name="sequence_type"
+                ref="sequence_type_purchase_requisition"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_requisition_group_purchase_admin">
+            <field name="sequence_type"
+                ref="sequence_type_purchase_requisition"/>
+            <field name="group" ref="purchase.group_purchase_admin"/>
+        </record>
+        <record model="ir.sequence" id="sequence_purchase_requisition">
+            <field name="name">Purchase Requisition</field>
+            <field name="code">purchase.requisition</field>
+        </record>
+
+        <record model="ir.model.button" id="requisition_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+
+        <record model="ir.model.button" id="requisition_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+
+        <record model="ir.model.button" id="requisition_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+
+        <record model="ir.model.button" id="requisition_approve_button">
+            <field name="name">approve</field>
+            <field name="string">Approve</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="requisition_approve_button_group_purchase_requisition_approval">
+            <field name="button" ref="requisition_approve_button"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+
+        <record model="ir.model.button" id="requisition_reject_button">
+            <field name="name">reject</field>
+            <field name="string">Reject</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="requisition_reject_button_group_purchase_requisition_approval">
+            <field name="button" ref="requisition_reject_button"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_requisition_default">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+         <record model="ir.rule" id="rule_requisition_default">
+            <field name="domain"
+                eval="[('employee', 'in', Eval('user', {}).get('employees', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_requisition_default"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_default_group_purchase_requisition">
+            <field name="rule_group"
+                ref="rule_group_requisition_default"/>
+            <field name="group" ref="group_purchase_requisition"/>
+        </record>
+
+        <!-- Give access to user who could trigger requisition work-flow -->
+        <record model="ir.rule.group" id="rule_group_requisition">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="global_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_group_purchase_requisition_approval">
+            <field name="rule_group" ref="rule_group_requisition"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_group_purchase_request">
+            <field name="rule_group" ref="rule_group_requisition"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_group_purchase">
+            <field name="rule_group" ref="rule_group_requisition"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_requisition_line_default">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+         <record model="ir.rule" id="rule_requisition_line_default">
+            <field name="domain"
+                eval="[('requisition.employee', 'in', Eval('user', {}).get('employees', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_requisition_line_default"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_line_default_group_purchase_requisition">
+            <field name="rule_group"
+                ref="rule_group_requisition_line_default"/>
+            <field name="group" ref="group_purchase_requisition"/>
+        </record>
+
+        <!-- Give access to user who could trigger requisition work-flow -->
+        <record model="ir.rule.group" id="rule_group_requisition_line">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="global_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_line_group_purchase_requisition_approval">
+            <field name="rule_group" ref="rule_group_requisition_line"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_line_group_purchase_request">
+            <field name="rule_group" ref="rule_group_requisition_line"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_requisition_line_group_purchase">
+            <field name="rule_group" ref="rule_group_requisition_line"/>
+            <field name="group" ref="purchase.group_purchase"/>
+        </record>
+
+        <record model="ir.model.access" id="access_requisition">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_requisition_purchase_requisition">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="group" ref="group_purchase_requisition"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_requisition_purchase_requisition_approval">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+         <record model="ir.model.access"
+             id="access_requisition_purchase_request">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="group"
+                ref="purchase_request.group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_requisition_line">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_requisition_line_purchase_requisition">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="group" ref="group_purchase_requisition"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_requisition_line_purchase_requisition_approval">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_requisition_line_purchase_request">
+            <field name="model"
+                search="[('model', '=', 'purchase.requisition.line')]"/>
+            <field name="group"
+                ref="purchase_request.group_purchase_request"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view"
+            id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="name">configuration_form</field>
+            <field name="inherit" ref="purchase.purchase_configuration_view_form"/>
+        </record>
+    </data>
+</tryton>

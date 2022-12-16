@@ -1,0 +1,289 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.advance_payment_term.line:"
+msgid "Invalid formula \"%(formula)s\" with exception \"%(exception)s\"."
+msgstr "Ungültige Formel \"%(formula)s\" mit Fehlermeldung \"%(exception)s\"."
+
+msgctxt "error:stock.shipment.out:"
+msgid ""
+"The customer has not paid the required advance payment amount for the sale "
+"\"%(sale)s\"."
+msgstr ""
+"Der Kunde hat den geforderten Anzahlungsbetrag für den Verkauf \"%(sale)s\" "
+"nicht geleistet."
+
+msgctxt "field:sale.advance_payment.condition,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:sale.advance_payment.condition,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgid "Block Shipping"
+msgstr "Versand sperren"
+
+msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgid "Block Supply"
+msgstr "Beschaffung sperren"
+
+msgctxt "field:sale.advance_payment.condition,completed:"
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+msgctxt "field:sale.advance_payment.condition,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.advance_payment.condition,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.advance_payment.condition,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:sale.advance_payment.condition,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "Rechnungsfrist"
+
+msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "field:sale.advance_payment.condition,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:sale.advance_payment.condition,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:sale.advance_payment.condition,sale_company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.advance_payment.condition,sale_state:"
+msgid "Sale State"
+msgstr "Verkaufsstatus"
+
+msgctxt "field:sale.advance_payment.condition,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.advance_payment.condition,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.advance_payment_term,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:sale.advance_payment_term,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.advance_payment_term,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.advance_payment_term,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.advance_payment_term,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:sale.advance_payment_term,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.advance_payment_term,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:sale.advance_payment_term,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.advance_payment_term,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.advance_payment_term.line,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:sale.advance_payment_term.line,accounts:"
+msgid "Accounts"
+msgstr "Konten"
+
+msgctxt "field:sale.advance_payment_term.line,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "Zahlungsbedingung Anzahlung"
+
+msgctxt "field:sale.advance_payment_term.line,block_shipping:"
+msgid "Block Shipping"
+msgstr "Versand sperren"
+
+msgctxt "field:sale.advance_payment_term.line,block_supply:"
+msgid "Block Supply"
+msgstr "Beschaffung sperren"
+
+msgctxt "field:sale.advance_payment_term.line,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.advance_payment_term.line,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.advance_payment_term.line,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:sale.advance_payment_term.line,formula:"
+msgid "Formula"
+msgstr "Formel"
+
+msgctxt "field:sale.advance_payment_term.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "Rechnungsfrist"
+
+msgctxt "field:sale.advance_payment_term.line,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:sale.advance_payment_term.line,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.advance_payment_term.line,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.advance_payment_term.line.account,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:sale.advance_payment_term.line.account,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.advance_payment_term.line.account,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.advance_payment_term.line.account,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.advance_payment_term.line.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.advance_payment_term.line.account,line:"
+msgid "Line"
+msgstr "Position"
+
+msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:sale.advance_payment_term.line.account,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.advance_payment_term.line.account,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:sale.sale,advance_payment_conditions:"
+msgid "Advance Payment Conditions"
+msgstr "Anzahlungskonditionen"
+
+msgctxt "field:sale.sale,advance_payment_invoices:"
+msgid "Advance Payment Invoices"
+msgstr "Anzahlungsrechnungen"
+
+msgctxt "field:sale.sale,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "Zahlungsbedingung der Anzahlung"
+
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:sale.advance_payment_term.line,account:"
+msgid "Used for the line of advance payment invoice."
+msgstr "Wird für die Position der Anzahlungsrechnung verwendet."
+
+msgctxt "help:sale.advance_payment_term.line,block_shipping:"
+msgid "Check to prevent the packing of the shipment before advance payment."
+msgstr ""
+"Aktivieren, um das Packen der Lieferung vor einer Anzahlung zu verhindern."
+
+msgctxt "help:sale.advance_payment_term.line,block_supply:"
+msgid "Check to prevent any supply request before advance payment."
+msgstr "Aktivieren, um Bestellungen vor Eingang der Anzahlung zu verhindern."
+
+msgctxt "help:sale.advance_payment_term.line,description:"
+msgid "Used as description for the invoice line."
+msgstr "Wird für die Bezeichnung der Rechnungsposition verwendet."
+
+msgctxt "help:sale.advance_payment_term.line,formula:"
+msgid ""
+"A python expression used to compute the advance payment amount that will be evaluated with:\n"
+"- total_amount: The total amount of the sale.\n"
+"- untaxed_amount: The total untaxed amount of the sale."
+msgstr ""
+"Ein Python-Ausdruck um den Anzahlungsbetrag zu berechnen, der ausgewertet wird mit:\n"
+"- total_amount: Den Gesamtbetrag des Verkaufs.\n"
+"- untaxed_amount: Den Gesamtnettobetrag des Verkaufs."
+
+msgctxt "help:sale.advance_payment_term.line,invoice_delay:"
+msgid ""
+"Delta to apply on the sale date for the date of the advance payment invoice."
+msgstr ""
+"Zeitspanne für das Verkaufsdatum zum Bestimmen des Datums der "
+"Anzahlungsrechnung."
+
+msgctxt "model:ir.action,name:act_advance_invoice_form"
+msgid "Advance Invoices"
+msgstr "Anzahlungsrechnungen"
+
+msgctxt "model:ir.action,name:act_advance_payment_term_form"
+msgid "Advance Payment Terms"
+msgstr "Zahlungsbedingungen Anzahlung"
+
+msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
+msgid "Advance Payment Terms"
+msgstr "Zahlungsbedingungen Anzahlung"
+
+msgctxt "model:sale.advance_payment.condition,name:"
+msgid "Advance Payment Condition"
+msgstr "Anzahlungskondition"
+
+msgctxt "model:sale.advance_payment_term,name:"
+msgid "Advance Payment Term"
+msgstr "Zahlungsbedingung Anzahlung"
+
+msgctxt "model:sale.advance_payment_term.line,name:"
+msgid "Advance Payment Term Line"
+msgstr "Position Zahlungsbedingung Anzahlung"
+
+msgctxt "model:sale.advance_payment_term.line.account,name:"
+msgid "Advance Payment Term Line Account"
+msgstr "Konto Position Zahlungsbedingung Anzahlung"
