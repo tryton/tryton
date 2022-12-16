@@ -1,0 +1,12 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,consignment_party:"
+msgid "Consignment Party"
+msgstr "Tercero consignación"
+
+msgctxt "help:stock.location,consignment_party:"
+msgid "The party invoiced when consignment stock is used."
+msgstr ""
+"El tercero a facturar cuando se utiliza los movimientos de consignación."
