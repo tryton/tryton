@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,recommendable:"
+msgid "Recommendable"
+msgstr "Raccomandabile"
+
+msgctxt "field:product.template,recommendable:"
+msgid "Recommendable"
+msgstr "Raccomandabile"
+
+msgctxt "field:sale.configuration,product_recommendation_method:"
+msgid "Method"
+msgstr "Metodo"
+
+msgctxt "field:sale.configuration,product_recommendation_size:"
+msgid "Size"
+msgstr "Dimensione"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_method:"
+msgid "Product Recommendation Method"
+msgstr "Metodo di raccomandazione del prodotto"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_size:"
+msgid "Size"
+msgstr "Dimensione"
+
+msgctxt "field:sale.point.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Prodotti consigliati"
+
+msgctxt "field:sale.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Prodotti consigliati"
+
+msgctxt "model:sale.configuration.product_recommendation,name:"
+msgid "Product Recommendation"
+msgstr "Raccomandazione del prodotto"
+
+msgctxt "view:sale.configuration:"
+msgid "Product Recommendation"
+msgstr "Raccomandazione del prodotto"

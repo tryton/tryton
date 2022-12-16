@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="6">
+    <label name="point"/>
+    <field name="point"/>
+    <label name="previous_session"/>
+    <field name="previous_session"/>
+    <label name="next_session"/>
+    <field name="next_session"/>
+
+    <label name="start_amount"/>
+    <field name="start_amount"/>
+    <label name="balance"/>
+    <field name="balance"/>
+    <label name="end_amount"/>
+    <field name="end_amount"/>
+
+    <field name="payments" colspan="3"/>
+    <field name="transfers" colspan="3"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" col="-1" colspan="4">
+        <button name="open" icon="tryton-back"/>
+        <button name="close" icon="tryton-close"/>
+        <button name="post" icon="tryton-ok"/>
+    </group>
+</form>

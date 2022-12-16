@@ -1,0 +1,5 @@
+Sale Price List Module
+######################
+
+The sale price list module adds support for price list on sale.
+A price list can be set per party or as default.

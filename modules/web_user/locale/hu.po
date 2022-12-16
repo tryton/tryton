@@ -1,0 +1,180 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.user,email:"
+msgid "E-mail"
+msgstr "E-mail"
+
+msgctxt "field:web.user,email_token:"
+msgid "E-mail Token"
+msgstr ""
+
+msgctxt "field:web.user,email_valid:"
+msgid "E-mail Valid"
+msgstr "E-mail cím leellenőrizve"
+
+msgctxt "field:web.user,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt "field:web.user,password:"
+msgid "Password"
+msgstr "Jelszó"
+
+msgctxt "field:web.user,password_hash:"
+msgid "Password Hash"
+msgstr "Jelszó hash"
+
+msgctxt "field:web.user,reset_password_token:"
+msgid "Reset Password Token"
+msgstr ""
+
+msgctxt "field:web.user,reset_password_token_expire:"
+msgid "Reset Password Token Expire"
+msgstr ""
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr "Másodlagos ügyfelek"
+
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "field:web.user.authenticate.attempt,device_cookie:"
+msgid "Device Cookie"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,login:"
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgctxt "field:web.user.session,key:"
+msgid "Key"
+msgstr "Kulcs"
+
+msgctxt "field:web.user.session,user:"
+msgid "User"
+msgstr "Felhasználó"
+
+msgctxt "model:ir.action,name:act_user_form"
+msgid "Web Users"
+msgstr "Webáruház felhasználók"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_user_form_party"
+msgid "Web Users"
+msgstr "Webáruház felhasználók"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+msgctxt "model:ir.action,name:report_email_validation"
+msgid "Email Validation"
+msgstr "E-mail cím ellenőrzés"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "Nem lehet több aktív webes felhasználónak ugyanaz az e-mail címe."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "E-mail cím leellenőrzése"
+
+msgctxt "model:ir.ui.menu,name:menu_user_form"
+msgid "Web Users"
+msgstr "Webáruház felhasználók"
+
+msgctxt "model:web.user,name:"
+msgid "Web User"
+msgstr "Webáruház felhasználó"
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr ""
+
+msgctxt "model:web.user.authenticate.attempt,name:"
+msgid "Web User Authenticate Attempt"
+msgstr ""
+
+msgctxt "model:web.user.session,name:"
+msgid "Web User Session"
+msgstr ""
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "A gomb nem működik? Másolja be ezt a böngészőjébe:"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr ""
+"Ha nem Ön küldte ezt a kérés, akkor nyugodtan hagyja figyelmen kívül ezt az "
+"e-mailt."
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+msgctxt "report:web.user.email_reset_password:"
+msgid "The link will expire in [1:%(datetime)s]."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:web.user.email_reset_password:"
+msgid ""
+"We received a request to reset the password for your account: %(email)s"
+msgstr "Kaptunk egy kérést, hogy állítsuk vissza a felhasználója jelszavát,"
+
+msgctxt "report:web.user.email_validation:"
+msgid "%(email)s"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "A gomb nem működik? Másolja be ezt a böngészőjébe:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "E-mail cím ellenőrzés"
+
+msgctxt "report:web.user.email_validation:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Ha tévedésből kapta ezt az e-mailt, hagyja nyugodtan figyelmen kívül."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Just one more step.."
+msgstr "Csak még egy lépés.."
+
+msgctxt "report:web.user.email_validation:"
+msgid "Validate"
+msgstr "Ellenőrzés"
+
+msgctxt "view:web.user:"
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+msgctxt "view:web.user:"
+msgid "Validate E-mail"
+msgstr "E-mail cím leellenőrzése"
