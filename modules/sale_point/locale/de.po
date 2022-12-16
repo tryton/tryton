@@ -1,0 +1,682 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.gross_price,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:product.gross_price,gross_price:"
+msgid "Gross Price"
+msgstr "Bruttopreis"
+
+msgctxt "field:product.gross_price,template:"
+msgid "Template"
+msgstr "Artikelvorlage"
+
+msgctxt "field:product.product,gross_price:"
+msgid "Gross Price"
+msgstr "Bruttopreis"
+
+msgctxt "field:product.product,gross_prices:"
+msgid "Gross Prices"
+msgstr "Bruttopreise"
+
+msgctxt "field:product.template,gross_price:"
+msgid "Gross Price"
+msgstr "Bruttopreis"
+
+msgctxt "field:product.template,gross_prices:"
+msgid "Gross Prices"
+msgstr "Bruttopreise"
+
+msgctxt "field:sale.point,address:"
+msgid "Address"
+msgstr "Adresse"
+
+msgctxt "field:sale.point,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point,customer_location:"
+msgid "To Location"
+msgstr "Zu Lagerort"
+
+msgctxt "field:sale.point,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:sale.point,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.point,return_location:"
+msgid "Return Location"
+msgstr "Lagerort Rücknahme"
+
+msgctxt "field:sale.point,sequence:"
+msgid "Sequence"
+msgstr "Nummernkreis"
+
+msgctxt "field:sale.point,storage_location:"
+msgid "Storage Location"
+msgstr "Lagerort Warenabgabe"
+
+msgctxt "field:sale.point,tax_included:"
+msgid "Tax Included"
+msgstr "Steuer Inklusive"
+
+msgctxt "field:sale.point.cash.session,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "field:sale.point.cash.session,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.cash.session,end_amount:"
+msgid "End Amount"
+msgstr "Endbestand"
+
+msgctxt "field:sale.point.cash.session,next_session:"
+msgid "Next Session"
+msgstr "Nächste Session"
+
+msgctxt "field:sale.point.cash.session,payments:"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "field:sale.point.cash.session,point:"
+msgid "Point"
+msgstr "Point of Sale"
+
+msgctxt "field:sale.point.cash.session,previous_session:"
+msgid "Previous Session"
+msgstr "Vorherige Session"
+
+msgctxt "field:sale.point.cash.session,start_amount:"
+msgid "Start Amount"
+msgstr "Anfangsbestand"
+
+msgctxt "field:sale.point.cash.session,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.point.cash.session,transfers:"
+msgid "Transfers"
+msgstr "Geldtransits"
+
+msgctxt "field:sale.point.cash.session.relation,next:"
+msgid "Next"
+msgstr "Nächste"
+
+msgctxt "field:sale.point.cash.session.relation,previous:"
+msgid "Previous"
+msgstr "Vorherige"
+
+msgctxt "field:sale.point.cash.transfer,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:sale.point.cash.transfer,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.cash.transfer,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.cash.transfer,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.point.cash.transfer,move:"
+msgid "Move"
+msgstr "Buchungssatz"
+
+msgctxt "field:sale.point.cash.transfer,point:"
+msgid "Point"
+msgstr "Point of Sale"
+
+msgctxt "field:sale.point.cash.transfer,session:"
+msgid "Session"
+msgstr "Session"
+
+msgctxt "field:sale.point.cash.transfer,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.point.cash.transfer,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:sale.point.cash.transfer.type,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:sale.point.cash.transfer.type,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.cash.transfer.type,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:sale.point.cash.transfer.type,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.point.payment,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:sale.point.payment,cash:"
+msgid "Cash"
+msgstr "Barzahlung"
+
+msgctxt "field:sale.point.payment,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.payment,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.payment,method:"
+msgid "Method"
+msgstr "Methode"
+
+msgctxt "field:sale.point.payment,point:"
+msgid "Point"
+msgstr "Point of Sale"
+
+msgctxt "field:sale.point.payment,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:sale.point.payment,sale_state:"
+msgid "Sale State"
+msgstr "Verkaufsstatus"
+
+msgctxt "field:sale.point.payment,session:"
+msgid "Session"
+msgstr "Session"
+
+msgctxt "field:sale.point.payment.method,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:sale.point.payment.method,cash:"
+msgid "Cash"
+msgstr "Barzahlung"
+
+msgctxt "field:sale.point.payment.method,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.payment.method,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.point.sale,amount_paid:"
+msgid "Paid"
+msgstr "Bezahlt"
+
+msgctxt "field:sale.point.sale,amount_to_pay:"
+msgid "To Pay"
+msgstr "Zu Zahlen"
+
+msgctxt "field:sale.point.sale,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.sale,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.sale,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.point.sale,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:sale.point.sale,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:sale.point.sale,move:"
+msgid "Move"
+msgstr "Buchungssatz"
+
+msgctxt "field:sale.point.sale,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.point.sale,payments:"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "field:sale.point.sale,point:"
+msgid "Point"
+msgstr "Point of Sale"
+
+msgctxt "field:sale.point.sale,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.point.sale,total:"
+msgid "Total"
+msgstr "Gesamt"
+
+msgctxt "field:sale.point.sale,total_tax:"
+msgid "Total Tax"
+msgstr "Steuer Gesamt"
+
+msgctxt "field:sale.point.sale.line,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:sale.point.sale.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.point.sale.line,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.point.sale.line,moves:"
+msgid "Moves"
+msgstr "Warenbewegungen"
+
+msgctxt "field:sale.point.sale.line,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:sale.point.sale.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.point.sale.line,sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "field:sale.point.sale.line,sale_state:"
+msgid "Sale State"
+msgstr "Verkaufsstatus"
+
+msgctxt "field:sale.point.sale.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:sale.point.sale.line,unit_gross_price:"
+msgid "Unit Gross Price"
+msgstr "Bruttoeinzelpreis"
+
+msgctxt "field:sale.point.sale.line,unit_list_price:"
+msgid "Unit List Price"
+msgstr "Listeneinzelpreis"
+
+msgctxt "field:sale.point.sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+msgctxt "help:product.product,gross_price:"
+msgid "The price with default tax included."
+msgstr "Der Preis inklusive der Standardsteuern."
+
+msgctxt "help:product.template,gross_price:"
+msgid "The price with default tax included."
+msgstr "Der Preis inklusive der Standardsteuern."
+
+msgctxt "help:sale.point,customer_location:"
+msgid "The location where goods are put when sold."
+msgstr "Der Lagerort in den die Waren beim Verkauf umgelagert werden."
+
+msgctxt "help:sale.point,return_location:"
+msgid ""
+"The location where goods are put when returned.\n"
+"If empty the storage location is used."
+msgstr ""
+"Der Lagerort in den die Waren bei einer Rücknahme eingelagert werden.\n"
+"Leer lassen, um den Lagerort der Warenabgabe zu verwenden."
+
+msgctxt "help:sale.point,storage_location:"
+msgid "The location from where goods are taken when sold."
+msgstr "Der Lagerort aus dem die Waren beim Verkauf entnommen werden."
+
+msgctxt "help:sale.point,tax_included:"
+msgid "Check if unit Price includes tax."
+msgstr "Aktivieren, wenn der Einzelpreis inklusive Steuern ist."
+
+msgctxt "model:ir.action,name:act_cash_session_form"
+msgid "POS Cash Sessions"
+msgstr "Point of Sale Sessions"
+
+msgctxt "model:ir.action,name:act_cash_transfer_type_form"
+msgid "POS Cash Transfer Types"
+msgstr "Point of Sale Geldtransitarten"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "POS Payment Methods"
+msgstr "Point of Sale Zahlungsarten"
+
+msgctxt "model:ir.action,name:act_point_form"
+msgid "Points of Sale"
+msgstr "Points of Sale"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "POS Sales"
+msgstr "Point of Sale"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay POS Sale"
+msgstr "Zahlung Point of Sale Verkauf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_closed"
+msgid "Closed"
+msgstr "Abgeschlossen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_cash_session_form_domain_open"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_done"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_open"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt "model:ir.message,text:msg_cash_session_delete_open"
+msgid "To delete session \"%(session)s\" you must re-open it."
+msgstr ""
+"Session \"%(session)s\" muss zuerst geöffnet werden bevor sie gelöscht "
+"werden kann."
+
+msgctxt "model:ir.message,text:msg_cash_session_previous_unique"
+msgid "A session can be used as previous only once."
+msgstr "Eine Session kann nur einmal als vorherige Session verwendet werden."
+
+msgctxt "model:ir.message,text:msg_cash_session_wrong_end_amount"
+msgid ""
+"To close session \"%(session)s\" you must change end amount to have "
+"%(amount)s instead of %(end_amount)s."
+msgstr ""
+"Damit die Session \"%(session)s\" abgeschlossen werden kann, muss ein "
+"Endbestand von %(amount)s anstatt %(end_amount)s erreicht werden."
+
+msgctxt "model:ir.message,text:msg_payment_delete_sale_open"
+msgid "To delete payment \"%(payment)s\" you must re-open sale \"%(sale)s\"."
+msgstr ""
+"Damit die Zahlung \"%(payment)s\" gelöscht werden kann, muss zuerst der "
+"Verkauf \"%(sale)s\" wieder geöffnet werden."
+
+msgctxt "model:ir.message,text:msg_payment_delete_session_open"
+msgid "To delete payment \"%(payment)s\" you must re-open session \"%(session)s\"."
+msgstr ""
+"Damit die Zahlung \"%(payment)s\" gelöscht werden kann, muss zuerst die "
+"Session \"%(session)s\" wieder geöffnet werden."
+
+msgctxt "model:ir.message,text:msg_payment_method_cash_unique"
+msgid "Each company can only have one cash payment method."
+msgstr "Es kann nur eine Barzahlungsart je Unternehmen geben."
+
+msgctxt "model:ir.message,text:msg_point_cash_session_open_unique"
+msgid "Each point of sale can only have one session open."
+msgstr "Ein Point of Sale kann nur eine offene Session haben."
+
+msgctxt "model:ir.message,text:msg_point_change_tax_included"
+msgid ""
+"You cannot change the point of sale's tax included flag because it has "
+"sales."
+msgstr ""
+"Die Markierung des Point of Sale für Steuern inklusive kann nicht geändert "
+"werden, weil mit ihm bereits Verkäufe erfasst wurden."
+
+msgctxt "model:ir.message,text:msg_sale_amount_paid_cancelled"
+msgid "The sale \"%(sale)s\" is cancelled so cannot have amount paid."
+msgstr ""
+"Der Verkauf \"%(sale)s\" wurde annulliert und darf daher keinen gezahlten "
+"Betrag erfasst haben."
+
+msgctxt "model:ir.message,text:msg_sale_amount_to_pay_done_paid"
+msgid "The sale \"%(sale)s\" is done so cannot have an amount to pay."
+msgstr ""
+"Der Verkauf \"%(sale)s\" ist erledigt und darf daher keinen zahlbaren Betrag"
+" haben."
+
+msgctxt "model:ir.message,text:msg_sale_delete_numbered"
+msgid "You cannot delete sale \"%(sale)s\" because it has a number."
+msgstr ""
+"Der Verkauf \"%(sale)s\" kann nicht gelöscht werden, da bereits eine Nummer "
+"vergeben wurde."
+
+msgctxt "model:ir.message,text:msg_transfer_delete_posted"
+msgid "You cannot delete transfer \"%(transfer)s\" because it is posted."
+msgstr ""
+"Der Geldtransfer \"%(transfer)s\" kann nicht gelöscht werden, weil er "
+"festgeschrieben ist."
+
+msgctxt "model:ir.message,text:msg_transfer_delete_session_open"
+msgid "To delete transfer \"%(transfer)s\" you must re-open session \"%(session)s\"."
+msgstr ""
+"Damit der Geldtransfer \"%(transfer)s\" gelöscht werden kann, muss erst die "
+"Session \"%(session)s\" wieder geöffnet werden."
+
+msgctxt "model:ir.model.button,confirm:cash_session_post_button"
+msgid "Are you sure you want to post the sessions?"
+msgstr "Die Session wirklich festschreiben?"
+
+msgctxt "model:ir.model.button,confirm:cash_transfer_post_button"
+msgid "Are you sure you want to post the transfer?"
+msgstr "Den Geldtransit wirklich festschreiben?"
+
+msgctxt "model:ir.model.button,confirm:sale_post_button"
+msgid "Are you sure you want to post the sales?"
+msgstr "Den Verkauf wirklich festschreiben?"
+
+msgctxt "model:ir.model.button,string:cash_session_close_button"
+msgid "Close"
+msgstr "Abschließen"
+
+msgctxt "model:ir.model.button,string:cash_session_open_button"
+msgid "Re-Open"
+msgstr "Wieder öffnen"
+
+msgctxt "model:ir.model.button,string:cash_session_post_button"
+msgid "Post"
+msgstr "Festschreiben"
+
+msgctxt "model:ir.model.button,string:cash_transfer_post_button"
+msgid "Post"
+msgstr "Festschreiben"
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "model:ir.model.button,string:sale_open_button"
+msgid "Re-Open"
+msgstr "Wieder öffnen"
+
+msgctxt "model:ir.model.button,string:sale_pay_button"
+msgid "Pay"
+msgstr "Zahlung erfassen"
+
+msgctxt "model:ir.model.button,string:sale_post_button"
+msgid "Post"
+msgstr "Festschreiben"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Ausführen"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_session_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_cash_transfer_type_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_point_sale_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "POS"
+msgstr "Point of Sale"
+
+msgctxt "model:ir.ui.menu,name:menu_cash_session_form"
+msgid "POS Cash Sessions"
+msgstr "Point of Sale Sessions"
+
+msgctxt "model:ir.ui.menu,name:menu_cash_transfer_type_form"
+msgid "POS Cash Transfer Types"
+msgstr "Point of Sale Geldtransitarten"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "POS Payment Methods"
+msgstr "Point of Sale Zahlungsarten"
+
+msgctxt "model:ir.ui.menu,name:menu_point_form"
+msgid "Points of Sale"
+msgstr "Points of Sale"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "POS Sales"
+msgstr "Point of Sale Verkauf"
+
+msgctxt "model:product.gross_price,name:"
+msgid "Product Gross Price"
+msgstr "Artikelbruttopreis"
+
+msgctxt "model:res.group,name:group_sale_point"
+msgid "POS"
+msgstr "Point of Sale"
+
+msgctxt "model:res.group,name:group_sale_point_posting"
+msgid "POS Posting"
+msgstr "Point of Sale Festschreibung"
+
+msgctxt "model:sale.point,name:"
+msgid "Point of Sale"
+msgstr "Point of Sale"
+
+msgctxt "model:sale.point.cash.session,name:"
+msgid "POS Cash Session"
+msgstr "Point of Sale Session"
+
+msgctxt "model:sale.point.cash.session.relation,name:"
+msgid "POS Session Relation"
+msgstr "Point of Sale Session Beziehung"
+
+msgctxt "model:sale.point.cash.transfer,name:"
+msgid "POS Cash Transfer"
+msgstr "Point of Sale Geldtransit"
+
+msgctxt "model:sale.point.cash.transfer.type,name:"
+msgid "POS Cash Transfer Type"
+msgstr "Point of Sale Geldtransitart"
+
+msgctxt "model:sale.point.payment,name:"
+msgid "POS Payment"
+msgstr "Point of Sale Zahlung"
+
+msgctxt "model:sale.point.payment.method,name:"
+msgid "POS Payment Method"
+msgstr "Point of Sale Zahlungsart"
+
+msgctxt "model:sale.point.sale,name:"
+msgid "POS Sale"
+msgstr "Point of Sale Verkauf"
+
+msgctxt "model:sale.point.sale.line,name:"
+msgid "POS Sale Line"
+msgstr "Point of Sale Verkaufsposition"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Closed"
+msgstr "Abgeschlossen"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Open"
+msgstr "Offen"
+
+msgctxt "selection:sale.point.cash.session,state:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "selection:sale.point.cash.transfer,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:sale.point.cash.transfer,state:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Open"
+msgstr "Offen"
+
+msgctxt "selection:sale.point.sale,state:"
+msgid "Posted"
+msgstr "Festgeschrieben"
+
+msgctxt "view:sale.point.sale.line:"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "view:sale.point.sale:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:sale.point.sale:"
+msgid "Payments"
+msgstr "Zahlungen"
+
+msgctxt "view:sale.point.sale:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:sale.point.sale.pay,payment,pay:"
+msgid "OK"
+msgstr "OK"
