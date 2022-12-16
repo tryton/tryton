@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="wizard_recall_deposit">
+            <field name="name">Recall Deposit</field>
+            <field name="wiz_name">account.invoice.recall_deposit</field>
+            <field name="model">account.invoice</field>
+        </record>
+
+        <record model="ir.ui.view" id="recall_deposit_start_view_form">
+            <field name="model">account.invoice.recall_deposit.start</field>
+            <field name="type">form</field>
+            <field name="name">recall_deposit_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+    </data>
+</tryton>
