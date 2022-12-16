@@ -1,0 +1,48 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.classification.dummy,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.classification.dummy,selectable:"
+msgid "Selectable"
+msgstr "Selezionabile"
+
+msgctxt "field:product.classification_tree.dummy,childs:"
+msgid "Children"
+msgstr "Figlio"
+
+msgctxt "field:product.classification_tree.dummy,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:product.classification_tree.dummy,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:product.classification_tree.dummy,selectable:"
+msgid "Selectable"
+msgstr "Selezionabile"
+
+msgctxt "field:product.product,classification:"
+msgid "Classification"
+msgstr "Classificazione"
+
+msgctxt "field:product.template,classification:"
+msgid "Classification"
+msgstr "Classificazione"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_classification"
+msgid "Classifications"
+msgstr "Classifications"
+
+msgctxt "model:product.classification.dummy,name:"
+msgid "Dummy Product Classification"
+msgstr "Classificazione d'esempio del prodotto"
+
+msgctxt "model:product.classification_tree.dummy,name:"
+msgid "Dummy Product Classification Tree"
+msgstr "Albero della classificazione d'esempio del prodotto"
