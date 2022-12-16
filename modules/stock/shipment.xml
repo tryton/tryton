@@ -1,0 +1,1078 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="type">form</field>
+            <field name="name">shipment_in_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_in_view_tree">
+            <field name="model">stock.shipment.in</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_in_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_in_form">
+            <field name="name">Supplier Shipments</field>
+            <field name="res_model">stock.shipment.in</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_received">
+            <field name="name">Received</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'received')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="20"
+            action="act_shipment_in_form" id="menu_shipment_in_form"/>
+
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="type">form</field>
+            <field name="name">shipment_in_return_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_in_return_view_tree">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_in_return_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_in_return_form">
+            <field name="name">Supplier Return Shipments</field>
+            <field name="res_model">stock.shipment.in.return</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_in_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_in_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_in_return_view_form"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_in_form" sequence="10"
+            action="act_shipment_in_return_form"
+            id="menu_shipment_in_return_form"/>
+
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="type">form</field>
+            <field name="name">shipment_out_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_out_view_tree">
+            <field name="model">stock.shipment.out</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_out_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_form">
+            <field name="name">Customer Shipments</field>
+            <field name="res_model">stock.shipment.out</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_shipment_out_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_picked">
+            <field name="name">Picked</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'picked')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_packed">
+            <field name="name">Packed</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain" eval="[('state', '=', 'packed')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="30"
+            action="act_shipment_out_form" id="menu_shipment_out_form"/>
+
+        <record model="ir.ui.view" id="shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
+            <field name="type">form</field>
+            <field name="name">shipment_internal_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_internal_view_tree">
+            <field name="model">stock.shipment.internal</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_internal_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_shipment_internal_form">
+            <field name="name">Internal Shipments</field>
+            <field name="res_model">stock.shipment.internal</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_internal_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_requests">
+            <field name="name">Requests</field>
+            <field name="sequence" eval="5"/>
+            <field name="domain" eval="[('state', '=', 'request')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_shipped">
+            <field name="name">Shipped</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'shipped')]" pyson="1"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="35"
+                  action="act_shipment_internal_form"
+                  id="menu_shipment_internal_form"/>
+
+        <record model="ir.ui.view" id="shipment_out_return_view_form">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="type">form</field>
+            <field name="name">shipment_out_return_form</field>
+        </record>
+        <record model="ir.ui.view" id="shipment_out_return_view_tree">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="type">tree</field>
+            <field name="name">shipment_out_return_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_out_return_form">
+            <field name="name">Customer Return Shipments</field>
+            <field name="res_model">stock.shipment.out.return</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="shipment_out_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_shipment_out_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="shipment_out_return_view_form"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_received">
+            <field name="name">Received</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'received')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="10"
+            action="act_shipment_out_return_form"
+            id="menu_shipment_out_return_form"/>
+
+        <record model="ir.action.report" id="report_shipment_out_delivery_note">
+            <field name="name">Delivery Note</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.delivery_note</field>
+            <field name="report">stock/delivery_note.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_delivery_note_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="report_shipment_out_delivery_note"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_out_picking_list">
+            <field name="name">Picking List</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.picking_list</field>
+            <field name="report">stock/picking_list.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_picking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="report_shipment_out_picking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_in_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.shipment.in</field>
+            <field name="report_name">stock.shipment.in.restocking_list</field>
+            <field name="report">stock/supplier_restocking_list.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_in_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="report_shipment_in_restocking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_out_return_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.shipment.out.return</field>
+            <field name="report_name">stock.shipment.out.return.restocking_list</field>
+            <field name="report">stock/customer_return_restocking_list.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_out_return_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="report_shipment_out_return_restocking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_shipment_internal">
+            <field name="name">Internal Shipment</field>
+            <field name="model">stock.shipment.internal</field>
+            <field name="report_name">stock.shipment.internal.report</field>
+            <field name="report">stock/internal_shipment.fodt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_shipment_internal_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="report_shipment_internal"/>
+        </record>
+
+        <!-- Sequence shipment out -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_out">
+            <field name="name">Customer Shipment</field>
+            <field name="code">stock.shipment.out</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_out">
+                <field name="name">Customer Shipment</field>
+                <field name="code">stock.shipment.out</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_shipment_in">
+            <field name="name">Supplier Shipment</field>
+            <field name="code">stock.shipment.in</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_in">
+                <field name="name">Supplier Shipment</field>
+                <field name="code">stock.shipment.in</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_shipment_internal">
+            <field name="name">Internal Shipment</field>
+            <field name="code">stock.shipment.internal</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_internal_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_internal"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_internal_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_internal"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_internal">
+                <field name="name">Internal Shipment</field>
+                <field name="code">stock.shipment.internal</field>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
+            <field name="name">Customer Return Shipment</field>
+            <field name="code">stock.shipment.out.return</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_return_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out_return"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_return_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out_return"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_out_return">
+                <field name="name">Customer Return Shipment</field>
+                <field name="code">stock.shipment.out.return</field>
+        </record>
+
+        <!-- Sequence shipment in return -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_in_return">
+                <field name="name">Supplier Return Shipment</field>
+                <field name="code">stock.shipment.in.return</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_return_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in_return"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_return_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in_return"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_shipment_in_return">
+                <field name="name">Supplier Return Shipment</field>
+                <field name="code">stock.shipment.in.return</field>
+        </record>
+
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree"/>
+            <field name="name">party_address_tree</field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
+            <field name="name">party_address_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_cancel_button_group_stock">
+            <field name="button" ref="shipment_in_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Reset to Draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_draft_button_group_stock">
+            <field name="button" ref="shipment_in_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_receive_button">
+            <field name="name">receive</field>
+            <field name="string">Receive</field>
+            <field name="confirm">Are you sure you want to receive the shipment?</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_receive_button_group_stock">
+            <field name="button" ref="shipment_in_receive_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_done_button">
+            <field name="name">done</field>
+            <field name="string">Done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_done_button_group_stock">
+            <field name="button" ref="shipment_in_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_cancel_button_group_stock">
+            <field name="button" ref="shipment_out_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_draft_button_group_stock">
+            <field name="button" ref="shipment_out_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_wait_button_group_stock">
+            <field name="button" ref="shipment_out_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_pick_button">
+            <field name="name">pick</field>
+            <field name="string">Pick</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_pick_button_group_stock">
+            <field name="button" ref="shipment_out_pick_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_pack_button">
+            <field name="name">pack</field>
+            <field name="string">Pack</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_pack_button_group_stock">
+            <field name="button" ref="shipment_out_pack_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_done_button">
+            <field name="name">done</field>
+            <field name="string">Done</field>
+            <field name="confirm">Are you sure you want to complete the shipment?</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_done_button_group_stock">
+            <field name="button" ref="shipment_out_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_assign_try_button_group_stock">
+            <field name="button" ref="shipment_out_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_out_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="string">Assign</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_out_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_out_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_internal">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_cancel_button_group_stock">
+            <field name="button" ref="shipment_internal_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_draft_button_group_stock">
+            <field name="button" ref="shipment_internal_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_wait_button_group_stock">
+            <field name="button" ref="shipment_internal_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_done_button">
+            <field name="name">done</field>
+            <field name="string">Done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_done_button_group_stock">
+            <field name="button" ref="shipment_internal_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_assign_try_button_group_stock">
+            <field name="button" ref="shipment_internal_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_internal_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="shipment_internal_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="string">Assign</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_internal_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_internal_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_ship_button">
+            <field name="name">ship</field>
+            <field name="string">Ship</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_cancel_button_group_stock">
+            <field name="button" ref="shipment_out_return_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_draft_button_group_stock">
+            <field name="button" ref="shipment_out_return_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_receive_button">
+            <field name="name">receive</field>
+            <field name="string">Receive</field>
+            <field name="confirm">Are you sure you want to receive the shipment?</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_receive_button_group_stock">
+            <field name="button" ref="shipment_out_return_receive_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_done_button">
+            <field name="name">done</field>
+            <field name="string">Done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_done_button_group_stock">
+            <field name="button" ref="shipment_out_return_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_in_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_cancel_button_group_stock">
+            <field name="button" ref="shipment_in_return_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_draft_button_group_stock">
+            <field name="button" ref="shipment_in_return_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_wait_button">
+            <field name="name">wait</field>
+            <field name="string">Wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_wait_button_group_stock">
+            <field name="button" ref="shipment_in_return_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_done_button">
+            <field name="name">done</field>
+            <field name="string">Done</field>
+            <field name="confirm">Are you sure you want to complete the shipment?</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_done_button_group_stock">
+            <field name="button" ref="shipment_in_return_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_assign_try_button_group_stock">
+            <field name="button" ref="shipment_in_return_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_in_return_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="shipment_in_return_assign_wizard_button">
+            <field name="name">assign_wizard</field>
+            <field name="string">Assign</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="shipment_in_return_assign_wizard_button_group_stock">
+            <field name="button" ref="shipment_in_return_assign_wizard_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_shipment_in">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_in">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_shipment_in"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_in_return">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_in_return">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_shipment_in_return"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_out">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_out">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_shipment_out"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_out_return">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_out_return">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_shipment_out_return"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_internal">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_internal">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_shipment_internal"/>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_assign_partial_view_form">
+            <field name="model">stock.shipment.assign.partial</field>
+            <field name="type">form</field>
+            <field name="name">shipment_assign_partial_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
+            <field name="name">Assign Supplier Return Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.in.return</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_out_assign">
+            <field name="name">Assign Customer Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
+            <field name="name">Assign Internal Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+
+    </data>
+</tryton>
