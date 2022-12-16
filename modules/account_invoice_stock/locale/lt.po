@@ -1,0 +1,32 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,stock_moves:"
+msgid "Stock Moves"
+msgstr "Sandėlio operacijos"
+
+msgctxt "field:account.invoice.line-stock.move,invoice_line:"
+msgid "Invoice Line"
+msgstr "Sąskaitos faktūros eilutė"
+
+msgctxt "field:account.invoice.line-stock.move,stock_move:"
+msgid "Stock Move"
+msgstr "Sandėlio operacija"
+
+msgctxt "field:stock.move,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Sąskaitos faktūros eilutės"
+
+#, fuzzy
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Sąskaitos faktūros eilutės"
+
+msgctxt "model:account.invoice.line-stock.move,name:"
+msgid "Invoice Line - Stock Move"
+msgstr "Sąskaitos faktūros eilutė - sandėlio operacija"
+
+msgctxt "view:account.invoice.line:"
+msgid "Stock"
+msgstr "Sandėlys"
