@@ -1,0 +1,1149 @@
+# Translations template for tryton.
+# Copyright (C) 2018 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "فایل پیکربندی جایگزین را مشخص کنید"
+
+msgid "development mode"
+msgstr "حالت پیشرفته"
+
+msgid "logging everything at INFO level"
+msgstr "گزارشگیری همه چیز در سطح اطلاعات"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "تعیین سطح گزارش : اشکال زدایی، اطلاعات، هشدار، خطا، بحرانی"
+
+msgid "specify the login user"
+msgstr "تعیین ورود به سیستم کاربر"
+
+msgid "specify the server hostname:port"
+msgstr "تعیین نام میزبان سرور : درگاه"
+
+#, python-format
+msgid "Unable to write config file %s."
+msgstr "قادر به نوشتن در فایل پیکربندی \"%s\" نیست."
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "قادر به تنظیم محلی: \"%s\" نیست"
+
+msgid ", "
+msgstr "، "
+
+msgid ",…"
+msgstr ",…"
+
+#, python-format
+msgid "%s (%s)"
+msgstr "\"%s\" (%s)"
+
+msgid "Select your action"
+msgstr "انتخاب اقدام شما"
+
+msgid "No action defined."
+msgstr "اقدامی تعریف نشده."
+
+msgid "By: "
+msgstr "توسط : "
+
+msgid "Selection"
+msgstr "انتخاب"
+
+msgid "Cancel"
+msgstr "انصراف"
+
+msgid "OK"
+msgstr "بلی"
+
+msgid "Your selection:"
+msgstr "انتخاب شما:"
+
+msgid "Select"
+msgstr "انتخاب"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Save As..."
+msgstr "ذخیره با نام..."
+
+msgid "Always ignore this warning."
+msgstr "همیشه این هشدار را نادیده بگیر."
+
+msgid "Do you want to proceed?"
+msgstr "آیا می خواهید پردازش شود؟"
+
+msgid "No"
+msgstr "خیر"
+
+msgid "Yes"
+msgstr "بله"
+
+msgid "Concurrency Exception"
+msgstr "همزمانی استثنا"
+
+msgid "This record has been modified while you were editing it."
+msgstr "این پرونده در حالی که شما در حال ویرایش آن بوید، اصلاح شد."
+
+msgid "Cancel saving"
+msgstr "لغو ذخیره کردن"
+
+msgid "Compare"
+msgstr "مقایسه"
+
+msgid "See the modified version"
+msgstr "نسخه اصلاح شده را ببینید"
+
+msgid "Write Anyway"
+msgstr "نوشتن بهرحال"
+
+msgid "Save your current version"
+msgstr "نسخه فعلی خود را ذخیره کنید"
+
+msgid "Close"
+msgstr "بستن"
+
+msgid "Application Error"
+msgstr "خطای برنامه"
+
+msgid "Report Bug"
+msgstr "گزارش اشکال(باگ)"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr "بررسی URL :  %s"
+
+msgid "Unable to check for new version"
+msgstr "قادر به بررسی نسخه جدید نیست"
+
+msgid "A new version is available!"
+msgstr "نسخه جدید در دسترس می باشد!"
+
+msgid "Download"
+msgstr "دانلود"
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>جستجو...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>ایجاد...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "قادر به جستجو برای تکمیل : \"%s\" نیست"
+
+msgid "Value"
+msgstr "مقدار"
+
+msgid "Displayed value"
+msgstr "مقدار نمایش داده شده"
+
+msgid "Format"
+msgstr "قالب"
+
+msgid "Display format"
+msgstr "فرمت نمایش"
+
+msgid "Open the calendar"
+msgstr "بازکردن تقویم"
+
+msgid "Date Format"
+msgstr "فرمت تاریخ"
+
+msgid "Displayed date format"
+msgstr "فرمت تاریخ تمایش داده شده"
+
+msgid "y"
+msgstr "y"
+
+msgid "True"
+msgstr "درست"
+
+msgid "t"
+msgstr "t"
+
+msgid "False"
+msgstr "غلط"
+
+msgid "Digits"
+msgstr ""
+
+msgid "The number of decimal"
+msgstr ""
+
+msgid "Edit..."
+msgstr "ویرایش..."
+
+msgid "Attachments..."
+msgstr "پیوست ها..."
+
+msgid "Notes..."
+msgstr "یادداشت ها..."
+
+msgid "Actions..."
+msgstr "اقدامات..."
+
+msgid "Relate..."
+msgstr "مرتبط..."
+
+msgid "Report..."
+msgstr "گزارش..."
+
+msgid "E-Mail..."
+msgstr "ایمیل..."
+
+msgid "Print..."
+msgstr "چاپ..."
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "Preferences..."
+msgstr "ظاهر برنامه..."
+
+msgid "Toolbar"
+msgstr "نوارابزار"
+
+msgid "Default"
+msgstr "پیش فرض"
+
+msgid "Text and Icons"
+msgstr "متن و آیکون ها"
+
+msgid "Text"
+msgstr "متن"
+
+msgid "Icons"
+msgstr "آیکون ها"
+
+msgid "Form"
+msgstr "فرم"
+
+msgid "Save Width/Height"
+msgstr "ذخیره عرض/ارتفاع"
+
+msgid "Save Tree State"
+msgstr "ذخیره حالت درختی"
+
+msgid "Fast Tabbing"
+msgstr "برگه کردن سریع"
+
+msgid "Spell Checking"
+msgstr "غلط ‌یاب املایی"
+
+msgid "PDA Mode"
+msgstr "حالت PDA"
+
+msgid "Search Limit..."
+msgstr "جستجو محدود..."
+
+msgid "Email..."
+msgstr "ایمیل..."
+
+msgid "Check Version"
+msgstr "بررسی نسخه"
+
+msgid "Options"
+msgstr "گزینه‌ها"
+
+msgid "Keyboard Shortcuts..."
+msgstr "میانبرهای صفحه کلید..."
+
+msgid "About..."
+msgstr "درباره..."
+
+msgid "Help"
+msgstr "راهنما"
+
+msgid "Quit"
+msgstr "خروج"
+
+msgid "No result found."
+msgstr "نتیجه ای پیدا نشد."
+
+msgid "Favorites"
+msgstr "علاقمندی ها"
+
+msgid "Manage..."
+msgstr "مدیریت..."
+
+msgid "Action"
+msgstr "اقدام"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"اقدام زیر نیاز به بستن همه برگه ها دارد.\n"
+"می خواهید ادامه دهید؟"
+
+msgid "Application Shortcuts"
+msgstr ""
+
+msgid "Global"
+msgstr ""
+
+msgid "Search menu"
+msgstr ""
+
+msgid "Toggle menu"
+msgstr ""
+
+#, fuzzy
+msgid "Previous tab"
+msgstr "_برگه قبلی"
+
+#, fuzzy
+msgid "Next tab"
+msgstr "_برگه بعدی"
+
+msgid "Shortcuts"
+msgstr ""
+
+msgid "Edition Shortcuts"
+msgstr ""
+
+msgid "Text Entries"
+msgstr ""
+
+msgid "Cut selected text"
+msgstr "برش متن انتخابی"
+
+msgid "Copy selected text"
+msgstr "کپی متن انتخابی"
+
+msgid "Paste copied text"
+msgstr "چسباندن متن کپی شده"
+
+msgid "Next entry"
+msgstr ""
+
+msgid "Previous entry"
+msgstr ""
+
+msgid "Relation Entries"
+msgstr ""
+
+msgid "Create new relation"
+msgstr "ایجاد رابطه جدید"
+
+msgid "Open/Search relation"
+msgstr "بازکردن / ارتباط جستجو"
+
+msgid "List Entries"
+msgstr ""
+
+#, fuzzy
+msgid "Switch view"
+msgstr "تعویض نمایه"
+
+msgid "Create/Select new line"
+msgstr ""
+
+msgid "Open relation"
+msgstr "بازکردن رابطه"
+
+msgid "Mark line for deletion/removal"
+msgstr ""
+
+msgid "Mark line for removal"
+msgstr ""
+
+msgid "Unmark line for deletion"
+msgstr "برای حذف علامت سطر را بردارید"
+
+msgid "List/Tree Shortcuts"
+msgstr ""
+
+msgid "Move Cursor"
+msgstr "حرکت مکان نما"
+
+#, fuzzy
+msgid "Move right"
+msgstr "حرکت به راست"
+
+#, fuzzy
+msgid "Move left"
+msgstr "حرکت به چپ"
+
+msgid "Move up"
+msgstr "حرکت به بالا"
+
+msgid "Move down"
+msgstr "حرکت به پایین"
+
+msgid "Move up of one page"
+msgstr "حرکت به بالای یک صفحه"
+
+msgid "Move down of one page"
+msgstr "حرکت به پایین یک صفحه"
+
+msgid "Move to top"
+msgstr "حرکت به بالا"
+
+msgid "Move to bottom"
+msgstr "حرکت به انتها"
+
+msgid "Move to parent"
+msgstr "انتقال به منبع"
+
+msgid "Select all"
+msgstr "انتخاب همه"
+
+msgid "Unselect all"
+msgstr "انتخاب نکردن همه"
+
+msgid "Select parent"
+msgstr "انتخاب منبع"
+
+msgid "Select/Activate current row"
+msgstr "انتخاب/فعال کردن ردیف جاری"
+
+msgid "Toggle selection"
+msgstr "انتخاب زنجیر"
+
+msgid "Expand/Collapse"
+msgstr "گشودن - بستن"
+
+msgid "Expand row"
+msgstr "گسترش ردیف"
+
+msgid "Collapse row"
+msgstr "بستن ردیف"
+
+msgid "Toggle row"
+msgstr "زنجیر ردیف"
+
+msgid "Collapse all rows"
+msgstr "بستن همه ردیف ها"
+
+msgid "Expand all rows"
+msgstr "گشودن همه ردیف ها"
+
+msgid "Close Tab"
+msgstr "بستن برگه"
+
+msgid "modularity, scalability and security"
+msgstr "مدولاربودن، مقیاس پذیری و امنیت"
+
+msgid "translator-credits"
+msgstr "پرویز همایون نژاد"
+
+#, python-format
+msgid "Attachments (%s)"
+msgstr "پیوستها (%s)"
+
+msgid "Profile Editor"
+msgstr "ویرایشگر پروفایل"
+
+msgid "Profile"
+msgstr "پروفایل"
+
+msgid "Add new profile"
+msgstr "افزودن پرفایل جدید"
+
+msgid "Remove selected profile"
+msgstr "حذف پرفایل انتخاب شده"
+
+msgid "Host:"
+msgstr "هاست:"
+
+msgid "Database:"
+msgstr "پایگاه داده:"
+
+msgid "Fetching databases list"
+msgstr "وارد کردن فهرست های پایگاه داده"
+
+msgid "Username:"
+msgstr "نام کاربری:"
+
+msgid "Incompatible version of the server"
+msgstr "نسخه ناسازگار سرور"
+
+msgid "Could not connect to the server"
+msgstr "نمی تواند به سرور متصل شود"
+
+msgid "Login"
+msgstr "ورود به سیستم"
+
+msgid "_Cancel"
+msgstr "_انصراف"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "لغو اتصال به سرور تریتون"
+
+msgid "C_onnect"
+msgstr "_ارتباط"
+
+msgid "Connect the Tryton server"
+msgstr "اتصال سرور تریتون"
+
+msgid "Profile:"
+msgstr "پروفایل:"
+
+msgid "Host / Database information"
+msgstr "اطلاعات میزبان / پایگاه داده"
+
+msgid "User name:"
+msgstr "نام کاربر:"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Email Program Settings"
+msgstr "تنظیمات برنامه ایمیل"
+
+msgid "Command Line:"
+msgstr "خط فرمان:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "مشروح متغیرهای موجود:"
+
+msgid "To:"
+msgstr "به:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "موضوع :"
+
+msgid "Body:"
+msgstr "بدنه:"
+
+msgid "Attachment:"
+msgstr "پیوست:"
+
+msgid "Add..."
+msgstr "افزودن..."
+
+#, python-format, fuzzy, python-format
+msgid "Attachment (%s)"
+msgstr "پیوستها (%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr ""
+
+msgid "You have to select one record."
+msgstr "شما باید یک پرونده را انتخاب کنید."
+
+msgid "ID:"
+msgstr "شناسه:"
+
+msgid "Creation User:"
+msgstr "ایجاد کاربر:"
+
+msgid "Creation Date:"
+msgstr "تاريخ ايجاد:"
+
+msgid "Latest Modification by:"
+msgstr "آخرین تغییرات بوسیله:"
+
+msgid "Latest Modification Date:"
+msgstr "تاریخ آخرین تغییرات:"
+
+msgid "Model:"
+msgstr "مدل:"
+
+msgid "Are you sure to remove this record?"
+msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
+
+msgid "Are you sure to remove those records?"
+msgstr "برای حذف این پرونده ها اطمینان کامل دارید؟"
+
+msgid "Records not removed."
+msgstr "پرونده ها حذف نشدند."
+
+msgid "Records removed."
+msgstr "پرونده ها حذف شدند."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "هم اکنون کار بر روی پرونده(ها) تکثیر شده انجام می شود."
+
+msgid "Record saved."
+msgstr "پرونده ذخیره شد."
+
+msgid " of "
+msgstr " از "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"این پرونده هنوز اصلاح نشده است.\n"
+"می‌خواهید آن را ذخیره کنید ؟"
+
+msgid "Launch action"
+msgstr "انجام اقدام"
+
+msgid "Relate"
+msgstr "مرتبط"
+
+msgid "Open related records"
+msgstr "بازکردن پرونده های مرتبط"
+
+msgid "Report"
+msgstr "گزارش"
+
+msgid "Open report"
+msgstr "باز کردن گزارش"
+
+msgid "E-Mail"
+msgstr "ایمیل"
+
+msgid "E-Mail report"
+msgstr "گزارش ایمیل"
+
+msgid "Print"
+msgstr "چاپ"
+
+msgid "Print report"
+msgstr "چاپ گزارش"
+
+msgid "_Copy URL"
+msgstr "_رونوشت URL"
+
+msgid "Copy URL into clipboard"
+msgstr "کپی URL درون کلیپبورد"
+
+msgid "Unknown"
+msgstr "نامعلوم"
+
+msgid "Limit"
+msgstr "محدود"
+
+msgid "Search Limit Settings"
+msgstr "تنظیمات جستجو محدود"
+
+msgid "Limit:"
+msgstr "محدودیت:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr "یادداشت ها(%s)"
+
+msgid "Preferences"
+msgstr "ظاهر برنامه"
+
+msgid "Edit User Preferences"
+msgstr "ویرایش ظاهر برنامه کاربر"
+
+msgid "Preference"
+msgstr "ظاهر"
+
+msgid "Revision"
+msgstr "تجدید نظر"
+
+msgid "Select a revision"
+msgstr "انتخاب یک تجدید نظر"
+
+msgid "Revision:"
+msgstr "تجدید نظر:"
+
+msgid "_Switch View"
+msgstr "_تعویض نمایه"
+
+msgid "Switch View"
+msgstr "تعویض نمایه"
+
+msgid "_Previous"
+msgstr "_قبلی"
+
+msgid "Previous Record"
+msgstr "پرونده قبلی"
+
+msgid "_Next"
+msgstr "_بعدی"
+
+msgid "Next Record"
+msgstr "پرونده بعدی"
+
+msgid "_Search"
+msgstr "_جستجو"
+
+msgid "_New"
+msgstr "_جدید"
+
+msgid "Create a new record"
+msgstr "ایجاد پرونده جدید"
+
+msgid "_Save"
+msgstr "_ذخیره"
+
+msgid "Save this record"
+msgstr "ذخیره این پرونده"
+
+msgid "_Reload/Undo"
+msgstr "_بارگیری مجدد / واگرد"
+
+msgid "Reload/Undo"
+msgstr "بارگیری مجدد / واگرد"
+
+msgid "_Duplicate"
+msgstr "_تکثیر"
+
+msgid "_Delete..."
+msgstr "_حذف..."
+
+msgid "View _Logs..."
+msgstr "_مشاهده گزارشات..."
+
+msgid "Show revisions..."
+msgstr "مشاهده تجدیدنظرها..."
+
+msgid "A_ttachments..."
+msgstr "_پیوست..."
+
+msgid "Add an attachment to the record"
+msgstr "پیوست را به پرونده اضافه کنید"
+
+msgid "_Notes..."
+msgstr "_یادداشت ها..."
+
+msgid "Add a note to the record"
+msgstr "یک یادداشت به پرونده اضافه کنید"
+
+msgid "_Actions..."
+msgstr "_اقدامات..."
+
+msgid "_Relate..."
+msgstr "_مرتبط..."
+
+msgid "_Report..."
+msgstr "_گزارش..."
+
+msgid "_E-Mail..."
+msgstr "_ایمیل..."
+
+msgid "_Print..."
+msgstr "_چاپ..."
+
+msgid "_Export Data..."
+msgstr "_صادرات داده ها..."
+
+msgid "_Import Data..."
+msgstr "_واردات داده ها..."
+
+msgid "Copy _URL..."
+msgstr "_رونوشت URL..."
+
+msgid "_Close Tab"
+msgstr "_بستن برگه"
+
+msgid "<b>All fields</b>"
+msgstr "<b>همه فیلد ها</b>"
+
+msgid "_Add"
+msgstr "_افزودن"
+
+msgid "_Remove"
+msgstr "_حذف"
+
+msgid "_Clear"
+msgstr "_پاکسازی"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>فیلد های انتخابی</b>"
+
+msgid "CSV Parameters"
+msgstr "مولفه های CSV"
+
+msgid "Delimiter:"
+msgstr "جدا کننده:"
+
+msgid "Quote char:"
+msgstr "کاراکترنقل قول:"
+
+msgid "Encoding:"
+msgstr "رمزگذاری:"
+
+msgid "Use locale format"
+msgstr ""
+
+msgid "Field name"
+msgstr "نام فیلد"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr "صادرکردن(CSV) : %s"
+
+msgid "_Save Export"
+msgstr "_ذخیره استخراج"
+
+msgid "_Delete Export"
+msgstr "_حذف استخراج"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>استخراج از پیش تعریف شده</b>"
+
+msgid "Name"
+msgstr "نام"
+
+msgid "Open"
+msgstr "باز کردن"
+
+#, fuzzy
+msgid "Add field names"
+msgstr "_اضافه کردن نام فیلدها"
+
+#, python-format
+msgid "%s (string)"
+msgstr "متنی %s"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "نام مدل %s"
+
+#, python-format
+msgid "%s (record name)"
+msgstr "نام پرونده %s"
+
+msgid "What is the name of this export?"
+msgstr "نام این فایل استخراجی چیست؟"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "بازنویسی %s تعاریف؟"
+
+#, python-format
+msgid "%d record saved."
+msgstr "%d پرونده ذخیره شد."
+
+#, python-format
+msgid "%d records saved."
+msgstr "%d پرونده های ذخیره شده."
+
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"عملیات ناموفق بود.\n"
+"پیام خطا:\n"
+"%s"
+
+msgid "Error"
+msgstr "خطا"
+
+msgid "Link"
+msgstr "پیوند"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "New"
+msgstr "جدید"
+
+msgid "Switch"
+msgstr "تعویض"
+
+msgid "Previous"
+msgstr "قبلی"
+
+msgid "Next"
+msgstr "بعدی"
+
+msgid "Add"
+msgstr "افزودن"
+
+msgid "Remove <Del>"
+msgstr "حذف <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "ایجاد یک پرونده جدید <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "حذف پرونده انتخابی <Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "بازگردانی فایل انتخابی <Ins>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr "وارد کردن (CSV) : %s"
+
+msgid "_Auto-Detect"
+msgstr "_شناسایی - خودکار"
+
+msgid "File to Import:"
+msgstr "فایل برای واردکردن:"
+
+msgid "Open..."
+msgstr "باز کردن..."
+
+msgid "Lines to Skip:"
+msgstr "چشم پوشی از سطرهای:"
+
+msgid "You must select an import file first."
+msgstr "شما باید ابتدا فایل ورودی را انتخاب کنید."
+
+msgid "Error opening CSV file"
+msgstr "خطا در بازگشایی فایل CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "خطای پردازش فایل واقع در فیلد : \"%s\"."
+
+#, python-format
+msgid "%d record imported."
+msgstr "%d پرونده وارد شد."
+
+#, python-format
+msgid "%d records imported."
+msgstr "%d پرونده ها وارد شدند."
+
+msgid "Search"
+msgstr "جستجو"
+
+#, python-format
+msgid "Search %s"
+msgstr "جستجو %s"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "قادر به حذف دستیار \"%s\" نیست"
+
+msgid "Wizard"
+msgstr "دستیار"
+
+msgid "ID"
+msgstr "شناسه"
+
+msgid "Creation User"
+msgstr "ایجاد کاربر"
+
+msgid "Creation Date"
+msgstr "تاریخ ایجاد"
+
+msgid "Modification User"
+msgstr "کاربر اصلاح کننده"
+
+msgid "Modification Date"
+msgstr "تاریخ اصلاح"
+
+#, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "قادربه دریافت حالت نمایش درختی نیست برای %s"
+
+msgid "Unable to set view tree state"
+msgstr "قادر به تنظیم حالت نمایش درختی نیست"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "با توجه به دامنه : \"%s\" معتبر نیست"
+
+#, python-format
+msgid "\"%s\" is required"
+msgstr "\"%s\" مورد نیاز است"
+
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "مقادیر \"%s\" معتبر نیستند"
+
+msgid "Pre-validation"
+msgstr "پیش-اعتبارسنجی"
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "اندازه تصویر"
+
+msgid "Width:"
+msgstr "عرض:"
+
+msgid "Height:"
+msgstr "ارتفاع:"
+
+msgid "PNG image (*.png)"
+msgstr "PNG image (*.png)"
+
+msgid "Save As"
+msgstr "ذخیره با نام"
+
+msgid "Image size too large."
+msgstr "اندازه تصویر بیش از حد بزرگ است."
+
+msgid "Copy"
+msgstr ""
+
+msgid "Paste"
+msgstr ""
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr "بازکردن فیلترها"
+
+msgid "Show bookmarks of filters"
+msgstr "نمایش بوک مارک های فیلترها"
+
+msgid "Remove this bookmark"
+msgstr "حذف این بوک مارک"
+
+msgid "Bookmark this filter"
+msgstr "بوک مارک این فیلتر"
+
+msgid "Show active records"
+msgstr "نمایش پرونده های فعال"
+
+msgid "Show inactive records"
+msgstr "نمایش پرونده های غیرفعال"
+
+msgid "Bookmark Name:"
+msgstr "نام بوک مارک :"
+
+msgid "Find"
+msgstr "یافتن"
+
+msgid "Today"
+msgstr "امروز"
+
+msgid "go back"
+msgstr "بازگشت"
+
+msgid "go forward"
+msgstr "برو جلو"
+
+msgid "previous year"
+msgstr "سال قبل"
+
+msgid "next year"
+msgstr "سال بعد"
+
+msgid "Day View"
+msgstr ""
+
+msgid "Week View"
+msgstr "نمایش هفته"
+
+msgid "Month View"
+msgstr "نمایش ماه"
+
+msgid "Week"
+msgstr "هفته"
+
+msgid "Select..."
+msgstr "انتخاب..."
+
+msgid "Clear"
+msgstr "پاک کردن"
+
+msgid "All files"
+msgstr "همه فایل ها"
+
+msgid "Show plain text"
+msgstr "نمایش متن ساده"
+
+msgid "Add value"
+msgstr "افزودن مقدار"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "حذف \"%s\""
+
+msgid "Images"
+msgstr "تصاویر"
+
+msgid "Add existing record"
+msgstr "افزودن پرونده موجود"
+
+msgid "Remove selected record"
+msgstr "حذف پرونده انتخابی"
+
+msgid "Open the record <F2>"
+msgstr "بازکردن پرونده <F2>"
+
+msgid "Clear the field <Del>"
+msgstr "پاکسازی فیلد <Del>"
+
+msgid "Search a record <F2>"
+msgstr "جستجوی یک پرونده <F2>"
+
+#, fuzzy
+msgid "Edit selected record"
+msgstr "ویرایش پرونده انتخابی <F2>"
+
+#, fuzzy
+msgid "Delete selected record"
+msgstr "حذف پرونده انتخابی"
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Bold"
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Underline"
+msgstr ""
+
+msgid "Align Left"
+msgstr ""
+
+msgid "Align Center"
+msgstr ""
+
+msgid "Align Right"
+msgstr ""
+
+msgid "Justify"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Select a color"
+msgstr "انتخاب یک رنگ"
+
+msgid "Choose a language"
+msgstr ""
+
+msgid "Translation"
+msgstr "ترجمه"
+
+msgid "Edit"
+msgstr "ویرایش"
+
+msgid "Fuzzy"
+msgstr "نامانوس"
+
+msgid "You need to save the record before adding translations."
+msgstr "قبل از اضافه کردن ترجمه ها شما باید پرونده را ذخیره کنید."
+
+msgid "No other language available."
+msgstr "هیچ زبان دیگری در دسترس نیست."
+
+msgid "Translate view"
+msgstr "نمایش ترجمه"
