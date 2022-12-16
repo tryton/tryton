@@ -1,0 +1,56 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.supply:"
+msgid "There are some late productions."
+msgstr "تأخیر در برخی از تولیدات وجود دارد."
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr "دوره عرضه"
+
+msgctxt "field:production.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:production.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:production.configuration.supply_period,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:production.configuration.supply_period,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "دوره عرضه"
+
+msgctxt "field:production.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:production.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "درخواست تولیدات"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "تولید"
+
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
+msgstr "پیکربندی تولید ؛ دوره عرضه"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "تولید"
