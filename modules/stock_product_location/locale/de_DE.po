@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:0"
+msgid "Default Locations"
+msgstr "Standardlagerorte"
+
+msgctxt "field:stock.product.location,location:0"
+msgid "Storage Location"
+msgstr "Lagerort"
+
+msgctxt "field:stock.product.location,product:0"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:stock.product.location,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.product.location,sequence:0"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+msgctxt "field:stock.product.location,warehouse:0"
+msgid "Warehouse"
+msgstr "Warenlager"
+
+msgctxt "model:stock.product.location,name:0"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:product.product:0"
+msgid "Default Locations"
+msgstr "Standardlagerorte"
+
+msgctxt "view:product.product:0"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:product.product:0"
+msgid "Product Locations"
+msgstr "Artikel Lagerorte"
+
+msgctxt "view:stock.product.location:0"
+msgid "Product Location"
+msgstr "Artikel Lagerort"
+
+msgctxt "view:stock.product.location:0"
+msgid "Product Locations"
+msgstr "Artikel Lagerorte"

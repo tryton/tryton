@@ -1,0 +1,1388 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.fiscalyear:0"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the fiscalyear"
+msgstr ""
+"U kunt de factuurreeks niet meer aanpassen als er in dit boekjaar al een "
+"factuur is geboekt."
+
+msgctxt "error:account.fiscalyear:0"
+msgid "You must have different invoice sequences per fiscal year!"
+msgstr "U moet per boekjaar verschillende factuurreeksen hebben!"
+
+msgctxt "error:account.invoice.credit_invoice:0"
+msgid "You can not credit with refund an invoice that is not opened!"
+msgstr "Alleen een openstaande factuur kunt u crediteren met terugbetaling!"
+
+msgctxt "error:account.invoice.credit_invoice:0"
+msgid "You can not credit with refund an invoice with payments!"
+msgstr ""
+"Een (gedeeltelijk) betaalde factuur kunt u niet crediteren met "
+"terugbetaling!"
+
+msgctxt "error:account.invoice.line:0"
+msgid "Line with \"line\" type must have an account!"
+msgstr "Regel met \"regel\" type moet een rekening hebben!"
+
+msgctxt "error:account.invoice.line:0"
+msgid "Line without \"line\" type must have an invoice!"
+msgstr "Een regel zonder \"regel\" moet een factuur hebben!"
+
+msgctxt "error:account.invoice.line:0"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"U kunt geen regels toevoegen aan een openstaande, betaalde of geannuleerde "
+"factuur!"
+
+msgctxt "error:account.invoice.line:0"
+msgid ""
+"You can not create invoice line\n"
+"with account with a different invoice company!"
+msgstr ""
+"U kunt geen factuurregel aanmaken\n"
+"op een rekening van een ander bedrijf!"
+
+msgctxt "error:account.invoice.line:0"
+msgid "You can not modify line from an invoice that is opened, paid!"
+msgstr "U kunt geen regel aanpassen van een openstraande of betaalde factuur!"
+
+msgctxt "error:account.invoice.line:0"
+msgid ""
+"You can not use the same account\n"
+"as on the invoice!"
+msgstr ""
+"U kunt niet dezelfde rekening \n"
+"gebruiken als op de factuur!"
+
+msgctxt "error:account.invoice.pay_invoice:0"
+msgid ""
+"You can not create a partial payment with an amount greater then the amount "
+"to pay!"
+msgstr ""
+"U kunt geen gedeeltelijke betaling boeken die groter is dan het te betalen "
+"bedrag!"
+
+msgctxt "error:account.invoice.payment_term.line.delay:0"
+msgid "The code must be unique!"
+msgstr "De code moet uniek zijn!"
+
+msgctxt "error:account.invoice.payment_term.line.type:0"
+msgid "The code must be unique!"
+msgstr "De code moet uniek zijn!"
+
+msgctxt "error:account.invoice.payment_term:0"
+msgid "Invalid payment term line!"
+msgstr "Ongeldige betalingstermijn!"
+
+msgctxt "error:account.invoice.payment_term:0"
+msgid "Payment term missing a remainder line!"
+msgstr "De betalingstermijn mist een restantregel!"
+
+msgctxt "error:account.invoice.tax:0"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"U kunt geen regels toevoegen aan een openstaande, betaalde of geannuleerde "
+"factuur!"
+
+msgctxt "error:account.invoice.tax:0"
+msgid "You can not modify tax from an invoice that is opened, paid!"
+msgstr ""
+"U kunt de belasting niet aanpassen van een openstaande of betaalde factuur!"
+
+msgctxt "error:account.invoice:0"
+msgid ""
+"Base taxes different from invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Standaard belasting wijkt af van factuurregels!\n"
+"Herbereken de factuur."
+
+msgctxt "error:account.invoice:0"
+msgid ""
+"Taxes defined but not on invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Belasting gedefinieerd maar niet op deze factuurregels!\n"
+"Herbereken de factuur."
+
+msgctxt "error:account.invoice:0"
+msgid ""
+"Taxes defined on invoice lines but not on invoice!\n"
+"Re-compute the invoice."
+msgstr ""
+"Belasting gedefinieerd op factuurregels, maar niet op de factuur!\n"
+"Herbereken de factuur."
+
+msgctxt "error:account.invoice:0"
+msgid "The credit account on journal is missing!"
+msgstr "De credit boeking ontbreekt!"
+
+msgctxt "error:account.invoice:0"
+msgid "The credit account on journal is the same than the invoice account!"
+msgstr ""
+"De credit rekening in het dagboek is dezelfde als de factuur rekening."
+
+msgctxt "error:account.invoice:0"
+msgid "The debit account on journal is missing!"
+msgstr "De debit boeking ontbreekt!"
+
+msgctxt "error:account.invoice:0"
+msgid "The debit account on journal is the same than the invoice account!"
+msgstr "De debit rekening in het dagboek is dezelfde als de factuur rekening."
+
+msgctxt "error:account.invoice:0"
+msgid "There is no invoice sequence on the period/fiscal year!"
+msgstr "Er is geen factuurreeks voor deze periode / dit boekjaar!"
+
+msgctxt "error:account.invoice:0"
+msgid ""
+"You can not create an invoice\n"
+"with account from a different invoice company!"
+msgstr ""
+"U kunt geen factuur aanmaken\n"
+"op een rekening van een ander bedrijf!"
+
+msgctxt "error:account.invoice:0"
+msgid "You can not modify an invoice that is opened, paid!"
+msgstr "U kunt een openstaande of betaalde factuur niet wijzigen!"
+
+msgctxt "error:account.invoice:0"
+msgid "You can not reset to draft an invoice that has move!"
+msgstr "Een geboekte factuur kunt u niet terugzetten naar concept!"
+
+msgctxt "error:account.invoice:0"
+msgid ""
+"You can not use the same account\n"
+"as on invoice line!"
+msgstr ""
+"U kunt niet dezelfde rekening gebruiken\n"
+"als op de factuurregel!"
+
+msgctxt "error:account.period:0"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the period"
+msgstr ""
+"U kunt niet de factuurreeks aanpassen als er al een factuur in deze periode "
+"is geboekt"
+
+msgctxt "error:account.period:0"
+msgid ""
+"You must have different invoice sequences per fiscal year and in the same "
+"company!"
+msgstr ""
+"U moet per boekjaar verschillende factuurreeksen hebben binnen hetzelfde "
+"bedrijf!"
+
+msgctxt "field:account.fiscalyear,in_credit_note_sequence:0"
+msgid "Supplier Credit Note Sequence"
+msgstr "Credit inkoopnota reeks"
+
+msgctxt "field:account.fiscalyear,in_invoice_sequence:0"
+msgid "Supplier Invoice Sequence"
+msgstr "Inkoopfactuurreeks"
+
+msgctxt "field:account.fiscalyear,out_credit_note_sequence:0"
+msgid "Customer Credit Note Sequence"
+msgstr "Credit verkoopnota reeks"
+
+msgctxt "field:account.fiscalyear,out_invoice_sequence:0"
+msgid "Customer Invoice Sequence"
+msgstr "Verkoopfactuur reeks"
+
+msgctxt "field:account.invoice,account:0"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.invoice,accounting_date:0"
+msgid "Accounting Date"
+msgstr "Boekingsdatum"
+
+msgctxt "field:account.invoice,amount_to_pay:0"
+msgid "Amount to Pay"
+msgstr "Te betalen bedrag"
+
+msgctxt "field:account.invoice,amount_to_pay_today:0"
+msgid "Amount to Pay Today"
+msgstr "Vandaag te betalen bedrag"
+
+msgctxt "field:account.invoice,comment:0"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "field:account.invoice,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.invoice,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice,currency_date:0"
+msgid "Currency Date"
+msgstr ""
+
+msgctxt "field:account.invoice,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.invoice,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice,invoice_address:0"
+msgid "Invoice Address"
+msgstr "Factuuradres"
+
+msgctxt "field:account.invoice,invoice_date:0"
+msgid "Invoice Date"
+msgstr "Factuurdatum"
+
+msgctxt "field:account.invoice,invoice_report_cache:0"
+msgid "Invoice Report"
+msgstr ""
+
+msgctxt "field:account.invoice,invoice_report_format:0"
+msgid "Invoice Report Format"
+msgstr "Opmaak factuuroverzicht"
+
+msgctxt "field:account.invoice,journal:0"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.invoice,lines:0"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:account.invoice,lines_to_pay:0"
+msgid "Lines to Pay"
+msgstr "Te betalen boekingen"
+
+msgctxt "field:account.invoice,move:0"
+msgid "Move"
+msgstr "Boeking"
+
+msgctxt "field:account.invoice,number:0"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:account.invoice,party:0"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.invoice,party_lang:0"
+msgid "Party Language"
+msgstr "Taal relatie"
+
+msgctxt "field:account.invoice,payment_lines:0"
+msgid "Payment Lines"
+msgstr "Betalingen"
+
+msgctxt "field:account.invoice,payment_term:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:account.invoice,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice,reconciled:0"
+msgid "Reconciled"
+msgstr "Afgeletterd"
+
+msgctxt "field:account.invoice,reference:0"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:account.invoice,state:0"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.invoice,tax_amount:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:account.invoice,taxes:0"
+msgid "Tax Lines"
+msgstr "Belastingregels"
+
+msgctxt "field:account.invoice,total_amount:0"
+msgid "Total"
+msgstr "Totaal"
+
+msgctxt "field:account.invoice,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice,type_name:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice,untaxed_amount:0"
+msgid "Untaxed"
+msgstr "Onbelast"
+
+msgctxt "field:account.invoice-account.move.line,invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.invoice-account.move.line,line:0"
+msgid "Payment Line"
+msgstr "Betalingen"
+
+msgctxt "field:account.invoice-account.move.line,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.credit_invoice.init,with_refund:0"
+msgid "With Refund"
+msgstr "Met restitutie"
+
+msgctxt "field:account.invoice.line,account:0"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.invoice.line,amount:0"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.invoice.line,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.invoice.line,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.line,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.invoice.line,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice.line,invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.invoice.line,invoice_taxes:0"
+msgid "Invoice Taxes"
+msgstr "Belastingen factuur"
+
+msgctxt "field:account.invoice.line,invoice_type:0"
+msgid "Invoice Type"
+msgstr "Factuurtype"
+
+msgctxt "field:account.invoice.line,note:0"
+msgid "Note"
+msgstr "Aantekening"
+
+msgctxt "field:account.invoice.line,party:0"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.invoice.line,party_lang:0"
+msgid "Party Language"
+msgstr "Taal relatie"
+
+msgctxt "field:account.invoice.line,product:0"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:account.invoice.line,quantity:0"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.line,sequence:0"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "field:account.invoice.line,taxes:0"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "field:account.invoice.line,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice.line,unit:0"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:account.invoice.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "field:account.invoice.line,unit_price:0"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:account.invoice.line-account.tax,line:0"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "field:account.invoice.line-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.line-account.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:account.invoice.pay_invoice.ask,account:0"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.invoice.pay_invoice.ask,account_writeoff:0"
+msgid "Write-Off Account"
+msgstr "Rekening afschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,amount:0"
+msgid "Payment Amount"
+msgstr "Bedrag betaling"
+
+msgctxt "field:account.invoice.pay_invoice.ask,amount_writeoff:0"
+msgid "Write-Off Amount"
+msgstr "Rekening afschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.invoice.pay_invoice.ask,currency:0"
+msgid "Payment Currency"
+msgstr "Valuta betaling"
+
+msgctxt "field:account.invoice.pay_invoice.ask,currency_digits:0"
+msgid "Payment Currency Digits"
+msgstr "Decimalen valuta betaling"
+
+msgctxt "field:account.invoice.pay_invoice.ask,currency_digits_writeoff:0"
+msgid "Write-Off Currency Digits"
+msgstr "Decimalen valuta afschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,currency_writeoff:0"
+msgid "Write-Off Currency"
+msgstr "Valuta afschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,date:0"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.pay_invoice.ask,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.invoice.pay_invoice.ask,journal:0"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.invoice.pay_invoice.ask,journal_writeoff:0"
+msgid "Write-Off Journal"
+msgstr "Dagboek afschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.ask,lines:0"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:account.invoice.pay_invoice.ask,lines_to_pay:0"
+msgid "Lines to Pay"
+msgstr "Te betalen boekingen"
+
+msgctxt "field:account.invoice.pay_invoice.ask,payment_lines:0"
+msgid "Payment Lines"
+msgstr "Betalingen"
+
+msgctxt "field:account.invoice.pay_invoice.ask,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice.pay_invoice.init,amount:0"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.invoice.pay_invoice.init,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.pay_invoice.init,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.invoice.pay_invoice.init,date:0"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.invoice.pay_invoice.init,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice.pay_invoice.init,journal:0"
+msgid "Journal"
+msgstr "Dagboek"
+
+msgctxt "field:account.invoice.payment_term,active:0"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "field:account.invoice.payment_term,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice.payment_term,lines:0"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:account.invoice.payment_term,name:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:account.invoice.payment_term,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.payment_term.line,amount:0"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.invoice.payment_term.line,currency:0"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.payment_term.line,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.invoice.payment_term.line,days:0"
+msgid "Number of Days"
+msgstr "Aantal dagen"
+
+msgctxt "field:account.invoice.payment_term.line,delay:0"
+msgid "Condition"
+msgstr "Voorwaarde"
+
+msgctxt "field:account.invoice.payment_term.line,payment:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:account.invoice.payment_term.line,percentage:0"
+msgid "Percentage"
+msgstr "Percentage"
+
+msgctxt "field:account.invoice.payment_term.line,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.payment_term.line,sequence:0"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "field:account.invoice.payment_term.line,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:account.invoice.payment_term.line.delay,code:0"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.invoice.payment_term.line.delay,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.payment_term.line.delay,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.payment_term.line.type,code:0"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.invoice.payment_term.line.type,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.payment_term.line.type,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.tax,account:0"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.invoice.tax,amount:0"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.invoice.tax,base:0"
+msgid "Base"
+msgstr "Basis"
+
+msgctxt "field:account.invoice.tax,base_code:0"
+msgid "Base Code"
+msgstr "Basiscode"
+
+msgctxt "field:account.invoice.tax,base_sign:0"
+msgid "Base Sign"
+msgstr "Basisteken"
+
+msgctxt "field:account.invoice.tax,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.invoice.tax,invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:account.invoice.tax,manual:0"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "field:account.invoice.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.invoice.tax,sequence:0"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "field:account.invoice.tax,sequence_number:0"
+msgid "Sequence Number"
+msgstr "Reeksnummer"
+
+msgctxt "field:account.invoice.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:account.invoice.tax,tax_code:0"
+msgid "Tax Code"
+msgstr "Belastingcode"
+
+msgctxt "field:account.invoice.tax,tax_sign:0"
+msgid "Tax Sign"
+msgstr "Teken belasting"
+
+msgctxt "field:account.period,in_credit_note_sequence:0"
+msgid "Supplier Credit Note Sequence"
+msgstr "Credit inkoopnota reeks"
+
+msgctxt "field:account.period,in_invoice_sequence:0"
+msgid "Supplier Invoice Sequence"
+msgstr "Inkoopfactuurreeks"
+
+msgctxt "field:account.period,out_credit_note_sequence:0"
+msgid "Customer Credit Note Sequence"
+msgstr "Credit verkoopnota reeks"
+
+msgctxt "field:account.period,out_invoice_sequence:0"
+msgid "Customer Invoice Sequence"
+msgstr "Verkoopfactuur reeks"
+
+msgctxt "field:party.address,invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "field:party.party,payment_term:0"
+msgid "Invoice Payment Term"
+msgstr "Betalingstermijn debiteur"
+
+msgctxt "field:party.party,supplier_payment_term:0"
+msgid "Supplier Payment Term"
+msgstr "Betalingstermijn crediteur"
+
+msgctxt "help:account.invoice.credit_invoice.init,with_refund:0"
+msgid "If true, the current invoice(s) will be paid."
+msgstr "Zo ja, dan zullen deze facturen betaald worden."
+
+msgctxt "help:account.invoice.payment_term.line,percentage:0"
+msgid "In %"
+msgstr "In %"
+
+msgctxt "help:account.invoice.payment_term.line,sequence:0"
+msgid "Use to order lines in ascending order"
+msgstr "Gebruiken voor oplopend sorteren"
+
+msgctxt "model:account.invoice,name:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "model:account.invoice-account.move.line,name:0"
+msgid "Invoice - Payment Line"
+msgstr "Factuurbetalingen"
+
+msgctxt "model:account.invoice.credit_invoice.init,name:0"
+msgid "Credit Invoice Init"
+msgstr "Creditnota gaan aanmaken"
+
+msgctxt "model:account.invoice.line,name:0"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "model:account.invoice.line-account.tax,name:0"
+msgid "Invoice Line - Tax"
+msgstr "Factuurregel - belasting"
+
+msgctxt "model:account.invoice.pay_invoice.ask,name:0"
+msgid "Pay Invoice Ask"
+msgstr "Betaal factuur vragen"
+
+msgctxt "model:account.invoice.pay_invoice.init,name:0"
+msgid "Pay Invoice Init"
+msgstr "Factuur gaan betalen"
+
+msgctxt "model:account.invoice.payment_term,name:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "model:account.invoice.payment_term.line,name:0"
+msgid "Payment Term Line"
+msgstr "Betalingstermijn regel"
+
+msgctxt "model:account.invoice.payment_term.line.delay,name:0"
+msgid "Payment Term Line Delay"
+msgstr "Betalingstermijn uitstelregel"
+
+msgctxt ""
+"model:account.invoice.payment_term.line.delay,name:payment_term_line_delay_end_month"
+msgid "End Month"
+msgstr "Einde van de maand"
+
+msgctxt ""
+"model:account.invoice.payment_term.line.delay,name:payment_term_line_delay_net_days"
+msgid "Net Days"
+msgstr "Dagen netto"
+
+msgctxt "model:account.invoice.payment_term.line.type,name:0"
+msgid "Payment Term Line Type"
+msgstr "Betalingstermijn regeltype"
+
+msgctxt ""
+"model:account.invoice.payment_term.line.type,name:payment_term_line_type_fixed"
+msgid "Fixed"
+msgstr "Vast"
+
+msgctxt ""
+"model:account.invoice.payment_term.line.type,name:payment_term_line_type_percent"
+msgid "Percentage"
+msgstr "Percentage"
+
+msgctxt ""
+"model:account.invoice.payment_term.line.type,name:payment_term_line_type_remainder"
+msgid "Remainder"
+msgstr "Restant"
+
+msgctxt "model:account.invoice.print_invoice_report.warning,name:0"
+msgid "Print Invoice Report Warning"
+msgstr "Afdrukken waarschuwwing factuuroverzicht"
+
+msgctxt "model:account.invoice.tax,name:0"
+msgid "Invoice Tax"
+msgstr "Belasting factuur"
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "All Invoices"
+msgstr "Alle facturen"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Verkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Credit inkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Concept credit inkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "Pro forma credit inkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Openstaande credit inkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Inkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Concept inkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "Pro forma inkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Openstaande inkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Credit verkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Concept credit verkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "Pro forma credit verkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Openstaande credit inkoopnota's"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Verkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Concept verkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "Pro forma verkoopfacturen"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Openstaande verkoopfacturen"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Betalingstermijnen"
+
+msgctxt "model:ir.action,name:credit_invoice"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "model:ir.action,name:print_invoice_report"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "model:ir.action,name:wizard_pay_invoice"
+msgid "Pay Invoice"
+msgstr "Betaal factuur"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_form"
+msgid "All Invoices"
+msgstr "Alle facturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Credit inkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Concept credit inkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "Pro forma credit inkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Openstaande credit inkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Inkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Concept inkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "Pro forma inkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Openstaande inkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Credit verkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Concept credit verkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "Pro forma credit verkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Openstaande credit inkoopnota's"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Verkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Concept verkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "Pro forma verkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Openstaande verkoopfacturen"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Facturen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "Betalingstermijnen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "Betalingstermijnen"
+
+msgctxt "model:workflow,name:invoice_workflow"
+msgid "Invoice workflow"
+msgstr "Procedure facturatie"
+
+msgctxt "model:workflow.activity,name:invoice_activity_cancel"
+msgid "Canceled"
+msgstr "Geannuleerd"
+
+msgctxt "model:workflow.activity,name:invoice_activity_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:workflow.activity,name:invoice_activity_open"
+msgid "Open"
+msgstr "Open"
+
+msgctxt "model:workflow.activity,name:invoice_activity_paid"
+msgid "Paid"
+msgstr "Betaald"
+
+msgctxt "model:workflow.activity,name:invoice_activity_proforma"
+msgid "Pro forma"
+msgstr "Pro forma"
+
+msgctxt "odt:account.invoice:0"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "odt:account.invoice:0"
+msgid "Base"
+msgstr "Basisbedrag"
+
+msgctxt "odt:account.invoice:0"
+msgid "Credit Note N°:"
+msgstr "Creditnotanummer:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Date"
+msgstr "Vervaldatum"
+
+msgctxt "odt:account.invoice:0"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "odt:account.invoice:0"
+msgid "Description:"
+msgstr "Betreft:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Draft Credit Note"
+msgstr "Concept creditnota"
+
+msgctxt "odt:account.invoice:0"
+msgid "Draft Invoice"
+msgstr "Concept verkoopfactuur"
+
+msgctxt "odt:account.invoice:0"
+msgid "Draft Supplier Credit Note"
+msgstr "Concept credit inkoopnota"
+
+msgctxt "odt:account.invoice:0"
+msgid "Draft Supplier Invoice"
+msgstr "Concept inkoopfactuur"
+
+msgctxt "odt:account.invoice:0"
+msgid "E-Mail:"
+msgstr "E-mail:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Invoice N°:"
+msgstr "Factuur:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "odt:account.invoice:0"
+msgid "Phone:"
+msgstr "Telefoon:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Pro forma Credit Note"
+msgstr "Pro forma creditnota"
+
+msgctxt "odt:account.invoice:0"
+msgid "Pro forma Invoice"
+msgstr "Pro forma verkoopfactuur"
+
+msgctxt "odt:account.invoice:0"
+msgid "Pro forma Supplier Credit Note"
+msgstr "Pro forma credit inkoopnota"
+
+msgctxt "odt:account.invoice:0"
+msgid "Pro forma Supplier Invoice"
+msgstr "Pro forma factuur"
+
+msgctxt "odt:account.invoice:0"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "odt:account.invoice:0"
+msgid "Supplier Credit Note N°:"
+msgstr "Credit inkoopnotanummer:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Supplier Invoice N°:"
+msgstr "Inkoopfactuurnummer:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "odt:account.invoice:0"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "odt:account.invoice:0"
+msgid "Taxes:"
+msgstr "Belastingen:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Total (excl. taxes):"
+msgstr "Totaal (excl. belasting):"
+
+msgctxt "odt:account.invoice:0"
+msgid "Total:"
+msgstr "Totaal:"
+
+msgctxt "odt:account.invoice:0"
+msgid "Unit Price"
+msgstr "Eenheids- prijs"
+
+msgctxt "odt:account.invoice:0"
+msgid "VAT Number:"
+msgstr "BTW-nummer:"
+
+msgctxt "odt:account.invoice:0"
+msgid "VAT:"
+msgstr "BTW:"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Canceled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Opened"
+msgstr "Geopend"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Paid"
+msgstr "Betaald"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Pro forma"
+msgstr "Pro forma"
+
+msgctxt "selection:account.invoice,type:0"
+msgid "Credit Note"
+msgstr "Credit verkoopnota"
+
+msgctxt "selection:account.invoice,type:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "selection:account.invoice,type:0"
+msgid "Supplier Credit Note"
+msgstr "Credit inkoopnota"
+
+msgctxt "selection:account.invoice,type:0"
+msgid "Supplier Invoice"
+msgstr "Inkoopfactuur"
+
+msgctxt "selection:account.invoice.line,invoice_type:0"
+msgid "Credit Note"
+msgstr "Credit verkoopnota"
+
+msgctxt "selection:account.invoice.line,invoice_type:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "selection:account.invoice.line,invoice_type:0"
+msgid "Supplier Credit Note"
+msgstr "Credit inkoopnota"
+
+msgctxt "selection:account.invoice.line,invoice_type:0"
+msgid "Supplier Invoice"
+msgstr "Inkoopfactuur"
+
+msgctxt "selection:account.invoice.line,type:0"
+msgid "Comment"
+msgstr "Opmerking"
+
+msgctxt "selection:account.invoice.line,type:0"
+msgid "Line"
+msgstr "Regel"
+
+msgctxt "selection:account.invoice.line,type:0"
+msgid "Subtotal"
+msgstr "Subtotaal"
+
+msgctxt "selection:account.invoice.line,type:0"
+msgid "Title"
+msgstr "Titel"
+
+msgctxt "selection:account.invoice.pay_invoice.ask,type:0"
+msgid "Partial Payment"
+msgstr "Deelbetaling"
+
+msgctxt "selection:account.invoice.pay_invoice.ask,type:0"
+msgid "Write-Off"
+msgstr "Afschrijven"
+
+msgctxt "view:account.invoice.credit_invoice.init:0"
+msgid "Are you sure to credit those/this invoice(s)?"
+msgstr "Wilt u deze factuur/facturen echt crediteren?"
+
+msgctxt "view:account.invoice.credit_invoice.init:0"
+msgid "Credit Invoice"
+msgstr "Credit verkoopfactuur"
+
+msgctxt "view:account.invoice.line:0"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:account.invoice.line:0"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "view:account.invoice.line:0"
+msgid "Invoice Lines"
+msgstr "Factuurregels"
+
+msgctxt "view:account.invoice.line:0"
+msgid "Notes"
+msgstr "Aantekeningen"
+
+msgctxt "view:account.invoice.line:0"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Amount Second Currency"
+msgstr "Bedrag alternatieve valuta"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Debit"
+msgstr "Debit"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Lines to Pay"
+msgstr "Te betalen boekingen"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Pay Invoice"
+msgstr "Betaal factuur"
+
+msgctxt "view:account.invoice.pay_invoice.ask:0"
+msgid "Payment Lines"
+msgstr "Betalingen"
+
+msgctxt "view:account.invoice.pay_invoice.init:0"
+msgid "Pay Invoice"
+msgstr "Betaal factuur"
+
+msgctxt "view:account.invoice.payment_term:0"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "view:account.invoice.payment_term:0"
+msgid "Payment Term Line"
+msgstr "Betalingstermijn regel"
+
+msgctxt "view:account.invoice.payment_term:0"
+msgid "Payment Term Lines"
+msgstr "Betalingstermijn regels"
+
+msgctxt "view:account.invoice.payment_term:0"
+msgid "Payment Terms"
+msgstr "Betalingstermijnen"
+
+msgctxt "view:account.invoice.print_invoice_report.warning:0"
+msgid "<b>Warning!</b>"
+msgstr "<b>Waarschuwing!</b>"
+
+msgctxt "view:account.invoice.print_invoice_report.warning:0"
+msgid "Print Invoice"
+msgstr "Factuur afdrukken"
+
+msgctxt "view:account.invoice.print_invoice_report.warning:0"
+msgid "The invoices will be sent <i>directly</i> to the printer."
+msgstr "De factuur wordt <i>direct</i> afgedrukt."
+
+msgctxt "view:account.invoice.print_invoice_report.warning:0"
+msgid "You have selected more than one invoice to print."
+msgstr "U heeft meer dan één factuur geselecteerd om af te drukken."
+
+msgctxt "view:account.invoice.tax:0"
+msgid "Invoice Tax"
+msgstr "Belasting factuur"
+
+msgctxt "view:account.invoice.tax:0"
+msgid "Invoice Taxes"
+msgstr "Belastingen factuur"
+
+msgctxt "view:account.invoice.tax:0"
+msgid "Tax Code"
+msgstr "Belastingcode"
+
+msgctxt "view:account.invoice:0"
+msgid "Amount Second Currency"
+msgstr "Bedrag alternatieve valuta"
+
+msgctxt "view:account.invoice:0"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "view:account.invoice:0"
+msgid "Debit"
+msgstr "Debit"
+
+msgctxt "view:account.invoice:0"
+msgid "Invoice"
+msgstr "Verkoopfactuur"
+
+msgctxt "view:account.invoice:0"
+msgid "Invoices"
+msgstr "Verkoopfacturen"
+
+msgctxt "view:account.invoice:0"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "view:account.invoice:0"
+msgid "Other Info"
+msgstr "Aanvullende informatie"
+
+msgctxt "view:account.invoice:0"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "view:account.invoice:0"
+msgid "Payment Lines"
+msgstr "Betalingen"
+
+msgctxt "view:account.invoice:0"
+msgid "Pro For_ma"
+msgstr "Pro For_ma"
+
+msgctxt "view:account.invoice:0"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "view:account.invoice:0"
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+msgctxt "view:account.invoice:0"
+msgid "_Draft"
+msgstr "_Concept"
+
+msgctxt "view:account.invoice:0"
+msgid "_Open"
+msgstr "_Open"
+
+msgctxt "view:account.invoice:0"
+msgid "_Pay"
+msgstr "_Betalen"
+
+msgctxt "view:account.invoice:0"
+msgid "_Reset to Draft"
+msgstr "_Terug naar concept"
+
+msgctxt "view:party.party:0"
+msgid "Payment Terms"
+msgstr "Betalingstermijnen"
+
+msgctxt "wizard_button:account.invoice.credit_invoice,init,credit:0"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "wizard_button:account.invoice.credit_invoice,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.pay_invoice,ask,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.pay_invoice,ask,pay:0"
+msgid "Ok"
+msgstr "Oké"
+
+msgctxt "wizard_button:account.invoice.pay_invoice,init,choice:0"
+msgid "Ok"
+msgstr "Oké"
+
+msgctxt "wizard_button:account.invoice.pay_invoice,init,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.print_invoice_report,warning,end:0"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.print_invoice_report,warning,print:0"
+msgid "Print"
+msgstr "Afdrukken"

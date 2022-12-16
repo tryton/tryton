@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Move">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="post_date"/>
+                    <field name="post_date"/>
+                    <field name="lines" colspan="4">
+                        <tree string="Account Move Lines" editable="top">
+                            <field name="move"/>
+                            <field name="name"/>
+                            <field name="reference"/>
+                            <field name="party"/>
+                            <field name="account"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
+                            <field name="tax_lines"/>
+                            <field name="reconciliation"/>
+                        </tree>
+                        <form string="Account Move Line">
+                            <label name="name"/>
+                            <field name="name"/>
+                            <label name="active"/>
+                            <field name="active" xexpand="0" width="100"/>
+                            <notebook colspan="4">
+                                <page string="General Information" id="general">
+                                    <label name="account"/>
+                                    <field name="account"/>
+                                    <newline/>
+                                    <label name="reference"/>
+                                    <field name="reference"/>
+                                    <label name="party"/>
+                                    <field name="party"/>
+                                    <label name="journal"/>
+                                    <field name="journal"/>
+                                    <label name="period"/>
+                                    <field name="period"/>
+                                    <label name="debit"/>
+                                    <field name="debit"/>
+                                    <label name="credit"/>
+                                    <field name="credit"/>
+                                    <separator string="Optional Information" colspan="4"
+                                        id="optional_information"/>
+                                    <field name="tax_lines" colspan="4"/>
+                                    <label name="amount_second_currency"/>
+                                    <field name="amount_second_currency"/>
+                                    <label name="second_currency"/>
+                                    <field name="second_currency"/>
+                                    <label name="reconciliation"/>
+                                    <field name="reconciliation"/>
+                                    <label name="maturity_date"/>
+                                    <field name="maturity_date"/>
+                                    <label id="empty" colspan="2"/>
+                                    <label name="state"/>
+                                    <field name="state"/>
+                                </page>
+                            </notebook>
+                        </form>
+                    </field>
+                    <label name="state"/>
+                    <field name="state"/>
+                    <group col="2" colspan="2" id="buttons">
+                        <button string="Post" name="button_post" type="object"
+                            states="{'invisible': Equal(Eval('state'), 'posted')}"
+                            icon="tryton-ok"/>
+                        <button string="Draft" name="button_draft" type="object"
+                            states="{'invisible': Equal(Eval('state'), 'draft')}"
+                            icon="tryton-clear"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">account.move</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Moves">
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="period"/>
+                    <field name="journal"/>
+                    <field name="date"/>
+                    <field name="post_date"/>
+                    <field name="state"/>
+                    <field name="create_date" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Account Moves</field>
+            <field name="res_model">account.move</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_move_form"
+            id="menu_move_form"/>
+
+        <record model="ir.model.access" id="access_move">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_account">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_account_admin">
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_move">
+            <field name="name">Account Move</field>
+            <field name="code">account.move</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_reconciliation_view_form">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Reconciliation" col="2">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <field name="lines" colspan="2"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_reconciliation_view_tree">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Reconciliations">
+                    <field name="name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.model.access" id="access_move_reconciliation">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_reconciliation_account">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_reconciliation_account_admin">
+            <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_move_reconciliation">
+            <field name="name">Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_account_move_reconciliation">
+            <field name="name">Default Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Move Line">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General Information" id="general">
+                            <label name="account"/>
+                            <field name="account"/>
+                            <label name="date"/>
+                            <field name="date"/>
+                            <label name="reference"/>
+                            <field name="reference"/>
+                            <label name="party"/>
+                            <field name="party"/>
+                            <label name="journal"/>
+                            <field name="journal"/>
+                            <label name="period"/>
+                            <field name="period"/>
+                            <label name="debit"/>
+                            <field name="debit"/>
+                            <label name="credit"/>
+                            <field name="credit"/>
+                            <separator string="Optional Information" colspan="4"
+                                id="optional_information"/>
+                            <field name="tax_lines" colspan="4"/>
+                            <label name="amount_second_currency"/>
+                            <field name="amount_second_currency"/>
+                            <label name="second_currency"/>
+                            <field name="second_currency"/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
+                            <label name="move"/>
+                            <field name="move"/>
+                            <label name="move_state"/>
+                            <field name="move_state"/>
+                            <label id="empty" colspan="2"/>
+                            <label name="state"/>
+                            <field name="state"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_line_view_tree">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Move Lines" editable="top"
+                    on_write="on_write"
+                    colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
+                    <field name="move"/>
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="date"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="debit" sum="Debit"/>
+                    <field name="credit" sum="Credit"/>
+                    <field name="tax_lines"/>
+                    <field name="reconciliation"/>
+                    <field name="state"/>
+                    <field name="move_state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_line_form">
+            <field name="name">Account Move Lines</field>
+            <field name="res_model">account.move.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_tree"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_view_form"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Move Account</field>
+            <field name="wiz_name">account.move.open_account</field>
+            <field name="model">account.account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_journal_ask_view_form">
+            <field name="model">account.move.open_journal.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Journal">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_journal">
+            <field name="name">Open Journal</field>
+            <field name="wiz_name">account.move.open_journal</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_journal_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.journal.period,-1</field>
+            <field name="action" ref="act_open_journal"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_open_journal"
+            icon="tryton-list" id="menu_open_journal"/>
+        <record model="ir.model.access" id="access_move_line">
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_move_line_account">
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="reconcile_lines_writeoff_view_form">
+            <field name="model">account.move.reconcile_lines.writeoff</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Write-Off">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_reconcile_lines">
+            <field name="name">Reconcile Lines</field>
+            <field name="wiz_name">account.move.reconcile_lines</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_reconcile_lines"/>
+        </record>
+
+        <record model="ir.ui.view" id="unreconcile_lines_init_view_form">
+            <field name="model">account.move.unreconcile_lines.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unreconcile" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."
+                        id="workflows"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_unreconcile_lines">
+            <field name="name">Unreconcile Lines</field>
+            <field name="wiz_name">account.move.unreconcile_lines</field>
+            <field name="model">account.move.line</field>
+        </record>
+        <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_unreconcile_lines"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_reconcile_lines_init_view_form">
+            <field name="model">account.move.open_reconcile_lines.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Reconcile Lines">
+                    <label name="account"/>
+                    <field name="account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_reconcile_lines">
+            <field name="name">Open Reconcile Lines</field>
+            <field name="wiz_name">account.move.open_reconcile_lines</field>
+        </record>
+        <menuitem name="Reconcile Lines" parent="menu_entries"
+            action="act_open_reconcile_lines"
+            id="menu_open_reconcile_lines"/>
+
+        <record model="ir.ui.view" id="print_general_journal_init_view_form">
+            <field name="model">account.move.print_general_journal.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print General Journal">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_journal">
+            <field name="name">Print General Journal</field>
+            <field name="wiz_name">account.move.print_general_journal</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_journal"
+            id="menu_print_general_journal" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_general_journal">
+            <field name="name">General Journal</field>
+            <field name="model">account.move</field>
+            <field name="report_name">account.move.general_journal</field>
+            <field name="report">account/general_journal.odt</field>
+        </record>
+    </data>
+</tryton>

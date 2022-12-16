@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Fiscal Years" parent="menu_account_configuration"
+            id="menu_fiscalyear_configuration"/>
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Fiscal Year">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="start_date"/>
+                    <field name="start_date"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="state"/>
+                    <field name="state"/>
+                    <notebook colspan="4">
+                        <page string="Periods" id="periods">
+                            <field name="periods" colspan="4"/>
+                            <group col="2" colspan="4" id="buttons">
+                                <button name="create_period" string="Create Monthly Periods"
+                                    type="object"
+                                    states="{'invisible': Or(Not(Equal(Eval('state'), 'open')), Bool(Eval('periods')))}"/>
+                                <button name="create_period_3" string="Create 3 Months Periods"
+                                    type="object"
+                                    states="{'invisible': Or(Not(Equal(Eval('state'), 'open')), Bool(Eval('periods')))}"/>
+                            </group>
+                        </page>
+                        <page string="Sequences" id="sequences">
+                            <label name="post_move_sequence"/>
+                            <field name="post_move_sequence"/>
+                        </page>
+                    </notebook>
+                    <label string="" colspan="2" id="empty"/>
+                    <group col="1" colspan="2" id="buttons">
+                        <button name="close" string="Close Fiscal Year" type="object"
+                            states="{'invisible': Not(Equal(Eval('state'), 'open'))}"
+                            icon="'tryton-readonly'"
+                            confirm="Are you sure to close fiscal year?"/>
+                        <button name="reopen" string="Re-Open Fiscal Year" type="object"
+                            states="{'invisible': Not(Equal(Eval('state'), 'close'))}"
+                            icon="'tryton-clear'"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="fiscalyear_view_tree">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Fiscal Years">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_fiscalyear_form">
+            <field name="name">Fiscal Years</field>
+            <field name="res_model">account.fiscalyear</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="fiscalyear_view_tree"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="fiscalyear_view_form"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <menuitem parent="menu_fiscalyear_configuration"
+            action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
+
+        <record model="ir.model.access" id="access_fiscalyear">
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_fiscalyear_account_admin">
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_fiscalyear">
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_fiscalyear1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.fiscalyear')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_fiscalyear"/>
+        </record>
+
+        <record model="ir.ui.view" id="fiscalyear_close_fiscalyear_init_view_form">
+            <field name="model">account.fiscalyear.close_fiscalyear.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Close Fiscal Year">
+                    <label name="close_fiscalyear"/>
+                    <field name="close_fiscalyear"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_close_fiscalyear">
+            <field name="name">Close Fiscal Year</field>
+            <field name="wiz_name">account.fiscalyear.close_fiscalyear</field>
+        </record>
+        <menuitem parent="menu_processing" action="act_close_fiscalyear"
+            id="menu_close_fiscalyear"/>
+    </data>
+</tryton>
