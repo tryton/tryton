@@ -1,0 +1,111 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "Sąryšis"
+
+msgctxt "field:party.relation,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:party.relation,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "Nuo"
+
+#, fuzzy
+msgctxt "field:party.relation,start_date:"
+msgid "Start Date"
+msgstr "Pakeitimo data"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "Į"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:party.relation.all,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:party.relation.all,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "Nuo"
+
+#, fuzzy
+msgctxt "field:party.relation.all,start_date:"
+msgid "Start Date"
+msgstr "Pakeitimo data"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "Į"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "Tipas"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "Atvirkštinis sąryšis"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr ""
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "Pagrindinis sąryšio tipo identifikatorius."
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "Automatiškai sukurti atvirkštinį sąryšį."
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Relations"
+msgstr "Sąryšis"
+
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "Sąryšių tipai"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Relations"
+msgstr "Sąryšis"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "Sąryšių tipai"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "Kontrahento ryšiai"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "Kontrahento ryšiai"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "Sąryšio tipas"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "Sąryšiai"

@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,sendcloud_format:"
+msgid "Format"
+msgstr "Format"
+
+msgctxt "field:carrier.credential.sendcloud,addresses:"
+msgid "Addresses"
+msgstr "Adresses"
+
+msgctxt "field:carrier.credential.sendcloud,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:carrier.credential.sendcloud,public_key:"
+msgid "Public Key"
+msgstr "Clé publique"
+
+msgctxt "field:carrier.credential.sendcloud,secret_key:"
+msgid "Secret Key"
+msgstr "Clé secrète"
+
+msgctxt "field:carrier.credential.sendcloud,shipping_methods:"
+msgid "Methods"
+msgstr "Méthodes"
+
+msgctxt "field:carrier.sendcloud.address,address:"
+msgid "Address"
+msgstr "Adresse"
+
+msgctxt "field:carrier.sendcloud.address,sendcloud:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "field:carrier.sendcloud.address,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:carrier.sendcloud.shipping_method,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:carrier.sendcloud.shipping_method,sendcloud:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "field:carrier.sendcloud.shipping_method,shipping_method:"
+msgid "Shipping Method"
+msgstr "Méthode d'expédition"
+
+msgctxt "field:stock.package,sendcloud_shipping_id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.package,sendcloud_shipping_tracking_url:"
+msgid "Tracking URL"
+msgstr "URL de suivi"
+
+msgctxt "help:carrier.sendcloud.address,address:"
+msgid "Leave empty for the Sendcloud default."
+msgstr "Laissez vide pour la valeur par défaut de Sendcloud."
+
+msgctxt "model:carrier.credential.sendcloud,name:"
+msgid "Sendcloud Credential"
+msgstr "Identifiant Sendcloud"
+
+msgctxt "model:carrier.sendcloud.address,name:"
+msgid "Sendcloud Address"
+msgstr "Adresse Sendcloud"
+
+msgctxt "model:carrier.sendcloud.shipping_method,name:"
+msgid "Sendcloud Shipping Method"
+msgstr "Méthode de livraison Sendcloud"
+
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Sendcloud Shipping for Packages"
+msgstr "Créer la livraison Sendcloud pour les emballages"
+
+msgctxt "model:ir.action,name:act_credential_form"
+msgid "Sendcloud Credentials"
+msgstr "Identifiants Sendcloud"
+
+msgctxt "model:ir.message,text:msg_sendcloud_webserver_error"
+msgid ""
+"Sendcloud webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"L'appel au service web de Sendcloud a échoué avec le message d'erreur suivant :\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create a shipping label for shipment \"%(shipment)s\" because it "
+"already has a reference number."
+msgstr ""
+"Vous ne pouvez pas créer d'étiquette de livraison pour l'expédition "
+"« %(shipment)s » car elle a déjà un numéro de référence."
+
+msgctxt "model:ir.ui.menu,name:menu_credential_form"
+msgid "Sendcloud Credentials"
+msgstr "Identifiants Sendcloud"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Bottom left"
+msgstr "A4 - En bas à gauche"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Bottom right"
+msgstr "A4 - En bas à droite"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Top left"
+msgstr "A4 - En haut à gauche"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A4 - Top right"
+msgstr "A4 - En haut à droite"
+
+msgctxt "selection:carrier,sendcloud_format:"
+msgid "A6 - Full page"
+msgstr "A6 - Pleine page"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+msgctxt "view:carrier:"
+msgid "Sendcloud"
+msgstr "Sendcloud"
