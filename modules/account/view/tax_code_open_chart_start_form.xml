@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="method"/>
+    <field name="method"/>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <field name="periods" colspan="2"/>
+</form>
