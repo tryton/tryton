@@ -1,0 +1,274 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Partii nõutav"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Partii nõutav"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Mall"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Tüüp"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Partii"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Prognoositav kogus"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Number"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Kood"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "Kuupäeval"
+
+msgctxt "field:stock.lots_by_location.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "Kuupäeval"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Partii"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr ""
+
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Sisemine kogus"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Partii"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Periood"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr ""
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr ""
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Partiid"
+
+msgctxt "model:ir.action,name:act_lots_by_locations"
+msgid "Lot"
+msgstr "Partii"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Liikumised"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Partiid"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Mall - varude partii tüüp"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Partii laos"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Partiitunnuse tüüp"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Klient"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Kaotatud ja leitud"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Tootmine"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Laokoht"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Hankija"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr ""
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr ""
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Partii"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Partiid"
