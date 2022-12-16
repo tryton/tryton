@@ -1,0 +1,83 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Actie"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Reeks"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Gebruiker"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Prikbord indeling"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Rechthoek"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "Stapel onder"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "Stapel links"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "Stapel rechts"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "Stapel boven"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Prikbord actie"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Prikbord actie"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Prikbord acties"
