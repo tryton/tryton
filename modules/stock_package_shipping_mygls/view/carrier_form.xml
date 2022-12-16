@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='shipping_service']" position="after">
+        <separator string="MyGLS" colspan="4" id="mygls"/>
+
+        <label name="mygls_type_of_printer"/>
+        <field name="mygls_type_of_printer"/>
+        <label name="mygls_print_position"/>
+        <field name="mygls_print_position"/>
+
+        <label name="mygls_services"/>
+        <field name="mygls_services" colspan="3"/>
+
+        <label name="mygls_sms"/>
+        <field name="mygls_sms" colspan="3"/>
+    </xpath>
+</data>
