@@ -1,0 +1,1452 @@
+# Lithuanian (Lithuania) translations for tryton.
+# Copyright (C) 2011 B2CK
+# This file is distributed under the same license as the tryton project.
+# Giedrius Slavinskas <giedrius@inovera.lt>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tryton 2.3.0\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2015-03-23 18:56+0100\n"
+"PO-Revision-Date: 2013-04-18 11:37+0300\n"
+"Last-Translator: Giedrius Slavinskas <giedrius@inovera.lt>\n"
+"Language-Team: lt_LT <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+msgid "specify alternate config file"
+msgstr ""
+
+msgid "development mode"
+msgstr ""
+
+msgid "logging everything at INFO level"
+msgstr ""
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr ""
+
+msgid "specify the login user"
+msgstr ""
+
+msgid "specify the server port"
+msgstr ""
+
+msgid "specify the server hostname"
+msgstr ""
+
+msgid "Too much arguments"
+msgstr ""
+
+#, python-format
+msgid "File \"%s\" not found"
+msgstr ""
+
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr ""
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Nepavyko nustatyti lokalės %s"
+
+msgid "Select your action"
+msgstr "Pasirinkite veiksmą"
+
+msgid "No action defined!"
+msgstr "Nėra apibrėžtų veiksmų!"
+
+msgid "Tryton Connection"
+msgstr "Tryton prisijungimas"
+
+msgid "Server:"
+msgstr "Serveris:"
+
+msgid "Port:"
+msgstr "Prievadas:"
+
+msgid "Selection"
+msgstr "Pasirinkimas"
+
+msgid "Your selection:"
+msgstr "Jūsų pasirinkimas:"
+
+msgid "Save As..."
+msgstr "Įrašyti kaip..."
+
+msgid "Always ignore this warning."
+msgstr "Daugiau nepaisyti šio pranešimo."
+
+msgid "Do you want to proceed?"
+msgstr "Ar tikrai norite vykdyti?"
+
+msgid "Confirmation"
+msgstr "Patvirtinimas"
+
+msgid "Concurrency Exception"
+msgstr "Lygiagretaus duomenų rašymo klaida"
+
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Perspėjimas dėl lygiagretaus duomenų rašymo:</b>\n"
+"\n"
+"Šis įrašas buvo pakeistas tuo metu kol redagavote.\n"
+" Pasirinkite:\n"
+"    - \"Atšaukti\", kad atšaukti pakeitimus;\n"
+"    - \"Palyginti\", kad peržiūrėti pakeistą versiją;\n"
+"    - \"Rašyti visvien\", kad išsaugoti jūsų turimą versiją."
+
+msgid "Compare"
+msgstr "Palyginti"
+
+msgid "Write Anyway"
+msgstr "Rašyti visvien"
+
+msgid "Error"
+msgstr "Klaida"
+
+msgid "Report Bug"
+msgstr "Pranešti apie klaidą"
+
+msgid "Application Error!"
+msgstr "Programos klaida!"
+
+msgid "Error: "
+msgstr "Klaida: "
+
+#, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "Klaidų pranešimui reikalinga naudotojo paskyra <u>%s</u>"
+
+msgid "Bug Tracker"
+msgstr "Klaidų pėdsekys"
+
+msgid "User:"
+msgstr "Naudotojas:"
+
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"Ta pati klaida jau buvo pranešta kito naudotojo.\n"
+"Norėdami informuoti apie klaidos tvarkymo eigą, jūsų naudotojo vardas "
+"buvo pridėtas prie klaidos pranešimo sąrašo"
+
+msgid "Created new bug with ID "
+msgstr "Užregistruoti naują klaidą su ID"
+
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"Prisijungimo klaida!\n"
+"Neteisingas naudotojo vardas arba slaptažodis!"
+
+msgid "Exception:"
+msgstr "Klaida:"
+
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+"Serverio identifikatorius (fingerprint) pasikeitė nuo paskutinio "
+"prisijungimo!\n"
+"Programa nustos jungtis su šiuos serveriui, kol bus sutvarkytas "
+"identifikatorius."
+
+msgid "Security risk!"
+msgstr "Saugumo pavojus!"
+
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"Prisijungimo klaida!\n"
+"Nepavyko prisijungti prie serverio!"
+
+msgid "Network Error!"
+msgstr "Tinklo klaida!"
+
+msgid "<i>Search...</i>"
+msgstr "<i>Ieškoti...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Sukurti...</i>"
+
+#, fuzzy
+msgid "Value"
+msgstr "Pridėti reikšmę"
+
+#, fuzzy
+msgid "Displayed value"
+msgstr "Pridėti reikšmę"
+
+#, fuzzy
+msgid "Format"
+msgstr "Sta_ndartinis"
+
+msgid "Display format"
+msgstr ""
+
+#, fuzzy
+msgid "Open the calendar"
+msgstr "Atverti kalendorių <F2>"
+
+msgid "Date Format"
+msgstr ""
+
+msgid "Displayed date format"
+msgstr ""
+
+msgid "y"
+msgstr "t"
+
+msgid "yes"
+msgstr "taip"
+
+msgid "true"
+msgstr "teisa"
+
+msgid "t"
+msgstr "t"
+
+msgid "True"
+msgstr "Tiesa"
+
+msgid "False"
+msgstr "Netiesa"
+
+#, fuzzy
+msgid "Edit..."
+msgstr "Išei_ti..."
+
+msgid "Attachments..."
+msgstr "Priedai..."
+
+msgid "Actions..."
+msgstr "Veiksmai..."
+
+msgid "Relate..."
+msgstr "Susiję įrašai..."
+
+msgid "Report..."
+msgstr "Ataskaita..."
+
+msgid "E-Mail..."
+msgstr "El. paštas..."
+
+msgid "Print..."
+msgstr "Spausdinti..."
+
+msgid "Y"
+msgstr "Y"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "w"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr ""
+
+msgid "_File"
+msgstr "_Failas"
+
+msgid "_User"
+msgstr "_Naudotojas"
+
+msgid "_Options"
+msgstr "_Parinktys"
+
+msgid "Fa_vorites"
+msgstr "_Mėgstami"
+
+msgid "_Help"
+msgstr "_Žinynas"
+
+msgid "Search"
+msgstr "Ieškoti"
+
+msgid "No result found."
+msgstr "Nerasta rezultatų."
+
+msgid "_Connect..."
+msgstr "_Prisijungti..."
+
+msgid "_Disconnect"
+msgstr "_Atsijungti"
+
+msgid "Data_base"
+msgstr "Duomenų bazė"
+
+msgid "_New Database..."
+msgstr "_Nauja duomenų bazė..."
+
+msgid "_Restore Database..."
+msgstr "_Atkurti duomenų bazę..."
+
+msgid "_Backup Database..."
+msgstr "_Duomenų bazės atsarginė kopija..."
+
+msgid "Dro_p Database..."
+msgstr "Nai_kinti duomenų bazę"
+
+msgid "_Quit..."
+msgstr "Išei_ti..."
+
+msgid "_Preferences..."
+msgstr "Nus_tatymai..."
+
+msgid "_Menu Reload"
+msgstr "Pekrauti meniu"
+
+msgid "_Menu Toggle"
+msgstr "Įjungti/išjungti _meniu"
+
+msgid "_Global Search"
+msgstr "Globali paieška"
+
+msgid "_Toolbar"
+msgstr "Įrankių _juosta"
+
+msgid "_Default"
+msgstr "_Numatytasis"
+
+msgid "_Text and Icons"
+msgstr "_Tekstas ir piktogramos"
+
+msgid "_Icons"
+msgstr "P_iktogramos"
+
+msgid "_Text"
+msgstr "_Tekstas"
+
+msgid "_Menubar"
+msgstr "_Meniu juosta"
+
+msgid "Change Accelerators"
+msgstr "Keisti trumpinius"
+
+msgid "_Mode"
+msgstr "_Rėžimas"
+
+msgid "_Normal"
+msgstr "Sta_ndartinis"
+
+msgid "_PDA"
+msgstr "_PDA"
+
+msgid "_Form"
+msgstr "_Forma"
+
+msgid "Save Width/Height"
+msgstr "Įsiminti plotį/aukštį"
+
+#, fuzzy
+msgid "Save Tree State"
+msgstr "Įsiminti hierarchinio sąrašo išskleistas šakas"
+
+msgid "Spell Checking"
+msgstr "Rašybos klaidų tikrinimas"
+
+msgid "_Previous Tab"
+msgstr "_Buvusi kortelė"
+
+msgid "_Next Tab"
+msgstr "Kita kortelė"
+
+msgid "Search Limit..."
+msgstr "Paieškos ribojimas..."
+
+msgid "_Email..."
+msgstr "_El. paštas..."
+
+msgid "_Save Options"
+msgstr "Iš_saugoti pasirinktis"
+
+msgid "_Tips..."
+msgstr "Pa_tarimai..."
+
+msgid "_Keyboard Shortcuts..."
+msgstr "_Trumpiniai..."
+
+msgid "_About..."
+msgstr "_Apie..."
+
+msgid "Manage Favorites"
+msgstr "_Tvarkyti mėgstamus"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"Atliekant šį veiksmą bus uždarytos visos kortelės.\n"
+"Ar norite tęsti?"
+
+msgid "Close Tab"
+msgstr "Uždaryti kortelę"
+
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Bus ištrinta Tryton duomenų bazė.\n"
+"Ar jūs tikrai norite tęsti?"
+
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"Neteisingas Tryon serverio slaptažodis\n"
+"Bandykite iš naujo."
+
+msgid "Access denied!"
+msgstr "Neturite teisių!"
+
+msgid "Database drop failed with error message:\n"
+msgstr "Nepavyko sunaikinti duomenų bazės. Klaidos pranešimas:\n"
+
+msgid "Database drop failed!"
+msgstr "Nepavyko sunaikinti duomenų bazės!"
+
+msgid "Database dropped successfully!"
+msgstr "Sėkmingai sunaikinta duomenų bazė!"
+
+msgid "Open Backup File to Restore..."
+msgstr "Atverti atsarginę kopiją atkūrimui..."
+
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Negalima atkurti duomenų bazės apsaugotos slaptažodžiu.\n"
+"Atsarginės kopijos sukūrimą bei atkūrimą atlikite savarankiškai."
+
+msgid "Database is password protected!"
+msgstr "Duomenų bazės slaptažodis yra apsaugotas!"
+
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"Neteisingas Tryton serverio slaptažodis.\n"
+"Bandykite iš naujo."
+
+msgid "Database restore failed with error message:\n"
+msgstr "Nepavyko sunaikinti duomenų bazės. Klaidos pranešimas:\n"
+
+msgid "Database restore failed!"
+msgstr "Nepavyko sunaikinti duomenų bazės!"
+
+msgid "Database restored successfully!"
+msgstr "Sėkmingai sunaikinta duomenų bazė!"
+
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Negalima sukurti duomenų bazės apsaugotos slaptažodžiu atsarginės "
+"kopijos.\n"
+"Atsarginės kopijos sukūrimą bei atkūrimą atlikite savarankiškai."
+
+msgid "Database dump failed with error message:\n"
+msgstr "Nepavyko padaryti duomenų bazės atsarginės kopijos.Klaidos pranešimas:\n"
+
+msgid "Database dump failed!"
+msgstr "Nepavyko padaryti duomenų bazės atsarginės kopijos!"
+
+msgid "Database backuped successfully!"
+msgstr "Sėkmingai padaryta duomenų bazės atsarginė kopija!"
+
+msgid "New"
+msgstr "Naujas"
+
+msgid "Create a new record"
+msgstr "Sukurti naują įrašą"
+
+msgid "Save"
+msgstr "Išsaugoti"
+
+msgid "Save this record"
+msgstr "Išsaugoti šį įrašą"
+
+msgid "Switch"
+msgstr "Perjungti"
+
+msgid "Switch view"
+msgstr "Perjungti rodymą"
+
+msgid "_Reload"
+msgstr "Pe_rkrauti"
+
+msgid "Reload"
+msgstr "Perkrauti"
+
+msgid "_New"
+msgstr "_Naujas"
+
+msgid "_Save"
+msgstr "_Saugoti"
+
+msgid "_Switch View"
+msgstr "_Perjungti rodymą"
+
+msgid "_Reload/Undo"
+msgstr "Pe_rkrauti/atšaukti"
+
+msgid "_Delete..."
+msgstr "_Ištrinti..."
+
+msgid "_Close Tab"
+msgstr "Uždaryti _kortelę"
+
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+"Tai yra Tryton serverio URL. Naudokite serverio adresą 'localhost' ir "
+"prievadą '8000', jeigu serveris įdiegtas šiame kompiuteryje. Spauskite "
+"ant 'Keisti' norėdami pakeisti serverio adresą."
+
+msgid "No connection!"
+msgstr "Nėra ryšio su serveriu!"
+
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"Nepavyko prisijungti prie serverio!\n"
+"1. Patikrinkite ar serveris tikrai veikia.\n"
+"2. Patikrinkite, kuriuo adresu bei prievadu veikia serveris.\n"
+"3. Jeigu tarp serverio ir kliento yra ugniasienė, įsitikinkite, kad "
+"serverio adresas ir prievadas (dažniausiai 8000) yra neužblokuoti.\n"
+"Spauskite 'Keisti', kad pakeisti serverio jungtį."
+
+msgid "Create new database"
+msgstr "Kurti naują duomenų bazę"
+
+msgid "C_reate"
+msgstr "Ku_rti"
+
+msgid "Create the new database."
+msgstr "Kurti naują duomenų bazę"
+
+msgid "Server Setup:"
+msgstr "Serverio nustatymai:"
+
+msgid "Server connection:"
+msgstr "Serverio jungtis:"
+
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+"Tai yra serverio URL. Naudokite serverio adresą 'localhost' ir prievadą "
+"'8000', jeigu serveris įdiegtas šiame kompiuteryje. Spauskite ant "
+"'Keisti' norėdami pakeisti serverio adresą."
+
+msgid "C_hange"
+msgstr "Ke_isti"
+
+msgid "Setup the server connection..."
+msgstr "Keisti serverio jungtį..."
+
+msgid "Tryton Server Password:"
+msgstr "Tryton serverio slaptažodis:"
+
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+"Tai yra Tryton serverio slaptažodis. Šis slaptažodis nėra priskirtas "
+"kuriam nors naudotojui. Slaptažodis dažniausiai nurodomas trytond "
+"konfiguraciniame faile."
+
+msgid "New database setup:"
+msgstr "Naujos duomenų bazės nustatymai:"
+
+msgid "Database name:"
+msgstr "Duomenų bazės pavadinimas:"
+
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+"Įveskite duomenų bazės pavadinimą.\n"
+"Leidžiami simboliai yra šie: lotyniškos raidės, skaičiai ir _ "
+"(pabraukimas)\n"
+"Negalima įvesti nelotyniškų raidžių, tarpų bei skyrybos ženklų! Pavyzdys:"
+" tryton"
+
+msgid "Default language:"
+msgstr "Numatytoji kalba:"
+
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Pasirinkite numatytąją kalbą, kuri bus įdiegta šiai duomenų bazei. "
+"Papildomas kalbas galima įdiegti per administravimo meniu, kai bus "
+"sukurta nauja duomenų bazė"
+
+msgid "Admin password:"
+msgstr "Administratoriaus slaptažodis:"
+
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Įveskite 'admin' naudotojo slaptažodį prisijungimui prie naujos duomenų "
+"bazės. Su šiais duomenimis prisijungsite prie naujos duomenų bazės:\n"
+"Naudotojas: admin\n"
+"Slaptažodis: <Slaptažodis, kurį įvedėte čia>"
+
+msgid "Confirm admin password:"
+msgstr "Pakartokite slaptažodį:"
+
+msgid "Type the Admin password again"
+msgstr "Pakartotinai įrašykite administratoriaus slaptažodį"
+
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr "Naujas administratoriaus slaptažodis nesutampa su pakartotinu.\n"
+
+msgid "Passwords doesn't match!"
+msgstr "Slaptažodžiai nesutampa!"
+
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Duomenų bazė tokiu pavadinimu jau yra sukurta.\n"
+"Pasirinkite kitą pavadinimą."
+
+msgid "This database name already exist!"
+msgstr "Duomenų bazė tokiu pavadinimu jau yra sukurta!"
+
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr "Neteisingas Tryton serverio slaptažodis. Bandykite iš naujo."
+
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"Nepavyko sukurti duomenų bazės dėl nežinomos priežasties.\n"
+"Jeigu duomenų bazė vis dėlto buvo sukurta, tikėtina, kad ji pažeista. "
+"Geriau sunaikinti šią duomenų bazę! Patikrinkite klaidos pranešimą dėl "
+"papildomos informacijos.\n"
+"Klaidos pranešimas:\n"
+
+msgid "Error creating database!"
+msgstr "Klaida kuriant duomenų bazę!"
+
+msgid "Could not connect to server!"
+msgstr "Nepavyko prisijungti prie serverio!"
+
+msgid "This client version is not compatible with the server!"
+msgstr "Šį programos versija nėra suderinama su serveriu!"
+
+msgid "No database found, you must create one!"
+msgstr "Nėra nei vienos duomenų bazės!"
+
+msgid "Backup a database"
+msgstr "Duomenų bazės atsarginė kopija"
+
+msgid "Backup"
+msgstr "Saugoti"
+
+msgid "Backup the choosen database."
+msgstr "Daryti pasirinktos duomenų bazės atsarginę kopiją."
+
+msgid "Choose a Tryton database to backup:"
+msgstr "Pasirinkite Tryton duomenų bazę atsarginės kopijos sukūrimui:"
+
+msgid "Delete a database"
+msgstr "Naikinti duomenų bazę"
+
+msgid "Delete"
+msgstr "Naikinti"
+
+msgid "Delete the choosen database."
+msgstr "Naikinti pasirinktą duomenų bazę."
+
+msgid "Choose a Tryton database to delete:"
+msgstr "Pasirinkite duomenų bazę, kurią sunaikinti:"
+
+msgid "Server Connection:"
+msgstr "Serverio jungtis:"
+
+msgid "Database:"
+msgstr "Duomenų bazė:"
+
+msgid "Profile Editor"
+msgstr "Profilių tvarkymas"
+
+msgid "Profile"
+msgstr "Profilis"
+
+msgid "_Add"
+msgstr "_Pridėti"
+
+msgid "_Remove"
+msgstr "_Ištrinti"
+
+msgid "Host:"
+msgstr "Serveris:"
+
+msgid "Create"
+msgstr "Kurti"
+
+msgid "Fetching databases list"
+msgstr "Gaunamas duomenų bazių sąrašas"
+
+msgid "Username:"
+msgstr "Naudotojas:"
+
+msgid "Could not connect to the server"
+msgstr "Nepavyko prisijungti prie serverio"
+
+msgid "Incompatible version of the server"
+msgstr "Nesuderinama serverio versija"
+
+msgid "Login"
+msgstr "Prisijungti"
+
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Atšaukti prisijungimą prie Tryton serverio"
+
+msgid "C_onnect"
+msgstr "_Prisijungti"
+
+msgid "Connect the Tryton server"
+msgstr "Prisijungti prie Tryton serverio"
+
+msgid "Profile:"
+msgstr "Profilis:"
+
+msgid "_Manage profiles"
+msgstr "_Tvarkyti profilius"
+
+msgid "Host / Database information"
+msgstr "Serverio / duomenų bazės duomenys"
+
+msgid "User name:"
+msgstr "Naudotojas:"
+
+msgid "Restore Database"
+msgstr "Atkurti duomenų bazę"
+
+msgid "File to Restore:"
+msgstr "Atkuriama iš failo:"
+
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Įveskite duomenų bazės pavadinimą į kurią atkurti.\n"
+"Leidžiami simboliai yra šie: lotyniškos raidės, skaičiai ir _ "
+"(pabraukimas)\n"
+"Negalima įvesti nelotyniškų raidžių, tarpų bei skyrybos ženklų! Pavyzdys:"
+" tryton"
+
+msgid "New Database Name:"
+msgstr "Naujos duomenų bazės pavadinimas:"
+
+msgid "Update Database:"
+msgstr "Atnaujinti duomenų bazę:"
+
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+"Pažymėkite, jeigu norite, kad po duomenų bazė atkūrimo būtų atnaujinama "
+"iki esamos Tryton versijos."
+
+msgid "Restore"
+msgstr "Atkurti"
+
+msgid "Restore the database from file."
+msgstr "Atkurti duomenų bazę iš failo."
+
+msgid "Email"
+msgstr "El. paštas"
+
+msgid "Email Program Settings"
+msgstr "El. pašto programos nustatymai"
+
+msgid "Command Line:"
+msgstr "Komandinė eilutė:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Galimos žymekliai:"
+
+msgid "To:"
+msgstr "Kam:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Tema:"
+
+msgid "Body:"
+msgstr "Turinys:"
+
+msgid "Attachment:"
+msgstr "Priedas:"
+
+msgid "Previous"
+msgstr "Buvęs"
+
+msgid "Previous Record"
+msgstr "Buvęs įrašas"
+
+msgid "Next"
+msgstr "Kitas"
+
+msgid "Next Record"
+msgstr "Kitas įrašas"
+
+msgid "Attachment(0)"
+msgstr "Priedai(0)"
+
+msgid "Add an attachment to the record"
+msgstr "Prisegti failą prie įrašo"
+
+msgid "_Duplicate"
+msgstr "Sukurti ko_piją"
+
+msgid "_Previous"
+msgstr "_Buvęs"
+
+msgid "_Next"
+msgstr "_Kitas"
+
+msgid "_Search"
+msgstr "I_eškoti"
+
+msgid "View _Logs..."
+msgstr "Žiūrėti _žurnalus..."
+
+msgid "Show revisions..."
+msgstr ""
+
+msgid "A_ttachments..."
+msgstr "P_riedas:"
+
+msgid "_Actions..."
+msgstr "_Veiksmai..."
+
+msgid "_Relate..."
+msgstr "_Susiję įrašai..."
+
+msgid "_Report..."
+msgstr "_Ataskaita..."
+
+msgid "_E-Mail..."
+msgstr "Siųsti _el. paštu..."
+
+msgid "_Print..."
+msgstr "_Spausdinti..."
+
+msgid "_Export Data..."
+msgstr "_Eksportuoti duomenis..."
+
+msgid "_Import Data..."
+msgstr "_Importuoti duomenis..."
+
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Priedai(%d)"
+
+msgid "You have to select one record!"
+msgstr "Pasirinkite bent vieną įrašą!"
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Sukūrė naudotojas:"
+
+msgid "Creation Date:"
+msgstr "Sukūrimo data:"
+
+msgid "Latest Modification by:"
+msgstr "Paskutinį kartą redagavo:"
+
+msgid "Latest Modification Date:"
+msgstr "Paskutinio redagavimo data:"
+
+msgid "Model:"
+msgstr "Modelis:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Ar tikrai norite ištrinti šį įrašą?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
+
+msgid "Records not removed!"
+msgstr "Įrašai nebuvo ištrinti!"
+
+msgid "Records removed!"
+msgstr "Įrašai ištrinti!"
+
+msgid "Working now on the duplicated record(s)!"
+msgstr "Dabar dirbate su įrašo(-ų) kopija(-omis)!"
+
+msgid "Record saved!"
+msgstr "Įrašas išsaugotas!"
+
+msgid "Invalid form!"
+msgstr "Netinkama forma!"
+
+msgid " of "
+msgstr " iš "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Šis įrašas buvo pakeistas\n"
+"Ar norite jį išsaugoti?"
+
+msgid "Action"
+msgstr "Veiksmai"
+
+msgid "Launch action"
+msgstr "Vykdyti veiksmą"
+
+msgid "Relate"
+msgstr "Susijęs"
+
+msgid "Open related records"
+msgstr "Atverti susijusius įrašus"
+
+msgid "Report"
+msgstr "Ataskaitos"
+
+msgid "Open report"
+msgstr "Atverti ataskaitą"
+
+msgid "E-Mail"
+msgstr "Siuntimas"
+
+msgid "E-Mail report"
+msgstr "Siųsti ataskaitą el. paštu"
+
+msgid "Print"
+msgstr "Spausdinimas"
+
+msgid "Print report"
+msgstr "Spausdinti ataskaitą"
+
+msgid "Unknown"
+msgstr "Nežinomas"
+
+msgid "Limit"
+msgstr "Riba"
+
+msgid "Search Limit Settings"
+msgstr "Paieškos ribojimo nustatymai"
+
+msgid "Limit:"
+msgstr "Riba:"
+
+msgid "Preferences"
+msgstr "Nustatymai"
+
+msgid "Edit User Preferences"
+msgstr "Keisti naudotojo nustatymus"
+
+msgid "Preference"
+msgstr "Nustatymai"
+
+msgid "Current Password:"
+msgstr "Dabartinis slaptažodis:"
+
+#, fuzzy
+msgid "Revision"
+msgstr "Buvęs"
+
+#, fuzzy
+msgid "Select a revision"
+msgstr "Pasirinkimas"
+
+msgid "Revision:"
+msgstr ""
+
+msgid "Keyboard Shortcuts"
+msgstr "Spartieji klavišai"
+
+msgid "Text Entries Shortcuts"
+msgstr "Teksto laukų trumpiniai"
+
+msgid "Cut selected text"
+msgstr "Iškirpti pažymėtą tekstą"
+
+msgid "Copy selected text"
+msgstr "Kopijuoti pažymėtą tekstą"
+
+msgid "Paste copied text"
+msgstr "Įdėti nukopijuotą tekstą"
+
+msgid "Next widget"
+msgstr "Peršokti į kitą lauką"
+
+msgid "Previous widget"
+msgstr "Grįžti į buvusį lauką"
+
+msgid "Relation Entries Shortcuts"
+msgstr "Sąryšinių laukų trumpiniai"
+
+msgid "Create new relation"
+msgstr "Kurti naują sąryšį"
+
+msgid "Open/Search relation"
+msgstr "Atverti/ieškoti sąryšinio įrašo"
+
+msgid "List Entries Shortcuts"
+msgstr "Sąrašo laukų trumpiniai"
+
+msgid "Create new line"
+msgstr "Kurti naują eilutę"
+
+msgid "Open relation"
+msgstr "Atverti sąryšį"
+
+msgid "Mark line for deletion"
+msgstr "Pažymėti eilutę ištrinimui"
+
+msgid "Unmark line for deletion"
+msgstr "Nužymėti eilutę ištrinimui"
+
+msgid "Edition Widgets"
+msgstr "Trumpiniai pagal laukus"
+
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Sveiki, atvykę į Tryton</b>\n"
+"\n"
+"\n"
+
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>Ar jūs žinote apie Tritoną, vieną iš mūsų projekto pavadinimų?</b>\n"
+"\n"
+"Tritonas (gr. Τρίτων) yra didžiausias Neptūno palydovas, kurį atrado "
+"Viljamas\n"
+"Laselis 1846 m. spalio 10 d. Tai vienintelis didelis planetų palydovas "
+"Saulės\n"
+"sistemoje su retrogradine orbita, t.y. orbitos skriejimo kryptis "
+"priešinga\n"
+"planetos sukimuisi. 2700 km skersmens, Tritonas yra septintas didžiausias"
+"\n"
+"planetos palydovas Saulės sistemoje. Tritonas sudaro daugiau kaip 99,5\n"
+"procentus visos žinomos Neptūno orbitos masės, įskaitant planetos žiedą "
+"bei\n"
+"dvyliką kitų žinomų planetos palydovų. Taip pat jis masyvesnis negu visi "
+"159\n"
+"žinomi mažesni Saulės sistemos planetų palydovai kartu sudėjus.\n"
+
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Eksportuoti įrašus iš sąrašo</b>\n"
+"\n"
+"Jūsų galite nukopijuoti įrašus iš bet kurio sąrašo naudodami Ctrl + C\n"
+"bei įdėti į bet kurią programą spustelėje Ctrl + V\n"
+
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+"<b>Eksportuoti diagramą</b>\n"
+"\n"
+"Jūs galite išsaugoti bet kurią diagramą PNG formatu, spustelėję\n"
+"dešinį pelės mygtuką ant diagramos.\n"
+
+msgid "Tips"
+msgstr "Patarimai"
+
+msgid "_Display a new tip next time"
+msgstr "_Rodyti patarimus ir kitą kartą"
+
+msgid "Export to CSV"
+msgstr "Eksportuoti CSV formatu"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Išsaugoti eksportavimo šablonai</b>"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Galimi laukai</b>"
+
+msgid "Clear"
+msgstr "Valyti"
+
+msgid "Save Export"
+msgstr "Išsaugoti šabloną"
+
+msgid "Delete Export"
+msgstr "Ištrinti šabloną"
+
+msgid "<b>Fields to export</b>"
+msgstr "<b>Eksportuojami laukai</b>"
+
+msgid "<b>Options</b>"
+msgstr "<b>Nustatymai</b>"
+
+msgid "Open"
+msgstr "Atvėrimas"
+
+msgid "Add _field names"
+msgstr "Pridėti laukų pavadinimus"
+
+msgid "Name"
+msgstr "Pavadinimas"
+
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+msgid "What is the name of this export?"
+msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#, python-format
+msgid "%d record saved!"
+msgstr "%d įrašas išsaugotas!"
+
+#, python-format
+msgid "%d records saved!"
+msgstr "%d įrašai išsaugoti!"
+
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Veiksmas neįvykdytas!\n"
+"Klaidos pranešimas:\n"
+"%s"
+
+msgid "Link"
+msgstr "Nuoroda"
+
+msgid "Add"
+msgstr "Pridėti"
+
+msgid "Remove <Del>"
+msgstr "Šalinti <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "Sukurti naują įrašą <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Pašalinti pasirinktą įrašą <Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Atkurti pasirinktą įrašą <Ins>"
+
+msgid "Import from CSV"
+msgstr "Importuoti iš CSV failo"
+
+msgid "Auto-Detect"
+msgstr "Aptikti automatiškai"
+
+msgid "<b>Fields to import</b>"
+msgstr "<b>Importuojami laukai</b>"
+
+msgid "File to Import:"
+msgstr "Importuoti iš failo:"
+
+msgid "Open..."
+msgstr "Atverti..."
+
+msgid "CSV Parameters"
+msgstr "CSV parametrai"
+
+msgid "Field Separator:"
+msgstr "Laukų skirtukas:"
+
+msgid "Text Delimiter:"
+msgstr "Teksto skyriklis:"
+
+msgid "Encoding:"
+msgstr "Koduotė:"
+
+msgid "Lines to Skip:"
+msgstr "Praleisti eilutes:"
+
+msgid "Field name"
+msgstr "Lauko pavadinimas"
+
+msgid "You must select an import file first!"
+msgstr "Pasirinkite failą iš kurio importuosite!"
+
+msgid "Error opening CSV file"
+msgstr "Klaida atveriant CSV failą"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Klaida apdorojant failą ties lauku %s."
+
+#, python-format
+msgid "%d record imported!"
+msgstr "%d įrašas importuotas!"
+
+#, python-format
+msgid "%d records imported!"
+msgstr "%d įrašai importuoti!"
+
+msgid "Wizard"
+msgstr "Vedlys"
+
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgid "Creation User"
+msgstr "Sukūrė naudotojas:"
+
+#, fuzzy
+msgid "Creation Date"
+msgstr "Sukūrimo data:"
+
+#, fuzzy
+msgid "Modification User"
+msgstr "Paskutinio redagavimo data:"
+
+#, fuzzy
+msgid "Modification Date"
+msgstr "Paskutinio redagavimo data:"
+
+msgid "Unable to get view tree state"
+msgstr ""
+
+#, fuzzy
+msgid "Unable to set view tree state"
+msgstr "Nepavyko nustatyti lokalės %s"
+
+msgid ":"
+msgstr ":"
+
+msgid "Save As"
+msgstr "Įrašyti kaip"
+
+msgid "Image Size"
+msgstr "Paveiklėlio dydis"
+
+msgid "Width:"
+msgstr "Plotis:"
+
+msgid "Height:"
+msgstr "Aukštis"
+
+msgid "PNG image (*.png)"
+msgstr "PNG paveikslėlis (*.png)"
+
+msgid "Image size too large!"
+msgstr "Paveikslėlis yra per didelis!"
+
+msgid ".."
+msgstr ".."
+
+msgid "F_ilters"
+msgstr "F_iltras"
+
+msgid "Show bookmarks of filters"
+msgstr "Rodyti filtrų žymeles"
+
+msgid "Remove this bookmark"
+msgstr "Šalinti šią žymelę"
+
+msgid "Bookmark this filter"
+msgstr "Sukurti šio filtro žymelę"
+
+msgid "Bookmark Name:"
+msgstr "Žymelės pavadinimas:"
+
+msgid "Find"
+msgstr "Rasti"
+
+#, fuzzy
+msgid "Today"
+msgstr "Turinys:"
+
+#, fuzzy
+msgid "Week View"
+msgstr "Perjungti rodymą"
+
+#, fuzzy
+msgid "Month View"
+msgstr "Perjungti rodymą"
+
+msgid "Week"
+msgstr ""
+
+msgid "Select a File..."
+msgstr "Pasirinkite failą..."
+
+msgid "Show plain text"
+msgstr "Rodyti paprastą tekstą"
+
+msgid "Add value"
+msgstr "Pridėti reikšmę"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Šalinti \"%s\""
+
+msgid "Select an Image..."
+msgstr "Pasirinkite paveikslėlį..."
+
+msgid "All files"
+msgstr "Visi failai"
+
+msgid "Images"
+msgstr "Paveikslėliai"
+
+msgid "Add existing record"
+msgstr "Pridėti turimą įrašą"
+
+msgid "Remove selected record <Del>"
+msgstr "Pašalinti pasirinktą įrašą <Del>"
+
+msgid "Open a record <F2>"
+msgstr "Atverti įrašą <F2>"
+
+msgid "Search a record <F2>"
+msgstr "Ieškoti įrašo <F2>"
+
+msgid "Remove selected record"
+msgstr "Pašalinti pasirinktą įrašą"
+
+msgid "Edit selected record <F2>"
+msgstr "Keisti pasirinktą įrašą <F2>"
+
+msgid "Change text to bold"
+msgstr "Paryškinti tekstą"
+
+msgid "Change text to italic"
+msgstr "Kursyvas tekstas"
+
+msgid "Change text to underline"
+msgstr "Pabraukti tekstą"
+
+msgid "Choose font-family"
+msgstr "Pasirinkite šriftą"
+
+msgid "Choose font-size"
+msgstr "Pasirinkite šrifto dydį"
+
+msgid "Justify of line to the left"
+msgstr "Lygiuoti tekstą kairėje"
+
+msgid "Justify of line to the center"
+msgstr "Lygiuoti tekstą centre"
+
+msgid "Justify of line to the right"
+msgstr "Lygiuoti tekstą dešinėje"
+
+msgid "Justify of line to fill window"
+msgstr "Pritaikyti abipusę lygiuotę"
+
+msgid "Change the foreground text"
+msgstr "Pakeisti teksto spalvą"
+
+msgid "Change the background text"
+msgstr "Pakeisti fono spalvą"
+
+msgid "Change the markup text view"
+msgstr "Rodyti teksto žymėjimo kalbos rodinį"
+
+msgid "Select a foreground color"
+msgstr "Pasirinkite teksto spalvą"
+
+msgid "Select a background color"
+msgstr "Pasirinkite fono spalvą"
+
+msgid "Translation"
+msgstr "Vertimas"
+
+msgid "Edit"
+msgstr "Keisti"
+
+msgid "Fuzzy"
+msgstr "Neaiškus"
+
+msgid "You need to save the record before adding translations!"
+msgstr "Išsaugokite įrašą prieš pridedant vertimą!"
+
+msgid "No other language available!"
+msgstr "Jokia kita kalba nėra prieinama!"
+
+msgid "Translate view"
+msgstr "Vertimų peržiūra"
+

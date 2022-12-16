@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Language" col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="direction"/>
+    <field name="direction"/>
+    <label name="translatable"/>
+    <field name="translatable"/>
+    <separator string="Date Formatting" colspan="6" id="date"/>
+    <label name="date"/>
+    <field name="date"/>
+    <separator string="Numbers Formatting" colspan="6" id="number"/>
+    <label name="grouping"/>
+    <field name="grouping"/>
+    <label name="thousands_sep"/>
+    <field name="thousands_sep"/>
+    <label name="decimal_point"/>
+    <field name="decimal_point"/>
+</form>
