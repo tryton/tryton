@@ -1,0 +1,127 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:product.product,height_digits:"
+msgid "Height Digits"
+msgstr "Dígitos de altura"
+
+msgctxt "field:product.product,height_uom:"
+msgid "Height Uom"
+msgstr "UdM de altura"
+
+msgctxt "field:product.product,length:"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "field:product.product,length_digits:"
+msgid "Length Digits"
+msgstr "Dígitos de longitud"
+
+msgctxt "field:product.product,length_uom:"
+msgid "Length Uom"
+msgstr "UdM de longitud"
+
+msgctxt "field:product.product,volume:"
+msgid "Volume"
+msgstr "Volumen"
+
+msgctxt "field:product.product,volume_digits:"
+msgid "Volume Digits"
+msgstr "Decimales de volumen"
+
+msgctxt "field:product.product,volume_uom:"
+msgid "Volume Uom"
+msgstr "UdM de volumen"
+
+msgctxt "field:product.product,weight:"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "field:product.product,weight_digits:"
+msgid "Weight Digits"
+msgstr "Dígitos de peso"
+
+msgctxt "field:product.product,weight_uom:"
+msgid "Weight Uom"
+msgstr "UdM de peso"
+
+msgctxt "field:product.product,width:"
+msgid "Width"
+msgstr "Ancho"
+
+msgctxt "field:product.product,width_digits:"
+msgid "Width Digits"
+msgstr "Dígitos de ancho"
+
+msgctxt "field:product.product,width_uom:"
+msgid "Width Uom"
+msgstr "UdM de ancho"
+
+msgctxt "field:product.template,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:product.template,height_digits:"
+msgid "Height Digits"
+msgstr "Dígitos de altura"
+
+msgctxt "field:product.template,height_uom:"
+msgid "Height Uom"
+msgstr "UdM de altura"
+
+msgctxt "field:product.template,length:"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "field:product.template,length_digits:"
+msgid "Length Digits"
+msgstr "Dígitos de longitud"
+
+msgctxt "field:product.template,length_uom:"
+msgid "Length Uom"
+msgstr "UdM de longitud"
+
+msgctxt "field:product.template,volume:"
+msgid "Volume"
+msgstr "Volumen"
+
+msgctxt "field:product.template,volume_digits:"
+msgid "Volume Digits"
+msgstr "Decimales de volumen"
+
+msgctxt "field:product.template,volume_uom:"
+msgid "Volume Uom"
+msgstr "UdM de volumen"
+
+msgctxt "field:product.template,weight:"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "field:product.template,weight_digits:"
+msgid "Weight Digits"
+msgstr "Dígitos de peso"
+
+msgctxt "field:product.template,weight_uom:"
+msgid "Weight Uom"
+msgstr "UdM de peso"
+
+msgctxt "field:product.template,width:"
+msgid "Width"
+msgstr "Ancho"
+
+msgctxt "field:product.template,width_digits:"
+msgid "Width Digits"
+msgstr "Dígitos de ancho"
+
+msgctxt "field:product.template,width_uom:"
+msgid "Width Uom"
+msgstr "UdM de ancho"
+
+msgctxt "view:product.template:"
+msgid "Measurements"
+msgstr "Mediciones"

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">party.address</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">address_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">address_tree_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">party.address</field>
+            <field name="type">form</field>
+            <field name="name">address_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_address_form">
+            <field name="name">Addresses</field>
+            <field name="res_model">party.address</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_address_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="address_view_tree"/>
+            <field name="act_window" ref="act_address_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_address_form_view2">
+          <field name="sequence" eval="20"/>
+          <field name="view" ref="address_view_form"/>
+          <field name="act_window" ref="act_address_form"/>
+        </record>
+        <menuitem name="Addresses" parent="menu_party"
+              sequence="2" action="act_address_form"
+              id="menu_address_form"/>
+    </data>
+</tryton>
