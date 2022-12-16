@@ -1,0 +1,55 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.employee,cost_price:"
+msgid "Cost Price"
+msgstr "Maliyet Fiyatı"
+
+msgctxt "field:company.employee,cost_prices:"
+msgid "Cost Prices"
+msgstr "Maliyet Fiyatları"
+
+msgctxt "field:company.employee_cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Maliyet Fiyatı"
+
+msgctxt "field:company.employee_cost_price,date:"
+msgid "Date"
+msgstr "Tarih"
+
+msgctxt "field:company.employee_cost_price,employee:"
+msgid "Employee"
+msgstr "Çalışan"
+
+msgctxt "field:timesheet.line,cost_price:"
+msgid "Cost Price"
+msgstr "Maliyet fiyatı"
+
+#, fuzzy
+msgctxt "help:company.employee,cost_price:"
+msgid "Hourly cost price for this Employee."
+msgstr "Bu çalışan için saatlik maliyet fiyatı"
+
+#, fuzzy
+msgctxt "help:company.employee,cost_prices:"
+msgid "List of hourly cost price over time."
+msgstr "Saatlik fazla mesai maliyet fiyatı listesi"
+
+#, fuzzy
+msgctxt "help:company.employee_cost_price,cost_price:"
+msgid "Hourly cost price."
+msgstr "Saatlik maliyet fiyatı"
+
+msgctxt "model:company.employee_cost_price,name:"
+msgid "Employee Cost Price"
+msgstr "Çalışan Maliyet Fiyatı"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"
+msgid "An employee can only have one cost price by date."
+msgstr "Bir çalışan için tarihe göre yalnız bir maliyet fiyatı olabilir"
+
+msgctxt "view:company.employee:"
+msgid "Cost"
+msgstr "Maliyet"
