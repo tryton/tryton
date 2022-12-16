@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator string="Product Recommendation Association Rule" id="product_association_rule" colspan="4"/>
+
+        <label name="product_association_rule_transactions_up_to"/>
+        <field name="product_association_rule_transactions_up_to"/>
+        <label name="product_association_rule_max_length"/>
+        <field name="product_association_rule_max_length"/>
+
+        <label name="product_association_rule_min_support"/>
+        <field name="product_association_rule_min_support"/>
+        <label name="product_association_rule_min_confidence"/>
+        <field name="product_association_rule_min_confidence"/>
+    </xpath>
+</data>
