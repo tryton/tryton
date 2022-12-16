@@ -1,0 +1,193 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,expiration_state:"
+msgid "Expiration State"
+msgstr "Vervalstatus"
+
+msgctxt "field:product.product,expiration_time:"
+msgid "Expiration Time"
+msgstr "Vervaltijd"
+
+msgctxt "field:product.product,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "staat van de maximale gebruiksduur (shelf life time state)"
+
+msgctxt "field:product.product,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Maximale gebruiksduur"
+
+msgctxt "field:product.template,expiration_state:"
+msgid "Expiration State"
+msgstr "Vervalstatus"
+
+msgctxt "field:product.template,expiration_time:"
+msgid "Expiration Time"
+msgstr "Vervaltijd"
+
+msgctxt "field:product.template,shelf_life_state:"
+msgid "Shelf Life Time State"
+msgstr "staat van de maximale gebruiksduur (shelf life time state)"
+
+msgctxt "field:product.template,shelf_life_time:"
+msgid "Shelf Life Time"
+msgstr "Maximale gebruiksduur"
+
+msgctxt "field:stock.configuration,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Houdbaarheidsvertraging"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Houdbaarheidsvertraging"
+
+msgctxt "field:stock.lot,expiration_date:"
+msgid "Expiration Date"
+msgstr "uiterste houdbaarheidsdatum"
+
+msgctxt "field:stock.lot,expiration_state:"
+msgid "Expiration State"
+msgstr "Vervalstatus"
+
+msgctxt "field:stock.lot,shelf_life_expiration_date:"
+msgid "Shelf Life Expiration Date"
+msgstr ""
+"staat van de maximale gebruiksduur (shelf life time state)/ "
+"houdbaarheidstermijn"
+
+msgctxt "field:stock.lot,shelf_life_expiration_state:"
+msgid "Shelf Life Expiration State"
+msgstr ""
+"staat van de maximale gebruiksduur (shelf life time state)/ "
+"houdbaarheidstermijn"
+
+msgctxt "help:product.product,expiration_time:"
+msgid "In number of days."
+msgstr "In aantal dagen."
+
+msgctxt "help:product.product,shelf_life_time:"
+msgid "In number of days."
+msgstr "In aantal dagen."
+
+msgctxt "help:product.template,expiration_time:"
+msgid "In number of days."
+msgstr "In aantal dagen."
+
+msgctxt "help:product.template,shelf_life_time:"
+msgid "In number of days."
+msgstr "In aantal dagen."
+
+msgctxt "help:stock.configuration,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "De tijdspanne voor de verwijdering uit de prognose."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "De tijdspanne voor de verwijdering uit de prognose."
+
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+"U kunt de vervaldatums van lot \"%(lot) s niet wijzigen omdat het wordt "
+"gebruikt bij boeking \"%(move)s\" in een afgesloten periode."
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+"U kan de boeking \"%(move)s\" niet verwerken omdat het lot \"%(lot)s "
+"vervallen is."
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
+msgstr ""
+"U kunt geen periodes afsluiten vóór het verlopen van lot \"%(lot)s\" "
+"(%(date)s)."
+
+msgctxt "model:res.group,name:group_stock_force_expiration"
+msgid "Stock Force Expiration"
+msgstr "Voorraad dwing vervaldatum af"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Voorraadconfiguratie Lot Houdbaarheid"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:product.product,expiration_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:product.product,shelf_life_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:product.template,expiration_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:product.template,shelf_life_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:stock.lot,expiration_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Optional"
+msgstr "optioneel"
+
+msgctxt "selection:stock.lot,shelf_life_expiration_state:"
+msgid "Required"
+msgstr "Vereist"
+
+msgctxt "view:product.template:"
+msgid "Shelf Life"
+msgstr "Houdbaarheid"
