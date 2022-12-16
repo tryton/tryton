@@ -1,0 +1,17 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_stock_quantity"
+msgid ""
+"The forcast quantity (%(forecast_quantity)s%(default_uom)s) for line "
+"\"%(line)s\" is lower than its quantity (%(quantity)s%(unit)s)."
+msgstr ""
+"La quantita prevista %(forecast_quantity)s%(default_uom)s di \"%(line)s\" è "
+"minore di %(quantity)s%(unit)s."
+
+#, fuzzy
+msgctxt "model:res.group,name:group_sale_stock_quantity"
+msgid "Sale Stock Quantity"
+msgstr "Sale Stock Quantity"

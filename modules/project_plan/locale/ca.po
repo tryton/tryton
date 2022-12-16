@@ -1,0 +1,131 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Predecessor"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Successor"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Finalització real"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Hora de finalització real"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Inici real"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Hora d'inici real"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Assignacions"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Back Leveling Delay"
+msgstr "Retard de l'anivellació"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Restricció de finalització"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint Finish Time"
+msgstr "Restricció d'hora de finalització"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Restricció d'inici"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Restricció de temps d'inici"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Temps"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Finalització avançada"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Hora de finalització avançada"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Inici prematur"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Hora d'inici prematur"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Finalització amb retard"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Hora de finalització amb retard"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Inici amb retard"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Hora d'inici amb retard"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Retard d'anivellació"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Predecessors"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Successors"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Anivellació de tasques"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Assignació"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Predecessor - Successor"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Assignacions"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Planificació"
