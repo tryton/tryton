@@ -1,0 +1,131 @@
+type,name,res_id,src,value,fuzzy
+error,party.address,0,You can not modify the party of an address!,No puede modificar el tercero de una dirección!,0
+error,party.category,0,The name of a party category must be unique by parent!,,0
+error,party.category,0,You can not create recursive categories!,No puede crear categorías recursivas!,0
+error,party.category,0,"You can not use "" / "" in name field!",,0
+error,party.check_vies,0,"The VIES service is unavailable, try again later.","El servicio VIES no está disponible, intente más tarde.",0
+error,party.contact_mechanism,0,You can not modify the party of a contact mechanism!,¡No puede modificar un tercero de un mecanismo de contacto!,0
+error,party.party,0,Invalid VAT number!,¡Número inválido!,0
+field,"party.address,active",0,Active,Activo,0
+field,"party.address,city",0,City,Ciudad,0
+field,"party.address,country",0,Country,País,0
+field,"party.address,full_address",0,,,0
+field,"party.address,name",0,Name,Nombre de Contacto,0
+field,"party.address,party",0,Party,Tercero,0
+field,"party.address,rec_name",0,Name,Nombre,0
+field,"party.address,sequence",0,Sequence,Secuencia,0
+field,"party.address,street",0,Street,Calle,0
+field,"party.address,streetbis",0,Street (bis),Calle (bis),0
+field,"party.address,subdivision",0,Subdivision,Subdivisión,0
+field,"party.address,zip",0,Zip,Código postal,0
+field,"party.category,active",0,Active,Activo,0
+field,"party.category,childs",0,Children,Hij@s,0
+field,"party.category,name",0,Name,Nombre,0
+field,"party.category,parent",0,Parent,Padre,0
+field,"party.category,rec_name",0,Name,Nombre,0
+field,"party.check_vies.check,parties_failed",0,Parties Failed,Los terceros fallaron,0
+field,"party.check_vies.check,parties_succeed",0,Parties Succeed,Terceros válidos,0
+field,"party.configuration,party_sequence",0,Party Reference Sequence,,0
+field,"party.configuration,rec_name",0,Name,Nombre de Contacto,1
+field,"party.contact_mechanism,active",0,Active,Activo,0
+field,"party.contact_mechanism,comment",0,Comment,Comentario,0
+field,"party.contact_mechanism,email",0,E-Mail,Correo electrónico,0
+field,"party.contact_mechanism,other_value",0,Value,Valor,0
+field,"party.contact_mechanism,party",0,Party,Tercero,0
+field,"party.contact_mechanism,rec_name",0,Name,Nombre,0
+field,"party.contact_mechanism,sequence",0,Sequence,Secuencia,0
+field,"party.contact_mechanism,sip",0,SIP,SIP,0
+field,"party.contact_mechanism,skype",0,Skype,Skype,0
+field,"party.contact_mechanism,type",0,Type,Tipo,0
+field,"party.contact_mechanism,value",0,Value,Valor,0
+field,"party.contact_mechanism,website",0,Website,Sitio Web,0
+field,"party.party,active",0,Active,Activo,0
+field,"party.party,addresses",0,Addresses,Direcciones,0
+field,"party.party,categories",0,Categories,Categorías,0
+field,"party.party,code",0,Code,Código,0
+field,"party.party,code_length",0,Code Length,Longitud del Código,0
+field,"party.party,contact_mechanisms",0,Contact Mechanisms,Mecanismos de contacto,0
+field,"party.party,email",0,E-Mail,Correo electrónico,0
+field,"party.party,fax",0,Fax,Fax,0
+field,"party.party,full_name",0,,,0
+field,"party.party,lang",0,Language,Idioma,0
+field,"party.party,mobile",0,Mobile,Celular,0
+field,"party.party,name",0,Name,Nombre,0
+field,"party.party-party.category,category",0,Category,Categoría,0
+field,"party.party-party.category,party",0,Party,Tercero,0
+field,"party.party-party.category,rec_name",0,Name,Nombre,0
+field,"party.party,phone",0,Phone,Teléfono,0
+field,"party.party,rec_name",0,Name,Nombre,0
+field,"party.party,vat_code",0,VAT Code,Código de IVA,0
+field,"party.party,vat_country",0,VAT Country,País,0
+field,"party.party,vat_number",0,VAT Number,Número,0
+field,"party.party,website",0,Website,Sitio Web,0
+help,"party.party,vat_country",0,Setting VAT country will enable validation of the VAT number.,Al especificar el país se habilitará la verificación del NIT.,0
+help,"party.party,vat_number",0,Value Added Tax number,Número de Impuesto de Valor Agregado,0
+model,"ir.action,name",act_address_form,Addresses,Direcciones,0
+model,"ir.action,name",act_address_form2,Addresses,Direcciones,0
+model,"ir.action,name",act_category_tree,Categories,Categorías,0
+model,"ir.action,name",act_category_form,Categories,Categorías,0
+model,"ir.action,name",act_category_form2,Categories,Categorías,0
+model,"ir.action,name",wizard_check_vies,Check VIES,Revisar VIES,0
+model,"ir.action,name",report_label,Labels,Etiquetas,0
+model,"ir.action,name",act_party_form,Parties,Terceros,0
+model,"ir.action,name",act_party_form2,Parties,Terceros,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Terceros por Categoría,0
+model,"ir.action,name",act_party_configuration_form,Party Configuration,,0
+model,"ir.sequence,name",sequence_party,Party,Tercero,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Tercero,0
+model,"ir.ui.menu,name",menu_address_form,Addresses,Direcciones,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Categorías,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Categorías,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuración,0
+model,"ir.ui.menu,name",menu_address_form2,New Address,Nueva Dirección,0
+model,"ir.ui.menu,name",menu_category_form2,New category,Nueva Categoría,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Nuevo Tercero,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Terceros,0
+model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,,0
+model,"ir.ui.menu,name",menu_party,Party Management,Gestión de Terceros,0
+model,"party.address,name",0,Address,Dirección,0
+model,"party.category,name",0,Category,Categoría,0
+model,"party.check_vies.check,name",0,Check VIES - Check,Revisar VIES - Revisar,0
+model,"party.check_vies.no_check,name",0,Check VIES - No Check,Revisar VIES - NO revisar,0
+model,"party.configuration,name",0,party.configuration,,0
+model,"party.contact_mechanism,name",0,Contact Mechanism,Mecanismo de contacto,0
+model,"party.party,name",0,Party,Tercero,0
+model,"party.party-party.category,name",0,Party - Category,Tercero - Categoría,0
+model,"res.group,name",group_party_admin,Party Administration,Terceros,0
+selection,"party.contact_mechanism,type",0,E-Mail,Correo electrónico,0
+selection,"party.contact_mechanism,type",0,Fax,Fax,0
+selection,"party.contact_mechanism,type",0,IRC,Chat,0
+selection,"party.contact_mechanism,type",0,Jabber,Jabber,0
+selection,"party.contact_mechanism,type",0,Mobile,Celular,0
+selection,"party.contact_mechanism,type",0,Other,Otro,0
+selection,"party.contact_mechanism,type",0,Phone,Teléfono,0
+selection,"party.contact_mechanism,type",0,SIP,SIP,0
+selection,"party.contact_mechanism,type",0,Skype,Skype,0
+selection,"party.contact_mechanism,type",0,Website,Sitio Web,0
+selection,"party.party,vat_country",0,,,0
+view,party.address,0,Addresses,Direcciones,0
+view,party.category,0,Categories,Categorías,0
+view,party.category,0,Category,Categoría,0
+view,party.check_vies.check,0,Parties Failed,Los terceros fallaron,0
+view,party.check_vies.check,0,Parties Succeed,Los terceros fueron válidos,0
+view,party.check_vies.check,0,VAT Information Exchange System Results,Resultado de Sistema de Información de intercambio IVA,0
+view,party.check_vies.no_check,0,VAT Information Exchange System,Sistema de Información de Intercambio IVA,0
+view,party.check_vies.no_check,0,"You must have a recent version of ""vatnumber"" installed!","Debe tener una versión reciente de ""vatnumber"" instalada!",0
+view,party.configuration,0,Party Configuration,,0
+view,party.contact_mechanism,0,Contact Mechanism,Mecanismo de contacto,0
+view,party.contact_mechanism,0,Contact Mechanisms,Mecanismos de contacto,0
+view,party.party,0,Account,Cuenta,0
+view,party.party,0,Accounting,Contabilidad,0
+view,party.party,0,Addresses,Direcciones,0
+view,party.party,0,Categories,Categorías,0
+view,party.party,0,Contact Mechanism,Mecanismo de contacto,0
+view,party.party,0,Contact Mechanisms,Mecanismos de contacto,0
+view,party.party,0,General,General,0
+view,party.party,0,_General,_General,0
+view,party.party,0,Parties,Terceros,0
+view,party.party,0,Party,Tercero,0
+view,party.party,0,VAT,IVA,0
+wizard_button,"party.check_vies,check,end",0,Ok,Aceptar,0
+wizard_button,"party.check_vies,no_check,end",0,Ok,Aceptar,0
