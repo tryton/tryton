@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="code" expand="1"/>
+    <field name="name" expand="2"/>
+    <field name="list_price"/>
+    <field name="cost_price"/>
+    <field name="type"/>
+    <field name="default_uom"/>
+    <field name="products"/>
+</tree>
