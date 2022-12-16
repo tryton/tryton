@@ -1,0 +1,162 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,quantity_early_plans:"
+msgid "Quantity Early Plans"
+msgstr "Planificacions de disponiblitat anticipada"
+
+msgctxt "field:stock.quantity.early_plan,closed_by:"
+msgid "Closed by"
+msgstr "Tancat per"
+
+msgctxt "field:stock.quantity.early_plan,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.quantity.early_plan,earlier_date:"
+msgid "Earlier Date"
+msgstr "Última data"
+
+msgctxt "field:stock.quantity.early_plan,earliest_date:"
+msgid "Earliest Date"
+msgstr "Primera data"
+
+msgctxt "field:stock.quantity.early_plan,earliest_percentage:"
+msgid "Earliest Percentage"
+msgstr "Percentage primera data"
+
+msgctxt "field:stock.quantity.early_plan,early_date:"
+msgid "Early Date"
+msgstr "Data anticipada"
+
+msgctxt "field:stock.quantity.early_plan,early_quantity:"
+msgid "Early Quantity"
+msgstr "Quantitat anticipada"
+
+msgctxt "field:stock.quantity.early_plan,ignored_by:"
+msgid "Ignored by"
+msgstr "Ignorat per"
+
+msgctxt "field:stock.quantity.early_plan,moves:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "field:stock.quantity.early_plan,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:stock.quantity.early_plan,planned_date:"
+msgid "Planned Date"
+msgstr "Data estimada"
+
+msgctxt "field:stock.quantity.early_plan,processed_by:"
+msgid "Processed by"
+msgstr "Processat per"
+
+msgctxt "field:stock.quantity.early_plan,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:stock.quantity.early_plan,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:stock.quantity.early_plan.generate.start,warehouses:"
+msgid "Warehouses"
+msgstr "Magatzems"
+
+msgctxt "help:stock.quantity.early_plan.generate.start,warehouses:"
+msgid "If empty all warehouses are used."
+msgstr "Si es deixa en blanc s'utilitzen tots els magatzems."
+
+msgctxt "model:ir.action,name:act_quantity_early_plan_form"
+msgid "Quantity Early Planning"
+msgstr "Planificació de disponiblitat anticipada"
+
+msgctxt "model:ir.action,name:act_quantity_early_plan_generate"
+msgid "Generate Stock Quantity Early Planning"
+msgstr "Genera planificacions de disponiblitat anticipada"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_early_plan_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_early_plan_form_domain_open"
+msgid "Open"
+msgstr "Obert"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_quantity_early_plan_form_domain_processing"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "model:ir.model.button,string:quantity_early_plan_close_button"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "model:ir.model.button,string:quantity_early_plan_ignore_button"
+msgid "Ignore"
+msgstr "Ignora"
+
+msgctxt "model:ir.model.button,string:quantity_early_plan_open_button"
+msgid "Reset to Open"
+msgstr "Restableix a obert"
+
+msgctxt "model:ir.model.button,string:quantity_early_plan_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.rule.group,name:rule_group_quantity_early_plan_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_form"
+msgid "Quantity Early Planning"
+msgstr "Planificació de disponiblitat anticipada"
+
+msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_generate"
+msgid "Generate Stock Quantity Early Planning"
+msgstr "Genera planificacions de disponiblitat anticipada"
+
+msgctxt "model:stock.quantity.early_plan,name:"
+msgid "Stock Quantity Early Plan"
+msgstr "Planificació de disponiblitat anticipada"
+
+msgctxt "model:stock.quantity.early_plan.generate.start,name:"
+msgid "Stock Quantity Early Plan Generate"
+msgstr "Genera planificació de disponiblitat anticipada"
+
+msgctxt "selection:stock.quantity.early_plan,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:stock.quantity.early_plan,state:"
+msgid "Ignored"
+msgstr "Ignorat"
+
+msgctxt "selection:stock.quantity.early_plan,state:"
+msgid "Open"
+msgstr "Obert"
+
+msgctxt "selection:stock.quantity.early_plan,state:"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "view:stock.quantity.early_plan.generate.start:"
+msgid "Generate Stock Quantity Early Planning?"
+msgstr "Generar planificació de disponiblitat anticipada?"
+
+msgctxt "view:stock.quantity.early_plan:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "wizard_button:stock.quantity.early_plan.generate,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:stock.quantity.early_plan.generate,start,generate:"
+msgid "Generate"
+msgstr "Genera"
