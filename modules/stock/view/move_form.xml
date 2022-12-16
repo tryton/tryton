@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Move" col="4">
+    <label name="from_location"/>
+    <field name="from_location"/>
+    <label name="to_location"/>
+    <field name="to_location"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="uom"/>
+    <field name="uom"/>
+    <label name="unit_price"/>
+    <field name="unit_price"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="effective_date"/>
+    <field name="effective_date"/>
+    <separator colspan="4" id="separator"/>
+    <label name="state"/>
+    <field name="state"/>
+    <field name="unit_price_required" invisible="1" colspan="4"/>
+    <field name="unit_digits" invisible="1" colspan="4"/>
+</form>
