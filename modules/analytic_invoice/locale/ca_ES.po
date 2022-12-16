@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Falten alguns comptes analítics obligatoris a \"%(name)s\"."
+
+msgctxt "field:account.invoice.line,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "field:account.invoice.line,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Mida dels comptes analítics"
