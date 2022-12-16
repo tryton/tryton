@@ -1,0 +1,156 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "UdM compra secundaria"
+
+msgctxt "field:product.product,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "Factor UdM compra secundaria"
+
+msgctxt "field:product.product,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "Ratio UdM compra secundaria"
+
+msgctxt "field:product.template,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "UdM compra secundaria"
+
+msgctxt "field:product.template,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "Factor UdM compra secundaria"
+
+msgctxt "field:product.template,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "Ratio UdM compra secundaria"
+
+msgctxt "field:purchase.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Categoría de UdM secundaria del producto"
+
+msgctxt "field:purchase.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Cantidad secundaria"
+
+msgctxt "field:purchase.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Unidad secundaria"
+
+msgctxt "field:purchase.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "Dígitos unidad secundaria"
+
+msgctxt "field:purchase.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "Precio unitario secundario"
+
+msgctxt "field:purchase.line,secondary_uom_factor:"
+msgid "Secondary UOM Factor"
+msgstr "Factor UdM secundaria"
+
+msgctxt "field:purchase.line,secondary_uom_rate:"
+msgid "Secondary UOM Rate"
+msgstr "Ratio UdM secundaria"
+
+msgctxt "field:purchase.product_supplier,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Categoría por defecto UdM"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom:"
+msgid "Purchase Secondary UOM"
+msgstr "UdM compra secundaria"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom_factor:"
+msgid "Purchase Secondary UOM Factor"
+msgstr "Factor UdM compra secundaria"
+
+msgctxt "field:purchase.product_supplier,purchase_secondary_uom_rate:"
+msgid "Purchase Secondary UOM Rate"
+msgstr "Ratio UdM compra secundaria"
+
+msgctxt "field:purchase.requisition.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Categoría de UdM secundaria del producto"
+
+msgctxt "help:product.product,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"1 (unidad_compra) = coeficiente (unidad secundaria)"
+
+msgctxt "help:product.product,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"coeficiente (unidad_compra) = 1 (unidad secundaria)"
+
+msgctxt "help:product.template,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"1 (unidad_compra) = coeficiente (unidad secundaria)"
+
+msgctxt "help:product.template,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"coeficiente (unidad_compra) = 1 (unidad secundaria)"
+
+msgctxt "help:purchase.product_supplier,purchase_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (purchase unit) = coefficient (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"1 (unidad_compra) = coeficiente (unidad secundaria)"
+
+msgctxt "help:purchase.product_supplier,purchase_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (purchase unit) = 1 (secondary unit)"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"coeficiente (unidad_compra) = 1 (unidad secundaria)"
+
+msgctxt "model:ir.message,text:msg_secondary_uom_incompatible_factor_rate"
+msgid "Incompatible secondary factor and rate values for \"%(record)s\"."
+msgstr ""
+"Los valores factor y ratio secundario de \"%(record)s\" són incompatibles."
+
+msgctxt "view:product.template:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:product.template:"
+msgid "Rate:"
+msgstr "Ratio:"
+
+msgctxt "view:purchase.line:"
+msgid "Quantity:"
+msgstr "Cantidad:"
+
+msgctxt "view:purchase.line:"
+msgid "Unit Price:"
+msgstr "Precio unitario:"
+
+msgctxt "view:purchase.line:"
+msgid "Unit:"
+msgstr "Unidad:"
+
+msgctxt "view:purchase.product_supplier:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:purchase.product_supplier:"
+msgid "Rate:"
+msgstr "Ratio:"
