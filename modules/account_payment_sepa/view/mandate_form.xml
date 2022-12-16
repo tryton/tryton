@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="account_number"/>
+    <field name="account_number"/>
+    <label name="company"/>
+    <field name="company"/>
+    <newline/>
+    <label name="identification"/>
+    <field name="identification"/>
+    <label name="signature_date"/>
+    <field name="signature_date"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence_type_rcur"/>
+    <field name="sequence_type_rcur"/>
+    <label name="scheme"/>
+    <field name="scheme"/>
+    <newline/>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="request" icon="tryton-forward"/>
+        <button name="validate_mandate" icon="tryton-ok"/>
+    </group>
+</form>

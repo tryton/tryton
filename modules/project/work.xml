@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="work_status_view_list">
+            <field name="model">project.work.status</field>
+            <field name="type">tree</field>
+            <field name="name">work_status_list</field>
+        </record>
+        <record model="ir.ui.view" id="work_status_view_form">
+            <field name="model">project.work.status</field>
+            <field name="type">form</field>
+            <field name="name">work_status_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_status">
+            <field name="name">Work Status</field>
+            <field name="res_model">project.work.status</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_work_status_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_status_view_list"/>
+            <field name="act_window" ref="act_work_status"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_work_status_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_status_view_form"/>
+            <field name="act_window" ref="act_work_status"/>
+        </record>
+        <menuitem parent="menu_configuration" sequence="20"
+            action="act_work_status" id="menu_work_status"/>
+
+        <record model="ir.model.access" id="access_work_status">
+            <field name="model" search="[('model', '=', 'project.work.status')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_status_admin">
+            <field name="model" search="[('model', '=', 'project.work.status')]"/>
+            <field name="group" ref="group_project_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_tree">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">work_tree</field>
+        </record>
+        <record model="ir.ui.view" id="work_view_tree_simple">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="field_childs">children</field>
+            <field name="name">work_tree_simple</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_list">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">work_list</field>
+        </record>
+        <record model="ir.ui.view" id="work_view_list_simple">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">work_list_simple</field>
+        </record>
+        <record model="ir.ui.view" id="work_view_list_children">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="name">work_list_children</field>
+        </record>
+
+        <record model="ir.ui.view" id="work_view_form">
+            <field name="model">project.work</field>
+            <field name="type">form</field>
+            <field name="name">work_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_work_tree">
+            <field name="name">Works Efforts</field>
+            <field name="res_model">project.work</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree_simple"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_work_tree"
+            id="menu_work_tree"/>
+
+        <record model="ir.action.act_window" id="act_work_list">
+            <field name="name">Works Efforts</field>
+            <field name="res_model">project.work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list_simple"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_list"/>
+        </record>
+        <menuitem parent="menu_work_tree"
+            action="act_work_list" id="menu_work_list"/>
+
+        <record model="ir.action.act_window" id="act_project_tree">
+            <field name="name">Projects</field>
+            <field name="res_model">project.work</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree"/>
+            <field name="act_window" ref="act_project_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_project_tree"/>
+        </record>
+        <menuitem parent="menu_project" action="act_project_tree"
+            id="menu_project_tree" sequence="20"/>
+
+        <record model="ir.action.act_window" id="act_project_form">
+            <field name="name">Projects</field>
+            <field name="res_model">project.work</field>
+            <field name="domain" eval="[('type', '=', 'project')]" pyson="1"/>
+            <field name="context"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <menuitem parent="menu_project_tree" action="act_project_form"
+            id="menu_project_form"/>
+
+        <record model="ir.action.act_window" id="act_task_form">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.work</field>
+            <field name="domain" eval="[('type', '=', 'task')]" pyson="1"/>
+            <field name="context"></field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_task_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_task_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_task_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_task_form"/>
+        </record>
+        <menuitem parent="menu_project_tree" action="act_task_form"
+            id="menu_task_form"/>
+
+        <record model="ir.action.act_window" id="act_open_child_work">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.work</field>
+            <field name="context"></field>
+            <field name="domain"
+                eval="[('type', '=', 'task'), If(Eval('active_ids', []) == [Eval('active_id')], ('parent', '=', Eval('active_id')), ('parent', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_project_work_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">project.work,-1</field>
+            <field name="action" ref="act_open_child_work"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_open_project_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_open_child_work"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_open_project_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_open_child_work"/>
+        </record>
+
+        <record model="ir.model.access" id="access_work">
+            <field name="model" search="[('model', '=', 'project.work')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_admin">
+            <field name="model" search="[('model', '=', 'project.work')]"/>
+            <field name="group" ref="group_project_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+    <data noupdate="1">
+        <record model="project.work.status" id="work_open_status">
+            <field name="name">Open</field>
+            <field name="default" eval="True"/>
+            <field name="count" eval="True"/>
+            <field name="types" eval="['project', 'task']"/>
+        </record>
+        <record model="project.work.status" id="work_done_status">
+            <field name="name">Done</field>
+            <field name="progress" eval="1.0"/>
+            <field name="types" eval="['project', 'task']"/>
+        </record>
+    </data>
+</tryton>
