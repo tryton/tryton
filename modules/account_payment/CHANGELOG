@@ -1,0 +1,63 @@
+Version 5.4.4 - 2020-12-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.3 - 2020-05-01
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.2 - 2020-04-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.1 - 2020-02-02
+* Bug fixes (see mercurial logs for details)
+
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
+
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
+* Add warning to group lines
+* Add date to Pay Lines wizard
+
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
+* Remove support for Python 2.7
+
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
+* Check pending payment to erase party
+
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
+* Add origin field on payment
+
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
+* Support direct debit of payable line
+* Set default journal when paying line
+
+Version 4.2.0 - 2016-11-28
+* Bug fixes (see mercurial logs for details)
+* Allow to block payment of line
+* Ask payment journal for each currency
+* Decrease amount to pay of invoice
+* Add group Payment Approval
+
+Version 4.0.0 - 2016-05-02
+* Bug fixes (see mercurial logs for details)
+* Rename Payment Group reference into number
+* Add payment group sequence in configuration
+* Add Python3 support
+
+Version 3.8.0 - 2015-11-02
+* Bug fixes (see mercurial logs for details)
+* Add date to Pay Lines wizard
+
+Version 3.6.0 - 2015-04-20
+* Bug fixes (see mercurial logs for details)
+* Add support for PyPy
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+* Add transitions between succeeded and failed
+
+Version 3.2.0 - 2014-04-21
+* Initial release
