@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr "Decimals de la moneda del pes"
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "UdM del pes"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr "Decimals de la UdM del pes"
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr "Preu"
+
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Pes"
+
+msgctxt "help:carrier,weight_currency:"
+msgid "The currency of the price."
+msgstr "La moneda del preu."
+
+msgctxt "help:carrier,weight_price_list:"
+msgid "Add price to the carrier service."
+msgstr "Afegeix preus al servei del transportista."
+
+msgctxt "help:carrier,weight_uom:"
+msgid "The unit of weight criteria of the price list."
+msgstr "La unitat de pes utilitzada per la tarifa."
+
+msgctxt "help:carrier.weight_price_list,carrier:"
+msgid "The carrier that the price list belongs to."
+msgstr "El transportista al que pertany la tarifa."
+
+msgctxt "help:carrier.weight_price_list,price:"
+msgid "The price of the carrier service."
+msgstr "El preu del servei del transportista."
+
+msgctxt "help:carrier.weight_price_list,weight:"
+msgid "The lower limit for the price."
+msgstr "El límit inferior al que aplica el preu."
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr "Tarifa pes transportista"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Pes"
