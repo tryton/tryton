@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Tarne teenus"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "Lähetuse etikett"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Lähetuse viide"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Kõrgus"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Kõrguse numbriväärtus"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Kõrguse ühik"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Pikkus"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "Pikkuse numbriväärtus"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Pikkuse ühik"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Laius"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "Laiuse numbriväärtus"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Laiuse ühik"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Lähetuse kirjeldus"
+
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Loo lähetus"
+
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr "Lähetuse \"%(shipment)s\" etikettide loomiseks tuleb see pakkida."
+
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "Lähetusel \"%(shipment)s\" ei ole vedajat."
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Loo saadetistele lähetus"
+
+msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
+msgid "Shipping"
+msgstr "Lähetus"
+
+msgctxt "view:stock.package.type:"
+msgid "Dimensions"
+msgstr "Mõõdud"
