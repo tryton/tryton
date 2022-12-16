@@ -1,0 +1,154 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkoop Secundaire maateenheid"
+
+msgctxt "field:product.product,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "secundaire maateenheid factor"
+
+msgctxt "field:product.product,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkoop Secundair maateenheid-tarief"
+
+msgctxt "field:product.template,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkoop Secundaire maateenheid"
+
+msgctxt "field:product.template,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Verkoop Secundaire maateenheid-factor"
+
+msgctxt "field:product.template,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkoop Secundair maateenheid-tarief"
+
+msgctxt "field:sale.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Product secundaire maateenheid categorie"
+
+msgctxt "field:sale.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Secundaire hoeveelheid"
+
+msgctxt "field:sale.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Secundaire eenheid"
+
+msgctxt "field:sale.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "decimalen secondaire eenheid"
+
+msgctxt "field:sale.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "secundaire eenheidsprijs"
+
+msgctxt "field:sale.line,secondary_uom_factor:"
+msgid "Secondary UOM Factor"
+msgstr "secundaire maateenheid factor"
+
+msgctxt "field:sale.line,secondary_uom_rate:"
+msgid "Secondary UOM Rate"
+msgstr "secundaire maateenheid waarde"
+
+msgctxt "field:sale.product_customer,default_uom_category:"
+msgid "Default UOM Category"
+msgstr "Standaard maateenheid-categorie"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom:"
+msgid "Sale Secondary UOM"
+msgstr "Verkoop Secundaire maateenheid"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_factor:"
+msgid "Sale Secondary UOM Factor"
+msgstr "Verkoop Secundaire maateenheid-factor"
+
+msgctxt "field:sale.product_customer,sale_secondary_uom_rate:"
+msgid "Sale Secondary UOM Rate"
+msgstr "Verkoop Secundair maateenheid-tarief"
+
+msgctxt "help:product.product,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (verkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:product.product,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "help:product.template,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (verkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:product.template,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_factor:"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (sale unit) = coefficient (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"1 (verkoopeenheid) = coëfficiënt (secundaire eenheid)"
+
+msgctxt "help:sale.product_customer,sale_secondary_uom_rate:"
+msgid ""
+"The coefficient for the formula:\n"
+"coefficient (sale unit) = 1 (secondary unit)"
+msgstr ""
+"De coëfficiënt voor de formule:\n"
+"coëfficiënt (verkoopeenheid) = 1 (secundaire eenheid)"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_secondary_uom_incompatible_factor_rate"
+msgid "Incompatible sale secondary factor and rate values for \"%(record)s\"."
+msgstr ""
+"Incompatibele secundaire factor en waardebeoordeling (rate values ) voor "
+"\"%(record)s\"."
+
+msgctxt "view:product.template:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:product.template:"
+msgid "Rate:"
+msgstr "Waarde:"
+
+msgctxt "view:sale.line:"
+msgid "Quantity:"
+msgstr "Hoeveelheid:"
+
+msgctxt "view:sale.line:"
+msgid "Unit Price:"
+msgstr "Eenheid prijs:"
+
+msgctxt "view:sale.line:"
+msgid "Unit:"
+msgstr "Eenheid:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Factor:"
+msgstr "Factor:"
+
+msgctxt "view:sale.product_customer:"
+msgid "Rate:"
+msgstr "Waarde:"

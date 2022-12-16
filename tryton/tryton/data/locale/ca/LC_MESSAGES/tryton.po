@@ -1,0 +1,1171 @@
+# Catalan translations for tryton.
+# Copyright (C) 2012 Zikzakmedia SL
+# This file is distributed under the same license as the tryton project.
+# Sergi Almacellas Abellana <sergi@koolpi.com> 2012.
+# Jordi Esteve Cusiné <jesteve@zikzakmedia.com> 2012.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgid "specify alternate config file"
+msgstr "Indica un fitxer de configuració alternatiu"
+
+msgid "development mode"
+msgstr "mode desenvolupament"
+
+msgid "logging everything at INFO level"
+msgstr "Registra tota la informació amb nivell INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "indica el nivell de log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "Indica l'usuari"
+
+msgid "specify the server hostname:port"
+msgstr "Indica el nom:port del servidor"
+
+#, python-format
+msgid "Unable to write config file %s."
+msgstr "No s'ha pogut escriure el fitxer configuració %s."
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "No s'ha pogut establir l'idioma %s"
+
+msgid ", "
+msgstr ", "
+
+msgid ",..."
+msgstr ",..."
+
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+msgid "Select your action"
+msgstr "Seleccioneu la vostra acció"
+
+msgid "No action defined."
+msgstr "No s'ha definit cap acció."
+
+msgid "By: "
+msgstr "Per: "
+
+msgid "Selection"
+msgstr "Selecció"
+
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgid "OK"
+msgstr "D'acord"
+
+msgid "Your selection:"
+msgstr "La vostra selecció:"
+
+msgid "Select"
+msgstr "Selecciona"
+
+msgid "Save"
+msgstr "Desa"
+
+msgid "Save As..."
+msgstr "Desa com..."
+
+msgid "Do you want to proceed?"
+msgstr "Voleu continuar?"
+
+msgid "Always ignore this warning."
+msgstr "Ignora sempre aquest advertiment."
+
+msgid "No"
+msgstr "No"
+
+msgid "Yes"
+msgstr "Si"
+
+msgid "Concurrency Exception"
+msgstr "Excepció de concurrència"
+
+msgid "This record has been modified while you were editing it."
+msgstr "Aquest registre ha estat modificat mentre l'editàveu."
+
+msgid "Cancel saving"
+msgstr "No desis els canvis"
+
+msgid "Compare"
+msgstr "Compara"
+
+msgid "See the modified version"
+msgstr "Mostra la versió modificada"
+
+msgid "Write Anyway"
+msgstr "Desa de totes formes"
+
+msgid "Save your current version"
+msgstr "Deseu els vostres canvis"
+
+#, python-format
+msgid "Compare: %s"
+msgstr "Compara: %s"
+
+msgid "Close"
+msgstr "Tanca"
+
+msgid "Application Error"
+msgstr "Error d'aplicació"
+
+msgid "Report Bug"
+msgstr "Informa de l'error"
+
+#, python-format
+msgid "Check URL: %s"
+msgstr "URL de comprovació: %s"
+
+msgid "Unable to check for new version."
+msgstr "No s'ha pogut comprovar si existeix una nova versió."
+
+msgid "A new version is available!"
+msgstr "Hi ha una nova versió disponible!"
+
+msgid "Download"
+msgstr "Baixa"
+
+msgid "Too many requests. Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
+
+msgid "..."
+msgstr "..."
+
+msgid "<i>Search...</i>"
+msgstr "<i>Cerca...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Crea...</i>"
+
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "No es pot buscar l'autocompletat de %s"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "Displayed value"
+msgstr "Valor a mostrar"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Display format"
+msgstr "Format a mostrar"
+
+msgid "Open the calendar"
+msgstr "Obre el calendari"
+
+msgid "Date Format"
+msgstr "Format dates"
+
+msgid "Displayed date format"
+msgstr "Format dates a mostrar"
+
+msgid "y"
+msgstr "a"
+
+msgid "True"
+msgstr "Verdader"
+
+msgid "t"
+msgstr "v"
+
+msgid "False"
+msgstr "Fals"
+
+msgid "Digits"
+msgstr "Dígits"
+
+msgid "The number of decimal"
+msgstr "El número de decimals"
+
+msgid "Template"
+msgstr "Plantilla"
+
+msgid "Edit..."
+msgstr "Edita..."
+
+msgid "Attachments..."
+msgstr "Adjunts..."
+
+msgid "Notes..."
+msgstr "Notes..."
+
+msgid "Actions..."
+msgstr "Accions..."
+
+msgid "Relate..."
+msgstr "Relacionat..."
+
+msgid "Report..."
+msgstr "Informe..."
+
+msgid "Print..."
+msgstr "Imprimeix..."
+
+msgid "E-Mail..."
+msgstr "Correu electrònic..."
+
+msgid "Bold"
+msgstr "Negreta"
+
+msgid "Italic"
+msgstr "Cursiva"
+
+msgid "Underline"
+msgstr "Subratllat"
+
+msgid "Align Left"
+msgstr "Alinear a l'esquerra"
+
+msgid "Align Center"
+msgstr "Alinear al centre"
+
+msgid "Align Right"
+msgstr "Alinear a la dreta"
+
+msgid "Justify"
+msgstr "Justificar"
+
+msgid "Foreground Color"
+msgstr "Color de fons"
+
+msgid "Select a color"
+msgstr "Seleccioneu un color"
+
+msgid "Y"
+msgstr "A"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "S"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "Preferences..."
+msgstr "Preferències..."
+
+msgid "Toolbar"
+msgstr "Barra d'eines"
+
+msgid "Default"
+msgstr "Per defecte"
+
+msgid "Text and Icons"
+msgstr "Text i icones"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Icons"
+msgstr "Icones"
+
+msgid "Form"
+msgstr "Formulari"
+
+msgid "Save Column Width"
+msgstr "Guarda l'ample de la columna"
+
+msgid "Save Tree State"
+msgstr "Desa l'estat de l'arbre"
+
+msgid "Spell Checking"
+msgstr "Correcció ortogràfica"
+
+msgid "PDA Mode"
+msgstr "Mode PDA"
+
+msgid "Search Limit..."
+msgstr "_Límit de cerca..."
+
+msgid "Check Version"
+msgstr "Comprova versió"
+
+msgid "Options"
+msgstr "Opcions"
+
+msgid "Keyboard Shortcuts..."
+msgstr "Combinacions de tecles..."
+
+msgid "About..."
+msgstr "Quant a..."
+
+msgid "Help"
+msgstr "Ajuda"
+
+msgid "No result found."
+msgstr "No s'han trobat resultats."
+
+msgid "Favorites"
+msgstr "Preferits"
+
+msgid "Manage..."
+msgstr "Gestiona..."
+
+msgid "Action"
+msgstr "Acció"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"L'acció seleccionada requereix tancar totes les pestanyes.\n"
+"Voleu continuar?"
+
+msgid "Application Shortcuts"
+msgstr "Dreceres de l'aplicació"
+
+msgid "Global"
+msgstr "Global"
+
+msgid "Preferences"
+msgstr "Preferències"
+
+msgid "Search menu"
+msgstr "Menú de cerca"
+
+msgid "Toggle menu"
+msgstr "Commuta el menú"
+
+msgid "Previous tab"
+msgstr "Pestanya anterior"
+
+msgid "Next tab"
+msgstr "Pestanya següent"
+
+msgid "Shortcuts"
+msgstr "Dreceres"
+
+msgid "Quit"
+msgstr "Sortir"
+
+msgid "Edition Shortcuts"
+msgstr "Accessos directes a l'edició"
+
+msgid "Text Entries"
+msgstr "Entrades de text"
+
+msgid "Cut selected text"
+msgstr "Talla el text seleccionat"
+
+msgid "Copy selected text"
+msgstr "Copia el text seleccionat"
+
+msgid "Paste copied text"
+msgstr "Enganxa el text seleccionat"
+
+msgid "Next entry"
+msgstr "Següent entrada"
+
+msgid "Previous entry"
+msgstr "Entrada anterior"
+
+msgid "Relation Entries"
+msgstr "Entrades de relacions"
+
+msgid "Create new relation"
+msgstr "Crea una nova relació"
+
+msgid "Open/Search relation"
+msgstr "Obre/Cerca una relació"
+
+msgid "List Entries"
+msgstr "Llistat d'entrades"
+
+msgid "Switch view"
+msgstr "Canvia la vista"
+
+msgid "Create/Select new line"
+msgstr "Crear/Seleccionar línia nova"
+
+msgid "Open relation"
+msgstr "Obre una relació"
+
+msgid "Mark line for deletion/removal"
+msgstr "Marcar línia per eliminar/suprimir"
+
+msgid "Mark line for removal"
+msgstr "Marcar línia per eliminar"
+
+msgid "Unmark line for deletion"
+msgstr "Desmarca la línia per ser eliminada"
+
+msgid "List/Tree Shortcuts"
+msgstr "Drecera de llista/arbre"
+
+msgid "Move Cursor"
+msgstr "Mou cursor"
+
+msgid "Move right"
+msgstr "Mou a la dreta"
+
+msgid "Move left"
+msgstr "Mou a l'esquerra"
+
+msgid "Move up"
+msgstr "Mou amunt"
+
+msgid "Move down"
+msgstr "Mou avall"
+
+msgid "Move up of one page"
+msgstr "Mou amunt una pàgina"
+
+msgid "Move down of one page"
+msgstr "Mou avall una pàgina"
+
+msgid "Move to top"
+msgstr "Mou al principi"
+
+msgid "Move to bottom"
+msgstr "Mou al final"
+
+msgid "Move to parent"
+msgstr "Mou al pare"
+
+msgid "Select all"
+msgstr "Selecciona tot"
+
+msgid "Unselect all"
+msgstr "Deselecciona tot"
+
+msgid "Select parent"
+msgstr "Selecciona pare"
+
+msgid "Select/Activate current row"
+msgstr "Selecciona/Activa fila actual"
+
+msgid "Toggle selection"
+msgstr "Commuta selecció"
+
+msgid "Expand/Collapse"
+msgstr "Expandeix/Contrau"
+
+msgid "Expand row"
+msgstr "Expandeix fila"
+
+msgid "Collapse row"
+msgstr "Contrau fila"
+
+msgid "Toggle row"
+msgstr "Commuta fila"
+
+msgid "Collapse all rows"
+msgstr "Contrau totes les files"
+
+msgid "Expand all rows"
+msgstr "Expandeix totes les files"
+
+msgid "Close Tab"
+msgstr "Tanca pestanya"
+
+msgid "modularity, scalability and security"
+msgstr "modularitat, escalabilitat i seguretat"
+
+msgid "translator-credits"
+msgstr "Sergi Almacellas Abellana"
+
+#, python-format
+msgid "Attachments (%s)"
+msgstr "Adjunts (%s)"
+
+msgid "Profile Editor"
+msgstr "Editor de perfils"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Add new profile"
+msgstr "Afegeix un nou perfil"
+
+msgid "Remove selected profile"
+msgstr "Elimina el perfil seleccionat"
+
+msgid "Host:"
+msgstr "Servidor:"
+
+msgid "Database:"
+msgstr "Base de dades:"
+
+msgid "Fetching databases list"
+msgstr "Recuperant llista de bases de dades"
+
+msgid "Username:"
+msgstr "Nom d'usuari:"
+
+msgid "Incompatible version of the server."
+msgstr "El client no és compatible amb la versió del servidor."
+
+msgid "Could not connect to the server."
+msgstr "No s'ha pogut connectar amb el servidor."
+
+msgid "Login"
+msgstr "Accedeix"
+
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Cancel·la connexió amb el servidor Tryton"
+
+msgid "C_onnect"
+msgstr "C_onnecta"
+
+msgid "Connect the Tryton server"
+msgstr "Connecta amb el servidor Tryton"
+
+msgid "Profile:"
+msgstr "Perfil:"
+
+msgid "Host / Database information"
+msgstr "Informació del Servidor / Base de dades"
+
+msgid "User name:"
+msgstr "Nom d'usuari:"
+
+msgid "Unable to complete email entry"
+msgstr "No s'ha pogut completar l'entrada del correu electrònic"
+
+#, python-format
+msgid "E-mail %s"
+msgstr "Correu electrònic %s"
+
+msgid "To:"
+msgstr "A:"
+
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Cco:"
+
+msgid "Subject:"
+msgstr "Assumpte:"
+
+msgid "Body"
+msgstr "Missatge"
+
+msgid "Reports"
+msgstr "Informes"
+
+msgid "Attachments"
+msgstr "Adjunts"
+
+msgid "Files"
+msgstr "Fitxers"
+
+msgid "Send"
+msgstr "Envia"
+
+msgid "Select File"
+msgstr "Selecciona un fitxer"
+
+msgid "Remove File"
+msgstr "Elimina fitxer"
+
+msgid "Add..."
+msgstr "Afegeix..."
+
+msgid "Preview"
+msgstr "Previsualitza"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Següent"
+
+#, python-format
+msgid "Attachment (%s)"
+msgstr "Adjunts (%s)"
+
+#, python-format
+msgid "Note (%d/%d)"
+msgstr "Nota (%d/%d)"
+
+msgid "You have to select one record."
+msgstr "Ha de seleccionar un registre."
+
+msgid "ID:"
+msgstr "Identificador:"
+
+msgid "Created by:"
+msgstr "Creat per:"
+
+msgid "Created at:"
+msgstr "Creat el:"
+
+msgid "Edited by:"
+msgstr "Editat per:"
+
+msgid "Edited at:"
+msgstr "Editat el:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Esteu segur que voleu eliminar aquest registre?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Esteu segur que voleu eliminar aquests registres?"
+
+msgid "Records not removed."
+msgstr "Els registres no s'han eliminat."
+
+msgid "Records removed."
+msgstr "Registres eliminats."
+
+msgid "Working now on the duplicated record(s)."
+msgstr "Està treballant amb un registre(s) duplicat."
+
+msgid "Record saved."
+msgstr "Registre desat."
+
+msgid " of "
+msgstr " de "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr ""
+"Aquest registre ha estat modificat.\n"
+"Voleu desar-lo?"
+
+msgid "Launch action"
+msgstr "Executa acció"
+
+msgid "Relate"
+msgstr "Relacionat"
+
+msgid "Open related records"
+msgstr "Obre registres relacionats"
+
+msgid "Report"
+msgstr "Informes"
+
+msgid "Open report"
+msgstr "Obre informe"
+
+msgid "Print"
+msgstr "Imprimeix"
+
+msgid "Print report"
+msgstr "Imprimeix informe"
+
+msgid "_Copy URL"
+msgstr "_Copia l'URL"
+
+msgid "Copy URL into clipboard"
+msgstr "Copia l'URL al porta-retalls"
+
+msgid "Unknown"
+msgstr "Desconegut"
+
+msgid "Limit"
+msgstr "Límit"
+
+msgid "Search Limit Settings"
+msgstr "Preferències del límit de cerca"
+
+msgid "Limit:"
+msgstr "Límit:"
+
+#, python-format
+msgid "Notes (%s)"
+msgstr "Notes (%s)"
+
+msgid "Edit User Preferences"
+msgstr "Edita preferències d'usuari"
+
+msgid "Preference"
+msgstr "Preferències"
+
+msgid "Revision"
+msgstr "Revisió"
+
+msgid "Select a revision"
+msgstr "Seleccioneu una revisió"
+
+msgid "Revision:"
+msgstr "Revisió:"
+
+msgid "_Switch View"
+msgstr "Canvia la vi_sta"
+
+msgid "Switch View"
+msgstr "Canvia la vista"
+
+msgid "_Previous"
+msgstr "_Anterior"
+
+msgid "Previous Record"
+msgstr "Registre anterior"
+
+msgid "_Next"
+msgstr "Seg_üent"
+
+msgid "Next Record"
+msgstr "Registre següent"
+
+msgid "_Search"
+msgstr "_Cerca"
+
+msgid "_New"
+msgstr "_Nou"
+
+msgid "Create a new record"
+msgstr "Crea un nou registre"
+
+msgid "_Save"
+msgstr "_Desa"
+
+msgid "Save this record"
+msgstr "Desa aquest registre"
+
+msgid "_Reload/Undo"
+msgstr "_Recarrega/Desfés"
+
+msgid "Reload/Undo"
+msgstr "Recarrega/Desfés"
+
+msgid "_Duplicate"
+msgstr "_Duplica"
+
+msgid "_Delete..."
+msgstr "_Elimina..."
+
+msgid "View _Logs..."
+msgstr "Veure _registre..."
+
+msgid "Show revisions..."
+msgstr "Mostra revisions..."
+
+msgid "A_ttachments..."
+msgstr "Adjun_ts..."
+
+msgid "Add an attachment to the record"
+msgstr "Afegeix un adjunt al registre"
+
+msgid "_Notes..."
+msgstr "_Notes..."
+
+msgid "Add a note to the record"
+msgstr "Afegeix una nota al registre"
+
+msgid "_Actions..."
+msgstr "_Accions..."
+
+msgid "_Relate..."
+msgstr "_Relacionat..."
+
+msgid "_Report..."
+msgstr "_Informes..."
+
+msgid "_Print..."
+msgstr "Im_primeix..."
+
+msgid "_E-Mail..."
+msgstr "_Correu electrònic..."
+
+msgid "Send an e-mail using the record"
+msgstr "Envia un correu electrònic utilitzant el registre"
+
+msgid "_Export Data..."
+msgstr "_Exporta dades..."
+
+msgid "_Import Data..."
+msgstr "_Importa dades..."
+
+msgid "Copy _URL..."
+msgstr "Copia l'_URL..."
+
+msgid "_Close Tab"
+msgstr "_Tanca la pestanya"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Tots els camps</b>"
+
+msgid "_Add"
+msgstr "_Afegeix"
+
+msgid "_Remove"
+msgstr "_Elimina"
+
+msgid "_Clear"
+msgstr "_Neteja"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>Camps seleccionats</b>"
+
+msgid "CSV Parameters"
+msgstr "Paràmetres CSV"
+
+msgid "Delimiter:"
+msgstr "Separador:"
+
+msgid "Quote char:"
+msgstr "Delimitador de text:"
+
+msgid "Encoding:"
+msgstr "Codificació:"
+
+msgid "Use locale format"
+msgstr "Utilitza format local"
+
+msgid "Field name"
+msgstr "Nom del camp"
+
+#, python-format
+msgid "CSV Export: %s"
+msgstr "Exportació CSV: %s"
+
+msgid "_Save Export"
+msgstr "_Desa exportació"
+
+msgid "_URL Export"
+msgstr "_URL exportació"
+
+msgid "_Delete Export"
+msgstr "_Elimina exportació"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Exportacions predeterminades</b>"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Open"
+msgstr "Obre"
+
+msgid "Listed Records"
+msgstr "Registres llistats"
+
+msgid "Selected Records"
+msgstr "Registres seleccionats"
+
+msgid "Ignore search limit"
+msgstr "Ignora límit de cerca"
+
+msgid "Add field names"
+msgstr "Afegeix noms de camp"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (text)"
+
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (nom del model)"
+
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (nom del registre)"
+
+msgid "What is the name of this export?"
+msgstr "Quin és el nom d'aquesta exportació?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Voleu sobreescriure la definició de '%s'?"
+
+#, python-format
+msgid "%d record saved."
+msgstr "S'ha desat %d registre."
+
+#, python-format
+msgid "%d records saved."
+msgstr "S'han desat %d registres."
+
+#, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Ha fallat l'operació.\n"
+"Missatge d'error:\n"
+"%s"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Link"
+msgstr "Enllaç"
+
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Switch"
+msgstr "Canvia la vista"
+
+msgid "Add"
+msgstr "Afegeix"
+
+msgid "Remove <Del>"
+msgstr "Elimina <Supr>"
+
+msgid "Create a new record <F3>"
+msgstr "Crea un nou registre <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Elimina el registre seleccionat <Supr>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Recupera el registre seleccionat <Ins>"
+
+#, python-format
+msgid "CSV Import: %s"
+msgstr "Importació CSV: %s"
+
+msgid "_Auto-Detect"
+msgstr "Detecta _automàticament"
+
+msgid "File to Import:"
+msgstr "Fitxer a importar:"
+
+msgid "Open..."
+msgstr "Obre..."
+
+msgid "Lines to Skip:"
+msgstr "Línies a ometre:"
+
+msgid "You must select an import file first."
+msgstr "Primer heu de seleccionar un fitxer a importar."
+
+msgid "Error opening CSV file"
+msgstr "Error a l'obrir el fitxer CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "S'ha produït un error en processar el fitxer en el camp %s."
+
+#, python-format
+msgid "%d record imported."
+msgstr "S'ha importat %d registre."
+
+#, python-format
+msgid "%d records imported."
+msgstr "S'han importat %d registres."
+
+msgid "Search"
+msgstr "Cerca"
+
+#, python-format
+msgid "Search %s"
+msgstr "Cerca %s"
+
+msgid "Wizard"
+msgstr "Assistent"
+
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "No s'ha pogut eliminar l'assistent %s"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Create by"
+msgstr "Creat per"
+
+msgid "Created at"
+msgstr "Creat el"
+
+msgid "Edited by"
+msgstr "Editat per"
+
+msgid "Edited at"
+msgstr "Editat el"
+
+#, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "No s'ha pogut obtenir l'estat de la vista d'arbre de %s"
+
+msgid "Unable to set view tree state"
+msgstr "No s'ha pogut desar l'estat de la vista d'arbre"
+
+#, python-format
+msgid "\"%s\" is not valid according to its domain."
+msgstr "\"%s\" no és vàlid segons el seu domini."
+
+#, python-format
+msgid "\"%s\" is required."
+msgstr "\"%s\" és obligatori."
+
+#, python-format
+msgid "The values of \"%s\" are not valid."
+msgstr "Els valors de \"%s\" no són vàlids."
+
+msgid "Pre-validation"
+msgstr "Prevalidació"
+
+msgid ":"
+msgstr ":"
+
+msgid "Image Size"
+msgstr "Mida de la imatge"
+
+msgid "Width:"
+msgstr "Amplada:"
+
+msgid "Height:"
+msgstr "Altura:"
+
+msgid "PNG image (*.png)"
+msgstr "Imatge PNG (*.png)"
+
+msgid "Save As"
+msgstr "Anomena i desa"
+
+msgid "Image size too large."
+msgstr "La mida de la imatge és massa gran."
+
+msgid "Copy"
+msgstr "Copia"
+
+msgid "Paste"
+msgstr "Enganxa"
+
+msgid ".."
+msgstr ".."
+
+msgid "Open filters"
+msgstr "Obre filtres"
+
+msgid "Show bookmarks of filters"
+msgstr "Mostra les cerques preferides"
+
+msgid "Remove this bookmark"
+msgstr "Elimina de les cerques preferides"
+
+msgid "Bookmark this filter"
+msgstr "Desa com a cerca preferida"
+
+msgid "Show active records"
+msgstr "Mostra registres actius"
+
+msgid "Show inactive records"
+msgstr "Mostra registres inactius"
+
+msgid "Bookmark Name:"
+msgstr "Nom de la cerca preferida:"
+
+msgid "Find"
+msgstr "Cerca"
+
+msgid "Today"
+msgstr "Avui"
+
+msgid "go back"
+msgstr "vés enrere"
+
+msgid "go forward"
+msgstr "vés endavant"
+
+msgid "previous year"
+msgstr "any anterior"
+
+msgid "next year"
+msgstr "l'any següent"
+
+msgid "Day View"
+msgstr "Vista de dia"
+
+msgid "Week View"
+msgstr "Vista setmanal"
+
+msgid "Month View"
+msgstr "Vista mensual"
+
+msgid "Week"
+msgstr "Setmana"
+
+msgid "Select..."
+msgstr "Selecciona..."
+
+msgid "Clear"
+msgstr "Neteja"
+
+msgid "All files"
+msgstr "Tots els fitxers"
+
+msgid "Show plain text"
+msgstr "Mostra com a text pla"
+
+msgid "Add value"
+msgstr "Afegeix un valor"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Eliminar \"%s\""
+
+msgid "Images"
+msgstr "Imatges"
+
+msgid "Add existing record"
+msgstr "Afegeix un registre existent"
+
+msgid "Remove selected record"
+msgstr "Elimina el registre seleccionat"
+
+msgid "Open the record <F2>"
+msgstr "Obre el registre <F2>"
+
+msgid "Clear the field <Del>"
+msgstr "Eliminar el registre <Del>"
+
+msgid "Search a record <F2>"
+msgstr "Cerca un registre <F2>"
+
+msgid "Edit selected record"
+msgstr "Edita registre seleccionat"
+
+msgid "Delete selected record"
+msgstr "Elimina el registre seleccionat"
+
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+msgid "Choose a language"
+msgstr "Escull un idioma"
+
+msgid "Translation"
+msgstr "Traducció"
+
+msgid "Edit"
+msgstr "Edita"
+
+msgid "Fuzzy"
+msgstr "Dubtosa"
+
+msgid "You need to save the record before adding translations."
+msgstr "Heu de desar el registre abans d'afegir traduccions."
+
+msgid "No other language available."
+msgstr "No hi ha cap altre idioma disponible."
+
+msgid "Translate view"
+msgstr "Tradueix la vista"
