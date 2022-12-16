@@ -1,0 +1,175 @@
+type,name,res_id,src,value,fuzzy
+error,res.group,0,The name of the group must be unique!,Le nom du groupe doit être unique !,0
+error,res.user,0,Wrong password!,Mauvais mot de passe !,0
+error,res.user,0,You can not have two users with the same login!,Vous ne pouvez pas créer deux utilisateur avec le même nom !,0
+error,res.user,0,"You can not remove the root user
+as it is used internally for resources
+created by the system (updates, module installation, ...)","Vous ne pouvez pas supprimer l'utilisateur racine
+puisqu'il est utilisé en interne pour créer
+des ressources par le système (mise-à-jour, installation de module, ...)",0
+field,"ir.action-res.group,action_id",0,Action,Action,0
+field,"ir.action-res.group,gid",0,Group,Groupe,0
+field,"ir.action-res.group,rec_name",0,Name,Nom,0
+field,"ir.model.field-res.group,field_id",0,Model Field,Champ de modèle,0
+field,"ir.model.field-res.group,group_id",0,Group,Groupe,0
+field,"ir.model.field-res.group,rec_name",0,Name,Nom,0
+field,"ir.rule.group-res.group,group_id",0,Group,Groupe,0
+field,"ir.rule.group-res.group,rec_name",0,Name,Nom,0
+field,"ir.rule.group-res.group,rule_group_id",0,Rule Group,Groupe de règle,0
+field,"ir.rule.group-res.user,rec_name",0,Name,Nom,0
+field,"ir.rule.group-res.user,rule_group_id",0,Rule Group,Groupe de règle,0
+field,"ir.rule.group-res.user,user_id",0,User,Utilisateur,0
+field,"ir.sequence,groups",0,User Groups,Groupes de l'utilisateur,0
+field,"ir.sequence.strict,groups",0,User Groups,Groupes d'utilisateurs,0
+field,"ir.sequence.type,groups",0,User Groups,Groupes d'utilisateurs,0
+field,"ir.sequence.type-res.group,group",0,User Groups,Groupes d'utilisateur,0
+field,"ir.sequence.type-res.group,rec_name",0,Name,Nom,0
+field,"ir.sequence.type-res.group,sequence_type",0,Sequence Type,Type de séquence,0
+field,"ir.ui.menu-res.group,gid",0,Group,Groupe,0
+field,"ir.ui.menu-res.group,menu_id",0,Menu,Menu,0
+field,"ir.ui.menu-res.group,rec_name",0,Name,Nom,0
+field,"res.group,field_access",0,Access Field,Droit d'accès,0
+field,"res.group,menu_access",0,Access Menu,Accès aux menus,0
+field,"res.group,model_access",0,Access Model,Accès aux modèles,0
+field,"res.group,name",0,Name,Nom,0
+field,"res.group,rec_name",0,Name,Nom,0
+field,"res.group,rule_groups",0,Rules,Règles,0
+field,"res.group,users",0,Users,Utilisateurs,0
+field,"res.request,act_from",0,From,De,0
+field,"res.request,act_to",0,To,À,0
+field,"res.request,active",0,Active,Actif,0
+field,"res.request,body",0,Body,Demande,0
+field,"res.request,date_sent",0,Date,Date,0
+field,"res.request,history",0,History,Historique,0
+field,"res.request,name",0,Subject,Sujet,0
+field,"res.request,number_references",0,Number of References,Nombre de référence,0
+field,"res.request,priority",0,Priority,Priorité,0
+field,"res.request,rec_name",0,Name,Nom,0
+field,"res.request,references",0,References,Références,0
+field,"res.request,state",0,State,État,0
+field,"res.request,trigger_date",0,Trigger Date,Date de déclenchement,0
+field,"res.request.history,act_from",0,From,De,0
+field,"res.request.history,act_to",0,To,À,0
+field,"res.request.history,body",0,Body,Corps,0
+field,"res.request.history,date_sent",0,Date sent,Date d'envoi,0
+field,"res.request.history,name",0,Summary,Résumé,0
+field,"res.request.history,number_references",0,References,Références,0
+field,"res.request.history,priority",0,Priority,Priorité,0
+field,"res.request.history,rec_name",0,Name,Nom,0
+field,"res.request.history,request",0,Request,Demande,0
+field,"res.request.history,state",0,State,État,0
+field,"res.request.history,subject",0,Subject,Sujet,0
+field,"res.request.link,model",0,Model,Modèle,0
+field,"res.request.link,name",0,Name,Nom,0
+field,"res.request.link,priority",0,Priority,Priorité,0
+field,"res.request.link,rec_name",0,Name,Nom,0
+field,"res.request.reference,rec_name",0,Name,Nom,0
+field,"res.request.reference,reference",0,Reference,Référence,0
+field,"res.request.reference,request",0,Request,Demande,0
+field,"res.user,action",0,Home Action,Action accueil,0
+field,"res.user,active",0,Active,Actif,0
+field,"res.user,connections",0,Connections,Connexions,0
+field,"res.user,email",0,Email,E-mail,0
+field,"res.user,groups",0,Groups,Groupes,0
+field,"res.user,language",0,Language,Langue,0
+field,"res.user,language_direction",0,Language Direction,Direction de la langue,0
+field,"res.user,login",0,Login,Nom d'utilisateur,0
+field,"res.user,menu",0,Menu Action,Action menu,0
+field,"res.user,name",0,Name,Nom,0
+field,"res.user,password",0,Password,Mot de passe,0
+field,"res.user,rec_name",0,Name,Nom,0
+field,"res.user,rule_groups",0,Rules,Règles,0
+field,"res.user,salt",0,Salt,Sel,0
+field,"res.user,signature",0,Signature,Signature,0
+field,"res.user,status_bar",0,Status Bar,Barre d'état,0
+field,"res.user,timezone",0,Timezone,Fuseau horaire,0
+field,"res.user,warnings",0,Warnings,Avertissements,0
+field,"res.user-res.group,gid",0,Group,Groupe,0
+field,"res.user-res.group,rec_name",0,Name,Nom,0
+field,"res.user-res.group,uid",0,User,Utilisateur,0
+field,"res.user.warning,always",0,Always,Toujours,0
+field,"res.user.warning,name",0,Name,Nom,0
+field,"res.user.warning,rec_name",0,Name,Nom,0
+field,"res.user.warning,user",0,User,Utilisateur,0
+help,"ir.sequence.type,groups",0,Groups allowed to edit the sequences of this type,Groupes autorisé à éditer les séquences de ce type,0
+model,"ir.action,name",act_group_form,Groups,Groupes,0
+model,"ir.action,name",act_request_form,Requests,Demandes,0
+model,"ir.action,name",act_request_link_form,Request Links,Liens des demandes,0
+model,"ir.action,name",act_user_form,Users,Utilisateurs,0
+model,"ir.action-res.group,name",0,Action - Group,Action - Groupe,0
+model,"ir.cron,name",cron_trigger_time,Run On Time Triggers,"Lance les déclencheurs ""À temps""",0
+model,"ir.model.field-res.group,name",0,Model Field Group Rel,Champ de modèle - Group,0
+model,"ir.rule.group-res.group,name",0,Rule Group - Group,Groupe de règle - Groupe,0
+model,"ir.rule.group-res.user,name",0,Rule Group - User,Groupe de règle - Utilisateur,0
+model,"ir.sequence.type-res.group,name",0,Sequence Type - Group,Type de séquence - Groupe,0
+model,"ir.ui.menu,name",menu_group_form,Groups,Groupes,0
+model,"ir.ui.menu,name",menu_request_form,Requests,Demandes,0
+model,"ir.ui.menu,name",menu_request_link_form,Request Links,Liens des demandes,0
+model,"ir.ui.menu,name",menu_res,Users,Res,0
+model,"ir.ui.menu,name",menu_user_form,Users,Utilisateurs,0
+model,"ir.ui.menu-res.group,name",0,UI Menu - Group,Menu de l'IU - Groupe,0
+model,"res.group,name",0,Group,Groupe,0
+model,"res.group,name",group_admin,Administration,Administration,0
+model,"res.request,name",0,Request,Demande,0
+model,"res.request.history,name",0,Request history,Historique de demande,0
+model,"res.request.link,name",0,Request link,Lien de demande,0
+model,"res.request.link,name",request_link_cron,Scheduler,Planificateur,0
+model,"res.request.reference,name",0,Request Reference,Référence de la demande,0
+model,"res.user,name",0,User,Utilisateur,0
+model,"res.user,name",user_admin,Administrator,Administrateur,0
+model,"res.user,name",user_trigger,Cron Trigger,Déclencheur du planificateur,0
+model,"res.user-res.group,name",0,User - Group,Utilisateur - Groupe,0
+model,"res.user.config.init,name",0,User Config Init,Configuration d'utilisateur - Init,0
+model,"res.user.warning,name",0,User Warning,Avertissement utilisateur,0
+selection,"res.request,priority",0,High,Élevée,0
+selection,"res.request,priority",0,Low,Faible,0
+selection,"res.request,priority",0,Normal,Normale,0
+selection,"res.request,state",0,Chatting,En discussion,0
+selection,"res.request,state",0,Closed,Fermé,0
+selection,"res.request,state",0,Draft,Brouillon,0
+selection,"res.request,state",0,Waiting,En attente,0
+selection,"res.request.history,priority",0,High,Élevée,0
+selection,"res.request.history,priority",0,Low,Basse,0
+selection,"res.request.history,priority",0,Normal,Normale,0
+selection,"res.request.history,state",0,Chatting,En discussion,0
+selection,"res.request.history,state",0,Closed,Fermé,0
+selection,"res.request.history,state",0,Draft,Brouillon,0
+selection,"res.request.history,state",0,Waiting,En attente,0
+view,ir.module.module,0,Cancel Installation,Annuler l'installation,0
+view,ir.module.module,0,Cancel Uninstallation,Annuler la désinstallation,0
+view,ir.module.module,0,Cancel Upgrade,Annuler la mise à jour,0
+view,ir.module.module,0,Mark for Installation,Marquer pour l'installation,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Marquer pour la désinstallation (beta),0
+view,ir.module.module,0,Mark for Upgrade,Marquer pour la mise à jour,0
+view,res.group,0,Access Permissions,Permissions d'accès,0
+view,res.group,0,Group,Groupe,0
+view,res.group,0,Groups,Groupes,0
+view,res.group,0,Members,Membres,0
+view,res.group,0,Security,Sécurité,0
+view,res.request,0,Close,Fermer,0
+view,res.request,0,Description,Description,0
+view,res.request,0,History,Historique,0
+view,res.request,0,References,Références,0
+view,res.request,0,Reply,Repondre,0
+view,res.request,0,Request,Demande,0
+view,res.request,0,Requests,Demandes,0
+view,res.request,0,Send,Envoyer,0
+view,res.request.history,0,Request History,Historique des demandes,0
+view,res.request.link,0,Request Link,Lien des demandes,0
+view,res.request.reference,0,Request Reference,Référence de la demande,0
+view,res.request.reference,0,Request References,Références de la demande,0
+view,res.user,0,Access Permissions,Permission d'accès,0
+view,res.user,0,Group Membership,Groupes,0
+view,res.user,0,Preferences,Préférences,0
+view,res.user,0,Security,Sécurité,0
+view,res.user,0,User,Utilisateur,0
+view,res.user,0,Users,Utilisateurs,0
+view,res.user.config.init,0,Add Users,Ajout d'utilisateurs,0
+view,res.user.config.init,0,Be careful that the login must be unique!,Attention l'utilisateur doit être unique !,0
+view,res.user.config.init,0,You can now add some users into the system.,Vous pouvez maintenant ajouter des utilisateurs au système.,0
+view,res.user.warning,0,Warning,Avertissement,0
+view,res.user.warning,0,Warnings,Avertissements,0
+wizard_button,"res.user.config,init,end",0,Cancel,Annuler,0
+wizard_button,"res.user.config,init,user",0,Ok,Ok,0
+wizard_button,"res.user.config,user,add",0,Add,Ajouter,0
+wizard_button,"res.user.config,user,end",0,End,Terminer,0
