@@ -1,0 +1,8 @@
+include CHANGELOG
+include COPYRIGHT
+include LICENSE
+include README.rst
+include doc/*
+recursive-include doc *.rst
+recursive-include doc *.po
+recursive-include doc *.pot

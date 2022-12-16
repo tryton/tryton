@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="model"/>
+    <field name="model"/>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="string"/>
+    <field name="string"/>
+    <newline/>
+    <separator name="help" colspan="4"/>
+    <field name="help" colspan="4"/>
+    <separator name="confirm" colspan="4"/>
+    <field name="confirm" colspan="4"/>
+    <field name="groups" colspan="4"/>
+    <field name="rules" colspan="2"/>
+    <field name="reset_by" colspan="2"/>
+</form>
