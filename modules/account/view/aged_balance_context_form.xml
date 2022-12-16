@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Aged Balance" col="6">
+    <label name="date"/>
+    <field name="date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="posted"/>
+    <field name="posted"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="unit"/>
+    <field name="unit"/>
+    <separator string="Terms" colspan="6" id="terms"/>
+    <label name="term1"/>
+    <field name="term1"/>
+    <label name="term2"/>
+    <field name="term2"/>
+    <label name="term3"/>
+    <field name="term3"/>
+</form>

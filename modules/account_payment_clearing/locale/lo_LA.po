@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,clearing_move:"
+msgid "Clearing Move"
+msgstr "ຊໍາລະເຄື່ອນຍ້າຍ"
+
+msgctxt "field:account.payment.journal,clearing_account:"
+msgid "Clearing Account"
+msgstr "ບັນຊີສະສາງ"
+
+msgctxt "field:account.payment.journal,clearing_journal:"
+msgid "Clearing Journal"
+msgstr "ບັນຊີສະສາງປະຈຳວັນ"
+
+msgctxt "field:account.statement.line,payment:"
+msgid "Payment"
+msgstr "ການຈ່າຍ"

@@ -1,0 +1,613 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.address:"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "Partner címének módosítása nem lehetséges\"%s\""
+
+msgctxt "error:party.category:"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr "Érvénytelen kategórianév \"%s\": név mezőben nem engedélyezett"
+
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent."
+msgstr ""
+"A partnerkategória neve felülrendelt kategóriánként csak egyszer adható ki"
+
+msgctxt "error:party.check_vies:"
+msgid "The VIES service is unavailable, try again later."
+msgstr "A kiszolgáló nem érhető el, próbálkozzon később"
+
+msgctxt "error:party.contact_mechanism:"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "A partner kapcsolati mechanizmus \"%s\" módosítása nem lehetséges"
+
+#, fuzzy
+msgctxt "error:party.identifier:"
+msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
+msgstr "A partner \"%(party)s\"érvénytelen adóazonosító száma \"%(vat)s\""
+
+msgctxt "error:party.party:"
+msgid "The code of the party must be unique."
+msgstr "Egy partner kódja csak egyszer adható ki"
+
+msgctxt "field:party.address,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Város"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Ország"
+
+msgctxt "field:party.address,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.address,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Teljes cím"
+
+msgctxt "field:party.address,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.address,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.address,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.address,sequence:"
+msgid "Sequence"
+msgstr "Sorrend"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Utca"
+
+msgctxt "field:party.address,streetbis:"
+msgid "Street (bis)"
+msgstr "Utca 2"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Alrészleg"
+
+msgctxt "field:party.address,write_date:"
+msgid "Write Date"
+msgstr "Utoljára módosított dátum"
+
+msgctxt "field:party.address,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "Irányítószám"
+
+msgctxt "field:party.category,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Alárendelt (kategória)"
+
+msgctxt "field:party.category,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.category,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Fölérendelt (kategória)"
+
+msgctxt "field:party.category,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.category,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.category,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.check_vies.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Partnerek sikertelen felülvizsgálása"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Partnerek sikeres felülvizsgálása"
+
+msgctxt "field:party.configuration,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.configuration,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.configuration,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Partner számköre"
+
+msgctxt "field:party.configuration,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.configuration,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.contact_mechanism,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Megjegyzés"
+
+msgctxt "field:party.contact_mechanism,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.contact_mechanism,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.contact_mechanism,id:"
+msgid "ID"
+msgstr "Azonosító"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Érték"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.contact_mechanism,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.contact_mechanism,sequence:"
+msgid "Sequence"
+msgstr "Sorrend"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Érték"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Weboldal"
+
+msgctxt "field:party.contact_mechanism,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.contact_mechanism,write_uid:"
+msgid "Write User"
+msgstr "Utolsó módosítás a következő felhasználó által"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Partner kód"
+
+msgctxt "field:party.identifier,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.identifier,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.identifier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.identifier,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:party.identifier,write_date:"
+msgid "Write Date"
+msgstr "Utoljára módosított dátum"
+
+msgctxt "field:party.identifier,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.party,active:"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Címek"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Kategóriák"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Partner kód"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Kód (olvasható)"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Kapcsolat lehetőség"
+
+msgctxt "field:party.party,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.party,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Teljes név"
+
+msgctxt "field:party.party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr ""
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Nyelv"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Mobiltelefon"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "field:party.party,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.party,vat_code:"
+msgid "VAT Code"
+msgstr "Adóazonosító szám "
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Weboldal"
+
+msgctxt "field:party.party,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.party,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "field:party.party-party.category,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+msgctxt "field:party.party-party.category,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:party.party-party.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.party-party.category,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.party-party.category,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+msgctxt "field:party.party-party.category,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Címek"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Partner kategóriák"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Partner kategóriák"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kapcsolat lehetőségek"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Partnerek kategória szerint"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "Partner"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Partnerek"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Címkék"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Adóazonosító szám vizsgálása VIES által"
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Címek"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Kategóriák"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Partner kategóriák"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Beállítások"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Kapcsolat lehetőségek"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "Partner beállítások"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Partnerek"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Cím"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Adóazonosító szám vizsgálása VIES által"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Partner beállítások"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Kapcsolat lehetőségek"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr ""
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Partner-Partner kategória"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Partner adminisztráció"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "E-mail"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Mobiltelefon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Más kapcsolat"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Weboldal"
+
+msgctxt "view:party.address:"
+msgid "Addresses"
+msgstr "Címek"
+
+msgctxt "view:party.category:"
+msgid "Categories"
+msgstr "Kategóriák"
+
+msgctxt "view:party.category:"
+msgid "Category"
+msgstr "Kategória"
+
+msgctxt "view:party.check_vies.result:"
+msgid "VAT Information Exchange System Results"
+msgstr ""
+
+msgctxt "view:party.configuration:"
+msgid "Party Configuration"
+msgstr "Partner"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kapcsolat lehetőségek"
+
+msgctxt "view:party.contact_mechanism:"
+msgid "Contact Mechanisms"
+msgstr "Kapcsolat lehetőség"
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifier"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "Party Identifiers"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:party.party:"
+msgid "Parties"
+msgstr "Partnerek"
+
+msgctxt "view:party.party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "OK"

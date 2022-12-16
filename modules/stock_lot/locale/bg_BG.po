@@ -1,0 +1,269 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.move:"
+msgid "Lot is required for move of product \"%s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "Въведете партида"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "Въведете партида"
+
+msgctxt "field:product.template-stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:product.template-stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:product.template-stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.template-stock.lot.type,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:product.template-stock.lot.type,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "field:product.template-stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Записано на"
+
+msgctxt "field:product.template-stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Записано от"
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Партида"
+
+msgctxt "field:stock.lot,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.lot,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Планирано количество"
+
+msgctxt "field:stock.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "Номер"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "field:stock.lot,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.lot,write_date:"
+msgid "Write Date"
+msgstr "Записано на"
+
+msgctxt "field:stock.lot,write_uid:"
+msgid "Write User"
+msgstr "Записано от"
+
+msgctxt "field:stock.lot.type,code:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "field:stock.lot.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.lot.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:stock.lot.type,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.lot.type,name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.lot.type,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.lot.type,write_date:"
+msgid "Write Date"
+msgstr "Записано на"
+
+msgctxt "field:stock.lot.type,write_uid:"
+msgid "Write User"
+msgstr "Записано от"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "Партида"
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Вътрешно количество"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Партида"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Период"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Вида местонахождение за което е необходима партидата"
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required"
+msgstr "Вида местонахождение за което е необходима партидата"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Партиди"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Движения"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Партиди"
+
+msgctxt "model:product.template-stock.lot.type,name:"
+msgid "Template - Stock Lot Type"
+msgstr "Шаблон - Вид наличност на партида"
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "Наличност на партида"
+
+msgctxt "model:stock.lot.type,name:"
+msgid "Stock Lot Type"
+msgstr "Вид наличност на партида"
+
+msgctxt "model:stock.lot.type,name:type_customer"
+msgid "Customer"
+msgstr "Клиент"
+
+msgctxt "model:stock.lot.type,name:type_lost_found"
+msgid "Lost and Found"
+msgstr "Изгубени и намерени"
+
+msgctxt "model:stock.lot.type,name:type_production"
+msgid "Production"
+msgstr "Производство"
+
+msgctxt "model:stock.lot.type,name:type_storage"
+msgid "Storage"
+msgstr "Съхранение"
+
+msgctxt "model:stock.lot.type,name:type_supplier"
+msgid "Supplier"
+msgstr "Доставчик"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "Партиди"
+
+msgctxt "view:stock.lot:"
+msgid "Lot"
+msgstr "Партида"
+
+msgctxt "view:stock.lot:"
+msgid "Lots"
+msgstr "Партиди"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Cache"
+msgstr ""
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Caches"
+msgstr ""
