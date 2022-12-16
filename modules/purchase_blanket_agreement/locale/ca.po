@@ -1,0 +1,274 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.blanket_agreement,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:purchase.blanket_agreement,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.blanket_agreement,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:purchase.blanket_agreement,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:purchase.blanket_agreement,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:purchase.blanket_agreement,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:purchase.blanket_agreement,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:purchase.blanket_agreement,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:purchase.blanket_agreement,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:purchase.blanket_agreement,supplier:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.blanket_agreement,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt ""
+"field:purchase.blanket_agreement.create_purchase.start,blanket_agreement:"
+msgid "Blanket Agreement"
+msgstr "Acord general"
+
+msgctxt "field:purchase.blanket_agreement.create_purchase.start,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:purchase.blanket_agreement.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:purchase.blanket_agreement.line,blanket_agreement:"
+msgid "Blanket Agreement"
+msgstr "Acord general"
+
+msgctxt "field:purchase.blanket_agreement.line,blanket_agreement_state:"
+msgid "Blanket Agreement State"
+msgstr "Estat del acord general"
+
+msgctxt "field:purchase.blanket_agreement.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.blanket_agreement.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:purchase.blanket_agreement.line,processed_quantity:"
+msgid "Processed quantity"
+msgstr "Quantitat procesada"
+
+msgctxt "field:purchase.blanket_agreement.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:purchase.blanket_agreement.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Producte proveïdor"
+
+msgctxt "field:purchase.blanket_agreement.line,product_uom_category:"
+msgid "Product UOM Category"
+msgstr "Categoria UdM del producte"
+
+msgctxt "field:purchase.blanket_agreement.line,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "Línies de compra"
+
+msgctxt "field:purchase.blanket_agreement.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:purchase.blanket_agreement.line,remaining_quantity:"
+msgid "Remaining quantity"
+msgstr "Quantitat restant"
+
+msgctxt "field:purchase.blanket_agreement.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:purchase.blanket_agreement.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "field:purchase.configuration,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Seqüència acord general"
+
+msgctxt "field:purchase.configuration.sequence,blanket_agreement_sequence:"
+msgid "Blanket Agreement Sequence"
+msgstr "Seqüència acord general"
+
+msgctxt "field:purchase.line,blanket_agreement_line:"
+msgid "Blanket Agreement Line"
+msgstr "Línia d'acord general"
+
+msgctxt "field:purchase.purchase,blanket_agreements:"
+msgid "Blanket Agreements"
+msgstr "Acords generals"
+
+msgctxt "model:ir.action,name:act_purchase_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Acords generals"
+
+msgctxt "model:ir.action,name:act_purchase_form_blanket_agreement"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_purchase_line_form_blanket_agreement"
+msgid "Purchase lines"
+msgstr "Línies de compra"
+
+msgctxt ""
+"model:ir.action,name:purchase_blanked_agreement_create_purchase_wizard"
+msgid "Create a Purchase"
+msgstr "Crea una compra"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_blanket_agreement_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_blanket_agreement_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_blanket_agreement_domain_running"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "model:ir.message,text:msg_agreement_closed_remaining_quantity"
+msgid ""
+"The agreement \"%(agreement)s\" to be closed has still remaining quantities."
+msgstr ""
+"El acord \"%(agreement)s\" que es vol tancar encara té quantitats pendents."
+
+msgctxt "model:ir.message,text:msg_agreement_line_incompatible_unit"
+msgid ""
+"To change the unit of agreement line \"%(line)s\", you must choose one "
+"compatible with the existing purchase lines."
+msgstr ""
+"Per canviar la unitat de la línia d'acord \"%(line)s\" heu d'escollir una "
+"compatible amb les línies de compra existents."
+
+msgctxt "model:ir.message,text:msg_quantity_greater_remaining"
+msgid ""
+"The quantity of line \"%(line)s\" is greater than the remaining quantity "
+"(%(remaining)s) of agreement \"%(agreement)s\"."
+msgstr ""
+"La quantitat de la línia \"%(line)s\" es superior a la quantitat restant "
+"(%remaining)s\" de l'acord \"%(agreement)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:purchase_blanket_agreement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:purchase_blanket_agreement_close_button"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_blanket_agreement_create_purchase_button"
+msgid "Create a Purchase"
+msgstr "Crea una compra"
+
+msgctxt "model:ir.model.button,string:purchase_blanket_agreement_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:purchase_blanket_agreement_run_button"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_purchase_blanket_agreement_companies"
+msgid "Purchases Blanket Agreement"
+msgstr "Acords generals de compra"
+
+msgctxt "model:ir.sequence,name:sequence_blanket_agreement"
+msgid "Purchase Blanket Agreement"
+msgstr "Acord general de compra"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_blanket_agreement"
+msgid "Purchase Blanket Agreement"
+msgstr "Acord general de compra"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_blanket_agreement"
+msgid "Blanket Agreements"
+msgstr "Acords generals"
+
+msgctxt "model:purchase.blanket_agreement,name:"
+msgid "Purchase Blanket Agreement"
+msgstr "Acord general de compra"
+
+msgctxt "model:purchase.blanket_agreement.create_purchase.start,name:"
+msgid "Create Purchase"
+msgstr "Crea compra"
+
+msgctxt "model:purchase.blanket_agreement.line,name:"
+msgid "Purchase Blanket Agreement Line"
+msgstr "Línea d'acord general de compra"
+
+msgctxt "model:res.group,name:group_purchase_blanket_agreement"
+msgid "Purchase Blanket Agreement"
+msgstr "Acord general de compra"
+
+msgctxt "selection:purchase.blanket_agreement,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:purchase.blanket_agreement,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:purchase.blanket_agreement,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:purchase.blanket_agreement,state:"
+msgid "Running"
+msgstr "En execució"
+
+msgctxt "view:purchase.blanket_agreement.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:purchase.blanket_agreement:"
+msgid "Agreement"
+msgstr "Acord"
+
+msgctxt "view:purchase.blanket_agreement:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt ""
+"wizard_button:purchase.blanket_agreement.create_purchase,start,create_purchase:"
+msgid "Create"
+msgstr "Crea"
+
+msgctxt "wizard_button:purchase.blanket_agreement.create_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"

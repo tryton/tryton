@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Unsubscribe</title>
+    </head>
+    <body>
+        <py:for each="record in records">
+        <div style="display: block; text-align: center">
+            <h1>You are unsubscribed</h1>
+            <p><strong>You have been successfully unsubscribed from this kind of email.</strong></p>
+            <p>We are sorry to see you go, and apologize if we have overwhelmed your inbox.</p>
+        </div>
+        </py:for>
+    </body>
+</html>
