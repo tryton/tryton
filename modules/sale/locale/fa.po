@@ -1,0 +1,1672 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_exception_state:"
+msgid "Exception State"
+msgstr "حالت اعتراضی"
+
+msgctxt "field:account.invoice,sales:"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "field:party.party,sale_invoice_method:"
+msgid "Invoice Method"
+msgstr "متد صورتحساب"
+
+#, fuzzy
+msgctxt "field:party.party,sale_methods:"
+msgid "Sale Methods"
+msgstr "متد صورتحساب فروش"
+
+#, fuzzy
+msgctxt "field:party.party,sale_shipment_method:"
+msgid "Shipment Method"
+msgstr "متد حمل ونقل"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "متد صورتحساب فروش"
+
+#, fuzzy
+msgctxt "field:party.party.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "متد حمل ونقل فروش"
+
+#, fuzzy
+msgctxt "field:product.configuration,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "زمان پیشبرد"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
+msgid "Default Lead Time"
+msgstr "زمان پیشبرد"
+
+msgctxt "field:product.product,lead_time:"
+msgid "Lead Time"
+msgstr "زمان پیشبرد"
+
+msgctxt "field:product.product,salable:"
+msgid "Salable"
+msgstr "قابل فروش"
+
+msgctxt "field:product.product,sale_price_uom:"
+msgid "Sale Price"
+msgstr "قیمت فروش"
+
+msgctxt "field:product.product,sale_uom:"
+msgid "Sale UOM"
+msgstr "واحد اندازی گیری فروش"
+
+#, fuzzy
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+#, fuzzy
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "انبار"
+
+#, fuzzy
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "تاریخ فروش"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr ""
+
+msgctxt "field:product.template,lead_time:"
+msgid "Lead Time"
+msgstr "زمان پیشبرد"
+
+msgctxt "field:product.template,salable:"
+msgid "Salable"
+msgstr "قابل فروش"
+
+msgctxt "field:product.template,sale_uom:"
+msgid "Sale UOM"
+msgstr "واحد اندازی گیری فروش"
+
+msgctxt "field:sale.configuration,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "متد صورتحساب فروش"
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
+msgstr "پس از فرایند فروش"
+
+msgctxt "field:sale.configuration,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "ادامه فروش"
+
+msgctxt "field:sale.configuration,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "متد حمل ونقل فروش"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
+msgid "Sale Invoice Method"
+msgstr "متد صورتحساب فروش"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
+msgid "Sale Shipment Method"
+msgstr "متد حمل ونقل فروش"
+
+msgctxt "field:sale.configuration.sequence,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.configuration.sequence,sale_sequence:"
+msgid "Sale Sequence"
+msgstr "ادامه فروش"
+
+msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
+msgid "Domain Invoices"
+msgstr "دامنه صورتحساب ها"
+
+msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid "Recreate Invoices"
+msgstr "ایجاد دوباره صورتحساب ها"
+
+msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
+msgid "Domain Moves"
+msgstr "دامنه جابجایی ها"
+
+msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
+msgid "Recreate Moves"
+msgstr "ایجاد دوباره جابجایی ها"
+
+#, fuzzy
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:sale.line,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:sale.line,from_location:"
+msgid "From Location"
+msgstr "از مکان"
+
+msgctxt "field:sale.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
+
+msgctxt "field:sale.line,move_done:"
+msgid "Moves Done"
+msgstr "جابجایی ها انجام شد"
+
+msgctxt "field:sale.line,move_exception:"
+msgid "Moves Exception"
+msgstr "جابجایی های اعتراضی"
+
+msgctxt "field:sale.line,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:sale.line,moves_ignored:"
+msgid "Ignored Moves"
+msgstr "جابجایی های نادیده گرفته شده"
+
+msgctxt "field:sale.line,moves_recreated:"
+msgid "Recreated Moves"
+msgstr "جابجایی های دوباره انجام شده"
+
+msgctxt "field:sale.line,note:"
+msgid "Note"
+msgstr "توجه"
+
+msgctxt "field:sale.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "دسته بندی واحد اندازه گیری محصول"
+
+msgctxt "field:sale.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:sale.line,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "field:sale.line,sale_state:"
+msgid "Sale State"
+msgstr "وضعیت فروش"
+
+msgctxt "field:sale.line,shipping_date:"
+msgid "Shipping Date"
+msgstr "تاریخ ارسال"
+
+msgctxt "field:sale.line,summary:"
+msgid "Summary"
+msgstr ""
+
+msgctxt "field:sale.line,taxes:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "field:sale.line,to_location:"
+msgid "To Location"
+msgstr "به مکان"
+
+msgctxt "field:sale.line,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "field:sale.line,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "field:sale.line,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:sale.line-account.tax,line:"
+msgid "Sale Line"
+msgstr "سطر فروش"
+
+msgctxt "field:sale.line-account.tax,tax:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:sale.line-ignored-stock.move,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:sale.line-ignored-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "سطر فروش"
+
+msgctxt "field:sale.line-recreated-stock.move,move:"
+msgid "Move"
+msgstr "جابجایی"
+
+msgctxt "field:sale.line-recreated-stock.move,sale_line:"
+msgid "Sale Line"
+msgstr "سطر فروش"
+
+msgctxt "field:sale.reporting.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.reporting.context,from_date:"
+msgid "From Date"
+msgstr "از تاریخ"
+
+msgctxt "field:sale.reporting.context,period:"
+msgid "Period"
+msgstr "دوره زمانی"
+
+msgctxt "field:sale.reporting.context,to_date:"
+msgid "To Date"
+msgstr "تا تاریخ"
+
+msgctxt "field:sale.reporting.context,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:sale.reporting.country,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:sale.reporting.country,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+msgctxt "field:sale.reporting.country.subdivision,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:sale.reporting.country.subdivision,subdivision:"
+msgid "Subdivision"
+msgstr "زیرتقسیمات"
+
+msgctxt "field:sale.reporting.country.subdivision,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
+msgid "Subdivision"
+msgstr "زیرتقسیمات"
+
+msgctxt "field:sale.reporting.country.time_series,country:"
+msgid "Country"
+msgstr "کشور"
+
+msgctxt "field:sale.reporting.country.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:sale.reporting.customer,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:sale.reporting.customer,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:sale.reporting.customer.category.tree,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "field:sale.reporting.customer.time_series,customer:"
+msgid "Customer"
+msgstr "مشتری"
+
+msgctxt "field:sale.reporting.customer.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.main,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.main.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:sale.reporting.product,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.reporting.product,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category,time_series:"
+msgid "Time Series"
+msgstr "سری زمانی"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,category:"
+msgid "Category"
+msgstr "دسته‌بندی‌"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+#, fuzzy
+msgctxt "field:sale.reporting.product.category.tree,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
+msgctxt "field:sale.reporting.product.time_series,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:sale.reporting.product.time_series,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.reporting.region,children:"
+msgid "Children"
+msgstr "زیر مجموعه"
+
+msgctxt "field:sale.reporting.region,parent:"
+msgid "Parent"
+msgstr "منبع"
+
+msgctxt "field:sale.reporting.region,region:"
+msgid "Region"
+msgstr "منطقه"
+
+msgctxt "field:sale.sale,comment:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "field:sale.sale,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "تایید شده"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.sale,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:sale.sale,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:sale.sale,invoice_address:"
+msgid "Invoice Address"
+msgstr "آدرس صورتحساب"
+
+msgctxt "field:sale.sale,invoice_method:"
+msgid "Invoice Method"
+msgstr "متد صورتحساب"
+
+#, fuzzy
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "وضعیت صورت حساب"
+
+msgctxt "field:sale.sale,invoice_state:"
+msgid "Invoice State"
+msgstr "وضعیت صورت حساب"
+
+msgctxt "field:sale.sale,invoices:"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "field:sale.sale,invoices_ignored:"
+msgid "Ignored Invoices"
+msgstr "صورتحساب های نادیده گرفته شده"
+
+msgctxt "field:sale.sale,invoices_recreated:"
+msgid "Recreated Invoices"
+msgstr "صورتحساب های دوباره ایجاد شده"
+
+msgctxt "field:sale.sale,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:sale.sale,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "field:sale.sale,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:sale.sale,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+msgctxt "field:sale.sale,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+msgctxt "field:sale.sale,party_lang:"
+msgid "Party Language"
+msgstr "زبان نهاد/سازمان"
+
+msgctxt "field:sale.sale,payment_term:"
+msgid "Payment Term"
+msgstr "شرایط پرداخت"
+
+#, fuzzy
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
+
+msgctxt "field:sale.sale,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:sale.sale,sale_date:"
+msgid "Sale Date"
+msgstr "تاریخ فروش"
+
+msgctxt "field:sale.sale,shipment_address:"
+msgid "Shipment Address"
+msgstr "آدرس حمل و نقل"
+
+msgctxt "field:sale.sale,shipment_method:"
+msgid "Shipment Method"
+msgstr "متد حمل ونقل"
+
+msgctxt "field:sale.sale,shipment_party:"
+msgid "Shipment Party"
+msgstr "نهاد/سازمان حمل و نقل"
+
+msgctxt "field:sale.sale,shipment_returns:"
+msgid "Shipment Returns"
+msgstr "محموله های برگشتی"
+
+msgctxt "field:sale.sale,shipment_state:"
+msgid "Shipment State"
+msgstr "وضعیت حمل و نقل محموله"
+
+msgctxt "field:sale.sale,shipments:"
+msgid "Shipments"
+msgstr "محموله ها"
+
+#, fuzzy
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "تاریخ ارسال"
+
+msgctxt "field:sale.sale,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:sale.sale,tax_amount:"
+msgid "Tax"
+msgstr "مالیات"
+
+msgctxt "field:sale.sale,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "مالیات نقدی"
+
+msgctxt "field:sale.sale,total_amount:"
+msgid "Total"
+msgstr "مجموع"
+
+#, fuzzy
+msgctxt "field:sale.sale,total_amount_cache:"
+msgid "Total Cache"
+msgstr "مالیات نقدی"
+
+msgctxt "field:sale.sale,untaxed_amount:"
+msgid "Untaxed"
+msgstr "بدون اعمال مالیات"
+
+msgctxt "field:sale.sale,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "نقدی بدون اعمال مالیات"
+
+msgctxt "field:sale.sale,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:sale.sale-ignored-account.invoice,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:sale.sale-recreated-account.invoice,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "field:stock.move,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "field:stock.move,sale_exception_state:"
+msgid "Exception State"
+msgstr "حالت اعتراضی"
+
+msgctxt "help:party.party,sale_invoice_method:"
+msgid ""
+"The default sale invoice method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:party.party,sale_shipment_method:"
+msgid ""
+"The default sale shipment method for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+
+msgctxt "help:product.configuration,default_lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"Used for products without a lead time."
+msgstr ""
+
+msgctxt "help:product.product,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:product.template,lead_time:"
+msgid ""
+"The time from confirming the sales order to sending the products.\n"
+"If empty the default lead time from the configuration is used."
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
+msgstr ""
+"دوره فصلی که در آن فروش تایید شده می تواند دوباره به پیش نویس بازگردد.اگر یک"
+" صف کارگر فعال شود، اعمال می شود."
+
+msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+"صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.action,name:act_open_customer"
+msgid "Parties associated to Sales"
+msgstr "نهادها/سازمان های مرتبط با فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product"
+msgid "Products"
+msgstr "محصول"
+
+msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
+msgid "Sales per Subdivision"
+msgstr "Sales per Subdivision"
+
+msgctxt "model:ir.action,name:act_reporting_country_time_series"
+msgid "Sales per Country"
+msgstr "Sales per Country"
+
+msgctxt "model:ir.action,name:act_reporting_customer"
+msgid "Sales per Customer"
+msgstr "Sales per Customer"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
+msgid "Sales per Party Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
+msgid "Sales per Customer Category"
+msgstr "Sales per Category"
+
+msgctxt "model:ir.action,name:act_reporting_customer_time_series"
+msgid "Sales per Customer"
+msgstr "Sales per Customer"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_main_time_series"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:ir.action,name:act_reporting_product"
+msgid "Sales per Product"
+msgstr "Sales per Product"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_product_category_tree"
+msgid "Sales per Product Category"
+msgstr "Sales per Category"
+
+msgctxt "model:ir.action,name:act_reporting_product_time_series"
+msgid "Sales per Product"
+msgstr "Sales per Product"
+
+msgctxt "model:ir.action,name:act_reporting_region"
+msgid "Sales per Region"
+msgstr "Sales per Region"
+
+msgctxt "model:ir.action,name:act_return_form"
+msgid "Returns"
+msgstr "برگشتی ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_configuration_form"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.action,name:act_sale_form"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "جابجایی ها"
+
+msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:ir.action,name:act_shipment_form"
+msgid "Shipments"
+msgstr "محموله ها"
+
+msgctxt "model:ir.action,name:report_sale"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
+msgid "Handle Invoice Exception"
+msgstr "رسیدگی به صورتحساب های اعتراضی"
+
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+msgctxt "model:ir.action,name:wizard_reporting_region_open"
+msgid "Open Region"
+msgstr "Open Region"
+
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Return Sale"
+msgstr "برگشتی فروش"
+
+msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
+msgid "Handle Shipment Exception"
+msgstr "رسیدگی به محموله های اعتراضی"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "تایید شده"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "اعتراض"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr "نقل قول"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending sales with "
+"company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان: \"%(party)s\"را هنگامی که فروش هایی معوق با شرکت:"
+" \"%(company)s\"دارد را حذف کنید."
+
+msgctxt "model:ir.message,text:msg_sale_customer_location_required"
+msgid ""
+"To process sale \"%(sale)s\" you must set a customer location on party "
+"\"%(party)s\"."
+msgstr ""
+"برای پردازش فروش: \"%(sale)s\" شما باید مکان مشتری را در نهاد/سازمان : "
+"\"%(party)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_sale_delete_cancel"
+msgid "To delete sale \"%(sale)s\" you must cancel it."
+msgstr "برای حذف فروش : \"%(sale)s\" شما باید ابتدا آنرا لغو کنید."
+
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and shipment "
+"\"%(shipment_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+"شما نمیتوانید در فروش : \"%(sale)s\" صورتحساب :\"%(invoice_method)s\"و حمل و"
+" نقل :\"%(shipment_method)s\" را با هم استفاده کنید."
+
+msgctxt ""
+"model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
+msgstr ""
+"برای دریافت یک نقل قول برای فروش : \"%(sale)s\"شما باید آدرس صورتحساب را "
+"وارد کنید."
+
+msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
+msgid ""
+"You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
+"by a sale."
+msgstr ""
+"شما نمیتوانید صورتحساب :\"%(invoice)s\"را به حالت پیش نویس بازنشانی کنید "
+"چراکه توسط یک فروش ایجاد شده است."
+
+msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft sale "
+"\"%(sale)s\"."
+msgstr ""
+"برای حذف سطر:\"%(line)s\" شما باید فروش :\"%(sale)s\"را لغو یا به حالت پیش "
+"نویس بازنشانی کنید."
+
+msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
+msgid "A tax can be added only once to a sale line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
+msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
+msgstr ""
+"برای صورتحساب فروش :\"%(sale)s\" شما باید یک حساب درآمد پیش فرض پیکربندی "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
+msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
+msgstr "برای تغیر عنوان فروش :\"%(sale)s\" حالت آن باید به پیش نویس بازنشانی شود."
+
+msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
+msgid ""
+"You cannot reset move \"%(move)s\" to draft because it was generated by a "
+"sale."
+msgstr ""
+"شما نمیتوانید جابجایی:\"%(move)s\"را به حالت پیش نویس بازنشانی کنید چراکه "
+"توسط یک فروش ایجاد شده است."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
+msgid ""
+"To invoice sale \"%(sale)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"برای صورتحساب فروش :\"%(sale)s\" شما باید یک حساب درآمد برای محصول : "
+"\"%(product)s\" تعریف کنید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr "تعداد فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "روند درآمد"
+
+msgctxt ""
+"model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
+msgstr ""
+"برای دریافت یک نقل قول برای فروش : \"%(sale)s\"شما باید یک آدرس حمل ونقل را "
+"وارد کنید."
+
+msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
+msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgstr ""
+"برای دریافت یک نقل قول برای فروش : \"%(sale)s\"شما باید یک انبار را وارد "
+"کنید."
+
+msgctxt "model:ir.model.button,string:sale_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:sale_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:sale_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Handle Invoice Exception"
+
+msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Handle Shipment Exception"
+
+msgctxt "model:ir.model.button,string:sale_modify_header_button"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+msgctxt "model:ir.model.button,string:sale_process_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:sale_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_reporting_region_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_sale"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_customer"
+msgid "Associated to Sales"
+msgstr "نهادها/سازمان های مرتبط با فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "محصول"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Reporting"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr "Sales"
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr "فروش ها"
+
+#, fuzzy
+msgctxt "model:party.party.sale_method,name:"
+msgid "Party Sale Method"
+msgstr "پیکربندی فروش ؛ متد فروش"
+
+msgctxt "model:product.configuration.default_lead_time,name:"
+msgid "Product Default Lead Time"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr "پس از فرایند فروش"
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr "فروش ها"
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr "مدیریت فروش ها"
+
+msgctxt "model:sale.configuration,name:"
+msgid "Sale Configuration"
+msgstr "پیکربندی فروش"
+
+msgctxt "model:sale.configuration.sale_method,name:"
+msgid "Sale Configuration Sale Method"
+msgstr "پیکربندی فروش ؛ متد فروش"
+
+msgctxt "model:sale.configuration.sequence,name:"
+msgid "Sale Configuration Sequence"
+msgstr "ادامه پیکربندی فروش"
+
+msgctxt "model:sale.handle.invoice.exception.ask,name:"
+msgid "Handle Invoice Exception"
+msgstr "رسیدگی به صورتحساب های اعتراضی"
+
+msgctxt "model:sale.handle.shipment.exception.ask,name:"
+msgid "Handle Shipment Exception"
+msgstr "رسیدگی به محموله های اعتراضی"
+
+msgctxt "model:sale.line,name:"
+msgid "Sale Line"
+msgstr "سطر فروش"
+
+msgctxt "model:sale.line-account.tax,name:"
+msgid "Sale Line - Tax"
+msgstr "سطر فروش - مالیات"
+
+msgctxt "model:sale.line-ignored-stock.move,name:"
+msgid "Sale Line - Ignored Move"
+msgstr "سطر فروش - جابجایی نادیده گرفته شده"
+
+msgctxt "model:sale.line-recreated-stock.move,name:"
+msgid "Sale Line - Recreated Move"
+msgstr "جابجایی دوباره انجام شده - سطر فروش"
+
+msgctxt "model:sale.reporting.context,name:"
+msgid "Sale Reporting Context"
+msgstr "مفاد گزارش فروش"
+
+msgctxt "model:sale.reporting.country,name:"
+msgid "Sale Reporting per Country"
+msgstr "گزارش فروش در هر کشور"
+
+msgctxt "model:sale.reporting.country.subdivision,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "گزارش فروش در هر استان"
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
+msgid "Sale Reporting per Subdivision"
+msgstr "گزارش فروش در هر استان"
+
+msgctxt "model:sale.reporting.country.time_series,name:"
+msgid "Sale Reporting per Country"
+msgstr "گزارش فروش در هر کشور"
+
+msgctxt "model:sale.reporting.customer,name:"
+msgid "Sale Reporting per Customer"
+msgstr "گزارش فروش برای هر مشتری"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.time_series,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer.category.tree,name:"
+msgid "Sale Reporting per Customer Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+msgctxt "model:sale.reporting.customer.time_series,name:"
+msgid "Sale Reporting per Customer"
+msgstr "گزارش فروش برای هر مشتری"
+
+#, fuzzy
+msgctxt "model:sale.reporting.main,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:sale.reporting.main.time_series,name:"
+msgid "Sale Reporting"
+msgstr "Reporting"
+
+msgctxt "model:sale.reporting.product,name:"
+msgid "Sale Reporting per Product"
+msgstr "گزارش فروش در هر محصول"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.time_series,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.tree,name:"
+msgid "Sale Reporting per Product Category"
+msgstr "گزارش فروش در هر زیرمجموعه"
+
+msgctxt "model:sale.reporting.product.time_series,name:"
+msgid "Sale Reporting per Product"
+msgstr "گزارش فروش در هر محصول"
+
+msgctxt "model:sale.reporting.region,name:"
+msgid "Sale Reporting per Region"
+msgstr "گزارش فروش در هر منطقه"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "برگشتی فروش"
+
+msgctxt "model:sale.sale,name:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "model:sale.sale-ignored-account.invoice,name:"
+msgid "Sale - Ignored Invoice"
+msgstr "فروش - فاکتور نادیده گرفته شده"
+
+msgctxt "model:sale.sale-recreated-account.invoice,name:"
+msgid "Sale - Recreated Invoice"
+msgstr "صورتحساب دوباره ایجاد شده - فروش"
+
+msgctxt "report:sale.sale:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:sale.sale:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "report:sale.sale:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+msgctxt "report:sale.sale:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "report:sale.sale:"
+msgid "Description:"
+msgstr "توضیحات :"
+
+msgctxt "report:sale.sale:"
+msgid "Draft Sale Order"
+msgstr "پیش نویس دستور فروش"
+
+msgctxt "report:sale.sale:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:sale.sale:"
+msgid "Quotation N°:"
+msgstr "نقل قول N°:"
+
+msgctxt "report:sale.sale:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:sale.sale:"
+msgid "Sale Order N°:"
+msgstr "دستور فروش N° :"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+msgctxt "report:sale.sale:"
+msgid "Taxes:"
+msgstr "مالیات ها :"
+
+msgctxt "report:sale.sale:"
+msgid "Total (excl. taxes):"
+msgstr "مجموع (بدون احتساب مالیات) :"
+
+msgctxt "report:sale.sale:"
+msgid "Total:"
+msgstr "مجموع :"
+
+msgctxt "report:sale.sale:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Ignored"
+msgstr "نادیده گرفته شده"
+
+msgctxt "selection:account.invoice,sale_exception_state:"
+msgid "Recreated"
+msgstr "دوباره ایجاد شده"
+
+msgctxt "selection:sale.line,type:"
+msgid "Comment"
+msgstr "اظهار نظر"
+
+msgctxt "selection:sale.line,type:"
+msgid "Line"
+msgstr "سطر"
+
+msgctxt "selection:sale.line,type:"
+msgid "Subtotal"
+msgstr "زیرمجموع"
+
+msgctxt "selection:sale.line,type:"
+msgid "Title"
+msgstr "عنوان"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Day"
+msgstr "روز"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Month"
+msgstr "ماه"
+
+msgctxt "selection:sale.reporting.context,period:"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Order Processed"
+msgstr "در دستور پردازش شده"
+
+msgctxt "selection:sale.sale,invoice_method:"
+msgid "On Shipment Sent"
+msgstr "در ارسال حمل و نقل"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Exception"
+msgstr "اعتراض"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Paid"
+msgstr "پرداخت شده"
+
+msgctxt "selection:sale.sale,invoice_state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Invoice Paid"
+msgstr "در فاکتور پرداخت شده"
+
+msgctxt "selection:sale.sale,shipment_method:"
+msgid "On Order Processed"
+msgstr "در دستور پردازش شده"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Exception"
+msgstr "اعتراض"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "None"
+msgstr "هیجکدام"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Sent"
+msgstr "ارسال"
+
+msgctxt "selection:sale.sale,shipment_state:"
+msgid "Waiting"
+msgstr "در انتظار"
+
+#, fuzzy
+msgctxt "selection:sale.sale,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Confirmed"
+msgstr "تایید شده"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Done"
+msgstr "انجام شد"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Processing"
+msgstr "در حال پردازش"
+
+msgctxt "selection:sale.sale,state:"
+msgid "Quotation"
+msgstr "نقل قول"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Ignored"
+msgstr "نادیده گرفته شده"
+
+msgctxt "selection:stock.move,sale_exception_state:"
+msgid "Recreated"
+msgstr "دوباره ایجاد شده"
+
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "view:product.template:"
+msgid "Customers"
+msgstr "مشتریان"
+
+#, fuzzy
+msgctxt "view:sale.handle.invoice.exception.ask:"
+msgid "Choose invoices to recreate:"
+msgstr "انتخاب صورتحساب ها برای ایجاد دوباره"
+
+#, fuzzy
+msgctxt "view:sale.handle.shipment.exception.ask:"
+msgid "Choose move to recreate:"
+msgstr "انتخاب جابجایی برای ایجاد دوباره"
+
+msgctxt "view:sale.line:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:sale.line:"
+msgid "Notes"
+msgstr "یادداشت ها"
+
+msgctxt "view:sale.line:"
+msgid "Taxes"
+msgstr "مالیات ها"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.subdivision.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.country.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.category.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.customer.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.main:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.category.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Number"
+msgstr "شماره"
+
+#, fuzzy
+msgctxt "view:sale.reporting.product.time_series:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return these/this sale(s)?"
+msgstr "آیا شما برای برگشت این فروش(ها) اطمینان دارید؟"
+
+msgctxt "view:sale.sale:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:sale.sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
+msgid "OK"
+msgstr "قبول"
+
+msgctxt "wizard_button:sale.modify_header,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:sale.modify_header,start,modify:"
+msgid "Modify"
+msgstr "تغییر"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "بازگشت"

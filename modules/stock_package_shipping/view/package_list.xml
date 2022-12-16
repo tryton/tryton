@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/tree/field[@name='type']" position="after">
+        <field name="shipping_reference" expand="1"/>
+        <field name="shipping_tracking_url" widget="url"/>
+    </xpath>
+    <xpath expr="/tree/field[@name='state']" position="after">
+        <button name="print_shipping_label"/>
+    </xpath>
+</data>
