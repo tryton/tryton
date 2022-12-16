@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="menu_view_tree_tree">
+            <field name="model">ir.ui.menu</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="name">ui_menu_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="menu_view_list">
+            <field name="model">ir.ui.menu</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">ui_menu_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="menu_view_form">
+            <field name="model">ir.ui.menu</field>
+            <field name="type">form</field>
+            <field name="name">ui_menu_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_menu_tree">
+            <field name="name">Menu</field>
+            <field name="res_model">ir.ui.menu</field>
+            <field name="usage">menu</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_menu_tree_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="menu_view_tree_tree"/>
+            <field name="act_window" ref="act_menu_tree"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_menu_list">
+            <field name="name">Menu</field>
+            <field name="res_model">ir.ui.menu</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_menu_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="menu_view_list"/>
+            <field name="act_window" ref="act_menu_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_menu_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="menu_view_form"/>
+            <field name="act_window" ref="act_menu_list"/>
+        </record>
+
+        <menuitem
+            parent="menu_ui"
+            action="act_menu_list"
+            sequence="10"
+            id="menu_menu_list"/>
+
+        <record model="ir.ui.view" id="menu_favorite_view_list">
+            <field name="model">ir.ui.menu.favorite</field>
+            <field name="type">tree</field>
+            <field name="name">ui_menu_favorite_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="menu_favorite_view_form">
+            <field name="model">ir.ui.menu.favorite</field>
+            <field name="type">form</field>
+            <field name="name">ui_menu_favorite_form</field>
+        </record>
+
+    </data>
+</tryton>
