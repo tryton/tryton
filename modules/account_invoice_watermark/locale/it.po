@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:report_invoice_watermark_draft"
+msgid "Invoice Watermark Draft"
+msgstr "Filigrana fattura bozza"
+
+msgctxt "model:ir.action,name:report_invoice_watermark_paid"
+msgid "Invoice Watermark Paid"
+msgstr "Filigrana fattura pagata"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "DRAFT"
+msgstr "BOZZA"
+
+msgctxt "report:account.invoice.watermark:"
+msgid "PAID"
+msgstr "PAGATO"

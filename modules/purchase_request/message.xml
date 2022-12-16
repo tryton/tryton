@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_request_no_create">
+            <field name="text">Purchase requests can only be created by the system.</field>
+        </record>
+        <record model="ir.message" id="msg_request_delete_purchased">
+            <field name="text">You cannot delete purchase request "%(request)s" because it is purchased.</field>
+        </record>
+        <record model="ir.message" id="msg_purchase_delete_request">
+            <field name="text">You cannot delete purchase "%(purchase)s" because it is linked to purchase requests.</field>
+        </record>
+        <record model="ir.message" id="msg_purchase_request_warehouse">
+            <field name="text">Warehouse "%(purchase_warehouse)s" on purchase "%(purchase)s" is different to warehouse "%(request_warehouse)s" on linked purchase request "%(request)s".</field>
+        </record>
+    </data>
+</tryton>

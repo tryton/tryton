@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,recommendable:"
+msgid "Recommendable"
+msgstr "Recomanable"
+
+msgctxt "field:product.template,recommendable:"
+msgid "Recommendable"
+msgstr "Recomanable"
+
+msgctxt "field:sale.configuration,product_recommendation_method:"
+msgid "Method"
+msgstr "Mètode"
+
+msgctxt "field:sale.configuration,product_recommendation_size:"
+msgid "Size"
+msgstr "Mida"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_method:"
+msgid "Product Recommendation Method"
+msgstr "Métode de recomanació de productes"
+
+msgctxt ""
+"field:sale.configuration.product_recommendation,product_recommendation_size:"
+msgid "Size"
+msgstr "Mida"
+
+msgctxt "field:sale.point.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Productes recomanats"
+
+msgctxt "field:sale.sale,recommended_products:"
+msgid "Recommended Products"
+msgstr "Productes recomanats"
+
+msgctxt "model:sale.configuration.product_recommendation,name:"
+msgid "Product Recommendation"
+msgstr "Recomanació de producte"
+
+msgctxt "view:sale.configuration:"
+msgid "Product Recommendation"
+msgstr "Recomanació de producte"
