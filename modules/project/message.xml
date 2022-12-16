@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_work_invalid_parent_state">
+            <field name="text">To open work "%(child)s", you must open its parent "%(parent)s".</field>
+        </record>
+        <record model="ir.message" id="msg_work_invalid_children_state">
+            <field name="text">To close work "%(parent)s", you must close its child "%(child)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_opened_project">
+            <field name="text">You cannot erase party "%(party)s" while they have opened projects with company "%(company)s".</field>
+        </record>
+    </data>
+</tryton>
