@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_configuration_view_form">
+            <field name="model">purchase.configuration</field>
+            <field name="inherit"
+                ref="purchase.purchase_configuration_view_form"/>
+            <field name="name">purchase_configuration_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_purchase_request_create">
+            <field name="name">Create Purchase Requests</field>
+            <field name="wiz_name">purchase.request.create</field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_request_create_start_view_form">
+            <field name="model">purchase.request.create.start</field>
+            <field name="type">form</field>
+            <field name="name">purchase_request_create_start_form</field>
+        </record>
+
+        <menuitem parent="purchase_request.menu_purchase_request_form"
+            sequence="10" action="act_purchase_request_create"
+            id="menu_purchase_request_create"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_form_group_purchase_request">
+            <field name="menu" ref="menu_purchase_request_create"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+
+        <record model="res.user" id="user_generate_request">
+            <field name="login">user_cron_purchase_request</field>
+            <field name="name">Cron Purchase Request</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_request_group_purchase_request">
+            <field name="user" ref="user_generate_request"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
+
+        <record model="ir.cron" id="cron_generate_request">
+            <field name="name">Generate Purchase Requests</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_request"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">purchase.request</field>
+            <field name="function">generate_requests</field>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_request_stock">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+         </record>
+    </data>
+</tryton>
