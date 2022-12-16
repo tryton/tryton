@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Customs" id="customs">
+            <label name="customs_category"/>
+            <field name="customs_category"/>
+            <label name="country_of_origin"/>
+            <field name="country_of_origin"/>
+
+            <label name="tariff_codes_category"/>
+            <field name="tariff_codes_category"/>
+            <field name="tariff_codes" colspan="4"
+                view_ids="customs.product-tariff_code_view_list_sequence"/>
+        </page>
+    </xpath>
+</data>
