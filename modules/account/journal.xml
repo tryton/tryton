@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Journals" parent="menu_account_configuration"
+            id="menu_journal_configuration"/>
+        <record model="ir.ui.view" id="journal_type_form">
+            <field name="model">account.journal.type</field>
+            <field name="type">form</field>
+            <field name="name">journal_type_form</field>
+        </record>
+        <record model="ir.ui.view" id="journal_type_tree">
+            <field name="model">account.journal.type</field>
+            <field name="type">tree</field>
+            <field name="name">journal_type_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_type_form">
+            <field name="name">Journal Types</field>
+            <field name="res_model">account.journal.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_type_tree"/>
+            <field name="act_window" ref="act_journal_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_type_form"/>
+            <field name="act_window" ref="act_journal_type_form"/>
+        </record>
+        <menuitem parent="menu_journal_configuration"
+            action="act_journal_type_form" id="menu_journal_type_form"/>
+
+        <record model="ir.model.access" id="access_journal_type">
+            <field name="model" search="[('model', '=', 'account.journal.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_type_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.type')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="account.journal.type" id="journal_type_general">
+            <field name="name">General</field>
+            <field name="code">general</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">revenue</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_expense">
+            <field name="name">Expense</field>
+            <field name="code">expense</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_cash">
+            <field name="name">Cash</field>
+            <field name="code">cash</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_situation">
+            <field name="name">Situation</field>
+            <field name="code">situation</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_write_off">
+            <field name="name">Write-Off</field>
+            <field name="code">write-off</field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_view_form">
+            <field name="model">account.journal.view</field>
+            <field name="type">form</field>
+            <field name="name">journal_view_form</field>
+        </record>
+        <record model="ir.ui.view" id="journal_view_view_tree">
+            <field name="model">account.journal.view</field>
+            <field name="type">tree</field>
+            <field name="name">journal_view_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_view_form">
+            <field name="name">Journal Views</field>
+            <field name="res_model">account.journal.view</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_view_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_view_view_tree"/>
+            <field name="act_window" ref="act_journal_view_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_view_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_view_view_form"/>
+            <field name="act_window" ref="act_journal_view_form"/>
+        </record>
+        <menuitem parent="menu_journal_configuration"
+            action="act_journal_view_form" id="menu_journal_view_form"/>
+
+        <record model="ir.model.access" id="access_journal_view">
+            <field name="model" search="[('model', '=', 'account.journal.view')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_view_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.view')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_list">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">journal_view_column_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_list_sequence">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">journal_view_column_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_form">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">form</field>
+            <field name="name">journal_view_column_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_journal_view_column">
+            <field name="model" search="[('model', '=', 'account.journal.view.column')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_view_column_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.view.column')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_form">
+            <field name="model">account.journal</field>
+            <field name="type">form</field>
+            <field name="name">journal_form</field>
+        </record>
+        <record model="ir.ui.view" id="journal_view_tree">
+            <field name="model">account.journal</field>
+            <field name="type">tree</field>
+            <field name="name">journal_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_form">
+            <field name="name">Journals</field>
+            <field name="res_model">account.journal</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_view_tree"/>
+            <field name="act_window" ref="act_journal_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_view_form"/>
+            <field name="act_window" ref="act_journal_form"/>
+        </record>
+        <menuitem parent="menu_journal_configuration"
+            action="act_journal_form" id="menu_journal_form"/>
+
+        <record model="ir.model.access" id="access_journal">
+            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_journal">
+            <field name="name">Account Journal</field>
+            <field name="code">account.journal</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_journal_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_journal"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_journal_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_journal"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_account_journal">
+            <field name="name">Default Account Journal</field>
+            <field name="code">account.journal</field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_period_view_form">
+            <field name="model">account.journal.period</field>
+            <field name="type">form</field>
+            <field name="name">journal_period_form</field>
+        </record>
+        <record model="ir.ui.view" id="journal_period_view_tree">
+            <field name="model">account.journal.period</field>
+            <field name="type">tree</field>
+            <field name="name">journal_period_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_period_tree">
+            <field name="name">Journals - Periods</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="domain"
+                eval="[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_tree"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_journal_period_tree"
+            id="menu_journal_period_tree"/>
+        <record model="ir.action.act_window" id="act_journal_period_tree2">
+            <field name="name">Journals - Periods</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="domain"
+                eval="[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_tree2"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_journal_period_tree2"
+            id="menu_journal_period_tree2"/>
+
+        <record model="ir.action.wizard" id="act_journal_period_close">
+            <field name="name">Close Journals - Periods</field>
+            <field name="wiz_name">account.journal.period.close</field>
+            <field name="model">account.journal.period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_journal_period_close_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.journal.period,-1</field>
+            <field name="action" ref="act_journal_period_close"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_journal_period_reopen">
+            <field name="name">Re-Open Journals - Periods</field>
+            <field name="wiz_name">account.journal.period.reopen</field>
+            <field name="model">account.journal.period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_journal_period_reopen_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.journal.period,-1</field>
+            <field name="action" ref="act_journal_period_reopen"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_journal_period_form">
+            <field name="name">Journals - Periods</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="domain"
+                eval="[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_period_view_form"/>
+            <field name="act_window" ref="act_journal_period_form"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_journal_period_form"
+            id="menu_journal_period_form" name="Close Journals - Periods"/>
+
+        <record model="ir.model.access" id="access_journal_period">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_period_account">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_period_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="account.journal" id="journal_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">REV</field>
+            <field name="type">revenue</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_expense">
+            <field name="name">Expense</field>
+            <field name="code">EXP</field>
+            <field name="type">expense</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_cash">
+            <field name="name">Cash</field>
+            <field name="code">CASH</field>
+            <field name="type">cash</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_stock">
+            <field name="name">Stock</field>
+            <field name="code">STO</field>
+            <field name="type">general</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+    </data>
+</tryton>
