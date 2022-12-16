@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Payment Terms"
+            parent="account.menu_account_configuration"
+            sequence="50"
+            id="menu_payment_terms_configuration"/>
+        <record model="ir.ui.view" id="payment_term_view_form">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">form</field>
+            <field name="name">payment_term_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_term_view_tree">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">tree</field>
+            <field name="name">payment_term_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_payment_term_form">
+            <field name="name">Payment Terms</field>
+            <field name="res_model">account.invoice.payment_term</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_term_view_tree"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_term_view_form"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <menuitem
+            parent="menu_payment_terms_configuration"
+            action="act_payment_term_form"
+            sequence="10"
+            id="menu_payment_term_form"/>
+
+        <record model="ir.model.access" id="access_payment_term">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_account_admin">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">payment_term_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list_sequence">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">payment_term_line_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_form">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">form</field>
+            <field name="name">payment_term_line_form</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="payment_term_line_relativedelta_view_list">
+            <field name="model">account.invoice.payment_term.line.delta</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">payment_term_line_relativedelta_list</field>
+        </record>
+        <record model="ir.ui.view"
+            id="payment_term_line_relativedelta_view_list_sequence">
+            <field name="model">account.invoice.payment_term.line.delta</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">payment_term_line_relativedelta_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_relativedelta_view_form">
+            <field name="model">account.invoice.payment_term.line.delta</field>
+            <field name="type">form</field>
+            <field name="name">payment_term_line_relativedelta_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_payment_term_test">
+            <field name="name">Test Payment Term</field>
+            <field name="wiz_name">account.invoice.payment_term.test</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="wizard_payment_term_test_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice.payment_term,-1</field>
+            <field name="action" ref="wizard_payment_term_test"/>
+        </record>
+        <menuitem
+            parent="menu_payment_terms_configuration"
+            action="wizard_payment_term_test"
+            sequence="90"
+            id="menu_payment_term_test"/>
+
+        <record model="ir.ui.view" id="payment_term_test_view_form">
+            <field name="model">account.invoice.payment_term.test</field>
+            <field name="type">form</field>
+            <field name="name">payment_term_test_form</field>
+        </record>
+        <record model="ir.ui.view" id="payment_term_test_result_view_list">
+            <field name="model">account.invoice.payment_term.test.result</field>
+            <field name="type">tree</field>
+            <field name="name">payment_term_test_result_list</field>
+        </record>
+    </data>
+</tryton>
