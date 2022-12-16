@@ -1,0 +1,244 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,mygls_print_position:"
+msgid "Print Position"
+msgstr "Druckposition"
+
+msgctxt "field:carrier,mygls_services:"
+msgid "Services"
+msgstr "Dienstleistungen"
+
+msgctxt "field:carrier,mygls_sms:"
+msgid "SMS"
+msgstr "SMS"
+
+msgctxt "field:carrier,mygls_type_of_printer:"
+msgid "Type of Printer"
+msgstr "Druckertyp"
+
+msgctxt "field:carrier.credential.mygls,client_number:"
+msgid "Client Number"
+msgstr "Kundennummer"
+
+msgctxt "field:carrier.credential.mygls,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:carrier.credential.mygls,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:carrier.credential.mygls,password:"
+msgid "Password"
+msgstr "Passwort"
+
+msgctxt "field:carrier.credential.mygls,server:"
+msgid "Server"
+msgstr "Server"
+
+msgctxt "field:carrier.credential.mygls,username:"
+msgid "Username"
+msgstr "Benutzername"
+
+msgctxt "field:stock.package,mygls_shipping_id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "help:carrier,mygls_sms:"
+msgid ""
+"Variables that can be used in the text of the SMS:\n"
+"ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
+msgstr ""
+"Variablen, die im Text der SMS verwendet werden können:\n"
+"ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
+
+msgctxt "model:carrier.credential.mygls,name:"
+msgid "MyGLS Credential"
+msgstr "MyGLS Anmeldedaten"
+
+msgctxt "model:ir.action,name:act_create_shipping_mygls_wizard"
+msgid "Create MyGLS Shipping for Packages"
+msgstr "MyGLS Versandauftrag für Pakete erstellen"
+
+msgctxt "model:ir.action,name:act_credential_form"
+msgid "MyGLS Credentials"
+msgstr "MyGLS Anmeldedaten"
+
+msgctxt "model:ir.message,text:msg_email_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add an email to party "
+"\"%(party)s\"."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann muss eine E-Mail-"
+"Adresse für Partei \"%(party)s\" erfasst werden."
+
+msgctxt "model:ir.message,text:msg_mobile_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add a mobile number to party "
+"\"%(party)s\"."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann, muss eine "
+"Mobilnummer für die Partei \"%(party)s\" erfasst werden."
+
+msgctxt "model:ir.message,text:msg_mygls_api_error"
+msgid ""
+"MyGLS API call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"Beim Aufruf der MyGLS API ist folgender Fehler aufgetreten:\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_phone_mobile_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add a phone or mobile number "
+"to party \"%(party)s\"."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann muss eine "
+"Telefonnummer oder eine Mobilnummer für die Partei \"%(party)s\" erfasst "
+"werden."
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create a shipping label for shipment \"%(shipment)s\" because it "
+"already has a reference number."
+msgstr ""
+"Es kann kein Versandetikett für die Lieferung \"%(shipment)s\" erstellt "
+"werden, weil bereits eine Referenznummer vorhanden ist."
+
+msgctxt "model:ir.message,text:msg_shipping_to_address_country_code_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set a country code to the "
+"destination address."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann, muss ein Land "
+"auf der Empfängeradresse erfasst werden."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_country_code_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set a country code to the "
+"address of warehouse \"%(warehouse)s\"."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann, muss ein Land "
+"für Adresse des Logistikstandorts \"%(warehouse)s\" erfasst werden."
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+"Damit die Lieferung \"%(shipment)s\" validiert werden kann, muss eine "
+"Adresse für den Logistikstandort \"%(warehouse)s\" erfasst werden."
+
+msgctxt "model:ir.ui.menu,name:menu_credential_form"
+msgid "MyGLS Credentials"
+msgstr "MyGLS Anmeldedaten"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Addressee Only Service"
+msgstr "Zusatzleistung Eigenhändig"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Contact Service"
+msgstr "Zusatzleistung Anruf"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Exchange Service"
+msgstr "Austausch"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T09)"
+msgstr "Express (T09)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T10)"
+msgstr "Express (T10)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Express service (T12)"
+msgstr "Express (T12)"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Flexible Delivery Service"
+msgstr "FlexDeliveryService"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Flexible delivery Sms Service"
+msgstr "FlexDeliverySMSService"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Pick & Return Services"
+msgstr "Pick&ReturnService"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Pick & Ship Service"
+msgstr "Pick&ShipService"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "SMS pre-advice"
+msgstr "SMS Vorankündigung"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "SMS service"
+msgstr "Zusatzleistung SMS"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Saturday service"
+msgstr "Samstagszustellung"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Service guaranteed delivery shipment in 24 Hours"
+msgstr "Garantierte Zustellung innerhalb von 24 Stunden"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Stand By Service"
+msgstr "Abholung durch den Empfänger"
+
+msgctxt "selection:carrier,mygls_services:"
+msgid "Think Green Service"
+msgstr "ThinkGreenService"
+
+msgctxt "selection:carrier,shipping_service:"
+msgid "MyGLS"
+msgstr "MyGLS"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Croatia"
+msgstr "Kroatien"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Czechia"
+msgstr "Tschechien"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Hungary"
+msgstr "Ungarn"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Romania"
+msgstr "Rumänien"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Slovakia"
+msgstr "Slowakei"
+
+msgctxt "selection:carrier.credential.mygls,country:"
+msgid "Slovenia"
+msgstr "Slowenien"
+
+msgctxt "selection:carrier.credential.mygls,server:"
+msgid "Production"
+msgstr "Produktivumgebung"
+
+msgctxt "selection:carrier.credential.mygls,server:"
+msgid "Testing"
+msgstr "Testumgebung"
+
+msgctxt "view:carrier.credential.mygls:"
+msgid "Credential Information"
+msgstr "Benutzeranmeldeinformationen"
+
+msgctxt "view:carrier:"
+msgid "MyGLS"
+msgstr "MyGLS"
