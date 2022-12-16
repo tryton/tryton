@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.address:"
+msgid "Invalid SIRET number \"%(siret)s\" on address \"%(address)s\""
+msgstr "El número SIRET \"%(siret)s\" de l'adreça \"%(address)s\" no és correcte."
+
+msgctxt "error:party.party:"
+msgid "Invalid SIREN number \"%(siren)s\" on party \"%(party)s\"."
+msgstr "Número SIREN \"%(siren)s\" del tercer \"%(party)s\", no és correcte."
+
+msgctxt "field:party.address,siret:"
+msgid "SIRET"
+msgstr "SIRET"
+
+msgctxt "field:party.address,siret_nic:"
+msgid "SIRET NIC"
+msgstr "SIRET NIC"
+
+msgctxt "field:party.party,siren:"
+msgid "SIREN"
+msgstr "SIREN"

@@ -1,0 +1,84 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "Файл"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fr.fec.result,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fr.fec.start,deferral_journal:"
+msgid "Deferral Journal"
+msgstr ""
+
+msgctxt "field:account.fr.fec.start,deferral_post_number:"
+msgid "Deferral Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+#, fuzzy
+msgctxt "field:account.fr.fec.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "Вид"
+
+msgctxt "help:account.fr.fec.start,deferral_journal:"
+msgid "Journal used for pseudo deferral move"
+msgstr ""
+
+msgctxt "help:account.fr.fec.start,deferral_post_number:"
+msgid "Post number used for pseudo deferral move"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+#, fuzzy
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "Generate FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "Приключен"
+
+#, fuzzy
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr ""

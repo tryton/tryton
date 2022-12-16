@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.fr.fec.result,file:"
+msgid "File"
+msgstr "فایل"
+
+msgctxt "field:account.fr.fec.result,filename:"
+msgid "File Name"
+msgstr "نام فایل"
+
+msgctxt "field:account.fr.fec.result,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.fr.fec.start,deferral_journal:"
+msgid "Deferral Journal"
+msgstr "روزنامه بازپرداخت"
+
+msgctxt "field:account.fr.fec.start,deferral_post_number:"
+msgid "Deferral Number"
+msgstr "شماره بازپرداخت"
+
+msgctxt "field:account.fr.fec.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "سال مالی"
+
+msgctxt "field:account.fr.fec.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:account.fr.fec.start,type:"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "help:account.fr.fec.start,deferral_journal:"
+msgid "Journal used for pseudo deferral move"
+msgstr "روزنامه استفاده شده برای بازپرداخت جابجایی ساختگی"
+
+msgctxt "help:account.fr.fec.start,deferral_post_number:"
+msgid "Post number used for pseudo deferral move"
+msgstr "شماره ارسالی استفاده شده برای بازپرداخت جابجایی ساختگی"
+
+msgctxt "model:account.fr.fec.result,name:"
+msgid "Generate FEC"
+msgstr "تولید FEC"
+
+msgctxt "model:account.fr.fec.start,name:"
+msgid "Generate FEC"
+msgstr "تولید FEC"
+
+msgctxt "model:ir.action,name:act_fec"
+msgid "Generate FEC"
+msgstr "تولید FEC"
+
+msgctxt "model:ir.ui.menu,name:menu_fec"
+msgid "Generate FEC"
+msgstr "تولید FEC"
+
+msgctxt "selection:account.fr.fec.start,type:"
+msgid "IS-BIC"
+msgstr "IS-BIC"
+
+msgctxt "wizard_button:account.fr.fec,result,end:"
+msgid "Close"
+msgstr "بسته"
+
+msgctxt "wizard_button:account.fr.fec,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:account.fr.fec,start,generate:"
+msgid "Generate"
+msgstr "تولید"
