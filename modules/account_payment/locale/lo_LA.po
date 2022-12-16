@@ -1,0 +1,469 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment.process:"
+msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
+msgstr "ການຊໍາລະເງິນ \"%(payment)s\" ຈ່າຍເກີນ ລາຍການ \"% (line)s\"."
+
+msgctxt "error:account.payment:"
+msgid "Payment \"%s\" must be in draft before deletion."
+msgstr "ການຈ່າຍເງິນ \"%s\" ຕ້ອງປັບໃຫ້ເປັນສະບັບຮ່າງກ່ອນຈຶ່ງລຶບໄດ້."
+
+msgctxt "field:account.configuration,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "ລໍຳດັບໝວດການຈ່າຍ"
+
+msgctxt "field:account.move.line,payment_amount:"
+msgid "Payment Amount"
+msgstr "ມູນຄ່າການຈ່າຍ"
+
+msgctxt "field:account.move.line,payment_kind:"
+msgid "Payment Kind"
+msgstr "ຊະນິດການຈ່າຍ"
+
+msgctxt "field:account.move.line,payments:"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.move.line.pay.start,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.payment,amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
+
+msgctxt "field:account.payment,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.payment,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+msgctxt "field:account.payment,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:account.payment,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.payment,currency_digits:"
+msgid "Currency Digits"
+msgstr "ຕົວເລກເສດ"
+
+msgctxt "field:account.payment,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:account.payment,description:"
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+msgctxt "field:account.payment,group:"
+msgid "Group"
+msgstr "ໝວດ"
+
+msgctxt "field:account.payment,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.payment,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.payment,kind:"
+msgid "Kind"
+msgstr "ຊະນິດ"
+
+msgctxt "field:account.payment,line:"
+msgid "Line"
+msgstr "ລາຍການ"
+
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:account.payment,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.payment,state:"
+msgid "State"
+msgstr "ສະຖານະ"
+
+msgctxt "field:account.payment,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+msgctxt "field:account.payment,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+
+msgctxt "field:account.payment.group,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.payment.group,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+msgctxt "field:account.payment.group,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:account.payment.group,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.payment.group,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "field:account.payment.group,kind:"
+msgid "Kind"
+msgstr "ຊະນິດ"
+
+msgctxt "field:account.payment.group,number:"
+msgid "Number"
+msgstr "ເລກທີ"
+
+msgctxt "field:account.payment.group,payments:"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "field:account.payment.group,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.payment.group,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+msgctxt "field:account.payment.group,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+
+msgctxt "field:account.payment.journal,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.payment.journal,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+msgctxt "field:account.payment.journal,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:account.payment.journal,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:account.payment.journal,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:account.payment.journal,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.payment.journal,process_method:"
+msgid "Process Method"
+msgstr "ວິທີການຄຳນວນ"
+
+msgctxt "field:account.payment.journal,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.payment.journal,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+msgctxt "field:account.payment.journal,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
+
+msgctxt "field:account.payment.process.start,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "ລາຍການຈ່າຍ"
+
+msgctxt "model:account.payment,name:"
+msgid "Payment"
+msgstr "ການຈ່າຍ"
+
+msgctxt "model:account.payment.group,name:"
+msgid "Payment Group"
+msgstr "ໝວດການຈ່າຍ"
+
+msgctxt "model:account.payment.journal,name:"
+msgid "Payment Journal"
+msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
+
+msgctxt "model:account.payment.process.start,name:"
+msgid "Process Payment"
+msgstr "ດຳເນີນການຊໍາລະ"
+
+msgctxt "model:ir.action,name:act_move_line_form"
+msgid "Lines to Pay"
+msgstr "ລາຍການທີ່ຈະຈ່າຍ"
+
+msgctxt "model:ir.action,name:act_pay_line"
+msgid "Pay Lines"
+msgstr "ລາຍການຈ່າຍ"
+
+msgctxt "model:ir.action,name:act_payment_form"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:ir.action,name:act_payment_form_group_open"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:ir.action,name:act_payment_form_line_relate"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:ir.action,name:act_payment_group_form"
+msgid "Payment Groups"
+msgstr "ໝວດການຈ່າຍ"
+
+msgctxt "model:ir.action,name:act_payment_journal_form"
+msgid "Payment Journals"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+msgctxt "model:ir.action,name:act_process_payments"
+msgid "Process Payments"
+msgstr "ດຳເນີນການຊໍາລະ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
+msgid "All"
+msgstr "ທັງໝົດ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
+msgid "Approved"
+msgstr "ອະນຸມັດແລ້ວ"
+
+msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
+msgid "Draft"
+msgstr "ສະບັບຮ່າງ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
+msgid "Failed"
+msgstr "ລົ້ມເຫຼວ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
+msgid "Processing"
+msgstr "ກຳລັງດຳເນີນການ"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "ສຳເລັດແລ້ວ"
+
+msgctxt "model:ir.sequence,name:sequence_account_payment_group"
+msgid "Default Account Payment Group"
+msgstr "ໝວດບັນຊີລາຍຈ່າຍຫຼັກ"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
+msgid "Account Payment Group"
+msgstr "ໝວດບັນຊີລາຍຈ່າຍ"
+
+msgctxt "model:ir.ui.menu,name:menu_move_line_form"
+msgid "Lines to Pay"
+msgstr "ລາຍການທີ່ຕ້ອງຈ່າຍ"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_form"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
+msgid "Payment Groups"
+msgstr "ໝວດການຈ່າຍ"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
+msgid "Payment Journals"
+msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
+
+msgctxt "model:ir.ui.menu,name:menu_payments"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "model:res.group,name:group_payment"
+msgid "Payment"
+msgstr "ການຈ່າຍ"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+msgctxt "selection:account.move.line,payment_kind:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+msgctxt "selection:account.payment,kind:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+msgctxt "selection:account.payment,state:"
+msgid "Approved"
+msgstr "ອະນຸມັດແລ້ວ"
+
+msgctxt "selection:account.payment,state:"
+msgid "Draft"
+msgstr "ສະບັບຮ່າງ"
+
+msgctxt "selection:account.payment,state:"
+msgid "Failed"
+msgstr "ລົ້ມເຫຼວ"
+
+msgctxt "selection:account.payment,state:"
+msgid "Processing"
+msgstr "ກຳລັງດຳເນີນການ"
+
+msgctxt "selection:account.payment,state:"
+msgid "Succeeded"
+msgstr "ສຳເລັດແລ້ວ"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
+msgctxt "selection:account.payment.group,kind:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Manual"
+msgstr "ດຳເນີນການດ້ວຍມື"
+
+msgctxt "view:account.configuration:"
+msgid "Group Sequence"
+msgstr "ລຳດັບໝວດ"
+
+msgctxt "view:account.configuration:"
+msgid "Payment"
+msgstr "ການຈ່າຍ"
+
+msgctxt "view:account.move.line.pay.start:"
+msgid "Pay Line"
+msgstr "ລາຍການຈ່າຍ"
+
+msgctxt "view:account.move.line:"
+msgid "Account Move Lines"
+msgstr "ລາຍການເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "view:account.move.line:"
+msgid "Pay Lines"
+msgstr "ລາຍການຈ່າຍ"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Group"
+msgstr "ໝວດການຈ່າຍ"
+
+msgctxt "view:account.payment.group:"
+msgid "Payment Groups"
+msgstr "ໝວດການຈ່າຍ"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journal"
+msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
+
+msgctxt "view:account.payment.journal:"
+msgid "Payment Journals"
+msgstr "ບັນຊີລາຍຈ່າຍປະຈຳວັນ"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments"
+msgstr "ດຳເນີນການຊໍາລະ"
+
+msgctxt "view:account.payment.process.start:"
+msgid "Process Payments?"
+msgstr "ດຳເນີນການຊໍາລະບໍ່?"
+
+msgctxt "view:account.payment:"
+msgid "Approve"
+msgstr "ອະນຸມັດ"
+
+msgctxt "view:account.payment:"
+msgid "Description"
+msgstr "ຄຳອະທິບາຍ"
+
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "ສະບັບຮ່າງ"
+
+msgctxt "view:account.payment:"
+msgid "Fail"
+msgstr "ລົ້ມເຫຼວ"
+
+msgctxt "view:account.payment:"
+msgid "Other Info"
+msgstr "ຂໍ້ມູນຂ່າວສານອື່ນໆ"
+
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "ການຈ່າຍ"
+
+msgctxt "view:account.payment:"
+msgid "Payments"
+msgstr "ການຊໍາລະເງິນ"
+
+msgctxt "view:account.payment:"
+msgid "Succeed"
+msgstr "ສຳເລັດແລ້ວ"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.move.line.pay,start,pay:"
+msgid "Pay"
+msgstr "ຈ່າຍ"
+
+msgctxt "wizard_button:account.payment.process,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.payment.process,start,process:"
+msgid "Process"
+msgstr "ດຳເນີນການ"
