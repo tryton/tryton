@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="number" expand="1"/>
+    <field name="reference" expand="1"/>
+    <field name="planned_date"/>
+    <field name="effective_date"/>
+    <field name="supplier" expand="2"/>
+    <field name="contact_address"/>
+    <field name="customer" expand="2"/>
+    <field name="delivery_address"/>
+    <field name="state"/>
+</tree>
