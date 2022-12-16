@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="name" expand="2">
+        <prefix id="avatar" icon="avatar_url" icon_type="url" url_size="s"/>
+    </field>
+    <field name="login" expand="1"/>
+    <field name="sessions"/>
+</tree>

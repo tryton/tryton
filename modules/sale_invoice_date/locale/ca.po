@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Termini de facturació venta"
+
+msgctxt "field:party.party.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Termini de facturació venta"
+
+msgctxt "field:sale.configuration,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Termini de facturació venta"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_term:"
+msgid "Sale Invoice Term"
+msgstr "Termini de facturació venta"
+
+msgctxt "field:sale.invoice.term,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:sale.invoice.term,relative_deltas:"
+msgid "Deltas"
+msgstr "Increments"
+
+msgctxt "field:sale.invoice.term.relative_delta,day:"
+msgid "Day of Month"
+msgstr "Dia del mes"
+
+msgctxt "field:sale.invoice.term.relative_delta,days:"
+msgid "Number of Days"
+msgstr "Nombre de dies"
+
+msgctxt "field:sale.invoice.term.relative_delta,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:sale.invoice.term.relative_delta,months:"
+msgid "Number of Months"
+msgstr "Nombre de mesos"
+
+msgctxt "field:sale.invoice.term.relative_delta,term:"
+msgid "Invoice Term"
+msgstr "Termini de facturació"
+
+msgctxt "field:sale.invoice.term.relative_delta,weekday:"
+msgid "Day of Week"
+msgstr "Dia de la setmana"
+
+msgctxt "field:sale.invoice.term.relative_delta,weeks:"
+msgid "Number of Weeks"
+msgstr "Nombre de setmanes"
+
+msgctxt "field:sale.sale,invoice_term:"
+msgid "Invoice Term"
+msgstr "Termini de facturació"
+
+msgctxt "help:party.party,sale_invoice_term:"
+msgid ""
+"The default sale invoice term for the customer.\n"
+"Leave empty to use the default value from the configuration."
+msgstr ""
+"El termini de facturació de venta per defecte pel client.\n"
+"Deixeu-ho en blanc per utilitzar el valor per defecte de la configuració."
+
+msgctxt "help:sale.invoice.term,name:"
+msgid "The main identifier of the invoice term."
+msgstr "L'identificador principal del termini de facturació."
+
+msgctxt "model:ir.action,name:act_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Terminis de facturació"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
+msgid "Invoice Terms"
+msgstr "Terminis de facturació"
+
+msgctxt "model:sale.invoice.term,name:"
+msgid "Invoice Term"
+msgstr "Termini de facturació"
+
+msgctxt "model:sale.invoice.term.relative_delta,name:"
+msgid "Invoice Term Delta"
+msgstr "Increment del termini de facturació"
