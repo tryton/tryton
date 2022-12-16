@@ -1,0 +1,366 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "پیگیری نقل قول درخواست خرید"
+
+msgctxt ""
+"field:purchase.configuration.sequence,purchase_request_quotation_sequence:"
+msgid "Purchase Request Quotation Sequence"
+msgstr "پیگیری نقل قول درخواست خرید"
+
+msgctxt "field:purchase.request,best_quotation_line:"
+msgid "Best Quotation Line"
+msgstr "بهترین خط نقل قول"
+
+msgctxt "field:purchase.request,preferred_quotation_line:"
+msgid "Preferred Quotation Line"
+msgstr "خط نقل قول ترجیحی"
+
+msgctxt "field:purchase.request,quotation_lines:"
+msgid "Quotation Lines"
+msgstr "خطوط نقل قول"
+
+msgctxt "field:purchase.request,quotation_lines_active:"
+msgid "Active Quotation Lines"
+msgstr "خطوط نقل قول فعال"
+
+msgctxt "field:purchase.request.quotation,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:purchase.request.quotation,lines:"
+msgid "Lines"
+msgstr "خطوط"
+
+msgctxt "field:purchase.request.quotation,number:"
+msgid "Number"
+msgstr "شماره"
+
+msgctxt "field:purchase.request.quotation,reference:"
+msgid "Reference"
+msgstr "مرجع"
+
+msgctxt "field:purchase.request.quotation,revision:"
+msgid "Revision"
+msgstr "تجدید نظر"
+
+msgctxt "field:purchase.request.quotation,state:"
+msgid "State"
+msgstr "وضعیت"
+
+msgctxt "field:purchase.request.quotation,supplier:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:purchase.request.quotation,supplier_address:"
+msgid "Supplier Address"
+msgstr "آدرس تامین کننده"
+
+msgctxt "field:purchase.request.quotation,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
+msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
+msgid "Suppliers"
+msgstr "تأمین کنندگان"
+
+msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
+msgid "Number of Created Quotations"
+msgstr "تعداد نقل قول های ایجاد شده"
+
+msgctxt "field:purchase.request.quotation.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:purchase.request.quotation.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:purchase.request.quotation.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:purchase.request.quotation.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:purchase.request.quotation.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "دسته بندی واحد اندازه گیری محصول"
+
+msgctxt "field:purchase.request.quotation.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:purchase.request.quotation.line,quotation:"
+msgid "Quotation"
+msgstr "نقل قول"
+
+#, fuzzy
+msgctxt "field:purchase.request.quotation.line,quotation_state:"
+msgid "Quotation State"
+msgstr "نقل قول"
+
+msgctxt "field:purchase.request.quotation.line,request:"
+msgid "Request"
+msgstr "درخواست"
+
+msgctxt "field:purchase.request.quotation.line,supplier:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+msgctxt "field:purchase.request.quotation.line,supply_date:"
+msgid "Supply Date"
+msgstr "تاریخ تأمین"
+
+msgctxt "field:purchase.request.quotation.line,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:purchase.request.quotation.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:purchase.request.quotation.line,unit_price:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "help:purchase.request,preferred_quotation_line:"
+msgid ""
+"The quotation that will be chosen to create the purchase\n"
+"otherwise first ordered received quotation line will be selected."
+msgstr ""
+"نقل قولی که برای ایجاد خرید انتخاب می شود\n"
+"در غیر این صورت ابتدا دستور خط نقل قول دریافت شده انتخاب می شود."
+
+msgctxt "help:purchase.request.quotation,number:"
+msgid "The unique identifier of the quotation."
+msgstr "شناسه انحصاری نقل قول"
+
+msgctxt "help:purchase.request.quotation,reference:"
+msgid "The reference used by the supplier."
+msgstr "مرجع استفاده شده توسط تامین کننده."
+
+msgctxt "help:purchase.request.quotation,revision:"
+msgid "Number incremented each time the quotation is sent."
+msgstr "تعداد افزایش در هر زمان که نقل قول ارسال می شود."
+
+msgctxt "help:purchase.request.quotation.line,request:"
+msgid "The request which this line belongs to."
+msgstr "درخواستی که این خط متعلق به ان است."
+
+msgctxt "help:purchase.request.quotation.line,supply_date:"
+msgid "When it should be delivered."
+msgstr "هنگامی که باید تحویل داده شود."
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Quotations"
+msgstr "نقل قول ها"
+
+msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "درخواست نقل قول های خرید"
+
+msgctxt "model:ir.action,name:report_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "درخواست نقل قول خرید"
+
+msgctxt "model:ir.action,name:wizard_create_quotation"
+msgid "Create Quotation"
+msgstr "ایجاد نقل قول"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
+msgid "All"
+msgstr "همه"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
+msgid "Sent"
+msgstr "ارسال"
+
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "یک نقل قول(دستور) در حال حاضر برای درخواست : \"%s\" وجود دارد."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "درخواست نقل قول خرید"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
+msgid "Purchase Request Quotation"
+msgstr "درخواست نقل قول خرید"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
+msgid "Purchase Request Quotations"
+msgstr "درخواست نقل قول های خرید"
+
+msgctxt "model:purchase.request.quotation,name:"
+msgid "Purchase Request For Quotation"
+msgstr "نقل قول برای درخواست خرید"
+
+msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
+msgid "Create Purchase Request Quotation Ask Suppliers"
+msgstr "ایجاد درخواست نقل قول خرید بخواست تأمین کنندگان"
+
+msgctxt "model:purchase.request.quotation.create.succeed,name:"
+msgid "Create Purchase Request Quotation Succeed"
+msgstr "ایجاد درخواست نقل قول خرید موفق"
+
+msgctxt "model:purchase.request.quotation.line,name:"
+msgid "Purchase Request For Quotation Line"
+msgstr "درخواست خرید برای خط نقل قول"
+
+msgctxt "report:purchase.request.quotation:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Customer Code:"
+msgstr ""
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Date:"
+msgstr "تاریخ :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Delivery Address:"
+msgstr "آدرس تحویل :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Expected Supply Date"
+msgstr "تاریخ عرضه مورد انتظار"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Purchase"
+msgstr "خرید"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "نقل قول"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Reference:"
+msgstr "ارجاع :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Request for Quotation N°:"
+msgstr "درخواست نقل قول N°:"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Revision:"
+msgstr "بازبینی :"
+
+msgctxt "report:purchase.request.quotation:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Quotation"
+msgstr "نقل قول"
+
+msgctxt "selection:purchase.request,state:"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Cancelled"
+msgstr "لغو شده"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Received"
+msgstr "دریافت شده"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Rejected"
+msgstr "رد شده"
+
+msgctxt "selection:purchase.request.quotation,state:"
+msgid "Sent"
+msgstr "ارسال"
+
+msgctxt "view:purchase.request.quotation.line:"
+msgid "General"
+msgstr "عمومی"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Other Info"
+msgstr "سایر اطلاعات"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Quotation"
+msgstr "نقل قول"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Receive"
+msgstr "دریافت"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Reject"
+msgstr "رد کردن"
+
+msgctxt "view:purchase.request.quotation:"
+msgid "Send"
+msgstr "ارسال"
+
+#, fuzzy
+msgctxt "view:purchase.request:"
+msgid "Preferred Quotation:"
+msgstr "خط نقل قول ترجیحی"
+
+msgctxt "view:purchase.request:"
+msgid "Quotations"
+msgstr "نقل قول ها"
+
+msgctxt ""
+"wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
+msgid "Process"
+msgstr "پردازش"
+
+msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
+msgid "Close"
+msgstr "بسته"
