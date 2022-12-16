@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:"
+msgid "Default Locations"
+msgstr "ບ່ອນເກັບມ້ຽນເດີມ"
+
+msgctxt "field:stock.product.location,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:stock.product.location,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:stock.product.location,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:stock.product.location,location:"
+msgid "Storage Location"
+msgstr "ບ່ອນເກັບມ້ຽນ"
+
+msgctxt "field:stock.product.location,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+msgctxt "field:stock.product.location,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:stock.product.location,sequence:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
+
+msgctxt "field:stock.product.location,warehouse:"
+msgid "Warehouse"
+msgstr "ສາງໃຫຍ່"
+
+msgctxt "field:stock.product.location,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+msgctxt "field:stock.product.location,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "model:stock.product.location,name:"
+msgid "Product Location"
+msgstr "ບ່ອນເກັບມ້ຽນຜະລິດຕະພັນ"

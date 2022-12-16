@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+import sys
+import os
+import glob
+
+from werkzeug.serving import run_simple
+
+DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
+    '..', '..', 'trytond')))
+if os.path.isdir(DIR):
+    sys.path.insert(0, os.path.dirname(DIR))
+
+import trytond.commandline as commandline
+from trytond.config import config, split_netloc
+
+parser = commandline.get_parser_daemon()
+options = parser.parse_args()
+commandline.config_log(options)
+extra_files = config.update_etc(options.configfile)
+
+# Import trytond things after it is configured
+from trytond.wsgi import app
+from trytond.pool import Pool
+from trytond.modules import get_module_list, get_module_info
+
+with commandline.pidfile(options):
+    Pool.start()
+    for name in options.database_names:
+        Pool(name).init()
+    hostname, port = split_netloc(config.get('web', 'listen'))
+    certificate = config.get('ssl', 'certificate')
+    privatekey = config.get('ssl', 'privatekey')
+    if certificate or privatekey:
+        ssl_context = (certificate, privatekey)
+    else:
+        ssl_context = None
+    for module in get_module_list():
+        info = get_module_info(module)
+        path = os.path.join(info['directory'], 'view', '*.xml')
+        extra_files.extend(glob.glob(path))
+    run_simple(hostname, port, app,
+        threaded=True,
+        extra_files=extra_files,
+        ssl_context=ssl_context,
+        use_reloader=options.dev)
