@@ -1,0 +1,1300 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "默认客户付款方式"
+
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "默认客户付款方式"
+
+msgctxt "field:account.fiscalyear,invoice_sequences:"
+msgid "Invoice Sequences"
+msgstr "原始凭证序列"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "供应商补款单序列"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "供应商原始凭证序列"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "客户补款单序列"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "客户原始凭证序列"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "记账日期"
+
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "允许取消原始凭证"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "付款金额"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "今日付款金额"
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
+msgstr "取消记账凭证"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "备注"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr "公司参与者"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "货币日期"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "原始凭证地址"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "原始凭证日期"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "原始凭证报告"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "原始票据报告ID"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "原始凭证报告格式"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "待支付明细"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "原始凭证号"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "依据"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr "参与者语言"
+
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr "参与者税号"
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "支付明细"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "支付方式"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "支付方式"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr "已对账"
+
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "支付明细"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "参考"
+
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "序列"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "税号"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "税明细"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "合计"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "未征税"
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr "原始凭证账户"
+
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "原始凭证参与者"
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "支付明细"
+
+#, fuzzy
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "原始凭证日期"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr "带退款"
+
+msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
+msgid "With Refund Allowed"
+msgstr "允许退款"
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "原始凭证状态"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr "原始凭证税"
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr "原始凭证类型"
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "注释"
+
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr "参与者语言"
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "产品计量单位类别"
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr "摘要"
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "税日期"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
+msgstr "税日期"
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "计量单位"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "单价"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "原始凭证明细"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr "支付金额"
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr "核销金额"
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "支付货币"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr "核销货币"
+
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "待支付明细"
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "支付明细"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "核销"
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "金额"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "原始凭证账户"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "支付方式"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "贷方账户"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "借方账户"
+
+msgctxt "field:account.invoice.payment.method,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "姓名"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "明细"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Name"
+msgstr "姓名"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "数量"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr "除数"
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "付款条件"
+
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr "率"
+
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr "增量"
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "类型"
+
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
+msgid "Day of Month"
+msgstr "每月天数"
+
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
+msgid "Number of Days"
+msgstr "天数"
+
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
+msgid "Payment Term Line"
+msgstr "付款条件明细"
+
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
+msgid "Month"
+msgstr "月"
+
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
+msgid "Number of Months"
+msgstr "月数"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
+msgid "Day of Week"
+msgstr "星期中的一天"
+
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
+msgid "Number of Weeks"
+msgstr "周数"
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "付款条件"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "结果"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "账户"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "数额"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "金额"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "原始凭证状态"
+
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr "法律声明"
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr "手工"
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "序列号"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr "原始凭证付款"
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr "原始凭证付款"
+
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "取消客户原始凭证"
+
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:party.contact_mechanism,invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "客户付款条件"
+
+msgctxt "field:party.party,payment_terms:"
+msgid "Payment Terms"
+msgstr "付款条件"
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "供应商付款条件"
+
+msgctxt "field:party.party.payment_term,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "客户付款条件"
+
+msgctxt "field:party.party.payment_term,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:party.party.payment_term,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "供应商付款条件"
+
+#, fuzzy
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+"计算税款的日期。\n"
+"会计日期留空。"
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be cancelled."
+msgstr "如果为真，当前原始凭证将被取消。"
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
+"计算税款的日期。\n"
+"会计日期留空。"
+
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
+msgstr "允许取消客户记账凭证。"
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr "账户设置-默认付款条件"
+
+msgctxt "model:account.fiscalyear.invoice_sequence,name:"
+msgid "Invoice Sequence"
+msgstr "原始凭证序列"
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "原始凭证 - 付款明细"
+
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "原始凭证地址"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice"
+msgstr "贷方原始凭证"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "原始凭证明细"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "原始凭证明细 - 税"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr "付款原始凭证"
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr "付款原始凭证"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "付款方式"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "付款条件"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "付款条件明细"
+
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr "付款条件明细相对增量"
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr "测试付款条件"
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr "测试付款条件"
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr "原始凭证税"
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "发票"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Invoices"
+
+msgctxt "model:ir.action,name:act_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Supplier Invoices"
+
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Customer Invoices"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "原始凭证付款方式"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Payment Terms"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "待支付明细"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr "Pay Invoice"
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Test Payment Term"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
+msgid "Posted"
+msgstr "Posted"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
+msgid "Validated"
+msgstr "已验证"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
+msgid "Posted"
+msgstr "Posted"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
+msgid "Validated"
+msgstr "已验证"
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr "当参与者 \"%(party)s\" 具有公司 \"%(company)s\" 的待定凭证时，不能删除。"
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
+
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
+msgstr "无法取消客户原始凭证 \"%(invoice)s\"，因为它已过帐并且公司设置不允许。"
+
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr "删除原始凭证 \"%(invoice)s\" 之前必须先取消它。"
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr "无法删除原始凭证 \"%(invoice)s\" ，因为它包含序号。"
+
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr "无法给原始凭证 \"%(invoice)s\" 添加明细，因为它已经入账，付款或者取消。"
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr "无法更改明细 \"%(line)s\"，因为原始凭证 \"%(invoice)s\" 它已经入账，付款或者取消。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr "一条付款明细只能链接到一张原始凭证。"
+
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr "无法更改原始凭证 \"%(invoice)s\" ，因为它已经入账，付款或者取消。"
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr "要对 \"%(invoice)s\" 入账，必须在会计年度 \"%(fiscalyear)s\" 上定义一个序列。"
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
+msgstr ""
+"若要为发票 \"%(invoice)s\" 编号，必须将会计日期设置在 \"%(date)s\" 之后，因为序列 \"%(sequence)s\" "
+"已用于发票 \"%(after_invoice)s\"。"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr "无法退还凭证 \"%(invoice)s\" ，因为它未过帐。"
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr "不能在发票 \"%(invoice)s\"上添加金额大于要支付金额 \"%(amount_to_pay)s\" 的部分付款。"
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr "一条付款明细只能链接到一张原始凭证。"
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr "不能在已付款原始凭证 \"%(invoice)s\" 上添加/删除付款明细。"
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr "原始凭证 \"%(invoice)s\" 上的付款明细金额不能大于凭证金额。"
+
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(line)s\"."
+msgstr "不能在原始凭证 \"%(invoice)s\" 和明细 \"%(invoice)s\"上使用相同的帐户 \"%(account)s\" 。"
+
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr "无法给原始凭证 \"%(invoice)s\" 添加税，因为它已经入账，付款或者取消。"
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr "原始凭证 \"%(invoice)s\" 上的税款无效，必须再次保存以强制重新计算。"
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr "无法更改税 \"%(tax)s\"，因为它的原始凭证 \"%(invoice)s\" 已经入账，付款或者取消."
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr "明细 \"%(line)s\" 上的率和除数不匹配."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr "要保存付款条件 \"%(payment_term)s\"，必须附加一个剩余金额明细."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr "要计算付款条件，必须在付款条件 \"%(payment_term)s\" 上附加一个剩余金额明细。"
+
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "确定要取消当前原始凭证？"
+
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
+msgstr "确定要将这张原始票据入账？"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Cancel the invoice"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr "Also known as Pro Forma"
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Pay"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr "公司用户"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Supplier Invoices"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Customer Invoices"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Invoices"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "原始票据付款方式"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "Payment Terms"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr "Test Payment Term"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "Payment Terms"
+
+msgctxt "model:party.party.payment_term,name:"
+msgid "Party Payment Term"
+msgstr "参与者付款条件"
+
+msgctxt "report:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.invoice:"
+msgid "Amount"
+msgstr "金额"
+
+msgctxt "report:account.invoice:"
+msgid "Base"
+msgstr "基数"
+
+msgctxt "report:account.invoice:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "report:account.invoice:"
+msgid "Date:"
+msgstr "日期"
+
+msgctxt "report:account.invoice:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "report:account.invoice:"
+msgid "Description:"
+msgstr "描述:"
+
+msgctxt "report:account.invoice:"
+msgid "Draft Invoice"
+msgstr "原始票据草稿"
+
+msgctxt "report:account.invoice:"
+msgid "Invoice N°:"
+msgstr "原始票据 N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Term"
+msgstr "付款条件"
+
+msgctxt "report:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr "预开原始票据"
+
+msgctxt "report:account.invoice:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "report:account.invoice:"
+msgid "Reference"
+msgstr "参考"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "供应商票据 N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Tax"
+msgstr "税"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes"
+msgstr "税"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes:"
+msgstr "税："
+
+msgctxt "report:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "合计(不含税):"
+
+msgctxt "report:account.invoice:"
+msgid "Total:"
+msgstr "合计:"
+
+msgctxt "report:account.invoice:"
+msgid "Unit Price"
+msgstr "单价"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Cancelled"
+msgstr "已取消"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "已支付"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Posted"
+msgstr "已入账"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
+msgstr "已确认"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Customer"
+msgstr "客户"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier"
+msgstr "供应商"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "说明"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr "明细"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr "小计"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr "标题"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "超付"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr "部分支付"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr "核销"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr "固定"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr "剩余百分比"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr "总数百分比"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr "剩余"
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit these/this invoice(s)?"
+msgstr "确定要记入这些/这张原始凭证的贷方吗？"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "基本"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr "注释"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "原始凭证"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "其它信息"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "支付"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier:"
+msgstr "税号:"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "贷方"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "借方"
+
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "原始发票"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr "支付条件"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "Credit"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "关闭"
