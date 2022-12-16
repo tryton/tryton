@@ -1,0 +1,181 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.in.return:"
+msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
+msgstr ""
+
+msgctxt "error:stock.shipment.out:"
+msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
+msgstr ""
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr ""
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Наследници"
+
+#, fuzzy
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:stock.package,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:stock.package,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.package,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Движения"
+
+#, fuzzy
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Родител"
+
+#, fuzzy
+msgctxt "field:stock.package,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:stock.package,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:stock.package,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:stock.package.type,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:stock.package.type,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.package.type,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:stock.package.type,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:stock.package.type,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:stock.package.type,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr ""
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr ""
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr ""
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr ""
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr ""
+
+msgctxt "view:stock.package.type:"
+msgid "Package Type"
+msgstr ""
+
+msgctxt "view:stock.package.type:"
+msgid "Package Types"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Package"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Packages"
+msgstr ""
