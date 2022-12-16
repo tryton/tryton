@@ -1,0 +1,103 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Lista de precios"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr ""
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr ""
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Cateogría de UdM de producto"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr ""
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr ""
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr ""
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr ""
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr ""

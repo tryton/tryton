@@ -1,0 +1,116 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:project.work,amount_to_invoice:"
+msgid "Amount to Invoice"
+msgstr "مدت زمان صورتحساب"
+
+msgctxt "field:project.work,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "field:project.work,invoice_method:"
+msgid "Invoice Method"
+msgstr "سبک صورتحساب"
+
+msgctxt "field:project.work,invoiced_amount:"
+msgid "Invoiced Amount"
+msgstr "مبلغ صورتحساب"
+
+msgctxt "field:project.work,invoiced_progress:"
+msgid "Invoiced Progress"
+msgstr "پیشرفت های فاکتورشده"
+
+msgctxt "field:project.work,project_invoice_method:"
+msgid "Invoice Method"
+msgstr "روش صورتحساب"
+
+#, fuzzy
+msgctxt "field:project.work,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "مدت زمان صورتحساب"
+
+msgctxt "field:project.work.invoiced_progress,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+#, fuzzy
+msgctxt "field:project.work.invoiced_progress,progress:"
+msgid "Progress"
+msgstr "در حال پیش رفت"
+
+msgctxt "field:project.work.invoiced_progress,work:"
+msgid "Work"
+msgstr "کار"
+
+msgctxt "field:timesheet.line,invoice_line:"
+msgid "Invoice Line"
+msgstr "خط صورتحساب"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
+msgid "Timesheet Lines"
+msgstr "خطوط جدول زمانی"
+
+msgctxt "model:ir.action,name:open_invoice"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr "شما نمی توانید سطر صورتحساب را حذف کنید."
+
+msgctxt "model:ir.message,text:msg_missing_account_revenue"
+msgid "To invoice work \"%(work)s\" you must configure a default account revenue."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr "در کار : \"%s\" هیچ لیست قیمتی وجود ندارد."
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr "در کار : \"%s\" هیچ نهاد/سازمانی وجود ندارد."
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr "شما نمی توانید خط صورتحساب را تغییردهید."
+
+msgctxt "model:ir.message,text:msg_product_missing_account_revenue"
+msgid ""
+"To invoice work \"%(work)s\" you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+msgctxt "model:project.work.invoiced_progress,name:"
+msgid "Work Invoiced Progress"
+msgstr "پیشرفت های کار فاکتورشده"
+
+msgctxt "model:res.group,name:group_project_invoice"
+msgid "Project Invoice"
+msgstr "صورتحساب پروژه"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "Manual"
+msgstr "دستی"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Effort"
+msgstr "در حال تلاش"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Progress"
+msgstr "در حال پیش رفت"
+
+msgctxt "selection:project.work,project_invoice_method:"
+msgid "On Timesheet"
+msgstr "در جدول زمانی"
+
+msgctxt "view:project.work.invoiced_progress:"
+msgid "%"
+msgstr ""

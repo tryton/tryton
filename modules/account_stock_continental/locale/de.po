@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal Lager"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal Lager"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Lagerbewertungsmethode"
+
+msgctxt "field:product.category,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Konto Lagereingang"
+
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Konto Lagerausgang"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "Konto Lager"
+
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Konto Lagereingang"
+
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Konto Lagerausgang"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Einstellungen Buchhaltung Journal Lager"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Kontinental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Keine"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Lager"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Lagerbewertung"
