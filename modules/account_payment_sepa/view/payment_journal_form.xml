@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='process_method']" position="after">
+        <separator name="sepa_bank_account_number" string="SEPA" colspan="4"/>
+        <label name="sepa_bank_account_number"/>
+        <field name="sepa_bank_account_number"/>
+        <newline/>
+        <label name="sepa_batch_booking"/>
+        <field name="sepa_batch_booking"/>
+        <label name="sepa_charge_bearer"/>
+        <field name="sepa_charge_bearer"/>
+        <label name="sepa_payable_flavor"/>
+        <field name="sepa_payable_flavor"/>
+        <label name="sepa_receivable_flavor"/>
+        <field name="sepa_receivable_flavor"/>
+        <label name="sepa_payable_initiator_id"/>
+        <field name="sepa_payable_initiator_id"/>
+        <label name="sepa_receivable_initiator_id"/>
+        <field name="sepa_receivable_initiator_id"/>
+    </xpath>
+</data>

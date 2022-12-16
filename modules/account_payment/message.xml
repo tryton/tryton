@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_payment_delete_draft">
+            <field name="text">To delete payment "%(payment)s" you must reset it to draft state.</field>
+        </record>
+        <record model="ir.message" id="msg_payment_overpay">
+            <field name="text">Payment "%(payment)s" overpays line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_erase_party_pending_payment">
+            <field name="text">You cannot erase party "%(party)s" while they have pending payments with company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_pay_line_blocked">
+            <field name="text">Line "%(line)s" is blocked for payment.</field>
+        </record>
+        <record model="ir.message" id="msg_pay_line_group">
+            <field name="text">The lines "%(names)s" for %(party)s could be grouped with the line "%(line)s".</field>
+        </record>
+    </data>
+</tryton>
