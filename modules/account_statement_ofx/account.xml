@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.statement.origin.information" id="information_checknum">
+            <field name="name">ofx_checknum</field>
+            <field name="string">Check Number</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_mcc">
+            <field name="name">ofx_mcc</field>
+            <field name="string">Merchant Category Code (MCC)</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_sic">
+            <field name="name">ofx_sic</field>
+            <field name="string">Standard Industry Code (SIC)</field>
+            <field name="type_">char</field>
+        </record>
+        <record model="account.statement.origin.information" id="information_type">
+            <field name="name">ofx_type</field>
+            <field name="string">Type</field>
+            <field name="type_">char</field>
+        </record>
+    </data>
+</tryton>
