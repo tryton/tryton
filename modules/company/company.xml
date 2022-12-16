@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="company_view_form">
+            <field name="model">company.company</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>
+            <field name="name">company_form</field>
+        </record>
+        <record model="ir.ui.view" id="company_view_tree">
+            <field name="model">company.company</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="name">company_tree</field>
+        </record>
+        <record model="ir.ui.view" id="company_view_list">
+            <field name="model">company.company</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">company_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_company_tree">
+            <field name="name">Companies</field>
+            <field name="res_model">company.company</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="company_view_tree"/>
+            <field name="act_window" ref="act_company_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="company_view_form"/>
+            <field name="act_window" ref="act_company_tree"/>
+        </record>
+        <menuitem parent="party.menu_configuration" action="act_company_tree"
+            id="menu_company_tree"/>
+
+        <record model="ir.action.act_window" id="act_company_list">
+            <field name="name">Companies</field>
+            <field name="res_model">company.company</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="company_view_list"/>
+            <field name="act_window" ref="act_company_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="company_view_form"/>
+            <field name="act_window" ref="act_company_list"/>
+        </record>
+        <menuitem parent="menu_company_tree" action="act_company_list"
+            id="menu_company_list"/>
+
+        <record model="ir.model.access" id="access_company">
+            <field name="model" search="[('model', '=', 'company.company')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_company_admin">
+            <field name="model" search="[('model', '=', 'company.company')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="inherit" ref="res.user_view_form"/>
+            <field name="name">user_form</field>
+        </record>
+        <record model="ir.ui.view" id="user_view_form_preferences">
+            <field name="model">res.user</field>
+            <field name="inherit" ref="res.user_view_form_preferences"/>
+            <field name="name">user_form_preferences</field>
+        </record>
+        <record model="ir.ui.view" id="property_view_form">
+            <field name="model">ir.property</field>
+            <field name="inherit" ref="ir.property_view_form"/>
+            <field name="name">property_form</field>
+        </record>
+        <record model="ir.ui.view" id="property_view_tree">
+            <field name="model">ir.property</field>
+            <field name="inherit" ref="ir.property_view_tree"/>
+            <field name="name">property_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_property">
+            <field name="model" search="[('model', '=', 'ir.property')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_property1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_property"/>
+        </record>
+        <record model="ir.rule" id="rule_property2">
+            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_property"/>
+        </record>
+
+        <record model="ir.ui.view" id="sequence_view_form">
+            <field name="model">ir.sequence</field>
+            <field name="inherit" ref="ir.sequence_view_form"/>
+            <field name="name">sequence_form</field>
+        </record>
+        <record model="ir.ui.view" id="sequence_view_tree">
+            <field name="model">ir.sequence</field>
+            <field name="inherit" ref="ir.sequence_view_tree"/>
+            <field name="name">sequence_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence">
+            <field name="model" search="[('model', '=', 'ir.sequence')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence2">
+            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sequence_strict">
+            <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict2">
+            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+
+        <record model="ir.ui.view" id="company_config_start_view_form">
+            <field name="model">company.company.config.start</field>
+            <field name="type">form</field>
+            <field name="name">company_config_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_company_config">
+            <field name="name">Configure Company</field>
+            <field name="wiz_name">company.company.config</field>
+        </record>
+
+        <record model="ir.module.config_wizard.item"
+            id="config_wizard_item_company">
+            <field name="action" ref="act_company_config"/>
+        </record>
+
+        <record model="ir.ui.view" id="employee_view_form">
+            <field name="model">company.employee</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>
+            <field name="priority">10</field>
+            <field name="name">employee_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_view_tree">
+            <field name="model">company.employee</field>
+            <field name="type">tree</field>
+            <field name="name">employee_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_employee_form">
+            <field name="name">Employees</field>
+            <field name="res_model">company.employee</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="employee_view_tree"/>
+            <field name="act_window" ref="act_employee_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="employee_view_form"/>
+            <field name="act_window" ref="act_employee_form"/>
+        </record>
+        <menuitem parent="party.menu_configuration" action="act_employee_form"
+            id="menu_employee_form"/>
+
+        <record model="ir.model.access" id="access_employee">
+            <field name="model" search="[('model', '=', 'company.employee')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_employee_admin">
+            <field name="model" search="[('model', '=', 'company.employee')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.report" id="report_letter">
+            <field name="name">Letter</field>
+            <field name="model">party.party</field>
+            <field name="report_name">party.letter</field>
+            <field name="report">company/letter.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_letter_party">
+            <field name="keyword">form_print</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="report_letter"/>
+        </record>
+    </data>
+</tryton>
