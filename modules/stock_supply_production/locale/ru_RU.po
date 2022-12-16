@@ -1,0 +1,57 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.configuration,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
+msgctxt "field:production.create_request.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "help:production.configuration,supply_period:"
+msgid "In number of days"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_production_request_create"
+msgid "Create Production Requests"
+msgstr ""
+
+msgctxt "model:ir.cron,name:cron_generate_request"
+msgid "Generate Production Requests"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_production_request_create"
+msgid "Create Production Requests"
+msgstr ""
+
+msgctxt "model:production.create_request.start,name:"
+msgid "Create Production Request"
+msgstr ""
+
+msgctxt "model:res.user,name:user_generate_request"
+msgid "Cron Production Request"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.order_point,type:"
+msgid "Production"
+msgstr "Производство"
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Request"
+msgstr ""
+
+msgctxt "view:production.create_request.start:"
+msgid "Create Production Request?"
+msgstr ""
+
+msgctxt "wizard_button:production.create_request,start,create_:"
+msgid "Create"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:production.create_request,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
