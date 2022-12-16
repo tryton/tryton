@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax.rule.line,from_country:"
+msgid "From Country"
+msgstr "Van land"
+
+msgctxt "field:account.tax.rule.line,from_subdivision:"
+msgid "From Subdivision"
+msgstr "van subdivisie"
+
+msgctxt "field:account.tax.rule.line,to_country:"
+msgid "To Country"
+msgstr "Naar land"
+
+msgctxt "field:account.tax.rule.line,to_subdivision:"
+msgid "To Subdivision"
+msgstr "naar subdivisie"
+
+msgctxt "field:account.tax.rule.line.template,from_country:"
+msgid "From Country"
+msgstr "Van land"
+
+msgctxt "field:account.tax.rule.line.template,from_subdivision:"
+msgid "From Subdivision"
+msgstr "van subdivisie"
+
+msgctxt "field:account.tax.rule.line.template,to_country:"
+msgid "To Country"
+msgstr "Naar land"
+
+msgctxt "field:account.tax.rule.line.template,to_subdivision:"
+msgid "To Subdivision"
+msgstr "naar subdivisie"
+
+msgctxt "help:account.tax.rule.line,from_country:"
+msgid "Apply only to addresses of this country."
+msgstr "Pas dit enkel toe voor adressen van dit land."
+
+msgctxt "help:account.tax.rule.line,from_subdivision:"
+msgid "Apply only to addresses in this subdivision."
+msgstr "Pas dit enkel toe voor adressen in deze subdevisie."
+
+msgctxt "help:account.tax.rule.line,to_country:"
+msgid "Apply only to addresses of this country."
+msgstr "Pas dit enkel toe op adressen van dit land."
+
+msgctxt "help:account.tax.rule.line,to_subdivision:"
+msgid "Apply only to addresses in this subdivision."
+msgstr "Pas dit enkel toe voor adressen in deze subdevisie."
+
+msgctxt "help:account.tax.rule.line.template,from_country:"
+msgid "Apply only to addresses of this country."
+msgstr "Pas dit enkel toe voor adressen van dit land."
+
+msgctxt "help:account.tax.rule.line.template,from_subdivision:"
+msgid "Apply only to addresses in this subdivision."
+msgstr "Pas dit enkel toe voor adressen in deze subdevisie."
+
+msgctxt "help:account.tax.rule.line.template,to_country:"
+msgid "Apply only to addresses of this country."
+msgstr "Pas dit enkel toe voor adressen van dit land."
+
+msgctxt "help:account.tax.rule.line.template,to_subdivision:"
+msgid "Apply only to addresses in this subdivision."
+msgstr "Pas dit enkel toe voor adressen in deze subdevisie."

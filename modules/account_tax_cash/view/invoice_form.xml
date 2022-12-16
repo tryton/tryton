@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='info']/separator[@name='comment']" position="before">
+        <field name="tax_group_on_cash_basis" colspan="4"/>
+    </xpath>
+</data>

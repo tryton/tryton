@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="root"/>
+    <field name="root"/>
+    <newline/>
+
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+
+    <notebook>
+        <page name="lines" col="1">
+            <field name="lines"/>
+            <button name="update_lines"/>
+        </page>
+    </notebook>
+</form>
