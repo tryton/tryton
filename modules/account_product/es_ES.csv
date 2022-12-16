@@ -1,0 +1,42 @@
+type,name,res_id,src,value,fuzzy
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),No hay ninguna cuenta de gastos/ingresos definida para el producto %s (%d),0
+field,"product.category,account_expense",0,Account Expense,Cuenta de gastos,0
+field,"product.category,account_revenue",0,Account Revenue,Cuenta de ingresos,0
+field,"product.category-customer-account.tax,product",0,Category,Categoría,0
+field,"product.category-customer-account.tax,rec_name",0,Name,Nombre,0
+field,"product.category-customer-account.tax,tax",0,Tax,Impuesto,0
+field,"product.category,customer_taxes",0,Customer Taxes,Impuestos de cliente,0
+field,"product.category-supplier-account.tax,product",0,Category,Categoría,0
+field,"product.category-supplier-account.tax,rec_name",0,Name,Nombre,0
+field,"product.category-supplier-account.tax,tax",0,Tax,Impuesto,0
+field,"product.category,supplier_taxes",0,Supplier Taxes,Impuestos de proveedor,0
+field,"product.template,account_category",0,Use Category's accounts,Usar las cuentas de la categoría,0
+field,"product.template,account_expense",0,Account Expense,Cuenta de gasto,0
+field,"product.template,account_expense_used",0,Account Expense Used,Cuenta de gasto usada,0
+field,"product.template,account_revenue",0,Account Revenue,Cuenta de ingresos,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Cuenta de ingresos usada,0
+field,"product.template-customer-account.tax,product",0,Product Template,Plantilla de producto,0
+field,"product.template-customer-account.tax,rec_name",0,Name,Nombre,0
+field,"product.template-customer-account.tax,tax",0,Tax,Impuesto,0
+field,"product.template,customer_taxes",0,Customer Taxes,Impuestos de cliente,0
+field,"product.template,customer_taxes_used",0,Customer Taxes Used,Impuestos de cliente usados,0
+field,"product.template-supplier-account.tax,product",0,Product Template,Plantilla de producto,0
+field,"product.template-supplier-account.tax,rec_name",0,Name,Nombre,0
+field,"product.template-supplier-account.tax,tax",0,Tax,Impuesto,0
+field,"product.template,supplier_taxes",0,Supplier Taxes,Impuestos de proveedores,0
+field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Impuestos de cliente usados,0
+field,"product.template,taxes_category",0,Use Category's Taxes,Usar los impuestos de la categoría,0
+help,"product.template,account_category",0,Use the accounts defined on the category,Usar las cuentas definidas en la categoría,0
+help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
+help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
+help,"product.template,taxes_category",0,Use the taxes defined on the category,Usar los impuestos definidos en la categoría,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Categoría - Impuesto de cliente,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Categoría - Impuesto de proveedor,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Plantilla de producto - Impuesto de cliente,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Plantilla de producto - Impuesto de proveedor,0
+view,product.category,0,Accounting,Contabilidad,0
+view,product.category,0,Taxes,Impuestos,0
+view,product.product,0,Accounting,Contabilidad,0
+view,product.template,0,Accounting,Contabilidad,0
+view,product.template,0,Accounts,Cuentas,0
+view,product.template,0,Taxes,Impuestos,0
