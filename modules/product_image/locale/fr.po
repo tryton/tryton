@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.image,cache:"
+msgid "Cache"
+msgstr "Cache"
+
+msgctxt "field:product.image,image:"
+msgid "Image"
+msgstr "Image"
+
+msgctxt "field:product.image,image_id:"
+msgid "Image ID"
+msgstr "ID de l'image"
+
+msgctxt "field:product.image,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.image,template:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:product.image.cache,image:"
+msgid "Image"
+msgstr "Image"
+
+msgctxt "field:product.image.cache,image_id:"
+msgid "Image ID"
+msgstr "ID de l'image"
+
+msgctxt "field:product.image.cache,product_image:"
+msgid "Product Image"
+msgstr "Image du produit"
+
+msgctxt "field:product.image.cache,size:"
+msgid "Size"
+msgstr "Taille"
+
+msgctxt "field:product.product,image_url:"
+msgid "Image URL"
+msgstr "URL de l'image"
+
+msgctxt "field:product.product,images:"
+msgid "Images"
+msgstr "Images"
+
+msgctxt "field:product.template,image_url:"
+msgid "Image URL"
+msgstr "URL de l'image"
+
+msgctxt "field:product.template,images:"
+msgid "Images"
+msgstr "Images"
+
+msgctxt "model:ir.message,text:msg_product_image_size_unique"
+msgid "The size of a product image must be unique."
+msgstr "La taille d'une image de produit doit être unique."
+
+msgctxt "model:product.image,name:"
+msgid "Product Image"
+msgstr "Image du produit"
+
+msgctxt "model:product.image.cache,name:"
+msgid "Product Image Cache"
+msgstr "Cache de l'image du produit"
