@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Levering in de uitverkoop"
+
+msgctxt "field:product.template,supply_on_sale:"
+msgid "Supply On Sale"
+msgstr "Levering in de uitverkoop"
+
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "Verkooplijnen"
+
+msgctxt "field:sale.line,purchase_request:"
+msgid "Purchase Request"
+msgstr "Aankoopverzoek"
+
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "Staat van levering"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Aankoopverzoeken"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Requested"
+msgstr "Aangevraagd"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr "Geleverde"
