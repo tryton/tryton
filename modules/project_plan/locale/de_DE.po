@@ -1,0 +1,207 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.allocation:"
+msgid "Percentage must be greater than zero"
+msgstr "Prozentsatz muss größer als 0 sein."
+
+msgctxt "error:project.work:"
+msgid "You can not create recursive dependencies!"
+msgstr "Abhängigkeiten können nicht rekursiv angelegt werden!"
+
+msgctxt "field:project.allocation,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:project.allocation,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:project.allocation,employee:"
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgctxt "field:project.allocation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.allocation,percentage:"
+msgid "Percentage"
+msgstr "Prozentsatz"
+
+msgctxt "field:project.allocation,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:project.allocation,work:"
+msgid "Work"
+msgstr "Arbeit"
+
+msgctxt "field:project.allocation,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:project.allocation,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:project.predecessor_successor,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:project.predecessor_successor,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:project.predecessor_successor,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:project.predecessor_successor,predecessor:"
+msgid "Predecessor"
+msgstr "Vorgänger"
+
+msgctxt "field:project.predecessor_successor,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:project.predecessor_successor,successor:"
+msgid "Successor"
+msgstr "Nachfolger"
+
+msgctxt "field:project.predecessor_successor,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:project.predecessor_successor,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:project.work,actual_finish_date:"
+msgid "Actual Finish"
+msgstr "Tatsächliches Enddatum"
+
+msgctxt "field:project.work,actual_finish_time:"
+msgid "Actual Finish Time"
+msgstr "Tatsächliche Endzeit"
+
+msgctxt "field:project.work,actual_start_date:"
+msgid "Actual Start"
+msgstr "Tatsächliches Startdatum"
+
+msgctxt "field:project.work,actual_start_time:"
+msgid "Actual Start Time"
+msgstr "Tatsächliche Startzeit"
+
+msgctxt "field:project.work,allocations:"
+msgid "Allocations"
+msgstr "Zuordnungen"
+
+msgctxt "field:project.work,back_leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Verzögerung Abgleich"
+
+msgctxt "field:project.work,constraint_finish_date:"
+msgid "Constraint Finish"
+msgstr "Fixes Enddatum"
+
+msgctxt "field:project.work,constraint_finish_time:"
+msgid "Constraint  Finish Time"
+msgstr "Fixe Endzeit"
+
+msgctxt "field:project.work,constraint_start_date:"
+msgid "Constraint Start"
+msgstr "Fixes Startdatum"
+
+msgctxt "field:project.work,constraint_start_time:"
+msgid "Constraint Start Time"
+msgstr "Fixe Startzeit"
+
+msgctxt "field:project.work,duration:"
+msgid "Duration"
+msgstr "Dauer"
+
+msgctxt "field:project.work,early_finish_date:"
+msgid "Early Finish"
+msgstr "Frühestes Enddatum"
+
+msgctxt "field:project.work,early_finish_time:"
+msgid "Early Finish Time"
+msgstr "Früheste Endzeit"
+
+msgctxt "field:project.work,early_start_date:"
+msgid "Early Start"
+msgstr "Frühestes Startdatum"
+
+msgctxt "field:project.work,early_start_time:"
+msgid "Early Start Time"
+msgstr "Früheste Startzeit"
+
+msgctxt "field:project.work,late_finish_date:"
+msgid "Late Finish"
+msgstr "Spätestes Enddatum"
+
+msgctxt "field:project.work,late_finish_time:"
+msgid "Late Finish Time"
+msgstr "Späteste Endzeit"
+
+msgctxt "field:project.work,late_start_date:"
+msgid "Late Start"
+msgstr "Spätestes Startdatum"
+
+msgctxt "field:project.work,late_start_time:"
+msgid "Late Start Time"
+msgstr "Späteste Startzeit"
+
+msgctxt "field:project.work,leveling_delay:"
+msgid "Leveling Delay"
+msgstr "Verzögerung Abgleich"
+
+msgctxt "field:project.work,predecessors:"
+msgid "Predecessors"
+msgstr "Vorgänger"
+
+msgctxt "field:project.work,requests:"
+msgid "Requests"
+msgstr "Anfragen"
+
+msgctxt "field:project.work,successors:"
+msgid "Successors"
+msgstr "Nachfolger"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Aufgaben abgleichen"
+
+msgctxt "model:project.allocation,name:"
+msgid "Allocation"
+msgstr "Zuordnung"
+
+msgctxt "model:project.predecessor_successor,name:"
+msgid "Predecessor - Successor"
+msgstr "Vorgänger - Nachfolger"
+
+msgctxt "model:res.request.link,name:request_link_work"
+msgid "Work"
+msgstr "Arbeit"
+
+msgctxt "view:project.allocation:"
+msgid "Allocation"
+msgstr "Zuordnung"
+
+msgctxt "view:project.allocation:"
+msgid "Allocations"
+msgstr "Zuordnungen"
+
+msgctxt "view:project.work:"
+msgid "Allocations"
+msgstr "Zuordnungen"
+
+msgctxt "view:project.work:"
+msgid "Plan"
+msgstr "Plan"
+
+msgctxt "view:project.work:"
+msgid "Requests"
+msgstr "Anfragen"
