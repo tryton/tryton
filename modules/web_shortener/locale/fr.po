@@ -1,0 +1,43 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:web.shortened_url,count:"
+msgid "Click Count"
+msgstr "Nombre de clics"
+
+msgctxt "field:web.shortened_url,method:"
+msgid "Method"
+msgstr "Méthode"
+
+msgctxt "field:web.shortened_url,record:"
+msgid "Record"
+msgstr "Enregistrement"
+
+msgctxt "field:web.shortened_url,redirect_url:"
+msgid "Redirect URL"
+msgstr "URL de redirection"
+
+msgctxt "field:web.shortened_url,shortened_url:"
+msgid "Shortened URL"
+msgstr "URL raccourcie"
+
+msgctxt "field:web.shortened_url.access,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "model:ir.action,name:act_shortened_url"
+msgid "Shortened URLs"
+msgstr "URLs raccourcies"
+
+msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
+msgid "Shortened URLs"
+msgstr "URLs raccourcies"
+
+msgctxt "model:web.shortened_url,name:"
+msgid "Short URL"
+msgstr "URL courte"
+
+msgctxt "model:web.shortened_url.access,name:"
+msgid "URL Access"
+msgstr "Accès URL"
