@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.sale:"
+msgid "The carrier '%(carrier)s' on sale '%(sale)s' is not valid."
+msgstr "حمل کننده : \"%s\" در فروش : \"%s\" معتبر نیست."
+
+msgctxt "error:stock.shipment.out:"
+msgid "Missing \"Account Revenue\" on product \"%s\"."
+msgstr "\"حساب درآمد\" بر روی محصول: \"٪ s\" گم شده است."
+
+msgctxt "field:sale.configuration,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "متد هزینه حمل ونقل فروش"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "متد هزینه حمل ونقل فروش"
+
+msgctxt "field:sale.line,shipment_cost:"
+msgid "Shipment Cost"
+msgstr "هزینه حمل ونقل"
+
+msgctxt "field:sale.sale,available_carriers:"
+msgid "Available Carriers"
+msgstr "حمل کننده های در دسترس"
+
+msgctxt "field:sale.sale,carrier:"
+msgid "Carrier"
+msgstr "حمل کننده"
+
+msgctxt "field:sale.sale,shipment_cost_method:"
+msgid "Shipment Cost Method"
+msgstr "متد هزینه حمل و نقل"
+
+msgctxt "field:stock.shipment.out,carrier:"
+msgid "Carrier"
+msgstr "حمل کننده"
+
+msgctxt "field:stock.shipment.out,cost:"
+msgid "Cost"
+msgstr "هزینه"
+
+msgctxt "field:stock.shipment.out,cost_currency:"
+msgid "Cost Currency"
+msgstr "واحد پول هزینه"
+
+msgctxt "field:stock.shipment.out,cost_invoice_line:"
+msgid "Cost Invoice Line"
+msgstr "سطر هزینه صورتحساب"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Order"
+msgstr "در دستور"
+
+msgctxt "selection:sale.sale,shipment_cost_method:"
+msgid "On Shipment"
+msgstr "در حمل ونقل"
