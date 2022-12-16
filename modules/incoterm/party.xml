@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="purchase">
+        <record model="ir.ui.view" id="party_view_form_purchase">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form_purchase</field>
+        </record>
+    </data>
+
+    <data depends="sale">
+        <record model="ir.ui.view" id="party_view_form_sale">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form_sale</field>
+        </record>
+    </data>
+    <data>
+        <record model="ir.ui.view" id="party_incoterm_view_form">
+            <field name="model">party.incoterm</field>
+            <field name="type">form</field>
+            <field name="name">party_incoterm_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="party_incoterm_view_list">
+            <field name="model">party.incoterm</field>
+            <field name="type">tree</field>
+            <field name="name">party_incoterm_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_party_incoterm_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'party.incoterm')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_party_incoterm_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_party_incoterm_companies"/>
+        </record>
+    </data>
+</tryton>

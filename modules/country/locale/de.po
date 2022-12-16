@@ -1,0 +1,1003 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:country.country,code3:"
+msgid "3-letters Code"
+msgstr "3-Buchstaben Code"
+
+msgctxt "field:country.country,code:"
+msgid "Code"
+msgstr "Länderkürzel"
+
+msgctxt "field:country.country,code_numeric:"
+msgid "Numeric Code"
+msgstr "Numerischer Code"
+
+msgctxt "field:country.country,flag:"
+msgid "Flag"
+msgstr "Flagge"
+
+msgctxt "field:country.country,members:"
+msgid "Members"
+msgstr "Mitglieder"
+
+msgctxt "field:country.country,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.country,organizations:"
+msgid "Organizations"
+msgstr "Organisationen"
+
+msgctxt "field:country.country,region:"
+msgid "Region"
+msgstr "Region"
+
+msgctxt "field:country.country,subdivisions:"
+msgid "Subdivisions"
+msgstr "Verwaltungseinheiten"
+
+msgctxt "field:country.organization,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:country.organization,countries:"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "field:country.organization,members:"
+msgid "Members"
+msgstr "Mitglieder"
+
+msgctxt "field:country.organization,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.organization.member,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:country.organization.member,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.organization.member,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:country.organization.member,organization:"
+msgid "Organization"
+msgstr "Organisation"
+
+msgctxt "field:country.organization.member,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:country.postal_code,city:"
+msgid "City"
+msgstr "Stadt"
+
+msgctxt "field:country.postal_code,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.postal_code,postal_code:"
+msgid "Postal Code"
+msgstr "Postleitzahl"
+
+msgctxt "field:country.postal_code,subdivision:"
+msgid "Subdivision"
+msgstr "Verwaltungseinheit"
+
+msgctxt "field:country.region,code_numeric:"
+msgid "Numeric Code"
+msgstr "Numerischer Code"
+
+msgctxt "field:country.region,countries:"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "field:country.region,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.region,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Region)"
+
+msgctxt "field:country.region,subregions:"
+msgid "Subregions"
+msgstr "Teilregionen"
+
+msgctxt "field:country.subdivision,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:country.subdivision,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.subdivision,flag:"
+msgid "Flag"
+msgstr "Flagge"
+
+msgctxt "field:country.subdivision,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.subdivision,parent:"
+msgid "Parent"
+msgstr "Übergeordnet (Verwaltungseinheit)"
+
+msgctxt "field:country.subdivision,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "help:country.country,code3:"
+msgid "The 3 chars ISO country code."
+msgstr "Der 3-stellige ISO-Ländercode."
+
+msgctxt "help:country.country,code:"
+msgid "The 2 chars ISO country code."
+msgstr "Der 2-stellige ISO-Ländercode."
+
+msgctxt "help:country.country,code_numeric:"
+msgid "The ISO numeric country code."
+msgstr "Der numerische ISO-Ländercode."
+
+msgctxt "help:country.country,name:"
+msgid "The main identifier of the country."
+msgstr "Das Hauptidentifizierungsmerkmal des Landes."
+
+msgctxt "help:country.postal_code,city:"
+msgid "The city associated with the postal code."
+msgstr "Die zur Postleitzahl gehörende Stadt."
+
+msgctxt "help:country.postal_code,country:"
+msgid "The country that contains the postal code."
+msgstr "Das Land zu dem die Postleitzahl gehört."
+
+msgctxt "help:country.postal_code,subdivision:"
+msgid "The subdivision where the postal code is."
+msgstr "Die Verwaltungseinheit zu der die Postleitzahl gehört."
+
+msgctxt "help:country.region,code_numeric:"
+msgid "UN M49 region code."
+msgstr "M49 Regionalcode der Vereinten Nationen."
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr "Der ISO-Code der Verwaltungseinheit."
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr "Das Land zu dem die Verwaltungseinheit gehört."
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr "Das Hauptidentifizierungsmerkmal der Verwaltungseinheit."
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr "Verwaltungseinheit hinzufügen."
+
+msgctxt "model:country.country,name:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "model:country.organization,name:"
+msgid "Organization"
+msgstr "Organisation"
+
+msgctxt "model:country.organization,name:organization_amu"
+msgid "Arab Maghreb Union"
+msgstr "Union des Arabischen Maghreb"
+
+msgctxt "model:country.organization,name:organization_apec"
+msgid "Asia-Pacific Economic Cooperation"
+msgstr "Asiatisch-Pazifische Wirtschaftsgemeinschaft"
+
+msgctxt "model:country.organization,name:organization_asean"
+msgid "Association of Southeast Asian Nations"
+msgstr "Verband Südostasiatischer Nationen (ASEAN)"
+
+msgctxt "model:country.organization,name:organization_benelux"
+msgid "Benelux Union"
+msgstr "Benelux"
+
+msgctxt "model:country.organization,name:organization_can"
+msgid "Andean Community"
+msgstr "Andengemeinschaft"
+
+msgctxt "model:country.organization,name:organization_caricom"
+msgid "Caribbean Community"
+msgstr "Karibische Gemeinschaft"
+
+msgctxt "model:country.organization,name:organization_cemac"
+msgid "Economic and Monetary Community of Central Africa"
+msgstr "Zentralafrikanische Wirtschaftsgemeinschaft (CEEAC/ECCAS)"
+
+msgctxt "model:country.organization,name:organization_cen-sad"
+msgid "Community of Sahel–Saharan States"
+msgstr "Gemeinschaft der Staaten des Sahel und der Sahara (CEN-SAD)"
+
+msgctxt "model:country.organization,name:organization_comesa"
+msgid "Common Market for Eastern and Southern Africa"
+msgstr "Gemeinsamer Markt für das Östliche und Südliche Afrika (COMESA)"
+
+msgctxt "model:country.organization,name:organization_eac"
+msgid "East African Community"
+msgstr "Ostafrikanische Gemeinschaft"
+
+msgctxt "model:country.organization,name:organization_eccas"
+msgid "Economic Community of Central African States"
+msgstr "Zentralafrikanische Wirtschaftsgemeinschaft (CEEAC/ECCAS)"
+
+msgctxt "model:country.organization,name:organization_ecowas"
+msgid "Economic Community of West African States"
+msgstr "Westafrikanische Wirtschaftsgemeinschaft (CEDEAO/ECOWAS/CEDEAO)"
+
+msgctxt "model:country.organization,name:organization_eu"
+msgid "European Union"
+msgstr "Europäische Union"
+
+msgctxt "model:country.organization,name:organization_gcc"
+msgid "Cooperation Council for the Arab States of the Gulf"
+msgstr "Golf-Kooperationsrat (GKR/GCC/CCASG)"
+
+msgctxt "model:country.organization,name:organization_igad"
+msgid "Intergovernmental Authority on Development"
+msgstr "Intergovernmental Authority on Development (IGAD)"
+
+msgctxt "model:country.organization,name:organization_mercosur"
+msgid "Southern Common Market"
+msgstr "Gemeinsamer Markt des Südens (Mercosur)"
+
+msgctxt "model:country.organization,name:organization_nafta"
+msgid "North American Free Trade Agreement"
+msgstr "Nordamerikanisches Freihandelsabkommen (NAFTA/ALÉNA/TLCAN)"
+
+msgctxt "model:country.organization,name:organization_sadc"
+msgid "Southern African Development Community"
+msgstr "Entwicklungsgemeinschaft des südlichen Afrika (SADC)"
+
+msgctxt "model:country.organization,name:organization_safta"
+msgid "South Asian Free Trade Area"
+msgstr "South Asian Free Trade Area (SAFTA)"
+
+msgctxt "model:country.organization.member,name:"
+msgid "Organization Member"
+msgstr "Organisationsmitglied"
+
+msgctxt "model:country.postal_code,name:"
+msgid "Postal Code"
+msgstr "Postleitzahl"
+
+msgctxt "model:country.region,name:"
+msgid "Region"
+msgstr "Region"
+
+msgctxt "model:country.region,name:region_africa"
+msgid "Africa"
+msgstr "Afrika"
+
+msgctxt "model:country.region,name:region_americas"
+msgid "Americas"
+msgstr "Amerika"
+
+msgctxt "model:country.region,name:region_antarctica"
+msgid "Antarctica"
+msgstr "Antarktis"
+
+msgctxt "model:country.region,name:region_asia"
+msgid "Asia"
+msgstr "Asien"
+
+msgctxt "model:country.region,name:region_australia_new_zealand"
+msgid "Australia and New Zealand"
+msgstr "Australien und Neuseeland"
+
+msgctxt "model:country.region,name:region_caribbean"
+msgid "Caribbean"
+msgstr "Karibik"
+
+msgctxt "model:country.region,name:region_central_america"
+msgid "Central America"
+msgstr "Zentralamerika"
+
+msgctxt "model:country.region,name:region_central_asia"
+msgid "Central Asia"
+msgstr "Zentralasien"
+
+msgctxt "model:country.region,name:region_channel_islands"
+msgid "Channel Islands"
+msgstr "Kanalinseln"
+
+msgctxt "model:country.region,name:region_eastern_africa"
+msgid "Eastern Africa"
+msgstr "Ostafrika"
+
+msgctxt "model:country.region,name:region_eastern_asia"
+msgid "Eastern Asia"
+msgstr "Ostasien"
+
+msgctxt "model:country.region,name:region_eastern_europe"
+msgid "Eastern Europe"
+msgstr "Osteuropa"
+
+msgctxt "model:country.region,name:region_europe"
+msgid "Europe"
+msgstr "Europa"
+
+msgctxt "model:country.region,name:region_latin_america_caribbean"
+msgid "Latin America and the Caribbean"
+msgstr "Lateinamerika und die Karibik (LAC)"
+
+msgctxt "model:country.region,name:region_melanesia"
+msgid "Melanesia"
+msgstr "Melanesien"
+
+msgctxt "model:country.region,name:region_micronesia"
+msgid "Micronesia"
+msgstr "Mikronesien"
+
+msgctxt "model:country.region,name:region_middle_africa"
+msgid "Middle Africa"
+msgstr "Mittelafrika"
+
+msgctxt "model:country.region,name:region_north_america"
+msgid "North America"
+msgstr "Nordamerika"
+
+msgctxt "model:country.region,name:region_northern_africa"
+msgid "Northern Africa"
+msgstr "Nordafrika"
+
+msgctxt "model:country.region,name:region_northern_america"
+msgid "Northern America"
+msgstr "Nordamerika"
+
+msgctxt "model:country.region,name:region_northern_europe"
+msgid "Northern Europe"
+msgstr "Nordeuropa"
+
+msgctxt "model:country.region,name:region_oceania"
+msgid "Oceania"
+msgstr "Ozeanien"
+
+msgctxt "model:country.region,name:region_polynesia"
+msgid "Polynesia"
+msgstr "Polynesien"
+
+msgctxt "model:country.region,name:region_south-eastern_asia"
+msgid "South-eastern Asia"
+msgstr "Südostasien"
+
+msgctxt "model:country.region,name:region_south_america"
+msgid "South America"
+msgstr "Südamerika"
+
+msgctxt "model:country.region,name:region_southern_africa"
+msgid "Southern Africa"
+msgstr "Südafrika"
+
+msgctxt "model:country.region,name:region_southern_asia"
+msgid "Southern Asia"
+msgstr "Südasien"
+
+msgctxt "model:country.region,name:region_southern_europe"
+msgid "Southern Europe"
+msgstr "Südeuropa"
+
+msgctxt "model:country.region,name:region_sub-saharan_africa"
+msgid "Sub-Saharan Africa"
+msgstr "Subsahara-Afrika"
+
+msgctxt "model:country.region,name:region_western_africa"
+msgid "Western Africa"
+msgstr "Westafrika"
+
+msgctxt "model:country.region,name:region_western_asia"
+msgid "Western Asia"
+msgstr "Westasien"
+
+msgctxt "model:country.region,name:region_western_europe"
+msgid "Western Europe"
+msgstr "Westeuropa"
+
+msgctxt "model:country.region,name:region_world"
+msgid "World"
+msgstr "Welt"
+
+msgctxt "model:country.subdivision,name:"
+msgid "Subdivision"
+msgstr "Verwaltungseinheit"
+
+msgctxt "model:ir.action,name:act_country_by_region"
+msgid "Countries by Region"
+msgstr "Länder nach Region"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "model:ir.action,name:act_organization_form"
+msgid "Organizations"
+msgstr "Organisationen"
+
+msgctxt "model:ir.action,name:act_postal_code_form"
+msgid "Postal Codes"
+msgstr "Postleitzahl"
+
+msgctxt "model:ir.action,name:act_region_form"
+msgid "Regions"
+msgstr "Regionen"
+
+msgctxt "model:ir.action,name:act_region_tree"
+msgid "Areas"
+msgstr "Gebiet"
+
+msgctxt "model:ir.ui.menu,name:menu_country"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "model:ir.ui.menu,name:menu_organization_form"
+msgid "Organizations"
+msgstr "Organisationen"
+
+msgctxt "model:ir.ui.menu,name:menu_region_form"
+msgid "Regions"
+msgstr "Regionen"
+
+msgctxt "model:ir.ui.menu,name:menu_region_tree"
+msgid "Areas"
+msgstr "Gebiete"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administration"
+msgstr "Verwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Region"
+msgstr "Regierungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative Territory"
+msgstr "Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative area"
+msgstr "Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative atoll"
+msgstr "Administratives Atoll"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Administrative precinct"
+msgstr "Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Arctic Region"
+msgstr "Arktische Region"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Area"
+msgstr "Bezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Atoll"
+msgstr "Atoll"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous City"
+msgstr "Autonome Stadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Commune"
+msgstr "Autonome Gemeinde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous District"
+msgstr "Autonomer Distrikt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Province"
+msgstr "Autonome Provinz"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous Region"
+msgstr "Autonome Region"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous city in north africa"
+msgstr "Autonome Stadt in Nordafrika"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous communities"
+msgstr "Autonome Gemeinden"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous community"
+msgstr "Autonome Gemeinde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous island"
+msgstr "Autonome Insel"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous monastic state"
+msgstr "Autonomer Kirchenstaat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous municipality"
+msgstr "Autonomer Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous republic"
+msgstr "Autonome Republik"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous sector"
+msgstr "Autonomer Bereich"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territorial unit"
+msgstr "Autonom territoriale Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Autonomous territory"
+msgstr "Autonomes Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Borough"
+msgstr "Stadtbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Canton"
+msgstr "Kanton"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital"
+msgstr "Hauptstadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital District"
+msgstr "Bezirksstadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Metropolitan City"
+msgstr "Capital Metropolitan City"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital Territory"
+msgstr "Hauptstadtterritorium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Capital city"
+msgstr "Capital city"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chain (of islands)"
+msgstr "Inselkette"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Chains (of islands)"
+msgstr "Inselkette"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City"
+msgstr "Stadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City corporation"
+msgstr "Stadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City municipality"
+msgstr "Stadtgemeinde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "City with county rights"
+msgstr "Stadt mit Kreisverwaltungsrechten"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Commune"
+msgstr "Gemeinde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Constitutional province"
+msgstr "Konstitutionelle Provinz"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Council area"
+msgstr "Ratsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "County"
+msgstr "Landkreis"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Decentralized regional entity"
+msgstr "Dezentralisierte regionale Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Department"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Dependency"
+msgstr "Schutzgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Development region"
+msgstr "Entwicklungsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District"
+msgstr "Distrikt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District council area"
+msgstr "Bezirksregierungsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District municipality"
+msgstr "Distriktverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "District with special status"
+msgstr "Distrikt mit Sonderstatus"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Districts under republic administration"
+msgstr "Distrikt unter Republikverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Division"
+msgstr "Untereinheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic Prefecture"
+msgstr "Wirtschaftspräfektur"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Economic region"
+msgstr "Wirtschaftsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Emirate"
+msgstr "Emirat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Entity"
+msgstr "Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Dependency"
+msgstr "Bundesstaatliche Kolonie"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal District"
+msgstr "Bundesgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territories"
+msgstr "Bundesländer"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal Territory"
+msgstr "Bundesunmittelbares Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal capital territory"
+msgstr "Hauptstadtterritorium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Free municipal consortium"
+msgstr "Freies kommunales Konsortium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical entity"
+msgstr "Geographische Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical region"
+msgstr "Geographische Region"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Geographical unit"
+msgstr "Geographische Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Governorate"
+msgstr "Regierungsbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Group of islands (20 inhabited islands)"
+msgstr "Inselgruppe (20 bewohnte Inseln)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Included for completeness"
+msgstr "Der Vollständigkeit halber hinzugefügt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Indigenous region"
+msgstr "Autochtone Region"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island"
+msgstr "Insel"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island council"
+msgstr "Inselrat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Island group"
+msgstr "Inselgruppe"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Islands, groups of islands"
+msgstr "Inseln, Inselgruppen"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Land"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Local council"
+msgstr "Gemeinderat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "London borough"
+msgstr "Stadtbezirk London"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan administration"
+msgstr "Metropolverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan cities"
+msgstr "Metropolstädte"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan city"
+msgstr "Metropolstadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan collectivity with special status"
+msgstr "Metropolgebietskörperschaft mit Sonderstatus"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan department"
+msgstr "Metropoldepartement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan district"
+msgstr "Metropolbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Metropolitan region"
+msgstr "Metropolregion"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipalities"
+msgstr "Stadtverwaltungen"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Municipality"
+msgstr "Stadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Nation"
+msgstr "Nation"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Oblast"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Outlying area"
+msgstr "Randbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity"
+msgstr "Überseegebietskörperschaft"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas collectivity with special status"
+msgstr "Überseegebietskörperschaft mit Sonderstatus"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas department"
+msgstr "Region Übersee/Departement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region"
+msgstr "Region Übersee/Departement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas region/department"
+msgstr "Region Übersee/Departement"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territorial collectivity"
+msgstr "Territoriale Gemeinschaft Übersee"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas territory"
+msgstr "Überseeterritorium"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Pakistan administered area"
+msgstr "Von Pakistan verwaltetes Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Parish"
+msgstr "Gemeinde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularate"
+msgstr "Distrikt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Popularates"
+msgstr "Distrikt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Prefecture"
+msgstr "Präfektur"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Principality"
+msgstr "Fürstentum"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Province"
+msgstr "Provinz"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Quarter"
+msgstr "Viertel"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rayon"
+msgstr "Bezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Region"
+msgstr "Region"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional council"
+msgstr "Regionalrat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Regional state"
+msgstr "Regionalstaat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republic"
+msgstr "Republik"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Republican City"
+msgstr "Republikanische Stadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Rural municipality"
+msgstr "Ländliche Kommune"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Self-governed part"
+msgstr "Autonomer Teil"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special District"
+msgstr "Special District"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Municipality"
+msgstr "Sonderstadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special Region"
+msgstr "Sonderverwaltungsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative city"
+msgstr "Sonderverwaltungsstadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special administrative region"
+msgstr "Sonderverwaltungszone"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special city"
+msgstr "Special city"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special island authority"
+msgstr "Spezielle Inselauthorität"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing city"
+msgstr "Besondere selbstverwaltete Stadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special self-governing province"
+msgstr "Besondere selbstverwaltete Provinz"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Special zone"
+msgstr "Sonderwirtschaftszone"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "State"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territorial unit"
+msgstr "Territoriale Einheit"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Territory"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town"
+msgstr "Stadt"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Town council"
+msgstr "Stadtrat"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Two-tier county"
+msgstr "Zweistufenbezirk"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Union territory"
+msgstr "Gemeinschaftsgebiet"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority"
+msgstr "Einheitliche Behörde"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (england)"
+msgstr "Unitäre Behörde (England)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Unitary authority (wales)"
+msgstr "Unitäre Behörde (Wales)"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban community"
+msgstr "Städtische Gemeinschaft"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Urban municipality"
+msgstr "Städtische Kommune"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Voivodship"
+msgstr "Woiwodschaft"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Ward"
+msgstr "Ward"
+
+msgctxt "selection:country.subdivision,type:"
+msgid "zone"
+msgstr "Zone"
