@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="work"/>
+    <field name="work"/>
+    <newline/>
+    <label name="progress"/>
+    <group col="2" id="progress">
+        <field name="progress" factor="100" xexpand="0"/>
+        <label name="progress" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+    <label name="invoice_line"/>
+    <field name="invoice_line"/>
+</form>
