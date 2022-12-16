@@ -1,0 +1,79 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.rule,account:"
+msgid "Substitution Account"
+msgstr "Compte de substitució"
+
+msgctxt "field:account.account.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.account.rule,end_date:"
+msgid "Ending Date"
+msgstr "Data final"
+
+msgctxt "field:account.account.rule,origin_account:"
+msgid "Original Account"
+msgstr "Compte original"
+
+msgctxt "field:account.account.rule,return_:"
+msgid "Return"
+msgstr "Devolució"
+
+msgctxt "field:account.account.rule,start_date:"
+msgid "Starting Date"
+msgstr "Data inicial"
+
+msgctxt "field:account.account.rule,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.account.rule,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.account.rule,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "help:account.account.rule,return_:"
+msgid "Check to limit to return operation."
+msgstr "Marcar per limitar només a operacions de devolució."
+
+msgctxt "model:account.account.rule,name:"
+msgid "Account Rule"
+msgstr "Regla de comptabilització"
+
+msgctxt "model:ir.action,name:act_account_rule_form"
+msgid "Account Rules"
+msgstr "Regles de comptabilització"
+
+msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
+msgid "Account Rules"
+msgstr "Regles de comptabilització"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Payable"
+msgstr "A pagar"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Receivable"
+msgstr "A cobrar"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "selection:account.account.rule,type:"
+msgid "Stock"
+msgstr "Existències"

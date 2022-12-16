@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,history_datetime:"
+msgid "History DateTime"
+msgstr "Cronologia date e ora"
+
+msgctxt "field:account.invoice,numbered_at:"
+msgid "Numbered At"
+msgstr "Numerato a"

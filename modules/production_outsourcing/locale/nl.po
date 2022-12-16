@@ -1,0 +1,69 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,purchase_lines:"
+msgid "Purchase Lines"
+msgstr "aankooplijnen"
+
+msgctxt "field:production.routing,supplier:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "field:production.routing,supplier_quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:production.routing,supplier_service:"
+msgid "Service"
+msgstr "Dienst"
+
+msgctxt "field:production.routing,supplier_service_supplier:"
+msgid "Supplier's Service"
+msgstr "Service van de leverancier"
+
+msgctxt "field:purchase.line,production:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "help:production,purchase_lines:"
+msgid "The lines to add to the production cost."
+msgstr "De lijnen om toe te voegen aan de productiekosten."
+
+msgctxt "help:production.routing,supplier:"
+msgid "The supplier to outsource the production."
+msgstr "De leverancier om de productie aan uit te besteden."
+
+msgctxt "help:production.routing,supplier_quantity:"
+msgid "The quantity to buy to produce one time the BOM."
+msgstr ""
+"De hoeveelheid die moet worden gekocht om de stuklijst één keer te "
+"produceren."
+
+msgctxt "help:production.routing,supplier_service:"
+msgid "The service to buy to the supplier for the production."
+msgstr "De te kopen service van de leverancier voor de productie."
+
+msgctxt "help:production.routing,supplier_service_supplier:"
+msgid "The supplier's service to buy for the production."
+msgstr "De service te kopen van de leverancier voor de productie."
+
+msgctxt "help:purchase.line,production:"
+msgid "Add to the cost of the production."
+msgstr "Voeg toe aan de kosten van de productie."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"De productie \"%(productions)s\"kan niet verwerkt worden om dat er nog "
+"aankopen hangende zijn."
+
+msgctxt "view:production.routing:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "view:purchase.line:"
+msgid "Production"
+msgstr "Productie"
