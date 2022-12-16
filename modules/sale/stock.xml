@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_list_shipment">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">move_list_shipment</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_move_relate">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('sale', '=', Eval('active_id')), ('sale', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_list_shipment"/>
+            <field name="act_window" ref="act_sale_move_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="stock.move_view_form"/>
+            <field name="act_window" ref="act_sale_move_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_move_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_sale_move_relate"/>
+        </record>
+    </data>
+</tryton>
