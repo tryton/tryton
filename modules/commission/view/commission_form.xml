@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Commission">
+    <label name="agent"/>
+    <field name="agent"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="type_"/>
+    <field name="type_"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="origin"/>
+    <field name="origin"/>
+    <newline/>
+    <label name="invoice_line"/>
+    <field name="invoice_line"/>
+    <label name="invoice_state"/>
+    <field name="invoice_state"/>
+</form>
