@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.role,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:res.role,create_uid:"
+msgid "Create User"
+msgstr "Loo kasutaja"
+
+msgctxt "field:res.role,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
+msgctxt "field:res.role,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.role,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:res.role,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:res.role,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:res.role,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:res.role-res.group,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:res.role-res.group,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:res.role-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+msgctxt "field:res.role-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.role-res.group,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:res.role-res.group,role:"
+msgid "Role"
+msgstr "Roll"
+
+msgctxt "field:res.role-res.group,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:res.role-res.group,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "field:res.user,roles:"
+msgid "Roles"
+msgstr "Rollid"
+
+msgctxt "field:res.user.role,create_date:"
+msgid "Create Date"
+msgstr "Loomise kuupäev"
+
+msgctxt "field:res.user.role,create_uid:"
+msgid "Create User"
+msgstr "Looja"
+
+msgctxt "field:res.user.role,from_date:"
+msgid "From Date"
+msgstr "Kuupäevast"
+
+msgctxt "field:res.user.role,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.role,rec_name:"
+msgid "Record Name"
+msgstr "Kirje nimi"
+
+msgctxt "field:res.user.role,role:"
+msgid "Role"
+msgstr "Roll"
+
+msgctxt "field:res.user.role,to_date:"
+msgid "To Date"
+msgstr "Kuupäevani"
+
+msgctxt "field:res.user.role,user:"
+msgid "User"
+msgstr "Kasutaja"
+
+msgctxt "field:res.user.role,write_date:"
+msgid "Write Date"
+msgstr "Muutmise kuupäev"
+
+msgctxt "field:res.user.role,write_uid:"
+msgid "Write User"
+msgstr "Muutja"
+
+msgctxt "model:ir.action,name:act_role_form"
+msgid "Roles"
+msgstr "Rollid"
+
+msgctxt "model:ir.ui.menu,name:menu_role_form"
+msgid "Roles"
+msgstr "Rollid"
+
+msgctxt "model:res.role,name:"
+msgid "Role"
+msgstr "Roll"
+
+msgctxt "model:res.role-res.group,name:"
+msgid "Role - Group"
+msgstr "Roll - Grupp"
+
+msgctxt "model:res.user.role,name:"
+msgid "User Role"
+msgstr "Kasutajaroll"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Synchronize Users Roles"
+msgstr "Sünkroniseeri kasutajarollid"
