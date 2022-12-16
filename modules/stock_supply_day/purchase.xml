@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_supplier_view_form">
+            <field name="model">purchase.product_supplier</field>
+            <field name="inherit" ref="purchase.product_supplier_view_form"/>
+            <field name="name">product_supplier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_weekdayview_form">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">form</field>
+            <field name="name">product_supplier_weekday_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_supplier_weekdayview_tree">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">product_supplier_weekday_tree</field>
+        </record>
+
+        <record model="ir.ui.view"
+            id="product_supplier_weekdayview_tree_editable">
+            <field name="model">purchase.product_supplier.day</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_supplier_weekday_tree_editable</field>
+        </record>
+
+    </data>
+</tryton>
