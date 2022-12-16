@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Work Center">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="category"/>
+    <field name="category"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="cost_price"/>
+    <field name="cost_price"/>
+    <label name="cost_method"/>
+    <field name="cost_method"/>
+    <field name="children" colspan="4"
+        view_ids="production_work.work_center_view_list_simple"/>
+</form>
