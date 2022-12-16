@@ -1,0 +1,103 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "میزان فروش"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "اضافی"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "رایگان"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "زیرمجموعه واحد اندازه گیری محصول"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "میزان فروش"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "واحد"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "اضافی"
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "اضافات"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "فروش اضافات"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "اضافات"
+
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "فروش اضافی"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr "سطر فروش اضافی"
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "سطر فروش"

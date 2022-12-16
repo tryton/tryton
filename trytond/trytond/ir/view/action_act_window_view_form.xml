@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="act_window"/>
+    <field name="act_window" colspan="3"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="view"/>
+    <field name="view"/>
+</form>
