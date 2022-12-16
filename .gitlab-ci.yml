@@ -1,0 +1,30 @@
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "trigger"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH =~ /^branch\/.*/
+
+stages:
+  - preparation
+  - execution
+
+prepare-job:
+  stage: preparation
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
+  script:
+    - python .gitlab-scripts/generate-ci.py gitlab-generated-ci.yml
+  artifacts:
+    paths:
+      - gitlab-generated-ci.yml
+
+trigger-job:
+  stage: execution
+  trigger:
+    forward:
+      pipeline_variables: true
+    strategy: depend
+    include:
+      - artifact: gitlab-generated-ci.yml
+        job: prepare-job
