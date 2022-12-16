@@ -1,0 +1,720 @@
+type,name,res_id,src,value,fuzzy
+error,access_error,0,"You try to bypass an access rule!
+(Document type: %s)","Опитвате се да прескочите право за достъп!
+(Вид документ: %s)",0
+error,delete_workflow_record,0,You cannot delete a record with a running workflow.,Не може да изтривате запис от работещ работен процес.,0
+error,delete_xml_record,0,You are not allowed to delete this record.,Нямате права да изтривате този запис.,0
+error,digits_validation_record,0,"The field ""%s"" on ""%s"" has too many decimal digits.","Полето ""%s"" от ""%s"" има много десетични цифри",0
+error,domain_validation_record,0,"The value of the field ""%s"" on ""%s"" is not valid according to its domain.","Стойността на полето ""%s"" от ""%s"" не е валидно според домейна.",0
+error,foreign_model_exist,0,"Could not delete ""%s"" records because they are used on field ""%s"" of ""%s"".","Не може да изтривате записи ""%s"" защото се използват в поле ""%s"" от ""%s"".",0
+error,foreign_model_missing,0,"The value of field ""%s"" on ""%s"" doesn't exist.","Стойността на полето ""%s"" от ""%s"" не съществува.",0
+error,ir.action.act_window,0,Invalid context!,Невалиден контекст!,0
+error,ir.action.act_window,0,Invalid domain!,Невалиден домайн!,0
+error,ir.action.act_window,0,Invalid search criteria!,Невалиден критерии за търсене!,0
+error,ir.action.act_window,0,Invalid views!,Невалидни изгледи!,0
+error,ir.action.keyword,0,Wrong wizard model!,Грешен модел на помощник!,0
+error,ir.action.report,0,The internal name must be unique by module!,Вътрепното име трябва да е уникално в модула!,0
+error,ir.attachment,0,The  names of attachments must be unique by resource!,Имената на прикачените файлове трябва да са уникални по ресурс!,0
+error,ir.cron,0,Scheduled action failed,Планираното действие неуспяло,0
+error,ir.cron,0,"The following action failed to execute properly: ""%s""
+ Traceback: 
+
+%s
+","Следното действие не е изпълнено успешно: ""%s""
+Информация:
+
+%s",0
+error,ir.lang,0,Invalid Grouping!,Невалидно групиране!,0
+error,ir.lang,0,The date format is not valid!,Формата на датата е невалиден!,0
+error,ir.lang,0,decimal_point and thousands_sep must be different!,десетична точка и разделител на хиляди трябва да са различни!,0
+error,ir.model,0,Module Name must be a python identifier!,Името на модула трябва да бъде python идентификатор!,0
+error,ir.model,0,The model must be unique!,Модела трябва да е уникален!,0
+error,ir.model.access,0,Only one record by model and group is allowed!,Разрешен е само един запис за модел и група!,0
+error,ir.model.access,0,You can not create this kind of document! (%s),Не може да създадете този вид документ! (%s),0
+error,ir.model.access,0,You can not delete this document! (%s),Не може да изтриете този документ! (%s),0
+error,ir.model.access,0,You can not read this document! (%s),Не може да четете този документ! (%s),0
+error,ir.model.access,0,You can not write in this document! (%s),Не може да пишете в този документ! (%s),0
+error,ir.model.data,0,"The triple (fs_id, module, model) must be unique!","Тройката (fs_id, module, model) трябва да е уникална!",0
+error,ir.model.field,0,Model Field Name must be a python identifier!,Името за поле на модел трябва да бъде python идентификатор!,0
+error,ir.model.field,0,The field name in model must be unique!,Името на полето трябва да е уникално!,0
+error,ir.model.field.access,0,Only one record by field and group is allowed!,Позволен е само един запис по поле и група!,0
+error,ir.model.field.access,0,You can not read the field! (%s.%s),Не може да прочетете полето! (%s.%s),0
+error,ir.model.field.access,0,You can not write on the field! (%s.%s),Не може да записвате полето! (%s.%s),0
+error,ir.module.module,0,"Missing dependencies %s for module ""%s""","Липсващи зависимости %s за модул ""%s""",0
+error,ir.module.module,0,The modules you are trying to uninstall depends on installed modules:,От модула който исакте да деинсталирате зависят следните инсталирани модули:,0
+error,ir.module.module,0,The name of the module must be unique!,Името на модула трябва да е уникално!,0
+error,ir.module.module,0,You can not remove a module that is installed or will be installed,Не може да изтривате модул който инсталиран или ще бъде инсталиран,0
+error,ir.module.module.dependency,0,Dependency must be unique by module!,Зависимостта трябва да е уникална за модул!,0
+error,ir.rule.group,0,Global and Default are mutually exclusive!,Глобален и По подразбиране са взаимно самоизключващи се!,0
+error,ir.sequence,0,Invalid prefix/suffix!,Невалиден префикс/суфикс!,0
+error,ir.sequence,0,Last Timestamp could not be in future!,Последния времеви маркер не може да е в бъдещето!,0
+error,ir.sequence,0,Missing sequence!,Липсва последователност!,0
+error,ir.sequence.strict,0,Invalid prefix/suffix!,Невалиден префикс/суфикс!,0
+error,ir.sequence.strict,0,Last Timestamp could not be in future!,Последния времеви маркер не може да е в бъдещето!,0
+error,ir.sequence.strict,0,Missing sequence!,Липсва последователност!,0
+error,ir.translation,0,Translation must be unique,Превода трябва да е уникален,0
+error,ir.translation,0,Translation of type 'model' must be unique!,Превод от вид 'модел' трябва да е уникален!,0
+error,ir.trigger,0,"""On Time"" and others are mutually exclusive!","""В даден момент"" и останалите са взаимно изключващи се!",0
+error,ir.trigger,0,Condition must be a python expression!,Условието трябва да е python израз!,0
+error,ir.ui.view,0,Invalid XML for View!,Невалиден XML за изглед!,0
+error,not_found_in_selection,0,Key %r not found in selection field %r,Ключа %r не е намерен в полето за избор %r,0
+error,read_error,0,"You try to read records that don't exist anymore!
+(Document type: %s)","Опитвате се да прочетете запис който вече не съществува!
+(Вид документ: %s)",0
+error,reference_syntax_error,0,Syntax error for reference %r in %s,Синтактична грешка за отпратка %r в %s,0
+error,relation_not_found,0,Relation not found: %r in %s,Не е намерена зависимост: %r в %s,0
+error,required_field,0,"The field ""%s"" on ""%s"" is required.","Полето ""%s"" от ""%s"" е задължително.",0
+error,required_validation_record,0,"The field ""%s"" on ""%s"" is required.","Полето ""%s"" от ""%s"" е задължително.",0
+error,search_function_missing,0,"Missing search function on field ""%s"".","Липсват функции за търсене върху поле ""%s"".",0
+error,size_validation_record,0,"The field ""%s"" on ""%s"" is too long.","Полето ""%s"" от ""%s"" е много дълго.",0
+error,too_many_relations_found,0,Too many relations found: %r in %s,Намерени са твърде много зависимости: %r в %s,0
+error,write_error,0,"You try to write on records that don't exist anymore!
+(Document type: %s)","Опитвате се да запишете в запис който вече не съшествува!
+(Вид документ: %s)",0
+error,write_xml_record,0,You are not allowed to modify this record.,Нямате права да променяте този запис.,0
+error,xml_id_syntax_error,0,Syntax error for XML id %r in %s,Ситактична грешка за XML id %r в %s,0
+error,xml_record_desc,0,This record is part of the base configuration.,Този запис е част от основната конфигурация.,0
+field,"ir.action,active",0,Active,Активен,0
+field,"ir.action,groups",0,Groups,Групи,0
+field,"ir.action,icon",0,Icon,Икона,0
+field,"ir.action,keywords",0,Keywords,Ключови думи,0
+field,"ir.action,name",0,Name,Име,0
+field,"ir.action,rec_name",0,Name,Име,0
+field,"ir.action,type",0,Type,Вид,0
+field,"ir.action,usage",0,Usage,Използване,0
+field,"ir.action.act_window,act_window_views",0,Views,Изгледи,0
+field,"ir.action.act_window,action",0,Action,Действие,0
+field,"ir.action.act_window,auto_refresh",0,Auto-Refresh,Самообновяване,0
+field,"ir.action.act_window,context",0,Context Value,Стойност на котекст,0
+field,"ir.action.act_window,domain",0,Domain Value,Стойност на домейн,0
+field,"ir.action.act_window,limit",0,Limit,Ограничение,0
+field,"ir.action.act_window,pyson_context",0,PySON Context,PySON контекст,0
+field,"ir.action.act_window,pyson_domain",0,PySON Domain,PySON контекст,0
+field,"ir.action.act_window,pyson_search_value",0,PySON Search Criteria,PySON критерии за търсене,0
+field,"ir.action.act_window,rec_name",0,Name,Име,0
+field,"ir.action.act_window,res_model",0,Model,Модел,0
+field,"ir.action.act_window,search_value",0,Search Criteria,Критерии за търсене,0
+field,"ir.action.act_window,view_type",0,Type of view,Вид изглед,0
+field,"ir.action.act_window,views",0,Views,Изгледи,0
+field,"ir.action.act_window,window_name",0,Window Name,Име на прозорец,0
+field,"ir.action.act_window.view,act_window",0,Action,Действие,0
+field,"ir.action.act_window.view,rec_name",0,Name,Име,0
+field,"ir.action.act_window.view,sequence",0,Sequence,Последователност,0
+field,"ir.action.act_window.view,view",0,View,Изглед,0
+field,"ir.action.keyword,action",0,Action,Действие,0
+field,"ir.action.keyword,keyword",0,Keyword,Ключова дума,0
+field,"ir.action.keyword,model",0,Model,Модел,0
+field,"ir.action.keyword,rec_name",0,Name,Име,0
+field,"ir.action.report,action",0,Action,Действие,0
+field,"ir.action.report,direct_print",0,Direct Print,Директен печат,0
+field,"ir.action.report,email",0,Email,Email,0
+field,"ir.action.report,extension",0,Extension,Разширение,0
+field,"ir.action.report,model",0,Model,Модел,0
+field,"ir.action.report,module",0,Module,Модул,0
+field,"ir.action.report,pyson_email",0,PySON Email,PySON Email,0
+field,"ir.action.report,rec_name",0,Name,Име,0
+field,"ir.action.report,report",0,Path,Път,0
+field,"ir.action.report,report_content",0,Content,Съдържание,0
+field,"ir.action.report,report_content_data",0,Content,Съдържание,0
+field,"ir.action.report,report_name",0,Internal Name,Вътрешно име,0
+field,"ir.action.report,style",0,Style,Стил,0
+field,"ir.action.report,style_content",0,Style,Стил,0
+field,"ir.action.url,action",0,Action,Действие,0
+field,"ir.action.url,rec_name",0,Name,Име,0
+field,"ir.action.url,url",0,Action Url,URL на действие,0
+field,"ir.action.wizard,action",0,Action,Действие,0
+field,"ir.action.wizard,email",0,Email,Email,0
+field,"ir.action.wizard,model",0,Model,Модел,0
+field,"ir.action.wizard,rec_name",0,Name,Име,0
+field,"ir.action.wizard,window",0,Window,Прозорец,0
+field,"ir.action.wizard,wiz_name",0,Wizard name,Име на помощник,0
+field,"ir.action.wizard_size,height",0,Height,Височина,0
+field,"ir.action.wizard_size,model",0,Model,Модел,0
+field,"ir.action.wizard_size,rec_name",0,Name,Име,0
+field,"ir.action.wizard_size,user",0,User,Потребител,0
+field,"ir.action.wizard_size,width",0,Width,Ширина,0
+field,"ir.action.wizard_size,wizard",0,Wizard,Помощник,0
+field,"ir.attachment,collision",0,Collision,Конфликт,0
+field,"ir.attachment,data",0,Data,Данни,0
+field,"ir.attachment,data_size",0,Data size,Размер на данни,0
+field,"ir.attachment,datas",0,Datas,Данни,0
+field,"ir.attachment,datas_size",0,Datas size,Размер на данните,0
+field,"ir.attachment,description",0,Description,Описание,0
+field,"ir.attachment,digest",0,Digest,Резюме,0
+field,"ir.attachment,last_modification",0,Last Modification,Последна промяна,0
+field,"ir.attachment,last_user",0,Last User,Последен потребител,0
+field,"ir.attachment,link",0,Link,Препратка,0
+field,"ir.attachment,name",0,Name,Име на прикачен файл,0
+field,"ir.attachment,rec_name",0,Name,Име,0
+field,"ir.attachment,resource",0,Resource,Ресурс,0
+field,"ir.attachment,summary",0,Summary,Обобщено,0
+field,"ir.attachment,type",0,Type,Вид,0
+field,"ir.cache,name",0,Name,Име,0
+field,"ir.cache,rec_name",0,Name,Име,0
+field,"ir.cache,timestamp",0,Timestamp,Дата,0
+field,"ir.cron,active",0,Active,Активен,0
+field,"ir.cron,args",0,Arguments,Аргументи,0
+field,"ir.cron,doall",0,Repeat missed,Повтаряне на липсващите,0
+field,"ir.cron,function",0,Function,Функция,0
+field,"ir.cron,interval_number",0,Interval Number,Номер на интервал,0
+field,"ir.cron,interval_type",0,Interval Unit,Единица за интервал,0
+field,"ir.cron,model",0,Model,Модел,0
+field,"ir.cron,name",0,Name,Име,0
+field,"ir.cron,nextcall",0,Next call date,Следващата дата на разговор,0
+field,"ir.cron,numbercall",0,Number of calls,Брой обаждания,0
+field,"ir.cron,priority",0,Priority,Важност,0
+field,"ir.cron,rec_name",0,Name,Име,0
+field,"ir.cron,request_user",0,Request User,Заявил потребител,0
+field,"ir.cron,running",0,Running,Работещ,0
+field,"ir.cron,user",0,Execution User,Изпълняващ потребител,0
+field,"ir.default,clause",0,Clause,Клауза,0
+field,"ir.default,field",0,Field,Поле,0
+field,"ir.default,model",0,Model,Модел,0
+field,"ir.default,rec_name",0,Name,Име,0
+field,"ir.default,user",0,User,Потребител,0
+field,"ir.default,value",0,Value,Стойност,0
+field,"ir.export,export_fields",0,Fields,Полета,0
+field,"ir.export,name",0,Name,Име,0
+field,"ir.export,rec_name",0,Name,Име,0
+field,"ir.export,resource",0,Resource,Ресурс,0
+field,"ir.export.line,export",0,Export,Извличане,0
+field,"ir.export.line,name",0,Name,Име,0
+field,"ir.export.line,rec_name",0,Name,Име,0
+field,"ir.lang,active",0,Active,Активен,0
+field,"ir.lang,code",0,Code,Код,0
+field,"ir.lang,date",0,Date,Дата,0
+field,"ir.lang,decimal_point",0,Decimal Separator,Десетичен разделител,0
+field,"ir.lang,direction",0,Direction,Посока,0
+field,"ir.lang,grouping",0,Grouping,Групиране,0
+field,"ir.lang,name",0,Name,Име,0
+field,"ir.lang,rec_name",0,Name,Име,0
+field,"ir.lang,thousands_sep",0,Thousands Separator,Разделител за хиляди,0
+field,"ir.lang,translatable",0,Translatable,За превод,0
+field,"ir.model,fields",0,Fields,Полета,0
+field,"ir.model,info",0,Information,Информация,0
+field,"ir.model,model",0,Model Name,Име на модел,0
+field,"ir.model,module",0,Module,Модул,0
+field,"ir.model,name",0,Model Description,Описание на модел,0
+field,"ir.model,rec_name",0,Name,Име,0
+field,"ir.model.access,description",0,Description,Описание,0
+field,"ir.model.access,group",0,Group,Група,0
+field,"ir.model.access,model",0,Model,Модел,0
+field,"ir.model.access,perm_create",0,Create Access,Права за създаване,0
+field,"ir.model.access,perm_delete",0,Delete Access,Права за изтриване,0
+field,"ir.model.access,perm_read",0,Read Access,Права за четене,0
+field,"ir.model.access,perm_write",0,Write Access,Права за писане,0
+field,"ir.model.access,rec_name",0,Name,Име,0
+field,"ir.model.data,date_init",0,Init Date,Начална дата,0
+field,"ir.model.data,date_update",0,Update Date,Дата на обновяване,0
+field,"ir.model.data,db_id",0,Resource ID,ID на ресурс,0
+field,"ir.model.data,fs_id",0,Identifier on File System,Идентификатор от файлова система,0
+field,"ir.model.data,inherit",0,Inherit,Наследяване,0
+field,"ir.model.data,model",0,Model,Модел,0
+field,"ir.model.data,module",0,Module,Модул,0
+field,"ir.model.data,noupdate",0,No Update,Без обновяване,0
+field,"ir.model.data,rec_name",0,Name,Име,0
+field,"ir.model.data,values",0,Values,Стойности,0
+field,"ir.model.field,field_description",0,Field Description,Описание на поле,0
+field,"ir.model.field,groups",0,Groups,Групи,0
+field,"ir.model.field,help",0,Help,Помощ,0
+field,"ir.model.field,model",0,Model,Модел,0
+field,"ir.model.field,module",0,Module,Модул,0
+field,"ir.model.field,name",0,Name,Име,0
+field,"ir.model.field,rec_name",0,Name,Име,0
+field,"ir.model.field,relation",0,Model Relation,Модел на връзка,0
+field,"ir.model.field,ttype",0,Field Type,Вид на поле,0
+field,"ir.model.field.access,description",0,Description,Описание,0
+field,"ir.model.field.access,field",0,Field,Поле,0
+field,"ir.model.field.access,group",0,Group,Група,0
+field,"ir.model.field.access,perm_read",0,Read Access,Права за четене,0
+field,"ir.model.field.access,perm_write",0,Write Access,Права за писане,0
+field,"ir.model.field.access,rec_name",0,Name,Име на прикачен файл,0
+field,"ir.model.print_model_graph.init,filter",0,Filter,Филтър,0
+field,"ir.model.print_model_graph.init,level",0,Level,Ниво,0
+field,"ir.module.module,author",0,Author,Автор,0
+field,"ir.module.module,dependencies",0,Dependencies,Зависимости,0
+field,"ir.module.module,description",0,Description,Описание,0
+field,"ir.module.module,name",0,Name,Име,0
+field,"ir.module.module,rec_name",0,Name,Име,0
+field,"ir.module.module,shortdesc",0,Short description,Кратко описание,0
+field,"ir.module.module,state",0,State,Състояние,0
+field,"ir.module.module,version",0,Version,Версия,0
+field,"ir.module.module,website",0,Website,Website,0
+field,"ir.module.module.config_wizard.item,name",0,Name,Име,0
+field,"ir.module.module.config_wizard.item,rec_name",0,Name,Име,0
+field,"ir.module.module.config_wizard.item,sequence",0,Sequence,Последователност,0
+field,"ir.module.module.config_wizard.item,state",0,State,Състояние,0
+field,"ir.module.module.dependency,module",0,Module,Модул,0
+field,"ir.module.module.dependency,name",0,Name,Име,0
+field,"ir.module.module.dependency,rec_name",0,Name,Име,0
+field,"ir.module.module.dependency,state",0,State,Състояние,0
+field,"ir.module.module.install_upgrade.init,module_info",0,Modules to update,Модули за обновяване,0
+field,"ir.property,field",0,Field,Поле,0
+field,"ir.property,name",0,Name,Име,0
+field,"ir.property,rec_name",0,Name,Име,0
+field,"ir.property,res",0,Resource,Ресурс,0
+field,"ir.property,value",0,Value,Стойност,0
+field,"ir.rule,field",0,Field,Поле,0
+field,"ir.rule,operand",0,Operand,Операнд,0
+field,"ir.rule,operator",0,Operator,Оператор,0
+field,"ir.rule,rec_name",0,Name,Име,0
+field,"ir.rule,rule_group",0,Group,Група,0
+field,"ir.rule.group,default_p",0,Default,По подразбиране,0
+field,"ir.rule.group,global_p",0,Global,Глобален,0
+field,"ir.rule.group,groups",0,Groups,Групи,0
+field,"ir.rule.group,model",0,Model,Модел,0
+field,"ir.rule.group,name",0,Name,Име,0
+field,"ir.rule.group,perm_create",0,Create Access,Права за създаване,0
+field,"ir.rule.group,perm_delete",0,Delete Access,Изтриване на достъп,0
+field,"ir.rule.group,perm_read",0,Read Access,Права за четене,0
+field,"ir.rule.group,perm_write",0,Write Access,Права за писане,0
+field,"ir.rule.group,rec_name",0,Name,Име,0
+field,"ir.rule.group,rules",0,Tests,Тестове,0
+field,"ir.rule.group,users",0,Users,Потребители,0
+field,"ir.sequence,active",0,Active,Активен,0
+field,"ir.sequence,code",0,Sequence Code,Вид последователност,0
+field,"ir.sequence,last_timestamp",0,Last Timestamp,Последен времеви маркер,0
+field,"ir.sequence,name",0,Sequence Name,Име на последователност,0
+field,"ir.sequence,number_increment",0,Increment Number,Стойност на увеличаване,0
+field,"ir.sequence,number_next",0,Next Number,Следващо число,0
+field,"ir.sequence,padding",0,Number padding,Фиксирана дължина (нули),0
+field,"ir.sequence,prefix",0,Prefix,Префикс,0
+field,"ir.sequence,rec_name",0,Name,Име,0
+field,"ir.sequence,suffix",0,Suffix,Суфикс,0
+field,"ir.sequence,timestamp_offset",0,Timestamp Offset,Отместване на времеви маркер,0
+field,"ir.sequence,timestamp_rounding",0,Timestamp Rounding,Закръгление на времеви маркер,0
+field,"ir.sequence,type",0,Type,Вид,0
+field,"ir.sequence.strict,active",0,Active,Активен,0
+field,"ir.sequence.strict,code",0,Sequence Code,Вид последователност,0
+field,"ir.sequence.strict,last_timestamp",0,Last Timestamp,Последен времеви маркер,0
+field,"ir.sequence.strict,name",0,Sequence Name,Име на последователност,0
+field,"ir.sequence.strict,number_increment",0,Increment Number,Стойност на увеличаване,0
+field,"ir.sequence.strict,number_next",0,Next Number,Следващо число,0
+field,"ir.sequence.strict,padding",0,Number padding,Фиксирана дължина (нули),0
+field,"ir.sequence.strict,prefix",0,Prefix,Префикс,0
+field,"ir.sequence.strict,rec_name",0,Name,Име,0
+field,"ir.sequence.strict,suffix",0,Suffix,Суфикс,0
+field,"ir.sequence.strict,timestamp_offset",0,Timestamp Offset,Отместване на времеви маркер,0
+field,"ir.sequence.strict,timestamp_rounding",0,Timestamp Rounding,Закръгление на времеви маркер,0
+field,"ir.sequence.strict,type",0,Type,Вид,0
+field,"ir.sequence.type,code",0,Sequence Code,Код на последователност,0
+field,"ir.sequence.type,name",0,Sequence Name,Име на последователност,0
+field,"ir.sequence.type,rec_name",0,Name,Име,0
+field,"ir.translation,fuzzy",0,Fuzzy,Неясен,0
+field,"ir.translation,lang",0,Language,Език,0
+field,"ir.translation,model",0,Model,Модел,0
+field,"ir.translation,module",0,Module,Модул,0
+field,"ir.translation,name",0,Field Name,Име на поле,0
+field,"ir.translation,rec_name",0,Name,Име,0
+field,"ir.translation,res_id",0,Resource ID,ID на ресурс,0
+field,"ir.translation,src",0,Source,Източник,0
+field,"ir.translation,src_md5",0,Source MD5,MD5 на източник,0
+field,"ir.translation,type",0,Type,Вид,0
+field,"ir.translation,value",0,Translation Value,Преведено значение,0
+field,"ir.translation.export.init,lang",0,Language,Език,0
+field,"ir.translation.export.init,module",0,Module,Модул,0
+field,"ir.translation.export.start,file",0,File,Файл,0
+field,"ir.translation.update.init,lang",0,Language,Език,0
+field,"ir.trigger,action_function",0,Action Function,Функция на действие,0
+field,"ir.trigger,action_model",0,Action Model,Модел на действие,0
+field,"ir.trigger,active",0,Active,Активен,0
+field,"ir.trigger,condition",0,Condition,Условие,0
+field,"ir.trigger,limit_number",0,Limit Number,Макс брой редове,0
+field,"ir.trigger,minimum_delay",0,Minimum Delay,Минимално забавяне,0
+field,"ir.trigger,model",0,Model,Модел,0
+field,"ir.trigger,name",0,Name,Име,0
+field,"ir.trigger,on_create",0,On Create,При създаване,0
+field,"ir.trigger,on_delete",0,On Delete,При изтриване,0
+field,"ir.trigger,on_time",0,On Time,В даден момент,0
+field,"ir.trigger,on_write",0,On Write,При запис,0
+field,"ir.trigger,rec_name",0,Name,Име,0
+field,"ir.trigger.log,rec_name",0,Name,Име,0
+field,"ir.trigger.log,record_id",0,Record ID,ID на запис,0
+field,"ir.trigger.log,trigger",0,Trigger,Превключвател,0
+field,"ir.ui.icon,icon",0,Icon,Икона,0
+field,"ir.ui.icon,module",0,Module,Модул,0
+field,"ir.ui.icon,name",0,Name,Име на прикачен файл,0
+field,"ir.ui.icon,path",0,SVG Path,Път към SVG файл,0
+field,"ir.ui.icon,rec_name",0,Name,Име на прикачен файл,0
+field,"ir.ui.icon,sequence",0,Sequence,Последователност,0
+field,"ir.ui.menu,action",0,Action,Действие,0
+field,"ir.ui.menu,active",0,Active,Активен,0
+field,"ir.ui.menu,childs",0,Children,Деца,0
+field,"ir.ui.menu,complete_name",0,Complete Name,Пълно име,0
+field,"ir.ui.menu,groups",0,Groups,Групи,0
+field,"ir.ui.menu,icon",0,Icon,Икона,0
+field,"ir.ui.menu,name",0,Menu,Меню,0
+field,"ir.ui.menu,parent",0,Parent Menu,Родителско меню,0
+field,"ir.ui.menu,rec_name",0,Name,Име,0
+field,"ir.ui.menu,sequence",0,Sequence,Последователност,0
+field,"ir.ui.view,arch",0,View Architecture,Архитектура на изгледа,0
+field,"ir.ui.view,domain",0,Domain,Домейн,0
+field,"ir.ui.view,field_childs",0,Children Field,Подчинено поле,0
+field,"ir.ui.view,inherit",0,Inherited View,Наследен изглед,0
+field,"ir.ui.view,model",0,Model,Модел,0
+field,"ir.ui.view,module",0,Module,Модул,0
+field,"ir.ui.view,priority",0,Priority,Важност,0
+field,"ir.ui.view,rec_name",0,Name,Име,0
+field,"ir.ui.view,type",0,View Type,Вид изглед,0
+field,"ir.ui.view_sc,name",0,Shortcut Name,Име на бърз клавиш,0
+field,"ir.ui.view_sc,rec_name",0,Name,Име,0
+field,"ir.ui.view_sc,res_id",0,Resource Ref.,Отпр. към ресурс,0
+field,"ir.ui.view_sc,resource",0,Resource Name,Име на ресурс,0
+field,"ir.ui.view_sc,sequence",0,Sequence,Последователност,0
+field,"ir.ui.view_sc,user_id",0,User Ref.,Препр. на потребител,0
+field,"ir.ui.view_tree_width,field",0,Field,Поле,0
+field,"ir.ui.view_tree_width,model",0,Model,Модел,0
+field,"ir.ui.view_tree_width,rec_name",0,Name,Име,0
+field,"ir.ui.view_tree_width,user",0,User,Потребител,0
+field,"ir.ui.view_tree_width,width",0,Width,Ширина,0
+help,"ir.action.act_window,auto_refresh",0,Add an auto-refresh on the view,Добавяне на самообновяване на изгледа,0
+help,"ir.action.act_window,limit",0,Default limit for the list view,Ограничение по подразбиране за изглед със списък,0
+help,"ir.action.act_window,search_value",0,Default search criteria for the list view,Условие за търсене по подразбиране върху изглед със списък ,0
+help,"ir.action.act_window,window_name",0,Use the action name as window name,Използване на името на действие като име на прозорец,0
+help,"ir.action.report,style",0,Define the style to apply on the report.,Задайте стила който да се приложа на тази справка.,0
+help,"ir.action.wizard,window",0,Run wizard in a new window,Стартиране на помощник в нов прозорец,0
+help,"ir.cron,numbercall",0,"Number of times the function is called,
+a negative number indicates that the function will always be called","Брой пъти на извикване на функцията,
+отрицателно число показва че фунцията ще се извиква винаги",0
+help,"ir.cron,priority",0,"0=Very Urgent
+10=Not urgent","0=Много спешно
+10=Не е спешно",0
+help,"ir.cron,request_user",0,The user who will receive requests in case of failure,Потребителя който получава заявки в случай на проблем,0
+help,"ir.cron,user",0,The user used to execute this action,Потребителя от чието име се изпълнява действието,0
+help,"ir.lang,code",0,RFC 4646 tag: http://tools.ietf.org/html/rfc4646,,0
+help,"ir.model,module",0,Module in which this model is defined,Модула в който този модел е зададен,0
+help,"ir.model.data,db_id",0,The id of the record in the database.,ID на записа в базата данни.,0
+help,"ir.model.data,fs_id",0,The id of the record as known on the file system.,ID на записа както е записан в файловата система,0
+help,"ir.model.field,module",0,Module in which this field is defined,Модул в който този модел е зададен,0
+help,"ir.model.print_model_graph.init,filter",0,Entering a Python Regular Expression will exclude matching models from the graph.,Въвеждането на регулярен израз на python ще изключи пасващия модел от диаграмата.,0
+help,"ir.rule.group,default_p",0,Add this rule to all users by default,По подразбиране добавете това правило за всички потребители,0
+help,"ir.rule.group,global_p",0,"Make the rule global 
+so every users must follow this rule","Направете правилото глобално
+така че всеки потребител да го прилага",0
+help,"ir.rule.group,rules",0,The rule is satisfied if at least one test is True,Правилото е удовлетворено ако поне един тест е успешен,0
+help,"ir.trigger,condition",0,"A Python statement evaluated with record represented by ""self""
+It triggers the action if true.","Python израз изчислен със запис представен със ""self""
+Извиква действието ако е истина.",0
+help,"ir.trigger,limit_number",0,"Limit the number of call to ""Action Function"" by records.
+0 for no limit.","Ограничаване на броя извиквания на ""Действие на фунция"" по записи.
+0 - няма ограничение",0
+help,"ir.trigger,minimum_delay",0,"Set a minimum delay in minutes between call to ""Action Function"" for the same record.
+0 for no delay.","Минимално забавяне в минути между извикването на ""Действие на функция"" за този запис.
+0 за да няма забавяне",0
+model,"ir.action,name",,Defaults,По подрабиране,0
+model,"ir.action,name",,Menus,Менюта,0
+model,"ir.action,name",0,Action,Действие,0
+model,"ir.action,name",act_action_act_window_form,Window Actions,Действия на прозорец,0
+model,"ir.action,name",act_action_form,Actions,Действия,0
+model,"ir.action,name",act_action_report_form,Reports,Справки,0
+model,"ir.action,name",act_action_url_form,URLs,URL-и,0
+model,"ir.action,name",act_action_wizard_form,Wizards,Помощници,0
+model,"ir.action,name",act_action_wizard_size_form,Wizard Sizes,Размери на помощник,0
+model,"ir.action,name",act_attachment_form,Attachments,Прикачени файлове,0
+model,"ir.action,name",act_config_wizard_item_form,Config Wizard Items,Елементи на помощника за конфигуриране,0
+model,"ir.action,name",act_cron_form,Scheduled Actions,Планирани действия,0
+model,"ir.action,name",act_export_form,Exports,Извличания,0
+model,"ir.action,name",act_icon_form,Icons,Икони,0
+model,"ir.action,name",act_lang_form,Languages,Езици,0
+model,"ir.action,name",act_menu_tree,Menu,Меню,0
+model,"ir.action,name",act_model_access_form,Models Access,Модел на достъп,0
+model,"ir.action,name",act_model_field_access_form,Fields Access,Достъп до полета,0
+model,"ir.action,name",act_model_fields_form,Fields,Полета,0
+model,"ir.action,name",act_model_form,Models,Модели,0
+model,"ir.action,name",act_module_config_wizard,Module Configuration,Конфицурация на модул,0
+model,"ir.action,name",act_module_form,Modules,Модули,0
+model,"ir.action,name",act_module_install_upgrade,Perform Pending Installation/Upgrade,Започване на изчакващите инталации/обновявания,0
+model,"ir.action,name",act_property_form,Properties,Свойства,0
+model,"ir.action,name",act_property_form_default,Default Properties,Свойства по подразбиране,0
+model,"ir.action,name",act_rule_group_form,Record Rules,Правила на запис,0
+model,"ir.action,name",act_sequence_form,Sequences,Последователности,0
+model,"ir.action,name",act_sequence_strict_form,Sequences Strict,Точни последователности,0
+model,"ir.action,name",act_sequence_type_form,Sequence Types,Видове последователности,0
+model,"ir.action,name",act_translation_clean,Clean Translations,Изчистване на преводи,0
+model,"ir.action,name",act_translation_export,Export Translations,Извличане на преводи,0
+model,"ir.action,name",act_translation_form,Translations,Преводи,0
+model,"ir.action,name",act_translation_set_report,Set Report Translations,Задаване на преводи на справки,0
+model,"ir.action,name",act_translation_update,Synchronize Translations,Синхронизиране на преводите,0
+model,"ir.action,name",act_trigger_form,Triggers,Превключватели,0
+model,"ir.action,name",act_view_form,Views,Изгледи,0
+model,"ir.action,name",act_view_sc_add,Add Shortcut,Добавяне на бърз клавиш,0
+model,"ir.action,name",act_view_sc_form,View Shortcuts,Преглед бързи клавиши,0
+model,"ir.action,name",act_view_sc_open,Open Shortcut,Отваряне на бързи клавиши,0
+model,"ir.action,name",act_view_tree_width_form,View Tree Width,Ширина на дървовиден изглед,0
+model,"ir.action,name",print_model_graph,Graph,Графика,0
+model,"ir.action,name",report_model_graph,Graph,Графика,0
+model,"ir.action.act_window,name",0,Action act window,Действие на активния прозорец,0
+model,"ir.action.act_window.view,name",0,Action act window view,Изглед на действие на активния на прозорец,0
+model,"ir.action.keyword,name",0,Action keyword,Бърз клавиш на действие,0
+model,"ir.action.report,name",0,Action report,Справка за сметка,0
+model,"ir.action.url,name",0,Action URL,URL на действие,0
+model,"ir.action.wizard,name",0,Action wizard,Помощник за действие,0
+model,"ir.action.wizard_size,name",0,Action Wizard Size,Размер на помощник на действие,0
+model,"ir.attachment,name",0,Attachment,Прикачен файл,0
+model,"ir.cache,name",0,Cache,Кеш,0
+model,"ir.cron,name",0,Cron,Планировщик,0
+model,"ir.date,name",0,Date,Дата,0
+model,"ir.default,name",0,Default,По подразбиране,0
+model,"ir.export,name",0,Export,Извличане,0
+model,"ir.export.line,name",0,Export line,Ред от извличане,0
+model,"ir.lang,name",0,Language,Език,0
+model,"ir.lang,name",lang_bg,Български,,0
+model,"ir.lang,name",lang_cs,Czech,Чешки,0
+model,"ir.lang,name",lang_de,German,Немски,0
+model,"ir.lang,name",lang_en,English,Англииски,0
+model,"ir.lang,name",lang_es,Spanish (Spain),Испански,0
+model,"ir.lang,name",lang_es_CO,Spanish (Colombia),Испански (Колумбия),0
+model,"ir.lang,name",lang_fr,French,Френски,0
+model,"ir.lang,name",lang_ru,Russian,Руски,0
+model,"ir.model,name",0,Model,Модел,0
+model,"ir.model.access,name",0,Model access,Модел на достъпа,0
+model,"ir.model.data,name",0,Model data,Модел на данни,0
+model,"ir.model.field,name",0,Model field,Поле на модел,0
+model,"ir.model.field.access,name",0,Model Field Access,Модел на достъп до поле,0
+model,"ir.model.print_model_graph.init,name",0,Print Model Graph Init,Начален печат на графика на модел,0
+model,"ir.module.module,name",0,Module,Модул,0
+model,"ir.module.module.config_wizard.first,name",0,Module Config Wizard First,Първи помощник на конфигуриране на модул,0
+model,"ir.module.module.config_wizard.item,name",0,Config wizard to run after installing module,Задаване на помощника да се стартира след инсталиране на модула,0
+model,"ir.module.module.dependency,name",0,Module dependency,Зависимости на модула,0
+model,"ir.module.module.install_upgrade.init,name",0,Module Install Upgrade Init,Начално инсталиране/обновяване на модул,0
+model,"ir.module.module.install_upgrade.start,name",0,Module Install Upgrade Start,Начало на инсталиране/обновяване на модул,0
+model,"ir.property,name",0,Property,Свойство,0
+model,"ir.rule,name",0,Rule,Правило,0
+model,"ir.rule.group,name",0,Rule group,Група правила,0
+model,"ir.sequence,name",0,Sequence,Последователност,0
+model,"ir.sequence.strict,name",0,Sequence Strict,Точна последователност,0
+model,"ir.sequence.type,name",0,Sequence type,Вид последователност,0
+model,"ir.translation,name",0,Translation,Превод,0
+model,"ir.translation.clean.init,name",0,Clean translation init,Начално изчистване на превод,0
+model,"ir.translation.clean.start,name",0,Clean translation start,Изчистване на преводи - начало,0
+model,"ir.translation.export.init,name",0,Export translation - language and module,Изчличане на превод - Език и модул,0
+model,"ir.translation.export.start,name",0,Export translation - file,Извличане на превод - файл,0
+model,"ir.translation.set_report.init,name",0,Update Report Translation,Обновяване на преводи на справки,0
+model,"ir.translation.set_report.start,name",0,Update Report Translation,Обновяване на превод на справка,0
+model,"ir.translation.update.init,name",0,Update translation - language,Обновяване на превод - език,0
+model,"ir.trigger,name",0,Trigger,Превключвател,0
+model,"ir.trigger.log,name",0,Trigger Log,Лог на превключвател,0
+model,"ir.ui.icon,name",0,Icon,Икона,0
+model,"ir.ui.menu,name",,Defaults,По подрабиране,0
+model,"ir.ui.menu,name",,Menus,Менюта,0
+model,"ir.ui.menu,name",0,UI menu,Потребителско меню,0
+model,"ir.ui.menu,name",menu_act_action,Actions,Действия,0
+model,"ir.ui.menu,name",menu_action,Actions,Действия,0
+model,"ir.ui.menu,name",menu_action_act_window,Window Actions,Действия на прозорец,0
+model,"ir.ui.menu,name",menu_action_report_form,Reports,Справки,0
+model,"ir.ui.menu,name",menu_action_url,URLs,URL-и,0
+model,"ir.ui.menu,name",menu_action_wizard,Wizards,Помощници,0
+model,"ir.ui.menu,name",menu_action_wizard_size,Wizard Sizes,Размери на помощник,0
+model,"ir.ui.menu,name",menu_administration,Administration,Администрация,0
+model,"ir.ui.menu,name",menu_attachment_form,Attachments,Прикачени файлове,0
+model,"ir.ui.menu,name",menu_config_wizard_item_form,Config Wizard Items,Елементи на помощника за конфигуриране,0
+model,"ir.ui.menu,name",menu_cron_form,Scheduled Actions,Планирани действия,0
+model,"ir.ui.menu,name",menu_export_form,Exports,Извличания,0
+model,"ir.ui.menu,name",menu_icon_form,Icons,Икони,0
+model,"ir.ui.menu,name",menu_ir_sequence_type,Sequence Types,Видове последователности,0
+model,"ir.ui.menu,name",menu_lang_form,Languages,Езици,0
+model,"ir.ui.menu,name",menu_localization,Localization,Превод,0
+model,"ir.ui.menu,name",menu_menu_tree,Menu,Меню,0
+model,"ir.ui.menu,name",menu_model_access_form,Models Access,Модел на достъп,0
+model,"ir.ui.menu,name",menu_model_field_access_form,Fields Access,Достъп до полета,0
+model,"ir.ui.menu,name",menu_model_form,Models,Модели,0
+model,"ir.ui.menu,name",menu_models,Models,Модели,0
+model,"ir.ui.menu,name",menu_module_form,Modules,Модули,0
+model,"ir.ui.menu,name",menu_module_install_upgrade,Perform Pending Installation/Upgrade,Започване на изчакващите инталации/обновявания,0
+model,"ir.ui.menu,name",menu_modules,Modules,Модули,0
+model,"ir.ui.menu,name",menu_property_form,Properties,Свойства,0
+model,"ir.ui.menu,name",menu_property_form_default,Default Properties,Свойства по подразбиране,0
+model,"ir.ui.menu,name",menu_rule_group_form,Record Rules,Правила на запис,0
+model,"ir.ui.menu,name",menu_scheduler,Scheduler,Планировщик,0
+model,"ir.ui.menu,name",menu_sequence_form,Sequences,Последователности,0
+model,"ir.ui.menu,name",menu_sequence_strict_form,Sequences Strict,Точни последователности,0
+model,"ir.ui.menu,name",menu_sequences,Sequences,Последователности,0
+model,"ir.ui.menu,name",menu_translation_clean,Clean Translations,Изчистване на преводи,0
+model,"ir.ui.menu,name",menu_translation_export,Export Translations,Извличане на преводи,0
+model,"ir.ui.menu,name",menu_translation_form,Translations,Преводи,0
+model,"ir.ui.menu,name",menu_translation_set_report,Set Report Translations,Задаване на преводи на справки,0
+model,"ir.ui.menu,name",menu_translation_update,Synchronize Translations,Синхронизиране на преводите,0
+model,"ir.ui.menu,name",menu_trigger_form,Triggers,Превключватели,0
+model,"ir.ui.menu,name",menu_ui,User Interface,Потребителски интерфейс,0
+model,"ir.ui.menu,name",menu_view,Views,Изгледи,0
+model,"ir.ui.menu,name",menu_view_sc,View Shortcuts,Преглед бързи клавиши,0
+model,"ir.ui.menu,name",menu_view_tree_width,View Tree Width,Ширина на дървовиден изглед,0
+model,"ir.ui.menu,name",model_model_fields_form,Fields,Полета,0
+model,"ir.ui.view,name",0,View,Изглед,0
+model,"ir.ui.view_sc,name",0,View shortcut,Изглед бърз клавиш,0
+model,"ir.ui.view_tree_width,name",0,View Tree Width,Ширина на дървовиден изглед,0
+selection,"ir.action.act_window,view_type",0,Board,Табло,0
+selection,"ir.action.act_window,view_type",0,Form,Форма,0
+selection,"ir.action.act_window,view_type",0,Tree,Дърво,0
+selection,"ir.action.keyword,keyword",0,Action form,Форма за действие,0
+selection,"ir.action.keyword,keyword",0,Action tree,Дърво с действия,0
+selection,"ir.action.keyword,keyword",0,Form relate,Свързана форма,0
+selection,"ir.action.keyword,keyword",0,Open Graph,Отваряне на графика,0
+selection,"ir.action.keyword,keyword",0,Open tree,Отваряне на дърво,0
+selection,"ir.action.keyword,keyword",0,Print form,Отпечатване на форма,0
+selection,"ir.action.report,extension",0,ODT Document,ODT документ,0
+selection,"ir.action.report,extension",0,PDF Document,PDF документ,0
+selection,"ir.attachment,type",0,Data,Данни,0
+selection,"ir.attachment,type",0,Link,Препратка,0
+selection,"ir.cron,interval_type",0,Days,Дни,0
+selection,"ir.cron,interval_type",0,Hours,Часове,0
+selection,"ir.cron,interval_type",0,Minutes,Минути,0
+selection,"ir.cron,interval_type",0,Months,Месеци,0
+selection,"ir.cron,interval_type",0,Weeks,Седмици,0
+selection,"ir.cron,interval_type",0,Work Days,Работни дни,0
+selection,"ir.lang,direction",0,Left-to-right,Отляво надясно,0
+selection,"ir.lang,direction",0,Right-to-left,Отдясно наляво,0
+selection,"ir.module.module,state",0,Installed,Инсталиран,0
+selection,"ir.module.module,state",0,Not Installed,Не е инсталиран,0
+selection,"ir.module.module,state",0,To be installed,За инсталиране,0
+selection,"ir.module.module,state",0,To be removed,За премахване,0
+selection,"ir.module.module,state",0,To be upgraded,За обновяване,0
+selection,"ir.module.module.config_wizard.item,state",0,Done,Приключен,0
+selection,"ir.module.module.config_wizard.item,state",0,Open,Отваряне,0
+selection,"ir.module.module.dependency,state",0,Installed,Инсталиран,0
+selection,"ir.module.module.dependency,state",0,Not Installed,Не е инсталиран,0
+selection,"ir.module.module.dependency,state",0,To be installed,За инсталиране,0
+selection,"ir.module.module.dependency,state",0,To be removed,За премахване,0
+selection,"ir.module.module.dependency,state",0,To be upgraded,За обновяване,0
+selection,"ir.module.module.dependency,state",0,Unknown,Неизвестен,0
+selection,"ir.sequence,type",0,Decimal Timestamp,Десетичен времеви маркер,0
+selection,"ir.sequence,type",0,Hexadecimal Timestamp,Шестнайсетичен времеви маркер,0
+selection,"ir.sequence,type",0,Incremental,Нарастване,0
+selection,"ir.sequence.strict,type",0,Decimal Timestamp,Десетичен времеви маркер,0
+selection,"ir.sequence.strict,type",0,Hexadecimal Timestamp,Шестнайсетичен времеви маркер,0
+selection,"ir.sequence.strict,type",0,Incremental,Нарастване,0
+selection,"ir.translation,type",0,Error,Грешка,0
+selection,"ir.translation,type",0,Field,Поле,0
+selection,"ir.translation,type",0,Help,Помощ,0
+selection,"ir.translation,type",0,Model,Модел,0
+selection,"ir.translation,type",0,ODT,ODT,0
+selection,"ir.translation,type",0,Selection,Избор,0
+selection,"ir.translation,type",0,View,Изглед,0
+selection,"ir.translation,type",0,Wizard Button,Бутон на помощник,0
+selection,"ir.ui.menu,action",0,ir.action.act_window,,0
+selection,"ir.ui.menu,action",0,ir.action.report,,0
+selection,"ir.ui.menu,action",0,ir.action.url,,0
+selection,"ir.ui.menu,action",0,ir.action.wizard,,0
+selection,"ir.ui.view,type",0,,,0
+selection,"ir.ui.view,type",0,Board,Табло,0
+selection,"ir.ui.view,type",0,Form,Форма,0
+selection,"ir.ui.view,type",0,Graph,Графика,0
+selection,"ir.ui.view,type",0,Tree,Дърво,0
+view,ir.action,0,Action,Действие,0
+view,ir.action,0,General,Основен,0
+view,ir.action,0,Keyword,Ключова дума,0
+view,ir.action,0,Keywords,Ключови думи,0
+view,ir.action.act_window,0,General,Основен,0
+view,ir.action.act_window,0,Keyword,Ключова дума,0
+view,ir.action.act_window,0,Keywords,Ключови думи,0
+view,ir.action.act_window,0,Open Window,Отваряне на прозорец,0
+view,ir.action.act_window,0,Open a Window,Отваряне на прозорец,0
+view,ir.action.act_window,0,Views,Изгледи,0
+view,ir.action.report,0,General,Основен,0
+view,ir.action.report,0,Keyword,Ключова дума,0
+view,ir.action.report,0,Keywords,Ключови думи,0
+view,ir.action.report,0,Report,Справка,0
+view,ir.action.report,0,Report xml,Xml на справка,0
+view,ir.action.url,0,General,Основен,0
+view,ir.action.url,0,Keyword,Ключова дума,0
+view,ir.action.url,0,Keywords,Ключови думи,0
+view,ir.action.url,0,URL,URL,0
+view,ir.action.wizard,0,General,Основен,0
+view,ir.action.wizard,0,Keyword,Ключова дума,0
+view,ir.action.wizard,0,Keywords,Ключови думи,0
+view,ir.action.wizard,0,Wizard,Помощник,0
+view,ir.action.wizard_size,0,Wizard Size,Размер на помощник,0
+view,ir.action.wizard_size,0,Wizard Sizes,Размери на помощник,0
+view,ir.attachment,0,Attachments,Прикачени файлове,0
+view,ir.attachment,0,Preview,Преглед,0
+view,ir.cron,0,Action to trigger,Действие за стартиране,0
+view,ir.cron,0,Scheduled Action,Планирано действие,0
+view,ir.cron,0,Scheduled Actions,Планирани действия,0
+view,ir.default,0,Default,По подразбиране,0
+view,ir.default,0,Defaults,По подрабиране,0
+view,ir.export,0,Exports,Извличания,0
+view,ir.lang,0,Date Formatting,Форматиране на дата,0
+view,ir.lang,0,Language,Език,0
+view,ir.lang,0,Languages,Езици,0
+view,ir.lang,0,Numbers Formatting,Форматиране на числа,0
+view,ir.model,0,Fields Description,Описание на полета,0
+view,ir.model,0,Model Description,Описание на модел,0
+view,ir.model.access,0,Access controls,Контрол на достъпа,0
+view,ir.model.field,0,Fields,Полета,0
+view,ir.model.field.access,0,Field Access,Достъп до поле,0
+view,ir.model.print_model_graph.init,0,Print Model Graph,Печат на графика на модел,0
+view,ir.module.module,0,Cancel Installation,Отказ от инсталалиране,0
+view,ir.module.module,0,Cancel Uninstallation,Отказ от деинсталиране,0
+view,ir.module.module,0,Cancel Upgrade,Отказ от обновяване,0
+view,ir.module.module,0,Dependencies,Зависимости,0
+view,ir.module.module,0,Mark for Installation,Отбелязване за инсталиране,0
+view,ir.module.module,0,Mark for Uninstallation (beta),Отбелязване за деинсталиране (beta),0
+view,ir.module.module,0,Mark for Upgrade,Отбелязване за обновяване,0
+view,ir.module.module,0,Module,Модул,0
+view,ir.module.module,0,Modules,Модули,0
+view,ir.module.module.config_wizard.first,0,Welcome to the module configuration wizard!,Добре дошли в помощника за конфигуриране на модула!,0
+view,ir.module.module.config_wizard.first,0,You will be able to configure your installation,Ще може да конфигурирате инсталацията си,0
+view,ir.module.module.config_wizard.first,0,depending on the modules you have installed.,в зависимост от модулите които сте инсталирали.,0
+view,ir.module.module.config_wizard.item,0,Config Wizard Items,Елементи на помощника за конфигуриране,0
+view,ir.module.module.install_upgrade.init,0,Note that this operation my take a few minutes.,Забележка: Операцията може да отнеме няколко минути,0
+view,ir.module.module.install_upgrade.init,0,System Upgrade,Обновяване на системата,0
+view,ir.module.module.install_upgrade.init,0,Your system will be upgraded.,Системата ще бъде обновена.,0
+view,ir.module.module.install_upgrade.start,0,System upgrade done,Обновяването на системата приключено,0
+view,ir.module.module.install_upgrade.start,0,The modules have been upgraded / installed !,Модулите са обновени / инсталирани !,0
+view,ir.property,0,Properties,Свойства,0
+view,ir.property,0,Property,Свойство,0
+view,ir.rule,0,Test,Тест,0
+view,ir.rule.group,0,"If there is no test defined, the rule is always satisfied if not global",Ако не указан тест правилото винаги е удовлетворено ако не е глобално,0
+view,ir.rule.group,0,Record rules,Правила на записи,0
+view,ir.rule.group,0,The rule is satisfied if at least one test is True,Правилото е удовлетворено ако поне един тест е успешен,0
+view,ir.sequence,0,${day},${ден},0
+view,ir.sequence,0,${month},${month} - месец,0
+view,ir.sequence,0,${year},${year} - година,0
+view,ir.sequence,0,Day:,Ден:,0
+view,ir.sequence,0,Incremental,Нарастване,0
+view,ir.sequence,0,"Legend (Placeholders for prefix, suffix)","Легенда (променливи за префикс, суфикс)",0
+view,ir.sequence,0,Month:,Месец:,0
+view,ir.sequence,0,Sequences,Последователности,0
+view,ir.sequence,0,Timestamp,Дата,0
+view,ir.sequence,0,Year:,Година:,0
+view,ir.sequence.type,0,Sequence Type,Вид последователност,0
+view,ir.translation,0,Translations,Преводи,0
+view,ir.translation.clean.init,0,Clean Translations,Изчистване на преводи,0
+view,ir.translation.clean.init,0,Clean Translations?,Изчистване на преводите?,0
+view,ir.translation.clean.start,0,Clean Translations,Изчистване на преводи,0
+view,ir.translation.clean.start,0,Clean Translations Succeed!,Изчистването на преводите е успешно!,0
+view,ir.translation.export.init,0,Export Translation,Извличане на превод,0
+view,ir.translation.export.start,0,Export Translation,Извличане на превод,0
+view,ir.translation.set_report.init,0,Set Report Translations,Задаване на преводи на справки,0
+view,ir.translation.set_report.init,0,Synchronize Report Translations?,Синхронизиране на преводи на справки?,0
+view,ir.translation.set_report.start,0,Set Report Translations,Задаване на преводи на справки,0
+view,ir.translation.set_report.start,0,Set Translations Succeed!,Преводите са успешно заредени!,0
+view,ir.translation.update.init,0,Synchronize Translations,Синхронизиране на преводите,0
+view,ir.trigger,0,Trigger,Превключвател,0
+view,ir.trigger,0,Triggers,Превключватели,0
+view,ir.ui.icon,0,Icon,Икона,0
+view,ir.ui.icon,0,Icons,Икони,0
+view,ir.ui.menu,0,Menu,Меню,0
+view,ir.ui.view,0,View,Изглед,0
+view,ir.ui.view_sc,0,Shortcut,Бърз клавиш,0
+view,ir.ui.view_sc,0,Shortcuts,Бързи клавиши,0
+view,ir.ui.view_tree_width,0,View Tree Width,Ширина на дървовиден изглед,0
+view,ir.ui.view_tree_width,0,Views Tree Width,Ширина на дърво с изгледи,0
+wizard_button,"ir.model.print_model_graph,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.model.print_model_graph,init,print",0,Print,Печат,0
+wizard_button,"ir.module.module.config_wizard,first,end",0,Cancel,Отказ,0
+wizard_button,"ir.module.module.config_wizard,first,wizard",0,Ok,Добре,0
+wizard_button,"ir.module.module.install_upgrade,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.module.module.install_upgrade,init,start",0,Start Upgrade,Започване на обновяване,0
+wizard_button,"ir.module.module.install_upgrade,start,menu",0,Ok,Добре,0
+wizard_button,"ir.translation.clean,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.translation.clean,init,start",0,Start,Начало,0
+wizard_button,"ir.translation.clean,start,end",0,Ok,Добре,0
+wizard_button,"ir.translation.export,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.translation.export,init,start",0,Start Export,Начало на извличане,0
+wizard_button,"ir.translation.export,start,end",0,Close,Затваряне,0
+wizard_button,"ir.translation.set_report,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.translation.set_report,init,start",0,Start Update,Започване на обновление,0
+wizard_button,"ir.translation.set_report,start,end",0,Ok,Добре,0
+wizard_button,"ir.translation.update,init,end",0,Cancel,Отказ,0
+wizard_button,"ir.translation.update,init,start",0,Start Update,Започване на обновление,0
