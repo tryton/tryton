@@ -1,0 +1,457 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.configuration,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr ""
+
+msgctxt ""
+"field:product.configuration.default_lot_sequence,default_lot_sequence:"
+msgid "Default Lot Sequence"
+msgstr ""
+
+msgctxt "field:product.product,lot_required:"
+msgid "Lot Required"
+msgstr "需要批次"
+
+#, fuzzy
+msgctxt "field:product.product,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "需要批次"
+
+msgctxt "field:product.template,lot_required:"
+msgid "Lot Required"
+msgstr "需要批次"
+
+#, fuzzy
+msgctxt "field:product.template,lot_sequence:"
+msgid "Lot Sequence"
+msgstr "需要批次"
+
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "field:stock.lot,default_uom:"
+msgid "Default UOM"
+msgstr "默认计量单位"
+
+msgctxt "field:stock.lot,default_uom_digits:"
+msgid "Default Unit Digits"
+msgstr "默认单位有效数字"
+
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "预期数量"
+
+msgctxt "field:stock.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr ""
+
+msgctxt "field:stock.lot,number:"
+msgid "Number"
+msgstr "批次号"
+
+msgctxt "field:stock.lot,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:stock.lot.trace,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:stock.lot.trace,document:"
+msgid "Document"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,downward_traces:"
+msgid "Downward Traces"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,lot:"
+msgid "Lot"
+msgstr "批次"
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.lot.trace,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:stock.lot.trace,shipment:"
+msgid "Shipment"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:stock.lot.trace,upward_traces:"
+msgid "Upward Traces"
+msgstr ""
+
+msgctxt "field:stock.lots_by_location.context,forecast_date:"
+msgid "At Date"
+msgstr "日期"
+
+msgctxt "field:stock.lots_by_location.context,stock_date_end:"
+msgid "At Date"
+msgstr "日期"
+
+msgctxt "field:stock.lots_by_locations,default_uom:"
+msgid "Default UOM"
+msgstr "默认计量单位"
+
+msgctxt "field:stock.lots_by_locations,default_uom_digits:"
+msgid "Default UOM Digits"
+msgstr "默认计量单位有效数字"
+
+msgctxt "field:stock.lots_by_locations,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "预期数量"
+
+msgctxt "field:stock.lots_by_locations,lot:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "field:stock.lots_by_locations,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "field:stock.lots_by_locations,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "日期"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "库位"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "日期"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "仓库"
+
+msgctxt "field:stock.move,lot:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "field:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "Duplicate Lot Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start,lots:"
+msgid "Lots"
+msgstr "批次"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start,quantity_remaining:"
+msgid "Quantity Remaining"
+msgstr "数量"
+
+msgctxt "field:stock.move.add.lots.start,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:stock.move.add.lots.start.lot,has_sequence:"
+msgid "Has Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,number:"
+msgid "Number"
+msgstr "批次号"
+
+msgctxt "field:stock.move.add.lots.start.lot,parent:"
+msgid "Parent"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.move.add.lots.start.lot,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+msgctxt "field:stock.move.add.lots.start.lot,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr "批次缓存"
+
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "内部数量"
+
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "库位"
+
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "周期"
+
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "help:product.product,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr ""
+
+msgctxt "help:product.product,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr ""
+
+msgctxt "help:product.template,lot_required:"
+msgid "The type of location for which lot is required."
+msgstr ""
+
+msgctxt "help:product.template,lot_sequence:"
+msgid "The sequence used to automatically number lots."
+msgstr ""
+
+msgctxt "help:stock.lots_by_location.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.move.add.lots.start,duplicate_lot_number:"
+msgid "The number of times the lot must be duplicated."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "库位明细数量"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "库位树数量"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "批次"
+
+msgctxt "model:ir.action,name:act_lot_trace_downward_relate"
+msgid "Downward Traces"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lot_trace_upward_relate"
+msgid "Upward Traces"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lots_by_locations_relate"
+msgid "Lots by Locations"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse_relate"
+msgid "Lots By Warehouse"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_move_add_lots"
+msgid "Add Lots"
+msgstr "批次"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_add_lot_quantity"
+msgid ""
+"The total quantity \"%(lot_quantity)s\" of the lots must be less than or "
+"equal to the quantity \"%(move_quantity)s\" of the move."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:lot_downward_traces_button"
+msgid "Downward Traces"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:lot_upward_traces_button"
+msgid "Upward Traces"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:move_add_lots_start_duplicate_lot_button"
+msgid "Duplicate Lot"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:move_add_lots_wizard_button"
+msgid "Add Lots"
+msgstr "批次"
+
+msgctxt "model:ir.rule.group,name:rule_group_lot_trace_companies"
+msgid "User in companies"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_stock_lot"
+msgid "Stock Lot"
+msgstr "库存批次"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "批次"
+
+msgctxt "model:product.configuration.default_lot_sequence,name:"
+msgid "Product Configuration Default Lot Sequence"
+msgstr ""
+
+msgctxt "model:stock.lot,name:"
+msgid "Stock Lot"
+msgstr "库存批次"
+
+#, fuzzy
+msgctxt "model:stock.lot.trace,name:"
+msgid "Lot Trace"
+msgstr "批次缓存"
+
+msgctxt "model:stock.lots_by_location.context,name:"
+msgid "Lot by Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:stock.lots_by_locations,name:"
+msgid "Lots by Locations"
+msgstr "Production"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:stock.move.add.lots.start,name:"
+msgid "Add Lots"
+msgstr "批次"
+
+#, fuzzy
+msgctxt "model:stock.move.add.lots.start.lot,name:"
+msgid "Add Lots"
+msgstr "批次"
+
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr ""
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "客户"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "失物招领区"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "产品"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "存储区"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "供应商"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "客户"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "失物招领区"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "产品"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "存储区"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "供应商"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "批次"
+
+msgctxt "view:product.template:"
+msgid "Lots"
+msgstr "批次"
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "Remaining:"
+msgstr ""
+
+msgctxt "view:stock.move.add.lots.start:"
+msgid "times"
+msgstr ""
+
+msgctxt "wizard_button:stock.move.add.lots,start,add:"
+msgid "Add"
+msgstr ""
+
+msgctxt "wizard_button:stock.move.add.lots,start,end:"
+msgid "Cancel"
+msgstr ""

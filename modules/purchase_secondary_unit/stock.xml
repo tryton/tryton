@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="stock_secondary_unit">
+        <record model="ir.ui.view" id="move_view_list_shipment">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="purchase.move_view_list_shipment"/>
+            <field name="name">stock_move_list</field>
+        </record>
+    </data>
+</tryton>
