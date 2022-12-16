@@ -1,0 +1,412 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:timesheet.line:"
+msgid "Duration of line \"%(line)s\" must be positive."
+msgstr "La durata della riga \"%(line)s\"  dev'essere positiva."
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr "L'azienda del lavoro  \"%(work)s\" è diversa dall'azienda di origine."
+
+msgctxt "error:timesheet.work:"
+msgid "The origin must be unique per company."
+msgstr "L'origine dev'essere unica per azienda."
+
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr "Creato il"
+
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+msgctxt "field:timesheet.hours_employee,duration:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "field:timesheet.hours_employee,employee:"
+msgid "Employee"
+msgstr "Dipendente"
+
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:timesheet.hours_employee.context,end_date:"
+msgid "End Date"
+msgstr "Data finale"
+
+msgctxt "field:timesheet.hours_employee.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee.context,start_date:"
+msgid "Start Date"
+msgstr "Data iniziale"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "creato il"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+msgctxt "field:timesheet.hours_employee_monthly,duration:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Dipendente"
+
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Mese"
+
+msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
+msgid "Month"
+msgstr "Mese"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Anno"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr "creato il"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+msgctxt "field:timesheet.hours_employee_weekly,duration:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Dipendente"
+
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Settimana"
+
+msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
+msgid "Week"
+msgstr "Settimana"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Anno"
+
+msgctxt "field:timesheet.line,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr "creato il"
+
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Descrizione"
+
+msgctxt "field:timesheet.line,duration:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Dipendente"
+
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Lavoro"
+
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Dipendente"
+
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,active:"
+msgid "Active"
+msgstr "Attivo"
+
+msgctxt "field:timesheet.work,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr "creato il"
+
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+msgctxt "field:timesheet.work,duration:"
+msgid "Timesheet Duration"
+msgstr "Durata timesheet"
+
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.work,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:timesheet.work,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fine timesheet"
+
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid "Timesheet Lines"
+msgstr "Righe timesheet"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "inizio timesheet"
+
+msgctxt "field:timesheet.work,work:"
+msgid "Work"
+msgstr "lavoro"
+
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:timesheet.work.context,from_date:"
+msgid "From Date"
+msgstr "Data Iniziale"
+
+msgctxt "field:timesheet.work.context,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:timesheet.work.context,to_date:"
+msgid "To Date"
+msgstr "a data"
+
+msgctxt "help:timesheet.work,duration:"
+msgid "Total time spent on this work"
+msgstr "Tempo totale speso nel lavoro"
+
+msgctxt "model:ir.action,name:act_hours_employee_form"
+msgid "Hours per Employee"
+msgstr "Ore per dipendente"
+
+msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
+msgid "Hours per Employee per Month"
+msgstr "Ore per dipendente per mese"
+
+msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
+msgid "Hours per Employee per Week"
+msgstr "Ore per dipendente per settimana"
+
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr "Inserire timesheet"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "righe timesheet"
+
+msgctxt "model:ir.action,name:act_line_form_work"
+msgid "Timesheet Lines"
+msgstr "righe timesheet"
+
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "lavori"
+
+msgctxt "model:ir.action,name:act_work_report"
+msgid "Works"
+msgstr "lavori"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configurazione"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee"
+msgid "Hours per Employee"
+msgstr "Ore per impiegato"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Ore per impiegato per mese"
+
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Ore per impiegato per settimana"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
+msgid "Enter Timesheet"
+msgstr "Inserisci timesheet"
+
+msgctxt "model:ir.ui.menu,name:menu_line_form"
+msgid "Timesheet Lines"
+msgstr "Righe timesheet"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Rapporti"
+
+msgctxt "model:ir.ui.menu,name:menu_timesheet"
+msgid "Timesheet"
+msgstr "Timesheet"
+
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Lavori"
+
+msgctxt "model:ir.ui.menu,name:menu_work_report"
+msgid "Works"
+msgstr "Lavori"
+
+msgctxt "model:res.group,name:group_timesheet_admin"
+msgid "Timesheet Administration"
+msgstr "Amministrazione timesheet"
+
+msgctxt "model:timesheet.hours_employee,name:"
+msgid "Hours per Employee"
+msgstr "Ore per dipendente"
+
+msgctxt "model:timesheet.hours_employee.context,name:"
+msgid "Hours per Employee Context"
+msgstr "Context ore per dipendente"
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
+msgid "Hours per Employee per Month"
+msgstr "Ore per dipendente per mese"
+
+msgctxt "model:timesheet.hours_employee_weekly,name:"
+msgid "Hours per Employee per Week"
+msgstr "Ore per dipendente per settimana"
+
+msgctxt "model:timesheet.line,name:"
+msgid "Timesheet Line"
+msgstr "Riga timesheet"
+
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr "Inserire righe"
+
+msgctxt "model:timesheet.work,name:"
+msgid "Work"
+msgstr "Lavoro"
+
+msgctxt "model:timesheet.work.context,name:"
+msgid "Work Context"
+msgstr "Context lavoro"
+
+msgctxt "selection:res.user.application,application:"
+msgid "Timesheet"
+msgstr "Timesheet"
+
+msgctxt "view:timesheet.hours_employee:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "view:timesheet.line:"
+msgid "Duration"
+msgstr "Durata"
+
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Annulla"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
+msgid "Enter"
+msgstr "Invio"
