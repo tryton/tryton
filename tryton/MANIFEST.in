@@ -1,0 +1,14 @@
+include LICENSE
+include COPYRIGHT
+include README
+include INSTALL
+include TODO
+include CHANGELOG
+include setup.nsi
+include setup-single.nsi
+include *.nsh
+include doc/*
+include share/pixmaps/*.png
+include share/pixmaps/*.svg
+include share/pixmaps/*.ico
+recursive-include share/locale/ *.mo
