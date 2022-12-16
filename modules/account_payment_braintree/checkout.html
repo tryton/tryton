@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Braintree Checkout</title>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            button {
+                background-color: #337ab7;
+                border-radius: 4px;
+                border: 1px solid #2e6da4;
+                color: #fff;
+                display: block;
+                font-size:2em;
+                margin: 0 auto;
+                padding: 0.5em 1em;
+            }
+            .wrapper {
+                width: 670px;
+                margin: 0 auto;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <py:for each="record in records[:1]">
+        <h1>${record.party.rec_name}</h1>
+        <div class="wrapper">
+            <form method="POST" id="form">
+                <script
+                    src="https://js.braintreegateway.com/web/dropin/1.23.0/js/dropin.min.js"
+                    data-braintree-dropin-authorization="${data['client_token']}">
+                </script>
+                <button type="submit">
+                    <py:choose test="data['model']">
+                    <py:when test="'account.payment'">
+                    Pay ${record.currency.symbol}${record.amount}
+                    </py:when>
+                    <py:when test="'account.payment.braintree.customer'">
+                    Register card
+                    </py:when>
+                    </py:choose>
+                </button>
+            </form>
+        </div>
+        </py:for>
+    </body>
+</html>

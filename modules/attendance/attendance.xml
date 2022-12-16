@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_attendance_admin">
+            <field name="name">Attendance Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_attendance_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.ui.icon" id="attendance_icon">
+            <field name="name">tryton-attendance</field>
+            <field name="path">icons/tryton-attendance.svg</field>
+        </record>
+
+        <menuitem
+            name="Attendance"
+            sequence="6"
+            icon="tryton-attendance"
+            id="menu_main_attendance"/>
+
+        <menuitem
+            name="Configuration"
+            parent="menu_main_attendance"
+            sequence="0"
+            id="menu_configuration"/>
+        <record model="ir.ui.menu-res.group" id="menu_configuration_group_employee_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="attendance_view_form">
+            <field name="model">attendance.line</field>
+            <field name="type">form</field>
+            <field name="name">attendance_form</field>
+        </record>
+        <record model="ir.ui.view" id="attendance_view_list">
+            <field name="model">attendance.line</field>
+            <field name="type">tree</field>
+            <field name="name">attendance_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_attendance">
+            <field name="name">Attendances</field>
+            <field name="res_model">attendance.line</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_attendance_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="attendance_view_list"/>
+            <field name="act_window" ref="act_attendance"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_attendance_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="attendance_view_form"/>
+            <field name="act_window" ref="act_attendance"/>
+        </record>
+
+        <menuitem
+            action="act_attendance"
+            parent="menu_main_attendance"
+            sequence="10"
+            id="menu_attendance"/>
+
+        <record model="ir.model.access" id="access_attendance">
+            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_attendance">
+            <field name="name">Own attendance</field>
+            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_attendance1">
+            <field
+                name="domain"
+                eval="[('employee', '=', Eval('user.employee', {}))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_attendance"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_attendance_admin">
+            <field name="name">Any attendance</field>
+            <field name="model" search="[('model', '=', 'attendance.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_attendance_admin_group_employee_admin">
+            <field name="rule_group" ref="rule_group_attendance_admin"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">attendance.period</field>
+            <field name="type">form</field>
+            <field name="name">period_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_list">
+            <field name="model">attendance.period</field>
+            <field name="type">tree</field>
+            <field name="name">period_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_period_list">
+            <field name="name">Attendance Periods</field>
+            <field name="res_model">attendance.period</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_list"/>
+            <field name="act_window" ref="act_period_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_list"/>
+        </record>
+
+        <menuitem
+            action="act_period_list"
+            parent="menu_configuration"
+            sequence="10"
+            id="menu_period_list"/>
+
+        <record model="ir.model.access" id="access_period">
+            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_period_admin">
+            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+            <field name="group" ref="group_attendance_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="period_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="period_draft_button_group_employee_admin">
+            <field name="button" ref="period_draft_button"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="period_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'attendance.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="period_close_button_group_employee_admin">
+            <field name="button" ref="period_close_button"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="sheet_line_view_form">
+            <field name="model">attendance.sheet.line</field>
+            <field name="type">form</field>
+            <field name="name">sheet_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sheet_line_view_list">
+            <field name="model">attendance.sheet.line</field>
+            <field name="type">tree</field>
+            <field name="name">sheet_line_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sheet_line">
+            <field name="name">Own attendance sheet line</field>
+            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sheet_line1">
+            <field
+                name="domain"
+                eval="[('employee', '=', Eval('user.employee', {}))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sheet_line"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_sheet_line_admin">
+            <field name="name">Any attendance sheet line</field>
+            <field name="model" search="[('model', '=', 'attendance.sheet.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_sheet_line_admin_group_employee_admin">
+            <field name="rule_group" ref="rule_group_sheet_line_admin"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="sheet_view_form">
+            <field name="model">attendance.sheet</field>
+            <field name="type">form</field>
+            <field name="name">sheet_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sheet_view_list">
+            <field name="model">attendance.sheet</field>
+            <field name="type">tree</field>
+            <field name="name">sheet_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sheet">
+            <field name="name">Attendance Sheet</field>
+            <field name="res_model">attendance.sheet</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sheet_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sheet_view_list"/>
+            <field name="act_window" ref="act_sheet"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sheet_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sheet_view_form"/>
+            <field name="act_window" ref="act_sheet"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sheet">
+            <field name="name">Own attendance sheet</field>
+            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sheet1">
+            <field
+                name="domain"
+                eval="[('employee', '=', Eval('user.employee', {}))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sheet"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_sheet_admin">
+            <field name="name">Any attendance sheet</field>
+            <field name="model" search="[('model', '=', 'attendance.sheet')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_sheet_admin_group_employee_admin">
+            <field name="rule_group" ref="rule_group_sheet_admin"/>
+            <field name="group" ref="group_attendance_admin"/>
+        </record>
+
+        <menuitem
+            action="act_sheet"
+            parent="menu_main_attendance"
+            sequence="20"
+            id="menu_sheet"/>
+    </data>
+    <data depends="timesheet">
+        <record model="ir.ui.view" id="sheet_view_form_timesheet">
+            <field name="model">attendance.sheet</field>
+            <field name="inherit" ref="sheet_view_form"/>
+            <field name="name">sheet_form_timesheet</field>
+        </record>
+
+        <record model="ir.ui.view" id="sheet_view_list_timesheet">
+            <field name="model">attendance.sheet</field>
+            <field name="inherit" ref="sheet_view_list"/>
+            <field name="name">sheet_list_timesheet</field>
+        </record>
+    </data>
+</tryton>
