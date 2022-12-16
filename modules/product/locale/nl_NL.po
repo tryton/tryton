@@ -1,0 +1,746 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "U kunt geen recursieve categorieën aanmaken!"
+
+msgctxt "error:product.template:0"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
+
+msgctxt "error:product.uom:0"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+"Als de maateenheid nog niet is gebruikt kan je hem verwijderen, anders kan "
+"je hem deactiveren en een nieuwe aanmaken."
+
+msgctxt "error:product.uom:0"
+msgid "Invalid Factor and Rate values!"
+msgstr "Ongeldige factor en verhouding waarden"
+
+msgctxt "error:product.uom:0"
+msgid "Rate and factor can not be both equal to zero."
+msgstr "Verhouding en factor kunnen niet beiden nul zijn! "
+
+msgctxt "error:product.uom:0"
+msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
+msgstr ""
+"U kunt Verhouding, Factor of Categorie van een maateenheid niet wijzigen."
+
+msgctxt "field:product.category,account_expense:0"
+msgid "Account Expense"
+msgstr "Kostenrekening"
+
+msgctxt "field:product.category,account_revenue:0"
+msgid "Account Revenue"
+msgstr "Opbrengstrekening"
+
+msgctxt "field:product.category,childs:0"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "field:product.category,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr "Belasting klanten"
+
+msgctxt "field:product.category,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.category,parent:0"
+msgid "Parent"
+msgstr "Bovenliggend niveau"
+
+msgctxt "field:product.category,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.category,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr "Belastingen inkoop"
+
+msgctxt "field:product.category-customer-account.tax,category:0"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.category-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.category-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product.category-supplier-account.tax,category:0"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.category-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.category-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product.product,code:0"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.product,description:0"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:product.product,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.product,template:0"
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+msgctxt "field:product.template,account_category:0"
+msgid "Use Category's accounts"
+msgstr "Gebruik de rekeningen van de categorie"
+
+msgctxt "field:product.template,account_expense:0"
+msgid "Account Expense"
+msgstr "Kostenrekening"
+
+msgctxt "field:product.template,account_expense_used:0"
+msgid "Account Expense Used"
+msgstr "Gebruikte kostenrekening"
+
+msgctxt "field:product.template,account_revenue:0"
+msgid "Account Revenue"
+msgstr "Opbrengstrekening"
+
+msgctxt "field:product.template,account_revenue_used:0"
+msgid "Account Revenue Used"
+msgstr "Opbrengstrekening gebruikt"
+
+msgctxt "field:product.template,active:0"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "field:product.template,category:0"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.template,cost_price:0"
+msgid "Cost Price"
+msgstr "Kostprijs"
+
+msgctxt "field:product.template,cost_price_method:0"
+msgid "Cost Method"
+msgstr "Kostprijsmethode"
+
+msgctxt "field:product.template,cost_price_uom:0"
+msgid "Cost Price"
+msgstr "Kostprijs"
+
+msgctxt "field:product.template,customer_taxes:0"
+msgid "Customer Taxes"
+msgstr "Belasting klanten"
+
+msgctxt "field:product.template,customer_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr "Belasting klanten gebruikt"
+
+msgctxt "field:product.template,default_uom:0"
+msgid "Default UOM"
+msgstr "Standaard ME"
+
+msgctxt "field:product.template,list_price:0"
+msgid "List Price"
+msgstr "Catalogusprijs"
+
+msgctxt "field:product.template,list_price_uom:0"
+msgid "List Price"
+msgstr "Catalogusprijs"
+
+msgctxt "field:product.template,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.template,products:0"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "field:product.template,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.template,supplier_taxes:0"
+msgid "Supplier Taxes"
+msgstr "Belastingen inkoop"
+
+msgctxt "field:product.template,supplier_taxes_used:0"
+msgid "Customer Taxes Used"
+msgstr "Belasting klanten gebruikt"
+
+msgctxt "field:product.template,taxes_category:0"
+msgid "Use Category's Taxes"
+msgstr "Gebruik de belastingen van de categorie"
+
+msgctxt "field:product.template,type:0"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:product.template-customer-account.tax,product:0"
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+msgctxt "field:product.template-customer-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.template-customer-account.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product.template-supplier-account.tax,product:0"
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+msgctxt "field:product.template-supplier-account.tax,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.template-supplier-account.tax,tax:0"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product.uom,active:0"
+msgid "Active"
+msgstr "Actief"
+
+msgctxt "field:product.uom,category:0"
+msgid "UOM Category"
+msgstr "ME categorie"
+
+msgctxt "field:product.uom,digits:0"
+msgid "Display Digits"
+msgstr "Zichtbare decimalen"
+
+msgctxt "field:product.uom,factor:0"
+msgid "Factor"
+msgstr "Faktor"
+
+msgctxt "field:product.uom,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.uom,rate:0"
+msgid "Rate"
+msgstr "Verhouding"
+
+msgctxt "field:product.uom,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.uom,rounding:0"
+msgid "Rounding Precision"
+msgstr "Afronding"
+
+msgctxt "field:product.uom,symbol:0"
+msgid "Symbol"
+msgstr "Symbool"
+
+msgctxt "field:product.uom.category,name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.uom.category,rec_name:0"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:product.uom.category,uoms:0"
+msgid "Unit of Measures"
+msgstr "Meeteenheid"
+
+msgctxt "help:product.template,account_category:0"
+msgid "Use the accounts defined on the category"
+msgstr "Gebruik de rekeningen van de categorie"
+
+msgctxt "help:product.template,account_expense:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+msgctxt "help:product.template,account_revenue:0"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+
+msgctxt "help:product.template,taxes_category:0"
+msgid "Use the taxes defined on the category"
+msgstr "Gebruik de belastingen van de categorie"
+
+msgctxt "help:product.uom,factor:0"
+msgid ""
+"The coefficient for the formula:\n"
+"coef (base unit) = 1 (this unit)"
+msgstr ""
+"De coëfficiënt voor deze formule:\n"
+"coëf (basiseenheid) = 1 (deze eenheid)"
+
+msgctxt "help:product.uom,rate:0"
+msgid ""
+"The coefficient for the formula:\n"
+"1 (base unit) = coef (this unit)"
+msgstr ""
+"De coëfficiënt voor deze formule:\n"
+"1(basiseenheid) = coëf (deze eenheid)"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.action,name:act_product_by_category"
+msgid "Product by Category"
+msgstr "Product per categorie"
+
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "model:ir.action,name:act_uom_category_form"
+msgid "Categories of Unit of Measure"
+msgstr "Categorieën van meeteenheden"
+
+msgctxt "model:ir.action,name:act_uom_form"
+msgid "Units of Measure"
+msgstr "Meeteenheden"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_main_product"
+msgid "Product"
+msgstr "Productbeheer"
+
+msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
+msgid "Categories"
+msgstr "Categorieën"
+
+msgctxt "model:ir.ui.menu,name:menu_uom_form"
+msgid "Units of Measure"
+msgstr "Meeteenheden"
+
+msgctxt "model:product.category,name:0"
+msgid "Product Category"
+msgstr "Product categorie"
+
+msgctxt "model:product.category-customer-account.tax,name:0"
+msgid "Category - Customer Tax"
+msgstr "Categorie - belasting klant"
+
+msgctxt "model:product.category-supplier-account.tax,name:0"
+msgid "Category - Supplier Tax"
+msgstr "Categorie - belasting leverancier"
+
+msgctxt "model:product.product,name:0"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "model:product.template,name:0"
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+msgctxt "model:product.template-customer-account.tax,name:0"
+msgid "Product Template - Customer Tax"
+msgstr "Productsjabloon - Belasting verkoop"
+
+msgctxt "model:product.template-supplier-account.tax,name:0"
+msgid "Product Template - Supplier Tax"
+msgstr "Productsjabloon - Belasting inkoop"
+
+msgctxt "model:product.uom,name:0"
+msgid "Unit of measure"
+msgstr "Meeteenheid"
+
+msgctxt "model:product.uom,name:uom_are"
+msgid "Are"
+msgstr "Are"
+
+msgctxt "model:product.uom,name:uom_carat"
+msgid "Carat"
+msgstr "Karaat"
+
+msgctxt "model:product.uom,name:uom_centimeter"
+msgid "centimeter"
+msgstr "centimeter"
+
+msgctxt "model:product.uom,name:uom_cubic_centimeter"
+msgid "Cubic centimeter"
+msgstr "Kubieke centimeter"
+
+msgctxt "model:product.uom,name:uom_cubic_foot"
+msgid "Cubic foot"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_cubic_inch"
+msgid "Cubic inch"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_cubic_meter"
+msgid "Cubic meter"
+msgstr "Kubieke meter"
+
+msgctxt "model:product.uom,name:uom_day"
+msgid "Day"
+msgstr "Dag"
+
+msgctxt "model:product.uom,name:uom_foot"
+msgid "Foot"
+msgstr "Voet"
+
+msgctxt "model:product.uom,name:uom_gallon"
+msgid "Gallon"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_gram"
+msgid "Gram"
+msgstr "Gram"
+
+msgctxt "model:product.uom,name:uom_hectare"
+msgid "Hectare"
+msgstr "Hectare"
+
+msgctxt "model:product.uom,name:uom_hour"
+msgid "Hour"
+msgstr "Uur"
+
+msgctxt "model:product.uom,name:uom_inch"
+msgid "Inch"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_kilogram"
+msgid "Kilogram"
+msgstr "Kilogram"
+
+msgctxt "model:product.uom,name:uom_kilometer"
+msgid "Kilometer"
+msgstr "Kilometer"
+
+msgctxt "model:product.uom,name:uom_liter"
+msgid "Liter"
+msgstr "Liter"
+
+msgctxt "model:product.uom,name:uom_meter"
+msgid "Meter"
+msgstr "Meter"
+
+msgctxt "model:product.uom,name:uom_mile"
+msgid "Mile"
+msgstr "Mijl"
+
+msgctxt "model:product.uom,name:uom_millimeter"
+msgid "Millimeter"
+msgstr "Milimeter"
+
+msgctxt "model:product.uom,name:uom_minute"
+msgid "Minute"
+msgstr "Minute"
+
+msgctxt "model:product.uom,name:uom_ounce"
+msgid "Ounce"
+msgstr "Ons"
+
+msgctxt "model:product.uom,name:uom_pound"
+msgid "Pound"
+msgstr "Pond"
+
+msgctxt "model:product.uom,name:uom_second"
+msgid "Second"
+msgstr "Seconde"
+
+msgctxt "model:product.uom,name:uom_square_centimeter"
+msgid "Square centimeter"
+msgstr "Vierkante centimeter"
+
+msgctxt "model:product.uom,name:uom_square_foot"
+msgid "Square foot"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_square_inch"
+msgid "Square inch"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_square_meter"
+msgid "Square meter"
+msgstr "Vierkante meter"
+
+msgctxt "model:product.uom,name:uom_square_yard"
+msgid "Square yard"
+msgstr ""
+
+msgctxt "model:product.uom,name:uom_unit"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "model:product.uom,name:uom_work_day"
+msgid "Work Day"
+msgstr "Werkdag"
+
+msgctxt "model:product.uom,name:uom_yard"
+msgid "Yard"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_are"
+msgid "a"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_carat"
+msgid "c"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_centimeter"
+msgid "cm"
+msgstr "cm."
+
+msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
+msgid "cm³"
+msgstr "cm³"
+
+msgctxt "model:product.uom,symbol:uom_cubic_foot"
+msgid "ft³"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_cubic_inch"
+msgid "in³"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_cubic_meter"
+msgid "m³"
+msgstr "m³"
+
+msgctxt "model:product.uom,symbol:uom_day"
+msgid "d"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_foot"
+msgid "ft"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_gallon"
+msgid "gal"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_gram"
+msgid "g"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_hectare"
+msgid "ha"
+msgstr "ha."
+
+msgctxt "model:product.uom,symbol:uom_hour"
+msgid "h"
+msgstr "uur"
+
+msgctxt "model:product.uom,symbol:uom_inch"
+msgid "in"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_kilogram"
+msgid "kg"
+msgstr "kg."
+
+msgctxt "model:product.uom,symbol:uom_kilometer"
+msgid "km"
+msgstr "km."
+
+msgctxt "model:product.uom,symbol:uom_liter"
+msgid "l"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_meter"
+msgid "m"
+msgstr "m."
+
+msgctxt "model:product.uom,symbol:uom_mile"
+msgid "mi"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_millimeter"
+msgid "mm"
+msgstr "mm."
+
+msgctxt "model:product.uom,symbol:uom_minute"
+msgid "min"
+msgstr "min."
+
+msgctxt "model:product.uom,symbol:uom_ounce"
+msgid "oz"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_pound"
+msgid "lbs"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_second"
+msgid "s"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_square_centimeter"
+msgid "cm²"
+msgstr "cm²"
+
+msgctxt "model:product.uom,symbol:uom_square_foot"
+msgid "ft²"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_square_inch"
+msgid "in²"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_square_meter"
+msgid "m²"
+msgstr "m²"
+
+msgctxt "model:product.uom,symbol:uom_square_yard"
+msgid "yd²"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_unit"
+msgid "u"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_work_day"
+msgid "wd"
+msgstr ""
+
+msgctxt "model:product.uom,symbol:uom_yard"
+msgid "yd"
+msgstr ""
+
+msgctxt "model:product.uom.category,name:0"
+msgid "Product uom category"
+msgstr "Product ME catergorie"
+
+msgctxt "model:product.uom.category,name:uom_cat_length"
+msgid "Length"
+msgstr "Lengte"
+
+msgctxt "model:product.uom.category,name:uom_cat_surface"
+msgid "Surface"
+msgstr "Oppervlak"
+
+msgctxt "model:product.uom.category,name:uom_cat_time"
+msgid "Time"
+msgstr "Tijd"
+
+msgctxt "model:product.uom.category,name:uom_cat_unit"
+msgid "Units"
+msgstr "Eenheden"
+
+msgctxt "model:product.uom.category,name:uom_cat_volume"
+msgid "Volume"
+msgstr "Volume"
+
+msgctxt "model:product.uom.category,name:uom_cat_weight"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "model:res.group,name:group_product_admin"
+msgid "Product Administration"
+msgstr "Productregistratie"
+
+msgctxt "selection:product.template,cost_price_method:0"
+msgid "Average"
+msgstr "Gemiddeld"
+
+msgctxt "selection:product.template,cost_price_method:0"
+msgid "Fixed"
+msgstr "Vast"
+
+msgctxt "selection:product.template,type:0"
+msgid "Consumable"
+msgstr "Verbruik"
+
+msgctxt "selection:product.template,type:0"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "selection:product.template,type:0"
+msgid "Stockable"
+msgstr "Op voorraad"
+
+msgctxt "view:product.category:0"
+msgid "Children"
+msgstr "Onderliggende niveaus"
+
+msgctxt "view:product.category:0"
+msgid "Product Categories"
+msgstr "Product categorieën"
+
+msgctxt "view:product.category:0"
+msgid "Product Category"
+msgstr "Product categorie"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "view:product.template:0"
+msgid "Accounting"
+msgstr "Boekhouden"
+
+msgctxt "view:product.template:0"
+msgid "Accounts"
+msgstr "Rekeningen"
+
+msgctxt "view:product.template:0"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:product.template:0"
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+msgctxt "view:product.template:0"
+msgid "Product Templates"
+msgstr "Productsjabloon"
+
+msgctxt "view:product.template:0"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "view:product.uom.category:0"
+msgid "Categories of Unit of Measure"
+msgstr "Categorieën van meeteenheden"
+
+msgctxt "view:product.uom.category:0"
+msgid "Category of Unit of Measure"
+msgstr "Categorie van meeteenheden"
+
+msgctxt "view:product.uom:0"
+msgid "Unit of Measure"
+msgstr "Meeteenheid"
+
+msgctxt "view:product.uom:0"
+msgid "Units of Measure"
+msgstr "Meeteenheden"
