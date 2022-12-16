@@ -1,0 +1,67 @@
+Version 3.4.4 - 2016-07-05
+* Bug fixes (see mercurial logs for details)
+
+Version 3.4.3 - 2016-04-06
+* Bug fixes (see mercurial logs for details)
+
+Version 3.4.2 - 2015-12-22
+* Bug fixes (see mercurial logs for details)
+
+Version 3.4.1 - 2015-02-21
+* Bug fixes (see mercurial logs for details)
+
+Version 3.4.0 - 2014-10-20
+* Bug fixes (see mercurial logs for details)
+
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
+* Add link between stock moves and invoice lines
+* Add warning for customer moves without origin
+
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
+* Replace reference copying by relate
+
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
+* Use origin Reference on Invoice Line and Stock Move
+
+Version 2.6.0 - 2012-10-22
+* Bug fixes (see mercurial logs for details)
+
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
+* Manage negative amounts in sale
+* Add cache on amount fields in readonly states
+* Confirmed state split into Confirmed and Processing
+* Add a Function field delivery_date to sale line
+* Sale date is required only at confirmation
+* warehouse is not always required
+
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
+* Add delivery time on product
+* Use compute delivery date for stock moves
+* Group stock moves on shipment using a key
+
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
+
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
+* Use a modelsingleton to define which sale sequence to use
+* Add default search value on sale
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add buttons to handle invoice and packing exceptions
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="calendar">
+    <element name="calendar">
+      <ref name="attlist.calendar"/>
+      <zeroOrMore>
+        <ref name="field"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <attribute name="dtstart"/>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="dtend"/>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
+      <attribute name="string" a:defaultValue="Unknown"/>
+    </optional>
+  </define>
+  <define name="field">
+    <element name="field">
+      <ref name="attlist.field"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <attribute name="name"/>
+  </define>
+  <start>
+    <ref name="calendar"/>
+  </start>
+</grammar>
