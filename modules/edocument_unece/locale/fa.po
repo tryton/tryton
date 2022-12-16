@@ -1,0 +1,345 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "کد دسته UNECE"
+
+msgctxt "field:account.tax,unece_code:"
+msgid "UNECE Code"
+msgstr "کد UNECE"
+
+msgctxt "field:account.tax.template,unece_category_code:"
+msgid "UNECE Category Code"
+msgstr "کد دسته UNECE"
+
+msgctxt "field:account.tax.template,unece_code:"
+msgid "UNECE Code"
+msgstr "کد UNECE"
+
+msgctxt "field:product.uom,unece_code:"
+msgid "UNECE Code"
+msgstr "کد UNECE"
+
+msgctxt "help:account.tax,unece_category_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr "کد استاندارد کمیسیون اقتصادی سازمان ملل متحد برای اروپا."
+
+msgctxt "help:account.tax,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr "کد استاندارد کمیسیون اقتصادی سازمان ملل متحد برای اروپا."
+
+msgctxt "help:product.uom,unece_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr "کد استاندارد کمیسیون اقتصادی سازمان ملل متحد برای اروپا."
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Canary Islands general indirect tax"
+msgstr "مالیات غیر مستقیم عمومی جزایر قناری"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Duty paid by supplier"
+msgstr "وظیفه توسط تامین کننده پرداخت می شود"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt for resale"
+msgstr "مجاز به فروش مجدد"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Exempt from tax"
+msgstr "معاف از مالیات"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Free export item, tax not charged"
+msgstr "آیتم های صادراتی آزاد بدون پرداخت مالیات"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Higher rate"
+msgstr "نرخ بالاتر"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Lower rate"
+msgstr "نرخ پایین تر"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Mixed tax rate"
+msgstr "نرخ مالیات مخلوط"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Services outside scope of tax"
+msgstr "خدمات خارج از محدوده مالیات"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Standard rate"
+msgstr "نرخ استاندارد"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Tax for production, services and importation in Ceuta and Melilla"
+msgstr "مالیات برای تولید، خدمات و واردات در Ceuta و Melilla"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Transferred (VAT)"
+msgstr "منتقل شده"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT Reverse Charge"
+msgstr "شارژ معکوس مالیات بر ارزش افزوده"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "VAT exempt for EEA intra-community supply of goods and services"
+msgstr "مالیات بر ارزش افزوده ناشی از عرضه کالا و خدمات EEA در داخل جامعه است"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) due from a previous invoice"
+msgstr "مالیات بر ارزش افزوده طرح حاشیه - به موجب صورتحساب قبلی"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - collector's items and antiques"
+msgstr "مالیات بر ارزش افزوده طرح حاشیه - اقلام کلکسیونی و عتیقه"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - second-hand goods"
+msgstr "مالیات بر ارزش افزوده طرح حاشیه - کالا دست دوم"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - travel agents"
+msgstr "مالیات بر ارزش افزوده طرح حاشیه - آژانس مسافرتی"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) margin scheme - works of art"
+msgstr "مالیات بر ارزش افزوده طرح حاشیه - آثار هنری"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Value Added Tax (VAT) not now due for payment"
+msgstr "مالیات بر ارزش افزوده در حال حاضر آماده پرداخت نیست"
+
+msgctxt "selection:account.tax,unece_category_code:"
+msgid "Zero rated goods"
+msgstr "امتیاز کالا صفر"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural export rebate"
+msgstr "تخفیف صادرات کشاورزی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Agricultural levy"
+msgstr "مجوز کشاورزی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Alcohol mark tax"
+msgstr "مالیات بر الکل"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Anti-dumping duty"
+msgstr "وظیفه ضد دامپینگ"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Business license fee"
+msgstr "هزینه مجوز کسب و کار"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Canadian provincial sales tax"
+msgstr "مالیات فروش استانی کانادا"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Car tax"
+msgstr "مالیات خودرو"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Coffee tax"
+msgstr "مالیات قهوه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Commodity specific tax"
+msgstr "مالیات خاص کالا"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Countervailing duty"
+msgstr "جبران خسارت وظیفه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Customs duty"
+msgstr "عوارض گمرکی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Energy fee"
+msgstr "هزینه های انرژی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Environmental tax"
+msgstr "مالیات های زیست محیطی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Excise duty"
+msgstr "مالیات غیر مستقیم وظیفه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Federal excise tax"
+msgstr "مالیات غیر مستقیم استانی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Free"
+msgstr "رایگان"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "General construction tax"
+msgstr "مالیات ساخت و ساز عمومی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Goods and services tax"
+msgstr "مالیات بر کالاها و خدمات"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Harmonised sales tax, Canadian"
+msgstr "هماهنگی مالیات بر فروش کانادا"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Illuminants tax"
+msgstr "کاهش مالیاتی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Import tax"
+msgstr "مالیات بر واردات"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Individual tax"
+msgstr "مالیات بر افراد"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Insurance tax"
+msgstr "بیمه و مالیات"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Light dues payable"
+msgstr "هزینه های قابل پرداخت"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local construction tax"
+msgstr "مالیات های محلی ساخت و ساز"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Local sales tax"
+msgstr "مالیات بر فروش محلی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Lust tax"
+msgstr "مشمول مالیات"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Mineral oil tax"
+msgstr "مالیات بر روغن معدنی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Miscellaneous cash deposit"
+msgstr "سپرده های نقدی متفرقه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Monetary compensatory amount"
+msgstr "مبلغ جبران خسارت"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Other taxes"
+msgstr "سایر مالیات ها"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Paper consortium tax (Italy)"
+msgstr "کاغذ کنسرسیوم مالیات (ایتالیا)"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Petroleum tax"
+msgstr "مالیات بر نفت"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Preference duty"
+msgstr "مزایای وظیفه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty bond"
+msgstr "جبران خسارت وظیفه موقت تضمینی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional countervailing duty cash"
+msgstr "جبران خسارت وظیفه موقت نقدی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty bond"
+msgstr "وظیفه موقت تضمینی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Provisional duty cash"
+msgstr "وظیفه موقت نقدی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Quebec sales tax"
+msgstr "مالیات بر فروش quebec"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted social securities"
+msgstr "اوراق بهادار اجتماعی منتقل"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Shifted wage tax"
+msgstr "مالیات دستمزد تغیریافته"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special construction tax"
+msgstr "مالیات ساختاری ویژه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Special tax"
+msgstr "مالیات ویژه"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Stamp duty (Imposta di Bollo)"
+msgstr "تمبر عوارض"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "State/provincial sales tax"
+msgstr "مالیات فروش ایالتی/استانی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Surtax"
+msgstr "اضافه ماليات"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Suspended duty"
+msgstr "وظیفه معلق"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tax on replacement part"
+msgstr "مالیات در بخش جایگزینی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tobacco tax"
+msgstr "مالیات توتون و تنباکو"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Tonnage taxes"
+msgstr "مالیات تناژ"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Total"
+msgstr "مجموع"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Turnover tax"
+msgstr "مالیات بر گردش مالی"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Valuation deposit"
+msgstr "ارزیابی سپرده"
+
+msgctxt "selection:account.tax,unece_code:"
+msgid "Value added tax"
+msgstr "مالیات ارزش افزوده"
+
+#, fuzzy
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "کد UNECE"
+
+#, fuzzy
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "کد UNECE"

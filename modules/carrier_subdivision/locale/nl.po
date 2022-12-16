@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier.selection,from_postal_code:"
+msgid "From Postal Code"
+msgstr "Van postcode"
+
+msgctxt "field:carrier.selection,from_subdivision:"
+msgid "From Subdivision"
+msgstr "van subdivisie"
+
+msgctxt "field:carrier.selection,to_postal_code:"
+msgid "To Postal Code"
+msgstr "Naar postcode"
+
+msgctxt "field:carrier.selection,to_subdivision:"
+msgid "To Subdivision"
+msgstr "naar subdivisie"
+
+#, fuzzy
+msgctxt "help:carrier.selection,from_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier collects from.\n"
+"Leave empty to allow collection from any postal code."
+msgstr ""
+"De subdivisie waaruit de vervoerder verzamelt.\n"
+"Laat leeg om inzameling vanuit elke subdivisie mogelijk te maken."
+
+msgctxt "help:carrier.selection,from_subdivision:"
+msgid ""
+"The subdivision the carrier collects from.\n"
+"Leave empty to allow collection from any subdivision."
+msgstr ""
+"De subdivisie waaruit de vervoerder verzamelt.\n"
+"Laat leeg om inzameling vanuit elke subdivisie mogelijk te maken."
+
+#, fuzzy
+msgctxt "help:carrier.selection,to_postal_code:"
+msgid ""
+"The regular expression to match the postal codes the carrier delivers to.\n"
+"Leave empty to allow delivery to any postal code."
+msgstr ""
+"De subdivisie waaraan de vervoerder levert.\n"
+"Laat leeg om levering aan een onderverdeling mogelijk te maken."
+
+msgctxt "help:carrier.selection,to_subdivision:"
+msgid ""
+"The subdivision the carrier delivers to.\n"
+"Leave empty to allow delivery to any subdivision."
+msgstr ""
+"De subdivisie waaraan de vervoerder levert.\n"
+"Laat leeg om levering aan een onderverdeling mogelijk te maken."

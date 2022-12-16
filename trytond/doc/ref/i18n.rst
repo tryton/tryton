@@ -1,0 +1,19 @@
+.. _ref-i18n:
+.. module:: trytond.i18n
+
+====================
+Internationalization
+====================
+
+.. method:: gettext(message_id, [language[, \**variables]])
+
+    Returns the message translated into the ``language``.
+    The ``message_id`` is the ``XML`` id for the ``ir.message`` that is to be
+    translated, and the ``variables`` keyword arguments are used as a mapping to
+    format the string.
+    If ``language`` is not set, then the :attr:`Transaction.language` is used.
+
+.. method:: lazy_gettext(message_id, [language[, \**variables]])
+
+    Return a LazyString that will be translated with gettext later when
+    actually used.
