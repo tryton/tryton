@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/group[@id='checkboxes']" position="inside">
+        <label name="customs"/>
+        <field name="customs" xexpand="0" width="25"/>
+    </xpath>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Customs" id="customs">
+            <label name="tariff_codes_parent"/>
+            <field name="tariff_codes_parent"/>
+            <field name="tariff_codes" colspan="4"
+                view_ids="customs.product-tariff_code_view_list_sequence"/>
+        </page>
+    </xpath>
+</data>

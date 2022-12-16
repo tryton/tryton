@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Models"
+            id="menu_models"
+            sequence="50"
+            parent="menu_administration"/>
+        <record model="ir.ui.view" id="model_view_form">
+            <field name="model">ir.model</field>
+            <field name="type">form</field>
+            <field name="name">model_form</field>
+        </record>
+        <record model="ir.ui.view" id="model_view_tree">
+            <field name="model">ir.model</field>
+            <field name="type">tree</field>
+            <field name="name">model_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_model_form">
+            <field name="name">Models</field>
+            <field name="res_model">ir.model</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="model_view_tree"/>
+            <field name="act_window" ref="act_model_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="model_view_form"/>
+            <field name="act_window" ref="act_model_form"/>
+        </record>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_model_form"
+            sequence="10"
+            id="menu_model_form"/>
+        <record model="ir.ui.view" id="model_fields_view_form">
+            <field name="model">ir.model.field</field>
+            <field name="type">form</field>
+            <field name="name">model_field_form</field>
+        </record>
+        <record model="ir.ui.view" id="model_fields_view_tree">
+            <field name="model">ir.model.field</field>
+            <field name="type">tree</field>
+            <field name="name">model_field_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_model_fields_form">
+            <field name="name">Fields</field>
+            <field name="res_model">ir.model.field</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_fields_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="model_fields_view_tree"/>
+            <field name="act_window" ref="act_model_fields_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_fields_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="model_fields_view_form"/>
+            <field name="act_window" ref="act_model_fields_form"/>
+        </record>
+        <menuitem
+            parent="menu_model_form"
+            action="act_model_fields_form"
+            sequence="20"
+            id="model_model_fields_form"/>
+        <record model="ir.ui.view" id="model_access_view_tree">
+            <field name="model">ir.model.access</field>
+            <field name="type">tree</field>
+            <field name="name">model_access_list</field>
+        </record>
+        <record model="ir.ui.view" id="model_access_view_form">
+            <field name="model">ir.model.access</field>
+            <field name="type">form</field>
+            <field name="name">model_access_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_model_access_form">
+            <field name="name">Models Access</field>
+            <field name="res_model">ir.model.access</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_access_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="model_access_view_tree"/>
+            <field name="act_window" ref="act_model_access_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_access_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="model_access_view_form"/>
+            <field name="act_window" ref="act_model_access_form"/>
+        </record>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_model_access_form"
+            sequence="30"
+            id="menu_model_access_form"/>
+
+        <record model="ir.action.act_window" id="act_model_access_form_relate_model">
+            <field name="name">Access</field>
+            <field name="res_model">ir.model.access</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('model', '=', Eval('active_id')), ('model', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_model_access_form_relate_model_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="act_model_access_form_relate_model"/>
+        </record>
+
+        <record model="ir.ui.view" id="model_field_access_view_tree">
+            <field name="model">ir.model.field.access</field>
+            <field name="type">tree</field>
+            <field name="name">model_field_access_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="model_field_access_view_form">
+            <field name="model">ir.model.field.access</field>
+            <field name="type">form</field>
+            <field name="name">model_field_access_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_model_field_access_form">
+            <field name="name">Fields Access</field>
+            <field name="res_model">ir.model.field.access</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_field_access_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="model_field_access_view_tree"/>
+            <field name="act_window" ref="act_model_field_access_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_field_access_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="model_field_access_view_form"/>
+            <field name="act_window" ref="act_model_field_access_form"/>
+        </record>
+        <menuitem
+            parent="menu_model_access_form"
+            action="act_model_field_access_form"
+            sequence="10"
+            id="menu_model_field_access_form"/>
+
+        <record model="ir.action.act_window" id="act_model_field_access_form_relate_field">
+            <field name="name">Access</field>
+            <field name="res_model">ir.model.field.access</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('field', '=', Eval('active_id')), ('field', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_modelfield__access_form_relate_field_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model.field,-1</field>
+            <field name="action" ref="act_model_field_access_form_relate_field"/>
+        </record>
+
+        <record model="ir.action.report" id="report_model_graph">
+            <field name="name">Graph</field>
+            <field name="model">ir.model</field>
+            <field name="report_name">ir.model.graph</field>
+        </record>
+
+        <record model="ir.ui.view" id="print_model_graph_start_view_form">
+            <field name="model">ir.model.print_model_graph.start</field>
+            <field name="type">form</field>
+            <field name="name">model_print_model_graph_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="print_model_graph">
+            <field name="name">Graph</field>
+            <field name="wiz_name">ir.model.print_model_graph</field>
+            <field name="model">ir.model</field>
+        </record>
+        <record model="ir.action.keyword" id="print_model_graph_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="print_model_graph"/>
+        </record>
+
+        <record model="ir.action.report" id="report_model_workflow_graph">
+            <field name="name">Workflow Graph</field>
+            <field name="model">ir.model</field>
+            <field name="report_name">ir.model.workflow_graph</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="print_model_workflow_graph_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">ir.model,-1</field>
+            <field name="action" ref="report_model_workflow_graph"/>
+        </record>
+
+        <record model="ir.ui.view" id="model_button_view_list">
+            <field name="model">ir.model.button</field>
+            <field name="type">tree</field>
+            <field name="name">model_button_list</field>
+        </record>
+        <record model="ir.ui.view" id="model_button_view_form">
+            <field name="model">ir.model.button</field>
+            <field name="type">form</field>
+            <field name="name">model_button_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_model_button_form">
+            <field name="name">Buttons</field>
+            <field name="res_model">ir.model.button</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_button_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="model_button_view_list"/>
+            <field name="act_window" ref="act_model_button_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_button_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="model_button_view_form"/>
+            <field name="act_window" ref="act_model_button_form"/>
+        </record>
+        <menuitem
+            parent="menu_model_access_form"
+            action="act_model_button_form"
+            sequence="20"
+            id="menu_model_button_form"/>
+
+        <record model="ir.ui.view" id="model_button_rule_view_list">
+            <field name="model">ir.model.button.rule</field>
+            <field name="type">tree</field>
+            <field name="name">model_button_rule_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="model_button_rule_view_form">
+            <field name="model">ir.model.button.rule</field>
+            <field name="type">form</field>
+            <field name="name">model_button_rule_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="model_button_click_view_list">
+            <field name="model">ir.model.button.click</field>
+            <field name="type">tree</field>
+            <field name="name">model_button_click_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="model_button_click_view_form">
+            <field name="model">ir.model.button.click</field>
+            <field name="type">form</field>
+            <field name="name">model_button_click_form</field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_model_button_click_form_relate_model_button">
+            <field name="name">Clicks</field>
+            <field name="res_model">ir.model.button.click</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('button', '=', Eval('active_id')), ('button', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_model_button_click_form_relate_model_button_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.model.button,-1</field>
+            <field name="action"
+                ref="act_model_button_click_form_relate_model_button"/>
+        </record>
+
+        <record model="ir.ui.view" id="model_data_view_list">
+            <field name="model">ir.model.data</field>
+            <field name="type">tree</field>
+            <field name="name">model_data_list</field>
+        </record>
+        <record model="ir.ui.view" id="model_data_view_form">
+            <field name="model">ir.model.data</field>
+            <field name="type">form</field>
+            <field name="name">model_data_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_model_data_form">
+            <field name="name">Data</field>
+            <field name="res_model">ir.model.data</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_data_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="model_data_view_list"/>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_data_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="model_data_view_form"/>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_model_data_form_domain_out_of_sync">
+            <field name="name">Out of Sync</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('out_of_sync', '=', True)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_model_data_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <menuitem
+            parent="menu_model_form"
+            action="act_model_data_form"
+            sequence="50"
+            id="menu_model_data_form"/>
+        <record model="ir.model.button" id="model_data_sync_button">
+            <field name="name">sync</field>
+            <field name="string">Sync</field>
+            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+        </record>
+
+    </data>
+</tryton>
