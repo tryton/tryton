@@ -1,0 +1,356 @@
+type,name,res_id,src,value,fuzzy
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,U kunt de factuurreeks niet meer aanpassen als er in dit boekjaar al een factuur is geboekt.,0
+error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,U moet per boekjaar verschillende factuurreeksen hebben!,0
+error,account.invoice,0,"Base taxes different from invoice lines!
+Re-compute the invoice.","Standaard belasting wijkt af van factuurregels!
+Herbereken de factuur.",0
+error,account.invoice,0,"Taxes defined but not on invoice lines!
+Re-compute the invoice.","Belasting gedefinieerd maar niet op deze factuurregels!
+Herbereken de factuur.",0
+error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.","Belasting gedefinieerd op factuurregels, maar niet op de factuur!
+Herbereken de factuur.",0
+error,account.invoice,0,The credit account on journal is missing!,De credit boeking ontbreekt!,0
+error,account.invoice,0,The credit account on journal is the same than the invoice account!,De credit rekening in het dagboek is dezelfde als de factuur rekening.,0
+error,account.invoice,0,The debit account on journal is missing!,De debit boeking ontbreekt!,0
+error,account.invoice,0,The debit account on journal is the same than the invoice account!,De debit rekening in het dagboek is dezelfde als de factuur rekening.,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Er is geen factuurreeks voor deze periode / dit boekjaar!,0
+error,account.invoice,0,"You can not create an invoice
+with account from a different invoice company!","U kunt geen factuur aanmaken
+op een rekening van een ander bedrijf!",0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!",U kunt een openstaande of betaalde factuur niet wijzigen!,0
+error,account.invoice,0,You can not reset to draft an invoice that has move!,Een geboekte factuur kunt u niet terugzetten naar concept!,0
+error,account.invoice,0,"You can not use the same account
+as on invoice line!","U kunt niet dezelfde rekening gebruiken
+als op de factuurregel!",0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,Alleen een openstaande factuur kunt u crediteren met terugbetaling!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,Een (gedeeltelijk) betaalde factuur kunt u niet crediteren met terugbetaling!,0
+error,account.invoice.line,0,"Line with ""line"" type must have an account!","Regel met ""regel"" type moet een rekening hebben!",0
+error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Een regel zonder ""regel"" moet een factuur hebben!",0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","U kunt geen regels toevoegen aan een openstaande, betaalde of geannuleerde factuur!",0
+error,account.invoice.line,0,"You can not create invoice line
+with account with a different invoice company!","U kunt geen factuurregel aanmaken
+op een rekening van een ander bedrijf!",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",U kunt geen regel aanpassen van een openstraande of betaalde factuur!,0
+error,account.invoice.line,0,"You can not use the same account
+as on the invoice!","U kunt niet dezelfde rekening 
+gebruiken als op de factuur!",0
+error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,U kunt geen gedeeltelijke betaling boeken die groter is dan het te betalen bedrag!,0
+error,account.invoice.payment_term,0,Invalid payment term line!,Ongeldige betalingstermijn!,0
+error,account.invoice.payment_term,0,Payment term missing a remainder line!,De betalingstermijn mist een restantregel!,0
+error,account.invoice.payment_term.line.delay,0,The code must be unique!,De code moet uniek zijn!,0
+error,account.invoice.payment_term.line.type,0,The code must be unique!,De code moet uniek zijn!,0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","U kunt geen regels toevoegen aan een openstaande, betaalde of geannuleerde factuur!",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",U kunt de belasting niet aanpassen van een openstaande of betaalde factuur!,0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,U kunt niet de factuurreeks aanpassen als er al een factuur in deze periode is geboekt,0
+error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,U moet per boekjaar verschillende factuurreeksen hebben binnen hetzelfde bedrijf!,0
+field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Credit inkoopnota reeks,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Inkoopfactuurreeks,0
+field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Credit verkoopnota reeks,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Verkoopfactuur reeks,0
+field,"account.invoice,account",0,Account,Rekening,0
+field,"account.invoice,accounting_date",0,Accounting Date,Boekingsdatum,0
+field,"account.invoice,amount_to_pay",0,Amount to Pay,Te betalen bedrag,0
+field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Vandaag te betalen bedrag,0
+field,"account.invoice,comment",0,Comment,Opmerking,0
+field,"account.invoice,company",0,Company,Bedrijf,0
+field,"account.invoice,currency",0,Currency,Valuta,0
+field,"account.invoice,currency_digits",0,Currency Digits,Valuta decimalen,0
+field,"account.invoice,description",0,Description,Omschrijving,0
+field,"account.invoice,invoice_address",0,Invoice Address,Factuuradres,0
+field,"account.invoice,invoice_date",0,Invoice Date,Factuurdatum,0
+field,"account.invoice,invoice_report",0,Invoice Report,Factuuroverzicht,0
+field,"account.invoice,invoice_report_format",0,Invoice Report Format,Opmaak factuuroverzicht,0
+field,"account.invoice,journal",0,Journal,Dagboek,0
+field,"account.invoice,lines",0,Lines,Regels,0
+field,"account.invoice,lines_to_pay",0,Lines to Pay,Te betalen boekingen,0
+field,"account.invoice,move",0,Move,Boeking,0
+field,"account.invoice,number",0,Number,Nummer,0
+field,"account.invoice,party",0,Party,Relatie,0
+field,"account.invoice,party_lang",0,Party Language,Taal relatie,0
+field,"account.invoice,payment_lines",0,Payment Lines,Betalingen,0
+field,"account.invoice,payment_term",0,Payment Term,Betalingstermijn,0
+field,"account.invoice,rec_name",0,Name,Naam,0
+field,"account.invoice,reconciled",0,Reconciled,Afgeletterd,0
+field,"account.invoice,reference",0,Reference,Referentie,0
+field,"account.invoice,state",0,State,Status,0
+field,"account.invoice,tax_amount",0,Tax,Belasting,0
+field,"account.invoice,taxes",0,Tax Lines,Belastingregels,0
+field,"account.invoice,total_amount",0,Total,Totaal,0
+field,"account.invoice,type",0,Type,Type,0
+field,"account.invoice,type_name",0,Type,Type,0
+field,"account.invoice,untaxed_amount",0,Untaxed,Onbelast,0
+field,"account.invoice-account.move.line,invoice",0,Invoice,Verkoopfactuur,0
+field,"account.invoice-account.move.line,line",0,Payment Line,Betalingen,0
+field,"account.invoice-account.move.line,rec_name",0,Name,Naam,0
+field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,Met restitutie,0
+field,"account.invoice.line,account",0,Account,Rekening,0
+field,"account.invoice.line,amount",0,Amount,Bedrag,0
+field,"account.invoice.line,company",0,Company,Bedrijf,0
+field,"account.invoice.line,currency",0,Currency,Valuta,0
+field,"account.invoice.line,currency_digits",0,Currency Digits,Valuta decimalen,0
+field,"account.invoice.line,description",0,Description,Omschrijving,0
+field,"account.invoice.line,invoice",0,Invoice,Verkoopfactuur,0
+field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Belastingen factuur,0
+field,"account.invoice.line,invoice_type",0,Invoice Type,Factuurtype,0
+field,"account.invoice.line,note",0,Note,Aantekening,0
+field,"account.invoice.line,party",0,Party,Relatie,0
+field,"account.invoice.line,party_lang",0,Party Language,Taal relatie,0
+field,"account.invoice.line,product",0,Product,Product,0
+field,"account.invoice.line,quantity",0,Quantity,Hoeveelheid,0
+field,"account.invoice.line,rec_name",0,Name,Naam,0
+field,"account.invoice.line,sequence",0,Sequence,Reeks,0
+field,"account.invoice.line,taxes",0,Taxes,Belastingen,0
+field,"account.invoice.line,type",0,Type,Type,0
+field,"account.invoice.line,unit",0,Unit,Eenheid,0
+field,"account.invoice.line,unit_digits",0,Unit Digits,Decimalen eenheid,0
+field,"account.invoice.line,unit_price",0,Unit Price,Eenheidsprijs,0
+field,"account.invoice.line-account.tax,line",0,Invoice Line,Factuurregel,0
+field,"account.invoice.line-account.tax,rec_name",0,Name,Naam,0
+field,"account.invoice.line-account.tax,tax",0,Tax,Belasting,0
+field,"account.invoice.pay_invoice.ask,account",0,Account,Rekening,0
+field,"account.invoice.pay_invoice.ask,account_writeoff",0,Write-Off Account,Rekening afschrijving,0
+field,"account.invoice.pay_invoice.ask,amount",0,Payment Amount,Bedrag betaling,0
+field,"account.invoice.pay_invoice.ask,amount_writeoff",0,Write-Off Amount,Rekening afschrijving,0
+field,"account.invoice.pay_invoice.ask,company",0,Company,Bedrijf,0
+field,"account.invoice.pay_invoice.ask,currency",0,Payment Currency,Valuta betaling,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Payment Currency Digits,Decimalen valuta betaling,0
+field,"account.invoice.pay_invoice.ask,currency_digits_writeoff",0,Write-Off Currency Digits,Decimalen valuta afschrijving,0
+field,"account.invoice.pay_invoice.ask,currency_writeoff",0,Write-Off Currency,Valuta afschrijving,0
+field,"account.invoice.pay_invoice.ask,date",0,Date,Datum,0
+field,"account.invoice.pay_invoice.ask,description",0,Description,Omschrijving,0
+field,"account.invoice.pay_invoice.ask,invoice",0,Invoice,Verkoopfactuur,0
+field,"account.invoice.pay_invoice.ask,journal",0,Journal,Dagboek,0
+field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Write-Off Journal,Dagboek afschrijving,0
+field,"account.invoice.pay_invoice.ask,lines",0,Lines,Regels,0
+field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Te betalen boekingen,0
+field,"account.invoice.pay_invoice.ask,payment_lines",0,Payment Lines,Betalingen,0
+field,"account.invoice.pay_invoice.ask,type",0,Type,Type,0
+field,"account.invoice.pay_invoice.init,amount",0,Amount,Bedrag,0
+field,"account.invoice.pay_invoice.init,currency",0,Currency,Valuta,0
+field,"account.invoice.pay_invoice.init,currency_digits",0,Currency Digits,Valuta decimalen,0
+field,"account.invoice.pay_invoice.init,date",0,Date,Datum,0
+field,"account.invoice.pay_invoice.init,description",0,Description,Omschrijving,0
+field,"account.invoice.pay_invoice.init,journal",0,Journal,Dagboek,0
+field,"account.invoice.payment_term,active",0,Active,Actief,0
+field,"account.invoice.payment_term,description",0,Description,Omschrijving,0
+field,"account.invoice.payment_term,lines",0,Lines,Regels,0
+field,"account.invoice.payment_term,name",0,Payment Term,Betalingstermijn,0
+field,"account.invoice.payment_term,rec_name",0,Name,Naam,0
+field,"account.invoice.payment_term.line,amount",0,Amount,Bedrag,0
+field,"account.invoice.payment_term.line,currency",0,Currency,Valuta,0
+field,"account.invoice.payment_term.line,currency_digits",0,Currency Digits,Valuta decimalen,0
+field,"account.invoice.payment_term.line,days",0,Number of Days,Aantal dagen,0
+field,"account.invoice.payment_term.line,delay",0,Condition,Voorwaarde,0
+field,"account.invoice.payment_term.line,payment",0,Payment Term,Betalingstermijn,0
+field,"account.invoice.payment_term.line,percentage",0,Percentage,Percentage,0
+field,"account.invoice.payment_term.line,rec_name",0,Name,Naam,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Reeks,0
+field,"account.invoice.payment_term.line,type",0,Type,Type,0
+field,"account.invoice.payment_term.line.delay,code",0,Code,Code,0
+field,"account.invoice.payment_term.line.delay,name",0,Name,Naam,0
+field,"account.invoice.payment_term.line.delay,rec_name",0,Name,Naam,0
+field,"account.invoice.payment_term.line.type,code",0,Code,Code,0
+field,"account.invoice.payment_term.line.type,name",0,Name,Naam,0
+field,"account.invoice.payment_term.line.type,rec_name",0,Name,Naam,0
+field,"account.invoice.tax,account",0,Account,Rekening,0
+field,"account.invoice.tax,amount",0,Amount,Bedrag,0
+field,"account.invoice.tax,base",0,Base,Basis,0
+field,"account.invoice.tax,base_code",0,Base Code,Basiscode,0
+field,"account.invoice.tax,base_sign",0,Base Sign,Basisteken,0
+field,"account.invoice.tax,description",0,Description,Omschrijving,0
+field,"account.invoice.tax,invoice",0,Invoice,Verkoopfactuur,0
+field,"account.invoice.tax,manual",0,Manual,Handmatig,0
+field,"account.invoice.tax,rec_name",0,Name,Naam,0
+field,"account.invoice.tax,sequence",0,Sequence,Reeks,0
+field,"account.invoice.tax,sequence_number",0,Sequence Number,Reeksnummer,0
+field,"account.invoice.tax,tax",0,Tax,Belasting,0
+field,"account.invoice.tax,tax_code",0,Tax Code,Belastingcode,0
+field,"account.invoice.tax,tax_sign",0,Tax Sign,Teken belasting,0
+field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Credit inkoopnota reeks,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Inkoopfactuurreeks,0
+field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Credit verkoopnota reeks,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Verkoopfactuur reeks,0
+field,"party.address,invoice",0,Invoice,Verkoopfactuur,0
+field,"party.party,payment_term",0,Invoice Payment Term,Betalingstermijn debiteur,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Betalingstermijn crediteur,0
+help,"account.invoice.credit_invoice.init,with_refund",0,"If true, the current invoice(s) will be paid.","Zo ja, dan zullen deze facturen betaald worden.",0
+help,"account.invoice.payment_term.line,percentage",0,In %,In %,0
+help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Gebruiken voor oplopend sorteren,0
+model,"account.invoice,name",0,Invoice,Verkoopfactuur,0
+model,"account.invoice-account.move.line,name",0,Invoice - Payment Line,Factuurbetalingen,0
+model,"account.invoice.credit_invoice.init,name",0,Credit Invoice Init,Creditnota gaan aanmaken,0
+model,"account.invoice.line,name",0,Invoice Line,Factuurregel,0
+model,"account.invoice.line-account.tax,name",0,Invoice Line - Tax,Factuurregel - belasting,0
+model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Betaal factuur vragen,0
+model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Factuur gaan betalen,0
+model,"account.invoice.payment_term,name",0,Payment Term,Betalingstermijn,0
+model,"account.invoice.payment_term.line,name",0,Payment Term Line,Betalingstermijn regel,0
+model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Betalingstermijn uitstelregel,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Einde van de maand,0
+model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Dagen netto,0
+model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Betalingstermijn regeltype,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Vast,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Percentage,0
+model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Restant,0
+model,"account.invoice.print_invoice_report.warning,name",0,Print Invoice Report Warning,Afdrukken waarschuwwing factuuroverzicht,0
+model,"account.invoice.tax,name",0,Invoice Tax,Belasting factuur,0
+model,"ir.action,name",act_invoice_form,All Invoices,Alle facturen,0
+model,"ir.action,name",act_invoice_form2,Invoices,Verkoopfacturen,0
+model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Credit inkoopnota's,0
+model,"ir.action,name",act_invoice_in_credit_note_form2,Supplier Credit Notes,Credit inkoopnota's,0
+model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Concept credit inkoopnota's,0
+model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro forma credit inkoopnota's,0
+model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Openstaande credit inkoopnota's,0
+model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Inkoopfacturen,0
+model,"ir.action,name",act_invoice_in_invoice_form2,Supplier Invoices,Inkoopfacturen,0
+model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Concept inkoopfacturen,0
+model,"ir.action,name",act_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Pro forma inkoopfacturen,0
+model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Openstaande inkoopfacturen,0
+model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Credit verkoopnota's,0
+model,"ir.action,name",act_invoice_out_credit_note_form2,Credit Notes,Credit verkoopnota's,0
+model,"ir.action,name",act_invoice_out_credit_note_form3,Draft Credit Notes,Concept credit verkoopnota's,0
+model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro forma credit verkoopnota's,0
+model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Openstaande credit inkoopnota's,0
+model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Verkoopfacturen,0
+model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Verkoopfacturen,0
+model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Concept verkoopfacturen,0
+model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Pro forma verkoopfacturen,0
+model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Openstaande verkoopfacturen,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Betalingstermijnen,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Betalingstermijnen,0
+model,"ir.action,name",credit_invoice,Credit,Credit,0
+model,"ir.action,name",print_invoice_report,Invoice,Factuur,0
+model,"ir.action,name",report_invoice,Invoice,Verkoopfactuur,0
+model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Betaal factuur,0
+model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Verkoopfactuur,0
+model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle facturen,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Credit inkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Nieuwe credit inkoopnota,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Concept credit inkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro forma credit inkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Openstaande credit inkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Inkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Nieuwe inkoopfactuur,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Concept inkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Pro forma inkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Openstaande inkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Credit verkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Nieuwe credit verkoopnota,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,Concept credit verkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro forma credit verkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Openstaande credit inkoopnota's,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Verkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Nieuwe verkoopfactuur,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Concept verkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro forma verkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Openstaande verkoopfacturen,0
+model,"ir.ui.menu,name",menu_invoices,Invoices,Facturen,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Betalingstermijnen,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,Nieuwe betalingstermijn,0
+model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Betalingstermijnen,0
+model,"workflow,name",invoice_workflow,Invoice workflow,Procedure facturatie,0
+model,"workflow.activity,name",invoice_activity_cancel,Canceled,Geannuleerd,0
+model,"workflow.activity,name",invoice_activity_draft,Draft,Concept,0
+model,"workflow.activity,name",invoice_activity_open,Open,Open,0
+model,"workflow.activity,name",invoice_activity_paid,Paid,Betaald,0
+model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro forma,0
+odt,account.invoice,0,Amount,Bedrag,0
+odt,account.invoice,0,Base,Basisbedrag,0
+odt,account.invoice,0,Credit Note N°:,Creditnotanummer:,0
+odt,account.invoice,0,Date,Vervaldatum,0
+odt,account.invoice,0,Date:,Datum:,0
+odt,account.invoice,0,Description,Specificatie,0
+odt,account.invoice,0,Description:,Betreft:,0
+odt,account.invoice,0,Draft Credit Note,Concept creditnota,0
+odt,account.invoice,0,Draft Invoice,Concept verkoopfactuur,0
+odt,account.invoice,0,Draft Supplier Credit Note,Concept credit inkoopnota,0
+odt,account.invoice,0,Draft Supplier Invoice,Concept inkoopfactuur,0
+odt,account.invoice,0,E-Mail:,E-mail:,0
+odt,account.invoice,0,Invoice N°:,Factuur:,0
+odt,account.invoice,0,Payment Term,Betalingstermijn,0
+odt,account.invoice,0,Phone:,Telefoon:,0
+odt,account.invoice,0,Pro forma Credit Note,Pro forma creditnota,0
+odt,account.invoice,0,Pro forma Invoice,Pro forma verkoopfactuur,0
+odt,account.invoice,0,Pro forma Supplier Credit Note,Pro forma credit inkoopnota,0
+odt,account.invoice,0,Pro forma Supplier Invoice,Pro forma factuur,0
+odt,account.invoice,0,Quantity,Hoeveelheid,0
+odt,account.invoice,0,Supplier Credit Note N°:,Credit inkoopnotanummer:,0
+odt,account.invoice,0,Supplier Invoice N°:,Inkoopfactuurnummer:,0
+odt,account.invoice,0,Tax,Belasting,0
+odt,account.invoice,0,Taxes,Belastingen,0
+odt,account.invoice,0,Taxes:,Belastingen:,0
+odt,account.invoice,0,Total (excl. taxes):,Totaal (excl. belasting):,0
+odt,account.invoice,0,Total:,Totaal:,0
+odt,account.invoice,0,Unit Price,Eenheids- prijs,0
+odt,account.invoice,0,VAT Number:,BTW-nummer:,0
+odt,account.invoice,0,VAT:,BTW:,0
+selection,"account.invoice,state",0,Canceled,Geannuleerd,0
+selection,"account.invoice,state",0,Draft,Concept,0
+selection,"account.invoice,state",0,Opened,Geopend,0
+selection,"account.invoice,state",0,Paid,Betaald,0
+selection,"account.invoice,state",0,Pro forma,Pro forma,0
+selection,"account.invoice,type",0,Credit Note,Credit verkoopnota,0
+selection,"account.invoice,type",0,Invoice,Verkoopfactuur,0
+selection,"account.invoice,type",0,Supplier Credit Note,Credit inkoopnota,0
+selection,"account.invoice,type",0,Supplier Invoice,Inkoopfactuur,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Credit verkoopnota,0
+selection,"account.invoice.line,invoice_type",0,Invoice,Verkoopfactuur,0
+selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Credit inkoopnota,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Inkoopfactuur,0
+selection,"account.invoice.line,type",0,Comment,Opmerking,0
+selection,"account.invoice.line,type",0,Line,Regel,0
+selection,"account.invoice.line,type",0,Subtotal,Subtotaal,0
+selection,"account.invoice.line,type",0,Title,Titel,0
+selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Deelbetaling,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Afschrijven,0
+view,account.invoice,0,Amount Second Currency,Bedrag alternatieve valuta,0
+view,account.invoice,0,Credit,Credit,0
+view,account.invoice,0,Debit,Debit,0
+view,account.invoice,0,Invoice,Verkoopfactuur,0
+view,account.invoice,0,Invoices,Verkoopfacturen,0
+view,account.invoice,0,Lines,Regels,0
+view,account.invoice,0,Other Info,Aanvullende informatie,0
+view,account.invoice,0,Payment,Betaling,0
+view,account.invoice,0,Payment Lines,Betalingen,0
+view,account.invoice,0,Pro For_ma,Pro For_ma,0
+view,account.invoice,0,Taxes,Belastingen,0
+view,account.invoice,0,_Cancel,_Annuleren,0
+view,account.invoice,0,_Draft,_Concept,0
+view,account.invoice,0,_Open,_Open,0
+view,account.invoice,0,_Pay,_Betalen,0
+view,account.invoice,0,_Reset to Draft,_Terug naar concept,0
+view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Wilt u deze factuur/facturen echt crediteren?,0
+view,account.invoice.credit_invoice.init,0,Credit Invoice,Credit verkoopfactuur,0
+view,account.invoice.line,0,General,Algemeen,0
+view,account.invoice.line,0,Invoice Line,Factuurregel,0
+view,account.invoice.line,0,Invoice Lines,Factuurregels,0
+view,account.invoice.line,0,Notes,Aantekeningen,0
+view,account.invoice.line,0,Products,Producten,0
+view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Bedrag alternatieve valuta,0
+view,account.invoice.pay_invoice.ask,0,Credit,Credit,0
+view,account.invoice.pay_invoice.ask,0,Debit,Debit,0
+view,account.invoice.pay_invoice.ask,0,Lines to Pay,Te betalen boekingen,0
+view,account.invoice.pay_invoice.ask,0,Pay Invoice,Betaal factuur,0
+view,account.invoice.pay_invoice.ask,0,Payment Lines,Betalingen,0
+view,account.invoice.pay_invoice.init,0,Pay Invoice,Betaal factuur,0
+view,account.invoice.payment_term,0,Payment Term,Betalingstermijn,0
+view,account.invoice.payment_term,0,Payment Term Line,Betalingstermijn regel,0
+view,account.invoice.payment_term,0,Payment Term Lines,Betalingstermijn regels,0
+view,account.invoice.payment_term,0,Payment Terms,Betalingstermijnen,0
+view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Waarschuwing!</b>,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Factuur afdrukken,0
+view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,De factuur wordt <i>direct</i> afgedrukt.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,U heeft meer dan één factuur geselecteerd om af te drukken.,0
+view,account.invoice.tax,0,Invoice Tax,Belasting factuur,0
+view,account.invoice.tax,0,Invoice Taxes,Belastingen factuur,0
+view,account.invoice.tax,0,Tax Code,Belastingcode,0
+view,party.party,0,Payment Terms,Betalingstermijnen,0
+wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Credit,0
+wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Annuleren,0
+wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Annuleren,0
+wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,Oké,0
+wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,Oké,0
+wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Annuleren,0
+wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Annuleren,0
+wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Afdrukken,0
