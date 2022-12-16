@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+# PYTHON_ARGCOMPLETE_OK
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+import curses
+import datetime as dt
+import math
+import os
+import sys
+from collections import defaultdict
+
+try:
+    import argcomplete
+except ImportError:
+    argcomplete = None
+
+DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
+    '..', '..', 'trytond')))
+if os.path.isdir(DIR):
+    sys.path.insert(0, os.path.dirname(DIR))
+
+import trytond.commandline as commandline
+from trytond.config import config
+
+parser = commandline.get_parser_stat()
+if argcomplete:
+    argcomplete.autocomplete(parser)
+options = parser.parse_args()
+config.update_etc(options.configfile)
+
+import trytond.status as status
+
+
+def main(stdscr):
+    global reverse
+    stdscr.nodelay(1)
+    reverse = True
+    processes = {}
+    status_pad = curses.newpad(1, 1)
+    cache_pad = curses.newpad(1, 1)
+
+    def refresh_status():
+        now = dt.datetime.now()
+        height, width = stdscr.getmaxyx()
+
+        def expired(process):
+            return process['expire'] > now
+
+        def format_status(since, id_, request):
+            since = str(dt.timedelta(seconds=int(since)))
+            pid, node = id_.split('@', 1)
+            if len(node) > 12:
+                node = node[:5] + '…' + node[:6]
+            return f"{pid:>5} {node:<12} {since:>18} {request}"
+        status_pad.clear()
+        status = [format_status(*i) for i in sorted(
+                ((msg['since'], p['id'], msg['request'])
+                    for p in filter(expired, processes.values())
+                    for msg in p['status']),
+                reverse=reverse)]
+        prow = min(len(status) + 1, height // 2)
+        pcol = max(max(map(len, status), default=0), width)
+        status_pad.resize(len(status) + 1, pcol + 1)
+        for i, line in enumerate(status, 1):
+            status_pad.addnstr(i, 0, line.ljust(pcol), pcol)
+        status_pad.addnstr(
+            0, 0, "{pid:>5} {node:^12} {since:>18} {request} ({n})".format(
+                pid="pid",
+                node="node",
+                since="TIME" + ('↑' if reverse else '↓'),
+                request="request",
+                n=len(status),
+                ).upper().ljust(pcol), pcol, curses.A_REVERSE)
+        status_pad.noutrefresh(0, 0, 0, 0, prow, width - 1)
+
+        def ratio(cache):
+            if cache['hit'] or cache['miss']:
+                return cache['hit'] / (cache['hit'] + cache['miss'])
+            return 0
+
+        def format_cache(name, hit, miss, ratio, size):
+            return f"{hit:{size}d} {miss:{size}d} {ratio * 100:6.2f} {name}"
+
+        cache_pad.clear()
+        cache_stats = defaultdict(lambda: defaultdict(lambda: 0))
+        for p in filter(expired, processes.values()):
+            for cache in p['caches']:
+                stats = cache_stats[cache['name']]
+                stats['name'] = cache['name']
+                stats['hit'] += cache['hit']
+                stats['miss'] += cache['miss']
+        for cache in cache_stats.values():
+            cache['ratio'] = ratio(cache)
+        try:
+            size = math.ceil(math.log10(
+                    max(s['hit'] + s['miss'] for s in cache_stats.values())))
+        except ValueError:
+            size = 1
+        size = max(size, 4)
+        caches = [format_cache(size=size, **cache) for cache in sorted(
+                cache_stats.values(), key=lambda c: (c['ratio'], c['miss']),
+                reverse=reverse)]
+        crow = max(len(caches) + 1, (height - prow))
+        ccol = max(max(map(len, caches), default=0), width)
+        cache_pad.resize(crow + 1, ccol + 1)
+        for i, line in enumerate(caches, 1):
+            cache_pad.addnstr(i, 0, line.ljust(ccol), ccol)
+        cache_pad.addstr(
+            0, 0,
+            "{hit:>{size}} {miss:>{size}} {ratio:>6} {name} ({n})".format(
+                size=size,
+                hit="hit",
+                miss="miss",
+                ratio="% " + ('↑' if reverse else '↓'),
+                name="name",
+                n=len(caches),
+                ).upper().ljust(ccol), curses.A_REVERSE)
+        cache_pad.noutrefresh(0, 0, prow, 0, height - 1, width - 1)
+
+    def refresh():
+        global reverse
+        refresh_status()
+        stdscr.refresh()
+
+        key = stdscr.getch()
+        if key == ord('q'):
+            sys.exit()
+        elif key == ord('r'):
+            reverse = not reverse
+            refresh()
+
+    def update(data=None):
+        if data:
+            pid = data['id']
+            data['expire'] = dt.datetime.now() + dt.timedelta(seconds=10)
+            processes[pid] = data
+        refresh()
+    refresh()
+    return status.listen(config.get('database', 'path'), update)
+
+
+if not curses.wrapper(main):
+    sys.stderr.write("status not supported on this platform\n")
