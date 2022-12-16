@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,product_association_rule_max_length:"
+msgid "The maximal number of products for a rule."
+msgstr "El número máximo de producto de una regla."
+
+msgctxt "field:sale.configuration,product_association_rule_min_confidence:"
+msgid "Minimum Confidence"
+msgstr "Confianza mínima"
+
+msgctxt "field:sale.configuration,product_association_rule_min_support:"
+msgid "Minimum Support"
+msgstr "Soporte mínimo"
+
+msgctxt ""
+"field:sale.configuration,product_association_rule_transactions_up_to:"
+msgid "Transactions Up to"
+msgstr "Transaciones hasta"
+
+msgctxt "field:sale.product.association.rule,antecedent_names:"
+msgid "Antecedents"
+msgstr "Antecedentes"
+
+msgctxt "field:sale.product.association.rule,antecedents:"
+msgid "Antecedents"
+msgstr "Antecedentes"
+
+msgctxt "field:sale.product.association.rule,confidence:"
+msgid "Confidence"
+msgstr "Confianza"
+
+msgctxt "field:sale.product.association.rule,consequent_names:"
+msgid "Consequents"
+msgstr "Consecuentes"
+
+msgctxt "field:sale.product.association.rule,consequents:"
+msgid "Consequents"
+msgstr "Consecuentes"
+
+msgctxt "field:sale.product.association.rule,conviction:"
+msgid "Conviction"
+msgstr "Convicción"
+
+msgctxt "field:sale.product.association.rule,lift:"
+msgid "Lift"
+msgstr "Elevador"
+
+msgctxt "field:sale.product.association.rule,support:"
+msgid "Support"
+msgstr "Soporte"
+
+msgctxt "field:sale.product.association.rule.antecedent,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:sale.product.association.rule.antecedent,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "field:sale.product.association.rule.consequent,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:sale.product.association.rule.consequent,rule:"
+msgid "Rule"
+msgstr "Regla"
+
+msgctxt "help:sale.configuration,product_association_rule_min_confidence:"
+msgid "The minimum probability of the rule."
+msgstr "La probabilidad mínima de la regla."
+
+msgctxt "help:sale.configuration,product_association_rule_min_support:"
+msgid ""
+"The minimum frequency of which the items in the rule appear together in the "
+"data set."
+msgstr ""
+"La frequencia mínima en que los articulos en la regla aparecen juntos en el "
+"conjunto de datos."
+
+msgctxt "help:sale.product.association.rule,confidence:"
+msgid "Probability of consequents, given antecedents."
+msgstr "Probabilidad de los consecuentes, dados los antecedentes."
+
+msgctxt "help:sale.product.association.rule,conviction:"
+msgid "The frequency that the rule makes an incorrect prediction."
+msgstr "La frequencia en que la regla hace una prección incorrecta."
+
+msgctxt "help:sale.product.association.rule,lift:"
+msgid ""
+"If equals to 1, the two occurrences are independent of each other.\n"
+"If greater than 1, the degree to which the two occurrences are dependent on one another.\n"
+"If less than 1, the items are substitute to each other."
+msgstr ""
+"Si es igual a 1, las dos ocurrencias són independienes una de la otra.\n"
+"Si es mayor que uno, el grado en que las dos ocurrencias son dependencias una de la otra.\n"
+"Si es menor que uno, los articulos són un sustituo uno del otro."
+
+msgctxt "help:sale.product.association.rule,support:"
+msgid "The frequency of consequents and antecedents appear together."
+msgstr ""
+"La frecuencia en la que los consecuentes y los antecedentes aparecen juntos."
+
+msgctxt "model:ir.action,name:act_product_association_rule_form"
+msgid "Sale Association Rules"
+msgstr "Reglas de associación de venta"
+
+msgctxt "model:ir.ui.menu,name:menu_product_association_rule_form"
+msgid "Sale Association Rules"
+msgstr "Reglas de associación de venta"
+
+msgctxt "model:sale.product.association.rule,name:"
+msgid "Product Association Rule"
+msgstr "Reglas de associación de productos"
+
+msgctxt "model:sale.product.association.rule.antecedent,name:"
+msgid "Product Association Rule Antecedent"
+msgstr "Antecedentes reglas de asociación de productos"
+
+msgctxt "model:sale.product.association.rule.consequent,name:"
+msgid "Product Association Rule Consequent"
+msgstr "Consiguientes reglas de asociación de productos"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Compute Sale Product Association Rules"
+msgstr "Calcular reglas de asociacion de ventas de productos"
+
+msgctxt "selection:sale.configuration,product_recommendation_method:"
+msgid "Association Rule"
+msgstr "Regla de asociación"
+
+msgctxt "view:sale.configuration:"
+msgid "Product Recommendation Association Rule"
+msgstr "Regla de asociación de recomendaciones de producto"

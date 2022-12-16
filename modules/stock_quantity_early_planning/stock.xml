@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="quantity_early_plan_view_form">
+            <field name="model">stock.quantity.early_plan</field>
+            <field name="type">form</field>
+            <field name="name">quantity_early_plan_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="quantity_early_plan_view_list">
+            <field name="model">stock.quantity.early_plan</field>
+            <field name="type">tree</field>
+            <field name="name">quantity_early_plan_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_quantity_early_plan_form">
+            <field name="name">Quantity Early Planning</field>
+            <field name="res_model">stock.quantity.early_plan</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quantity_early_plan_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="quantity_early_plan_view_list"/>
+            <field name="act_window" ref="act_quantity_early_plan_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_quantity_early_plan_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="quantity_early_plan_view_form"/>
+            <field name="act_window" ref="act_quantity_early_plan_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quantity_early_plan_form_domain_open">
+            <field name="name">Open</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open'), ('origin', 'not like', 'stock.move,%')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quantity_early_plan_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quantity_early_plan_form_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_quantity_early_plan_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_quantity_early_plan_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_quantity_early_plan_form"/>
+        </record>
+
+        <menuitem
+            parent="stock.menu_stock"
+            action="act_quantity_early_plan_form"
+            sequence="50"
+            id="menu_quantity_early_plan_form"/>
+
+        <record model="ir.model.access" id="access_quantity_early_plan">
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_quantity_early_plan_group_stock">
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_quantity_early_plan_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_quantity_early_plan_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_quantity_early_plan_companies"/>
+        </record>
+
+        <record model="ir.model.button" id="quantity_early_plan_open_button">
+            <field name="name">open</field>
+            <field name="string">Reset to Open</field>
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quantity_early_plan_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quantity_early_plan_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+        </record>
+
+        <record model="ir.model.button" id="quantity_early_plan_ignore_button">
+            <field name="name">ignore</field>
+            <field name="string">Ignore</field>
+            <field name="model" search="[('model', '=', 'stock.quantity.early_plan')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_quantity_early_plan_generate">
+            <field name="name">Generate Stock Quantity Early Planning</field>
+            <field name="wiz_name">stock.quantity.early_plan.generate</field>
+        </record>
+        <record model="ir.action-res.group" id="act_quantity_early_plan_generate_group_stock_admin">
+            <field name="action" ref="act_quantity_early_plan_generate"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <menuitem
+            parent="stock.menu_stock"
+            action="act_quantity_early_plan_generate"
+            sequence="90"
+            id="menu_quantity_early_plan_generate"/>
+        <record model="ir.ui.menu-res.group" id="menu_quantity_early_plan_generate_stock_admin">
+            <field name="menu" ref="menu_quantity_early_plan_generate"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="quantity_early_plan_generate_start_view_form">
+            <field name="model">stock.quantity.early_plan.generate.start</field>
+            <field name="type">form</field>
+            <field name="name">quantity_early_plan_generate_start_form</field>
+        </record>
+    </data>
+</tryton>
