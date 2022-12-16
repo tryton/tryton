@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="price_list_view_form">
+            <field name="model">product.price_list</field>
+            <field name="inherit"
+                ref="product_price_list.price_list_view_form"/>
+            <field name="name">price_list_form</field>
+        </record>
+        <record model="ir.model.button" id="price_list_open_lines_button">
+            <field name="name">open_lines</field>
+            <field name="string">Open Lines</field>
+            <field name="model"
+                search="[('model', '=', 'product.price_list')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_form">
+            <field name="model">product.price_list.line</field>
+            <field name="inherit"
+                ref="product_price_list.price_list_line_view_form"/>
+            <field name="name">price_list_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_tree">
+            <field name="model">product.price_list.line</field>
+            <field name="inherit"
+                ref="product_price_list.price_list_line_view_tree"/>
+            <field name="name">price_list_line_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_view_tree_sequence">
+            <field name="model">product.price_list.line</field>
+            <field name="inherit"
+                ref="product_price_list.price_list_line_view_tree_sequence"/>
+            <field name="name">price_list_line_tree_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_price_list_line_form">
+            <field name="name">Lines</field>
+            <field name="res_model">product.price_list.line</field>
+            <field name="context_model">product.price_list.line.context</field>
+            <field name="domain"
+                eval="[('price_list', '=', Eval('active_id'))]"
+                pyson="1"/>
+            <field name="context_domain"
+                eval="[['OR', ('start_date', '=', None), ('start_date', '&lt;=', Eval('date', Date()))], ['OR', ('end_date', '=', None), ('end_date', '&gt;=', Eval('date', Date()))]]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_price_list_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view"
+                ref="product_price_list.price_list_line_view_tree_sequence"/>
+            <field name="act_window" ref="act_price_list_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_price_list_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view"
+                ref="product_price_list.price_list_line_view_form"/>
+            <field name="act_window" ref="act_price_list_line_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="price_list_line_context_view_form">
+            <field name="model">product.price_list.line.context</field>
+            <field name="type">form</field>
+            <field name="name">price_list_line_context_form</field>
+        </record>
+    </data>
+
+    <data depends="sale_price_list">
+        <record model="ir.ui.view" id="product_sale_context_view_form">
+            <field name="model">product.sale.context</field>
+            <field name="inherit" ref="sale.product_sale_context_view_form"/>
+            <field name="name">product_sale_context_form</field>
+        </record>
+    </data>
+</tryton>
