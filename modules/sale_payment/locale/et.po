@@ -1,0 +1,22 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Laekumised"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Laekumised"
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr "Ei saa tühistada müüki \"%(sale)s\", kuna sellega on seotud laekumised."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr ""
+"Ei saa muuta müüki \"%(sale)s\" mustandiks, kuna sellega on seotud "
+"laekumised."
