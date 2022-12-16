@@ -1,0 +1,6 @@
+type,name,res_id,src,value,fuzzy
+field,"company.company,hours_per_work_day",0,Hours per Work Day,Stunden pro Personentag,0
+field,"company.company,hours_per_work_month",0,Hours per Work Month,Stunden pro Personenmonat,0
+field,"company.company,hours_per_work_week",0,Hours per Work Week,Stunden pro Personenwoche,0
+field,"company.company,hours_per_work_year",0,Hours per Work Year,Stunden pro Personenjahr,0
+view,company.company,0,Work Time,Arbeitszeit,0

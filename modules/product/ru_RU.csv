@@ -1,0 +1,155 @@
+type,name,res_id,src,value,fuzzy
+error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Если Ед.измерения еще не используется, его можно удалить или вы можете отключить его и создать новую.",0
+error,product.uom,0,Invalid Factor and Rate values!,Не правильные значения фактора и курса,0
+error,product.uom,0,Rate and factor can not be both equal to zero.,Ставка и фактор не могут быть одновременно равны нулю.,0
+error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Вы не можете изменить Курс, фактор или категорию на единицу измерения.",0
+field,"product.category,childs",0,Children,Подчиненый,0
+field,"product.category,name",0,Name,Наименование,0
+field,"product.category,parent",0,Parent,Основной,0
+field,"product.category,rec_name",0,Name,Наименование,0
+field,"product.product,code",0,Code,Код,0
+field,"product.product,description",0,Description,Описание,0
+field,"product.product,rec_name",0,Name,Наименование,0
+field,"product.product,template",0,Product Template,Шаблон Товара,0
+field,"product.template,active",0,Active,Действительнный,0
+field,"product.template,category",0,Category,Категории,0
+field,"product.template,cost_price",0,Cost Price,Покупная цена,0
+field,"product.template,cost_price_method",0,Cost Method,Затратный метод,0
+field,"product.template,cost_price_uom",0,Cost Price,Цена за единицу,0
+field,"product.template,default_uom",0,Default UOM,По умолчанию ед.измерения,0
+field,"product.template,list_price",0,List Price,Прайс-лист,0
+field,"product.template,list_price_uom",0,List Price,Прайс-лист,0
+field,"product.template,name",0,Name,Наименование,0
+field,"product.template,products",0,Products,ТМЦ,0
+field,"product.template,rec_name",0,Name,Наименование,0
+field,"product.template,type",0,Type,Тип,0
+field,"product.uom,active",0,Active,Действительнный,0
+field,"product.uom,category",0,UOM Category,Категория Ед.изм.,0
+field,"product.uom,digits",0,Display Digits,Кол-во знаков после запятой,0
+field,"product.uom,factor",0,Factor,Коэффициент к основной единице,0
+field,"product.uom,name",0,Name,Наименование,0
+field,"product.uom,rate",0,Rate,Коэфициент основной единицы,0
+field,"product.uom,rec_name",0,Name,Наименование,0
+field,"product.uom,rounding",0,Rounding Precision,Точность округления,0
+field,"product.uom,symbol",0,Symbol,Условное обозначение,0
+field,"product.uom.category,name",0,Name,Наименование,0
+field,"product.uom.category,rec_name",0,Name,Наименование,0
+field,"product.uom.category,uoms",0,Unit of Measures,Единица измерений,0
+help,"product.uom,factor",0,"The coefficient for the formula:
+coef (base unit) = 1 (this unit)","Коэффициент по формуле:
+коэффициент в этом поле (базовая единица) = 1 (этой ед. измерения)",0
+help,"product.uom,rate",0,"The coefficient for the formula:
+1 (base unit) = coef (this unit)","Коэффициент по формуле:
+1 (базовая единица) = коэффициенту (этой ед.измерения)",0
+model,"ir.action,name",act_category_form,Product Categories,Категория ТМЦ,0
+model,"ir.action,name",act_category_form2,Product Categories,Категория ТМЦ,0
+model,"ir.action,name",act_category_tree,Categories,Категория,0
+model,"ir.action,name",act_product_by_category,Product by Category,ТМЦ по категориям,0
+model,"ir.action,name",act_product_form,Products,ТМЦ,0
+model,"ir.action,name",act_product_form2,Products,ТМЦ,0
+model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Категория ед.измерения,0
+model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Категория ед.измерения,0
+model,"ir.action,name",act_uom_form,Units of Measure,Единицы измерения,0
+model,"ir.action,name",act_uom_form2,Units of Measure,Единицы измерения,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Категория,0
+model,"ir.ui.menu,name",menu_category_form_new,New Category,Новая категория,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Категория,0
+model,"ir.ui.menu,name",menu_main_product,Product,Товарно материальные ценности (ТМЦ),0
+model,"ir.ui.menu,name",menu_product_product,Products,ТМЦ,0
+model,"ir.ui.menu,name",menu_product_product_new,New Product,Новый ТМЦ,0
+model,"ir.ui.menu,name",menu_uom_category_form,Categories,Категория,0
+model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Новая категория,0
+model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Единицы измерения,0
+model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Новая единица измерения,0
+model,"product.category,name",0,Product Category,Категория ТМЦ,0
+model,"product.product,name",0,Product,ТМЦ,0
+model,"product.template,name",0,Product Template,Шаблон ТМЦ,0
+model,"product.uom,name",0,Unit of measure,Единица измерения,0
+model,"product.uom,name",uom_are,Are,,0
+model,"product.uom,name",uom_carat,Carat,Карат,0
+model,"product.uom,name",uom_centimeter,centimeter,сантиметр,0
+model,"product.uom,name",uom_cubic_centimeter,Cubic centimeter,Кубический сантиметр,0
+model,"product.uom,name",uom_cubic_foot,Cubic foot,Кубический фут,0
+model,"product.uom,name",uom_cubic_inch,Cubic inch,Кубический дюйм,0
+model,"product.uom,name",uom_cubic_meter,Cubic meter,Кубический метр,0
+model,"product.uom,name",uom_day,Day,День,0
+model,"product.uom,name",uom_foot,Foot,Фут,0
+model,"product.uom,name",uom_gallon,Gallon,Галлон,0
+model,"product.uom,name",uom_gram,Gram,Грамм,0
+model,"product.uom,name",uom_hectare,Hectare,Гектар,0
+model,"product.uom,name",uom_hour,Hour,Час,0
+model,"product.uom,name",uom_inch,Inch,Дюйм,0
+model,"product.uom,name",uom_kilogram,Kilogram,Килограмм,0
+model,"product.uom,name",uom_kilometer,Kilometer,Километр,0
+model,"product.uom,name",uom_liter,Liter,Литр,0
+model,"product.uom,name",uom_meter,Meter,Метр,0
+model,"product.uom,name",uom_mile,Mile,Миля,0
+model,"product.uom,name",uom_millimeter,Millimeter,Миллиметр,0
+model,"product.uom,name",uom_minute,Minute,Минута,0
+model,"product.uom,name",uom_ounce,Ounce,Унция,0
+model,"product.uom,name",uom_pound,Pound,Фунт,0
+model,"product.uom,name",uom_second,Second,Секунда,0
+model,"product.uom,name",uom_square_centimeter,Square centimeter,Квадратный сантиметр,0
+model,"product.uom,name",uom_square_foot,Square foot,Квадратный фут,0
+model,"product.uom,name",uom_square_inch,Square inch,Квадратный дюйм,0
+model,"product.uom,name",uom_square_meter,Square meter,Квадратный метр,0
+model,"product.uom,name",uom_square_yard,Square yard,Квадратный ярд,0
+model,"product.uom,name",uom_unit,Unit,Штука,0
+model,"product.uom,name",uom_work_day,Work Day,Рабочий день,0
+model,"product.uom,name",uom_yard,Yard,Ярд,0
+model,"product.uom,symbol",uom_are,a,,0
+model,"product.uom,symbol",uom_carat,c,,0
+model,"product.uom,symbol",uom_centimeter,cm,,0
+model,"product.uom,symbol",uom_cubic_centimeter,cm³,,0
+model,"product.uom,symbol",uom_cubic_foot,ft³,,0
+model,"product.uom,symbol",uom_cubic_inch,in³,,0
+model,"product.uom,symbol",uom_cubic_meter,m³,,0
+model,"product.uom,symbol",uom_day,d,,0
+model,"product.uom,symbol",uom_foot,ft,,0
+model,"product.uom,symbol",uom_gallon,gal,,0
+model,"product.uom,symbol",uom_gram,g,,0
+model,"product.uom,symbol",uom_hectare,ha,,0
+model,"product.uom,symbol",uom_hour,h,,0
+model,"product.uom,symbol",uom_inch,in,,0
+model,"product.uom,symbol",uom_kilogram,kg,,0
+model,"product.uom,symbol",uom_kilometer,km,,0
+model,"product.uom,symbol",uom_liter,l,,0
+model,"product.uom,symbol",uom_meter,m,,0
+model,"product.uom,symbol",uom_mile,mi,,0
+model,"product.uom,symbol",uom_millimeter,mm,,0
+model,"product.uom,symbol",uom_minute,min,,0
+model,"product.uom,symbol",uom_ounce,oz,,0
+model,"product.uom,symbol",uom_pound,lbs,,0
+model,"product.uom,symbol",uom_second,s,,0
+model,"product.uom,symbol",uom_square_centimeter,cm²,,0
+model,"product.uom,symbol",uom_square_foot,ft²,,0
+model,"product.uom,symbol",uom_square_inch,in²,,0
+model,"product.uom,symbol",uom_square_meter,m²,,0
+model,"product.uom,symbol",uom_square_yard,yd²,,0
+model,"product.uom,symbol",uom_unit,u,,0
+model,"product.uom,symbol",uom_work_day,wd,,0
+model,"product.uom,symbol",uom_yard,yd,,0
+model,"product.uom.category,name",0,Product uom category,Категория ед. измерения ТМЦ,0
+model,"product.uom.category,name",uom_cat_length,Length,Длина,0
+model,"product.uom.category,name",uom_cat_surface,Surface,Площадь,0
+model,"product.uom.category,name",uom_cat_time,Time,Время,0
+model,"product.uom.category,name",uom_cat_unit,Units,Единицы,0
+model,"product.uom.category,name",uom_cat_volume,Volume,Объем,0
+model,"product.uom.category,name",uom_cat_weight,Weight,Ширина,0
+model,"res.group,name",group_product_admin,Product Administration,Управление ТМЦ,0
+selection,"product.template,cost_price_method",0,Average,Средняя цена,0
+selection,"product.template,cost_price_method",0,Fixed,Фиксированная,0
+selection,"product.template,type",0,Consumable,Расходные,0
+selection,"product.template,type",0,Service,Услуги,0
+selection,"product.template,type",0,Stockable,Можно хранить,0
+view,product.category,0,Children,Подчиненый,0
+view,product.category,0,Product Categories,Категория ТМЦ,0
+view,product.category,0,Product Category,Категории ТМЦ,0
+view,product.product,0,Products,ТМЦ,0
+view,product.template,0,General,Основной,0
+view,product.template,0,Product Template,Шаблон Товара,0
+view,product.template,0,Product Templates,Шаблоны Товара,0
+view,product.uom,0,Unit of Measure,Единица измерения,0
+view,product.uom,0,Units of Measure,Единицы измерения,0
+view,product.uom.category,0,Categories of Unit of Measure,Категория ед.измерения,0
+view,product.uom.category,0,Category of Unit of Measure,Категории ед.измерения,0
