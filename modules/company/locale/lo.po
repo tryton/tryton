@@ -1,0 +1,316 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,childs:"
+msgid "Children"
+msgstr "ບັນຊີຍ່ອຍ"
+
+msgctxt "field:company.company,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:company.company,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:company.company,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+msgctxt "field:company.company,employees:"
+msgid "Employees"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:company.company,footer:"
+msgid "Footer"
+msgstr "ຕີນກະດາດ"
+
+msgctxt "field:company.company,header:"
+msgid "Header"
+msgstr "ຫົວກະດາດ"
+
+msgctxt "field:company.company,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:company.company,parent:"
+msgid "Parent"
+msgstr "ບັນຊີແມ່"
+
+msgctxt "field:company.company,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:company.company,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "ເຂດເວລາ"
+
+msgctxt "field:company.company,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີຂຽນ"
+
+msgctxt "field:company.company,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ຂຽນ"
+
+#, fuzzy
+msgctxt "field:company.company.config.start,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+msgctxt "field:company.employee,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:company.employee,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:company.employee,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:company.employee,end_date:"
+msgid "End Date"
+msgstr ""
+
+msgctxt "field:company.employee,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:company.employee,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:company.employee,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:company.employee,start_date:"
+msgid "Start Date"
+msgstr ""
+
+msgctxt "field:company.employee,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີຂຽນ"
+
+msgctxt "field:company.employee,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ຂຽນ"
+
+msgctxt "field:ir.cron,companies:"
+msgid "Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:ir.cron-company.company,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:ir.cron-company.company,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:ir.cron-company.company,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+msgctxt "field:ir.cron-company.company,cron:"
+msgid "Cron"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.cron-company.company,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:ir.cron-company.company,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:ir.cron-company.company,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:ir.cron-company.company,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "field:ir.property,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:ir.sequence,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:ir.sequence.strict,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "field:res.user,companies:"
+msgid "Current Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ ປັດຈຸບັນ"
+
+#, fuzzy
+msgctxt "field:res.user,company:"
+msgid "Current Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ ປັດຈຸບັນ"
+
+msgctxt "field:res.user,employee:"
+msgid "Current Employee"
+msgstr ""
+
+msgctxt "field:res.user,employees:"
+msgid "Employees"
+msgstr "ພະນັກງານ"
+
+msgctxt "field:res.user,main_company:"
+msgid "Main Company"
+msgstr "ສຳນັກງານ/ບໍລິສັດໃຫຍ່"
+
+msgctxt "field:res.user-company.employee,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+msgctxt "field:res.user-company.employee,employee:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,user:"
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:res.user-company.employee,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
+msgctxt "help:ir.cron,companies:"
+msgid "Companies registered for this cron"
+msgstr "ຫ້ອງການ/ສຳນັກງານ ທີ່ລົງທະບຽນ"
+
+msgctxt "model:company.company,name:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:company.company.config.start,name:"
+msgid "Company Config"
+msgstr "ກຳນົດຄ່າ ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:company.employee,name:"
+msgid "Employee"
+msgstr "ພະນັກງານ"
+
+msgctxt "model:ir.action,name:act_company_config"
+msgid "Configure Company"
+msgstr "ກຳນົດຄ່າ ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "ພະນັກງານ"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr ""
+
+msgctxt "model:ir.cron-company.company,name:"
+msgid "Cron - Company"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "ພະນັກງານ"
+
+msgctxt "model:res.user-company.employee,name:"
+msgid "User - Employee"
+msgstr ""
+
+msgctxt "report:party.letter:"
+msgid "Best Regards,"
+msgstr "ດ້ວຍຄວາມເຄົາລົບ,"
+
+msgctxt "report:party.letter:"
+msgid "Date:"
+msgstr "ວັນທີ"
+
+msgctxt "report:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "ທ່ານ ທີ່ຮັກແພງ,"
+
+msgctxt "report:party.letter:"
+msgid "Subject:"
+msgstr "ເລື່ອງ:"
+
+msgctxt "view:company.company.config.start:"
+msgid "You can now add your company into the system."
+msgstr ""
+
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "ລາຍງານ"
+
+msgctxt "wizard_button:company.company.config,company,add:"
+msgid "Add"
+msgstr "ເພີ່ມ"
+
+msgctxt "wizard_button:company.company.config,company,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:company.company.config,start,company:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+msgctxt "wizard_button:company.company.config,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
