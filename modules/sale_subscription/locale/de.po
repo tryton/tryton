@@ -1,0 +1,596 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.configuration,subscription_sequence:"
+msgid "Subscription Sequence"
+msgstr "Nummernkreis Abonnement"
+
+msgctxt "field:sale.configuration.sequence,subscription_sequence:"
+msgid "Subscription Sequence"
+msgstr "Nummernkreis Abonnement"
+
+msgctxt "field:sale.subscription,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr "Kontakt"
+
+msgctxt "field:sale.subscription,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.subscription,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:sale.subscription,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:sale.subscription,invoice_address:"
+msgid "Invoice Address"
+msgstr "Rechnungsadresse"
+
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
+msgstr "Rechnungsempfänger"
+
+msgctxt "field:sale.subscription,invoice_recurrence:"
+msgid "Invoice Recurrence"
+msgstr "Wiederkehrende Rechnung"
+
+msgctxt "field:sale.subscription,invoice_start_date:"
+msgid "Invoice Start Date"
+msgstr "Startdatum der Verrechnung"
+
+msgctxt "field:sale.subscription,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:sale.subscription,next_invoice_date:"
+msgid "Next Invoice Date"
+msgstr "Nächstes Rechnungsdatum"
+
+msgctxt "field:sale.subscription,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.subscription,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:sale.subscription,payment_term:"
+msgid "Payment Term"
+msgstr "Zahlungsbedingung"
+
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr "Angeboten von"
+
+msgctxt "field:sale.subscription,reference:"
+msgid "Reference"
+msgstr "Referenz"
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
+msgstr "Ausgeführt von"
+
+msgctxt "field:sale.subscription,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:sale.subscription,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.subscription.create_invoice.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:sale.subscription.line,consumed_until:"
+msgid "Consumed until"
+msgstr "Verbraucht bis"
+
+msgctxt "field:sale.subscription.line,consumption_delay:"
+msgid "Consumption Delay"
+msgstr "Verbrauchszeitraum"
+
+msgctxt "field:sale.subscription.line,consumption_recurrence:"
+msgid "Consumption Recurrence"
+msgstr "Wiederkehrender Verbrauch"
+
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:sale.subscription.line,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:sale.subscription.line,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:sale.subscription.line,next_consumption_date:"
+msgid "Next Consumption Date"
+msgstr "Nächstes Verbrauchsdatum"
+
+msgctxt "field:sale.subscription.line,next_consumption_date_delayed:"
+msgid "Next Consumption Delayed"
+msgstr "Nächster Verbrauch verzögert"
+
+msgctxt "field:sale.subscription.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.subscription.line,service:"
+msgid "Service"
+msgstr "Dienstleistung"
+
+msgctxt "field:sale.subscription.line,service_unit_category:"
+msgid "Service Unit Category"
+msgstr "Einheitenkategorie Dienstleistung"
+
+msgctxt "field:sale.subscription.line,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:sale.subscription.line,subscription:"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "field:sale.subscription.line,subscription_end_date:"
+msgid "Subscription End Date"
+msgstr "Ablaufdatum des Abonnements"
+
+msgctxt "field:sale.subscription.line,subscription_start_date:"
+msgid "Subscription Start Date"
+msgstr "Startdatum des Abonnements"
+
+msgctxt "field:sale.subscription.line,subscription_state:"
+msgid "Subscription State"
+msgstr "Status des Abonnements"
+
+msgctxt "field:sale.subscription.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:sale.subscription.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:sale.subscription.line,unit_price:"
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+msgctxt "field:sale.subscription.line.consumption,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.subscription.line.consumption,invoice_line:"
+msgid "Invoice Line"
+msgstr "Rechnungsposition"
+
+msgctxt "field:sale.subscription.line.consumption,line:"
+msgid "Line"
+msgstr "Position"
+
+msgctxt "field:sale.subscription.line.consumption,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.subscription.line.consumption,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:sale.subscription.line.consumption.create.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.subscription.recurrence.rule,bymonth:"
+msgid "By Month"
+msgstr "Pro Monat"
+
+msgctxt "field:sale.subscription.recurrence.rule,bymonthday:"
+msgid "By Month Day"
+msgstr "Pro Tag des Monats"
+
+msgctxt "field:sale.subscription.recurrence.rule,bysetpos:"
+msgid "By Position"
+msgstr "Pro Position"
+
+msgctxt "field:sale.subscription.recurrence.rule,byweekday:"
+msgid "By Week Day"
+msgstr "Pro Wochentag"
+
+msgctxt "field:sale.subscription.recurrence.rule,byweekno:"
+msgid "By Week Number"
+msgstr "Pro Kalenderwoche"
+
+msgctxt "field:sale.subscription.recurrence.rule,byyearday:"
+msgid "By Year Day"
+msgstr "Pro Tag im Jahr"
+
+msgctxt "field:sale.subscription.recurrence.rule,exclusive:"
+msgid "Exclusive"
+msgstr "Exklusiv"
+
+msgctxt "field:sale.subscription.recurrence.rule,freq:"
+msgid "Frequency"
+msgstr "Frequenz"
+
+msgctxt "field:sale.subscription.recurrence.rule,interval:"
+msgid "Interval"
+msgstr "Intervall"
+
+msgctxt "field:sale.subscription.recurrence.rule,set_:"
+msgid "Set"
+msgstr "Satz"
+
+msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
+msgid "Week Start Day"
+msgstr "Erster Wochentag"
+
+msgctxt "field:sale.subscription.recurrence.rule.set,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
+msgid "Rules"
+msgstr "Regeln"
+
+msgctxt "field:sale.subscription.service,consumption_delay:"
+msgid "Consumption Delay"
+msgstr "Verbrauchszeitraum"
+
+msgctxt "field:sale.subscription.service,consumption_recurrence:"
+msgid "Consumption Recurrence"
+msgstr "Wiederkehrender Verbrauch"
+
+msgctxt "field:sale.subscription.service,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "help:sale.subscription,company:"
+msgid "Make the subscription belong to the company."
+msgstr "Das Abonnement dem Unternehmen zuordnen."
+
+msgctxt "help:sale.subscription,number:"
+msgid "The main identification of the subscription."
+msgstr "Die Hauptbezeichnung des Abonnements."
+
+msgctxt "help:sale.subscription,party:"
+msgid "The party who subscribes."
+msgstr "Die Partei die abonniert."
+
+msgctxt "help:sale.subscription,reference:"
+msgid "The identification of an external origin."
+msgstr "Die Identifikation für eine externe Herkunft."
+
+msgctxt "help:sale.subscription,state:"
+msgid "The current state of the subscription."
+msgstr "Der aktuelle Status des Abonnements."
+
+msgctxt "help:sale.subscription.line,subscription:"
+msgid "Add the line below the subscription."
+msgstr "Die Position unter dem Abonnement hinzufügen."
+
+msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
+msgid "A comma separated list of integers."
+msgstr "Durch Komma getrennte Liste von Ganzzahlen."
+
+msgctxt "help:sale.subscription.recurrence.rule,bymonthday:"
+msgid "A comma separated list of integers."
+msgstr "Durch Komma getrennte Liste von Ganzzahlen."
+
+msgctxt "help:sale.subscription.recurrence.rule,bysetpos:"
+msgid "A comma separated list of integers."
+msgstr "Durch Komma getrennte Liste von Ganzzahlen."
+
+msgctxt "help:sale.subscription.recurrence.rule,byweekday:"
+msgid "A comma separated list of integers or weekday (MO, TU etc)."
+msgstr ""
+"Durch Komma getrennte Liste von Ganzzahlen oder Wochentagen (MO, TU etc)."
+
+msgctxt "help:sale.subscription.recurrence.rule,byweekno:"
+msgid "A comma separated list of integers (ISO8601)."
+msgstr "Durch Komma getrennte Liste von Ganzzahlen (ISO8601)."
+
+msgctxt "help:sale.subscription.recurrence.rule,byyearday:"
+msgid "A comma separated list of integers."
+msgstr "Durch Komma getrennte Liste von Ganzzahlen."
+
+msgctxt "help:sale.subscription.recurrence.rule,set_:"
+msgid "Add the rule below the set."
+msgstr "Die Regel am Ende hinzufügen."
+
+msgctxt "help:sale.subscription.recurrence.rule.set,name:"
+msgid "The main identifier of the rule set."
+msgstr "Das Hauptidentifizierungsmerkmal des Regelsatzes."
+
+msgctxt "model:ir.action,name:act_create_invoice"
+msgid "Create Subscription Invoices"
+msgstr "Rechnungen für Abonnements erstellen"
+
+msgctxt "model:ir.action,name:act_line_consumption_create"
+msgid "Create Line Consumptions"
+msgstr "Verbrauchspositionen erstellen"
+
+msgctxt "model:ir.action,name:act_recurrence_rule_set_form"
+msgid "Subscription Recurrence Rule Sets"
+msgstr "Abonnement Wiederholungsregelsätze"
+
+msgctxt "model:ir.action,name:act_service_form"
+msgid "Subscription Services"
+msgstr "Abonnement Dienstleistungen"
+
+msgctxt "model:ir.action,name:act_subscription_form"
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+msgctxt "model:ir.action,name:act_subscription_invoice_relate"
+msgid "Invoices"
+msgstr "Rechnungen"
+
+msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
+msgid "Consumptions"
+msgstr "Verbrauch"
+
+msgctxt ""
+"model:ir.action,name:act_subscription_line_consumption_subscription_line_relate"
+msgid "Consumptions"
+msgstr "Verbrauch"
+
+msgctxt ""
+"model:ir.action,name:act_subscription_line_consumption_subscription_relate"
+msgid "Consumptions"
+msgstr "Verbrauch"
+
+msgctxt "model:ir.action,name:act_subscription_party_relate"
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_subscription_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_subscription_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_subscription_form_domain_quotation"
+msgid "Quotation"
+msgstr "Angebot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_subscription_form_domain_running"
+msgid "Running"
+msgstr "In Ausführung"
+
+msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
+msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
+msgstr ""
+"Der bereits abgerechnete Verbrauch \"%(consumption)s\" kann nicht gelöscht "
+"werden."
+
+msgctxt ""
+"model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
+msgid ""
+"To invoice consumptions you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Damit der Verbrauch abgerechnet werden kann, muss zuerst ein Ertragskonto "
+"für Artikel \"%(product)s\" konfiguriert werden."
+
+msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
+msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
+msgstr ""
+"Der bereits abgerechnete Verbrauch \"%(consumption)s\" kann nicht mehr "
+"geändert werden."
+
+msgctxt "model:ir.message,text:msg_consumption_recurrence_invalid"
+msgid ""
+"The consumption recurrence of line \"%(line)s\" of subscription "
+"\"%(subscription)s\" does not generate any occurrence."
+msgstr ""
+"Die Verbrauchswiederholung von Position \"%(line)s\" von Abonnement "
+"\"%(subscription)s\" erzeugt keine Vorkommnisse."
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending subscriptions "
+"with company \"%(company)s\"."
+msgstr ""
+"Die Partei \"%(party)s\" kann nicht gelöscht werden, solange für sie noch "
+"unerledigte Abonnements bei Unternehmen \"%(company)s\" bestehen."
+
+msgctxt "model:ir.message,text:msg_invoice_recurrence_invalid"
+msgid ""
+"The invoice recurrence of subscription \"%(subscription)s\" does not "
+"generate any occurrence."
+msgstr ""
+"Die Rechnungswiederholung von Abonnement \"%(subscription)s\" erzeugt keine "
+"Vorkommnisse."
+
+msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
+msgid ""
+"Invalid \"%(field)s\" \"%(value)s\" in recurence rule "
+"\"%(recurrence_rule)s\" with exception \"%(exception)s\"."
+msgstr ""
+"\"%(field)s\" \"%(value)s\" in Wiederholungsregel \"%(recurrence_rule)s\" "
+"ist ungültig mit Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:subscription_cancel_button"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "model:ir.model.button,string:subscription_draft_button"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:subscription_quote_button"
+msgid "Quote"
+msgstr "Angebot"
+
+msgctxt "model:ir.model.button,string:subscription_run_button"
+msgid "Run"
+msgstr "Ausführen"
+
+msgctxt "model:ir.rule.group,name:rule_group_subscription_companies"
+msgid "User in companies"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.sequence,name:sequence_subscription"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_subscription"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "model:ir.ui.menu,name:menu_create_invoice"
+msgid "Create Subscription Invoices"
+msgstr "Rechnungen für Abonnements erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_line_consumption_create"
+msgid "Create Line Consumptions"
+msgstr "Verbrauchspositionen erstellen"
+
+msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
+msgid "Subscription Recurrence Rule Sets"
+msgstr "Abonnement Wiederholungsregelsätze"
+
+msgctxt "model:ir.ui.menu,name:menu_service_form"
+msgid "Subscription Services"
+msgstr "Abonnement Dienstleistungen"
+
+msgctxt "model:ir.ui.menu,name:menu_subscription_form"
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+msgctxt "model:sale.subscription,name:"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "model:sale.subscription.create_invoice.start,name:"
+msgid "Create Subscription Invoice"
+msgstr "Rechnung für Abonnement erstellen"
+
+msgctxt "model:sale.subscription.line,name:"
+msgid "Subscription Line"
+msgstr "Abonnement Position"
+
+msgctxt "model:sale.subscription.line.consumption,name:"
+msgid "Subscription Line Consumption"
+msgstr "Abonnement Position Verbrauch"
+
+msgctxt "model:sale.subscription.line.consumption.create.start,name:"
+msgid "Create Subscription Line Consumption"
+msgstr "Verbrauch für die Abonnementsposition erstellen"
+
+msgctxt "model:sale.subscription.recurrence.rule,name:"
+msgid "Subscription Recurrence Rule"
+msgstr "Abonnement Wiederholungsregel"
+
+msgctxt "model:sale.subscription.recurrence.rule.set,name:"
+msgid "Subscription Recurrence Rule Set"
+msgstr "Abonnement Wiederholungsregelsatz"
+
+msgctxt "model:sale.subscription.service,name:"
+msgid "Subscription Service"
+msgstr "Abonnement Dienstleistung"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Invoices"
+msgstr "Rechnungen für Abonnements erstellen"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Line Consumptions"
+msgstr "Verbrauchspositionen für Abonnements erstellen"
+
+msgctxt "selection:sale.subscription,state:"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt "selection:sale.subscription,state:"
+msgid "Closed"
+msgstr "Geschlossen"
+
+msgctxt "selection:sale.subscription,state:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "selection:sale.subscription,state:"
+msgid "Quotation"
+msgstr "Angebot"
+
+msgctxt "selection:sale.subscription,state:"
+msgid "Running"
+msgstr "In Ausführung"
+
+msgctxt "selection:sale.subscription.recurrence.rule,freq:"
+msgid "Daily"
+msgstr "Täglich"
+
+msgctxt "selection:sale.subscription.recurrence.rule,freq:"
+msgid "Monthly"
+msgstr "Monatlich"
+
+msgctxt "selection:sale.subscription.recurrence.rule,freq:"
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+msgctxt "selection:sale.subscription.recurrence.rule,freq:"
+msgid "Yearly"
+msgstr "Jährlich"
+
+msgctxt "view:sale.subscription.create_invoice.start:"
+msgid "Create Subscription Invoices for date"
+msgstr "Rechnungen für Abonnements für ein Datum erstellen"
+
+msgctxt "view:sale.subscription.line.consumption.create.start:"
+msgid "Create Subscription Line Consumptions for date"
+msgstr "Verbrauch für die Abonnementsposition für ein Datum erstellen"
+
+msgctxt "view:sale.subscription.line:"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "view:sale.subscription:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:sale.subscription:"
+msgid "Subscription"
+msgstr "Abonnement"
+
+msgctxt "wizard_button:sale.subscription.create_invoice,start,create_:"
+msgid "Create"
+msgstr "Erstellen"
+
+msgctxt "wizard_button:sale.subscription.create_invoice,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt ""
+"wizard_button:sale.subscription.line.consumption.create,start,create_:"
+msgid "Create"
+msgstr "Erstellen"
+
+msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
