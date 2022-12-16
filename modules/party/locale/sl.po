@@ -1,0 +1,1282 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontakt"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Mesto"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "Država"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Polni naslov"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "Naziv stavbe"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address,postal_code:"
+msgid "Postal Code"
+msgstr "Država"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Ulica"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Regija"
+
+#, fuzzy
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Regija"
+
+#, fuzzy
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Država"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Oblika"
+
+#, fuzzy
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Jezik"
+
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Država"
+
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Regija"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Podkategorije"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Matična kategorija"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Partnerji neuspešno preverjeni"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Partnerji uspešno preverjeni"
+
+#, fuzzy
+msgctxt "field:party.configuration,identifier_types:"
+msgid "Identifier Types"
+msgstr "Identifikatorji"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Jezik partnerja"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Štetje partnerjev"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Jezik partnerja"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Štetje partnerjev"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Opomba"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "E-pošta"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,language:"
+msgid "Language"
+msgstr "Jezik"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,languages:"
+msgid "Languages"
+msgstr "Jeziki"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Drugo"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Tip"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Vrednost"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Zgoščena vrednost"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Spletna stran"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism.language,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontakt"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism.language,language:"
+msgid "Language"
+msgstr "Jezik"
+
+#, fuzzy
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Vrsta"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Naslovi"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Kategorije"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Šifra"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Šifra samo za branje"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Kontakti"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "E-pošta"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Faks"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Polno ime"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identifikatorji"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Jezik"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Jeziki"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Mobilni"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Naziv"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Zamenjan z"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Davčni ID"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Spletna stran"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Jezik"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Cilj"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Original"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+
+#, fuzzy
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${postal_code}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Spremenljivke na voljo (tudi z velikimi črkami):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Dodajanje podkategorij."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "Glavni identifikator kategorije."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Dodajanje kategorije pod matično kategorijo."
+
+msgctxt "help:party.configuration,identifier_types:"
+msgid ""
+"Defines which identifier types are available.\n"
+"Leave empty for all of them."
+msgstr ""
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "Privzeti jezik za nove partnerje."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Upošteva se pri izdelavi šifre partnerja."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "Privzeti jezik za nove partnerje."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Upošteva se pri izdelavi šifre partnerja."
+
+#, fuzzy
+msgctxt "help:party.contact_mechanism,language:"
+msgid ""
+"Used to translate communication made using the contact mechanism.\n"
+"Leave empty for the party language."
+msgstr "Upošteva se pri prevajanju komunikacije s partnerjem."
+
+#, fuzzy
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "Prejšnji partner, ki bo zamenjan z novim."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "Partner, identificiran v tem zapisu."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Kategorija, v katero spada partner."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "Unikaten ID partnerja"
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Dodajanje drugih identifikatorjev partnerja."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Upošteva se pri prevajanju komunikacije s partnerjem."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "Glavni identifikator partnerja"
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "Partner, ki zamenjuje slednjega."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "Identifikator na davčnem poročilu."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "Novi partner, ki bo zamenjal prejšnjega."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "Prejšnji partner, ki bo zamenjan z novim."
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Addresses"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Address Formats"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Regija"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categories"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Categories"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Contact Mechanisms"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Parties by Category"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Parties"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Labels"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Check VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Replace"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "Šifra partnerja mora biti edinstvena."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+"Partnerja imata različna imena: %(source_name)s in %(destination_name)s."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"Partnerja imata različen davčni ID: %(source_code)s in %(destination_code)s."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_identifier_type_remove"
+msgid ""
+"To remove the identifier type \"%(type)s\" from the configuration, you must "
+"change it on \"%(identifier)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "Šifra partnerja mora biti edinstvena."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "VIES storitev je nedostopna, poskusite kasneje."
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Party"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Party"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Addresses"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Address Formats"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Regija"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categories"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Categories"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Contact Mechanisms"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Party"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Parties"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Naslov"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Oblika naslova"
+
+#, fuzzy
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Regija"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Kategorija"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Preveri z VIES sistemom"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Konfiguracija partnerjev"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Konfiguracija jezika partnerjev"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Konfiguracija štetja partnerjev"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Kontakt"
+
+#, fuzzy
+msgctxt "model:party.contact_mechanism.language,name:"
+msgid "Contact Mechanism Language"
+msgstr "Kontakt"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr ""
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Partner - Kategorija"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Jezik partnerja"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Zamenjava partnerja"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Party Administration"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Albanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Andorra Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian National Identity Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Argentinian Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Business Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Company Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Australian Tax File Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Company Register"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belarus VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian Company Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Brazillian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Bulgarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Business Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Canadian Social Insurance Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chilean National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Resident Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Chinese Unified Social Credit Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Business Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Colombian Identity Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Costa Rica Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Croatian Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cuban Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Cypriot VAT Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech National Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Czech VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish Citizen Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Danish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dominican Republic Tax"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Citizen Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch School Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch Student Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Dutch VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Ecuadorian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "English Unique Pupil Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Organisation Registration Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian Personal ID Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Estonian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Association Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Individual Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Personal Identification Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Tax Identification Number"
+msgstr "Davčni ID"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Company Register Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Personal Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "German VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Greek VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Guatemala Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Hungarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Icelandic VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indian Income Tax Identifier"
+msgstr "Davčni ID"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Indonesian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish Personal Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Irish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Company Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Israeli Identity Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian Tax Code for Individuals"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Italian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Japanese Corporate Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Latvian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Personal Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Luxembourgian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Maltese VAT Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mauritian National Identifier"
+msgstr "Identifikator partnerja"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mexican Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Moldavian Company Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Monacan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Birth Number, the National Identity Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian Organisation Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Norwegian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Paraguay Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Company Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Peruvian Identity Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish Register of Economic Units"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Polish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Portuguese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian Numerical Personal Code"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian ONRC Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Romanian VAT Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Tax identifier"
+msgstr "Davčni ID"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "San Marino National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Serbian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak Birth Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovak VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Slovenian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Identity Document Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South African Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korea Business Registration Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "South Korean Resident Registration Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Company Tax"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Foreigner Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Company Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish Personal Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swedish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Swiss VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Turkish Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Employer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Uruguay Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Venezuelan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "E-naslov"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Faks"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Mobilni"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Drugo"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Telefon"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Spletna stran"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "Splošno"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Zamenjava z"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "V redu"
+
+#, fuzzy
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Erase"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Zamenjaj"
