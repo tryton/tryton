@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Package">
+    <label name="type"/>
+    <field name="type" widget="selection"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="shipment"/>
+    <field name="shipment"/>
+    <field name="moves" colspan="4" widget="many2many"/>
+    <field name="children" colspan="4"/>
+</form>
