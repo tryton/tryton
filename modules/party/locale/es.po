@@ -1,0 +1,1124 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Método de contacto"
+
+msgctxt "field:party.address,city:"
+msgid "City"
+msgstr "Ciudad"
+
+msgctxt "field:party.address,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr "Dirección completa"
+
+msgctxt "field:party.address,name:"
+msgid "Building Name"
+msgstr "Nombre del edificio"
+
+msgctxt "field:party.address,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr "Nombre del tercero"
+
+msgctxt "field:party.address,street:"
+msgid "Street"
+msgstr "Calle"
+
+msgctxt "field:party.address,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivisión"
+
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Tipos de subdivisión"
+
+msgctxt "field:party.address,zip:"
+msgid "Zip"
+msgstr "Código postal"
+
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Código País"
+
+msgctxt "field:party.address.format,format_:"
+msgid "Format"
+msgstr "Formato"
+
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Código Idioma"
+
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Código País"
+
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Tipos de subdivisión"
+
+msgctxt "field:party.category,childs:"
+msgid "Children"
+msgstr "Hijos"
+
+msgctxt "field:party.category,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.category,parent:"
+msgid "Parent"
+msgstr "Padre"
+
+msgctxt "field:party.check_vies.result,parties_failed:"
+msgid "Parties Failed"
+msgstr "Tercero erróneo"
+
+msgctxt "field:party.check_vies.result,parties_succeed:"
+msgid "Parties Succeed"
+msgstr "Terceros correctos"
+
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercero"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr "Secuencia de tercero"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercero"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Secuencia de tercero"
+
+msgctxt "field:party.contact_mechanism,comment:"
+msgid "Comment"
+msgstr "Comentario"
+
+msgctxt "field:party.contact_mechanism,email:"
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.contact_mechanism,other_value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "field:party.contact_mechanism,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.contact_mechanism,sip:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "field:party.contact_mechanism,skype:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "field:party.contact_mechanism,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "field:party.contact_mechanism,value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "field:party.contact_mechanism,value_compact:"
+msgid "Value Compact"
+msgstr "Valor compacto"
+
+msgctxt "field:party.contact_mechanism,website:"
+msgid "Website"
+msgstr "Sitio Web"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.identifier,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:party.identifier,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.identifier,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.party,addresses:"
+msgid "Addresses"
+msgstr "Direcciones"
+
+msgctxt "field:party.party,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "field:party.party,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr "Código sólo lectura"
+
+msgctxt "field:party.party,contact_mechanisms:"
+msgid "Contact Mechanisms"
+msgstr "Métodos de contacto"
+
+msgctxt "field:party.party,email:"
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+msgctxt "field:party.party,fax:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr "Nombre completo"
+
+msgctxt "field:party.party,identifiers:"
+msgid "Identifiers"
+msgstr "Identificadores"
+
+msgctxt "field:party.party,lang:"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Idiomas"
+
+msgctxt "field:party.party,mobile:"
+msgid "Mobile"
+msgstr "Móvil"
+
+msgctxt "field:party.party,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.party,phone:"
+msgid "Phone"
+msgstr "Teléfono"
+
+msgctxt "field:party.party,replaced_by:"
+msgid "Replaced By"
+msgstr "Reemplazado por"
+
+msgctxt "field:party.party,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificador fiscal"
+
+msgctxt "field:party.party,website:"
+msgid "Website"
+msgstr "Sitio Web"
+
+msgctxt "field:party.party-party.category,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:party.party-party.category,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.replace.ask,destination:"
+msgid "Destination"
+msgstr "Destino"
+
+msgctxt "field:party.replace.ask,source:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Define qué dirección de correo electrónico utilizar de los mecanismos de "
+"contacto del tercero."
+
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+"Si esta lleno se sustituirá el nombre del tercero para el formato de las "
+"direcciones"
+
+msgctxt "help:party.address.format,format_:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+msgstr ""
+"Variables disponibles (también en mayúsculas):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${zip}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Añade hijos debajo de la categoría."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "El identificador principal de la categoría."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Añade la categoría debajo del padre."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "El idioma por defecto de los nuevos terceros."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Utilizado para generar el código del tercero."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "El idioma por defecto de los nuevos terceros."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Utilizada para generar el código del tercero."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "El tercero que será eliminado."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "El tercero identificado por este registro."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Las categorías a las que pertenece el tercero."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "El identificador único del tercero."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Añade otros identificadores del tercero."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Utilizado para traducir las comunicaciones con el tercero."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "El identificador principal del tercero."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "El tercero que sustituye este."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "El identificador utilizado con las autoridades impositivas."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "El tercero que sustituye."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "El tercero que se sustituye."
+
+msgctxt "model:ir.action,name:act_address_form"
+msgid "Addresses"
+msgstr "Direcciones"
+
+msgctxt "model:ir.action,name:act_address_format_form"
+msgid "Address Formats"
+msgstr "Formatos de las direcciones"
+
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipos de subdivisión por dirección"
+
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "model:ir.action,name:act_category_tree"
+msgid "Categories"
+msgstr "Árbol de categorías"
+
+msgctxt "model:ir.action,name:act_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Métodos de contacto"
+
+msgctxt "model:ir.action,name:act_party_by_category"
+msgid "Parties by Category"
+msgstr "Terceros por categoría"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr "Configuración de terceros"
+
+msgctxt "model:ir.action,name:act_party_form"
+msgid "Parties"
+msgstr "Terceros"
+
+msgctxt "model:ir.action,name:report_label"
+msgid "Labels"
+msgstr "Etiqueta"
+
+msgctxt "model:ir.action,name:wizard_check_vies"
+msgid "Check VIES"
+msgstr "Comprobar VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Borrar"
+
+msgctxt "model:ir.action,name:wizard_replace"
+msgid "Replace"
+msgstr "Reemplazar"
+
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr "No puede cambiar el tercero de la dirección \"%(address)s\"."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "El código de páis en el tipo de subdivisión debe ser único."
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "El nombre de la categoría del tercero debe ser único según el padre."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr "No puede cambiar el medio de contacto \"%(contact)s\" del tercero."
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+"Los terceros tienen nombre distinto: \"%(source_name)s\" vs "
+"\"%(destination_name)s\"."
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"Los terceros tienen distinto Identificador fiscal: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr "No se puede eliminar el tercero \"%(party)s\" porqué aún esta activo."
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "El %(type)s \"%(code)s\" para el tercero \"%(party)s\" no es válido."
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "El format \"%(format)s\" es invalido con la excepción \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "El número de teléfono \"%(phone)s\" del tercero \"%(party)s\" no es válido."
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "El código del tercero debe ser único."
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde."
+
+msgctxt "model:ir.sequence,name:sequence_party"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_party"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "model:ir.ui.menu,name:menu_address_form"
+msgid "Addresses"
+msgstr "Direcciones"
+
+msgctxt "model:ir.ui.menu,name:menu_address_format_form"
+msgid "Address Formats"
+msgstr "Formatos de las direcciones"
+
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipos de subdivisión por dirección"
+
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "model:ir.ui.menu,name:menu_category_tree"
+msgid "Categories"
+msgstr "Árbol de categorías"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
+msgid "Contact Mechanisms"
+msgstr "Métodos de contacto"
+
+msgctxt "model:ir.ui.menu,name:menu_party"
+msgid "Party"
+msgstr "Terceros"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr "Configuración de terceros"
+
+msgctxt "model:ir.ui.menu,name:menu_party_form"
+msgid "Parties"
+msgstr "Terceros"
+
+msgctxt "model:party.address,name:"
+msgid "Address"
+msgstr "Dirección"
+
+msgctxt "model:party.address.format,name:"
+msgid "Address Format"
+msgstr "Formato de la dirección"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Tipos de subdivisión por dirección"
+
+msgctxt "model:party.category,name:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Comprobar VIES"
+
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr "Configuración de terceros"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Configuración del idioma del tercero"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Configuración de las secuencias de terceros"
+
+msgctxt "model:party.contact_mechanism,name:"
+msgid "Contact Mechanism"
+msgstr "Método de contacto"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Eliminar tercero"
+
+msgctxt "model:party.identifier,name:"
+msgid "Party Identifier"
+msgstr "Identificador del tercero"
+
+msgctxt "model:party.party,name:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "model:party.party-party.category,name:"
+msgid "Party - Category"
+msgstr "Terceros - Categoría"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Idioma del tercero"
+
+msgctxt "model:party.replace.ask,name:"
+msgid "Replace Party"
+msgstr "Reemplazar tercero"
+
+msgctxt "model:res.group,name:group_party_admin"
+msgid "Party Administration"
+msgstr "Administración de terceros"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Fax"
+msgstr "Fax"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "IRC"
+msgstr "IRC"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Jabber"
+msgstr "Jabber"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Mobile"
+msgstr "Móvil"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Other"
+msgstr "Otro"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Phone"
+msgstr "Teléfono"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "SIP"
+msgstr "SIP"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Skype"
+msgstr "Skype"
+
+msgctxt "selection:party.contact_mechanism,type:"
+msgid "Website"
+msgstr "Sitio Web"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Albanian VAT Number"
+msgstr "Identificador fiscal Albanes"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Número fiscal Andorrano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Argentinian Tax Number"
+msgstr "Identificador fiscal Argentino"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr "Número negocio Australiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr "Número de empresa Australiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr "Identificador fiscal Australiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr "Registro de la empresa Austríaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr "Identificador fiscal Austríaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr "Número de empresa Belga"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr "Identificador de empresa Brasileño"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr "Identificador nacional Brasileño"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr "Número de extranjero Búlgaro"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr "Código personal de identidad Búlgaro"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr "Identificador fiscal Búlgaro"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr "Número de empresa Canadiense"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr "Número de seguridad social Canadiense"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr "Identificador fiscal Chileno"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr "Número de carnet de identidad de residente chino"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr "Identificador fiscal Colombiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr "Código de identidad Colombiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Número de extranjero Costarricense"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Identificador personal de Costa Rica"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr "Número de identificación Croata"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Número de tarjeta de identidad Cubana"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr "Identificador fiscal Chipriota"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr "Identificador nacional Checo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr "Identificador fiscal Checo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr "Número de ciudadano Danés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr "Identificador fiscal Danés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr "Número de identificación nacional de la República Dominicana"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr "Identificador fiscal de la República Dominicana"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr "Identificador de ciudadano Holandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr "Identificador escolar Holandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr "Identificador fiscal Holandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr "Identificador de estudiante Holandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr "Identificador personal Ecuatoriano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr "Identificador fiscal Ecuatoriano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr "Número único de alumno inglés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr "Código de registro de organizaciones Estonio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr "Identificador personal Estonio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr "Identificador fiscal Estonio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr "Identificador fiscal Europeo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr "Identificador de asociaciones Finlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr "Identificador de empresas Fnlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr "Código de identidad personal Finlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr "Identificador fiscal Finlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr "Número fiscal individual finlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr "Identificador personal francés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr "Número identificador fiscal Francés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr "Identificador fiscal Francés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr "Número de registro de empresa Alemán"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr "Número fiscal personal Alemán"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr "Número fiscal Alemán"
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr "Identificador fiscal Alemán"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr "Identificador fiscal Griego"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Número fiscal Guatemaltenco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr "Identificador fiscal Húngaro"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr "Código de identidad personal y de organización de Islandia"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr "Identificador fiscal Islandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr "Número de identificación digital personal de residente indio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr "Identificador fiscal Indio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr "Número personal Irlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr "Identificador fiscal Irlandés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr "Código fiscal para individuos Italiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr "Identificador fiscal Italiano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Número de empresa Japonés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr "Identificador fiscal Letón"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr "Identificador fiscal Lituano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr "Identificador fiscal Luxemburgués"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr "Número de carnet de identidad del registro nacional de Malasia"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr "Identificador fiscal Maltés"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr "Identificador nacional Mauritano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr "Identificador fiscal Mejicano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Número de identificación de empresa Moldavia"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr "Identificador fiscal de Mónaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Número de departamento de ingresos de Nueva Zelanda"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr "Número de organización Noruego"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr "Identificador fiscal Noruego"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Número fiscal Paraguayo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Número fiscal de empresa Peruana"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Número de identificación Peruano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr "Identificador nacional Polaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr "Registro polaco de unidades económicas"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr "Identificador fiscal Polaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr "Identificador fiscal Portugués"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr "Código personal numérico Rumano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr "Identificador fiscal Rumano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr "Identificador fiscal Ruso"
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr "Identificador de acreedor SEPA (AT-02)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr "Identificador fiscal nacional de San Marino"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr "Identificador fiscal Serbio"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr "Número de nacimiento eslovaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr "Identificador fiscal Eslovaco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr "Identificador fiscal Esloveno"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Número de identificación Sudafricano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Número fiscal Sudafricano"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr "Número de empresa Español (CIF)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr "Número de extranjero Español (NIE)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr "Código personal de identidad Español (DNI)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr "Identificador fiscal Español"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr "Número de empresa Sueco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr "Identificador fiscal Sueco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr "Identificador de empresa Suizo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr "Número de seguridad social Suizo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr "Identificador fiscal Suizo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr "Número de identificación personal Turco"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr "Identificador de contribuyente en adopción de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr "Identificador de empresario de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr "Identificador de contribuyente individual de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr "Identificador fiscal de gestores de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr "Número de la seguridad social de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr "Identificador de contribuyente de los EUA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr "Identificador fiscal del Reino Unido"
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr ""
+"Identificador del paciente del servicio nacional de salud del Reino Unido"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Número fiscal Uruguayo"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Número fiscal Venezolano"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:party.replace.ask:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "view:party.replace.ask:"
+msgid "Replace By"
+msgstr "Reemplazar por"
+
+msgctxt "wizard_button:party.check_vies,result,end:"
+msgid "OK"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Eliminar"
+
+msgctxt "wizard_button:party.replace,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:party.replace,ask,replace:"
+msgid "Replace"
+msgstr "Reemplazar"
