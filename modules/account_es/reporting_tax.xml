@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.action.report" id="report_aeat_111">
+            <field name="name">AEAT Model 111</field>
+            <field name="report_name">account.reporting.aeat111</field>
+            <field name="report">account_es/aeat111.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_111_group_account">
+            <field name="action" ref="report_aeat_111"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_115">
+            <field name="name">AEAT Model 115</field>
+            <field name="report_name">account.reporting.aeat115</field>
+            <field name="report">account_es/aeat115.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_115_group_account">
+            <field name="action" ref="report_aeat_115"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_303">
+            <field name="name">AEAT Model 303</field>
+            <field name="report_name">account.reporting.aeat303</field>
+            <field name="report">account_es/aeat303.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_303_group_account">
+            <field name="action" ref="report_aeat_303"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="print_aeat_start_view_form">
+            <field name="model">account.reporting.aeat.start</field>
+            <field name="type">form</field>
+            <field name="name">print_aeat_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_print_aeat_report">
+            <field name="name">Print AEAT</field>
+            <field name="wiz_name">account.reporting.aeat</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_print_aeat_report_group_account">
+            <field name="action" ref="wizard_print_aeat_report"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <menuitem parent="account.menu_reporting"
+            action="wizard_print_aeat_report"
+            id="menu_print_aeat"
+            icon="tryton-print"/>
+        <record model="ir.ui.menu-res.group" id="menu_print_aeat_group_account">
+            <field name="menu" ref="menu_print_aeat"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="vat_list_view_list">
+            <field name="model">account.reporting.vat_list_es</field>
+            <field name="type">tree</field>
+            <field name="name">vat_list_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_vat_list_form">
+            <field name="name">Spanish VAT List</field>
+            <field name="res_model">account.reporting.vat_list_es</field>
+            <field name="context_model">account.reporting.vat_list_es.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_vat_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="vat_list_view_list"/>
+            <field name="act_window" ref="act_vat_list_form"/>
+        </record>
+        <menuitem parent="account.menu_reporting"
+            action="act_vat_list_form" id="menu_vat_list"/>
+
+        <record model="ir.ui.view" id="vat_list_context_view_form">
+            <field name="model">account.reporting.vat_list_es.context</field>
+            <field name="type">form</field>
+            <field name="name">vat_list_context_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_vat_list">
+            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_vat_list_account">
+            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_347">
+            <field name="name">AEAT Model 347</field>
+            <field name="report_name">account.reporting.aeat347</field>
+            <field name="report">account_es/aeat347.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_347_group_account">
+            <field name="action" ref="report_aeat_347"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_347_group_account_admin">
+            <field name="action" ref="report_aeat_347"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="report_aeat_347_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.reporting.vat_list_es,-1</field>
+            <field name="action" ref="report_aeat_347"/>
+        </record>
+
+        <record model="ir.ui.view" id="es_ec_operation_list_view_list">
+            <field name="model">account.reporting.es_ec_operation_list</field>
+            <field name="type">tree</field>
+            <field name="name">es_ec_operation_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_es_ec_operation_list_form">
+            <field name="name">EC Operation List</field>
+            <field name="res_model">account.reporting.es_ec_operation_list</field>
+            <field name="context_model">account.reporting.es_ec_operation_list.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_es_ec_operation_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="es_ec_operation_list_view_list"/>
+            <field name="act_window" ref="act_es_ec_operation_list_form"/>
+        </record>
+        <menuitem parent="account.menu_reporting"
+            action="act_es_ec_operation_list_form" id="menu_es_ec_operation_list"/>
+
+        <record model="ir.ui.view" id="es_ec_operation_list_context_view_form">
+            <field name="model">account.reporting.es_ec_operation_list.context</field>
+            <field name="type">form</field>
+            <field name="name">es_ec_operation_list_context_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_349">
+            <field name="name">AEAT Model 349</field>
+            <field name="report_name">account.reporting.aeat349</field>
+            <field name="report">account_es/aeat349.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_349_group_account">
+            <field name="action" ref="report_aeat_349"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_349_group_account_admin">
+            <field name="action" ref="report_aeat_349"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="report_aeat_349_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.reporting.es_ec_operation_list,-1</field>
+            <field name="action" ref="report_aeat_349"/>
+        </record>
+    </data>
+</tryton>

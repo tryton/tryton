@@ -1,0 +1,105 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.extra,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:sale.extra,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:sale.extra,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+msgctxt "field:sale.extra,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:sale.extra,name:"
+msgid "Name"
+msgstr "Nimi"
+
+msgctxt "field:sale.extra,price_list:"
+msgid "Price List"
+msgstr "Hinnakiri"
+
+msgctxt "field:sale.extra,sale_amount:"
+msgid "Sale Amount"
+msgstr "Summa"
+
+msgctxt "field:sale.extra,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+msgctxt "field:sale.extra.line,extra:"
+msgid "Extra"
+msgstr "Ekstra"
+
+msgctxt "field:sale.extra.line,free:"
+msgid "Free"
+msgstr "Tasuta"
+
+msgctxt "field:sale.extra.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:sale.extra.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Toote mõõtühiku kategooria"
+
+msgctxt "field:sale.extra.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:sale.extra.line,sale_amount:"
+msgid "Sale Amount"
+msgstr "Summa"
+
+msgctxt "field:sale.extra.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:sale.extra.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+msgctxt "field:sale.line,extra:"
+msgid "Extra"
+msgstr "Ekstra"
+
+msgctxt "model:ir.action,name:act_extra_form"
+msgid "Extras"
+msgstr "Ekstrad"
+
+msgctxt "model:ir.action,name:act_extra_relate"
+msgid "Sale Extras"
+msgstr "Müügi ekstra"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_extra"
+msgid "Extras"
+msgstr "Ekstrad"
+
+#, fuzzy
+msgctxt "model:sale.extra,name:"
+msgid "Sale Extra"
+msgstr "Müügi ekstra"
+
+msgctxt "model:sale.extra.line,name:"
+msgid "Sale Extra Line"
+msgstr ""
+
+msgctxt "view:sale.extra.line:"
+msgid "Sale Line"
+msgstr "Müügirida"

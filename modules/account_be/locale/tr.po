@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.be.vat_customer,company_tax_identifier:"
+msgid "Company Tax Identifier"
+msgstr "Şirket Vergi Tanımlayıcısı"
+
+msgctxt "field:account.be.vat_customer,currency:"
+msgid "Currency"
+msgstr "Para Birimi"
+
+msgctxt "field:account.be.vat_customer,currency_digits:"
+msgid "Currency Digits"
+msgstr "Para Birimi Basamakları"
+
+msgctxt "field:account.be.vat_customer,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
+msgctxt "field:account.be.vat_customer,turnover:"
+msgid "Turnover"
+msgstr "Ciro"
+
+msgctxt "field:account.be.vat_customer,vat:"
+msgid "VAT"
+msgstr "KDV"
+
+msgctxt "field:account.be.vat_customer.context,company:"
+msgid "Company"
+msgstr "Şirket"
+
+msgctxt "field:account.be.vat_customer.context,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Mali Yıl"
+
+msgctxt "model:account.be.vat_customer,name:"
+msgid "Belgium VAT Customer"
+msgstr "Belçika KDV Müşterisi"
+
+msgctxt "model:account.be.vat_customer.context,name:"
+msgid "Belgium VAT Customer Context"
+msgstr "Belçika KDV Müşteri İçeriği"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_vat_customer_form"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_vat_customer"
+msgid "Belgium VAT Customer"
+msgstr "Belgium VAT Customer"
