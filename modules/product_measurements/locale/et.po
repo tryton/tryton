@@ -1,0 +1,127 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,height:"
+msgid "Height"
+msgstr "Kõrgus"
+
+msgctxt "field:product.product,height_digits:"
+msgid "Height Digits"
+msgstr "Kõrguse numbriväärtus"
+
+msgctxt "field:product.product,height_uom:"
+msgid "Height Uom"
+msgstr "Kõrguse mõõtühik"
+
+msgctxt "field:product.product,length:"
+msgid "Length"
+msgstr "Pikkus"
+
+msgctxt "field:product.product,length_digits:"
+msgid "Length Digits"
+msgstr "Pikkuse numbriväärtus"
+
+msgctxt "field:product.product,length_uom:"
+msgid "Length Uom"
+msgstr "Pikkuse mõõtühik"
+
+msgctxt "field:product.product,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+msgctxt "field:product.product,volume_digits:"
+msgid "Volume Digits"
+msgstr "Mahu numbriväärtus"
+
+msgctxt "field:product.product,volume_uom:"
+msgid "Volume Uom"
+msgstr "Mahu mõõtühik"
+
+msgctxt "field:product.product,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+msgctxt "field:product.product,weight_digits:"
+msgid "Weight Digits"
+msgstr "Kaalu numbriväärtus"
+
+msgctxt "field:product.product,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaalu mõõtühik"
+
+msgctxt "field:product.product,width:"
+msgid "Width"
+msgstr "Laius"
+
+msgctxt "field:product.product,width_digits:"
+msgid "Width Digits"
+msgstr "Laiuse numbriväärtus"
+
+msgctxt "field:product.product,width_uom:"
+msgid "Width Uom"
+msgstr "Laiuse mõõtühik"
+
+msgctxt "field:product.template,height:"
+msgid "Height"
+msgstr "Kõrgus"
+
+msgctxt "field:product.template,height_digits:"
+msgid "Height Digits"
+msgstr "Kõrguse numbriväärtus"
+
+msgctxt "field:product.template,height_uom:"
+msgid "Height Uom"
+msgstr "Kõrguse mõõtühik"
+
+msgctxt "field:product.template,length:"
+msgid "Length"
+msgstr "Pikkus"
+
+msgctxt "field:product.template,length_digits:"
+msgid "Length Digits"
+msgstr "Pikkuse numbriväärtus"
+
+msgctxt "field:product.template,length_uom:"
+msgid "Length Uom"
+msgstr "Pikkuse mõõtühik"
+
+msgctxt "field:product.template,volume:"
+msgid "Volume"
+msgstr "Maht"
+
+msgctxt "field:product.template,volume_digits:"
+msgid "Volume Digits"
+msgstr "Mahu numbriväärtus"
+
+msgctxt "field:product.template,volume_uom:"
+msgid "Volume Uom"
+msgstr "Mahu mõõtühik"
+
+msgctxt "field:product.template,weight:"
+msgid "Weight"
+msgstr "Kaal"
+
+msgctxt "field:product.template,weight_digits:"
+msgid "Weight Digits"
+msgstr "Kaalu numbriväärtus"
+
+msgctxt "field:product.template,weight_uom:"
+msgid "Weight Uom"
+msgstr "Kaalu mõõtühik"
+
+msgctxt "field:product.template,width:"
+msgid "Width"
+msgstr "Laius"
+
+msgctxt "field:product.template,width_digits:"
+msgid "Width Digits"
+msgstr "Laiuse numbriväärtus"
+
+msgctxt "field:product.template,width_uom:"
+msgid "Width Uom"
+msgstr "Laiuse mõõtühik"
+
+msgctxt "view:product.template:"
+msgid "Measurements"
+msgstr "Mõõdud"

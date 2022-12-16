@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Csomag számkör"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Csomag számkör"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Csomag"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Gyermek (csomag)"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Raktár mozgatás"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Szülő (csomag)"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Szállítási tétel"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Package Types"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_package_label"
+msgid "Package Labels"
+msgstr "Package Labels"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Stock Package"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Stock Package"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Package Types"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Raktár csomag"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Raktár csomag típus"
+
+msgctxt "report:stock.package.label:"
+msgid "Package:"
+msgstr "Csomag:"
+
+msgctxt "report:stock.package.label:"
+msgid "Shipment:"
+msgstr "Szállítási pont:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""
