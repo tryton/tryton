@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+field,"carrier,carrier_cost_method",0,Carrier Cost Method,Método del costo de transportista,0
+field,"carrier,carrier_product",0,Carrier Product,Productos del transportista,0
+field,"carrier,party",0,Party,Tercero,0
+field,"carrier,rec_name",0,Name,Nombre,0
+help,"carrier,carrier_cost_method",0,Method to compute carrier cost,Método para procesar el costo del transportista,0
+model,"carrier,name",0,carrier,Transportista,0
+model,"ir.action,name",act_carrier_form,Carriers,Transportistas,0
+model,"ir.action,name",act_carrier_form2,Carrier,Transportista,0
+model,"ir.ui.menu,name",menu_carrier,Carrier Management,Manejo de Transporte,0
+model,"ir.ui.menu,name",menu_carrier_form,Carriers,Transportistas,0
+model,"ir.ui.menu,name",menu_carrier_form2,New Carrier,Nuevo Transportista,0
+model,"res.group,name",group_carrier_admin,Carrier Administration,Administración de Transportista,0
+selection,"carrier,carrier_cost_method",0,Product Price,Precio del producto,0
+view,carrier,0,Carrier,Transportista,0
+view,carrier,0,Carriers,Transportistas,0

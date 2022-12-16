@@ -1,0 +1,40 @@
+type,name,res_id,src,value,fuzzy
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d),0
+field,"product.category,account_expense",0,Account Expense,Kostenrekening,0
+field,"product.category,account_revenue",0,Account Revenue,Opbrengstrekening,0
+field,"product.category,customer_taxes",0,Customer Taxes,Belasting klanten,0
+field,"product.category,supplier_taxes",0,Supplier Taxes,Belastingen inkoop,0
+field,"product.category-customer-account.tax,category",0,Category,Categorie,0
+field,"product.category-customer-account.tax,rec_name",0,Name,Naam,0
+field,"product.category-customer-account.tax,tax",0,Tax,Belasting,0
+field,"product.category-supplier-account.tax,category",0,Category,Categorie,0
+field,"product.category-supplier-account.tax,rec_name",0,Name,Naam,0
+field,"product.category-supplier-account.tax,tax",0,Tax,Belasting,0
+field,"product.template,account_category",0,Use Category's accounts,Gebruik de rekeningen van de categorie,0
+field,"product.template,account_expense",0,Account Expense,Kostenrekening,0
+field,"product.template,account_expense_used",0,Account Expense Used,Gebruikte kostenrekening,0
+field,"product.template,account_revenue",0,Account Revenue,Opbrengstrekening,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Opbrengstrekening gebruikt,0
+field,"product.template,customer_taxes",0,Customer Taxes,Belasting klanten,0
+field,"product.template,customer_taxes_used",0,Customer Taxes Used,Belasting klanten gebruikt,0
+field,"product.template,supplier_taxes",0,Supplier Taxes,Belastingen inkoop,0
+field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Belasting klanten gebruikt,0
+field,"product.template,taxes_category",0,Use Category's Taxes,Gebruik de belastingen van de categorie,0
+field,"product.template-customer-account.tax,product",0,Product Template,Productsjabloon,0
+field,"product.template-customer-account.tax,rec_name",0,Name,Naam,0
+field,"product.template-customer-account.tax,tax",0,Tax,Belasting,0
+field,"product.template-supplier-account.tax,product",0,Product Template,Productsjabloon,0
+field,"product.template-supplier-account.tax,rec_name",0,Name,Naam,0
+field,"product.template-supplier-account.tax,tax",0,Tax,Belasting,0
+help,"product.template,account_category",0,Use the accounts defined on the category,Gebruik de rekeningen van de categorie,0
+help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Deze rekening zal gebruikt worden in de plaats van die van de categorie.,0
+help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Deze rekening zal gebruikt worden in de plaats van die van de categorie.,0
+help,"product.template,taxes_category",0,Use the taxes defined on the category,Gebruik de belastingen van de categorie,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Categorie - belasting klant,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Categorie - belasting leverancier,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Productsjabloon - Belasting verkoop,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Productsjabloon - Belasting inkoop,0
+view,product.category,0,Accounting,Boekhouden,0
+view,product.template,0,Accounting,Boekhouden,0
+view,product.template,0,Accounts,Rekeningen,0
+view,product.template,0,Taxes,Belastingen,0

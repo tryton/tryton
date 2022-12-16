@@ -1,0 +1,193 @@
+type,name,res_id,src,value,fuzzy
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d),0
+error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Als de maateenheid nog niet is gebruikt kan je hem verwijderen, anders kan je hem deactiveren en een nieuwe aanmaken.",0
+error,product.uom,0,Invalid Factor and Rate values!,Ongeldige factor en verhouding waarden,0
+error,product.uom,0,Rate and factor can not be both equal to zero.,Verhouding en factor kunnen niet beiden nul zijn! ,0
+error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","U kunt Verhouding, Factor of Categorie van een maateenheid niet wijzigen.",0
+field,"product.category,account_expense",0,Account Expense,Kostenrekening,0
+field,"product.category,account_revenue",0,Account Revenue,Opbrengstrekening,0
+field,"product.category,childs",0,Children,Onderliggende niveaus,0
+field,"product.category,customer_taxes",0,Customer Taxes,Belasting klanten,0
+field,"product.category,name",0,Name,Naam,0
+field,"product.category,parent",0,Parent,Bovenliggend niveau,0
+field,"product.category,rec_name",0,Name,Naam,0
+field,"product.category,supplier_taxes",0,Supplier Taxes,Belastingen inkoop,0
+field,"product.category-customer-account.tax,category",0,Category,Categorie,0
+field,"product.category-customer-account.tax,rec_name",0,Name,Naam,0
+field,"product.category-customer-account.tax,tax",0,Tax,Belasting,0
+field,"product.category-supplier-account.tax,category",0,Category,Categorie,0
+field,"product.category-supplier-account.tax,rec_name",0,Name,Naam,0
+field,"product.category-supplier-account.tax,tax",0,Tax,Belasting,0
+field,"product.product,code",0,Code,Code,0
+field,"product.product,description",0,Description,Omschrijving,0
+field,"product.product,rec_name",0,Name,Naam,0
+field,"product.product,template",0,Product Template,Productsjabloon,0
+field,"product.template,account_category",0,Use Category's accounts,Gebruik de rekeningen van de categorie,0
+field,"product.template,account_expense",0,Account Expense,Kostenrekening,0
+field,"product.template,account_expense_used",0,Account Expense Used,Gebruikte kostenrekening,0
+field,"product.template,account_revenue",0,Account Revenue,Opbrengstrekening,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Opbrengstrekening gebruikt,0
+field,"product.template,active",0,Active,Actief,0
+field,"product.template,category",0,Category,Categorie,0
+field,"product.template,cost_price",0,Cost Price,Kostprijs,0
+field,"product.template,cost_price_method",0,Cost Method,Kostprijsmethode,0
+field,"product.template,cost_price_uom",0,Cost Price,Kostprijs,0
+field,"product.template,customer_taxes",0,Customer Taxes,Belasting klanten,0
+field,"product.template,customer_taxes_used",0,Customer Taxes Used,Belasting klanten gebruikt,0
+field,"product.template,default_uom",0,Default UOM,Standaard ME,0
+field,"product.template,list_price",0,List Price,Catalogusprijs,0
+field,"product.template,list_price_uom",0,List Price,Catalogusprijs,0
+field,"product.template,name",0,Name,Naam,0
+field,"product.template,products",0,Products,Producten,0
+field,"product.template,rec_name",0,Name,Naam,0
+field,"product.template,supplier_taxes",0,Supplier Taxes,Belastingen inkoop,0
+field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Belasting klanten gebruikt,0
+field,"product.template,taxes_category",0,Use Category's Taxes,Gebruik de belastingen van de categorie,0
+field,"product.template,type",0,Type,Type,0
+field,"product.template-customer-account.tax,product",0,Product Template,Productsjabloon,0
+field,"product.template-customer-account.tax,rec_name",0,Name,Naam,0
+field,"product.template-customer-account.tax,tax",0,Tax,Belasting,0
+field,"product.template-supplier-account.tax,product",0,Product Template,Productsjabloon,0
+field,"product.template-supplier-account.tax,rec_name",0,Name,Naam,0
+field,"product.template-supplier-account.tax,tax",0,Tax,Belasting,0
+field,"product.uom,active",0,Active,Actief,0
+field,"product.uom,category",0,UOM Category,ME categorie,0
+field,"product.uom,digits",0,Display Digits,Zichtbare decimalen,0
+field,"product.uom,factor",0,Factor,Faktor,0
+field,"product.uom,name",0,Name,Naam,0
+field,"product.uom,rate",0,Rate,Verhouding,0
+field,"product.uom,rec_name",0,Name,Naam,0
+field,"product.uom,rounding",0,Rounding Precision,Afronding,0
+field,"product.uom,symbol",0,Symbol,Symbool,0
+field,"product.uom.category,name",0,Name,Naam,0
+field,"product.uom.category,rec_name",0,Name,Naam,0
+field,"product.uom.category,uoms",0,Unit of Measures,Meeteenheid,0
+help,"product.template,account_category",0,Use the accounts defined on the category,Gebruik de rekeningen van de categorie,0
+help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Deze rekening zal gebruikt worden in de plaats van die van de categorie.,0
+help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Deze rekening zal gebruikt worden in de plaats van die van de categorie.,0
+help,"product.template,taxes_category",0,Use the taxes defined on the category,Gebruik de belastingen van de categorie,0
+help,"product.uom,factor",0,"The coefficient for the formula:
+coef (base unit) = 1 (this unit)","De coëfficiënt voor deze formule:
+coëf (basiseenheid) = 1 (deze eenheid)",0
+help,"product.uom,rate",0,"The coefficient for the formula:
+1 (base unit) = coef (this unit)","De coëfficiënt voor deze formule:
+1(basiseenheid) = coëf (deze eenheid)",0
+model,"ir.action,name",act_category_form,Product Categories,Product categorieën,0
+model,"ir.action,name",act_category_form2,Product Categories,Product categorieën,0
+model,"ir.action,name",act_category_tree,Categories,Categorieën,0
+model,"ir.action,name",act_product_by_category,Product by Category,Product per categorie,0
+model,"ir.action,name",act_product_form,Products,Producten,0
+model,"ir.action,name",act_product_form2,Products,Producten,0
+model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Categorieën van meeteenheden,0
+model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Categorieën van meeteenheden,0
+model,"ir.action,name",act_uom_form,Units of Measure,Meeteenheden,0
+model,"ir.action,name",act_uom_form2,Units of Measure,Meeteenheden,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Categorieën,0
+model,"ir.ui.menu,name",menu_category_form_new,New Category,Nieuwe categorie,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Categorieën,0
+model,"ir.ui.menu,name",menu_main_product,Product,Productbeheer,0
+model,"ir.ui.menu,name",menu_product_product,Products,Producten,0
+model,"ir.ui.menu,name",menu_product_product_new,New Product,Nieuw product,0
+model,"ir.ui.menu,name",menu_uom_category_form,Categories,Categorieën,0
+model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Nieuwe categorie,0
+model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Meeteenheden,0
+model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nieuwe maateenheid,0
+model,"product.category,name",0,Product Category,Product categorie,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Categorie - belasting klant,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Categorie - belasting leverancier,0
+model,"product.product,name",0,Product,Product,0
+model,"product.template,name",0,Product Template,Productsjabloon,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Productsjabloon - Belasting verkoop,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Productsjabloon - Belasting inkoop,0
+model,"product.uom,name",0,Unit of measure,Meeteenheid,0
+model,"product.uom,name",uom_are,Are,Are,0
+model,"product.uom,name",uom_carat,Carat,Karaat,0
+model,"product.uom,name",uom_centimeter,centimeter,centimeter,0
+model,"product.uom,name",uom_cubic_centimeter,Cubic centimeter,Kubieke centimeter,0
+model,"product.uom,name",uom_cubic_foot,Cubic foot,,0
+model,"product.uom,name",uom_cubic_inch,Cubic inch,,0
+model,"product.uom,name",uom_cubic_meter,Cubic meter,Kubieke meter,0
+model,"product.uom,name",uom_day,Day,Dag,0
+model,"product.uom,name",uom_foot,Foot,Voet,0
+model,"product.uom,name",uom_gallon,Gallon,,0
+model,"product.uom,name",uom_gram,Gram,Gram,0
+model,"product.uom,name",uom_hectare,Hectare,Hectare,0
+model,"product.uom,name",uom_hour,Hour,Uur,0
+model,"product.uom,name",uom_inch,Inch,,0
+model,"product.uom,name",uom_kilogram,Kilogram,Kilogram,0
+model,"product.uom,name",uom_kilometer,Kilometer,Kilometer,0
+model,"product.uom,name",uom_liter,Liter,Liter,0
+model,"product.uom,name",uom_meter,Meter,Meter,0
+model,"product.uom,name",uom_mile,Mile,Mijl,0
+model,"product.uom,name",uom_millimeter,Millimeter,Milimeter,0
+model,"product.uom,name",uom_minute,Minute,Minute,0
+model,"product.uom,name",uom_ounce,Ounce,Ons,0
+model,"product.uom,name",uom_pound,Pound,Pond,0
+model,"product.uom,name",uom_second,Second,Seconde,0
+model,"product.uom,name",uom_square_centimeter,Square centimeter,Vierkante centimeter,0
+model,"product.uom,name",uom_square_foot,Square foot,,0
+model,"product.uom,name",uom_square_inch,Square inch,,0
+model,"product.uom,name",uom_square_meter,Square meter,Vierkante meter,0
+model,"product.uom,name",uom_square_yard,Square yard,,0
+model,"product.uom,name",uom_unit,Unit,Eenheid,0
+model,"product.uom,name",uom_work_day,Work Day,Werkdag,0
+model,"product.uom,name",uom_yard,Yard,,0
+model,"product.uom,symbol",uom_are,a,,0
+model,"product.uom,symbol",uom_carat,c,,0
+model,"product.uom,symbol",uom_centimeter,cm,cm.,0
+model,"product.uom,symbol",uom_cubic_centimeter,cm³,cm³,0
+model,"product.uom,symbol",uom_cubic_foot,ft³,,0
+model,"product.uom,symbol",uom_cubic_inch,in³,,0
+model,"product.uom,symbol",uom_cubic_meter,m³,m³,0
+model,"product.uom,symbol",uom_day,d,,0
+model,"product.uom,symbol",uom_foot,ft,,0
+model,"product.uom,symbol",uom_gallon,gal,,0
+model,"product.uom,symbol",uom_gram,g,,0
+model,"product.uom,symbol",uom_hectare,ha,ha.,0
+model,"product.uom,symbol",uom_hour,h,uur,0
+model,"product.uom,symbol",uom_inch,in,,0
+model,"product.uom,symbol",uom_kilogram,kg,kg.,0
+model,"product.uom,symbol",uom_kilometer,km,km.,0
+model,"product.uom,symbol",uom_liter,l,,0
+model,"product.uom,symbol",uom_meter,m,m.,0
+model,"product.uom,symbol",uom_mile,mi,,0
+model,"product.uom,symbol",uom_millimeter,mm,mm.,0
+model,"product.uom,symbol",uom_minute,min,min.,0
+model,"product.uom,symbol",uom_ounce,oz,,0
+model,"product.uom,symbol",uom_pound,lbs,,0
+model,"product.uom,symbol",uom_second,s,,0
+model,"product.uom,symbol",uom_square_centimeter,cm²,cm²,0
+model,"product.uom,symbol",uom_square_foot,ft²,,0
+model,"product.uom,symbol",uom_square_inch,in²,,0
+model,"product.uom,symbol",uom_square_meter,m²,m²,0
+model,"product.uom,symbol",uom_square_yard,yd²,,0
+model,"product.uom,symbol",uom_unit,u,,0
+model,"product.uom,symbol",uom_work_day,wd,,0
+model,"product.uom,symbol",uom_yard,yd,,0
+model,"product.uom.category,name",0,Product uom category,Product ME catergorie,0
+model,"product.uom.category,name",uom_cat_length,Length,Lengte,0
+model,"product.uom.category,name",uom_cat_surface,Surface,Oppervlak,0
+model,"product.uom.category,name",uom_cat_time,Time,Tijd,0
+model,"product.uom.category,name",uom_cat_unit,Units,Eenheden,0
+model,"product.uom.category,name",uom_cat_volume,Volume,Volume,0
+model,"product.uom.category,name",uom_cat_weight,Weight,Gewicht,0
+model,"res.group,name",group_product_admin,Product Administration,Productregistratie,0
+selection,"product.template,cost_price_method",0,Average,Gemiddeld,0
+selection,"product.template,cost_price_method",0,Fixed,Vast,0
+selection,"product.template,type",0,Consumable,Verbruik,0
+selection,"product.template,type",0,Service,Service,0
+selection,"product.template,type",0,Stockable,Op voorraad,0
+view,product.category,0,Children,Onderliggende niveaus,0
+view,product.category,0,Product Categories,Product categorieën,0
+view,product.category,0,Product Category,Product categorie,0
+view,product.product,0,Products,Producten,0
+view,product.template,0,Accounting,Boekhouden,0
+view,product.template,0,Accounts,Rekeningen,0
+view,product.template,0,General,Algemeen,0
+view,product.template,0,Product Template,Productsjabloon,0
+view,product.template,0,Product Templates,Productsjabloon,0
+view,product.template,0,Taxes,Belastingen,0
+view,product.uom,0,Unit of Measure,Meeteenheid,0
+view,product.uom,0,Units of Measure,Meeteenheden,0
+view,product.uom.category,0,Categories of Unit of Measure,Categorieën van meeteenheden,0
+view,product.uom.category,0,Category of Unit of Measure,Categorie van meeteenheden,0
