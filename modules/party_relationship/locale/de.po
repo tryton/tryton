@@ -1,0 +1,87 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr "Distanz"
+
+msgctxt "field:party.party,relations:"
+msgid "Relations"
+msgstr "Beziehungen"
+
+msgctxt "field:party.relation,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:party.relation,to:"
+msgid "To"
+msgstr "Zu"
+
+msgctxt "field:party.relation,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:party.relation.all,from_:"
+msgid "From"
+msgstr "Von"
+
+msgctxt "field:party.relation.all,to:"
+msgid "To"
+msgstr "Zu"
+
+msgctxt "field:party.relation.all,type:"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "field:party.relation.type,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:party.relation.type,reverse:"
+msgid "Reverse Relation"
+msgstr "Umkehrbeziehung"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr "Verwendungen"
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "Das Hauptidentifizierungsmerkmal des Beziehungstypen."
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "Die Umkehrrelation automatisch erstellen."
+
+msgctxt "model:ir.action,name:act_relation_all"
+msgid "Party Relations"
+msgstr "Parteibeziehungen"
+
+msgctxt "model:ir.action,name:act_relation_type"
+msgid "Relation Types"
+msgstr "Beziehungstypen"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_all"
+msgid "Party Relations"
+msgstr "Parteibeziehungen"
+
+msgctxt "model:ir.ui.menu,name:menu_relation_type"
+msgid "Relation Types"
+msgstr "Beziehungstypen"
+
+msgctxt "model:party.relation,name:"
+msgid "Party Relation"
+msgstr "Partei Beziehung"
+
+msgctxt "model:party.relation.all,name:"
+msgid "Party Relation"
+msgstr "Partei Beziehung"
+
+msgctxt "model:party.relation.type,name:"
+msgid "Relation Type"
+msgstr "Beziehungstyp"
+
+msgctxt "view:party.party:"
+msgid "Relations"
+msgstr "Beziehungen"
