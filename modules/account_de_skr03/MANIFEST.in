@@ -1,0 +1,6 @@
+include COPYRIGHT
+include LICENSE
+include INSTALL
+include README
+include *.xml
+include *.csv

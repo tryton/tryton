@@ -1,0 +1,32 @@
+Version 1.4.5 - 2011-12-26
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.4 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.3 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.4.2 - 2010-02-16
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.1 - 2009-11-23
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.4.0 - 2009-10-19
+* Bug fixes (see mercurial logs for details)
+* Add origin_tax field on account.tax.rule
+* Change get_receivable_payable on party.party to work with a list of name
+* Remove blocked field on account.move.line
+* Fix digits of amount on tax and tax line
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Add tax rule to replace vat and supplier_vat on party
+  Previous vat configuration will be lost
+* Allow to update chart of account from template
+* Change sequence on Journal into Property for multi-company
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
