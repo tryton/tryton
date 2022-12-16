@@ -1,0 +1,2 @@
+- Add a reference field on the invoice to provide links to other
+  models (e.g. sale, purchase)

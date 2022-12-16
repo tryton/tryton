@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="update_cost_price_ask_form">
+            <field name="model">product.update_cost_price.ask</field>
+            <field name="type">form</field>
+            <field name="name">update_cost_price_ask_form</field>
+        </record>
+        <record model="ir.ui.view" id="update_cost_price_show_move_form">
+            <field name="model">product.update_cost_price.show_move</field>
+            <field name="type">form</field>
+            <field name="name">update_cost_price_show_move_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_update_cost_price">
+            <field name="name">Update Cost Price</field>
+            <field name="wiz_name">product.update_cost_price</field>
+        </record>
+        <record model="ir.action.keyword" id="update_cost_price_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_update_cost_price"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_update_cost_price-group_account">
+            <field name="action" ref="wizard_update_cost_price"/>
+            <field name="group" ref="account.group_account" />
+        </record>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">category_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">template_form</field>
+        </record>
+    </data>
+</tryton>
