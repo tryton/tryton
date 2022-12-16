@@ -1,0 +1,253 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Séquence d'emballage"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
+msgid "Package Sequence"
+msgstr "Séquence d'emballage"
+
+msgctxt "field:stock.move,package:"
+msgid "Package"
+msgstr "Emballage"
+
+msgctxt "field:stock.package,children:"
+msgid "Children"
+msgstr "Enfants"
+
+msgctxt "field:stock.package,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:stock.package,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.package,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "field:stock.package,packaging_height:"
+msgid "Packaging Height"
+msgstr "Hauteur de l'emballage"
+
+msgctxt "field:stock.package,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Hauteur de l'emballage UDM"
+
+msgctxt "field:stock.package,packaging_length:"
+msgid "Packaging Length"
+msgstr "Longueur de l'emballage"
+
+msgctxt "field:stock.package,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Longueur de l'emballage UDM"
+
+msgctxt "field:stock.package,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Volume de l'emballage"
+
+msgctxt "field:stock.package,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Volume de l'emballage UDM"
+
+msgctxt "field:stock.package,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Poids de l'emballage"
+
+msgctxt "field:stock.package,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Poids de l'emballage UDM"
+
+msgctxt "field:stock.package,packaging_width:"
+msgid "Packaging Width"
+msgstr "Largeur de l'emballage"
+
+msgctxt "field:stock.package,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Largeur de l'emballage UDM"
+
+msgctxt "field:stock.package,parent:"
+msgid "Parent"
+msgstr "Parent"
+
+msgctxt "field:stock.package,shipment:"
+msgid "Shipment"
+msgstr "Expédition"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:stock.package,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:stock.package.type,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:stock.package.type,packaging_height:"
+msgid "Packaging Height"
+msgstr "Hauteur de l'emballage"
+
+msgctxt "field:stock.package.type,packaging_height_uom:"
+msgid "Packaging Height UOM"
+msgstr "Hauteur de l'emballage UDM"
+
+msgctxt "field:stock.package.type,packaging_length:"
+msgid "Packaging Length"
+msgstr "Longueur de l'emballage"
+
+msgctxt "field:stock.package.type,packaging_length_uom:"
+msgid "Packaging Length UOM"
+msgstr "Longueur de l'emballage UDM"
+
+msgctxt "field:stock.package.type,packaging_volume:"
+msgid "Packaging Volume"
+msgstr "Volume de l'emballage"
+
+msgctxt "field:stock.package.type,packaging_volume_uom:"
+msgid "Packaging Volume UOM"
+msgstr "Volume de l'emballage UDM"
+
+msgctxt "field:stock.package.type,packaging_weight:"
+msgid "Packaging Weight"
+msgstr "Poids de l'emballage"
+
+msgctxt "field:stock.package.type,packaging_weight_uom:"
+msgid "Packaging Weight UOM"
+msgstr "Poids de l'emballage UDM"
+
+msgctxt "field:stock.package.type,packaging_width:"
+msgid "Packaging Width"
+msgstr "Largeur de l'emballage"
+
+msgctxt "field:stock.package.type,packaging_width_uom:"
+msgid "Packaging Width UOM"
+msgstr "Largeur de l'emballage UDM"
+
+msgctxt "field:stock.shipment.in.return,packages:"
+msgid "Packages"
+msgstr "Emballages"
+
+msgctxt "field:stock.shipment.in.return,root_packages:"
+msgid "Packages"
+msgstr "Emballages"
+
+msgctxt "field:stock.shipment.out,packages:"
+msgid "Packages"
+msgstr "Emballages"
+
+msgctxt "field:stock.shipment.out,root_packages:"
+msgid "Packages"
+msgstr "Emballages"
+
+msgctxt "help:stock.package,packaging_height:"
+msgid "The height of the package."
+msgstr "La hauteur de l'emballage."
+
+msgctxt "help:stock.package,packaging_length:"
+msgid "The length of the package."
+msgstr "La longueur de l'emballage."
+
+msgctxt "help:stock.package,packaging_volume:"
+msgid "The volume of the package."
+msgstr "Le volume de l'emballage."
+
+msgctxt "help:stock.package,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "Le poids du colis vide."
+
+msgctxt "help:stock.package,packaging_width:"
+msgid "The width of the package."
+msgstr "La largeur de l'emballage."
+
+msgctxt "help:stock.package.type,packaging_height:"
+msgid "The height of the package."
+msgstr "La hauteur de l'emballage."
+
+msgctxt "help:stock.package.type,packaging_length:"
+msgid "The length of the package."
+msgstr "La longueur de l'emballage."
+
+msgctxt "help:stock.package.type,packaging_volume:"
+msgid "The volume of the package."
+msgstr "Le volume de l'emballage."
+
+msgctxt "help:stock.package.type,packaging_weight:"
+msgid "The weight of the package when empty."
+msgstr "Le poids du colis vide."
+
+msgctxt "help:stock.package.type,packaging_width:"
+msgid "The width of the package."
+msgstr "La largeur de l'emballage."
+
+msgctxt "model:ir.action,name:act_package_type_form"
+msgid "Package Types"
+msgstr "Types d'emballage"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"Pour traiter l’expédition « %(shipment)s », vous devez emballer tous ces "
+"mouvements."
+
+msgctxt "model:ir.message,text:msg_package_volume_too_small"
+msgid ""
+"The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
+"volume (%(children_volume)s) of its children packages."
+msgstr ""
+"Le volume (%(volume)s) de l'emballage « %(package)s » est trop petit pour le"
+" volume additionné (%(children_volume)s) de ses colis enfants."
+
+msgctxt "model:ir.rule.group,name:rule_group_package_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence,name:sequence_package"
+msgid "Stock Package"
+msgstr "Emballage de stock"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_package"
+msgid "Stock Package"
+msgstr "Emballage de stock"
+
+msgctxt "model:ir.ui.menu,name:menu_package_form"
+msgid "Package Types"
+msgstr "Types d'emballage"
+
+msgctxt "model:stock.package,name:"
+msgid "Stock Package"
+msgstr "Emballage de stock"
+
+msgctxt "model:stock.package.type,name:"
+msgid "Stock Package Type"
+msgstr "Type d'emballage de stock"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Fermé"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Ouvert"
+
+msgctxt "view:stock.configuration:"
+msgid "Package"
+msgstr "Emballage"
+
+msgctxt "view:stock.configuration:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "view:stock.package.type:"
+msgid "Measurements"
+msgstr "Mesures"
+
+msgctxt "view:stock.package:"
+msgid "Measurements"
+msgstr "Mesures"
