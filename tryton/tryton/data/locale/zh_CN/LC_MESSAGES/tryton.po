@@ -1,0 +1,1534 @@
+# Translations template for tryton.
+# Copyright (C) 2016 Tryton
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#: tryton/config.py:74
+msgid "specify alternate config file"
+msgstr "备选配置文件"
+
+#: tryton/config.py:77
+msgid "development mode"
+msgstr "开发模式"
+
+#: tryton/config.py:80
+msgid "logging everything at INFO level"
+msgstr "INFO级别记录日志"
+
+#: tryton/config.py:82
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "设置日志级别: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+#: tryton/config.py:85
+msgid "specify the login user"
+msgstr "设置登录用户"
+
+#: tryton/config.py:87
+msgid "specify the server hostname:port"
+msgstr "设置服务器名称：端口号"
+
+#: tryton/config.py:127
+#, python-format, python-format, python-format, python-format
+msgid "Unable to write config file %s."
+msgstr "无法写入配置文件 %s!"
+
+#: tryton/translate.py:185
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "无法设置语言地域 %s"
+
+#: tryton/action/main.py:89 tryton/common/button.py:54
+msgid ", "
+msgstr ", "
+
+#: tryton/action/main.py:91
+msgid ",…"
+msgstr ",…"
+
+#: tryton/action/main.py:92
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: tryton/action/main.py:187
+msgid "Select your action"
+msgstr "选择一项操作"
+
+#: tryton/action/main.py:193
+msgid "No action defined."
+msgstr "没有定义任何操作 ！"
+
+#: tryton/common/button.py:54
+msgid "By: "
+msgstr "By: "
+
+#: tryton/common/common.py:307 tryton/gui/window/shortcuts.py:64
+msgid "Selection"
+msgstr "选择"
+
+#: tryton/common/common.py:309 tryton/common/common.py:365
+#: tryton/common/common.py:368 tryton/common/common.py:642
+#: tryton/common/common.py:693 tryton/common/common.py:796
+#: tryton/gui/window/email.py:23 tryton/gui/window/limit.py:24
+#: tryton/gui/window/preference.py:35 tryton/gui/window/revision.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:149
+#: tryton/gui/window/view_form/view/graph.py:106
+#: tryton/gui/window/win_csv.py:173 tryton/gui/window/win_form.py:68
+#: tryton/gui/window/win_search.py:54
+#, fuzzy
+msgid "Cancel"
+msgstr "取消(_C)"
+
+#: tryton/common/common.py:310 tryton/common/common.py:797
+#: tryton/gui/window/email.py:28 tryton/gui/window/limit.py:29
+#: tryton/gui/window/preference.py:40 tryton/gui/window/revision.py:30
+#: tryton/gui/window/shortcuts.py:25
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:154
+#: tryton/gui/window/view_form/view/graph.py:111
+#: tryton/gui/window/win_csv.py:178 tryton/gui/window/win_form.py:97
+#: tryton/gui/window/win_search.py:72
+msgid "OK"
+msgstr ""
+
+#: tryton/common/common.py:315
+msgid "Your selection:"
+msgstr "已选择:"
+
+#: tryton/common/common.py:366 tryton/gui/window/form.py:114
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:83
+msgid "Select"
+msgstr "选择"
+
+#: tryton/common/common.py:369 tryton/gui/window/win_export.py:83
+msgid "Save"
+msgstr "保存"
+
+#: tryton/common/common.py:447
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:31
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:116
+#: tryton/gui/window/view_form/view/graph.py:171
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:493
+#: tryton/gui/window/win_export.py:305
+msgid "Save As..."
+msgstr "另存为..."
+
+#: tryton/common/common.py:592
+msgid "Always ignore this warning."
+msgstr "下次不再提示."
+
+#: tryton/common/common.py:597
+msgid "Do you want to proceed?"
+msgstr "继续此项操作 ?"
+
+#: tryton/common/common.py:643
+msgid "No"
+msgstr ""
+
+#: tryton/common/common.py:644 tryton/common/domain_parser.py:239
+msgid "Yes"
+msgstr "是"
+
+#: tryton/common/common.py:689 tryton/common/common.py:983
+msgid "Concurrency Exception"
+msgstr "并行操作异常"
+
+#: tryton/common/common.py:691
+msgid "This record has been modified while you were editing it."
+msgstr ""
+
+#: tryton/common/common.py:694
+msgid "Cancel saving"
+msgstr ""
+
+#: tryton/common/common.py:696
+msgid "Compare"
+msgstr "对比"
+
+#: tryton/common/common.py:697
+msgid "See the modified version"
+msgstr ""
+
+#: tryton/common/common.py:699
+msgid "Write Anyway"
+msgstr "覆写"
+
+#: tryton/common/common.py:700
+msgid "Save your current version"
+msgstr ""
+
+#: tryton/common/common.py:729
+#, fuzzy
+msgid "Application Error"
+msgstr "程序错误 !"
+
+#: tryton/common/common.py:732
+msgid "Report Bug"
+msgstr "报告Bug"
+
+#: tryton/common/common.py:733 tryton/gui/window/dblogin.py:36
+msgid "Close"
+msgstr ""
+
+#: tryton/common/common.py:751
+msgid "Error: "
+msgstr "错误:"
+
+#: tryton/common/common.py:768
+#, python-format, fuzzy, python-format
+msgid "To report bugs you must have an account on %s"
+msgstr "提交Bug报告，需要 <u>%s</u>账户"
+
+#: tryton/common/common.py:794
+msgid "Bug Tracker"
+msgstr "Bug 追踪器"
+
+#: tryton/common/common.py:811
+msgid "User:"
+msgstr "用户名:"
+
+#: tryton/common/common.py:819
+msgid "Password:"
+msgstr "密码:"
+
+#: tryton/common/common.py:875
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"已有其他用户报告相同bug.\n"
+"用户名已加入通知列表，将随时接收相关信息"
+
+#: tryton/common/common.py:886
+msgid "Created new bug with ID "
+msgstr "Bug 已提交备案"
+
+#: tryton/common/common.py:894
+msgid ""
+"Connection error.\n"
+"Bad username or password."
+msgstr ""
+"连接错误!\n"
+"用户名或密码有误!"
+
+#: tryton/common/common.py:899
+msgid "Exception:"
+msgstr "异常:"
+
+#: tryton/common/common.py:926
+#, python-format
+msgid "Check URL: %s"
+msgstr ""
+
+#: tryton/common/common.py:934
+msgid "Unable to check for new version"
+msgstr ""
+
+#: tryton/common/common.py:940
+msgid "A new version is available!"
+msgstr ""
+
+#: tryton/common/common.py:942
+msgid "Download"
+msgstr ""
+
+#: tryton/common/common.py:1323
+msgid "..."
+msgstr "..."
+
+#: tryton/common/completion.py:25
+msgid "<i>Search...</i>"
+msgstr "<i>查找...</i>"
+
+#: tryton/common/completion.py:27
+msgid "<i>Create...</i>"
+msgstr "<i>创建...</i>"
+
+#: tryton/common/completion.py:70
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr "无法找到“ %s ”的匹配项"
+
+#: tryton/common/datetime_.py:32 tryton/common/datetime_.py:238
+#: tryton/common/datetime_.py:391
+msgid "Value"
+msgstr "值"
+
+#: tryton/common/datetime_.py:33 tryton/common/datetime_.py:239
+#: tryton/common/datetime_.py:392
+msgid "Displayed value"
+msgstr "显示"
+
+#: tryton/common/datetime_.py:37 tryton/common/datetime_.py:195
+#: tryton/common/datetime_.py:242 tryton/common/datetime_.py:347
+msgid "Format"
+msgstr "格式"
+
+#: tryton/common/datetime_.py:38 tryton/common/datetime_.py:196
+#: tryton/common/datetime_.py:243 tryton/common/datetime_.py:348
+msgid "Display format"
+msgstr "显示格式"
+
+#: tryton/common/datetime_.py:63
+msgid "Open the calendar"
+msgstr "打开日历"
+
+#: tryton/common/datetime_.py:396 tryton/common/datetime_.py:401
+msgid "Date Format"
+msgstr "日期格式"
+
+#: tryton/common/datetime_.py:397 tryton/common/datetime_.py:402
+msgid "Displayed date format"
+msgstr "日期显示格式"
+
+#: tryton/common/domain_parser.py:239
+msgid "y"
+msgstr "y"
+
+#: tryton/common/domain_parser.py:239 tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "True"
+msgstr "True"
+
+#: tryton/common/domain_parser.py:239
+msgid "t"
+msgstr "t"
+
+#: tryton/common/domain_parser.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:567
+msgid "False"
+msgstr "False"
+
+#: tryton/common/popup_menu.py:84
+msgid "Edit..."
+msgstr "编辑..."
+
+#: tryton/common/popup_menu.py:89
+msgid "Attachments..."
+msgstr "附件文档..."
+
+#: tryton/common/popup_menu.py:95
+msgid "Notes..."
+msgstr "注释..."
+
+#: tryton/common/popup_menu.py:107
+msgid "Actions..."
+msgstr "操作..."
+
+#: tryton/common/popup_menu.py:108
+msgid "Relate..."
+msgstr "关联..."
+
+#: tryton/common/popup_menu.py:109
+msgid "Report..."
+msgstr "报告..."
+
+#: tryton/common/popup_menu.py:110
+msgid "E-Mail..."
+msgstr "用电子邮件发送..."
+
+#: tryton/common/popup_menu.py:111
+msgid "Print..."
+msgstr "打印..."
+
+#: tryton/common/timedelta.py:26
+msgid "Y"
+msgstr "年"
+
+#: tryton/common/timedelta.py:27
+msgid "M"
+msgstr "月"
+
+#: tryton/common/timedelta.py:28
+msgid "w"
+msgstr "星期"
+
+#: tryton/common/timedelta.py:29
+msgid "d"
+msgstr "日"
+
+#: tryton/common/timedelta.py:30
+msgid "h"
+msgstr "时"
+
+#: tryton/common/timedelta.py:31
+msgid "m"
+msgstr "分"
+
+#: tryton/common/timedelta.py:32
+msgid "s"
+msgstr "秒"
+
+#: tryton/gui/main.py:123
+#, fuzzy
+msgid "Preferences..."
+msgstr "设置偏好(_P)..."
+
+#: tryton/gui/main.py:127
+#, fuzzy
+msgid "Toolbar"
+msgstr "工具栏(_T)"
+
+#: tryton/gui/main.py:128
+#, fuzzy
+msgid "Default"
+msgstr "默认设置(_D)"
+
+#: tryton/gui/main.py:129
+#, fuzzy
+msgid "Text and Icons"
+msgstr "图标文字(_R)"
+
+#: tryton/gui/main.py:130
+#, fuzzy
+msgid "Text"
+msgstr "显示文字(_T)"
+
+#: tryton/gui/main.py:131
+#, fuzzy
+msgid "Icons"
+msgstr "显示图标(_I)"
+
+#: tryton/gui/main.py:134
+#, fuzzy
+msgid "Form"
+msgstr "表单视图(_F)"
+
+#: tryton/gui/main.py:135
+msgid "Save Width/Height"
+msgstr "保存窗体大小"
+
+#: tryton/gui/main.py:136
+msgid "Save Tree State"
+msgstr "保存导航状态"
+
+#: tryton/gui/main.py:137
+msgid "Fast Tabbing"
+msgstr "快速切换标签"
+
+#: tryton/gui/main.py:138
+msgid "Spell Checking"
+msgstr "开启拼写检查"
+
+#: tryton/gui/main.py:140
+msgid "PDA Mode"
+msgstr ""
+
+#: tryton/gui/main.py:141
+msgid "Search Limit..."
+msgstr "数据查询..."
+
+#: tryton/gui/main.py:142
+#, fuzzy
+msgid "Email..."
+msgstr "电子邮件(_E)..."
+
+#: tryton/gui/main.py:143
+msgid "Check Version"
+msgstr ""
+
+#: tryton/gui/main.py:145
+#, fuzzy
+msgid "Options"
+msgstr "选项(_O)"
+
+#: tryton/gui/main.py:148
+#, fuzzy
+msgid "Keyboard Shortcuts..."
+msgstr "快捷键(K)..."
+
+#: tryton/gui/main.py:149
+#, fuzzy
+msgid "About..."
+msgstr "关于(_A)..."
+
+#: tryton/gui/main.py:150
+#, fuzzy
+msgid "Help"
+msgstr "帮助(_H)"
+
+#: tryton/gui/main.py:153
+msgid "Quit"
+msgstr ""
+
+#: tryton/gui/main.py:395
+msgid "No result found."
+msgstr "无符合条件的数据."
+
+#: tryton/gui/main.py:447
+#, fuzzy
+msgid "Favorites"
+msgstr "收藏(_V)"
+
+#: tryton/gui/main.py:464 tryton/gui/window/dblogin.py:438
+#: tryton/gui/window/form.py:139
+msgid "Manage..."
+msgstr ""
+
+#: tryton/gui/main.py:541 tryton/gui/window/form.py:559
+msgid "Action"
+msgstr "操作"
+
+#: tryton/gui/main.py:563
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"该操作需要关闭打开的项目\n"
+"是否继续？"
+
+#: tryton/gui/main.py:747
+msgid "Close Tab"
+msgstr "关闭标签"
+
+#: tryton/gui/window/about.py:37
+msgid "modularity, scalability and security"
+msgstr ""
+
+#: tryton/gui/window/about.py:43
+msgid "translator-credits"
+msgstr ""
+
+#: tryton/gui/window/attachment.py:24
+#, python-format, python-format, python-format, python-format
+msgid "Attachments (%s)"
+msgstr "附件文档(%s)"
+
+#: tryton/gui/window/dblogin.py:33
+msgid "Profile Editor"
+msgstr "数据服务配置器"
+
+#: tryton/gui/window/dblogin.py:49
+msgid "Profile"
+msgstr "配置列表"
+
+#: tryton/gui/window/dblogin.py:58
+msgid "Add new profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:63
+msgid "Remove selected profile"
+msgstr ""
+
+#: tryton/gui/window/dblogin.py:77 tryton/gui/window/dblogin.py:450
+msgid "Host:"
+msgstr "主机:"
+
+#: tryton/gui/window/dblogin.py:88 tryton/gui/window/dblogin.py:462
+msgid "Database:"
+msgstr "服务标识:"
+
+#: tryton/gui/window/dblogin.py:108
+msgid "Fetching databases list"
+msgstr "获取服务列表..."
+
+#: tryton/gui/window/dblogin.py:122
+msgid "Username:"
+msgstr "用户名:"
+
+#: tryton/gui/window/dblogin.py:309 tryton/gui/window/dblogin.py:619
+msgid "Incompatible version of the server"
+msgstr "服务器版本与客户端不兼容"
+
+#: tryton/gui/window/dblogin.py:311 tryton/gui/window/dblogin.py:623
+msgid "Could not connect to the server"
+msgstr "无法连接服务器"
+
+#: tryton/gui/window/dblogin.py:390
+msgid "Login"
+msgstr "登录"
+
+#: tryton/gui/window/dblogin.py:396
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: tryton/gui/window/dblogin.py:398
+msgid "Cancel connection to the Tryton server"
+msgstr "取消与服务器的连接"
+
+#: tryton/gui/window/dblogin.py:400
+msgid "C_onnect"
+msgstr "连机(_O)"
+
+#: tryton/gui/window/dblogin.py:404
+msgid "Connect the Tryton server"
+msgstr "连接数据服务器"
+
+#: tryton/gui/window/dblogin.py:432
+msgid "Profile:"
+msgstr "配置:"
+
+#: tryton/gui/window/dblogin.py:447
+msgid "Host / Database information"
+msgstr "数据服务器:"
+
+#: tryton/gui/window/dblogin.py:478
+msgid "User name:"
+msgstr "用户:"
+
+#: tryton/gui/window/email.py:19
+msgid "Email"
+msgstr "邮件"
+
+#: tryton/gui/window/email.py:36
+msgid "Email Program Settings"
+msgstr "电子邮件相关设置"
+
+#: tryton/gui/window/email.py:39
+msgid "Command Line:"
+msgstr "电子邮件程序命令行"
+
+#: tryton/gui/window/email.py:49
+msgid "Legend of Available Placeholders:"
+msgstr "替换变量列表："
+
+#: tryton/gui/window/email.py:56
+msgid "To:"
+msgstr "收件人:"
+
+#: tryton/gui/window/email.py:60
+msgid "CC:"
+msgstr "抄送："
+
+#: tryton/gui/window/email.py:64
+msgid "Subject:"
+msgstr "主题:"
+
+#: tryton/gui/window/email.py:68
+msgid "Body:"
+msgstr "内容:"
+
+#: tryton/gui/window/email.py:72
+msgid "Attachment:"
+msgstr "附件:"
+
+#: tryton/gui/window/form.py:135
+msgid "Add..."
+msgstr ""
+
+#: tryton/gui/window/form.py:155
+#, python-format
+msgid "Attachment(%d)"
+msgstr "附件文档(%d)"
+
+#: tryton/gui/window/form.py:185
+#, python-format
+msgid "Note(%d)"
+msgstr "注释(%d)"
+
+#: tryton/gui/window/form.py:207
+msgid "You have to select one record."
+msgstr "选择需要操作的项目"
+
+#: tryton/gui/window/form.py:211
+msgid "ID:"
+msgstr "标识:"
+
+#: tryton/gui/window/form.py:212
+msgid "Creation User:"
+msgstr "创建者:"
+
+#: tryton/gui/window/form.py:213
+msgid "Creation Date:"
+msgstr "创建日期:"
+
+#: tryton/gui/window/form.py:214
+msgid "Latest Modification by:"
+msgstr "最近更改:"
+
+#: tryton/gui/window/form.py:215
+msgid "Latest Modification Date:"
+msgstr "最近更改日期:"
+
+#: tryton/gui/window/form.py:234
+msgid "Model:"
+msgstr "模型:"
+
+#: tryton/gui/window/form.py:312
+msgid "Are you sure to remove this record?"
+msgstr "确定要删除此项吗？"
+
+#: tryton/gui/window/form.py:314
+msgid "Are you sure to remove those records?"
+msgstr "确定要删除这些项目？"
+
+#: tryton/gui/window/form.py:317
+msgid "Records not removed."
+msgstr "所选项目未删除成功."
+
+#: tryton/gui/window/form.py:319
+msgid "Records removed."
+msgstr "项目已成功删除"
+
+#: tryton/gui/window/form.py:356
+msgid "Working now on the duplicated record(s)."
+msgstr "当前处理的是项目的副本."
+
+#: tryton/gui/window/form.py:368
+msgid "Record saved."
+msgstr "保存成功."
+
+#: tryton/gui/window/form.py:485
+msgid " of "
+msgstr "of"
+
+#: tryton/gui/window/form.py:505
+msgid ""
+"This record has been modified\n"
+"do you want to save it?"
+msgstr "记录有改动, 是否保存？"
+
+#: tryton/gui/window/form.py:559
+msgid "Launch action"
+msgstr "执行操作"
+
+#: tryton/gui/window/form.py:560
+msgid "Relate"
+msgstr "关联"
+
+#: tryton/gui/window/form.py:560
+msgid "Open related records"
+msgstr "打开关联项目"
+
+#: tryton/gui/window/form.py:562
+msgid "Report"
+msgstr "报告(_R)..."
+
+#: tryton/gui/window/form.py:562
+msgid "Open report"
+msgstr "打开报表"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail"
+msgstr "邮件发送"
+
+#: tryton/gui/window/form.py:563
+msgid "E-Mail report"
+msgstr "用电子邮件发送报表"
+
+#: tryton/gui/window/form.py:564
+msgid "Print"
+msgstr "打印"
+
+#: tryton/gui/window/form.py:564
+msgid "Print report"
+msgstr "打印报表"
+
+#: tryton/gui/window/form.py:590
+msgid "_Copy URL"
+msgstr "复制（_C）URL"
+
+#: tryton/gui/window/form.py:593
+msgid "Copy URL into clipboard"
+msgstr "将URL复制到粘贴板"
+
+#: tryton/gui/window/form.py:652
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:932
+msgid "Unknown"
+msgstr "未知"
+
+#: tryton/gui/window/limit.py:20
+msgid "Limit"
+msgstr "限制"
+
+#: tryton/gui/window/limit.py:37
+msgid "Search Limit Settings"
+msgstr "查询限制..."
+
+#: tryton/gui/window/limit.py:40
+msgid "Limit:"
+msgstr "限制:"
+
+#: tryton/gui/window/note.py:17
+#, python-format
+msgid "Notes (%s)"
+msgstr "注释(%s)"
+
+#: tryton/gui/window/preference.py:25
+msgid "Preferences"
+msgstr "偏好"
+
+#: tryton/gui/window/preference.py:58
+msgid "Edit User Preferences"
+msgstr "设置用户偏好..."
+
+#: tryton/gui/window/preference.py:85
+msgid "Preference"
+msgstr "偏好"
+
+#: tryton/gui/window/revision.py:21
+msgid "Revision"
+msgstr "版本"
+
+#: tryton/gui/window/revision.py:38
+msgid "Select a revision"
+msgstr "选择版本"
+
+#: tryton/gui/window/revision.py:41
+msgid "Revision:"
+msgstr "版本:"
+
+#: tryton/gui/window/shortcuts.py:20
+msgid "Keyboard Shortcuts"
+msgstr "快捷键"
+
+#: tryton/gui/window/shortcuts.py:35
+msgid "Text Entries Shortcuts"
+msgstr "文本相关"
+
+#: tryton/gui/window/shortcuts.py:36
+msgid "Cut selected text"
+msgstr "剪切"
+
+#: tryton/gui/window/shortcuts.py:37
+msgid "Copy selected text"
+msgstr "复制"
+
+#: tryton/gui/window/shortcuts.py:38
+msgid "Paste copied text"
+msgstr "粘贴"
+
+#: tryton/gui/window/shortcuts.py:39
+msgid "Next widget"
+msgstr "下一个文本"
+
+#: tryton/gui/window/shortcuts.py:40
+msgid "Previous widget"
+msgstr "上一个文本"
+
+#: tryton/gui/window/shortcuts.py:41
+msgid "Relation Entries Shortcuts"
+msgstr "关联操作"
+
+#: tryton/gui/window/shortcuts.py:42
+msgid "Create new relation"
+msgstr "新建关联"
+
+#: tryton/gui/window/shortcuts.py:43
+msgid "Open/Search relation"
+msgstr "打开. 查找关联"
+
+#: tryton/gui/window/shortcuts.py:44
+msgid "List Entries Shortcuts"
+msgstr "列表项相关"
+
+#: tryton/gui/window/shortcuts.py:45
+msgid "Create new line"
+msgstr "新建一行"
+
+#: tryton/gui/window/shortcuts.py:46
+msgid "Open relation"
+msgstr "打开关联项"
+
+#: tryton/gui/window/shortcuts.py:47
+msgid "Mark line for deletion"
+msgstr "标定删除选择"
+
+#: tryton/gui/window/shortcuts.py:48
+msgid "Unmark line for deletion"
+msgstr "取消删除选择"
+
+#: tryton/gui/window/shortcuts.py:51
+msgid "Edition Widgets"
+msgstr "编辑界面"
+
+#: tryton/gui/window/shortcuts.py:54
+msgid "Move Cursor"
+msgstr "光标移动"
+
+#: tryton/gui/window/shortcuts.py:55
+msgid "Move to right"
+msgstr "右移"
+
+#: tryton/gui/window/shortcuts.py:56
+msgid "Move to left"
+msgstr "左移"
+
+#: tryton/gui/window/shortcuts.py:57
+msgid "Move up"
+msgstr "上移"
+
+#: tryton/gui/window/shortcuts.py:58
+msgid "Move down"
+msgstr "下移"
+
+#: tryton/gui/window/shortcuts.py:59
+msgid "Move up of one page"
+msgstr "上移一页"
+
+#: tryton/gui/window/shortcuts.py:60
+msgid "Move down of one page"
+msgstr "下移一页"
+
+#: tryton/gui/window/shortcuts.py:61
+msgid "Move to top"
+msgstr "移到顶端"
+
+#: tryton/gui/window/shortcuts.py:62
+msgid "Move to bottom"
+msgstr "移到底部"
+
+#: tryton/gui/window/shortcuts.py:63
+msgid "Move to parent"
+msgstr "上一级"
+
+#: tryton/gui/window/shortcuts.py:65 tryton/gui/window/shortcuts.py:66
+msgid "Select all"
+msgstr "全选"
+
+#: tryton/gui/window/shortcuts.py:67 tryton/gui/window/shortcuts.py:68
+msgid "Unselect all"
+msgstr "全不选"
+
+#: tryton/gui/window/shortcuts.py:69
+msgid "Select parent"
+msgstr "选择上一级"
+
+#: tryton/gui/window/shortcuts.py:70 tryton/gui/window/shortcuts.py:71
+#: tryton/gui/window/shortcuts.py:72 tryton/gui/window/shortcuts.py:73
+msgid "Select/Activate current row"
+msgstr "选择/激活当前行"
+
+#: tryton/gui/window/shortcuts.py:74
+msgid "Toggle selection"
+msgstr "切换状态"
+
+#: tryton/gui/window/shortcuts.py:75
+msgid "Expand/Collapse"
+msgstr "展开/收起"
+
+#: tryton/gui/window/shortcuts.py:76
+msgid "Expand row"
+msgstr "展开"
+
+#: tryton/gui/window/shortcuts.py:77
+msgid "Collapse row"
+msgstr "收起"
+
+#: tryton/gui/window/shortcuts.py:78
+msgid "Toggle row"
+msgstr "切换状态"
+
+#: tryton/gui/window/shortcuts.py:79
+msgid "Collapse all rows"
+msgstr "收起所有"
+
+#: tryton/gui/window/shortcuts.py:80
+msgid "Expand all rows"
+msgstr "展开所有"
+
+#: tryton/gui/window/shortcuts.py:83
+msgid "Tree view"
+msgstr "树形导航"
+
+#: tryton/gui/window/tabcontent.py:43
+msgid "_Switch View"
+msgstr "切换视图(_S)"
+
+#: tryton/gui/window/tabcontent.py:44
+msgid "Switch View"
+msgstr "切换视图"
+
+#: tryton/gui/window/tabcontent.py:49
+msgid "_Previous"
+msgstr "向前(_P)"
+
+#: tryton/gui/window/tabcontent.py:50
+msgid "Previous Record"
+msgstr "前一项"
+
+#: tryton/gui/window/tabcontent.py:55
+msgid "_Next"
+msgstr "向后(_N)"
+
+#: tryton/gui/window/tabcontent.py:56
+msgid "Next Record"
+msgstr "后一项"
+
+#: tryton/gui/window/tabcontent.py:61
+msgid "_Search"
+msgstr "查找(_S)"
+
+#: tryton/gui/window/tabcontent.py:67
+msgid "_New"
+msgstr "新建(_N)"
+
+#: tryton/gui/window/tabcontent.py:68
+msgid "Create a new record"
+msgstr "新建项目"
+
+#: tryton/gui/window/tabcontent.py:73 tryton/gui/window/win_form.py:85
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: tryton/gui/window/tabcontent.py:74
+msgid "Save this record"
+msgstr "保存项目"
+
+#: tryton/gui/window/tabcontent.py:79
+msgid "_Reload/Undo"
+msgstr "刷新/撤销(_R)"
+
+#: tryton/gui/window/tabcontent.py:80
+msgid "Reload/Undo"
+msgstr "刷新/撤销"
+
+#: tryton/gui/window/tabcontent.py:85
+msgid "_Duplicate"
+msgstr "复制(_D)"
+
+#: tryton/gui/window/tabcontent.py:90
+msgid "_Delete..."
+msgstr "删除(_D)..."
+
+#: tryton/gui/window/tabcontent.py:96
+msgid "View _Logs..."
+msgstr "日志(_V)..."
+
+#: tryton/gui/window/tabcontent.py:100
+msgid "Show revisions..."
+msgstr "显示版本..."
+
+#: tryton/gui/window/tabcontent.py:105
+msgid "A_ttachments..."
+msgstr "附件(_T)..."
+
+#: tryton/gui/window/tabcontent.py:106
+msgid "Add an attachment to the record"
+msgstr "给当前项添加附件"
+
+#: tryton/gui/window/tabcontent.py:112
+msgid "_Notes..."
+msgstr "注释（_N）..."
+
+#: tryton/gui/window/tabcontent.py:113
+msgid "Add a note to the record"
+msgstr "给当前项添加注释"
+
+#: tryton/gui/window/tabcontent.py:118
+msgid "_Actions..."
+msgstr "操作(_A)..."
+
+#: tryton/gui/window/tabcontent.py:123
+msgid "_Relate..."
+msgstr "关联(_L)..."
+
+#: tryton/gui/window/tabcontent.py:129
+msgid "_Report..."
+msgstr "报告(_R)..."
+
+#: tryton/gui/window/tabcontent.py:134
+msgid "_E-Mail..."
+msgstr "邮件发送(_E)..."
+
+#: tryton/gui/window/tabcontent.py:139
+msgid "_Print..."
+msgstr "打印(_P)..."
+
+#: tryton/gui/window/tabcontent.py:145
+msgid "_Export Data..."
+msgstr "导出数据(_X)"
+
+#: tryton/gui/window/tabcontent.py:150
+msgid "_Import Data..."
+msgstr "导入数据(_I)"
+
+#: tryton/gui/window/tabcontent.py:155
+msgid "Copy _URL..."
+msgstr "复制URL（_U）..."
+
+#: tryton/gui/window/tabcontent.py:161
+msgid "_Close Tab"
+msgstr "关闭标签页(_C)"
+
+#: tryton/gui/window/win_csv.py:60
+msgid "<b>All fields</b>"
+msgstr "<b>数据项</b>"
+
+#: tryton/gui/window/win_csv.py:69
+msgid "_Add"
+msgstr "添加(_A)"
+
+#: tryton/gui/window/win_csv.py:77
+msgid "_Remove"
+msgstr "删除(_R)"
+
+#: tryton/gui/window/win_csv.py:85
+msgid "_Clear"
+msgstr "清除（_C）"
+
+#: tryton/gui/window/win_csv.py:105
+msgid "<b>Fields selected</b>"
+msgstr "<b>选中字段</b>"
+
+#: tryton/gui/window/win_csv.py:124
+msgid "CSV Parameters"
+msgstr "CSV 参数"
+
+#: tryton/gui/window/win_csv.py:132
+msgid "Delimiter:"
+msgstr "分隔符:"
+
+#: tryton/gui/window/win_csv.py:146
+msgid "Quote char:"
+msgstr "限定符:"
+
+#: tryton/gui/window/win_csv.py:155
+msgid "Encoding:"
+msgstr "编码:"
+
+#: tryton/gui/window/win_csv.py:195 tryton/gui/window/win_csv.py:199
+msgid "Field name"
+msgstr "列名"
+
+#: tryton/gui/window/win_export.py:28
+#, python-format
+msgid "CSV Export: %s"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:32
+msgid "_Save Export"
+msgstr "保存设定（_S）"
+
+#: tryton/gui/window/win_export.py:40
+msgid "_Delete Export"
+msgstr "删除设定（_D）"
+
+#: tryton/gui/window/win_export.py:55
+msgid "<b>Predefined exports</b>"
+msgstr "<b>导出设定</b>"
+
+#: tryton/gui/window/win_export.py:62
+msgid "Name"
+msgstr "名称"
+
+#: tryton/gui/window/win_export.py:82
+msgid "Open"
+msgstr "打开"
+
+#: tryton/gui/window/win_export.py:87
+msgid "Add _field names"
+msgstr "添加列名称(_F)"
+
+#: tryton/gui/window/win_export.py:103
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+#: tryton/gui/window/win_export.py:106
+#, python-format
+msgid "%s (model name)"
+msgstr "%s (模型名称)"
+
+#: tryton/gui/window/win_export.py:108
+#, python-format
+msgid "%s (record name)"
+msgstr "%s (记录名称)"
+
+#: tryton/gui/window/win_export.py:207
+msgid "What is the name of this export?"
+msgstr "导出设定的名称"
+
+#: tryton/gui/window/win_export.py:213
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "替换设定 '%s' ?"
+
+#: tryton/gui/window/win_export.py:328
+#, python-format, python-format, python-format, python-format
+msgid "%d record saved."
+msgstr "%d 项保存成功!"
+
+#: tryton/gui/window/win_export.py:330
+#, python-format, python-format, python-format, python-format
+msgid "%d records saved."
+msgstr "%d 记录保存成功!"
+
+#: tryton/gui/window/win_export.py:333
+#, python-format, python-format, python-format, python-format
+msgid ""
+"Operation failed.\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"操作失败!\n"
+"相关错误信息:\n"
+"%s"
+
+#: tryton/gui/window/win_export.py:334 tryton/gui/window/win_import.py:112
+#: tryton/gui/window/win_import.py:139
+msgid "Error"
+msgstr "错误"
+
+#: tryton/gui/window/win_form.py:38
+msgid "Link"
+msgstr "链接"
+
+#: tryton/gui/window/win_form.py:66
+msgid "Delete"
+msgstr "删除"
+
+#: tryton/gui/window/win_form.py:78 tryton/gui/window/win_search.py:65
+msgid "New"
+msgstr "新建"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:48
+#: tryton/gui/window/win_form.py:140
+msgid "Switch"
+msgstr "切换"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:56
+#: tryton/gui/window/view_form/view/screen_container.py:222
+#: tryton/gui/window/win_form.py:148
+msgid "Previous"
+msgstr "向前"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:67
+#: tryton/gui/window/view_form/view/screen_container.py:231
+#: tryton/gui/window/win_form.py:159
+msgid "Next"
+msgstr "向后"
+
+#: tryton/gui/window/win_form.py:176
+msgid "Add"
+msgstr "添加"
+
+#: tryton/gui/window/win_form.py:186
+msgid "Remove <Del>"
+msgstr "删除 <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:118
+#: tryton/gui/window/win_form.py:198
+msgid "Create a new record <F3>"
+msgstr "新建项目 <F3>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:134
+#: tryton/gui/window/win_form.py:208
+msgid "Delete selected record <Del>"
+msgstr "删除选择项 <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:142
+#: tryton/gui/window/win_form.py:219
+msgid "Undelete selected record <Ins>"
+msgstr "回滚删除项 <Ins>"
+
+#: tryton/gui/window/win_import.py:26
+#, python-format
+msgid "CSV Import: %s"
+msgstr ""
+
+#: tryton/gui/window/win_import.py:30
+msgid "_Auto-Detect"
+msgstr "自动设置（_A）"
+
+#: tryton/gui/window/win_import.py:41
+msgid "File to Import:"
+msgstr "数据文件:"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:200
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:466
+#: tryton/gui/window/win_import.py:43
+msgid "Open..."
+msgstr "打开..."
+
+#: tryton/gui/window/win_import.py:48
+msgid "Lines to Skip:"
+msgstr "跳过行:"
+
+#: tryton/gui/window/win_import.py:101
+msgid "You must select an import file first."
+msgstr "必须先选择要导入的文件！"
+
+#: tryton/gui/window/win_import.py:112
+msgid "Error opening CSV file"
+msgstr "打开CSV出错 !"
+
+#: tryton/gui/window/win_import.py:138
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "处理数值 %s 时出错"
+
+#: tryton/gui/window/win_import.py:198
+#, python-format, python-format, python-format, python-format
+msgid "%d record imported."
+msgstr "%d 项记录导入成功!"
+
+#: tryton/gui/window/win_import.py:200
+#, python-format, python-format, python-format, python-format
+msgid "%d records imported."
+msgstr "%d 项记录导入成功!"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:344
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:46
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:81
+#: tryton/gui/window/view_form/view/screen_container.py:146
+#: tryton/gui/window/win_search.py:36 tryton/gui/window/win_search.py:59
+msgid "Search"
+msgstr "查找"
+
+#: tryton/gui/window/win_search.py:91
+#, python-format
+msgid "Search %s"
+msgstr "查找 %s"
+
+#: tryton/gui/window/wizard.py:160
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr "无法删除向导 %s"
+
+#: tryton/gui/window/wizard.py:317
+msgid "Wizard"
+msgstr "向导"
+
+#: tryton/gui/window/view_form/screen/screen.py:206
+msgid "ID"
+msgstr "标识"
+
+#: tryton/gui/window/view_form/screen/screen.py:207
+msgid "Creation User"
+msgstr "创建者"
+
+#: tryton/gui/window/view_form/screen/screen.py:208
+msgid "Creation Date"
+msgstr "创建日期"
+
+#: tryton/gui/window/view_form/screen/screen.py:209
+msgid "Modification User"
+msgstr "修改者"
+
+#: tryton/gui/window/view_form/screen/screen.py:210
+msgid "Modification Date"
+msgstr "修改日期"
+
+#: tryton/gui/window/view_form/screen/screen.py:806
+#, python-format, python-format, python-format, python-format
+msgid "Unable to get view tree state for %s"
+msgstr "无法获取视图树状态： %s"
+
+#: tryton/gui/window/view_form/screen/screen.py:867
+msgid "Unable to set view tree state"
+msgstr "无法设置视图树状态"
+
+#: tryton/gui/window/view_form/screen/screen.py:1054
+#, python-format
+msgid "\"%s\" is not valid according to its domain"
+msgstr "根据域设置，\"%s\"不可用"
+
+#: tryton/gui/window/view_form/screen/screen.py:1061
+#, python-format
+msgid "\"%s\" is required"
+msgstr "\"%s\" 是必填项"
+
+#: tryton/gui/window/view_form/screen/screen.py:1065
+#, python-format
+msgid "The values of \"%s\" are not valid"
+msgstr "无法获得\"%s\" 的值"
+
+#: tryton/gui/window/view_form/screen/screen.py:1114
+msgid "Pre-validation"
+msgstr "预校验"
+
+#: tryton/gui/window/view_form/view/form.py:261
+#: tryton/gui/window/view_form/view/form.py:263
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:476
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:478
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:172
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:174
+#: tryton/gui/window/view_form/view/list.py:530
+#: tryton/gui/window/view_form/view/list.py:532
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:102
+msgid "Image Size"
+msgstr "图片尺寸"
+
+#: tryton/gui/window/view_form/view/graph.py:121
+msgid "Width:"
+msgstr "宽:"
+
+#: tryton/gui/window/view_form/view/graph.py:129
+msgid "Height:"
+msgstr "高:"
+
+#: tryton/gui/window/view_form/view/graph.py:140
+msgid "PNG image (*.png)"
+msgstr "PNG 图片格式 (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:149
+msgid "Save As"
+msgstr "另存为"
+
+#: tryton/gui/window/view_form/view/graph.py:161
+msgid "Image size too large."
+msgstr "图片尺寸过大 !"
+
+#: tryton/gui/window/view_form/view/screen_container.py:23
+msgid ".."
+msgstr ".."
+
+#: tryton/gui/window/view_form/view/screen_container.py:152
+msgid "Open filters"
+msgstr "打开过滤器"
+
+#: tryton/gui/window/view_form/view/screen_container.py:209
+msgid "Show bookmarks of filters"
+msgstr "显示筛选器书签"
+
+#: tryton/gui/window/view_form/view/screen_container.py:371
+msgid "Remove this bookmark"
+msgstr "移除书签"
+
+#: tryton/gui/window/view_form/view/screen_container.py:379
+msgid "Bookmark this filter"
+msgstr "收藏筛选器"
+
+#: tryton/gui/window/view_form/view/screen_container.py:396
+msgid "Show active records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:398
+msgid "Show inactive records"
+msgstr ""
+
+#: tryton/gui/window/view_form/view/screen_container.py:479
+msgid "Bookmark Name:"
+msgstr "书签名称:"
+
+#: tryton/gui/window/view_form/view/screen_container.py:599
+msgid "Find"
+msgstr "查找"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:22
+msgid "Today"
+msgstr "今天"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:32
+msgid "go back"
+msgstr "回退"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:73
+msgid "go forward"
+msgstr "前进"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:82
+msgid "previous year"
+msgstr "上年度"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:96
+msgid "next year"
+msgstr "下年度"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:107
+msgid "Week View"
+msgstr "周视图"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:117
+msgid "Month View"
+msgstr "月视图"
+
+#: tryton/gui/window/view_form/view/calendar_gtk/toolbar.py:142
+msgid "Week"
+msgstr "周"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:39
+msgid "Select..."
+msgstr "选择..."
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:47
+msgid "Clear"
+msgstr "清除"
+
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:60
+msgid "All files"
+msgstr "所有文件"
+
+#: tryton/gui/window/view_form/view/form_gtk/char.py:169
+msgid "Show plain text"
+msgstr "显示纯文本"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:369
+msgid "Add value"
+msgstr "添加条目"
+
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:490
+#, python-format
+msgid "Remove \"%s\""
+msgstr "删除\"%s\""
+
+#: tryton/gui/window/view_form/view/form_gtk/image.py:50
+msgid "Images"
+msgstr "图片"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:99
+msgid "Add existing record"
+msgstr "添加现存条目"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:74
+msgid "Remove selected record <Del>"
+msgstr "删除选择项 <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:305
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:582
+msgid "Open the record <F2>"
+msgstr "打开条目 <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:306
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:583
+#, fuzzy
+msgid "Clear the field <Del>"
+msgstr "删除记录 <Del>"
+
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:309
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:586
+msgid "Search a record <F2>"
+msgstr "查找条目 <F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:108
+msgid "Remove selected record"
+msgstr "删除所选条目"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:126
+msgid "Edit selected record <F2>"
+msgstr "编辑所选条目<F2>"
+
+#: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:908
+#, python-format
+msgid "%s%%"
+msgstr "%s%%"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:85
+msgid "Foreground"
+msgstr "字体颜色"
+
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:328
+msgid "Select a color"
+msgstr "选择颜色"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:136
+msgid "Translation"
+msgstr "翻译"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:209
+msgid "Edit"
+msgstr "编辑"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:214
+msgid "Fuzzy"
+msgstr "模糊"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:285
+msgid "You need to save the record before adding translations."
+msgstr "请先保存已翻译条目，再增加新翻译 !"
+
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:296
+msgid "No other language available."
+msgstr "没有其他可翻译语言！"
+
+#: tryton/plugins/translation/__init__.py:17
+#: tryton/plugins/translation/__init__.py:24
+msgid "Translate view"
+msgstr "翻译视图"
