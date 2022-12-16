@@ -1,0 +1,63 @@
+# extracted from index.rst
+#. extracted from index.rst
+msgid ""
+msgstr ""
+"Project-Id-Version: Tryton\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-04 16:33+0200\n"
+"PO-Revision-Date: 2009-12-30 12:06+0100\n"
+"Last-Translator: Tobias Paepke <tryton@paepke.net>\n"
+"Language-Team: http://tryton.origo.ethz.ch/forum/8\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.5.3\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: index.rst:1
+msgid ""
+".. Tryton documentation master file. You can adapt this file\n"
+"   completely to your liking, but it should at least contain the root\n"
+"   `toctree` directive."
+msgstr ""
+".. Tryton Dokumentation Haupt Datei. Diese Datei kann komplett nach\n"
+"   eigenen Wünschen angepasst werden. Sie sollte aber zumindest die\n"
+"   Direktive `toctree` beinhalten."
+
+#: index.rst:5
+msgid ""
+"Tryton Client\n"
+"#############"
+msgstr ""
+"Tryton Client\n"
+"#############"
+
+#: index.rst:8
+msgid "Contents:"
+msgstr "Inhalt:"
+
+#: index.rst:10
+msgid ""
+".. toctree::\n"
+"   :maxdepth: 2"
+msgstr ""
+".. toctree::\n"
+"   :maxdepth: 2"
+
+#: index.rst:13
+msgid ""
+"   introduction\n"
+"   installation"
+msgstr ""
+"   introduction\n"
+"   installation"
+
+#: index.rst:16
+msgid "   usage"
+msgstr "   usage"
+
+#: index.rst:18
+msgid "   glossary"
+msgstr "   glossary"
