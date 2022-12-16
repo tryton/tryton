@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/form/notebook/page[@id='user']/field[@name='password']"
+        position="after">
+        <label name="mobile"/>
+        <field name="mobile"/>
+        <newline/>
+    </xpath>
+</data>

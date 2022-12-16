@@ -1,0 +1,69 @@
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_line_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="inherit" ref="account_invoice.invoice_line_view_form"/>
+            <field name="name">invoice_line_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_commission_relate">
+            <field name="name">Commissions</field>
+            <field name="res_model">commission</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.invoice', '=', Eval('active_id'), 'account.invoice.line'), ('origin.invoice', 'in', Eval('active_ids'), 'account.invoice.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="commission_view_list"/>
+            <field name="act_window" ref="act_commission_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="commission_view_form"/>
+            <field name="act_window" ref="act_commission_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_commission_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_commission_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_commission_from_relate">
+            <field name="name">From Commissions</field>
+            <field name="res_model">commission</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('invoice_line.invoice', '=', Eval('active_id')), ('invoice_line.invoice', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_from_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="commission_view_list"/>
+            <field name="act_window" ref="act_commission_from_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_commission_from_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="commission_view_form"/>
+            <field name="act_window" ref="act_commission_from_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_commission_from_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="act_commission_from_relate"/>
+        </record>
+
+    </data>
+</tryton>
