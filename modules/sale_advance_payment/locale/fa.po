@@ -1,0 +1,197 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,unearned_revenue:"
+msgid "Unearned Revenue"
+msgstr ""
+
+msgctxt "field:account.account.type.template,unearned_revenue:"
+msgid "Unearned Revenue"
+msgstr ""
+
+msgctxt "field:sale.advance_payment.condition,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:sale.advance_payment.condition,amount:"
+msgid "Amount"
+msgstr "مقدار"
+
+msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgid "Block Shipping"
+msgstr "حمل و نقل مسدود"
+
+msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgid "Block Supply"
+msgstr "عرضه مسدود"
+
+msgctxt "field:sale.advance_payment.condition,completed:"
+msgid "Completed"
+msgstr "تکمیل شده"
+
+msgctxt "field:sale.advance_payment.condition,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "صورتحساب تأخیر"
+
+msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "سطرهای صورتحساب"
+
+msgctxt "field:sale.advance_payment.condition,sale:"
+msgid "Sale"
+msgstr "فروش"
+
+msgctxt "field:sale.advance_payment.condition,sale_company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.advance_payment.condition,sale_state:"
+msgid "Sale State"
+msgstr "وضعیت فروش"
+
+msgctxt "field:sale.advance_payment_term,lines:"
+msgid "Lines"
+msgstr "سطرها"
+
+msgctxt "field:sale.advance_payment_term,name:"
+msgid "Name"
+msgstr "نام"
+
+msgctxt "field:sale.advance_payment_term.line,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:sale.advance_payment_term.line,accounts:"
+msgid "Accounts"
+msgstr "حساب ها"
+
+msgctxt "field:sale.advance_payment_term.line,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "نحوه پرداخت پیش پرداخت"
+
+msgctxt "field:sale.advance_payment_term.line,block_shipping:"
+msgid "Block Shipping"
+msgstr "حمل و نقل مسدود"
+
+msgctxt "field:sale.advance_payment_term.line,block_supply:"
+msgid "Block Supply"
+msgstr "عرضه مسدود"
+
+msgctxt "field:sale.advance_payment_term.line,description:"
+msgid "Description"
+msgstr "شرح"
+
+msgctxt "field:sale.advance_payment_term.line,formula:"
+msgid "Formula"
+msgstr "فرمول"
+
+msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
+msgid "Invoice Delay"
+msgstr "صورتحساب تأخیر"
+
+msgctxt "field:sale.advance_payment_term.line.account,account:"
+msgid "Account"
+msgstr "حساب"
+
+msgctxt "field:sale.advance_payment_term.line.account,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:sale.advance_payment_term.line.account,line:"
+msgid "Line"
+msgstr "سطر"
+
+msgctxt "field:sale.sale,advance_payment_conditions:"
+msgid "Advance Payment Conditions"
+msgstr "شرایط پرداخت پیش پرداخت"
+
+msgctxt "field:sale.sale,advance_payment_invoices:"
+msgid "Advance Payment Invoices"
+msgstr "صورتحساب پرداخت پیش پرداخت"
+
+msgctxt "field:sale.sale,advance_payment_term:"
+msgid "Advance Payment Term"
+msgstr "نحوه پرداخت پیش پرداخت"
+
+msgctxt "help:sale.advance_payment_term.line,account:"
+msgid "Used for the line of advance payment invoice."
+msgstr "سطراستفاده شده برای پیش پرداخت در صورتحساب پرداخت."
+
+msgctxt "help:sale.advance_payment_term.line,block_shipping:"
+msgid "Check to prevent the packing of the shipment before advance payment."
+msgstr ""
+"جهت جلوگیری از بسته بندی حمل و نقل قبل از پرداخت پیش پرداخت، کادر را تیک "
+"بزنید."
+
+msgctxt "help:sale.advance_payment_term.line,block_supply:"
+msgid "Check to prevent any supply request before advance payment."
+msgstr ""
+"جهت جلوگیری از درخواست تأمین قبل از پرداخت پیش پرداخت، کادر را تیک بزنید."
+
+msgctxt "help:sale.advance_payment_term.line,description:"
+msgid "Used as description for the invoice line."
+msgstr "استفاده از سطر صورتحساب بعنوان شرح."
+
+msgctxt "help:sale.advance_payment_term.line,formula:"
+msgid ""
+"A python expression used to compute the advance payment amount that will be evaluated with:\n"
+"- total_amount: The total amount of the sale.\n"
+"- untaxed_amount: The total untaxed amount of the sale."
+msgstr ""
+"یک عبارت پایتون برای محاسبه مبلغ پیش پرداخت که ارزیابی می شود با:\n"
+"- مجموع _ مبلغ : کل مبلغ فروش.\n"
+"- مبلغ - بدون احتساب مالیات : کل مبلغ فروش بدون احتساب مالیات."
+
+msgctxt "help:sale.advance_payment_term.line,invoice_delay:"
+msgid ""
+"Delta to apply on the sale date for the date of the advance payment invoice."
+msgstr "برای تاریخ فاکتور پیش پرداخت. دلتا برای تاریخ فروش اعمال شود"
+
+msgctxt "model:ir.action,name:act_advance_invoice_form"
+msgid "Advance Invoices"
+msgstr "فاکتورهای پیش پرداخت"
+
+msgctxt "model:ir.action,name:act_advance_payment_term_form"
+msgid "Advance Payment Terms"
+msgstr "مدت پرداخت پیش پرداخت"
+
+msgctxt "model:ir.message,text:msg_shipping_blocked"
+msgid ""
+"To pack shipments the customer must paid the advance payment for sale "
+"\"%(sale)s\"."
+msgstr ""
+"برای بسته بندی کالاها، مشتری باید پیش پرداخت را برای فروش "
+":\"%(sale)s\"پرداخت کند."
+
+msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"فرمول :\"%(formula)s\"در سطر مدت :\"%(term_line)s\"باشرایط "
+":\"%(exception)s\" نا معتبر است."
+
+msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
+msgid "Advance Payment Terms"
+msgstr "مدت پرداخت پیش پرداخت"
+
+msgctxt "model:sale.advance_payment.condition,name:"
+msgid "Advance Payment Condition"
+msgstr "شرایط پرداخت پیش پرداخت"
+
+msgctxt "model:sale.advance_payment_term,name:"
+msgid "Advance Payment Term"
+msgstr "مدت پرداخت پیش پرداخت"
+
+msgctxt "model:sale.advance_payment_term.line,name:"
+msgid "Advance Payment Term Line"
+msgstr "سطر مدت پرداخت پیش پرداخت"
+
+msgctxt "model:sale.advance_payment_term.line.account,name:"
+msgid "Advance Payment Term Line Account"
+msgstr "حساب سطر مدت پرداخت پیش پرداخت"

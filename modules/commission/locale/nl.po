@@ -1,0 +1,490 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,agent:"
+msgid "Commission Agent"
+msgstr "Agent van de Commissie"
+
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr "vertegenwoordiger"
+
+msgctxt "field:account.invoice.line,commissions:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "field:account.invoice.line,from_commissions:"
+msgid "From Commissions"
+msgstr "Van commissies"
+
+msgctxt "field:account.invoice.line,principal:"
+msgid "Commission Principal"
+msgstr "Commissie opdrachtgever"
+
+msgctxt "field:commission,agent:"
+msgid "Agent"
+msgstr "vertegenwoordiger"
+
+msgctxt "field:commission,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:commission,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:commission,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:commission,invoice_line:"
+msgid "Invoice Line"
+msgstr "Factuurregel"
+
+msgctxt "field:commission,invoice_state:"
+msgid "Invoice State"
+msgstr "Factuur status"
+
+msgctxt "field:commission,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:commission,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:commission,type_:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:commission.agent,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:commission.agent,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:commission.agent,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:commission.agent,pending_amount:"
+msgid "Pending Amount"
+msgstr "Bedrag in afwachting"
+
+msgctxt "field:commission.agent,plan:"
+msgid "Plan"
+msgstr "Plan"
+
+msgctxt "field:commission.agent,selections:"
+msgid "Selections"
+msgstr "Selecties"
+
+msgctxt "field:commission.agent,type_:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:commission.agent.selection,agent:"
+msgid "Agent"
+msgstr "Vertegenwoordiger"
+
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:commission.agent.selection,end_date:"
+msgid "End Date"
+msgstr "Einddatum"
+
+msgctxt "field:commission.agent.selection,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:commission.agent.selection,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:commission.create_invoice.ask,from_:"
+msgid "From"
+msgstr "Van"
+
+msgctxt "field:commission.create_invoice.ask,to:"
+msgid "To"
+msgstr "Tot"
+
+msgctxt "field:commission.create_invoice.ask,type_:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:commission.plan,commission_method:"
+msgid "Commission Method"
+msgstr "Commissie methode"
+
+msgctxt "field:commission.plan,commission_product:"
+msgid "Commission Product"
+msgstr "Commissieproduct"
+
+msgctxt "field:commission.plan,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:commission.plan,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:commission.plan.line,formula:"
+msgid "Formula"
+msgstr "Formule"
+
+msgctxt "field:commission.plan.line,plan:"
+msgid "Plan"
+msgstr "Plan"
+
+msgctxt "field:commission.plan.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr "Vertegenwoordigers"
+
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "comissie debiteuren (schuldenaar)"
+
+msgctxt "field:product.template,principals:"
+msgid "Commission Principals"
+msgstr "comissie debiteuren (schuldenaar)"
+
+msgctxt "field:product.template-commission.agent,agent:"
+msgid "Agent"
+msgstr "vertegenwoordiger"
+
+msgctxt "field:product.template-commission.agent,template:"
+msgid "Template"
+msgstr "Sjabloon"
+
+msgctxt "field:sale.line,principal:"
+msgid "Commission Principal"
+msgstr "comissie debiteuren (schuldenaar)"
+
+msgctxt "field:sale.sale,agent:"
+msgid "Commission Agent"
+msgstr "Agent van de Commissie"
+
+msgctxt "help:account.invoice,agent:"
+msgid "The agent who receives a commission for the invoice."
+msgstr "De agent die een commissie ontvangt voor de factuur."
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
+msgstr ""
+"Vink deze optie aan om de agent van de oorspronkelijke factuur te behouden."
+
+msgctxt "help:account.invoice.line,principal:"
+msgid "The principal who pays a commission for the invoice line."
+msgstr "De opdrachtgever die een commissie betaalt voor de factuurregel."
+
+msgctxt "help:commission,date:"
+msgid "When the commission is due."
+msgstr "Wanneer de commissie verschuldigd is."
+
+msgctxt "help:commission,invoice_state:"
+msgid "The current state of the invoice that the commission appears on."
+msgstr "De huidige staat van de factuur waarop de commissie verschijnt."
+
+msgctxt "help:commission,origin:"
+msgid "The source of the commission."
+msgstr "De bron van de commissie."
+
+msgctxt "help:commission,product:"
+msgid "The product that is used on the invoice line."
+msgstr "Het product dat wordt gebruikt op de factuurregel."
+
+msgctxt "help:commission.agent,party:"
+msgid "The party for whom the commission is calculated."
+msgstr "De relatie voor wie de commissie wordt berekend."
+
+msgctxt "help:commission.agent,plan:"
+msgid "The plan used to calculate the commission."
+msgstr "Het plan gebruikt om de commissie te berekenen."
+
+msgctxt "help:commission.agent.selection,end_date:"
+msgid "The last date that the agent will be considered for selection."
+msgstr "De laatste datum waarop de agent in aanmerking komt voor selectie."
+
+msgctxt "help:commission.agent.selection,start_date:"
+msgid "The first date that the agent will be considered for selection."
+msgstr "De eerste datum waarop de agent in aanmerking komt voor selectie."
+
+msgctxt "help:commission.create_invoice.ask,from_:"
+msgid "Limit to commissions from this date."
+msgstr "Beperk tot commissies vanaf deze datum."
+
+msgctxt "help:commission.create_invoice.ask,to:"
+msgid "Limit to commissions to this date."
+msgstr "Beperk tot commissies tot deze datum."
+
+msgctxt "help:commission.create_invoice.ask,type_:"
+msgid "Limit to commissions of this type."
+msgstr "Beperk tot commissies van dit type."
+
+msgctxt "help:commission.plan,commission_method:"
+msgid "When the commission is due."
+msgstr "Wanneer de commissie verschuldigd is."
+
+msgctxt "help:commission.plan,commission_product:"
+msgid "The product that is used on the invoice lines."
+msgstr "Het product dat wordt gebruikt op de factuurregel."
+
+msgctxt "help:commission.plan,lines:"
+msgid "The formulas used to calculate the commission for different criteria."
+msgstr ""
+"De formules die gebruikt worden om de commissie te berekenen voor "
+"verschillende criteria."
+
+msgctxt "help:commission.plan.line,category:"
+msgid "Apply only to products in the category."
+msgstr "Alleen van toepassing op producten van deze categorie."
+
+msgctxt "help:commission.plan.line,formula:"
+msgid ""
+"The python expression used to calculate the amount of commission for the line.\n"
+"It is evaluated with:\n"
+"- amount: the original amount"
+msgstr ""
+"De python-uitdrukking die wordt gebruikt om het bedrag van de commissie voor de lijn te berekenen.\n"
+"Het wordt geëvalueerd met:\n"
+"- bedrag: het oorspronkelijke bedrag"
+
+msgctxt "help:commission.plan.line,plan:"
+msgid "The plan to which the line belongs."
+msgstr "Het plan waartoe de lijn behoort."
+
+msgctxt "help:commission.plan.line,product:"
+msgid "Apply only to the product."
+msgstr "Alleen van toepassing op dit product."
+
+msgctxt "help:product.product,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"De opdrachtgever die een commissie betalen bij verkoop van het product."
+
+msgctxt "help:product.template,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"De opdrachtgever die een commissie betaalt bij de verkoop van het product."
+
+msgctxt "help:sale.line,principal:"
+msgid "The principal who pays a commission for the line."
+msgstr "De opdrachtgever die de commissie betaalt voor de lijn."
+
+msgctxt "help:sale.sale,agent:"
+msgid "The agent who receives a commission for the sale."
+msgstr "De agent die een commissie ontvangt voor de verkoop."
+
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "Commissie"
+
+msgctxt "model:commission,name:"
+msgid "Commission"
+msgstr "commissie"
+
+msgctxt "model:commission.agent,name:"
+msgid "Commission Agent"
+msgstr "Commissie vertegenwoordiger"
+
+msgctxt "model:commission.agent.selection,name:"
+msgid "Agent Selection"
+msgstr "Selectie van de vertegenwoordiger"
+
+msgctxt "model:commission.create_invoice.ask,name:"
+msgid "Create Commission Invoice"
+msgstr "Maak een commissiefactuur aan"
+
+msgctxt "model:commission.plan,name:"
+msgid "Commission Plan"
+msgstr "Commissie plan"
+
+msgctxt "model:commission.plan.line,name:"
+msgid "Commission Plan Line"
+msgstr "Commissie plan lijn"
+
+msgctxt "model:ir.action,name:act_agent_form"
+msgid "Agents"
+msgstr "Vertegenwoordigers"
+
+msgctxt "model:ir.action,name:act_agent_selections"
+msgid "Selections"
+msgstr "Selecties"
+
+msgctxt "model:ir.action,name:act_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "maak comissie factuur"
+
+msgctxt "model:ir.action,name:act_commission_form"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "model:ir.action,name:act_commission_form2"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "model:ir.action,name:act_commission_from_relate"
+msgid "From Commissions"
+msgstr "Van commissies"
+
+msgctxt "model:ir.action,name:act_commission_relate"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "model:ir.action,name:act_plan_form"
+msgid "Commission Plans"
+msgstr "Commissie Planen"
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+"U kunt de relatie \"%(party)s\" niet verwijderen terwijl ze "
+"aankopencommissies in behandeling hebben bij bedrijf \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ongeldige formule \"%(formula)s\" in commissieplanlijn \"% (line)s\" met "
+"uitzondering \"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "model:ir.ui.menu,name:menu_agent_form"
+msgid "Agents"
+msgstr "Vertegenwoordigers"
+
+msgctxt "model:ir.ui.menu,name:menu_commission"
+msgid "Commission"
+msgstr "Commissie"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "maak comissie factuur"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_form"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_plan_form"
+msgid "Commission Plans"
+msgstr "Commissie Planen"
+
+msgctxt "model:product.template-commission.agent,name:"
+msgid "Product Template - Commission Agent"
+msgstr "Productsjabloon - agent van de Commissie"
+
+msgctxt "model:res.group,name:group_commission"
+msgid "Commission"
+msgstr "Commissie"
+
+msgctxt "model:res.group,name:group_commission_admin"
+msgid "Commission Administration"
+msgstr "Commissie Administratie"
+
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "commissie"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Invoiced"
+msgstr "gefactureerd"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Paid"
+msgstr "Betaald"
+
+msgctxt "selection:commission,type_:"
+msgid "Incoming"
+msgstr "inkomend"
+
+msgctxt "selection:commission,type_:"
+msgid "Outgoing"
+msgstr "uitgaande"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Agent Of"
+msgstr "Agent van"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Principal Of"
+msgstr "Opdrachtgever van"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Both"
+msgstr "Beide"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Incoming"
+msgstr "inkomend"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Outgoing"
+msgstr "uitgaande"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Payment"
+msgstr "Tegen betaling"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Posting"
+msgstr "Bij het boeken"
+
+msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "view:commission.agent.selection:"
+msgid "Criteria"
+msgstr "criteria"
+
+msgctxt "view:party.party:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "Ok"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"

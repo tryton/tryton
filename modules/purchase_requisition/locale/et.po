@@ -1,0 +1,273 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Hanke päringu jada"
+
+msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Hanke päringu jada"
+
+#, fuzzy
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Kinnitatud"
+
+msgctxt "field:purchase.requisition,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:purchase.requisition,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:purchase.requisition,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtus"
+
+msgctxt "field:purchase.requisition,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:purchase.requisition,employee:"
+msgid "Employee"
+msgstr "Töötaja"
+
+msgctxt "field:purchase.requisition,lines:"
+msgid "Lines"
+msgstr "Read"
+
+msgctxt "field:purchase.requisition,number:"
+msgid "Number"
+msgstr "Number"
+
+#, fuzzy
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Tagasi lükatud"
+
+msgctxt "field:purchase.requisition,state:"
+msgid "State"
+msgstr "Olek"
+
+msgctxt "field:purchase.requisition,supply_date:"
+msgid "Supply Date"
+msgstr "Hanke kuupäev"
+
+msgctxt "field:purchase.requisition,total_amount:"
+msgid "Total"
+msgstr "Kokku"
+
+msgctxt "field:purchase.requisition,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Kokku vahesumma"
+
+msgctxt "field:purchase.requisition,warehouse:"
+msgid "Warehouse"
+msgstr "Ladu"
+
+msgctxt "field:purchase.requisition.line,amount:"
+msgid "Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+msgctxt "field:purchase.requisition.line,description:"
+msgid "Description"
+msgstr "Selgitus"
+
+msgctxt "field:purchase.requisition.line,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:purchase.requisition.line,product_uom_category:"
+msgid "Product UOM Category"
+msgstr "Toote mõõtühiku kategooria"
+
+msgctxt "field:purchase.requisition.line,purchase_requests:"
+msgid "Purchase Request"
+msgstr "Hankepäring"
+
+msgctxt "field:purchase.requisition.line,purchase_requisition_state:"
+msgid "Purchase Requisition State"
+msgstr "Hankepäringu staatus"
+
+msgctxt "field:purchase.requisition.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:purchase.requisition.line,requisition:"
+msgid "Requisition"
+msgstr "Soov"
+
+msgctxt "field:purchase.requisition.line,supplier:"
+msgid "Supplier"
+msgstr "Hankija"
+
+msgctxt "field:purchase.requisition.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+msgctxt "field:purchase.requisition.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+msgctxt "field:purchase.requisition.line,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
+
+msgctxt "model:ir.action,name:act_open_purchase_request_form"
+msgid "Requests"
+msgstr "Päring"
+
+msgctxt "model:ir.action,name:act_open_purchase_request_form2"
+msgid "Requests"
+msgstr "Päring"
+
+msgctxt "model:ir.action,name:act_purchase_requisition_form"
+msgid "Purchase Requisitions"
+msgstr "Hanke päringud"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
+msgid "All"
+msgstr "Kõik"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_open"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_sent"
+msgid "Processing"
+msgstr "Töötlen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_validated"
+msgid "Waiting"
+msgstr "Ootan"
+
+msgctxt "model:ir.message,text:msg_delete_cancel"
+msgid "To delete requisition \"%(requisition)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_required"
+msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Kinnita"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Tühista"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Mustand"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Töötlen"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Lükka tagasi"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Oota"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition"
+msgid "Any requisition"
+msgstr "Kõik päringud"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_default"
+msgid "Own requisition"
+msgstr "Enda päringud"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line"
+msgid "Any requisition line"
+msgstr "Kõigi päringute rida"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line_default"
+msgid "Own requisition line"
+msgstr "Oma päringu rida"
+
+msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Hanke päring"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Hanke päring"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
+msgid "Purchase Requisitions"
+msgstr "Hanke päringud"
+
+msgctxt "model:purchase.requisition,name:"
+msgid "Purchase Requisition"
+msgstr "Hanke päring"
+
+msgctxt "model:purchase.requisition.line,name:"
+msgid "Purchase Requisition Line"
+msgstr "Hanke päringu rida"
+
+msgctxt "model:res.group,name:group_purchase_requisition"
+msgid "Purchase Requisition"
+msgstr "Hanke päring"
+
+msgctxt "model:res.group,name:group_purchase_requisition_approval"
+msgid "Purchase Requisition Approval"
+msgstr "Hanke päringu kinnitus"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Approved"
+msgstr "Kinnitatud"
+
+#, fuzzy
+msgctxt "selection:purchase.requisition,state:"
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Done"
+msgstr "Tehtud"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Draft"
+msgstr "Mustand"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Processing"
+msgstr "Töötlen"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Rejected"
+msgstr "Tagasi lükatud"
+
+msgctxt "selection:purchase.requisition,state:"
+msgid "Waiting"
+msgstr "Ootel"
+
+msgctxt "view:purchase.requisition.line:"
+msgid "General"
+msgstr "Üldine"
+
+msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Muu info"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr "Päring"
