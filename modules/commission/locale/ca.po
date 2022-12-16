@@ -1,0 +1,491 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:commission.plan.line:"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"La fórmula \"%(formula)s\" a la línia de pla de comissions \"%(line)s\" no "
+"és correcte generant l'excepció \"%(exception)s\"."
+
+msgctxt "field:account.invoice,agent:"
+msgid "Commission Agent"
+msgstr "Agent comissió"
+
+msgctxt "field:account.invoice.line,commissions:"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "field:account.invoice.line,from_commissions:"
+msgid "From Commissions"
+msgstr "De les comissions"
+
+msgctxt "field:account.invoice.line,principal:"
+msgid "Commission Principal"
+msgstr "Comissió principal"
+
+msgctxt "field:commission,agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "field:commission,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:commission,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:commission,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:commission,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:commission,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:commission,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:commission,invoice_line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:commission,invoice_state:"
+msgid "Invoice State"
+msgstr "Estat factura"
+
+msgctxt "field:commission,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:commission,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:commission,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:commission,type_:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:commission,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:commission,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:commission.agent,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:commission.agent,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:commission.agent,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:commission.agent,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:commission.agent,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:commission.agent,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:commission.agent,pending_amount:"
+msgid "Pending Amount"
+msgstr "Import pendent"
+
+msgctxt "field:commission.agent,plan:"
+msgid "Plan"
+msgstr "Pla"
+
+msgctxt "field:commission.agent,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:commission.agent,type_:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:commission.agent,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:commission.agent,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:commission.create_invoice.ask,from_:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:commission.create_invoice.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:commission.create_invoice.ask,to:"
+msgid "To"
+msgstr "A"
+
+msgctxt "field:commission.create_invoice.ask,type_:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:commission.plan,commission_method:"
+msgid "Commission Method"
+msgstr "Mètode comissió"
+
+msgctxt "field:commission.plan,commission_product:"
+msgid "Commission Product"
+msgstr "Producte comissió"
+
+msgctxt "field:commission.plan,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:commission.plan,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:commission.plan,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:commission.plan,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:commission.plan,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:commission.plan,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:commission.plan,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:commission.plan,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:commission.plan.line,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:commission.plan.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:commission.plan.line,formula:"
+msgid "Formula"
+msgstr "Fórmula"
+
+msgctxt "field:commission.plan.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:commission.plan.line,plan:"
+msgid "Plan"
+msgstr "Pla"
+
+msgctxt "field:commission.plan.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:commission.plan.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:commission.plan.line,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:commission.plan.line,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:commission.plan.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:product.product,principals:"
+msgid "Commission Principals"
+msgstr "Comissió principals"
+
+msgctxt "field:product.template,principals:"
+msgid "Commission Principals"
+msgstr "Comissió principals"
+
+msgctxt "field:product.template-commission.agent,agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "field:product.template-commission.agent,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.template-commission.agent,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.template-commission.agent,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-commission.agent,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.template-commission.agent,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.template-commission.agent,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:product.template-commission.agent,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:sale.line,principal:"
+msgid "Commission Principal"
+msgstr "Comissió principal"
+
+msgctxt "field:sale.sale,agent:"
+msgid "Commission Agent"
+msgstr "Agent comissió"
+
+msgctxt "help:commission.plan,commission_method:"
+msgid "When the commission is due"
+msgstr "Quan la comissió venç."
+
+msgctxt "help:commission.plan.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- amount: the original amount"
+msgstr ""
+"Expressió Python que s'avaluarà amb:\n"
+"- amount: L'import original"
+
+msgctxt "model:account.journal,name:journal_commission"
+msgid "Commission"
+msgstr "Comissió"
+
+msgctxt "model:account.journal.type,name:journal_type_commission"
+msgid "Commission"
+msgstr "Comissió"
+
+msgctxt "model:commission,name:"
+msgid "Commission"
+msgstr "Comissió"
+
+msgctxt "model:commission.agent,name:"
+msgid "Commission Agent"
+msgstr "Agent comissió"
+
+msgctxt "model:commission.create_invoice.ask,name:"
+msgid "Create Commission Invoice"
+msgstr "Crea factura de comissió"
+
+msgctxt "model:commission.plan,name:"
+msgid "Commission Plan"
+msgstr "Pla comissió"
+
+msgctxt "model:commission.plan.line,name:"
+msgid "Commission Plan Line"
+msgstr "Línia de pla comissió"
+
+msgctxt "model:ir.action,name:act_agent_form"
+msgid "Agents"
+msgstr "Agents"
+
+msgctxt "model:ir.action,name:act_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Crea factures de comissió"
+
+msgctxt "model:ir.action,name:act_commission_form"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "model:ir.action,name:act_commission_form2"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "model:ir.action,name:act_commission_from_relate"
+msgid "From Commissions"
+msgstr "De les comissions"
+
+msgctxt "model:ir.action,name:act_commission_relate"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "model:ir.action,name:act_plan_form"
+msgid "Commission Plans"
+msgstr "Plans comissió"
+
+msgctxt "model:ir.ui.menu,name:menu_agent_form"
+msgid "Agents"
+msgstr "Agents"
+
+msgctxt "model:ir.ui.menu,name:menu_commission"
+msgid "Commission"
+msgstr "Comissions"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
+msgid "Create Commission Invoices"
+msgstr "Crea factures de comissió"
+
+msgctxt "model:ir.ui.menu,name:menu_commission_form"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_plan_form"
+msgid "Commission Plans"
+msgstr "Plans comissió"
+
+msgctxt "model:product.template-commission.agent,name:"
+msgid "Product Template - Commission Agent"
+msgstr "Plantilla de producte - Agent comisionista"
+
+msgctxt "model:res.group,name:group_commission"
+msgid "Commission"
+msgstr "Comissions"
+
+msgctxt "model:res.group,name:group_commission_admin"
+msgid "Commission Administration"
+msgstr "Administració de comissions"
+
+msgctxt "selection:commission,invoice_state:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Canceled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Invoiced"
+msgstr "Facturada"
+
+msgctxt "selection:commission,invoice_state:"
+msgid "Paid"
+msgstr "Pagada"
+
+msgctxt "selection:commission,type_:"
+msgid "Incoming"
+msgstr "Entrada"
+
+msgctxt "selection:commission,type_:"
+msgid "Outgoing"
+msgstr "Sortida"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Agent Of"
+msgstr "Agent de"
+
+msgctxt "selection:commission.agent,type_:"
+msgid "Principal Of"
+msgstr "Principal de"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Both"
+msgstr "Ambdós"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Incoming"
+msgstr "Entrada"
+
+msgctxt "selection:commission.create_invoice.ask,type_:"
+msgid "Outgoing"
+msgstr "Sortida"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Payment"
+msgstr "Al pagar"
+
+msgctxt "selection:commission.plan,commission_method:"
+msgid "On Posting"
+msgstr "Al comptabilitzar"
+
+msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "view:product.template:"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "view:sale.line:"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "wizard_button:commission.create_invoice,ask,create_:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:commission.create_invoice,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "view:commission.agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "view:commission.agent:"
+msgid "Agents"
+msgstr "Agents"
+
+msgctxt "view:commission.create_invoice.ask:"
+msgid "Create Commission Invoice"
+msgstr "Crea factura de comissió"
+
+msgctxt "view:commission.plan.line:"
+msgid "Commission Plan Line"
+msgstr "Línia de pla comissió"
+
+msgctxt "view:commission.plan.line:"
+msgid "Commission Plan Lines"
+msgstr "Línies de pla comissió"
+
+msgctxt "view:commission.plan:"
+msgid "Commission Plan"
+msgstr "Pla comissió"
+
+msgctxt "view:commission.plan:"
+msgid "Commission Plans"
+msgstr "Plans comissió"
