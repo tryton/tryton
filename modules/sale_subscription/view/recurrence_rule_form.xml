@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="set_"/>
+    <field name="set_"/>
+    <newline/>
+    <label name="exclusive"/>
+    <field name="exclusive"/>
+    <newline/>
+    <label name="freq"/>
+    <field name="freq"/>
+    <label name="interval"/>
+    <field name="interval"/>
+    <label name="byweekday"/>
+    <field name="byweekday" colspan="3"/>
+    <label name="bymonthday"/>
+    <field name="bymonthday" colspan="3"/>
+    <label name="byyearday"/>
+    <field name="byyearday" colspan="3"/>
+    <label name="byweekno"/>
+    <field name="byweekno" colspan="3"/>
+    <label name="bymonth"/>
+    <field name="bymonth" colspan="3"/>
+    <label name="bysetpos"/>
+    <field name="bysetpos" colspan="3"/>
+    <label name="wkst"/>
+    <field name="wkst" colspan="3"/>
+</form>
