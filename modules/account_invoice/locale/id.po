@@ -1,0 +1,1308 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+#, fuzzy
+msgctxt "field:account.configuration,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+msgctxt "field:account.configuration.default_payment_term,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_payment_term,default_customer_payment_term:"
+msgid "Default Customer Payment Term"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+msgctxt "field:account.fiscalyear,invoice_sequences:"
+msgid "Invoice Sequences"
+msgstr "Urutan Faktur"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Tahun Fiskal"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Urutan Nota Kredit Pemasok"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Urutan Faktur Pemasok"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Urutan Nota Kredit Pelanggan"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Urutan Faktur Pelanggan"
+
+msgctxt "field:account.fiscalyear.invoice_sequence,period:"
+msgid "Period"
+msgstr "Periode"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "Tanggal Akuntansi"
+
+msgctxt "field:account.invoice,additional_moves:"
+msgid "Additional Moves"
+msgstr ""
+
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Izinkan Batalkan Faktur"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "Jumlah yang harus dibayar"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "Jumlah yang Dibayar Hari Ini"
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
+msgstr "Batalkan Perpindahan"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "Komentar"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice,company_party:"
+msgid "Company Party"
+msgstr "Pihak Perusahaan"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "Tanggal Mata Uang"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "Alamat Faktur"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "Tanggal Faktur"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Laporan Faktur"
+
+msgctxt "field:account.invoice,invoice_report_cache_id:"
+msgid "Invoice Report ID"
+msgstr "ID Laporan Faktur"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Format Laporan Faktur"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Baris yang Harus Dibayar"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "Perpindahan"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "Nomor"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Asal"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr ""
+
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "Baris Pembayaran"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_term_date:"
+msgid "Payment Term Date"
+msgstr "Masa Pembayaran"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr ""
+
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "Baris Pembayaran"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "Referensi"
+
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "Urutan"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "field:account.invoice,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "NPWP"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "Baris Pajak"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "Jenis"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "Jenis"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr ""
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr ""
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "Baris Pembayaran"
+
+msgctxt "field:account.invoice-additional-account.move,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice-additional-account.move,move:"
+msgid "Additional Move"
+msgstr ""
+
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Tanggal Faktur"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr ""
+
+msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
+msgid "With Refund Allowed"
+msgstr ""
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.line,invoice_state:"
+msgid "Invoice State"
+msgstr "Status Faktur"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr ""
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr ""
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "Catatan"
+
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
+msgstr "Asal"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr ""
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "Produk"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Kuantitas"
+
+msgctxt "field:account.invoice.line,summary:"
+msgid "Summary"
+msgstr "Ringkasan"
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "Pajak-Pajak"
+
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr ""
+
+msgctxt "field:account.invoice.line,taxes_deductible_rate:"
+msgid "Taxes Deductible Rate"
+msgstr ""
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "Jenis"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Satuan"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Harga Satuan"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "Baris Faktur"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "Mata Uang Pembayaran"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.ask,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "Baris Pembayaran"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "Jenis"
+
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "Metode pembayaran"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "Akun Kredit"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "Akun Debit"
+
+msgctxt "field:account.invoice.payment.method,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "Baris"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "field:account.invoice.payment_term.line,ratio:"
+msgid "Ratio"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
+msgid "Deltas"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "Jenis"
+
+msgctxt "field:account.invoice.payment_term.line.delta,day:"
+msgid "Day of Month"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delta,days:"
+msgid "Number of Days"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delta,line:"
+msgid "Payment Term Line"
+msgstr "Baris Masa Pembayaran"
+
+msgctxt "field:account.invoice.payment_term.line.delta,month:"
+msgid "Month"
+msgstr "Bulan"
+
+msgctxt "field:account.invoice.payment_term.line.delta,months:"
+msgid "Number of Months"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
+msgid "Day of Week"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
+msgid "Number of Weeks"
+msgstr ""
+
+msgctxt "field:account.invoice.payment_term.test,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.payment_term.test,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgctxt "field:account.invoice.payment_term.test,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.invoice.payment_term.test,payment_term:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "field:account.invoice.payment_term.test,result:"
+msgid "Result"
+msgstr "Hasil"
+
+msgctxt "field:account.invoice.payment_term.test.result,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.invoice.payment_term.test.result,date:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr ""
+
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.tax,invoice_state:"
+msgid "Invoice State"
+msgstr "Status Faktur"
+
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr ""
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "Nomor Urut"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr ""
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr ""
+
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "Batalkan Faktur Pelanggan"
+
+msgctxt "field:company.company,purchase_taxes_expense:"
+msgid "Purchase Taxes as Expense"
+msgstr ""
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:party.contact_mechanism,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+msgctxt "field:party.party,payment_terms:"
+msgid "Payment Terms"
+msgstr ""
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Ketentuan Pembayaran Pemasok"
+
+msgctxt "field:party.party.payment_term,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+msgctxt "field:party.party.payment_term,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:party.party.payment_term,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Ketentuan Pembayaran Pemasok"
+
+msgctxt "help:account.invoice,payment_term_date:"
+msgid ""
+"The date from which the payment term is calculated.\n"
+"Leave empty to use the invoice date."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be cancelled."
+msgstr "Jika benar, faktur saat ini akan dibatalkan."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
+
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
+msgstr ""
+
+msgctxt "help:company.company,purchase_taxes_expense:"
+msgid "Check to book purchase taxes as expense."
+msgstr ""
+
+msgctxt "model:account.configuration.default_payment_term,name:"
+msgid "Account Configuration Default Payment Term"
+msgstr ""
+
+msgctxt "model:account.fiscalyear.invoice_sequence,name:"
+msgid "Invoice Sequence"
+msgstr "Urutan Faktur"
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "Faktur - Baris Pembayaran"
+
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,name:"
+msgid "Invoice Additional Move"
+msgstr "Alamat Faktur"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice"
+msgstr "Faktur Kredit"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "Baris Faktur"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "Baris Faktur - Pajak"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr ""
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr ""
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "Metode pembayaran"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "Baris Masa Pembayaran"
+
+msgctxt "model:account.invoice.payment_term.line.delta,name:"
+msgid "Payment Term Line Relative Delta"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term.test,name:"
+msgid "Test Payment Term"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term.test.result,name:"
+msgid "Test Payment Term"
+msgstr ""
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "Invoices"
+msgstr "Faktur-faktur"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Faktur-faktur"
+
+msgctxt "model:ir.action,name:act_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Faktur Pemasok"
+
+msgctxt "model:ir.action,name:act_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Faktur Pelanggan"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
+msgid "Reschedule Lines to Pay"
+msgstr "Baris yang Harus Dibayar"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_payment_term_test"
+msgid "Test Payment Term"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
+msgid "Validated"
+msgstr "Sahih"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
+msgid "To close the periods you must post the invoices \"%(invoices)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr ""
+"Anda tidak dapat menghapus pihak \"%(party)s\" selagi mereka memiliki faktur"
+" yang tertunda dengan perusahaan \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
+msgstr ""
+"Anda tidak dapat membatalkan faktur \"%(invoice)s\" karena dibukukan dan "
+"pengaturan perusahaan tidak mengizinkannya."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_date_future"
+msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
+msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr "Untuk menghapus faktur \"%(invoice)s\" Anda harus membatalkannya."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr "Anda tidak dapat menghapus faktur \"%(invoice)s\" karena memiliki nomor."
+
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
+msgid "A tax can be added only once to an invoice line."
+msgstr "Pajak hanya dapat ditambahkan satu kali kepada baris faktur."
+
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an invoice date after "
+"\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
+" invoice \"%(after_invoice)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
+msgid ""
+"You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
+"pay."
+msgstr "Anda tidak dapat menghapus faktur \"%(invoice)s\" karena memiliki nomor."
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr ""
+"Anda tidak dapat menambah/menghapus baris pembayaran pada faktur terbayar "
+"\"%(invoice)s\"."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
+msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
+msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
+
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(line)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_similar"
+msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
+msgstr ""
+"Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
+"lampau."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "Apakah Anda yakin ingin membatalkan faktur?"
+
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
+msgstr "Apakah Anda yakin ingin membukukan faktur?"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Batalkan faktur"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Bayar"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Bukukan"
+
+msgctxt "model:ir.model.button,string:invoice_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
+msgid "Reschedule"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Mengesahkan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
+msgid "Supplier Invoices"
+msgstr "Faktur Pemasok"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
+msgid "Customer Invoices"
+msgstr "Faktur Pelanggan"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Faktur-faktur"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
+msgid "Test Payment Term"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr ""
+
+msgctxt "model:party.party.payment_term,name:"
+msgid "Party Payment Term"
+msgstr ""
+
+msgctxt "report:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:account.invoice:"
+msgid "Amount"
+msgstr "Jumlah"
+
+msgctxt "report:account.invoice:"
+msgid "Base"
+msgstr ""
+
+msgctxt "report:account.invoice:"
+msgid "Date"
+msgstr "Tanggal"
+
+msgctxt "report:account.invoice:"
+msgid "Date:"
+msgstr "Tanggal:"
+
+msgctxt "report:account.invoice:"
+msgid "Description"
+msgstr "Deskripsi"
+
+msgctxt "report:account.invoice:"
+msgid "Description:"
+msgstr "Deskripsi:"
+
+msgctxt "report:account.invoice:"
+msgid "Draft Invoice"
+msgstr ""
+
+msgctxt "report:account.invoice:"
+msgid "Invoice N°:"
+msgstr "Faktur N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Term"
+msgstr "Masa Pembayaran"
+
+msgctxt "report:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr ""
+
+msgctxt "report:account.invoice:"
+msgid "Quantity"
+msgstr "Kuantitas"
+
+msgctxt "report:account.invoice:"
+msgid "Reference"
+msgstr "Referensi"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "Faktur Pemasok N°:"
+
+msgctxt "report:account.invoice:"
+msgid "Tax"
+msgstr "Pajak"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes"
+msgstr "Pajak-Pajak"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes:"
+msgstr ""
+
+msgctxt "report:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "Total (di luar pajak):"
+
+msgctxt "report:account.invoice:"
+msgid "Total:"
+msgstr "Total:"
+
+msgctxt "report:account.invoice:"
+msgid "Unit Price"
+msgstr "Harga Satuan"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "Rancangan"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "Lunas"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
+msgstr ""
+
+msgctxt "selection:account.invoice,type:"
+msgid "Customer"
+msgstr "Pelanggan"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier"
+msgstr "Pemasok"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "Komentar"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr ""
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr ""
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Kelebihan Pembayaran"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr ""
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr ""
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr ""
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit these/this invoice(s)?"
+msgstr "Apakah Anda yakin akan mengkreditkan faktur ini?"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "Umum"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr ""
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "Info Lain"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "Pembayaran"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier:"
+msgstr "NPWP:"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Debit"
+
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr ""
+
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
+msgid "Close"
+msgstr "Tutup"
