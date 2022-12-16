@@ -1,0 +1,203 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:ir.trigger,notification_email:"
+msgid "Email Notification"
+msgstr "E-mail notificatie"
+
+msgctxt "field:ir.trigger,notification_email_required:"
+msgid "Notification Email Required"
+msgstr "E-mailmelding vereist"
+
+msgctxt "field:notification.email,attachments:"
+msgid "Attachments"
+msgstr "Bijlagen"
+
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Contactmogelijkheid"
+
+msgctxt "field:notification.email,content:"
+msgid "Content"
+msgstr "Inhoud"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Ontvanger in geval van nood"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Verborgen ontvangers in geval van nood"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Secundaire ontvanger in geval van nood"
+
+msgctxt "field:notification.email,from_:"
+msgid "From"
+msgstr "Van"
+
+msgctxt "field:notification.email,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:notification.email,recipients:"
+msgid "Recipients"
+msgstr "ontvangers"
+
+msgctxt "field:notification.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Verborgen ontvangers"
+
+msgctxt "field:notification.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Secundaire ontvangers"
+
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr "Onderwerp"
+
+msgctxt "field:notification.email,triggers:"
+msgid "Triggers"
+msgstr "triggers"
+
+msgctxt "field:notification.email.attachment,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:notification.email.attachment,notification:"
+msgid "Notification"
+msgstr "Kennisgeving"
+
+msgctxt "field:notification.email.attachment,report:"
+msgid "Report"
+msgstr "Verslag"
+
+msgctxt "field:notification.email.log,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr "Kennisgeving"
+
+msgctxt "field:notification.email.log,recipients:"
+msgid "Recipients"
+msgstr "ontvangers"
+
+msgctxt "field:notification.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Verborgen ontvangers"
+
+msgctxt "field:notification.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Secundaire ontvangers"
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
+msgstr "hulpbron (resource)"
+
+msgctxt "field:notification.email.log,trigger:"
+msgid "Trigger"
+msgstr "Trigger"
+
+msgctxt "help:notification.email,attachments:"
+msgid "The reports used as attachments."
+msgstr "De rapporten die als bijlagen worden gebruikt."
+
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+"Bepaal welke e-mail u wilt gebruiken van de contactmechanismen van de "
+"relatie"
+
+msgctxt "help:notification.email,content:"
+msgid "The report used as email template."
+msgstr "Het rapport gebruikt als e-mailsjabloon."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr "Te verwittigen gebruiker als er geen e-mail adres is"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr "Gebruiker op de hoogte stellen als er geen verborgen e-mailadres is"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"Gebruiker wordt op de hoogte gesteld als er geen secundair e-mailadres is"
+
+msgctxt "help:notification.email,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr ""
+"Laat leeg voor de waarde die is gedefinieerd in het configuratiebestand."
+
+msgctxt "help:notification.email,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Het veld dat de ontvanger (s) bevat."
+
+msgctxt "help:notification.email,recipients_hidden:"
+msgid "The field that contains the hidden recipient(s)."
+msgstr "Het veld dat de verborgen ontvanger (s) bevat."
+
+msgctxt "help:notification.email,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Het veld dat de secundaire ontvanger (s) bevat."
+
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+"De Genshi-syntaxis kan worden gebruikt met 'record' in de evaluatiecontext.\n"
+"Indien leeg wordt de rapportnaam gebruikt."
+
+msgctxt "help:notification.email,triggers:"
+msgid "Add a trigger for the notification."
+msgstr "Voeg een trigger toe voor de melding."
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "Notification Emails"
+msgstr "E-mailmeldingen"
+
+msgctxt "model:ir.action,name:act_notification_email_log"
+msgid "Logs"
+msgstr "Logs"
+
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr "E-mailmeldingen"
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Ongeldig e-mailonderwerp in melding \"%(notification)s\" met uitzondering "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "Notification Emails"
+msgstr "E-mailmeldingen"
+
+msgctxt "model:notification.email,name:"
+msgid "Email Notification"
+msgstr "E-mail notificatie"
+
+msgctxt "model:notification.email.attachment,name:"
+msgid "Email Notification Attachment"
+msgstr "Bijlage bij e-mailmelding"
+
+msgctxt "model:notification.email.log,name:"
+msgid "Notification Email Log"
+msgstr "Kennisgeving e-maillogboek"
+
+msgctxt "selection:ir.trigger,action:"
+msgid "Email Notification"
+msgstr "E-mail notificatie"
+
+msgctxt "view:notification.email.log:"
+msgid "Time"
+msgstr "Tijd"
