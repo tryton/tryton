@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,consignment_party:"
+msgid "Consignment Party"
+msgstr "موجودی انبار نهاد/سازمان"
+
+msgctxt "help:stock.location,consignment_party:"
+msgid "The party invoiced when consignment stock is used."
+msgstr "هنگامی که موجودی انبار استفاده شود، نهاد/سازمان صورتحساب میسازد."
