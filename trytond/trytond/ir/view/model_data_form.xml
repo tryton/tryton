@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="module"/>
+    <field name="module"/>
+    <label name="model"/>
+    <field name="model"/>
+    <label name="fs_id"/>
+    <field name="fs_id"/>
+    <label name="db_id"/>
+    <field name="db_id"/>
+    <label name="noupdate"/>
+    <field name="noupdate"/>
+    <newline/>
+    <label name="out_of_sync"/>
+    <field name="out_of_sync"/>
+    <button name="sync" colspan="2"/>
+    <group id="values" colspan="2" yexpand="1" yfill="1" col="1">
+        <separator name="values"/>
+        <field name="values"/>
+    </group>
+    <group id="fs_values" colspan="2" yexpand="1" yfill="1" col="1">
+        <separator name="fs_values"/>
+        <field name="fs_values"/>
+    </group>
+</form>
