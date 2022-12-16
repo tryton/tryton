@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Bank Account">
+    <label name="bank"/>
+    <field name="bank"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <field name="owners" colspan="4"/>
+    <field name="numbers" colspan="4" pre_validate="1"
+        view_ids="bank.bank_account_number_view_list_sequence"/>
+</form>
