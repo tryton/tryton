@@ -1,0 +1,38 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "پرداخت ها"
+
+msgctxt "model:ir.message,text:msg_payment_sale_cancel"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"cancelled sale."
+msgstr ""
+"شما نمیتوانید از فروش :\"%(sale)s\"روی پرداخت :\"%(payment)s\" استفاده کنید،"
+" زیرا این یک فروش لغو شده است."
+
+msgctxt "model:ir.message,text:msg_payment_sale_draft"
+msgid ""
+"You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
+"draft sale."
+msgstr ""
+"شما نمیتوانید از فروش :\"%(sale)s\"روی پرداخت :\"%(payment)s\" استفاده کنید،"
+" زیرا این یک فروش پیش نویس است."
+
+msgctxt "model:ir.message,text:msg_sale_cancel_payment"
+msgid "You cannot cancel sale \"%(sale)s\" because it has payments."
+msgstr "شما نمیتوانید فروش :\"%(sale)s\"راحذف کنید، چرا که پرداخت شده است."
+
+msgctxt "model:ir.message,text:msg_sale_draft_payment"
+msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
+msgstr ""
+"شما نمیتوانید حالت فروش :\"%(sale)s\" را به پیش نویس بازنشانی کنید، چرا که "
+"پرداخت شده است."
