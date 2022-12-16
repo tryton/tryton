@@ -1,0 +1,15 @@
+type,name,res_id,src,value,fuzzy
+field,"purchase.product_supplier,weekdays",0,Week Days,Дни от седмицата,0
+field,"purchase.product_supplier.day,product_supplier",0,Supplier,Доставчик,0
+field,"purchase.product_supplier.day,rec_name",0,Name,Име,0
+field,"purchase.product_supplier.day,weekday",0,Week Day,Ден от седмица,0
+model,"purchase.product_supplier.day,name",0,Product Supplier Day,Ден на доставчик на наличност,0
+selection,"purchase.product_supplier.day,weekday",0,Friday,Петък,0
+selection,"purchase.product_supplier.day,weekday",0,Monday,Понеделник,0
+selection,"purchase.product_supplier.day,weekday",0,Saturday,Събота,0
+selection,"purchase.product_supplier.day,weekday",0,Sunday,Неделя,0
+selection,"purchase.product_supplier.day,weekday",0,Thursday,Четвъртък,0
+selection,"purchase.product_supplier.day,weekday",0,Tuesday,Вторник,0
+selection,"purchase.product_supplier.day,weekday",0,Wednesday,Четвъртък,0
+view,purchase.product_supplier,0,Week Days,Дни от седмицата,0
+view,purchase.product_supplier.day,0,Week Day,Ден от седмица,0

@@ -1,0 +1,13 @@
+type,name,res_id,src,value,fuzzy
+field,"product.product,locations",0,Default Locations,Ubicaciones predeterminadas,0
+field,"stock.product.location,location",0,Storage Location,Ubicación del almacén,0
+field,"stock.product.location,product",0,Product,Producto,0
+field,"stock.product.location,rec_name",0,Name,Nombre,0
+field,"stock.product.location,sequence",0,Sequence,Secuencia,0
+field,"stock.product.location,warehouse",0,Warehouse,Depósito,0
+model,"stock.product.location,name",0,Product Location,Ubicación de producto,0
+view,product.product,0,Default Locations,Ubicaciones predeterminadas,0
+view,product.product,0,Product Location,Ubicación de producto,0
+view,product.product,0,Product Locations,Ubicaciones de producto,0
+view,stock.product.location,0,Product Location,Ubicación de producto,0
+view,stock.product.location,0,Product Locations,Ubicaciones de producto,0
