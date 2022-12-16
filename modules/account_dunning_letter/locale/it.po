@@ -1,0 +1,47 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.dunning.level,print_on_letter:"
+msgid "Print on Letter"
+msgstr "Stampare su lettera"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Dunning Letter"
+msgstr "Lettera di sollecito"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Importo"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Descrizione"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Data Scadenza"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Tariffe:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Pagamenti in attesa ricevuti"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Riferimento"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Avviso di promemoria"
