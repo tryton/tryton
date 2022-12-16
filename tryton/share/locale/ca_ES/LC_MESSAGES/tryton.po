@@ -1,0 +1,1427 @@
+# Catalan translations for tryton.
+# Copyright (C) 2012 Zikzakmedia SL
+# This file is distributed under the same license as the tryton project.
+# Sergi Almacellas Abellana <sergi@koolpi.com> 2012.
+# Jordi Esteve Cusiné <jesteve@zikzakmedia.com> 2012.
+#
+# , 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: tryton 2.4.0\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2015-04-16 17:31+0200\n"
+"PO-Revision-Date: 2015-04-16 17:33+0100\n"
+"Last-Translator: Sergi Almacellas Abellana <sergi@koolpi.com>\n"
+"Language-Team: Catalan <tryton-ca@googlegroups.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "specify alternate config file"
+msgstr "Indica un fitxer de configuració alternatiu"
+
+msgid "development mode"
+msgstr "mode desenvolupament"
+
+msgid "logging everything at INFO level"
+msgstr "Registra tota la informació amb nivell INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "indica el nivell de log: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "Indica l'usuari"
+
+msgid "specify the server port"
+msgstr "Indica el port del servidor"
+
+msgid "specify the server hostname"
+msgstr "Indica el nom del servidor"
+
+msgid "Too much arguments"
+msgstr "Massa arguments"
+
+#, python-format
+msgid "File \"%s\" not found"
+msgstr "No s'ha trobat el fitxer \"%s\""
+
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr "No s'ha pogut escriure el fitxer configuració %s"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "No s'ha pogut establir l'idioma %s"
+
+msgid "Select your action"
+msgstr "Seleccioneu la vostra acció"
+
+msgid "No action defined!"
+msgstr "No s'ha definit cap acció."
+
+msgid "Tryton Connection"
+msgstr "Connexió a Tryton"
+
+msgid "Server:"
+msgstr "Servidor:"
+
+msgid "Port:"
+msgstr "Port:"
+
+msgid "Selection"
+msgstr "Selecció"
+
+msgid "Your selection:"
+msgstr "La vostra selecció:"
+
+msgid "Save As..."
+msgstr "Desa com..."
+
+msgid "Always ignore this warning."
+msgstr "Ignora sempre aquest advertiment."
+
+msgid "Do you want to proceed?"
+msgstr "Voleu continuar?"
+
+msgid "Confirmation"
+msgstr "Confirmació"
+
+msgid "Concurrency Exception"
+msgstr "Excepció de concurrència"
+
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Avís de concurrència d'escriptura:</b>\n"
+"\n"
+"Aquest registre ha estat modificat mentre l'editàveu.\n"
+"  Trieu:\n"
+"   - \"Cancel·la\" per no desar;\n"
+"   - \"Compara\" per veure la versió modificada:\n"
+"   - \"Desa de totes formes\" per desar els vostres canvis."
+
+msgid "Compare"
+msgstr "Compara"
+
+msgid "Write Anyway"
+msgstr "Desa de totes formes"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Report Bug"
+msgstr "Informa de l'error"
+
+msgid "Application Error!"
+msgstr "Error d'aplicació."
+
+msgid "Error: "
+msgstr "Error: "
+
+#, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "Per informar d'errors heu de tenir un compte a <u>%s</u>"
+
+msgid "Bug Tracker"
+msgstr "Seguiment d'errors"
+
+msgid "User:"
+msgstr "Usuari:"
+
+msgid "Password:"
+msgstr "Contrasenya:"
+
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"El mateix error ja ha estat notificat per un altre usuari.\n"
+"Per mantenir-vos informat afegirem el vostre usuari a la llista "
+"d'interessats en aquest assumpte."
+
+msgid "Created new bug with ID "
+msgstr "S'ha creat una nou informe d'error amb l'identificador "
+
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"Error de connexió.\n"
+"Nom d'usuari o contrasenya incorrectes."
+
+msgid "Exception:"
+msgstr "Excepció:"
+
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint is "
+"fixed."
+msgstr ""
+"L'empremta digital del servidor ha canviat des de l'última connexió.\n"
+"L'aplicació no es podrà connectar a aquest servidor fins que es corregeixi "
+"l'empremta digital del servidor."
+
+msgid "Security risk!"
+msgstr "Risc de seguretat."
+
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"Error de connexió.\n"
+"No ha estat possible connectar-se al servidor."
+
+msgid "Network Error!"
+msgstr "Error de xarxa."
+
+msgid "<i>Search...</i>"
+msgstr "<i>Cerca...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Crea...</i>"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "Displayed value"
+msgstr "Valor a mostrar"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Display format"
+msgstr "Format a mostrar"
+
+msgid "Open the calendar"
+msgstr "Obre el calendari"
+
+msgid "Date Format"
+msgstr "Format dates"
+
+msgid "Displayed date format"
+msgstr "Format dates a mostrar"
+
+msgid "y"
+msgstr "a"
+
+msgid "yes"
+msgstr "sí"
+
+msgid "true"
+msgstr "verdader"
+
+msgid "t"
+msgstr "v"
+
+msgid "True"
+msgstr "Verdader"
+
+msgid "False"
+msgstr "Fals"
+
+msgid "Edit..."
+msgstr "Edita..."
+
+msgid "Attachments..."
+msgstr "Adjunts..."
+
+msgid "Actions..."
+msgstr "Accions..."
+
+msgid "Relate..."
+msgstr "Relacionat..."
+
+msgid "Report..."
+msgstr "Informe..."
+
+msgid "E-Mail..."
+msgstr "Correu electrònic..."
+
+msgid "Print..."
+msgstr "Imprimeix..."
+
+msgid "Y"
+msgstr "A"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "S"
+
+msgid "d"
+msgstr "d"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "_File"
+msgstr "_Fitxer"
+
+msgid "_User"
+msgstr "U_suari"
+
+msgid "_Options"
+msgstr "_Opcions"
+
+msgid "Fa_vorites"
+msgstr "_Preferits"
+
+msgid "_Help"
+msgstr "Aj_uda"
+
+msgid "No result found."
+msgstr "No s'han trobat resultats."
+
+msgid "_Connect..."
+msgstr "_Connecta..."
+
+msgid "_Disconnect"
+msgstr "_Desconnecta"
+
+msgid "Data_base"
+msgstr "_Base de dades"
+
+msgid "_New Database..."
+msgstr "_Nova base de dades..."
+
+msgid "_Restore Database..."
+msgstr "_Restaura una base de dades..."
+
+msgid "_Backup Database..."
+msgstr "Fes _còpia de seguretat de la base de dades..."
+
+msgid "Dro_p Database..."
+msgstr "_Elimina una base de dades..."
+
+msgid "_Quit..."
+msgstr "_Surt..."
+
+msgid "_Preferences..."
+msgstr "_Preferències..."
+
+msgid "_Menu Reload"
+msgstr "_Recarrega el menú"
+
+msgid "_Menu Toggle"
+msgstr "Commuta el _menú"
+
+msgid "_Global Search"
+msgstr "Cerca _Global"
+
+msgid "_Toolbar"
+msgstr "Barra d'_eines"
+
+msgid "_Default"
+msgstr "Per _defecte"
+
+msgid "_Text and Icons"
+msgstr "Text _i icones"
+
+msgid "_Icons"
+msgstr "_Icones"
+
+msgid "_Text"
+msgstr "_Text"
+
+msgid "_Menubar"
+msgstr "Barra de _menú"
+
+msgid "Change Accelerators"
+msgstr "Canvia tecles ràpides"
+
+msgid "_Mode"
+msgstr "_Mode"
+
+msgid "_Normal"
+msgstr "_Normal"
+
+msgid "_PDA"
+msgstr "_PDA"
+
+msgid "_Form"
+msgstr "_Formulari"
+
+msgid "Save Width/Height"
+msgstr "Desa ample/alt"
+
+msgid "Save Tree State"
+msgstr "Desa l'estat de l'arbre"
+
+msgid "Spell Checking"
+msgstr "Correcció ortogràfica"
+
+msgid "_Previous Tab"
+msgstr "_Anterior"
+
+msgid "_Next Tab"
+msgstr "_Següent"
+
+msgid "Search Limit..."
+msgstr "_Límit de cerca..."
+
+msgid "_Email..."
+msgstr "_Correu electrònic..."
+
+msgid "_Save Options"
+msgstr "_Desa opcions"
+
+msgid "_Tips..."
+msgstr "Conse_lls..."
+
+msgid "_Keyboard Shortcuts..."
+msgstr "Com_binacions de tecles..."
+
+msgid "_About..."
+msgstr "_Quant a..."
+
+msgid "Manage Favorites"
+msgstr "_Gestiona els preferits"
+
+msgid "Search"
+msgstr "Cerca"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"L'acció seleccionada requereix tancar totes les pestanyes.\n"
+"Voleu continuar?"
+
+msgid "Close Tab"
+msgstr "Tanca pestanya"
+
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Esteu a punt d'eliminar una base de dades de Tryton.\n"
+"Esteu segur que voleu continuar?"
+
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"La contrasenya del servidor Tryton és incorrecta.\n"
+"Intenteu-ho de nou."
+
+msgid "Access denied!"
+msgstr "Accés denegat."
+
+msgid "Database drop failed with error message:\n"
+msgstr "L'eliminació de la base de dades ha fallat amb el missatge d'error:\n"
+
+msgid "Database drop failed!"
+msgstr "Ha fallat l'eliminació de la base de dades."
+
+msgid "Database dropped successfully!"
+msgstr "La base de dades s'ha eliminat correctament."
+
+msgid "Open Backup File to Restore..."
+msgstr "Obre una còpia de seguretat per restaurar..."
+
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"No és possible restaurar una base de dades protegida amb contrasenya.\n"
+"La còpia de seguretat i la seva restauració ha de ser manual."
+
+msgid "Database is password protected!"
+msgstr "La base de dades està protegida amb contrasenya."
+
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"La contrasenya del servidor Tryton és incorrecta.\n"
+"Intenteu-ho de nou."
+
+msgid "Database restore failed with error message:\n"
+msgstr "La restauració de la base de dades ha fallat amb l'error:\n"
+
+msgid "Database restore failed!"
+msgstr "La restauració de la base de dades ha fallat."
+
+msgid "Database restored successfully!"
+msgstr "La base de dades s'ha restaurat correctament."
+
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"No és possible fer còpia d'una base de dades protegida amb contrasenya.\n"
+"La còpia de seguretat i la seva restauració ha de ser manual."
+
+msgid "Database dump failed with error message:\n"
+msgstr "L'extracció de la base de dades ha fallat amb el missatge d'error:\n"
+
+msgid "Database dump failed!"
+msgstr "L'extracció de la base de dades ha fallat."
+
+msgid "Database backuped successfully!"
+msgstr "La còpia de seguretat de la base de dades ha finalitzat correctament."
+
+msgid "New"
+msgstr "Nou"
+
+msgid "Create a new record"
+msgstr "Crea un nou registre"
+
+msgid "Save"
+msgstr "Desa"
+
+msgid "Save this record"
+msgstr "Desa aquest registre"
+
+msgid "Switch"
+msgstr "Canvia la vista"
+
+msgid "Switch view"
+msgstr "Canvia la vista"
+
+msgid "_Reload"
+msgstr "_Recarrega"
+
+msgid "Reload"
+msgstr "Recarrega"
+
+msgid "_New"
+msgstr "_Nou"
+
+msgid "_Save"
+msgstr "_Desa"
+
+msgid "_Switch View"
+msgstr "Canvia la vi_sta"
+
+msgid "_Reload/Undo"
+msgstr "_Recarrega/Desfés"
+
+msgid "_Delete..."
+msgstr "_Elimina..."
+
+msgid "_Close Tab"
+msgstr "_Tanca la pestanya"
+
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port '8000' "
+"if the server is installed on this computer. Click on 'Change' to change the "
+"address."
+msgstr ""
+"Aquest és l'URL del servidor Tryton. Useu el servidor «localhost» i el port "
+"«8000» si el servidor està instal·lat en aquest ordinador. Premeu «Canvia» "
+"per canviar l'adreça."
+
+msgid "No connection!"
+msgstr "No hi ha connexió."
+
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure that "
+"the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"No s'ha pogut connectar al servidor\n"
+"1. Reviseu si el servidor s'està executant.\n"
+"2. Esbrineu a quina adreça i port està escoltant.\n"
+"3. Si hi ha un tallafocs entre el servidor i aquest client, assegureu-vos "
+"que l'adreça i el port (normalment 8000) del servidor no estan bloquejats.\n"
+"Premeu a «Canvia» per canviar l'adreça."
+
+msgid "Create new database"
+msgstr "Crea nova base de dades"
+
+msgid "C_reate"
+msgstr "C_rea"
+
+msgid "Create the new database."
+msgstr "Crea la nova base de dades."
+
+msgid "Server Setup:"
+msgstr "Configuració del servidor:"
+
+msgid "Server connection:"
+msgstr "Connexió amb el servidor:"
+
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if the "
+"server is installed on this computer. Click on 'Change' to change the "
+"address."
+msgstr ""
+"Aquest és l'URL del servidor. Useu el servidor «localhost» i el port «8000» "
+"si el servidor està instal·lat en aquest ordinador. Premeu a «Canvia» per "
+"canviar l'adreça."
+
+msgid "C_hange"
+msgstr "C_anvia"
+
+msgid "Setup the server connection..."
+msgstr "Configura la connexió amb el servidor..."
+
+msgid "Tryton Server Password:"
+msgstr "Contrasenya del servidor Tryton:"
+
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real user. "
+"This password is usually defined in the trytond configuration."
+msgstr ""
+"Aquesta és la contrasenya del servidor Tryton. No correspon a un usuari "
+"real. Aquesta contrasenya es defineix en la configuració de trytond."
+
+msgid "New database setup:"
+msgstr "Nova configuració de la base de dades:"
+
+msgid "Database name:"
+msgstr "Nom de la base de dades:"
+
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: tryton"
+msgstr ""
+"Trieu un nom per a la nova base de dades.\n"
+"Podeu utilitzar caràcters alfanumèrics o _ (guió baix)\n"
+"Eviteu qualsevol accent, espai o caràcters especials. Exemple: tryton"
+
+msgid "Default language:"
+msgstr "Idioma per defecte:"
+
+msgid ""
+"Choose the default language that will be installed for this database. You "
+"will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Escolliu l'idioma per defecte que s'instal·larà per a aquesta base de dades. "
+"Podreu instal·lar nous idiomes després de la instal·lació, mitjançant el "
+"menú d'administració."
+
+msgid "Admin password:"
+msgstr "Contrasenya de l'administrador:"
+
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Trieu una contrasenya per a l'usuari administrador de la nova base de dades. "
+"Podreu accedir a la base de dades amb aquestes credencials:\n"
+"Nom d'usuari: admin\n"
+"Contrasenya: <La contrasenya que introduïu aquí>"
+
+msgid "Confirm admin password:"
+msgstr "Confirmeu la contrasenya de l'administrador:"
+
+msgid "Type the Admin password again"
+msgstr "Teclegeu la contrasenya de l'administrador de nou"
+
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr ""
+"La nova contrasenya de l'administrador no coincideix amb el camp de "
+"confirmació.\n"
+
+msgid "Passwords doesn't match!"
+msgstr "Les contrasenyes no coincideixen."
+
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Ja existeix una base de dades amb el mateix nom.\n"
+"Intenteu-ho amb un altre nom de base de dades."
+
+msgid "This database name already exist!"
+msgstr "Ja existeix una base de dades amb aquest nom."
+
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr "La contrasenya del servidor Tryton no és correcta. Intenteu-ho de nou."
+
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"No s'ha pogut crear la base de dades, la causa és desconeguda.\n"
+"Si hi ha una base de dades creada, podria estar danyada. Proveu d'eliminar "
+"aquesta base de dades. Reviseu el missatge d'error per obtenir informació "
+"addicional.\n"
+"Missatge d'error:\n"
+
+msgid "Error creating database!"
+msgstr "S'ha produït un error al crear la base de dades."
+
+msgid "Could not connect to server!"
+msgstr "No s'ha pogut connectar al servidor."
+
+msgid "This client version is not compatible with the server!"
+msgstr "Aquesta versió del client no és compatible amb el servidor."
+
+msgid "No database found, you must create one!"
+msgstr "No s'ha trobat cap base de dades, heu de crear-ne una."
+
+msgid "Backup a database"
+msgstr "Realitza còpia de seguretat d'una base de dades"
+
+msgid "Backup"
+msgstr "Còpia de seguretat"
+
+msgid "Backup the choosen database."
+msgstr "Fa còpia de seguretat de la base de dades triada."
+
+msgid "Choose a Tryton database to backup:"
+msgstr "Trieu una base de dades Tryton per fer una còpia de seguretat:"
+
+msgid "Delete a database"
+msgstr "Elimina una base de dades"
+
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "Delete the choosen database."
+msgstr "Elimina la base de dades seleccionada."
+
+msgid "Choose a Tryton database to delete:"
+msgstr "Trieu la base de dades Tryton a eliminar:"
+
+msgid "Server Connection:"
+msgstr "Connexió al servidor:"
+
+msgid "Database:"
+msgstr "Base de dades:"
+
+msgid "Profile Editor"
+msgstr "Editor de perfils"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "_Add"
+msgstr "_Afegeix"
+
+msgid "_Remove"
+msgstr "_Elimina"
+
+msgid "Host:"
+msgstr "Servidor:"
+
+msgid "Create"
+msgstr "Crea"
+
+msgid "Fetching databases list"
+msgstr "Recuperant llista de bases de dades"
+
+msgid "Username:"
+msgstr "Nom d'usuari:"
+
+msgid "Could not connect to the server"
+msgstr "No s'ha pogut connectar al servidor"
+
+msgid "Incompatible version of the server"
+msgstr "El client no és compatible amb la versió del servidor"
+
+msgid "Login"
+msgstr "Usuari"
+
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Cancel·la connexió al servidor Tryton"
+
+msgid "C_onnect"
+msgstr "C_onnecta"
+
+msgid "Connect the Tryton server"
+msgstr "Connecta al servidor Tryton"
+
+msgid "Profile:"
+msgstr "Perfil:"
+
+msgid "_Manage profiles"
+msgstr "_Administra perfils"
+
+msgid "Host / Database information"
+msgstr "Informació del Servidor / Base de dades"
+
+msgid "User name:"
+msgstr "Nom d'usuari:"
+
+msgid "Restore Database"
+msgstr "Restaura una base de dades"
+
+msgid "File to Restore:"
+msgstr "Fitxer a restaurar:"
+
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Trieu el nom de la base de dades a restaurar.\n"
+"Els caràcters permesos són alfanumèrics o _ (guió baix)\n"
+"Eviteu tots els accents, espais, o caràcters especials. \n"
+"Exemple: tryton"
+
+msgid "New Database Name:"
+msgstr "Nom de la base de dades nova:"
+
+msgid "Update Database:"
+msgstr "Actualitza base de dades:"
+
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+"Marqueu perquè es realitzi una actualització automàtica de la base de dades "
+"des d'una versió anterior de Tryton, després de restaurar la base de dades."
+
+msgid "Restore"
+msgstr "Restaura"
+
+msgid "Restore the database from file."
+msgstr "Restaura la base de dades des d'un fitxer."
+
+msgid "Email"
+msgstr "Correu electrònic"
+
+msgid "Email Program Settings"
+msgstr "Configuració del programa de correu electrònic"
+
+msgid "Command Line:"
+msgstr "Línia de comandes:"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Llegenda de paraules clau disponibles:"
+
+msgid "To:"
+msgstr "A:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Assumpte:"
+
+msgid "Body:"
+msgstr "Missatge:"
+
+msgid "Attachment:"
+msgstr "Adjunt:"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Previous Record"
+msgstr "Registre anterior"
+
+msgid "Next"
+msgstr "Següent"
+
+msgid "Next Record"
+msgstr "Registre següent"
+
+msgid "Attachment(0)"
+msgstr "Adjunt(0)"
+
+msgid "Add an attachment to the record"
+msgstr "Afegeix un adjunt al registre"
+
+msgid "_Duplicate"
+msgstr "_Duplica"
+
+msgid "_Previous"
+msgstr "_Anterior"
+
+msgid "_Next"
+msgstr "Seg_üent"
+
+msgid "_Search"
+msgstr "_Cerca"
+
+msgid "View _Logs..."
+msgstr "Veure _registre..."
+
+msgid "Show revisions..."
+msgstr "Mostra revisions..."
+
+msgid "A_ttachments..."
+msgstr "Adjun_ts..."
+
+msgid "_Actions..."
+msgstr "_Accions..."
+
+msgid "_Relate..."
+msgstr "_Relacionat..."
+
+msgid "_Report..."
+msgstr "_Informes..."
+
+msgid "_E-Mail..."
+msgstr "_Correu electrònic..."
+
+msgid "_Print..."
+msgstr "Im_primeix..."
+
+msgid "_Export Data..."
+msgstr "_Exporta dades..."
+
+msgid "_Import Data..."
+msgstr "_Importa dades..."
+
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Adjunt(%d)"
+
+msgid "You have to select one record!"
+msgstr "Heu de triar un registre."
+
+msgid "ID:"
+msgstr "ID:"
+
+msgid "Creation User:"
+msgstr "Creat per:"
+
+msgid "Creation Date:"
+msgstr "Data de creació:"
+
+msgid "Latest Modification by:"
+msgstr "Última modificació per:"
+
+msgid "Latest Modification Date:"
+msgstr "Última data de modificació:"
+
+msgid "Model:"
+msgstr "Model:"
+
+msgid "Are you sure to remove this record?"
+msgstr "Esteu segur que voleu eliminar aquest registre?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Esteu segur que voleu eliminar aquests registres?"
+
+msgid "Records not removed!"
+msgstr "Els registres no s'han eliminat."
+
+msgid "Records removed!"
+msgstr "Registres eliminats."
+
+msgid "Working now on the duplicated record(s)!"
+msgstr "Ara esteu treballant en el registre duplicat."
+
+msgid "Record saved!"
+msgstr "Registre desat."
+
+msgid "Invalid form!"
+msgstr "Formulari incorrecte."
+
+msgid " of "
+msgstr " de "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Aquest registre ha estat modificat.\n"
+"Voleu desar-lo?"
+
+msgid "Action"
+msgstr "Acció"
+
+msgid "Launch action"
+msgstr "Executa acció"
+
+msgid "Relate"
+msgstr "_Relacionat"
+
+msgid "Open related records"
+msgstr "Obre registres relacionats"
+
+msgid "Report"
+msgstr "Informes"
+
+msgid "Open report"
+msgstr "Obre informe"
+
+msgid "E-Mail"
+msgstr "Correu electrònic"
+
+msgid "E-Mail report"
+msgstr "Informe per email"
+
+msgid "Print"
+msgstr "Imprimeix"
+
+msgid "Print report"
+msgstr "Imprimeix informe"
+
+msgid "Unknown"
+msgstr "Desconegut"
+
+msgid "Limit"
+msgstr "Límit"
+
+msgid "Search Limit Settings"
+msgstr "Preferències del límit de cerca"
+
+msgid "Limit:"
+msgstr "Límit:"
+
+msgid "Preferences"
+msgstr "Preferències"
+
+msgid "Edit User Preferences"
+msgstr "Edita preferències d'usuari"
+
+msgid "Preference"
+msgstr "Preferències"
+
+msgid "Current Password:"
+msgstr "Contrasenya actual:"
+
+msgid "Revision"
+msgstr "Revisió"
+
+msgid "Select a revision"
+msgstr "Seleccioneu una revisió"
+
+msgid "Revision:"
+msgstr "Revisió:"
+
+msgid "Keyboard Shortcuts"
+msgstr "Combinacions de tecles"
+
+msgid "Text Entries Shortcuts"
+msgstr "Dreceres en camps de text"
+
+msgid "Cut selected text"
+msgstr "Talla el text seleccionat"
+
+msgid "Copy selected text"
+msgstr "Copia el text seleccionat"
+
+msgid "Paste copied text"
+msgstr "Enganxa el text seleccionat"
+
+msgid "Next widget"
+msgstr "Camp següent"
+
+msgid "Previous widget"
+msgstr "Camp anterior"
+
+msgid "Relation Entries Shortcuts"
+msgstr "Dreceres en relacions"
+
+msgid "Create new relation"
+msgstr "Crea una nova relació"
+
+msgid "Open/Search relation"
+msgstr "Obre/Cerca una relació"
+
+msgid "List Entries Shortcuts"
+msgstr "Dreceres en llistes"
+
+msgid "Create new line"
+msgstr "Crea una nova línia"
+
+msgid "Open relation"
+msgstr "Obre una relació"
+
+msgid "Mark line for deletion"
+msgstr "Marca la línia per ser eliminada"
+
+msgid "Unmark line for deletion"
+msgstr "Desmarca la línia per ser eliminada"
+
+msgid "Edition Widgets"
+msgstr "Controls en l'edició"
+
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Benvingut a Tryton</b>\n"
+"\n"
+"\n"
+
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>Coneixeu Triton? un dels apel·latius de nostre projecte</b>\n"
+"\n"
+"Triton (pronunciat /ˈtraɪtən/ TRYE-tən, o en grec Τρίτων) és la\n"
+"lluna més gran del planeta Neptú, descoberta el 10 d'Octubre de\n"
+"1846 per William Lassell. És l'única lluna gran del Sistema Solar\n"
+"amb una òrbita retrògrada, això és, que orbita en el sentit oposat\n"
+"a la rotació del planeta.  Amb 2.700 km de diàmetre és la setena lluna\n"
+"en grandària del Sistema Solar. Triton compta amb més del 99.5 per cent\n"
+"de tota la massa que orbita a Neptú, incloent els anells del planeta i\n"
+"vint llunes conegudes.  Té més massa que totes les altres 159 llunes\n"
+"més petites del Sistema Solar combinades.\n"
+
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Exporta llista de registres</b>\n"
+"\n"
+"Podeu copiar els registres de qualsevol llista amb Ctrl + C\n"
+"i enganxar-los en qualsevol aplicació amb Ctrl + V\n"
+
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+"<b>Exporta gràfics</b>\n"
+"\n"
+"Podeu desar els gràfics en un fitxer PNG fent clic amb el botó dret sobre la "
+"imatge.\n"
+
+msgid "Tips"
+msgstr "Consells"
+
+msgid "_Display a new tip next time"
+msgstr "_Mostra un nou consell la propera vegada"
+
+msgid "Export to CSV"
+msgstr "Exporta a CSV"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Exportacions predeterminades</b>"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Tots els camps</b>"
+
+msgid "Clear"
+msgstr "Neteja"
+
+msgid "Save Export"
+msgstr "Desa exportació"
+
+msgid "Delete Export"
+msgstr "Elimina exportació"
+
+msgid "<b>Fields to export</b>"
+msgstr "<b>Camps a exportar</b>"
+
+msgid "<b>Options</b>"
+msgstr "<b>Opcions</b>"
+
+msgid "Open"
+msgstr "Obre"
+
+msgid "Add _field names"
+msgstr "Afegeix noms de _camp"
+
+msgid "Name"
+msgstr "Nom"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (text)"
+
+msgid "What is the name of this export?"
+msgstr "Quin és el nom d'aquesta exportació?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Voleu sobrescriure la definició de '%s'?"
+
+#, python-format
+msgid "%d record saved!"
+msgstr "S'ha desat %d registre."
+
+#, python-format
+msgid "%d records saved!"
+msgstr "S'han desat %d registres."
+
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Ha fallat l'operació.\n"
+"Missatge d'error:\n"
+"%s"
+
+msgid "Link"
+msgstr "Enllaç"
+
+msgid "Add"
+msgstr "Afegeix"
+
+msgid "Remove <Del>"
+msgstr "Elimina <Supr>"
+
+msgid "Create a new record <F3>"
+msgstr "Crea un nou registre <F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Elimina el registre seleccionat <Supr>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Recupera el registre seleccionat <Ins>"
+
+msgid "Import from CSV"
+msgstr "Importa des de CSV"
+
+msgid "Auto-Detect"
+msgstr "Auto-detecta"
+
+msgid "<b>Fields to import</b>"
+msgstr "<b>Camps a importar</b>"
+
+msgid "File to Import:"
+msgstr "Fitxer a importar:"
+
+msgid "Open..."
+msgstr "Obre..."
+
+msgid "CSV Parameters"
+msgstr "Paràmetres CSV"
+
+msgid "Field Separator:"
+msgstr "Separador de camp:"
+
+msgid "Text Delimiter:"
+msgstr "Delimitador de text:"
+
+msgid "Encoding:"
+msgstr "Codificació:"
+
+msgid "Lines to Skip:"
+msgstr "Línies a ometre:"
+
+msgid "Field name"
+msgstr "Nom del camp"
+
+msgid "You must select an import file first!"
+msgstr "Primer heu de triar un fitxer a importar."
+
+msgid "Error opening CSV file"
+msgstr "Error a l'obrir el fitxer CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "S'ha produït un error en processar el fitxer en el camp %s."
+
+#, python-format
+msgid "%d record imported!"
+msgstr "S'ha importat %d registre."
+
+#, python-format
+msgid "%d records imported!"
+msgstr "S'han importat %d registres."
+
+msgid "Wizard"
+msgstr "Assistent"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Creation User"
+msgstr "Creat per"
+
+msgid "Creation Date"
+msgstr "Data de creació"
+
+msgid "Modification User"
+msgstr "Modificat per"
+
+msgid "Modification Date"
+msgstr "Data de modificació"
+
+msgid "Unable to get view tree state"
+msgstr "No s'ha pogut obtenir l'estat de la vista d'arbre"
+
+msgid "Unable to set view tree state"
+msgstr "No s'ha pogut desar l'estat de la vista d'arbre"
+
+msgid ":"
+msgstr ":"
+
+msgid "Save As"
+msgstr "Anomena i desa"
+
+msgid "Image Size"
+msgstr "Mida de la imatge"
+
+msgid "Width:"
+msgstr "Amplada:"
+
+msgid "Height:"
+msgstr "Altura:"
+
+msgid "PNG image (*.png)"
+msgstr "Imatge PNG (*.png)"
+
+msgid "Image size too large!"
+msgstr "La mida de la imatge és massa gran."
+
+msgid ".."
+msgstr ".."
+
+msgid "F_ilters"
+msgstr "F_iltres"
+
+msgid "Show bookmarks of filters"
+msgstr "Mostra les cerques preferides"
+
+msgid "Remove this bookmark"
+msgstr "Elimina de les cerques preferides"
+
+msgid "Bookmark this filter"
+msgstr "Desa com a cerca preferida"
+
+msgid "Bookmark Name:"
+msgstr "Nom de la cerca preferida:"
+
+msgid "Find"
+msgstr "Cerca"
+
+msgid "Today"
+msgstr "Avui"
+
+msgid "Week View"
+msgstr "Vista setmanal"
+
+msgid "Month View"
+msgstr "Vista mensual"
+
+msgid "Week"
+msgstr "Setmana"
+
+msgid "Select a File..."
+msgstr "Selecciona un fitxer..."
+
+msgid "Show plain text"
+msgstr "Mostra com a text pla"
+
+msgid "Add value"
+msgstr "Afegeix un valor"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Eliminar \"%s\""
+
+msgid "Select an Image..."
+msgstr "Selecciona una imatge..."
+
+msgid "All files"
+msgstr "Tots els fitxers"
+
+msgid "Images"
+msgstr "Imatges"
+
+msgid "Add existing record"
+msgstr "Afegeix un registre existent"
+
+msgid "Remove selected record <Del>"
+msgstr "Elimina el registre seleccionat <Supr>"
+
+msgid "Open a record <F2>"
+msgstr "Obre el registre <F2>"
+
+msgid "Search a record <F2>"
+msgstr "Cerca un registre <F2>"
+
+msgid "Remove selected record"
+msgstr "Elimina el registre seleccionat"
+
+msgid "Edit selected record <F2>"
+msgstr "Edita registre seleccionat <F2>"
+
+msgid "Change text to bold"
+msgstr "Canvia text a negreta"
+
+msgid "Change text to italic"
+msgstr "Canvia text a cursiva"
+
+msgid "Change text to underline"
+msgstr "Canvia text a subratllat"
+
+msgid "Choose font-family"
+msgstr "Tria tipus de lletra"
+
+msgid "Choose font-size"
+msgstr "Tria grandària de la lletra"
+
+msgid "Justify of line to the left"
+msgstr "Alinea la línia a l'esquerra"
+
+msgid "Justify of line to the center"
+msgstr "Centra la línia"
+
+msgid "Justify of line to the right"
+msgstr "Alinea la línia a la dreta"
+
+msgid "Justify of line to fill window"
+msgstr "Justifica la línia per emplenar la finestra"
+
+msgid "Change the foreground text"
+msgstr "Canvia el text principal"
+
+msgid "Change the background text"
+msgstr "Canvia color de fons"
+
+msgid "Change the markup text view"
+msgstr "Canvia el text de marcat"
+
+msgid "Select a foreground color"
+msgstr "Selecciona color principal"
+
+msgid "Select a background color"
+msgstr "Selecciona color de fons"
+
+msgid "Translation"
+msgstr "Traducció"
+
+msgid "Edit"
+msgstr "Edita"
+
+msgid "Fuzzy"
+msgstr "Dubtós"
+
+msgid "You need to save the record before adding translations!"
+msgstr "Heu de desar el registre abans d'afegir traduccions."
+
+msgid "No other language available!"
+msgstr "No hi ha cap altre idioma disponible."
+
+msgid "Translate view"
+msgstr "Tradueix la vista"
