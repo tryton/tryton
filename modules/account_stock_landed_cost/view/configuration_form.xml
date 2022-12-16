@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator id="landed_cost" string="Landed Cost" colspan="4"/>
+        <label name="landed_cost_sequence" string="Sequence"/>
+        <field name="landed_cost_sequence"/>
+        <newline/>
+    </xpath>
+</data>
