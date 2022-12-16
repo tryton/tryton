@@ -1,0 +1,32 @@
+Version 1.2.8 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.7 - 2011-09-10
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.6 - 2011-05-29
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.5 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.4 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
+Version 1.2.3 - 2010-02-18
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.2.2 - 2009-11-24
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.2.1 - 2009-07-07
+* Some bug fixes (see mercurial logs for details)
+
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
+* Use the purchase uom to compute purchase price from product supplier
+* Add buttons to handle invoice and packing exceptions
+* Allow egg installation
+
+Version 1.0.0 - 2008-11-17
+* Initial release
