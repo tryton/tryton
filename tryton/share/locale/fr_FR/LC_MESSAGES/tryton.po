@@ -1,0 +1,1438 @@
+# French (France) translations for tryton.
+# Copyright (C) 2008-2013 B2CK
+# This file is distributed under the same license as the tryton project.
+# FIRST AUTHOR <cedric.krier@b2ck.com>, 2008-2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tryton 0.0.1\n"
+"Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
+"POT-Creation-Date: 2015-03-23 18:56+0100\n"
+"PO-Revision-Date: 2013-04-19 23:58+0200\n"
+"Last-Translator: Cédric Krier <cedric.krier@b2ck.com>\n"
+"Language-Team: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+msgid "specify alternate config file"
+msgstr "spécifier un fichier de configuration alternatif"
+
+msgid "development mode"
+msgstr "mode développement"
+
+msgid "logging everything at INFO level"
+msgstr "logger tout au niveau INFO"
+
+msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "Spécifie le niveau de log : DEBUG, INFO, WARNING, ERROR, CRITICAL"
+
+msgid "specify the login user"
+msgstr "spécifier l'utilisateur de login"
+
+msgid "specify the server port"
+msgstr "spécifier le port du serveur"
+
+msgid "specify the server hostname"
+msgstr "spécifier le nom du serveur"
+
+msgid "Too much arguments"
+msgstr "Trop d'arguments"
+
+#, python-format
+msgid "File \"%s\" not found"
+msgstr "Fichier \"%s\" non trouvé"
+
+#, python-format
+msgid "Unable to write config file %s!"
+msgstr "Impossible d'écrire le fichier de configuration %s !"
+
+#, python-format
+msgid "Unable to set locale %s"
+msgstr "Impossible de sélectionner la locale %s"
+
+msgid "Select your action"
+msgstr "Sélectionnez votre action"
+
+msgid "No action defined!"
+msgstr "Pas d'action définie !"
+
+msgid "Tryton Connection"
+msgstr "Connexion Tryton"
+
+msgid "Server:"
+msgstr "Serveur :"
+
+msgid "Port:"
+msgstr "Port :"
+
+msgid "Selection"
+msgstr "Sélection"
+
+msgid "Your selection:"
+msgstr "Votre sélection :"
+
+msgid "Save As..."
+msgstr "Enregistrer sous..."
+
+msgid "Always ignore this warning."
+msgstr "Toujours ignorer cet avertissement."
+
+msgid "Do you want to proceed?"
+msgstr "Souhaitez-vous continuer ?"
+
+msgid "Confirmation"
+msgstr "Confirmation"
+
+msgid "Concurrency Exception"
+msgstr "Erreur d'accès concurrent"
+
+msgid ""
+"<b>Write Concurrency Warning:</b>\n"
+"\n"
+"This record has been modified while you were editing it.\n"
+" Choose:\n"
+"    - \"Cancel\" to cancel saving;\n"
+"    - \"Compare\" to see the modified version;\n"
+"    - \"Write Anyway\" to save your current version."
+msgstr ""
+"<b>Attention, accès en écriture concurrents:</b>\n"
+"\n"
+"Cet enregistrement a été édité pendant que vous étiez en train de le "
+"modifier.\n"
+"  Choisissez:\n"
+"   - \"Annuler\" pour annuler vos modifications;\n"
+"   - \"Comparer\" pour voir la nouvelle version;\n"
+"   - \"Écraser\" pour sauver vos modifications."
+
+msgid "Compare"
+msgstr "Comparer"
+
+msgid "Write Anyway"
+msgstr "Écraser"
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid "Report Bug"
+msgstr "Rapporter un bogue"
+
+msgid "Application Error!"
+msgstr "Erreur Applicative !"
+
+msgid "Error: "
+msgstr "Erreur : "
+
+#, python-format
+msgid "To report bugs you must have an account on <u>%s</u>"
+msgstr "Pour rapporter un bogue vous devez avoir un compte sur <u>%s</u>"
+
+msgid "Bug Tracker"
+msgstr "Bug Tracker"
+
+msgid "User:"
+msgstr "Utilisateur :"
+
+msgid "Password:"
+msgstr "Mot de passe :"
+
+msgid ""
+"The same bug was already reported by another user.\n"
+"To keep you informed your username is added to the nosy-list of this issue"
+msgstr ""
+"Le même bogue a été déjà rapporté par un autre utilisateur.\n"
+"Pour vous garder informé, votre nom d'utilisateur a été ajouté à la liste"
+" de suivi de ce bogue"
+
+msgid "Created new bug with ID "
+msgstr "Un nouveau bogue a été créé avec l'ID "
+
+msgid ""
+"Connection error!\n"
+"Bad username or password!"
+msgstr ""
+"Erreur de connexion !\n"
+"Mauvais nom d'utilisateur ou mot de passe !"
+
+msgid "Exception:"
+msgstr "Exception :"
+
+msgid ""
+"The server fingerprint has changed since last connection!\n"
+"The application will stop connecting to this server until its fingerprint"
+" is fixed."
+msgstr ""
+"L'empreinte digitale du serveur a changé depuis la dernière connection !\n"
+"Les connections à ce serveur sont annulées tant que son empreinte n'est "
+"pas corrigée."
+
+msgid "Security risk!"
+msgstr "Alerte sécurité !"
+
+msgid ""
+"Connection error!\n"
+"Unable to connect to the server!"
+msgstr ""
+"Erreur de connexion !\n"
+"Impossible de se connecter au serveur !"
+
+msgid "Network Error!"
+msgstr "Erreur réseau"
+
+msgid "<i>Search...</i>"
+msgstr "<i>Recherche...</i>"
+
+msgid "<i>Create...</i>"
+msgstr "<i>Créer...</i>"
+
+msgid "Value"
+msgstr "Valeur"
+
+msgid "Displayed value"
+msgstr "Valeur affichée"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Display format"
+msgstr "Format d'affichage"
+
+msgid "Open the calendar"
+msgstr "Ouvrir le calendrier"
+
+msgid "Date Format"
+msgstr "Format de date"
+
+msgid "Displayed date format"
+msgstr "Format de date affichée"
+
+msgid "y"
+msgstr "y"
+
+msgid "yes"
+msgstr "oui"
+
+msgid "true"
+msgstr "vrai"
+
+msgid "t"
+msgstr "v"
+
+msgid "True"
+msgstr "Vrai"
+
+msgid "False"
+msgstr "Faux"
+
+msgid "Edit..."
+msgstr "Éditer..."
+
+msgid "Attachments..."
+msgstr "Pièces jointes..."
+
+msgid "Actions..."
+msgstr "Actions..."
+
+msgid "Relate..."
+msgstr "Relation..."
+
+msgid "Report..."
+msgstr "Rapport..."
+
+msgid "E-Mail..."
+msgstr "Email..."
+
+msgid "Print..."
+msgstr "Imprimer..."
+
+msgid "Y"
+msgstr "A"
+
+msgid "M"
+msgstr "M"
+
+msgid "w"
+msgstr "S"
+
+msgid "d"
+msgstr "j"
+
+msgid "h"
+msgstr "h"
+
+msgid "m"
+msgstr "m"
+
+msgid "s"
+msgstr "s"
+
+msgid "_File"
+msgstr "_Fichier"
+
+msgid "_User"
+msgstr "_Utilisateur"
+
+msgid "_Options"
+msgstr "_Options"
+
+msgid "Fa_vorites"
+msgstr "Fa_voris"
+
+msgid "_Help"
+msgstr "_Aide"
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "No result found."
+msgstr "Aucun résultat trouvé"
+
+msgid "_Connect..."
+msgstr "_Connecter..."
+
+msgid "_Disconnect"
+msgstr "_Déconnecter"
+
+msgid "Data_base"
+msgstr "_Base de données"
+
+msgid "_New Database..."
+msgstr "_Nouvelle base de données..."
+
+msgid "_Restore Database..."
+msgstr "_Restaurer une base de données..."
+
+msgid "_Backup Database..."
+msgstr "_Sauvegarder une base de données..."
+
+msgid "Dro_p Database..."
+msgstr "Su_pprimer une base de données..."
+
+msgid "_Quit..."
+msgstr "_Quitter..."
+
+msgid "_Preferences..."
+msgstr "_Préférences..."
+
+msgid "_Menu Reload"
+msgstr "_Recharger le menu"
+
+msgid "_Menu Toggle"
+msgstr "Montrer/Cacher le _menu"
+
+msgid "_Global Search"
+msgstr "Recherche _globale"
+
+msgid "_Toolbar"
+msgstr "_Barre d'outils"
+
+msgid "_Default"
+msgstr "_Défaut"
+
+msgid "_Text and Icons"
+msgstr "_Textes et Icônes"
+
+msgid "_Icons"
+msgstr "_Icônes"
+
+msgid "_Text"
+msgstr "_Textes"
+
+msgid "_Menubar"
+msgstr "_Barre de Menu"
+
+msgid "Change Accelerators"
+msgstr "Changer les raccourcis"
+
+msgid "_Mode"
+msgstr "_Mode"
+
+msgid "_Normal"
+msgstr "_Normal"
+
+msgid "_PDA"
+msgstr "_PDA"
+
+msgid "_Form"
+msgstr "_Formulaire"
+
+msgid "Save Width/Height"
+msgstr "Sauver largeur / hauteur"
+
+msgid "Save Tree State"
+msgstr "Sauver l'état des arbres"
+
+msgid "Spell Checking"
+msgstr "Vérifier l'orthographe"
+
+msgid "_Previous Tab"
+msgstr "Onglet _Précédent"
+
+msgid "_Next Tab"
+msgstr "Onglet _Suivant"
+
+msgid "Search Limit..."
+msgstr "Limite la recherche à ..."
+
+msgid "_Email..."
+msgstr "_Email..."
+
+msgid "_Save Options"
+msgstr "_Sauver les options"
+
+msgid "_Tips..."
+msgstr "_Astuces..."
+
+msgid "_Keyboard Shortcuts..."
+msgstr "Raccourcis _Clavier..."
+
+msgid "_About..."
+msgstr "_À Propos..."
+
+msgid "Manage Favorites"
+msgstr "_Gérer les favoris"
+
+msgid ""
+"The following action requires to close all tabs.\n"
+"Do you want to continue?"
+msgstr ""
+"L'action suivante nécessite de fermer tous les onglets.\n"
+"Voulez-vous continuer?"
+
+msgid "Close Tab"
+msgstr "Fermer l'onglet"
+
+msgid ""
+"You are going to delete a Tryton database.\n"
+"Are you really sure to proceed?"
+msgstr ""
+"Vous allez supprimer une base de données Tryton.\n"
+"Êtes-vous sûr de vouloir continuer ?"
+
+msgid ""
+"Wrong Tryton Server Password\n"
+"Please try again."
+msgstr ""
+"Mauvais mot de passe du serveur Tryton.\n"
+"Essayez à nouveau."
+
+msgid "Access denied!"
+msgstr "Accès refusé !"
+
+msgid "Database drop failed with error message:\n"
+msgstr ""
+"La suppression de la base de données a échouée avec le message d'erreur :"
+"\n"
+
+msgid "Database drop failed!"
+msgstr "La suppression de la base de données a échouée !"
+
+msgid "Database dropped successfully!"
+msgstr "La base de données a été supprimée avec succès !"
+
+msgid "Open Backup File to Restore..."
+msgstr "Ouvrir le Fichier de Sauvergarde..."
+
+msgid ""
+"It is not possible to restore a password protected database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Il n'est pas possible de restaurer une base de données protégée par un "
+"mot de passe.\n"
+"La sauvegarde et la restauration doivent être faites manuellement."
+
+msgid "Database is password protected!"
+msgstr "La base de données est protégée par un mot de passe !"
+
+msgid ""
+"Wrong Tryton Server Password.\n"
+"Please try again."
+msgstr ""
+"Mauvais mot de passe du serveur Tryton.\n"
+"Essayez à nouveau."
+
+msgid "Database restore failed with error message:\n"
+msgstr ""
+"La restauration de la base de données a échouée avec le message d'erreur "
+":\n"
+
+msgid "Database restore failed!"
+msgstr "La restauration de la base de données a échoué !"
+
+msgid "Database restored successfully!"
+msgstr "La base de données a été restaurée avec succès !"
+
+msgid ""
+"It is not possible to dump a password protected Database.\n"
+"Backup and restore needed to be proceed manual."
+msgstr ""
+"Il n'est pas possible de sauvergarder une base de données protégée par un"
+" mot de passe.\n"
+"La sauvegarde et la restauration doivent être faites manuellement."
+
+msgid "Database dump failed with error message:\n"
+msgstr "La sauvegarde de la base de donnée a échouée avec le message d'erreur :\n"
+
+msgid "Database dump failed!"
+msgstr "La sauvegarde de la base de données a échouée !"
+
+msgid "Database backuped successfully!"
+msgstr "La base de données a été sauvegardée avec succès !"
+
+msgid "New"
+msgstr "Nouveau"
+
+msgid "Create a new record"
+msgstr "Créer un nouvel enregistrement"
+
+msgid "Save"
+msgstr "Sauver"
+
+msgid "Save this record"
+msgstr "Sauver cet enregistrement"
+
+msgid "Switch"
+msgstr "Basculer"
+
+msgid "Switch view"
+msgstr "Basculer la vue"
+
+msgid "_Reload"
+msgstr "_Recharger"
+
+msgid "Reload"
+msgstr "Recharger"
+
+msgid "_New"
+msgstr "_Nouveau"
+
+msgid "_Save"
+msgstr "_Sauver"
+
+msgid "_Switch View"
+msgstr "_Changer de vue"
+
+msgid "_Reload/Undo"
+msgstr "_Recharger/Annuler"
+
+msgid "_Delete..."
+msgstr "Su_pprimer..."
+
+msgid "_Close Tab"
+msgstr "_Fermer l'onglet"
+
+msgid ""
+"This is the URL of the Tryton server. Use server 'localhost' and port "
+"'8000' if the server is installed on this computer. Click on 'Change' to "
+"change the address."
+msgstr ""
+"Ceci est l'URL du serveur Tryton. Utilisez le serveur « localhost » et le"
+" port « 8000 » si le serveur est installé sur cette machine. Cliquez sur "
+"« Changer » pour changer l'adresse."
+
+msgid "No connection!"
+msgstr "Pas de connexion !"
+
+msgid ""
+"Can not connect to the server!\n"
+"1. Try to check if the server is running.\n"
+"2. Find out on which address and port it is listening.\n"
+"3. If there is a firewall between the server and this client, make sure "
+"that the server address and port (usually 8000) are not blocked.\n"
+"Click on 'Change' to change the address."
+msgstr ""
+"Impossible de se connecter au serveur !\n"
+"1. Vérifiez si le serveur est en train de tourner.\n"
+"2. Trouvez sur quelle adresse et port il écoute.\n"
+"3. Si il y a un firewall entre le serveur et ce client, vérifiez que "
+"l'adresse du serveur et le port (habituellement 8000) ne sont pas "
+"bloqués.\n"
+"Cliquez sur « Changer » pour changer l'adresse."
+
+msgid "Create new database"
+msgstr "Créer une nouvelle base de données"
+
+msgid "C_reate"
+msgstr "C_réer"
+
+msgid "Create the new database."
+msgstr "Créer une nouvelle base de données"
+
+msgid "Server Setup:"
+msgstr "Configuration du serveur :"
+
+msgid "Server connection:"
+msgstr "Connexion au serveur :"
+
+msgid ""
+"This is the URL of the server. Use server 'localhost' and port '8000' if "
+"the server is installed on this computer. Click on 'Change' to change the"
+" address."
+msgstr ""
+"Ceci est l'« URL » du serveur. Utilisez le serveur « localhost » et port "
+"« 8000 » si le serveur est installé sur cette machine. Cliquez sur "
+"« Changer » pour changer l'adresse."
+
+msgid "C_hange"
+msgstr "C_hanger"
+
+msgid "Setup the server connection..."
+msgstr "Configurer la connexion au serveur"
+
+msgid "Tryton Server Password:"
+msgstr "Mot de passe du serveur Tryton :"
+
+msgid ""
+"This is the password of the Tryton server. It doesn't belong to a real "
+"user. This password is usually defined in the trytond configuration."
+msgstr ""
+"Ceci est le mot de passe du serveur Tryton. Il ne correspond pas à un "
+"vrai utilisateur. Ce mot de passe est défini dans la configuration de "
+"trytond."
+
+msgid "New database setup:"
+msgstr "Configuration de la nouvelle base de données :"
+
+msgid "Database name:"
+msgstr "Nom de la base de données :"
+
+msgid ""
+"Choose the name of the new database.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! Example: "
+"tryton"
+msgstr ""
+"Choisissez le nom de la nouvelle base de données.\n"
+"Seuls sont permis les caractères alphanumériques ou _ (caractère "
+"souligné)\n"
+"Vous devez proscrire les accents, espaces ou caractères spéciaux ! "
+"Example : tryton"
+
+msgid "Default language:"
+msgstr "Langue par défaut :"
+
+msgid ""
+"Choose the default language that will be installed for this database. You"
+" will be able to install new languages after installation through the "
+"administration menu."
+msgstr ""
+"Choisissez la langue par défaut qui sera utilisée pour cette base de "
+"données. Vous pourrez installer d'autres langues après l'installation "
+"sous le menu administration."
+
+msgid "Admin password:"
+msgstr "Mot de passe admin :"
+
+msgid ""
+"Choose a password for the admin user of the new database. With these "
+"credentials you will be later able to login into the database:\n"
+"User name: admin\n"
+"Password: <The password you set here>"
+msgstr ""
+"Choisissez un mot de passe pour l'utilisateur admin de la nouvelle base "
+"de données. Avec ce mot de passe, vous pourrez ensuite vous connecter à "
+"la base de données :\n"
+"Nom d'utilisateur : admin\n"
+"Mot de passe : <Le mot de passe que vous avez choisi>"
+
+msgid "Confirm admin password:"
+msgstr "Confirmer le mot de passe admin :"
+
+msgid "Type the Admin password again"
+msgstr "Entrer le mot de passe admin à nouveau"
+
+msgid "The new admin password doesn't match the confirmation field.\n"
+msgstr "Le mot de passe admin ne correspond pas au mot de passe de confirmation.\n"
+
+msgid "Passwords doesn't match!"
+msgstr "Les mots de passe ne correspondent pas !"
+
+msgid ""
+"A database with the same name already exists.\n"
+"Try another database name."
+msgstr ""
+"Une base de données avec le même nom existe déjà.\n"
+"Essayer un autre nom de base de données."
+
+msgid "This database name already exist!"
+msgstr "La base de données existe déjà !"
+
+msgid "Sorry, wrong password for the Tryton server. Please try again."
+msgstr ""
+"Désolé, le mot de passe du serveur Tryton est incorrect. Veuillez "
+"réessayer."
+
+msgid ""
+"Can't create the database, caused by an unknown reason.\n"
+"If there is a database created, it could be broken. Maybe drop this "
+"database! Please check the error message for possible informations.\n"
+"Error message:\n"
+msgstr ""
+"Impossible de créer une base de données pour une raison inconnue.\n"
+"Si une base de données a été créée, elle pourrait être inutilisable. "
+"Supprimer la ! Vérifiez le message d'erreur pour plus d'information.\n"
+"Message d'erreur :\n"
+
+msgid "Error creating database!"
+msgstr "Erreur de création de base de données !"
+
+msgid "Could not connect to server!"
+msgstr "Impossible de se connecter au serveur !"
+
+msgid "This client version is not compatible with the server!"
+msgstr "Cette version du client n'est pas compatible avec le serveur !"
+
+msgid "No database found, you must create one!"
+msgstr "Pas de base de donnée trouvée, vous devez en créer une !"
+
+msgid "Backup a database"
+msgstr "Sauvegarder une base de données"
+
+msgid "Backup"
+msgstr "Sauvegarde"
+
+msgid "Backup the choosen database."
+msgstr "Sauvegarder la base de données choisie."
+
+msgid "Choose a Tryton database to backup:"
+msgstr "Choisissez la base de données à sauvegarder"
+
+msgid "Delete a database"
+msgstr "Supprimer une base de données"
+
+msgid "Delete"
+msgstr "Suppression"
+
+msgid "Delete the choosen database."
+msgstr "Supprimer la base de données choisie."
+
+msgid "Choose a Tryton database to delete:"
+msgstr "Choisissez la base de données à supprimer"
+
+msgid "Server Connection:"
+msgstr "Connexion au serveur :"
+
+msgid "Database:"
+msgstr "Base de données :"
+
+msgid "Profile Editor"
+msgstr "Éditeur de profil"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "_Add"
+msgstr "_Ajouter"
+
+msgid "_Remove"
+msgstr "_Enlever"
+
+msgid "Host:"
+msgstr "Hôte :"
+
+msgid "Create"
+msgstr "C_réer"
+
+msgid "Fetching databases list"
+msgstr "Récupération de la liste des bases de données"
+
+msgid "Username:"
+msgstr "Nom d'utilisateur :"
+
+msgid "Could not connect to the server"
+msgstr "Impossible de se connecter au serveur !"
+
+msgid "Incompatible version of the server"
+msgstr "Version du serveur incompatible !"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "_Cancel"
+msgstr "A_nnuler"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Annuler la connexion au serveur Tryton"
+
+msgid "C_onnect"
+msgstr "C_onnecter"
+
+msgid "Connect the Tryton server"
+msgstr "Se connecter au serveur Tryton"
+
+msgid "Profile:"
+msgstr "Profil :"
+
+msgid "_Manage profiles"
+msgstr "_Gestionnaire de profils"
+
+msgid "Host / Database information"
+msgstr "Hôte / Port"
+
+msgid "User name:"
+msgstr "Nom d'utilisateur :"
+
+msgid "Restore Database"
+msgstr "Restaurer une base de données"
+
+msgid "File to Restore:"
+msgstr "Fichier à restaurer :"
+
+msgid ""
+"Choose the name of the database to be restored.\n"
+"Allowed characters are alphanumerical or _ (underscore)\n"
+"You need to avoid all accents, space or special characters! \n"
+"Example: tryton"
+msgstr ""
+"Choisissez le nom de la base de données à restaurer.\n"
+"Seul sont permis les caractères alphanumériques ou _ (caractère souligné)"
+"\n"
+"Vous devez proscrire les accents, espaces ou caractères spéciaux !\n"
+"Example : tryton"
+
+msgid "New Database Name:"
+msgstr "Nom de la nouvelle base de données :"
+
+msgid "Update Database:"
+msgstr "Mettre à jour la base de données :"
+
+msgid ""
+"Check for an automatic database update after restoring a database from a "
+"previous Tryton version."
+msgstr ""
+"Cocher pour une mise à jour automatique de la base de données après "
+"restauration d'une base de données d'une version précédente de Tryton."
+
+msgid "Restore"
+msgstr "Restaurer"
+
+msgid "Restore the database from file."
+msgstr "Restaurer la base de données depuis le fichier."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email Program Settings"
+msgstr "Paramètres d'email"
+
+msgid "Command Line:"
+msgstr "Commande :"
+
+msgid "Legend of Available Placeholders:"
+msgstr "Légende des symboles :"
+
+msgid "To:"
+msgstr "À :"
+
+msgid "CC:"
+msgstr "CC :"
+
+msgid "Subject:"
+msgstr "Sujet :"
+
+msgid "Body:"
+msgstr "Corps :"
+
+msgid "Attachment:"
+msgstr "Attachement :"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Previous Record"
+msgstr "Enregistrement précédent"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Next Record"
+msgstr "Enregistrement suivant"
+
+msgid "Attachment(0)"
+msgstr "Attachement(0)"
+
+msgid "Add an attachment to the record"
+msgstr "Ajouter un attachement à l'enregistrement"
+
+msgid "_Duplicate"
+msgstr "_Dupliquer"
+
+msgid "_Previous"
+msgstr "_Précédent"
+
+msgid "_Next"
+msgstr "Sui_vant"
+
+msgid "_Search"
+msgstr "_Recherche"
+
+msgid "View _Logs..."
+msgstr "Voir les _Logs..."
+
+msgid "Show revisions..."
+msgstr "Afficher les révisions..."
+
+msgid "A_ttachments..."
+msgstr "_Pièce jointes..."
+
+msgid "_Actions..."
+msgstr "_Actions..."
+
+msgid "_Relate..."
+msgstr "_Relation..."
+
+msgid "_Report..."
+msgstr "_Rapport..."
+
+msgid "_E-Mail..."
+msgstr "_Email..."
+
+msgid "_Print..."
+msgstr "_Imprimer..."
+
+msgid "_Export Data..."
+msgstr "_Export de données..."
+
+msgid "_Import Data..."
+msgstr "_Import de données..."
+
+#, python-format
+msgid "Attachment(%d)"
+msgstr "Attachement(%d)"
+
+msgid "You have to select one record!"
+msgstr "Vous devez sélectionner un enregistrement !"
+
+msgid "ID:"
+msgstr "ID :"
+
+msgid "Creation User:"
+msgstr "Créé par l'utilisateur :"
+
+msgid "Creation Date:"
+msgstr "Date de création :"
+
+msgid "Latest Modification by:"
+msgstr "Dernière modification par :"
+
+msgid "Latest Modification Date:"
+msgstr "Date de dernière modification :"
+
+msgid "Model:"
+msgstr "Modèle :"
+
+msgid "Are you sure to remove this record?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet enregistrement ?"
+
+msgid "Are you sure to remove those records?"
+msgstr "Êtes-vous sûr de vouloir supprimer ces enregistrements ?"
+
+msgid "Records not removed!"
+msgstr "Enregistrements non supprimés !"
+
+msgid "Records removed!"
+msgstr "Enregistrements supprimés !"
+
+msgid "Working now on the duplicated record(s)!"
+msgstr "Sur les enregistrement(s) dupliqué(s) maintenant !"
+
+msgid "Record saved!"
+msgstr "Enregistrement sauvé !"
+
+msgid "Invalid form!"
+msgstr "Formulaire non-valide !"
+
+msgid " of "
+msgstr " de "
+
+msgid ""
+"This record has been modified\n"
+"do you want to save it ?"
+msgstr ""
+"Cet enregistrement a été modifié\n"
+"Voulez-vous le sauvegarder ?"
+
+msgid "Action"
+msgstr "Actions"
+
+msgid "Launch action"
+msgstr "Lancer une action"
+
+msgid "Relate"
+msgstr "Relation"
+
+msgid "Open related records"
+msgstr "Ouvrir les enregistrements liés"
+
+msgid "Report"
+msgstr "Rapport"
+
+msgid "Open report"
+msgstr "Ouvrir un rapport"
+
+msgid "E-Mail"
+msgstr "Email"
+
+msgid "E-Mail report"
+msgstr "Rapport par email"
+
+msgid "Print"
+msgstr "Imprimer"
+
+msgid "Print report"
+msgstr "Imprimer un rapport"
+
+msgid "Unknown"
+msgstr "Inconnu"
+
+msgid "Limit"
+msgstr "Limite"
+
+msgid "Search Limit Settings"
+msgstr "Limite de recherche"
+
+msgid "Limit:"
+msgstr "Limite :"
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid "Edit User Preferences"
+msgstr "Éditer les préférences utilisateur"
+
+msgid "Preference"
+msgstr "Préférence"
+
+msgid "Current Password:"
+msgstr "Mot de passe actuel :"
+
+msgid "Revision"
+msgstr "Révision"
+
+msgid "Select a revision"
+msgstr "Sélectionner une révision"
+
+msgid "Revision:"
+msgstr "Révision :"
+
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+msgid "Text Entries Shortcuts"
+msgstr "Raccourcis des champs texte"
+
+msgid "Cut selected text"
+msgstr "Couper le texte sélectionné"
+
+msgid "Copy selected text"
+msgstr "Copier le texte sélectionné"
+
+msgid "Paste copied text"
+msgstr "Coller le texte copié"
+
+msgid "Next widget"
+msgstr "Widget suivant"
+
+msgid "Previous widget"
+msgstr "Widget précédent"
+
+msgid "Relation Entries Shortcuts"
+msgstr "Raccourcis des champs relation"
+
+msgid "Create new relation"
+msgstr "Créer une nouvelle relation"
+
+msgid "Open/Search relation"
+msgstr "Ouvrir/Chercher une relation"
+
+msgid "List Entries Shortcuts"
+msgstr "Raccourcis des listes"
+
+msgid "Create new line"
+msgstr "Créer une nouvelle ligne"
+
+msgid "Open relation"
+msgstr "Ouvrir une relation"
+
+msgid "Mark line for deletion"
+msgstr "Marquer la ligne pour suppression"
+
+msgid "Unmark line for deletion"
+msgstr "Annuler le marquage de la ligne pour suppression"
+
+msgid "Edition Widgets"
+msgstr "Widgets d'édition"
+
+msgid ""
+"<b>Welcome to Tryton</b>\n"
+"\n"
+"\n"
+msgstr ""
+"<b>Bienvenue sur Tryton</b>\n"
+"\n"
+"\n"
+
+msgid ""
+"<b>Do you know Triton, one of the namesakes for our project?</b>\n"
+"\n"
+"Triton (pronounced /ˈtraɪtən/ TRYE-tən, or as in Greek Τρίτων) is the\n"
+"largest moon of the planet Neptune, discovered on October 10, 1846\n"
+"by William Lassell. It is the only large moon in the Solar System\n"
+"with a retrograde orbit, which is an orbit in the opposite direction\n"
+"to its planet's rotation. At 2,700 km in diameter, it is the seventh-"
+"largest\n"
+"moon in the Solar System. Triton comprises more than 99.5 percent of all\n"
+"the mass known to orbit Neptune, including the planet's rings and twelve\n"
+"other known moons. It is also more massive than all the Solar System's\n"
+"159 known smaller moons combined.\n"
+msgstr ""
+"<b>Connaissez-vous Triton, un des homonymes de notre Projet?</b>\n"
+"\n"
+"Triton est la plus grande lune de la planète Neptune.\n"
+"Découverte le 10 octobre 1846 par William Lassell, C'est la\n"
+"seule grande lune dans le système solaire avec une orbite rétrograde, "
+"c'est \n"
+"à dire une orbite dans la direction opposée à celle de la planète. Avec "
+"2700\n"
+"km de diamètre, c'est la septième plus grande lune du système solaire.\n"
+"Triton comprend plus de 99,5 pourcent de tout la masse connue en orbite\n"
+"autour de Neptune, incluant les anneaux et douze autres lunes. Elle\n"
+"est aussi plus massive que toutes les 159 plus petites lunes connues du\n"
+"système solaire combinées.\n"
+
+msgid ""
+"<b>Export list records</b>\n"
+"\n"
+"You can copy records from any list with Ctrl + C\n"
+"and paste in any application with Ctrl + V\n"
+msgstr ""
+"<b>Exporter la liste d'enregistrements</b>\n"
+"\n"
+"Vous pouvez copier les enregistrements d'une liste avec Ctrl + C\n"
+"et les coller dans une autre application avec Ctrl + V\n"
+
+msgid ""
+"<b>Export graphs</b>\n"
+"\n"
+"You can save any graphs in PNG file with right-click on it.\n"
+msgstr ""
+"<b>Export des  graphes</b>\n"
+"Vous pouvez exporter les graphes en PNG via un clic droit.\n"
+
+msgid "Tips"
+msgstr "Astuces"
+
+msgid "_Display a new tip next time"
+msgstr "_Afficher une nouvelle astuce la prochaine fois"
+
+msgid "Export to CSV"
+msgstr "Exporter en CSV"
+
+msgid "<b>Predefined exports</b>"
+msgstr "<b>Exportations prédéfinies</b>"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Tout les champs</b>"
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Save Export"
+msgstr "Sauver l'exportation"
+
+msgid "Delete Export"
+msgstr "Supprimer l'exportation"
+
+msgid "<b>Fields to export</b>"
+msgstr "<b>Champs à exporter</b>"
+
+msgid "<b>Options</b>"
+msgstr "<b>Options</b>"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Add _field names"
+msgstr "Ajouter les noms des champs"
+
+msgid "Name"
+msgstr "Nom"
+
+#, python-format
+msgid "%s (string)"
+msgstr "%s (string)"
+
+msgid "What is the name of this export?"
+msgstr "Quel est le nom de cet export ?"
+
+#, python-format
+msgid "Override '%s' definition?"
+msgstr "Surcharger la définition « %s » ?"
+
+#, python-format
+msgid "%d record saved!"
+msgstr "%d enregistrement sauvé!"
+
+#, python-format
+msgid "%d records saved!"
+msgstr "%d enregistrements sauvés!"
+
+#, python-format
+msgid ""
+"Operation failed!\n"
+"Error message:\n"
+"%s"
+msgstr ""
+"Échec de l'opération !\n"
+"Message d'erreur :\n"
+"%s"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Remove <Del>"
+msgstr "Supprimer <Del>"
+
+msgid "Create a new record <F3>"
+msgstr "Créer un nouvel enregistrement<F3>"
+
+msgid "Delete selected record <Del>"
+msgstr "Supprimer l'enregistrement sélectionné<Del>"
+
+msgid "Undelete selected record <Ins>"
+msgstr "Restaurer l'enregistrement sélectionné<Ins>"
+
+msgid "Import from CSV"
+msgstr "Importer depuis un CSV"
+
+msgid "Auto-Detect"
+msgstr "Détection automatique"
+
+msgid "<b>Fields to import</b>"
+msgstr "<b>Champs à importer</b>"
+
+msgid "File to Import:"
+msgstr "Fichier à importer"
+
+msgid "Open..."
+msgstr "Ouvrir..."
+
+msgid "CSV Parameters"
+msgstr "Paramètres CSV"
+
+msgid "Field Separator:"
+msgstr "Séparateur de champs :"
+
+msgid "Text Delimiter:"
+msgstr "Délimiteur de texte :"
+
+msgid "Encoding:"
+msgstr "Codage :"
+
+msgid "Lines to Skip:"
+msgstr "Lignes à ignorer :"
+
+msgid "Field name"
+msgstr "Nom du champ"
+
+msgid "You must select an import file first!"
+msgstr "Vous devez d'abord sélectionner un fichier d'import !"
+
+msgid "Error opening CSV file"
+msgstr "Erreur d'ouverture du fichier CSV"
+
+#, python-format
+msgid "Error processing the file at field %s."
+msgstr "Erreur lors du traitement du fichier du champ %s."
+
+#, python-format
+msgid "%d record imported!"
+msgstr "%d enregistrement importé!"
+
+#, python-format
+msgid "%d records imported!"
+msgstr "%d enregistrements importés!"
+
+msgid "Wizard"
+msgstr "Wizard"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Creation User"
+msgstr "Créé par l'utilisateur"
+
+msgid "Creation Date"
+msgstr "Date de création"
+
+msgid "Modification User"
+msgstr "Modifié par l'utilisateur"
+
+msgid "Modification Date"
+msgstr "Date de modification"
+
+msgid "Unable to get view tree state"
+msgstr "Impossible d'obtenir l'état de la vue arbre"
+
+msgid "Unable to set view tree state"
+msgstr "Impossible de définir l'état de la vue arbre"
+
+msgid ":"
+msgstr " :"
+
+msgid "Save As"
+msgstr "Enregistrer sous"
+
+msgid "Image Size"
+msgstr "Taille de l'image"
+
+msgid "Width:"
+msgstr "Largeur :"
+
+msgid "Height:"
+msgstr "Hauteur :"
+
+msgid "PNG image (*.png)"
+msgstr "image PNG (*.png)"
+
+msgid "Image size too large!"
+msgstr "Taille de l'image trop grande !"
+
+msgid ".."
+msgstr ".."
+
+msgid "F_ilters"
+msgstr "F_iltrer"
+
+msgid "Show bookmarks of filters"
+msgstr "Montrer les marques-pages des filtres"
+
+msgid "Remove this bookmark"
+msgstr "Supprimer ce marque-page"
+
+msgid "Bookmark this filter"
+msgstr "Sauver ce filtre"
+
+msgid "Bookmark Name:"
+msgstr "Nom du marque-page"
+
+msgid "Find"
+msgstr "Chercher"
+
+msgid "Today"
+msgstr "Aujourd'hui"
+
+msgid "Week View"
+msgstr "Vue semaine"
+
+msgid "Month View"
+msgstr "Vue mois"
+
+msgid "Week"
+msgstr "Semaine"
+
+msgid "Select a File..."
+msgstr "Sélectionner un fichier ..."
+
+msgid "Show plain text"
+msgstr "Montrer en text clair"
+
+msgid "Add value"
+msgstr "Ajouter une valeur"
+
+#, python-format
+msgid "Remove \"%s\""
+msgstr "Supprimer \"%s\""
+
+msgid "Select an Image..."
+msgstr "Sélectionner une image ..."
+
+msgid "All files"
+msgstr "Tous les fichiers"
+
+msgid "Images"
+msgstr "Images"
+
+msgid "Add existing record"
+msgstr "Ajouter un enregistrement existant"
+
+msgid "Remove selected record <Del>"
+msgstr "Supprimer l'enregistrement sélectionné<Del>"
+
+msgid "Open a record <F2>"
+msgstr "Ouvrir un enregistrement<F2>"
+
+msgid "Search a record <F2>"
+msgstr "Chercher un enregistrement<F2>"
+
+msgid "Remove selected record"
+msgstr "Supprimer l'enregistrement sélectionné"
+
+msgid "Edit selected record <F2>"
+msgstr "Éditer l'enregistrement sélectionné<F2>"
+
+msgid "Change text to bold"
+msgstr "Gras"
+
+msgid "Change text to italic"
+msgstr "Italique"
+
+msgid "Change text to underline"
+msgstr "Souligner"
+
+msgid "Choose font-family"
+msgstr "Police"
+
+msgid "Choose font-size"
+msgstr "Taille du texte"
+
+msgid "Justify of line to the left"
+msgstr "Aligner à gauche"
+
+msgid "Justify of line to the center"
+msgstr "Centrer"
+
+msgid "Justify of line to the right"
+msgstr "Aligner à droite"
+
+msgid "Justify of line to fill window"
+msgstr "Justifier"
+
+msgid "Change the foreground text"
+msgstr "Couleur du texte"
+
+msgid "Change the background text"
+msgstr "Couleur d'arrière plan"
+
+msgid "Change the markup text view"
+msgstr "Voir les balises"
+
+msgid "Select a foreground color"
+msgstr "Couleur du texte"
+
+msgid "Select a background color"
+msgstr "Couleur de l'arrière plan"
+
+msgid "Translation"
+msgstr "Traduction"
+
+msgid "Edit"
+msgstr "Éditer"
+
+msgid "Fuzzy"
+msgstr "Floue"
+
+msgid "You need to save the record before adding translations!"
+msgstr "Vous devez sauvegarder l'enregistrement avant d'ajouter des traductions !"
+
+msgid "No other language available!"
+msgstr "Pas d'autre langue disponible !"
+
+msgid "Translate view"
+msgstr "Traduire la vue"
+
