@@ -1,0 +1,66 @@
+type,name,res_id,src,value,fuzzy
+error,stock.forecast,0,"""To Date"" must be greater than ""From Date""!","Стойността на ""До дата"" трябва да е по-голяма от тази на  ""От дата""!",0
+error,stock.forecast,0,You can not create forecasts for the same locations with overlapping dates,Не може да създавате прогнози за еднао и също местонахиждение за припокриващи се периоди,0
+error,stock.forecast.complete,0,"""From Date"" should be smaller than ""To Date""!","Стойността на ""От дата"" трябва да е по-малка от тази на  ""До дата""!",0
+error,stock.forecast.line,0,Line quantity must be greater than the minimal quantity!,Количество на ред трябва да е по-голямо от минималното количество!,0
+error,stock.forecast.line,0,Line quantity must be positive!,Количеството на реда трябва да е положително число!,0
+error,stock.forecast.line,0,Product must be unique by forcast!,Продукта трябва да уникален по прогноза!,0
+field,"stock.forecast,company",0,Company,Фирма,0
+field,"stock.forecast,destination",0,Destination,Местонахождение-цел,0
+field,"stock.forecast,from_date",0,From Date,От дата,0
+field,"stock.forecast,lines",0,Lines,Редове,0
+field,"stock.forecast,location",0,Location,Местоположение,0
+field,"stock.forecast,rec_name",0,Name,Име,0
+field,"stock.forecast,state",0,State,Състояние,0
+field,"stock.forecast,to_date",0,To Date,До дата,0
+field,"stock.forecast.complete.ask,from_date",0,From Date,От дата,0
+field,"stock.forecast.complete.ask,to_date",0,To Date,До дата,0
+field,"stock.forecast.complete.choose,products",0,Products,Продукти,0
+field,"stock.forecast.line,forecast",0,Forecast,Прогноза,0
+field,"stock.forecast.line,minimal_quantity",0,Minimal Qty,"Мин, к-во",0
+field,"stock.forecast.line,moves",0,Moves,Движения,0
+field,"stock.forecast.line,product",0,Product,Продукт,0
+field,"stock.forecast.line,quantity",0,Quantity,Количество,0
+field,"stock.forecast.line,rec_name",0,Name,Име,0
+field,"stock.forecast.line,unit_digits",0,Unit Digits,Десетични единици,0
+field,"stock.forecast.line,uom",0,UOM,Мер. ед.,0
+field,"stock.forecast.line-stock.move,line",0,Forecast Line,Ред от прогноза,0
+field,"stock.forecast.line-stock.move,move",0,Move,Движение,0
+field,"stock.forecast.line-stock.move,rec_name",0,Name,Име,0
+model,"ir.action,name",act_forecast_form,Forecasts,Прогнози,0
+model,"ir.action,name",act_forecast_form2,Forecasts,Прогнози,0
+model,"ir.action,name",act_forecast_form_draft,Draft Forecasts,Проект на прогноза,0
+model,"ir.action,name",wizard_forecast_complete,Complete Forecast,Изготвяне на прогноза,0
+model,"ir.ui.menu,name",menu_forecast_form,Forecasts,Прогнози,0
+model,"ir.ui.menu,name",menu_forecast_form_draft,Draft Forecasts,Проект на прогноза,0
+model,"ir.ui.menu,name",menu_forecast_form_new,New Forecast,Нова прогноза,0
+model,"res.group,name",group_stock_forecast,Stock Forecast,Прогноза за наличност,0
+model,"stock.forecast,name",0,Stock Forecast,Прогноза за наличност,0
+model,"stock.forecast.complete.ask,name",0,Forecast Complete Ask,Запитване за изготвяне на прогноза,0
+model,"stock.forecast.complete.choose,name",0,Forecast Complete Choose,Изготвяне на прогноза - Избор,0
+model,"stock.forecast.line,name",0,Stock Forecast Line,Ред от прогноза за наличност,0
+model,"stock.forecast.line-stock.move,name",0,ForecastLine - Move,Ред от прогноза - Движение,0
+model,"workflow,name",wkf_forecast,Forecast,Прогноза,0
+model,"workflow.activity,name",forecast_act_cancel,Cancel,Отказ,0
+model,"workflow.activity,name",forecast_act_done,Done,Приключен,0
+model,"workflow.activity,name",forecast_act_draft,Draft,Проект,0
+selection,"stock.forecast,state",0,Cancel,Отказ,0
+selection,"stock.forecast,state",0,Done,Приключен,0
+selection,"stock.forecast,state",0,Draft,Проект,0
+view,stock.forecast,0,Add forecast line based on past data.,Добавяне на ред от прогноза въз основа на минали данни,0
+view,stock.forecast,0,Cancel,Отказ,0
+view,stock.forecast,0,Complete Forecast,Изготвяне на прогноза,0
+view,stock.forecast,0,Confirm,Потвърждаване,0
+view,stock.forecast,0,Forecast,Прогноза,0
+view,stock.forecast,0,Forecasts,Прогнози,0
+view,stock.forecast,0,Reset to Draft,Изпращане в проект,0
+view,stock.forecast.complete.ask,0,Choose dates,Избор на дати,0
+view,stock.forecast.complete.choose,0,Choose products,Избор на продукти,0
+view,stock.forecast.line,0,Forecast Line,Ред от прогноза,0
+view,stock.forecast.line,0,Forecast Lines,Редове от прогноза,0
+wizard_button,"stock.forecast.complete,choose,complete",0,Complete,Пълен,0
+wizard_button,"stock.forecast.complete,choose,end",0,cancel,Отказ,0
+wizard_button,"stock.forecast.complete,choose,init",0,Choose Dates,Избор на дати,0
+wizard_button,"stock.forecast.complete,init,choose",0,Choose products,Избор на продукти,0
+wizard_button,"stock.forecast.complete,init,complete",0,Complete,Пълен,0
+wizard_button,"stock.forecast.complete,init,end",0,cancel,Отказ,0

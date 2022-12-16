@@ -1,0 +1,41 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,You can not create recursive dependencies!,Vous ne pouvez pas créer des dépendances récursives !,0
+field,"project.allocation,employee",0,Employee,Employé,1
+field,"project.allocation,percentage",0,Percentage,Pourcentage,1
+field,"project.allocation,rec_name",0,Name,Nom,1
+field,"project.allocation,work",0,Work,Tâche,1
+field,"project.predecessor_successor,predecessor",0,Predecessor,Prédécesseur,0
+field,"project.predecessor_successor,rec_name",0,Name,Nom,1
+field,"project.predecessor_successor,successor",0,Successor,Successeur,0
+field,"project.work,actual_finish_date",0,Actual Finish,Fin réelle,0
+field,"project.work,actual_finish_time",0,Actual Finish Time,Fin réelle,0
+field,"project.work,actual_start_date",0,Actual Start,Début réel,0
+field,"project.work,actual_start_time",0,Actual Start Time,Début réel,0
+field,"project.work,allocations",0,Allocations,Répartitions,0
+field,"project.work,back_leveling_delay",0,Leveling Delay,Délais de décalage,0
+field,"project.work,constraint_finish_date",0,Constraint Finish,Fin imposée,0
+field,"project.work,constraint_finish_time",0,Constraint  Finish Time,Fin imposée,0
+field,"project.work,constraint_start_date",0,Constraint Start,Début imposé,0
+field,"project.work,constraint_start_time",0,Constraint Start Time,Début imposé,0
+field,"project.work,duration",0,Duration,Durée,0
+field,"project.work,early_finish_date",0,Early Finish,Fin au plus tôt,0
+field,"project.work,early_finish_time",0,Early Finish Time,Fin au plus tôt,0
+field,"project.work,early_start_date",0,Early Start,Départ au plus tôt,0
+field,"project.work,early_start_time",0,Early Start Time,Départ au plus tôt,0
+field,"project.work,late_finish_date",0,Late Finish,Fin au plus tard,0
+field,"project.work,late_finish_time",0,Late Finish Time,Fin au plus tard,0
+field,"project.work,late_start_date",0,Late Start,Début au plus tard,0
+field,"project.work,late_start_time",0,Late Start Time,au plus tard,0
+field,"project.work,leveling_delay",0,Leveling Delay,Délais décalage,0
+field,"project.work,predecessors",0,Predecessors,Prédécesseurs,0
+field,"project.work,requests",0,Requests,Demandes,1
+field,"project.work,successors",0,Successors,Successeurs,0
+model,"ir.action,name",wizard_leveling,Tasks Leveling,Décalage des tâches,0
+model,"project.allocation,name",0,Allocation,Répartition,0
+model,"project.predecessor_successor,name",0,Predecessor - Successor,Prédécesseur - Successeur,0
+model,"res.request.link,name",request_link_work,Work,Tâche,1
+view,project.allocation,0,Allocation,Répartition,0
+view,project.allocation,0,Allocations,Répartitions,0
+view,project.work,0,Allocations,Répartitions,0
+view,project.work,0,Plan,Planification,0
+view,project.work,0,Requests,Demandes,1
