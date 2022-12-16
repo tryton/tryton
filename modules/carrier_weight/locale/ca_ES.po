@@ -1,0 +1,75 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,weight_currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:carrier,weight_currency_digits:"
+msgid "Weight Currency Digits"
+msgstr "Decimals moneda del pes"
+
+msgctxt "field:carrier,weight_price_list:"
+msgid "Price List"
+msgstr "Tarifa"
+
+msgctxt "field:carrier,weight_uom:"
+msgid "Weight Uom"
+msgstr "Pes UdM"
+
+msgctxt "field:carrier,weight_uom_digits:"
+msgid "Weight Uom Digits"
+msgstr "Decimals UdM pes"
+
+msgctxt "field:carrier.weight_price_list,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.weight_price_list,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:carrier.weight_price_list,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:carrier.weight_price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier.weight_price_list,price:"
+msgid "Price"
+msgstr "Preu"
+
+msgctxt "field:carrier.weight_price_list,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:carrier.weight_price_list,weight:"
+msgid "Weight"
+msgstr "Pes"
+
+msgctxt "field:carrier.weight_price_list,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:carrier.weight_price_list,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "model:carrier.weight_price_list,name:"
+msgid "Carrier Weight Price List"
+msgstr "Tarifa pes transportista"
+
+msgctxt "selection:carrier,carrier_cost_method:"
+msgid "Weight"
+msgstr "Pes"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price List"
+msgstr "Tarifa pes transportista"
+
+msgctxt "view:carrier.weight_price_list:"
+msgid "Carrier Weight Price Lists"
+msgstr "Tarifes pes transportista"
