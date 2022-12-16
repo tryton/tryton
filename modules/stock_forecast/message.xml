@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_forecast_date_overlap">
+            <field name="text">The forecasts "%(first)s" and "%(second)s" overlap, you must use different dates.</field>
+        </record>
+        <record model="ir.message" id="msg_forecast_delete_cancel">
+            <field name="text">To delete forecast "%(forecast)s" you must cancel it.</field>
+        </record>
+        <record model="ir.message" id="msg_forecast_line_product_unique">
+            <field name="text">Product must be unique by forecast.</field>
+        </record>
+    </data>
+</tryton>
