@@ -1,0 +1,59 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.shipment.internal:"
+msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
+msgstr "مکان : \"%s\" در حال حاضر توسط : \"%s\" اختصاص داده است."
+
+msgctxt "field:stock.location,assigned_by:"
+msgid "Assigned by"
+msgstr "اختصاص داده شده توسط"
+
+msgctxt "field:stock.location,movable:"
+msgid "Movable"
+msgstr "قابل جابجایی"
+
+msgctxt "field:stock.shipment.internal,locations:"
+msgid "Locations"
+msgstr "مکان ها"
+
+msgctxt "field:stock.shipment.internal-location,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+msgctxt "field:stock.shipment.internal-location,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:stock.shipment.internal-location,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:stock.shipment.internal-location,location:"
+msgid "Location"
+msgstr "مکان"
+
+msgctxt "field:stock.shipment.internal-location,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:stock.shipment.internal-location,shipment:"
+msgid "Shipment"
+msgstr "محموله"
+
+msgctxt "field:stock.shipment.internal-location,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+msgctxt "field:stock.shipment.internal-location,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+msgctxt "model:res.group,name:group_stock_location_movable"
+msgid "Stock Location Movable"
+msgstr "مکان موجودی قابل جابجایی"
+
+msgctxt "model:stock.shipment.internal-location,name:"
+msgid "Shipment Internal - Location"
+msgstr "مکان - محموله داخلی"

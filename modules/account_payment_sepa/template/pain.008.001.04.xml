@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:py="http://genshi.edgewall.org/">
+    <xi:include href="base.xml"/>
+    <CstmrDrctDbtInitn>
+        <GrpHdr>
+            <MsgId>${group.number[:35]}</MsgId>
+            <CreDtTm>${datetime.datetime.now().replace(microsecond=0).isoformat()}</CreDtTm>
+            <!-- Authstn -->
+            <NbOfTxs>${len(group.payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
+            <!-- PmtTpInf -->
+            <!-- ReqdColltnDt -->
+            <InitgPty>
+                ${PartyIdentification(group.sepa_initiating_party)}
+            </InitgPty>
+            <!-- FwdgAgt -->
+        </GrpHdr>
+        <PmtInf py:for="key, payments in group.sepa_payments">
+            <PmtInfId>${group.sepa_group_payment_id(key)[:35]}</PmtInfId>
+            <PmtMtd>DD</PmtMtd>
+            <BtchBookg>${'true' if group.journal.sepa_batch_booking else 'false'}</BtchBookg>
+            <NbOfTxs>${len(payments)}</NbOfTxs>
+            <CtrlSum>${sum(p.amount for p in payments)}</CtrlSum>
+            <PmtTpInf>
+                <!-- InstrPrty -->
+                <SvcLvl>
+                    <Cd>SEPA</Cd>
+                    <!-- Prtry -->
+                </SvcLvl>
+                <LclInstrm>
+                    <Cd>${key['scheme']}</Cd>
+                    <!-- Prtry -->
+                </LclInstrm>
+                <SeqTp>${key['sequence_type']}</SeqTp>
+                <!-- CtgyPurp -->
+            </PmtTpInf>
+            <ReqdColltnDt>${key['date'].isoformat()}</ReqdColltnDt>
+            <Cdtr>
+                ${PartyIdentification(group.company.party, id=False)}
+            </Cdtr>
+            <CdtrAcct>
+                ${Account(group.journal.sepa_bank_account_number)}
+            </CdtrAcct>
+            <CdtrAgt>
+                ${FinancialInstitution(group.journal.sepa_bank_account_number.account.bank, only_bic=True)}
+            </CdtrAgt>
+            <!-- CdtrAgtAcct -->
+            <!-- UltmtCdtr -->
+            <ChrgBr>${group.journal.sepa_charge_bearer}</ChrgBr>
+            <!-- ChrgsAcct -->
+            <!-- ChrgsAcctAgt -->
+            <CdtrSchmeId>
+                ${PartyIdentification(group.company.party)}
+            </CdtrSchmeId>
+            <DrctDbtTxInf py:for="payment in payments">
+                <PmtId>
+                    <InstrId>${payment.sepa_instruction_id}</InstrId>
+                    <EndToEndId>${payment.sepa_end_to_end_id}</EndToEndId>
+                </PmtId>
+                <!-- PmtTpInf -->
+                <InstdAmt py:attrs="{'Ccy': payment.currency.code}">${payment.amount}</InstdAmt>
+                <!-- ChrgBr --> <!-- EPC only at payment information level -->
+                <DrctDbtTx>
+                    <MndtRltdInf py:with="mandate = payment.sepa_mandate">
+                        <MndtId>${mandate.identification}</MndtId>
+                        <DtOfSgntr>${mandate.signature_date.isoformat()}</DtOfSgntr>
+                        <!-- AmdmntInd -->
+                        <!-- AmdmntInfDtls -->
+                        <!-- ElctrncSgntr -->
+                        <!-- FrstColltnDt -->
+                        <!-- FnlColltnDt -->
+                        <!-- Frqcy -->
+                    </MndtRltdInf>
+                    <!-- CdtrSchmeId -->
+                    <!-- PreNtfctnId -->
+                    <!-- PreNtfctnDt -->
+                </DrctDbtTx>
+                <!-- UltmtCdtr -->
+                <DbtrAgt>
+                    ${FinancialInstitution(payment.sepa_bank_account_number.account.bank, only_bic=True)}
+                </DbtrAgt>
+                <!-- DbtrAgtAcct -->
+                <Dbtr>
+                    ${PartyIdentification(payment.party)}
+                </Dbtr>
+                <DbtrAcct>
+                    ${Account(payment.sepa_bank_account_number, currency=False)}
+                </DbtrAcct>
+                <!-- UltmtDbtr -->
+                <!-- InstrForCdtrAgt -->
+                <!-- Purp -->
+                <!-- RgltryRptg -->
+                <!-- Tax -->
+                <!-- RltdRmtInf -->
+                <RmtInf py:if="payment.sepa_remittance_information">
+                    <Ustrd>${payment.sepa_remittance_information[:140]}</Ustrd>
+                </RmtInf>
+                <!-- SplmtryData -->
+            </DrctDbtTxInf>
+        </PmtInf>
+        <!-- SplmtryData -->
+    </CstmrDrctDbtInitn>
+</Document>

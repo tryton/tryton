@@ -1,0 +1,75 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:"
+msgid "Week Days"
+msgstr "Dnevi v tednu"
+
+msgctxt "field:purchase.product_supplier.day,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.product_supplier.day,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.product_supplier.day,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
+msgid "Supplier"
+msgstr "Dobavitelj"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.product_supplier.day,weekday:"
+msgid "Week Day"
+msgstr "Dan v tednu"
+
+msgctxt "field:purchase.product_supplier.day,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.product_supplier.day,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "model:purchase.product_supplier.day,name:"
+msgid "Product Supplier Day"
+msgstr "Dobaviteljev dan"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Friday"
+msgstr "Petek"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Monday"
+msgstr "Ponedeljek"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Saturday"
+msgstr "Sobota"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Sunday"
+msgstr "Nedelja"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Thursday"
+msgstr "Četrtek"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Tuesday"
+msgstr "Torek"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:"
+msgid "Wednesday"
+msgstr "Sreda"
+
+msgctxt "view:purchase.product_supplier.day:"
+msgid "Week Day"
+msgstr "Dan v tednu"

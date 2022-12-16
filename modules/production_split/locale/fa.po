@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production.split.start,count:"
+msgid "Count"
+msgstr "شمارش"
+
+msgctxt "field:production.split.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+msgctxt "field:production.split.start,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:production.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "ارقام واحد"
+
+msgctxt "field:production.split.start,uom:"
+msgid "Uom"
+msgstr "واحد اندازی گیری"
+
+msgctxt "field:production.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "دسته بندی واحد اندازه گیری"
+
+msgctxt "help:production.split.start,count:"
+msgid "The limit number of productions"
+msgstr "تعداد محدود تولیدات"
+
+msgctxt "model:ir.action,name:wizard_split_production"
+msgid "Split Production"
+msgstr "تقسیم تولید"
+
+msgctxt "model:ir.model.button,string:production_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:production.split.start,name:"
+msgid "Split Production"
+msgstr "تقسیم تولید"
+
+msgctxt "wizard_button:production.split,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "تقسیم"
