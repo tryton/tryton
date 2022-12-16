@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_line_view_form">
+            <field name="model">purchase.line</field>
+            <field name="inherit" ref="purchase.purchase_line_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page/field[@name=&quot;amount&quot;]"
+                        position="after">
+                        <group col="4" colspan="4" name="analytic_accounts">
+                            <field name="analytic_accounts"/>
+                        </group>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

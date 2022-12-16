@@ -1,0 +1,137 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:"
+msgid "Invalid formula!"
+msgstr "Invalida formula!"
+
+msgctxt "field:product.price_list,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:product.price_list,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.price_list,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.price_list,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:product.price_list,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.price_list,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.price_list,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.price_list,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.price_list.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+msgctxt "field:product.price_list.line,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.price_list.line,formula:"
+msgid "Formula"
+msgstr "Formula"
+
+msgctxt "field:product.price_list.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.price_list.line,price_list:"
+msgid "Price List"
+msgstr "Lista de Precios"
+
+msgctxt "field:product.price_list.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.price_list.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:product.price_list.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.price_list.line,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:product.price_list.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de Unidad"
+
+msgctxt "field:product.price_list.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.price_list.line,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr "La expresion python que será evaluada con:"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Listas de Precios"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Listas de Precios"
+
+msgctxt "model:product.price_list,name:"
+msgid "Price List"
+msgstr "Lista de Precios"
+
+msgctxt "model:product.price_list.line,name:"
+msgid "Price List Line"
+msgstr "Linea de Lista de Precios"
+
+msgctxt "view:party.party:"
+msgid "Price List"
+msgstr "Lista de Precios"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Line"
+msgstr "Linea de Lista de Precios"
+
+msgctxt "view:product.price_list.line:"
+msgid "Price List Lines"
+msgstr "Lineas de Lista de Precios"
+
+msgctxt "view:product.price_list:"
+msgid "Price List"
+msgstr "Lista de Precios"
+
+msgctxt "view:product.price_list:"
+msgid "Price List Lines"
+msgstr "Lineas de Lista de Precios"
+
+msgctxt "view:product.price_list:"
+msgid "Price Lists"
+msgstr "Listas de Precios"

@@ -1,0 +1,1539 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.fiscalyear:"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the fiscalyear"
+msgstr ""
+"No podeu canviar la seqüència d'una factura si ja hi ha una factura oberta "
+"en l'exercici fiscal."
+
+msgctxt "error:account.fiscalyear:"
+msgid "You must have different invoice sequences per fiscal year!"
+msgstr "Heu de tenir diferents seqüències de factura per exercici fiscal."
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund an invoice that is not opened!"
+msgstr ""
+"No podeu fer un abonament amb devolució des d'una factura que no estigui "
+"oberta."
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund an invoice with payments!"
+msgstr ""
+"No podeu fer un abonament amb devolució des d'una factura amb pagaments."
+
+msgctxt "error:account.invoice.line:"
+msgid "Line with \"line\" type must have an account!"
+msgstr "Una línia del tipus \"línia\" ha de tenir un compte."
+
+msgctxt "error:account.invoice.line:"
+msgid "Line without \"line\" type must have an invoice!"
+msgstr "Una línia sense el tipus \"línia\" ha de tenir una factura."
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"No podeu afegir una línia a una factura que està oberta, pagada o "
+"cancel·lada."
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not create invoice line\n"
+"with account with a different invoice company!"
+msgstr ""
+"No podeu crear una línia de factura\n"
+"amb un compte d'una empresa diferent de la que factura."
+
+msgctxt "error:account.invoice.line:"
+msgid "You can not modify line from an invoice that is opened, paid!"
+msgstr "No podeu modificar les línies d'una factura que està oberta o pagada."
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not use the same account\n"
+"as on the invoice!"
+msgstr ""
+"No podeu utilitzar el mateix compte\n"
+"que en la factura."
+
+msgctxt "error:account.invoice.pay:"
+msgid ""
+"You can not create a partial payment with an amount greater then the amount "
+"to pay!"
+msgstr ""
+"No podeu crear un pagament parcial amb un import major que l'import a pagar."
+
+msgctxt "error:account.invoice.payment_term.line:"
+msgid "Day of month must be between 1 and 31."
+msgstr "El dia del mes ha d'estar entre 1 i 31."
+
+msgctxt "error:account.invoice.payment_term.line:"
+msgid "Percentage and Divisor values are not consistent."
+msgstr "Els valors percentatge i divisor no són coherents."
+
+msgctxt "error:account.invoice.payment_term:"
+msgid "Invalid payment term line!"
+msgstr "La línia del termini de pagament no és correcta."
+
+msgctxt "error:account.invoice.payment_term:"
+msgid "Payment term missing a remainder line!"
+msgstr "Al termini de pagament li falta una línia amb el remanent."
+
+msgctxt "error:account.invoice.tax:"
+msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgstr ""
+"No podeu afegir una línia a una factura que està oberta, pagada o "
+"cancel·lada."
+
+msgctxt "error:account.invoice.tax:"
+msgid "You can not modify tax from an invoice that is opened, paid!"
+msgstr ""
+"No podeu modificar els impostos d'una factura que està oberta o pagada."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Base taxes different from invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Els impostos base són diferents de les línies de la factura.\n"
+"Recalculeu la factura."
+
+msgctxt "error:account.invoice:"
+msgid "Invoice \"%s\" must be cancelled before deletion!"
+msgstr "La factura \"%s\" ha de ser cancel·lada abans d'eliminar-la."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Taxes defined but not on invoice lines!\n"
+"Re-compute the invoice."
+msgstr ""
+"Els impostos estan definits a la factura però cap a les línies de la factura.\n"
+"Recalculeu la factura."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Taxes defined on invoice lines but not on invoice!\n"
+"Re-compute the invoice."
+msgstr ""
+"Els impostos estan definits a les línies de la factura però no a la factura.\n"
+"Recalculeu la factura."
+
+msgctxt "error:account.invoice:"
+msgid "The credit account on journal is missing!"
+msgstr "Falta el compte haver del diari."
+
+msgctxt "error:account.invoice:"
+msgid "The credit account on journal is the same than the invoice account!"
+msgstr "El compte haver del diari és el mateix que el de la factura."
+
+msgctxt "error:account.invoice:"
+msgid "The debit account on journal is missing!"
+msgstr "Falta el compte deure del diari."
+
+msgctxt "error:account.invoice:"
+msgid "The debit account on journal is the same than the invoice account!"
+msgstr "El compte deure del diari és el mateix que el de la factura."
+
+msgctxt "error:account.invoice:"
+msgid "There is no invoice sequence on the period/fiscal year!"
+msgstr "No existeix una seqüència de factura pel període/exercici fiscal."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not create an invoice\n"
+"with account from a different invoice company!"
+msgstr ""
+"No podeu crear una factura\n"
+"amb un compte d'una empresa diferent de la que factura."
+
+msgctxt "error:account.invoice:"
+msgid "You can not modify an invoice that is opened, paid!"
+msgstr "No podeu modificar una factura que està oberta o pagada."
+
+msgctxt "error:account.invoice:"
+msgid "You can not reset to draft an invoice that has move!"
+msgstr "No podeu posar en esborrany una factura que té assentament."
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not use the same account\n"
+"as on invoice line!"
+msgstr ""
+"No podeu utilitzar el mateix compte\n"
+"que en la línia de la factura."
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not change the invoice sequence if there is already an invoice "
+"opened in the period"
+msgstr ""
+"No podeu canviar la seqüència d'una factura si ja hi ha una factura oberta "
+"en el període."
+
+msgctxt "error:account.period:"
+msgid ""
+"You must have different invoice sequences per fiscal year and in the same "
+"company!"
+msgstr ""
+"Heu de tenir diferents seqüències de factura per exercici fiscal en la "
+"mateixa empresa."
+
+msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Seqüència d'abonament de proveïdor"
+
+msgctxt "field:account.fiscalyear,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Seqüència de factura de proveïdor"
+
+msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Seqüència d'abonament de client"
+
+msgctxt "field:account.fiscalyear,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Seqüència de factura de client"
+
+msgctxt "field:account.invoice,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.invoice,accounting_date:"
+msgid "Accounting Date"
+msgstr "Data comptabilització"
+
+msgctxt "field:account.invoice,amount_to_pay:"
+msgid "Amount to Pay"
+msgstr "Import a pagar"
+
+msgctxt "field:account.invoice,amount_to_pay_today:"
+msgid "Amount to Pay Today"
+msgstr "Import a pagar avui"
+
+msgctxt "field:account.invoice,comment:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:account.invoice,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice,currency_date:"
+msgid "Currency Date"
+msgstr "Data moneda"
+
+msgctxt "field:account.invoice,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígits de la moneda"
+
+msgctxt "field:account.invoice,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adreça de factura"
+
+msgctxt "field:account.invoice,invoice_date:"
+msgid "Invoice Date"
+msgstr "Data factura"
+
+msgctxt "field:account.invoice,invoice_report_cache:"
+msgid "Invoice Report"
+msgstr "Informe factura"
+
+msgctxt "field:account.invoice,invoice_report_format:"
+msgid "Invoice Report Format"
+msgstr "Format de l'informe de factura"
+
+msgctxt "field:account.invoice,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.invoice,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.invoice,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Línies a pagar"
+
+msgctxt "field:account.invoice,move:"
+msgid "Move"
+msgstr "Assentament"
+
+msgctxt "field:account.invoice,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.invoice,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.invoice,party_lang:"
+msgid "Party Language"
+msgstr "Idioma tercer"
+
+msgctxt "field:account.invoice,payment_lines:"
+msgid "Payment Lines"
+msgstr "Línies de pagament"
+
+msgctxt "field:account.invoice,payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:account.invoice,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice,reconciled:"
+msgid "Reconciled"
+msgstr "Concil·liada"
+
+msgctxt "field:account.invoice,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:account.invoice,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.invoice,tax_amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.invoice,taxes:"
+msgid "Tax Lines"
+msgstr "Línies d'impost"
+
+msgctxt "field:account.invoice,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:account.invoice,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice,type_name:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Base imponible"
+
+msgctxt "field:account.invoice,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice-account.move.line,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice-account.move.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice-account.move.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice-account.move.line,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice-account.move.line,line:"
+msgid "Payment Line"
+msgstr "Línia de pagament"
+
+msgctxt "field:account.invoice-account.move.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice-account.move.line,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice-account.move.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice.credit.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.credit.start,with_refund:"
+msgid "With Refund"
+msgstr "Amb devolució"
+
+msgctxt "field:account.invoice.line,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.invoice.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.invoice.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.line,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígits de la moneda"
+
+msgctxt "field:account.invoice.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.line,invoice_taxes:"
+msgid "Invoice Taxes"
+msgstr "Impostos de la factura"
+
+msgctxt "field:account.invoice.line,invoice_type:"
+msgid "Invoice Type"
+msgstr "Tipus de factura"
+
+msgctxt "field:account.invoice.line,note:"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:account.invoice.line,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.invoice.line,party_lang:"
+msgid "Party Language"
+msgstr "Idioma tercer"
+
+msgctxt "field:account.invoice.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:account.invoice.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categoria UdM del producte"
+
+msgctxt "field:account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:account.invoice.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.line,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:account.invoice.line,taxes:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "field:account.invoice.line,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "field:account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitat"
+
+msgctxt "field:account.invoice.line,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice.line-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice.line-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice.line-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.line-account.tax,line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "field:account.invoice.line-account.tax,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.invoice.line-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice.line-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice.pay.ask,account_writeoff:"
+msgid "Write-Off Account"
+msgstr "Compte del desajust"
+
+msgctxt "field:account.invoice.pay.ask,amount:"
+msgid "Payment Amount"
+msgstr "Import del pagament"
+
+msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
+msgid "Write-Off Amount"
+msgstr "Import del desajust"
+
+msgctxt "field:account.invoice.pay.ask,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.pay.ask,currency:"
+msgid "Payment Currency"
+msgstr "Moneda de pagament"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits:"
+msgid "Payment Currency Digits"
+msgstr "Decimals moneda de pagament"
+
+msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
+msgid "Write-Off Currency Digits"
+msgstr "Decimals de la moneda del desajust"
+
+msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
+msgid "Write-Off Currency"
+msgstr "Moneda del desajust"
+
+msgctxt "field:account.invoice.pay.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.pay.ask,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
+msgid "Write-Off Journal"
+msgstr "Diari del desajust"
+
+msgctxt "field:account.invoice.pay.ask,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
+msgid "Lines to Pay"
+msgstr "Línies a pagar"
+
+msgctxt "field:account.invoice.pay.ask,payment_lines:"
+msgid "Payment Lines"
+msgstr "Línies de pagament"
+
+msgctxt "field:account.invoice.pay.ask,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice.pay.start,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.invoice.pay.start,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.pay.start,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígits de la moneda"
+
+msgctxt "field:account.invoice.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.pay.start,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice.pay.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.pay.start,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.invoice.payment_term,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:account.invoice.payment_term,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice.payment_term,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice.payment_term,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice.payment_term,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:account.invoice.payment_term,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.payment_term,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice.payment_term,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice.payment_term.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.invoice.payment_term.line,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice.payment_term.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice.payment_term.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.payment_term.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígits de la moneda"
+
+msgctxt "field:account.invoice.payment_term.line,day:"
+msgid "Day of Month"
+msgstr "Dia del mes"
+
+msgctxt "field:account.invoice.payment_term.line,days:"
+msgid "Number of Days"
+msgstr "Número de dies"
+
+msgctxt "field:account.invoice.payment_term.line,divisor:"
+msgid "Divisor"
+msgstr "Divisor"
+
+msgctxt "field:account.invoice.payment_term.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment_term.line,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.invoice.payment_term.line,months:"
+msgid "Number of Months"
+msgstr "Número de mesos"
+
+msgctxt "field:account.invoice.payment_term.line,payment:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:account.invoice.payment_term.line,percentage:"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "field:account.invoice.payment_term.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.payment_term.line,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:account.invoice.payment_term.line,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.invoice.payment_term.line,weekday:"
+msgid "Day of Week"
+msgstr "Dia de la setmana"
+
+msgctxt "field:account.invoice.payment_term.line,weeks:"
+msgid "Number of Weeks"
+msgstr "Número de setmanes"
+
+msgctxt "field:account.invoice.payment_term.line,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice.payment_term.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.invoice.print.warning,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.tax,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.invoice.tax,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.invoice.tax,base:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "field:account.invoice.tax,base_code:"
+msgid "Base Code"
+msgstr "Codi base"
+
+msgctxt "field:account.invoice.tax,base_sign:"
+msgid "Base Sign"
+msgstr "Signe base"
+
+msgctxt "field:account.invoice.tax,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.invoice.tax,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.invoice.tax,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.invoice.tax,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.tax,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.tax,manual:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "field:account.invoice.tax,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.invoice.tax,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:account.invoice.tax,sequence_number:"
+msgid "Sequence Number"
+msgstr "Número de seqüència"
+
+msgctxt "field:account.invoice.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.invoice.tax,tax_code:"
+msgid "Tax Code"
+msgstr "Codi d'impost"
+
+msgctxt "field:account.invoice.tax,tax_sign:"
+msgid "Tax Sign"
+msgstr "Signe de l'impost"
+
+msgctxt "field:account.invoice.tax,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.invoice.tax,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.period,in_credit_note_sequence:"
+msgid "Supplier Credit Note Sequence"
+msgstr "Seqüència d'abonament de proveïdor"
+
+msgctxt "field:account.period,in_invoice_sequence:"
+msgid "Supplier Invoice Sequence"
+msgstr "Seqüència de factura de proveïdor"
+
+msgctxt "field:account.period,out_credit_note_sequence:"
+msgid "Customer Credit Note Sequence"
+msgstr "Seqüència d'abonament de client"
+
+msgctxt "field:account.period,out_invoice_sequence:"
+msgid "Customer Invoice Sequence"
+msgstr "Seqüència de factura de client"
+
+msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:party.party,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr "Termini pagament del client"
+
+msgctxt "field:party.party,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr "Termini de pagament del proveïdor"
+
+msgctxt "help:account.invoice.credit.start,with_refund:"
+msgid "If true, the current invoice(s) will be paid."
+msgstr "Si està marcada, les factures actuals es pagarán."
+
+msgctxt "help:account.invoice.payment_term.line,sequence:"
+msgid "Use to order lines in ascending order"
+msgstr "Serveix per ordenar les línies de forma ascendent."
+
+msgctxt "model:account.invoice,name:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:account.invoice-account.move.line,name:"
+msgid "Invoice - Payment Line"
+msgstr "Factura - Línia de pagament"
+
+msgctxt "model:account.invoice.credit.start,name:"
+msgid "Credit Invoice Init"
+msgstr "Inicialització factura abonament"
+
+msgctxt "model:account.invoice.line,name:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "model:account.invoice.line-account.tax,name:"
+msgid "Invoice Line - Tax"
+msgstr "Línia de factura - Impost"
+
+msgctxt "model:account.invoice.pay.ask,name:"
+msgid "Pay Invoice"
+msgstr "Paga factura"
+
+msgctxt "model:account.invoice.pay.start,name:"
+msgid "Pay Invoice"
+msgstr "Paga factura"
+
+msgctxt "model:account.invoice.payment_term,name:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "model:account.invoice.payment_term.line,name:"
+msgid "Payment Term Line"
+msgstr "Línia termini de pagament"
+
+msgctxt "model:account.invoice.print.warning,name:"
+msgid "Print Invoice Report Warning"
+msgstr "Imprimeix avís informe de factura"
+
+msgctxt "model:account.invoice.tax,name:"
+msgid "Invoice Tax"
+msgstr "Impost de factura"
+
+msgctxt "model:ir.action,name:act_invoice_form"
+msgid "All Invoices"
+msgstr "Totes les factures"
+
+msgctxt "model:ir.action,name:act_invoice_form2"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Abonaments de proveïdor"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Abonaments de proveïdor esborrany"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "Abonaments de proveïdor Pro Forma"
+
+msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Abonaments de proveïdor oberts"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Factures de proveïdor"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Factures de proveïdor esborrany"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "Factures de proveïdor Pro Forma"
+
+msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Factures de proveïdor obertes"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Abonaments"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Abonaments esborrany"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "Abonaments Pro Forma"
+
+msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Abonaments oberts"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Factures esborrany"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "Factures Pro Forma"
+
+msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Factures obertes"
+
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Terminis de pagament"
+
+msgctxt "model:ir.action,name:credit"
+msgid "Credit"
+msgstr "Abona"
+
+msgctxt "model:ir.action,name:print"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:ir.action,name:report_invoice"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:ir.action,name:wizard_pay"
+msgid "Pay Invoice"
+msgstr "Paga factura"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_form"
+msgid "All Invoices"
+msgstr "Totes les factures"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
+msgid "Supplier Credit Notes"
+msgstr "Abonaments de proveïdor"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
+msgid "Draft Supplier Credit Notes"
+msgstr "Esborrany"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
+msgid "Pro Forma Supplier Credit Notes"
+msgstr "Pro Forma"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
+msgid "Opened Supplier Credit Notes"
+msgstr "Oberts"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
+msgid "Supplier Invoices"
+msgstr "Factures de proveïdor"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
+msgid "Draft Supplier Invoices"
+msgstr "Esborrany"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
+msgid "Pro Forma Supplier Invoices"
+msgstr "Pro Forma"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
+msgid "Opened Supplier Invoices"
+msgstr "Obertes"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
+msgid "Credit Notes"
+msgstr "Abonaments"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
+msgid "Draft Credit Notes"
+msgstr "Esborrany"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
+msgid "Pro Forma Credit Notes"
+msgstr "Pro Forma"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
+msgid "Opened Credit Notes"
+msgstr "Oberts"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
+msgid "Draft Invoices"
+msgstr "Esborrany"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
+msgid "Pro Forma Invoices"
+msgstr "Pro Forma"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
+msgid "Opened Invoices"
+msgstr "Obertes"
+
+msgctxt "model:ir.ui.menu,name:menu_invoices"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
+msgid "Payment Terms"
+msgstr "Terminis de pagament"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
+msgid "Payment Terms"
+msgstr "Terminis de pagament"
+
+msgctxt "odt:account.invoice:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "odt:account.invoice:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "odt:account.invoice:"
+msgid "Credit Note N°:"
+msgstr "Abonament Nº:"
+
+msgctxt "odt:account.invoice:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "odt:account.invoice:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "odt:account.invoice:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "odt:account.invoice:"
+msgid "Description:"
+msgstr "Descripció:"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Credit Note"
+msgstr "Abonament esborrany"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Invoice"
+msgstr "Factura esborrany"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Supplier Credit Note"
+msgstr "Abonament de proveïdor esborrany"
+
+msgctxt "odt:account.invoice:"
+msgid "Draft Supplier Invoice"
+msgstr "Factura de proveïdor esborrany"
+
+msgctxt "odt:account.invoice:"
+msgid "E-Mail:"
+msgstr "Correu electrònic:"
+
+msgctxt "odt:account.invoice:"
+msgid "Invoice N°:"
+msgstr "Factura Nº:"
+
+msgctxt "odt:account.invoice:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "odt:account.invoice:"
+msgid "Phone:"
+msgstr "Telèfon:"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Credit Note"
+msgstr "Abonament Pro Forma"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Invoice"
+msgstr "Factura Pro Forma"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Supplier Credit Note"
+msgstr "Abonament de proveïdor Pro Forma"
+
+msgctxt "odt:account.invoice:"
+msgid "Pro forma Supplier Invoice"
+msgstr "Factura de proveïdor Pro Forma"
+
+msgctxt "odt:account.invoice:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "odt:account.invoice:"
+msgid "Supplier Credit Note N°:"
+msgstr "Abonament de proveïdor Nº:"
+
+msgctxt "odt:account.invoice:"
+msgid "Supplier Invoice N°:"
+msgstr "Factura de proveïdor Nº:"
+
+msgctxt "odt:account.invoice:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "odt:account.invoice:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "odt:account.invoice:"
+msgid "Taxes:"
+msgstr "Impostos:"
+
+msgctxt "odt:account.invoice:"
+msgid "Total (excl. taxes):"
+msgstr "Total (sense impostos):"
+
+msgctxt "odt:account.invoice:"
+msgid "Total:"
+msgstr "Total:"
+
+msgctxt "odt:account.invoice:"
+msgid "Unit Price"
+msgstr "Preu unitat"
+
+msgctxt "odt:account.invoice:"
+msgid "VAT Number:"
+msgstr "CIF/NIF:"
+
+msgctxt "odt:account.invoice:"
+msgid "VAT:"
+msgstr "CIF/NIF:"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Canceled"
+msgstr "Cancel·lada"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Opened"
+msgstr "Oberta"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Paid"
+msgstr "Pagada"
+
+msgctxt "selection:account.invoice,state:"
+msgid "Pro forma"
+msgstr "Pro Forma"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Credit Note"
+msgstr "Abonament"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier Credit Note"
+msgstr "Abonament de proveïdor"
+
+msgctxt "selection:account.invoice,type:"
+msgid "Supplier Invoice"
+msgstr "Factura de proveïdor"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Credit Note"
+msgstr "Abonament"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Supplier Credit Note"
+msgstr "Abonament de proveïdor"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid "Supplier Invoice"
+msgstr "Factura de proveïdor"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Line"
+msgstr "Línia"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgctxt "selection:account.invoice.line,type:"
+msgid "Title"
+msgstr "Títol"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Partial Payment"
+msgstr "Pagament parcial"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Write-Off"
+msgstr "Desajust"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid ""
+msgstr " "
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "March"
+msgstr "Març"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.invoice.payment_term.line,month:"
+msgid "September"
+msgstr "Setembre"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Fixed"
+msgstr "Fix"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Remainder"
+msgstr "Percentatge sobre remanent"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Percentage on Total"
+msgstr "Percentatge sobre total"
+
+msgctxt "selection:account.invoice.payment_term.line,type:"
+msgid "Remainder"
+msgstr "Remanent"
+
+#, fuzzy
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid ""
+msgstr "Servidor"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Friday"
+msgstr "Divendres"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Monday"
+msgstr "Dilluns"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Saturday"
+msgstr "Dissabte"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Sunday"
+msgstr "Diumenge"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Thursday"
+msgstr "Dijous"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Tuesday"
+msgstr "Dimarts"
+
+msgctxt "selection:account.invoice.payment_term.line,weekday:"
+msgid "Wednesday"
+msgstr "Dimecres"
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Are you sure to credit those/this invoice(s)?"
+msgstr "Esteu segur d'abonar aquestes factures?"
+
+msgctxt "view:account.invoice.credit.start:"
+msgid "Credit Invoice"
+msgstr "Factura abonament"
+
+msgctxt "view:account.invoice.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Line"
+msgstr "Línia de factura"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "view:account.invoice.line:"
+msgid "Notes"
+msgstr "Notes"
+
+msgctxt "view:account.invoice.pay.ask:"
+msgid "Pay Invoice"
+msgstr "Paga factura"
+
+msgctxt "view:account.invoice.pay.start:"
+msgid "Pay Invoice"
+msgstr "Paga factura"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "Payment Term Line"
+msgstr "Línia termini de pagament"
+
+msgctxt "view:account.invoice.payment_term.line:"
+msgid "Payment Term Lines"
+msgstr "Línies termini de pagament"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "view:account.invoice.payment_term:"
+msgid "Payment Terms"
+msgstr "Terminis de pagament"
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "Print Invoice"
+msgstr "Imprimeix factura"
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "The invoices will be sent <i>directly</i> to the printer."
+msgstr "Les factures s'enviaran <i>directament</i> a la impressora."
+
+msgctxt "view:account.invoice.print.warning:"
+msgid "You have selected more than one invoice to print."
+msgstr "Heu seleccionat més d'una factura per imprimir."
+
+msgctxt "view:account.invoice.tax:"
+msgid "Invoice Tax"
+msgstr "Impost de la factura"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Invoice Taxes"
+msgstr "Impostos de factura"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Tax Code"
+msgstr "Codi d'impost"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "view:account.invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "view:account.invoice:"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "view:account.invoice:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:account.invoice:"
+msgid "Payment"
+msgstr "Pagament"
+
+msgctxt "view:account.invoice:"
+msgid "Pro For_ma"
+msgstr "Pro For_ma"
+
+msgctxt "view:account.invoice:"
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+msgctxt "view:account.invoice:"
+msgid "_Draft"
+msgstr "_Esborrany"
+
+msgctxt "view:account.invoice:"
+msgid "_Open"
+msgstr "_Obre"
+
+msgctxt "view:account.invoice:"
+msgid "_Pay"
+msgstr "_Paga"
+
+msgctxt "view:account.move.line:"
+msgid "Amount Second Currency"
+msgstr "Import segona moneda"
+
+msgctxt "view:account.move.line:"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "view:account.move.line:"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "view:account.move.line:"
+msgid "Lines to Pay"
+msgstr "Línies a pagar"
+
+msgctxt "view:account.move.line:"
+msgid "Payment Lines"
+msgstr "Línies de pagament"
+
+msgctxt "view:party.party:"
+msgid "Payment Terms"
+msgstr "Terminis de pagament"
+
+msgctxt "wizard_button:account.invoice.credit,start,credit:"
+msgid "Credit"
+msgstr "Abona"
+
+msgctxt "wizard_button:account.invoice.credit,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.pay,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.pay,ask,pay:"
+msgid "Ok"
+msgstr "D'acord"
+
+msgctxt "wizard_button:account.invoice.pay,start,choice:"
+msgid "Ok"
+msgstr "D'acord"
+
+msgctxt "wizard_button:account.invoice.pay,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.print,warning,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.print,warning,print_:"
+msgid "Print"
+msgstr "Imprimeix"
