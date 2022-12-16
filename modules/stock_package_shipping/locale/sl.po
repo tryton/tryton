@@ -1,0 +1,82 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,shipping_service:"
+msgid "Shipping Service"
+msgstr "Dostavna služba"
+
+msgctxt "field:stock.package,shipping_label:"
+msgid "Shipping Label"
+msgstr "Nalepka pošiljke"
+
+msgctxt "field:stock.package,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Sklic paketne dostave"
+
+msgctxt "field:stock.package.type,height:"
+msgid "Height"
+msgstr "Višina"
+
+msgctxt "field:stock.package.type,height_digits:"
+msgid "Height Digits"
+msgstr "Decimalke za višino"
+
+msgctxt "field:stock.package.type,height_uom:"
+msgid "Height Unit"
+msgstr "Enota višine"
+
+msgctxt "field:stock.package.type,length:"
+msgid "Length"
+msgstr "Dolžina"
+
+msgctxt "field:stock.package.type,length_digits:"
+msgid "Length Digits"
+msgstr "Decimalke za dolžino"
+
+msgctxt "field:stock.package.type,length_uom:"
+msgid "Length Unit"
+msgstr "Enota dolžine"
+
+msgctxt "field:stock.package.type,width:"
+msgid "Width"
+msgstr "Širina"
+
+msgctxt "field:stock.package.type,width_digits:"
+msgid "Width Digits"
+msgstr "Decimalke za širino"
+
+msgctxt "field:stock.package.type,width_uom:"
+msgid "Width Unit"
+msgstr "Enota širine"
+
+msgctxt "field:stock.shipment.out,shipping_description:"
+msgid "Shipping Description"
+msgstr "Opis pošiljke"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_create_shipping_wizard"
+msgid "Create Shipping"
+msgstr "Create Shipping"
+
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "Za dostavo \"%(shipment)s\" še ni izbran špediter."
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
+msgid "Shipping"
+msgstr "Shipping"
+
+msgctxt "view:stock.package.type:"
+msgid "Dimensions"
+msgstr "Dimenzije"
