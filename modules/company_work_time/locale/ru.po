@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,hours_per_work_day:"
+msgid "Hours per Work Day"
+msgstr "Часов за день"
+
+msgctxt "field:company.company,hours_per_work_month:"
+msgid "Hours per Work Month"
+msgstr "Часов за месяц"
+
+msgctxt "field:company.company,hours_per_work_week:"
+msgid "Hours per Work Week"
+msgstr "Часов за неделю"
+
+msgctxt "field:company.company,hours_per_work_year:"
+msgid "Hours per Work Year"
+msgstr "Часов за год"
+
+msgctxt "view:company.company:"
+msgid "Work Time"
+msgstr "Рабочее время"
