@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="origin">
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="origin"/>
+    <field name="origin" colspan="3"/>
+
+    <label name="planned_date"/>
+    <field name="planned_date"/>
+    <label name="best_planned_date"/>
+    <group col="-1" id="best_planned_date">
+        <field name="best_planned_date"/>
+        <button name="apply_best_planned_date" icon="tryton-save" string="Apply"/>
+    </group>
+
+    <notebook colspan="4">
+        <page name="products">
+            <field name="products" colspan="4" view_ids="stock_quantity_issue.product_view_list"/>
+        </page>
+        <page string="Other Info" id="other">
+            <label name="processed_by"/>
+            <field name="processed_by"/>
+            <label name="solved_by"/>
+            <field name="solved_by"/>
+        </page>
+    </notebook>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="open" icon="tryton-back"/>
+        <button name="process" icon="tryton-forward"/>
+        <button name="solve" icon="tryton-close"/>
+    </group>
+</form>
