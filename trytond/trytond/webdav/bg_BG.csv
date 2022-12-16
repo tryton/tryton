@@ -1,0 +1,28 @@
+type,name,res_id,src,value,fuzzy
+error,ir.attachment,0,"You can not create an attachment
+in a collection with the name
+of an existing child collection!","Не може да създадете 
+прикачен файл в колекция
+с име като на съществуваща
+подчинена колекция!",0
+error,webdav.collection,0,The collection name must be unique inside a collection!,Името на колекцията трябва да уникално вътре в колекцията!,0
+error,webdav.collection,0,"You can not create a collection
+in a collection with the name of an existing file!","Не може да създадете колекция
+в колекция с име на съществуващ файл!",0
+error,webdav.collection,0,You can not create recursive collections!,Не може да създавате взаимно вложени колекции!,0
+field,"webdav.collection,childs",0,Children,Деца,0
+field,"webdav.collection,domain",0,Domain,Домейн,0
+field,"webdav.collection,model",0,Model,Модел,0
+field,"webdav.collection,name",0,Name,Име,0
+field,"webdav.collection,parent",0,Parent,Родител,0
+field,"webdav.collection,rec_name",0,Name,Име,0
+model,"ir.action,name",,Collections,Колекции,0
+model,"ir.action,name",act_collection_form,Collections,Колекции,0
+model,"ir.action,name",act_collection_tree,Collections,Колекции,0
+model,"ir.ui.menu,name",,New Collection,Нова колекция,0
+model,"ir.ui.menu,name",menu_collection_form,New Collection,Редактиране на колекции,0
+model,"ir.ui.menu,name",menu_collection_tree,Collections,Колекции,0
+model,"ir.ui.menu,name",menu_webdav,WebDAV,WebDAV,0
+model,"webdav.collection,name",0,Collection,Колекция,0
+view,webdav.collection,0,Collection,Колекция,0
+view,webdav.collection,0,Collections,Колекции,0
