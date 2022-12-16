@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="product">
+    <label name="sale"/>
+    <field name="sale" colspan="3"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="product"/>
+            <field name="product"
+                view_ids="sale.product_view_list_sale_line"/>
+            <newline/>
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="unit"/>
+            <field name="unit"/>
+            <label name="unit_price"/>
+            <field name="unit_price"/>
+            <label name="amount"/>
+            <field name="amount"/>
+            <label name="shipping_date"/>
+            <field name="shipping_date"/>
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
+        </page>
+        <page string="Taxes" id="taxes">
+            <field name="taxes" colspan="4"/>
+        </page>
+        <page string="Notes" id="notes">
+            <separator name="note" colspan="4"/>
+            <field name="note" colspan="4"/>
+        </page>
+    </notebook>
+</form>
