@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_payments_relate">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'sale.sale'), ('origin.id', 'in', Eval('active_ids'), 'sale.sale'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_payments_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_payments_relate"/>
+        </record>
+    </data>
+</tryton>

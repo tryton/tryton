@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/">
+    <!-- CFONB forbid PstlAdr -->
+    <py:def function="PartyIdentification(party, id=None, with_name=True)">
+        <!-- EPC limits to 70 instead of 140 -->
+        <Nm py:if="with_name">${party.name[:70]}</Nm>
+        <Id py:if="id">
+            <py:with vars="identifier = party.get_sepa_identifier(id)">
+                <OrgId py:if="identifier['Type'] == 'OrgId'">
+                    <BICOrBEI py:if="identifier.get('BICOrBEI')">${identifier['BICOrBEI']}</BICOrBEI>
+                    <Othr py:if="identifier.get('Id')">
+                        <Id>${identifier['Id']}</Id>
+                        <SchmeNm py:if="identifier.get('SchmeNm')">
+                            <Cd py:if="identifier['SchmeNm'].get('Cd')">${identifier['SchmeNm']['Cd']}</Cd>
+                            <Prtry py:if="identifier['SchmeNm'].get('Prtry')">${identifier['SchmeNm']['Cd']}</Prtry>
+                        </SchmeNm>
+                        <Issr py:if="identifier.get('Issr')">${identifier['Issr']}</Issr>
+                    </Othr>
+                </OrgId>
+                <PrvtId py:if="identifier['Type'] == 'PrvtId'">
+                    <DtAndPlcOfBirth py:if="identifier.get('DtAndPlcOfBirth')">
+                        <BirthDt>${identifier['DtAndPlcOfBirth']['BirthDt'].isoformat()}</BirthDt>
+                        <PrvcOfBirth py:if="identifier['DtAndPlcOfBirth'].get('PrvcOfBirth')">${identifier['DtAndPlcOfBirth']['PrvcOfBirth']}</PrvcOfBirth>
+                        <CityOfBirth>${identifier['DtAndPlcOfBirth']['CityOfBirth']}</CityOfBirth>
+                        <CtryOfBirth>${identifier['DtAndPlcOfBirth']['CtryOfBirth']}</CtryOfBirth>
+                    </DtAndPlcOfBirth>
+                    <Othr py:if="identifier.get('Id')">
+                        <Id>${identifier['Id']}</Id>
+                        <SchmeNm py:if="identifier.get('SchmeNm')">
+                            <Cd py:if="identifier['SchmeNm'].get('Cd')">${identifier['SchmeNm']['Cd']}</Cd>
+                            <Prtry py:if="identifier['SchmeNm'].get('Prtry')">${identifier['SchmeNm']['Prtry']}</Prtry>
+                        </SchmeNm>
+                        <Issr py:if="identifier.get('Issr')">${identifier['Issr']}</Issr>
+                    </Othr>
+                </PrvtId>
+            </py:with>
+        </Id>
+        <!-- CtryOfRes -->
+        <!-- CtctDtls -->
+    </py:def>
+</py:strip>
