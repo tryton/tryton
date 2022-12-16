@@ -1,0 +1,117 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr ""
+
+msgctxt "field:account.dunning.email.log,date:"
+msgid "Date"
+msgstr "Tarih"
+
+msgctxt "field:account.dunning.email.log,dunning:"
+msgid "Dunning"
+msgstr "Hatırlatma"
+
+msgctxt "field:account.dunning.email.log,level:"
+msgid "Level"
+msgstr "Seviye"
+
+msgctxt "field:account.dunning.email.log,recipients:"
+msgid "Recipients"
+msgstr "Alıcılar"
+
+msgctxt "field:account.dunning.email.log,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Gizli Alıcılar"
+
+msgctxt "field:account.dunning.email.log,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "İkincil Alıcılar"
+
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
+msgctxt "field:account.dunning.level,email_from:"
+msgid "From"
+msgstr "Kimden"
+
+msgctxt "field:account.dunning.level,email_template:"
+msgid "Email Template"
+msgstr "E-posta Taslağı"
+
+msgctxt "field:account.dunning.level,send_email:"
+msgid "Send Email"
+msgstr "E-posta Gönder"
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_from:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr "Konfigurasyon dosyasında tanımlanmış değer için boş bırakın."
+
+msgctxt "model:account.dunning.email.log,name:"
+msgid "Dunning Email Log"
+msgstr "İhtarname E-posta Kayıtları"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_log"
+msgid "Email Logs"
+msgstr "Email Logs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_email"
+msgid "Dunning Email"
+msgstr "Dunning Email"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Amount"
+msgstr "Miktar"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date"
+msgstr "Tarih"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Date:"
+msgstr "Tarih:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Description"
+msgstr "Tanım"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Due Date"
+msgstr "Son Tarih"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Fees:"
+msgstr "Ücretler:"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Pending Payments Received"
+msgstr "Beklemedeki Alınan Ödemeler"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reference"
+msgstr "Referans"
+
+msgctxt "report:account.dunning.letter:"
+msgid "Reminder Notice"
+msgstr "Hatırlatıcı Bildirim"
+
+msgctxt "view:account.dunning.email.log:"
+msgid "Time"
+msgstr "Zaman"
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
+msgstr ""
