@@ -1,0 +1,169 @@
+stages:
+  - preparation
+  - check
+  - test
+  - build
+  - manual
+
+packages:
+  stage: preparation
+  rules:
+    - when: always
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
+  variables:
+    DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
+  script:
+    - .gitlab-scripts/generate-packages.sh packages
+  artifacts:
+    paths:
+      - packages/
+    expire_in: 1 week
+
+documentation:
+  stage: preparation
+  rules:
+    - when: always
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/sphinxdoc/sphinx
+  script:
+    - .gitlab-scripts/generate-doc.sh docs
+  artifacts:
+    paths:
+      - docs/
+    expire_in: 1 week
+
+.check:
+  stage: check
+  rules:
+    - if: $CI_MERGE_REQUEST_ID != null
+      when: always
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
+
+.check-doc:
+  extends: .check
+  needs:
+    - documentation
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/sphinxdoc/sphinx
+  variables:
+    DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
+    DOC_DIR: doc
+  script:
+    - cd "${PACKAGE}"
+    - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
+    - python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build
+  rules:
+    - changes:
+        - ${PACKAGE}/${DOC_DIR}/**/*
+        - ${PACKAGE}/tryton.cfg
+        - ${PACKAGE}/CHANGELOG
+
+check-doc-readthedocs:
+  extends: .check-doc
+  variables:
+    PACKAGE: readthedocs
+    DOC_DIR: .
+  rules:
+    - changes:
+        - ${PACKAGE}/**/*
+
+check-flake8:
+  extends: .check
+  script:
+    - hg diff --rev s0 | flake8 --diff
+
+check-dist:
+  stage: check
+  needs:
+    - packages
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
+  script:
+    - twine check packages/*
+
+.test:
+  stage: test
+  rules:
+    - when: always
+
+.test-tox:
+  extends: .test
+  needs:
+    - packages
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:${PYTHON_VERSION}
+  variables:
+    CFLAGS: -O0
+    PIP_FIND_LINKS: file://${CI_PROJECT_DIR}/packages/
+  before_script:
+    - pip install tox
+  script:
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}"
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.6", "3.7", "3.8", "3.9"]
+
+.test-db:
+  extends: .test-tox
+  variables:
+    DB_CACHE: /tmp/cache
+  script:
+    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}"
+
+.test-sqlite:
+  extends: .test-db
+  variables:
+    DATABASE: sqlite
+
+.test-postgresql:
+  extends: .test-db
+  variables:
+    DATABASE: postgresql
+    POSTGRESQL_URI: postgresql://postgres@postgresql:5432/
+    POSTGRES_HOST_AUTH_METHOD: trust
+  services:
+    - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgres
+      alias: postgresql
+      command: ["-c", "fsync=off", "-c", "synchronous_commit=off", "-c", "full_page_writes=off"]
+
+.test-postgis:
+  extends: .test-db
+  variables:
+    DATABASE: postgis
+    POSTGIS_URI: postgis://postgres@postgis:5432/
+    POSTGRES_HOST_AUTH_METHOD: trust
+  script:
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}"
+  services:
+    - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgis/postgis
+      alias: postgis
+      command: ["-c", "fsync=off", "-c", "synchronous_commit=off", "-c", "full_page_writes=off"]
+
+.test-npm:
+  extends: .test
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node
+  before_script:
+    - sh .gitlab-scripts/bower_allow_root.sh
+  script:
+    - cd "${PACKAGE}"
+    - npm -s install --unsafe-perm --legacy-peer-deps
+    - npm test
+
+.trigger-doc-build:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
+  script:
+    - .gitlab-scripts/trigger-readthedocs.py -c "${RTD_CONFIG}" -p "${PACKAGE}" -b "${CI_COMMIT_BRANCH#branch/}"
+  rules:
+    - if: $CI_COMMIT_BRANCH =~ /^branch\/.*/
+      changes:
+        - ${PACKAGE}/doc/**/*
+        - ${PACKAGE}/tryton.cfg
+        - ${PACKAGE}/CHANGELOG
+      allow_failure: true
+
+trigger-doc-build-readthedocs:
+  extends: .trigger-doc-build
+  variables:
+    PACKAGE: readthedocs
+  rules:
+    - if: $CI_COMMIT_BRANCH =~ /^branch\/.*/
+      changes:
+        - ${PACKAGE}/**/*
+      allow_failure: true
