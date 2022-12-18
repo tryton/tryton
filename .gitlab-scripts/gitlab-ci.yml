@@ -48,8 +48,7 @@ documentation:
     DOC_DIR: doc
   script:
     - cd "${PACKAGE}"
-    - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
-    - python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build
+    - python -m sphinx -T -E -b html ${DOC_DIR} _build/html
   rules:
     - changes:
         - ${PACKAGE}/${DOC_DIR}/**/*
@@ -97,7 +96,7 @@ check-dist:
     - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}"
   parallel:
     matrix:
-      - PYTHON_VERSION: ["3.4", "3.5", "3.6", "3.7"]
+      - PYTHON_VERSION: ["3.5", "3.6", "3.7"]
 
 .test-db:
   extends: .test-tox

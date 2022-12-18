@@ -41,7 +41,7 @@ def get_info():
     for key in {'depends', 'extras_depend'}:
         info[key] = info.get(key, '').strip().splitlines()
     info['modules'] = set(info['depends'] + info['extras_depend'])
-    info['modules'] -= {'ir', 'res'}
+    info['modules'] -= {'ir', 'res', 'account_product'}
 
     return info
 

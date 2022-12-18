@@ -14,15 +14,12 @@ else:
 
 
 def get_info():
-    import configparser
     import subprocess
     import sys
 
     module_dir = os.path.dirname(os.path.dirname(__file__))
 
-    config = configparser.ConfigParser()
-    config.read_file(open(os.path.join(module_dir, 'tryton.cfg')))
-    info = dict(config.items('tryton'))
+    info = dict()
 
     result = subprocess.run(
         [sys.executable, 'setup.py', '--name'],
@@ -38,11 +35,6 @@ def get_info():
     else:
         info['series'] = '.'.join(version.split('.', 2)[:2])
 
-    for key in {'depends', 'extras_depend'}:
-        info[key] = info.get(key, '').strip().splitlines()
-    info['modules'] = set(info['depends'] + info['extras_depend'])
-    info['modules'] -= {'ir', 'res'}
-
     return info
 
 
@@ -57,13 +49,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     ]
 intersphinx_mapping = {
-    'trytond': (trytond_url.format(series=version), None),
+    'python': ('https://docs.python.org/', None),
     }
-intersphinx_mapping.update({
-        m: (modules_url.format(
-                module=m.replace('_', '-'), series=version), None)
-        for m in info['modules']
-        })
 linkcheck_ignore = [r'/.*', r'https://demo.tryton.org/*']
 
 del get_info, info, base_url, modules_url, trytond_url

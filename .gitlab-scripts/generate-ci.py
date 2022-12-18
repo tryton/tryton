@@ -112,6 +112,9 @@ def render(file):
             }
         if os.path.exists(os.path.join(package, 'doc')):
             file.write(TEMPLATE_DOC.substitute(mapping))
+        if (not os.path.exists(os.path.join(package, 'tox.ini'))
+                and not os.path.exists(os.path.join(package, 'package.json'))):
+            continue
         if package in NO_DB:
             file.write(TEMPLATE.substitute(mapping))
         elif package in CUSTOM_IMAGE:
