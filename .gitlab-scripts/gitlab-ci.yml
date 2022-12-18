@@ -48,8 +48,7 @@ documentation:
     DOC_DIR: doc
   script:
     - cd "${PACKAGE}"
-    - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
-    - python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build
+    - python -m sphinx -T -E -b html ${DOC_DIR} _build/html
   rules:
     - changes:
         - ${PACKAGE}/${DOC_DIR}/**/*
