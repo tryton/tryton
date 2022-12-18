@@ -30,8 +30,8 @@ criteria.
 Line
 ----
 
-- The *Formula* is a Python expression that will be evaluated with `amount` as
-  the invoiced amount.
+- The *Formula* is a Python expression that will be evaluated with ``amount``
+  as the invoiced amount.
 
 The criteria:
 
