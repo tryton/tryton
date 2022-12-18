@@ -64,16 +64,26 @@ class ShipmentAssignMixin(ShipmentMixin):
         cls.assign(shipments)
 
     @dualmethod
-    def assign_ignore(cls, shipments):
+    def assign_ignore(cls, shipments, moves=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([
-                m for s in shipments for m in s.assign_moves
-                if m.assignation_required
-                and m.state in {'staging', 'draft'}], {
+        assign_moves = {
+            m for s in shipments for m in s.assign_moves
+            if m.assignation_required and m.state in {'staging', 'draft'}}
+        if moves is None:
+            moves = list(assign_moves)
+        else:
+            moves = [m for m in moves if m in assign_moves]
+        Move.write(moves, {
                 'quantity': 0,
                 })
-        cls.assign(shipments)
+        to_assign = [
+            s for s in shipments
+            if all(
+                m.state not in {'staging', 'draft'}
+                for m in s.assign_moves if m.assignation_required)]
+        if to_assign:
+            cls.assign(to_assign)
 
     @classmethod
     def _get_assign_domain(cls):
@@ -2856,7 +2866,7 @@ class Assign(Wizard):
         return 'end'
 
     def transition_ignore(self):
-        self.record.assign_ignore()
+        self.record.assign_ignore(self.partial.moves)
         return 'end'
 
 
