@@ -39,11 +39,6 @@ name = 'trytond_party'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = (
-        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
-            name[8:], name, version))
 
 requires = ['python-sql >= 0.4', 'python-stdnum']
 for dep in info.get('depends', []):
@@ -52,9 +47,6 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus'), 'phonenumbers']
-dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -117,7 +109,6 @@ setup(name=name,
         'VIES-ALT': ['python-stdnum[VIES-ALT]'],
         'phonenumbers': ['phonenumbers'],
         },
-    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]

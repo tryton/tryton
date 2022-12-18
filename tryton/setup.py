@@ -57,10 +57,6 @@ name = 'tryton'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
-        name, name, version)
 
 dist = setup(name=name,
     version=version,

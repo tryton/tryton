@@ -36,14 +36,6 @@ minor_version = int(minor_version)
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
-        name, name, version)
-
-dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -84,7 +76,6 @@ setup(name=name,
     extras_require={
         'trytond': [get_require_version('trytond')],
         },
-    dependency_links=dependency_links,
     zip_safe=True,
     test_suite='proteus.tests',
     tests_require=[get_require_version('trytond'),

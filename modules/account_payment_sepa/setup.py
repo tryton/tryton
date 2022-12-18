@@ -39,11 +39,6 @@ name = 'trytond_account_payment_sepa'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = (
-        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
-            name[8:], name, version))
 
 requires = [
     'Genshi',
@@ -58,10 +53,6 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = []
-
-dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -120,7 +111,6 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.4',
     install_requires=requires,
-    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]

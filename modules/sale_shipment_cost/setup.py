@@ -39,11 +39,6 @@ name = 'trytond_sale_shipment_cost'
 
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
-if minor_version % 2:
-    version = '%s.%s.dev0' % (major_version, minor_version)
-    download_url = (
-        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
-            name[8:], name, version))
 
 requires = []
 for dep in info.get('depends', []):
@@ -54,9 +49,6 @@ requires.append(get_require_version('trytond'))
 tests_require = [get_require_version('proteus')]
 for dep in ['account', 'party', 'stock']:
     tests_require.append(get_require_version('trytond_%s' % dep))
-dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
@@ -115,7 +107,6 @@ setup(name=name,
     install_requires=requires,
     extras_require={
     },
-    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
