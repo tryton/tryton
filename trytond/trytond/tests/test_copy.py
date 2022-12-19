@@ -272,6 +272,30 @@ class CopyTestCase(unittest.TestCase):
             new_record, = TestAccess.copy(
                 [record], default={'name': 'nondefault'})
 
+    @with_transaction(context={'_check_access': True})
+    def test_copy_with_no_read_access(self):
+        "Test copying field with no read access"
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.copy.access')
+
+        record, = TestAccess.create([{}])
+
+        field, = Field.search([
+                ('model.model', '=', 'test.copy.access'),
+                ('name', '=', 'name'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'group': None,
+                    'perm_read': False,
+                    'perm_write': False,
+                    }])
+
+        new_record, = TestAccess.copy([record])
+        self.assertNotEqual(new_record.id, record.id)
+
 
 class CopyTranslationTestCase(TranslationTestCase):
     "Test copy translation"

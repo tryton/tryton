@@ -440,7 +440,9 @@ class ModelStorage(Model):
                 or isinstance(f, fields.MultiValue))
             and n not in mptt]
         ids = list(map(int, records))
-        values = {d['id']: d for d in cls.read(ids, fields_names=fields_names)}
+        with Transaction().set_context(_check_access=False):
+            values = {
+                d['id']: d for d in cls.read(ids, fields_names=fields_names)}
         field_defs = cls.fields_get(fields_names=fields_names)
         default_values = cls.default_get(fields_names, with_rec_name=False)
         to_create = []
