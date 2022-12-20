@@ -2673,7 +2673,7 @@
                 }
                 if ((name.split('.').length - 1) == count &&
                         (domain[1] == '=')) {
-                    return [true, domain[1], value];
+                    return [true, name, value];
                 }
             }
             return [false, null, null];
