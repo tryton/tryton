@@ -17,9 +17,9 @@ relationship are considered, but this can be limited by adding
 Configuration
 *************
 
-The party_relationship module use the section `party_relationship` to retrieve
-some parameters:
+The party_relationship module use the section ``party_relationship`` to
+retrieve some parameters:
 
-- `depth`: The maximum number of steps to consider when calculating the
+- ``depth``: The maximum number of steps to consider when calculating the
   distance between parties.
-  The default value is `7`.
+  The default value is ``7``.

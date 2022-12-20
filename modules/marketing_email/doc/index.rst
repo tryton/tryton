@@ -46,14 +46,14 @@ Configuration
 
 The marketing_email module uses parameters from the section:
 
-- `[marketing]`:
+- ``[marketing]``:
 
-    - `email_from`: The default `From` for the e-mails that get sent.
+    - ``email_from``: The default ``From`` for the e-mails that get sent.
 
-    - `email_subscribe_url`: the URL to confirm the subscription to which the
-      parameter `token` will be added.
+    - ``email_subscribe_url``: the URL to confirm the subscription to which the
+      parameter ``token`` will be added.
 
-    - `email_unsubscribe_url`: the URL to unsubscribe an e-mail address to
-      which the parameter `token` will be added.
+    - ``email_unsubscribe_url``: the URL to unsubscribe an e-mail address to
+      which the parameter ``token`` will be added.
 
-    - `email_spy_pixel`: A boolean to activate spy pixel. Disable by default.
+    - ``email_spy_pixel``: A boolean to activate spy pixel. Disable by default.

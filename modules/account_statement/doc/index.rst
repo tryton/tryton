@@ -93,11 +93,11 @@ with origins filled.
 Configuration
 *************
 
-The account_statement module uses the section `account_statement` to retrieve
+The account_statement module uses the section ``account_statement`` to retrieve
 some parameters:
 
-- `filestore`: a boolean value to store origin file in the FileStore.
-  The default value is `False`.
+- ``filestore``: a boolean value to store origin file in the FileStore.
+  The default value is ``False``.
 
-- `store_prefix`: the prefix to use with the FileStore.
-  The default value is `None`.
+- ``store_prefix``: the prefix to use with the FileStore.
+  The default value is ``None``.

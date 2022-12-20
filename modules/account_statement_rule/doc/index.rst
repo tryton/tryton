@@ -34,8 +34,8 @@ The criteria are matched with each origin of the statement:
             * Char: A regular expression.
             * Selection
 
-The regular expression can register the group names `party`, `bank_account` and
-`invoice` which are later used to search for a party and an invoice.
+The regular expression can register the group names ``party``, ``bank_account``
+and ``invoice`` which are later used to search for a party and an invoice.
 
 Lines
 -----
@@ -43,12 +43,12 @@ Lines
 They define how to create the statement lines from the matching origin:
 
     * Amount: A Python expression evaluated with:
-        * `amount`: the amount of the origin.
-        * `pending`: the amount from which previous lines have been deducted.
+        * ``amount``: the amount of the origin.
+        * ``pending``: the amount from which previous lines have been deducted.
     * Party
     * Account
 
 If the party is not filled in, one will be searched for using the
-`bank_account` or the `party` group names from the regular expressions.
-If the `invoice` group name appears in a regular expression, it will be used to
-find an invoice to link with.
+``bank_account`` or the ``party`` group names from the regular expressions.
+If the ``invoice`` group name appears in a regular expression, it will be used
+to find an invoice to link with.

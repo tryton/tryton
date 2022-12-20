@@ -50,12 +50,12 @@ Send E-Mail
 
 The activity send an e-mail to the party defined on the record.
 The E-mail is composed using an HTML `Genshi <https://genshi.edgewall.org/>`_
-template with `record` in the evaluation context.
-All `<a>` elements have their `href` replaced by a shortened version used to
-trigger children activities. If the `href` value is `unsubscribe`, it is
+template with ``record`` in the evaluation context.
+All ``<a>`` elements have their ``href`` replaced by a shortened version used
+to trigger children activities. If the ``href`` value is ``unsubscribe``, it is
 replaced by the URL which allows the recipient to block their record for the
 scenario.
-A empty image is automatically added at the end of the `<body>` to track when
+A empty image is automatically added at the end of the ``<body>`` to track when
 emails are opened.
 
 Record
@@ -77,9 +77,10 @@ Configuration
 
 The marketing_automation module uses parameters from the section:
 
-- `[marketing]`:
+- ``[marketing]``:
 
-    - `email_from`: The default `From` for the email.
-    - `automation_base`: The base URL without a path for the unsubscribe URL
+    - ``email_from``: The default ``From`` for the email.
+    - ``automation_base``: The base URL without a path for the unsubscribe URL
       and the empty image.
-      The default value is created using the configuration `[web]` `hostname`.
+      The default value is created using the configuration ``[web]``
+      ``hostname``.

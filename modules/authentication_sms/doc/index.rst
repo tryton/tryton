@@ -3,11 +3,11 @@ Authentication SMS Module
 
 The `SMS <https://en.wikipedia.org/wiki/Short_Message_Service>`_ authentication
 module allows users to authenticate via SMS.  It adds a new authentication
-method `sms`, which can be used in the list of `authentications` in the
-`session` section of the configuration file.
+method ``sms``, which can be used in the list of ``authentications`` in the
+``session`` section of the configuration file.
 
-The `sms` method just sends a code via SMS to the user. Then the user needs to
-transcribe the code into the login dialog.
+The ``sms`` method just sends a code via SMS to the user. Then the user needs
+to transcribe the code into the login dialog.
 
 This method requires that the user has the correct *Mobile* phone number
 defined otherwise it will not be possible for them to authenticate.
@@ -15,7 +15,7 @@ defined otherwise it will not be possible for them to authenticate.
 Configuration
 *************
 
-The configuration of the module is set in the `authentication_sms` section.
+The configuration of the module is set in the ``authentication_sms`` section.
 
 function
 --------

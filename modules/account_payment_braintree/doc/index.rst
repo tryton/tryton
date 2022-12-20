@@ -61,7 +61,7 @@ Configuration
 *************
 
 The account_payment_braintree module uses the section
-`account_payment_braintree` to retrieve some parameters:
+``account_payment_braintree`` to retrieve some parameters:
 
-- `payment_methods_cache`: defines the duration in seconds that payment methods
-  are kept in the cache. The default value is `15 * 60`.
+- ``payment_methods_cache``: defines the duration in seconds that payment
+  methods are kept in the cache. The default value is ``15 * 60``.

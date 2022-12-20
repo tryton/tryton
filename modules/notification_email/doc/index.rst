@@ -10,7 +10,7 @@ Configuration
 
 The notification_email module uses parameters from the section:
 
-- `[notification_email]`:
+- ``[notification_email]``:
 
-    - `from`: The default `From` for the email.
+    - ``from``: The default ``From`` for the email.
 

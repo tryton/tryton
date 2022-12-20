@@ -25,4 +25,4 @@ following commands::
     xsltproc --stringparam chart <chart> create_chart.xsl account.xml
     xsltproc --stringparam chart <chart> create_chart.xsl tax.xml
 
-where ``chart`` is `normal` or `pyme`
+where ``chart`` is ``normal`` or ``pyme``.

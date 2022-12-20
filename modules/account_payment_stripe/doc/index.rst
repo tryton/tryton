@@ -63,11 +63,11 @@ It is possible to partially or completely refund a payment.
 Configuration
 *************
 
-The account_payment_stripe module uses the section `account_payment_stripe` to
-retrieve some parameters:
+The account_payment_stripe module uses the section ``account_payment_stripe``
+to retrieve some parameters:
 
-- `sources_cache`: defines the duration in seconds the sources are kept in the
-  cache. The default value is `15 * 60`.
+- ``sources_cache``: defines the duration in seconds the sources are kept in
+  the cache. The default value is ``15 * 60``.
 
-- `max_network_retries`: defines the maximum number of retries the Stripe
-  library may perform. The default value is `3`.
+- ``max_network_retries``: defines the maximum number of retries the Stripe
+  library may perform. The default value is ``3``.

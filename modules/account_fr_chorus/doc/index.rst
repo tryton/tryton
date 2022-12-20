@@ -11,12 +11,12 @@ the accounting configuration.
 Configuration
 *************
 
-The account_fr_chorus module uses the section `account_fr_chorus` to retrieve
+The account_fr_chorus module uses the section ``account_fr_chorus`` to retrieve
 the path of the SSL certificates.
 
-- `certificate`: the path to the SSL certificate.
+- ``certificate``: the path to the SSL certificate.
 
-- `privatekey`: the path to the SSL private key.
+- ``privatekey``: the path to the SSL private key.
 
 .. warning::
     The private key must be unencrypted.

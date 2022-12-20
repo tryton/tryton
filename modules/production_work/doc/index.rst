@@ -10,7 +10,7 @@ Work Center
 Work center are places in the warehouse where production operations are
 performed. They can be organized in a tree structure and each center can be
 linked to a category. A cost can be defined on the work center with two
-methods: `Per Cycle` or `Per Hour`.
+methods: ``Per Cycle`` or ``Per Hour``.
 
 Work
 ****

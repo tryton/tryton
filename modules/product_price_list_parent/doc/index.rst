@@ -2,5 +2,5 @@ Product Price List Parent Module
 ################################
 
 The product_price_list_parent module adds a *Parent* to the price list and the
-keyword `parent_unit_price` for the formula which contains the unit price
+keyword ``parent_unit_price`` for the formula which contains the unit price
 computed by the parent price list.

@@ -3,11 +3,11 @@ LDAP Authentication Module
 
 The LDAP authentication module allows to authenticate users via a LDAP server.
 
-The configuration of the LDAP connection is set in the `ldap_authentication`
+The configuration of the LDAP connection is set in the ``ldap_authentication``
 section.
 
-To be activated, the `ldap` method must be added to the `authentications`
-methods list of the `session` section of the configuration.
+To be activated, the ``ldap`` method must be added to the ``authentications``
+methods list of the ``session`` section of the configuration.
 
 Configuration
 *************
@@ -34,7 +34,7 @@ The LDAP password used to bind if needed.
 uid
 ---
 
-The UID Attribute for authentication (default is `uid`).
+The UID Attribute for authentication (default is ``uid``).
 
 create_user
 -----------

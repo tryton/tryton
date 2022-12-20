@@ -33,7 +33,7 @@ The Journal has some fields when the process method is SEPA:
 Group
 *****
 
-The Group has a field `SEPA Messages` containing the XML messages.
+The Group has a field ``SEPA Messages`` containing the XML messages.
 
 Mandate
 *******
@@ -80,18 +80,18 @@ return reason will be stored on it.
 Party
 *****
 
-The Party has a field `SEPA Creditor Identifier` used for the party of the
+The Party has a field ``SEPA Creditor Identifier`` used for the party of the
 company.
 
 
 Configuration
 *************
 
-The account_payment_sepa module uses the section `account_payment_sepa` to
+The account_payment_sepa module uses the section ``account_payment_sepa`` to
 retrieve some parameters:
 
-- `filestore`: a boolean value to store SEPA message in the FileStore.
-  The default value is `False`.
+- ``filestore``: a boolean value to store SEPA message in the FileStore.
+  The default value is ``False``.
 
-- `store_prefix`: the prefix to use with the FileStore. The default value is
-  `None`.
+- ``store_prefix``: the prefix to use with the FileStore. The default value is
+  ``None``.

@@ -1,7 +1,8 @@
 Stock Lot Unit Module
 #####################
 
-The `stock_lot_unit` module allows to define a unit and quantity on stock lot.
+The ``stock_lot_unit`` module allows to define a unit and quantity on stock
+lot.
 
 Lots with unit have the following properties:
 

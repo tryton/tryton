@@ -22,22 +22,23 @@ Configuration
 
 The web_user module uses parameters from different sections:
 
-- `web`:
+- ``web``:
 
-    - `reset_password_url`: the URL to reset the password to which the
-      parameters `email` and `token` will be added.
+    - ``reset_password_url``: the URL to reset the password to which the
+      parameters ``email`` and ``token`` will be added.
 
-    - `email_validation_url`: the URL for email validation to which the
-      parameter `token` will be added.
+    - ``email_validation_url``: the URL for email validation to which the
+      parameter ``token`` will be added.
 
-- `email`:
+- ``email``:
 
-    - `from`: the origin address to send emails.
+    - ``from``: the origin address to send emails.
 
-- `session`:
+- ``session``:
 
-    - `web_timeout`: defines in seconds the validity of the web session.
+    - ``web_timeout``: defines in seconds the validity of the web session.
       Default: 30 days.
 
-    - `web_timeout_reset`: in seconds the validity of the reset password token.
+    - ``web_timeout_reset``: in seconds the validity of the reset password
+      token.
       Default: 1 day.
