@@ -521,7 +521,7 @@ class DomainInversionTestCase(unittest.TestCase):
 
     def test_unique_value(self):
         domain = [['a', '=', 1]]
-        self.assertEqual(unique_value(domain), (True, '=', 1))
+        self.assertEqual(unique_value(domain), (True, 'a', 1))
 
         domain = [['a', '!=', 1]]
         self.assertFalse(unique_value(domain)[0])
@@ -533,7 +533,7 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertFalse(unique_value(domain)[0])
 
         domain = [['a.id', '=', 1, 'model']]
-        self.assertEqual(unique_value(domain), (True, '=', ['model', 1]))
+        self.assertEqual(unique_value(domain), (True, 'a.id', ['model', 1]))
 
         domain = [['a.b.id', '=', 1, 'model']]
         self.assertEqual(unique_value(domain), (False, None, None))
