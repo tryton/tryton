@@ -2736,7 +2736,7 @@
         var unique_value = domain_inversion.unique_value;
         var compare = Sao.common.compare;
         var domain = [['a', '=', 1]];
-        QUnit.ok(compare(unique_value(domain), [true, '=', 1]));
+        QUnit.ok(compare(unique_value(domain), [true, 'a', 1]));
         domain = [['a', '!=', 1]];
         QUnit.ok(!unique_value(domain)[0]);
         domain = [['a', '=', 1], ['a', '=', 2]];
@@ -2744,7 +2744,7 @@
         domain = [['a.b', '=', 1]];
         QUnit.ok(!unique_value(domain)[0]);
         domain = [['a.id', '=', 1, 'model']];
-        QUnit.ok(compare(unique_value(domain), [true, '=', ['model', 1]]));
+        QUnit.ok(compare(unique_value(domain), [true, 'a.id', ['model', 1]]));
         domain = [['a.b.id', '=', 1, 'model']];
         QUnit.ok(compare(unique_value(domain), [false, null, null]));
     });

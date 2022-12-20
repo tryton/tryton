@@ -390,7 +390,7 @@ def unique_value(domain):
             model = domain[3]
             value = [model, value]
         if name.count('.') == count and domain[1] == '=':
-            return True, domain[1], value
+            return True, name, value
     return False, None, None
 
 
