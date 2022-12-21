@@ -210,7 +210,7 @@ class ProductSupplier(metaclass=PoolMeta):
     def on_change_with_drop_shipment_available(self, name=None):
         product = self.product or self.template
         if product and product.type in {'goods', 'assets'}:
-            return product.supply_on_sale
+            return bool(product.supply_on_sale)
 
 
 class RequestCreatePurchase(metaclass=PoolMeta):

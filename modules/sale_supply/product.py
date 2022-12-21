@@ -1,19 +1,46 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql import Literal
+
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
-    supply_on_sale = fields.Boolean('Supply On Sale',
+    supply_on_sale = fields.Selection([
+            (None, "Never"),
+            ('always', "Always"),
+            ], "Supply On Sale",
         states={
             'invisible': ~Eval('purchasable') | ~Eval('salable'),
             })
+
+    @classmethod
+    def __resgister__(cls, module):
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+
+        migrate_supply_on_sale = table_h.column_is_type(
+            'supply_on_sale', 'BOOL')
+        if migrate_supply_on_sale:
+            table_h.column_rename('supply_on_sale', '_temp_supply_on_sale')
+
+        super().__register__(module)
+
+        # Migration from 6.6: convert supply_on_sale from boolean to selection
+        if migrate_supply_on_sale:
+            cursor.execute(*table.update(
+                    [table.supply_on_sale],
+                    ['always'],
+                    where=table._temp_supply_on_sale == Literal(True)))
+            table_h.drop_column('_temp_supply_on_sale')
 
     @fields.depends(methods=['_notify_order_point'])
     def on_change_notify(self):

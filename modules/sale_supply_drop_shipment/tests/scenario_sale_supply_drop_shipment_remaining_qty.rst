@@ -72,7 +72,7 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.supply_on_sale = True
+    >>> template.supply_on_sale = 'always'
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products

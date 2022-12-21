@@ -1,3 +1,4 @@
+* Change supply_on_sale into selection
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Notify when product is supplied on sale and has purchase order point

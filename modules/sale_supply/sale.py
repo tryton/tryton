@@ -121,7 +121,7 @@ class Line(metaclass=PoolMeta):
                 or any(m.state not in ['staging', 'cancelled']
                     for m in self.moves)):
             return False
-        return self.product.supply_on_sale
+        return bool(self.product.supply_on_sale)
 
     def get_move(self, shipment_type):
         move = super().get_move(shipment_type)

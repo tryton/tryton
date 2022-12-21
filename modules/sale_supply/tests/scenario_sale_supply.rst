@@ -99,7 +99,7 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.supply_on_sale = True
+    >>> template.supply_on_sale = 'always'
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
@@ -208,7 +208,7 @@ not create a new purchase request::
     >>> changing_template.salable = True
     >>> changing_template.list_price = Decimal('10')
     >>> changing_template.account_category = account_category
-    >>> changing_template.supply_on_sale = False
+    >>> changing_template.supply_on_sale = None
     >>> changing_template.save()
     >>> changing_product, = changing_template.products
 
@@ -247,7 +247,7 @@ not create a new purchase request::
     >>> shipment.click('pack')
 
     >>> set_user(admin_user)
-    >>> changing_template.supply_on_sale = True
+    >>> changing_template.supply_on_sale = 'always'
     >>> changing_template.save()
 
     >>> set_user(stock_user)

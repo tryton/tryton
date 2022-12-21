@@ -53,7 +53,7 @@ Create product::
     >>> template.type = 'goods'
     >>> template.producible = True
     >>> template.salable = True
-    >>> template.supply_on_sale = True
+    >>> template.supply_on_sale = 'always'
     >>> template.list_price = Decimal(30)
     >>> template.account_category = account_category
     >>> product, = template.products
