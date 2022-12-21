@@ -49,6 +49,8 @@ All are optional except :attr:`~Field.string`.
    A :ref:`domain <topics-domain>` constraint that is applied on the field
    value.
 
+   The domain is enforced unless the field value is ``None``.
+
    .. note::
 
       For :class:`Reference` field it is a dictionary that contains the domain

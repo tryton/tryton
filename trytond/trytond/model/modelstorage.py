@@ -1292,7 +1292,9 @@ class ModelStorage(Model):
                 relations.update(*(getattr(r, field.name) for r in records))
             else:
                 # Cache alignment is not a problem
-                relations = set(records)
+                relations = {
+                    r for r in records
+                    if getattr(r, field.name) is not None}
             relations.discard(None)
             return relations
 

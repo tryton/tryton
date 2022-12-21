@@ -1651,7 +1651,9 @@
                 return true;
             }
             var invalid = false;
-            this.get_state_attrs(record).domain_readonly = false;
+            var state_attrs = this.get_strate_attrs(record);
+            var is_required = Boolean(parseInt(state_attrs.required, 10));
+            state_attrs.domain_readonly = false;
             var inversion = new Sao.common.DomainInversion();
             var domain = inversion.simplify(this.validation_domains(record,
                         pre_validate));
@@ -1667,11 +1669,19 @@
             } else if (Sao.common.compare(domain, [['id', '=', null]])) {
                 invalid = 'domain';
             } else {
+                let [screen_domain, _] = this.get_domains(
+                    record, pre_validate);
                 var uniques = inversion.unique_value(domain);
                 var unique = uniques[0];
                 var leftpart = uniques[1];
                 var value = uniques[2];
-                if (unique) {
+                let unique_from_screen = inversion.unique_value(
+                    screen_domain)[0];
+                if (this._is_empty(record) &&
+                    !is_required &&
+                    !unique_from_screen) {
+                    // Do nothing
+                } else if (unique) {
                     // If the inverted domain is so constraint that only one
                     // value is possible we should use it. But we must also pay
                     // attention to the fact that the original domain might be
@@ -1706,8 +1716,7 @@
                     }
                     if (setdefault && !pre_validate) {
                         this.set_client(record, value);
-                        this.get_state_attrs(record).domain_readonly =
-                            domain_readonly;
+                        state_attrs.domain_readonly = domain_readonly;
                     }
                 }
                 if (!inversion.eval_domain(domain,
@@ -1715,7 +1724,7 @@
                     invalid = domain;
                 }
             }
-            this.get_state_attrs(record).invalid = invalid;
+            state_attrs.invalid = invalid;
             return !invalid;
         }
     });

@@ -582,6 +582,22 @@ class ModelStorageTestCase(unittest.TestCase):
             cm.exception.domain[1]['relation2']['relation_fields']['value'])
 
     @with_transaction()
+    def test_domain_not_required_validation(self):
+        "Test domain validation on not required"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.domain_not_required')
+        Model.create([{'domain_not_required': None}])
+
+    @with_transaction()
+    def test_domain_not_required_invalid(self):
+        "Test invalid domain on not required"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.domain_not_required')
+
+        with self.assertRaises(DomainValidationError):
+            Model.create([{'domain_not_required': 0}])
+
+    @with_transaction()
     def test_check_xml_record_without_record(self):
         "Test check_xml_record without record"
         pool = Pool()

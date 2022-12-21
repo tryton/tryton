@@ -95,8 +95,10 @@ class Field(object):
     def validate(self, record, softvalidation=False, pre_validate=None):
         if self.attrs.get('readonly'):
             return True
+        state_attrs = self.get_state_attrs(record)
+        is_required = bool(int(state_attrs.get('required') or 0))
         invalid = False
-        self.get_state_attrs(record)['domain_readonly'] = False
+        state_attrs['domain_readonly'] = False
         domain = simplify(self.validation_domains(record, pre_validate))
         if not softvalidation:
             if not self.check_required(record):
@@ -107,8 +109,14 @@ class Field(object):
         elif domain == [('id', '=', None)]:
             invalid = 'domain'
         else:
+            screen_domain, _ = self.domains_get(record, pre_validate)
             unique, leftpart, value = unique_value(domain)
-            if unique:
+            unique_from_screen, _, _ = unique_value(screen_domain)
+            if (self._is_empty(record)
+                    and not is_required
+                    and not unique_from_screen):
+                pass
+            elif unique:
                 # If the inverted domain is so constraint that only one value
                 # is possible we should use it. But we must also pay attention
                 # to the fact that the original domain might be a 'OR' domain
@@ -132,11 +140,10 @@ class Field(object):
                         setdefault = False
                 if setdefault and not pre_validate:
                     self.set_client(record, value)
-                    self.get_state_attrs(record)['domain_readonly'] = (
-                        domain_readonly)
+                    state_attrs['domain_readonly'] = domain_readonly
             if not eval_domain(domain, EvalEnvironment(record)):
                 invalid = domain
-        self.get_state_attrs(record)['invalid'] = invalid
+        state_attrs['invalid'] = invalid
         return not invalid
 
     def set(self, record, value):

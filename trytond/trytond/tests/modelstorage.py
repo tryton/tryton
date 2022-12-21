@@ -194,6 +194,14 @@ class ModelStorageEvalEnvironment(ModelStorage_):
         'test.modelstorage.eval_environment', 'many2one', "One2Many")
 
 
+class ModelStorageDomainNotRequired(ModelSQL):
+    "Model for domain on not required field"
+    __name__ = 'test.modelstorage.domain_not_required'
+
+    domain_not_required = fields.Integer(
+        "Domain Not Required", domain=[('domain_not_required', '>', 0)])
+
+
 def register(module):
     Pool.register(
         ModelStorage,
@@ -213,4 +221,5 @@ def register(module):
         ModelStorageRelationDomain2,
         ModelStorageRelationDomain2Target,
         ModelStorageEvalEnvironment,
+        ModelStorageDomainNotRequired,
         module=module, type_='model')
