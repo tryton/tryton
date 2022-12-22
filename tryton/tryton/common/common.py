@@ -439,16 +439,8 @@ def file_selection(title, filename='',
         action=Gtk.FileChooserAction.OPEN, preview=True, multi=False,
         filters=None):
     parent = get_toplevel_window()
-    if action == Gtk.FileChooserAction.OPEN:
-        buttons = (set_underline(_("Cancel")), Gtk.ResponseType.CANCEL,
-            set_underline(_("Select")), Gtk.ResponseType.OK)
-    else:
-        buttons = (set_underline(_("Cancel")), Gtk.ResponseType.CANCEL,
-            set_underline(_("Save")), Gtk.ResponseType.OK)
-    win = Gtk.FileChooserDialog(
+    win = Gtk.FileChooserNative(
         title=title, transient_for=parent, action=action)
-    win.add_buttons(*buttons)
-    win.set_icon(TRYTON_ICON)
     if filename:
         filename = slugify(filename)
         if action in (Gtk.FileChooserAction.SAVE,
@@ -459,7 +451,6 @@ def file_selection(title, filename='',
     if hasattr(win, 'set_do_overwrite_confirmation'):
         win.set_do_overwrite_confirmation(True)
     win.set_select_multiple(multi)
-    win.set_default_response(Gtk.ResponseType.OK)
     if filters is not None:
         for filt in filters:
             win.add_filter(filt)
@@ -484,7 +475,7 @@ def file_selection(title, filename='',
         win.connect('update-preview', update_preview_cb, img_preview)
 
     button = win.run()
-    if button != Gtk.ResponseType.OK:
+    if button != Gtk.ResponseType.ACCEPT:
         result = None
     elif not multi:
         result = PurePath(win.get_filename())
