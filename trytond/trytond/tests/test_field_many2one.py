@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from sql import Join
+
 from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -157,7 +159,9 @@ class FieldMany2OneTestCase(unittest.TestCase):
         self.assertListEqual(result, [record])
 
     @with_transaction()
-    def _test_search_join(self, target_search):
+    def _test_search_join(self, subquery_threshold=1_000):
+        from trytond.model.fields import many2one
+
         pool = Pool()
         Target = pool.get('test.many2one_target')
         Many2One = pool.get('test.many2one')
@@ -170,24 +174,28 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 {'many2one': target2},
                 ])
 
-        def set_target_search(target_search):
-            Many2One.many2one.target_search = target_search
-        self.addCleanup(set_target_search, Many2One.many2one.target_search)
-        set_target_search(target_search)
+        previous = many2one._subquery_threshold
+        many2one._subquery_threshold = subquery_threshold
+        self.addCleanup(setattr, many2one, '_subquery_threshold', previous)
 
         many2ones = Many2One.search([
                 ('many2one.value', '=', 1),
                 ])
-
         self.assertListEqual(many2ones, [many2one1])
+
+        return Many2One.search([
+                ('many2one.value', '=', 1),
+                ], query=True)
 
     def test_search_join(self):
         "Test search by many2one join"
-        self._test_search_join('join')
+        query = self._test_search_join(0)
+        self.assertIsInstance(query.from_[0], Join)
 
     def test_search_subquery(self):
         "Test search by many2one subquery"
-        self._test_search_join('subquery')
+        query = self._test_search_join()
+        self.assertNotIsInstance(query.from_[0], Join)
 
     @with_transaction()
     def test_context_attribute(self):

@@ -64,6 +64,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('database', 'retry', '5')
         self.set('database', 'language', 'en')
         self.set('database', 'timeout', str(30 * 60))
+        self.set('database', 'subquery_threshold', str(1_000))
         self.add_section('request')
         self.set('request', 'max_size', str(2 * 1024 * 1024))
         self.set('request', 'max_size_authenticated',

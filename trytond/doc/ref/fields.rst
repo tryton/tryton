@@ -694,7 +694,7 @@ Instance methods:
 Many2One
 --------
 
-.. class:: Many2One(model_name, string[, left[, right[, path[, ondelete[, datetime_field[, target_search[, search_order[, search_context[, \**options]]]]]]]]])
+.. class:: Many2One(model_name, string[, left[, right[, path[, ondelete[, datetime_field[, search_order[, search_context[, \**options]]]]]]]])
 
    A many-to-one relation field that refers to a record of the named model.
 
@@ -768,23 +768,6 @@ Many2One
    It is usually used in combination with
    :attr:`~trytond.model.ModelSQL._history` to request a value for a given date
    and time on a historicized model.
-
-.. attribute:: Many2One.target_search
-
-   Define the kind of SQL query to use when searching on related target.
-
-   Allowed values are:
-
-      - ``subquery``: uses a subquery based on the ids.
-
-      - ``join``: adds a join on the main query.
-
-   ``join`` is the default value.
-
-   .. note::
-
-      ``join`` could improve the performance if the target has a huge amount of
-      records.
 
 .. attribute:: Many2One.search_order
 

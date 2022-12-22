@@ -5,6 +5,7 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
 
+from trytond.config import config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import cached_property, reduce_ids
@@ -13,6 +14,8 @@ from trytond.transaction import Transaction
 from .field import (
     Field, context_validate, instantiate_context, search_order_validate,
     with_inactive_records)
+
+_subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class Many2One(Field):
@@ -23,7 +26,7 @@ class Many2One(Field):
     _sql_type = 'INTEGER'
 
     def __init__(self, model_name, string='', left=None, right=None, path=None,
-            ondelete='SET NULL', datetime_field=None, target_search='join',
+            ondelete='SET NULL', datetime_field=None,
             search_order=None, search_context=None, help='', required=False,
             readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None, context=None,
@@ -57,8 +60,6 @@ class Many2One(Field):
         self.right = right
         self.path = path
         self.datetime_field = datetime_field
-        assert target_search in ['subquery', 'join']
-        self.target_search = target_search
         self.__search_order = None
         self.search_order = search_order
         self.__search_context = None
@@ -258,7 +259,7 @@ class Many2One(Field):
         else:
             _, target_name = name.split('.', 1)
         target_domain = [(target_name,) + tuple(domain[1:])]
-        if self.target_search == 'subquery':
+        if Target.count() < _subquery_threshold:
             query = Target.search(target_domain, order=[], query=True)
             return column.in_(query)
         else:

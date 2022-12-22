@@ -180,6 +180,13 @@ The number of retries when a database operational error occurs during a request.
 
 Default: ``5``
 
+subquery_threshold
+~~~~~~~~~~~~~~~~~~
+
+The number of records in the target relation under which a sub-query is used.
+
+Default: ``1000``
+
 language
 ~~~~~~~~
 
