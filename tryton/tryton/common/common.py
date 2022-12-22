@@ -45,7 +45,7 @@ except ImportError:
 import zipfile
 from threading import Lock
 
-from gi.repository import Gdk, GdkPixbuf, GLib, GObject, Gtk
+from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk
 
 from tryton import __version__
 from tryton.exceptions import TrytonError, TrytonServerError
@@ -542,10 +542,8 @@ def file_open(filename, type=None, print_p=False):
                     file_open(zfilename, type=ztype, print_p=True)
         return
 
-    if os.name == 'nt':
-        operation = 'open'
-        if print_p:
-            operation = 'print'
+    if hasattr(os, 'startfile'):
+        operation = 'print' if print_p else 'open'
         try:
             os.startfile(os.path.normpath(filename), operation)
         except WindowsError:
@@ -570,10 +568,18 @@ def file_open(filename, type=None, print_p=False):
         except OSError:
             save()
     else:
+        uri = GLib.filename_to_uri(filename)
         try:
-            subprocess.Popen(['xdg-open', filename])
-        except OSError:
+            Gio.AppInfo.launch_default_for_uri(uri)
+        except GLib.Error:
             save()
+
+
+def webbrowser_open(url):
+    try:
+        Gio.AppInfo.launch_default_for_uri(url)
+    except GLib.Error:
+        webbrowser.open(url)
 
 
 def url_open(uri):
@@ -636,7 +642,7 @@ def mailto(to=None, cc=None, subject=None, body=None, attachment=None):
         url += "&body=" + urllib.parse.quote(body, "")
     if attachment:
         url += "&attachment=" + urllib.parse.quote(attachment, "")
-    webbrowser.open(url, new=1)
+    webbrowser_open(url, new=1)
 
 
 class UniqueDialog(object):
@@ -878,7 +884,7 @@ class ErrorDialog(UniqueDialog):
             CONFIG['bug.url'], _("Report Bug"))
         button_roundup.get_child().set_halign(Gtk.Align.START)
         button_roundup.connect('activate-link',
-            lambda widget: webbrowser.open(CONFIG['bug.url'], new=2))
+            lambda widget: webbrowser_open(CONFIG['bug.url'], new=2))
         dialog.vbox.pack_start(
             button_roundup, expand=False, fill=False, padding=0)
 
@@ -899,7 +905,7 @@ error = ErrorDialog()
 def check_version(box, version=__version__):
     def info_bar_response(info_bar, response, box, url):
         if response == Gtk.ResponseType.ACCEPT:
-            webbrowser.open(url)
+            webbrowser_open(url)
         box.remove(info_bar)
 
     class HeadRequest(urllib.request.Request):
@@ -951,7 +957,7 @@ def open_documentation():
         version = 'latest'
     else:
         version = '.'.join(version)
-    webbrowser.open(CONFIG['doc.url'] % {
+    webbrowser_open(CONFIG['doc.url'] % {
             'lang': CONFIG['client.lang'],
             'version': version,
             })
@@ -1045,7 +1051,7 @@ def get_credentials(user_id=None):
             query['renew'] = user_id
         url_parts[4] = urlencode(query)
         url = urlunparse(url_parts)
-        webbrowser.open(url)
+        webbrowser_open(url)
 
         class RequestHandler(BaseHTTPRequestHandler):
             def do_GET(self):
