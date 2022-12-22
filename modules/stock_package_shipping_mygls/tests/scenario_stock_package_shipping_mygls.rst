@@ -5,6 +5,7 @@ Stock Package Shipping MyGLS Scenario
 Imports::
 
     >>> import os
+    >>> import uuid
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
@@ -184,6 +185,7 @@ Create the packages and ship the shipment::
     >>> shipment, = sale.shipments
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
+    >>> shipment.shipping_description = str(uuid.uuid4())
     >>> pack = shipment.packages.new(type=box)
     >>> pack_moves = pack.moves.find([])
     >>> pack.moves.append(pack_moves[0])
