@@ -101,8 +101,9 @@ def run_task(pool, task_id):
         pool = Pool(pool)
     Queue = pool.get('ir.queue')
     logger.info('task "%d" started', task_id)
+    retry = config.getint('database', 'retry')
     try:
-        for count in range(config.getint('database', 'retry'), -1, -1):
+        for count in range(retry, -1, -1):
             with Transaction().start(pool.database_name, 0) as transaction:
                 try:
                     Queue(task_id).run()
