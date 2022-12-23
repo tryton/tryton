@@ -3,7 +3,10 @@
 from io import BytesIO
 from itertools import zip_longest
 
-from PyPDF2 import PdfFileReader, PdfFileWriter
+try:
+    from PyPDF2 import PdfReader, PdfWriter
+except ImportError:
+    from PyPDF2 import PdfFileReader as PdfReader, PdfFileWriter as PdfWriter
 
 from trytond.i18n import gettext
 from trytond.model import fields
@@ -168,9 +171,9 @@ class ShipmentCreateShippingMyGLS(Wizard):
                     message=message))
 
         labels = []
-        reader = PdfFileReader(BytesIO(response.Labels))
+        reader = PdfReader(BytesIO(response.Labels))
         for i in range(reader.getNumPages()):
-            pdf = PdfFileWriter()
+            pdf = PdfWriter()
             label = BytesIO()
             pdf.addPage(reader.getPage(i))
             pdf.write(label)

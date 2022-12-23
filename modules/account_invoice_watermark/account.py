@@ -2,7 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from io import BytesIO
 
-from PyPDF2 import PdfFileReader, PdfFileWriter
+try:
+    from PyPDF2 import PdfReader, PdfWriter
+except ImportError:
+    from PyPDF2 import PdfFileReader as PdfReader, PdfFileWriter as PdfWriter
 
 from trytond.pool import Pool, PoolMeta
 from trytond.report import Report
@@ -45,9 +48,9 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def merge(cls, invoice, watermark):
-        output = PdfFileWriter()
-        invoice = PdfFileReader(BytesIO(invoice))
-        watermark = PdfFileReader(BytesIO(watermark)).getPage(0)
+        output = PdfWriter()
+        invoice = PdfReader(BytesIO(invoice))
+        watermark = PdfReader(BytesIO(watermark)).getPage(0)
         for i in range(invoice.getNumPages()):
             page = invoice.getPage(i)
             page.mergePage(watermark)
