@@ -2159,7 +2159,15 @@
                 group.load(value, modified || default_);
             } else {
                 for (const vals of value) {
-                    var new_record = group.new_(false);
+                    var new_record;
+                    if ('id' in vals) {
+                        new_record = group.get(vals.id);
+                        if (!new_record) {
+                            new_record = group.new_(false, vals.id);
+                        }
+                    } else {
+                        new_record = group.new_(false);
+                    }
                     if (default_) {
                         // Don't validate as parent will validate
                         new_record.set_default(vals, false, false);
