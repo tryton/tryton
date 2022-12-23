@@ -70,6 +70,8 @@ def work(options):
     try:
         while True:
             timeout = options.timeout
+            # Add some randomness to avoid concurrent pulling
+            time.sleep(0.1 * random.random())
             while len(tasks.filter()) >= processes:
                 time.sleep(0.1)
             for queue in queues:
