@@ -50,11 +50,21 @@ class Invoice(metaclass=PoolMeta):
     def merge(cls, invoice, watermark):
         output = PdfWriter()
         invoice = PdfReader(BytesIO(invoice))
-        watermark = PdfReader(BytesIO(watermark)).getPage(0)
-        for i in range(invoice.getNumPages()):
-            page = invoice.getPage(i)
-            page.mergePage(watermark)
-            output.addPage(page)
+        watermark = PdfReader(BytesIO(watermark))
+        if hasattr(watermark, 'pages'):
+            watermark = watermark.pages[0]
+        else:
+            watermark = watermark.getNumPages(0)
+        for i in range(len(invoice.pages)):
+            page = invoice.pages[i]
+            if hasattr(page, 'merge_page'):
+                page.merge_page(watermark)
+            else:
+                page.mergePage(watermark)
+            if hasattr(output, 'add_page'):
+                output.add_page(page)
+            else:
+                output.addPage(page)
         data = BytesIO()
         output.write(data)
         return data.getvalue()
