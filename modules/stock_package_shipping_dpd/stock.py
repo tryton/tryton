@@ -28,6 +28,14 @@ from .exceptions import DPDError
 TRACKING_URL = 'https://tracking.dpd.de/status/%(code)s/parcel/%(reference)s'
 
 
+def iter_pdf_pages(document):
+    if hasattr(document, 'pages'):
+        yield from document.pages
+    else:
+        for i in range(document.getNumPages()):
+            yield document.getPage(i)
+
+
 class Package(metaclass=PoolMeta):
     __name__ = 'stock.package'
 
@@ -175,10 +183,13 @@ class CreateDPDShipping(Wizard):
         labels = []
         labels_pdf = BytesIO(shipment_response.parcellabelsPDF)
         reader = PdfReader(labels_pdf)
-        for page_num in range(reader.getNumPages()):
+        for page in iter_pdf_pages(reader):
             new_pdf = PdfWriter()
             new_label = BytesIO()
-            new_pdf.addPage(reader.getPage(page_num))
+            if hasattr(new_pdf, 'add_page'):
+                new_pdf.add_page(page)
+            else:
+                new_pdf.addPage(page)
             new_pdf.write(new_label)
             labels.append(new_label)
 
