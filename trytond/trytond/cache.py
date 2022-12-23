@@ -369,11 +369,10 @@ class MemoryCache(BaseCache):
 
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
-            current_thread.listening = True
-
             # Clear everything in case we missed a payload
             Pool(dbname).refresh(_get_modules(cursor))
             cls._clear_all(dbname)
+            current_thread.listening = True
 
             selector.register(conn, selectors.EVENT_READ)
             while cls._listener.get((pid, dbname)) == current_thread:
