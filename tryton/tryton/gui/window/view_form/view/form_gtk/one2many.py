@@ -62,7 +62,7 @@ class One2Many(Widget):
         self.but_pre.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_pre, expand=False, fill=False, padding=0)
 
-        self.label = Gtk.Label(label='(0,0)')
+        self.label = Gtk.Label(label='(0/0)')
         hbox.pack_start(self.label, expand=False, fill=False, padding=0)
 
         self.but_next = Gtk.Button(can_focus=False)
@@ -510,12 +510,12 @@ class One2Many(Widget):
     def record_message(self, position, size, *args):
         self._position = position
         self._length = size
-        if self._position:
-            name = str(self._position)
-        else:
-            name = '_'
-        line = '(%s/%s)' % (name, self._length)
-        self.label.set_text(line)
+        name = str(position) if position else '_'
+        selected = len(self.screen.selected_records)
+        if selected > 1:
+            name += '#%i' % selected
+        name = '(%s/%s)' % (name, common.humanize(size))
+        self.label.set_text(name)
         self._set_button_sensitive()
 
     def display(self):

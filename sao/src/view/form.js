@@ -3626,13 +3626,15 @@ function eval_pyson(value){
         record_message: function(position, size) {
             this._position = position;
             this._length = size;
-            var name;
-            if (this._position) {
-                name = this._position;
-            } else {
-                name = '_';
+            var name = "_";
+            if (position) {
+                var selected = this.screen.selected_records.length;
+                name = ' ' + position;
+                if (selected > 1) {
+                    name += '#' + selected;
+                }
             }
-            var message = name + ' / ' + size;
+            var message = name + ' / ' + Sao.common.humanize(size);
             this.label.text(message).attr('title', message);
             this._set_button_sensitive();
         },
@@ -3763,6 +3765,12 @@ function eval_pyson(value){
             ).appendTo(buttons);
             this.but_add.click(this.add.bind(this));
 
+            this.label = jQuery('<span/>', {
+                'class': 'badge',
+            }).appendTo(jQuery('<span/>', {
+                'class': 'btn hidden-xs',
+            }).appendTo(buttons));
+
             this.but_remove = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
@@ -3844,8 +3852,18 @@ function eval_pyson(value){
             this.but_remove.prop('disabled', this._readonly ||
                 this._position === 0);
         },
-        record_message: function(position) {
+        record_message: function(position, size) {
             this._position = position;
+            var name = "_";
+            if (position) {
+                var selected = this.screen.selected_records.length;
+                name = ' ' + position;
+                if (selected > 1) {
+                    name += '#' + selected;
+                }
+            }
+            var message = name + ' / ' + Sao.common.humanize(size);
+            this.label.text(message).attr('title', message);
             this._set_button_sensitive();
         },
         display: function() {

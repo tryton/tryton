@@ -72,6 +72,9 @@ class Many2Many(Widget):
         self.but_add.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
+        self.label = Gtk.Label(label='(0/0)')
+        hbox.pack_start(self.label, expand=False, fill=False, padding=0)
+
         self.but_remove = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_remove, _('Remove selected record'))
         self.but_remove.connect('clicked', self._sig_remove)
@@ -273,8 +276,14 @@ class Many2Many(Widget):
                 not self._readonly
                 and self._position))
 
-    def record_message(self, position, *args):
+    def record_message(self, position, size, *args):
         self._position = position
+        name = str(position) if position else '_'
+        selected = len(self.screen.selected_records)
+        if selected > 1:
+            name += '#%i' % selected
+        name = '(%s/%s)' % (name, common.humanize(size))
+        self.label.set_text(name)
         self._set_button_sensitive()
 
     def display(self):
