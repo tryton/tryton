@@ -2772,6 +2772,69 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_V_fr"/>
             <field name="account" ref="root_fr"/>
         </record>
+        <record id="tax_code_V_B_62-tva_achat_marchandises_intracommunautaires_6_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_6_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_marchandises_intracommunautaires_12_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_12_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_marchandises_intracommunautaires_21_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_marchandises_intracommunautaires_21_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_frais_biens_intracommunautaires_6_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_6_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_frais_biens_intracommunautaires_12_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_12_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_frais_biens_intracommunautaires_21_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_frais_biens_intracommunautaires_21_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_investissement_intracommunautaires_6_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_6_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_investissement_intracommunautaires_12_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_12_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_V_B_62-tva_achat_investissement_intracommunautaires_21_1_fr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_V_B_62_fr"/>
+            <field name="tax" ref="tva_achat_investissement_intracommunautaires_21_1_fr"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
 
         <record id="tax_code_V_C_64_fr" model="account.tax.code.template">
             <field name="name">C. T.V.A. à récupérer mentionnée sur les notes de crédit délivrées</field>
