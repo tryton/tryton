@@ -950,7 +950,7 @@ def open_documentation():
     if int(version[-1]) % 2:
         version = 'latest'
     else:
-        version = '.'.join([version])
+        version = '.'.join(version)
     webbrowser.open(CONFIG['doc.url'] % {
             'lang': CONFIG['client.lang'],
             'version': version,
