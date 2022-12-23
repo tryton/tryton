@@ -687,7 +687,13 @@ class O2MField(Field):
             group.load(value, modified=modified or default)
         else:
             for vals in value:
-                new_record = record.value[self.name].new(default=False)
+                if 'id' in vals:
+                    new_record = group.get(vals['id'])
+                    if not new_record:
+                        new_record = group.new(
+                            default=False, obj_id=vals['id'])
+                else:
+                    new_record = group.new(default=False)
                 if default:
                     # Don't validate as parent will validate
                     new_record.set_default(vals, signal=False, validate=False)
