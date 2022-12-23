@@ -23,6 +23,14 @@ from .configuration import get_client, SHIPMENT_SERVICE
 __all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
 
 
+def iter_pdf_pages(document):
+    if hasattr(document, 'pages'):
+        yield from document.pages
+    else:
+        for i in range(document.getNumPages()):
+            yield document.getPage(i)
+
+
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
@@ -142,10 +150,13 @@ class CreateDPDShipping(Wizard):
         labels = []
         labels_pdf = BytesIO(shipment_response.parcellabelsPDF)
         reader = PdfReader(labels_pdf)
-        for page_num in range(reader.getNumPages()):
+        for page in iter_pdf_pages(reader):
             new_pdf = PdfWriter()
             new_label = BytesIO()
-            new_pdf.addPage(reader.getPage(page_num))
+            if hasattr(new_pdf, 'add_page'):
+                new_pdf.add_page(page)
+            else:
+                new_pdf.addPage(page)
             new_pdf.write(new_label)
             labels.append(new_label)
 
