@@ -3,8 +3,8 @@
 import datetime
 
 from dateutil.relativedelta import relativedelta
-from proteus import Model, Wizard
 
+from proteus import Model, Wizard
 from trytond.modules.company.tests.tools import get_company
 
 __all__ = ['create_fiscalyear', 'create_chart', 'get_accounts',
@@ -85,6 +85,7 @@ def get_accounts(company=None, config=None):
             accounts[type], = Account.find([
                     ('type.%s' % type, '=', True),
                     ('company', '=', company.id),
+                    ('closed', '!=', True),
                     ], limit=1)
         except ValueError:
             pass
@@ -92,6 +93,7 @@ def get_accounts(company=None, config=None):
         accounts['cash'], = Account.find([
                 ('company', '=', company.id),
                 ('name', '=', 'Main Cash'),
+                ('closed', '!=', True),
                 ], limit=1)
     except ValueError:
         pass
@@ -99,6 +101,7 @@ def get_accounts(company=None, config=None):
         accounts['tax'], = Account.find([
                 ('company', '=', company.id),
                 ('name', '=', 'Main Tax'),
+                ('closed', '!=', True),
                 ], limit=1)
     except ValueError:
         pass
