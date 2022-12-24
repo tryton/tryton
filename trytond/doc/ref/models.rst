@@ -472,6 +472,11 @@ Dual methods:
 
    Save the modification made on the records.
 
+   .. warning::
+
+      Fields that have a container as a value must be reassigned to the parent
+      record in order to be saved when the parent record is saved.
+
 Instance methods:
 
 .. method:: ModelStorage.resources()
