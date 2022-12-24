@@ -17,10 +17,7 @@ def read(fname):
 
 
 def get_require_version(name):
-    if minor_version % 2:
-        require = '%s >= %s.%s.dev0, < %s.%s'
-    else:
-        require = '%s >= %s.%s, < %s.%s'
+    require = '%s >= %s.%s, < %s.%s'
     require %= (name, major_version, minor_version,
         major_version, minor_version + 1)
     return require
@@ -54,14 +51,14 @@ setup(name=name,
     description='Tryton module to group sale stock moves',
     long_description=read('README.rst'),
     author='Tryton',
-    author_email='bugs@tryton.org',
+    author_email='foundation@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation": 'https://docs.tryton.org/',
         "Forum": 'https://www.tryton.org/forum',
-        "Source Code": 'https://hg.tryton.org/modules/sale_shipment_grouping',
+        "Source Code": 'https://code.tryton.org/tryton',
         },
     keywords='tryton sale shipment grouping',
     package_dir={'trytond.modules.sale_shipment_grouping': '.'},

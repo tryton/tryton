@@ -47,8 +47,11 @@ major_version = int(major_version)
 minor_version = int(minor_version)
 name = 'trytond'
 
-download_url = 'http://downloads.tryton.org/%s.%s/' % (
-    major_version, minor_version)
+if minor_version % 2:
+    download_url = ''
+else:
+    download_url = 'http://downloads.tryton.org/%s.%s/' % (
+        major_version, minor_version)
 
 tests_require = ['pillow']
 
@@ -57,14 +60,14 @@ setup(name=name,
     description='Tryton server',
     long_description=read('README.rst'),
     author='Tryton',
-    author_email='bugs@tryton.org',
+    author_email='foundation@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
         "Documentation": 'https://docs.tryton.org/',
         "Forum": 'https://www.tryton.org/forum',
-        "Source Code": 'https://hg.tryton.org/trytond',
+        "Source Code": 'https://code.tryton.org/tryton',
         },
     keywords='business application platform ERP',
     packages=find_packages(exclude=['*.modules.*', 'modules.*', 'modules',
