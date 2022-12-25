@@ -3,7 +3,7 @@
 
 import datetime
 import unittest
-from decimal import Decimal
+from decimal import ROUND_HALF_DOWN, Decimal
 
 from trytond import backend
 from trytond.modules.currency.ecb import (
@@ -142,6 +142,29 @@ class CurrencyTestCase(ModuleTestCase):
         rounded = cu.round(Decimal('1.2345'))
 
         self.assertEqual(rounded, Decimal('1.2345'))
+
+    @with_transaction()
+    def test_round_opposite(self):
+        "Test the opposite rounding"
+        cu = create_currency('cu')
+        cu.save()
+
+        rounded = cu.round(Decimal('1.235'))
+        self.assertEqual(rounded, Decimal('1.24'))
+        opposite_rounded = cu.round(Decimal('1.235'), opposite=True)
+        self.assertEqual(opposite_rounded, Decimal('1.24'))
+
+    @with_transaction()
+    def test_round_opposite_HALF_DOWN(self):
+        "Test the oposite rounding of ROUND_HALF_DOWN"
+        cu = create_currency('cu')
+        cu.save()
+
+        rounded = cu.round(Decimal('1.235'), rounding=ROUND_HALF_DOWN)
+        self.assertEqual(rounded, Decimal('1.23'))
+        opposite_rounded = cu.round(
+            Decimal('1.235'), rounding=ROUND_HALF_DOWN, opposite=True)
+        self.assertEqual(opposite_rounded, Decimal('1.24'))
 
     @with_transaction()
     def test_is_zero(self):

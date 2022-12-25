@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import decimal
 import logging
-from decimal import ROUND_HALF_EVEN, Decimal, localcontext
+from decimal import Decimal, localcontext
 
 from dateutil.relativedelta import relativedelta
 from sql import Window
@@ -22,6 +23,17 @@ from .exceptions import RateError
 from .ir import rate_decimal
 
 logger = logging.getLogger(__name__)
+
+
+ROUNDING_OPPOSITES = {
+    decimal.ROUND_HALF_EVEN: decimal.ROUND_HALF_EVEN,
+    decimal.ROUND_HALF_UP: decimal.ROUND_HALF_DOWN,
+    decimal.ROUND_HALF_DOWN: decimal.ROUND_HALF_UP,
+    decimal.ROUND_UP: decimal.ROUND_DOWN,
+    decimal.ROUND_DOWN: decimal.ROUND_UP,
+    decimal.ROUND_CEILING: decimal.ROUND_FLOOR,
+    decimal.ROUND_FLOOR: decimal.ROUND_CEILING,
+    }
 
 
 class Currency(
@@ -148,8 +160,10 @@ class Currency(
                 res[currency_id] = id2rate[res[currency_id]].rate
         return res
 
-    def round(self, amount, rounding=ROUND_HALF_EVEN):
+    def round(self, amount, rounding=decimal.ROUND_HALF_EVEN, opposite=False):
         'Round the amount depending of the currency'
+        if opposite:
+            rounding = ROUNDING_OPPOSITES[rounding]
         return self._round(amount, self.rounding, rounding)
 
     @classmethod
