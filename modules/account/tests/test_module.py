@@ -1154,6 +1154,108 @@ class AccountTestCase(
         self.assertEqual(tax['amount'], Decimal('20.02'))
 
     @with_transaction()
+    def test_taxable_mixin_tax_residual_rounding(self):
+        "Test TaxableMixin for rounding with residual amount"
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            config = Configuration(1)
+            config.tax_rounding = 'line'
+            config.save()
+
+            tax_account, = Account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+
+            tax1 = Tax()
+            tax1.name = tax1.description = "Tax 1"
+            tax1.type = 'percentage'
+            tax1.rate = Decimal('.1')
+            tax1.invoice_account = tax_account
+            tax1.credit_note_account = tax_account
+            tax1.save()
+            tax2 = Tax()
+            tax2.name = tax2.description = "Tax 2"
+            tax2.type = 'percentage'
+            tax2.rate = Decimal('.1')
+            tax2.invoice_account = tax_account
+            tax2.credit_note_account = tax_account
+            tax2.save()
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax1, tax2], Decimal('1.0417'), 1, None),
+                    ],
+                company=company)
+
+            taxline_1, taxline_2 = taxable._get_taxes()
+            self.assertEqual(taxline_1['base'], Decimal('1.04'))
+            self.assertEqual(taxline_1['amount'], Decimal('.11'))
+            self.assertEqual(taxline_2['base'], Decimal('1.04'))
+            self.assertEqual(taxline_2['amount'], Decimal('.10'))
+
+    @with_transaction()
+    def test_taxable_mixin_tax_residual_rounding_negative_residual(self):
+        "Test TaxableMixin for rounding with negative residual amount"
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            config = Configuration(1)
+            config.tax_rounding = 'line'
+            config.save()
+
+            tax_account, = Account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+
+            tax1 = Tax()
+            tax1.name = tax1.description = "Tax 1"
+            tax1.type = 'percentage'
+            tax1.rate = Decimal('.1')
+            tax1.invoice_account = tax_account
+            tax1.credit_note_account = tax_account
+            tax1.save()
+            tax2 = Tax()
+            tax2.name = tax2.description = "Tax 2"
+            tax2.type = 'percentage'
+            tax2.rate = Decimal('.1')
+            tax2.invoice_account = tax_account
+            tax2.credit_note_account = tax_account
+            tax2.save()
+
+            # -2.95 is the unit price of -3.54 with 20% tax included
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax1], Decimal('30.00'), 1, None),
+                    ([tax1, tax2], Decimal('-2.95'), 1, None),
+                    ],
+                company=company)
+
+            taxline_1, taxline_2, taxline_3 = taxable._get_taxes()
+            self.assertEqual(taxline_1['base'], Decimal('30.00'))
+            self.assertEqual(taxline_1['amount'], Decimal('3.00'))
+            self.assertEqual(taxline_2['base'], Decimal('-2.95'))
+            self.assertEqual(taxline_2['amount'], Decimal('-0.29'))
+            self.assertEqual(taxline_3['base'], Decimal('-2.95'))
+            self.assertEqual(taxline_3['amount'], Decimal('-0.30'))
+
+    @with_transaction()
     def test_tax_compute_with_children_update_unit_price(self):
         "Test tax compute with children taxes modifying unit_price"
         pool = Pool()

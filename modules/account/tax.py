@@ -3,7 +3,7 @@
 import datetime
 from collections import namedtuple
 from decimal import Decimal
-from itertools import groupby
+from itertools import cycle, groupby
 
 from sql import Literal
 from sql.aggregate import Sum
@@ -1248,8 +1248,23 @@ class TaxableMixin(object):
     def _round_taxes(self, taxes):
         if not self.currency:
             return
+
+        remainder = 0
         for taxline in taxes.values():
-            taxline['amount'] = self.currency.round(taxline['amount'])
+            rounded_amount = self.currency.round(taxline['amount'])
+            remainder += rounded_amount - taxline['amount']
+            taxline['amount'] = rounded_amount
+
+        # We need to compensate the rounding we did
+        remainder = self.currency.round(remainder, opposite=True)
+        if abs(remainder) >= self.currency.rounding:
+            offset_amount = self.currency.rounding.copy_sign(remainder)
+
+            for tax in cycle(taxes.values()):
+                tax['amount'] -= offset_amount
+                remainder -= offset_amount
+                if abs(remainder) < self.currency.rounding:
+                    break
 
     @fields.depends('company', methods=['_get_tax_context', '_round_taxes'])
     def _get_taxes(self):
@@ -1267,6 +1282,7 @@ class TaxableMixin(object):
                 assert all(t.company == self.company for t in line.taxes)
                 l_taxes = Tax.compute(Tax.browse(line.taxes), line.unit_price,
                     line.quantity, line.tax_date or self.tax_date)
+                current_taxes = {}
                 for tax in l_taxes:
                     taxline = self._compute_tax_line(**tax)
                     # Base must always be rounded per line as there will be one
@@ -1278,8 +1294,9 @@ class TaxableMixin(object):
                     else:
                         taxes[taxline]['base'] += taxline['base']
                         taxes[taxline]['amount'] += taxline['amount']
+                    current_taxes[taxline] = taxes[taxline]
                 if tax_rounding == 'line':
-                    self._round_taxes(taxes)
+                    self._round_taxes(current_taxes)
         if tax_rounding == 'document':
             self._round_taxes(taxes)
         return taxes
