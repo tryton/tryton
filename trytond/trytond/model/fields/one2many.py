@@ -3,8 +3,11 @@
 from collections import defaultdict
 from itertools import chain
 
+from sql import Literal
 from sql.conditionals import Coalesce
+from sql.operators import Exists
 
+from trytond.config import config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import cached_property, grouped_slice
@@ -15,6 +18,8 @@ from .field import (
     instanciate_values, instantiate_context, search_order_validate,
     size_validate)
 from .function import Function
+
+_subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class One2Many(Field):
@@ -332,20 +337,42 @@ class One2Many(Field):
             origin_where = origin.like(Model.__name__ + ',%')
             origin = origin_field.sql_id(origin, Target)
 
+        use_in = Target.count() < _subquery_threshold
         if '.' not in name:
             if value is None:
-                where = origin != value
-                if history_where:
-                    where &= history_where
-                if origin_where:
-                    where &= origin_where
-                if self.filter:
-                    query = Target.search(self.filter, order=[], query=True)
-                    where &= origin.in_(query)
-                query = target.select(origin, where=where)
-                expression = ~table.id.in_(query)
+                if use_in:
+                    where = origin != value
+                    if history_where:
+                        where &= history_where
+                    if origin_where:
+                        where &= origin_where
+                    if self.filter:
+                        query = Target.search(
+                            self.filter, order=[], query=True)
+                        where &= origin.in_(query)
+                    query = target.select(origin, where=where)
+                    expression = ~table.id.in_(query)
+                else:
+                    where = origin == table.id
+                    if history_where:
+                        where &= history_where
+                    if origin_where:
+                        where &= origin_where
+                    if self.filter:
+                        target_tables = {
+                            None: (target, None),
+                            }
+                        target_tables, clause = Target.search_domain(
+                            self.filter, tables=target_tables)
+                        where &= clause
+                        query_table = convert_from(None, target_tables)
+                        query = query_table.select(Literal(1), where=where)
+                    else:
+                        query = target.select(Literal(1), where=where)
+                    expression = ~Exists(query)
+
                 if operator == '!=':
-                    return ~expression
+                    expression = ~expression
                 return expression
             else:
                 if isinstance(value, str):
@@ -372,13 +399,22 @@ class One2Many(Field):
         tables, expression = Target.search_domain(
             target_domain, tables=target_tables)
         query_table = convert_from(None, target_tables)
-        query = query_table.select(origin, where=expression)
-        expression = table.id.in_(query)
+        if use_in:
+            query = query_table.select(origin, where=expression)
+            expression = table.id.in_(query)
+        else:
+            query = query_table.select(
+                Literal(1), where=expression & (origin == table.id))
+            expression = Exists(query)
 
         if operator == 'not where':
             expression = ~expression
         elif operator.startswith('!') or operator.startswith('not '):
-            expression |= ~table.id.in_(target.select(origin))
+            if use_in:
+                expression |= ~table.id.in_(target.select(origin))
+            else:
+                expression |= ~Exists(target.select(
+                        Literal(1), where=origin == table.id))
         return expression
 
     def definition(self, model, language):

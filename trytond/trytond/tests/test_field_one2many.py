@@ -2,90 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from trytond.config import config
 from trytond.model.exceptions import (
     RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
 
-class CommonTestCaseMixin:
-
-    @with_transaction()
-    def test_set_reverse_field_instance(self):
-        "Test reverse field is set on instance"
-        One2Many = self.One2Many()
-        Target = self.One2ManyTarget()
-
-        record = One2Many()
-        target = Target()
-        record.targets = [target]
-
-        self.assertEqual(target.origin, record)
-
-    @with_transaction()
-    def test_save_reverse_field(self):
-        "Test save with reverse field set"
-        One2Many = self.One2Many()
-        Target = self.One2ManyTarget()
-
-        record = One2Many()
-        target = Target()
-        record.targets = [target]
-
-        record.save()
-
-    @with_transaction()
-    def test_save_reverse_field_saved(self):
-        "Test save with reverse field set on saved"
-        One2Many = self.One2Many()
-        Target = self.One2ManyTarget()
-
-        record = One2Many()
-        target = Target()
-        target.save()
-        record.targets = [target]
-
-        record.save()
-
-    @with_transaction()
-    def test_set_reverse_field_dict(self):
-        "Test reverse field is set on dict"
-        One2Many = self.One2Many()
-
-        record = One2Many()
-        record.targets = [{}]
-        target, = record.targets
-
-        self.assertEqual(target.origin, record)
-
-    @with_transaction()
-    def test_set_reverse_field_id(self):
-        "Test reverse field is set on id"
-        One2Many = self.One2Many()
-        Target = self.One2ManyTarget()
-
-        record = One2Many()
-        target = Target()
-        target.save()
-        record.targets = [target.id]
-        target, = record.targets
-
-        self.assertEqual(target.origin, record)
-
-    @with_transaction()
-    def test_create(self):
-        "Test create one2many"
-        One2Many = self.One2Many()
-
-        one2many, = One2Many.create([{
-                    'targets': [
-                        ('create', [{
-                                    'name': "Target",
-                                    }]),
-                        ],
-                    }])
-
-        self.assertEqual(len(one2many.targets), 1)
+class SearchTestCaseMixin:
 
     @with_transaction()
     def test_search_equals(self):
@@ -321,6 +245,98 @@ class CommonTestCaseMixin:
         self.assertListEqual(one2manys, [])
 
     @with_transaction()
+    def test_search_strategy(self):
+        "Test search one2many with the right strategy"
+        One2Many = self.One2Many()
+        one2many, = One2Many.create([{
+                    'targets': [('create', [{'name': "Target"}])],
+                    }])
+
+        One2Many.search([('targets.name', '=', "Target")])
+        query = One2Many.search([('targets.name', '=', "Target")], query=True)
+        self.assertIn(self._strategy, str(query))
+
+
+class CommonTestCaseMixin:
+
+    @with_transaction()
+    def test_set_reverse_field_instance(self):
+        "Test reverse field is set on instance"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        record.targets = [target]
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
+    def test_save_reverse_field(self):
+        "Test save with reverse field set"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        record.targets = [target]
+
+        record.save()
+
+    @with_transaction()
+    def test_save_reverse_field_saved(self):
+        "Test save with reverse field set on saved"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        target.save()
+        record.targets = [target]
+
+        record.save()
+
+    @with_transaction()
+    def test_set_reverse_field_dict(self):
+        "Test reverse field is set on dict"
+        One2Many = self.One2Many()
+
+        record = One2Many()
+        record.targets = [{}]
+        target, = record.targets
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
+    def test_set_reverse_field_id(self):
+        "Test reverse field is set on id"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        target.save()
+        record.targets = [target.id]
+        target, = record.targets
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
+    def test_create(self):
+        "Test create one2many"
+        One2Many = self.One2Many()
+
+        one2many, = One2Many.create([{
+                    'targets': [
+                        ('create', [{
+                                    'name': "Target",
+                                    }]),
+                        ],
+                    }])
+
+        self.assertEqual(len(one2many.targets), 1)
+
+    @with_transaction()
     def test_write_write(self):
         "Test write one2many write"
         One2Many = self.One2Many()
@@ -433,8 +449,10 @@ class CommonTestCaseMixin:
         self.assertIsNone(target.write_date)
 
 
-class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldOne2ManyTestCase(
+        unittest.TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many"
+    _strategy = 'IN'
 
     @classmethod
     def setUpClass(cls):
@@ -646,8 +664,10 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         self.assertEqual(record.targets[0].context, record.id)
 
 
-class FieldOne2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
+class FieldOne2ManyReferenceTestCase(
+        unittest.TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many Reference"
+    _strategy = 'IN'
 
     @classmethod
     def setUpClass(cls):
@@ -658,3 +678,53 @@ class FieldOne2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
 
     def One2ManyTarget(self):
         return Pool().get('test.one2many_reference.target')
+
+
+class FieldOne2ManyExistsTestCase(unittest.TestCase, SearchTestCaseMixin):
+    "Test Field One2Many when using EXISTS"
+    _strategy = 'EXISTS'
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    def setUp(self):
+        from trytond.model.fields import one2many
+        super().setUp()
+        previous = int(
+            config.get('database', 'subquery_threshold', default='1_000'))
+        one2many._subquery_threshold = 0
+        self.addCleanup(setattr, one2many, '_subquery_threshold', previous)
+
+    def One2Many(self):
+        return Pool().get('test.one2many')
+
+    def One2ManyTarget(self):
+        return Pool().get('test.one2many.target')
+
+
+class FieldOne2ManyReferenceExistsTestCase(
+        unittest.TestCase, SearchTestCaseMixin):
+    "Test Field One2Many Reference when using EXISTS"
+    _strategy = 'EXISTS'
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    def setUp(self):
+        from trytond.model.fields import one2many
+        super().setUp()
+        previous = int(
+            config.get('database', 'subquery_threshold', default='1_000'))
+        one2many._subquery_threshold = 0
+        self.addCleanup(setattr, one2many, '_subquery_threshold', previous)
+
+    def One2Many(self):
+        return Pool().get('test.one2many_reference')
+
+    def One2ManyTarget(self):
+        return Pool().get('test.one2many_reference.target')
+
+    def assert_strategy(self, query):
+        self.assertIn('EXISTS', query)

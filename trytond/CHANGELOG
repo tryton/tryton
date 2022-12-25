@@ -1,3 +1,4 @@
+* Use EXISTS for search on O2M with many records
 * Replace target_search by use of count()
 * Manage domain on id in single value list as unique
 * Do not validate domain for empty fields
