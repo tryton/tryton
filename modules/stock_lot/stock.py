@@ -132,6 +132,14 @@ class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
             return self.product.default_uom.digits
 
     @classmethod
+    def copy(cls, lots, default=None):
+        default = default.copy() if default else {}
+        has_sequence = {l.id: l.has_sequence for l in lots}
+        default.setdefault(
+            'number', lambda o: None if has_sequence[o['id']] else o['number'])
+        return super().copy(lots, default=default)
+
+    @classmethod
     def create(cls, vlist):
         vlist = [v.copy() for v in vlist]
         for values in vlist:

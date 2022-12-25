@@ -51,3 +51,17 @@ Create lot without number::
 
     >>> lot.number
     '1'
+
+Copy set a new number::
+
+    >>> lot2, = lot.duplicate()
+    >>> lot2.number
+    '2'
+
+Copy without sequence keep same number::
+
+    >>> template.lot_sequence = None
+    >>> template.save()
+    >>> lot3, = lot.duplicate()
+    >>> lot3.number
+    '1'
