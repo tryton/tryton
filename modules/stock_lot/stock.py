@@ -8,7 +8,8 @@ from sql import Column
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import Index, Model, ModelSQL, ModelView, fields
+from trytond.model import (
+    DeactivableMixin, Index, Model, ModelSQL, ModelView, fields)
 from trytond.model.exceptions import (
     AccessError, RequiredValidationError, ValidationError)
 from trytond.modules.stock import StockMixin
@@ -73,7 +74,7 @@ class LotMixin:
             return bool(self.product.lot_sequence)
 
 
-class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
+class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     "Stock Lot"
     __name__ = 'stock.lot'
     _rec_name = 'number'

@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='product']" position="after">
+        <newline/>
         <label name="shelf_life_expiration_date"/>
         <field name="shelf_life_expiration_date"/>
         <label name="expiration_date"/>
