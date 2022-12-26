@@ -96,6 +96,10 @@ check-dist:
   variables:
     CFLAGS: -O0
     PIP_FIND_LINKS: file://${CI_PROJECT_DIR}/packages/
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip
   before_script:
     - pip install tox
   script:
@@ -143,11 +147,16 @@ check-dist:
 .test-npm:
   extends: .test
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node
+  variables:
+    NODE_CACHE_DIR: "$CI_PROJECT_DIR/.cache/npm"
+  cache:
+    paths:
+      - .cache/npm
   before_script:
     - sh .gitlab-scripts/bower_allow_root.sh
   script:
     - cd "${PACKAGE}"
-    - npm -s install --unsafe-perm --legacy-peer-deps
+    - npm -s install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
     - npm test
 
 .trigger-doc-build:
