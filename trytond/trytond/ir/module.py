@@ -628,5 +628,6 @@ class ModuleConfigStart(ModelView):
     modules = fields.Many2Many(
         'ir.module', None, None, "Modules",
         domain=[
+            ('name', '!=', 'tests'),
             ('state', '=', 'not activated'),
             ])
