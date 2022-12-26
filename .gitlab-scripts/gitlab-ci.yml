@@ -88,7 +88,6 @@ check-dist:
     - packages
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:${PYTHON_VERSION}
   variables:
-    CFLAGS: -O0
     PIP_FIND_LINKS: file://${CI_PROJECT_DIR}/packages/
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
