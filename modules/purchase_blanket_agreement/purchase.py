@@ -788,14 +788,15 @@ class Line(metaclass=PoolMeta):
                         self.quantity = remaining_quantity
                         self.on_change_quantity()
 
-    @fields.depends(
-        'blanket_agreement_line', 'product',
-        '_parent_blanket_agreement_line.product')
+    @fields.depends(methods=['is_valid_product_for_blanket_agreement'])
     def on_change_product(self):
         super().on_change_product()
         if not self.is_valid_product_for_blanket_agreement():
             self.blanket_agreement_line = None
 
+    @fields.depends(
+        'blanket_agreement_line', 'product',
+        '_parent_blanket_agreement_line.product')
     def is_valid_product_for_blanket_agreement(self):
         if self.blanket_agreement_line:
             return self.product == self.blanket_agreement_line.product
