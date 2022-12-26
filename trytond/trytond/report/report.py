@@ -519,13 +519,13 @@ class Report(URLMixin, PoolBase):
         @classmethod
         def barcode(cls, name, code, size=(), **kwargs):
             image = barcode.generate_svg(name, code, **kwargs)
-            return image, 'image/svg+xml', *size
+            return (image, 'image/svg+xml', *size)
 
     if qrcode:
         @classmethod
         def qrcode(cls, code, size=(), **kwargs):
             image = qrcode.generate_svg(code, **kwargs)
-            return image, 'image/svg+xml', *size
+            return (image, 'image/svg+xml', *size)
 
 
 def get_email(report, record, languages):

@@ -24,6 +24,11 @@ from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
+try:
+    from trytond.tools import barcode
+except ImportError:
+    barcode = None
+
 from .exceptions import InvalidIdentifierCode
 from .ir import price_decimal
 
@@ -908,3 +913,8 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
                         type=self.type_string,
                         code=self.code,
                         product=product))
+
+    def barcode(self, format='svg', **options):
+        if barcode and self.type in barcode.BARCODES:
+            generator = getattr(barcode, 'generate_%s' % format)
+            return generator(self.type, self.on_change_with_code(), **options)

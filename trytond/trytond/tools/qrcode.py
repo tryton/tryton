@@ -32,16 +32,12 @@ def generate_svg(
         background='white', foreground='black'):
 
     class FactoryImage(SvgImage):
-        def _rect(self, *args, **kwargs):
-            el = super()._rect(*args, **kwargs)
-            el.attrib['fill'] = foreground
-            return el
-
+        pass
     setattr(FactoryImage, 'background', background)
     return _generate(
         code, box_size=box_size, border=border,
         error_correction=_error_correction(error_correction),
-        image_factory=FactoryImage)
+        image_factory=SvgImage)
 
 
 def generate_png(

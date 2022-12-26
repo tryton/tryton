@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import io
+import unittest
 from decimal import Decimal
 
 from trytond.modules.company.tests import CompanyTestMixin
 from trytond.modules.product import round_price
 from trytond.modules.product.exceptions import UOMAccessError
+from trytond.modules.product.product import barcode
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
@@ -584,6 +587,30 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         product.save()
 
         self.assertEqual(product.identifier_get('ean'), None)
+
+    @unittest.skipUnless(barcode, 'required barcode')
+    @with_transaction()
+    def test_product_identifier_barcode(self):
+        "Test identifier barcode"
+        pool = Pool()
+        Identifier = pool.get('product.identifier')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
+
+        uom, = Uom.search([], limit=1)
+        template = Template(name="Product", default_uom=uom)
+        template.save()
+        product = Product(template=template)
+        product.identifiers = [
+            Identifier(type='ean', code='978-0-471-11709-4'),
+            ]
+        product.save()
+        identifier, = product.identifiers
+
+        image = identifier.barcode()
+        self.assertIsInstance(image, io.BytesIO)
+        self.assertIsNotNone(image.getvalue())
 
 
 del ModuleTestCase
