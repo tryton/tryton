@@ -442,9 +442,12 @@ Class methods:
 
 .. classmethod:: ModelStorage.check_xml_record(records, values)
 
-   Verify if the records are originating from XML data.
+   Raise an :exc:`~trytond.model.exceptions.AccessError` if the records can not
+   be modified because they originate from XML data.
+   ``values`` is a dictionary of written values or ``None`` for deletion.
 
-   It is used to prevent modification of data coming from XML files.
+   It is used by :meth:`~ModelStorage.write` and :meth:`~ModelStorage.delete`
+   to prevent modification of data coming from XML files.
 
    .. note::
       This method must be overiden to change this behavior.

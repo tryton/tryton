@@ -74,7 +74,7 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def check_xml_record(cls, records, values):
-        return True
+        pass
 
     @staticmethod
     def default_rate():

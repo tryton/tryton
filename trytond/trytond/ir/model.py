@@ -492,9 +492,9 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 'get_access': RPC(),
                 })
 
-    @staticmethod
-    def check_xml_record(accesses, values):
-        return True
+    @classmethod
+    def check_xml_record(cls, accesses, values):
+        pass
 
     @staticmethod
     def default_perm_read():
@@ -701,9 +701,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     description = fields.Text('Description')
     _get_access_cache = Cache('ir_model_field_access.check', context=False)
 
-    @staticmethod
-    def check_xml_record(field_accesses, values):
-        return True
+    @classmethod
+    def check_xml_record(cls, field_accesses, values):
+        pass
 
     @staticmethod
     def default_perm_read():

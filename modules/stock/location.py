@@ -334,7 +334,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def check_xml_record(cls, records, values):
-        return True
+        pass
 
     def get_warehouse(self, name):
         # Order by descending left to get the first one in the tree

@@ -1,3 +1,4 @@
+* Raise error message with record name and field in check_xml_record
 * Cache RPC call for class method selection
 
 Version 6.6.0 - 2022-10-31

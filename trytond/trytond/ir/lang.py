@@ -307,9 +307,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     gettext('ir.msg_language_default_translatable',
                         language=lang.rec_name))
 
-    @staticmethod
-    def check_xml_record(langs, values):
-        return True
+    @classmethod
+    def check_xml_record(cls, langs, values):
+        pass
 
     @classmethod
     def get_translatable_languages(cls):

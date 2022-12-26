@@ -236,10 +236,7 @@ class ModelStorage(Model):
         all_records = []
         all_fields = set()
         for records, values in zip(actions, actions):
-            if not cls.check_xml_record(records, values):
-                raise AccessError(
-                    gettext('ir.msg_write_xml_record'),
-                    gettext('ir.msg_base_config_record'))
+            cls.check_xml_record(records, values)
             all_records += records
             all_fields.update(values.keys())
 
@@ -303,10 +300,7 @@ class ModelStorage(Model):
         ModelData = pool.get('ir.model.data')
 
         ModelAccess.check(cls.__name__, 'delete')
-        if not cls.check_xml_record(records, None):
-            raise AccessError(
-                gettext('ir.msg_delete_xml_record'),
-                gettext('ir.msg_base_config_record'))
+        cls.check_xml_record(records, None)
         if ModelData.has_model(cls.__name__):
             with Transaction().set_context(_check_access=False):
                 data = []
@@ -1124,40 +1118,39 @@ class ModelStorage(Model):
 
     @classmethod
     def check_xml_record(cls, records, values):
-        """
-        Check if a list of records and their corresponding fields are
-        originating from xml data. This is used by write and delete
-        functions: if the return value is True the records can be
-        written/deleted, False otherwise. The default behaviour is to
-        forbid any modification on records/fields originating from
-        xml. Values is the dictionary of written values. If values is
-        equal to None, no field by field check is performed, False is
-        returned as soon as one of the record comes from the xml.
-        """
         ModelData = Pool().get('ir.model.data')
         # Allow root user to update/delete
         if (Transaction().user == 0
                 or not ModelData.has_model(cls.__name__)):
-            return True
+            return
+        id2record = {r.id: r for r in records}
         with Transaction().set_context(_check_access=False):
             models_data = ModelData.search([
                 ('model', '=', cls.__name__),
-                ('db_id', 'in', list(map(int, records))),
+                ('db_id', 'in', list(id2record.keys())),
                 ])
             if not models_data:
-                return True
+                return
             for model_data in models_data:
+                record = id2record[model_data.db_id]
                 if values is None:
                     if not model_data.noupdate:
-                        return False
+                        raise AccessError(
+                            gettext(
+                                'ir.msg_delete_xml_record',
+                                **cls.__names__(record=record)),
+                            gettext('ir.msg_base_config_record'))
                 else:
                     if not model_data.values or model_data.noupdate:
                         continue
                     xml_values = ModelData.load_values(model_data.values)
                     for key, val in values.items():
                         if key in xml_values and val != xml_values[key]:
-                            return False
-        return True
+                            raise AccessError(
+                                gettext(
+                                    'ir.msg_write_xml_record',
+                                    **cls.__names__(field=key, record=record)),
+                                gettext('ir.msg_base_config_record'))
 
     @classmethod
     def validate(cls, records):

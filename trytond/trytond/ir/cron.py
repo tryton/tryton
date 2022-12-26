@@ -105,9 +105,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     def get_timezone(self, name):
         return tz.SERVER.key
 
-    @staticmethod
-    def check_xml_record(crons, values):
-        return True
+    @classmethod
+    def check_xml_record(cls, crons, values):
+        pass
 
     @classmethod
     def view_attributes(cls):

@@ -137,10 +137,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">ID must be positive.</field>
         </record>
         <record model="ir.message" id="msg_write_xml_record">
-            <field name="text">You are not allowed to modify this record.</field>
+            <field name="text">You are not allowed to modify the field "%(field)s" in "%(record)s" of "%(model)s".</field>
         </record>
         <record model="ir.message" id="msg_delete_xml_record">
-            <field name="text">You are not allowed to delete this record.</field>
+            <field name="text">You are not allowed to delete the record "%(record)s" of "%(model)s".</field>
         </record>
         <record model="ir.message" id="msg_base_config_record">
             <field name="text">This record is part of the base configuration.</field>

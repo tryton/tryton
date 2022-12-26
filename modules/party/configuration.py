@@ -121,7 +121,7 @@ class ConfigurationSequence(_ConfigurationValue, ModelSQL, ValueMixin):
 
     @classmethod
     def check_xml_record(cls, records, values):
-        return True
+        pass
 
 
 class ConfigurationLang(_ConfigurationValue, ModelSQL, ValueMixin):

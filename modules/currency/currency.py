@@ -87,7 +87,7 @@ class Currency(
 
     @classmethod
     def check_xml_record(cls, records, values):
-        return True
+        pass
 
     @classmethod
     def search_global(cls, text):
@@ -287,7 +287,7 @@ class CurrencyRate(ModelSQL, ModelView):
 
     @classmethod
     def check_xml_record(cls, records, values):
-        return True
+        pass
 
     def get_rec_name(self, name):
         return str(self.date)

@@ -515,9 +515,7 @@ class ModelStorageTestCase(unittest.TestCase):
         Model = pool.get('test.modelstorage')
         record, = Model.create([{}])
 
-        result = Model.check_xml_record([record], {'name': "Test"})
-
-        self.assertTrue(result)
+        Model.check_xml_record([record], {'name': "Test"})
 
     @with_transaction()
     def test_check_xml_record_with_record_no_matching_values(self):
@@ -535,9 +533,7 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': False,
                     }])
 
-        result = Model.check_xml_record([record], {'name': "Test"})
-
-        self.assertTrue(result)
+        Model.check_xml_record([record], {'name': "Test"})
 
     @with_transaction()
     def test_check_xml_record_with_record_matching_values(self):
@@ -555,9 +551,8 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': False,
                     }])
 
-        result = Model.check_xml_record([record], {'name': "Bar"})
-
-        self.assertFalse(result)
+        with self.assertRaises(AccessError):
+            Model.check_xml_record([record], {'name': "Bar"})
 
     @with_transaction()
     def test_check_xml_record_with_record_matching_values_noupdate(self):
@@ -575,9 +570,7 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': True,
                     }])
 
-        result = Model.check_xml_record([record], {'name': "Bar"})
-
-        self.assertTrue(result)
+        Model.check_xml_record([record], {'name': "Bar"})
 
     @with_transaction(user=0)
     def test_check_xml_record_with_record_matching_values_root(self):
@@ -595,9 +588,7 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': False,
                     }])
 
-        result = Model.check_xml_record([record], {'name': "Bar"})
-
-        self.assertTrue(result)
+        Model.check_xml_record([record], {'name': "Bar"})
 
     @with_transaction()
     def test_check_xml_record_with_record_no_values(self):
@@ -615,9 +606,8 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': False,
                     }])
 
-        result = Model.check_xml_record([record], None)
-
-        self.assertFalse(result)
+        with self.assertRaises(AccessError):
+            Model.check_xml_record([record], None)
 
     @with_transaction()
     def test_check_xml_record_with_record_no_values_noupdate(self):
@@ -635,9 +625,7 @@ class ModelStorageTestCase(unittest.TestCase):
                     'noupdate': True,
                     }])
 
-        result = Model.check_xml_record([record], None)
-
-        self.assertTrue(result)
+        Model.check_xml_record([record], None)
 
     @with_transaction()
     def test_delete_clear_db_id_model_data_noupdate(self):
