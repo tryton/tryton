@@ -35,6 +35,35 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_lot_form"/>
 
+        <record model="ir.action.act_window" id="act_lot_form_product_relate">
+            <field name="name">Lots</field>
+            <field name="res_model">stock.lot</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'product.template', 'product.template', 'product'), '=', Eval('active_id', -1)), (If(Eval('active_model') == 'product.template', 'product.template', 'product'), 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_lot_form_product_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="lot_view_tree"/>
+            <field name="act_window" ref="act_lot_form_product_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_lot_form_product_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="lot_view_form"/>
+            <field name="act_window" ref="act_lot_form_product_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_lot_form_product_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_lot_form_product_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_lot_form_product_relate_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_lot_form_product_relate"/>
+        </record>
+
         <record model="ir.model.access" id="access_lot">
             <field name="model" search="[('model', '=', 'stock.lot')]"/>
             <field name="perm_read" eval="False"/>
