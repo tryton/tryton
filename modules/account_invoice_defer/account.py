@@ -72,8 +72,11 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             ], "Type", required=True,
         states=_states)
     journal = fields.Many2One(
-        'account.journal', "Journal", required=True,
-        states=_states,
+        'account.journal', "Journal",
+        states={
+            'readonly': _states['readonly'],
+            'required': Eval('state') != 'draft',
+            },
         context={
             'company': Eval('company', -1),
             },
@@ -147,6 +150,14 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 })
 
     @classmethod
+    def __register__(cls, module_name):
+        table_h = cls.__table_handler__(module_name)
+        super().__register__(module_name)
+
+        # Migration from 6.6: drop not null on journal
+        table_h.not_null_action('journal', 'remove')
+
+    @classmethod
     def _journal_types(cls, type):
         if type == 'out':
             return ['revenue']
@@ -154,14 +165,17 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
             return ['expense']
 
     @fields.depends('type')
-    def on_change_type(self):
-        Journal = self.__class__.journal.get_target()
-        journal_types = self.__class__._journal_types(self.type)
-        journals = Journal.search([
-                ('type', 'in', journal_types),
-                ], limit=1)
-        if journals:
-            self.journal, = journals
+    def on_change_with_journal(self, pattern=None):
+        pool = Pool()
+        Journal = pool.get('account.journal')
+        pattern = pattern.copy() if pattern is not None else {}
+        pattern.setdefault('type', {
+                'out': 'revenue',
+                'in': 'expense',
+                }.get(self.type))
+        journal = Journal.find(pattern)
+        if journal:
+            return journal.id
 
     @fields.depends('invoice_line', 'start_date', 'company')
     def on_change_invoice_line(self):

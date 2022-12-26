@@ -7,7 +7,8 @@ from sql.aggregate import Sum
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Unique, Workflow, fields)
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, Unique, Workflow,
+    fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
@@ -25,7 +26,9 @@ STATES = {
 
 
 class Journal(
-        DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
+        DeactivableMixin, MatchMixin,
+        sequence_ordered('matching_sequence', "Matching Sequence"),
+        ModelSQL, ModelView, CompanyMultiValueMixin):
     'Journal'
     __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
@@ -152,6 +155,12 @@ class Journal(
                 result['balance'][journal_id] = company.currency.round(
                     debit - credit)
         return result
+
+    @classmethod
+    def find(cls, pattern):
+        for journal in cls.search([]):
+            if journal.match(pattern):
+                return journal
 
     @classmethod
     def write(cls, *args):

@@ -770,28 +770,19 @@ class Purchase(
     def _get_invoice_purchase(self):
         'Return invoice'
         pool = Pool()
-        Journal = pool.get('account.journal')
         Invoice = pool.get('account.invoice')
-
-        journals = Journal.search([
-                ('type', '=', 'expense'),
-                ], limit=1)
-        if journals:
-            journal, = journals
-        else:
-            journal = None
         party = self.invoice_party or self.party
-
-        return Invoice(
+        invoice = Invoice(
             company=self.company,
             type='in',
-            journal=journal,
             party=party,
             invoice_address=self.invoice_address,
             currency=self.currency,
             account=party.account_payable_used,
             payment_term=self.payment_term,
             )
+        invoice.journal = invoice.on_change_with_journal()
+        return invoice
 
     def create_invoice(self):
         'Create an invoice for the purchase and return it'

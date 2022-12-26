@@ -127,7 +127,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
     journal = fields.Many2One(
-        'account.journal', 'Journal', required=True, states=_states,
+        'account.journal', 'Journal',
+        states={
+            'readonly': _states['readonly'],
+            'required': Eval('state') != 'draft',
+            },
         context={
             'company': Eval('company', -1),
             }, depends={'company'})
@@ -429,6 +433,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         # Migration from 5.8: drop foreign key for sequence
         table.drop_fk('sequence')
 
+        # Migration from 6.6: drop not null on journal
+        table.not_null_action('journal', 'remove')
+
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
@@ -470,25 +477,25 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     account = self.party.account_payable_used
         return account.id if account else None
 
-    @fields.depends('type')
-    def on_change_type(self):
-        Journal = Pool().get('account.journal')
-        journal_type = {
-            'out': 'revenue',
-            'in': 'expense',
-            }.get(self.type or 'out', 'revenue')
-        journals = Journal.search([
-                ('type', '=', journal_type),
-                ], limit=1)
-        if journals:
-            self.journal, = journals
-
     @classmethod
     def _journal_types(cls, invoice_type):
         if invoice_type == 'out':
             return ['revenue']
         else:
             return ['expense']
+
+    @fields.depends('type')
+    def on_change_with_journal(self, pattern=None):
+        pool = Pool()
+        Journal = pool.get('account.journal')
+        pattern = pattern.copy() if pattern is not None else {}
+        pattern.setdefault('type', {
+                'out': 'revenue',
+                'in': 'expense',
+                }.get(self.type))
+        journal = Journal.find(pattern)
+        if journal:
+            return journal.id
 
     @classmethod
     def order_accounting_date(cls, tables):
