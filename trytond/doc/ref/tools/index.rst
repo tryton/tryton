@@ -7,10 +7,12 @@ Tools
 Tools API reference.
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
 
-    misc
-    email
-    singleton
-    immutabledict
-    timezone
+   barcode
+   email
+   immutabledict
+   misc
+   qrcode
+   singleton
+   timezone

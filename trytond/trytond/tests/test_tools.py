@@ -6,6 +6,7 @@ import datetime as dt
 import doctest
 import sys
 import unittest
+from io import BytesIO
 
 import sql
 import sql.operators
@@ -21,6 +22,15 @@ from trytond.tools.domain_inversion import (
     unique_value)
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.tools.string_ import LazyString, StringPartitioned
+
+try:
+    from trytond.tools import barcode
+except ImportError:
+    barcode = None
+try:
+    from trytond.tools import qrcode
+except ImportError:
+    qrcode = None
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -1025,6 +1035,40 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             extract_reference_models(domain, 'x'), {'model_A', 'model_B'})
         self.assertEqual(extract_reference_models(domain, 'y'), set())
+
+
+@unittest.skipUnless(barcode, "required barcode")
+class BarcodeTestCase(unittest.TestCase):
+    "Test barcode module"
+
+    def test_generate_svg(self):
+        "Test generate SVG"
+        image = barcode.generate_svg('ean', "8749903790831")
+        self.assertIsInstance(image, BytesIO)
+        self.assertIsNotNone(image.getvalue())
+
+    def test_generate_png(self):
+        "Test generate PNG"
+        image = barcode.generate_png('ean', "8749903790831")
+        self.assertIsInstance(image, BytesIO)
+        self.assertIsNotNone(image.getvalue())
+
+
+@unittest.skipUnless(qrcode, "required qrcode")
+class QRCodeTestCase(unittest.TestCase):
+    "Test qrcode module"
+
+    def test_generate_svg(self):
+        "Test generate SVG"
+        image = qrcode.generate_svg("Tryton")
+        self.assertIsInstance(image, BytesIO)
+        self.assertIsNotNone(image.getvalue())
+
+    def test_generate_png(self):
+        "Test generate PNG"
+        image = qrcode.generate_png("Tryton")
+        self.assertIsInstance(image, BytesIO)
+        self.assertIsNotNone(image.getvalue())
 
 
 def load_tests(loader, tests, pattern):

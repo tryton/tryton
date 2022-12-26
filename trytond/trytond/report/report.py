@@ -40,6 +40,15 @@ from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
 
+try:
+    from trytond.tools import barcode
+except ImportError:
+    barcode = None
+try:
+    from trytond.tools import qrcode
+except ImportError:
+    qrcode = None
+
 warnings.simplefilter("ignore")
 import relatorio.reporting  # noqa: E402
 
@@ -315,6 +324,10 @@ class Report(URLMixin, PoolBase):
         report_context['format_number'] = cls.format_number
         report_context['format_number_symbol'] = cls.format_number_symbol
         report_context['datetime'] = datetime
+        if barcode:
+            report_context['barcode'] = cls.barcode
+        if qrcode:
+            report_context['qrcode'] = cls.qrcode
 
         def set_lang(language=None):
             if isinstance(language, Lang):
@@ -501,6 +514,18 @@ class Report(URLMixin, PoolBase):
             lang = Lang.get()
         return lang.format_number_symbol(
             value, symbol, digits=digits, grouping=grouping)
+
+    if barcode:
+        @classmethod
+        def barcode(cls, name, code, size=(), **kwargs):
+            image = barcode.generate_svg(name, code, **kwargs)
+            return image, 'image/svg+xml', *size
+
+    if qrcode:
+        @classmethod
+        def qrcode(cls, code, size=(), **kwargs):
+            image = qrcode.generate_svg(code, **kwargs)
+            return image, 'image/svg+xml', *size
 
 
 def get_email(report, record, languages):

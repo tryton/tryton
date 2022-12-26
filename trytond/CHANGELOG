@@ -1,3 +1,4 @@
+* Add support for barcode and QR code
 * Support reading string value of selection fields
 * Add ButtonActionException and RPCReturnException
 * Rename ModelStorage.count into ModelStorage.estimated_count
