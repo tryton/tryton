@@ -1926,6 +1926,18 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'invisible': Bool(Eval('context', {}).get('standalone')),
             'readonly': _states['readonly'] & Bool(Eval('invoice')),
             })
+    invoice_party = fields.Function(
+        fields.Many2One(
+            'party.party', "Party",
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
+        'on_change_with_invoice_party', searcher='search_invoice_party')
+    invoice_description = fields.Function(
+        fields.Char("Invoice Description"),
+        'on_change_with_invoice_description',
+        searcher='search_invoice_description')
     invoice_state = fields.Function(
         fields.Selection('get_invoice_states', "Invoice State"),
         'on_change_with_invoice_state')
@@ -2179,6 +2191,30 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @staticmethod
     def default_type():
         return 'line'
+
+    @fields.depends('party', 'invoice', '_parent_invoice.party')
+    def on_change_with_invoice_party(self, name=None):
+        if self.invoice and self.invoice.party:
+            return self.invoice.party.id
+        elif self.party:
+            return self.party.id
+
+    @classmethod
+    def search_invoice_party(cls, name, clause):
+        nested = clause[0][len(name) + 1:]
+        return ['OR',
+            ('invoice.party' + nested, *clause[1:]),
+            ('party' + nested, *clause[1:]),
+            ]
+
+    @fields.depends('invoice', '_parent_invoice.description')
+    def on_change_with_invoice_description(self, name=None):
+        if self.invoice:
+            return self.invoice.description
+
+    @classmethod
+    def search_invoice_description(cls, name, clause):
+        return [('invoice.description', *clause[1:])]
 
     @classmethod
     def default_invoice_state(cls):
