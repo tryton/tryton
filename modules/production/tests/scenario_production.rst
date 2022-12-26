@@ -10,7 +10,6 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> from trytond.modules.production.production import BOM_CHANGES
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -148,7 +147,11 @@ Test reset bom button::
 
     >>> for input in production.inputs:
     ...     input.quantity += 1
-    >>> production.click('reset_bom', change=BOM_CHANGES)
+    >>> production.click(
+    ...     'reset_bom',
+    ...     change=[
+    ...         'bom', 'product', 'uom', 'quantity',
+    ...         'inputs', 'outputs', 'company', 'warehouse', 'location'])
     >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
     True
     >>> output, = production.outputs

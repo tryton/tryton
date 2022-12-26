@@ -21,9 +21,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import CostWarning
 
-BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
-    'company', 'inputs', 'outputs']
-
 
 class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Production"
@@ -357,31 +354,37 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
-    def _move(self, from_location, to_location, company, product, uom,
-            quantity):
-        Move = Pool().get('stock.move')
+    @fields.depends(
+        'company', 'location', methods=['picking_location', 'output_location'])
+    def _move(self, type, product, uom, quantity):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        assert type in {'input', 'output'}
         move = Move(
             product=product,
             uom=uom,
             quantity=quantity,
-            from_location=from_location,
-            to_location=to_location,
-            company=company,
-            currency=company.currency if company else None,
-            state='draft',
-            )
+            company=self.company,
+            currency=self.company.currency if self.company else None)
+        if type == 'input':
+            move.from_location = self.picking_location
+            move.to_location = self.location
+            move.production_input = self
+        else:
+            move.from_location = self.location
+            move.to_location = self.output_location
+            move.production_output = self
         return move
 
-    def _explode_move_values(self, from_location, to_location, company,
-            bom_io, quantity):
-        move = self._move(from_location, to_location, company,
-            bom_io.product, bom_io.uom, quantity)
-        move.from_location = from_location.id if from_location else None
-        move.to_location = to_location.id if to_location else None
+    @fields.depends(methods=['_move'])
+    def _explode_move_values(self, type, bom_io, quantity):
+        move = self._move(type, bom_io.product, bom_io.uom, quantity)
         move.unit_price_required = move.on_change_with_unit_price_required()
         return move
 
-    @fields.depends(*BOM_CHANGES)
+    @fields.depends(
+        'bom', 'product', 'uom', 'quantity', 'company', 'inputs', 'outputs',
+        methods=['_explode_move_values'])
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -393,9 +396,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            move = self._explode_move_values(
-                self.picking_location, self.location, self.company,
-                input_, quantity)
+            move = self._explode_move_values('input', input_, quantity)
             if move:
                 inputs.append(move)
                 quantity = Uom.compute_qty(input_.uom, quantity,
@@ -405,9 +406,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            move = self._explode_move_values(
-                self.location, self.output_location, self.company, output,
-                quantity)
+            move = self._explode_move_values('output', output, quantity)
             if move:
                 move.unit_price = Decimal(0)
                 move.currency = self.company.currency
@@ -487,17 +486,12 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         to_save = []
         for production in productions:
-            location = production.location
-            company = production.company
-
             if not production.bom:
                 if production.product:
                     move = production._move(
-                        location, production.output_location, company,
-                        production.product, production.uom,
+                        'input', production.product, production.uom,
                         production.quantity)
                     if move:
-                        move.production_output = production
                         move.unit_price = Decimal(0)
                         move.currency = production.company.currency
                         to_save.append(move)
@@ -509,19 +503,16 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 quantity = input_.compute_quantity(factor)
                 product = input_.product
                 move = production._move(
-                    production.picking_location, location, company, product,
-                    input_.uom, quantity)
+                    'input', product, input_.uom, quantity)
                 if move:
-                    move.production_input = production
                     to_save.append(move)
 
             for output in production.bom.outputs:
                 quantity = output.compute_quantity(factor)
                 product = output.product
-                move = production._move(location, production.output_location,
-                    company, product, output.uom, quantity)
+                move = production._move(
+                    'output', product, output.uom, quantity)
                 if move:
-                    move.production_output = production
                     move.unit_price = Decimal(0)
                     move.currency = production.company.currency
                     to_save.append(move)
@@ -817,12 +808,14 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls.save(productions)
 
     @property
+    @fields.depends('warehouse')
     def picking_location(self):
         if self.warehouse:
             return (self.warehouse.production_picking_location
                 or self.warehouse.storage_location)
 
     @property
+    @fields.depends('warehouse')
     def output_location(self):
         if self.warehouse:
             return (self.warehouse.production_output_location
