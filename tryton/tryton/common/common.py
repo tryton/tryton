@@ -1357,14 +1357,29 @@ def untimezoned_date(date):
 
 
 def humanize(size, suffix=''):
-    for u in ['', 'K', 'M', 'G', 'T', 'P']:
-        if size <= 1000:
-            if isinstance(size, int) or size.is_integer():
-                size = locale.localize('{0:.0f}'.format(size))
-            else:
-                size = locale.localize('{0:.{1}f}'.format(size, 2).rstrip('0'))
-            return ''.join([size, u, suffix])
-        size /= 1000.0
+    if 0 < abs(size) < 1:
+        for u in ['', 'm', 'µ', 'n', 'p', 'f', 'a', 'z', 'y', 'r', 'q']:
+            if abs(size) >= 0.01:
+                break
+            size *= 1000.0
+        else:
+            size /= 1000.0
+    else:
+        for u in ['', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'R', 'Q']:
+            if abs(size) <= 1000:
+                break
+            size /= 1000.0
+        else:
+            size *= 1000.0
+    if isinstance(size, int) or size.is_integer():
+        size = locale.localize(str(int(size)))
+    elif abs(size) < 0.01:
+        size = locale.localize(
+            '{0:f}'.format(size).rstrip('0').rstrip('.'))
+    else:
+        size = locale.localize(
+            '{0:.{1}f}'.format(size, 2).rstrip('0').rstrip('.'))
+    return ''.join([size, u, suffix])
 
 
 def get_hostname(netloc):

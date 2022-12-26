@@ -623,22 +623,36 @@
 
     Sao.common.humanize = function(size, suffix) {
         suffix = suffix || '';
-        var sizes = ['', 'K', 'M', 'G', 'T', 'P'];
-        for (var i =0, len = sizes.length; i < len; i++) {
-            if (size <= 1000) {
-                if (size % 1 === 0) {
-                    size = '' + size;
-                } else {
-                    size = size.toLocaleString(
-                        Sao.i18n.BC47(Sao.i18n.getlang()), {
-                            'minimumFractionDigits': 0,
-                            'maximumFractionDigits': 2,
-                        });
+        var sizes, u;
+        if ((0 < Math.abs(size)) && (Math.abs(size) < 1)) {
+            sizes = ['', 'm', 'µ', 'n', 'p', 'f', 'a', 'z', 'y', 'r', 'q'];
+            for (let i=0, len=sizes.length; i < len; i++) {
+                u = sizes[i];
+                if (Math.abs(size) >= 0.01) {
+                    break;
                 }
-                return size + sizes[i] + suffix;
+                if (i + 1 < len ) {
+                    size *= 1000;
+                }
             }
-            size /= 1000;
+        } else {
+            sizes = ['', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 'R', 'Q'];
+            for (let i=0, len= sizes.length; i < len; i++) {
+                u = sizes[i];
+                if (Math.abs(size) <= 1000) {
+                    break;
+                }
+                if (i + 1 < len) {
+                    size /= 1000;
+                }
+            }
         }
+        size = size.toLocaleString(
+            Sao.i18n.BC47(Sao.i18n.getlang()), {
+                'minimumFractionDigits': 0,
+                'maximumFractionDigits': Math.abs(size) < 0.01? 15 : 2,
+            });
+        return size + u + suffix;
     };
 
     Sao.common.EvalEnvironment = function(parent_, eval_type='eval') {

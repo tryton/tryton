@@ -1274,6 +1274,48 @@
             "Or(true, false)", "eval_pyson('Or(True, False)').toString()");
     });
 
+    var humanize_tests = [
+        [0, '0'],
+        [1, '1'],
+        [5, '5'],
+        [10, '10'],
+        [50, '50'],
+        [100, '100'],
+        [1000, '1,000'],
+        [1001, '1k'],
+        [1500, '1.5k'],
+        [1000000, '1,000k'],
+        [1000001, '1M'],
+        [1010000, '1.01M'],
+        [Math.pow(10, 33), '1,000Q'],
+        [0.1, '0.1'],
+        [0.5, '0.5'],
+        [0.01, '0.01'],
+        [0.05, '0.05'],
+        [0.001, '1m'],
+        [0.0001, '0.1m'],
+        [0.000001, '1µ'],
+        [0.0000015, '1.5µ'],
+        [0.00000105, '1.05µ'],
+        [0.000001001, '1µ'],
+        [Math.pow(10, -33), '0.001q'],
+    ];
+
+    QUnit.test('humanize', function() {
+        humanize_tests.forEach(function(test) {
+            var value = test[0];
+            var text = test[1];
+            QUnit.equal(Sao.common.humanize(value), text,
+                'humanize(' + JSON.stringify(value) + ')');
+            if (value) {
+                value *= -1;
+                text = '-' + text;
+                QUnit.equal(Sao.common.humanize(value), text,
+                    'humanize(' + JSON.stringify(value) + ')');
+            }
+        });
+    });
+
     QUnit.test('DomainParser.group_operator', function() {
         var parser = new Sao.common.DomainParser();
         QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=']),
