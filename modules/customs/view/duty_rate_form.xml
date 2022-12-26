@@ -6,10 +6,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="tariff_code"/>
     <label name="type"/>
     <field name="type"/>
+
     <label name="country"/>
     <field name="country"/>
-    <!-- TODO country group -->
-    <newline/>
+    <label name="organization"/>
+    <field name="organization"/>
+
     <label name="start_date"/>
     <field name="start_date"/>
     <label name="end_date"/>

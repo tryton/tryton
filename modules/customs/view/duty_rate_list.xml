@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="tariff_code" expand="1"/>
     <field name="country" expand="1"/>
-    <!-- TODO country group -->
+    <field name="organization" expand="1"/>
     <field name="type"/>
     <field name="start_date"/>
     <field name="end_date"/>

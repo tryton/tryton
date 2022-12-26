@@ -8,10 +8,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="active"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
+
     <label name="country"/>
     <field name="country"/>
-    <!-- TODO country group -->
-    <newline/>
+    <label name="organization"/>
+    <field name="organization"/>
+
     <label id="from" string="From"/>
     <group id="start" col="2">
         <field name="start_day"/>

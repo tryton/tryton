@@ -14,7 +14,33 @@ from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
 
-class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
+class CountryMatchMixin(MatchMixin):
+    country = fields.Many2One(
+        'country.country', "Country",
+        states={
+            'invisible': Bool(Eval('organization')),
+            })
+    organization = fields.Many2One(
+        'country.organization', "Organization",
+        states={
+            'invisible': Bool(Eval('country')),
+            })
+
+    def match(self, pattern, match_none=False):
+        if 'country' in pattern:
+            pattern = pattern.copy()
+            country = pattern.pop('country')
+            if country is not None or match_none:
+                if self.country and self.country.id != country:
+                    return False
+                if (self.organization
+                        and country not in [
+                            c.id for c in self.organization.countries]):
+                    return False
+        return super().match(pattern, match_none=match_none)
+
+
+class TariffCode(DeactivableMixin, CountryMatchMixin, ModelSQL, ModelView):
     'Tariff Code'
     __name__ = 'customs.tariff.code'
     _rec_name = 'code'
@@ -96,7 +122,7 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             table_h.drop_column('_temp_start_month')
             table_h.drop_column('_temp_end_month')
 
-    def match(self, pattern):
+    def match(self, pattern, match_none=False):
         if 'date' in pattern:
             pattern = pattern.copy()
             date = pattern.pop('date')
@@ -110,7 +136,7 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
                 else:
                     if end <= date <= start:
                         return False
-        return super(TariffCode, self).match(pattern)
+        return super().match(pattern, match_none=match_none)
 
     def get_duty_rate(self, pattern):
         for rate in self.duty_rates:
@@ -118,13 +144,11 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
                 return rate
 
 
-class DutyRate(ModelSQL, ModelView, MatchMixin):
+class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
     'Duty Rate'
     __name__ = 'customs.duty.rate'
     tariff_code = fields.Many2One(
         'customs.tariff.code', "Tariff Code", required=True)
-    country = fields.Many2One('country.country', 'Country')
-    # TODO country group
     type = fields.Selection([
             ('import', 'Import'),
             ('export', 'Export'),

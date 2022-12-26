@@ -13,8 +13,8 @@ class CustomsTestCase(ModuleTestCase):
     module = 'customs'
 
     @with_transaction()
-    def test_tariff_code_match(self):
-        'Test tariff code match'
+    def test_tariff_code_match_date(self):
+        "Test tariff code match date"
         pool = Pool()
         Tariff = pool.get('customs.tariff.code')
         Template = pool.get('product.template')
@@ -54,6 +54,58 @@ class CustomsTestCase(ModuleTestCase):
                 ({'date': date(2016, 9, 1)}, tariff2),
                 ]:
             self.assertEqual(template.get_tariff_code(pattern), result)
+
+    @with_transaction()
+    def test_tariff_code_match_country(self):
+        "Test tariff code match country"
+        pool = Pool()
+        Tariff = pool.get('customs.tariff.code')
+        Country = pool.get('country.country')
+
+        country1 = Country(name="Country 1")
+        country1.save()
+        country2 = Country(name="Country 2")
+        country2.save()
+        tariff1 = Tariff(code='170390')
+        tariff1.save()
+        tariff2 = Tariff(code='17039099', country=country1)
+        tariff2.save()
+
+        self.assertTrue(tariff1.match({}))
+        self.assertTrue(tariff1.match({'country': None}))
+        self.assertTrue(tariff1.match({'country': country1.id}))
+        self.assertTrue(tariff2.match({}))
+        self.assertTrue(tariff2.match({'country': None}))
+        self.assertTrue(tariff2.match({'country': country1.id}))
+        self.assertFalse(tariff2.match({'country': country2.id}))
+
+    @with_transaction()
+    def test_tariff_code_match_country_organization(self):
+        "Test Tariff code match country with organization"
+        pool = Pool()
+        Tariff = pool.get('customs.tariff.code')
+        Country = pool.get('country.country')
+        Organization = pool.get('country.organization')
+
+        country1 = Country(name="Country 1")
+        country1.save()
+        country2 = Country(name="Country 2")
+        country2.save()
+        organization = Organization(
+            name="Organization", members=[{'country': country1.id}])
+        organization.save()
+        tariff1 = Tariff(code='170390')
+        tariff1.save()
+        tariff2 = Tariff(code='17039099', organization=organization)
+        tariff2.save()
+
+        self.assertTrue(tariff1.match({}))
+        self.assertTrue(tariff1.match({'country': None}))
+        self.assertTrue(tariff1.match({'country': country1.id}))
+        self.assertTrue(tariff2.match({}))
+        self.assertTrue(tariff2.match({'country': None}))
+        self.assertTrue(tariff2.match({'country': country1.id}))
+        self.assertFalse(tariff2.match({'country': country2.id}))
 
     @with_transaction()
     def test_get_tariff_code(self):
