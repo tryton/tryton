@@ -40,6 +40,7 @@ TRANSLATION_TYPE = [
     ('wizard_button', 'Wizard Button'),
     ('help', 'Help'),
 ]
+INTERNAL_LANG = 'en'
 
 
 class OverriddenError(UserError):
@@ -139,7 +140,7 @@ class Translation(ModelSQL, ModelView):
         if not src:
             return
         cursor.execute(*ir_translation.select(ir_translation.id,
-                where=(ir_translation.lang == 'en')
+                where=(ir_translation.lang == INTERNAL_LANG)
                 & (ir_translation.type == 'model')
                 & (ir_translation.name == name)
                 # Keep searching on all values for migration
@@ -158,7 +159,8 @@ class Translation(ModelSQL, ModelView):
                     [Column(ir_translation, c)
                         for c in ('name', 'lang', 'type', 'src',
                             'value', 'module', 'fuzzy', 'res_id')],
-                    [[name, 'en', 'model', src,
+                    [[
+                            name, INTERNAL_LANG, 'model', src,
                             '', module_name, False, -1]]))
         else:
             cursor.execute(*ir_translation.update(
@@ -181,7 +183,7 @@ class Translation(ModelSQL, ModelView):
             cursor.execute(*ir_translation.select(ir_translation.id,
                     ir_translation.name, ir_translation.src,
                     ir_translation.type,
-                    where=((ir_translation.lang == 'en')
+                    where=((ir_translation.lang == INTERNAL_LANG)
                         & ir_translation.type.in_(
                             ('field', 'help', 'selection'))
                         & ir_translation.name.in_(names))))
@@ -205,7 +207,9 @@ class Translation(ModelSQL, ModelView):
                     f"for {type} of {name} in {module_name}")
                 cursor.execute(
                     *ir_translation.insert(columns,
-                        [[name, 'en', type, val, '', module_name, False, -1]]))
+                        [[
+                                name, INTERNAL_LANG, type, val,
+                                '', module_name, False, -1]]))
                 inserted = True
 
         for field_name, field in model._fields.items():
@@ -226,7 +230,7 @@ class Translation(ModelSQL, ModelView):
         # Prefetch button translations
         cursor.execute(*ir_translation.select(
                 ir_translation.id, ir_translation.name, ir_translation.src,
-                where=((ir_translation.lang == 'en')
+                where=((ir_translation.lang == INTERNAL_LANG)
                     & (ir_translation.type == 'wizard_button')
                     & (ir_translation.name.like(wizard.__name__ + ',%')))))
         trans_buttons = {t['name']: t for t in cursor_dict(cursor)}
@@ -243,7 +247,7 @@ class Translation(ModelSQL, ModelView):
                             ir_translation.value, ir_translation.module,
                             ir_translation.fuzzy, ir_translation.res_id],
                         [[
-                                trans_name, 'en',
+                                trans_name, INTERNAL_LANG,
                                 'wizard_button', button.string,
                                 '', module_name,
                                 False, -1]]))
@@ -449,11 +453,11 @@ class Translation(ModelSQL, ModelView):
                     ttype = 'field'
                 else:
                     ttype = 'help'
-                with Transaction().set_context(language='en'):
+                with Transaction().set_context(language=INTERNAL_LANG):
                     records = ModelFields.browse(ids)
             else:
                 ttype = 'model'
-                with Transaction().set_context(language='en'):
+                with Transaction().set_context(language=INTERNAL_LANG):
                     records = Model.browse(ids)
 
             def get_name(record):
@@ -474,7 +478,7 @@ class Translation(ModelSQL, ModelView):
                 to_save = []
                 for record, value in zip(records, values):
                     translations = name2translations.get(get_name(record))
-                    if lang == 'en':
+                    if lang == INTERNAL_LANG:
                         src = value
                     else:
                         src = getattr(record, field_name)
@@ -1065,7 +1069,7 @@ class TranslationSet(Wizard):
 
                 cursor.execute(*translation.select(
                         translation.id, translation.name, translation.src,
-                        where=(translation.lang == 'en')
+                        where=(translation.lang == INTERNAL_LANG)
                         & (translation.type == 'report')
                         & (translation.name == report.report_name)
                         & (translation.module == module)))
@@ -1108,7 +1112,7 @@ class TranslationSet(Wizard):
                                     translation.value, translation.module,
                                     translation.fuzzy, translation.res_id],
                                 [[
-                                        report.report_name, 'en',
+                                        report.report_name, INTERNAL_LANG,
                                         'report', string,
                                         '', module,
                                         False, -1]]))
@@ -1150,7 +1154,7 @@ class TranslationSet(Wizard):
         for view in views:
             cursor.execute(*translation.select(
                     translation.id, translation.name, translation.src,
-                    where=(translation.lang == 'en')
+                    where=(translation.lang == INTERNAL_LANG)
                     & (translation.type == 'view')
                     & (translation.name == view.model)
                     & (translation.module == view.module)))
@@ -1208,7 +1212,7 @@ class TranslationSet(Wizard):
                                 translation.value, translation.module,
                                 translation.fuzzy, translation.res_id],
                             [[
-                                    view.model, 'en',
+                                    view.model, INTERNAL_LANG,
                                     'view', string,
                                     '', view.module,
                                     False, -1]]))
@@ -1444,6 +1448,7 @@ class TranslationUpdate(Wizard):
 
     def do_update(self, action):
         pool = Pool()
+        Config = pool.get('ir.configuration')
         Translation = pool.get('ir.translation')
         Report = pool.get('ir.action.report')
         View = pool.get('ir.ui.view')
@@ -1463,12 +1468,13 @@ class TranslationUpdate(Wizard):
                 & translation.name.in_([v.model for v in views]))
         else:
             source_clause = Literal(True)
+        default_lang = Config.get_language()
 
         columns = [translation.name.as_('name'),
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.src.as_('src'), translation.module.as_('module')]
         cursor.execute(*(translation.select(*columns,
-                    where=(translation.lang == 'en')
+                    where=(translation.lang == default_lang)
                     & source_clause
                     & translation.type.in_(self._source_types))
                 - translation.select(*columns,
@@ -1516,7 +1522,7 @@ class TranslationUpdate(Wizard):
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.module.as_('module')]
         cursor.execute(*(translation.select(*columns,
-                    where=(translation.lang == 'en')
+                    where=(translation.lang == default_lang)
                     & translation.type.in_(self._ressource_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
@@ -1555,7 +1561,7 @@ class TranslationUpdate(Wizard):
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.src.as_('src'), translation.module.as_('module')]
         cursor.execute(*(translation.select(*columns,
-                    where=(translation.lang == 'en')
+                    where=(translation.lang == default_lang)
                     & translation.type.in_(self._updatable_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
@@ -1611,7 +1617,7 @@ class TranslationExportStart(ModelView):
     language = fields.Many2One('ir.lang', 'Language', required=True,
         domain=[
             ('translatable', '=', True),
-            ('code', '!=', 'en'),
+            ('code', '!=', INTERNAL_LANG),
             ])
     module = fields.Many2One('ir.module', 'Module', required=True,
         domain=[
