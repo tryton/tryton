@@ -34,7 +34,7 @@ from trytond.model.fields import Function
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.tools import file_open, find_dir, is_instance_method
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, TransactionError
 from trytond.wizard import StateAction, StateView
 
 __all__ = [
@@ -214,17 +214,23 @@ def with_transaction(user=1, context=None):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            transaction = Transaction()
-            with transaction.start(DB_NAME, user, context=context):
-                try:
-                    result = func(*args, **kwargs)
-                finally:
-                    transaction.rollback()
-                    # Clear remaining tasks
-                    transaction.tasks.clear()
-                    # Drop the cache as the transaction is rollbacked
-                    Cache.drop(DB_NAME)
-                return result
+            extras = {}
+            while True:
+                with Transaction().start(
+                        DB_NAME, user, context=context,
+                        **extras) as transaction:
+                    try:
+                        result = func(*args, **kwargs)
+                    except TransactionError as e:
+                        e.fix(extras)
+                        continue
+                    finally:
+                        transaction.rollback()
+                        # Clear remaining tasks
+                        transaction.tasks.clear()
+                        # Drop the cache as the transaction is rollbacked
+                        Cache.drop(DB_NAME)
+                    return result
         return wrapper
     return decorator
 

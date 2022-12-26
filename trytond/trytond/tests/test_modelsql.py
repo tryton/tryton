@@ -14,7 +14,7 @@ from trytond.model.exceptions import (
 from trytond.model.modelsql import split_subquery_domain
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, TransactionError
 
 
 class ModelSQLTestCase(unittest.TestCase):
@@ -671,11 +671,26 @@ class ModelSQLTestCase(unittest.TestCase):
         Model = pool.get('test.modelsql.lock')
         transaction = Transaction()
 
-        with transaction.new_transaction():
-            Model.lock()
-            with transaction.new_transaction():
-                with self.assertRaises(backend.DatabaseOperationalError):
+        args1 = {}
+        while True:
+            with transaction.new_transaction(**args1):
+                try:
                     Model.lock()
+                except TransactionError as e:
+                    e.fix(args1)
+                    continue
+                with self.assertRaises(
+                        backend.DatabaseOperationalError):
+                    args2 = {}
+                    while True:
+                        with transaction.new_transaction(**args2):
+                            try:
+                                Model.lock()
+                            except TransactionError as e:
+                                e.fix(args2)
+                                continue
+                            break
+                break
 
     @with_transaction()
     def test_search_or_to_union(self):

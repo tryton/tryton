@@ -16,6 +16,21 @@ _cache_record = config.getint('cache', 'record')
 logger = logging.getLogger(__name__)
 
 
+class TransactionError(Exception):
+    def fix(self, extras):
+        pass
+
+
+class _TransactionLockError(TransactionError):
+    def __init__(self, table):
+        super().__init__()
+        self._table = table
+
+    def fix(self, extras):
+        super().fix(extras)
+        extras.setdefault('_lock_tables', []).append(self._table)
+
+
 def record_cache_size(transaction):
     return transaction.context.get('_record_cache_size', _cache_record)
 
@@ -104,45 +119,49 @@ class Transaction(object):
         return self.cache[(self.user, keys)]
 
     def start(self, database_name, user, readonly=False, context=None,
-            close=False, autocommit=False):
+            close=False, autocommit=False, **extras):
         '''
         Start transaction
         '''
-        from trytond import backend
-        assert self.user is None
-        assert self.database is None
-        assert self.close is None
-        assert self.context is None
-        # Compute started_at before connect to ensure
-        # it is strictly before all transactions started after
-        # but it may be also before transactions started before
-        self.started_at = self.monotonic_time()
-        if not database_name:
-            database = backend.Database().connect()
-        else:
-            database = backend.Database(database_name).connect()
-        Flavor.set(backend.Database.flavor)
-        self.connection = database.get_connection(readonly=readonly,
-            autocommit=autocommit)
-        self.user = user
-        self.database = database
-        self.readonly = readonly
-        self.close = close
-        self.context = ImmutableDict(context or {})
-        self.create_records = defaultdict(set)
-        self.delete_records = defaultdict(set)
-        self.trigger_records = defaultdict(set)
-        self.check_warnings = set()
-        self.timestamp = {}
-        self.counter = 0
-        self._datamanagers = []
-        if database_name:
-            from trytond.cache import Cache
-            try:
+        try:
+            from trytond import backend
+            assert self.user is None
+            assert self.database is None
+            assert self.close is None
+            assert self.context is None
+            # Compute started_at before connect to ensure
+            # it is strictly before all transactions started after
+            # but it may be also before transactions started before
+            self.started_at = self.monotonic_time()
+            if not database_name:
+                database = backend.Database().connect()
+            else:
+                database = backend.Database(database_name).connect()
+            Flavor.set(backend.Database.flavor)
+            self.connection = database.get_connection(readonly=readonly,
+                autocommit=autocommit)
+            self.user = user
+            self.database = database
+            self.readonly = readonly
+            self.close = close
+            self.context = ImmutableDict(context or {})
+            self.create_records = defaultdict(set)
+            self.delete_records = defaultdict(set)
+            self.trigger_records = defaultdict(set)
+            self.check_warnings = set()
+            self.timestamp = {}
+            self.counter = 0
+            self._datamanagers = []
+            lock_tables = extras.get('_lock_tables', [])
+            for table in lock_tables:
+                self.database.lock(self.connection, table)
+            self._locked_tables = set(lock_tables)
+            if database_name:
+                from trytond.cache import Cache
                 Cache.sync(self)
-            except BaseException:
-                self.stop(False)
-                raise
+        except BaseException:
+            self.stop(False)
+            raise
         return self
 
     def __enter__(self):
@@ -219,15 +238,19 @@ class Transaction(object):
         self.user = user
         return manager
 
+    def lock_table(self, table):
+        if table not in self._locked_tables:
+            raise _TransactionLockError(table)
+
     def set_current_transaction(self, transaction):
         self._local.transactions.append(transaction)
         return transaction
 
-    def new_transaction(self, autocommit=False, readonly=False):
+    def new_transaction(self, autocommit=False, readonly=False, **extras):
         transaction = Transaction(new=True)
         return transaction.start(self.database.name, self.user,
             context=self.context, close=self.close, readonly=readonly,
-            autocommit=autocommit)
+            autocommit=autocommit, **extras)
 
     def commit(self):
         from trytond.cache import Cache

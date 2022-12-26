@@ -15,7 +15,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing
 from trytond.tools import timezone as tz
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 
 logger = logging.getLogger(__name__)
@@ -171,18 +171,27 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     return (time.monotonic() - started) * 1000
                 started = time.monotonic()
                 name = '<Cron %s@%s %s>' % (cron.id, db_name, cron.method)
-                for count in range(retry, -1, -1):
-                    if count != retry:
+                transaction_extras = {}
+                count = 0
+                while True:
+                    if count:
                         time.sleep(0.02 * (retry - count))
                     try:
                         with processing(name), \
-                                transaction.new_transaction() as cron_trans:
+                                transaction.new_transaction(
+                                    **transaction_extras) as cron_trans:
                             cron.run_once()
                             cron_trans.commit()
                     except Exception as e:
+                        if isinstance(e, TransactionError):
+                            cron_trans.rollback()
+                            e.fix(transaction_extras)
+                            continue
                         if (isinstance(e, backend.DatabaseOperationalError)
-                                and count):
-                            logger.debug("Retry: %i", retry - count + 1)
+                                and count < retry):
+                            cron_trans.rollback()
+                            count += 1
+                            logger.debug("Retry: %i", count)
                             continue
                         if isinstance(e, (UserError, UserWarning)):
                             Error.log(cron, e)

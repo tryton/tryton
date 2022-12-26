@@ -2034,7 +2034,7 @@ class ModelSQL(ModelStorage):
                 with connection.cursor() as cursor:
                     cursor.execute(*query)
         else:
-            database.lock(connection, cls._table)
+            transaction.lock_table(cls._table)
 
 
 def convert_from(table, tables):

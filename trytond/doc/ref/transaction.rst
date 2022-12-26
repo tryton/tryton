@@ -4,6 +4,15 @@
 Transaction
 ===========
 
+.. exception:: TransactionError
+
+   The base class for transaction error that need to retry the transaction.
+
+.. method:: TransactionError.fix(extras)
+
+   Update the extras argument of :meth:`~Transaction.start` to restart the
+   transaction without the error.
+
 .. class:: Transaction
 
    Represents a Tryton transaction that contains thread-local parameters of a
@@ -57,7 +66,7 @@ Transaction
 
    Return a monotonic time used to populate :attr:~Transaction.started_at.
 
-.. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit]]]])
+.. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit, \**extras]]]])
 
    Start a new transaction and return a `context manager`_.
    The non-readonly transaction will be committed when exiting the ``with``
@@ -89,13 +98,18 @@ Transaction
    record rules.
    The user will be restored when exiting the ``with`` statement.
 
+.. method:: Transaction.lock_table(table)
+
+   Raise a :exc:`TransactionError` to retry the transaction if the table has
+   not been locked at the start.
+
 .. method:: Transaction.set_current_transaction(transaction)
 
    Add a specific ``transaction`` on the top of the transaction stack.
    A transaction is commited or rollbacked only when its last reference is
    popped from the stack.
 
-.. method:: Transaction.new_transaction([autocommit[, readonly]])
+.. method:: Transaction.new_transaction([autocommit[, readonly, \**extras]])
 
    Create a new transaction with the same database, user and context as the
    original transaction and adds it to the stack of transactions.

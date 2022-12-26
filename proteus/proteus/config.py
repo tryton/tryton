@@ -183,7 +183,7 @@ class _TrytondMethod(object):
     def __call__(self, *args, **kwargs):
         from trytond.rpc import RPC
         from trytond.tools import is_instance_method
-        from trytond.transaction import Transaction
+        from trytond.transaction import Transaction, TransactionError
         from trytond.worker import run_task
 
         if self._name in self._object.__rpc__:
@@ -193,23 +193,35 @@ class _TrytondMethod(object):
         else:
             raise TypeError('%s is not callable' % self._name)
 
-        with Transaction().start(self._config.database_name,
-                self._config.user, readonly=rpc.readonly) as transaction:
-            args, kwargs, transaction.context, transaction.timestamp = \
-                rpc.convert(self._object, *args, **kwargs)
-            meth = getattr(self._object, self._name)
-            if (rpc.instantiate is None
-                    or not is_instance_method(self._object, self._name)):
-                result = rpc.result(meth(*args, **kwargs))
-            else:
-                assert rpc.instantiate == 0
-                inst = args.pop(0)
-                if hasattr(inst, self._name):
-                    result = rpc.result(meth(inst, *args, **kwargs))
-                else:
-                    result = [rpc.result(meth(i, *args, **kwargs))
-                        for i in inst]
-            transaction.commit()
+        extras = {}
+        while True:
+            with Transaction().start(self._config.database_name,
+                    self._config.user, readonly=rpc.readonly,
+                    **extras) as transaction:
+                try:
+                    (c_args, c_kwargs,
+                        transaction.context, transaction.timestamp) \
+                            = rpc.convert(self._object, *args, **kwargs)
+                    meth = getattr(self._object, self._name)
+                    if (rpc.instantiate is None
+                            or not is_instance_method(
+                                self._object, self._name)):
+                        result = rpc.result(meth(*c_args, **c_kwargs))
+                    else:
+                        assert rpc.instantiate == 0
+                        inst = c_args.pop(0)
+                        if hasattr(inst, self._name):
+                            result = rpc.result(
+                                meth(inst, *c_args, **c_kwargs))
+                        else:
+                            result = [rpc.result(meth(i, *c_args, **c_kwargs))
+                                for i in inst]
+                except TransactionError as e:
+                    transaction.rollback()
+                    e.fix(extras)
+                    continue
+                transaction.commit()
+            break
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(self._config.database_name, task_id)

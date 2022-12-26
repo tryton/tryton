@@ -16,7 +16,7 @@ from trytond.config import config
 from trytond.exceptions import UserError, UserWarning
 from trytond.pool import Pool
 from trytond.status import processing
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, TransactionError
 
 __all__ = ['work']
 logger = logging.getLogger(__name__)
@@ -126,10 +126,14 @@ def run_task(pool, task_id):
     name = '<Task %s@%s>' % (task_id, pool.database_name)
     retry = config.getint('database', 'retry')
     try:
-        for count in range(retry, -1, -1):
-            if count != retry:
+        count = 0
+        transaction_extras = {}
+        while True:
+            if count:
                 time.sleep(0.02 * (retry - count))
-            with Transaction().start(pool.database_name, 0) as transaction:
+            with Transaction().start(
+                    pool.database_name, 0,
+                    **transaction_extras) as transaction:
                 try:
                     try:
                         task, = Queue.search([('id', '=', task_id)])
@@ -139,10 +143,15 @@ def run_task(pool, task_id):
                     with processing(name):
                         task.run()
                     break
+                except TransactionError as e:
+                    transaction.rollbacked()
+                    e.fix(transaction_extras)
+                    continue
                 except backend.DatabaseOperationalError:
-                    if count:
+                    if count < retry:
                         transaction.rollback()
-                        logger.debug("Retry: %i", retry - count + 1)
+                        count += 1
+                        logger.debug("Retry: %i", count)
                         continue
                     raise
                 except (UserError, UserWarning) as e:

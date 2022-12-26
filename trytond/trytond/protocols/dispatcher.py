@@ -13,7 +13,7 @@ from trytond.exceptions import (
     ConcurrencyException, LoginException, RateLimitException, UserError,
     UserWarning)
 from trytond.tools import is_instance_method
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 from trytond.wsgi import app
 
@@ -185,11 +185,14 @@ def _dispatch(request, pool, *args, **kwargs):
     started = time.monotonic()
 
     retry = config.getint('database', 'retry')
-    for count in range(retry, -1, -1):
-        if count != retry:
+    count = 0
+    transaction_extras = {}
+    while True:
+        if count:
             time.sleep(0.02 * (retry - count))
-        with Transaction().start(pool.database_name, user,
-                readonly=rpc.readonly) as transaction:
+        with Transaction().start(
+                pool.database_name, user, readonly=rpc.readonly,
+                **transaction_extras) as transaction:
             try:
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
                     = rpc.convert(obj, *args, **kwargs)
@@ -206,10 +209,15 @@ def _dispatch(request, pool, *args, **kwargs):
                     else:
                         result = [rpc.result(meth(i, *c_args, **c_kwargs))
                             for i in inst]
+            except TransactionError as e:
+                transaction.rollback()
+                e.fix(transaction_extras)
+                continue
             except backend.DatabaseOperationalError:
-                if count and not rpc.readonly:
+                if count < retry and not rpc.readonly:
                     transaction.rollback()
-                    logger.debug("Retry: %i", retry - count + 1)
+                    count += 1
+                    logger.debug("Retry: %i", count)
                     continue
                 logger.exception(log_message, *log_args, duration())
                 raise
