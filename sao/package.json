@@ -32,7 +32,7 @@
     "tests"
   ],
   "scripts": {
-    "test": "npx grunt test",
+    "test": "npx grunt test -v",
     "postinstall": "npx bower install"
   },
   "devDependencies": {

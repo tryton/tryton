@@ -127,7 +127,7 @@ check-ci-modules:
   before_script:
     - pip install tox
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}"
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v
   parallel:
     matrix:
       - PYTHON_VERSION: ["3.7", "3.8", "3.9", "3.10"]
@@ -137,7 +137,7 @@ check-ci-modules:
   variables:
     DB_CACHE: /tmp/cache
   script:
-    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}"
+    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -vv -- -v
 
 .test-sqlite:
   extends: .test-db
@@ -162,7 +162,7 @@ check-ci-modules:
     POSTGIS_URI: postgis://postgres@postgis:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}"
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v
   services:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgis/postgis
       alias: postgis
