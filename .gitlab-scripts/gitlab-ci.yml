@@ -93,7 +93,7 @@ check-dist:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
-      - .cache/pip
+      - .cache/pip/http
   before_script:
     - pip install tox
   script:
