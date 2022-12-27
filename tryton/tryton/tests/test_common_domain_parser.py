@@ -529,31 +529,31 @@ class DomainParserTestCase(TestCase):
         double_null_ = ('e', None, None)
         for value, result in (
                 (['a'], ['a']),
-                (['a', 'or', 'b'], [['OR', 'a', 'b']]),
-                (['a', 'or', 'b', 'or', 'c'], [['OR', ['OR', 'a', 'b'], 'c']]),
-                (['a', 'b', 'or', 'c'], ['a', ['OR', 'b', 'c']]),
-                (['a', 'or', 'b', 'c'], [['OR', 'a', 'b'], 'c']),
+                (['a', '|', 'b'], [['OR', 'a', 'b']]),
+                (['a', '|', 'b', '|', 'c'], [['OR', ['OR', 'a', 'b'], 'c']]),
+                (['a', 'b', '|', 'c'], ['a', ['OR', 'b', 'c']]),
+                (['a', '|', 'b', 'c'], [['OR', 'a', 'b'], 'c']),
                 (['a', iter(['b', 'c'])], ['a', ['b', 'c']]),
                 (['a', iter(['b', 'c']), 'd'], ['a', ['b', 'c'], 'd']),
-                (['a', 'or', iter(['b', 'c'])], [['OR', 'a', ['b', 'c']]]),
-                (['a', 'or', iter(['b', 'c']), 'd'],
+                (['a', '|', iter(['b', 'c'])], [['OR', 'a', ['b', 'c']]]),
+                (['a', '|', iter(['b', 'c']), 'd'],
                     [['OR', 'a', ['b', 'c']], 'd']),
-                (['a', iter(['b', 'c']), 'or', 'd'],
+                (['a', iter(['b', 'c']), '|', 'd'],
                     ['a', ['OR', ['b', 'c'], 'd']]),
-                (['a', 'or', iter(['b', 'or', 'c'])],
+                (['a', '|', iter(['b', '|', 'c'])],
                     [['OR', 'a', [['OR', 'b', 'c']]]]),
-                (['or'], []),
-                (['or', 'a'], ['a']),
-                (['a', iter(['or', 'b'])], ['a', ['b']]),
-                (['a', 'or', 'or', 'b'], [['OR', 'a', 'b']]),
-                (['or', 'or', 'a'], ['a']),
-                (['or', 'or', 'a', 'b'], ['a', 'b']),
-                (['or', 'or', 'a', 'or', 'b'], [['OR', 'a', 'b']]),
-                (['a', iter(['b', 'or', 'c'])], ['a', [['OR', 'b', 'c']]]),
-                ([a, iter([b, ('or',), c])], [a, [['OR', b, c]]]),
-                (['a', iter(['b', 'or'])], ['a', [['OR', 'b']]]),
+                (['|'], []),
+                (['|', 'a'], ['a']),
+                (['a', iter(['|', 'b'])], ['a', ['b']]),
+                (['a', '|', '|', 'b'], [['OR', 'a', 'b']]),
+                (['|', '|', 'a'], ['a']),
+                (['|', '|', 'a', 'b'], ['a', 'b']),
+                (['|', '|', 'a', '|', 'b'], [['OR', 'a', 'b']]),
+                (['a', iter(['b', '|', 'c'])], ['a', [['OR', 'b', 'c']]]),
+                ([a, iter([b, ('|',), c])], [a, [['OR', b, c]]]),
+                (['a', iter(['b', '|'])], ['a', [['OR', 'b']]]),
                 ([null_], [null_]),
-                ([null_, 'or', double_null_], [['OR', null_, double_null_]]),
+                ([null_, '|', double_null_], [['OR', null_, double_null_]]),
                 ):
             self.assertEqual(
                 rlist(operatorize(iter(value))), result,
@@ -696,14 +696,14 @@ class DomainParserTestCase(TestCase):
             dom.string(['OR',
                 ('name', 'ilike', '%Doe%'),
                 ('name', 'ilike', '%Jane%')]),
-            'Name: Doe or Name: Jane')
+            'Name: Doe | Name: Jane')
         self.assertEqual(
             dom.string([
                 ('name', 'ilike', '%Doe%'),
                 ['OR',
                     ('name', 'ilike', '%John%'),
                     ('name', 'ilike', '%Jane%')]]),
-            'Name: Doe (Name: John or Name: Jane)')
+            'Name: Doe (Name: John | Name: Jane)')
         self.assertEqual(dom.string([]), '')
         self.assertEqual(
             dom.string([('surname', 'ilike', '%Doe%')]), '"(Sur)Name": Doe')
@@ -1121,10 +1121,10 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(list(dom.completion('Name: !=foo')), [])
         self.assertEqual(list(dom.completion('')), ['Name: '])
         self.assertEqual(list(dom.completion(' ')), ['', 'Name: '])
-        self.assertEqual(list(dom.completion('Name: foo or')), ['Name: foo'])
+        self.assertEqual(list(dom.completion('Name: foo |')), ['Name: foo'])
         self.assertEqual(
-            list(dom.completion('Name: foo (Name: foo or N')),
-            ['Name: foo (Name: foo or Name: '])
+            list(dom.completion('Name: foo (Name: foo | N')),
+            ['Name: foo (Name: foo | Name: '])
 
     def test_completion_many2one(self):
         "Test completion many2one"

@@ -484,7 +484,10 @@ def parenthesize(tokens):
 
 def operatorize(tokens, operator='or'):
     "Convert operators"
-    test = (operator, (operator,))
+    test = {
+        'or': ('|', ('|',)),
+        'and': ('&', ('&',)),
+        }[operator]
     try:
         cur = next(tokens)
         while cur in test:
@@ -656,7 +659,7 @@ class DomainParser(object):
         if not domain:
             return ''
         if domain[0] in ('AND', 'OR'):
-            nary = ' ' if domain[0] == 'AND' else ' or '
+            nary = ' ' if domain[0] == 'AND' else ' | '
             domain = domain[1:]
         else:
             nary = ' '

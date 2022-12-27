@@ -1578,31 +1578,31 @@
 
         [
         [['a'], ['a']],
-        [['a', 'or', 'b'], [['OR', 'a', 'b']]],
-        [['a', 'or', 'b', 'or', 'c'], [['OR', ['OR', 'a', 'b'], 'c']]],
-        [['a', 'b', 'or', 'c'], ['a', ['OR', 'b', 'c']]],
-        [['a', 'or', 'b', 'c'], [['OR', 'a', 'b'], 'c']],
+        [['a', '|', 'b'], [['OR', 'a', 'b']]],
+        [['a', '|', 'b', '|', 'c'], [['OR', ['OR', 'a', 'b'], 'c']]],
+        [['a', 'b', '|', 'c'], ['a', ['OR', 'b', 'c']]],
+        [['a', '|', 'b', 'c'], [['OR', 'a', 'b'], 'c']],
         [['a', ['b', 'c']], ['a', ['b', 'c']]],
         [['a', ['b', 'c'], 'd'], ['a', ['b', 'c'], 'd']],
-        [['a', 'or', ['b', 'c']], [['OR', 'a', ['b', 'c']]]],
-        [['a', 'or', ['b', 'c'], 'd'],
+        [['a', '|', ['b', 'c']], [['OR', 'a', ['b', 'c']]]],
+        [['a', '|', ['b', 'c'], 'd'],
             [['OR', 'a', ['b', 'c']], 'd']],
-        [['a', ['b', 'c'], 'or', 'd'],
+        [['a', ['b', 'c'], '|', 'd'],
             ['a', ['OR', ['b', 'c'], 'd']]],
-        [['a', 'or', ['b', 'or', 'c']],
+        [['a', '|', ['b', '|', 'c']],
             [['OR', 'a', [['OR', 'b', 'c']]]]],
-        [['or'], []],
-        [['or', 'a'], ['a']],
-        [['a', ['or', 'b']], ['a', ['b']]],
-        [['a', 'or', 'or', 'b'], [['OR', 'a', 'b']]],
-        [['or', 'or', 'a'], ['a']],
-        [['or', 'or', 'a', 'b'], ['a', 'b']],
-        [['or', 'or', 'a', 'or', 'b'], [['OR', 'a', 'b']]],
-        [['a', ['b', 'or', 'c']], ['a', [['OR', 'b', 'c']]]],
-        [[a, [b, ['or'], c]], [a, [['OR', b, c]]]],
-        [['a', ['b', 'or']], ['a', [['OR', 'b']]]],
+        [['|'], []],
+        [['|', 'a'], ['a']],
+        [['a', ['|', 'b']], ['a', ['b']]],
+        [['a', '|', '|', 'b'], [['OR', 'a', 'b']]],
+        [['|', '|', 'a'], ['a']],
+        [['|', '|', 'a', 'b'], ['a', 'b']],
+        [['|', '|', 'a', '|', 'b'], [['OR', 'a', 'b']]],
+        [['a', ['b', '|', 'c']], ['a', [['OR', 'b', 'c']]]],
+        [[a, [b, ['|'], c]], [a, [['OR', b, c]]]],
+        [['a', ['b', '|']], ['a', [['OR', 'b']]]],
         [[null_], [null_]],
-        [[null_, 'or', double_null_], [['OR', null_, double_null_]]]
+        [[null_, '|', double_null_], [['OR', null_, double_null_]]]
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
@@ -2233,14 +2233,14 @@
         [['OR',
             ['name', 'ilike', '%Doe%'],
             ['name', 'ilike', '%Jane%']
-            ], 'Name: Doe or Name: Jane'],
+            ], 'Name: Doe | Name: Jane'],
         [[
             ['name', 'ilike', '%Doe%'],
             ['OR',
                 ['name', 'ilike', '%John%'],
                 ['name', 'ilike', '%Jane%']
                 ]
-            ], 'Name: Doe (Name: John or Name: Jane)'],
+            ], 'Name: Doe (Name: John | Name: Jane)'],
         [[], ''],
         [[['surname', 'ilike', '%Doe%']], '"(Sur)Name": Doe'],
         //[[['date', '>=', new Date(2012, 10, 24)]], 'Date: >=10/24/2012'],
@@ -3112,8 +3112,8 @@
         ['Name: !=foo', []],
         ['', ["Name: "]],
         [' ', ["", "Name: "]],
-        ["Name: foo or", ["Name: foo"]],
-        ['Name: foo (Name: foo or N', ["Name: foo (Name: foo or Name: "]],
+        ["Name: foo |", ["Name: foo"]],
+        ['Name: foo (Name: foo | N', ["Name: foo (Name: foo | Name: "]],
         ].forEach(function(test) {
             var value = test[0];
             var expected = test[1];

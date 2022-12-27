@@ -1,3 +1,4 @@
+* Use ``&`` and ``|`` as boolean operator in search widget
 * Use toggle button and label on translate dialog
 * Support border type of images
 * Manage domain on id in single value list as unique

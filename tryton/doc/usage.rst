@@ -512,22 +512,26 @@ It is possible to escape special characters in values by using double quotes.
 Clause composition
 ++++++++++++++++++
 
-The clauses can be composed using the two boolean operators ``and`` and ``or``.
-By default, there is an implicit ``and`` between each clause if no operator is
+The clauses can be composed using the two boolean operators ``&`` (for `logical
+conjunction`_) and ``|`` (for `logical disjunction`_).
+By default, there is an implicit ``&`` between each clause if no operator is
 specified.
 
    For example: ``Name: Michael Amount: 100``
 
-   is the same as ``Name: Michael and Amount: 100``
+   is the same as ``Name: Michael & Amount: 100``
 
-The ``and`` operator has a highest precedence than ``or`` but you can change it
-by using parenthesis.
+The ``&`` operator has a highest precedence than ``|`` but you can change it by
+using parenthesis.
 
-   For example: ``(Name: Michael or Name: Pam) and Amount: 100``
+   For example: ``(Name: Michael | Name: Pam) & Amount: 100``
 
-   is different than ``Name: Michael or Name: Pam and Amount: 100``
+   is different than ``Name: Michael | Name: Pam & Amount: 100``
 
-   which is evaluated as ``Name: Michael or (Name: Pam and Amount: 100)``
+   which is evaluated as ``Name: Michael | (Name: Pam & Amount: 100)``
+
+.. _logical conjunction: https://en.wikipedia.org/wiki/Logical_conjunction
+.. _logical disjunction: https://en.wikipedia.org/wiki/Logical_disjunction
 
 RichText Editor
 ^^^^^^^^^^^^^^^

@@ -1306,7 +1306,7 @@
             var nary = ' ';
             if ((domain[0] == 'AND') || (domain[0] == 'OR')) {
                 if (domain[0] == 'OR') {
-                    nary = ' or ';
+                    nary = ' | ';
                 }
                 domain = domain.slice(1);
             }
@@ -1729,11 +1729,12 @@
             var result = [];
             operator = operator || 'or';
             tokens = jQuery.extend([], tokens);
+            var notation = {'or': '|', 'and': '&'}[operator];
             var test = function(value) {
                 if (value instanceof Array) {
-                    return Sao.common.compare(value, [operator]);
+                    return Sao.common.compare(value, [notation]);
                 } else {
-                    return value == operator;
+                    return value == notation;
                 }
             };
             var cur = tokens.shift();
