@@ -1745,7 +1745,8 @@
             for (var name in fields) {
                 var props = fields[name];
                 if ((props.type != 'selection') &&
-                        (props.type != 'reference')) {
+                    (props.type != 'multiselection') &&
+                    (props.type != 'reference')) {
                     continue;
                 }
                 if (props.selection instanceof Array) {

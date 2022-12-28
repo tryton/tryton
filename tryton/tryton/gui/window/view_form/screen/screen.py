@@ -190,7 +190,8 @@ class Screen:
 
         fields = view_tree['fields'].copy()
         for name in fields:
-            if fields[name]['type'] not in ('selection', 'reference'):
+            if fields[name]['type'] not in {
+                    'selection', 'multiselection', 'reference'}:
                 continue
             if isinstance(fields[name]['selection'], (tuple, list)):
                 continue
