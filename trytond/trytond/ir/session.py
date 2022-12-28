@@ -26,7 +26,6 @@ class Session(ModelSQL):
         super(Session, cls).__setup__()
         table = cls.__table__()
         cls.__rpc__ = {}
-        cls.__rpc__ = {}
         cls._sql_indexes.update({
                 Index(table,
                     (table.key, Index.Equality()),
