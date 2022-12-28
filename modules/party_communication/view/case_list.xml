@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="name"/>
+    <field name="party" expand="1" optional="0"/>
+    <field name="start" widget="date"/>
+    <field name="start" widget="time"/>
+    <field name="end" widget="date"/>
+    <field name="end" widget="time"/>
+    <field name="status"/>
+</tree>

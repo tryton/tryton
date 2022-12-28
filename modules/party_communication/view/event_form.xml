@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="case"/>
+    <field name="case"/>
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="start"/>
+    <field name="start"/>
+    <label name="end"/>
+    <field name="end"/>
+    <label name="purpose"/>
+    <field name="purpose"/>
+    <notebook>
+        <page id="general" string="General" col="2">
+            <field name="parties"/>
+            <field name="contacts"/>
+        </page>
+        <page name="note" col="1">
+            <field name="note"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+</form>
