@@ -11,9 +11,6 @@ Party
 `Avatar </projects/modules-party-avatar/en/latest>`_
     Adds avatar.
 
-`Communication </projects/modules-party-communcation/en/latest>`_
-    Stores communications between parties.
-
 `Relationship </projects/modules-party-relationship/en/latest>`_
     Defines relation between parties.
 
