@@ -170,7 +170,8 @@ class Screen(SignalEvent):
 
         fields = copy.deepcopy(view_tree['fields'])
         for name, props in fields.items():
-            if props['type'] not in ('selection', 'reference'):
+            if props['type'] not in {
+                    'selection', 'multiselection', 'reference'}:
                 continue
             if isinstance(props['selection'], (tuple, list)):
                 continue
