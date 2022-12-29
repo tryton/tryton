@@ -162,8 +162,9 @@
             this.states[definition.state] = button;
             return button;
         },
-        record_message: function() {
+        record_modified: function() {
             this.update_buttons();
+            this.info_bar.refresh();
         },
         update_buttons: function() {
             var record = this.screen.current_record;
