@@ -1081,7 +1081,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     outgoing_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Outgoing Moves',
             domain=[
-                ('from_location', '=', Eval('warehouse_output')),
+                If(Eval('warehouse_output') == Eval('warehouse_storage'),
+                    ('from_location', 'child_of',
+                        [Eval('warehouse_output', -1)], 'parent'),
+                    ('from_location', '=', Eval('warehouse_output'))),
                 If(~Eval('state').in_(['done', 'cancelled']),
                     ('to_location', '=', Eval('customer_location')),
                     ()),
@@ -1321,11 +1324,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             return self.customer.customer_location.id
 
     def get_outgoing_moves(self, name):
-        moves = []
-        for move in self.moves:
-            if move.from_location == self.warehouse_output:
-                moves.append(move.id)
-        return moves
+        if self.warehouse_output == self.warehouse_storage:
+            return [m.id for m in self.moves]
+        else:
+            return [
+                m.id for m in self.moves
+                if m.from_location == self.warehouse_output]
 
     @classmethod
     def set_outgoing_moves(cls, shipments, name, value):
@@ -1965,13 +1969,12 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             return self.customer.customer_location.id
 
     def get_incoming_moves(self, name):
-        moves = []
         if self.warehouse_input == self.warehouse_storage:
             return [m.id for m in self.moves]
-        for move in self.moves:
-            if move.to_location == self.warehouse_input:
-                moves.append(move.id)
-        return moves
+        else:
+            return [
+                m.id for m in self.moves
+                if m.to_location == self.warehouse_input]
 
     @classmethod
     def set_incoming_moves(cls, shipments, name, value):
