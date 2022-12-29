@@ -1523,13 +1523,13 @@
             var previous_value = this.get(record);
             this.set(record, value);
             if (this._has_changed(previous_value, this.get(record))) {
-                this.changed(record);
-                record.validate(null, true, false, true);
                 record.set_modified(this.name);
-            } else if (force_change) {
                 this.changed(record);
                 record.validate(null, true, false, true);
+            } else if (force_change) {
                 this.set_modified();
+                this.changed(record);
+                record.validate(null, true, false, true);
             }
         },
         get_client: function(record) {
@@ -2266,13 +2266,13 @@
                 previous_ids.sort(), value.sort());
             this._set_value(record, value, false, modified);
             if (modified) {
-                this.changed(record);
-                record.validate(null, true, false, true);
                 record.set_modified(this.name);
-            } else if (force_change) {
                 this.changed(record);
                 record.validate(null, true, false, true);
+            } else if (force_change) {
                 record.set_modified();
+                this.changed(record);
+                record.validate(null, true, false, true);
             }
         },
         get_client: function(record) {
