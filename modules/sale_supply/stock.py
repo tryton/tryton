@@ -47,7 +47,11 @@ class ShipmentIn(metaclass=PoolMeta):
                 ('purchase_request.origin', 'like', 'sale.sale,%'),
                 ])
         pbl = defaultdict(lambda: defaultdict(int))
-        for move in filter(filter_func, self.inventory_moves):
+        if self.warehouse_storage == self.warehouse_input:
+            inventory_moves = self.incoming_moves
+        else:
+            inventory_moves = self.inventory_moves
+        for move in filter(filter_func, inventory_moves):
             pbl[move.product][get_key(move)] += move.internal_quantity
         for sale_line in sale_lines:
             sale_line.assign_supplied(
