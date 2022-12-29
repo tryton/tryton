@@ -1274,7 +1274,9 @@ function eval_pyson(value){
             window.setTimeout(() => {
                 var value = this.get_value();
                 window.setTimeout(() => {
-                    if (this.record && (this.get_value() == value)) {
+                    if (this.record &&
+                        (this.get_value() == value) &&
+                        this.modified) {
                         this.view.screen.record_modified(false);
                     }
                 }, 300);
