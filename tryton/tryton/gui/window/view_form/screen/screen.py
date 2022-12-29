@@ -70,8 +70,8 @@ class Screen:
             lambda: collections.defaultdict(lambda: None))
         self.tree_states_done = set()
         self.__group = None
-        self.new_group(context or {})
         self.__current_record = None
+        self.new_group(context or {})
         self.current_record = None
         self.screen_container = ScreenContainer(attributes.get('tab_domain'))
         self.screen_container.alternate_view = attributes.get(
@@ -486,6 +486,8 @@ class Screen:
         return self.__current_record
 
     def __set_current_record(self, record):
+        if self.__current_record == record:
+            return
         self.__current_record = record
         if record:
             try:
@@ -501,7 +503,6 @@ class Screen:
         self.update_resources(record.resources if record else None)
         # update resources after 1 second
         GLib.timeout_add(1000, self._update_resources, record)
-        return True
 
     current_record = property(__get_current_record, __set_current_record)
 
