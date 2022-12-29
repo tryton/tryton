@@ -640,6 +640,7 @@ class Form(TabContent):
             if self.widget_get().props.window:
                 self.activate_save()
         GLib.idle_add(_record_modified)
+        self.info_bar_refresh()
 
     def record_saved(self):
         self.activate_save()

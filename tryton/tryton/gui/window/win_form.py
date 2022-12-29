@@ -381,6 +381,7 @@ class WinForm(NoModal, InfoBar):
 
     def record_modified(self, *args):
         self.activate_save()
+        self.info_bar_refresh()
 
     def activate_save(self):
         modified = self.screen.modified()

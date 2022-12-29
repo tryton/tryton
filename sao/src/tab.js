@@ -1509,6 +1509,7 @@
         },
         record_modified: function() {
             this.activate_save();
+            this.info_bar.refresh();
         },
         record_saved: function() {
             this.activate_save();
