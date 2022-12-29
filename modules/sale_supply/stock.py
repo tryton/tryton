@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
-from trytond.model import Model, ModelView, Workflow
+from trytond.i18n import gettext
+from trytond.model import Model, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 
 
@@ -56,3 +57,22 @@ class ShipmentIn(metaclass=PoolMeta):
         for sale_line in sale_lines:
             sale_line.assign_supplied(
                 pbl[sale_line.product], grouping=grouping)
+
+
+class OrderPoint(metaclass=PoolMeta):
+    __name__ = 'stock.order_point'
+
+    @fields.depends(methods=['_notify_product_supply_on_sale'])
+    def on_change_notify(self):
+        notifications = super().on_change_notify()
+        notifications.extend(self._notify_product_supply_on_sale())
+        return notifications
+
+    @fields.depends('type', 'product')
+    def _notify_product_supply_on_sale(self):
+        if (self.type == 'purchase'
+                and self.product and self.product.supply_on_sale):
+            yield ('warning', gettext(
+                    'sale_supply'
+                    '.msg_order_point_product_supply_on_sale',
+                    product=self.product.rec_name))

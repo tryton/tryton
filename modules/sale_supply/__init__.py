@@ -19,3 +19,6 @@ def register():
     Pool.register(
         purchase.HandlePurchaseCancellationException,
         module='sale_supply', type_='wizard')
+    Pool.register(
+        stock.OrderPoint,
+        module='sale_supply', type_='model', depends=['stock_supply'])

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_order_point_product_supply_on_sale">
+            <field name="text">The product "%(product)s" is supplied on sale.</field>
+        </record>
+        <record model="ir.message" id="msg_template_supply_on_sale_order_point">
+            <field name="text">The product has purchase order points "%(order_points)s" defined.</field>
+        </record>
+    </data>
+</tryton>
