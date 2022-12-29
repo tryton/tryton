@@ -802,8 +802,7 @@
             this.domain = attributes.domain || [];
             this.context_domain = attributes.context_domain;
             this.size_limit = null;
-            if ((this.attributes.limit === undefined) ||
-                (this.attributes.limit === null)) {
+            if (this.attributes.limit === undefined) {
                 this.limit = Sao.config.limit;
             } else {
                 this.limit = attributes.limit;
