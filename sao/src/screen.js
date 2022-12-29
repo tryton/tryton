@@ -1280,6 +1280,9 @@
             return this.__current_record;
         },
         set current_record(record) {
+            if (this.__current_record === record) {
+                return;
+            }
             this.__current_record = record;
             var pos = null;
             var record_id = null;
