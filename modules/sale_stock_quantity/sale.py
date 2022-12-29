@@ -211,6 +211,7 @@ class Line(metaclass=PoolMeta):
         Lang = pool.get('ir.lang')
         Move = pool.get('stock.move')
         Product = pool.get('product.product')
+        UoM = pool.get('product.uom')
         lang = Lang.get()
         if (self.sale_state == 'draft'
                 and self.sale
@@ -226,16 +227,18 @@ class Line(metaclass=PoolMeta):
             locations = [self.sale.warehouse.id]
             with Transaction().set_context(
                     locations=locations,
-                    stock_date_end=sale_date,
-                    uom=self.unit):
+                    stock_date_end=sale_date):
                 product = Product(self.product.id)
-                if product.forecast_quantity < self.quantity:
+                quantity = UoM.compute_qty(
+                    self.unit, self.quantity,
+                    product.default_uom, round=False)
+                if product.forecast_quantity < quantity:
                     yield ('warning', gettext(
                             'sale_stock_quantity'
                             '.msg_product_forecast_quantity_lower',
                             forecast_quantity=lang.format_number_symbol(
-                                product.forecast_quantity, self.unit,
-                                self.unit.digits),
+                                product.forecast_quantity, product.default_uom,
+                                product.default_uom.digits),
                             product=self.product.rec_name,
                             quantity=lang.format_number_symbol(
                                 self.quantity, self.unit,
