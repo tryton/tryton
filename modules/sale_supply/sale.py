@@ -221,9 +221,14 @@ class Line(metaclass=PoolMeta):
 
         moves = set()
         for move in self.moves:
-            if isinstance(move.shipment, ShipmentOut):
-                for inv_move in move.shipment.inventory_moves:
-                    if inv_move.product.id == self.product.id:
+            shipment = move.shipment
+            if isinstance(shipment, ShipmentOut):
+                if shipment.warehouse_storage == shipment.warehouse_output:
+                    inventory_moves = shipment.outgoing_moves
+                else:
+                    inventory_moves = shipment.inventory_moves
+                for inv_move in inventory_moves:
+                    if inv_move.product == self.product:
                         moves.add(inv_move)
         to_write = []
         to_assign = []
