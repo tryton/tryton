@@ -77,7 +77,7 @@ class Widget(object):
         def send(value):
             if not self.widget.props.window:
                 return
-            if self.record and self.get_value() == value:
+            if self.record and self.get_value() == value and self.modified:
                 self.view.screen.record_modified(display=False)
 
         def get_value():
