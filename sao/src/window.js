@@ -409,6 +409,7 @@
         },
         record_modified: function() {
             this.activate_save();
+            this.info_bar.refresh();
         },
         activate_save: function() {
             if (this.but_ok.hasClass('disabled') && this.screen.modified()) {

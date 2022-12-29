@@ -191,6 +191,7 @@ class Wizard(InfoBar):
 
     def record_modified(self):
         self.update_buttons()
+        self.info_bar_refresh()
 
     def update_buttons(self):
         record = self.screen.current_record
