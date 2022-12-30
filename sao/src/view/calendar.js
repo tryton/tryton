@@ -340,7 +340,10 @@
         },
         get_selected_date: function(){
             return this.el.fullCalendar('getDate');
-        }
+        },
+        get listed_records() {
+            return this.events.map(e => e.record);
+        },
     });
 
 }());

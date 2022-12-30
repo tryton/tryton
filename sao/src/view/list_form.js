@@ -105,6 +105,9 @@
             }
             return records;
         },
+        get listed_records() {
+            this.group.slice();
+        },
         set_cursor: function(new_, reset_view) {
             if (new_) {
                 this.el.animate({

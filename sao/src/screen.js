@@ -1437,7 +1437,9 @@
             }
         },
         get listed_records() {
-            if (this.current_view && this.current_view.view_type == 'tree') {
+            if (this.current_view &&
+                ~['tree', 'calendar', 'list-form'].indexOf(
+                    this.current_view.view_type)) {
                 return this.current_view.listed_records;
             } else if (this.current_record) {
                 return [this.current_record];

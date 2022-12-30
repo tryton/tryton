@@ -115,6 +115,10 @@ class ViewListForm(View):
         return [
             self._model.get_item(r.get_index()).record for r in selected_rows]
 
+    @property
+    def listed_records(self):
+        return list(self._model.group)
+
     def group_list_changed(self, group, action, *args):
         if action == 'record-added':
             record, position = args

@@ -1173,7 +1173,9 @@ class Screen:
 
     @property
     def listed_records(self):
-        if self.current_view and self.current_view.view_type == 'tree':
+        if (self.current_view
+                and self.current_view.view_type in {
+                    'tree', 'calendar', 'list-form'}):
             return self.current_view.listed_records
         elif self.current_record:
             return [self.current_record]

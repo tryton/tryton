@@ -170,3 +170,8 @@ class ViewCalendar(View):
 
     def get_fields(self):
         return []
+
+    @property
+    def listed_records(self):
+        event_store = self.widgets['goocalendar'].event_store
+        return [e.record for e in event_store.get_events()]
