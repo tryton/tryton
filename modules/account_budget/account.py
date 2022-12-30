@@ -333,8 +333,18 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
     def default_fiscalyear(cls):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
-        context = Transaction().context
-        return FiscalYear.find(context.get('company'), exception=False)
+        return FiscalYear.find(cls.default_company(), exception=False)
+
+    @fields.depends('company', 'fiscalyear')
+    def on_change_company(self):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        if self.company:
+            if not self.fiscalyear or self.fiscalyear.company != self.company:
+                self.fiscalyear = FiscalYear.find(
+                    self.company.id, exception=False)
+        else:
+            self.fiscalyear = None
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.name, self.fiscalyear.rec_name)
