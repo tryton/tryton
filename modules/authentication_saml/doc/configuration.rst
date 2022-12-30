@@ -10,6 +10,21 @@ user.
 Each service can be configuration with a section named ``[authentication_saml
 <service>]`` with the following options.
 
+Example::
+
+   [authentication_saml]
+   test = SAMLTEST
+
+   [authentication_saml test]
+   metadata = /path/to/metadata.xml
+   config = /path/to/config.py
+   login = email
+
+.. note::
+   Depending on the service provider, you may need to add its origins to the
+   ``cors`` value in the ``[web]`` section of the :doc:`configuration file
+   <trytond:topics/configuration>`.
+
 .. _config-authentication_saml.metadata:
 
 ``metadata``
@@ -33,13 +48,3 @@ The path of an optional configuration file using the `PySAML2 format
 The name of the identity attribute that contains the Tryton login of the user.
 
 The default value is ``uid``.
-
-Example::
-
-   [authentication_saml]
-   test = SAMLTEST
-
-   [authentication_saml test]
-   metadata = /path/to/metadata.xml
-   config = /path/to/config.py
-   login = email
