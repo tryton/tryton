@@ -12,13 +12,12 @@ except ImportError:
 import saml2
 import saml2.client
 import saml2.config
-from werkzeug.exceptions import HTTPException, abort
-from werkzeug.utils import redirect
 
 from trytond.config import config
 from trytond.protocols.dispatcher import register_authentication_service
 from trytond.protocols.wrappers import (
-    Response, allow_null_origin, with_pool, with_transaction)
+    Response, abort, allow_null_origin, exceptions, redirect, with_pool,
+    with_transaction)
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import app
@@ -51,7 +50,7 @@ def log(func):
     def wrapper(request, *args, **kwargs):
         try:
             return func(request, *args, **kwargs)
-        except HTTPException:
+        except exceptions.HTTPException:
             logger.debug('%s', request, exc_info=True)
             raise
         except Exception as e:

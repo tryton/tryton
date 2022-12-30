@@ -2,11 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
-from werkzeug.exceptions import HTTPException
-
 from trytond import backend
 from trytond.exceptions import UserError, UserWarning
-from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.protocols.wrappers import exceptions, with_pool, with_transaction
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 
@@ -43,7 +41,7 @@ def route(request, pool, shop, target, action, sku=None):
             kwargs['sku'] = sku
         with Transaction().set_context(**shop.get_context()):
             result = getattr(shop, method)(data, **kwargs)
-    except HTTPException as exception:
+    except exceptions.HTTPException as exception:
         Transaction().rollback()
         return {'code': exception.code, 'result': exception.description}
     except (UserError, UserWarning) as exception:

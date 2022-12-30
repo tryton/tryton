@@ -4,11 +4,9 @@ import logging
 import random
 import time
 
-from werkzeug.exceptions import abort
-
 from trytond.config import config
 from trytond.protocols.wrappers import (
-    allow_null_origin, with_pool, with_transaction)
+    abort, allow_null_origin, with_pool, with_transaction)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 

@@ -21,10 +21,10 @@ from sql.conditionals import NullIf
 from sql.functions import (
     CharLength, CurrentTimestamp, Extract, Function, Overlay, Position,
     Substring, Trim)
-from werkzeug.security import safe_join
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
+from trytond.tools import safe_join
 from trytond.transaction import Transaction
 
 __all__ = [

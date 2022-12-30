@@ -20,6 +20,11 @@ Miscellaneous
 
    Resolve a dotted name to a global object.
 
+.. method:: safe_join(directory, \*pathnames)
+
+   Safely join zero or more untrusted path components to a base directory to
+   avoid escaping the base directory.
+
 .. function:: unescape_wildcard(string[, wildcards[, escape]])
 
    Return the string without the wild card escapes.

@@ -12,8 +12,10 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
+from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
-from werkzeug.exceptions import HTTPException, abort
+from werkzeug.exceptions import abort
+from werkzeug.utils import redirect
 from werkzeug.wrappers import Request as _Request
 from werkzeug.wrappers import Response
 
@@ -23,6 +25,20 @@ from trytond.exceptions import RateLimitException, UserError, UserWarning
 from trytond.pool import Pool
 from trytond.tools import cached_property
 from trytond.transaction import Transaction
+
+__all__ = [
+    'HTTPStatus',
+    'Request',
+    'Response',
+    'abort',
+    'allow_null_origin',
+    'exceptions',
+    'redirect',
+    'set_max_request_size',
+    'user_application',
+    'with_pool',
+    'with_transaction',
+    ]
 
 logger = logging.getLogger(__name__)
 
@@ -160,7 +176,7 @@ def with_pool(func):
                 pool.init()
         try:
             return func(request, pool, *args, **kwargs)
-        except HTTPException:
+        except exceptions.HTTPException:
             logger.debug('%s', request, exc_info=True)
             raise
         except (UserError, UserWarning) as e:

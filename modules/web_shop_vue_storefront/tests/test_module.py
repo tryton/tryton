@@ -5,12 +5,11 @@ from contextlib import contextmanager
 from decimal import Decimal
 from unittest.mock import ANY, patch
 
-from werkzeug.exceptions import Unauthorized
-
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.modules.web_shop_vue_storefront.exceptions import LoginException
 from trytond.pool import Pool
+from trytond.protocols.wrappers import exceptions
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
@@ -238,7 +237,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
                     "password": "OldPassword",
                     })
 
-            with self.assertRaises(Unauthorized):
+            with self.assertRaises(exceptions.Unauthorized):
                 web_shop.POST_vsf_user_change_password({
                         "currentPassword": "BadPassword",
                         "newPassword": "NewPassword",
@@ -317,7 +316,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
     @with_transaction(user=0)
     def test_user_order_history_wrong_token(self):
         with self.create_web_shop() as web_shop:
-            with self.assertRaises(Unauthorized):
+            with self.assertRaises(exceptions.Unauthorized):
                 web_shop.GET_vsf_user_order_history(None, 'wrong token')
 
     @with_transaction(user=0)
@@ -353,10 +352,10 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
     def test_user_me_wrong_token(self):
         with self.create_web_shop() as web_shop:
 
-            with self.assertRaises(Unauthorized):
+            with self.assertRaises(exceptions.Unauthorized):
                 web_shop.GET_vsf_user_me(None, 'wrong token')
 
-            with self.assertRaises(Unauthorized):
+            with self.assertRaises(exceptions.Unauthorized):
                 web_shop.POST_vsf_user_me({}, 'wrong token')
 
     @with_transaction(user=0)

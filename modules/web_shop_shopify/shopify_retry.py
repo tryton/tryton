@@ -2,14 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import time
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
 from pyactiveresource.connection import ClientError
 from shopify import Limits
 from shopify.base import ShopifyConnection
+
+from trytond.protocols.wrappers import HTTPStatus
 
 
 def patch():

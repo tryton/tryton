@@ -1,15 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
-from werkzeug.exceptions import abort
-from werkzeug.utils import redirect
-
-from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.protocols.wrappers import (
+    HTTPStatus, abort, redirect, with_pool, with_transaction)
 from trytond.wsgi import app
 
 

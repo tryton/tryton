@@ -9,14 +9,7 @@ import sys
 import traceback
 import urllib.parse
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
-from werkzeug.exceptions import HTTPException, InternalServerError, abort
 from werkzeug.routing import BaseConverter, Map, Rule
-from werkzeug.wrappers import Response
 
 try:
     from werkzeug.middleware.proxy_fix import ProxyFix
@@ -28,10 +21,6 @@ try:
 except ImportError:
     from werkzeug.contrib.fixers import ProxyFix as NumProxyFix
 try:
-    from werkzeug.security import safe_join
-except ImportError:
-    safe_join = posixpath.join
-try:
     from werkzeug.middleware.shared_data import SharedDataMiddleware
 except ImportError:
     from werkzeug.wsgi import SharedDataMiddleware
@@ -40,10 +29,11 @@ import wrapt
 
 from trytond.config import config
 from trytond.protocols.jsonrpc import JSONProtocol
-from trytond.protocols.wrappers import Request
+from trytond.protocols.wrappers import (
+    HTTPStatus, Request, Response, abort, exceptions)
 from trytond.protocols.xmlrpc import XMLProtocol
 from trytond.status import processing
-from trytond.tools import resolve
+from trytond.tools import resolve, safe_join
 
 __all__ = ['TrytondWSGI', 'app']
 
@@ -117,7 +107,7 @@ class TrytondWSGI(object):
             max_request_size = getattr(endpoint, 'max_request_size', None)
             self.check_request_size(request, max_request_size)
             return endpoint(request, **request.view_args)
-        except HTTPException as e:
+        except exceptions.HTTPException as e:
             logger.debug(
                 "Exception when processing %s", request, exc_info=True)
             return e
@@ -152,9 +142,10 @@ class TrytondWSGI(object):
             else:
                 if isinstance(data, Exception):
                     try:
-                        response = InternalServerError(original_exception=data)
+                        response = exceptions.InternalServerError(
+                            original_exception=data)
                     except TypeError:
-                        response = InternalServerError(data)
+                        response = exceptions.InternalServerError(data)
                 else:
                     response = Response(data)
         return response
@@ -188,7 +179,7 @@ class TrytondWSGI(object):
 
         with processing(request):
             data = self.dispatch_request(request)
-            if not isinstance(data, (Response, HTTPException)):
+            if not isinstance(data, (Response, exceptions.HTTPException)):
                 response = self.make_response(request, data)
             else:
                 response = data

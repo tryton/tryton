@@ -6,19 +6,11 @@ import io
 import json
 from numbers import Number
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
-from werkzeug.exceptions import abort
-from werkzeug.utils import redirect
-from werkzeug.wrappers import Response
-
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.protocols.jsonrpc import JSONDecoder
-from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.protocols.wrappers import (
+    HTTPStatus, Response, abort, redirect, with_pool, with_transaction)
 from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.wsgi import app

@@ -1,9 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import posixpath
+
 try:
     from functools import cached_property
 except ImportError:
     from werkzeug.utils import cached_property
+
+try:
+    from werkzeug.security import safe_join
+except ImportError:
+    safe_join = posixpath.join
 
 from .decimal_ import decistmt
 from .misc import (
@@ -49,6 +56,7 @@ __all__ = [
     remove_forbidden_chars,
     resolve,
     rstrip_wildcard,
+    safe_join,
     slugify,
     sortable_values,
     sql_pairing,

@@ -2,11 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from werkzeug.exceptions import abort
-from werkzeug.wrappers import Response
-
 from trytond.protocols.wrappers import (
-    allow_null_origin, user_application, with_pool, with_transaction)
+    Response, abort, allow_null_origin, user_application, with_pool,
+    with_transaction)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 

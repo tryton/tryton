@@ -5,14 +5,7 @@ import logging
 import pydoc
 import time
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
 from sql import Table
-from werkzeug.exceptions import abort
-from werkzeug.wrappers import Response
 
 from trytond import __version__, backend, security
 from trytond.config import config, get_hostname
@@ -24,7 +17,7 @@ from trytond.transaction import Transaction
 from trytond.worker import run_task
 from trytond.wsgi import app
 
-from .wrappers import with_pool
+from .wrappers import HTTPStatus, Response, abort, with_pool
 
 __all__ = ['register_authentication_service']
 

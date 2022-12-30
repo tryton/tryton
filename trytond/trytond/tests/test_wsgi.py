@@ -4,10 +4,9 @@
 import unittest
 from unittest.mock import Mock, sentinel
 
-from werkzeug.test import Client
-from werkzeug.wrappers import Response
-
 from trytond.exceptions import TrytonException
+from trytond.protocols.wrappers import Response
+from trytond.tests.test_tryton import Client
 from trytond.wsgi import TrytondWSGI
 
 

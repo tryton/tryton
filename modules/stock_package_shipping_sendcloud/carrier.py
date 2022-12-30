@@ -3,11 +3,6 @@
 import time
 from functools import wraps
 
-try:
-    from http import HTTPStatus
-except ImportError:
-    from http import client as HTTPStatus
-
 import requests
 
 from trytond.cache import Cache
@@ -16,6 +11,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.pool import PoolMeta
+from trytond.protocols.wrappers import HTTPStatus
 from trytond.pyson import Eval
 
 from .exceptions import SendcloudError

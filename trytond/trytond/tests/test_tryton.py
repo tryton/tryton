@@ -23,6 +23,7 @@ except ImportError:
 
 from lxml import etree
 from sql import Table
+from werkzeug.test import Client
 
 from trytond import backend
 from trytond.cache import Cache
@@ -36,9 +37,19 @@ from trytond.tools import file_open, find_dir, is_instance_method
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateView
 
-__all__ = ['DB_NAME', 'USER', 'CONTEXT',
-    'activate_module', 'ModuleTestCase', 'with_transaction',
-    'doctest_setup', 'doctest_teardown', 'doctest_checker', 'load_doc_tests']
+__all__ = [
+    'CONTEXT',
+    'Client',
+    'DB_NAME',
+    'ModuleTestCase',
+    'USER',
+    'activate_module',
+    'doctest_checker',
+    'doctest_setup',
+    'doctest_teardown',
+    'load_doc_tests',
+    'with_transaction',
+    ]
 
 Pool.start()
 USER = 1

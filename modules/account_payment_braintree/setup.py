@@ -44,7 +44,7 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-requires = ['braintree >= 3.38.0', 'werkzeug']
+requires = ['braintree >= 3.38.0']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))

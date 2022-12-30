@@ -5,10 +5,9 @@ import json
 import logging
 
 import stripe
-from werkzeug.exceptions import abort
-from werkzeug.wrappers import Response
 
-from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.protocols.wrappers import (
+    Response, abort, with_pool, with_transaction)
 from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
