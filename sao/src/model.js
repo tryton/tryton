@@ -1857,6 +1857,11 @@
 
     Sao.field.Float = Sao.class_(Sao.field.Field, {
         _default: null,
+        init: function(description) {
+            Sao.field.Float._super.init.call(this, description);
+            this._digits = {};
+            this._symbol = {};
+        },
         digits: function(record, factor=1) {
             var digits = record.expr_eval(this.description.digits);
             if (typeof(digits) == 'string') {
@@ -1867,16 +1872,21 @@
                 var digits_name = digits_field.description.relation;
                 var digits_id = digits_field.get(record);
                 if (digits_name && (digits_id !== null) && (digits_id >= 0)) {
-                    try {
-                        digits = Sao.rpc({
-                            'method': 'model.' + digits_name + '.get_digits',
-                            'params': [digits_id, {}],
-                        }, record.model.session, false);
-                    } catch(e) {
-                        Sao.Logger.warn(
-                            "Fail to fetch digits for %s,%s",
-                            digits_name, digits_id);
-                        return;
+                    if (digits_id in this._digits) {
+                        digits = this._digits[digits_id];
+                    } else {
+                        try {
+                            digits = Sao.rpc({
+                                'method': 'model.' + digits_name + '.get_digits',
+                                'params': [digits_id, {}],
+                            }, record.model.session, false);
+                        } catch(e) {
+                            Sao.Logger.warn(
+                                "Fail to fetch digits for %s,%s",
+                                digits_name, digits_id);
+                            return;
+                        }
+                        this._digits[digits_id] = digits;
                     }
                 } else {
                     return;
@@ -1903,11 +1913,16 @@
                 var symbol_name = symbol_field.description.relation;
                 var symbol_id = symbol_field.get(record);
                 if (symbol_name && (symbol_id !== null) && (symbol_id >= 0)) {
+                    if (symbol_id in this._symbol) {
+                        return this._symbol[symbol_id];
+                    }
                     try {
-                        return Sao.rpc({
+                        var result = Sao.rpc({
                             'method': 'model.' + symbol_name + '.get_symbol',
                             'params': [symbol_id, sign, record.get_context()],
                         }, record.model.session, false) || ['', 1];
+                        this._symbol[symbol_id] = result;
+                        return result;
                     } catch (e) {
                         Sao.Logger.warn(
                             "Fail to fetch symbol for %s,%s",

@@ -350,6 +350,11 @@ class TimeDeltaField(Field):
 class FloatField(Field):
     _default = None
 
+    def __init__(self, attrs):
+        super().__init__(attrs)
+        self._digits = {}
+        self._symbol = {}
+
     def _is_empty(self, record):
         return self.get(record) is None
 
@@ -365,14 +370,18 @@ class FloatField(Field):
             digits_name = digits_field.attrs.get('relation')
             digits_id = digits_field.get(record)
             if digits_name and digits_id is not None and digits_id >= 0:
-                try:
-                    digits = RPCExecute(
-                        'model', digits_name, 'get_digits', digits_id)
-                except RPCException:
-                    logger.warn(
-                        "Fail to fetch digits for %s,%s",
-                        digits_name, digits_id)
-                    return
+                if digits_id in self._digits:
+                    digits = self._digits[digits_id]
+                else:
+                    try:
+                        digits = RPCExecute(
+                            'model', digits_name, 'get_digits', digits_id)
+                    except RPCException:
+                        logger.warn(
+                            "Fail to fetch digits for %s,%s",
+                            digits_name, digits_id)
+                        return
+                    self._digits[digits_id] = digits
             else:
                 return
         if not digits or any(d is None for d in digits):
@@ -392,10 +401,14 @@ class FloatField(Field):
             symbol_name = symbol_field.attrs.get('relation')
             symbol_id = symbol_field.get(record)
             if symbol_name and symbol_id is not None and symbol_id >= 0:
+                if symbol_id in self._symbol:
+                    return self._symbol[symbol_id]
                 try:
-                    return RPCExecute(
+                    result = RPCExecute(
                         'model', symbol_name, 'get_symbol', symbol_id, sign,
                         context=record.get_context())
+                    self._symbol[symbol_id] = result
+                    return result
                 except RPCException:
                     logger.warn(
                         "Fail to fetch symbol for %s,%s",
