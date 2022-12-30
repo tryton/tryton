@@ -68,6 +68,9 @@ def get_rates(currency='EUR', date=None):
             url = _URL_HIST
         with urlopen(url, context=context) as response:
             element = _find_time(response, date)
+            if element is None and url == _URL_90:
+                with urlopen(_URL_HIST, context=context) as response:
+                    element = _find_time(response, date)
             return _compute_rates(element, currency, date)
     except HTTPError as e:
         raise RatesNotAvailableError() from e
