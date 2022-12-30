@@ -422,10 +422,7 @@ class Screen:
             self.filter_widget = None
             self.order = None
         self.__group.add_fields(fields)
-        if len(group):
-            self.current_record = group[0]
-        else:
-            self.current_record = None
+        self.current_record = None
         for name, views in fields_views.items():
             self.__group.fields[name].views.update(views)
         self.__group.exclude_field = self.exclude_field
@@ -789,11 +786,6 @@ class Screen:
             if not self.group.delete(records):
                 return False
 
-        top_record = records[0]
-        top_group = top_record.group
-        idx = top_group.index(top_record)
-        path = top_record.get_path(self.group)
-
         for record in records:
             # set current model to None to prevent __select_changed
             # to save the previous_model as it can be already deleted.
@@ -815,15 +807,7 @@ class Screen:
                     record.parent.save(force_reload=False)
                 record.destroy()
 
-        if idx > 0:
-            record = top_group[idx - 1]
-            path = path[:-1] + ((path[-1][0], record.id,),)
-        else:
-            path = path[:-1]
-        if path:
-            self.current_record = self.group.get_by_path(path)
-        elif len(self.group):
-            self.current_record = self.group[0]
+        self.current_record = None
         self.set_cursor()
         self.display()
         return True
@@ -961,7 +945,7 @@ class Screen:
             if (self.current_record
                     and self.current_record in self.current_record.group):
                 pass
-            elif self.group and self.current_view.view_type != 'calendar':
+            elif self.group and self.current_view.view_type == 'form':
                 self.current_record = self.group[0]
             else:
                 self.current_record = None

@@ -1206,11 +1206,7 @@
             if (this.group.parent) {
                 this.order = null;
             }
-            if (group && group.length) {
-                this.current_record = group[0];
-            } else {
-                this.current_record = null;
-            }
+            this.current_record = null;
             this.group.add_fields(fields);
             for (name in fields_views) {
                 var views = fields_views[name];
@@ -1313,11 +1309,7 @@
         load: function(ids, set_cursor=true, modified=false, position=-1) {
             this.group.load(ids, modified, position);
             this.current_view.reset();
-            if (ids.length && this.current_view.view_type != 'calendar') {
-                this.current_record = this.group.get(ids[0]);
-            } else {
-                this.current_record = null;
-            }
+            this.current_record = null;
             return this.display().then(() => {
                 if (set_cursor) {
                     this.set_cursor();
@@ -1329,7 +1321,7 @@
             if (this.current_record &&
                     ~this.current_record.group.indexOf(this.current_record)) {
             } else if (this.group && this.group.length &&
-                    (this.current_view.view_type != 'calendar')) {
+                (this.current_view.view_type == 'form')) {
                 this.current_record = this.group[0];
             } else {
                 this.current_record = null;
@@ -1656,10 +1648,6 @@
                 // TODO delete children before parent
                 prm = this.group.delete_(records);
             }
-            var top_record = records[0];
-            var top_group = top_record.group;
-            var idx = top_group.indexOf(top_record);
-            var path = top_record.get_path(this.group);
             return prm.then(() => {
                 for (const record of records) {
                     record.group.remove(record, remove, force_remove, false);
@@ -1683,20 +1671,7 @@
                         // TODO destroy
                     }
                 }
-                if (idx > 0) {
-                    var record = top_group[idx - 1];
-                    path.splice(-1, 1, [path[path.length - 1][0], record.id]);
-                } else {
-                    path.splice(-1, 1);
-                }
-                if (!jQuery.isEmptyObject(path)) {
-                    prms.push(this.group.get_by_path(path).then(record => {
-                        this.current_record = record;
-                    }));
-                } else if (this.group.length) {
-                    this.current_record = this.group[0];
-                }
-
+                this.current_record = null;
                 return jQuery.when.apply(jQuery, prms).then(() => {
                     return this.display().done(() => {
                         this.set_cursor();

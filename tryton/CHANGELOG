@@ -1,3 +1,4 @@
+* Do not select first record by default
 * Use ``&`` and ``|`` as boolean operator in search widget
 * Use toggle button and label on translate dialog
 * Manage domain on id in single value list as unique
