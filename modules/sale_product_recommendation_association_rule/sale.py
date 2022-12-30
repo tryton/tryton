@@ -129,11 +129,16 @@ class ProductAssociationRule(ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()
-        cls._sql_indexes.add(
-            Index(
-                t,
-                (t.lift, Index.Range(order='DESC')),
-                (t.conviction, Index.Range(order='ASC'))))
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.lift, Index.Range(order='DESC')),
+                    (t.conviction, Index.Range(order='ASC'))),
+                Index(
+                    t,
+                    (t.id, Index.Range()),
+                    (t.lift, Index.Range(order='DESC'))),
+                })
 
     def get_product_names(self, name):
         return ', '.join(
