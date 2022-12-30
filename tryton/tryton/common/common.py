@@ -894,8 +894,7 @@ class ErrorDialog(UniqueDialog):
         if isinstance(title, Exception):
             title = "%s: %s" % (title.__class__.__name__, title)
         details += '\n' + title
-        log = logging.getLogger(__name__)
-        log.error(details)
+        logger.error(details)
         return super(ErrorDialog, self).__call__(title, details)
 
 

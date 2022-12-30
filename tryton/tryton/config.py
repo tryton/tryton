@@ -12,6 +12,7 @@ from gi.repository import GdkPixbuf
 
 from tryton import __version__
 
+logger = logging.getLogger(__name__)
 _ = gettext.gettext
 
 
@@ -136,9 +137,7 @@ class ConfigManager(object):
             with open(self.rcfile, 'w') as fp:
                 parser.write(fp)
         except IOError:
-            logging.getLogger(__name__).warn(
-                _('Unable to write config file %s.')
-                % (self.rcfile,))
+            logger.warn("Unable to write config file %s", self.rcfile)
             return False
         return True
 

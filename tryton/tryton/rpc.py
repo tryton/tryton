@@ -45,12 +45,12 @@ context_reset()
 def db_list(host, port):
     try:
         connection = ServerProxy(host, port)
-        logging.getLogger(__name__).info('common.db.list()')
+        logger.info('common.db.list()')
         result = connection.common.db.list()
-        logging.getLogger(__name__).debug(repr(result))
+        logger.debug('%r', result)
         return result
     except Fault as exception:
-        logging.getLogger(__name__).debug(exception.faultCode)
+        logger.debug(exception.faultCode)
         if exception.faultCode == str(HTTPStatus.FORBIDDEN.value):
             return []
         else:
@@ -60,13 +60,12 @@ def db_list(host, port):
 def server_version(host, port):
     try:
         connection = ServerProxy(host, port)
-        logging.getLogger(__name__).info(
-            'common.server.version(None, None)')
+        logger.info('common.server.version(None, None)')
         result = connection.common.server.version()
-        logging.getLogger(__name__).debug(repr(result))
+        logger.debug('%r', result)
         return result
     except Exception as e:
-        logging.getLogger(__name__).error(e)
+        logger.error(e)
         return None
 
 
@@ -75,7 +74,7 @@ def authentication_services(host, port):
         connection = ServerProxy(host, port)
         logger.info('common.authentication.services()')
         services = connection.common.authentication.services()
-        logger.debug(repr(services))
+        logger.debug('%r', services)
         return connection.url, services
     except Exception as e:
         logger.error(e)
@@ -119,10 +118,9 @@ def login(parameters):
     language = CONFIG['client.lang']
     parameters['device_cookie'] = device_cookie.get()
     connection = ServerProxy(hostname, port, database)
-    logging.getLogger(__name__).info('common.db.login(%s, %s, %s)'
-        % (username, 'x' * 10, language))
+    logger.info('common.db.login(%s, %s, %s)', username, 'x' * 10, language)
     result = connection.common.db.login(username, parameters, language)
-    logging.getLogger(__name__).debug(repr(result))
+    logger.debug('%r', result)
     _USER = result[0]
     session = ':'.join(map(str, [username] + result))
     if CONNECTION is not None:
@@ -137,7 +135,7 @@ def logout():
     global CONNECTION, _USER
     if CONNECTION is not None:
         try:
-            logging.getLogger(__name__).info('common.db.logout()')
+            logger.info('common.db.logout()')
             with CONNECTION() as conn:
                 conn.common.db.logout()
         except (Fault, socket.error, http.client.CannotSendRequest):
@@ -154,12 +152,12 @@ def execute(*args):
     try:
         name = '.'.join(args[:3])
         args = args[3:]
-        logging.getLogger(__name__).info('%s%s' % (name, args))
+        logger.info('%s%r', name, args)
         with CONNECTION() as conn:
             result = getattr(conn, name)(*args)
     except (http.client.CannotSendRequest, socket.error) as exception:
         raise TrytonServerUnavailable(*exception.args)
-    logging.getLogger(__name__).debug(repr(result))
+    logger.debug('%r', result)
     return result
 
 
