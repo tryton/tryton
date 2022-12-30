@@ -144,6 +144,19 @@ class FieldMany2OneTestCase(unittest.TestCase):
         self.assertListEqual(values, [2, 3, 5])
 
     @with_transaction()
+    def test_search_id(self):
+        "Test search on many2one id"
+        pool = Pool()
+        Target = pool.get('test.many2one_target')
+        Many2One = pool.get('test.many2one')
+
+        target, = Target.create([{}])
+        record, = Many2One.create([{'many2one': target.id}])
+
+        result = Many2One.search([('many2one', '=', target.id)])
+        self.assertListEqual(result, [record])
+
+    @with_transaction()
     def _test_search_join(self, target_search):
         pool = Pool()
         Target = pool.get('test.many2one_target')
