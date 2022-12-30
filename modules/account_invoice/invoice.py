@@ -3312,7 +3312,7 @@ class PayInvoice(Wizard):
         default['currency_writeoff'] = invoice.company.currency.id
         default['invoice'] = invoice.id
 
-        if (amount_invoice > invoice.amount_to_pay
+        if (amount_invoice >= invoice.amount_to_pay
                 or invoice.company.currency.is_zero(amount)):
             default['type'] = 'writeoff'
         return default

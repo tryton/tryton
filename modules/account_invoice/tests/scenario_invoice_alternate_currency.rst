@@ -165,7 +165,8 @@ Pay the invoice with rate change::
     >>> pay.form.payment_method = payment_method
     >>> pay.form.date = tomorrow
     >>> pay.execute('choice')
-    >>> pay.form.type = 'writeoff'
+    >>> pay.form.type
+    'writeoff'
     >>> pay.form.writeoff = writeoff
     >>> pay.form.amount
     Decimal('460.00')
