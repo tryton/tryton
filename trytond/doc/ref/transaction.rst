@@ -62,6 +62,14 @@ Transaction
 
    Count the number of modification made in this transaction.
 
+.. attribute:: Transaction.check_access
+
+   If the access must be enforced.
+
+.. attribute:: Transaction.active_records
+
+   If the active test is enabled.
+
 .. staticmethod:: Transaction.monotonic_time
 
    Return a monotonic time used to populate :attr:~Transaction.started_at.
@@ -136,6 +144,32 @@ Transaction
    Register a function to be executed upon normal transaction termination.
    The function can not use the current transaction because it will be already
    committed or rollbacked.
+
+.. function:: check_access([func])
+
+   When called with a function, it decorates the function to be executed with
+   check of access rights.
+   Otherwise it returns a `context manager`_ that check access rights until
+   exiting.
+
+.. function:: without_check_access([func])
+
+   When called with a function, it decorates the function to be executed
+   without check of access rights.
+   Otherwise it returns a `context manager`_ that disable check access rights
+   until exiting.
+
+.. function:: active_records([func])
+
+   When called with a function, it decorates the function to be executed with
+   active test enabled.
+   Otherwise it returns a `context manager`_ that enable active test.
+
+.. function:: with_inactive_records(func)
+
+   When called with a function, it decorates the function to be executed with
+   active test disabled.
+   Otherwise it returns a `context manager`_ that disables active test.
 
 .. _`context manager`: http://docs.python.org/reference/datamodel.html#context-managers
 .. _`PEP-0249`: https://www.python.org/dev/peps/pep-0249/

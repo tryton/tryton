@@ -7,7 +7,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import without_check_access
 
 from .exceptions import PurchaseWarehouseWarning
 
@@ -34,9 +34,8 @@ class Purchase(metaclass=PoolMeta):
         super(Purchase, cls).delete(purchases)
 
     @classmethod
+    @without_check_access
     def check_delete_purchase_request(cls, purchases):
-        with Transaction().set_context(_check_access=False):
-            purchases = cls.browse(purchases)
         for purchase in purchases:
             for line in purchase.lines:
                 if line.requests:
@@ -103,8 +102,8 @@ class Line(metaclass=PoolMeta):
     def delete(cls, lines):
         pool = Pool()
         Request = pool.get('purchase.request')
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             requests = [r for l in cls.browse(lines) for r in l.requests]
         super().delete(lines)
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             Request.update_state(requests)

@@ -14,7 +14,7 @@ from trytond.modules.company.tests import (
 from trytond.modules.currency.tests import create_currency
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 
 def create_chart(company, tax=False, chart='account.account_template_root_en'):
@@ -1645,7 +1645,7 @@ class AccountTestCase(
         with set_company(company):
             create_chart(company, True)
 
-            with Transaction().set_context(active_test=False):
+            with inactive_records():
                 self.assertEqual(Type.search([], count=True), 16)
                 self.assertEqual(Account.search([], count=True), 7)
                 self.assertEqual(Tax.search([], count=True), 1)
@@ -1717,7 +1717,7 @@ class AccountTestCase(
             update_chart.start.account = account
             update_chart.transition_update()
 
-            with Transaction().set_context(active_test=False):
+            with inactive_records():
                 self.assertEqual(Type.search([], count=True), 17)
                 self.assertEqual(Account.search([], count=True), 8)
                 self.assertEqual(Tax.search([], count=True), 2)
@@ -1840,7 +1840,7 @@ class AccountTestCase(
             update_chart.start.account = root
             update_chart.transition_update()
 
-            with Transaction().set_context(active_test=False):
+            with inactive_records():
                 self.assertEqual(
                     Account.search([('name', '=', 'Main Cash')], count=True),
                     1)

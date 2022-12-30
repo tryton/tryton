@@ -20,7 +20,7 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import decistmt, grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -52,8 +52,7 @@ def check_no_move(func):
         pool = Pool()
         Template = pool.get('product.template')
         transaction = Transaction()
-        if (transaction.user != 0
-                and transaction.context.get('_check_access')):
+        if transaction.user and transaction.check_access:
             actions = iter(args)
             for records, values in zip(actions, actions):
                 for field, msg in Template._modify_no_move:
@@ -133,7 +132,7 @@ def check_no_stock_if_inactive(func):
             if not values.get('active', True):
                 to_check.extend(products)
         if to_check:
-            with Transaction().set_context(_check_access=False):
+            with without_check_access():
                 locations = Location.search([('type', '=', 'storage')])
                 location_ids = list(map(int, locations))
                 for company in Company.search([]):
@@ -338,15 +337,14 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             cls.update_cost_price(costs)
 
     @classmethod
+    @without_check_access
     def update_cost_price(cls, costs):
         "Update cost price of products from costs re-computation dictionary"
         to_write = []
         for cost, products in costs.items():
             to_write.append(products)
             to_write.append({'cost_price': cost})
-
-        with Transaction().set_context(_check_access=False):
-            cls.write(*to_write)
+        cls.write(*to_write)
 
     def recompute_cost_price_fixed(self, start=None):
         return self.cost_price

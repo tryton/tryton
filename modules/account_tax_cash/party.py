@@ -15,9 +15,8 @@ class Party(metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, parties, default=None):
-        context = Transaction().context
         default = default.copy() if default else {}
-        if context.get('_check_access'):
+        if Transaction().check_access:
             default.setdefault(
                 'supplier_tax_group_on_cash_basis',
                 cls.default_get(

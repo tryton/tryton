@@ -25,7 +25,7 @@ from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.tools import cursor_dict, grouped_slice, is_instance_method
 from trytond.tools.string_ import StringMatcher
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
 logger = logging.getLogger(__name__)
@@ -616,9 +616,9 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         Model = pool.get(model_name)
         assert mode in ['read', 'write', 'create', 'delete'], \
             'Invalid access mode for security'
-        if ((Transaction().user == 0)
-                or (raise_exception
-                    and not Transaction().context.get('_check_access'))):
+        transaction = Transaction()
+        if (transaction.user == 0
+                or (raise_exception and not transaction.check_access)):
             return True
 
         access = cls.get_access([model_name])[model_name][mode]
@@ -813,9 +813,9 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         Model = pool.get(model_name)
         assert mode in ('read', 'write', 'create', 'delete'), \
             'Invalid access mode'
-        if ((Transaction().user == 0)
-                or (raise_exception
-                    and not Transaction().context.get('_check_access'))):
+        transaction = Transaction()
+        if (transaction.user == 0
+                or (raise_exception and not transaction.check_access)):
             if access:
                 return dict((x, True) for x in fields)
             return True
@@ -944,6 +944,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         return super(ModelButton, cls).copy(buttons, default=default)
 
     @classmethod
+    @without_check_access
     def get_rules(cls, model, name):
         'Return a list of rules to apply on the named button of the model'
         pool = Pool()
@@ -965,6 +966,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
         return rules
 
     @classmethod
+    @without_check_access
     def get_reset(cls, model, name):
         "Return a list of button names to reset"
         key = (model, name)
@@ -1132,6 +1134,7 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
         return clicks
 
     @classmethod
+    @without_check_access
     def reset(cls, model, names, records):
         assert all(r.__class__.__name__ == model for r in records)
 
@@ -1285,6 +1288,55 @@ class ModelData(ModelSQL, ModelView):
         return model in models
 
     @classmethod
+    @without_check_access
+    def can_modify(cls, records, values):
+        for Model, records in groupby(
+                records, key=lambda r: r.__class__):
+            for sub_records in grouped_slice(records):
+                id2record = {r.id: r for r in sub_records}
+                data = cls.search([
+                        ('model', '=', Model.__name__),
+                        ('db_id', 'in', list(id2record.keys())),
+                        ], order=[])
+                for data in data:
+                    record = id2record[data.db_id]
+                    if values is None:
+                        if not data.noupdate:
+                            raise AccessError(
+                                gettext(
+                                    'ir.msg_delete_xml_record',
+                                    **Model.__names__(record=record)),
+                                gettext('ir.msg_base_config_record'))
+                    else:
+                        if not data.values or data.noupdate:
+                            continue
+                        xml_values = cls.load_values(data.values)
+                        for key, val in values.items():
+                            if key in xml_values and val != xml_values[key]:
+                                raise AccessError(
+                                    gettext(
+                                        'ir.msg_write_xml_record',
+                                        **cls.__names__(
+                                            field=key, record=record)),
+                                    gettext('ir.msg_base_config_record'))
+
+    @classmethod
+    @without_check_access
+    def clean(cls, records):
+        data = []
+        for name, records in groupby(
+                records, key=lambda r: r.__class__.__name__):
+            for sub_records in grouped_slice(records):
+                ids = [r.id for r in sub_records]
+                data += cls.search([
+                        ('model', '=', name),
+                        ('db_id', 'in', ids),
+                        ('noupdate', '=', True),
+                        ], order=[])
+        cls.write(data, {'db_id': None})
+
+    @classmethod
+    @without_check_access
     def get_id(cls, module, fs_id=None):
         """
         Return for an fs_id the corresponding db_id.

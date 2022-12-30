@@ -9,7 +9,7 @@ from trytond.model.exceptions import (
 from trytond.model.modelstorage import _UnsavedRecordError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 
 
 class ModelStorageTestCase(unittest.TestCase):
@@ -845,7 +845,7 @@ class EvalEnvironmentTestCase(unittest.TestCase):
                     'perm_write': False,
                     'perm_delete': False,
                     }])
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             record = Model(name="Test")
             record.save()
 
@@ -867,7 +867,7 @@ class EvalEnvironmentTestCase(unittest.TestCase):
                     }])
         record, = Model.create([{'name': "Test"}])
 
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             record = Model(record.id)
 
             self.assertEqual(record.name, "Test")

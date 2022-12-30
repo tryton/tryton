@@ -8,7 +8,7 @@ from functools import wraps
 from trytond.i18n import gettext
 from trytond.model.fields.field import Field
 from trytond.tools import is_instance_method
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 def getter_context(func):
@@ -104,57 +104,57 @@ class Function(Field):
                 **Model.__names__(self.name)))
 
     @getter_context
+    @without_check_access
     def get(self, ids, Model, name, values=None):
         '''
         Call the getter.
         If the function has ``names`` in the function definition then
         it will call it with a list of name.
         '''
-        with Transaction().set_context(_check_access=False):
-            method = getattr(Model, self.getter)
-            instance_method = is_instance_method(Model, self.getter)
-            multiple = self.getter_multiple(method)
+        method = getattr(Model, self.getter)
+        instance_method = is_instance_method(Model, self.getter)
+        multiple = self.getter_multiple(method)
 
-            records = Model.browse(ids)
-            for record, value in zip(records, values):
-                assert record.id == value['id']
-                for fname, val in value.items():
-                    field = Model._fields.get(fname)
-                    if field and field._type not in {
-                            'many2one', 'reference',
-                            'one2many', 'many2many', 'one2one'}:
-                        record._local_cache[record.id][fname] = val
+        records = Model.browse(ids)
+        for record, value in zip(records, values):
+            assert record.id == value['id']
+            for fname, val in value.items():
+                field = Model._fields.get(fname)
+                if field and field._type not in {
+                        'many2one', 'reference',
+                        'one2many', 'many2many', 'one2one'}:
+                    record._local_cache[record.id][fname] = val
 
-            def call(name):
-                if not instance_method:
-                    return method(records, name)
-                else:
-                    return dict((r.id, method(r, name)) for r in records)
-            if isinstance(name, list):
-                names = name
-                if multiple:
-                    return call(names)
-                return dict((name, call(name)) for name in names)
+        def call(name):
+            if not instance_method:
+                return method(records, name)
             else:
-                if multiple:
-                    name = [name]
-                return call(name)
+                return dict((r.id, method(r, name)) for r in records)
+        if isinstance(name, list):
+            names = name
+            if multiple:
+                return call(names)
+            return dict((name, call(name)) for name in names)
+        else:
+            if multiple:
+                name = [name]
+            return call(name)
 
+    @without_check_access
     def set(self, Model, name, ids, value, *args):
         '''
         Call the setter.
         '''
-        with Transaction().set_context(_check_access=False):
-            if self.setter:
-                # TODO change setter API to use sequence of records, value
-                setter = getattr(Model, self.setter)
-                args = iter((ids, value) + args)
-                for ids, value in zip(args, args):
-                    setter(Model.browse(ids), name, value)
-            else:
-                raise NotImplementedError(gettext(
-                        'ir.msg_setter_function_missing',
-                        **Model.__names__(self.name)))
+        if self.setter:
+            # TODO change setter API to use sequence of records, value
+            setter = getattr(Model, self.setter)
+            args = iter((ids, value) + args)
+            for ids, value in zip(args, args):
+                setter(Model.browse(ids), name, value)
+        else:
+            raise NotImplementedError(gettext(
+                    'ir.msg_setter_function_missing',
+                    **Model.__names__(self.name)))
 
     def __get__(self, inst, cls):
         try:

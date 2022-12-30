@@ -11,7 +11,7 @@ from xml import sax
 from trytond import __version__
 from trytond.pyson import CONTEXT, PYSONEncoder
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 logger = logging.getLogger(__name__)
 
@@ -250,7 +250,7 @@ class RecordTagHandler:
             if search_attr:
                 search_model = field.model_name
                 SearchModel = self.mh.pool.get(search_model)
-                with Transaction().set_context(active_test=False):
+                with inactive_records():
                     found, = SearchModel.search(eval(search_attr, context))
                     self.values[field_name] = found.id
 
@@ -404,7 +404,7 @@ class Fs2bdAccessor:
                 continue
             self.browserecord[module][model_name] = {}
             for sub_record_ids in grouped_slice(record_ids[model_name]):
-                with Transaction().set_context(active_test=False):
+                with inactive_records():
                     records = Model.search([
                         ('id', 'in', list(sub_record_ids)),
                         ], order=[('id', 'ASC')])
@@ -791,7 +791,7 @@ def post_import(pool, module, to_delete):
     mdata_delete = []
     ModelData = pool.get("ir.model.data")
 
-    with Transaction().set_context(active_test=False):
+    with inactive_records():
         mdata = ModelData.search([
             ('fs_id', 'in', to_delete),
             ('module', '=', module),

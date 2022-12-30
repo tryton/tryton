@@ -4,7 +4,7 @@ from trytond.model import (
     EvalEnvironment, ModelSQL, ModelView, dualmethod, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import timezone as tz
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 class Sequence(metaclass=PoolMeta):
@@ -76,8 +76,8 @@ class Rule(metaclass=PoolMeta):
         with Transaction().set_user(0):
             user = User(user_id)
         if user.employee:
-            with Transaction().set_context(
-                    _check_access=False, _datetime=None):
+            with without_check_access(), \
+                    Transaction().set_context(_datetime=None):
                 context['employee'] = EvalEnvironment(
                     Employee(user.employee.id), Employee)
         if user.company_filter == 'one':

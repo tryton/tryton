@@ -6,7 +6,7 @@ from trytond.i18n import lazy_gettext
 from trytond.model import Index, ModelSQL, ModelStorage, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 __all__ = ['ResourceAccessMixin', 'ResourceMixin', 'resource_copy']
 
@@ -41,11 +41,11 @@ class ResourceAccessMixin(ModelStorage):
     def check_access(cls, ids, mode='read'):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        if ((Transaction().user == 0)
-                or not Transaction().context.get('_check_access')):
+        transaction = Transaction()
+        if transaction.user == 0 or not transaction.check_access:
             return
         model_names = set()
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             for record in cls.browse(ids):
                 if record.resource:
                     model_names.add(str(record.resource).split(',')[0])

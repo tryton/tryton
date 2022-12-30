@@ -17,7 +17,7 @@ from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import cached_property
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.url import URLMixin
 
 
@@ -256,7 +256,7 @@ class Wizard(URLMixin, PoolBase):
         if Transaction().user == 0:
             return
 
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             model = context.get('active_model')
             if model:
                 Model = pool.get(model)

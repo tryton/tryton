@@ -5,7 +5,7 @@ from functools import wraps
 from trytond.i18n import gettext
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
+from trytond.transaction import without_check_access
 
 
 def process_opportunity(func):
@@ -13,12 +13,12 @@ def process_opportunity(func):
     def wrapper(cls, sales):
         pool = Pool()
         Opportunity = pool.get('sale.opportunity')
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             opportunities = Opportunity.browse(
                 set(s.origin for s in cls.browse(sales)
                     if isinstance(s.origin, Opportunity)))
         func(cls, sales)
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             Opportunity.process(opportunities)
     return wrapper
 

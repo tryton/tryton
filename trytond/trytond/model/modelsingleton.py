@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.transaction import Transaction
+
+from trytond.transaction import Transaction, without_check_access
 
 from .modelstorage import ModelStorage
 
@@ -58,7 +59,7 @@ class ModelSingleton(ModelStorage):
     def write(cls, records, values, *args):
         singleton = cls.get_singleton()
         if not singleton:
-            with Transaction().set_context(_check_access=False):
+            with without_check_access():
                 singleton, = cls.create([values])
             actions = (records, {}) + args
         else:

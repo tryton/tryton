@@ -11,7 +11,7 @@ from trytond.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -265,7 +265,7 @@ class Dunning(ModelSQL, ModelView):
             date = Date.today()
 
         set_level = defaultdict(list)
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             dunnings = cls.search([
                     ('state', '=', 'waiting'),
                     ('blocked', '=', False),
@@ -301,7 +301,7 @@ class Dunning(ModelSQL, ModelView):
         if to_write:
             cls.write(*to_write)
 
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             lines = MoveLine.search(cls._overdue_line_domain(date))
         lines = MoveLine.browse(lines)
         dunnings = (cls._get_dunning(line, date) for line in lines)

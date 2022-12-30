@@ -20,7 +20,7 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools import decistmt, grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import FormulaError
@@ -599,7 +599,7 @@ class CreateInvoice(Wizard):
     def do_create_(self, action):
         pool = Pool()
         Commission = pool.get('commission')
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             commissions = Commission.search(self.get_domain(),
                 order=[('agent', 'DESC'), ('date', 'DESC')])
         commissions = Commission.browse(commissions)

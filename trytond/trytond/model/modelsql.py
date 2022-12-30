@@ -22,7 +22,8 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import cursor_dict, grouped_slice, reduce_ids
-from trytond.transaction import Transaction, record_cache_size
+from trytond.transaction import (
+    Transaction, inactive_records, record_cache_size, without_check_access)
 
 from . import fields
 from .descriptors import dualmethod
@@ -491,6 +492,7 @@ class ModelSQL(ModelStorage):
                 history_table.add_column(field_name, field._sql_type)
 
     @classmethod
+    @without_check_access
     def __raise_integrity_error(
             cls, exception, values, field_names=None, transaction=None):
         pool = Pool()
@@ -537,6 +539,7 @@ class ModelSQL(ModelStorage):
                                 **error_args))
 
     @classmethod
+    @without_check_access
     def __raise_data_error(
             cls, exception, values, field_names=None, transaction=None):
         if field_names is None:
@@ -812,8 +815,7 @@ class ModelSQL(ModelStorage):
                     backend.DatabaseIntegrityError,
                     backend.DatabaseDataError) as exception:
                 transaction = Transaction()
-                with Transaction().new_transaction(), \
-                        Transaction().set_context(_check_access=False):
+                with Transaction().new_transaction():
                     if isinstance(exception, backend.DatabaseIntegrityError):
                         cls.__raise_integrity_error(
                             exception, values, transaction=transaction)
@@ -1254,8 +1256,7 @@ class ModelSQL(ModelStorage):
                         backend.DatabaseIntegrityError,
                         backend.DatabaseDataError) as exception:
                     transaction = Transaction()
-                    with Transaction().new_transaction(), \
-                            Transaction().set_context(_check_access=False):
+                    with Transaction().new_transaction():
                         if isinstance(
                                 exception, backend.DatabaseIntegrityError):
                             cls.__raise_integrity_error(
@@ -1376,7 +1377,7 @@ class ModelSQL(ModelStorage):
                         where=foreign_red_sql))
                 records = Model.browse([x[0] for x in cursor])
             else:
-                with transaction.set_context(active_test=False):
+                with inactive_records():
                     records = Model.search([(field_name, 'in', sub_ids)])
             return records
 
@@ -1404,8 +1405,7 @@ class ModelSQL(ModelStorage):
                     Model.delete(records)
 
             for Model, field_name in foreign_keys_tocheck:
-                with Transaction().set_context(
-                        _check_access=False, active_test=False):
+                with without_check_access(), inactive_records():
                     if Model.search([
                                 (field_name, 'in', sub_ids),
                                 ], order=[]):
@@ -1794,7 +1794,7 @@ class ModelSQL(ModelStorage):
                 return And((convert(d) for d in (
                             domain[1:] if domain[0] == 'AND' else domain)))
 
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             expression = convert(domain)
 
         if cls._history and transaction.context.get('_datetime'):

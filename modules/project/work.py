@@ -13,7 +13,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import WorkProgressValidationError
 
@@ -546,7 +546,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         super(Work, cls).delete(project_works)
 
         if timesheet_works:
-            with Transaction().set_context(_check_access=False):
+            with without_check_access():
                 TimesheetWork.delete(timesheet_works)
 
     @classmethod

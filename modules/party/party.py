@@ -16,7 +16,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.tools.multivalue import migrate_property
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .contact_mechanism import _PHONE_TYPES, _ContactMechanismMixin
@@ -927,7 +927,7 @@ class Erase(Wizard):
 
         resources = self.get_resources()
         parties = replacing = [self.ask.party]
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             while replacing:
                 replacing = Party.search([
                         ('replaced_by', 'in', list(map(int, replacing))),

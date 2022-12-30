@@ -12,7 +12,7 @@ from trytond.exceptions import LoginException
 from trytond.i18n import gettext
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
-from trytond.transaction import Transaction
+from trytond.transaction import without_check_access
 
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
@@ -98,6 +98,7 @@ class User(metaclass=PoolMeta):
                 for e in result]
 
     @classmethod
+    @without_check_access
     def _check_passwd_ldap_user(cls, logins):
         find = False
         try:
@@ -122,8 +123,7 @@ class User(metaclass=PoolMeta):
             if values.get('password') and 'login' in values:
                 tocheck.append(values['login'])
         if tocheck:
-            with Transaction().set_context(_check_access=False):
-                cls._check_passwd_ldap_user(tocheck)
+            cls._check_passwd_ldap_user(tocheck)
         return super(User, cls).create(vlist)
 
     @classmethod

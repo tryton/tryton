@@ -53,9 +53,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, parties, default=None):
-        context = Transaction().context
         default = default.copy() if default else {}
-        if context.get('_check_access'):
+        if Transaction().check_access:
             fields = [
                 'sale_methods', 'sale_invoice_method', 'sale_shipment_method']
             default_values = cls.default_get(fields, with_rec_name=False)

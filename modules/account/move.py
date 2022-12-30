@@ -23,7 +23,7 @@ from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -1846,6 +1846,7 @@ class Reconcile(Wizard):
                 having=having))
         return [p for p, in cursor]
 
+    @check_access
     def transition_next_(self):
         pool = Pool()
         Line = pool.get('account.move.line')
@@ -1869,29 +1870,28 @@ class Reconcile(Wizard):
             self.show.parties = parties
             return party,
 
-        with Transaction().set_context(_check_access=True):
-            if getattr(self.show, 'accounts', None) is None:
-                self.show.accounts = self.get_accounts()
-                if not next_account():
-                    return 'end'
-            if getattr(self.show, 'parties', None) is None:
-                self.show.parties = self.get_parties(self.show.account)
+        if getattr(self.show, 'accounts', None) is None:
+            self.show.accounts = self.get_accounts()
+            if not next_account():
+                return 'end'
+        if getattr(self.show, 'parties', None) is None:
+            self.show.parties = self.get_parties(self.show.account)
 
-            while not next_party():
-                if not next_account():
-                    return 'end'
-            if self.start.automatic or self.start.only_balanced:
-                lines = self._default_lines()
-                if lines and self.start.automatic:
-                    while lines:
-                        Line.reconcile(lines)
-                        lines = self._default_lines()
-                    if not self.get_parties(
-                            self.show.account, party=self.show.party):
-                        return 'next_'
-                elif not lines and self.start.only_balanced:
+        while not next_party():
+            if not next_account():
+                return 'end'
+        if self.start.automatic or self.start.only_balanced:
+            lines = self._default_lines()
+            if lines and self.start.automatic:
+                while lines:
+                    Line.reconcile(lines)
+                    lines = self._default_lines()
+                if not self.get_parties(
+                        self.show.account, party=self.show.party):
                     return 'next_'
-            return 'show'
+            elif not lines and self.start.only_balanced:
+                return 'next_'
+        return 'show'
 
     def default_show(self, fields):
         pool = Pool()

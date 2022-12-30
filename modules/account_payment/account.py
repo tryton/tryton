@@ -16,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.tools.multivalue import migrate_property
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -211,7 +211,7 @@ class MoveLine(metaclass=PoolMeta):
         Reception = pool.get('party.party.reception_direct_debit')
         if date is None:
             date = Date.today()
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             lines = cls.search(cls._pay_direct_debit_domain(date))
 
         payments = []

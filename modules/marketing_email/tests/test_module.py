@@ -7,7 +7,7 @@ from trytond.config import config
 from trytond.modules.marketing_email import marketing as marketing_module
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import inactive_records
 
 SUBSCRIBE_URL = 'http://www.example.com/subscribe'
 UNSUBSCRIBE_URL = 'http://www.example.com/unsubscribe'
@@ -57,7 +57,7 @@ class MarketingEmailTestCase(ModuleTestCase):
             email_list.request_subscribe('user@example.com')
             sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
 
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             email, = Email.search([
                     ('list_', '=', email_list.id),
                     ])

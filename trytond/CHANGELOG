@@ -1,3 +1,5 @@
+* Add functions in transaction for check access and active record
+* Add check_access and active_records attribute to Transaction
 * Add searchable and sortable methods on Field
 * Add support for barcode and QR code
 * Support reading string value of selection fields

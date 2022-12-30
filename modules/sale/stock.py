@@ -8,7 +8,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 def process_sale(moves_field):
@@ -19,7 +19,7 @@ def process_sale(moves_field):
             Sale = pool.get('sale.sale')
             transaction = Transaction()
             context = transaction.context
-            with transaction.set_context(_check_access=False):
+            with without_check_access():
                 sales = set(m.sale for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.sale)
             func(cls, shipments)
@@ -97,7 +97,7 @@ def process_sale_move(func):
         Sale = pool.get('sale.sale')
         transaction = Transaction()
         context = transaction.context
-        with transaction.set_context(_check_access=False):
+        with without_check_access():
             sales = set(m.sale for m in cls.browse(moves) if m.sale)
         func(cls, moves)
         if sales:

@@ -3,12 +3,17 @@
 import logging
 import time
 from collections import defaultdict
+from functools import wraps
 from threading import local
 
 from sql import Flavor
 
 from trytond.config import config
 from trytond.tools.immutabledict import ImmutableDict
+
+__all__ = ['Transaction',
+    'check_access', 'without_check_access',
+    'active_records', 'inactive_records']
 
 _cache_transaction = config.getint('cache', 'transaction')
 _cache_model = config.getint('cache', 'model')
@@ -33,6 +38,36 @@ class _TransactionLockError(TransactionError):
 
 def record_cache_size(transaction):
     return transaction.context.get('_record_cache_size', _cache_record)
+
+
+def check_access(func=None, *, _access=True):
+    if func:
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            with check_access(_access=_access):
+                return func(*args, **kwargs)
+        return wrapper
+    else:
+        return Transaction().set_context(_check_access=_access)
+
+
+def without_check_access(func=None):
+    return check_access(func=func, _access=False)
+
+
+def active_records(func=None, *, _test=True):
+    if func:
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            with active_records(_test=_test):
+                return func(*args, **kwargs)
+        return wrapper
+    else:
+        return Transaction().set_context(active_test=_test)
+
+
+def inactive_records(func=None):
+    return active_records(func=func, _test=False)
 
 
 class _AttributeManager(object):
@@ -308,3 +343,11 @@ class Transaction(object):
         if self.context:
             return self.context.get('language') or get_language()
         return get_language()
+
+    @property
+    def check_access(self):
+        return self.context.get('_check_access', False)
+
+    @property
+    def active_records(self):
+        return self.context.get('active_test', True)

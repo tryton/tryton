@@ -19,7 +19,7 @@ from trytond.pool import Pool
 from trytond.pyson import PYSON, Eval, PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import file_open
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 if not config.get('html', 'plugins-ir.action.report-report_content_html'):
     config.set(
@@ -91,26 +91,26 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
     @classmethod
+    @inactive_records
     def get_action_id(cls, action_id):
         pool = Pool()
-        with Transaction().set_context(active_test=False):
-            if cls.search([
-                        ('id', '=', action_id),
-                        ]):
-                return action_id
-            for action_type in (
-                    'ir.action.report',
-                    'ir.action.act_window',
-                    'ir.action.wizard',
-                    'ir.action.url',
-                    ):
-                Action = pool.get(action_type)
-                actions = Action.search([
+        if cls.search([
                     ('id', '=', action_id),
-                    ])
-                if actions:
-                    action, = actions
-                    return action.action.id
+                    ]):
+            return action_id
+        for action_type in (
+                'ir.action.report',
+                'ir.action.act_window',
+                'ir.action.wizard',
+                'ir.action.url',
+                ):
+            Action = pool.get(action_type)
+            actions = Action.search([
+                ('id', '=', action_id),
+                ])
+            if actions:
+                action, = actions
+                return action.action.id
 
     @classmethod
     def get_action_values(cls, type_, action_ids, columns=None):

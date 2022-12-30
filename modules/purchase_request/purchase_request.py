@@ -326,7 +326,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         transaction = Transaction()
-        if transaction.user != 0 and transaction.context.get('_check_access'):
+        if transaction.user and transaction.check_access:
             raise AccessError(
                 gettext('purchase_request.msg_request_no_create'))
         return super(PurchaseRequest, cls).create(vlist)

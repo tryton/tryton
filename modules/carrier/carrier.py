@@ -5,7 +5,7 @@ from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered)
 from trytond.pool import Pool
-from trytond.transaction import Transaction
+from trytond.transaction import inactive_records
 
 
 class Carrier(DeactivableMixin, ModelSQL, ModelView):
@@ -127,7 +127,7 @@ class Selection(
         carriers = []
         selections = cls.search([])
         if not selections:
-            with Transaction().set_context(active_test=False):
+            with inactive_records():
                 carriers = Carrier.search([])
         else:
             for selection in selections:

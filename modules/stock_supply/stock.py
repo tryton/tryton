@@ -3,7 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelView, fields
 from trytond.pool import Pool
-from trytond.transaction import Transaction
+from trytond.transaction import check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -42,7 +42,7 @@ class Supply(Wizard):
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
         today = Date.today()
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             if Move.search([
                         ('from_location.type', '=', 'supplier'),
                         ('to_location.type', '=', 'storage'),
@@ -73,7 +73,7 @@ class Supply(Wizard):
             first = False
 
         # Remove transit split of request
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             shipments = ShipmentInternal.search([
                     ('state', '=', 'request'),
                     ])

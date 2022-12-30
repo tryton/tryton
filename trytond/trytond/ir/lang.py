@@ -16,7 +16,7 @@ from trytond.model import (
 from trytond.modules import create_graph, load_translations
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 Transaction.cache_keys.add('translate_name')
@@ -362,16 +362,16 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         _parents.clear()
 
     @classmethod
+    @inactive_records
     def get(cls, code=None):
         "Return language instance for the code or the transaction language"
         if code is None:
             code = Transaction().language
         lang_id = cls._code_cache.get(code)
         if not lang_id:
-            with Transaction().set_context(active_test=False):
-                lang, = cls.search([
-                        ('code', '=', code),
-                        ])
+            lang, = cls.search([
+                    ('code', '=', code),
+                    ])
             cls._code_cache.set(code, lang.id)
         else:
             lang = cls(lang_id)

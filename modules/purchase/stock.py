@@ -11,7 +11,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 def process_purchase(moves_field):
@@ -22,7 +22,7 @@ def process_purchase(moves_field):
             Purchase = pool.get('purchase.purchase')
             transaction = Transaction()
             context = transaction.context
-            with transaction.set_context(_check_access=False):
+            with without_check_access():
                 purchases = set(m.purchase for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.purchase)
             func(cls, shipments)
@@ -145,7 +145,7 @@ def process_purchase_move(without_shipment=False):
             Purchase = pool.get('purchase.purchase')
             transaction = Transaction()
             context = transaction.context
-            with transaction.set_context(_check_access=False):
+            with without_check_access():
                 p_moves = cls.browse(moves)
                 if without_shipment:
                     p_moves = [m for m in p_moves if not m.shipment]

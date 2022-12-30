@@ -6,7 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 def process_purchase(func):
@@ -16,7 +16,7 @@ def process_purchase(func):
         Purchase = pool.get('purchase.purchase')
         transaction = Transaction()
         context = transaction.context
-        with transaction.set_context(_check_access=False):
+        with without_check_access():
             purchases = set(
                 p for i in cls.browse(invoices) for p in i.purchases)
         func(cls, invoices)
@@ -153,7 +153,7 @@ class InvoiceLine(metaclass=PoolMeta):
         Purchase = pool.get('purchase.purchase')
         transaction = Transaction()
         context = transaction.context
-        with transaction.set_context(_check_access=False):
+        with without_check_access():
             invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
             purchases = set(p for i in invoices for p in i.purchases)

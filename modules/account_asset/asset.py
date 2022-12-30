@@ -16,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import cached_property, grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access, without_check_access
 from trytond.wizard import (
     Button, StateReport, StateTransition, StateView, Wizard)
 
@@ -792,9 +792,11 @@ class CreateMoves(Wizard):
             ])
     create_moves = StateTransition()
 
+    @without_check_access
     def transition_create_moves(self):
-        Asset = Pool().get('account.asset')
-        with Transaction().set_context(_check_access=True):
+        pool = Pool()
+        with check_access():
+            Asset = pool.get('account.asset')
             assets = Asset.search([
                     ('state', '=', 'running'),
                     ])
@@ -1178,21 +1180,21 @@ class PrintDepreciationTable(Wizard):
             ])
     print_ = StateReport('account.asset.depreciation_table')
 
+    @check_access
     def do_print_(self, action):
         pool = Pool()
         Asset = pool.get('account.asset')
-        with Transaction().set_context(_check_access=True):
-            assets = Asset.search([
-                    ['OR',
-                        ('purchase_date', '<=', self.start.end_date),
-                        ('start_date', '<=', self.start.end_date),
-                        ],
-                    ['OR',
-                        ('move', '=', None),
-                        ('move.date', '>=', self.start.start_date),
-                        ],
-                    ('state', '!=', 'draft'),
-                    ])
+        assets = Asset.search([
+                ['OR',
+                    ('purchase_date', '<=', self.start.end_date),
+                    ('start_date', '<=', self.start.end_date),
+                    ],
+                ['OR',
+                    ('move', '=', None),
+                    ('move.date', '>=', self.start.start_date),
+                    ],
+                ('state', '!=', 'draft'),
+                ])
         if not assets:
             raise PrintDepreciationTableError(
                 gettext('account_asset.msg_no_assets'))

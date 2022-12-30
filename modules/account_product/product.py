@@ -398,9 +398,8 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, templates, default=None):
-        context = Transaction().context
         default = default.copy() if default else {}
-        if context.get('_check_access'):
+        if Transaction().check_access:
             default.setdefault(
                 'account_category',
                 cls.default_get(

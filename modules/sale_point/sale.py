@@ -75,8 +75,7 @@ class POS(ModelSQL, ModelView):
         pool = Pool()
         Sale = pool.get('sale.point.sale')
         transaction = Transaction()
-        if (transaction.user != 0
-                and transaction.context.get('_check_access')):
+        if transaction.user and transaction.check_access:
             actions = iter(args)
             for points, values in zip(actions, actions):
                 if 'tax_included' in values:

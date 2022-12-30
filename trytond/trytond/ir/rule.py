@@ -11,7 +11,8 @@ from trytond.model import (
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder
-from trytond.transaction import Transaction
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 
 class DomainError(ValidationError):
@@ -153,7 +154,8 @@ class Rule(ModelSQL, ModelView):
         User = Pool().get('res.user')
         transaction = Transaction()
         user_id = transaction.user
-        with transaction.set_context(_check_access=False, _datetime=None), \
+        with transaction.set_context(_datetime=None), \
+                without_check_access(), \
                 transaction.set_user(0):
             user = EvalEnvironment(User(user_id), User)
         return {
@@ -269,8 +271,7 @@ class Rule(ModelSQL, ModelView):
     def domain_get(cls, model_name, mode='read'):
         transaction = Transaction()
         # root user above constraint
-        if ((transaction.user == 0)
-                or not transaction.context.get('_check_access')):
+        if transaction.user == 0 or not transaction.check_access:
             return []
 
         assert mode in cls.modes
@@ -307,8 +308,7 @@ class Rule(ModelSQL, ModelView):
         domain = cls.domain_get(model_name, mode=mode)
 
         # Use root to prevent infinite recursion
-        with Transaction().set_user(0), \
-                Transaction().set_context(active_test=False, user=0):
+        with Transaction().set_user(0, set_context=True), inactive_records():
             return Model.search(domain, order=[], query=True)
 
     @classmethod

@@ -10,7 +10,7 @@ from trytond.model import Check, DeactivableMixin, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import And, Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 sql_sequence = backend.Database.has_sequence()
 
@@ -203,8 +203,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         transaction = Transaction()
-        if (transaction.user != 0
-                and transaction.context.get('_check_access')):
+        if transaction.user != 0 and transaction.check_access:
             for values in args[1::2]:
                 if 'sequence_type' in values:
                     raise AccessError(gettext(
@@ -374,26 +373,24 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 return hex(timestamp)[2:].upper()
         return ''
 
+    @without_check_access
     def get(self, _lock=False):
         '''
         Return the next sequence value
         '''
         cls = self.__class__
-        # bypass rules on sequences
-        with Transaction().set_context(user=False, _check_access=False):
-            with Transaction().set_user(0):
-                try:
-                    sequence = cls(self.id)
-                except TypeError:
-                    raise MissingError(gettext('ir.msg_sequence_missing'))
-                if _lock:
-                    self.lock()
-                date = Transaction().context.get('date')
-                return '%s%s%s' % (
-                    cls._process(sequence.prefix, date=date),
-                    cls._get_sequence(sequence),
-                    cls._process(sequence.suffix, date=date),
-                    )
+        try:
+            sequence = cls(self.id)
+        except TypeError:
+            raise MissingError(gettext('ir.msg_sequence_missing'))
+        if _lock:
+            self.lock()
+        date = Transaction().context.get('date')
+        return '%s%s%s' % (
+            cls._process(sequence.prefix, date=date),
+            cls._get_sequence(sequence),
+            cls._process(sequence.suffix, date=date),
+            )
 
 
 class SequenceStrict(Sequence):

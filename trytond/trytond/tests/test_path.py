@@ -3,7 +3,7 @@
 import unittest
 
 from trytond.pool import Pool
-from trytond.transaction import Transaction
+from trytond.transaction import inactive_records
 
 from .test_tree import TreeTestCaseMixin
 
@@ -16,7 +16,7 @@ class PathTestCase(TreeTestCaseMixin, unittest.TestCase):
         pool = Pool()
         Path = pool.get(self.model_name)
 
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             children = Path.search([
                     ('parent', '=', parent_id),
                     ])

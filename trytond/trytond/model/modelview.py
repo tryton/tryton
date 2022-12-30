@@ -12,7 +12,7 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC, RPCReturnException
 from trytond.tools import is_instance_method
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access, without_check_access
 
 from . import fields
 from .fields import on_change_result
@@ -631,7 +631,7 @@ class ModelView(Model):
             link_name = element.attrib['name']
             action_id = ModelData.get_id(*link_name.split('.'))
             try:
-                with Transaction().set_context(_check_access=True):
+                with check_access():
                     action, = ActionWindow.search([('id', '=', action_id)])
             except ValueError:
                 action = None
@@ -677,7 +677,7 @@ class ModelView(Model):
             User = pool.get('res.user')
 
             transaction = Transaction()
-            check_access = transaction.context.get('_check_access')
+            check_access = transaction.check_access
 
             assert len(records) == len(set(records)), "Duplicate records"
 
@@ -700,20 +700,20 @@ class ModelView(Model):
                 else:
                     ModelAccess.check(cls.__name__, 'write')
 
-            with Transaction().set_context(_check_access=False):
-                if (transaction.user != 0) and check_access:
-                    button_rules = Button.get_rules(
-                        cls.__name__, func.__name__)
-                    if button_rules:
-                        clicks = ButtonClick.register(
-                            cls.__name__, func.__name__, records)
-                        records = [r for r in records
-                            if all(br.test(r, clicks.get(r.id, []))
-                                for br in button_rules)]
-                # Reset click after filtering in case the button also has rules
-                names = Button.get_reset(cls.__name__, func.__name__)
-                if names:
-                    ButtonClick.reset(cls.__name__, names, records)
+            if (transaction.user != 0) and check_access:
+                button_rules = Button.get_rules(
+                    cls.__name__, func.__name__)
+                if button_rules:
+                    clicks = ButtonClick.register(
+                        cls.__name__, func.__name__, records)
+                    records = [r for r in records
+                        if all(br.test(r, clicks.get(r.id, []))
+                            for br in button_rules)]
+            # Reset click after filtering in case the button also has rules
+            names = Button.get_reset(cls.__name__, func.__name__)
+            if names:
+                ButtonClick.reset(cls.__name__, names, records)
+            with without_check_access():
                 return func(cls, records, *args, **kwargs)
         return wrapper
 

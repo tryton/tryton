@@ -8,7 +8,7 @@ from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import StateTransition, Wizard
 
 
@@ -397,7 +397,7 @@ class InvoiceDeferredCreateMoves(Wizard):
     def transition_create_moves(self):
         pool = Pool()
         InvoiceDeferred = pool.get('account.invoice.deferred')
-        with Transaction().set_context(_check_access=True):
+        with check_access():
             deferrals = InvoiceDeferred.search([
                     ('state', '=', 'running'),
                     ])

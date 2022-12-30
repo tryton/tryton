@@ -7,7 +7,7 @@ from sql.operators import Equal
 from trytond.i18n import lazy_gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Model, ModelSQL, ModelView, fields)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 
 class Parameter(DeactivableMixin, ModelSQL, ModelView):
@@ -49,7 +49,7 @@ class Parameter(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def from_name(cls, name, create=True):
         name = name.strip().lower()
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             records = cls.search([
                     ('name', '=', name),
                     ])

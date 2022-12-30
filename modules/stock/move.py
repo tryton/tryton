@@ -20,7 +20,7 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import MoveFutureWarning, MoveOriginWarning
 
@@ -542,24 +542,24 @@ class Move(Workflow, ModelSQL, ModelView):
         return self.origin.rec_name if self.origin else None
 
     @classmethod
+    @without_check_access
     def check_period_closed(cls, moves):
         Period = Pool().get('stock.period')
-        with Transaction().set_context(_check_access=False):
-            for company, moves in groupby(moves, lambda m: m.company):
-                periods = Period.search([
-                        ('state', '=', 'closed'),
-                        ('company', '=', company.id),
-                        ], order=[('date', 'DESC')], limit=1)
-                if periods:
-                    period, = periods
-                    for move in moves:
-                        date = (move.effective_date if move.effective_date
-                            else move.planned_date)
-                        if date and date <= period.date:
-                            raise AccessError(
-                                gettext('stock.msg_move_modify_period_close',
-                                    move=move.rec_name,
-                                    period=period.rec_name))
+        for company, moves in groupby(moves, lambda m: m.company):
+            periods = Period.search([
+                    ('state', '=', 'closed'),
+                    ('company', '=', company.id),
+                    ], order=[('date', 'DESC')], limit=1)
+            if periods:
+                period, = periods
+                for move in moves:
+                    date = (move.effective_date if move.effective_date
+                        else move.planned_date)
+                    if date and date <= period.date:
+                        raise AccessError(
+                            gettext('stock.msg_move_modify_period_close',
+                                move=move.rec_name,
+                                period=period.rec_name))
 
     def get_rec_name(self, name):
         pool = Pool()

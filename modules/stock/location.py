@@ -15,7 +15,7 @@ from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, TimeDelta
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 from .exceptions import LocationValidationError
 
@@ -289,8 +289,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         location_ids = list(map(int, locations))
         # Use root to compute for all companies
         # and ensures inactive locations are in the query
-        with Transaction().set_user(0), \
-                Transaction().set_context(active_test=False):
+        with Transaction().set_user(0), inactive_records():
             query = Move.compute_quantities_query(
                 location_ids, with_childs=True)
             quantities = Move.compute_quantities(
@@ -338,7 +337,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     def get_warehouse(self, name):
         # Order by descending left to get the first one in the tree
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             locations = self.search([
                     ('parent', 'parent_of', [self.id]),
                     ('type', '=', 'warehouse'),

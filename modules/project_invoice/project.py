@@ -508,13 +508,11 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
                 for line in lines:
                     for origin in line['origins']:
                         origins[origin.__class__].append(origin)
-                # TODO: remove when _check_access ignores record rule
-                with Transaction().set_user(0):
-                    for klass, records in origins.items():
-                        klass.save(records)  # Store first new origins
-                        klass.write(records, {
-                                'invoice_line': invoice_line.id,
-                                })
+                for klass, records in origins.items():
+                    klass.save(records)  # Store first new origins
+                    klass.write(records, {
+                            'invoice_line': invoice_line.id,
+                            })
         Invoice.update_taxes(invoices)
 
     def _get_invoice(self):

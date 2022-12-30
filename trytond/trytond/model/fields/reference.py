@@ -9,11 +9,12 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
 from trytond.tools import cached_property
-from trytond.transaction import Transaction
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 from .field import (
     Field, context_validate, domain_validate, instantiate_context,
-    search_order_validate, with_inactive_records)
+    search_order_validate)
 from .selection import SelectionMixin
 
 
@@ -146,8 +147,7 @@ class Reference(SelectionMixin, Field):
             ref_to_check[ref_model][1].append(i)
 
         # Check if reference ids still exist
-        with Transaction().set_context(active_test=False), \
-                Transaction().set_context(_check_access=False):
+        with inactive_records(), without_check_access():
             for ref_model, (ref_ids, ids) in ref_to_check.items():
                 try:
                     pool.get(ref_model)
@@ -194,7 +194,7 @@ class Reference(SelectionMixin, Field):
                 column, Position(',', column) + Literal(1)),
             Model.id.sql_type().base)
 
-    @with_inactive_records
+    @inactive_records
     def convert_domain(self, domain, tables, Model):
         if '.' not in domain[0]:
             return super(Reference, self).convert_domain(domain, tables, Model)

@@ -10,7 +10,7 @@ import time
 import warnings
 from collections import defaultdict
 from decimal import Decimal
-from functools import lru_cache, wraps
+from functools import lru_cache
 from itertools import chain, groupby, islice
 from operator import itemgetter
 
@@ -25,7 +25,8 @@ from trytond.rpc import RPC
 from trytond.tools import grouped_slice, is_instance_method, reduce_domain
 from trytond.tools.domain_inversion import domain_inversion, eval_domain
 from trytond.tools.domain_inversion import parse as domain_parse
-from trytond.transaction import Transaction, record_cache_size
+from trytond.transaction import (
+    Transaction, inactive_records, record_cache_size, without_check_access)
 
 from . import fields
 from .descriptors import dualmethod
@@ -89,14 +90,6 @@ class _UnsavedRecordError(ValueError):
 
     def __init__(self, record):
         self.record = record
-
-
-def without_check_access(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        with Transaction().set_context(_check_access=False):
-            return func(*args, **kwargs)
-    return wrapper
 
 
 def is_leaf(expression):
@@ -309,16 +302,7 @@ class ModelStorage(Model):
         ModelAccess.check(cls.__name__, 'delete')
         cls.check_xml_record(records, None)
         if ModelData.has_model(cls.__name__):
-            with Transaction().set_context(_check_access=False):
-                data = []
-                for sub_records in grouped_slice(records):
-                    ids = [r.id for r in sub_records]
-                    data += ModelData.search([
-                            ('model', '=', cls.__name__),
-                            ('db_id', 'in', ids),
-                            ('noupdate', '=', True),
-                            ])
-                ModelData.write(data, {'db_id': None})
+            ModelData.clean(records)
 
         # Increase transaction counter
         Transaction().counter += 1
@@ -441,7 +425,7 @@ class ModelStorage(Model):
                 or isinstance(f, fields.MultiValue))
             and n not in mptt]
         ids = list(map(int, records))
-        with Transaction().set_context(_check_access=False):
+        with without_check_access():
             values = {
                 d['id']: d for d in cls.read(ids, fields_names=fields_names)}
         field_defs = cls.fields_get(fields_names=fields_names)
@@ -535,7 +519,7 @@ class ModelStorage(Model):
                     target_order = [(relate, otype)]
                     check_order(target_order, target, to_check)
 
-        if transaction.user and transaction.context.get('_check_access'):
+        if transaction.user and transaction.check_access:
             to_check = defaultdict(set)
             check_domain(domain, cls, to_check)
             check_order(order, cls, to_check)
@@ -583,7 +567,7 @@ class ModelStorage(Model):
         # records unless they were explicitely asked for
         if not ('active' in cls._fields
                 and active_test
-                and Transaction().context.get('active_test', True)):
+                and Transaction().active_records):
             return domain
 
         def process(domain):
@@ -1130,34 +1114,7 @@ class ModelStorage(Model):
         if (Transaction().user == 0
                 or not ModelData.has_model(cls.__name__)):
             return
-        id2record = {r.id: r for r in records}
-        with Transaction().set_context(_check_access=False):
-            models_data = ModelData.search([
-                ('model', '=', cls.__name__),
-                ('db_id', 'in', list(id2record.keys())),
-                ])
-            if not models_data:
-                return
-            for model_data in models_data:
-                record = id2record[model_data.db_id]
-                if values is None:
-                    if not model_data.noupdate:
-                        raise AccessError(
-                            gettext(
-                                'ir.msg_delete_xml_record',
-                                **cls.__names__(record=record)),
-                            gettext('ir.msg_base_config_record'))
-                else:
-                    if not model_data.values or model_data.noupdate:
-                        continue
-                    xml_values = ModelData.load_values(model_data.values)
-                    for key, val in values.items():
-                        if key in xml_values and val != xml_values[key]:
-                            raise AccessError(
-                                gettext(
-                                    'ir.msg_write_xml_record',
-                                    **cls.__names__(field=key, record=record)),
-                                gettext('ir.msg_base_config_record'))
+        ModelData.can_modify(records, values)
 
     @classmethod
     def validate(cls, records):
@@ -1353,7 +1310,7 @@ class ModelStorage(Model):
             field_names = set(field_names)
         function_fields = {name for name, field in cls._fields.items()
             if isinstance(field, fields.Function)}
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             for field_name, field in cls._fields.items():
                 if (field_name not in field_names
                         and not (field.validation_depends & field_names)
@@ -1778,8 +1735,8 @@ class ModelStorage(Model):
         with Transaction().set_current_transaction(self._transaction), \
                 self._transaction.set_user(self._user), \
                 self._transaction.reset_context(), \
-                self._transaction.set_context(
-                    self._context, _check_access=False) as transaction:
+                self._transaction.set_context(self._context), \
+                without_check_access() as transaction:
             if (self.id in self._cache and name in self._cache[self.id]
                     and ffields.keys() <= set(self._cache[self.id]._keys())):
                 # Use values from cache
@@ -1953,7 +1910,8 @@ class ModelStorage(Model):
                 with Transaction().set_current_transaction(transaction), \
                         transaction.set_user(user), \
                         transaction.reset_context(), \
-                        transaction.set_context(context, _check_access=False):
+                        transaction.set_context(context), \
+                        without_check_access():
                     if to_create:
                         news = cls.create([save_values[r] for r in to_create])
                         for record, new in zip(to_create, news):

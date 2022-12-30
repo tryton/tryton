@@ -14,8 +14,7 @@ class Company(metaclass=PoolMeta):
         pool = Pool()
         Move = pool.get('account.move')
         transaction = Transaction()
-        if (transaction.user
-                and transaction.context.get('_check_access')):
+        if transaction.user and transaction.check_access:
             actions = iter(args)
             for companies, values in zip(actions, actions):
                 if 'currency' in values:

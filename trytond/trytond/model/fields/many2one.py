@@ -9,11 +9,10 @@ from trytond.config import config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import cached_property, reduce_ids
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 from .field import (
-    Field, context_validate, instantiate_context, search_order_validate,
-    with_inactive_records)
+    Field, context_validate, instantiate_context, search_order_validate)
 
 _subquery_threshold = config.getint('database', 'subquery_threshold')
 
@@ -195,7 +194,7 @@ class Many2One(Field):
             return ~expression
         return expression
 
-    @with_inactive_records
+    @inactive_records
     def convert_domain(self, domain, tables, Model):
         pool = Pool()
         Rule = pool.get('ir.rule')

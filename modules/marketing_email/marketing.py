@@ -32,7 +32,7 @@ from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, sendmail_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import set_from_header
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -170,7 +170,7 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
         # Make it slow to prevent brute force attacks
         delay = config.getint('marketing', 'subscribe_delay', default=1)
         Transaction().atexit(time.sleep, delay)
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             records = cls.search([
                     ('email_token', 'in', tokens),
                     ])
@@ -280,7 +280,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
         Transaction().atexit(time.sleep, random.random())
 
         email = email.lower()
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             records = Email.search([
                     ('email', '=', email),
                     ('list_', '=', self.id),
@@ -308,7 +308,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
         Transaction().atexit(time.sleep, random.random())
 
         email = email.lower()
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             records = Email.search([
                     ('email', '=', email),
                     ('list_', '=', self.id),

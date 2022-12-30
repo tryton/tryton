@@ -34,9 +34,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def copy(cls, parties, default=None):
-        context = Transaction().context
         default = default.copy() if default else {}
-        if context.get('_check_access'):
+        if Transaction().check_access:
             fields = ['sale_price_lists', 'sale_price_list']
             default_values = cls.default_get(fields, with_rec_name=False)
             for fname in fields:

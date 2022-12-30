@@ -5,7 +5,7 @@ from functools import wraps
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 class Request(metaclass=PoolMeta):
@@ -26,7 +26,7 @@ class Request(metaclass=PoolMeta):
         transaction = Transaction()
         context = transaction.context
 
-        with transaction.set_context(_check_access=False):
+        with without_check_access():
             reqs = cls.browse(requests)
             sales = set(r.origin for r in reqs if isinstance(r.origin, Sale))
             sale_lines = [l for r in reqs for l in r.sale_lines]
@@ -53,7 +53,7 @@ def process_sale_supply(func):
         context = transaction.context
 
         sales = set()
-        with transaction.set_context(_check_access=False):
+        with without_check_access():
             for sub_purchases in grouped_slice(purchases):
                 ids = [x.id for x in sub_purchases]
                 requests = Request.search([

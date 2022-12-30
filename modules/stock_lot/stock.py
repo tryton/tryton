@@ -38,8 +38,7 @@ def check_no_move(func):
     @wraps(func)
     def decorator(cls, *args):
         transaction = Transaction()
-        if (transaction.user != 0
-                and transaction.context.get('_check_access')):
+        if transaction.user and transaction.check_access:
             actions = iter(args)
             for records, values in zip(actions, actions):
                 for field, state, error in cls._modify_no_move:

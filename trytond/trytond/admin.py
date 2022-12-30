@@ -12,7 +12,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -79,7 +79,7 @@ def run(options):
             User = pool.get('res.user')
             Configuration = pool.get('ir.configuration')
             configuration = Configuration(1)
-            with transaction.set_context(active_test=False):
+            with inactive_records():
                 admin, = User.search([('login', '=', 'admin')])
 
             if options.email is not None:

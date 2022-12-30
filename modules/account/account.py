@@ -4,7 +4,6 @@ import datetime
 import operator
 from collections import defaultdict
 from decimal import Decimal
-from functools import wraps
 from itertools import zip_longest
 
 from dateutil.relativedelta import relativedelta
@@ -23,21 +22,13 @@ from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
     grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access, inactive_records
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
 from .common import ActivePeriodMixin, ContextCompanyMixin, PeriodMixin
 from .exceptions import (
     AccountValidationError, ChartWarning, SecondCurrencyError)
-
-
-def inactive_records(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        with Transaction().set_context(active_test=False):
-            return func(*args, **kwargs)
-    return wrapper
 
 
 def TypeMixin(template=False):
@@ -3195,16 +3186,16 @@ class UpdateChart(Wizard):
             Button('OK', 'end', 'tryton-ok', default=True),
             ])
 
+    @check_access
     def default_start(self, fields):
         pool = Pool()
         Account = pool.get('account.account')
 
         defaults = {}
-        with Transaction().set_context(_check_access=True):
-            charts = Account.search([
-                    ('parent', '=', None),
-                    ('template', '!=', None),
-                    ], limit=2)
+        charts = Account.search([
+                ('parent', '=', None),
+                ('template', '!=', None),
+                ], limit=2)
         if len(charts) == 1:
             defaults['account'] = charts[0].id
         return defaults

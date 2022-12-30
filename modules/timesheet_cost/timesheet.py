@@ -4,7 +4,7 @@ from sql import Null
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 from .company import price_digits
 
@@ -65,13 +65,13 @@ class Line(metaclass=PoolMeta):
         cls.sync_cost(sum(args[0:None:2], []))
 
     @classmethod
+    @without_check_access
     def sync_cost(cls, lines):
-        with Transaction().set_context(_check_access=False):
-            to_write = []
-            lines = cls.browse(lines)
-            for line in lines:
-                cost_price = line.employee.compute_cost_price(date=line.date)
-                if cost_price != line.cost_price:
-                    to_write.extend([[line], {'cost_price': cost_price}])
-            if to_write:
-                cls.write(*to_write)
+        to_write = []
+        lines = cls.browse(lines)
+        for line in lines:
+            cost_price = line.employee.compute_cost_price(date=line.date)
+            if cost_price != line.cost_price:
+                to_write.extend([[line], {'cost_price': cost_price}])
+        if to_write:
+            cls.write(*to_write)

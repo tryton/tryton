@@ -8,7 +8,7 @@ from .date import Date, DateTime, Time, TimeDelta, Timestamp
 from .dict import Dict
 from .field import (
     SQL_OPERATORS, Field, context_validate, depends, domain_validate,
-    get_eval_fields, on_change_result, states_validate, with_inactive_records)
+    get_eval_fields, on_change_result, states_validate)
 from .float import Float
 from .function import Function, MultiValue
 from .integer import BigInteger, Integer
@@ -23,7 +23,7 @@ from .selection import Selection
 from .text import FullText, Text
 
 __all__ = [
-    depends, with_inactive_records, SQL_OPERATORS, on_change_result,
+    depends, SQL_OPERATORS, on_change_result,
     get_eval_fields, states_validate, domain_validate, context_validate, Field,
     Boolean, Integer, BigInteger, Char, Text, FullText, Float, Numeric, Date,
     Timestamp, DateTime, Time, TimeDelta, Binary, Selection, Reference,

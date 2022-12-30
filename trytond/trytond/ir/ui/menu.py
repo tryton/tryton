@@ -8,7 +8,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.rpc import RPC
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 
 def one_in(i, j):
@@ -153,11 +153,11 @@ class UIMenu(
         return menus
 
     @classmethod
+    @inactive_records
     def get_action(cls, menus, name):
         pool = Pool()
         actions = dict((m.id, None) for m in menus)
-        with Transaction().set_context(active_test=False):
-            menus = cls.browse(menus)
+        menus = cls.browse(menus)
         action_keywords = sum((list(m.action_keywords) for m in menus), [])
 
         def action_type(keyword):
@@ -173,10 +173,9 @@ class UIMenu(
                     action_keyword)
 
             Action = pool.get(type)
-            with Transaction().set_context(active_test=False):
-                factions = Action.search([
-                        ('action', 'in', list(action2keywords.keys())),
-                        ])
+            factions = Action.search([
+                    ('action', 'in', list(action2keywords.keys())),
+                    ])
             for action in factions:
                 for action_keyword in action2keywords[action.id]:
                     actions[action_keyword.model.id] = str(action)

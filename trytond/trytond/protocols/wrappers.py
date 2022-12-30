@@ -24,7 +24,7 @@ from trytond.config import config
 from trytond.exceptions import RateLimitException, UserError, UserWarning
 from trytond.pool import Pool
 from trytond.tools import cached_property
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 
 __all__ = [
     'HTTPStatus',
@@ -263,7 +263,7 @@ def user_application(name, json=True):
             transaction = Transaction()
             # TODO language
             with transaction.set_user(application.user.id), \
-                    transaction.set_context(_check_access=True):
+                    check_access():
                 response = func(request, *args, **kwargs)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),

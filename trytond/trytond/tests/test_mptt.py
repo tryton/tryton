@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import inactive_records
 
 from .test_tree import TreeTestCaseMixin
 
@@ -24,7 +24,7 @@ class MPTTTestCase(TreeTestCaseMixin, unittest.TestCase):
         pool = Pool()
         Mptt = pool.get(self.model_name)
 
-        with Transaction().set_context(active_test=False):
+        with inactive_records():
             childs = Mptt.search([
                     ('parent', '=', parent_id),
                     ], order=[('left', 'ASC')])
