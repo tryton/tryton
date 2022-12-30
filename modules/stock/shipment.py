@@ -183,17 +183,32 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
             },
         help="Where the stock is received.")
-    warehouse_input = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Input'),
-        'on_change_with_warehouse_input')
-    warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage'),
-        'on_change_with_warehouse_storage')
+    warehouse_input = fields.Many2One(
+        'stock.location', "Warehouse Input", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
+    warehouse_storage = fields.Many2One(
+        'stock.location', "Warehouse Storage", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
     incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Incoming Moves',
             add_remove=[
                 ('shipment', '=', None),
-                ('from_location', '=', Eval('supplier_location')),
                 ('state', '=', 'draft'),
                 If(Eval('warehouse_input') == Eval('warehouse_storage'),
                     ('to_location', 'child_of',
@@ -201,7 +216,9 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     ('to_location', '=', Eval('warehouse_input'))),
                 ],
             domain=[
-                ('from_location', '=', Eval('supplier_location')),
+                If(Eval('state') == 'draft',
+                    ('from_location', '=', Eval('supplier_location')),
+                    ()),
                 If(Eval('warehouse_input') == Eval('warehouse_storage'),
                     ('to_location', 'child_of',
                         [Eval('warehouse_input', -1)], 'parent'),
@@ -210,7 +227,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': (
-                    Eval('state').in_(['received', 'done', 'cancelled'])
+                    (Eval('state') != 'draft')
                     | ~Eval('warehouse') | ~Eval('supplier')),
                 },
             help="The moves that bring the stock into the warehouse."),
@@ -296,9 +313,12 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Location = pool.get('stock.location')
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
+        location = Location.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -310,6 +330,20 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+        # Migration from 6.6: fill warehouse locations
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_input],
+                location.select(
+                    location.input_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_input == Null))
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_storage],
+                location.select(
+                    location.storage_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_storage == Null))
 
     @classmethod
     def order_number(cls, tables):
@@ -334,6 +368,14 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Location = Pool().get('stock.location')
         return Location.get_default_warehouse()
 
+    @fields.depends('warehouse')
+    def on_change_warehouse(self):
+        if self.warehouse:
+            self.warehouse_input = self.warehouse.input_location
+            self.warehouse_storage = self.warehouse.storage_location
+        else:
+            self.warehouse_input = self.warehouse_storage = None
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -348,28 +390,6 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def on_change_with_supplier_location(self, name=None):
         if self.supplier and self.supplier.supplier_location:
             return self.supplier.supplier_location.id
-
-    @classmethod
-    def default_warehouse_input(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_input()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_input(self, name=None):
-        if self.warehouse:
-            return self.warehouse.input_location.id
-
-    @classmethod
-    def default_warehouse_storage(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_storage()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_storage(self, name=None):
-        if self.warehouse:
-            return self.warehouse.storage_location.id
 
     def get_incoming_moves(self, name):
         moves = []
@@ -1036,15 +1056,35 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 | Eval('outgoing_moves', [0]) | Eval('inventory_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         help="Where the stock is sent from.")
-    warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage'), 'on_change_with_warehouse_storage')
-    warehouse_output = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Output'), 'on_change_with_warehouse_output')
+    warehouse_storage = fields.Many2One(
+        'stock.location', "Warehouse Storage", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
+    warehouse_output = fields.Many2One(
+        'stock.location', "Warehouse Output", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
     outgoing_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Outgoing Moves',
             domain=[
                 ('from_location', '=', Eval('warehouse_output')),
-                ('to_location', '=', Eval('customer_location')),
+                If(~Eval('state').in_(['done', 'cancelled']),
+                    ('to_location', '=', Eval('customer_location')),
+                    ()),
                 ('company', '=', Eval('company')),
                 ],
             states={
@@ -1196,9 +1236,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Location = pool.get('stock.location')
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
+        location = Location.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -1214,6 +1257,20 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+        # Migration from 6.6: fill warehouse locations
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_storage],
+                location.select(
+                    location.storage_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_storage == Null))
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_output],
+                location.select(
+                    location.output_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_output == Null))
 
     @classmethod
     def order_number(cls, tables):
@@ -1238,6 +1295,17 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('warehouse')
+    def on_change_warehouse(self):
+        if self.warehouse:
+            if self.warehouse.picking_location:
+                self.warehouse_storage = self.warehouse.picking_location
+            else:
+                self.warehouse_storage = self.warehouse.storage_location
+            self.warehouse_output = self.warehouse.output_location
+        else:
+            self.warehouse_storage = self.warehouse_output = None
+
     @fields.depends('customer', 'warehouse')
     def on_change_customer(self):
         self.delivery_address = None
@@ -1251,32 +1319,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def on_change_with_customer_location(self, name=None):
         if self.customer:
             return self.customer.customer_location.id
-
-    @classmethod
-    def default_warehouse_storage(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_storage()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_storage(self, name=None):
-        if self.warehouse:
-            if self.warehouse.picking_location:
-                location = self.warehouse.picking_location
-            else:
-                location = self.warehouse.storage_location
-            return location.id
-
-    @classmethod
-    def default_warehouse_output(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_output()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_output(self, name=None):
-        if self.warehouse:
-            return self.warehouse.output_location.id
 
     def get_outgoing_moves(self, name):
         moves = []
@@ -1719,14 +1761,34 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
             }, domain=[('type', '=', 'warehouse')],
         help="Where the stock is returned.")
-    warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage'), 'on_change_with_warehouse_storage')
-    warehouse_input = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Input'), 'on_change_with_warehouse_input')
+    warehouse_storage = fields.Many2One(
+        'stock.location', "Warehouse Storage", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
+    warehouse_input = fields.Many2One(
+        'stock.location', "Warehouse Input", required=True,
+        domain=[
+            ('type', '=', 'storage'),
+            If(Eval('state') == 'draft',
+                ('parent', 'child_of', [Eval('warehouse', -1)]),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
     incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Incoming Moves',
             domain=[
-                ('from_location', '=', Eval('customer_location')),
+                If(Eval('state') == 'draft',
+                    ('from_location', '=', Eval('customer_location')),
+                    ()),
                 If(Eval('warehouse_input') == Eval('warehouse_storage'),
                     ('to_location', 'child_of',
                         [Eval('warehouse_input', -1)], 'parent'),
@@ -1822,9 +1884,12 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Location = pool.get('stock.location')
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
+        location = Location.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -1842,6 +1907,20 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
         # Migration from 6.4: remove required on contact_address
         table.not_null_action('contact_address', 'remove')
+
+        # Migration from 6.6: fill warehouse locations
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_input],
+                location.select(
+                    location.input_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_input == Null))
+        cursor.execute(*sql_table.update(
+                [sql_table.warehouse_storage],
+                location.select(
+                    location.storage_location,
+                    where=location.id == sql_table.warehouse),
+                where=sql_table.warehouse_storage == Null))
 
     @classmethod
     def order_number(cls, tables):
@@ -1862,6 +1941,14 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Location = Pool().get('stock.location')
         return Location.get_default_warehouse()
 
+    @fields.depends('warehouse')
+    def on_change_warehouse(self):
+        if self.warehouse:
+            self.warehouse_input = self.warehouse.input_location
+            self.warehouse_storage = self.warehouse.storage_location
+        else:
+            self.warehouse_input = self.warehouse_storage = None
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -1876,28 +1963,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def on_change_with_customer_location(self, name=None):
         if self.customer:
             return self.customer.customer_location.id
-
-    @classmethod
-    def default_warehouse_storage(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_storage()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_storage(self, name=None):
-        if self.warehouse:
-            return self.warehouse.storage_location.id
-
-    @classmethod
-    def default_warehouse_input(cls):
-        warehouse = cls.default_warehouse()
-        if warehouse:
-            return cls(warehouse=warehouse).on_change_with_warehouse_input()
-
-    @fields.depends('warehouse')
-    def on_change_with_warehouse_input(self, name=None):
-        if self.warehouse:
-            return self.warehouse.input_location.id
 
     def get_incoming_moves(self, name):
         moves = []

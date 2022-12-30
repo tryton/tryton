@@ -879,6 +879,7 @@ class Sale(
             }
         values.update(dict(key))
         shipment = Shipment(**values)
+        shipment.on_change_warehouse()
         if Shipment.__name__ == 'stock.shipment.out':
             if self.shipment_address == self.warehouse.address:
                 shipment.delivery_address = shipment.warehouse.address
