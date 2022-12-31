@@ -32,9 +32,6 @@ documentation:
 
 .check:
   stage: check
-  rules:
-    - if: $CI_MERGE_REQUEST_ID != null
-      when: always
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
 
 .check-doc:
@@ -64,13 +61,19 @@ check-doc-readthedocs:
     - changes:
         - ${PACKAGE}/**/*
 
-check-flake8:
+.check-code:
   extends: .check
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+      when: always
+
+check-flake8:
+  extends: .check-code
   script:
     - hg diff --rev s0 | flake8 --diff
 
 check-isort:
-  extends: .check
+  extends: .check-code
   script:
     - isort -m VERTICAL_GRID -p trytond -c `hg status --no-status --added --modified --rev s0`
 
