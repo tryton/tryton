@@ -1,7 +1,6 @@
 #!/bin/env python
 import glob
 import os
-import subprocess
 import sys
 from itertools import chain
 from string import Template
@@ -25,8 +24,7 @@ test-${name}:
   extends: .test-tox
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 """)
 
@@ -36,8 +34,7 @@ test-${name}:
   image: $${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/${package}-test:$${PYTHON_VERSION}
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 """)  # noqa: E501
 
@@ -46,15 +43,13 @@ test-${name}-sqlite:
   extends: .test-sqlite
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 test-${name}-postgresql:
   extends: .test-postgresql
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 """)
 
@@ -63,8 +58,7 @@ test-${name}-postgis:
   extends: .test-postgis
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 """)
 
@@ -74,17 +68,10 @@ test-${name}:
   image: $${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/${package}-test
   variables:
     PACKAGE: ${package}
-  ${stage}
-  ${when}
+    TAG_PATTERN: '/^${tag_name}-.*/'
 
 """)
 
-STAGE_MANUAL = "stage: manual"
-WHEN_MANUAL = """
-  allow_failure: true
-  rules:
-    - when: manual
-"""
 NO_DB = {'proteus'}
 CUSTOM_IMAGE = {'tryton'}
 CUSTOM_NPM_IMAGE = {'sao'}
@@ -102,13 +89,14 @@ def main(filename):
 def render(file):
     file.write(open(os.path.join(BASE_DIR, 'gitlab-ci.yml'), 'r').read())
     packages = list(all_packages())
-    modified = set(modified_packages(packages))
     for package in packages:
+        name = tag_name = package.replace('/', '-')
+        if tag_name.startswith('modules-'):
+            tag_name = tag_name[len('modules-'):]
         mapping = {
-            'name': package.replace('/', '-'),
+            'name': name,
             'package': package,
-            'stage': STAGE_MANUAL if package not in modified else '',
-            'when': WHEN_MANUAL if package not in modified else '',
+            'tag_name': tag_name,
             }
         if os.path.exists(os.path.join(package, 'doc')):
             file.write(TEMPLATE_DOC.substitute(mapping))
@@ -127,38 +115,10 @@ def render(file):
 def all_packages():
     root_dir = os.path.dirname(BASE_DIR)
     for filename in chain(
-            glob.glob('**/setup.py', recursive=True, root_dir=root_dir),
-            glob.glob('**/package.json', recursive=True, root_dir=root_dir)):
+            glob.glob('*/setup.py', root_dir=root_dir),
+            glob.glob('modules/*/setup.py', root_dir=root_dir),
+            glob.glob('*/package.json', root_dir=root_dir)):
         yield os.path.dirname(filename)
-
-
-def modified_packages(packages):
-    env = os.environ.copy()
-    env['HGPLAIN'] = '1'
-    if env.get('CI_COMMIT_TAG'):
-        tagged = env['CI_COMMIT_TAG'].split('-')[0]
-        for package in packages:
-            if tagged in package:
-                yield package
-    else:
-        if not subprocess.run(
-                ['hg', 'topic', '--current'],
-                env=env, stdout=subprocess.DEVNULL).returncode:
-            cmd = ['hg', 'status', '--rev', 's0', '--no-status']
-        else:
-            cmd = ['hg', 'status', '--change', '.', '--no-status']
-        proc = subprocess.run(cmd, env=env, stdout=subprocess.PIPE, text=True)
-        proc.check_returncode()
-        modified_files = proc.stdout.splitlines()
-
-        modified = set()
-        for filename in modified_files:
-            parts = filename.split(os.sep)
-            modified.add(parts[0])
-            modified.add(os.sep.join(parts[:2]))
-        for package in packages:
-            if package in modified:
-                yield package
 
 
 if __name__ == '__main__':
