@@ -209,6 +209,8 @@ def with_transaction(user=1, context=None):
                     result = func(*args, **kwargs)
                 finally:
                     transaction.rollback()
+                    # Clear remaining tasks
+                    transaction.tasks.clear()
                     # Drop the cache as the transaction is rollbacked
                     Cache.drop(DB_NAME)
                 return result
