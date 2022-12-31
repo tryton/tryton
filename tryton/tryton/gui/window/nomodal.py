@@ -32,5 +32,9 @@ class NoModal(object):
         self.sensible_widget.props.sensitive = True
         for focus in self.parent_focus:
             if focus and focus.is_ancestor(self.parent):
-                focus.grab_focus()
+                try:
+                    focus.grab_focus()
+                except TypeError:
+                    # GooCanvas needs a GooCanvasItem
+                    continue
                 break
