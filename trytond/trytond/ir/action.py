@@ -53,7 +53,12 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     "Action"
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
-    type = fields.Char('Type', required=True, readonly=True)
+    type = fields.Selection([
+            ('ir.action.report', "Report"),
+            ('ir.action.act_window', "Window"),
+            ('ir.action.wizard', "Wizard"),
+            ('ir.action.url', "URL"),
+            ], "Type", required=True, readonly=True)
     records = fields.Selection([
             ('selected', "Selected"),
             ('listed', "Listed"),
@@ -302,10 +307,16 @@ class ActionMixin(ModelSQL):
     _order_name = 'action'
     _action_name = 'name'
 
+    action = fields.Many2One(
+        'ir.action', "Action", required=True, ondelete='CASCADE')
+
     @classmethod
     def __setup__(cls):
         pool = Pool()
         super(ActionMixin, cls).__setup__()
+        cls.action.domain = [
+            ('type', '=', cls.__name__),
+            ]
         Action = pool.get('ir.action')
         for name in dir(Action):
             field = getattr(Action, name)
@@ -472,8 +483,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                 },
             depends=['template_extension']),
         'get_report_content_html', setter='set_report_content_html')
-    action = fields.Many2One('ir.action', 'Action', required=True,
-            ondelete='CASCADE')
     direct_print = fields.Boolean('Direct Print')
     single = fields.Boolean("Single",
         help="Check if the template works only for one record.")
@@ -746,8 +755,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         'act_window', 'Domains')
     domains = fields.Function(fields.Binary('Domains'), 'get_domains')
     limit = fields.Integer('Limit', help='Default limit for the list view.')
-    action = fields.Many2One('ir.action', 'Action', required=True,
-            ondelete='CASCADE')
     search_value = fields.Char('Search Criteria',
             help='Default search criteria for the list view.')
     pyson_domain = fields.Function(fields.Char('PySON Domain'), 'get_pyson')
@@ -1076,8 +1083,6 @@ class ActionWizard(ActionMixin, ModelSQL, ModelView):
     __name__ = 'ir.action.wizard'
     _action_name = 'wiz_name'
     wiz_name = fields.Char('Wizard name', required=True)
-    action = fields.Many2One('ir.action', 'Action', required=True,
-            ondelete='CASCADE')
     model = fields.Char('Model')
     window = fields.Boolean('Window', help='Run wizard in a new window.')
 
@@ -1101,8 +1106,6 @@ class ActionURL(ActionMixin, ModelSQL, ModelView):
     "Action URL"
     __name__ = 'ir.action.url'
     url = fields.Char('Action Url', required=True)
-    action = fields.Many2One('ir.action', 'Action', required=True,
-            ondelete='CASCADE')
 
     @staticmethod
     def default_type():
