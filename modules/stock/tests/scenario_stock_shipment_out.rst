@@ -4,15 +4,15 @@ Stock Shipment Out Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = datetime.date.today()
-    >>> yesterday = today - relativedelta(days=1)
+
+    >>> today = dt.date.today()
+    >>> yesterday = today - dt.timedelta(days=1)
 
 Activate modules::
 

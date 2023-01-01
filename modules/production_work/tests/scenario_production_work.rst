@@ -4,14 +4,14 @@ Production Work Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -216,7 +216,7 @@ Run works::
     'draft'
     >>> work2.click('start')
     >>> cycle2, = [c for c in work2.active_cycles]
-    >>> cycle2.duration = datetime.timedelta(hours=1)
+    >>> cycle2.duration = dt.timedelta(hours=1)
     >>> cycle2.save()
     >>> work2.click('stop')
     >>> work2.state

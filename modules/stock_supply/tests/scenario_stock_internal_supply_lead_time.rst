@@ -4,15 +4,15 @@ Stock Internal Supply Lead Time Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = datetime.date.today()
-    >>> tomorrow = today + relativedelta(days=1)
+
+    >>> today = dt.date.today()
+    >>> tomorrow = today + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -61,7 +61,7 @@ Add lead time between warehouses::
     >>> lead_time = LeadTime()
     >>> lead_time.warehouse_from = warehouse_loc
     >>> lead_time.warehouse_to = sec_warehouse_loc
-    >>> lead_time.lead_time = datetime.timedelta(1)
+    >>> lead_time.lead_time = dt.timedelta(1)
     >>> lead_time.save()
 
 Create internal order point::

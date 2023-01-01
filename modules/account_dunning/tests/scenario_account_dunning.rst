@@ -198,7 +198,7 @@ Process dunning::
     >>> dunning.reload()
     >>> dunning.state
     'waiting'
-    >>> dunning.date == today
+    >>> bool(dunning.date)
     True
 
 Create dunnings on 30 days with blocked dunning::

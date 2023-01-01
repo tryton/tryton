@@ -4,17 +4,17 @@ Production Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.production.production import BOM_CHANGES
-    >>> today = datetime.date.today()
-    >>> yesterday = today - relativedelta(days=1)
-    >>> before_yesterday = yesterday - relativedelta(days=1)
+
+    >>> today = dt.date.today()
+    >>> yesterday = today - dt.timedelta(days=1)
+    >>> before_yesterday = yesterday - dt.timedelta(days=1)
 
 Activate modules::
 
@@ -97,7 +97,7 @@ Create Bill of Material::
     >>> production_lead_time = ProductionLeadTime()
     >>> production_lead_time.product = product
     >>> production_lead_time.bom = bom
-    >>> production_lead_time.lead_time = datetime.timedelta(1)
+    >>> production_lead_time.lead_time = dt.timedelta(1)
     >>> production_lead_time.save()
 
 Create an Inventory::

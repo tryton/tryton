@@ -4,7 +4,6 @@ Purchase Product Quantity Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
@@ -13,8 +12,6 @@ Imports::
     ...     create_chart, get_accounts)
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
-
-    >>> today = dt.date.today()
 
 Activate modules::
 

@@ -4,7 +4,6 @@ Account Cash Rounding Alternate Currency Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,8 +14,6 @@ Imports::
     ...     create_fiscalyear, create_chart, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> today = dt.date.today()
-    >>> tomorrow = today + dt.timedelta(days=1)
 
 Activate modules::
 

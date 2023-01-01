@@ -4,7 +4,7 @@ Account Dunning Fee Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -12,7 +12,6 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -87,10 +86,10 @@ Create dunning procedure::
     >>> Procedure = Model.get('account.dunning.procedure')
     >>> procedure = Procedure(name='Procedure Fee')
     >>> level = procedure.levels.new()
-    >>> level.overdue = datetime.timedelta(5)
+    >>> level.overdue = dt.timedelta(5)
     >>> level.fee = fee
     >>> level = procedure.levels.new()
-    >>> level.overdue = datetime.timedelta(10)
+    >>> level.overdue = dt.timedelta(10)
     >>> level.fee = fee_pc
     >>> procedure.save()
 
@@ -131,8 +130,8 @@ Create dunning on 5 days::
 
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
-    >>> create_dunning.form.date = (period.start_date
-    ...     + datetime.timedelta(days=5))
+    >>> create_dunning.form.date = (
+    ...     period.start_date + dt.timedelta(days=5))
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
 
@@ -156,7 +155,7 @@ Create dunning on 10 days::
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = (period.start_date
-    ...     + datetime.timedelta(days=10))
+    ...     + dt.timedelta(days=10))
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
 

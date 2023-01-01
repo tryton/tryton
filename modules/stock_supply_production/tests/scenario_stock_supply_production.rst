@@ -11,6 +11,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.stock.exceptions import MoveFutureWarning
+
     >>> today = dt.date.today()
 
 Activate modules::

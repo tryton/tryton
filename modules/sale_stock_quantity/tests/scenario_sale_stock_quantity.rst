@@ -4,7 +4,7 @@ Sale Stock Quantity
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +15,9 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.stock.exceptions import InventoryFutureWarning
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
+    >>> later = today + dt.timedelta(days=2)
 
 Activate modules::
 
@@ -29,7 +31,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, (today, later)))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -77,7 +79,7 @@ Create product::
     >>> product_supplier = ProductSupplier()
     >>> product_supplier.template = template
     >>> product_supplier.party = supplier
-    >>> product_supplier.lead_time = datetime.timedelta(3)
+    >>> product_supplier.lead_time = dt.timedelta(3)
     >>> product_supplier.save()
 
 Create payment term::
@@ -165,7 +167,7 @@ Make an inventory of 3 products in 2 days::
 
     >>> inventory = Inventory()
     >>> inventory.location = storage
-    >>> inventory.date = today + datetime.timedelta(2)
+    >>> inventory.date = later
     >>> inventory_line = inventory.lines.new(product=product)
     >>> inventory_line.quantity = 3.0
     >>> inventory_line.expected_quantity = 5.0

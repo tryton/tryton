@@ -4,7 +4,6 @@ Account Asset Depreciated Scenario
 
 Imports::
 
-    >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -17,7 +16,6 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.account_asset.tests.tools \
     ...     import add_asset_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -77,7 +75,7 @@ Depreciate the asset::
     >>> asset.product = asset_product
     >>> asset.value = Decimal('1500.00')
     >>> asset.depreciated_amount = Decimal('500.00')
-    >>> asset.start_date = today + relativedelta(day=1, month=1)
+    >>> asset.start_date = fiscalyear.start_date
     >>> asset.purchase_date = asset.start_date
     >>> asset.end_date = (asset.start_date +
     ...     relativedelta(years=2, days=-1))

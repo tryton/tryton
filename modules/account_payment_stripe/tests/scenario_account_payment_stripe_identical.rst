@@ -16,6 +16,8 @@ Imports::
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
 
+    >>> today = dt.date.today()
+
 Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
@@ -65,7 +67,7 @@ Create a customer::
     ...     card={
     ...         'number': '4012888888881881',
     ...         'exp_month': 12,
-    ...         'exp_year': dt.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -90,7 +92,7 @@ Create a second customer with same card::
     ...     card={
     ...         'number': '4012888888881881',
     ...         'exp_month': 12,
-    ...         'exp_year': dt.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )

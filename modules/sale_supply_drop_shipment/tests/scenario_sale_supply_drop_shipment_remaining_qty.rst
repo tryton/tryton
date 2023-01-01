@@ -4,8 +4,7 @@ Sale Supply Drop Shipment Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +14,6 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -82,7 +80,7 @@ Create product::
     >>> product_supplier.template = template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.lead_time = datetime.timedelta(0)
+    >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
 
 Create payment term::

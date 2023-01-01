@@ -4,7 +4,7 @@ Account Stock Continental Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -17,7 +17,8 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.account_stock_continental.tests.tools import \
     ...     add_stock_accounts
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -36,7 +37,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.account_stock_method = 'continental'
     >>> fiscalyear.click('create_period')
 
@@ -86,7 +87,7 @@ Create product::
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
-    >>> template.lead_time = datetime.timedelta(0)
+    >>> template.lead_time = dt.timedelta(0)
     >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
@@ -282,7 +283,7 @@ Create Drop Shipment Move::
     >>> product_supplier.template = product.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.lead_time = datetime.timedelta(0)
+    >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
     >>> product.template.supply_on_sale = True
     >>> product.template.save()
@@ -335,7 +336,7 @@ Create Drop Shipment Move::
     >>> product_supplier.template = product_average.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.lead_time = datetime.timedelta(0)
+    >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
     >>> product_average.template.supply_on_sale = True
     >>> product_average.template.save()

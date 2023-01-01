@@ -4,7 +4,6 @@ Analytic Budget Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -12,7 +11,6 @@ Imports::
     ...     create_company, get_company)
     >>> from trytond.modules.account.tests.tools import (
     ...     create_fiscalyear, create_chart, get_accounts)
-    >>> today = dt.date.today()
 
 Activate the analytic_budget module::
 

@@ -3,8 +3,8 @@ Invoice Scenario
 ================
 
 Imports::
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts, create_tax, create_tax_code
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -33,7 +33,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
     >>> period_ids = [p.id for p in fiscalyear.periods]
@@ -167,6 +167,7 @@ Test change tax::
 
 Post invoice::
 
+    >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
     'posted'
@@ -219,7 +220,7 @@ Credit invoice with refund::
     >>> invoice.reload()
     >>> invoice.state
     'cancelled'
-    >>> invoice.reconciled == today
+    >>> bool(invoice.reconciled)
     True
     >>> credit_note, = Invoice.find([
     ...     ('type', '=', 'out'), ('id', '!=', invoice.id)])

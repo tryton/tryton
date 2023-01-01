@@ -4,8 +4,6 @@ Purchase Shipment Cost with Account Stock Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -17,7 +15,6 @@ Imports::
     ...     set_fiscalyear_invoice_sequences
     >>> from trytond.modules.account_stock_continental.tests.tools import \
     ...     add_stock_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 

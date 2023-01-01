@@ -4,14 +4,15 @@ Stock Average Cost Price
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
+    >>> next_day = today + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -147,7 +148,7 @@ Reduce Cost Price by 80%, to force to write recomputed price later::
 
     >>> modify_cost_price = Wizard('product.modify_cost_price', [product])
     >>> modify_cost_price.form.cost_price = 'cost_price * 0.8'
-    >>> modify_cost_price.form.date = today + datetime.timedelta(days=1)
+    >>> modify_cost_price.form.date = next_day
     >>> modify_cost_price.execute('modify')
     >>> product.cost_price
     Decimal('140.0000')
@@ -157,7 +158,7 @@ Increase Cost Price by 10% using Template wizard::
     >>> modify_cost_price = Wizard(
     ...     'product.modify_cost_price', [product.template])
     >>> modify_cost_price.form.cost_price = 'cost_price * 1.1'
-    >>> modify_cost_price.form.date = today + datetime.timedelta(days=1)
+    >>> modify_cost_price.form.date = next_day
     >>> modify_cost_price.execute('modify')
     >>> product.reload()
     >>> product.cost_price

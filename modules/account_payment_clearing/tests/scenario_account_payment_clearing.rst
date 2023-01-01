@@ -3,8 +3,8 @@ Payment Clearing Scenario
 =========================
 
 Imports::
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,9 +15,9 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
-    >>> yesterday = today - relativedelta(days=1)
-    >>> first = today  + relativedelta(day=1)
+    >>> today = dt.date.today()
+    >>> yesterday = today - dt.timedelta(days=1)
+    >>> first = today + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -31,7 +31,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, (yesterday, first)))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -62,7 +62,7 @@ Create payment journal::
     >>> payment_journal = PaymentJournal(name='Manual',
     ...     process_method='manual', clearing_journal=expense,
     ...     clearing_account=bank_clearing,
-    ...     clearing_posting_delay=datetime.timedelta(1))
+    ...     clearing_posting_delay=dt.timedelta(1))
     >>> payment_journal.save()
 
 Create parties::
@@ -110,8 +110,6 @@ Partially pay the line::
 Succeed payment::
 
     >>> succeed = Wizard('account.payment.succeed', [payment])
-    >>> succeed.form.date == today
-    True
     >>> succeed.form.date = first
     >>> succeed.execute('succeed')
     >>> payment.state

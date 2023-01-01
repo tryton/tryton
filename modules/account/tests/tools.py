@@ -12,7 +12,7 @@ __all__ = ['create_fiscalyear', 'create_chart', 'get_accounts',
 
 
 def create_fiscalyear(company=None, today=None, config=None):
-    "Create a fiscal year for the company on today"
+    "Create a fiscal year for the company on today or range"
     FiscalYear = Model.get('account.fiscalyear', config=config)
     Sequence = Model.get('ir.sequence', config=config)
     SequenceType = Model.get('ir.sequence.type', config=config)
@@ -22,10 +22,18 @@ def create_fiscalyear(company=None, today=None, config=None):
 
     if not today:
         today = datetime.date.today()
+    if isinstance(today, datetime.date):
+        start_date = end_date = today
+    else:
+        start_date, end_date = today
+        today = start_date + (end_date - start_date) / 2
+    start_date = min(start_date, today - relativedelta(months=6, day=1))
+    end_date = max(end_date, today + relativedelta(months=5, day=31))
+    assert start_date <= end_date
 
     fiscalyear = FiscalYear(name=str(today.year))
-    fiscalyear.start_date = today + relativedelta(month=1, day=1)
-    fiscalyear.end_date = today + relativedelta(month=12, day=31)
+    fiscalyear.start_date = start_date
+    fiscalyear.end_date = end_date
     fiscalyear.company = company
 
     sequence_type, = SequenceType.find(

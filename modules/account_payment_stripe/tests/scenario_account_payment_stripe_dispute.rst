@@ -5,7 +5,7 @@ Account Payment Stripe Dispute Scenario
 Imports::
 
     >>> import os
-    >>> import datetime
+    >>> import datetime as dt
     >>> import time
     >>> from decimal import Decimal
     >>> import stripe
@@ -15,6 +15,8 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -28,7 +30,7 @@ Create company::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, today)
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -87,7 +89,7 @@ Create fully disputed payment::
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -180,7 +182,7 @@ Create partial disputed payment::
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -251,7 +253,7 @@ Create won disputed payment::
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )

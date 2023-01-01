@@ -10,6 +10,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
+
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
 

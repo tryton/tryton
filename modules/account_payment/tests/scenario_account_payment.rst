@@ -3,7 +3,8 @@ Payment Scenario
 ================
 
 Imports::
-    >>> import datetime
+
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -11,7 +12,9 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
+    >>> today = dt.date.today()
+    >>> tomorrow = today + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -38,7 +41,7 @@ Set employee::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, (today, tomorrow))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::

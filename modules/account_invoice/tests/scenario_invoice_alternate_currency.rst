@@ -4,8 +4,7 @@ Invoice Scenario Alternate Currency
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
@@ -17,8 +16,8 @@ Imports::
     ...     create_chart, get_accounts, create_tax
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
-    >>> tomorrow = today + relativedelta(days=1)
+    >>> today = dt.date.today()
+    >>> tomorrow = today + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -44,11 +43,8 @@ Set alternate currency rates::
 Create fiscal years::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today))
+    ...     create_fiscalyear(company, (today, tomorrow)))
     >>> fiscalyear.click('create_period')
-    >>> next_fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today + relativedelta(years=1)))
-    >>> next_fiscalyear.click('create_period')
 
 Create chart of accounts::
 
@@ -147,6 +143,7 @@ Create invoice with alternate currency::
     Decimal('40.00')
     >>> invoice.total_amount
     Decimal('460.00')
+    >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

@@ -18,6 +18,8 @@ Imports::
     >>> from trytond.modules.account_invoice_defer.tests.tools import (
     ...     add_deferred_accounts)
 
+    >>> today = dt.date.today()
+
 Activate modules::
 
     >>> config = activate_modules('account_invoice_defer')
@@ -36,7 +38,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
@@ -81,7 +83,7 @@ Create invoice::
     >>> line.unit_price = Decimal('1000')
     >>> line.defer_from = period.start_date
     >>> line.defer_to = line.defer_from + dt.timedelta(days=499)
-    >>> invoice.invoice_date = dt.date.today()
+    >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice_line, = invoice.lines
 

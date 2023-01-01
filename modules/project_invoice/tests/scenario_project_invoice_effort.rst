@@ -4,8 +4,7 @@ Project Invoice Effort Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
@@ -15,7 +14,6 @@ Imports::
     ...     get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -120,12 +118,12 @@ Create a Project::
     >>> project.party = customer
     >>> project.project_invoice_method = 'effort'
     >>> project.product = product
-    >>> project.effort_duration = datetime.timedelta(hours=1)
+    >>> project.effort_duration = dt.timedelta(hours=1)
     >>> task = project.children.new()
     >>> task.name = 'Task 1'
     >>> task.type = 'task'
     >>> task.product = product
-    >>> task.effort_duration = datetime.timedelta(hours=5)
+    >>> task.effort_duration = dt.timedelta(hours=5)
     >>> task_no_effort = project.children.new()
     >>> task_no_effort.name = "Task 2"
     >>> task_no_effort.type = 'task'
@@ -133,7 +131,7 @@ Create a Project::
     >>> task_fixed = project.children.new()
     >>> task_fixed.name = "Task 2"
     >>> task_fixed.type = 'task'
-    >>> task_fixed.effort_duration = datetime.timedelta(hours=2)
+    >>> task_fixed.effort_duration = dt.timedelta(hours=2)
     >>> task_fixed.product = product_fixed
     >>> project.save()
     >>> task, task_no_effort, task_fixed = project.children

@@ -4,7 +4,7 @@ Purchase Request Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -13,7 +13,8 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import (create_chart,
     ...     get_accounts)
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -42,7 +43,7 @@ Configure supply period::
 
     >>> PurchaseConfig = Model.get('purchase.configuration')
     >>> purchase_config = PurchaseConfig(1)
-    >>> purchase_config.supply_period = datetime.timedelta(days=30)
+    >>> purchase_config.supply_period = dt.timedelta(days=30)
     >>> purchase_config.save()
 
 Create stock admin user::
@@ -120,7 +121,7 @@ Define a product supplier::
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> product_supplier = ProductSupplier(template=template)
     >>> product_supplier.party = supplier
-    >>> product_supplier.lead_time = datetime.timedelta(days=1)
+    >>> product_supplier.lead_time = dt.timedelta(days=1)
     >>> product_supplier.save()
 
 Get stock locations::
@@ -155,7 +156,7 @@ Create needs for missing product::
     >>> shipment_out.click('wait')
 
     >>> shipment_out, = shipment_out.duplicate(
-    ...     default={'planned_date': today + datetime.timedelta(days=10)})
+    ...     default={'planned_date': today + dt.timedelta(days=10)})
     >>> shipment_out.click('wait')
 
 There is no purchase request::

@@ -4,7 +4,7 @@ Account ES Reporting Alternate Currency Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts, create_fiscalyear)
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -31,7 +31,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::

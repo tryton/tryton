@@ -51,7 +51,7 @@ tests_require = [get_require_version('proteus'),
     get_require_version('trytond_account_statement'),
     get_require_version('trytond_account_statement_rule'),
     get_require_version('trytond_account_invoice'),
-    'python-dateutil']
+    ]
 
 setup(name=name,
     version=version,

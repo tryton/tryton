@@ -4,8 +4,7 @@ Account Dunning Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
@@ -13,7 +12,6 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -82,7 +80,7 @@ Create dunning procedure::
     >>> procedure = Procedure(name='Procedure')
     >>> level = procedure.levels.new()
     >>> level.sequence = 1
-    >>> level.overdue = datetime.timedelta(5)
+    >>> level.overdue = dt.timedelta(5)
     >>> level.print_on_letter = True
     >>> procedure.save()
 
@@ -174,7 +172,7 @@ Create dunnings::
     >>> set_user(dunning_user)
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
-    >>> create_dunning.form.date = period.start_date + relativedelta(days=5)
+    >>> create_dunning.form.date = period.start_date + dt.timedelta(days=5)
     >>> create_dunning.execute('create_')
     >>> dunning, = Dunning.find([])
 

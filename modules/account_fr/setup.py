@@ -47,7 +47,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'), 'python-dateutil']
+tests_require = [get_require_version('proteus')]
 
 setup(name=name,
     version=version,

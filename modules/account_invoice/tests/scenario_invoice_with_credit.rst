@@ -3,8 +3,7 @@ Invoice with credit Scenario
 ============================
 
 Imports::
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
@@ -15,7 +14,6 @@ Imports::
     ...     create_chart, get_accounts, create_tax, create_tax_code
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -74,6 +72,7 @@ Create invoice::
     >>> line.quantity = -2
     >>> line.unit_price = Decimal('5.0000')
     >>> line.taxes.append(Tax(tax.id))
+    >>> invoice.invoice_date = fiscalyear.start_date
     >>> invoice.click('post')
 
     >>> invoice.untaxed_amount

@@ -4,7 +4,6 @@ Account Asset Scenario
 
 Imports::
 
-    >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -17,7 +16,6 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.account_asset.tests.tools \
     ...     import add_asset_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -98,7 +96,7 @@ Buy an asset::
     >>> invoice_line.unit_price = Decimal('1000')
     >>> invoice_line.account == asset_account
     True
-    >>> supplier_invoice.invoice_date = today + relativedelta(day=1, month=1)
+    >>> supplier_invoice.invoice_date = fiscalyear.start_date
     >>> supplier_invoice.click('post')
     >>> supplier_invoice.state
     'posted'

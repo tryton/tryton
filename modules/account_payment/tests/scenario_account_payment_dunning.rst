@@ -41,7 +41,7 @@ Create chart of accounts::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, today)
     >>> fiscalyear.click('create_period')
 
 Create dunning procedure::

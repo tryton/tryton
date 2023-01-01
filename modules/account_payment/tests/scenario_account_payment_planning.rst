@@ -4,7 +4,7 @@ Payment Planning Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -12,9 +12,10 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
-    >>> today = datetime.date.today()
-    >>> tomorrow = today + datetime.timedelta(days=1)
-    >>> next_week = today + datetime.timedelta(weeks=1)
+
+    >>> today = dt.date.today()
+    >>> tomorrow = today + dt.timedelta(days=1)
+    >>> next_week = today + dt.timedelta(weeks=1)
 
 Activate modules::
 
@@ -27,7 +28,7 @@ Create company::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, (today, next_week))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::

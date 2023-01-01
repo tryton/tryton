@@ -4,8 +4,6 @@ Deposit Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -17,7 +15,6 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.account_deposit.tests.tools import \
     ...     add_deposit_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 

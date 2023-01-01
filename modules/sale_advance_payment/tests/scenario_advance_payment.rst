@@ -4,9 +4,8 @@ Sale Advance Payment Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
-    >>> from dateutil.relativedelta import relativedelta
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -17,8 +16,9 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.sale_advance_payment.tests.tools import \
     ...     create_advance_payment_term, add_advance_payment_accounts
-    >>> today = datetime.date.today()
-    >>> next_week = today + relativedelta(days=7)
+
+    >>> today = dt.date.today()
+    >>> next_week = today + dt.timedelta(days=7)
 
 Activate sale_advance_payment::
 
@@ -32,11 +32,8 @@ Create company::
 Create fiscal years::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today))
+    ...     create_fiscalyear(company, (today, next_week)))
     >>> fiscalyear.click('create_period')
-    >>> next_fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today + relativedelta(years=1)))
-    >>> next_fiscalyear.click('create_period')
 
 Create chart of accounts::
 

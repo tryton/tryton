@@ -4,7 +4,7 @@ Project Invoice Timesheet Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
@@ -15,8 +15,9 @@ Imports::
     ...     get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
-    >>> today = datetime.date.today()
-    >>> yesterday = today - datetime.timedelta(days=1)
+
+    >>> today = dt.date.today()
+    >>> yesterday = today - dt.timedelta(days=1)
 
 Activate modules::
 
@@ -135,13 +136,13 @@ Create timesheets::
     >>> line = TimesheetLine()
     >>> line.date = yesterday
     >>> line.employee = employee
-    >>> line.duration = datetime.timedelta(hours=3)
+    >>> line.duration = dt.timedelta(hours=3)
     >>> line.work, = task.timesheet_works
     >>> line.save()
     >>> line = TimesheetLine()
     >>> line.date = today
     >>> line.employee = employee
-    >>> line.duration = datetime.timedelta(hours=2)
+    >>> line.duration = dt.timedelta(hours=2)
     >>> line.work, = project.timesheet_works
     >>> line.save()
 
@@ -199,7 +200,7 @@ Create more timesheets::
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
     >>> line.employee = employee
-    >>> line.duration = datetime.timedelta(hours=4)
+    >>> line.duration = dt.timedelta(hours=4)
     >>> line.work, = task.timesheet_works
     >>> line.save()
 

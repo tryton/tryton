@@ -4,8 +4,6 @@ Purchase Asset Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -17,7 +15,6 @@ Imports::
     ...     set_fiscalyear_invoice_sequences
     >>> from trytond.modules.account_asset.tests.tools \
     ...     import add_asset_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 

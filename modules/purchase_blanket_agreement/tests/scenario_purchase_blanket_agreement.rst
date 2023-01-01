@@ -4,8 +4,7 @@ Purchase Blanket Agreement Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
@@ -15,8 +14,8 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, get_accounts)
 
-    >>> today = datetime.date.today()
-    >>> later = today + relativedelta(days=30)
+    >>> today = dt.date.today()
+    >>> later = today + dt.timedelta(days=30)
 
 
 Activate modules::

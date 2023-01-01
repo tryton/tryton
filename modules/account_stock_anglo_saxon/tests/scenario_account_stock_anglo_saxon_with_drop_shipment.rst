@@ -4,8 +4,7 @@ Account Stock Anglo-Saxon with Drop Shipment Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
@@ -19,7 +18,8 @@ Imports::
     ...     add_stock_accounts
     >>> from trytond.modules.account_stock_anglo_saxon.tests.tools import \
     ...     add_cogs_accounts
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -79,7 +79,7 @@ Create account user::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.account_stock_method = 'anglo_saxon'
     >>> fiscalyear.click('create_period')
 
@@ -132,7 +132,7 @@ Create product::
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
-    >>> template.lead_time = datetime.timedelta(0)
+    >>> template.lead_time = dt.timedelta(0)
     >>> template.supply_on_sale = True
     >>> template.account_category = account_category
     >>> product, = template.products
@@ -143,7 +143,7 @@ Create product::
     >>> product_supplier.template = template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
-    >>> product_supplier.lead_time = datetime.timedelta(0)
+    >>> product_supplier.lead_time = dt.timedelta(0)
     >>> product_supplier.save()
 
 Create payment term::

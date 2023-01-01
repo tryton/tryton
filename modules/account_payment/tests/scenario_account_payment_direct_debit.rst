@@ -16,6 +16,7 @@ Imports::
 
     >>> today = dt.date.today()
     >>> tomorrow = today + dt.timedelta(days=1)
+    >>> after_tomorrow = tomorrow + dt.timedelta(days=1)
 
 Activate modules::
 
@@ -34,7 +35,7 @@ Create company::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, (today, after_tomorrow))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -83,7 +84,7 @@ Create receivable moves::
 Create direct debit::
 
     >>> create_direct_debit = Wizard('account.move.line.create_direct_debit')
-    >>> create_direct_debit.form.date = tomorrow + dt.timedelta(days=1)
+    >>> create_direct_debit.form.date = after_tomorrow
     >>> create_direct_debit.execute('create_')
 
     >>> payment, = Payment.find([])
@@ -99,7 +100,7 @@ Create direct debit::
 Re-run create direct debit does nothing::
 
     >>> create_direct_debit = Wizard('account.move.line.create_direct_debit')
-    >>> create_direct_debit.form.date = tomorrow + dt.timedelta(days=1)
+    >>> create_direct_debit.form.date = after_tomorrow
     >>> create_direct_debit.execute('create_')
 
     >>> Payment.find([]) == [payment]

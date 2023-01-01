@@ -4,8 +4,7 @@ Project Invoice Progress Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
@@ -15,7 +14,6 @@ Imports::
     ...     get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -124,12 +122,12 @@ Create a Project::
     >>> project.party = customer
     >>> project.project_invoice_method = 'progress'
     >>> project.product = product
-    >>> project.effort_duration = datetime.timedelta(hours=1)
+    >>> project.effort_duration = dt.timedelta(hours=1)
     >>> task = project.children.new()
     >>> task.name = 'Task 1'
     >>> task.type = 'task'
     >>> task.product = product
-    >>> task.effort_duration = datetime.timedelta(hours=5)
+    >>> task.effort_duration = dt.timedelta(hours=5)
     >>> task_fixed = project.children.new()
     >>> task_fixed.name = 'Task 2'
     >>> task_fixed.type = 'task'

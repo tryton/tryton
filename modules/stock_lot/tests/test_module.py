@@ -1,10 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import datetime
+import datetime as dt
 from decimal import Decimal
-
-from dateutil.relativedelta import relativedelta
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
@@ -145,7 +143,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         'product': product.id,
                         }])
 
-            today = datetime.date.today()
+            today = dt.date.today()
 
             moves = Move.create([{
                         'product': product.id,
@@ -154,8 +152,8 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         'quantity': 5,
                         'from_location': supplier.id,
                         'to_location': storage.id,
-                        'planned_date': today - relativedelta(days=1),
-                        'effective_date': today - relativedelta(days=1),
+                        'planned_date': today - dt.timedelta(days=1),
+                        'effective_date': today - dt.timedelta(days=1),
                         'company': company.id,
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
@@ -166,8 +164,8 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         'quantity': 10,
                         'from_location': supplier.id,
                         'to_location': storage.id,
-                        'planned_date': today - relativedelta(days=1),
-                        'effective_date': today - relativedelta(days=1),
+                        'planned_date': today - dt.timedelta(days=1),
+                        'effective_date': today - dt.timedelta(days=1),
                         'company': company.id,
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
@@ -178,8 +176,8 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                         'quantity': 3,
                         'from_location': supplier.id,
                         'to_location': storage.id,
-                        'planned_date': today - relativedelta(days=1),
-                        'effective_date': today - relativedelta(days=1),
+                        'planned_date': today - dt.timedelta(days=1),
+                        'effective_date': today - dt.timedelta(days=1),
                         'company': company.id,
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
@@ -187,7 +185,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
             Move.do(moves)
 
             period, = Period.create([{
-                        'date': today - relativedelta(days=1),
+                        'date': today - dt.timedelta(days=1),
                         'company': company.id,
                         }])
             Period.close([period])

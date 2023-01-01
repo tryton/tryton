@@ -4,8 +4,7 @@ Sale Extra Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +14,6 @@ Imports::
     ...     get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -58,7 +56,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
-    >>> template.lead_time = datetime.timedelta(0)
+    >>> template.lead_time = dt.timedelta(0)
     >>> template.list_price = Decimal('20')
     >>> template.account_category = account_category
     >>> template.save()
@@ -69,7 +67,7 @@ Create product::
     >>> extra_template.default_uom = unit
     >>> extra_template.type = 'service'
     >>> extra_template.salable = True
-    >>> extra_template.lead_time = datetime.timedelta(0)
+    >>> extra_template.lead_time = dt.timedelta(0)
     >>> extra_template.list_price = Decimal('3')
     >>> extra_template.account_category = account_category
     >>> extra_template.save()

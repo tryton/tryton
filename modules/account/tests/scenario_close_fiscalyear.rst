@@ -4,7 +4,7 @@ Account Close Fiscalyear Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
 
     >>> from dateutil.relativedelta import relativedelta
@@ -17,7 +17,7 @@ Imports::
     ...     create_fiscalyear, create_chart, get_accounts)
     >>> from trytond.modules.currency.tests.tools import get_currency
 
-    >>> today = datetime.date.today()
+    >>> today = dt.date.today()
     >>> last_year = today - relativedelta(years=1)
 
 Activate modules::

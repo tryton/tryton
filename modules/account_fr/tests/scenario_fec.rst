@@ -4,11 +4,10 @@ FEC Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> import os
     >>> import io
     >>> from decimal import Decimal
-    >>> from dateutil.relativedelta import relativedelta
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -16,8 +15,6 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
     >>> from trytond.modules.account_fr.tests.tools import create_chart, \
     ...     get_accounts
-
-    >>> today = datetime.date(2018, 1, 1)
 
 Activate modules::
 
@@ -34,13 +31,14 @@ Create company::
 Create last year fiscal year::
 
     >>> fiscalyear_previous = create_fiscalyear(
-    ...     company, today=today - relativedelta(years=1))
+    ...     company, (dt.date(2017, 1, 1), dt.date(2017, 12, 31)))
     >>> fiscalyear_previous.click('create_period')
     >>> period_previous = fiscalyear_previous.periods[0]
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company, today=today)
+    >>> fiscalyear = create_fiscalyear(
+    ...     company, (dt.date(2018, 1, 1), dt.date(2018, 12, 31)))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
@@ -153,6 +151,7 @@ With reconciliation::
     ...     [reconcile1, reconcile2])
     >>> reconcile_lines.state == 'end'
     True
+    >>> reconcile_date = reconcile1.reconciliation.create_date
 
 Balance non-deferral::
 
@@ -197,7 +196,7 @@ Generate FEC::
     >>> file = os.path.join(os.path.dirname(__file__), 'FEC.csv')
     >>> with io.open(file, mode='rb') as fp:
     ...     template = fp.read().decode('utf-8')
-    >>> current_date = datetime.date.today().strftime('%Y%m%d')
+    >>> current_date = reconcile_date.strftime('%Y%m%d')
     >>> template = template.format(
     ...         current_date=current_date,
     ...         )

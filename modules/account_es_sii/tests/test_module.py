@@ -331,7 +331,7 @@ class AccountEsSiiTestCase(ModuleTestCase):
             fiscalyear.save()
 
             currency = create_currency('gbp')
-            add_currency_rate(currency, 2)
+            add_currency_rate(currency, 2, fiscalyear.start_date)
 
             party = create_party('Customer', 'eu_vat', 'ES00000000T')
             tax, = Tax.search([

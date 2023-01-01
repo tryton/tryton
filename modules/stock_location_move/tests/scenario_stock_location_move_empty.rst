@@ -4,16 +4,17 @@ Stock Location Move Empty Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
 
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> today = datetime.date.today()
-    >>> yesterday = today - datetime.timedelta(1)
-    >>> tomorrow = today + datetime.timedelta(1)
+
+    >>> today = dt.date.today()
+    >>> yesterday = today - dt.timedelta(1)
+    >>> tomorrow = today + dt.timedelta(1)
 
 Activate modules::
 

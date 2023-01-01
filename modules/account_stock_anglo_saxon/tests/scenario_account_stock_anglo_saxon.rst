@@ -4,8 +4,7 @@ Account Stock Anglo-Saxon Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules, set_user
@@ -19,7 +18,8 @@ Imports::
     ...     add_stock_accounts
     >>> from trytond.modules.account_stock_anglo_saxon.tests.tools import \
     ...     add_cogs_accounts
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -69,7 +69,7 @@ Create the required users::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.account_stock_method = 'anglo_saxon'
     >>> fiscalyear.click('create_period')
 
@@ -121,7 +121,7 @@ Create product::
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
-    >>> template.lead_time = datetime.timedelta(0)
+    >>> template.lead_time = dt.timedelta(0)
     >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
@@ -355,7 +355,7 @@ Now we will use a product with different unit of measure::
     >>> template_by5.sale_uom = unit_5
     >>> template_by5.list_price = Decimal('10')
     >>> template_by5.cost_price_method = 'fixed'
-    >>> template_by5.lead_time = datetime.timedelta(0)
+    >>> template_by5.lead_time = dt.timedelta(0)
     >>> template_by5.account_category = account_category
     >>> product_by5, = template_by5.products
     >>> product_by5.cost_price = Decimal('5')

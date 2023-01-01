@@ -4,7 +4,7 @@ Renew Fiscalyear Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
@@ -14,8 +14,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
     >>> from trytond.modules.account_invoice.tests.tools \
     ...     import set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
-    >>> end_year = today + relativedelta(month=12, day=31)
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -29,7 +28,7 @@ Create company::
 Create fiscal year::
 
     >>> InvoiceSequence = Model.get('account.fiscalyear.invoice_sequence')
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, today)
     >>> fiscalyear = set_fiscalyear_invoice_sequences(fiscalyear)
     >>> fiscalyear.click('create_period')
     >>> inv_seq, = fiscalyear.invoice_sequences
@@ -45,8 +44,8 @@ Create fiscal year::
     ...             })
     >>> period = fiscalyear.periods.new()
     >>> period.name = 'Adjustment'
-    >>> period.start_date = end_year
-    >>> period.end_date = end_year
+    >>> period.start_date = fiscalyear.end_date
+    >>> period.end_date = fiscalyear.end_date
     >>> period.type = 'adjustment'
     >>> fiscalyear.save()
 
@@ -91,7 +90,7 @@ Set the sequence name::
 
     >>> for seq in new_fiscalyear.invoice_sequences:
     ...     seq.out_invoice_sequence.name = ('Sequence %s' %
-    ...         new_fiscalyear.start_date.strftime('%Y'))
+    ...         new_fiscalyear.name)
     ...     seq.out_invoice_sequence.save()
 
 Renew fiscalyear and test sequence name is updated::
@@ -101,6 +100,6 @@ Renew fiscalyear and test sequence name is updated::
     >>> renew_fiscalyear.execute('create_')
     >>> new_fiscalyear, = renew_fiscalyear.actions[0]
     >>> all(seq.out_invoice_sequence.name ==
-    ...         'Sequence %s' % new_fiscalyear.start_date.strftime('%Y')
+    ...         'Sequence %s' % new_fiscalyear.name
     ...     for seq in new_fiscalyear.invoice_sequences)
     True

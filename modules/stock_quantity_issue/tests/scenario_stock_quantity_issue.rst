@@ -7,7 +7,6 @@ Imports::
     >>> from decimal import Decimal
 
     >>> import datetime as dt
-    >>> from dateutil.relativedelta import relativedelta
 
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,9 +14,9 @@ Imports::
     ...     create_company, get_company)
 
     >>> today = dt.date.today()
-    >>> week1 = today + relativedelta(weeks=1)
-    >>> week2 = today + relativedelta(weeks=2)
-    >>> week3 = today + relativedelta(weeks=3)
+    >>> week1 = today + dt.timedelta(weeks=1)
+    >>> week2 = today + dt.timedelta(weeks=2)
+    >>> week3 = today + dt.timedelta(weeks=3)
 
 Activate modules::
 

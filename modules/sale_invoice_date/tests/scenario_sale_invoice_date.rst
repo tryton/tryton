@@ -19,6 +19,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences)
 
     >>> today = dt.date.today()
+    >>> end_month = today + relativedelta(day=31)
 
 Activate modules::
 
@@ -39,7 +40,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, (today, end_month)))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -98,5 +99,5 @@ Make a sale::
 Check invoice date::
 
     >>> invoice, = sale.invoices
-    >>> invoice.invoice_date == today + relativedelta(day=31)
+    >>> invoice.invoice_date == end_month
     True

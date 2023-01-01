@@ -4,7 +4,7 @@ Invoice Scenario Alternate Currency Lower Rate
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -38,7 +38,7 @@ Set alternate currency rates::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -76,6 +76,7 @@ Create invoice with alternate currency::
     >>> line.account = accounts['revenue']
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('80')
+    >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

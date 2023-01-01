@@ -4,8 +4,7 @@ Project Invoice Multiple Parties Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -13,7 +12,6 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -70,7 +68,7 @@ Create a Project with multiple customers::
     >>> project.party = customer1
     >>> project.project_invoice_method = 'effort'
     >>> project.product = product
-    >>> project.effort_duration = datetime.timedelta(hours=1)
+    >>> project.effort_duration = dt.timedelta(hours=1)
 
     >>> subproject = project.children.new()
     >>> subproject.name = 'Subproject'
@@ -78,7 +76,7 @@ Create a Project with multiple customers::
     >>> subproject.party = customer2
     >>> subproject.project_invoice_method = 'effort'
     >>> subproject.product = product
-    >>> subproject.effort_duration = datetime.timedelta(hours=5)
+    >>> subproject.effort_duration = dt.timedelta(hours=5)
 
     >>> project.save()
     >>> subproject, = project.children

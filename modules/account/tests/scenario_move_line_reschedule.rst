@@ -122,7 +122,7 @@ Split line by number::
     (Decimal('33.33'), Decimal('33.33'), Decimal('33.34'))
     >>> term1.amount = Decimal('40.00')
     >>> term2.amount = term3.amount = Decimal('30.00')
-    >>> term3.date += relativedelta(months=1)
+    >>> term3.date = period.end_date + relativedelta(months=3)
 
     >>> reschedule.execute('reschedule')
     >>> reschedule_move, = reschedule.actions[0]

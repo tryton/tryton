@@ -4,8 +4,7 @@ Sale Shipment Cost Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +14,6 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -69,7 +67,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
-    >>> template.lead_time = datetime.timedelta(0)
+    >>> template.lead_time = dt.timedelta(0)
     >>> template.list_price = Decimal('20')
     >>> template.account_category = account_category
     >>> template.save()
@@ -80,7 +78,7 @@ Create product::
     >>> carrier_template.default_uom = unit
     >>> carrier_template.type = 'service'
     >>> carrier_template.salable = True
-    >>> carrier_template.lead_time = datetime.timedelta(0)
+    >>> carrier_template.lead_time = dt.timedelta(0)
     >>> carrier_template.list_price = Decimal('3')
     >>> carrier_template.account_category = account_category
     >>> carrier_template.save()

@@ -4,14 +4,12 @@ Stock Assign Manual Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> import json
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import (
     ...     create_company, get_company)
-    >>> today = dt.date.today()
 
 Activate stock_assign_manual::
 

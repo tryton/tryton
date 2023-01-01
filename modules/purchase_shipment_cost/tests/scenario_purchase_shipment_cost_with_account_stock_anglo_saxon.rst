@@ -4,8 +4,7 @@ Purchase Shipment Cost with Account Stock Anglo-Saxon Scenario
 
 Imports::
 
-    >>> import datetime
-    >>> from dateutil.relativedelta import relativedelta
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -19,7 +18,8 @@ Imports::
     ...     add_stock_accounts
     >>> from trytond.modules.account_stock_anglo_saxon.tests.tools import \
     ...     add_cogs_accounts
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -37,7 +37,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today))
     >>> fiscalyear.account_stock_method = 'anglo_saxon'
     >>> fiscalyear.click('create_period')
 

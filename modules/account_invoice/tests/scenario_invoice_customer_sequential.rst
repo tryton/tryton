@@ -6,8 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> import datetime as dt
-    >>> from dateutil.relativedelta import relativedelta
-    >>> from proteus import Model
+    >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -16,7 +15,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = dt.date.today()
-    >>> past_year = today - relativedelta(years=1)
+    >>> past_year = today - dt.timedelta(days=365)
 
 Activate modules::
 
@@ -30,11 +29,12 @@ Create company::
 Create fiscal years::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=past_year))
+    ...     create_fiscalyear(company, past_year))
     >>> fiscalyear.click('create_period')
-    >>> next_fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, today=today))
-    >>> next_fiscalyear.click('create_period')
+
+    >>> renew_fiscalyear = Wizard('account.fiscalyear.renew')
+    >>> renew_fiscalyear.execute('create_')
+    >>> next_fiscalyear, = renew_fiscalyear.actions[0]
 
 Create chart of accounts::
 

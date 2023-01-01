@@ -5,7 +5,7 @@ Account Payment Stripe Scenario
 Imports::
 
     >>> import os
-    >>> import datetime
+    >>> import datetime as dt
     >>> import time
     >>> from decimal import Decimal
     >>> import stripe
@@ -15,6 +15,8 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -28,7 +30,7 @@ Create company::
 
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, today)
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -102,7 +104,7 @@ Checkout the payment::
     ...     card={
     ...         'number': '4242424242424242',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -144,7 +146,7 @@ Create failing payment::
     ...     card={
     ...         'number': '4000000000000002',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -178,7 +180,7 @@ Checkout the customer::
     ...     card={
     ...         'number': '4012888888881881',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )
@@ -217,7 +219,7 @@ Make payment with customer::
     >>> payment.save()
     >>> _, source = Payment.get_stripe_customer_sources(payment.id, config.context)
     >>> source_id, source_name = source
-    >>> source_name == 'Visa ****1881 12/%s' % (datetime.date.today().year + 1)
+    >>> source_name == 'Visa ****1881 12/%s' % (today.year + 1)
     True
     >>> payment.stripe_customer_source = source_id
     >>> payment.click('submit')
@@ -280,7 +282,7 @@ Checkout the capture payment::
     ...     card={
     ...         'number': '4242424242424242',
     ...         'exp_month': 12,
-    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'exp_year': today.year + 1,
     ...         'cvc': '123',
     ...         },
     ...     )

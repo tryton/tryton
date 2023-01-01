@@ -4,11 +4,13 @@ Stock Product Locations Production Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company
+
+    >>> today = dt.date.today()
 
 Activate modules::
 
@@ -120,7 +122,7 @@ Make a production::
 
     >>> Production = Model.get('production')
     >>> production = Production()
-    >>> production.planned_date = datetime.date.today()
+    >>> production.planned_date = today
     >>> production.product = product
     >>> production.bom = bom
     >>> production.quantity = 2

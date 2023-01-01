@@ -4,7 +4,7 @@ Account ES Reporting Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
     >>> from trytond.tests.tools import activate_modules
@@ -15,7 +15,6 @@ Imports::
     ...     create_chart, get_accounts, create_fiscalyear)
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
-    >>> today = datetime.date.today()
 
 Activate modules::
 
@@ -33,7 +32,8 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company, datetime.date(2018, 1, 1)))
+    ...     create_fiscalyear(
+    ...         company, (dt.date(2018, 1, 1), dt.date(2018, 12, 31))))
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 

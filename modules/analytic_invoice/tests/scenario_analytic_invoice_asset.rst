@@ -4,7 +4,7 @@ Analytic Invoice with Assets Scenario
 
 Imports::
 
-    >>> import datetime
+    >>> import datetime as dt
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from operator import attrgetter
@@ -18,7 +18,10 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.account_asset.tests.tools \
     ...     import add_asset_accounts
-    >>> today = datetime.date.today()
+
+    >>> today = dt.date.today()
+    >>> next_month = today + relativedelta(day=1, month=1)
+    >>> next_next_month = next_month + relativedelta(months=1)
 
 Activate modules::
 
@@ -32,7 +35,7 @@ Create company::
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, (today, next_next_month)))
     >>> fiscalyear.click('create_period')
 
 Create chart of accounts::
@@ -98,7 +101,7 @@ Buy an asset::
     >>> invoice_line.unit_price = Decimal('1000')
     >>> entry, = invoice_line.analytic_accounts
     >>> entry.account = analytic_account
-    >>> supplier_invoice.invoice_date = today + relativedelta(day=1, month=1)
+    >>> supplier_invoice.invoice_date = next_month
     >>> supplier_invoice.click('post')
     >>> supplier_invoice.state
     'posted'
@@ -121,8 +124,7 @@ Depreciate the asset::
 Create Moves for 1 month::
 
     >>> create_moves = Wizard('account.asset.create_moves')
-    >>> create_moves.form.date = (supplier_invoice.invoice_date
-    ...     + relativedelta(months=1))
+    >>> create_moves.form.date = next_next_month
     >>> create_moves.execute('create_moves')
     >>> analytic_account.reload()
     >>> analytic_account.debit
