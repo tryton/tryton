@@ -190,6 +190,7 @@ class Line(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
+        ShipmentOut = pool.get('stock.shipment.out')
 
         if self.supply_state != 'supplied':
             return
@@ -220,7 +221,7 @@ class Line(metaclass=PoolMeta):
 
         moves = set()
         for move in self.moves:
-            if move.shipment:
+            if isinstance(move.shipment, ShipmentOut):
                 for inv_move in move.shipment.inventory_moves:
                     if inv_move.product.id == self.product.id:
                         moves.add(inv_move)
