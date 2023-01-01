@@ -11,7 +11,13 @@ source = os.path.join(root, 'modules')
 destination = os.path.join(root, 'trytond', 'trytond', 'modules')
 
 modules = set()
-for filename in glob.glob('modules/*/setup.py', root_dir=root):
+try:
+    filenames = glob.glob('modules/*/setup.py', root_dir=root)
+except TypeError:
+    # If root_dir is not supported, fallback considering the hook is executed
+    # from the repository root
+    filenames = glob.glob('modules/*/setup.py')
+for filename in filenames:
     modules.add(os.path.basename(os.path.dirname(filename)))
 
 for module in modules:
