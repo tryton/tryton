@@ -200,6 +200,7 @@ class MoveLine(metaclass=PoolMeta):
                 ('credit', '<', 0),
                 ],
             ('maturity_date', '<=', date),
+            ('payment_blocked', '!=', True),
             ]
 
     @classmethod
