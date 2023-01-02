@@ -8880,3 +8880,4 @@ b3e037148aeafb194f42e229193e36b50eb6ef1f trytond-6.4.9
 75bd497adf6510ba3475f7a26b8432084c8e0973 stock_package_shipping_dpd-6.4.3
 e89180ca21ab3bbf1cece2632d13b823deb4916a sale_supply_drop_shipment-6.4.2
 d0d926c6aefbfa5408ee85deefbb67c2952d2229 sale_stock_quantity-6.4.2
+2f9421f3304b02e52d2e5b74c4d3b54dfc82f190 purchase_request_quotation-6.4.2
