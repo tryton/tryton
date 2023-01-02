@@ -194,6 +194,14 @@ Instance methods:
 
     Return a list of translation sources used by :meth:`~Field.definition`.
 
+.. method:: Field.searchable(model)
+
+   Return True if the field is searchable.
+
+.. method:: Field.sortable(model)
+
+   Return True if the field is sortable.
+
 Default value
 =============
 

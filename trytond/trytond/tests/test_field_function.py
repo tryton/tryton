@@ -16,6 +16,29 @@ class FieldFunctionTestCase(unittest.TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_definition(self):
+        pool = Pool()
+        Model = pool.get('test.function.definition')
+
+        definition = Model.function.definition(Model, 'en')
+        self.assertEqual(definition, {
+                'context': '{}',
+                'loading': 'lazy',
+                'name': 'function',
+                'on_change': [],
+                'on_change_with': [],
+                'readonly': True,
+                'required': False,
+                'states': '{}',
+                'type': 'integer',
+                'domain': '[]',
+                'searchable': True,
+                'sortable': False,
+                'help': '',
+                'string': 'Integer',
+                })
+
+    @with_transaction()
     def test_accessor(self):
         "Test accessing field on unsaved instance"
         pool = Pool()

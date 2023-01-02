@@ -1,9 +1,24 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ModelStorage, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+
+
+class FunctionDefinition(ModelStorage):
+    "Function Definition"
+    __name__ = 'test.function.definition'
+    function = fields.Function(
+        fields.Integer("Integer"),
+        'on_change_with_function', searcher='search_function')
+
+    def on_change_with_function(self, name=None):
+        return self.id
+
+    @classmethod
+    def search_function(cls, name, clause):
+        return [('id',) + tuple(clause[1:])]
 
 
 class FunctionAccessor(ModelSQL):
@@ -68,6 +83,7 @@ class FunctionGetterLocalCache(ModelSQL):
 
 def register(module):
     Pool.register(
+        FunctionDefinition,
         FunctionAccessor,
         FunctionAccessorTarget,
         FunctionGetterContext,

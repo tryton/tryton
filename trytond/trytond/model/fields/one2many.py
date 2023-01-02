@@ -433,8 +433,10 @@ class One2Many(Field):
         definition['search_order'] = encoder.encode(self.search_order)
         if self.size is not None:
             definition['size'] = encoder.encode(self.size)
-        definition['sortable'] &= hasattr(model, 'order_' + self.name)
         definition['order'] = (
             getattr(self.get_target(), '_order', None)
             if self.order is None else self.order)
         return definition
+
+    def sortable(self, model):
+        return super().sortable(model) and hasattr(model, f'order_{self.name}')

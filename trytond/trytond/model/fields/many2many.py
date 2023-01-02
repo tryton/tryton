@@ -492,10 +492,12 @@ class Many2Many(Field):
         definition['relation'] = self.get_target().__name__
         definition['search_context'] = encoder.encode(self.search_context)
         definition['search_order'] = encoder.encode(self.search_order)
-        definition['sortable'] &= hasattr(model, 'order_' + self.name)
         definition['order'] = (
             getattr(self.get_target(), '_order', None)
             if self.order is None else self.order)
         if self.size is not None:
             definition['size'] = encoder.encode(self.size)
         return definition
+
+    def sortable(self, model):
+        return super().sortable(model) and hasattr(model, f'order_{self.name}')
