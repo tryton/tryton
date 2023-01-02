@@ -1186,6 +1186,8 @@ class Account(
     def on_change_parent(self):
         if not self.parent:
             return
+        if self.id is not None and self.id >= 0:
+            return
         for field in self.__on_change_parent_fields:
             if (not getattr(self, field)
                     or field in {'reconcile', 'deferral',
