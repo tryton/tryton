@@ -64,9 +64,14 @@ class Invoice(metaclass=PoolMeta):
                     Greatest(table.numbered_at, party.create_date,
                         address.create_date, payment_term.create_date),
                     where=reduce_ids(table.id, ids)
-                    & (table.numbered_at != Null)))
+                    & (table.numbered_at != Null)
+                    & (table.state.in_(cls._history_states()))))
             datetimes.update(cursor)
         return datetimes
+
+    @classmethod
+    def _history_states(cls):
+        return ['posted', 'paid', 'cancelled']
 
     @classmethod
     def set_number(cls, invoices):
