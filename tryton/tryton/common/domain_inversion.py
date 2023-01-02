@@ -381,16 +381,16 @@ def unique_value(domain):
     "Return if unique, the field and the value"
     if (isinstance(domain, list)
             and len(domain) == 1):
-        domain, = domain
-        name = domain[0]
-        value = domain[2]
-        count = 0
-        if len(domain) == 4 and name[-3:] == '.id':
-            count = 1
-            model = domain[3]
-            value = [model, value]
-        if name.count('.') == count and domain[1] == '=':
-            return True, name, value
+        name, operator, value, *model = domain[0]
+        if operator == '=' or (operator == 'in' and len(value) == 1):
+            value = value if operator == '=' else value[0]
+            count = 0
+            if model and name.endswith('.id'):
+                count = 1
+                model = model[0]
+                value = [model, value]
+            if name.count('.') == count:
+                return True, name, value
     return False, None, None
 
 

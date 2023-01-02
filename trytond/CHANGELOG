@@ -1,3 +1,4 @@
+* Manage domain on id in single value list as unique
 * Do not validate domain for empty fields
 * Warn about implicit save() of unsaved relation
 * Raise error message with record name and field in check_xml_record

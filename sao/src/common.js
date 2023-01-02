@@ -2676,18 +2676,19 @@
         unique_value: function(domain) {
             if ((domain instanceof Array) &&
                     (domain.length == 1)) {
-                domain = domain[0];
-                var name = domain[0];
-                var value = domain[2];
-                var count = 0;
-                if (domain.length == 4 && name.endsWith('.id')) {
-                    count = 1;
-                    var model = domain[3];
-                    value = [model, value];
-                }
-                if ((name.split('.').length - 1) == count &&
-                        (domain[1] == '=')) {
-                    return [true, name, value];
+                let [name, operator, value, ...model] = domain[0];
+                if (operator == '=' ||
+                    (operator == 'in' && value.length == 1)) {
+                    value = operator == '=' ? value : value[0];
+                    var count = 0;
+                    if (model.length && name.endsWith('.id')) {
+                        count = 1;
+                        model = model[0];
+                        value = [model, value];
+                    }
+                    if ((name.split('.').length - 1) == count) {
+                        return [true, name, value];
+                    }
                 }
             }
             return [false, null, null];
