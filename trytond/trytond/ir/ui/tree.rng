@@ -388,6 +388,18 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.affix" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="square">
+        <name ns="">border</name>
+        <choice>
+          <value>square</value>
+          <value>circle</value>
+          <value>rounded</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <define name="button">
     <element>
       <name ns="">button</name>

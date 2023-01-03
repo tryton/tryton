@@ -2280,6 +2280,16 @@
                                 }
                             });
                     }
+                    switch (this.attributes.border) {
+                        case 'rounded':
+                            img_tag.addClass('img-rounded');
+                            break;
+                        case 'circle':
+                            img_tag.addClass('img-circle');
+                            break;
+                        default:
+                            break;
+                    }
                 } else {
                     value = this.attributes.string || '';
                     if (!value) {

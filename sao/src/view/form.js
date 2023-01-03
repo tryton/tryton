@@ -1117,6 +1117,16 @@ function eval_pyson(value){
                 'width': (attributes.size || 48) + 'px',
                 'height': (attributes.size || 48) + 'px',
             }).appendTo(this.el);
+            switch (attributes.border) {
+                case 'rounded':
+                    this.img.addClass('img-rounded');
+                    break;
+                case 'circle':
+                    this.img.addClass('img-circle');
+                    break;
+                default:
+                    break;
+            }
         },
         set_state: function(record) {
             Sao.View.Form.Image_._super.set_state.call(this, record);
@@ -4330,7 +4340,16 @@ function eval_pyson(value){
             this.image.css('max-width', this.width);
             this.image.css('height', 'auto');
             this.image.css('width', 'auto');
-
+            switch (attributes.border) {
+                case 'rounded':
+                    this.image.addClass('img-rounded');
+                    break;
+                case 'circle':
+                    this.image.addClass('img-circle');
+                    break;
+                default:
+                    break;
+            }
             var group = this.toolbar('btn-group');
             if (!attributes.readonly) {
                 jQuery('<div/>', {

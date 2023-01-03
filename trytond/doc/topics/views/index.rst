@@ -351,6 +351,11 @@ attributes:
    Only for Text widgets, a :ref:`PYSON statement <topics-pyson>` that is
    evaluated to the language code for which spell checking must be done.
 
+``border``
+   The type of border for the image widget. Available values are ``square``,
+   ``rounded`` or ``circle``.
+   The default value is ``square``.
+
 :ref:`yexpand <common-attributes-yexpand>`,
 :ref:`yfill <common-attributes-yfill>`,
 :ref:`xexpand <common-attributes-xexpand>`,
@@ -385,6 +390,11 @@ Display an image with those attributes:
 ``size``
    The size of the image in pixels.
    The default value is ``48``.
+
+``border``
+   The type of border for the image. Available values are ``square``,
+   ``rounded`` or ``circle``.
+   The default value is ``square``.
 
 :ref:`yexpand <common-attributes-yexpand>`,
 :ref:`yfill <common-attributes-yfill>`,
@@ -734,6 +744,11 @@ displayed in the same column with the attributes:
 
 ``url_size``
    The name of the size parameter to add to the URL.
+
+``border``
+   The type of border for the icon. Available values are ``square``,
+   ``rounded`` or ``circle``.
+   The default value is ``square``.
 
 button
 ------
