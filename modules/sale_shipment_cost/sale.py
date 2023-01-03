@@ -6,7 +6,8 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
-from trytond.modules.sale.exceptions import SaleConfirmError
+from trytond.modules.sale.exceptions import (
+    SaleConfirmError, SaleQuotationError)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -197,6 +198,19 @@ class Sale(metaclass=PoolMeta):
             self.carrier = self.available_carriers[0]
         elif not self.available_carriers:
             self.carrier = None
+
+    def check_for_quotation(self):
+        super().check_for_quotation()
+        if self.shipment_cost_method and self.available_carriers:
+            for line in self.lines:
+                if (line.product
+                        and line.product.type != 'service'
+                        and line.quantity >= 0
+                        and not self.carrier):
+                    raise SaleQuotationError(
+                        gettext('sale'
+                            '.msg_sale_carrier_required_for_quotation',
+                            sale=self.rec_name))
 
     @classmethod
     @ModelView.button
