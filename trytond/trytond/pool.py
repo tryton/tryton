@@ -84,11 +84,13 @@ class Pool(object):
         module = kwargs['module']
         type_ = kwargs['type_']
         depends = set(kwargs.get('depends', []))
-        assert type_ in ('model', 'report', 'wizard')
+        assert type_ in {'model', 'report', 'wizard'}, (
+            f"{type_} is not a valid type_")
         for cls in classes:
             mpool = Pool.classes[type_][module]
-            assert cls not in mpool, cls
-            assert issubclass(cls.__class__, PoolMeta), cls
+            assert cls not in mpool, f"{cls} is already registered"
+            assert issubclass(cls.__class__, PoolMeta), (
+                f"{cls} is missing metaclass {PoolMeta}")
             mpool[cls] = depends
 
     @staticmethod
@@ -233,7 +235,8 @@ class Pool(object):
                         cls.__name__, (cls, previous_cls), {'__slots__': ()})
                 except KeyError:
                     pass
-                assert issubclass(cls, PoolBase), cls
+                assert issubclass(cls, PoolBase), (
+                    f"{cls} is not a subclass of {PoolBase}")
                 self.add(cls, type=type_)
                 classes[type_].append(cls)
         self._modules.append(module)
