@@ -28,8 +28,6 @@ packages:
 
 documentation:
   stage: preparation
-  rules:
-    - when: always
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/sphinxdoc/sphinx
   script:
     - .gitlab-scripts/generate-doc.sh docs
@@ -37,9 +35,16 @@ documentation:
     paths:
       - docs/
     expire_in: 1 week
+  rules:
+    - changes:
+        - "**/*/doc/**/*"
+        - "**/*/tryton.cfg"
+        - "**/*/CHANGELOG"
+        - "readthedocs/**/*"
 
 .check:
   stage: check
+  needs: []
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
 
 .check-doc:
@@ -112,8 +117,6 @@ check-ci-modules:
 
 .test-tox:
   extends: .test
-  needs:
-    - packages
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:${PYTHON_VERSION}
   variables:
     PIP_FIND_LINKS: file://${CI_PROJECT_DIR}/packages/
