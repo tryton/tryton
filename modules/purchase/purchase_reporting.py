@@ -288,7 +288,7 @@ class Supplier(SupplierMixin, Abstract, ModelView):
 
     time_series = fields.One2Many(
         'purchase.reporting.supplier.time_series', 'supplier',
-        lazy_gettext('purchase.msg_purchase_reporting_time_series')),
+        lazy_gettext('purchase.msg_purchase_reporting_time_series'))
 
     @classmethod
     def __setup__(cls):
