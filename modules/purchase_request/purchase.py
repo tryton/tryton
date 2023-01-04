@@ -92,6 +92,12 @@ class Line(metaclass=PoolMeta):
             })
 
     @classmethod
+    def copy(cls, lines, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('requests')
+        return super().copy(lines, default=default)
+
+    @classmethod
     def delete(cls, lines):
         pool = Pool()
         Request = pool.get('purchase.request')
