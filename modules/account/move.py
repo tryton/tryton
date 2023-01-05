@@ -5,7 +5,7 @@ from decimal import Decimal
 from itertools import chain, combinations, groupby, islice
 
 from dateutil.relativedelta import relativedelta
-from sql import Literal, Null
+from sql import Literal, Null, Window
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Abs, CharLength, Round
@@ -731,6 +731,81 @@ class MoveLineMixin:
             currency = self.account.currency
         return currency.id
 
+    @classmethod
+    def get_payable_receivable_balance(cls, lines, name):
+        pool = Pool()
+        Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
+        Move = pool.get('account.move')
+
+        transaction = Transaction()
+        database = transaction.database
+        context = transaction.context
+        cursor = transaction.connection.cursor()
+
+        line = cls.__table__()
+        account = Account.__table__()
+        account_type = AccountType.__table__()
+        move = Move.__table__()
+
+        balances = dict.fromkeys(map(int, lines))
+
+        for company, lines in groupby(lines, lambda l: l.company):
+            for sub_lines in grouped_slice(lines):
+                sub_lines = list(sub_lines)
+                where = account.company == company.id
+                where_type = Literal(False)
+                if context.get('receivable', True):
+                    where_type |= account_type.receivable
+                if context.get('payable', True):
+                    where_type |= account_type.payable
+                where &= where_type
+                if not context.get('reconciled'):
+                    if hasattr(cls, 'reconciliation'):
+                        where &= line.reconciliation == Null
+                    elif hasattr(cls, 'reconciled'):
+                        where &= ~line.reconciled
+
+                currency = Coalesce(line.second_currency, company.currency.id)
+                sign = Case(
+                    (account_type.statement == 'income', -1),
+                    else_=1)
+                balance = sign * Case(
+                    (line.amount_second_currency != Null,
+                        line.amount_second_currency),
+                    else_=line.debit - line.credit)
+                if database.has_window_functions():
+                    balance = Sum(balance,
+                        window=Window(
+                            [line.party, currency],
+                            order_by=[
+                                line.maturity_date.asc,
+                                move.date.desc,
+                                line.id.desc,
+                                ]))
+
+                party_where = Literal(False)
+                parties = {l.party for l in sub_lines}
+                if None in parties:
+                    party_where |= line.party == parties.discard(None)
+                party_where |= reduce_ids(line.party, map(int, parties))
+                where &= party_where
+
+                query = (line
+                    .join(move, condition=line.move == move.id)
+                    .join(account, condition=line.account == account.id)
+                    .join(
+                        account_type,
+                        condition=account.type == account_type.id)
+                    .select(
+                        line.id.as_('id'), balance.as_('balance'),
+                        where=where))
+                cursor.execute(*query.select(
+                        query.id, query.balance,
+                        where=reduce_ids(query.id, [l.id for l in sub_lines])))
+                balances.update(cursor)
+        return balances
+
     def get_rec_name(self, name):
         if self.debit > self.credit:
             return self.account.rec_name
@@ -890,6 +965,11 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                 'invisible': ~Eval('reconciliation', False),
                 }),
         'get_delegated_amount')
+    payable_receivable_balance = fields.Function(
+        Monetary(
+            "Payable/Receivable Balance",
+            currency='amount_currency', digits='amount_currency'),
+        'get_payable_receivable_balance')
 
     del _states
 
@@ -936,6 +1016,12 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                     (table.party, Index.Equality()),
                     (table.id, Index.Equality()),
                     where=table.party != Null),
+                # Index for receivable/payable balance
+                Index(
+                    table,
+                    (table.account, Index.Equality()),
+                    (table.party, Index.Equality()),
+                    where=table.reconciliation == Null),
                 })
 
     @classmethod
@@ -1491,6 +1577,27 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
 
         move.lines = lines
         return move
+
+
+class LineReceivablePayableContext(ModelView):
+    "Receivable/Payable Line Context"
+    __name__ = 'account.move.line.receivable_payable.context'
+
+    reconciled = fields.Boolean("Reconciled")
+    receivable = fields.Boolean("Receivable")
+    payable = fields.Boolean("Payable")
+
+    @classmethod
+    def default_reconciled(cls):
+        return Transaction().context.get('reconciled', False)
+
+    @classmethod
+    def default_receivable(cls):
+        return Transaction().context.get('receivable', True)
+
+    @classmethod
+    def default_payable(cls):
+        return Transaction().context.get('payable', True)
 
 
 class WriteOff(DeactivableMixin, ModelSQL, ModelView):

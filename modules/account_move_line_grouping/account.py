@@ -77,6 +77,11 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
                 'invisible': ~Eval('partially_reconciled', False),
                 }),
         'get_delegated_amount')
+    payable_receivable_balance = fields.Function(
+        Monetary(
+            "Payable/Receivable Balance",
+            currency='amount_currency', digits='amount_currency'),
+        'get_payable_receivable_balance')
 
     partially_reconciled = fields.Boolean(
         "Partially Reconciled", readonly=True)

@@ -1,3 +1,4 @@
+* Add cumulative balance to payable/receivable lines
 * Rename reconciliation name to number
 * Accrue and allocate rounding errors when there are multiple taxes
 * Use match pattern to find journal

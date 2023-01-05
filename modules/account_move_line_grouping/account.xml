@@ -78,11 +78,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_line_group_payable_receivable">
             <field name="name">Payable/Receivable Lines (Grouped)</field>
             <field name="res_model">account.move.line.group</field>
+            <field name="context_model">account.move.line.receivable_payable.context</field>
             <field name="domain"
-                eval="[['OR', ('account.type.receivable', '=', True), ('account.type.payable', '=', True)], If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids'))), ('company', '=', Eval('context', {}).get('company', -1))]"
+                eval="[('party', 'in', Eval('active_ids')), ('company', '=', Eval('context', {}).get('company', -1))]"
                 pyson="1"/>
-            <field name="search_value" eval="[('reconciled', '=', False)]" pyson="1"/>
-            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
+            <field name="context_domain"
+                eval="[['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciled', '=', False))]"
+                pyson="1"/>
+            <field name="search_value"></field>
+            <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_line_group_payable_receivable_view1">
             <field name="sequence" eval="10"/>
@@ -92,23 +96,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view" id="act_move_line_group_payable_receivable_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="move_line_group_view_form_payable_receivable"/>
-            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_payable">
-            <field name="name">Payable</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('account.type.payable', '=', True)]" pyson="1"/>
-            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_receivable">
-            <field name="name">Receivable</field>
-            <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('account.type.receivable', '=', True)]" pyson="1"/>
-            <field name="act_window" ref="act_move_line_group_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain" id="act_move_line_group_payable_receivable_domain_all">
-            <field name="name">All</field>
-            <field name="sequence" eval="9999"/>
             <field name="act_window" ref="act_move_line_group_payable_receivable"/>
         </record>
         <record model="ir.action.keyword" id="act_move_line_group_payable_receivable_keyword1">

@@ -246,39 +246,20 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_move_line_payable_receivable">
             <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
+            <field name="context_model">account.move.line.receivable_payable.context</field>
             <field name="domain"
-                eval="[['OR', ('account.type.receivable', '=', True), ('account.type.payable', '=', True)], If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids'))), ('company', '=', Eval('context', {}).get('company', -1))]"
+                eval="[('party', 'in', Eval('active_ids')), ('company', '=', Eval('context', {}).get('company', -1))]"
                 pyson="1"/>
-            <field name="search_value"
-                eval="[('reconciliation', '=', None)]" pyson="1"/>
+            <field name="context_domain"
+                eval="[['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciliation', '=', None))]"
+                pyson="1"/>
+            <field name="search_value"></field>
             <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_move_line_payable_receivable_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="move_line_view_list_payable_receivable"/>
-            <field name="act_window" ref="act_move_line_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain"
-                id="act_move_line_payable_receivable_domain_payable">
-            <field name="name">Payable</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain"
-                eval="[('account.type.payable', '=', True)]" pyson="1"/>
-            <field name="act_window" ref="act_move_line_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain"
-                id="act_move_line_payable_receivable_domain_receivable">
-            <field name="name">Receivable</field>
-            <field name="sequence" eval="20"/>
-            <field name="domain"
-                eval="[('account.type.receivable', '=', True)]" pyson="1"/>
-            <field name="act_window" ref="act_move_line_payable_receivable"/>
-        </record>
-        <record model="ir.action.act_window.domain"
-                id="act_move_line_payable_receivable_domain_all">
-            <field name="name">All</field>
-            <field name="sequence" eval="9999"/>
             <field name="act_window" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action.keyword"
@@ -291,6 +272,12 @@ this repository contains the full copyright notices and license terms. -->
             id="act_move_line_payable-group_account">
             <field name="action" ref="act_move_line_payable_receivable"/>
             <field name="group" ref="group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_receivable_payable_context_view_form">
+            <field name="model">account.move.line.receivable_payable.context</field>
+            <field name="type">form</field>
+            <field name="name">move_line_receivable_payable_context_form</field>
         </record>
 
         <record model="ir.ui.view" id="open_journal_ask_view_form">

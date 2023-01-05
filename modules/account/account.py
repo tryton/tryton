@@ -261,6 +261,18 @@ class Type(
             })
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        table = cls.__table__()
+        cls._sql_indexes.update({
+                # Index for receivable/payable balance
+                Index(
+                    table,
+                    (table.id, Index.Range()),
+                    where=table.receivable | table.payable),
+                })
+
+    @classmethod
     def __register__(cls, module_name):
         super().__register__(module_name)
         table_h = cls.__table_handler__(module_name)

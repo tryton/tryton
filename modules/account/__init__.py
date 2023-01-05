@@ -53,6 +53,7 @@ def register():
         move.Reconciliation,
         configuration.ConfigurationTaxRounding,
         move.Line,
+        move.LineReceivablePayableContext,
         move.WriteOff,
         move.OpenJournalAsk,
         move.ReconcileLinesWriteOff,
