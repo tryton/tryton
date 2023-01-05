@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Null, Select, Window
+from sql import As, Literal, Null, Select, Window
 from sql.aggregate import BoolAnd, BoolOr, Min, Sum
 from sql.functions import CurrentTimestamp, FirstValue
 
@@ -149,6 +149,8 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
         aggregated_columns = cls._aggregated_columns(line)
 
         columns = std_columns + grouped_columns + aggregated_columns
+        grouped_columns = [
+            c.expression if isinstance(c, As) else c for c in grouped_columns]
         return line.select(*columns, group_by=grouped_columns)
 
     @classmethod
