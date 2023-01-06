@@ -8,7 +8,7 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account import MoveLineMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
 
@@ -191,6 +191,24 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     def get_delegated_amount(self, name):
         return self.amount_currency.round(
             sum(l.delegated_amount for l in self.lines if l.delegated_amount))
+
+    @classmethod
+    def view_attributes(cls):
+        attributes = super().view_attributes()
+        view_ids = cls._view_reconciliation_muted()
+        if Transaction().context.get('view_id') in view_ids:
+            attributes.append(
+                ('/tree', 'visual',
+                    If(Bool(Eval('reconciliation')), 'muted', '')))
+        return attributes
+
+    @classmethod
+    def _view_reconciliation_muted(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return {ModelData.get_id(
+                'account_move_line_grouping',
+                'move_line_group_view_list_payable_receivable')}
 
 
 class MoveLineGroup_MoveLine(ModelSQL):
