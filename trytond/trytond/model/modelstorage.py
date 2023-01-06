@@ -7,6 +7,7 @@ import datetime
 import decimal
 import random
 import time
+import warnings
 from collections import defaultdict
 from decimal import Decimal
 from functools import lru_cache, wraps
@@ -82,6 +83,12 @@ class SelectionValidationError(ValidationError):
 
 class TimeFormatValidationError(ValidationError):
     pass
+
+
+class _UnsavedRecordError(ValueError):
+
+    def __init__(self, record):
+        self.record = record
 
 
 def without_check_access(func):
@@ -1833,7 +1840,7 @@ class ModelStorage(Model):
                 if value:
                     if ((value.id is None or value.id < 0)
                             and field._type != 'reference'):
-                        value.save()
+                        raise _UnsavedRecordError(value)
                     if field._type == 'reference':
                         value = str(value)
                     else:
@@ -1924,7 +1931,14 @@ class ModelStorage(Model):
                         or context != record._context):
                     latter.append(record)
                     continue
-                save_values[record] = record._save_values
+                while True:
+                    try:
+                        save_values[record] = record._save_values
+                        break
+                    except _UnsavedRecordError as e:
+                        warnings.warn(
+                            f"Using an unsaved relation record: {e.record}")
+                        e.record.save()
                 values[record] = record._values
                 record._values = None
                 if record.id is None or record.id < 0:

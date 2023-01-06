@@ -1,3 +1,4 @@
+* Warn about implicit save() of unsaved relation
 * Raise error message with record name and field in check_xml_record
 * Cache RPC call for class method selection
 

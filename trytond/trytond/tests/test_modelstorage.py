@@ -6,6 +6,7 @@ import unittest
 from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
     AccessError, DomainValidationError, RequiredValidationError)
+from trytond.model.modelstorage import _UnsavedRecordError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -150,6 +151,78 @@ class ModelStorageTestCase(unittest.TestCase):
         foo.name = 'foo'
         with self.assertRaises(RequiredValidationError):
             ModelStorage.save([foo, bar])
+
+    @with_transaction()
+    def test_many2one_save_raise_exception(self):
+        "Test _save_values raises _UnsavedRecordError on unsaved record"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save_m2o')
+        Target = pool.get('test.modelstorage.save_m2o.target')
+
+        record = ModelStorage()
+        record.target = target = Target()
+
+        with self.assertRaises(_UnsavedRecordError) as cm:
+            record._save_values
+
+        self.assertEqual(cm.exception.record, target)
+
+    @with_transaction()
+    def test_save_many2one_create(self):
+        "Test saving a record while creating a Many2One"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save_m2o')
+        Target = pool.get('test.modelstorage.save_m2o.target')
+
+        record = ModelStorage()
+        record.target = target = Target()
+        with self.assertWarnsRegex(
+                UserWarning, r"Using an unsaved relation record:"):
+            record.save()
+
+        self.assertIsNotNone(record.id)
+        self.assertIsNotNone(target.id)
+
+    @with_transaction()
+    def test_save_many2one_create_multi(self):
+        "Test saving multiple records while creating a M2O"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save_m2o')
+        Target = pool.get('test.modelstorage.save_m2o.target')
+
+        record1 = ModelStorage()
+        record1.target = target = Target()
+        record1.save()
+
+        record2 = ModelStorage()
+        record2.target = target
+        record2.save()
+
+        ModelStorage.save([record1, record2])
+
+        self.assertIsNotNone(record1.id)
+        self.assertIsNotNone(record2.id)
+        self.assertEqual(record1.target.id, record2.target.id)
+        self.assertNotEqual(record2.id, record1.id)
+
+    @with_transaction()
+    def test_save_many2one_in_one2many_create(self):
+        "Test saving a record while creating a M2O contained in a O2M"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save_m2o')
+        Target = pool.get('test.modelstorage.save_m2o.target')
+        M2OTarget = pool.get('test.modelstorage.save_m2o.o2m_target.target')
+
+        target = Target()
+        target.target = m2o_target = M2OTarget()
+        record = ModelStorage()
+        record.targets = [target]
+        record.save()
+
+        self.assertIsNotNone(record.id)
+        self.assertIsNotNone(m2o_target.id)
+        self.assertEqual(len(record.targets), 1)
+        self.assertEqual(record.targets[0].target, m2o_target)
 
     @with_transaction()
     def test_save_one2many_create(self):

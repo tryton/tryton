@@ -20,6 +20,28 @@ class ModelStorageRequired(ModelSQL):
     name = fields.Char('Name', required=True)
 
 
+class ModelStorageSaveMany2One(ModelSQL):
+    "ModelStorage to test save with Many2One"
+    __name__ = 'test.modelstorage.save_m2o'
+    target = fields.Many2One('test.modelstorage.save_m2o.target', "Target")
+    targets = fields.One2Many(
+        'test.modelstorage.save_m2o.target', 'parent', "Targets")
+
+
+class ModelStorageSaveMany2OneTarget(ModelSQL):
+    "ModelStorage to test save with Many2One - Target"
+    __name__ = 'test.modelstorage.save_m2o.target'
+
+    parent = fields.Many2One('test.modelstorage.save_m2o', "Parent")
+    target = fields.Many2One(
+        'test.modelstorage.save_m2o.o2m_target.target', "Target")
+
+
+class ModelStorageSaveMany2OneTargetTarget(ModelSQL):
+    "ModelStorage to test save with Many2One - Target of Target"
+    __name__ = 'test.modelstorage.save_m2o.o2m_target.target'
+
+
 class ModelStorageSave2Many(ModelSQL):
     "Model Storage to test save with xxx2many"
     __name__ = 'test.modelstorage.save2many'
@@ -176,6 +198,9 @@ def register(module):
     Pool.register(
         ModelStorage,
         ModelStorageRequired,
+        ModelStorageSaveMany2One,
+        ModelStorageSaveMany2OneTarget,
+        ModelStorageSaveMany2OneTargetTarget,
         ModelStorageSave2Many,
         ModelStorageSave2ManyTarget,
         ModelStorageSave2ManyRelation,
