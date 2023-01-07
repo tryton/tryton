@@ -1207,7 +1207,9 @@ class ModelStorage(Model):
                     Relation = field.get_target()
                 elif field._type == 'reference':
                     value = getattr(record, field.name)
-                    Relation = value.__class__ if value else None
+                    Relation = (
+                        value.__class__ if isinstance(value, ModelStorage)
+                        else None)
                 else:
                     Relation = cls
                 return Relation

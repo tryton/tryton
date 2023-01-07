@@ -511,6 +511,28 @@ class FieldReferenceTestCase(unittest.TestCase):
         self.assertEqual(reference.reference, None)
 
     @with_transaction()
+    def test_domain_no_id_value(self):
+        "Test reference with domain and no id"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+
+        reference, = Reference.create([{
+                    'reference': 'test.reference.target,',
+                    }])
+        self.assertEqual(reference.reference, 'test.reference.target,')
+
+    @with_transaction()
+    def test_domain_negative_id_value(self):
+        "Test reference with domain and negative id"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation')
+
+        reference, = Reference.create([{
+                    'reference': 'test.reference.target,-1',
+                    }])
+        self.assertEqual(reference.reference, 'test.reference.target,-1')
+
+    @with_transaction()
     def test_domain_different_targets(self):
         "Test reference with domain and different targets"
         pool = Pool()
@@ -543,6 +565,28 @@ class FieldReferenceTestCase(unittest.TestCase):
                     'reference': str(target),
                     }])
         self.assertEqual(reference.reference, target)
+
+    @with_transaction()
+    def test_domain_pyson_no_id_value(self):
+        "Test reference with pyson domain and no id"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation_pyson')
+
+        reference, = Reference.create([{
+                    'reference': 'test.reference.target,',
+                    }])
+        self.assertEqual(reference.reference, 'test.reference.target,')
+
+    @with_transaction()
+    def test_domain_pyson_negative_id_value(self):
+        "Test reference with pyson domain and negative id"
+        pool = Pool()
+        Reference = pool.get('test.reference_domainvalidation_pyson')
+
+        reference, = Reference.create([{
+                    'reference': 'test.reference.target,-1',
+                    }])
+        self.assertEqual(reference.reference, 'test.reference.target,-1')
 
     @with_transaction()
     def test_domain_pyson_different_targets(self):
