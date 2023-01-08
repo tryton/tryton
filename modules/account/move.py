@@ -489,7 +489,8 @@ class Move(ModelSQL, ModelView):
 class Reconciliation(ModelSQL, ModelView):
     'Account Move Reconciliation Lines'
     __name__ = 'account.move.reconciliation'
-    name = fields.Char('Name', size=None, required=True)
+    _rec_name = 'number'
+    number = fields.Char("Number", required=True)
     company = fields.Many2One('company.company', "Company", required=True)
     lines = fields.One2Many(
         'account.move.line', 'reconciliation', 'Lines',
@@ -508,6 +509,7 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(Index(t, (t.date, Index.Range())))
@@ -526,6 +528,10 @@ class Reconciliation(ModelSQL, ModelView):
 
         date_exist = table.column_exist('date')
         company_exist = table.column_exist('company')
+
+        # Migration from 6.6: rename name to number
+        if table.column_exist('name') and not table.column_exist('number'):
+            table.column_rename('name', 'number')
 
         super(Reconciliation, cls).__register__(module_name)
 
@@ -552,9 +558,9 @@ class Reconciliation(ModelSQL, ModelView):
             cursor.execute(*sql_table.update([sql_table.company], [value]))
 
     @classmethod
-    def order_name(cls, tables):
+    def order_number(cls, tables):
         table, _ = tables[None]
-        return [CharLength(table.name), table.name]
+        return [CharLength(table.number), table.number]
 
     @classmethod
     def default_company(cls):
@@ -569,8 +575,8 @@ class Reconciliation(ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         default_company = cls.default_company()
         for vals in vlist:
-            if 'name' not in vals:
-                vals['name'] = configuration.get_multivalue(
+            if 'number' not in vals:
+                vals['number'] = configuration.get_multivalue(
                     'reconciliation_sequence',
                     company=vals.get('company', default_company)).get()
 
