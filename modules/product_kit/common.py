@@ -293,7 +293,7 @@ def order_line_component_mixin(prefix):
             for component in components:
                 product = component.product
                 list_price = Uom.compute_price(
-                    product.default_uom, product.list_price,
+                    product.default_uom, product.list_price_used or 0,
                     component.unit)
                 if component.fixed:
                     list_price *= Decimal(str(component.quantity / quantity))
