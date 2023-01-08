@@ -345,6 +345,7 @@ class ModuleDependency(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModuleDependency, cls).__setup__()
+        cls.__access__.add('module')
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_module_uniq', Unique(table, table.name, table.module),
