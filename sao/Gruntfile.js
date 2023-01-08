@@ -156,6 +156,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-po2json');
+  grunt.loadNpmTasks('grunt-qunit-junit');
 
   grunt.registerTask('default', 'Build for production.', function() {
     grunt.task.run(['concat', 'jshint', 'uglify', 'less', 'po2json']);
@@ -177,7 +178,7 @@ module.exports = function(grunt) {
   });
   grunt.registerTask('test', 'Run tests', function() {
     grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.task.run(['concat', 'jshint', 'less:dev', 'qunit']);
+    grunt.task.run(['concat', 'jshint', 'less:dev', 'qunit_junit', 'qunit']);
     });
 
 };

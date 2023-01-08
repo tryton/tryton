@@ -127,7 +127,10 @@ check-ci-modules:
   before_script:
     - pip install tox
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
+  artifacts:
+    reports:
+      junit: ${PACKAGE}/junit.xml
   parallel:
     matrix:
       - PYTHON_VERSION: ["3.7", "3.8", "3.9", "3.10"]
@@ -137,7 +140,7 @@ check-ci-modules:
   variables:
     DB_CACHE: /tmp/cache
   script:
-    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -vv -- -v
+    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
 
 .test-sqlite:
   extends: .test-db
@@ -162,7 +165,7 @@ check-ci-modules:
     POSTGIS_URI: postgis://postgres@postgis:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
   services:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgis/postgis
       alias: postgis
@@ -182,6 +185,9 @@ check-ci-modules:
     - cd "${PACKAGE}"
     - npm -s install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
     - npm test
+  artifacts:
+    reports:
+      junit: ${PACKAGE}/_build/test-reports/*.xml
 
 .trigger-doc-build:
   stage: build
