@@ -128,9 +128,13 @@ check-ci-modules:
     - pip install tox
   script:
     - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -vv -- -v --output-file junit.xml
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   artifacts:
     reports:
       junit: ${PACKAGE}/junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: ${PACKAGE}/coverage.xml
   parallel:
     matrix:
       - PYTHON_VERSION: ["3.7", "3.8", "3.9", "3.10"]
