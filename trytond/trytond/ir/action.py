@@ -962,10 +962,14 @@ class ActionActWindowView(
         sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     "Action act window view"
     __name__ = 'ir.action.act_window.view'
-    view = fields.Many2One('ir.ui.view', 'View', required=True,
-            ondelete='CASCADE')
+    view = fields.Many2One(
+        'ir.ui.view', "View", required=True, ondelete='CASCADE',
+        domain=[
+            ('model', '=', Eval('model')),
+            ])
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')
+    model = fields.Function(fields.Char("Model"), 'on_change_with_model')
 
     @classmethod
     def __register__(cls, module_name):
@@ -975,6 +979,11 @@ class ActionActWindowView(
 
         # Migration from 5.0: remove required on sequence
         table.not_null_action('sequence', 'remove')
+
+    @fields.depends('act_window', '_parent_act_window.res_model')
+    def on_change_with_model(self, name=None):
+        if self.act_window:
+            return self.act_window.res_model
 
     @classmethod
     def create(cls, vlist):
