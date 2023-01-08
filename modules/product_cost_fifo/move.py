@@ -29,10 +29,19 @@ class Move(metaclass=PoolMeta):
 
         t = cls.__table__()
         cls._sql_constraints += [
-            ('check_fifo_quantity_out',
+            ('check_fifo_quantity',
                 Check(t, t.quantity >= t.fifo_quantity),
                 'product_cost_fifo.msg_move_fifo_quantity_greater'),
             ]
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 6.6: rename check_fifo_quantity_out to
+        # check_fifo_quantity
+        table_h.drop_constraint('check_fifo_quantity_out')
 
     @staticmethod
     def default_fifo_quantity():
