@@ -163,6 +163,7 @@ class ActionKeyword(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ActionKeyword, cls).__setup__()
+        cls.__access__.add('action')
         table = cls.__table__()
 
         cls.__rpc__.update({
@@ -314,6 +315,7 @@ class ActionMixin(ModelSQL):
     def __setup__(cls):
         pool = Pool()
         super(ActionMixin, cls).__setup__()
+        cls.__access__.add('action')
         cls.action.domain = [
             ('type', '=', cls.__name__),
             ]
@@ -972,6 +974,11 @@ class ActionActWindowView(
     model = fields.Function(fields.Char("Model"), 'on_change_with_model')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('act_window')
+
+    @classmethod
     def __register__(cls, module_name):
         super().__register__(module_name)
 
@@ -1014,6 +1021,11 @@ class ActionActWindowDomain(
     count = fields.Boolean('Count')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
         required=True, ondelete='CASCADE')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('act_window')
 
     @classmethod
     def __register__(cls, module_name):
