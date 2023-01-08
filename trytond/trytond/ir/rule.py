@@ -116,6 +116,7 @@ class Rule(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('rule_group')
         table = cls.__table__()
 
         cls._sql_indexes.add(
