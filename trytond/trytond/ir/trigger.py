@@ -322,6 +322,7 @@ class TriggerLog(ModelSQL):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('trigger')
 
         table = cls.__table__()
         cls._sql_indexes.add(
