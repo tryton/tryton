@@ -55,8 +55,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             ('product_default', "Product Default"),
             ], "Unit", required=True,
         help="The unit in which the quantity is expressed.")
-    lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines',
-        help="Add price formulas for different criterias.")
+    lines = fields.One2Many(
+        'product.price_list.line', 'price_list', "Lines",
+        help="Add price formulas for different criteria.\n"
+        "The first matching line is used.")
 
     @staticmethod
     def default_company():

@@ -280,8 +280,10 @@ class ProductSupplier(
         depends={'company'})
     name = fields.Char("Name", translate=True)
     code = fields.Char("Code")
-    prices = fields.One2Many('purchase.product_supplier.price',
-            'product_supplier', 'Prices')
+    prices = fields.One2Many(
+        'purchase.product_supplier.price', 'product_supplier', "Prices",
+        help="Add price for different criteria.\n"
+        "The last matching line is used.")
     company = fields.Many2One(
         'company.company', "Company",
         required=True, ondelete='CASCADE')
