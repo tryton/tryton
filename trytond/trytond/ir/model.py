@@ -268,6 +268,7 @@ class ModelField(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelField, cls).__setup__()
+        cls.__access__.add('model')
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_model_uniq', Unique(table, table.name, table.model),
@@ -488,6 +489,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelAccess, cls).__setup__()
+        cls.__access__.add('model')
         cls.__rpc__.update({
                 'get_access': RPC(),
                 })
@@ -702,6 +704,11 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     _get_access_cache = Cache('ir_model_field_access.check', context=False)
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('field')
+
+    @classmethod
     def check_xml_record(cls, field_accesses, values):
         pass
 
@@ -894,6 +901,7 @@ class ModelButton(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelButton, cls).__setup__()
+        cls.__access__.add('model')
         t = cls.__table__()
         cls._sql_constraints += [
             ('name_model_exclude',
@@ -1012,6 +1020,11 @@ class ModelButtonRule(ModelSQL, ModelView):
         '"self"\nIt activate the rule if true.')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('button')
+
+    @classmethod
     def default_number_user(cls):
         return 1
 
@@ -1084,6 +1097,7 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelButtonClick, cls).__setup__()
+        cls.__access__.add('button')
         cls.__rpc__.update({
                 'get_click': RPC(),
                 })
