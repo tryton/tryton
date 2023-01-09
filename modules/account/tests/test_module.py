@@ -1608,6 +1608,12 @@ class AccountTestCase(
                         account.parent.name, account.template.parent.name)
                 else:
                     self.assertEqual(account.parent, None)
+                if account.template.replaced_by:
+                    self.assertEqual(
+                        account.replaced_by.name,
+                        account.template.replaced_by.name)
+                else:
+                    self.assertEqual(account.replaced_by, None)
 
             for tax_code in TaxCode.search([]):
                 self.assertEqual(tax_code.name, tax_code.template.name)
@@ -1685,6 +1691,7 @@ class AccountTestCase(
             inactive_account = AccountTemplate(ModelData.get_id(
                     'account', 'account_template_expense_en'))
             inactive_account.end_date = datetime.date.min
+            inactive_account.replaced_by = new_account
             inactive_account.save()
             new_tax = TaxTemplate()
             new_tax.name = new_tax.description = '10% VAT'
