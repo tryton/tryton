@@ -158,7 +158,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_purchase_request_sale">
+        <record model="ir.model.access" id="access_purchase_request_purchase">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
             <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
