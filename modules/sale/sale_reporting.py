@@ -352,6 +352,10 @@ class CustomerMixin(object):
     def get_rec_name(self, name):
         return self.customer.rec_name
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('customer.rec_name', *clause[1:])]
+
 
 class Customer(CustomerMixin, Abstract, ModelView):
     "Sale Reporting per Customer"
@@ -436,6 +440,10 @@ class CustomerCategoryMixin:
     def get_rec_name(self, name):
         return self.category.rec_name if self.category else None
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('category.rec_name', *clause[1:])]
+
 
 class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
     "Sale Reporting per Customer Category"
@@ -466,7 +474,8 @@ class CustomerCategoryTree(ModelSQL, ModelView):
     "Sale Reporting per Customer Category"
     __name__ = 'sale.reporting.customer.category.tree'
 
-    name = fields.Function(fields.Char("Name"), 'get_name')
+    name = fields.Function(
+        fields.Char("Name"), 'get_name', searcher='search_name')
     parent = fields.Many2One('sale.reporting.customer.category.tree', "Parent")
     children = fields.One2Many(
         'sale.reporting.customer.category.tree', 'parent', "Children")
@@ -493,6 +502,12 @@ class CustomerCategoryTree(ModelSQL, ModelView):
         Category = pool.get('party.category')
         categories = Category.browse(categories)
         return {c.id: c.name for c in categories}
+
+    @classmethod
+    def search_name(cls, name, clause):
+        pool = Pool()
+        Category = pool.get('party.category')
+        return [('id', 'in', Category.search([clause], query=True))]
 
     @classmethod
     def order_name(cls, tables):
@@ -607,6 +622,10 @@ class ProductMixin(object):
     def get_rec_name(self, name):
         return self.product.rec_name if self.product else None
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product.rec_name', *clause[1:])]
+
 
 class Product(ProductMixin, Abstract, ModelView):
     "Sale Reporting per Product"
@@ -696,6 +715,10 @@ class ProductCategoryMixin(object):
     def get_rec_name(self, name):
         return self.category.rec_name if self.category else None
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('category.rec_name', *clause[1:])]
+
 
 class ProductCategory(ProductCategoryMixin, Abstract, ModelView):
     "Sale Reporting per Product Category"
@@ -726,7 +749,8 @@ class ProductCategoryTree(ModelSQL, ModelView):
     "Sale Reporting per Product Category"
     __name__ = 'sale.reporting.product.category.tree'
 
-    name = fields.Function(fields.Char("Name"), 'get_name')
+    name = fields.Function(
+        fields.Char("Name"), 'get_name', searcher='search_name')
     parent = fields.Many2One('sale.reporting.product.category.tree', "Parent")
     children = fields.One2Many(
         'sale.reporting.product.category.tree', 'parent', "Children")
@@ -753,6 +777,12 @@ class ProductCategoryTree(ModelSQL, ModelView):
         Category = pool.get('product.category')
         categories = Category.browse(categories)
         return {c.id: c.name for c in categories}
+
+    @classmethod
+    def search_name(cls, name, clause):
+        pool = Pool()
+        Category = pool.get('product.category')
+        return [('id', 'in', Category.search([clause], query=True))]
 
     @classmethod
     def order_name(cls, tables):
@@ -870,6 +900,13 @@ class CountryMixin(object):
         where = super(CountryMixin, cls)._where(tables, withs)
         where &= address.country != Null
         return where
+
+    def get_rec_name(self, name):
+        return self.country.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('country.rec_name', *clause[1:])]
 
 
 class RegionTree(ModelSQL, ModelView):
@@ -1022,9 +1059,6 @@ class Country(CountryMixin, Abstract):
         address = tables['line.shipment_address']
         return address.country
 
-    def get_rec_name(self, name):
-        return self.country.rec_name
-
 
 class CountryTimeseries(CountryMixin, AbstractTimeseries, ModelView):
     "Sale Reporting per Country"
@@ -1054,6 +1088,13 @@ class SubdivisionMixin(CountryMixin):
         where &= address.subdivision != Null
         return where
 
+    def get_rec_name(self, name):
+        return self.subdivision.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('subdivision.rec_name', *clause[1:])]
+
 
 class Subdivision(SubdivisionMixin, Abstract):
     "Sale Reporting per Subdivision"
@@ -1072,9 +1113,6 @@ class Subdivision(SubdivisionMixin, Abstract):
     def _column_id(cls, tables, withs):
         address = tables['line.shipment_address']
         return address.subdivision
-
-    def get_rec_name(self, name):
-        return self.subdivision.rec_name
 
 
 class SubdivisionTimeseries(SubdivisionMixin, AbstractTimeseries, ModelView):

@@ -433,6 +433,10 @@ class EmployeeMixin:
     def get_rec_name(self, name):
         return self.employee.rec_name
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('employee.rec_name', *clause[1:])]
+
 
 class ConversionEmployee(EmployeeMixin, AbstractConversion, ModelView):
     "Sale Opportunity Reporting Conversion per Employee"

@@ -204,6 +204,9 @@ Check reporting margin per categories::
     ...     ('Child2', Decimal('40.00'), Decimal('100.00'),
     ...         Decimal('60.00'), Decimal('0.6000'))])
     True
+    >>> child1, = MarginCategoryTree.find([('rec_name', '=', 'Child1')])
+    >>> child1.rec_name
+    'Child1'
 
 Check reporting margin including lost::
 

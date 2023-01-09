@@ -150,6 +150,13 @@ class Agent(ModelView, ModelSQL):
     def get_currency(self, name):
         return self.agent.currency.id
 
+    def get_rec_name(self, name):
+        return self.agent.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('agent.rec_name', *clause[1:])]
+
 
 class AgentTimeseries(Agent):
     "Commission Reporting per Agent"

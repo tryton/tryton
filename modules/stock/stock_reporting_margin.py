@@ -413,6 +413,10 @@ class ProductMixin:
     def get_rec_name(self, name):
         return self.product.rec_name
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product.rec_name', *clause[1:])]
+
     def get_quantity(self, name):
         return self.unit.round(self.internal_quantity)
 
@@ -500,6 +504,10 @@ class CategoryMixin:
     def get_rec_name(self, name):
         return self.category.rec_name if self.category else None
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('category.rec_name', *clause[1:])]
+
 
 class Category(CategoryMixin, Abstract, ModelView):
     "Stock Reporting Margin per Category"
@@ -529,7 +537,8 @@ class CategoryTree(ModelSQL, ModelView):
     "Stock Reporting Margin per Category"
     __name__ = 'stock.reporting.margin.category.tree'
 
-    name = fields.Function(fields.Char("Name"), 'get_name')
+    name = fields.Function(
+        fields.Char("Name"), 'get_name', searcher='search_name')
     parent = fields.Many2One('stock.reporting.margin.category.tree', "Parent")
     children = fields.One2Many(
         'stock.reporting.margin.category.tree', 'parent', "Children")
@@ -572,6 +581,12 @@ class CategoryTree(ModelSQL, ModelView):
         Category = pool.get('product.category')
         categories = Category.browse(categories)
         return {c.id: c.name for c in categories}
+
+    @classmethod
+    def search_name(cls, name, clause):
+        pool = Pool()
+        Category = pool.get('product.category')
+        return [('id', 'in', Category.search([clause], query=True))]
 
     @classmethod
     def order_name(cls, tables):

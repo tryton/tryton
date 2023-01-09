@@ -281,6 +281,10 @@ class SupplierMixin(object):
     def get_rec_name(self, name):
         return self.supplier.rec_name
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('supplier.rec_name', *clause[1:])]
+
 
 class Supplier(SupplierMixin, Abstract, ModelView):
     "Purchase Reporting per Supplier"
@@ -351,6 +355,10 @@ class ProductMixin(object):
             supplier = Party(context['supplier'])
             name += '@%s' % supplier.rec_name
         return name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product.rec_name', *clause[1:])]
 
 
 class Product(ProductMixin, Abstract, ModelView):

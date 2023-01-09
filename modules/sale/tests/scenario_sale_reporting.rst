@@ -213,6 +213,9 @@ Check sale reporting per customer categories::
     ...         ('Child2', Decimal('10')),
     ...         ('Root2', Decimal('30'))])
     True
+    >>> child1, = CustomerCategoryTree.find([('rec_name', '=', 'Child1')])
+    >>> child1.rec_name
+    'Child1'
 
 Check sale reporting per product::
 
@@ -280,6 +283,9 @@ Check sale reporting per product categories::
     ...         ('Root2', Decimal('30')),
     ...         ('Account Category', Decimal('40'))])
     True
+    >>> child1, = ProductCategoryTree.find([('rec_name', '=', 'Child1')])
+    >>> child1.rec_name
+    'Child1'
 
 Check sale reporting per countries::
 
