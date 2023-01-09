@@ -22,7 +22,7 @@ stored.
 
 .. seealso::
 
-   The SSI Invoices can be foun by opening the main menu item:
+   The SSI Invoices can be found by opening the main menu item:
 
       |Financial --> Invoices --> SII Invoices|__
 
