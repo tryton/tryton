@@ -198,6 +198,31 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_hours_employee_open_weekly"/>
 
+        <record model="ir.rule.group" id="rule_group_hours_employee_weekly">
+            <field name="name">Own hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee_weekly')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_hours_employee_weekly">
+            <field name="domain"
+                eval="[('employee', 'in', Eval('employees', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_hours_employee_weekly"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_hours_employee_weekly_admin">
+            <field name="name">Any employee hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee_weekly')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_hours_employee_weekly_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_hours_employee_weekly_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="hours_employee_monthly_view_tree">
             <field name="model">timesheet.hours_employee_monthly</field>
             <field name="type">tree</field>
@@ -218,5 +243,30 @@ this repository contains the full copyright notices and license terms. -->
             action="act_hours_employee_monthly_form"
             sequence="50"
             id="menu_hours_employee_open_monthly"/>
+
+        <record model="ir.rule.group" id="rule_group_hours_employee_monthly">
+            <field name="name">Own hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee_monthly')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_hours_employee_monthly">
+            <field name="domain"
+                eval="[('employee', 'in', Eval('employees', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_hours_employee_monthly"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_hours_employee_monthly_admin">
+            <field name="name">Any employee hours</field>
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee_monthly')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_hours_employee_monthly_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_hours_employee_monthly_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
     </data>
 </tryton>
