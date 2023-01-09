@@ -3,6 +3,8 @@
 
 import datetime
 from collections import defaultdict
+from itertools import groupby
+from operator import attrgetter
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
@@ -85,34 +87,36 @@ class Sale(metaclass=PoolMeta):
             return group in user.groups
 
         def filter_line(line):
-            return (line.product
+            return (line.warehouse
+                and line.product
                 and line.product.type == 'goods'
                 and not line.product.consumable
                 and line.quantity > 0
                 # Use getattr as supply_on_sale comes from sale_supply module
                 and not getattr(line, 'supply_on_sale', False))
 
-        def get_delta(date):
+        def get_delta(date, warehouse, products):
             'Compute quantity delta at the date'
             if date in date2delta:
-                return date2delta[date]
+                return date2delta[warehouse][date]
 
             with transaction.set_context(forecast=True,
                     stock_date_start=date,
                     stock_date_end=date):
                 pbl = defaultdict(int)
-                for sub_product_ids in grouped_slice(product_ids):
+                for sub_products in grouped_slice(products):
+                    sub_product_ids = [p.id for p in sub_products]
                     pbl.update(Product.products_by_location(
-                            [self.warehouse.id],
+                            [warehouse.id],
                             with_childs=True,
-                            grouping_filter=(list(sub_product_ids),)))
+                            grouping_filter=(sub_product_ids,)))
             delta = {}
             for key, qty in pbl.items():
                 _, product_id = key
                 delta[product_id] = qty
-            date2delta[date] = delta
+            date2delta[warehouse][date] = delta
             return delta
-        date2delta = {}
+        date2delta = defaultdict(dict)
 
         def raise_(line_id, message_values):
             if not in_group():
@@ -129,39 +133,50 @@ class Sale(metaclass=PoolMeta):
             today = Date.today()
         lang = Lang.get()
         sale_date = self.sale_date or today
-        product_ids = {l.product.id for l in filter(filter_line, self.lines)}
-        product_ids = list(product_ids)
 
-        with transaction.set_context(
-                locations=[self.warehouse.id],
-                stock_date_end=sale_date,
-                stock_assign=True):
-            products = Product.browse(product_ids)
-        quantities = {p: p.forecast_quantity for p in products}
+        lines = filter(filter_line, self.lines)
+        lines = list(lines)
 
-        # Remove quantities from other sales
-        for sub_product_ids in grouped_slice(product_ids):
-            lines = Line.search([
-                    ('sale.company', '=', self.company.id),
-                    ('sale.state', 'in', self._stock_quantity_states()),
-                    ('sale.id', '!=', self.id),
-                    ['OR',
-                        ('sale.sale_date', '<=', sale_date),
-                        ('sale.sale_date', '=', None),
-                        ],
-                    ('product', 'in', sub_product_ids),
-                    ('quantity', '>', 0),
-                    ])
-            for line in lines:
-                product = line.product
-                date = line.sale.sale_date or today
-                if date > today or line.warehouse != self.warehouse:
-                    continue
-                quantity = Uom.compute_qty(line.unit, line.quantity,
-                    product.default_uom, round=False)
-                quantities[product] -= quantity
+        quantities = defaultdict(lambda: defaultdict(int))
+        w_getter = attrgetter('warehouse')
+        w_products = {}
+        for warehouse, w_lines in groupby(
+                sorted(lines, key=w_getter), key=w_getter):
+            w_products[warehouse] = products = {l.product for l in w_lines}
+            with transaction.set_context(
+                    locations=[warehouse.id],
+                    stock_date_end=sale_date,
+                    stock_assign=True):
+                products = Product.browse(products)
+            quantities[warehouse].update(
+                (p, p.forecast_quantity) for p in products)
 
-        for line in filter(filter_line, self.lines):
+            # Remove quantities from other sales
+            for sub_products in grouped_slice(products):
+                other_lines = Line.search([
+                        ('sale.company', '=', self.company.id),
+                        ('sale.state', 'in', self._stock_quantity_states()),
+                        ('sale.id', '!=', self.id),
+                        ['OR',
+                            ('sale.sale_date', '<=', sale_date),
+                            ('sale.sale_date', '=', None),
+                            ],
+                        ('product', 'in', sub_products),
+                        ('quantity', '>', 0),
+                        ])
+                for line in other_lines:
+                    if line.warehouse != warehouse:
+                        continue
+                    product = line.product
+                    date = line.sale.sale_date or today
+                    if date > today:
+                        continue
+                    quantity = Uom.compute_qty(line.unit, line.quantity,
+                        product.default_uom, round=False)
+                    quantities[line.warehouse][product] -= quantity
+
+        for line in lines:
+            warehouse = line.warehouse
             product = line.product
             quantity = Uom.compute_qty(line.unit, line.quantity,
                 product.default_uom, round=False)
@@ -169,23 +184,24 @@ class Sale(metaclass=PoolMeta):
             message_values = {
                 'line': line.rec_name,
                 'forecast_quantity': lang.format_number_symbol(
-                    quantities[product], product.default_uom,
-                    product.default_uom.digits),
+                    quantities[warehouse][product],
+                    product.default_uom, product.default_uom.digits),
                 'quantity': lang.format_number_symbol(
                     line.quantity, line.unit, line.unit.digits),
                 }
-            if (quantities[product] < quantity
+            if (quantities[warehouse][product] < quantity
                     and sale_date < next_supply_date):
                 raise_(line.id, message_values)
             # Update quantities if the same product is many times in lines
-            quantities[product] -= quantity
+            quantities[warehouse][product] -= quantity
 
             # Check other dates until next supply date
             if next_supply_date != datetime.date.max:
-                forecast_quantity = quantities[product]
+                products = w_products[warehouse]
+                forecast_quantity = quantities[warehouse][product]
                 date = sale_date + datetime.timedelta(1)
                 while date < next_supply_date:
-                    delta = get_delta(date)
+                    delta = get_delta(date, warehouse, products)
                     forecast_quantity += delta.get(product.id, 0)
                     if forecast_quantity < 0:
                         message_values['forecast_quantity'] = forecast_quantity
