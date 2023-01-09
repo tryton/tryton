@@ -1360,19 +1360,17 @@ class Account(
             for child in childs:
                 if not child.template:
                     continue
-                if not child.template.taxes:
-                    continue
                 values = {}
                 tax_ids = [template2tax[x.id] for x in child.template.taxes
                     if x.id in template2tax]
                 old_tax_ids = [x.id for x in child.taxes]
-                for tax_id in tax_ids:
-                    if tax_id not in old_tax_ids:
-                        values['taxes'] = [
-                            ('add', [template2tax[x.id]
-                                    for x in child.template.taxes
-                                    if x.id in template2tax])]
-                        break
+                taxes_to_add = [x for x in tax_ids if x not in old_tax_ids]
+                taxes_to_remove = [x for x in old_tax_ids if x not in tax_ids]
+                if taxes_to_add or taxes_to_remove:
+                    values['taxes'] = [
+                        ('add', taxes_to_add),
+                        ('remove', taxes_to_remove),
+                        ]
                 if child.template.parent:
                     parent = template2account[child.template.parent.id]
                 else:
