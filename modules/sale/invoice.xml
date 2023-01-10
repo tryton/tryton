@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lines.origin.sale.id', '=', Eval('active_id'), 'sale.line'), ('lines.origin.sale.id', 'in', Eval('active_ids'), 'sale.line'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_invoice_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_invoice_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_sale">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_line_sale">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>

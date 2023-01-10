@@ -57,47 +57,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">purchase_tree</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_shipment_form">
-            <field name="name">Shipments</field>
-            <field name="res_model">stock.shipment.in</field>
-            <field name="domain"
-                eval="[('moves.purchase', 'in', Eval('active_ids'))]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword"
-                id="act_open_shipment_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">purchase.purchase,-1</field>
-            <field name="action" ref="act_shipment_form"/>
-        </record>
-        <record model="ir.action.act_window" id="act_return_form">
-            <field name="name">Returns</field>
-            <field name="res_model">stock.shipment.in.return</field>
-            <field name="domain"
-                eval="[('moves.purchase', 'in', Eval('active_ids'))]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword"
-            id="act_open_shipment_return_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">purchase.purchase,-1</field>
-            <field name="action" ref="act_return_form"/>
-        </record>
-        <record model="ir.action.act_window" id="act_invoice_form">
-            <field name="name">Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="context"></field>
-            <field name="domain"
-                eval="[('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line')]"
-                pyson="1"/>
-        </record>
-        <record model="ir.action.keyword"
-                id="act_open_invoice_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">purchase.purchase,-1</field>
-            <field name="action" ref="act_invoice_form"/>
-        </record>
-
         <record model="ir.ui.view" id="handle_shipment_exception_ask_view_form">
             <field name="model">purchase.handle.shipment.exception.ask</field>
             <field name="type">form</field>
@@ -210,6 +169,58 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_purchase_invoice_relate"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_purchase_shipments_relate">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain"
+                eval="[('shipments', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipments_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_shipments_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipments_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_shipments_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_shipments_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in,-1</field>
+            <field name="action" ref="act_purchase_shipments_relate"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_shipment_returns_relate">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="domain"
+                eval="[('shipment_returns', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipment_returns_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_purchase_shipment_returns_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_shipment_returns_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="act_purchase_shipment_returns_relate"/>
+        </record>
+
         <menuitem
             name="Reporting"
             parent="menu_purchase"
@@ -235,6 +246,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.access" id="access_purchase_account">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_purchase_group_stock">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -387,6 +407,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">purchase_line_tree_sequence</field>
         </record>
 
+        <record model="ir.model.access" id="access_purchase_line_group_stock">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
         <record model="ir.ui.view" id="product_supplier_view_form">
             <field name="model">purchase.product_supplier</field>
             <field name="type">form</field>
@@ -488,17 +517,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_product_supplier_price_form"/>
         </record>
 
-        <record model="ir.ui.view" id="template_view_form">
-            <field name="model">product.template</field>
-            <field name="inherit" ref="product.template_view_form"/>
-            <field name="name">template_form</field>
-        </record>
-        <record model="ir.ui.view" id="template_view_tree">
-            <field name="model">product.template</field>
-            <field name="inherit" ref="product.template_view_tree"/>
-            <field name="name">template_tree</field>
-        </record>
-
         <record model="ir.ui.view" id="return_purchase_start_view_form">
             <field name="model">purchase.return_purchase.start</field>
             <field name="type">form</field>
@@ -552,51 +570,5 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_purchase_companies"/>
         </record>
-
-        <record model="ir.model.access" id="access_invoice_purchase">
-            <field name="model" search="[('model', '=', 'account.invoice')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
-        <record model="ir.model.access" id="access_invoice_line_purchase">
-            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
-        <record model="ir.model.access" id="access_move_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.move')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
-        <record model="ir.model.access" id="access_shipment_in_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
-        <record model="ir.model.access" id="access_shipment_in_return_group_purchase">
-            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
     </data>
 </tryton>
