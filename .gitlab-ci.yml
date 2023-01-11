@@ -56,7 +56,10 @@ documentation:
   script:
     - cd "${PACKAGE}"
     - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
-    - python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build
+    - |
+      if [ "${CHECK_LINK}" ]; then
+      python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build;
+      fi
   rules:
     - changes:
         - ${PACKAGE}/${DOC_DIR}/**/*
