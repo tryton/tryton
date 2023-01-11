@@ -86,7 +86,7 @@ check-flake8:
 check-isort:
   extends: .check-code
   script:
-    - isort -m VERTICAL_GRID -p trytond -c `hg status --no-status --added --modified --rev s0`
+    - isort -m VERTICAL_GRID -c `hg status --no-status --added --modified --rev s0`
 
 check-dist:
   stage: check
