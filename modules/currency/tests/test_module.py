@@ -23,11 +23,9 @@ def create_currency(name):
                 }])[0]
 
 
-def add_currency_rate(currency, rate, date=None):
+def add_currency_rate(currency, rate, date=datetime.date.min):
     pool = Pool()
     Rate = pool.get('currency.currency.rate')
-    if date is None:
-        date = Rate.default_date()
     return Rate.create([{
                 'currency': currency.id,
                 'rate': rate,
