@@ -13,7 +13,7 @@ The columns are in the following order:
 * The python type expected on input
 * The python type received on output
 
-.. _`SQL 92`: http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt
+.. _`SQL 92`: https://en.wikipedia.org/wiki/SQL-92
 .. _`PostgreSQL type`: https://www.postgresql.org/docs/current/static/datatype.html
 
 ``None`` will represent the ``NULL`` value and vice versa, it can be used as
