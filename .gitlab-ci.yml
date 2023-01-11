@@ -1,10 +1,8 @@
 workflow:
   rules:
-    - if: $CI_PIPELINE_SOURCE == "trigger"
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+    - if: $CI_COMMIT_BRANCH =~ /^topic\/.*/ && $CI_PIPELINE_SOURCE == "push"
       when: never
-    - if: $CI_COMMIT_BRANCH =~ /^branch\/.*/
+    - when: always
 
 stages:
   - preparation
