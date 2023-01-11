@@ -4,7 +4,7 @@ set -eu
 OUTPUTDIR=`realpath "${1}"`
 mkdir -p "${OUTPUTDIR}"
 
-find . -path '*/doc/conf.py' | while read path; do
+find . -name 'cookiecutter*' -prune -o -path '*/doc/conf.py' -print | while read path; do
     path=`dirname "${path}"`
     path=`dirname "${path}"`
     package=`basename "${path}"`

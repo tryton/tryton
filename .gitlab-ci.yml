@@ -90,12 +90,12 @@ check-doc-readthedocs:
 check-flake8:
   extends: .check-code
   script:
-    - flake8
+    - flake8 --exclude 'cookiecutter*'
 
 check-isort:
   extends: .check-code
   script:
-    - isort -m VERTICAL_GRID -c .
+    - isort -m VERTICAL_GRID -c --skip-glob 'cookiecutter*' .
 
 check-dist:
   stage: check
@@ -110,6 +110,21 @@ check-ci-modules:
   script:
     - python .gitlab-scripts/generate-ci.py $TMPDIR/gitab-ci-modules.yml
     - cmp .gitlab-ci-modules.yml $TMPDIR/gitab-ci-modules.yml
+
+check-cookiecutter-module:
+  extends: .check
+  cache:
+    paths:
+      - .cache/pip/http
+  before_script:
+    - pip install cookiecutter
+  script:
+    - cookiecutter --no-input cookiecutter-module -o /tmp
+    - flake8 /tmp/my_module
+    - isort -m VERTICAL_GRID -c /tmp/my_module
+  rules:
+    - changes:
+        - cookiecutter-module/**/*
 
 .test:
   stage: test
