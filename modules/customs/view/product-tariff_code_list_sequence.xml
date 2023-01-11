@@ -4,4 +4,10 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="product" expand="2"/>
     <field name="tariff_code" expand="1"/>
+    <field name="organization" optional="0"/>
+    <field name="country" optional="0"/>
+    <field name="start_day" optional="1"/>
+    <field name="start_month" optional="1"/>
+    <field name="end_day" optional="1"/>
+    <field name="end_month" optional="1"/>
 </tree>

@@ -182,6 +182,30 @@ class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
             ], required=True)
     tariff_code = fields.Many2One('customs.tariff.code', 'Tariff Code',
         required=True, ondelete='CASCADE')
+    country = fields.Function(
+        fields.Many2One('country.country', "Country"), 'get_tariff_code_field')
+    organization = fields.Function(
+        fields.Many2One('country.organization', "Organization"),
+        'get_tariff_code_field')
+    start_day = fields.Function(
+        fields.Integer("Start Day"), 'get_tariff_code_field')
+    start_month = fields.Function(
+        fields.Many2One('ir.calendar.month', "Start Month"),
+        'get_tariff_code_field')
+    end_day = fields.Function(
+        fields.Integer("End Day"), 'get_tariff_code_field')
+    end_month = fields.Function(
+        fields.Many2One('ir.calendar.month', "End Month"),
+        'get_tariff_code_field')
+
+    def get_tariff_code_field(self, name):
+        field = getattr(self.__class__, name)
+        value = getattr(self.tariff_code, name, None)
+        if isinstance(value, ModelSQL):
+            if field._type == 'reference':
+                return str(value)
+            return value.id
+        return value
 
     def get_rec_name(self, name):
         return self.tariff_code.rec_name
