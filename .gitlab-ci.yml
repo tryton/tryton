@@ -81,12 +81,12 @@ check-doc-readthedocs:
 check-flake8:
   extends: .check-code
   script:
-    - hg diff --rev s0 | flake8 --diff
+    - flake8
 
 check-isort:
   extends: .check-code
   script:
-    - isort -m VERTICAL_GRID -c `hg status --no-status --added --modified --rev s0`
+    - isort -m VERTICAL_GRID -c .
 
 check-dist:
   stage: check
