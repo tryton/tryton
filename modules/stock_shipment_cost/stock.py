@@ -7,7 +7,7 @@ from sql import Null
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
 
 

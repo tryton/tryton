@@ -8,6 +8,7 @@ from sql import Literal, Null, With
 from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
+
 try:
     import pygal
 except ImportError:

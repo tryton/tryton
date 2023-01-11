@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from proteus import Model
 from proteus.config import get_config
-
 from trytond.modules.company.tests.tools import get_company
 
 

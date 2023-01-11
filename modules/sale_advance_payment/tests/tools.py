@@ -3,7 +3,6 @@
 from datetime import timedelta
 
 from proteus import Model
-
 from trytond.modules.company.tests.tools import get_company
 
 

@@ -5,8 +5,7 @@ import datetime
 from trytond.config import config
 from trytond.exceptions import LoginException
 from trytond.pool import Pool
-from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 def send_sms(text, to, from_):

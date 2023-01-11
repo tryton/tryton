@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from proteus import Model, Wizard
-
 from trytond.modules.company.tests.tools import get_company
 
 __all__ = ['create_chart', 'get_accounts']

@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from proteus import Model, Wizard
 from proteus.config import get_config
-
 from trytond.modules.currency.tests.tools import get_currency
 
 __all__ = ['create_company', 'get_company']
