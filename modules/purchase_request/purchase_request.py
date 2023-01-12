@@ -200,14 +200,22 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        res = []
-        names = clause[2].split('@', 1)
-        res.append(('product.template.name', clause[1], names[0]))
-        if len(names) != 1 and names[1]:
-            res.append(('warehouse', clause[1], names[1]))
-        return ['OR', res,
-            ('description',) + tuple(clause[1:]),
-            ]
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not'):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = [bool_op]
+        if value is not None:
+            names = value.split('@', 1)
+            sub_domain = [('product.template.name', operator, names[0])]
+            if len(names) != 1 and names[1]:
+                sub_domain.append(('warehouse', operator, names[1]))
+                if bool_op == 'AND':
+                    sub_domain.insert(0, 'OR')
+            domain.append(sub_domain)
+        domain.append(('description', *clause[1:]))
+        return domain
 
     @staticmethod
     def default_company():

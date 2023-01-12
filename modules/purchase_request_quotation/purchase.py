@@ -388,11 +388,18 @@ class QuotationLine(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        names = clause[2].split(' - ', 1)
-        res = [('quotation', clause[1], names[0])]
-        if len(names) != 1 and names[1]:
-            res.append(('supplier', clause[1], names[1]))
-        return res
+        domain = []
+        _, operator, value = clause
+        if value is not None:
+            names = clause[2].split(' - ', 1)
+            domain.append(('quotation', operator, names[0]))
+            if len(names) != 1 and names[1]:
+                domain.append(('supplier', operator, names[1]))
+            if operator.startswith('!') or operator.startswith('not'):
+                domain.insert(0, 'OR')
+        elif not operator.startswith('!') and not operator.startswith('not'):
+            domain.append(('id', '<', 0))
+        return domain
 
     @classmethod
     def delete(cls, quotationlines):
