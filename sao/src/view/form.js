@@ -1313,7 +1313,7 @@ function eval_pyson(value){
         class_: 'form',
         init: function(languages, widget) {
             var dialog = new Sao.Dialog(
-                Sao.i18n.gettext('Translate'), this.class_, 'lg');
+                Sao.i18n.gettext('Translate'), this.class_, 'md');
             this.languages = languages;
             this.read(widget, dialog);
             jQuery('<button/>', {
@@ -1350,24 +1350,23 @@ function eval_pyson(value){
             function field_value(result) {
                 return result[0][widget.field_name] || '';
             }
+            dialog.content.addClass('form-horizontal');
             this.languages.forEach(lang => {
                 var value;
                 var row = jQuery('<div/>', {
-                    'class':'row form-group'
+                    'class':'form-group'
                 });
                 var input = widget.translate_widget();
                 input.attr('data-lang-id', lang.id);
-                var checkbox = jQuery('<input/>', {
-                    'type':'checkbox',
-                    'title': Sao.i18n.gettext('Edit')
-                });
+                var edit = jQuery('<button/>', {
+                    'type': 'button',
+                    'class': 'btn btn-default',
+                }).text(Sao.i18n.gettext('Edit'));
                 if (widget._readonly) {
-                    checkbox.attr('disabled', true);
+                    edit.attr('disabled', true);
                 }
-                var fuzzy_box = jQuery('<input/>', {
-                    'type':'checkbox',
-                    'disabled': true,
-                    'title': Sao.i18n.gettext('Fuzzy')
+                var fuzzy_label = jQuery('<span>', {
+                    'class': 'label',
                 });
                 var prm1 = Sao.rpc({
                     'method': 'model.' + widget.model.name  + '.read',
@@ -1392,25 +1391,28 @@ function eval_pyson(value){
                 jQuery.when(prm1, prm2).done(function(value, fuzzy_value) {
                     widget.translate_widget_set(input, fuzzy_value);
                     widget.translate_widget_set_readonly( input, true);
-                    fuzzy_box.attr('checked', value !== fuzzy_value);
+                    if (value !== fuzzy_value) {
+                        fuzzy_label.addClass('label-warning');
+                        fuzzy_label.text(Sao.i18n.gettext("Fuzzy"));
+                    }
                 });
-                checkbox.click(function() {
+                edit.click(function() {
+                    jQuery(this).toggleClass('active');
                     widget.translate_widget_set_readonly(
-                        input, !jQuery(this).prop('checked'));
+                        input, !jQuery(this).hasClass('active'));
                 });
                 dialog.body.append(row);
+                input.uniqueId();
+                row.append(jQuery('<label/>', {
+                    'for': input.attr('id'),
+                    'class': 'col-sm-3 control-label',
+                }).append(' ' + lang.name));
                 row.append(jQuery('<div/>', {
-                    'class':'col-sm-2'
-                }).append(lang.name));
-                row.append(jQuery('<div/>', {
-                    'class':'col-sm-8'
-                }).append(input));
-                row.append(jQuery('<div/>', {
-                    'class':'col-sm-1'
-                }).append(checkbox));
-                row.append(jQuery('<div/>', {
-                    'class':'col-sm-1'
-                }).append(fuzzy_box));
+                    'class': 'col-sm-9 input-group',
+                }).append(input)
+                    .append(jQuery('<span/>', {
+                        'class': 'input-group-addon',
+                    }).append(edit).append(fuzzy_label)));
             });
         },
         write: function(widget, dialog) {
@@ -2297,10 +2299,12 @@ function eval_pyson(value){
             this.input.prop('readonly', readonly);
         },
         translate_widget: function() {
-            return jQuery('<textarea/>', {
+            var widget = jQuery('<textarea/>', {
                     'class': 'form-control',
-                    'readonly': 'readonly'
+                    'readonly': 'readonly',
                 });
+            widget.css('min-height', this.el.height());
+            return widget;
         }
     });
 

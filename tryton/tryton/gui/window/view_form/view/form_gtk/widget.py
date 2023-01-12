@@ -204,17 +204,15 @@ class TranslateDialog(NoModal):
             widget.set_vexpand(self.widget.expand)
             widget.set_hexpand(True)
             grid.attach(widget, 1, i, 1, 1)
-            editing = Gtk.CheckButton()
+            editing = Gtk.ToggleButton(label=_("Edit"))
             editing.connect('toggled', self.editing_toggled, widget)
             editing.props.sensitive = not readonly
-            tooltips.set_tip(editing, _('Edit'))
             grid.attach(editing, 2, i, 1, 1)
-            fuzzy = Gtk.CheckButton()
-            fuzzy.set_active(value != fuzzy_value)
-            fuzzy.props.sensitive = False
-            tooltips.set_tip(fuzzy, _('Fuzzy'))
-            grid.attach(fuzzy, 4, i, 1, 1)
-            self.widgets[language['code']] = (widget, editing, fuzzy)
+            if value != fuzzy_value:
+                fuzzy = Gtk.Label(_("Fuzzy"))
+                widget_class(fuzzy, 'warning', True)
+                grid.attach(fuzzy, 4, i, 1, 1)
+            self.widgets[language['code']] = (widget, editing)
 
         tooltips.enable()
         vbox = Gtk.VBox()
@@ -241,7 +239,7 @@ class TranslateDialog(NoModal):
     def response(self, win, response):
         if response == Gtk.ResponseType.OK:
             for code, widget in self.widgets.items():
-                widget, editing, fuzzy = widget
+                widget, editing = widget
                 if not editing.get_active():
                     continue
                 value = self.widget.translate_widget_get(widget)

@@ -1,3 +1,4 @@
+* Use toggle button and label on translate dialog
 * Manage domain on id in single value list as unique
 * Do not validate domain and enforce uniqueness for empty fields unless they're required
 * Display the number of selected records on xxx2Many

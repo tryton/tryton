@@ -30,6 +30,9 @@ def main():
     label.editable {
         font-style: italic;
     }
+    label.warning {
+        color: @warning_color;
+    }
     .window-title, .wizard-title {
         font-size: large;
         font-weight: bold;
