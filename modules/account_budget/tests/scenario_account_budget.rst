@@ -35,9 +35,10 @@ Create a fiscal year::
     >>> fiscalyear = create_fiscalyear(company)
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
-    >>> next_fiscalyear = create_fiscalyear(
-    ...     company, fiscalyear.end_date + dt.timedelta(days=1))
-    >>> next_fiscalyear.click('create_period')
+
+    >>> renew_fiscalyear = Wizard('account.fiscalyear.renew')
+    >>> renew_fiscalyear.execute('create_')
+    >>> next_fiscalyear, = renew_fiscalyear.actions[0]
 
 Create a chart of accounts::
 
