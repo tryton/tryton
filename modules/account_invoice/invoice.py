@@ -732,7 +732,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
-        if backend.name() == 'sqlite':
+        if value is not None and backend.name() == 'sqlite':
             value = float(value)
 
         union = (line.join(invoice, condition=(invoice.id == line.invoice)
@@ -768,7 +768,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
-        if backend.name() == 'sqlite':
+        if value is not None and backend.name() == 'sqlite':
             value = float(value)
 
         query = line.join(invoice,
@@ -797,7 +797,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         invoice_query = Rule.query_get('account.invoice')
         Operator = fields.SQL_OPERATORS[operator]
         # SQLite uses float for sum
-        if backend.name() == 'sqlite':
+        if value is not None and backend.name() == 'sqlite':
             value = float(value)
 
         query = tax.select(tax.invoice,
