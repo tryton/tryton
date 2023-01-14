@@ -44,10 +44,13 @@ class Production(metaclass=PoolMeta):
         Date = pool.get('ir.date')
         User = pool.get('res.user')
         company = User(Transaction().user).company
+        if not company:
+            return
 
         if clean:
             reqs = cls.search([
                     ('state', '=', 'request'),
+                    ('company', '=', company.id),
                     ])
             if warehouses:
                 reqs = [r for r in reqs if r.warehouse in warehouses]
@@ -62,7 +65,7 @@ class Production(metaclass=PoolMeta):
         # fetch order points
         order_points = OrderPoint.search([
                 ('warehouse_location', '!=', None),
-                ('company', '=', company.id if company else None),
+                ('company', '=', company.id),
                 ])
         # index them by product
         product2ops = {}
