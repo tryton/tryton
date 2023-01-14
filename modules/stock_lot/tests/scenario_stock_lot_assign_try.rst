@@ -115,7 +115,6 @@ Request specific lot in stock assignation::
 Assign the shipment::
 
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> move, = shipment.inventory_moves

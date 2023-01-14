@@ -121,7 +121,6 @@ Fill supplier consignment location::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')
@@ -142,7 +141,6 @@ Use supplier consignment stock::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')
@@ -184,7 +182,8 @@ Use supplier consignment stock for shipment out::
     >>> move, = shipment_out.inventory_moves
     >>> move.from_location = supplier_consignment_loc
     >>> shipment_out.click('assign_try')
-    True
+    >>> shipment_out.state
+    'assigned'
     >>> move, = shipment_out.inventory_moves
     >>> len(move.invoice_lines)
     1
@@ -203,7 +202,6 @@ Fill customer consignment location::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')
@@ -224,7 +222,6 @@ Use customer consignment stock::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')
@@ -268,7 +265,6 @@ Cancel supplier consignment stock::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> move, = shipment.moves

@@ -89,7 +89,8 @@ Create Internal Shipment::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    False
+    >>> shipment.state
+    'waiting'
     >>> shipment.assigned_by
     >>> shipment.done_by
 
@@ -110,7 +111,6 @@ Create Internal Shipment from lost_found location::
     >>> move.currency = company.currency
     >>> lost_found_shipment.click('wait')
     >>> lost_found_shipment.click('assign_try')
-    True
     >>> lost_found_shipment.state
     'assigned'
     >>> lost_found_shipment.click('done')
@@ -120,7 +120,6 @@ Create Internal Shipment from lost_found location::
 Check that now we can finish the older shipment::
 
     >>> shipment.click('assign_try')
-    True
     >>> shipment.assigned_by == employee
     True
     >>> shipment.done_by

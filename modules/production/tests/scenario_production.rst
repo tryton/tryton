@@ -161,7 +161,8 @@ Test reset bom button::
 Do the production::
 
     >>> production.click('assign_try')
-    True
+    >>> production.state
+    'assigned'
     >>> all(i.state == 'assigned' for i in production.inputs)
     True
     >>> production.click('run')
@@ -192,7 +193,6 @@ Make a production with effective date yesterday and running the day before::
     >>> production.quantity = 2
     >>> production.click('wait')
     >>> production.click('assign_try')
-    True
     >>> production.click('run')
     >>> production.reload()
     >>> all(i.effective_date == before_yesterday for i in production.inputs)

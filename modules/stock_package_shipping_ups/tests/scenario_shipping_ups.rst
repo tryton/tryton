@@ -210,7 +210,6 @@ Create the packs and ship the shipment::
     >>> shipment, = sale.shipments
     >>> shipment.shipping_description = 'Football Players'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> pack = shipment.packages.new()
     >>> pack.type = ups_box

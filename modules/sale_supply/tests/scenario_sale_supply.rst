@@ -243,7 +243,6 @@ not create a new purchase request::
     >>> inventory.state
     'done'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
 

@@ -179,7 +179,6 @@ Test works::
 Run the production::
 
     >>> production.click('assign_try')
-    True
     >>> production.click('run')
     >>> production.state
     'running'

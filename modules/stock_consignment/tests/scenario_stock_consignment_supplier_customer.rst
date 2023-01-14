@@ -112,7 +112,6 @@ Fill supplier consignment location::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')
@@ -133,7 +132,6 @@ Use supplier consignment stock by customer::
     >>> shipment.state
     'waiting'
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('done')

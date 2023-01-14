@@ -248,7 +248,6 @@ Make 1 unit of the product available::
 Finish the shipment::
 
     >>> shipment_out.click('assign_try')
-    True
     >>> shipment_out.click('pick')
     >>> shipment_out.click('pack')
     >>> shipment_out.click('done')

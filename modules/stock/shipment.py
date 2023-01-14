@@ -977,7 +977,17 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 success = False
         if success:
             cls.assign(shipments)
-        return success
+        else:
+            to_assign = []
+            for shipment in shipments:
+                if any(
+                        m.state in {'staging', 'draft'}
+                        for m in shipment.assign_moves
+                        if m.assignation_required):
+                    continue
+                to_assign.append(shipment)
+            if to_assign:
+                cls.assign(to_assign)
 
     @classmethod
     def _get_reschedule_domain(cls, date):
@@ -1694,9 +1704,17 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             if m.assignation_required]
         if Move.assign_try(to_assign):
             cls.assign(shipments)
-            return True
         else:
-            return False
+            to_assign = []
+            for shipment in shipments:
+                if any(
+                        m.state in {'staging', 'draft'}
+                        for m in shipment.assign_moves
+                        if m.assignation_required):
+                    continue
+                to_assign.append(shipment)
+            if to_assign:
+                cls.assign(to_assign)
 
     @classmethod
     def _get_reschedule_domain(cls, date):
@@ -2815,11 +2833,19 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         to_assign = [
             m for s in shipments for m in s.assign_moves
             if m.assignation_required]
-        if not to_assign or Move.assign_try(to_assign):
+        if Move.assign_try(to_assign):
             cls.assign(shipments)
-            return True
         else:
-            return False
+            to_assign = []
+            for shipment in shipments:
+                if any(
+                        m.state in {'staging', 'draft'}
+                        for m in shipment.assign_moves
+                        if m.assignation_required):
+                    continue
+                to_assign.append(shipment)
+            if to_assign:
+                cls.assign(to_assign)
 
     @property
     def _move_planned_date(self):
@@ -2912,7 +2938,8 @@ class Assign(Wizard):
     ignore = StateTransition()
 
     def transition_start(self):
-        if self.record.assign_try():
+        self.record.assign_try()
+        if self.record.state == 'assigned':
             return 'end'
         else:
             return 'partial'

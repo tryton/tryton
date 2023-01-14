@@ -100,7 +100,6 @@ Let's ship a product with a lot::
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-    True
     >>> move.lot = lot
     >>> shipment.click('pick')
     >>> shipment.click('pack')
@@ -129,7 +128,6 @@ Let's ship now two times the same lot::
     >>> move2.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-    True
     >>> move1, move2 = shipment.inventory_moves
     >>> move1.lot = lot
     >>> move2.lot = lot
@@ -156,7 +154,6 @@ Now let's ship one move with a quantity bigger than lot unit quantity::
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-    True
     >>> move, = shipment.inventory_moves
     >>> move.lot = lot
     >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL

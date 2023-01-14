@@ -147,7 +147,7 @@ Check the shipments::
     >>> len(shipments)
     2
     >>> for shipment in shipments:
-    ...     _ = shipment.click('assign_try')
+    ...     shipment.click('assign_try')
     ...     shipment.click('pick')
     ...     shipment.click('pack')
     ...     shipment.click('done')

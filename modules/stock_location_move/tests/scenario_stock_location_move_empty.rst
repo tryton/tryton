@@ -133,7 +133,6 @@ Ship 1 product from the locations::
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')

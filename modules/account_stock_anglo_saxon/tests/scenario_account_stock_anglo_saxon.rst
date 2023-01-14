@@ -244,7 +244,6 @@ Send 5 products::
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('pick')

@@ -779,12 +779,22 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def assign_try(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        if Move.assign_try(
-                [m for p in productions for m in p.assign_moves]):
+        to_assign = [
+            m for p in productions for m in p.assign_moves
+            if m.assignation_required]
+        if Move.assign_try(to_assign):
             cls.assign(productions)
-            return True
         else:
-            return False
+            to_assign = []
+            for production in productions:
+                if any(
+                        m.state in {'staging', 'draft'}
+                        for m in production.assign_moves
+                        if m.assignation_required):
+                    continue
+                to_assign.append(production)
+            if to_assign:
+                cls.assign(to_assign)
 
     @classmethod
     def _get_reschedule_domain(cls, date):

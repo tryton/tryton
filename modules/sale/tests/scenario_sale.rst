@@ -265,7 +265,6 @@ Not yet linked to invoice lines::
 Validate Shipments::
 
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
@@ -365,7 +364,6 @@ Ship 3 products::
     4.0
     >>> stock_inventory_move.quantity = 3.0
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
@@ -506,7 +504,6 @@ Checking Shipments::
     >>> move_return.quantity
     2.0
     >>> mix_shipment.click('assign_try')
-    True
     >>> mix_shipment.click('pick')
     >>> mix_shipment.click('pack')
     >>> mix_shipment.click('done')
@@ -568,7 +565,6 @@ Checking Shipments::
     >>> move_return.quantity
     3.0
     >>> mix_shipment.click('assign_try')
-    True
     >>> mix_shipment.click('pick')
     >>> mix_shipment.click('pack')
     >>> move_shipment, = mix_shipment.outgoing_moves
@@ -657,7 +653,6 @@ to invoices::
     >>> for move in shipment.inventory_moves:
     ...     move.quantity = 5.0
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')

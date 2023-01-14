@@ -206,7 +206,6 @@ Send 5 products::
 
     >>> shipment, = sale.shipments
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> shipment.click('pick')

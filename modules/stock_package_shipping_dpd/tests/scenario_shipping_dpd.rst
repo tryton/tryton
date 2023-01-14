@@ -203,7 +203,6 @@ Create the packs and ship the shipment::
     >>> Package = Model.get('stock.package')
     >>> shipment, = sale.shipments
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> pack = shipment.packages.new()
     >>> pack.type = box

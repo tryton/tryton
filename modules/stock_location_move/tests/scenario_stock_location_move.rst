@@ -43,7 +43,6 @@ Move pallet from storage1 to storage2::
     >>> shipment.click('wait')
 
     >>> shipment.click('assign_try')
-    True
     >>> shipment.state
     'assigned'
     >>> pallet.reload()
@@ -87,7 +86,8 @@ Concurrently move pallet::
     >>> shipment2.click('wait')
 
     >>> shipment1.click('assign_try')
-    True
+    >>> shipment1.state
+    'assigned'
     >>> shipment2.click('assign_try')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -117,7 +117,6 @@ Move pallet from storage1 to storage2 with lead_time::
     >>> shipment.locations.append(Location(pallet.id))
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-    True
 
     >>> shipment.click('ship')
     >>> pallet.reload()

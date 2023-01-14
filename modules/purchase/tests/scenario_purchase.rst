@@ -358,7 +358,6 @@ Check Return Shipments::
     >>> move_return.quantity
     4.0
     >>> ship_return.click('assign_try')
-    True
     >>> ship_return.click('done')
     >>> ship_return.state
     'done'
@@ -429,7 +428,6 @@ Checking Shipments::
 
     >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
-    True
     >>> mix_return.click('done')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
@@ -497,7 +495,6 @@ Checking Shipments::
 
     >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
-    True
     >>> mix_return.click('done')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
