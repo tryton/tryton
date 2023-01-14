@@ -268,10 +268,7 @@ class WinCSV(NoModal):
     def drag_data_received(self, treeview, context, x, y, selection,
             info, etime):
         treeview.emit_stop_by_name('drag-data-received')
-        try:
-            selection_data = selection.data
-        except AttributeError:
-            selection_data = selection.get_data()
+        selection_data = selection.get_data()
         if not selection_data:
             return
         selection_data = selection_data.decode('utf-8')
