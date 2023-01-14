@@ -125,7 +125,7 @@ class Main(Gtk.Application):
             return
 
         self.window = Gtk.ApplicationWindow(application=self, title="Tryton")
-        self.window.set_default_size(960, 720)
+        self.window.set_default_size(1280, 960)
         self.window.maximize()
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_resizable(True)

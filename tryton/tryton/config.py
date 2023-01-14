@@ -69,7 +69,7 @@ class ConfigManager(object):
             'bug.url': 'https://bugs.tryton.org/',
             'download.url': 'https://downloads-cdn.tryton.org/',
             'download.frequency': 60 * 60 * 8,
-            'menu.pane': 200,
+            'menu.pane': 320,
         }
         self.config = {}
         self.options = {}
