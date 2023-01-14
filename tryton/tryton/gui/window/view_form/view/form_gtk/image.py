@@ -67,7 +67,7 @@ class Image(BinaryMixin, Widget):
     def drag_motion(self, widget, context, x, y, timestamp):
         if self._readonly:
             return False
-        context.drag_status(gtk.gdk.ACTION_COPY, timestamp)
+        gtk.gdk.drag_status(context, gtk.gdk.ACTION_COPY, timestamp)
         return True
 
     def drag_data_received(self, widget, context, x, y, selection,
