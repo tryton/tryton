@@ -12,14 +12,12 @@ this repository contains the full copyright notices and license terms. -->
     <label name="invoice_party"/>
     <field name="invoice_party"/>
     <label name="invoice_address"/>
-    <field name="invoice_address"/>
-    <newline/>
+    <field name="invoice_address" colspan="3"/>
 
     <label name="shipment_party"/>
     <field name="shipment_party"/>
     <label name="shipment_address"/>
-    <field name="shipment_address"/>
-    <newline/>
+    <field name="shipment_address" colspan="3"/>
 
     <label name="description"/>
     <field name="description" colspan="3"/>
