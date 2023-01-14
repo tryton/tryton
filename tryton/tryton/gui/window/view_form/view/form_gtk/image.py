@@ -84,7 +84,7 @@ class Image(BinaryMixin, Widget):
                 self.field.set_client(self.record, url_open(uri).read())
             self.update_img()
         elif info == 1:
-            uri = selection.data.split('\r\n')[0]
+            uri = selection.get_data().split('\r\n')[0]
             if uri:
                 self.field.set_client(self.record, url_open(uri).read())
             self.update_img()
