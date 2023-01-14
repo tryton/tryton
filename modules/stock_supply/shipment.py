@@ -28,26 +28,30 @@ class ShipmentInternal(ModelSQL, ModelView):
         User = pool.get('res.user')
         Move = pool.get('stock.move')
         LeadTime = pool.get('stock.location.lead_time')
+        company = User(Transaction().user).company
+        if not company:
+            return
 
         if warehouses is None:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
                     ])
 
-        user_record = User(Transaction().user)
         today = Date.today()
         lead_time = LeadTime.get_max_lead_time()
 
         if clean:
             reqs = cls.search([
                     ('state', '=', 'request'),
+                    ('company', '=', company.id),
                     ])
             cls.delete(reqs)
 
         # fetch quantities on order points
         order_points = OrderPoint.search([
-            ('type', '=', 'internal'),
-            ])
+                ('type', '=', 'internal'),
+                ('company', '=', company.id)
+                ])
         order_points = [
             op for op in order_points if op.location.warehouse in warehouses]
         id2product = {}
@@ -157,7 +161,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                             product=product,
                             quantity=qty,
                             uom=product.default_uom,
-                            company=user_record.company,
+                            company=company,
                             ))
                 shipment.moves = shipment_moves
                 shipment.planned_start_date = (
