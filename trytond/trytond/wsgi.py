@@ -8,6 +8,7 @@ import posixpath
 import sys
 import traceback
 import urllib.parse
+from functools import wraps
 
 from werkzeug.routing import BaseConverter, Map, Rule
 
@@ -24,8 +25,6 @@ try:
     from werkzeug.middleware.shared_data import SharedDataMiddleware
 except ImportError:
     from werkzeug.wsgi import SharedDataMiddleware
-
-import wrapt
 
 from trytond.config import config
 from trytond.protocols.jsonrpc import JSONProtocol
@@ -69,17 +68,18 @@ class TrytondWSGI(object):
         self.error_handlers.append(handler)
         return handler
 
-    @wrapt.decorator
-    def auth_required(self, wrapped, instance, args, kwargs):
-        request = args[0]
-        if request.user_id:
-            return wrapped(*args, **kwargs)
-        else:
-            headers = {}
-            if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
-                headers['WWW-Authenticate'] = 'Basic realm="Tryton"'
-            response = Response(None, http.client.UNAUTHORIZED, headers)
-            abort(http.client.UNAUTHORIZED, response=response)
+    def auth_required(self, func):
+        @wraps(func)
+        def wrapper(request, *args, **kwargs):
+            if request.user_id:
+                return func(request, *args, **kwargs)
+            else:
+                headers = {}
+                if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
+                    headers['WWW-Authenticate'] = 'Basic realm="Tryton"'
+                response = Response(None, http.client.UNAUTHORIZED, headers)
+                abort(http.client.UNAUTHORIZED, response=response)
+        return wrapper
 
     def check_request_size(self, request, size=None):
         if request.method not in {'POST', 'PUT', 'PATCH'}:
