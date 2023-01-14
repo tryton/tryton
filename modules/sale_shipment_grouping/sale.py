@@ -37,9 +37,10 @@ class Sale(metaclass=PoolMeta):
             ('state', 'in', self._shipment_grouping_state),
             ]
         shipment_domain += self._get_grouped_shipment_planned_date(shipment)
-        defaults = Shipment.default_get(self._shipment_grouping_fields,
-            with_rec_name=False)
-        for field in self._shipment_grouping_fields:
+        fields = [
+            f for f in self._shipment_grouping_fields if f in Shipment._fields]
+        defaults = Shipment.default_get(fields, with_rec_name=False)
+        for field in fields:
             shipment_domain.append((field, '=',
                     getattr(shipment, field, defaults.get(field))))
         return shipment_domain
