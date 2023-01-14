@@ -1,6 +1,6 @@
-==============================
-Sale Invoice Grouping Scenario
-==============================
+===============================
+Sale Shipment Grouping Scenario
+===============================
 
 Imports::
 
