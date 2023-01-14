@@ -3,7 +3,7 @@
 
 from itertools import groupby
 
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 
@@ -18,14 +18,18 @@ class Sale(metaclass=PoolMeta):
     def _shipment_grouping_state(self):
         return ['draft', 'waiting']
 
-    @property
-    def _shipment_grouping_fields(self):
-        return ('customer', 'delivery_address', 'company', 'warehouse')
+    def _get_shipment_grouping_fields(self, shipment):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        fields = ['customer', 'company', 'warehouse']
+        if isinstance(shipment, ShipmentOut):
+            fields.append('delivery_address')
+        return fields
 
     def _get_grouped_shipment_planned_date(self, shipment):
         return [('planned_date', '=', shipment.planned_date)]
 
-    def _get_grouped_shipment_order(self):
+    def _get_grouped_shipment_order(self, shipment_type):
         "Returns the order used to find shipments that should be grouped"
         return None
 
@@ -37,8 +41,7 @@ class Sale(metaclass=PoolMeta):
             ('state', 'in', self._shipment_grouping_state),
             ]
         shipment_domain += self._get_grouped_shipment_planned_date(shipment)
-        fields = [
-            f for f in self._shipment_grouping_fields if f in Shipment._fields]
+        fields = self._get_shipment_grouping_fields(shipment)
         defaults = Shipment.default_get(fields, with_rec_name=False)
         for field in fields:
             shipment_domain.append((field, '=',
@@ -55,7 +58,7 @@ class Sale(metaclass=PoolMeta):
                 shipment = self._get_shipment_sale(shipment_type, values)
             Shipment = shipment.__class__
             domain = self._get_grouped_shipment_domain(shipment)
-            order = self._get_grouped_shipment_order()
+            order = self._get_grouped_shipment_order(shipment_type)
             grouped_shipments = Shipment.search(domain, order=order, limit=1)
             if grouped_shipments:
                 shipment, = grouped_shipments

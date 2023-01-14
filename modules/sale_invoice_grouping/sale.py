@@ -15,10 +15,9 @@ class Sale(metaclass=PoolMeta):
         party = self.invoice_party or self.party
         return party.sale_invoice_grouping_method
 
-    @property
-    def _invoice_grouping_fields(self):
-        return ('state', 'company', 'type', 'journal', 'party',
-            'invoice_address', 'currency', 'account', 'payment_term')
+    def _get_invoice_grouping_fields(self, invoice):
+        return ['state', 'company', 'type', 'journal', 'party',
+            'invoice_address', 'currency', 'account', 'payment_term']
 
     def _get_grouped_invoice_order(self):
         "Returns the order clause used to find invoice that should be grouped"
@@ -30,9 +29,9 @@ class Sale(metaclass=PoolMeta):
         invoice_domain = [
             ('lines.origin', 'like', 'sale.line,%'),
             ]
-        defaults = Invoice.default_get(self._invoice_grouping_fields,
-            with_rec_name=False)
-        for field in self._invoice_grouping_fields:
+        fields = self._get_invoice_grouping_fields(invoice)
+        defaults = Invoice.default_get(fields, with_rec_name=False)
+        for field in fields:
             invoice_domain.append(
                 (field, '=', getattr(invoice, field, defaults.get(field)))
                 )
