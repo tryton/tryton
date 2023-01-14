@@ -50,6 +50,8 @@ class PurchaseRequest(metaclass=PoolMeta):
         Location = pool.get('stock.location')
         User = pool.get('res.user')
         company = User(Transaction().user).company
+        if not company:
+            return
 
         if warehouses is None:
             # fetch warehouses:
@@ -60,7 +62,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         # fetch order points
         order_points = OrderPoint.search([
             ('warehouse_location', '!=', None),
-            ('company', '=', company.id if company else None),
+            ('company', '=', company.id),
             ])
         # index them by product
         product2ops = {}
@@ -134,6 +136,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         products = set(products)
         reqs = cls.search([
                 ('state', '=', 'draft'),
+                ('company', '=', company.id),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
         reqs = [r for r in reqs
