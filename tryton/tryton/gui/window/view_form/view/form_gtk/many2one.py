@@ -19,6 +19,7 @@ _ = gettext.gettext
 
 
 class Many2One(Widget):
+    default_width_chars = 12
 
     def __init__(self, view, attrs):
         super(Many2One, self).__init__(view, attrs)

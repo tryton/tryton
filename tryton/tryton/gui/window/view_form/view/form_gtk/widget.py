@@ -16,7 +16,7 @@ _ = gettext.gettext
 
 class Widget(object):
     expand = False
-    default_width_chars = 25
+    default_width_chars = 8
 
     def __init__(self, view, attrs):
         super(Widget, self).__init__()
