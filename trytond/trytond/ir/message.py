@@ -11,7 +11,7 @@ class Message(ModelSQL, ModelView):
     "Message"
     __name__ = "ir.message"
 
-    _message_cache = Cache('ir.message', size_limit=10240, context=False)
+    _message_cache = Cache('ir.message', context=False)
     text = fields.Text("Text", required=True, translate=True)
 
     @classmethod

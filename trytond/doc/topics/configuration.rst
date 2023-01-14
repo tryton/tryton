@@ -304,6 +304,13 @@ The number of field to load with an ``eager`` :attr:`Field.loading
 
 Default: ``100``
 
+default
+~~~~~~~
+
+The default :attr:`~trytond.cache.Cache.size_limit` of :class:`~trytond.cache.Cache`.
+
+Default: ``1024``
+
 clean_timeout
 ~~~~~~~~~~~~~
 

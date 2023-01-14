@@ -4,15 +4,12 @@
 Cache
 =====
 
-.. class:: Cache(name[, size_limit[, duration[, context[, context_ignored_keys]]]])
+.. class:: Cache(name[, duration[, context[, context_ignored_keys]]])
 
    Use to cache values between server requests.
 
    The ``name`` should be unique and it's used to identify the cache.
    Usually ``<class_name>.<content_name>`` is used to make it unique.
-
-   The ``size_limit`` parameter can be used to limit the number of values
-   cached and it has ``1024`` as the default value.
 
    The ``duration`` parameter defines how long a cached value stays valid but
    if it is not set the value remains valid until it is cleared.
@@ -28,6 +25,13 @@ Cache
 
        As there is no deepcopy of the values cached, they must never be mutated
        after being set in or retrieved from the cache.
+
+.. attribute:: Cache.size_limit
+
+   The maximal number of values cached.
+   The value comes from the entry with the same ``name`` under the ``cache``
+   section of the :ref:`configuration <topics-configuration>` using the
+   ``default`` entry as default value.
 
 .. attribute:: Cache.hit
 

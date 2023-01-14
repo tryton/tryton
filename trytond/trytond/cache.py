@@ -22,6 +22,7 @@ from trytond.transaction import Transaction
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
+_default_size_limit = config.getint('cache', 'default')
 logger = logging.getLogger(__name__)
 
 
@@ -69,14 +70,15 @@ class BaseCache(object):
         }
 
     def __init__(
-            self, name, size_limit=1024, duration=None, context=True,
+            self, name, duration=None, context=True,
             context_ignored_keys=None):
         assert ((context_ignored_keys is not None and context)
             or (context_ignored_keys is None)), (
                 f"context_ignored_keys ({context_ignored_keys}) is not valid"
                 f" in regards to context ({context}).")
         self._name = name
-        self.size_limit = size_limit
+        self.size_limit = config.getint(
+            'cache', name, default=_default_size_limit)
         self.context = context
         self.context_ignored_keys = set()
         if context and context_ignored_keys:

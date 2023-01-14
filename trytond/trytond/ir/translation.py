@@ -71,8 +71,7 @@ class Translation(ModelSQL, ModelView):
     model = fields.Function(fields.Char('Model'), 'get_model',
             searcher='search_model')
     overriding_module = fields.Char('Overriding Module', readonly=True)
-    _translation_cache = Cache('ir.translation', size_limit=10240,
-        context=False)
+    _translation_cache = Cache('ir.translation', context=False)
     _translation_report_cache = Cache(
         'ir.translation.get_report', context=False)
     _get_language_cache = Cache('ir.translation.get_language', context=False)
