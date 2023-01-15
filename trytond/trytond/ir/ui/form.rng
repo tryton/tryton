@@ -561,7 +561,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="attlist.affix" combine="interleave">
+  <define name="attlist.image" combine="interleave">
     <optional>
       <attribute>
         <name ns="">url_size</name>
