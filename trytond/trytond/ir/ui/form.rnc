@@ -121,7 +121,7 @@ attlist.field &= [a:defaultValue = "square"] attribute border { "square" | "circ
 image = element image { attlist.image, empty }
 attlist.image &= attribute name { text }
 attlist.image &= [a:defaultValue = "icon"] attribute type { "icon" | "url" }?
-attlist.affix &= attribute url_size { text }?
+attlist.image &= attribute url_size { text }?
 attlist.image &= [a:defaultValue = "square"] attribute border { "square" | "circle" | "rounded" }?
 attlist.image &= [ a:defaultValue = "1" ] attribute colspan { text }?
 attlist.image &=
