@@ -2,9 +2,11 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="party" expand="2"/>
-    <field name="email" expand="1"/>
+    <field name="email" expand="1">
+        <prefix id="avatar" icon="avatar_url" icon_type="url" url_size="s" border="circle"/>
+    </field>
     <field name="email_valid"/>
+    <field name="party" expand="2"/>
     <button name="validate_email" string="Validate E-mail"/>
     <button name="reset_password" string="Reset Password"/>
 </tree>

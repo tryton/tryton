@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="password" widget="password"/>
         <button name="reset_password" colspan="2" />
     </group>
-    <field name="avatar" widget="image" height="100" width="100" xexpand="0"/>
+    <field name="avatar" widget="image" height="100" width="100" xexpand="0" border="circle"/>
     <notebook colspan="4">
         <page string="User" id="user">
             <separator name="signature" colspan="4"/>

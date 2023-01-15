@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="email" widget="email"/>
         <newline/>
     </group>
-    <field name="avatar" widget="image" height="100" width="100" xexpand="0"/>
+    <field name="avatar" widget="image" height="100" width="100" xexpand="0" border="circle"/>
 
     <label name="password"/>
     <field name="password" widget="password"/>

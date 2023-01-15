@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='header']" position="after">
-        <field name="avatar" widget="image" height="100" width="100" xexpand="0"/>
+        <field name="avatar" widget="image" height="100" width="100" xexpand="0" border="circle"/>
     </xpath>
 </data>

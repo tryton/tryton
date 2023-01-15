@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='name']" position="inside">
-        <prefix id="avatar" icon="avatar_url" icon_type="url" url_size="s"/>
+        <prefix id="avatar" icon="avatar_url" icon_type="url" url_size="s" border="circle"/>
     </xpath>
 </data>
