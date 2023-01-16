@@ -144,7 +144,7 @@ def run_task(pool, task_id):
                         task.run()
                     break
                 except TransactionError as e:
-                    transaction.rollbacked()
+                    transaction.rollback()
                     e.fix(transaction_extras)
                     continue
                 except backend.DatabaseOperationalError:
