@@ -291,9 +291,11 @@ class Many2One(Field):
             oname, _, _ = oexpr.partition('.')
         else:
             oname = 'id'
-            if Target._rec_name in Target._fields:
+            if (Target._rec_name in Target._fields
+                    and Target._fields[Target._rec_name].sortable(Target)):
                 oname = Target._rec_name
-            if Target._order_name in Target._fields:
+            if (Target._order_name in Target._fields
+                    and Target._fields[Target._order_name].sortable(Target)):
                 oname = Target._order_name
             oexpr = oname
 
