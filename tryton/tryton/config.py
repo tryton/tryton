@@ -67,7 +67,7 @@ class ConfigManager(object):
             'image.cache_size': 1024,
             'doc.url': 'https://docs.tryton.org/en/%(version)s',
             'bug.url': 'https://bugs.tryton.org/',
-            'download.url': 'https://downloads-cdn.tryton.org/',
+            'download.url': 'https://downloads.tryton.org/',
             'download.frequency': 60 * 60 * 8,
             'menu.pane': 320,
         }
