@@ -1,3 +1,4 @@
+* Rename ModelStorage.count into ModelStorage.estimated_count
 * Add border type to images
 * Lock table on transaction start
 * Use EXISTS for search on O2M with many records

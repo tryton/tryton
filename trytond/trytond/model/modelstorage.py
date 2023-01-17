@@ -609,7 +609,7 @@ class ModelStorage(Model):
         return process(domain)
 
     @classmethod
-    def count(cls):
+    def estimated_count(cls):
         "Returns the estimation of the number of records."
         count = cls._count_cache.get(cls.__name__)
         if count is None:

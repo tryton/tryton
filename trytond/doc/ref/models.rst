@@ -407,7 +407,7 @@ Class methods:
 
    It is used for the global search.
 
-.. classmethod:: ModelStorage.count()
+.. classmethod:: ModelStorage.estimated_count()
 
    Return an estimation of the number of records stored.
 
