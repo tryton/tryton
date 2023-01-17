@@ -80,8 +80,7 @@ Create fully disputed payment::
     >>> payment.state
     'submitted'
 
-    >>> _ = payment.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
+    >>> checkout = payment.click('stripe_checkout')
     >>> bool(payment.stripe_checkout_id)
     True
 
@@ -173,8 +172,7 @@ Create partial disputed payment::
     >>> payment.state
     'submitted'
 
-    >>> _ = payment.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
+    >>> checkout = payment.click('stripe_checkout')
     >>> bool(payment.stripe_checkout_id)
     True
 
@@ -244,8 +242,7 @@ Create won disputed payment::
     >>> payment.state
     'submitted'
 
-    >>> _ = payment.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
+    >>> checkout = payment.click('stripe_checkout')
     >>> bool(payment.stripe_checkout_id)
     True
 

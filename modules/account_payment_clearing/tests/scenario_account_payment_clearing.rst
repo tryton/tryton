@@ -109,7 +109,7 @@ Partially pay the line::
 
 Succeed payment::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.form.date = first
     >>> succeed.execute('succeed')
     >>> payment.state
@@ -166,7 +166,7 @@ Pay the line::
 
 Succeed payment::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
     >>> payment.state
     'succeeded'
@@ -191,7 +191,7 @@ Fail payment::
 
 Succeed payment and post clearing::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.form.date = yesterday
     >>> succeed.execute('succeed')
     >>> payment.state
@@ -228,7 +228,7 @@ Fail payment with posted clearing::
 
 Succeed payment to use on statement::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
     >>> payment.state
     'succeeded'
@@ -372,7 +372,7 @@ Pay the line::
 
 Succeed payment::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
     >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
     >>> debit_line.debit
@@ -414,7 +414,7 @@ Pay the line::
 
 Succeed payment::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
     >>> credit_line, = [l for l in payment.clearing_move.lines if l.credit > 0]
     >>> credit_line.credit

@@ -96,9 +96,7 @@ Create sale blanket agreement::
 
 Create sale from blanket agreement::
 
-    >>> create_sale = Wizard(
-    ...     'sale.blanket_agreement.create_sale',
-    ...     [blanket_agreement])
+    >>> create_sale = blanket_agreement.click('create_sale')
     >>> len(create_sale.form.lines)
     1
     >>> create_sale.form.lines[0].remaining_quantity

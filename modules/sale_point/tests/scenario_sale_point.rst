@@ -155,7 +155,7 @@ Make a sale::
 
 Overpay by terminal::
 
-    >>> payment = Wizard('sale.point.sale.pay', [sale])
+    >>> payment = sale.click('pay')
     >>> payment.form.method = terminal_method
     >>> payment.form.amount
     Decimal('6036.00')

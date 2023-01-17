@@ -97,9 +97,7 @@ Create purchase blanket agreement::
 
 Create purchase from blanket agreement::
 
-    >>> create_purchase = Wizard(
-    ...     'purchase.blanket_agreement.create_purchase',
-    ...     [blanket_agreement])
+    >>> create_purchase = blanket_agreement.click('create_purchase')
     >>> len(create_purchase.form.lines)
     1
     >>> create_purchase.form.lines[0].remaining_quantity

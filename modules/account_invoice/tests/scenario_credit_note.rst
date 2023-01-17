@@ -108,7 +108,7 @@ Post credit note::
 
 Pay credit note::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('-220.00')
     >>> pay.form.amount = Decimal('-120.00')
@@ -129,7 +129,7 @@ Pay credit note::
     >>> pay.state
     'end'
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('-100.00')
     >>> pay.form.amount = Decimal('-100.00')

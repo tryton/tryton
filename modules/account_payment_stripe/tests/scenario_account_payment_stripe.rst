@@ -95,8 +95,7 @@ Create submitted payment::
 
 Checkout the payment::
 
-    >>> action_id = payment.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
+    >>> checkout = payment.click('stripe_checkout')
     >>> bool(payment.stripe_checkout_id)
     True
 
@@ -138,8 +137,7 @@ Create failing payment::
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
-    >>> action_id = payment.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
+    >>> checkout = payment.click('stripe_checkout')
     >>> bool(payment.stripe_checkout_id)
     True
     >>> token = stripe.Token.create(
@@ -171,8 +169,7 @@ Create a customer::
 
 Checkout the customer::
 
-    >>> action_id = stripe_customer.click('stripe_checkout')
-    >>> checkout = Wizard('account.payment.stripe.checkout', [stripe_customer])
+    >>> checkout = stripe_customer.click('stripe_checkout')
     >>> bool(stripe_customer.stripe_checkout_id)
     True
 
@@ -238,8 +235,7 @@ Make payment with customer::
 
 Detach source::
 
-    >>> detach = Wizard(
-    ...     'account.payment.stripe.customer.source.detach', [stripe_customer])
+    >>> detach = stripe_customer.click('detach_source')
     >>> detach.form.source = source_id
     >>> detach.execute('detach')
 

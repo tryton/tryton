@@ -265,7 +265,7 @@ Pay invoice::
     >>> invoice, = invoice.duplicate()
     >>> invoice.click('post')
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('240.00')
     >>> pay.form.amount = Decimal('120.00')
@@ -274,7 +274,7 @@ Pay invoice::
     >>> pay.state
     'end'
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('120.00')
     >>> pay.form.amount = Decimal('20.00')
@@ -293,7 +293,7 @@ Pay invoice::
     Decimal('100.00')
     >>> pay.execute('pay')
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('-20.00')
     >>> pay.form.amount = Decimal('99.00')
@@ -369,7 +369,7 @@ Create a paid invoice::
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> pay.state

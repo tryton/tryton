@@ -87,7 +87,7 @@ Create a sale with a line::
 
 Change the party::
 
-    >>> modify_header = Wizard('purchase.modify_header', [purchase])
+    >>> modify_header = purchase.click('modify_header')
     >>> modify_header.form.party == supplier
     True
     >>> modify_header.form.party = another

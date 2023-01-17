@@ -333,7 +333,7 @@ Post and Pay Invoice for 4 products::
     5.0
     >>> invoice_line.quantity = 4.0
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> invoice.reload()
@@ -595,7 +595,7 @@ Sale services::
 Pay the service invoice::
 
     >>> service_invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [service_invoice])
+    >>> pay = service_invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> service_invoice.reload()
@@ -685,7 +685,7 @@ invoices::
     True
     >>> invoice_line.quantity = 5.0
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> invoice.reload()

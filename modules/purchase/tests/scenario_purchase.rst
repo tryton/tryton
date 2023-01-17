@@ -525,7 +525,7 @@ Pay the service invoice::
 
     >>> service_invoice.invoice_date = today
     >>> service_invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [service_invoice])
+    >>> pay = service_invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.form.amount = service_invoice.total_amount
     >>> pay.execute('choice')

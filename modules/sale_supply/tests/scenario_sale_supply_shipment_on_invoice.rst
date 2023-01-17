@@ -103,7 +103,7 @@ Pay for 4 products::
     >>> invoice_line, = invoice.lines
     >>> invoice_line.quantity = 4
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 
@@ -117,7 +117,7 @@ Pay for remaining products::
     >>> sale.reload()
     >>> _, invoice = sale.invoices
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 

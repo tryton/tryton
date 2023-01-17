@@ -116,7 +116,7 @@ Set another payee::
 
 Pay the invoice::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payee = party3
     >>> pay.form.amount = Decimal('10.00')
     >>> pay.form.payment_method = payment_method

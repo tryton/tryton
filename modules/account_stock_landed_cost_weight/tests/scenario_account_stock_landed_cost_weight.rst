@@ -169,7 +169,7 @@ Add landed cost::
     >>> landed_cost.save()
     >>> landed_cost.state
     'draft'
-    >>> post_landed_cost = Wizard('account.landed_cost.post', [landed_cost])
+    >>> post_landed_cost = landed_cost.click('post_wizard')
     >>> post_landed_cost.form.cost
     Decimal('30.0000')
     >>> sorted([m.cost for m in post_landed_cost.form.moves])

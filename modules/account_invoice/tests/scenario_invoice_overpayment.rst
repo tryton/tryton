@@ -85,7 +85,7 @@ Create an invoice::
 
 Overpay the invoice with write-off::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount = Decimal('110.00')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
@@ -105,7 +105,7 @@ Overpay the invoice without write-off::
 
     >>> invoice, = invoice.duplicate()
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount = Decimal('110.00')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')

@@ -98,7 +98,7 @@ Make a customer shipment::
 
 Assign manually the first move::
 
-    >>> assign_manual = Wizard('stock.shipment.assign.manual', [shipment])
+    >>> assign_manual = shipment.click('assign_manual_wizard')
     >>> assign_manual.form.move == shipment.inventory_moves[0]
     True
     >>> assign_manual.form.move_quantity
@@ -129,7 +129,7 @@ Shipment is not yet assigned::
 
 Assign manually remaining move::
 
-    >>> assign_manual = Wizard('stock.shipment.assign.manual', [shipment])
+    >>> assign_manual = shipment.click('assign_manual_wizard')
     >>> assign_manual.form.place = json.dumps([storage_loc2.id, product.id])
     >>> assign_manual.execute('assign')
 

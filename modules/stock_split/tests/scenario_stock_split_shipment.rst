@@ -77,7 +77,7 @@ Set to waiting and go back to draft to get inventory moves::
 
 Split shipment::
 
-    >>> split_shipment = Wizard('stock.shipment.split', [shipment1])
+    >>> split_shipment = shipment1.click('split_wizard')
     >>> len(split_shipment.form.domain_moves)
     2
     >>> split_shipment.form.moves.append(Move(move2.id))

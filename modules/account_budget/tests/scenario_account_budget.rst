@@ -131,8 +131,7 @@ Check actual amount of the budget::
 
 Create periods::
 
-    >>> create_periods = Wizard(
-    ...     'account.budget.line.create_periods', [pl_budget])
+    >>> create_periods = pl_budget.click('create_periods')
     >>> create_periods.execute('create_periods')
     >>> revenue_budget, expense_budget = pl_budget.children
     >>> len(pl_budget.periods)

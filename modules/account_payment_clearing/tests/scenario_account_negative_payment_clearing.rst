@@ -99,7 +99,7 @@ Pay the line::
 
 Succeed payment::
 
-    >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed = payment.click('succeed_wizard')
     >>> succeed.execute('succeed')
     >>> payment.state
     'succeeded'

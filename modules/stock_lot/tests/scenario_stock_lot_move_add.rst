@@ -59,7 +59,7 @@ Create a lot::
 
 Add few lots::
 
-    >>> add_lots = Wizard('stock.move.add.lots', [move])
+    >>> add_lots = move.click('add_lots_wizard')
     >>> add_lots.form.product== product
     True
     >>> add_lots.form.quantity
@@ -98,7 +98,7 @@ Check moves::
 
 Add lot to remaining::
 
-    >>> add_lots = Wizard('stock.move.add.lots', [move])
+    >>> add_lots = move.click('add_lots_wizard')
     >>> lot = add_lots.form.lots.new()
     >>> lot.number = '03'
     >>> add_lots.execute('add')

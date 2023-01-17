@@ -85,7 +85,7 @@ Create invoice with alternate currency::
 
 Pay the invoice::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('400.00')
     >>> pay.form.currency == eur

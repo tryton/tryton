@@ -96,8 +96,7 @@ Create submitted payment::
 
 Checkout the payment::
 
-    >>> action_id = payment.click('braintree_checkout')
-    >>> checkout = Wizard('account.payment.braintree.checkout', [payment])
+    >>> checkout = payment.click('braintree_checkout')
     >>> bool(payment.braintree_checkout_id)
     True
 

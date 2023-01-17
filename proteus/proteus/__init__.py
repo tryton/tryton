@@ -913,7 +913,15 @@ class Model(object):
         if change is None:
             cls.save(records)
             cls.reload(records)  # Force reload because save doesn't always
-            return getattr(proxy, button)([r.id for r in records], context)
+            record_ids = [r.id for r in records]
+            action = getattr(proxy, button)(record_ids, context)
+            if action and not isinstance(action, str):
+                if isinstance(action, int):
+                    action = config.get_proxy('ir.action').get_action_value(
+                        action, context)
+                return _convert_action(
+                    action, records, context=context, config=config)
+            return action
         else:
             record, = records
             values = record._on_change_args(change)
@@ -1302,8 +1310,16 @@ class Report(object):
 def _convert_action(action, data=None, context=None, config=None):
     if config is None:
         config = proteus.config.get_config()
+    records = None
     if data is None:
         data = {}
+    elif isinstance(data, (list, tuple)):
+        records = data
+        data = {
+            'model': records[0].__class__.__name__,
+            'id': records[0].id,
+            'ids': [r.id for r in records],
+            }
     else:
         data = data.copy()
 
@@ -1352,7 +1368,9 @@ def _convert_action(action, data=None, context=None, config=None):
             'config': config,
             'context': context,
             }
-        if 'model' in data:
+        if records is not None:
+            kwargs['models'] = records
+        elif 'model' in data:
             Model_ = Model.get(data['model'], config)
             config = Model_._config
             with config.reset_context(), config.set_context(context):

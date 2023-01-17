@@ -131,7 +131,7 @@ Make 1 unit of the product available::
 
 Assign the shipment now::
 
-    >>> shipment_assign = Wizard('stock.shipment.assign', [shipment_out])
+    >>> shipment_assign = shipment_out.click('assign_wizard')
     >>> len(shipment_assign.form.moves)
     1
     >>> shipment_assign.execute('end')
@@ -155,7 +155,7 @@ Assign the shipment now::
 
 Ignore non assigned moves and pack shipment::
 
-    >>> shipment_assign = Wizard('stock.shipment.assign', [shipment_out])
+    >>> shipment_assign = shipment_out.click('assign_wizard')
     >>> shipment_assign.execute('ignore')
     >>> sorted([m.quantity for m in shipment_out.inventory_moves])
     [0.0, 1.0]

@@ -253,8 +253,7 @@ As a consequence the sale order is now in exception::
     >>> purchase.reload()
     >>> purchase.shipment_state
     'exception'
-    >>> handle_exception = Wizard('purchase.handle.shipment.exception',
-    ...     [purchase])
+    >>> handle_exception = purchase.click('handle_shipment_exception')
     >>> _ = handle_exception.form.recreate_moves.pop()
     >>> handle_exception.execute('handle')
     >>> purchase.reload()
@@ -321,9 +320,8 @@ Cancelling the workflow on the purchase step::
 
 Let's reset the purchase request and create a new purchase::
 
-    >>> handle_exception = Wizard(
-    ...     'purchase.request.handle.purchase.cancellation',
-    ...     [purchase_request])
+    >>> handle_exception = purchase_request.click(
+    ...     'handle_purchase_cancellation_exception')
     >>> handle_exception.execute('reset')
     >>> purchase_request.state
     'draft'
@@ -341,9 +339,8 @@ the sale::
     >>> purchase_request.reload()
     >>> purchase_request.state
     'exception'
-    >>> handle_exception = Wizard(
-    ...     'purchase.request.handle.purchase.cancellation',
-    ...     [purchase_request])
+    >>> handle_exception = purchase_request.click(
+    ...     'handle_purchase_cancellation_exception')
     >>> handle_exception.execute('cancel_request')
     >>> purchase_request.state
     'cancelled'
@@ -354,7 +351,7 @@ The sale is then in exception::
     >>> sale.reload()
     >>> sale.shipment_state
     'exception'
-    >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> handle_exception = sale.click('handle_shipment_exception')
     >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> sale.shipment_state

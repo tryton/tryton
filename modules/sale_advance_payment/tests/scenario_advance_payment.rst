@@ -180,7 +180,7 @@ The advance payment invoice has been created::
 
 Let's pay the advance payment invoice::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 
@@ -258,7 +258,7 @@ Let's pay the advance payment invoice::
     True
     >>> invoice.invoice_date = None
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()
@@ -318,7 +318,7 @@ The advance payment invoice has been created, now pay it::
     True
     >>> invoice.invoice_date = None
     >>> invoice.click('post')
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()
@@ -363,7 +363,7 @@ Let's cancel the advance invoice::
 Handle the exception on the sale level, not recreating the invoice will create
 the final invoice with the remaining total::
 
-    >>> handle_exception = Wizard('sale.handle.invoice.exception', [sale])
+    >>> handle_exception = sale.click('handle_invoice_exception')
     >>> _ = handle_exception.form.recreate_invoices.pop()
     >>> handle_exception.execute('handle')
 
@@ -396,7 +396,7 @@ it::
     >>> sale.invoice_state
     'exception'
 
-    >>> handle_exception = Wizard('sale.handle.invoice.exception', [sale])
+    >>> handle_exception = sale.click('handle_invoice_exception')
     >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> _, inv_recreated = sale.advance_payment_invoices
@@ -406,7 +406,7 @@ it::
     True
     >>> inv_recreated.invoice_date = None
     >>> inv_recreated.click('post')
-    >>> pay = Wizard('account.invoice.pay', [inv_recreated])
+    >>> pay = inv_recreated.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()

@@ -104,7 +104,7 @@ Make a sale::
     >>> line.quantity = 1
     >>> sale.save()
 
-    >>> payment = Wizard('sale.point.sale.pay', [sale])
+    >>> payment = sale.click('pay')
     >>> payment.form.method = cash_method
     >>> payment.execute('pay')
 

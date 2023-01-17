@@ -123,7 +123,7 @@ Check actual amount the budget::
 
 Copy the budget without amounts::
 
-    >>> copy_budget = Wizard('analytic_account.budget.copy', [budget])
+    >>> copy_budget = budget.click('copy_button')
     >>> copy_budget.form.start_date = next_period.start_date
     >>> copy_budget.form.end_date = next_period.end_date
     >>> copy_budget.form.factor = Decimal('1.2')

@@ -74,8 +74,7 @@ Post customer invoice::
 
 Reschedule line::
 
-    >>> reschedule = Wizard(
-    ...     'account.invoice.lines_to_pay.reschedule', [invoice])
+    >>> reschedule = invoice.click('reschedule_lines_to_pay')
     >>> reschedule_lines, = reschedule.actions
     >>> reschedule_lines.form.total_amount
     Decimal('10.00')
@@ -97,7 +96,7 @@ Reschedule line::
 
 Pay the invoice::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount = Decimal('10.00')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')

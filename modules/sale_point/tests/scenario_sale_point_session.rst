@@ -147,7 +147,7 @@ Make a sale::
 
 Pay by cash::
 
-    >>> payment = Wizard('sale.point.sale.pay', [sale])
+    >>> payment = sale.click('pay')
     >>> payment.form.method = cash_method
     >>> payment.form.amount
     Decimal('20.00')

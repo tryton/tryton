@@ -80,7 +80,7 @@ Create final invoice::
 
 Recall deposit::
 
-    >>> recall_deposit = Wizard('account.invoice.recall_deposit', [invoice])
+    >>> recall_deposit = invoice.click('recall_deposit')
     >>> recall_deposit.form.account = accounts['deposit']
     >>> recall_deposit.form.description = 'Recall Deposit'
     >>> recall_deposit.execute('recall')

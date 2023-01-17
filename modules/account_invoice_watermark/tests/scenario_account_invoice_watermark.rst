@@ -95,7 +95,7 @@ Print posted invoice::
 
 Print paid invoice::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> invoice.state

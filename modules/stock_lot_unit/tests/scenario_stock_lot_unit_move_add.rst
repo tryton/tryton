@@ -61,7 +61,7 @@ Create a lot::
 
 Add a lot::
 
-    >>> add_lots = Wizard('stock.move.add.lots', [move])
+    >>> add_lots = move.click('add_lots_wizard')
     >>> lot = add_lots.form.lots.new()
     >>> lot.quantity
     5.0

@@ -598,7 +598,7 @@ Cancel remaining shipment::
 
 Ignore shipment exception::
 
-    >>> shipment_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> shipment_exception = sale.click('handle_shipment_exception')
     >>> move = shipment_exception.form.recreate_moves.pop()
     >>> shipment_exception.execute('handle')
 

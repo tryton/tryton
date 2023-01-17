@@ -63,7 +63,7 @@ Create invoice::
 
 Correct invoice::
 
-    >>> correct = Wizard('account.invoice.correct', [invoice])
+    >>> correct = invoice.click('correct')
     >>> correct.form.lines.extend(correct.form.lines.find(
     ...         [('description', '=', "Revenue 1")]))
     >>> correct.execute('correct')

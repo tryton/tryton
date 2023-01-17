@@ -149,7 +149,7 @@ Make a sale::
 
 Overpay::
 
-    >>> payment = Wizard('sale.point.sale.pay', [sale])
+    >>> payment = sale.click('pay')
     >>> payment.form.method = payment_method
     >>> payment.form.amount = Decimal('600.00')
     >>> payment.execute('pay')
@@ -201,7 +201,7 @@ Make a second sale and pay with gift card::
 
 Pay::
 
-    >>> payment = Wizard('sale.point.sale.pay', [sale])
+    >>> payment = sale.click('pay')
     >>> payment.form.method = payment_method
     >>> payment.execute('pay')
 

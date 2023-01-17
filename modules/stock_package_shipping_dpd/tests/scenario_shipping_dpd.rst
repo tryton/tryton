@@ -210,7 +210,7 @@ Create the packs and ship the shipment::
     >>> pack.moves.append(pack_move)
     >>> shipment.click('pack')
 
-    >>> create_shipping = Wizard('stock.shipment.create_shipping', [shipment])
+    >>> create_shipping = shipment.click('create_shipping')
     >>> shipment.reload()
     >>> shipment.reference != ''
     True

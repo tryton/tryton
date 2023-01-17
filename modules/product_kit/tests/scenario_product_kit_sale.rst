@@ -263,7 +263,7 @@ Cancel backorder::
 
 Handle shipment exception::
 
-    >>> shipment_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> shipment_exception = sale.click('handle_shipment_exception')
     >>> move, = [
     ...     m for m in shipment_exception.form.recreate_moves
     ...     if m.product == product1]

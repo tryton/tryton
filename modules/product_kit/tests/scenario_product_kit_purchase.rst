@@ -272,7 +272,7 @@ Cancel backorder::
 
 Handle shipment exception::
 
-    >>> shipment_exception = Wizard('purchase.handle.shipment.exception', [purchase])
+    >>> shipment_exception = purchase.click('handle_shipment_exception')
     >>> shipment_exception.execute('handle')
 
     >>> len(purchase.moves)

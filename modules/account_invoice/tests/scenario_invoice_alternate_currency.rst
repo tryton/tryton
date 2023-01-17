@@ -156,7 +156,7 @@ Create invoice with alternate currency::
 
 Pay the invoice with rate change::
 
-    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay = invoice.click('pay')
     >>> pay.form.amount
     Decimal('460.00')
     >>> pay.form.payment_method = payment_method

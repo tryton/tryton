@@ -151,7 +151,7 @@ Add shipment cost to both shipments::
     'draft'
     >>> bool(shipment_cost1.number)
     True
-    >>> post_shipment_cost = Wizard('account.shipment_cost.post', [shipment_cost1])
+    >>> post_shipment_cost = shipment_cost1.click('post_wizard')
     >>> post_shipment_cost.form.cost
     Decimal('10.0000')
     >>> sorted([s.cost for s in post_shipment_cost.form.shipments])
@@ -164,7 +164,7 @@ Add shipment cost to both shipments::
 
 Show shipment cost::
 
-    >>> show_shipment_cost = Wizard('account.shipment_cost.show', [shipment_cost1])
+    >>> show_shipment_cost = shipment_cost1.click('show')
     >>> show_shipment_cost.form.cost
     Decimal('10.0000')
     >>> sorted([s.cost for s in show_shipment_cost.form.shipments])
@@ -194,7 +194,7 @@ Add a second shipment cost to 1 shipment::
     >>> shipment_cost2.invoice_lines.append(InvoiceLine(line.id))
     >>> shipment_cost2.shipments.append(ShipmentOut(shipment1.id))
     >>> shipment_cost2.save()
-    >>> post_shipment_cost = Wizard('account.shipment_cost.post', [shipment_cost2])
+    >>> post_shipment_cost = shipment_cost2.click('post_wizard')
     >>> post_shipment_cost.form.cost
     Decimal('2.0000')
     >>> sorted([s.cost for s in post_shipment_cost.form.shipments])
