@@ -1207,8 +1207,8 @@ class Wizard(object):
 
             self.actions = []
             for action in result.get('actions', []):
-                proteus_action = _convert_action(*action,
-                    context=self._context)
+                proteus_action = _convert_action(
+                    *action, context=self._context, config=self._config)
                 if proteus_action:
                     self.actions.append(proteus_action)
 
