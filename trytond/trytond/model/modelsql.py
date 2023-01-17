@@ -1647,7 +1647,9 @@ class ModelSQL(ModelStorage):
         main_table, _ = tables[None]
         if count:
             table = convert_from(None, tables)
-            if (limit is not None and limit < cls.count()) or offset:
+            if (limit is not None
+                    and callable(cls.count)
+                    and limit < cls.count()) or offset:
                 select = table.select(
                     Literal(1), where=expression, limit=limit, offset=offset
                     ).select(Count(Literal('*')))
@@ -1878,7 +1880,7 @@ class ModelSQL(ModelStorage):
                     'You can not update fields: "%s", "%s"' %
                     (field.left, field.right))
 
-            if len(ids) < max(cls.count() / 4, 4):
+            if callable(cls.count) and len(ids) < max(cls.count() / 4, 4):
                 for id_ in ids:
                     cls._update_tree(id_, field_name,
                         field.left, field.right)

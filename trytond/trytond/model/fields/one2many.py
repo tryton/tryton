@@ -337,7 +337,8 @@ class One2Many(Field):
             origin_where = origin.like(Model.__name__ + ',%')
             origin = origin_field.sql_id(origin, Target)
 
-        use_in = Target.count() < _subquery_threshold
+        use_in = (
+            callable(Target.count) and Target.count() < _subquery_threshold)
         if '.' not in name:
             if value is None:
                 if use_in:

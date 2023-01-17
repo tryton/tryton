@@ -259,7 +259,7 @@ class Many2One(Field):
         else:
             _, target_name = name.split('.', 1)
         target_domain = [(target_name,) + tuple(domain[1:])]
-        if Target.count() < _subquery_threshold:
+        if callable(Target.count) and Target.count() < _subquery_threshold:
             query = Target.search(target_domain, order=[], query=True)
             return column.in_(query)
         else:
