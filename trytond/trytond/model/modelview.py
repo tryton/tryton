@@ -10,7 +10,7 @@ from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.rpc import RPC
+from trytond.rpc import RPC, RPCReturnException
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 
@@ -23,6 +23,26 @@ __all__ = ['ModelView']
 
 class AccessButtonError(UserError):
     pass
+
+
+class ButtonActionException(RPCReturnException):
+    "Exception to launch action instead of executing button."
+
+    def __init__(self, action, value=None):
+        super().__init__()
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Action = pool.get('ir.action')
+
+        module, fs_id = action.split('.')
+        action_id = Action.get_action_id(
+            ModelData.get_id(module, fs_id))
+        self.value = Action(action_id).get_action_value()
+        if value:
+            self.value.update(value)
+
+    def result(self):
+        return self.value
 
 
 def on_change(func):

@@ -12,6 +12,7 @@ from trytond.config import config, get_hostname
 from trytond.exceptions import (
     ConcurrencyException, LoginException, RateLimitException, UserError,
     UserWarning)
+from trytond.rpc import RPCReturnException
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
@@ -221,6 +222,10 @@ def _dispatch(request, pool, *args, **kwargs):
                     continue
                 logger.exception(log_message, *log_args, duration())
                 raise
+            except RPCReturnException as e:
+                transaction.rollback()
+                transaction.tasks.clear()
+                result = e.result()
             except (ConcurrencyException, UserError, UserWarning,
                     LoginException):
                 logger.info(

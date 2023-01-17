@@ -6,7 +6,8 @@ from unittest.mock import patch
 
 from lxml import etree
 
-from trytond.model.exceptions import AccessButtonError, AccessError
+from trytond.model.exceptions import (
+    AccessButtonError, AccessError, ButtonActionException)
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -689,3 +690,27 @@ class ModelView(unittest.TestCase):
         self.assertIn('bar', writeable_fields)
         self.assertIn('baz', writeable_fields)
         self.assertIn('quux', writeable_fields)
+
+    @with_transaction()
+    def test_button_action_exception(self):
+        "Test value of ButtonActionException"
+        exception = ButtonActionException('tests.test_modelview_button_action')
+        self.assertEqual(exception.value, {
+                **exception.value,
+                'name': "Test Button Action",
+                'url': 'http://www.example.com/',
+                })
+
+    @with_transaction()
+    def test_button_action_exception_value(self):
+        "Test value of ButtonActionException"
+        exception = ButtonActionException(
+            'tests.test_modelview_button_action',
+            value={
+                'url': 'https://www.example.net',
+                })
+        self.assertEqual(exception.value, {
+                **exception.value,
+                'name': "Test Button Action",
+                'url': 'https://www.example.net',
+                })

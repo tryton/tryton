@@ -7,12 +7,13 @@ from .modelstorage import (
     ForbiddenCharValidationError, ImportDataError, RequiredValidationError,
     SelectionValidationError, SizeValidationError, TimeFormatValidationError,
     ValidationError)
-from .modelview import AccessButtonError
+from .modelview import AccessButtonError, ButtonActionException
 from .tree import RecursionError
 
 __all__ = [
     AccessButtonError,
     AccessError,
+    ButtonActionException,
     DigitsValidationError,
     DomainValidationError,
     ForeignKeyError,

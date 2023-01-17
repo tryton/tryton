@@ -46,6 +46,13 @@ Exceptions
 
    The exception raised when trying to execute a button without the rights.
 
+.. exception:: ButtonActionException
+
+   The exception raised to launch the ``action`` instead of executing the
+   button method.
+
+   The ``value`` attribute is the action value returned.
+
 .. exception:: ImportDataError
 
    The exception raises when importing data fails.

@@ -61,3 +61,14 @@ Instance methods are:
 .. method:: RCP.headers
 
    Return a dictionary of the headers.
+
+Exceptions
+==========
+
+.. exception:: RPCReturnException
+
+   The base class of exceptions to return the result of ``result`` method
+   instead of raising an exception.
+
+   The :class:`~trytond.transaction.Transaction` is rollbacked and tasks are
+   cleared.

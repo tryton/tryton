@@ -3,9 +3,8 @@
 import copy
 import datetime as dt
 
+from trytond.exceptions import TrytonException
 from trytond.transaction import Transaction
-
-__all__ = ['RPC']
 
 
 class RPC(object):
@@ -95,3 +94,10 @@ class RPCCache:
         return {
             'X-Tryton-Cache': int(self.duration.total_seconds()),
             }
+
+
+class RPCReturnException(TrytonException):
+    "Exception to return response instead of being raised"
+
+    def result(self):
+        pass
