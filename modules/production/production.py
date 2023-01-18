@@ -35,7 +35,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             })
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             })
     effective_date = fields.Date('Effective Date',
         states={
@@ -795,7 +795,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 cls.assign(to_assign)
 
     @classmethod
-    def _get_reschedule_domain(cls, date):
+    def _get_reschedule_planned_start_dates_domain(cls, date):
         context = Transaction().context
         return [
             ('company', '=', context.get('company')),
@@ -804,16 +804,34 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
+    def _get_reschedule_planned_dates_domain(cls, date):
+        context = Transaction().context
+        return [
+            ('company', '=', context.get('company')),
+            ('state', '=', 'running'),
+            ('planned_date', '<', date),
+            ]
+
+    @classmethod
     def reschedule(cls, date=None):
         pool = Pool()
         Date = pool.get('ir.date')
         if date is None:
             date = Date.today()
-        productions = cls.search(cls._get_reschedule_domain(date))
-        for production in productions:
+
+        to_reschedule_start_date = cls.search(
+            cls._get_reschedule_planned_start_dates_domain(date))
+        to_reschedule_planned_date = cls.search(
+            cls._get_reschedule_planned_dates_domain(date))
+
+        for production in to_reschedule_start_date:
             production.planned_start_date = date
             production.on_change_planned_start_date()
-        cls.save(productions)
+
+        for production in to_reschedule_planned_date:
+            production.planned_date = date
+
+        cls.save(to_reschedule_start_date + to_reschedule_planned_date)
 
     @property
     @fields.depends('warehouse')
