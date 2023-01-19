@@ -62,30 +62,6 @@ class Template(metaclass=PoolMeta):
         'product.lead_time', 'template', "Lead Times")
 
     @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
-        super(Template, cls).__register__(module_name)
-
-        # Migration from 3.8: change delivery_time into timedelta lead_time
-        if table.column_exist('delivery_time'):
-            cursor.execute(*sql_table.select(
-                    sql_table.id, sql_table.delivery_time))
-            for id_, delivery_time in cursor:
-                if delivery_time is None:
-                    continue
-                lead_time = datetime.timedelta(days=delivery_time)
-                update.execute(*sql_table.update(
-                        [sql_table.lead_time],
-                        [lead_time],
-                        where=sql_table.id == id_))
-            table.drop_column('delivery_time')
-
-    @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field == 'lead_time':

@@ -30,12 +30,3 @@ class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
                 'party.msg_category_name_unique'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Category, cls).__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: replace unique by exclude
-        table_h.drop_constraint('name_parent_uniq')

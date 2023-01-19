@@ -1,11 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 supplier_location = fields.Many2One(
@@ -69,23 +67,6 @@ class PartyLocation(ModelSQL, ValueMixin):
     party = fields.Many2One('party.party', "Party", ondelete='CASCADE')
     supplier_location = supplier_location
     customer_location = customer_location
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super().__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['supplier_location', 'customer_location'])
-        value_names.extend(['supplier_location', 'customer_location'])
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
 
     @classmethod
     def default_supplier_location(cls):

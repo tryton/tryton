@@ -55,31 +55,6 @@ class TableHandler(TableHandlerInterface):
         res = cursor.fetchone()
         if not res:
             return False
-        sql, = res
-
-        # Migration from 1.6 add autoincrement
-
-        if 'AUTOINCREMENT' not in sql.upper():
-            temp_sql = sql.replace(table_name, '_temp_%s' % table_name)
-            cursor.execute(temp_sql)
-            cursor.execute('PRAGMA table_info("' + table_name + '")')
-            columns = [_escape_identifier(column)
-                for _, column, _, _, _, _ in cursor]
-            cursor.execute(('INSERT INTO %s '
-                    '(' + ','.join(columns) + ') '
-                    'SELECT ' + ','.join(columns)
-                    + ' FROM %s') % (
-                    _escape_identifier('_temp_' + table_name),
-                    _escape_identifier(table_name)))
-            cursor.execute('DROP TABLE %s' % _escape_identifier(table_name))
-            new_sql = sql.replace('PRIMARY KEY',
-                    'PRIMARY KEY AUTOINCREMENT')
-            cursor.execute(new_sql)
-            cursor.execute(('INSERT INTO "%s" '
-                    '(' + ','.join(columns) + ') '
-                    'SELECT ' + ','.join(columns)
-                    + ' FROM "_temp_%s"') % (table_name, table_name))
-            cursor.execute('DROP TABLE "_temp_%s"' % table_name)
         return True
 
     @classmethod

@@ -1,8 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-from sql.operators import Concat
-
 from trytond.config import config
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -54,34 +51,6 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
             ('create_date', 'DESC'),
             ('id', 'DESC'),
             ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-
-        super(Attachment, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        attachment = cls.__table__()
-
-        # Migration from 4.0: merge digest and collision into file_id
-        if table.column_exist('digest') and table.column_exist('collision'):
-            cursor.execute(*attachment.update(
-                    [attachment.file_id],
-                    [attachment.digest],
-                    where=(attachment.collision == 0)
-                    | (attachment.collision == Null)))
-            cursor.execute(*attachment.update(
-                    [attachment.file_id],
-                    [Concat(Concat(attachment.digest, '-'),
-                            attachment.collision)],
-                    where=(attachment.collision != 0)
-                    & (attachment.collision != Null)))
-            table.drop_column('digest')
-            table.drop_column('collision')
-
-        # Migration from 4.8: remove unique constraint
-        table.drop_constraint('resource_name')
 
     @staticmethod
     def default_type():

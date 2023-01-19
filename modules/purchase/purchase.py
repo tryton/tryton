@@ -5,12 +5,10 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, groupby
 
-from sql import Literal, Null
+from sql import Literal
 from sql.aggregate import Count
 from sql.functions import CharLength
-from sql.operators import Concat
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
@@ -329,51 +327,10 @@ class Purchase(
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        PurchaseLine = pool.get('purchase.line')
-        Move = pool.get('stock.move')
-        InvoiceLine = pool.get('account.invoice.line')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.8:
-        if table.column_exist('supplier_reference'):
-            table.column_rename('reference', 'number')
-            table.column_rename('supplier_reference', 'reference')
-
         super(Purchase, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.2
-        # state confirmed splitted into confirmed and processing
-        if (backend.TableHandler.table_exist(PurchaseLine._table)
-                and backend.TableHandler.table_exist(Move._table)
-                and backend.TableHandler.table_exist(InvoiceLine._table)):
-            purchase_line = PurchaseLine.__table__()
-            move = Move.__table__()
-            invoice_line = InvoiceLine.__table__()
-            # Wrap subquery inside an other inner subquery because MySQL syntax
-            # doesn't allow update a table and select from the same table in a
-            # subquery.
-            sub_query = sql_table.join(purchase_line,
-                condition=purchase_line.purchase == sql_table.id
-                ).join(invoice_line, 'LEFT',
-                    condition=(invoice_line.origin
-                        == Concat(
-                            PurchaseLine.__name__ + ',', purchase_line.id))
-                    ).join(move, 'LEFT',
-                        condition=(move.origin == Concat(
-                                PurchaseLine.__name__ + ',', purchase_line.id))
-                        ).select(sql_table.id,
-                            where=((sql_table.state == 'confirmed')
-                                & ((invoice_line.id != Null)
-                                    | (move.id != Null))))
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.state],
-                    values=['processing'],
-                    where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1307,14 +1264,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         cls.__access__.add('purchase')
         cls._order.insert(0, ('purchase.purchase_date', 'DESC NULLS FIRST'))
         cls._order.insert(1, ('purchase.id', 'DESC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: drop required on description
-        table.not_null_action('description', action='remove')
 
     @staticmethod
     def default_type():

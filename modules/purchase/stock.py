@@ -2,10 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
-from sql import Null
-from sql.aggregate import Max
-from sql.operators import Concat
-
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -84,35 +80,6 @@ class ShipmentIn(metaclass=PoolMeta):
 
 class ShipmentInReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        PurchaseLine = pool.get('purchase.line')
-        Purchase = pool.get('purchase.purchase')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        move = Move.__table__()
-        line = PurchaseLine.__table__()
-        purchase = Purchase.__table__()
-
-        # Migration from 3.8: New supplier field
-        cursor.execute(*sql_table.select(sql_table.supplier,
-                where=sql_table.supplier == Null, limit=1))
-        if cursor.fetchone():
-            value = sql_table.join(move, condition=(
-                    Concat(cls.__name__ + ',', sql_table.id) == move.shipment)
-                ).join(line, condition=(
-                        Concat(PurchaseLine.__name__ + ',', line.id)
-                        == move.origin)
-                ).join(purchase,
-                    condition=(purchase.id == line.purchase)
-                ).select(Max(purchase.party))
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.supplier],
-                    values=[value]))
-        super(ShipmentInReturn, cls).__register__(module_name)
 
     @classmethod
     @ModelView.button

@@ -3,10 +3,8 @@
 from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
-from sql import Column
 
 from trytond import backend
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
@@ -122,20 +120,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         super().__setup__()
         cls.__access__.add('payment')
 
-    @classmethod
-    def __register__(cls, module_name):
-        sql_table = cls.__table__()
-        super(PaymentTermLine, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.8: rename percentage into ratio
-        if table.column_exist('percentage'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.ratio],
-                    values=[sql_table.percentage / 100]))
-            table.drop_column('percentage')
-
     @staticmethod
     def default_type():
         return 'remainder'
@@ -248,21 +232,12 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         pool = Pool()
-        Line = pool.get('account.invoice.payment_term.line')
         Month = pool.get('ir.calendar.month')
         Day = pool.get('ir.calendar.day')
         sql_table = cls.__table__()
-        line = Line.__table__()
         month = Month.__table__()
         day = Day.__table__()
         table_h = cls.__table_handler__(module_name)
-
-        # Migration from 4.0: rename long table
-        old_model_name = 'account.invoice.payment_term.line.relativedelta'
-        old_table = config.get(
-            'table', old_model_name, default=old_model_name.replace('.', '_'))
-        if backend.TableHandler.table_exist(old_table):
-            backend.TableHandler.table_rename(old_table, cls._table)
 
         # Migration from 5.0: use ir.calendar
         migrate_calendar = False
@@ -279,19 +254,6 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
-        line_table = Line.__table_handler__(module_name)
-
-        # Migration from 3.4
-        fields = ['day', 'month', 'weekday', 'months', 'weeks', 'days']
-        if any(line_table.column_exist(f) for f in fields):
-            columns = ([line.id.as_('line')]
-                + [Column(line, f) for f in fields])
-            cursor.execute(*sql_table.insert(
-                    columns=[sql_table.line]
-                    + [Column(sql_table, f) for f in fields],
-                    values=line.select(*columns)))
-            for field in fields:
-                line_table.drop_column(field)
 
         # Migration from 5.0: use ir.calendar
         if migrate_calendar:

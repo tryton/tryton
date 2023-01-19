@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
 from collections import defaultdict
 from itertools import groupby
 
-from sql import Literal, Null
+from sql import Literal
 
 from trytond.model import (
     Index, Model, ModelSQL, ModelView, Unique, fields, sequence_ordered)
@@ -36,28 +35,6 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
         'account.dunning.procedure', "Procedure", required=True)
     overdue = fields.TimeDelta('Overdue',
         help="When the level should be applied.")
-
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
-        super(Level, cls).__register__(module_name)
-
-        # Migration from 4.0: change days into timedelta overdue
-        if table.column_exist('days'):
-            cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
-                    where=sql_table.days != Null))
-            for id_, days in cursor:
-                overdue = datetime.timedelta(days)
-                update.execute(*sql_table.update(
-                        [sql_table.overdue],
-                        [overdue],
-                        where=sql_table.id == id_))
-            table.drop_column('days')
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
@@ -163,17 +140,6 @@ class Dunning(ModelSQL, ModelView):
                     'depends': ['active'],
                     },
                 })
-
-    @classmethod
-    def __register__(cls, module):
-        dunning = cls.__table__()
-        super().__register__(module)
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 4.8: rename done state into waiting
-        cursor.execute(*dunning.update(
-                [dunning.state], ['waiting'],
-                where=dunning.state == 'done'))
 
     @staticmethod
     def default_company():

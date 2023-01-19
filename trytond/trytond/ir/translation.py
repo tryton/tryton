@@ -109,9 +109,6 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        ir_translation = cls.__table__()
         table = cls.__table_handler__(module_name)
 
         # Migration from 5.0: remove src_md5
@@ -120,12 +117,6 @@ class Translation(ModelSQL, ModelView):
             table.drop_column('src_md5')
 
         super(Translation, cls).__register__(module_name)
-
-        # Migration from 3.8: rename odt type in report
-        cursor.execute(*ir_translation.update(
-                [ir_translation.type],
-                ['report'],
-                where=ir_translation.type == 'odt'))
 
     @classmethod
     def register_model(cls, model, module_name):

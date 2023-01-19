@@ -5,7 +5,6 @@ from functools import wraps
 
 from sql.operators import NotIn
 
-from trytond import backend
 from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
@@ -92,43 +91,6 @@ class Module(ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        sql_table = cls.__table__()
-        model_data_sql_table = ModelData.__table__()
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 3.6: remove double module
-        old_table = 'ir_module_module'
-        if backend.TableHandler.table_exist(old_table):
-            backend.TableHandler.table_rename(old_table, cls._table)
-
-        super(Module, cls).__register__(module_name)
-
-        # Migration from 4.0: rename installed to activated
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['activated'],
-                where=sql_table.state == 'installed'))
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['not activated'],
-                where=sql_table.state == 'uninstalled'))
-
-        # Migration from 4.6: register buttons on ir module
-        button_fs_ids = [
-            'module_activate_button',
-            'module_activate_cancel_button',
-            'module_deactivate_button',
-            'module_deactivate_cancel_button',
-            'module_upgrade_button',
-            'module_upgrade_cancel_button',
-            ]
-        cursor.execute(*model_data_sql_table.update(
-                [model_data_sql_table.module], ['ir'],
-                where=((model_data_sql_table.module == 'res')
-                    & (model_data_sql_table.fs_id.in_(button_fs_ids)))))
 
     @staticmethod
     def default_state():
@@ -334,15 +296,6 @@ class ModuleDependency(ModelSQL, ModelView):
         ]
 
     @classmethod
-    def __register__(cls, module_name):
-        # Migration from 3.6: remove double module
-        old_table = 'ir_module_module_dependency'
-        if backend.TableHandler.table_exist(old_table):
-            backend.TableHandler.table_rename(old_table, cls._table)
-
-        super(ModuleDependency, cls).__register__(module_name)
-
-    @classmethod
     def get_state(cls, dependencies, name):
         pool = Pool()
         Module = pool.get('ir.module')
@@ -368,21 +321,6 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        model_data = ModelData.__table__()
-
-        # Migration from 3.6: remove double module
-        old_table = 'ir_module_module_config_wizard_item'
-        if backend.TableHandler.table_exist(old_table):
-            backend.TableHandler.table_rename(old_table, cls._table)
-        cursor.execute(*model_data.update(
-                columns=[model_data.model],
-                values=[cls.__name__],
-                where=(model_data.model
-                    == 'ir.module.module.config_wizard.item')))
-
         super(ModuleConfigWizardItem, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)

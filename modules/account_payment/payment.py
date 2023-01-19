@@ -112,15 +112,6 @@ class Group(ModelSQL, ModelView):
             )
 
     @classmethod
-    def __register__(cls, module_name):
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 3.8: rename reference into number
-        if table_h.column_exist('reference'):
-            table_h.column_rename('reference', 'number')
-        super(Group, cls).__register__(module_name)
-
-    @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]

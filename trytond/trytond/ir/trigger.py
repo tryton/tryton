@@ -3,7 +3,7 @@
 import datetime
 import time
 
-from sql import Literal, Null, Select
+from sql import Literal, Select
 from sql.aggregate import Count, Max
 from sql.functions import CurrentTimestamp
 from sql.operators import Concat
@@ -77,27 +77,11 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
         super(Trigger, cls).__register__(module_name)
 
+        cursor = Transaction().connection.cursor()
         table_h = cls.__table_handler__(module_name)
-
-        # Migration from 3.4:
-        # change minimum_delay into timedelta minimum_time_delay
-        if table.column_exist('minimum_delay'):
-            cursor.execute(*sql_table.select(
-                    sql_table.id, sql_table.minimum_delay,
-                    where=sql_table.minimum_delay != Null))
-            for id_, delay in cursor:
-                delay = datetime.timedelta(hours=delay)
-                cursor.execute(*sql_table.update(
-                        [sql_table.minimum_time_delay],
-                        [delay],
-                        where=sql_table.id == id_))
-            table.drop_column('minimum_delay')
+        sql_table = cls.__table__()
 
         # Migration from 5.4: merge action
         if (table_h.column_exist('action_model')

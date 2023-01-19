@@ -3,8 +3,6 @@
 import datetime
 from decimal import Decimal
 
-from sql import Null
-
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered)
@@ -99,31 +97,6 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             'currency.currency', "Currency"),
         'on_change_with_currency')
     lines = fields.One2Many('sale.extra.line', 'extra', 'Lines')
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        PriceList = pool.get('product.price_list')
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
-        sql_table = cls.__table__()
-        price_list = PriceList.__table__()
-
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        # Migration from 3.6: price_list not required and new company
-        table.not_null_action('price_list', 'remove')
-        query = sql_table.join(price_list,
-            condition=sql_table.price_list == price_list.id
-            ).select(sql_table.id, price_list.company,
-                where=sql_table.company == Null)
-        cursor.execute(*query)
-        for extra_id, company_id in cursor:
-            query = sql_table.update([sql_table.company], [company_id],
-                where=sql_table.id == extra_id)
-            update.execute(*query)
 
     @staticmethod
     def default_company():

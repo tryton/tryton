@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 from .exceptions import CreditLimitError, CreditLimitWarning
@@ -141,24 +139,6 @@ class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
         "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)))
     credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_credit_limit_digits')
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(PartyCreditLimitAmount, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('credit_limit_amount')
-        value_names.append('credit_limit_amount')
-        fields.append('company')
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
 
     @fields.depends('company')
     def on_change_with_credit_limit_digits(self, name=None):

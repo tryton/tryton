@@ -8,14 +8,12 @@ from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Abs
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -475,24 +473,6 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
             ('sequence_type', '=',
                 Id('account_payment', 'sequence_type_account_payment_group')),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationPaymentGroupSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('payment_group_sequence')
-        value_names.append('payment_group_sequence')
-        fields.append('company')
-        migrate_property(
-            'account.configuration', field_names, cls, value_names,
-            fields=fields)
 
     @classmethod
     def default_payment_group_sequence(cls):

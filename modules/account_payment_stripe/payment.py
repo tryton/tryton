@@ -252,20 +252,6 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        table = cls.__table_handler__(module_name)
-        idempotency_key_exist = table.column_exist('stripe_idempotency_key')
-
-        super(Payment, cls).__register__(module_name)
-
-        # Migration from 4.6: do not set the same key to all existing payments
-        if not idempotency_key_exist:
-            cursor.execute(*sql_table.update(
-                    [sql_table.stripe_idempotency_key], [None]))
-
-    @classmethod
     def default_stripe_capture(cls):
         return True
 

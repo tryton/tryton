@@ -3,8 +3,6 @@
 
 import datetime
 
-from sql import Null
-
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
@@ -230,83 +228,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TimesheetWork = Pool().get('timesheet.work')
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
         table_project_work = cls.__table_handler__(module_name)
-        project = cls.__table__()
-        timesheet = TimesheetWork.__table__()
-
-        work_exist = table_project_work.column_exist('work')
-        add_parent = (not table_project_work.column_exist('parent')
-            and work_exist)
-        add_company = (not table_project_work.column_exist('company')
-            and work_exist)
-        add_name = (not table_project_work.column_exist('name')
-            and work_exist)
 
         super(Work, cls).__register__(module_name)
-
-        # Migration from 3.4: change effort into timedelta effort_duration
-        if table_project_work.column_exist('effort'):
-            cursor.execute(*project.select(project.id, project.effort,
-                    where=project.effort != Null))
-            for id_, effort in cursor:
-                duration = datetime.timedelta(hours=effort)
-                update.execute(*project.update(
-                        [project.effort_duration],
-                        [duration],
-                        where=project.id == id_))
-            table_project_work.drop_column('effort')
-
-        # Migration from 3.6: add parent, company, drop required on work,
-        # fill name
-        if add_parent:
-            second_project = cls.__table__()
-            query = project.join(timesheet,
-                condition=project.work == timesheet.id
-                ).join(second_project,
-                    condition=timesheet.parent == second_project.work
-                    ).select(project.id, second_project.id)
-            cursor.execute(*query)
-            for id_, parent in cursor:
-                update.execute(*project.update(
-                        [project.parent],
-                        [parent],
-                        where=project.id == id_))
-            cls._rebuild_tree('parent', None, 0)
-        if add_company:
-            cursor.execute(*project.join(timesheet,
-                    condition=project.work == timesheet.id
-                    ).select(project.id, timesheet.company))
-            for id_, company in cursor:
-                update.execute(*project.update(
-                        [project.company],
-                        [company],
-                        where=project.id == id_))
-        table_project_work.not_null_action('work', action='remove')
-        if add_name:
-            cursor.execute(*project.join(timesheet,
-                    condition=project.work == timesheet.id
-                    ).select(project.id, timesheet.name))
-            for id_, name in cursor:
-                update.execute(*project.update(
-                        [project.name],
-                        [name],
-                        where=project.id == id_))
-
-        # Migration from 4.0: remove work
-        if work_exist:
-            table_project_work.drop_constraint('work_uniq')
-            cursor.execute(*project.select(project.id, project.work,
-                    where=project.work != Null))
-            for project_id, work_id in cursor:
-                update.execute(*timesheet.update(
-                        [timesheet.origin, timesheet.name],
-                        ['%s,%s' % (cls.__name__, project_id), Null],
-                        where=timesheet.id == work_id))
-            table_project_work.drop_column('work')
 
         # Migration from 5.4: replace state by status
         table_project_work.not_null_action('state', action='remove')

@@ -7,11 +7,10 @@ from importlib import import_module
 
 import stdnum
 import stdnum.exceptions
-from sql import Column, Literal, Null
+from sql import Literal
 from sql.functions import CharLength
 from sql.operators import Equal
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Index, Model, ModelSQL, ModelView, UnionMixin,
@@ -21,7 +20,6 @@ from trytond.modules.company.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval, Get, If
 from trytond.tools import is_full_text, lstrip_wildcard
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 try:
@@ -119,18 +117,6 @@ class Template(
             If(~Eval('active'), ('active', '=', False), ()),
             ],
         help="The different variants the product comes in.")
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Template, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.8: rename category into categories
-        if table.column_exist('category'):
-            logger.warning(
-                'The column "category" on table "%s" must be dropped manually',
-                cls._table)
 
     @classmethod
     def __setup__(cls):
@@ -690,24 +676,6 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
         super().__setup__()
         cls.company.required = True
 
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ProductListPrice, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('list_price')
-        value_names.append('list_price')
-        fields.append('company')
-        migrate_property(
-            'product.template', field_names, cls, value_names,
-            parent='template', fields=fields)
-
 
 class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
     "Product Cost Price Method"
@@ -720,43 +688,6 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
         depends={'company'})
     cost_price_method = fields.Selection(
         'get_cost_price_methods', "Cost Price Method")
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        ProductCostPrice = pool.get('product.cost_price')
-        sql_table = cls.__table__()
-        cost_price = ProductCostPrice.__table__()
-        cursor = Transaction().connection.cursor()
-
-        exist = backend.TableHandler.table_exist(cls._table)
-        cost_price_exist = backend.TableHandler.table_exist(
-            ProductCostPrice._table)
-
-        super(ProductCostPriceMethod, cls).__register__(module_name)
-
-        # Migrate from 4.4: move cost_price_method from ProductCostPrice
-        if not exist and not cost_price_exist:
-            cls._migrate_property([], [], [])
-        elif not exist and cost_price_exist:
-            cost_price_table = ProductCostPrice.__table_handler__(module_name)
-            if cost_price_table.column_exist('template'):
-                columns = ['create_uid', 'create_date',
-                    'write_uid', 'write_date',
-                    'template', 'cost_price_method']
-                cursor.execute(*sql_table.insert(
-                        columns=[Column(sql_table, c) for c in columns],
-                        values=cost_price.select(
-                            *[Column(cost_price, c) for c in columns])))
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('cost_price_method')
-        value_names.append('cost_price_method')
-        fields.append('company')
-        migrate_property(
-            'product.template', field_names, cls, value_names,
-            parent='template', fields=fields)
 
     @classmethod
     def get_cost_price_methods(cls):
@@ -784,52 +715,6 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
     def __setup__(cls):
         super().__setup__()
         cls.company.required = True
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Product = pool.get('product.product')
-        sql_table = cls.__table__()
-        product = Product.__table__()
-        cursor = Transaction().connection.cursor()
-
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ProductCostPrice, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        if not exist:
-            # Create template column for property migration
-            table.add_column('template', 'INTEGER')
-            cls._migrate_property([], [], [])
-
-        # Migration from 4.4: replace template by product
-        if table.column_exist('template'):
-            columns = ['create_uid', 'create_date',
-                'write_uid', 'write_date', 'cost_price']
-            cursor.execute(*sql_table.insert(
-                    columns=[Column(sql_table, c) for c in columns]
-                    + [sql_table.product],
-                    values=sql_table.join(product,
-                        condition=sql_table.template == product.template
-                        ).select(
-                        *[Column(sql_table, c) for c in columns]
-                        + [product.id],
-                        where=(sql_table.template != Null)
-                        & (sql_table.product == Null))))
-            cursor.execute(*sql_table.delete(
-                    where=(sql_table.template != Null)
-                    & (sql_table.product == Null)))
-            table.drop_column('template')
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('cost_price')
-        value_names.append('cost_price')
-        fields.append('company')
-        migrate_property(
-            'product.template', field_names, cls, value_names,
-            parent='template', fields=fields)
 
 
 class TemplateCategory(ModelSQL):

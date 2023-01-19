@@ -6,7 +6,6 @@ from operator import itemgetter
 
 from sql.functions import CharLength
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Index, MatchMixin, ModelSQL, ModelView, Workflow, fields)
@@ -14,7 +13,6 @@ from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -56,24 +54,6 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
             ('sequence_type', '=',
                 Id('account_stock_landed_cost', 'sequence_type_landed_cost')),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationLandedCostSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('landed_cost_sequence')
-        value_names.append('landed_cost_sequence')
-        fields.append('company')
-        migrate_property(
-            'account.configuration', field_names, cls, value_names,
-            fields=fields)
 
     @classmethod
     def default_landed_cost_sequence(cls, **pattern):
@@ -189,12 +169,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        table_h = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
-
-        # Migration from 3.8: rename code into number
-        if table_h.column_exist('code'):
-            table_h.column_rename('code', 'number')
 
         super(LandedCost, cls).__register__(module_name)
 

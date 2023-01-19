@@ -328,13 +328,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Location = pool.get('stock.location')
         cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         location = Location.__table__()
-
-        # Migration from 3.8: rename code into number
-        if table.column_exist('code'):
-            table.column_rename('code', 'number')
 
         super(ShipmentIn, cls).__register__(module_name)
 
@@ -779,12 +774,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
-
-        # Migration from 3.8: rename code into number
-        if table.column_exist('code'):
-            table.column_rename('code', 'number')
 
         super(ShipmentInReturn, cls).__register__(module_name)
 
@@ -1273,10 +1263,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         location = Location.__table__()
-
-        # Migration from 3.8: rename code into number
-        if table.column_exist('code'):
-            table.column_rename('code', 'number')
 
         # Migration from 5.6: rename assigned_by into picked_by
         if table.column_exist('assigned_by'):
@@ -1935,10 +1921,6 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         sql_table = cls.__table__()
         location = Location.__table__()
 
-        # Migration from 3.8: rename code into number
-        if table.column_exist('code'):
-            table.column_rename('code', 'number')
-
         # Migration from 6.4: rename delivery_address to contact_address
         table.column_rename('delivery_address', 'contact_address')
 
@@ -2478,22 +2460,8 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.8:
-        if table.column_exist('code'):
-            table.column_rename('code', 'number')
 
         super(ShipmentInternal, cls).__register__(module_name)
-
-        # Migration from 4.0: fill planned_start_date
-        cursor = Transaction().connection.cursor()
-        cursor.execute(*sql_table.update(
-                [sql_table.planned_start_date],
-                [sql_table.planned_date],
-                where=(sql_table.planned_start_date == Null)
-                & (sql_table.planned_date != Null)))
-
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],

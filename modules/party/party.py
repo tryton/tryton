@@ -1,12 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import stdnum.exceptions
-from sql import Column, Literal, Null
+from sql import Column, Literal
 from sql.aggregate import Min
 from sql.functions import CharLength
 from stdnum import get_cc_module
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, MultiValueMixin, Unique,
@@ -15,7 +14,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval
 from trytond.tools import is_full_text, lstrip_wildcard
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -105,15 +103,6 @@ class Party(
         cls.active.states.update({
                 'readonly': Bool(Eval('replaced_by')),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Party, cls).__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 3.8
-        table_h.not_null_action('name', 'remove')
 
     @staticmethod
     def order_code(tables):
@@ -340,36 +329,6 @@ class PartyLang(ModelSQL, ValueMixin):
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')
     lang = fields.Many2One('ir.lang', "Language")
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Party = pool.get('party.party')
-        cursor = Transaction().connection.cursor()
-        exist = backend.TableHandler.table_exist(cls._table)
-        table = cls.__table__()
-        party = Party.__table__()
-
-        super(PartyLang, cls).__register__(module_name)
-
-        if not exist:
-            party_h = Party.__table_handler__(module_name)
-            if party_h.column_exist('lang'):
-                query = table.insert(
-                    [table.party, table.lang],
-                    party.select(party.id, party.lang))
-                cursor.execute(*query)
-                party_h.drop_column('lang')
-            else:
-                cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('lang')
-        value_names.append('lang')
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
 
 
 class PartyCategory(ModelSQL):
@@ -623,37 +582,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Party = pool.get('party.party')
         cursor = Transaction().connection.cursor()
-        party = Party.__table__()
         table = cls.__table__()
 
         super().__register__(module_name)
-
-        party_h = Party.__table_handler__(module_name)
-        if (party_h.column_exist('vat_number')
-                and party_h.column_exist('vat_country')):
-            identifiers = []
-            cursor.execute(*party.select(
-                    party.id, party.vat_number, party.vat_country,
-                    where=(party.vat_number != Null)
-                    | (party.vat_country != Null)))
-            for party_id, number, country in cursor:
-                code = (country or '') + (number or '')
-                if not code:
-                    continue
-                for type in Party.tax_identifier_types():
-                    module = get_cc_module(*type.split('_', 1))
-                    if module.is_valid(code):
-                        break
-                else:
-                    type = None
-                identifiers.append(
-                    cls(party=party_id, code=code, type=type))
-            cls.save(identifiers)
-            party_h.drop_column('vat_number')
-            party_h.drop_column('vat_country')
 
         # Migration from 5.8: Rename cn_rit into cn_ric
         cursor.execute(*table.update([table.type], ['cn_ric'],

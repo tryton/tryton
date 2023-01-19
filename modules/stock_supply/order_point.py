@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
-
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
@@ -104,26 +102,6 @@ class OrderPoint(ModelSQL, ModelView):
                     Eval('context', {}).get('company', -1)),
             ])
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.2
-        table.drop_constraint('check_max_qty_greater_min_qty')
-        table.not_null_action('min_quantity', 'remove')
-        table.not_null_action('max_quantity', 'remove')
-        target_qty_exist = table.column_exist('target_quantity')
-
-        super(OrderPoint, cls).__register__(module_name)
-
-        # Migration from 4.2
-        if not target_qty_exist:
-            cursor.execute(*sql_table.update(
-                    [sql_table.target_quantity, sql_table.max_quantity],
-                    [sql_table.max_quantity, Null]))
 
     @staticmethod
     def default_type():

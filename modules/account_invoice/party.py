@@ -1,11 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools.multivalue import migrate_property
 
 customer_payment_term = fields.Many2One(
     'account.invoice.payment_term', "Customer Payment Term")
@@ -61,23 +59,6 @@ class PartyPaymentTerm(ModelSQL, ValueMixin):
         'party.party', "Party", ondelete='CASCADE')
     customer_payment_term = customer_payment_term
     supplier_payment_term = supplier_payment_term
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(PartyPaymentTerm, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['customer_payment_term', 'supplier_payment_term'])
-        value_names.extend(['customer_payment_term', 'supplier_payment_term'])
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
 
 
 class Replace(metaclass=PoolMeta):

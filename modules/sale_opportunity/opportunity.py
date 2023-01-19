@@ -4,7 +4,6 @@
 import datetime
 from itertools import groupby
 
-from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -127,48 +126,15 @@ class SaleOpportunity(
     def __register__(cls, module_name):
         pool = Pool()
         Company = pool.get('company.company')
-        Sale = pool.get('sale.sale')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
         sql_table = cls.__table__()
         company = Company.__table__()
-        sale = Sale.__table__()
 
         table = cls.__table_handler__(module_name)
-        number_exists = table.column_exist('number')
         currency_exists = table.column_exist('currency')
 
-        # Migration from 3.8: rename reference into number
-        if table.column_exist('reference') and not number_exists:
-            table.column_rename('reference', 'number')
-            number_exists = True
-
         super(SaleOpportunity, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.4: replace sale by origin
-        if table.column_exist('sale'):
-            cursor.execute(*sql_table.select(
-                    sql_table.id, sql_table.sale,
-                    where=sql_table.sale != Null))
-            for id_, sale_id in cursor:
-                update.execute(*sale.update(
-                        columns=[sale.origin],
-                        values=['%s,%s' % (cls.__name__, id_)],
-                        where=sale.id == sale_id))
-            table.drop_column('sale')
-
-        # Migration from 4.0: change probability into conversion probability
-        if table.column_exist('probability'):
-            cursor.execute(*sql_table.update(
-                    [sql_table.conversion_probability],
-                    [sql_table.probability / 100.0]))
-            table.drop_constraint('check_percentage')
-            table.drop_column('probability')
-
-        # Migration from 4.2: make employee not required
-        table.not_null_action('employee', action='remove')
 
         # Migration from 5.0: drop required on description
         table.not_null_action('description', action='remove')

@@ -4,7 +4,6 @@ from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Or
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
 
 
 class Category(metaclass=PoolMeta):
@@ -110,27 +109,6 @@ class Template(metaclass=PoolMeta):
             'invisible': Eval('type') == 'service',
             },
         help="The country of origin of the product.")
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        pool = Pool()
-        Category = pool.get('product.category')
-        sql_table = cls.__table__()
-        category = Category.__table__()
-
-        table = cls.__table_handler__(module_name)
-        category_exists = table.column_exist('category')
-
-        super(Template, cls).__register__(module_name)
-
-        # Migration from 3.8: duplicate category into account_category
-        if category_exists:
-            # Only accounting category until now
-            cursor.execute(*category.update([category.customs], [True]))
-            cursor.execute(*sql_table.update(
-                    [sql_table.customs_category],
-                    [sql_table.category]))
 
     @classmethod
     def default_tariff_codes_category(cls):

@@ -14,15 +14,6 @@ class Allocation(ModelSQL, ModelView):
     percentage = fields.Float('Percentage', digits=(16, 2), required=True,
         domain=[('percentage', '>', 0.0)])
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(Allocation, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.2:
-        table.drop_constraint('percentage_positive')
-
     @staticmethod
     def default_percentage():
         return 100

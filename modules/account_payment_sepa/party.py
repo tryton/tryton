@@ -1,8 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Null
-from sql.functions import CurrentTimestamp
-
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
@@ -19,28 +16,6 @@ class Party(metaclass=PoolMeta):
         'get_sepa_creditor_identifier_used')
     sepa_mandates = fields.One2Many('account.payment.sepa.mandate', 'party',
         'SEPA Mandates')
-
-    @classmethod
-    def __register__(cls, module_name):
-        Identifier = Pool().get('party.identifier')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        identifier = Identifier.__table__()
-        super(Party, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.0: Move sepa_creditor_identifier to identifier
-        if table.column_exist('sepa_creditor_identifier'):
-            select = sql_table.select(Literal(0), CurrentTimestamp(),
-                        sql_table.id, Literal('sepa'),
-                        sql_table.sepa_creditor_identifier,
-                        where=((sql_table.sepa_creditor_identifier != Null)
-                            & (sql_table.sepa_creditor_identifier != "")))
-            cursor.execute(*identifier.insert(
-                    columns=[identifier.create_uid, identifier.create_date,
-                        identifier.party, identifier.type, identifier.code],
-                    values=select))
-            table.drop_column('sepa_creditor_identifier')
 
     @classmethod
     def copy(cls, parties, default=None):

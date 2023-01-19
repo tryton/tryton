@@ -5,7 +5,6 @@ from itertools import chain
 
 from sql.functions import CharLength
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
@@ -56,25 +55,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
                 Id('purchase_requisition',
                     'sequence_type_purchase_requisition')),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-        if exist:
-            table = cls.__table_handler__(module_name)
-            exist &= table.column_exist('purchase_requisition_sequence')
-
-        super(ConfigurationSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('purchase_requisition_sequence')
-        value_names.append('purchase_requisition_sequence')
-        super(ConfigurationSequence, cls)._migrate_property(
-            field_names, value_names, fields)
 
     @classmethod
     def default_purchase_requisition_sequence(cls):

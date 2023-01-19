@@ -67,45 +67,6 @@ class Work(ModelSQL, ModelView):
                 'timesheet.msg_work_origin_unique_company'),
             ]
 
-    @classmethod
-    def __register__(cls, module_name):
-        table_h = cls.__table_handler__(module_name)
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        super(Work, cls).__register__(module_name)
-
-        # Migration from 4.0: remove required on name
-        table_h.not_null_action('name', 'remove')
-
-        # Migration from 4.0: remove parent, left and right
-        if table_h.column_exist('parent'):
-            id2name = {}
-            id2parent = {}
-            cursor.execute(*table.select(
-                    table.id, table.parent, table.name))
-            for id_, parent, name in cursor:
-                id2name[id_] = name
-                id2parent[id_] = parent
-
-            for id_, name in id2name.items():
-                parent = id2parent[id_]
-                while parent:
-                    name = '%s\\%s' % (id2name[parent], name)
-                    parent = id2parent[parent]
-                cursor.execute(*table.update(
-                        [table.name], [name],
-                        where=table.id == id_))
-            table_h.drop_column('parent')
-        table_h.drop_column('left')
-        table_h.drop_column('right')
-
-        # Migration from 4.0: remove timesheet_available
-        if table_h.column_exist('timesheet_available'):
-            cursor.execute(*table.delete(
-                    where=table.timesheet_available == Literal(False)))
-            table_h.drop_column('timesheet_available')
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')

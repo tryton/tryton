@@ -4,13 +4,9 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Column
-from sql.aggregate import Count
 from sql.conditionals import Coalesce
 from sql.functions import CharLength
-from sql.operators import Concat
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -19,7 +15,7 @@ from trytond.modules.purchase.stock import process_purchase
 from trytond.modules.sale.stock import process_sale
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id, If
-from trytond.tools import cursor_dict, grouped_slice
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -59,25 +55,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
                 Id('sale_supply_drop_shipment',
                     'sequence_type_shipment_drop')),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-        if exist:
-            table = cls.__table_handler__(module_name)
-            exist &= table.column_exist('shipment_drop_sequence')
-
-        super(ConfigurationSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('shipment_drop_sequence')
-        value_names.append('shipment_drop_sequence')
-        super(ConfigurationSequence, cls)._migrate_property(
-            field_names, value_names, fields)
 
     @classmethod
     def default_shipment_drop_sequence(cls):
@@ -185,18 +162,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        PurchaseLine = pool.get('purchase.line')
-        PurchaseRequest = pool.get('purchase.request')
-        SaleLine = pool.get('sale.line')
-        Location = pool.get('stock.location')
         table = cls.__table__()
-        move = Move.__table__()
-        purchase_line = PurchaseLine.__table__()
-        purchase_request = PurchaseRequest.__table__()
-        sale_line = SaleLine.__table__()
-        location = Location.__table__()
         cursor = Transaction().connection.cursor()
 
         table_h = cls.__table_handler__(module_name)
@@ -205,56 +171,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             table_h.column_rename('code', 'number')
 
         super(ShipmentDrop, cls).__register__(module_name)
-
-        # Migration from 3.6
-        cursor.execute(*location.select(Count(location.id),
-                where=(location.type == 'drop')))
-        has_drop_shipment, = cursor.fetchone()
-
-        if not has_drop_shipment:
-            drop_shipment = Location(name='Migration Drop Shipment',
-                type='drop', active=False)
-            drop_shipment.save()
-            drop_shipment_location = drop_shipment.id
-
-            move_sale_query = move.join(purchase_line,
-                condition=move.origin == Concat('purchase.line,',
-                    purchase_line.id)
-                ).join(purchase_request,
-                condition=purchase_request.purchase_line == purchase_line.id
-                ).join(sale_line,
-                condition=sale_line.purchase_request == purchase_request.id
-                ).select(
-                    move.id, move.to_location, sale_line.id,
-                    where=move.shipment.like('stock.shipment.drop,%'))
-            cursor.execute(*move_sale_query)
-            move_sales = cursor.fetchall()
-
-            for sub_move in grouped_slice(move_sales):
-                sub_ids = [s[0] for s in sub_move]
-                cursor.execute(*move.update(
-                        columns=[move.to_location],
-                        values=[drop_shipment_location],
-                        where=move.id.in_(sub_ids)))
-
-            cursor.execute(*move.select(limit=1))
-            moves = list(cursor_dict(cursor))
-            if moves:
-                move_columns = moves[0].keys()
-                columns = [Column(move, c) for c in move_columns if c != 'id']
-                create_move = move.insert(
-                    columns=columns, values=move.select(
-                        *columns,
-                        where=move.shipment.like('stock.shipment.drop,%')))
-                cursor.execute(*create_move)
-
-            for move_id, customer_location, line_id in move_sales:
-                cursor.execute(*move.update(
-                        columns=[move.origin, move.from_location,
-                            move.to_location],
-                        values=[Concat('sale.line,', str(line_id)),
-                            drop_shipment_location, customer_location],
-                        where=(move.id == move_id)))
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*table.update(

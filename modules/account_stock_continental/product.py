@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond import backend
 from trytond.model import fields
 from trytond.modules.account_product.product import (
     account_used, template_property)
@@ -132,33 +131,6 @@ class CategoryAccount(metaclass=PoolMeta):
                 ('type.statement', 'in',
                     cls.get_account_stock_type_statements()),
                 ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-        if exist:
-            table = cls.__table_handler__(module_name)
-            exist &= all(table.column_exist(c) for c in account_names)
-
-            # Migration from 5.4: rename account_stock_{supplier,customer}
-            for old, new in [
-                    ('account_stock_supplier', 'account_stock_in'),
-                    ('account_stock_customer', 'account_stock_out')]:
-                if table.column_exist(old):
-                    table.column_rename(old, new)
-
-        super(CategoryAccount, cls).__register__(module_name)
-
-        if not exist:
-            # Re-migration
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(account_names)
-        value_names.extend(account_names)
-        super(CategoryAccount, cls)._migrate_property(
-            field_names, value_names, fields)
 
     @classmethod
     def get_account_stock_type_statements(cls):

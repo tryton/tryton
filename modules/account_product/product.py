@@ -4,14 +4,12 @@ from functools import wraps
 
 from sql import Null
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Or
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 from .exceptions import AccountError, TaxError
@@ -276,24 +274,6 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
             ('type.revenue', '=', True),
             ('company', '=', Eval('company', -1)),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(CategoryAccount, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['account_expense', 'account_revenue'])
-        value_names.extend(['account_expense', 'account_revenue'])
-        fields.append('company')
-        migrate_property(
-            'product.category', field_names, cls, value_names,
-            parent='category', fields=fields)
 
 
 class CategoryCustomerTax(ModelSQL):

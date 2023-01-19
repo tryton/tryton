@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import price_digits, round_price
@@ -47,25 +46,6 @@ class ConfigurationSaleMethod(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sale_method'
     sale_shipment_cost_method = sale_shipment_cost_method
     get_sale_shipment_cost_methods = get_sale_methods('shipment_cost_method')
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-        if exist:
-            table = cls.__table_handler__(module_name)
-            exist &= table.column_exist('sale_shipment_cost_method')
-
-        super(ConfigurationSaleMethod, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sale_shipment_cost_method')
-        value_names.append('sale_shipment_cost_method')
-        super(ConfigurationSaleMethod, cls)._migrate_property(
-            field_names, value_names, fields)
 
     @classmethod
     def default_sale_shipment_cost_method(cls):

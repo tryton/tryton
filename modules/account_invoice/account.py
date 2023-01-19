@@ -3,9 +3,6 @@
 from collections import OrderedDict
 from itertools import islice
 
-from sql import Literal
-from sql.conditionals import Coalesce
-
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
@@ -51,41 +48,6 @@ class FiscalYear(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ])
 
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Sequence = pool.get('account.fiscalyear.invoice_sequence')
-        sequence = Sequence.__table__()
-        sql_table = cls.__table__()
-
-        super(FiscalYear, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.2: Use Match pattern for sequences
-        if (table.column_exist('in_invoice_sequence')
-                and table.column_exist('in_credit_note_sequence')
-                and table.column_exist('out_invoice_sequence')
-                and table.column_exist('out_credit_note_sequence')):
-            cursor.execute(*sequence.insert(columns=[
-                        sequence.sequence, sequence.fiscalyear,
-                        sequence.company,
-                        sequence.out_invoice_sequence,
-                        sequence.out_credit_note_sequence,
-                        sequence.in_invoice_sequence,
-                        sequence.in_credit_note_sequence],
-                    values=sql_table.select(
-                        Literal(20), sql_table.id,
-                        sql_table.company,
-                        sql_table.out_invoice_sequence,
-                        sql_table.out_credit_note_sequence,
-                        sql_table.in_invoice_sequence,
-                        sql_table.in_credit_note_sequence)))
-            table.drop_column('out_invoice_sequence')
-            table.drop_column('out_credit_note_sequence')
-            table.drop_column('in_invoice_sequence')
-            table.drop_column('in_credit_note_sequence')
-
     @staticmethod
     def default_invoice_sequences():
         if Transaction().user == 0:
@@ -95,49 +57,6 @@ class FiscalYear(metaclass=PoolMeta):
 
 class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Sequence = pool.get('account.fiscalyear.invoice_sequence')
-        FiscalYear = pool.get('account.fiscalyear')
-        sequence = Sequence.__table__()
-        fiscalyear = FiscalYear.__table__()
-        sql_table = cls.__table__()
-
-        super(Period, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.2: Use Match pattern for sequences
-        if (table.column_exist('in_invoice_sequence')
-                and table.column_exist('in_credit_note_sequence')
-                and table.column_exist('out_invoice_sequence')
-                and table.column_exist('out_credit_note_sequence')):
-            cursor.execute(*sequence.insert(columns=[
-                        sequence.sequence, sequence.fiscalyear,
-                        sequence.company, sequence.period,
-                        sequence.out_invoice_sequence,
-                        sequence.out_credit_note_sequence,
-                        sequence.in_invoice_sequence,
-                        sequence.in_credit_note_sequence],
-                    values=sql_table.join(fiscalyear,
-                            condition=(fiscalyear.id == sql_table.fiscalyear)
-                        ).select(
-                        Literal(10), sql_table.fiscalyear,
-                        fiscalyear.company, sql_table.id,
-                        Coalesce(sql_table.out_invoice_sequence,
-                            fiscalyear.out_invoice_sequence),
-                        Coalesce(sql_table.out_credit_note_sequence,
-                            fiscalyear.out_credit_note_sequence),
-                        Coalesce(sql_table.in_invoice_sequence,
-                            fiscalyear.in_invoice_sequence),
-                        Coalesce(sql_table.in_credit_note_sequence,
-                            fiscalyear.in_credit_note_sequence))))
-            table.drop_column('out_invoice_sequence')
-            table.drop_column('out_credit_note_sequence')
-            table.drop_column('in_invoice_sequence')
-            table.drop_column('in_credit_note_sequence')
 
     @classmethod
     @ModelView.button

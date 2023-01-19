@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
-from sql import Null
-
 from trytond.i18n import gettext
 from trytond.model import (
     Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
@@ -372,34 +370,6 @@ class InventoryLine(ModelSQL, ModelView):
                 'stock.msg_inventory_line_quantity_positive'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
-        pool = Pool()
-        Move = pool.get('stock.move')
-        sql_table = cls.__table__()
-        move_table = Move.__table__()
-
-        super(InventoryLine, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.0: use Move origin
-        if table.column_exist('move'):
-            cursor.execute(*sql_table.select(sql_table.id, sql_table.move,
-                    where=sql_table.move != Null))
-            for line_id, move_id in cursor:
-                update.execute(*move_table.update(
-                        columns=[move_table.origin],
-                        values=['%s,%s' % (cls.__name__, line_id)],
-                        where=move_table.id == move_id))
-            table.drop_column('move')
-
-        # Migration from 4.6: drop required on quantity
-        table.not_null_action('quantity', action='remove')
 
     @staticmethod
     def default_expected_quantity():

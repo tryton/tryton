@@ -6,12 +6,11 @@ from itertools import chain, combinations, groupby, islice
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal, Null, Window
-from sql.aggregate import Max, Sum
+from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Abs, CharLength, Round
 from sql.operators import Exists
 
-from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
@@ -113,30 +112,6 @@ class Move(ModelSQL, ModelView):
                     (t.journal, Index.Equality()),
                     (t.period, Index.Equality())),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-        pool = Pool()
-        Period = pool.get('account.period')
-        period = Period.__table__()
-        FiscalYear = pool.get('account.fiscalyear')
-        fiscalyear = FiscalYear.__table__()
-
-        created_company = not table.column_exist('company')
-
-        super(Move, cls).__register__(module_name)
-
-        # Migration from 3.4: new company field
-        if created_company:
-            # Don't use UPDATE FROM because SQLite nor MySQL support it.
-            value = period.join(fiscalyear,
-                condition=period.fiscalyear == fiscalyear.id).select(
-                    fiscalyear.company,
-                    where=period.id == sql_table.period)
-            cursor.execute(*sql_table.update([sql_table.company], [value]))
 
     @classmethod
     def order_number(cls, tables):
@@ -535,7 +510,6 @@ class Reconciliation(ModelSQL, ModelView):
         line = Line.__table__()
         line_h = Line.__table_handler__(module_name)
 
-        date_exist = table.column_exist('date')
         company_exist = table.column_exist('company')
 
         # Migration from 6.6: rename name to number
@@ -543,18 +517,6 @@ class Reconciliation(ModelSQL, ModelView):
             table.column_rename('name', 'number')
 
         super(Reconciliation, cls).__register__(module_name)
-
-        # Migration from 3.8: new date field
-        if (not date_exist
-                and backend.TableHandler.table_exist(Line._table)
-                and Line.__table_handler__().column_exist('move')):
-            cursor.execute(*sql_table.update(
-                    [sql_table.date],
-                    line.join(move,
-                        condition=move.id == line.move
-                        ).select(Max(move.date),
-                        where=line.reconciliation == sql_table.id,
-                        group_by=line.reconciliation)))
 
         # Migration from 5.8: add company field
         if not company_exist and line_h.column_exist('reconciliation'):

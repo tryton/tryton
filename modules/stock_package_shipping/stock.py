@@ -210,23 +210,6 @@ class ShipmentOut(ShippingMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
-    def __register__(cls, module):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        model_data = ModelData.__table__()
-        cursor = Transaction().connection.cursor()
-        super(ShipmentOut, cls).__register__(module)
-
-        # Migration from 4.6: rename create_shipping xml id
-        if module == 'stock_package_shipping':
-            cursor.execute(*model_data.update(
-                    [model_data.fs_id],
-                    ['shipment_out_create_shipping_button'],
-                    where=(model_data.module == module)
-                    & (model_data.model == 'ir.model.button')
-                    & (model_data.fs_id == 'create_shipping_button')))
-
-    @classmethod
     @Workflow.transition('packed')
     def pack(cls, shipments):
         super().pack(shipments)

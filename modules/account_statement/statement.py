@@ -183,16 +183,6 @@ class Statement(Workflow, ModelSQL, ModelView):
         sql_table = cls.__table__()
 
         super(Statement, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.2: remove required on start/end balance
-        table.not_null_action('start_balance', action='remove')
-        table.not_null_action('end_balance', action='remove')
-
-        # Migration from 3.2: add required name
-        cursor.execute(*sql_table.update([sql_table.name],
-                [sql_table.id.cast(cls.name.sql_type().base)],
-                where=sql_table.name == Null))
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(

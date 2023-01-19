@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelView, ValueMixin, fields)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
-from trytond.tools.multivalue import migrate_property
 
 sequences = ['shipment_in_sequence', 'shipment_in_return_sequence',
     'shipment_out_sequence', 'shipment_out_return_sequence',
@@ -175,24 +173,6 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
                 Id('stock', 'sequence_type_inventory')),
             ])
 
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(sequences)
-        value_names.extend(sequences)
-        fields.append('company')
-        migrate_property(
-            'stock.configuration', field_names, cls, value_names,
-            fields=fields)
-
     default_shipment_in_sequence = default_sequence('sequence_shipment_in')
     default_shipment_in_return_sequence = default_sequence(
         'sequence_shipment_in_return')
@@ -208,23 +188,6 @@ class ConfigurationLocation(ModelSQL, ValueMixin):
     "Stock Configuration Location"
     __name__ = 'stock.configuration.location'
     shipment_internal_transit = shipment_internal_transit
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationLocation, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('shipment_internal_transit')
-        value_names.append('shipment_internal_transit')
-        migrate_property(
-            'stock.configuration', field_names, cls, value_names,
-            fields=fields)
 
     @classmethod
     def default_shipment_internal_transit(cls):

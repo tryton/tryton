@@ -311,10 +311,7 @@ class ProductSupplier(
 
     @classmethod
     def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
 
         # Migration from 5.0: add product/template
         if (table.column_exist('product')
@@ -322,20 +319,6 @@ class ProductSupplier(
             table.column_rename('product', 'template')
 
         super(ProductSupplier, cls).__register__(module_name)
-
-        # Migration from 3.8: change delivery_time inte timedelta lead_time
-        if table.column_exist('delivery_time'):
-            cursor.execute(*sql_table.select(
-                    sql_table.id, sql_table.delivery_time))
-            for id_, delivery_time in cursor:
-                if delivery_time is None:
-                    continue
-                lead_time = datetime.timedelta(days=delivery_time)
-                cursor.execute(*sql_table.update(
-                        [sql_table.lead_time],
-                        [lead_time],
-                        where=sql_table.id == id_))
-            table.drop_column('delivery_time')
 
     @staticmethod
     def default_company():
@@ -482,21 +465,6 @@ class ProductSupplierPrice(
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('product_supplier')
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
-        fill_sequence = not table.column_exist('sequence')
-
-        super(ProductSupplierPrice, cls).__register__(module_name)
-
-        # Migration from 3.2: replace quantity by sequence for order
-        if fill_sequence:
-            cursor.execute(*sql_table.update(
-                    [sql_table.sequence], [sql_table.quantity]))
 
     @staticmethod
     def default_quantity():

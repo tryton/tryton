@@ -195,11 +195,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         table_h = cls.__table_handler__(module_name)
 
-        # Migration from 3.8: rename reference into number
-        if (table_h.column_exist('reference')
-                and not table_h.column_exist('number')):
-            table_h.column_rename('reference', 'number')
-
         # Migration from 6.4: rename employee into submitted_by
         if (table_h.column_exist('employee')
                 and not table_h.column_exist('submitted_by')):

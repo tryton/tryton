@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelView, ValueMixin, fields)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id, TimeDelta
-from trytond.tools.multivalue import migrate_property
 
 sale_invoice_method = fields.Selection(
     'get_sale_invoice_methods', "Sale Invoice Method")
@@ -83,24 +81,6 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
             ])
 
     @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sale_sequence')
-        value_names.append('sale_sequence')
-        fields.append('company')
-        migrate_property(
-            'sale.configuration', field_names, cls, value_names,
-            fields=fields)
-
-    @classmethod
     def default_sale_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
@@ -117,23 +97,6 @@ class ConfigurationSaleMethod(ModelSQL, ValueMixin):
     get_sale_invoice_methods = get_sale_methods('invoice_method')
     sale_shipment_method = sale_shipment_method
     get_sale_shipment_methods = get_sale_methods('shipment_method')
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationSaleMethod, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['sale_invoice_method', 'sale_shipment_method'])
-        value_names.extend(['sale_invoice_method', 'sale_shipment_method'])
-        migrate_property(
-            'sale.configuration', field_names, cls, value_names,
-            fields=fields)
 
     @classmethod
     def default_sale_invoice_method(cls):

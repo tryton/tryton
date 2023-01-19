@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools.multivalue import migrate_property
 
 asset_bymonthday = fields.Selection([
         ('1', "First"),
@@ -95,24 +93,6 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
             ('sequence_type', '=',
                 Id('account_asset', 'sequence_type_asset')),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(ConfigurationAssetSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('asset_sequence')
-        value_names.append('asset_sequence')
-        fields.append('company')
-        migrate_property(
-            'account.configuration', field_names, cls, value_names,
-            fields=fields)
 
     @classmethod
     def default_asset_sequence(cls):

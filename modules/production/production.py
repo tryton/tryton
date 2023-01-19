@@ -5,7 +5,6 @@ from datetime import timedelta
 from decimal import Decimal
 from itertools import chain, groupby
 
-from sql import Null
 from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
@@ -261,22 +260,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        table_h = cls.__table_handler__(module_name)
-        table = cls.__table__()
-
-        # Migration from 3.8: rename code into number
-        if table_h.column_exist('code'):
-            table_h.column_rename('code', 'number')
-
         super(Production, cls).__register__(module_name)
 
-        # Migration from 4.0: fill planned_start_date
+        table = cls.__table__()
         cursor = Transaction().connection.cursor()
-        cursor.execute(*table.update(
-                [table.planned_start_date],
-                [table.planned_date],
-                where=(table.planned_start_date == Null)
-                & (table.planned_date != Null)))
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*table.update(

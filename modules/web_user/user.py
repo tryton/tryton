@@ -112,18 +112,6 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        super(User, cls).__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 4.6
-        table_h.not_null_action('email', 'remove')
-
-        # Migration from 4.6: replace unique by exclude
-        table_h.drop_constraint('email_unique')
-
-    @classmethod
     def default_email_valid(cls):
         return False
 

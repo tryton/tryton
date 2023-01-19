@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 
@@ -57,21 +55,3 @@ class PartySalePriceList(ModelSQL, CompanyValueMixin):
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(PartySalePriceList, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sale_price_list')
-        value_names.append('sale_price_list')
-        fields.append('company')
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)

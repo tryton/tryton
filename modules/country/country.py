@@ -183,15 +183,6 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
         super(Country, cls).__register__(module_name)
 
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.4: drop unique constraints from name and code
-        table.drop_constraint('name_uniq')
-        table.drop_constraint('code_uniq')
-
-        # Migration from 3.8: remove required on code
-        table.not_null_action('code', 'remove')
-
         # Migration from 5.2: remove country data
         cursor.execute(*data.delete(where=(data.module == 'country')
                 & (data.model == cls.__name__)))

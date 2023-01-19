@@ -79,12 +79,6 @@ class Currency(
 
         table_h = cls.__table_handler__(module_name)
 
-        # Migration from 4.6: removal of monetary
-        for col in [
-                'mon_grouping', 'mon_decimal_point',
-                'p_sign_posn', 'n_sign_posn']:
-            table_h.not_null_action(col, 'remove')
-
         # Migration from 5.2: remove country data
         cursor.execute(*data.delete(where=(data.module == 'currency')
                 & (data.model == cls.__name__)))

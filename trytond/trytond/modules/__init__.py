@@ -367,7 +367,6 @@ def register_classes(with_test=False):
 def load_modules(
         database_name, pool, update=None, lang=None, activatedeps=False):
     # Do not import backend when importing module
-    from trytond import backend
     res = True
     if update:
         update = update[:]
@@ -380,23 +379,6 @@ def load_modules(
 
         with transaction.set_context(_no_trigger=True), \
                 transaction.connection.cursor() as cursor:
-            # Migration from 3.6: remove double module
-            old_table = 'ir_module_module'
-            new_table = 'ir_module'
-            if backend.TableHandler.table_exist(old_table):
-                backend.TableHandler.table_rename(old_table, new_table)
-
-            # Migration from 4.0: rename installed to activated
-            cursor.execute(*ir_module.select(ir_module.name,
-                    where=ir_module.state.in_(('installed', 'uninstalled'))))
-            if cursor.fetchone():
-                cursor.execute(*ir_module.update(
-                        [ir_module.state], ['activated'],
-                        where=ir_module.state == 'installed'))
-                cursor.execute(*ir_module.update(
-                        [ir_module.state], ['not activated'],
-                        where=ir_module.state == 'uninstalled'))
-
             if update:
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=ir_module.state.in_(('activated', 'to activate',

@@ -5,7 +5,6 @@ from collections import defaultdict, namedtuple
 from decimal import Decimal
 from itertools import chain, combinations, groupby
 
-from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import CharLength, Round
@@ -390,62 +389,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Line = pool.get('account.invoice.line')
-        Tax = pool.get('account.invoice.tax')
         sql_table = cls.__table__()
-        line = Line.__table__()
-        tax = Tax.__table__()
 
         super(Invoice, cls).__register__(module_name)
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
-
-        # Migration from 3.8: remove invoice/credit note type
-        cursor.execute(*sql_table.select(sql_table.id,
-                where=sql_table.type.like('%_invoice')
-                | sql_table.type.like('%_credit_note'),
-                limit=1))
-        if cursor.fetchone():
-            for type_ in ['out', 'in']:
-                cursor.execute(*sql_table.update(
-                        columns=[sql_table.type],
-                        values=[type_],
-                        where=sql_table.type == '%s_invoice' % type_))
-                cursor.execute(*line.update(
-                        columns=[line.invoice_type],
-                        values=[type_],
-                        where=line.invoice_type == '%s_invoice' % type_))
-
-                cursor.execute(*line.update(
-                        columns=[line.quantity, line.invoice_type],
-                        values=[-line.quantity, type_],
-                        where=(line.invoice_type == '%s_credit_note' % type_)
-                        & (line.invoice == Null)
-                        ))
-                # Don't use UPDATE FROM because SQLite nor MySQL support it
-                cursor.execute(*line.update(
-                        columns=[line.quantity, line.invoice_type],
-                        values=[-line.quantity, type_],
-                        where=line.invoice.in_(sql_table.select(sql_table.id,
-                                where=(
-                                    sql_table.type == '%s_credit_note' % type_)
-                                ))))
-                cursor.execute(*tax.update(
-                        columns=[tax.base, tax.amount, tax.base_sign],
-                        values=[-tax.base, -tax.amount, -tax.base_sign],
-                        where=tax.invoice.in_(sql_table.select(sql_table.id,
-                                where=(
-                                    sql_table.type == '%s_credit_note' % type_)
-                                ))))
-                cursor.execute(*sql_table.update(
-                        columns=[sql_table.type],
-                        values=[type_],
-                        where=sql_table.type == '%s_credit_note' % type_))
-
-        # Migration from 4.0: Drop not null on payment_term
-        table.not_null_action('payment_term', 'remove')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -2180,28 +2129,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-        invoice = Invoice.__table__()
-        sql_table = cls.__table__()
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
         super(InvoiceLine, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
-
-        # Migration from 3.4: company is required
-        cursor.execute(*sql_table.join(invoice,
-                condition=sql_table.invoice == invoice.id
-                ).select(sql_table.id, invoice.company,
-                where=sql_table.company == Null))
-        for line_id, company_id in cursor:
-            update.execute(*sql_table.update([sql_table.company], [company_id],
-                    where=sql_table.id == line_id))
-
-        # Migration from 4.6: drop required on description
-        table.not_null_action('description', action='remove')
-
         # Migration from 5.0: remove check constraints
         table.drop_constraint('type_account')
         table.drop_constraint('type_invoice')
@@ -2806,16 +2735,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('invoice')
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(InvoiceTax, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: drop base_sign and tax_sign
-        table.not_null_action('base_sign', action='remove')
-        table.not_null_action('tax_sign', action='remove')
 
     @staticmethod
     def default_base():

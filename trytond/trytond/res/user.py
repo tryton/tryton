@@ -28,9 +28,8 @@ from operator import attrgetter
 from passlib.context import CryptContext
 from sql import Literal, Null
 from sql.aggregate import Count
-from sql.conditionals import Case, Coalesce
+from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
-from sql.operators import Concat
 
 try:
     import bcrypt
@@ -205,21 +204,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         model_data = ModelData.__table__()
         cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.0
-        if table.column_exist('password') and table.column_exist('salt'):
-            sqltable = cls.__table__()
-            password_hash_new = Concat('sha1$', Concat(sqltable.password,
-                Concat('$', Coalesce(sqltable.salt, ''))))
-            cursor.execute(*sqltable.update(
-                columns=[sqltable.password_hash],
-                values=[password_hash_new]))
-            table.drop_column('password')
-            table.drop_column('salt')
-
-        # Migration from 4.2: Remove required on name
-        table.not_null_action('name', action='remove')
 
         # Migration from 5.6: Set noupdate to admin
         cursor.execute(*model_data.update(

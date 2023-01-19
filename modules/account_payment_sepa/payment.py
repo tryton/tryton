@@ -14,7 +14,6 @@ from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from lxml import etree
 from sql import Literal, Null
 
-from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
@@ -855,31 +854,11 @@ class Message(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Group = pool.get('account.payment.group')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
         table = cls.__table__()
 
         super(Message, cls).__register__(module_name)
-
-        # Migration from 3.2
-        if backend.TableHandler.table_exist(Group._table):
-            group_table = Group.__table_handler__(module_name)
-            if group_table.column_exist('sepa_message'):
-                group = Group.__table__()
-                cursor.execute(*group.select(
-                        group.id, group.sepa_message, group.company))
-                for group_id, message, company_id in cursor:
-                    update.execute(*table.insert(
-                            [table.message, table.type, table.company,
-                                table.origin, table.state],
-                            [[
-                                    message, 'out', company_id,
-                                    'account.payment.group,%s' % group_id,
-                                    'done']]))
-                group_table.drop_column('sepa_message')
 
         # Migration from 5.6: rename state canceled to cancelled
         cursor.execute(*table.update(

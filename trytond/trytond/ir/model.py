@@ -1225,18 +1225,9 @@ class ModelData(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        model_data = cls.__table__()
-
         super(ModelData, cls).__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: register buttons on ir module
-        cursor.execute(*model_data.update(
-                [model_data.module], ['ir'],
-                where=((model_data.module == 'res')
-                    & (model_data.fs_id == 'model_data_sync_button'))))
 
         # Migration from 5.0: remove required on db_id
         table_h.not_null_action('db_id', action='remove')
@@ -1368,16 +1359,7 @@ class ModelData(ModelSQL, ModelView):
 
     @classmethod
     def load_values(cls, values):
-        try:
-            return dict(json.loads(values, object_hook=JSONDecoder()))
-        except ValueError:
-            # Migration from 3.2
-            import datetime
-            from decimal import Decimal
-            return eval(values, {
-                    'Decimal': Decimal,
-                    'datetime': datetime,
-                    })
+        return dict(json.loads(values, object_hook=JSONDecoder()))
 
     @classmethod
     @ModelView.button

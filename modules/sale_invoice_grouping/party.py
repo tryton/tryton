@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools.multivalue import migrate_property
 
 
 class Party(metaclass=PoolMeta):
@@ -33,23 +31,6 @@ class PartySaleInvoiceGroupingMethod(ModelSQL, ValueMixin):
         'party.party', "Party", ondelete='CASCADE')
     sale_invoice_grouping_method = fields.Selection(
         'get_sale_invoice_grouping_methods', "Sale Invoice Grouping Method")
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(PartySaleInvoiceGroupingMethod, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sale_invoice_grouping_method')
-        value_names.append('sale_invoice_grouping_method')
-        migrate_property(
-            'party.party', field_names, cls, value_names,
-            parent='party', fields=fields)
 
     @classmethod
     def get_sale_invoice_grouping_methods(cls):

@@ -5,7 +5,6 @@ from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id
-from trytond.transaction import Transaction
 
 tax_roundings = [
     ('document', 'Per Document'),
@@ -173,21 +172,6 @@ class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
             },
         depends={'company'})
     tax_rounding = fields.Selection(tax_roundings, 'Method', required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        sql_table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        super(ConfigurationTaxRounding, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.2: rename method into tax_rounding
-        if table.column_exist('method'):
-            cursor.execute(*sql_table.update(
-                    [sql_table.tax_rounding], [sql_table.method]))
-            table.drop_column('method')
 
     @classmethod
     def default_tax_rounding(cls):

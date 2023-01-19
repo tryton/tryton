@@ -4,9 +4,8 @@
 from string import Template
 
 from sql import Literal
-from sql.conditionals import Coalesce
 from sql.functions import Substring
-from sql.operators import Concat, Equal
+from sql.operators import Equal
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
@@ -83,26 +82,12 @@ class Address(
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
         table = cls.__table_handler__(module_name)
 
         # Migration from 5.8: rename zip to postal code
         table.column_rename('zip', 'postal_code')
 
         super(Address, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.0: remove streetbis
-        if table.column_exist('streetbis'):
-            value = Concat(
-                Coalesce(sql_table.street, ''),
-                Concat('\n', Coalesce(sql_table.streetbis, '')))
-            cursor.execute(*sql_table.update(
-                    [sql_table.street],
-                    [value]))
-            table.drop_column('streetbis')
 
     @fields.depends('street')
     def on_change_with_street_single_line(self, name=None):

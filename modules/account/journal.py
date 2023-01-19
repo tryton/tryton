@@ -4,7 +4,6 @@ from decimal import Decimal
 
 from sql.aggregate import Sum
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, Unique, Workflow,
@@ -17,7 +16,6 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id
 from trytond.tools import (
     grouped_slice, is_full_text, lstrip_wildcard, reduce_ids)
-from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
 STATES = {
@@ -201,24 +199,6 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
         depends={'company'})
 
     @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(JournalSequence, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append('sequence')
-        value_names.append('sequence')
-        fields.append('company')
-        migrate_property(
-            'account.journal', field_names, cls, value_names,
-            parent='journal', fields=fields)
-
-    @classmethod
     def default_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
@@ -277,14 +257,6 @@ class JournalPeriod(
                     },
                 })
         cls.active.states = STATES
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(JournalPeriod, cls).__register__(module_name)
-
-        table = cls.__table_handler__(cls, module_name)
-        # Migration from 4.2: remove name column
-        table.drop_column('name')
 
     @staticmethod
     def default_state():

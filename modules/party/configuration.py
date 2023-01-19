@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Id
-from trytond.tools.multivalue import migrate_property
 
 from .party import IDENTIFIER_TYPES
 
@@ -91,41 +89,17 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
                         ))
 
 
-class _ConfigurationValue(ModelSQL):
-
-    _configuration_value_field = None
-
-    @classmethod
-    def __register__(cls, module_name):
-        exist = backend.TableHandler.table_exist(cls._table)
-
-        super(_ConfigurationValue, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.append(cls._configuration_value_field)
-        value_names.append(cls._configuration_value_field)
-        migrate_property(
-            'party.configuration', field_names, cls, value_names,
-            fields=fields)
-
-
-class ConfigurationSequence(_ConfigurationValue, ModelSQL, ValueMixin):
+class ConfigurationSequence(ModelSQL, ValueMixin):
     'Party Configuration Sequence'
     __name__ = 'party.configuration.party_sequence'
     party_sequence = party_sequence
-    _configuration_value_field = 'party_sequence'
 
     @classmethod
     def check_xml_record(cls, records, values):
         pass
 
 
-class ConfigurationLang(_ConfigurationValue, ModelSQL, ValueMixin):
+class ConfigurationLang(ModelSQL, ValueMixin):
     'Party Configuration Lang'
     __name__ = 'party.configuration.party_lang'
     party_lang = party_lang
-    _configuration_value_field = 'party_lang'

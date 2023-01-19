@@ -122,63 +122,11 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-        model_data = ModelData.__table__()
-        purchase = Purchase.__table__()
-        purchase_line = PurchaseLine.__table__()
         request = cls.__table__()
-
-        tablehandler = cls.__table_handler__(module_name)
-        state_exist = tablehandler.column_exist('state')
 
         super(PurchaseRequest, cls).__register__(module_name)
 
-        # Migration from 3.6: removing the constraint on the quantity
-        tablehandler = cls.__table_handler__(module_name)
-        tablehandler.drop_constraint('check_purchase_request_quantity')
-
-        # Migration from 3.8: renaming module of Purchase Request group entry
         cursor = Transaction().connection.cursor()
-        cursor.execute(*model_data.update(
-                columns=[model_data.module],
-                values=['purchase_request'],
-                where=((model_data.fs_id == 'group_purchase_request')
-                    & (model_data.module == 'stock_supply'))))
-
-        # Migration from 4.0: remove required on product and uom
-        tablehandler.not_null_action('product', action='remove')
-        tablehandler.not_null_action('uom', action='remove')
-
-        # Migration from 4.2: add state
-        if not state_exist:
-            cursor = Transaction().connection.cursor()
-            update = Transaction().connection.cursor()
-            query = request.join(purchase_line, type_='INNER',
-                condition=request.purchase_line == purchase_line.id
-                ).join(purchase, type_='INNER',
-                    condition=purchase_line.purchase == purchase.id
-                    ).select(
-                        request.id, purchase.state, request.exception_ignored)
-            cursor.execute(*query)
-            for request_id, purchase_state, exception_ignored in cursor:
-                if purchase_state == 'cancel' and not exception_ignored:
-                    state = 'exception'
-                elif purchase_state == 'cancel':
-                    state = 'cancel'
-                elif purchase_state == 'done':
-                    state = 'done'
-                else:
-                    state = 'purchased'
-                update.execute(*request.update(
-                        [request.state],
-                        [state],
-                        where=request.id == request_id))
-
-        # Migration from 4.4: remove required on origin
-        tablehandler.not_null_action('origin', action='remove')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*request.update(

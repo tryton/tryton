@@ -8,7 +8,6 @@ from . import account
 
 def register():
     Pool.register(
-        account.AccountTemplate,
         account.BEVATCustomer,
         account.BEVATCustomerContext,
         module='account_be', type_='model')

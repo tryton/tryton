@@ -6,7 +6,6 @@ from functools import partial
 from operator import itemgetter
 
 from genshi.template.text import TextTemplate
-from sql import Null
 
 from trytond.cache import Cache, MemoryCache
 from trytond.config import config
@@ -576,24 +575,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     module = fields.Char('Module', readonly=True)
     _template_cache = MemoryCache('ir.action.report.template', context=False)
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(ActionReport, cls).__register__(module_name)
-
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        table = cls.__table_handler__(module_name)
-        action_report = cls.__table__()
-
-        # Migration from 3.4 remove report_name_module_uniq constraint
-        table.drop_constraint('report_name_module_uniq')
-
-        # Migration from 4.4 replace plain extension by txt
-        cursor.execute(*action_report.update(
-                [action_report.extension],
-                ['txt'],
-                where=action_report.extension == 'plain'))
-
     @staticmethod
     def default_type():
         return 'ir.action.report'
@@ -773,26 +754,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         cls.__rpc__.update({
                 'get': RPC(cache=dict(days=1)),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        act_window = cls.__table__()
-        super(ActionActWindow, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 3.0: auto_refresh removed
-        table.drop_column('auto_refresh')
-
-        # Migration from 4.0: window_name removed
-        table.drop_column('window_name')
-
-        # Migration from 4.2: remove required on limit
-        table.not_null_action('limit', 'remove')
-        cursor.execute(*act_window.update(
-                [act_window.limit], [Null],
-                where=act_window.limit == 0))
 
     @staticmethod
     def default_type():

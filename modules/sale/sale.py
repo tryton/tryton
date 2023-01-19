@@ -361,19 +361,9 @@ class Sale(
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
-        # Migration from 3.8: rename reference into number
-        if (table.column_exist('reference')
-                and not table.column_exist('number')):
-            table.column_rename('reference', 'number')
-
         super(Sale, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.0: Drop not null on payment_term
-        table.not_null_action('payment_term', 'remove')
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1346,14 +1336,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         cls.__access__.add('sale')
         cls._order.insert(0, ('sale.sale_date', 'DESC NULLS FIRST'))
         cls._order.insert(1, ('sale.id', 'DESC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(SaleLine, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: drop required on description
-        table.not_null_action('description', action='remove')
 
     @staticmethod
     def default_type():

@@ -282,15 +282,6 @@ class TaxLineTemplate(ModelSQL, ModelView):
         super().__setup__()
         cls.__access__.add('line')
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(TaxLineTemplate, cls).__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 4.6: remove code
-        table_h.drop_column('code')
-
     def get_line(self, values):
         'Return the tax line for the keyword values'
         pool = Pool()

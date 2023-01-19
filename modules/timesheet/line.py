@@ -95,40 +95,6 @@ class Line(ModelSQL, ModelView):
                     (t.employee, Index.Equality())),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        update = transaction.connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-        pool = Pool()
-        Work = pool.get('timesheet.work')
-        work = Work.__table__()
-
-        created_company = not table.column_exist('company')
-
-        super(Line, cls).__register__(module_name)
-
-        # Migration from 3.4: new company field
-        if created_company:
-            # Don't use FROM because SQLite nor MySQL support it.
-            update.execute(*sql_table.update(
-                    [sql_table.company], [work.select(work.company,
-                            where=work.id == sql_table.work)]))
-        # Migration from 3.4: change hours into timedelta duration
-        if table.column_exist('hours'):
-            table.drop_constraint('check_move_hours_pos')
-            cursor.execute(*sql_table.select(
-                    sql_table.id, sql_table.hours))
-            for id_, hours in cursor:
-                duration = datetime.timedelta(hours=hours)
-                update.execute(*sql_table.update(
-                        [sql_table.duration],
-                        [duration],
-                        where=sql_table.id == id_))
-            table.drop_column('hours')
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')

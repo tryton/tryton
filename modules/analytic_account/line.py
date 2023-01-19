@@ -59,10 +59,6 @@ class Line(ModelSQL, ModelView):
         super(Line, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
 
-        # Migration from 4.0: remove name and journal
-        for field_name in ['name', 'journal']:
-            table.not_null_action(field_name, action='remove')
-
         # Migration from 5.0: replace credit_debit constraint by credit_debit_
         table.drop_constraint('credit_debit')
 
@@ -192,21 +188,6 @@ class MoveLine(metaclass=PoolMeta):
                 },
             })
         cls._check_modify_exclude |= {'analytic_lines', 'analytic_state'}
-
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        state_exist = table.column_exist('analytic_state')
-
-        super(MoveLine, cls).__register__(module_name)
-
-        # Migration from 4.0: add analytic_state
-        if not state_exist:
-            cursor.execute(
-                *sql_table.update([sql_table.analytic_state], ['valid']))
 
     @classmethod
     def default_analytic_state(cls):

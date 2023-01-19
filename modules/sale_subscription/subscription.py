@@ -7,7 +7,6 @@ from sql import Literal, Null, operators
 from sql.conditionals import Case, Coalesce
 from sql.functions import CharLength
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
@@ -610,29 +609,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module):
-        pool = Pool()
-        Subscription = pool.get('sale.subscription')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table__()
-        subscription = Subscription.__table__()
-
-        # Migration from 4.8: start_date required
-        if backend.TableHandler.table_exist(cls._table):
-            table_h = cls.__table_handler__(module)
-            if table_h.column_exist('start_date'):
-                cursor.execute(*table.update(
-                        [table.start_date],
-                        subscription.select(
-                            subscription.start_date,
-                            where=subscription.id == table.subscription),
-                        where=table.start_date == Null))
 
         super(Line, cls).__register__(module)
         table_h = cls.__table_handler__(module)
-
-        # Migration from 4.8: drop required on description
-        table_h.not_null_action('description', action='remove')
 
         # Migration from 5.2: replace consumed by consumed_until
         if table_h.column_exist('consumed'):
