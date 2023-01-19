@@ -129,6 +129,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_group_view_form"/>
             <field name="act_window" ref="act_payment_group_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_payment_group_form_domain_not_completed">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('payment_complete', '=', False)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_payment_group_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_payment_group_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_payment_group_form"/>
+        </record>
         <menuitem
             parent="menu_payments"
             action="act_payment_group_form"
