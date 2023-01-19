@@ -489,7 +489,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             if not production.bom:
                 if production.product:
                     move = production._move(
-                        'input', production.product, production.uom,
+                        'output', production.product, production.uom,
                         production.quantity)
                     if move:
                         move.unit_price = Decimal(0)
