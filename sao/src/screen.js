@@ -2128,8 +2128,13 @@
                             view.children_field || null] = [
                                 [], [[this.current_record.id]]];
                     }
-                } else if (view.view_type == 'tree') {
-                    var paths = view.get_expanded_paths();
+                } else if (~['tree', 'list-form'].indexOf(view.view_type)) {
+                    var paths;
+                    if (view.view_type == 'tree') {
+                        paths = view.get_expanded_paths();
+                    } else {
+                        paths = [];
+                    }
                     var selected_paths = view.get_selected_paths();
                     if (!(parent_ in this.tree_states)) {
                         this.tree_states[parent_] = {};
@@ -2166,7 +2171,7 @@
         set_tree_state: function() {
             var parent_, state, state_prm, tree_state_model;
             var view = this.current_view;
-            if (!~['tree', 'form'].indexOf(view.view_type)) {
+            if (!~['tree', 'form', 'list-form'].indexOf(view.view_type)) {
                 return jQuery.when();
             }
 
@@ -2177,7 +2182,7 @@
                     !jQuery.isEmptyObject(this.tree_states_done)) {
                 return jQuery.when();
             }
-            if (view.view_type == 'tree' &&
+            if ((~['tree', 'list-form'].indexOf(view.view_type)) &&
                 !parseInt(view.attributes.tree_state, 10)) {
                 this.tree_states_done.push(view);
             }
@@ -2222,6 +2227,8 @@
                 }
                 if (view.view_type == 'tree') {
                     return view.display(selected_nodes, expanded_nodes);
+                } else if (view.view_type == 'list-form') {
+                    return view.display(selected_nodes);
                 } else {
                     var record;
                     if (!jQuery.isEmptyObject(selected_nodes)) {

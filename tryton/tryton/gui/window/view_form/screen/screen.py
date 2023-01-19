@@ -824,13 +824,13 @@ class Screen:
 
     def set_tree_state(self):
         view = self.current_view
-        if view.view_type not in ('tree', 'form'):
+        if view.view_type not in {'tree', 'form', 'list-form'}:
             return
         if id(view) in self.tree_states_done:
             return
         if view.view_type == 'form' and self.tree_states_done:
             return
-        if (view.view_type == 'tree'
+        if (view.view_type in {'tree', 'list-form'}
                 and not int(view.attributes.get('tree_state', False))):
             # Mark as done to not set later when the view_type change
             self.tree_states_done.add(id(view))
@@ -838,7 +838,7 @@ class Screen:
         if parent is not None and parent < 0:
             return
         expanded_nodes, selected_nodes = [], []
-        if view.view_type == 'tree':
+        if view.view_type in {'tree', 'list-form'}:
             state = self.tree_states[parent][view.children_field]
             if state:
                 expanded_nodes, selected_nodes = state
@@ -859,7 +859,8 @@ class Screen:
                         self.model_name)
                 self.tree_states[parent][view.children_field] = (
                     expanded_nodes, selected_nodes)
-            view.expand_nodes(expanded_nodes)
+            if view.view_type == 'tree':
+                view.expand_nodes(expanded_nodes)
             view.select_nodes(selected_nodes)
         else:
             if selected_nodes:
@@ -895,9 +896,12 @@ class Screen:
                             self.current_record)
                     self.tree_states[parent][view.children_field] = (
                         [], [[path]])
-            elif view.view_type == 'tree':
-                view.save_width()
-                paths = view.get_expanded_paths()
+            elif view.view_type in {'tree', 'list-form'}:
+                if view.view_type == 'tree':
+                    view.save_width()
+                    paths = view.get_expanded_paths()
+                else:
+                    paths = []
                 selected_paths = view.get_selected_paths()
                 self.tree_states[parent][view.children_field] = (
                     paths, selected_paths)

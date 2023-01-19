@@ -131,6 +131,23 @@ class ViewListForm(View):
                 self._select_show_row(idx)
                 break
 
+    def get_selected_paths(self):
+        return [[r.id] for r in self.selected_records]
+
+    def select_nodes(self, nodes):
+        if not nodes:
+            return
+        nodes = {n[0] for n in nodes}
+        self.listbox.handler_block_by_func(self.select_nodes)
+        self.listbox.unselect_all()
+        for idx, view_form in enumerate(self._view_forms):
+            if view_form.record.id in nodes:
+                row = self.listbox.get_row_at_index(idx)
+                if not row:
+                    continue
+                self.listbox.select_row(row)
+        self.listbox.handler_unblock_by_func(self.select_nodes)
+
     def _row_selected(self, listbox, row):
         previous_record = self.record
         if (previous_record

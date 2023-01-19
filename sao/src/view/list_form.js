@@ -28,10 +28,16 @@
             });
             this._view_forms = [];
         },
-        display: function() {
+        display: function(selected_nodes) {
             var record, view_form, view_form_frame, to_delete;
             var deferreds = [];
             var new_elements = [];
+            var selected = new Set();
+            if (!jQuery.isEmptyObject(selected_nodes)) {
+                for (const id_path of selected_nodes) {
+                    selected.add(id_path[0]);
+                }
+            }
             for (var i = 0; i < this.group.length; i++) {
                 record = this.group[i];
                 view_form = this._view_forms[i];
@@ -50,7 +56,7 @@
                 } else {
                     view_form_frame.removeClass('disabled');
                 }
-                if (this.record === record) {
+                if ((this.record === record) || selected.has(record.id)) {
                     view_form_frame.addClass('list-group-item-selected');
                 } else {
                     view_form_frame.removeClass('list-group-item-selected');
@@ -64,6 +70,17 @@
             jQuery(to_delete.map(function (vf) { return vf.el[0]; }))
                 .parent().detach();
             return jQuery.when.apply(jQuery, deferreds);
+        },
+        get_selected_paths: function() {
+            var paths = [];
+            var view_form_frame;
+            for (const form of this._view_forms) {
+                view_form_frame = form.el.parent();
+                if (view_form_frame.hasClass('list-group-item-selected')) {
+                    paths.push([form.record.id]);
+                }
+            }
+            return paths;
         },
         _create_form: function(record) {
             var view_form = new Sao.View.ListGroupViewForm(
