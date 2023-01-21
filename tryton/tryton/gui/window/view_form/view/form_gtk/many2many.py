@@ -87,13 +87,19 @@ class Many2Many(Widget):
         frame.set_shadow_type(Gtk.ShadowType.OUT)
         vbox.pack_start(frame, expand=False, fill=True, padding=0)
 
-        self.screen = Screen(attrs['relation'],
+        model = attrs['relation']
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            attrs.get('string') or common.MODELNAME.get(model))
+        self.screen = Screen(model,
             view_ids=attrs.get('view_ids', '').split(','),
             mode=['tree'], views_preload=attrs.get('views', {}),
             order=attrs.get('order'),
             row_activate=self._on_activate,
             readonly=True,
-            limit=None)
+            limit=None,
+            context=self.view.screen.context,
+            breadcrumb=breadcrumb)
         self.screen.windows.append(self)
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)

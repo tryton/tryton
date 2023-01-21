@@ -3217,6 +3217,7 @@ function eval_pyson(value){
                 row_activate: this.activate.bind(this),
                 exclude_field: attributes.relation_field || null,
                 limit: null,
+                context: this.view.screen.context,
                 pre_validate: attributes.pre_validate,
                 breadcrumb: breadcrumb,
             });
@@ -3790,6 +3791,7 @@ function eval_pyson(value){
                 row_activate: this.activate.bind(this),
                 readonly: true,
                 limit: null,
+                context: this.view.screen.context,
                 breadcrumb: breadcrumb,
             });
             this.screen.windows.push(this);
@@ -3954,12 +3956,16 @@ function eval_pyson(value){
                 // Remove the first tree view as mode is form only
                 view_ids.shift();
             }
-            return new Sao.Screen(this.attributes.relation, {
+            var model = this.attributes.relation;
+            var breadcrumb = jQuery.extend([], this.view.screen.breadcrumb);
+            breadcrumb.push(this.attributes.string || Sao.common.MODELNAME.get(model));
+            return new Sao.Screen(model, {
                 'domain': domain,
                 'view_ids': view_ids,
                 'mode': ['form'],
                 'views_preload': this.attributes.views,
-                'context': context
+                'context': context,
+                'breadcrumb': breadcrumb,
             });
         },
         edit: function() {
