@@ -168,6 +168,7 @@ class One2Many(Widget):
             row_activate=self._on_activate,
             exclude_field=attrs.get('relation_field', None),
             limit=None,
+            context=self.view.screen.context,
             breadcrumb=breadcrumb)
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
         self.screen.windows.append(self)
