@@ -1651,7 +1651,7 @@
                 return true;
             }
             var invalid = false;
-            var state_attrs = this.get_strate_attrs(record);
+            var state_attrs = this.get_state_attrs(record);
             var is_required = Boolean(parseInt(state_attrs.required, 10));
             state_attrs.domain_readonly = false;
             var inversion = new Sao.common.DomainInversion();
