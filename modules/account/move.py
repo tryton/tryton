@@ -1227,6 +1227,7 @@ class Line(MoveLineMixin, ModelSQL, ModelView):
                     gettext('account.msg_modify_line_closed_journal_period',
                         journal_period=journal_period.rec_name))
         else:
+            JournalPeriod.lock()
             JournalPeriod.create([{
                         'journal': journal.id,
                         'period': period.id,
