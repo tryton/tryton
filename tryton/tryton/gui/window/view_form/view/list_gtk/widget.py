@@ -996,6 +996,8 @@ class O2M(GenericText):
         screen = Screen(relation, mode=['tree', 'form'],
             view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'),
+            limit=None,
+            context=self.view.screen.context,
             breadcrumb=breadcrumb)
         screen.pre_validate = bool(int(self.attrs.get('pre_validate', 0)))
         screen.group = group
@@ -1022,6 +1024,8 @@ class M2M(O2M):
         screen = Screen(relation, mode=['tree', 'form'],
             view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'),
+            limit=None,
+            context=self.view.screen.context,
             breadcrumb=breadcrumb)
         screen.group = group
 
