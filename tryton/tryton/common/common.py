@@ -104,6 +104,8 @@ class IconFactory:
         try:
             icon_ref = (cls._name2id[iconname], iconname)
         except KeyError:
+            logger.error(f"Unknown icon {iconname}")
+            cls._icons[iconname] = None
             return
         idx = cls._tryton_icons.index(icon_ref)
         to_load = slice(max(0, idx - cls.batchnum // 2),
@@ -128,13 +130,14 @@ class IconFactory:
         colors = CONFIG['icon.colors'].split(',')
         cls.register_icon(iconname)
         if iconname not in cls._pixbufs[(size, badge)]:
+            data = None
             if iconname in cls._icons:
                 data = cls._icons[iconname]
             elif iconname in cls._local_icons:
                 path = cls._local_icons[iconname]
                 with open(path, 'rb') as fp:
                     data = fp.read()
-            else:
+            if not data:
                 logger.error("Unknown icon %s" % iconname)
                 return
             if not color:
