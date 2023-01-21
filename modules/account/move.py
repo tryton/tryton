@@ -1131,6 +1131,10 @@ class Line(ModelSQL, ModelView):
         and if there is no journal - period, create it
         '''
         JournalPeriod = Pool().get('account.journal.period')
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+
         journal_periods = JournalPeriod.search([
                 ('journal', '=', journal.id),
                 ('period', '=', period.id),
@@ -1142,6 +1146,7 @@ class Line(ModelSQL, ModelView):
                     gettext('account.msg_modify_line_closed_journal_period',
                         journal_period=journal_period.rec_name))
         else:
+            database.lock(connection, JournalPeriod._table)
             JournalPeriod.create([{
                         'journal': journal.id,
                         'period': period.id,
