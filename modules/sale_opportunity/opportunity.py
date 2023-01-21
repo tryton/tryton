@@ -302,6 +302,25 @@ class SaleOpportunity(
             'default_customer_payment_term', **pattern)
         return payment_term.id if payment_term else None
 
+    def get_rec_name(self, name):
+        items = [self.number]
+        if self.reference:
+            items.append(f'[{self.reference}]')
+        return ' '.join(items)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = [bool_op,
+            ('number', operator, value),
+            ('reference', operator, value),
+            ]
+        return domain
+
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
