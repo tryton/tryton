@@ -425,7 +425,7 @@ class ModuleConfigWizardOther(ModelView):
     'Module Config Wizard Other'
     __name__ = 'ir.module.config_wizard.other'
 
-    percentage = fields.Float('Percentage', readonly=True)
+    percentage = fields.Float('Percentage', digits=(1, 2), readonly=True)
 
     @staticmethod
     def default_percentage():
@@ -435,7 +435,7 @@ class ModuleConfigWizardOther(ModelView):
             ('state', '=', 'done'),
             ], count=True)
         all = Item.search([], count=True)
-        return done / all
+        return round(done / all, 2)
 
 
 class ModuleConfigWizardDone(ModelView):
