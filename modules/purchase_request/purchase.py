@@ -13,6 +13,8 @@ from .exceptions import PurchaseWarehouseWarning
 
 
 def process_request(func):
+    # Must be run after the purchase transition
+    # such as purchase has the proper state
     @wraps(func)
     def wrapper(cls, purchases):
         pool = Pool()
@@ -70,14 +72,14 @@ class Purchase(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancelled')
     @process_request
+    @Workflow.transition('cancelled')
     def cancel(cls, purchases):
         super(Purchase, cls).cancel(purchases)
 
     @classmethod
-    @Workflow.transition('done')
     @process_request
+    @Workflow.transition('done')
     def do(cls, purchases):
         super(Purchase, cls).do(purchases)
 
