@@ -129,8 +129,9 @@ class Date(Gtk.Entry):
                 self.__date.month - 1, self.__date.year)
             self.__calendar.select_day(self.__date.day)
         self.__cal_popup.set_transient_for(self.get_toplevel())
-        popup_position(self, self.__cal_popup)
+        # Show popup before because position needs the popup allocation
         popup_show(self.__cal_popup)
+        popup_position(self, self.__cal_popup)
 
     def cal_popup_changed(self, calendar):
         year, month, day = self.__calendar.get_date()
@@ -532,8 +533,19 @@ GObject.type_register(DateTime)
 
 def popup_position(widget, popup):
     allocation = widget.get_allocation()
+    popup_allocation = popup.get_allocation()
     x, y = widget.get_window().get_root_coords(allocation.x, allocation.y)
-    popup.move(x, y + allocation.height)
+    display = widget.get_display()
+    monitor = display.get_monitor_at_window(widget.get_window())
+    monitor_geometry = monitor.get_geometry()
+    if (monitor_geometry.height
+            < y + allocation.height + popup_allocation.height):
+        y -= popup_allocation.height
+    else:
+        y += allocation.height
+    if monitor_geometry.width < x + popup_allocation.width:
+        x -= popup_allocation.width
+    popup.move(x, y)
 
 
 def popup_show(popup):
