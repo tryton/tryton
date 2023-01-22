@@ -222,6 +222,10 @@ class FieldMany2OneTreeTestCase(unittest.TestCase):
     "Test Field Many2One Tree"
     model_name = 'test.many2one_tree'
 
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
     def create_tree(self, Many2One):
         self.root1, self.root2 = Many2One.create([{}, {}])
         self.first1, self.first2, self.first3, self.first4 = Many2One.create([
