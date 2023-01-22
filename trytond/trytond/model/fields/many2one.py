@@ -118,7 +118,10 @@ class Many2One(Field):
         super(Many2One, self).__set__(inst, value)
 
     def sql_format(self, value):
+        from ..model import Model
         assert value is not False
+        assert (
+            not isinstance(value, Model) or value.__name__ == self.model_name)
         if value and not isinstance(value, (Query, Expression)):
             value = int(value)
         return super().sql_format(value)
