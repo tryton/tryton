@@ -214,8 +214,18 @@ class Wizard(URLMixin, PoolBase):
 
         # Copy states
         for attr in dir(cls):
-            if isinstance(getattr(cls, attr), State):
-                setattr(cls, attr, copy.deepcopy(getattr(cls, attr)))
+            if not isinstance(getattr(cls, attr), State):
+                continue
+            state_name = attr
+            state = getattr(cls, state_name)
+            # Copy the original state definition to prevent side-effect with
+            # the mutable attributes
+            for parent_cls in cls.__mro__:
+                parent_state = getattr(parent_cls, state_name, None)
+                if isinstance(parent_state, State):
+                    state = parent_state
+            state = copy.deepcopy(state)
+            setattr(cls, attr, state)
 
     @classmethod
     def __post_setup__(cls):
