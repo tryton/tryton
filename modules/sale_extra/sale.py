@@ -151,31 +151,24 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             ]
 
     @classmethod
-    def get_lines(cls, sale, pattern=None):
+    def get_lines(cls, sale, pattern=None, line_pattern=None):
         'Yield extra sale lines'
         pool = Pool()
         Currency = pool.get('currency.currency')
         extras = cls.search(cls._extras_domain(sale))
-        if pattern is None:
-            pattern = {}
-        else:
-            pattern = pattern.copy()
-        pattern['sale_amount'] = Currency.compute(sale.currency,
-            sale.untaxed_amount, sale.company.currency)
+        pattern = pattern.copy() if pattern is not None else {}
+        line_pattern = line_pattern.copy() if line_pattern is not None else {}
+        sale_amount = Currency.compute(
+            sale.currency, sale.untaxed_amount, sale.company.currency)
+        pattern.setdefault('sale_amount', sale_amount)
+        line_pattern.setdefault('sale_amount', sale_amount)
 
         for extra in extras:
-            epattern = pattern.copy()
-            epattern.update(extra.get_pattern(sale))
-            if extra.match(epattern):
+            if extra.match(pattern):
                 for line in extra.lines:
-                    lpattern = epattern.copy()
-                    lpattern.update(line.get_pattern(sale))
-                    if line.match(lpattern):
+                    if line.match(line_pattern):
                         yield line.get_line(sale)
                         break
-
-    def get_pattern(self, sale):
-        return {}
 
     def match(self, pattern):
         pattern = pattern.copy()
@@ -236,9 +229,6 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def on_change_with_currency(self, name=None):
         if self.extra and self.extra.currency:
             return self.extra.currency.id
-
-    def get_pattern(self, sale):
-        return {}
 
     def match(self, pattern):
         pattern = pattern.copy()
