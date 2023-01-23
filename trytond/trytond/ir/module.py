@@ -279,7 +279,7 @@ class Module(ModelSQL, ModelView):
     def update_list(cls):
         'Update the list of available packages'
         count = 0
-        module_names = get_module_list()
+        module_names = get_module_list(with_test=Pool.test)
 
         modules = cls.search([])
         name2id = dict((m.name, m.id) for m in modules)

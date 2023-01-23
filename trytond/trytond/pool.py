@@ -105,7 +105,7 @@ class Pool(object):
         with cls._lock:
             for classes in Pool.classes.values():
                 classes.clear()
-            register_classes()
+            register_classes(with_test=cls.test)
             cls._started = True
 
     @classmethod

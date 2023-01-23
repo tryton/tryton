@@ -318,7 +318,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
     logger.info('all modules loaded')
 
 
-def get_module_list():
+def get_module_list(with_test=False):
     module_list = set()
     if os.path.exists(MODULES_PATH) and os.path.isdir(MODULES_PATH):
         for file in os.listdir(MODULES_PATH):
@@ -332,11 +332,12 @@ def get_module_list():
     module_list.update(EGG_MODULES.keys())
     module_list.add('ir')
     module_list.add('res')
-    module_list.add('tests')
+    if with_test:
+        module_list.add('tests')
     return list(module_list)
 
 
-def register_classes():
+def register_classes(with_test=False):
     '''
     Import modules to register the classes in the Pool
     '''
@@ -344,10 +345,11 @@ def register_classes():
     trytond.ir.register()
     import trytond.res
     trytond.res.register()
-    import trytond.tests
-    trytond.tests.register()
+    if with_test:
+        import trytond.tests
+        trytond.tests.register()
 
-    for node in create_graph(get_module_list()):
+    for node in create_graph(get_module_list(with_test=with_test)):
         module = node.name
         logger.info('%s:registering classes', module)
 

@@ -51,6 +51,7 @@ __all__ = [
     'with_transaction',
     ]
 
+Pool.test = True
 Pool.start()
 USER = 1
 CONTEXT = {}
@@ -62,7 +63,6 @@ else:
     DB_NAME = 'test_' + str(int(time.time()))
 os.environ['DB_NAME'] = DB_NAME
 DB_CACHE = os.environ.get('DB_CACHE')
-Pool.test = True
 
 
 def activate_module(modules, lang='en'):
