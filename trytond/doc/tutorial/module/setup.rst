@@ -33,7 +33,7 @@ The Tryton template can be rendered into a module with:
 
 .. code-block:: console
 
-   $ cookiecutter hg+https://hg.tryton.org/cookiecutter
+   $ cookiecutter hg+https://code.tryton.org/tryton --directory cookiecutter-module
    module_name [my_module]: opportunity
    prefix []: tuto
    package_name [tuto_opportunity]:
