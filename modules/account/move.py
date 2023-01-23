@@ -484,8 +484,9 @@ class Move(ModelSQL, ModelView):
         to_reconcile = Line.browse(sorted(
                 [l for l in Line.browse(to_reconcile) if l.account.reconcile],
                 key=keyfunc))
-        for _, lines in groupby(to_reconcile, keyfunc):
-            Line.reconcile(list(lines))
+        to_reconcile = [list(l) for _, l in groupby(to_reconcile, keyfunc)]
+        if to_reconcile:
+            Line.reconcile(*to_reconcile)
 
         cls.save(moves)
 

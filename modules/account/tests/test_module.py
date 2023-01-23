@@ -655,6 +655,22 @@ class AccountTestCase(
 
             self.assertEqual(move.state, 'posted')
 
+            # Move lines with debit = credit = 0 are automatically reconciled
+            move = Move()
+            move.period = period
+            move.journal = journal_revenue
+            move.date = period.start_date
+            move.lines = [
+                Line(account=revenue, credit=Decimal(0)),
+                Line(account=receivable, debit=Decimal(0), party=party),
+                ]
+            move.save()
+            Move.post([move])
+
+            lines = Line.browse([l.id for l in move.lines
+                    if l.account.reconcile])
+            self.assertTrue(all(bool(l.reconciliation) for l in lines))
+
             # Can not post an empty move
             with self.assertRaises(UserError):
                 move = Move()
