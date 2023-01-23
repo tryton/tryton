@@ -102,7 +102,7 @@ Confirm sale::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.invoice_state
-    'waiting'
+    'pending'
     >>> sale.shipment_state
     'waiting'
 

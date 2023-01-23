@@ -171,7 +171,9 @@ class Purchase(
             ], 'Invoice Method', required=True, states=_states)
     invoice_state = fields.Selection([
             ('none', 'None'),
-            ('waiting', 'Waiting'),
+            ('pending', "Pending"),
+            ('awaiting payment', "Awaiting Payment"),
+            ('partially paid', "Partially Paid"),
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True, sort=False)
@@ -376,6 +378,11 @@ class Purchase(
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+        # Migration from 6.6: rename invoice state waiting to pending
+        cursor.execute(*sql_table.update(
+                [sql_table.invoice_state], ['pending'],
+                where=sql_table.invoice_state == 'waiting'))
 
     @classmethod
     def order_number(cls, tables):
@@ -601,8 +608,12 @@ class Purchase(
                 return 'exception'
             elif all(i.state == 'paid' for i in invoices):
                 return 'paid'
+            elif any(i.state == 'paid' for i in invoices):
+                return 'partially paid'
+            elif any(i.state == 'posted' for i in invoices):
+                return 'awaiting payment'
             else:
-                return 'waiting'
+                return 'pending'
         return 'none'
 
     get_shipments = get_shipments_returns('stock.shipment.in')

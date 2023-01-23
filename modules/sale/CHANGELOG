@@ -1,3 +1,4 @@
+* Add pending, awaiting payment and partially paid to invoice state
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Add related stock moves and invoice lines on sale line

@@ -115,7 +115,7 @@ Confirm purchase::
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.invoice_state
-    'waiting'
+    'pending'
     >>> purchase.shipment_state
     'waiting'
 

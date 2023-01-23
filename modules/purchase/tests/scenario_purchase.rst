@@ -182,7 +182,7 @@ Purchase 5 products::
     >>> purchase.shipment_state
     'waiting'
     >>> purchase.invoice_state
-    'waiting'
+    'pending'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
     >>> invoice, = purchase.invoices
@@ -219,7 +219,7 @@ Post invoice and check no new invoices::
     >>> purchase.shipment_state
     'waiting'
     >>> purchase.invoice_state
-    'waiting'
+    'awaiting payment'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
 
@@ -284,7 +284,7 @@ Validate Shipments::
 Open supplier invoice::
 
     >>> purchase.invoice_state
-    'waiting'
+    'pending'
     >>> invoice, = purchase.invoices
     >>> invoice.type
     'in'
@@ -367,7 +367,7 @@ Check Return Shipments::
     >>> return_.shipment_state
     'received'
     >>> return_.invoice_state
-    'waiting'
+    'pending'
 
 Open supplier credit note::
 
@@ -406,7 +406,7 @@ Mixing return and purchase::
     >>> mix.shipment_state
     'waiting'
     >>> mix.invoice_state
-    'waiting'
+    'pending'
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 1)
 
@@ -518,7 +518,7 @@ Purchase services::
     >>> service_purchase.shipment_state
     'none'
     >>> service_purchase.invoice_state
-    'waiting'
+    'pending'
     >>> service_invoice, = service_purchase.invoices
 
 Pay the service invoice::

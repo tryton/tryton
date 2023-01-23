@@ -172,7 +172,7 @@ Sale 5 products::
     >>> sale.shipment_state
     'waiting'
     >>> sale.invoice_state
-    'waiting'
+    'pending'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
     >>> invoice, = sale.invoices
@@ -210,6 +210,8 @@ Post invoice and check no new invoices::
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
+    >>> sale.invoice_state
+    'awaiting payment'
 
 Testing the report::
 
@@ -273,7 +275,7 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> sale.invoice_state
-    'waiting'
+    'pending'
     >>> invoice, = sale.invoices
     >>> invoice.type
     'out'
@@ -315,7 +317,7 @@ Sale 5 products with shipment method 'on invoice'::
     >>> sale.shipment_state
     'none'
     >>> sale.invoice_state
-    'waiting'
+    'pending'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (0, 0, 1)
 
@@ -426,7 +428,7 @@ Check Return::
     >>> return_.shipment_state
     'waiting'
     >>> return_.invoice_state
-    'waiting'
+    'pending'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 2, 1)
@@ -459,7 +461,7 @@ Check Return::
     >>> return_.shipment_state
     'sent'
     >>> return_.invoice_state
-    'waiting'
+    'awaiting payment'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 2, 2)
@@ -489,7 +491,7 @@ Mixing return and sale::
     >>> mix.shipment_state
     'waiting'
     >>> mix.invoice_state
-    'waiting'
+    'pending'
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 1)
 
@@ -589,7 +591,7 @@ Sale services::
     >>> service_sale.shipment_state
     'none'
     >>> service_sale.invoice_state
-    'waiting'
+    'pending'
     >>> service_invoice, = service_sale.invoices
 
 Pay the service invoice::
@@ -691,6 +693,9 @@ invoices::
     >>> invoice.reload()
     >>> invoice.state
     'paid'
+    >>> sale.reload()
+    >>> sale.invoice_state
+    'partially paid'
     >>> invoice_line.reload()
     >>> stock_move, = invoice_line.stock_moves
     >>> stock_move.quantity
