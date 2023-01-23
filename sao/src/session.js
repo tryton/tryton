@@ -215,7 +215,6 @@
             'class': 'form-control',
             'id': 'login',
             'name': 'login',
-            'placeholder': Sao.i18n.gettext('User name')
         });
         dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary btn-block',
