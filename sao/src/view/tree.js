@@ -1634,8 +1634,11 @@
                             }
                         }
                     }
-                    apply_visual(
-                        td, this.record.expr_eval(column.attributes.visual));
+                    let visual = this.record.expr_eval(column.attributes.visual);
+                    if (this.record.deleted || this.record.removed) {
+                        visual = 'muted';
+                    }
+                    apply_visual(td, visual);
                 }
                 this.update_visible();
             }
@@ -1688,13 +1691,16 @@
                     update_expander();
                 }
             }
-            apply_visual(
-                this.el, this.record.expr_eval(this.tree.attributes.visual));
+            let visual = this.record.expr_eval(this.tree.attributes.visual);
             if (this.record.deleted || this.record.removed) {
-                this.el.css('text-decoration', 'line-through');
+                if (this.record.deleted) {
+                    this.el.css('text-decoration', 'line-through');
+                }
+                visual = 'muted';
             } else {
                 this.el.css('text-decoration', 'inherit');
             }
+            apply_visual(this.el, visual);
         },
         update_visible: function() {
             var thead_visible = this.tree.thead.is(':visible');
