@@ -1689,9 +1689,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 expiration = dt.datetime.now() - delay
                 created = dt.datetime.fromtimestamp(setup_intent.created)
                 if created < expiration:
-                    stripe.SetupIntent.cancel(
-                        customer.stripe_customer_id,
-                        api_key=customer.stripe_account.secret_key)
+                    setup_intent.cancel()
                 continue
             customer.lock()
             try:
