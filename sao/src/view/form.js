@@ -2009,7 +2009,8 @@ function eval_pyson(value){
                 record = this.record;
             var value = '';
             if (this.width !== null){
-                this.el.css('width', this.width + 'ch');
+                this.input_text.css('width', this.width + 'ch');
+                this.input.css('width', (this.width + 5) + 'ch');
             }
             if (field) {
                 value = field.get_client(record, this.factor, this.grouping);
