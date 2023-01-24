@@ -433,6 +433,12 @@ class Move(metaclass=PoolMeta):
     def add_lots_wizard(cls, moves):
         pass
 
+    def add_lot(self):
+        if not self.lot and self.product:
+            lot = self.product.create_lot()
+            if lot:
+                self.lot = lot
+
     def check_lot(self):
         "Check if lot is required"
         if (self.state == 'done'

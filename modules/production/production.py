@@ -15,7 +15,7 @@ from trytond.model import (
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock.shipment import ShipmentAssignMixin
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
@@ -830,3 +830,27 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         if self.warehouse:
             return (self.warehouse.production_output_location
                 or self.warehouse.storage_location)
+
+
+class Production_Lot(metaclass=PoolMeta):
+    __name__ = 'production'
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(cls, productions):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        Move = pool.get('stock.move')
+        lots, moves = [], []
+        for production in productions:
+            for move in production.outputs:
+                if not move.lot and move.product.lot_is_required(
+                        move.from_location, move.to_location):
+                    move.add_lot()
+                    if move.lot:
+                        lots.append(move.lot)
+                        moves.append(move)
+        Lot.save(lots)
+        Move.save(moves)
+        super().done(productions)

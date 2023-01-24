@@ -28,6 +28,7 @@ def register():
         module='production', type_='model')
     Pool.register(
         stock.LotTrace,
+        production.Production_Lot,
         module='production', type_='model', depends=['stock_lot'])
     Pool.register(
         bom.OpenBOMTree,

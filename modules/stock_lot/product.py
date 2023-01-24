@@ -112,3 +112,14 @@ class Product(metaclass=PoolMeta):
     def lot_is_required(self, from_, to):
         'Is product lot required for move with "from_" and "to" location ?'
         return any(l.type in (self.lot_required or []) for l in [from_, to])
+
+    def create_lot(self):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        if self.lot_sequence:
+            lot = Lot(product=self)
+            try:
+                lot.on_change_product()
+            except AttributeError:
+                pass
+            return lot
