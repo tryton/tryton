@@ -1276,7 +1276,7 @@
             return this.__current_record;
         },
         set current_record(record) {
-            if (this.__current_record === record) {
+            if ((this.__current_record === record) && record) {
                 return;
             }
             this.__current_record = record;

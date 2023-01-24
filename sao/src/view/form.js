@@ -3118,7 +3118,8 @@ function eval_pyson(value){
 
             this.label = jQuery('<span/>', {
                 'class': 'badge',
-            }).appendTo(jQuery('<span/>', {
+            }).text('_ / 0'
+            ).appendTo(jQuery('<span/>', {
                 'class': 'btn hidden-xs',
             }).appendTo(buttons));
 
@@ -3779,7 +3780,8 @@ function eval_pyson(value){
 
             this.label = jQuery('<span/>', {
                 'class': 'badge',
-            }).appendTo(jQuery('<span/>', {
+            }).text('_ / 0'
+            ).appendTo(jQuery('<span/>', {
                 'class': 'btn hidden-xs',
             }).appendTo(buttons));
 

@@ -62,7 +62,7 @@ class One2Many(Widget):
         self.but_pre.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_pre, expand=False, fill=False, padding=0)
 
-        self.label = Gtk.Label(label='(0/0)')
+        self.label = Gtk.Label(label='(_/0)')
         hbox.pack_start(self.label, expand=False, fill=False, padding=0)
 
         self.but_next = Gtk.Button(can_focus=False)
