@@ -4361,7 +4361,11 @@ function eval_pyson(value){
             return digits;
         },
         get_value: function() {
-            var value = Number(this.input.val());
+            var value = this.input.val();
+            if (!value && (value !== 0)) {
+                return null;
+            }
+            value = Number(value);
             if (isNaN(value)) {
                 return null;
             }
@@ -4378,7 +4382,11 @@ function eval_pyson(value){
     Sao.View.Form.Dict.Numeric = Sao.class_(Sao.View.Form.Dict.Float, {
         class_: 'dict-numeric',
         get_value: function() {
-            var value = new Sao.Decimal(this.input.val());
+            var value = this.input.val();
+            if (!value && (value !== 0)) {
+                return null;
+            }
+            value = new Sao.Decimal(value);
             if (isNaN(value.valueOf())) {
                 return null;
             }
