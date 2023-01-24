@@ -462,5 +462,12 @@ class IrCronTestCase(unittest.TestCase):
             cron.compute_next_call(datetime.datetime(2022, 11, 6, 7, 30)),
             datetime.datetime(2022, 11, 6, 8, 30))
 
+    @with_transaction()
+    def test_get_timezone(self):
+        "Test get_timezone"
+        cron = self._get_cron()
+
+        self.assertIsInstance(cron.get_timezone('timezone'), str)
+
 
 del ModuleTestCase

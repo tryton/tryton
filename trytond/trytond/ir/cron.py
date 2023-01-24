@@ -103,7 +103,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         table_h.not_null_action('next_call', 'remove')
 
     def get_timezone(self, name):
-        return tz.SERVER.key
+        return tz.SERVER.tzname(datetime.datetime.now())
 
     @classmethod
     def check_xml_record(cls, crons, values):
