@@ -1585,8 +1585,8 @@ class TranslationUpdate(Wizard):
                         where=((translation.value == '')
                             | (translation.value == Null))
                         & (translation.lang == lang)
-                        & translation.src != ''
-                        & translation.src != Null))
+                        & (translation.src != '')
+                        & (translation.src != Null)))
                 & (translation.value != '')
                 & (translation.value != Null),
                 group_by=translation.src))
