@@ -1302,12 +1302,7 @@
             var values = this._get_on_change_args(
                 Object.keys(this._changed).concat(['id']));
             return this.model.execute('pre_validate',
-                    [values], this.get_context())
-                .then(function() {
-                    return true;
-                }, function() {
-                    return false;
-                });
+                    [values], this.get_context());
         },
         cancel: function() {
             this._loaded = {};

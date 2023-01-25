@@ -430,7 +430,10 @@
                     this.screen.current_record) {
                 this.screen.current_record.validate().then(function(validate) {
                     if (validate && this.screen.attributes.pre_validate) {
-                        return this.screen.current_record.pre_validate();
+                        return this.screen.current_record.pre_validate().then(
+                            function () { return true; },
+                            function () { return false; }
+                        );
                     }
                     return validate;
                 }.bind(this)).then(function(validate) {
