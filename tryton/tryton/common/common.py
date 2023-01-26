@@ -23,7 +23,6 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
-import _thread
 import shlex
 import socket
 import sys
@@ -34,6 +33,7 @@ import urllib.request
 import webbrowser
 from functools import lru_cache, wraps
 from string import Template
+from threading import Lock, Thread
 
 import tryton.rpc as rpc
 from tryton.config import CONFIG, PIXMAPS_DIR, TRYTON_ICON
@@ -43,7 +43,6 @@ try:
 except ImportError:
     ssl = None
 import zipfile
-from threading import Lock
 
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk
 
@@ -1221,7 +1220,7 @@ class RPCProgress(object):
             # otherwise the cursor is not updated.
             self.parent = get_toplevel_window()
             GLib.timeout_add(3000, self._set_cursor)
-            _thread.start_new_thread(self.start, ())
+            Thread(target=self.start).run()
             return
         else:
             self.start()
