@@ -42,6 +42,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_modify_header_draft">
             <field name="text">To modify the header of sale "%(sale)s", it must be in "draft" state.</field>
         </record>
+        <record model="ir.message" id="msg_sale_line_create_draft">
+            <field name="text">You cannot add lines to sale "%(sale)s" because it is no longer in a draft state.</field>
+        </record>
         <record model="ir.message" id="msg_sale_reporting_company">
             <field name="text">Company</field>
         </record>

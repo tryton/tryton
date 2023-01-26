@@ -1771,6 +1771,18 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ]
 
     @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        purchase_ids = filter(None, {v.get('purchase') for v in vlist})
+        for purchase in Purchase.browse(list(purchase_ids)):
+            if purchase.state != 'draft':
+                raise AccessError(
+                    gettext('purchase.msg_purchase_line_create_draft',
+                        purchase=purchase.rec_name))
+        return super().create(vlist)
+
+    @classmethod
     def delete(cls, lines):
         for line in lines:
             if line.purchase_state not in {'cancelled', 'draft'}:

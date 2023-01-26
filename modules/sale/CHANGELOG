@@ -1,3 +1,4 @@
+* Prevent creation of lines for non draft sales
 * Allow searching reporting records by name
 
 Version 6.6.0 - 2022-10-31

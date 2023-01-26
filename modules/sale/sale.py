@@ -1793,6 +1793,18 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 'spell', Eval('_parent_sale', {}).get('party_lang'))]
 
     @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        sale_ids = filter(None, {v.get('sale') for v in vlist})
+        for sale in Sale.browse(list(sale_ids)):
+            if sale.state != 'draft':
+                raise AccessError(
+                    gettext('sale.msg_sale_line_create_draft',
+                        sale=sale.rec_name))
+        return super().create(vlist)
+
+    @classmethod
     def delete(cls, lines):
         for line in lines:
             if line.sale_state not in {'cancelled', 'draft'}:
