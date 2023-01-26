@@ -1,3 +1,4 @@
+* Add option to disable thread
 * Remove support for Python 3.7
 * Add support for Python 3.11
 * Save and Restore tree state on List Form

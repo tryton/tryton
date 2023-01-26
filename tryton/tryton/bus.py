@@ -25,6 +25,8 @@ CHANNELS = [
 
 
 def listen(connection):
+    if not CONFIG['thread']:
+        return
     listener = threading.Thread(
         target=_listen, args=(connection,), daemon=True)
     listener.start()

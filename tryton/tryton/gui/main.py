@@ -522,19 +522,25 @@ class Main(Gtk.Application):
         except RPCException:
             prefs = {}
 
-        threads = []
-        for target in (
-                common.IconFactory.load_icons,
-                common.MODELACCESS.load_models,
-                common.MODELHISTORY.load_history,
-                common.MODELNOTIFICATION.load_names,
-                common.VIEW_SEARCH.load_searches,
-                ):
-            t = threading.Thread(target=target)
-            threads.append(t)
-            t.start()
-        for t in threads:
-            t.join()
+        targets = [
+            common.IconFactory.load_icons,
+            common.MODELACCESS.load_models,
+            common.MODELHISTORY.load_history,
+            common.MODELNOTIFICATION.load_names,
+            common.VIEW_SEARCH.load_searches,
+            ]
+        if CONFIG['thread']:
+            threads = []
+            for target in targets:
+                t = threading.Thread(target=target)
+                threads.append(t)
+                t.start()
+            for t in threads:
+                t.join()
+        else:
+            for target in targets:
+                target()
+
         if prefs and 'language_direction' in prefs:
             translate.set_language_direction(prefs['language_direction'])
             CONFIG['client.language_direction'] = \

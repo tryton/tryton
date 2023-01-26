@@ -286,9 +286,13 @@ class DBListEditor(object):
 
     def refresh_databases(self, host, port):
         self.dbs_updated = threading.Event()
-        threading.Thread(target=self.refresh_databases_start,
-            args=(host, port)).start()
-        GLib.timeout_add(100, self.refresh_databases_end, host, port)
+        if CONFIG['thread']:
+            threading.Thread(target=self.refresh_databases_start,
+                args=(host, port)).start()
+            GLib.timeout_add(100, self.refresh_databases_end, host, port)
+        else:
+            self.refresh_databases_start(host, port)
+            self.refresh_databases_end(host, port)
 
     def refresh_databases_start(self, host, port):
         dbs = None

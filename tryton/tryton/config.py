@@ -97,6 +97,9 @@ class ConfigManager(object):
                 help=_("specify the login user"))
         parser.add_option("-s", "--server", dest="host",
                 help=_("specify the server hostname:port"))
+        parser.add_option(
+            '--no-thread', default=True, action='store_false', dest='thread',
+            help=_("disable thread usage"))
         opt, self.arguments = parser.parse_args()
         self.rcfile = opt.config or os.path.join(
             get_config_dir(), 'tryton.conf')
@@ -125,6 +128,7 @@ class ConfigManager(object):
         for arg in ['login', 'host']:
             if getattr(opt, arg):
                 self.options['login.' + arg] = getattr(opt, arg)
+        self.options['thread'] = opt.thread
 
     def save(self):
         try:
