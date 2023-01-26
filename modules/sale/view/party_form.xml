@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='links']" position="inside">
-        <link icon="tryton-sale" name="sale.act_sale_form2" empty="hide"/>
+        <link icon="tryton-sale" name="sale.act_sale_relate" empty="hide"/>
     </xpath>
     <xpath expr="/form/notebook" position="inside">
         <page id="sale" string="Sale">

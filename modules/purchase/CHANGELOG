@@ -1,3 +1,4 @@
+* Simplify relate to purchases
 * Prevent creation of lines for non draft purchases
 * Allow searching reporting records by name
 
