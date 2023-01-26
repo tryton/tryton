@@ -65,7 +65,7 @@ def server_version(host, port):
         logger.debug('%r', result)
         return result
     except Exception as e:
-        logger.error(e)
+        logger.exception(e)
         return None
 
 
@@ -77,7 +77,7 @@ def authentication_services(host, port):
         logger.debug('%r', services)
         return connection.url, services
     except Exception as e:
-        logger.error(e)
+        logger.exception(e)
         return '', []
 
 
