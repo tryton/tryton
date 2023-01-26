@@ -275,6 +275,7 @@ class ActionKeyword(ModelSQL, ModelView):
         for type_, action_ids in types.items():
             for value in Action.get_action_values(type_, action_ids):
                 if (type_ == 'ir.action.act_window'
+                        and value['res_model']
                         and not ModelAccess.check(
                             value['res_model'], raise_exception=False)):
                     continue
