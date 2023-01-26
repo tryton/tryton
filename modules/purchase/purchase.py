@@ -1066,7 +1066,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     actual_quantity = fields.Float(
         "Actual Quantity", digits='unit', readonly=True,
         states={
-            'invisible': Eval('type') != 'line',
+            'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
             })
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
@@ -1205,10 +1205,20 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             })
     purchase_state = fields.Function(
         fields.Selection('get_purchase_states', 'Purchase State'),
-        'on_change_with_purchase_state')
+        'on_change_with_purchase_state', searcher='search_purchase_state')
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
+    supplier = fields.Function(
+        fields.Many2One(
+            'party.party', "Supplier",
+            context={
+                'company': Eval('company', -1),
+                }),
+        'on_change_with_supplier', searcher='search_supplier')
+    purchase_date = fields.Function(
+        fields.Date("Purchase Date"),
+        'on_change_with_purchase_date', searcher='search_purchase_date')
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
@@ -1223,6 +1233,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('purchase')
+        cls._order.insert(0, ('purchase.purchase_date', 'DESC NULLS FIRST'))
+        cls._order.insert(1, ('purchase.id', 'DESC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1517,10 +1529,37 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.purchase:
             return self.purchase.state
 
+    @classmethod
+    def search_purchase_state(cls, name, clause):
+        return [('purchase.state', *clause[1:])]
+
     @fields.depends('purchase', '_parent_purchase.company')
     def on_change_with_company(self, name=None):
         if self.purchase and self.purchase.company:
             return self.purchase.company.id
+
+    @fields.depends('purchase', '_parent_purchase.party')
+    def on_change_with_supplier(self, name=None):
+        if self.purchase and self.purchase.party:
+            return self.purchase.party.id
+
+    @classmethod
+    def search_supplier(cls, name, clause):
+        return [('purchase.party' + clause[0][len(name):], *clause[1:])]
+
+    @fields.depends('purchase', '_parent_purchase.purchase_date')
+    def on_change_with_purchase_date(self, name=None):
+        if self.purchase:
+            return self.purchase.purchase_date
+
+    @classmethod
+    def search_purchase_date(cls, name, clause):
+        return [('purchase.purchase_date', *clause[1:])]
+
+    @classmethod
+    def order_purchase_date(cls, tables):
+        return cls.purchase.convert_order(
+            'purchase.purchase_date', tables, cls)
 
     @fields.depends('purchase', '_parent_purchase.currency')
     def on_change_with_currency(self, name=None):

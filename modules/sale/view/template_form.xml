@@ -15,6 +15,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sale_uom"/>
             <label name="lead_time"/>
             <field name="lead_time"/>
+
+            <group id="customers_links" col="-1" colspan="4">
+                <link icon="tryton-sale" name="sale.act_sale_line_relate" empty="hide"/>
+            </group>
         </page>
     </xpath>
 </data>

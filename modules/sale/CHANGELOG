@@ -1,3 +1,4 @@
+* Add relate to sale lines from party and product
 * Simplify relate to sales
 * Prevent creation of lines for non draft sales
 * Allow searching reporting records by name

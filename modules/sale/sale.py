@@ -1153,7 +1153,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     actual_quantity = fields.Float(
         "Actual Quantity", digits='unit', readonly=True,
         states={
-            'invisible': Eval('type') != 'line',
+            'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
             })
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
             states={
@@ -1255,10 +1255,20 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_shipping_date')
     sale_state = fields.Function(
         fields.Selection('get_sale_states', "Sale State"),
-        'on_change_with_sale_state')
+        'on_change_with_sale_state', searcher='search_sale_state')
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
+    customer = fields.Function(
+        fields.Many2One(
+            'party.party', "Customer",
+            context={
+                'company': Eval('company', -1),
+                }),
+        'on_change_with_customer', searcher='search_customer')
+    sale_date = fields.Function(
+        fields.Date("Sale Date"),
+        'on_change_with_sale_date', searcher='search_sale_date')
 
     @classmethod
     def get_move_product_types(cls):
@@ -1270,6 +1280,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('sale')
+        cls._order.insert(0, ('sale.sale_date', 'DESC NULLS FIRST'))
+        cls._order.insert(1, ('sale.id', 'DESC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -1536,10 +1548,36 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if self.sale:
             return self.sale.state
 
+    @classmethod
+    def search_sale_state(cls, name, clause):
+        return [('sale.state', *clause[1:])]
+
     @fields.depends('sale', '_parent_sale.company')
     def on_change_with_company(self, name=None):
         if self.sale and self.sale.company:
             return self.sale.company.id
+
+    @fields.depends('sale', '_parent_sale.party')
+    def on_change_with_customer(self, name=None):
+        if self.sale and self.sale.party:
+            return self.sale.party.id
+
+    @classmethod
+    def search_customer(cls, name, clause):
+        return [('sale.party' + clause[0][len(name):], *clause[1:])]
+
+    @fields.depends('sale', '_parent_sale.sale_date')
+    def on_change_with_sale_date(self, name=None):
+        if self.sale:
+            return self.sale.sale_date
+
+    @classmethod
+    def search_sale_date(cls, name, clause):
+        return [('sale.sale_date', *clause[1:])]
+
+    @classmethod
+    def order_sale_date(cls, tables):
+        return cls.sale.convert_order('sale.sale_date', tables, cls)
 
     def get_invoice_line(self):
         'Return a list of invoice lines for sale line'

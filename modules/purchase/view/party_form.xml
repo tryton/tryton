@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='links']" position="inside">
         <link icon="tryton-purchase" name="purchase.act_purchase_relate" empty="hide"/>
+        <link icon="tryton-purchase" name="purchase.act_purchase_line_relate" empty="hide"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']" position="after">
         <page string="Supplier" id="supplier">

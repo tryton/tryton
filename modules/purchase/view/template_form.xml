@@ -16,6 +16,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="purchase_uom"/>
             <field name="product_suppliers" colspan="4"
                 view_ids="purchase.product_supplier_view_tree_sequence"/>
+
+            <group id="suppliers_links" col="-1" colspan="4">
+                <link icon="tryton-purchase" name="purchase.act_purchase_line_relate" empty="hide"/>
+            </group>
         </page>
     </xpath>
 </data>

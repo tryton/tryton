@@ -435,6 +435,74 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">purchase_line_tree_sequence</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_purchase_line_relate">
+            <field name="name">Purchase Lines</field>
+            <field name="res_model">purchase.line</field>
+            <field
+                name="domain"
+                eval="[('type', '=', 'line'),
+                If(Eval('active_model') == 'purchase.purchase',
+                ('purchase', 'in', Eval('active_ids', [])), ()),
+                If(Eval('active_model') == 'product.product',
+                ('product', 'in', Eval('active_ids', [])), ()),
+                If(Eval('active_model') == 'product.template',
+                ('product.template.id', 'in', Eval('active_ids', [])), ()),
+                If(Eval('active_model') == 'party.party',
+                ('supplier', 'in', Eval('active_ids', [])), ()),
+                ]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_line_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_line_view_tree"/>
+            <field name="act_window" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_line_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_line_view_form"/>
+            <field name="act_window" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_purchase_line_relate_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('purchase_state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_purchase_line_relate_done">
+            <field name="name">Done</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('purchase_state', '=', 'done')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_purchase_line_relate_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_purchase_line_relate_keyword_purchase">
+            <field name="keyword">form_relate</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_purchase_line_relate_keyword_product">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_purchase_line_relate_keyword_product_template">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_purchase_line_relate"/>
+        </record>
+        <record model="ir.action.keyword" id="act_purchase_line_relate_keyword_party">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_purchase_line_relate"/>
+        </record>
+
         <record model="ir.model.access" id="access_purchase_line_group_stock">
             <field name="model" search="[('model', '=', 'purchase.line')]"/>
             <field name="group" ref="stock.group_stock"/>
