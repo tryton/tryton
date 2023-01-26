@@ -1923,8 +1923,8 @@
             this.el.on('keypress', event_ => {
                 if ((event_.which == Sao.common.RETURN_KEYCODE) &&
                     (this.tree.edited_row != this)) {
-                    this.tree.edit_row(this);
                     event_.preventDefault();
+                    this.tree.edit_row(this);
                 }
             });
         },
@@ -2083,6 +2083,7 @@
                 .find('.dropdown-menu:visible').length) {
                 return;
             }
+            event_.preventDefault();
             var td = this._get_column_td(this.edited_column);
             var editable_el = this.get_editable_el(td);
             var widget = editable_el.data('widget');
@@ -2094,7 +2095,6 @@
                     if (event_.shiftKey) {
                         sign = -1;
                     }
-                    event_.preventDefault();
                     next_idx = this.next_column(this.edited_column, true, sign);
                     if (next_idx !== null) {
                         this.edited_column = next_idx;
@@ -2182,7 +2182,6 @@
             } else {
                 widget.display(this.record, column.field);
             }
-            event_.preventDefault();
         }
     });
 

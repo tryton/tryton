@@ -20,8 +20,8 @@
             this.filter_box = jQuery('<form/>', {
                 'class': 'filter-box'
             }).submit(e => {
-                this.do_search();
                 e.preventDefault();
+                this.do_search();
             });
             var search_row = jQuery('<div/>', {
                 'class': 'row'
@@ -453,8 +453,8 @@
                 this.search_form = dialog.content;
                 this.search_form.addClass('form-horizontal');
                 this.search_form.submit(function(e) {
-                    search();
                     e.preventDefault();
+                    search();
                 });
 
                 var fields = [];

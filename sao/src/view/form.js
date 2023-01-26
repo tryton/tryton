@@ -2761,12 +2761,12 @@ function eval_pyson(value){
             if (event_.which == Sao.common.F3_KEYCODE &&
                     editable &&
                     this.create_access) {
-                this.new_();
                 event_.preventDefault();
+                this.new_();
             } else if (event_.which == Sao.common.F2_KEYCODE &&
                     this.read_access) {
-                this.edit();
                 event_.preventDefault();
+                this.edit();
             } else if (~activate_keys.indexOf(event_.which) && editable) {
                 if (!this.attributes.completion ||
                         this.attributes.completion == "1") {
@@ -3624,11 +3624,11 @@ function eval_pyson(value){
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.F3_KEYCODE) {
+                event_.preventDefault();
                 this.new_(event_);
-                event_.preventDefault();
             } else if (event_.which ==  Sao.common.F2_KEYCODE) {
-                this.add(event_);
                 event_.preventDefault();
+                this.add(event_);
             }
             if (this.attributes.add_remove) {
                 var activate_keys = [Sao.common.TAB_KEYCODE];
@@ -3966,11 +3966,11 @@ function eval_pyson(value){
             }
 
             if (event_.which == Sao.common.F3_KEYCODE) {
+                event_.preventDefault();
                 this.new_();
-                event_.preventDefault();
             } else if (event_.which == Sao.common.F2_KEYCODE) {
-                this.add();
                 event_.preventDefault();
+                this.add();
             } else if (~activate_keys.indexOf(event_.which) && this.entry.val()) {
                 this.add();
             }
@@ -4249,11 +4249,11 @@ function eval_pyson(value){
         key_press: function(evt) {
             var editable = !this.text.prop('readonly');
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
+                evt.preventDefault();
                 this.new_();
-                evt.preventDefault();
             } else if (evt.which == Sao.common.F2_KEYCODE) {
-                this.open();
                 evt.preventDefault();
+                this.open();
             }
         },
         set_value: function() {

@@ -3160,8 +3160,8 @@
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
             dialog.content.submit(evt => {
-                dialog.footer.find('button.btn-primary').first().click();
                 evt.preventDefault();
+                dialog.footer.find('button.btn-primary').first().click();
             });
             this.running = true;
             dialog.modal.modal('show');

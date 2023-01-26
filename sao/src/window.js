@@ -227,8 +227,8 @@
                 }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             }
             dialog.content.submit(e => {
-                this.response('RESPONSE_OK');
                 e.preventDefault();
+                this.response('RESPONSE_OK');
             });
 
             if (view_type == 'tree') {
@@ -778,8 +778,8 @@
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(e => {
-                this.response('RESPONSE_OK');
                 e.preventDefault();
+                this.response('RESPONSE_OK');
             });
 
             this.screen = new Sao.Screen(model, {
@@ -887,8 +887,8 @@
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(e => {
-                this.response('RESPONSE_OK');
                 e.preventDefault();
+                this.response('RESPONSE_OK');
             });
 
             this.screen = new Sao.Screen('res.user', {
@@ -968,8 +968,8 @@
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(e => {
-                this.response('RESPONSE_OK');
                 e.preventDefault();
+                this.response('RESPONSE_OK');
             });
 
             var group = jQuery('<div/>', {
@@ -1037,8 +1037,8 @@
                 'type': 'submit',
                 'title': Sao.i18n.gettext("OK"),
             }).text(Sao.i18n.gettext('OK')).click(e => {
-                this.response('RESPONSE_OK');
                 e.preventDefault();
+                this.response('RESPONSE_OK');
             }).appendTo(this.dialog.footer);
 
             var row_fields = jQuery('<div/>', {

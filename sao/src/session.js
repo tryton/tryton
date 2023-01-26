@@ -343,8 +343,8 @@
             keyboard: false
         });
         dialog.modal.find('form').unbind().submit(function(e) {
-            login();
             e.preventDefault();
+            login();
         });
         dialog.modal.on('shown.bs.modal', function() {
             empty_field().first().focus();
