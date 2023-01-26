@@ -1078,7 +1078,8 @@ function eval_pyson(value){
             if (domains.length) {
                 domains.map(function(d, i) {
                     var name = d[0];
-                    this.label.text(name + ' ');
+                    this.label.append(jQuery('<br/>'));
+                    this.label.append(name + ' ');
                     jQuery('<span/>', {
                         'class': 'badge',
                     }).text(counter[i]).appendTo(this.label);
