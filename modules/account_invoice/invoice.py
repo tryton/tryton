@@ -2561,13 +2561,11 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def create(cls, vlist):
-        Invoice = Pool().get('account.invoice')
-        invoice_ids = []
-        for vals in vlist:
-            if vals.get('invoice'):
-                invoice_ids.append(vals.get('invoice'))
-        for invoice in Invoice.browse(invoice_ids):
-            if invoice.state in ('posted', 'paid', 'cancelled'):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        invoice_ids = filter(None, {v.get('invoice') for v in vlist})
+        for invoice in Invoice.browse(list(invoice_ids)):
+            if invoice.state != 'draft':
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_line_create',
                         invoice=invoice.rec_name))
@@ -2904,15 +2902,13 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        Invoice = Pool().get('account.invoice')
-        invoice_ids = []
-        for vals in vlist:
-            if vals.get('invoice'):
-                invoice_ids.append(vals['invoice'])
-        for invoice in Invoice.browse(invoice_ids):
-            if invoice.state in ('posted', 'paid', 'cancelled'):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        invoice_ids = filter(None, {v.get('invoice') for v in vlist})
+        for invoice in Invoice.browse(list(invoice_ids)):
+            if invoice.state != 'draft':
                 raise AccessError(
-                    gettext('account_invoice.msg_invoice_tax_create',
+                    gettext('account_invoice.msg_invoice_tax_create_draft',
                         invoice=invoice.rec_name))
         return super(InvoiceTax, cls).create(vlist)
 

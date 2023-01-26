@@ -51,14 +51,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_line_modify">
             <field name="text">You cannot modify line "%(line)s" because its invoice "%(invoice)s" is posted, paid or cancelled.</field>
         </record>
-        <record model="ir.message" id="msg_invoice_line_create">
-            <field name="text">You cannot add a line to invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
+        <record model="ir.message" id="msg_invoice_line_create_draft">
+            <field name="text">You cannot add lines to invoice "%(invoice)s" because it is no longer in a draft state.</field>
         </record>
         <record model="ir.message" id="msg_invoice_tax_modify">
             <field name="text">You cannot modify tax "%(tax)s" because its invoice "%(invoice)s" is posted, paid or cancelled.</field>
         </record>
         <record model="ir.message" id="msg_invoice_tax_create">
-            <field name="text">You cannot add a tax to invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
+            <field name="text">You cannot add taxes to invoice "%(invoice)s" because it is no longer in a draft state.</field>
         </record>
         <record model="ir.message" id="msg_invoice_line_tax_unique">
             <field name="text">A tax can be added only once to an invoice line.</field>
