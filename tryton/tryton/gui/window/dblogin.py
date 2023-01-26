@@ -588,7 +588,7 @@ class DBLogin(object):
             self.services = self._services[key]
         elif hostname and port:
             self.service_base, self.services = rpc.authentication_services(
-                host, port)
+                hostname, port)
             self._services[key] = self.services
         for response_id, (name, url) in enumerate(self.services, 1):
             button = Gtk.Button(label=name)
