@@ -480,9 +480,7 @@
                 this.screen.current_record.validate().then(validate => {
                     if (validate && this.screen.attributes.pre_validate) {
                         return this.screen.current_record.pre_validate().then(
-                            function () { return true; },
-                            function () { return false; }
-                        );
+                            () => true, () => false);
                     }
                     return validate;
                 }).then(validate => {
