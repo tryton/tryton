@@ -2746,10 +2746,19 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     tax = fields.Many2One('account.tax', 'Tax',
         ondelete='RESTRICT',
         domain=[
+            ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in',
+                    If(Eval('_parent_invoice', {}).get('type') == 'out',
+                        ['sale', 'both'],
+                        ['purchase', 'both']),
+                    )],
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
         states={
-            'readonly': ~Eval('manual', False) | _states['readonly'],
+            'readonly': (
+                ~Eval('manual', False) | ~Bool(Eval('invoice'))
+                | _states['readonly']),
             },
         depends={'invoice'})
     legal_notice = fields.Text("Legal Notice", states=_states)
