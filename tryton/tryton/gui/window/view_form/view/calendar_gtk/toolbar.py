@@ -108,28 +108,29 @@ class Toolbar(Gtk.Toolbar):
         self.insert(blank_widget, -1)
 
         day_button = Gtk.RadioToolButton()
-        day_button.set_label(_('Day View'))
+        day_button.set_label(_("Day"))
         day_button.connect("clicked", self.on_day_button_clicked)
         day_button.add_accelerator(
             "clicked", self.accel_group, Gdk.KEY_d,
             Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
-        self.insert(day_button, -1)
 
         week_button = Gtk.RadioToolButton.new_from_widget(day_button)
-        week_button.set_label(_('Week View'))
+        week_button.set_label(_("Week"))
         week_button.connect("clicked", self.on_week_button_clicked)
         week_button.add_accelerator(
             "clicked", self.accel_group, Gdk.KEY_w,
             Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
-        self.insert(week_button, -1)
 
         month_button = Gtk.RadioToolButton.new_from_widget(week_button)
-        month_button.set_label_widget(Gtk.Label(label=_('Month View')))
+        month_button.set_label_widget(Gtk.Label(label=_("Month")))
         month_button.connect("clicked", self.on_month_button_clicked)
         month_button.add_accelerator(
             "clicked", self.accel_group, Gdk.KEY_m,
             Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
+
         self.insert(month_button, -1)
+        self.insert(week_button, -1)
+        self.insert(day_button, -1)
         buttons = {
             'month': month_button,
             'week': week_button,
