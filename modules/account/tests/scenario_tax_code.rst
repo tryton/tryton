@@ -79,6 +79,7 @@ Create some moves::
     >>> _ = move.duplicate()
 
     >>> cancel_move = Wizard('account.move.cancel', [move])
+    >>> cancel_move.form.reversal = False
     >>> cancel_move.execute('cancel')
 
 Check tax code::

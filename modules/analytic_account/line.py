@@ -158,19 +158,19 @@ class Move(metaclass=PoolMeta):
         MoveLine.set_analytic_state(lines)
         MoveLine.save(lines)
 
-    def cancel(self, default=None):
-        'Reverse credit/debit of analytic lines'
-        pool = Pool()
-        AnalyticLine = pool.get('analytic_account.line')
-        cancel_move = super(Move, self).cancel(default)
-        analytic_lines = []
-        for line in cancel_move.lines:
-            for analytic_line in line.analytic_lines:
-                analytic_line.debit, analytic_line.credit = (
-                    analytic_line.credit, analytic_line.debit)
-                analytic_lines.append(analytic_line)
-        AnalyticLine.save(analytic_lines)
-        return cancel_move
+    def _cancel_default(self, reversal=False):
+        default = super()._cancel_default(reversal=reversal)
+        if reversal:
+            default['lines.analytic_lines.debit'] = (
+                lambda data: data['credit'])
+            default['lines.analytic_lines.credit'] = (
+                lambda data: data['debit'])
+        else:
+            default['lines.analytic_lines.debit'] = (
+                lambda data: data['debit'] * -1)
+            default['lines.analytic_lines.credit'] = (
+                lambda data: data['credit'] * -1)
+        return default
 
 
 class MoveLine(metaclass=PoolMeta):

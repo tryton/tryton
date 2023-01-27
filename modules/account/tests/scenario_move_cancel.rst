@@ -17,6 +17,8 @@ Activate modules::
 
     >>> config = activate_modules('account')
 
+    >>> Reconciliation = Model.get('account.move.reconciliation')
+
 Create company::
 
     >>> _ = create_company()
@@ -78,10 +80,49 @@ Create Move to cancel::
     >>> receivable.debit
     Decimal('42.00')
 
+Cancel reversal Move::
+
+    >>> cancel_move = Wizard('account.move.cancel', [move])
+    >>> cancel_move.form.description = "Reversal"
+    >>> cancel_move.form.reversal = True
+    >>> cancel_move.execute('cancel')
+    >>> cancel_move.state
+    'end'
+    >>> move.reload()
+    >>> [bool(l.reconciliation) for l in move.lines if l.account == receivable]
+    [True, True]
+    >>> line, _ = [l for l in move.lines if l.account == receivable]
+    >>> cancel_move, = [l.move for l in line.reconciliation.lines
+    ...     if l.move != move]
+    >>> cancel_move.origin == move
+    True
+    >>> cancel_move.description
+    'Reversal'
+    >>> sorted([l.origin.id for l in cancel_move.lines]) == \
+    ...     sorted(map(int, move.lines))
+    True
+    >>> revenue.reload()
+    >>> revenue.credit
+    Decimal('42.00')
+    >>> revenue.debit
+    Decimal('42.00')
+    >>> receivable.reload()
+    >>> receivable.credit
+    Decimal('42.00')
+    >>> receivable.debit
+    Decimal('42.00')
+
+    >>> reconciliations = {
+    ...     l.reconciliation for l in cancel_move.lines if l.reconciliation}
+    >>> Reconciliation.delete(list(reconciliations))
+    >>> cancel_move.reload()
+    >>> cancel_move.delete()
+
 Cancel Move::
 
     >>> cancel_move = Wizard('account.move.cancel', [move])
     >>> cancel_move.form.description = 'Cancel'
+    >>> cancel_move.form.reversal = False
     >>> cancel_move.execute('cancel')
     >>> cancel_move.state
     'end'

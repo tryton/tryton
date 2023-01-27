@@ -16,6 +16,8 @@ Activate modules::
 
     >>> config = activate_modules('analytic_account')
 
+    >>> Reconciliation = Model.get('account.move.reconciliation')
+
 Create company::
 
     >>> _ = create_company()
@@ -93,7 +95,7 @@ Create Move analytic accounts::
     >>> analytic_account.debit
     Decimal('0.00')
 
-Cancel Move::
+Cancel reversal move::
 
     >>> cancel_move = Wizard('account.move.cancel', [move])
     >>> cancel_move.form.description = 'Cancel'
@@ -111,6 +113,32 @@ Cancel Move::
     Decimal('42.00')
     >>> analytic_account.debit
     Decimal('42.00')
+
+    >>> reconciliations = {
+    ...     l.reconciliation for l in cancel_move.lines if l.reconciliation}
+    >>> Reconciliation.delete(list(reconciliations))
+    >>> cancel_move.reload()
+    >>> cancel_move.delete()
+
+Cancel move::
+
+    >>> cancel_move = Wizard('account.move.cancel', [move])
+    >>> cancel_move.form.description = 'Cancel'
+    >>> cancel_move.form.reversal = False
+    >>> cancel_move.execute('cancel')
+    >>> move.reload()
+    >>> line, = [l for l in move.lines if l.account == receivable]
+    >>> bool(line.reconciliation)
+    True
+    >>> cancel_move, = [l.move for l in line.reconciliation.lines
+    ...     if l.move != move]
+    >>> cancel_move.origin == move
+    True
+    >>> analytic_account.reload()
+    >>> analytic_account.credit
+    Decimal('0.00')
+    >>> analytic_account.debit
+    Decimal('0.00')
 
 Create Move without analytic accounts::
 

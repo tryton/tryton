@@ -369,7 +369,7 @@ class Move(ModelSQL, ModelView):
                 cache_cls = cache[MoveLine.__name__]
                 cache_cls.clear()
 
-    def _cancel_default(self):
+    def _cancel_default(self, reversal=False):
         'Return default dictionary to cancel move'
         pool = Pool()
         Date = pool.get('ir.date')
@@ -392,8 +392,12 @@ class Move(ModelSQL, ModelView):
                     'date': date,
                     'period': period_id,
                     })
-        default['lines.debit'] = lambda data: data['debit'] * -1
-        default['lines.credit'] = lambda data: data['credit'] * -1
+        if reversal:
+            default['lines.debit'] = lambda data: data['credit']
+            default['lines.credit'] = lambda data: data['debit']
+        else:
+            default['lines.debit'] = lambda data: data['debit'] * -1
+            default['lines.credit'] = lambda data: data['credit'] * -1
         default['lines.amount_second_currency'] = (
             lambda data: data['amount_second_currency'] * -1
             if data['amount_second_currency']
@@ -403,13 +407,13 @@ class Move(ModelSQL, ModelView):
             lambda data: 'account.move.line,%s' % data['id'])
         return default
 
-    def cancel(self, default=None):
+    def cancel(self, default=None, reversal=False):
         'Return a cancel move'
         if default is None:
             default = {}
         else:
             default = default.copy()
-        default.update(self._cancel_default())
+        default.update(self._cancel_default(reversal=reversal))
         cancel_move, = self.copy([self], default=default)
         return cancel_move
 
@@ -2215,7 +2219,8 @@ class CancelMoves(Wizard):
                 with Transaction().set_user(0):
                     Unreconcile.make_unreconciliation(moves_w_delegation[move])
             default = self.default_cancel(move)
-            cancel_move = move.cancel(default=default)
+            cancel_move = move.cancel(
+                default=default, reversal=self.default.reversal)
             to_reconcile = defaultdict(list)
             for line in move.lines + cancel_move.lines:
                 if line.account.reconcile:
@@ -2229,6 +2234,13 @@ class CancelMovesDefault(ModelView):
     'Cancel Moves'
     __name__ = 'account.move.cancel.default'
     description = fields.Char('Description')
+    reversal = fields.Boolean(
+        "Reversal",
+        help="Reverse debit and credit.")
+
+    @classmethod
+    def default_reversal(cls):
+        return True
 
 
 class GroupLines(Wizard):
