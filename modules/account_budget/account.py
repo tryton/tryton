@@ -437,7 +437,6 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         states={
             'required': ~Eval('name') & ~Eval('account'),
             'invisible': Eval('name') | Eval('account'),
-            'readonly': Bool(Eval('lines', [-1])),
             },
         help="The account type the budget applies to.")
     account = fields.Many2One(
