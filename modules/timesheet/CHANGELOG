@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Include supervised employees in timesheet reporting
 * Add access rules for weekly and monthly reporting
 

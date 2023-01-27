@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Support having a price without weight
 
 Version 6.6.0 - 2022-10-31

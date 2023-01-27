@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Create lot for output product when needed
 * Assign all possible productions when trying
 

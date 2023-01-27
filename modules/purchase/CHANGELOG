@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Add related stock moves and invoice lines on purchase line
 * Add relate to purchase lines from party and product
 * Simplify relate to purchases

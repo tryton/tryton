@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Allow stock lot to be deactivated
 * Do not copy number of lot with sequence
 

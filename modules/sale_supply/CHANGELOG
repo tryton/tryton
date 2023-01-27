@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Notify when product is supplied on sale and has purchase order point
 
 Version 6.6.0 - 2022-10-31

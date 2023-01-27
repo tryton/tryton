@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Add reversal option when cancelling move
 * Add cumulative balance to payable/receivable lines
 * Rename reconciliation name to number

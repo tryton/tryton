@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Show tariff code criteria on product form
 * Support country organization for tariff code and duty rate
 * Use ir.calendar.month for tariff code months

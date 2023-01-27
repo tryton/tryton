@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Remove non-standard work day unit
 * Add energy units and category
 * Add barcode function on product identifier

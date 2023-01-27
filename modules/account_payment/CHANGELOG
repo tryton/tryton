@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Skip blocked payments when creating direct debits
 
 Version 6.6.0 - 2022-10-31

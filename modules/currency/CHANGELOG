@@ -1,3 +1,4 @@
+* Add support for Python 3.11
 * Allow rounding with opposite method
 
 Version 6.6.0 - 2022-10-31
