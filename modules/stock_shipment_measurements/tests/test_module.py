@@ -154,6 +154,8 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
             shipment = Shipment()
             shipment.customer = party
             shipment.delivery_address, = party.addresses
+            shipment.warehouse = Shipment.default_warehouse()
+            shipment.on_change_warehouse()
             shipment.save()
 
             # without moves
