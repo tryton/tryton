@@ -452,7 +452,11 @@ class ModuleTestCase(unittest.TestCase):
                     for attribute in [
                             'depends', 'on_change', 'on_change_with',
                             'selection_change_with', 'autocomplete']:
-                        depends = getattr(field, attribute, [])
+                        depends = getattr(field, attribute, set())
+                        if attribute == 'depends':
+                            depends |= field.display_depends
+                            depends |= field.edition_depends
+                            depends |= field.validation_depends
                         qualname = '"%s"."%s"."%s"' % (mname, fname, attribute)
                         for depend in depends:
                             test_depend_exists(model, depend, qualname)

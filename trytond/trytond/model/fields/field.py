@@ -142,7 +142,9 @@ def _iter_eval_fields(value):
 
 def get_eval_fields(value):
     "Return fields evaluated"
-    return set(_iter_eval_fields(value))
+    fields = set(_iter_eval_fields(value))
+    fields.discard('context')  # TODO: remove when context is renamed
+    return fields
 
 
 def instanciate_values(Target, value, **extra):
