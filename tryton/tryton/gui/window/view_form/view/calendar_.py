@@ -41,20 +41,9 @@ class CalendarXMLViewParser(XMLViewParser):
             self.parse(child)
         goocalendar = Calendar_(
             self.view.attributes, self.view, self.calendar_fields)
-        scrolledwindow = Gtk.ScrolledWindow()
-        scrolledwindow.add(goocalendar)
         toolbar = Toolbar(goocalendar)
-        self.view.widget.pack_start(
-            toolbar, expand=False, fill=False, padding=0)
-        self.view.widget.pack_start(
-            scrolledwindow, expand=True, fill=True, padding=0)
         self.view.widgets['goocalendar'] = goocalendar
         self.view.widgets['toolbar'] = toolbar
-
-        if attributes.get('height') or attributes.get('width'):
-            scrolledwindow.set_size_request(
-                int(attributes.get('width', -1)),
-                int(attributes.get('height', -1)))
 
     def _parse_field(self, node, attributes):
         self.calendar_fields.append(attributes)
@@ -84,6 +73,25 @@ class ViewCalendar(View):
         goocalendar.connect('event-released', self.on_event_released)
         goocalendar.connect('day-pressed', self.on_day_pressed)
         goocalendar.connect('day-activated', self.on_day_activated)
+
+        self.widget.pack_start(toolbar, expand=False, fill=False, padding=0)
+        vp = Gtk.Viewport()
+        vp.set_shadow_type(Gtk.ShadowType.NONE)
+        vp.add(goocalendar)
+        self.scroll = scroll = Gtk.ScrolledWindow()
+        scroll.add(vp)
+        scroll.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll.set_placement(Gtk.CornerType.TOP_LEFT)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
+        viewport.add(scroll)
+        self.widget.pack_start(viewport, expand=True, fill=True, padding=0)
+
+        if self.attributes.get('height') or self.attributes.get('width'):
+            scroll.set_size_request(
+                int(self.attributes.get('width', -1)),
+                int(self.attributes.get('height', -1)))
 
     def on_page_changed(self, goocalendar, day, toolbar):
         toolbar.update_displayed_date()
