@@ -30,6 +30,12 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Taxes" id="taxes">
             <field name="taxes" colspan="4"/>
         </page>
+        <page name="moves" col="1">
+            <field name="moves"/>
+        </page>
+        <page name="invoice_lines" col="1">
+            <field name="invoice_lines"/>
+        </page>
         <page string="Notes" id="notes">
             <separator name="note" colspan="4"/>
             <field name="note" colspan="4"/>

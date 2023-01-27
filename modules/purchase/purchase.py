@@ -1165,9 +1165,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
             })
-    invoice_lines = fields.One2Many('account.invoice.line', 'origin',
-        'Invoice Lines', readonly=True)
-    moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
+    invoice_lines = fields.One2Many(
+        'account.invoice.line', 'origin', "Invoice Lines", readonly=True,
+        states={
+            'invisible': ~Eval('invoice_lines'),
+            })
+    moves = fields.One2Many(
+        'stock.move', 'origin', "Moves", readonly=True,
+        states={
+            'invisible': ~Eval('moves'),
+            })
     moves_ignored = fields.Many2Many('purchase.line-ignored-stock.move',
             'purchase_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',

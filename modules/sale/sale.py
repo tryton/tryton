@@ -1232,9 +1232,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('sale_state') != 'draft',
             },
         depends={'sale'})
-    invoice_lines = fields.One2Many('account.invoice.line', 'origin',
-        'Invoice Lines', readonly=True)
-    moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
+    invoice_lines = fields.One2Many(
+        'account.invoice.line', 'origin', "Invoice Lines", readonly=True,
+        states={
+            'invisible': ~Eval('invoice_lines'),
+            })
+    moves = fields.One2Many(
+        'stock.move', 'origin', "Moves", readonly=True,
+        states={
+            'invisible': ~Eval('moves'),
+            })
     moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
             'sale_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
