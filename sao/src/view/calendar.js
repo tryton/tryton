@@ -3,6 +3,44 @@
 (function() {
     'use strict';
 
+    function set_calendar_height(el) {
+        var height = window.innerHeight - 15;
+        if (el.parents('.modal-body').length) {
+            var modal_height = parseInt(
+                el.parents('.modal-body').css('max-height'), 10);
+            if (isNaN(modal_height)) {
+                height -= 200;
+            } else {
+                height = modal_height;
+            }
+        }
+        height -= el.find('.fc-toolbar').height();
+        el.parents('.panel-body').each(function(i, panel) {
+            panel = jQuery(panel);
+            height -= parseInt(panel.css('padding-top'), 10);
+            height -= parseInt(panel.css('padding-bottom'), 10);
+        });
+        el.parents('.panel').each(function(i, panel) {
+            panel = jQuery(panel);
+            var lengths = panel.css('box-shadow').match(/\d+px/g);
+            if (lengths && lengths.length) {
+                lengths = lengths.map(function(length) {
+                    length = parseInt(length, 10);
+                    return isNaN(length) ? 0 : length;
+                });
+                height -= Math.max.apply(null, lengths);
+            }
+        });
+        height -= el[0].getBoundingClientRect().y;
+        el.fullCalendar('option', 'contentHeight', height);
+    }
+
+    jQuery(window).resize(function() {
+        jQuery('.calendar').each(function(i, el) {
+            set_calendar_height(jQuery(el));
+        });
+    });
+
     Sao.View.CalendarXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_calendar: function(node, attributes) {
             for (const child of node.childNodes) {
@@ -46,7 +84,6 @@
                 header: header,
                 timeFormat: 'H:mm',
                 events: this.view.get_events.bind(this.view),
-                contentHeight: 'auto',
                 locale: Sao.i18n.getlang().slice(0, 2),
                 isRTL: Sao.i18n.rtl,
                 themeSystem: 'bootstrap3',
@@ -112,6 +149,7 @@
         },
         display: function() {
             this.el.fullCalendar('render');
+            set_calendar_height(this.el);
             // Don't refetch events from server when get_events is processing
             if (!this.processing) {
                 this.el.fullCalendar('refetchEvents');
