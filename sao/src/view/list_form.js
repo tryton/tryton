@@ -119,28 +119,46 @@
             }
         },
         _select_row: function(event_) {
-            var current_view_form;
-            var view_form_idx = event_.data;
-            var view_form = this._view_forms[view_form_idx];
+            var next_form_idx = event_.data;
+            var next_view_form = this._view_forms[next_form_idx];
 
-            if (event_.shiftKey) {
-                for (const other_view_form of this._view_forms) {
-                    if (other_view_forms.record === this.record) {
-                        current_view_form = other_view_form;
-                        break;
+            var prm = jQuery.when();
+            if (this.record && (next_view_form.record != this.record)) {
+                if (!this.screen.group.parent) {
+                    if (!this.record.validate(
+                            this.get_fields(), false, false, false)) {
+                        prm = jQuery.Deferred().reject();
+                    } else {
+                        prm = this.record.save();
                     }
+                } else if (this.screen.attributes.pre_validate) {
+                    prm = this.record.pre_validate();
                 }
-                this.select_records(i, view_form_idx);
-            } else {
-                if (!(event_.ctrlKey || event_.metaKey)) {
-                    this.select_records(null, null);
+            }
+
+            prm.done(() => {
+                var current_view_form;
+
+                if (event_.shiftKey) {
+                    for (const other_view_form of this._view_forms) {
+                        if (other_view_forms.record === this.record) {
+                            current_view_form = other_view_form;
+                            break;
+                        }
+                    }
+                    this.select_records(i, next_form_idx);
+                } else {
+                    if (!(event_.ctrlKey || event_.metaKey)) {
+                        this.select_records(null, null);
+                    }
+                    this.record = next_view_form.record;
+                    next_view_form.el.parent()
+                        .toggleClass('list-group-item-selected');
                 }
-                this.record = view_form.record;
-                view_form.el.parent().toggleClass('list-group-item-selected');
-            }
-            if (current_view_form) {
-                this.record = current_view_form.record;
-            }
+                if (current_view_form) {
+                    this.record = current_view_form.record;
+                }
+            });
         }
     });
 

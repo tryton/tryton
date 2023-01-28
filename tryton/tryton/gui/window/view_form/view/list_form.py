@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from gi.repository import Gio, GObject, Gtk
+from gi.repository import Gio, GLib, GObject, Gtk
 
 from tryton.common import common
 
@@ -132,16 +132,51 @@ class ViewListForm(View):
                 break
 
     def _row_selected(self, listbox, row):
-        if not row:
-            return
-        self.record = self._model.get_item(row.get_index()).record
+        previous_record = self.record
+        if (previous_record
+                and previous_record not in previous_record.group):
+            previous_record = None
+
+        if row:
+            self.record = self._model.get_item(row.get_index()).record
+        else:
+            self.record = None
+
+        def go_previous():
+            self.record = previous_record
+            self.set_cursor()
+
+        def save():
+            if not previous_record.destroyed:
+                if not previous_record.save():
+                    go_previous()
+
+        def pre_validate():
+            if not previous_record.destroyed:
+                if not previous_record.pre_validate():
+                    go_previous()
+
+        if previous_record and previous_record != self.record:
+            if not self.screen.parent:
+                if not previous_record.validate(self.get_fields()):
+                    go_previous()
+                    return True
+                GLib.idle_add(save)
+            elif self.screen.pre_validate:
+                GLib.idle_add(pre_validate)
 
     @common.idle_add
     def _select_show_row(self, index):
         # translate_coordinates requires that both widgets are realized
         if not self.listbox.get_realized():
             return
-        self.listbox.unselect_all()
+        # unselect_all triggers a loop in _row_selected if the record is not
+        # valid
+        self.listbox.handler_block_by_func(self._select_show_row)
+        try:
+            self.listbox.unselect_all()
+        finally:
+            self.listbox.handler_unblock_by_func(self._select_show_row)
         row = self.listbox.get_row_at_index(index)
         if not row or not row.get_realized():
             return
