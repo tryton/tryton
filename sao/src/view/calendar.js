@@ -83,6 +83,9 @@
                 defaultView: defaultview,
                 header: header,
                 timeFormat: 'H:mm',
+                scrollTime: (
+                    this.view.screen.context.calendar_scroll_time ||
+                    Sao.Time(6)).toString(),
                 events: this.view.get_events.bind(this.view),
                 locale: Sao.i18n.getlang().slice(0, 2),
                 isRTL: Sao.i18n.rtl,

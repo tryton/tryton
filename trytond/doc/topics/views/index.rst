@@ -968,6 +968,10 @@ The RNG that describes the XML for a calendar view is stored in
 ``trytond/ir/ui/calendar.rng``.
 There is also a RNC in ``trytond/ir/ui/calendar.rnc``.
 
+The ``calendar_scroll_time`` context key determines the initial time to scroll
+to.
+The default value is ``datetime.time(6)``.
+
 calendar
 --------
 

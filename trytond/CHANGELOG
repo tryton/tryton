@@ -1,3 +1,4 @@
+* Add scroll time for calendar view
 * Allow cache size to be configured
 * Add local and global list of ignore context keys
 * Add functions in transaction for check access and active record
