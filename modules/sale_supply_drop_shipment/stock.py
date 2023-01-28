@@ -662,7 +662,7 @@ class Move(metaclass=PoolMeta):
     moves_drop = fields.One2Many(
         'stock.move', 'origin_drop', "Drop Moves", readonly=True,
         states={
-            'invisible': ~Eval('drop_moves'),
+            'invisible': ~Eval('moves_drop'),
             })
     customer_drop = fields.Function(fields.Many2One(
             'party.party', "Drop Customer",
