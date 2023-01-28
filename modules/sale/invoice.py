@@ -60,8 +60,8 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def search_sales(cls, name, clause):
-        return [('lines.origin.sale' + clause[0].lstrip(name),)
-            + tuple(clause[1:3]) + ('sale.line',) + tuple(clause[3:])]
+        return [('lines.origin.sale' + clause[0][len(name):],
+                *clause[1:3], 'sale.line', *clause[3:])]
 
     @classmethod
     def copy(cls, invoices, default=None):

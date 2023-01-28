@@ -246,8 +246,7 @@ class Template(
 
     @classmethod
     def search_default_uom_category(cls, name, clause):
-        return [('default_uom.category' + clause[0].lstrip(name),)
-            + tuple(clause[1:])]
+        return [('default_uom.category' + clause[0][len(name):], *clause[1:])]
 
     @fields.depends('default_uom')
     def on_change_with_default_uom_digits(self, name=None):

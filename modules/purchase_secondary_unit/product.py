@@ -63,8 +63,8 @@ class PurchaseSecondaryMixin:
 
     @classmethod
     def search_purchase_secondary_uom_category(cls, name, clause):
-        return [('purchase_secondary_uom.category' + clause[0].lstrip(name),)
-            + tuple(clause[1:])]
+        return [('purchase_secondary_uom.category' + clause[0][len(name):],
+                *clause[1:])]
 
     @property
     def purchase_secondary_uom_normal_rate(self):

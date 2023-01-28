@@ -585,8 +585,8 @@ class Purchase(
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice' + clause[0].lstrip(name),)
-            + tuple(clause[1:])]
+        return [('lines.invoice_lines.invoice' + clause[0][len(name):],
+                *clause[1:])]
 
     def get_invoice_state(self):
         '''

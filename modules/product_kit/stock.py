@@ -155,9 +155,8 @@ class MovePurchase(metaclass=PoolMeta):
     def search_supplier(cls, name, clause):
         return ['OR',
             super().search_supplier(name, clause),
-            ('origin.line.purchase.party' + clause[0].lstrip(name),)
-            + tuple(clause[1:3]) + ('purchase.line.component',)
-            + tuple(clause[3:])]
+            ('origin.line.purchase.party' + clause[0][len(name):],
+                *clause[1:3], 'purchase.line.component', *clause[3:])]
 
     def get_purchase_exception_state(self, name):
         pool = Pool()

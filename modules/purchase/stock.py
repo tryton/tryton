@@ -238,8 +238,8 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def search_supplier(cls, name, clause):
-        return [('origin.purchase.party' + clause[0].lstrip(name),)
-            + tuple(clause[1:3]) + ('purchase.line',) + tuple(clause[3:])]
+        return [('origin.purchase.party' + clause[0][len(name):],
+                *clause[1:3], 'purchase.line', *clause[3:])]
 
     @classmethod
     @ModelView.button

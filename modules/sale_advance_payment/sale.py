@@ -343,8 +343,7 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     def search_advance_payment_invoices(cls, name, clause):
         return [('advance_payment_conditions.invoice_lines.invoice'
-                + clause[0].lstrip(name),)
-            + tuple(clause[1:])]
+                + clause[0][len(name):], *clause[1:])]
 
     def get_invoice_state(self):
         state = super(Sale, self).get_invoice_state()
