@@ -74,9 +74,13 @@ class Record:
             fnames = [fname for fname, field in fields
                 if fname not in self._loaded
                 and (not views or (views & field.views))]
-            fnames.extend(('%s.rec_name' % fname for fname in fnames[:]
-                    if self.group.fields[fname].attrs['type']
-                    in ('many2one', 'one2one', 'reference')))
+            for fname in list(fnames):
+                f_attrs = self.group.fields[fname].attrs
+                if f_attrs['type'] in {'many2one', 'one2one', 'reference'}:
+                    fnames.append('%s.rec_name' % fname)
+                elif (f_attrs['type'] == 'selection'
+                        and f_attrs.get('loading', 'lazy') == 'eager'):
+                    fnames.append('%s:string' % fname)
             if 'rec_name' not in fnames:
                 fnames.append('rec_name')
             fnames.extend(['_timestamp', '_write', '_delete'])
@@ -464,13 +468,17 @@ class Record:
                 if fieldname == 'rec_name':
                     self.value['rec_name'] = value
                 continue
-            if isinstance(self.group.fields[fieldname], fields.O2MField):
+            field = self.group.fields[fieldname]
+            if isinstance(field, fields.O2MField):
                 later[fieldname] = value
                 continue
-            if isinstance(self.group.fields[fieldname], (fields.M2OField,
-                        fields.ReferenceField)):
+            if isinstance(field, (fields.M2OField, fields.ReferenceField)):
                 related = fieldname + '.'
                 self.value[related] = val.get(related) or {}
+            elif (isinstance(field, fields.SelectionField)
+                    and fieldname + ':string' in val):
+                related = fieldname + ':string'
+                self.value[related] = val[related]
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
             fieldnames.append(fieldname)

@@ -671,6 +671,10 @@
                 var fdescription = this.model.fields[fname].description;
                 if (~rec_named_fields.indexOf(fdescription.type))
                     fnames_to_fetch.push(fname + '.rec_name');
+                else if ((fdescription.type == 'selection') &&
+                        ((fdescription.loading || 'lazy') == 'eager')) {
+                    fnames_to_fetch.push(fname + ':string');
+                }
             }
             if (!~fnames.indexOf('rec_name')) {
                 fnames_to_fetch.push('rec_name');
@@ -830,10 +834,16 @@
                 if (this.model.fields[name] instanceof Sao.field.One2Many) {
                     later[name] = value;
                 }
-                if ((this.model.fields[name] instanceof Sao.field.Many2One) ||
-                        (this.model.fields[name] instanceof Sao.field.Reference)) {
-                    var related = name + '.';
+                const field = this.model.fields[name];
+                var related;
+                if ((field instanceof Sao.field.Many2One) ||
+                        (field instanceof Sao.field.Reference)) {
+                    related = name + '.';
                     this._values[related] = values[related] || {};
+                } else if ((field instanceof Sao.field.Selection) &&
+                        (name + ':string' in values)){
+                    related = name + ':string';
+                    this._values[related] = values[related];
                 }
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;

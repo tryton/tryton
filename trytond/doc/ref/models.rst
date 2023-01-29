@@ -296,6 +296,10 @@ Class methods:
    ``.``.
    The number of *dots* in the name is not limited.
 
+   ``fields_names`` can also contain ``<field>:string`` for
+   :class:`~fields.Selection` or :class:`~fields.MultiSelection` fields.
+   Their human-readable value are returned.
+
    The virtual fields ``_write`` and ``_delete`` can be used the read the
    writeable and deleteable state of the records.
    Regarding the ``_timestamp`` virtual fields it contains a timestamp that is

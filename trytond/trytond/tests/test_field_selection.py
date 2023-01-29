@@ -242,3 +242,42 @@ class FieldSelectionTestCase(unittest.TestCase):
                     }])
 
         self.assertEqual(selection.dyn_select_static_string, '1')
+
+    @with_transaction()
+    def test_read_string(self):
+        "Test reading value and string"
+        Selection = Pool().get('test.selection')
+
+        arabic, null = Selection.create([
+                {
+                    'select': 'arabic',
+                    },
+                {
+                    'select': None,
+                    },
+                ])
+        arabic_read, null_read = Selection.read(
+            [arabic.id, null.id], ['select:string'])
+
+        self.assertEqual(arabic_read['select:string'], 'Arabic')
+        self.assertEqual(null_read['select:string'], '')
+
+    @with_transaction()
+    def test_read_string_dynamic_selection(self):
+        "Test reading value and string of dynamic selection"
+        Selection = Pool().get('test.selection')
+
+        one, null = Selection.create([
+                {
+                    'select': 'arabic',
+                    'dyn_select': '1'
+                    },
+                {
+                    'select': None,
+                    },
+                ])
+        one_read, null_read = Selection.read(
+            [one.id, null.id], ['dyn_select:string'])
+
+        self.assertEqual(one_read['dyn_select:string'], '1')
+        self.assertEqual(null_read['dyn_select:string'], '')

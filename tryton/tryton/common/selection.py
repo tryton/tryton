@@ -48,6 +48,8 @@ class SelectionMixin(object):
     def update_selection(self, record, field):
         if not field:
             return
+        if not self.selection:
+            self.init_selection()
 
         domain = field.domain_get(record)
         if 'relation' not in self.attrs:

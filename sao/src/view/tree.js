@@ -2529,38 +2529,49 @@
             Sao.View.Tree.SelectionColumn._super.init.call(this, model,
                 attributes);
             Sao.common.selection_mixin.init.call(this);
-            this.init_selection();
+            if (!this.tree || this.tree.editable) {
+                this.init_selection();
+            }
         },
         init_selection: function(key) {
             Sao.common.selection_mixin.init_selection.call(this, key);
         },
         update_selection: function(record, callback) {
+            if (!this.selection) {
+                this.init_selection();
+            }
             Sao.common.selection_mixin.update_selection.call(this, record,
                 this.field, callback);
         },
         update_text: function(cell, record) {
-            this.update_selection(record, () => {
-                var value = this.field.get(record);
-                var prm, text, found = false;
-                for (const option of this.selection) {
-                    if (option[0] === value) {
-                        found = true;
-                        text = option[1];
-                        break;
+            if (!this.tree.editable &&
+                    (this.field.name + ':string' in record._values)) {
+                var text_value = record._values[this.field.name + ':string'];
+                cell.text(text_value).attr('title', text_value);
+            } else {
+                this.update_selection(record, () => {
+                    var value = this.field.get(record);
+                    var prm, text, found = false;
+                    for (const option of this.selection) {
+                        if (option[0] === value) {
+                            found = true;
+                            text = option[1];
+                            break;
+                        }
                     }
-                }
-                if (!found) {
-                    prm = Sao.common.selection_mixin.get_inactive_selection
-                        .call(this, value).then(function(inactive) {
-                            return inactive[1];
-                        });
-                } else {
-                    prm = jQuery.when(text);
-                }
-                prm.done(text_value => {
-                    cell.text(text_value).attr('title', text_value);
+                    if (!found) {
+                        prm = Sao.common.selection_mixin.get_inactive_selection
+                            .call(this, value).then(function(inactive) {
+                                return inactive[1];
+                            });
+                    } else {
+                        prm = jQuery.when(text);
+                    }
+                    prm.done(text_value => {
+                        cell.text(text_value).attr('title', text_value);
+                    });
                 });
-            });
+            }
         }
     });
 
@@ -2580,18 +2591,24 @@
                 this.field, callback);
         },
         update_text: function(cell, record) {
-            this.update_selection(record, () => {
-                var values = this.field.get_eval(record).map(value => {
-                    for (const option of this.selection) {
-                        if (option[0] === value) {
-                            return option[1];
-                        }
-                    }
-                    return '';
-                });
-                var text_value = values.join(';');
+            if (!this.tree.editable &&
+                    (this.field_name + ':string' in record._value)) {
+                var text_value = record._values[this.field_name + ':string'];
                 cell.text(text_value).attr('title', text_value);
-            });
+            } else {
+                this.update_selection(record, () => {
+                    var values = this.field.get_eval(record).map(value => {
+                        for (const option of this.selection) {
+                            if (option[0] === value) {
+                                return option[1];
+                            }
+                        }
+                        return '';
+                    });
+                    var text_value = values.join(';');
+                    cell.text(text_value).attr('title', text_value);
+                });
+            }
         },
     });
 

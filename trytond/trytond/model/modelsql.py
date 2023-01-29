@@ -899,6 +899,9 @@ class ModelSQL(ModelStorage):
             if '.' in field_name:
                 field_name, field_related = field_name.split('.', 1)
                 fields_related[field_name].add(field_related)
+            if field_name.endswith(':string'):
+                field_name = field_name[:-len(':string')]
+                fields_related[field_name]
             field = cls._fields[field_name]
             if hasattr(field, 'datetime_field') and field.datetime_field:
                 extra_fields.add(field.datetime_field)
@@ -1116,6 +1119,17 @@ class ModelSQL(ModelStorage):
                     for target in row[name]:
                         if target is not None:
                             values.append(targets[target])
+            elif field._type in {'selection', 'multiselection'}:
+                key = name + ':string'
+                for row, target in zip(rows, targets):
+                    selection = field.get_selection(cls, name, target)
+                    if field._type == 'selection':
+                        row[key] = field.get_selection_string(
+                            selection, row[name])
+                    else:
+                        row[key] = [
+                            field.get_selection_string(selection, v)
+                            for v in row[name]]
             else:
                 for row in rows:
                     value = row[name]
@@ -1147,7 +1161,9 @@ class ModelSQL(ModelStorage):
                     ctx.update(PYSONDecoder(row).decode(pyson_context))
                 if datetime_field:
                     ctx['_datetime'] = row.get(datetime_field)
-                if field._type == 'reference':
+                if field._type in {'selection', 'multiselection'}:
+                    Target = None
+                elif field._type == 'reference':
                     value = row[fname]
                     if not value:
                         Target = None
@@ -1171,7 +1187,7 @@ class ModelSQL(ModelStorage):
                             field, Target, rows, list(fields_related[fname]))
                         targets = {t['id']: t for t in targets}
                     else:
-                        targets = {}
+                        targets = cls.browse([r['id'] for r in rows])
                     add_related(field, rows, targets)
 
         for row, field in product(result, to_del):

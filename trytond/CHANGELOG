@@ -1,3 +1,4 @@
+* Support reading string value of selection fields
 * Add ButtonActionException and RPCReturnException
 * Rename ModelStorage.count into ModelStorage.estimated_count
 * Add border type to images

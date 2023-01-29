@@ -319,6 +319,45 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
         self.assertEqual(foo_baz, [])
         self.assertEqual(empty, [selection])
 
+    @with_transaction()
+    def test_read_string(self):
+        "Test reading value and string"
+        Selection = Pool().get('test.multi_selection')
+        foo, foo_bar, null = Selection.create([{
+                    'selects': ['foo'],
+                    }, {
+                    'selects': ['foo', 'bar'],
+                    }, {
+                    'selects': [],
+                    }])
+
+        foo_read, foo_bar_read, null_read = Selection.read(
+            [foo.id, foo_bar.id, null.id], ['selects:string'])
+
+        self.assertEqual(foo_read['selects:string'], ["Foo"])
+        self.assertEqual(foo_bar_read['selects:string'], ["Bar", "Foo"])
+        self.assertEqual(null_read['selects:string'], [])
+
+    @with_transaction()
+    def test_read_string_dynamic_selection(self):
+        "Test reading value and string of a dynamic selection"
+        Selection = Pool().get('test.multi_selection')
+        foo, bar, null = Selection.create([{
+                    'selects': ['foo'],
+                    'dyn_selects': ['foo', 'foobar'],
+                    }, {
+                    'dyn_selects': ['bar', 'baz'],
+                    }, {
+                    'dyn_selects': [],
+                    }])
+
+        foo_read, bar_read, null_read = Selection.read(
+            [foo.id, bar.id, null.id], ['dyn_selects:string'])
+
+        self.assertEqual(foo_read['dyn_selects:string'], ["Foo", "FooBar"])
+        self.assertEqual(bar_read['dyn_selects:string'], ["Bar", "Baz"])
+        self.assertEqual(null_read['dyn_selects:string'], [])
+
 
 @unittest.skipIf(
     backend.name != 'postgresql', 'jsonb only supported by postgresql')

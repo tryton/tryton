@@ -71,6 +71,27 @@ class SelectionMixin(Field):
                     (name, 'selection', language, source))
         return super().definition_translations(model, language) + selection
 
+    @classmethod
+    def get_selection(cls, model, name, inst):
+        selection = model.fields_get([name])[name]['selection']
+        if isinstance(selection, str):
+            sel_func = getattr(model, selection)
+            if not is_instance_method(model, selection):
+                selection = sel_func()
+            else:
+                selection = sel_func(inst)
+        return dict(selection)
+
+    @classmethod
+    def get_selection_string(cls, selection, value):
+        # None and '' are equivalent
+        if value is None or value == '':
+            if value not in selection:
+                switch_value = {None: '', '': None}[value]
+                if switch_value in selection:
+                    value = switch_value
+        return selection[value]
+
 
 class Selection(SelectionMixin, Field):
     '''
@@ -157,29 +178,17 @@ class TranslatedSelection(object):
         from ..model import Model
         if inst is None:
             return self
+        field = cls._fields[self.name]
         with Transaction().set_context(getattr(inst, '_context', {})):
-            selection = cls.fields_get([self.name])[self.name]['selection']
-            if not isinstance(selection, (tuple, list)):
-                sel_func = getattr(cls, selection)
-                if not is_instance_method(cls, selection):
-                    selection = sel_func()
-                else:
-                    selection = sel_func(inst)
-            selection = dict(selection)
+            selection = field.get_selection(cls, self.name, inst)
         value = getattr(inst, self.name)
-        # None and '' are equivalent
-        if value is None or value == '':
-            if value not in selection:
-                switch_value = {None: '', '': None}[value]
-                if switch_value in selection:
-                    value = switch_value
         # Use Model __name__ for Reference field
-        elif isinstance(value, Model):
+        if isinstance(value, Model):
             value = value.__name__
         if isinstance(value, (list, tuple)):
             values = []
             for item in value:
-                values.append(selection.get(item, item))
+                values.append(field.get_selection_string(selection, item))
             return values
         else:
-            return selection.get(value, value)
+            return field.get_selection_string(selection, value)

@@ -589,6 +589,22 @@ Selection
 
    A dictionary mapping the selection value with its help string.
 
+Class methods:
+
+.. classmethod:: Selection.get_selection(model, name, inst)
+
+   Returns a :py:class`dictionary <dict>` mapping the selection value to its
+   human-readable value.
+
+.. classmethod:: Selection.get_selection_string(selection, value)
+
+   Returns the human-readable form of ``value`` in regard to ``selection``.
+   ``selection`` is acquired thanks to :meth:`Selection.get_selection`.
+   ..note::
+   This method should be used instead of relying on dictionary access
+   because this method take into account the internal representation of the
+   ``Selection`` value.
+
 Instance methods:
 
 .. method:: Selection.translated([name])
@@ -623,6 +639,16 @@ MultiSelection
 .. attribute:: MultiSelection.help_selection
 
    Same as :attr:`Selection.help_selection`.
+
+Class methods:
+
+.. classmethod:: MultiSelection.get_selection(model, name, inst)
+
+   Same as :meth:`Selection.get_selection`
+
+.. classmethod:: MultiSelection.get_selection_string(selection, value)
+
+   Same as :meth:`Selection.get_selection_string`
 
 Instance methods:
 
