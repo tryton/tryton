@@ -3813,7 +3813,7 @@
     });
 
     Sao.common.get_focus_chain = function(element) {
-        var elements = element.find('input', 'textarea');
+        var elements = element.find('input,select,textarea');
         elements.sort(function(a, b) {
             if (('tabindex' in a.attributes) && ('tabindex' in b.attributes)) {
                 var a_tabindex = parseInt(a.attributes.tabindex.value);
