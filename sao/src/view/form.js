@@ -3530,13 +3530,8 @@ function eval_pyson(value){
                         return;
                     }
                     if (this.screen.pre_validate) {
-                        return record.pre_validate().then(function(validate) {
-                            if (!validate) {
-                                prm.reject();
-                                return;
-                            }
-                            prm.resolve();
-                        });
+                        return record.pre_validate().then(
+                            prm.resolve, prm.reject);
                     }
                     prm.resolve();
                 }.bind(this));
