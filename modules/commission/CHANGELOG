@@ -1,3 +1,4 @@
+* Remove support for Python 3.7
 * Add support for Python 3.11
 * Allow searching reporting records by name
 

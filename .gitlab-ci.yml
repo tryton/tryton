@@ -165,7 +165,7 @@ check-cookiecutter-module:
         path: ${PACKAGE}/coverage.xml
   parallel:
     matrix:
-      - PYTHON_VERSION: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+      - PYTHON_VERSION: ["3.8", "3.9", "3.10", "3.11"]
 
 .test-db:
   extends: .test-tox

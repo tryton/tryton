@@ -1,3 +1,4 @@
+* Remove support for Python 3.7
 * Add support for Python 3.11
 * Require carrier to quote sale with shipment cost method
 
