@@ -12,9 +12,10 @@ class InfoBar(object):
         self.__box = Gtk.VBox()
         self.__box.show()
         self.__messages = set()
+        self.__kinds = {}
         return self.__box
 
-    def info_bar_add(self, message, type_=Gtk.MessageType.ERROR):
+    def info_bar_add(self, message, type_=Gtk.MessageType.ERROR, kind=None):
         if not message:
             return
         key = (message, type_)
@@ -27,15 +28,19 @@ class InfoBar(object):
             info_bar.connect('response', self.__response, key)
             info_bar.set_message_type(type_)
             info_bar.show_all()
+            self.__kinds[info_bar] = kind
 
     def __response(self, widget, response, key):
         self.__messages.add(key)
         self.__box.remove(widget)
 
-    def info_bar_refresh(self):
+    def info_bar_refresh(self, kind=None):
         for child in self.__box.get_children():
-            self.__box.remove(child)
+            if self.__kinds[child] == kind:
+                self.__box.remove(child)
+                del self.__kinds[child]
 
     def info_bar_clear(self):
-        self.info_bar_refresh()
+        for kind in set(self.__kinds.values()):
+            self.info_bar_refresh(kind=kind)
         self.__messages.clear()

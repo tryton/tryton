@@ -59,7 +59,8 @@
             });
             this.__messages = new Set();
         },
-        add: function(message, type) {
+        add: function(message, type, kind) {
+            kind = kind || null;
             if (!message) {
                 return;
             }
@@ -84,16 +85,26 @@
                     .on('close.bs.alert',
                         null, key, this.__response.bind(this));
                 this.el.append(infobar);
+                infobar.data('kind', kind);
             }
         },
         __response: function(evt) {
             this.__messages.add(evt.data);
         },
-        refresh: function() {
-            this.el.empty();
+        refresh: function(kind) {
+            kind = kind || null;
+            this.el.children().each((i, el) => {
+                el = jQuery(el);
+                if (el.data('kind') === kind) {
+                    el.remove();
+                }
+            });
         },
         clear: function() {
-            this.refresh();
+            var kinds = this.el.children().each((i, el) => el.data('kind'));
+            new Set(kinds).forEach(kind => {
+                this.refresh(kind);
+            });
             this.__messages.clear();
         },
     });

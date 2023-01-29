@@ -1237,11 +1237,11 @@
         record_notify: function(notifications) {
             for (const window_ of this.windows) {
                 if (window_.info_bar) {
-                    window_.info_bar.refresh();
+                    window_.info_bar.refresh('notification');
                     for (const notification of notifications) {
                         const type = notification[0];
                         const message = notification[1];
-                        window_.info_bar.add(message, type);
+                        window_.info_bar.add(message, type, 'notification');
                     }
                 }
             }
