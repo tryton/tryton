@@ -18,6 +18,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_code">
             <field name="text">The %(type)s "%(code)s" for party "%(party)s" is not valid.</field>
         </record>
+        <record model="ir.message" id="msg_party_identifier_duplicate">
+            <field name="text">The party "%(party)s" has the same %(type)s "%(code)s".</field>
+        </record>
         <record model="ir.message" id="msg_vies_unavailable">
             <field name="text">The VIES service is unavailable, try again later.</field>
         </record>

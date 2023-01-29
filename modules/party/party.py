@@ -710,6 +710,30 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             code=self.code,
                             party=party))
 
+    @fields.depends(methods=['_notify_duplicate'])
+    def on_change_notify(self):
+        notifications = super().on_change_notify()
+        notifications.extend(self._notify_duplicate())
+        return notifications
+
+    @fields.depends('code', methods=['on_change_with_code'])
+    def _notify_duplicate(self):
+        cls = self.__class__
+        if self.code:
+            code = self.on_change_with_code()
+            others = cls.search([
+                    ('id', '!=', self.id),
+                    ('type', '!=', None),
+                    ('code', '=', code),
+                    ], limit=1)
+            if others:
+                other, = others
+                yield ('warning', gettext(
+                        'party.msg_party_identifier_duplicate',
+                        party=other.party.rec_name,
+                        type=other.type_string,
+                        code=other.code))
+
 
 class CheckVIESResult(ModelView):
     'Check VIES'
