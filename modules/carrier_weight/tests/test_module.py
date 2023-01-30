@@ -7,6 +7,7 @@ from trytond.modules.company.tests import CompanyTestMixin
 from trytond.modules.currency.tests import create_currency
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.transaction import Transaction
 
 
 class CarrierWeightTestCase(CompanyTestMixin, ModuleTestCase):
@@ -15,9 +16,7 @@ class CarrierWeightTestCase(CompanyTestMixin, ModuleTestCase):
     extras = [
         'purchase_shipment_cost', 'sale_shipment_cost', 'stock_shipment_cost']
 
-    @with_transaction()
-    def test_compute_weight_price(self):
-        'Test compute_weight_price'
+    def create_carrier(self):
         pool = Pool()
         Party = pool.get('party.party')
         Uom = pool.get('product.uom')
@@ -51,24 +50,55 @@ class CarrierWeightTestCase(CompanyTestMixin, ModuleTestCase):
                     'weight_uom': weight_uom.id,
                     'weight_currency': currency.id,
                     }])
-        for i, weight in enumerate(range(0, 100, 20)):
+        for i, weight in enumerate(range(0, 100, 20), 1):
             WeightPriceList.create([{
                         'carrier': carrier.id,
                         'weight': weight,
                         'price': Decimal(i),
                         }])
-        self.assertEqual(
-            carrier.compute_weight_price(0), Decimal(0))
+        return carrier
+
+    @with_transaction()
+    def test_compute_weight_price(self):
+        'Test compute_weight_price'
+        carrier = self.create_carrier()
+
         for weight, price in [
-                (1, Decimal(0)),
-                (10, Decimal(0)),
-                (20, Decimal(0)),
-                (21, Decimal(1)),
-                (80, Decimal(3)),
-                (81, Decimal(4)),
-                (100, Decimal(4)),
+                (-1, Decimal(0)),
+                (0, Decimal(1)),
+                (1, Decimal(1)),
+                (10, Decimal(1)),
+                (20, Decimal(1)),
+                (21, Decimal(2)),
+                (80, Decimal(4)),
+                (81, Decimal(5)),
+                (100, Decimal(5)),
                 ]:
-            self.assertEqual(carrier.compute_weight_price(weight), price)
+            with self.subTest(weight=weight):
+                self.assertEqual(carrier.compute_weight_price(weight), price)
+
+    @with_transaction()
+    def test_get_weight_price(self):
+        "Test get_weight_price"
+        transaction = Transaction()
+        carrier = self.create_carrier()
+
+        for weights, price in [
+                ([], Decimal(1)),
+                ([0], Decimal(1)),
+                ([0, 0], Decimal(2)),
+                ([21], Decimal(2)),
+                ([10, 21], Decimal(3)),
+                ([0, 21], Decimal(3)),
+                ]:
+            with self.subTest(weights=weights):
+                with transaction.set_context(weights=weights):
+                    self.assertEqual(
+                        carrier.get_sale_price(),
+                        (price, carrier.weight_currency.id))
+                    self.assertEqual(
+                        carrier.get_purchase_price(),
+                        (price, carrier.weight_currency.id))
 
 
 del ModuleTestCase

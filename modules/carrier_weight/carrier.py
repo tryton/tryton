@@ -34,7 +34,9 @@ class Carrier(metaclass=PoolMeta):
             'invisible': Eval('carrier_cost_method') != 'weight',
             'readonly': ~(Eval('weight_uom', 0) & Eval('weight_currency', 0)),
             },
-        help="Add price to the carrier service.")
+        help="Add price per weight to the carrier service.\n"
+        "The first line for which the weight is greater is used.\n"
+        "The line with weight of 0 is used as default price.")
 
     @classmethod
     def __setup__(cls):
@@ -58,24 +60,30 @@ class Carrier(metaclass=PoolMeta):
         for line in reversed(self.weight_price_list):
             if line.weight < weight:
                 return line.price
+        else:
+            if not line.weight and not weight:
+                return line.price
         return Decimal(0)
+
+    def _get_weight_price(self):
+        weights = Transaction().context.get('weights', [])
+        if weights:
+            weight_price = sum(
+                self.compute_weight_price(w) for w in weights)
+        else:
+            weight_price = self.compute_weight_price(0)
+        return weight_price, self.weight_currency.id
 
     def get_sale_price(self):
         price, currency_id = super(Carrier, self).get_sale_price()
         if self.carrier_cost_method == 'weight':
-            weight_price = Decimal(0)
-            for weight in Transaction().context.get('weights', []):
-                weight_price += self.compute_weight_price(weight)
-            return weight_price, self.weight_currency.id
+            price, currency_id = self._get_weight_price()
         return price, currency_id
 
     def get_purchase_price(self):
         price, currency_id = super(Carrier, self).get_purchase_price()
         if self.carrier_cost_method == 'weight':
-            weight_price = Decimal(0)
-            for weight in Transaction().context.get('weights', []):
-                weight_price += self.compute_weight_price(weight)
-            return weight_price, self.weight_currency.id
+            price, currency_id = self._get_weight_price()
         return price, currency_id
 
 
@@ -87,6 +95,9 @@ class WeightPriceList(ModelSQL, ModelView):
         help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
+        domain=[
+            ('weight', '>=', 0),
+            ],
         depends={'carrier'},
         help="The lower limit for the price.")
     price = Monetary(
