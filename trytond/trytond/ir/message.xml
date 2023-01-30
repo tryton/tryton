@@ -136,6 +136,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_id_positive">
             <field name="text">ID must be positive.</field>
         </record>
+        <record model="ir.message" id="msg_singleton">
+            <field name="text">Only one singleton can be created.</field>
+        </record>
         <record model="ir.message" id="msg_write_xml_record">
             <field name="text">You are not allowed to modify the field "%(field)s" in "%(record)s" of "%(model)s".</field>
         </record>

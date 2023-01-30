@@ -1,8 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql.operators import Equal
+
 from trytond.transaction import Transaction, without_check_access
 
+from .modelsql import Exclude, ModelSQL
 from .modelstorage import ModelStorage
 
 
@@ -16,6 +19,12 @@ class ModelSingleton(ModelStorage):
         super().__setup__()
         # Cache disable because it is used as a read by the client
         cls.__rpc__['default_get'].cache = None
+
+        if issubclass(cls, ModelSQL):
+            table = cls.__table__()
+            cls._sql_constraints.append(
+                ('singleton', Exclude(table, (table.id * 0, Equal)),
+                    'ir.msg_singleton'))
 
     @classmethod
     def get_singleton(cls):
@@ -31,6 +40,8 @@ class ModelSingleton(ModelStorage):
         assert len(vlist) == 1
         singleton = cls.get_singleton()
         if not singleton:
+            if issubclass(cls, ModelSQL):
+                cls.lock()
             return super(ModelSingleton, cls).create(vlist)
         cls.write([singleton], vlist[0])
         return [singleton]
