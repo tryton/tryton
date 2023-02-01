@@ -1536,7 +1536,7 @@
                 this.changed(record);
                 record.validate(null, true, false, true);
             } else if (force_change) {
-                this.set_modified();
+                record.set_modified();
                 this.changed(record);
                 record.validate(null, true, false, true);
             }
