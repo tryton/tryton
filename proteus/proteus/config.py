@@ -181,7 +181,7 @@ class _TrytondMethod(object):
         self._config = config
 
     def __call__(self, *args, **kwargs):
-        from trytond.rpc import RPC
+        from trytond.rpc import RPC, RPCReturnException
         from trytond.tools import is_instance_method
         from trytond.transaction import Transaction, TransactionError
         from trytond.worker import run_task
@@ -220,6 +220,10 @@ class _TrytondMethod(object):
                     transaction.rollback()
                     e.fix(extras)
                     continue
+                except RPCReturnException as e:
+                    transaction.rollback()
+                    transaction.tasks.clear()
+                    result = e.result()
                 transaction.commit()
             break
         while transaction.tasks:
