@@ -43,3 +43,7 @@ class InvoiceFutureWarning(UserWarning):
 
 class InvoiceSimilarWarning(UserWarning):
     pass
+
+
+class CancelInvoiceMoveWarning(UserWarning):
+    pass

@@ -51,6 +51,7 @@ def register():
         account.RenewFiscalYear,
         account.RescheduleLines,
         account.DelegateLines,
+        account.CancelMoves,
         module='account_invoice', type_='wizard')
     Pool.register(
         invoice.InvoiceReport,

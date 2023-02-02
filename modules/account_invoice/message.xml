@@ -84,6 +84,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_similar">
             <field name="text">The invoice "%(invoice)s" is similar to invoice "%(similar)s".</field>
         </record>
+        <record model="ir.message" id="msg_cancel_invoice_move">
+            <field name="text">The moves "%(moves)s" have the posted invoices "%(invoices)s" as origin.</field>
+        </record>
+        <record model="ir.message" id="msg_cancel_invoice_move_description">
+            <field name="text">Cancelling them will reconcile the move lines thus paying the invoices. You might want to cancel the invoices first.</field>
+        </record>
     </data>
 </tryton>
 
