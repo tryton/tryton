@@ -23,6 +23,10 @@ class ListBoxViewForm(ViewForm):
     def record(self, value):
         self._record = value
 
+    def button_clicked(self, widget):
+        if self.screen.selected_records == [self.record]:
+            super().button_clicked(widget)
+
 
 class ListBoxItem(GObject.Object):
 
