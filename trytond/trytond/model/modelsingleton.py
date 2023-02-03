@@ -60,7 +60,9 @@ class ModelSingleton(ModelStorage):
         if not singleton:
             with Transaction().set_context(_check_access=False):
                 singleton, = cls.create([values])
-        actions = (records, values) + args
+            actions = (records, {}) + args
+        else:
+            actions = (records, values) + args
         args = []
         for values in actions[1:None:2]:
             args.extend(([singleton], values))
