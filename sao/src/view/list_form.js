@@ -9,6 +9,11 @@
         },
         set record(value) {
             this._record = value;
+        },
+        button_clicked: function(event) {
+            if (Sao.common.compare(this.screen.selected_records, [this.record])) {
+                Sao.View.ListGroupViewForm._super.button_clicked.call(this, event);
+            }
         }
     });
 
