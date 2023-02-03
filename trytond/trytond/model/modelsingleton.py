@@ -58,7 +58,9 @@ class ModelSingleton(ModelStorage):
         singleton = cls.get_singleton()
         if not singleton:
             singleton, = cls.create([values])
-        actions = (records, values) + args
+            actions = (records, {}) + args
+        else:
+            actions = (records, values) + args
         args = []
         for values in actions[1:None:2]:
             args.extend(([singleton], values))
