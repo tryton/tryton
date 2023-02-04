@@ -53,9 +53,15 @@ documentation:
   variables:
     DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
     DOC_DIR: doc
+  cache:
+    paths:
+      - .cache/pip/http
+  before_script:
+    - pip install sphinx-lint
   script:
     - cd "${PACKAGE}"
     - python -m sphinx -T -E -W -n -b html ${DOC_DIR} _build/html
+    - python -m sphinxlint ${DOC_DIR}
     - |
       if [ "${CHECK_LINK}" ]; then
       python -m sphinx -T -E -W -n -b linkcheck ${DOC_DIR} _build;

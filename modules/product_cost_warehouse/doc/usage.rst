@@ -27,7 +27,7 @@ prices is configured to run for each different warehouse.
 .. _Viewing product cost prices:
 
 Viewing product cost prices
-===========================  
+===========================
 
 With this module activated each `Product's <product:concept-product>` cost
 price is shown based on your current `Company <company:model-company.company>`

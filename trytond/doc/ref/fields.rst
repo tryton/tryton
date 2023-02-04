@@ -601,7 +601,7 @@ Class methods:
 
 .. classmethod:: Selection.get_selection(model, name, inst)
 
-   Returns a :py:class`dictionary <dict>` mapping the selection value to its
+   Returns a :py:class:`dictionary <dict>` mapping the selection value to its
    human-readable value.
 
 .. classmethod:: Selection.get_selection_string(selection, value)

@@ -14,7 +14,7 @@ location.
   process will be triggered.
 
 * The maximum quantity is the threshold quantity above which the overflowing
-  process will be triggered. 
+  process will be triggered.
 
 * The target quantity is the quantity that will be found in the location after
   the provisioning / overflowing process has been completed.

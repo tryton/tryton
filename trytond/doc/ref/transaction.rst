@@ -72,7 +72,7 @@ Transaction
 
 .. staticmethod:: Transaction.monotonic_time
 
-   Return a monotonic time used to populate :attr:~Transaction.started_at.
+   Return a monotonic time used to populate :attr:`~Transaction.started_at`.
 
 .. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit, \**extras]]]])
 

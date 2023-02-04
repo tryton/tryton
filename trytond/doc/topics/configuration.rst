@@ -639,7 +639,7 @@ The space separated list of TinyMCE plugins to load.
 It can be overridden for specific models and fields using the names:
 ``plugins-<model>-<field>`` or ``plugins-<model>``.
 
-Default: ``
+Default: ``''``
 
 css
 ~~~

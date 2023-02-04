@@ -29,7 +29,7 @@ Database
 
 .. method:: Database.get_connection([autocommit[, readonly]])
 
-   Retrieve a connection object as defined by :pep:249#connection.
+   Retrieve a connection object as defined by :pep:`249#connection`.
    If autocommit is set, the connection is committed after each statement.
    If readonly is set, the connection is read only.
 
@@ -172,8 +172,8 @@ Database
 
 .. method:: Database.sequence_update(connection, name[, number_increment[, start_value]])
 
-   Modify the named sequence with ``number_increment`` and ``start_value``using
-   the ``connection``.
+   Modify the named sequence with ``number_increment`` and ``start_value``
+   using the ``connection``.
 
 .. method:: Database.sequence_rename(connection, old_name, new_name)
 
