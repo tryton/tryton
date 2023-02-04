@@ -103,25 +103,24 @@ class Transaction(object):
 
     cache_keys = {'language', 'fuzzy_translation', '_datetime'}
 
-    database = None
-    readonly = False
-    connection = None
-    close = None
-    user = None
-    context = None
-    create_records = None
-    delete_records = None
-    trigger_records = None
-    check_warnings = None
-    timestamp = None
-    started_at = None
-
     def __new__(cls, new=False):
         from trytond.cache import LRUDict
         from trytond.pool import Pool
         transactions = cls._local.transactions
         if new or not transactions:
             instance = super(Transaction, cls).__new__(cls)
+            instance.database = None
+            instance.readonly = False
+            instance.connection = None
+            instance.close = None
+            instance.user = None
+            instance.context = None
+            instance.create_records = None
+            instance.delete_records = None
+            instance.trigger_records = None
+            instance.check_warnings = None
+            instance.timestamp = None
+            instance.started_at = None
             instance.cache = LRUDict(
                 _cache_transaction,
                 lambda: LRUDict(
