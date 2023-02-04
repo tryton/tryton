@@ -215,6 +215,9 @@ check-doc-trytond:
 
 check-trytond-rng:
   extends: .check
+  cache:
+    paths:
+      - .cache/pip/http
   before_script:
     - pip install rnc2rng
   script:
