@@ -213,21 +213,6 @@ check-doc-trytond:
   variables:
     PACKAGE: trytond
 
-check-trytond-rng:
-  extends: .check
-  before_script:
-    - pip install rnc2rng
-  script:
-    - python trytond/setup.py update_rng
-    - |
-      if [ `hg status | wc -l` -ne 0 ]; then
-        false
-      fi
-  rules:
-    - changes:
-        - trytond/**/*.rnc
-        - trytond/**/*.rng
-
 trigger-doc-build-trytond:
   extends: .trigger-doc-build
   variables:
