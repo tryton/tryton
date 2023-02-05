@@ -18,6 +18,31 @@ class StockForecastTestCase(CompanyTestMixin, ModuleTestCase):
     module = 'stock_forecast'
 
     @with_transaction()
+    def test_forecast_rec_name(self):
+        pool = Pool()
+        Forecast = pool.get('stock.forecast')
+        Location = pool.get('stock.location')
+
+        customer, = Location.search([('code', '=', 'CUS')])
+        warehouse, = Location.search([('code', '=', 'WH')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
+            forecast = Forecast(
+                warehouse=warehouse,
+                destination=customer,
+                from_date=datetime.date(2023, 1, 1),
+                to_date=datetime.date(2023, 3, 31),
+                )
+            forecast.save()
+            forecasts = Forecast.search([('rec_name', '=', "Warehouse")])
+
+            self.assertEqual(
+                forecast.rec_name,
+                "Warehouse → Customer @ [01/01/2023 - 03/31/2023]")
+            self.assertEqual(forecasts, [forecast])
+
+    @with_transaction()
     def test_distribute(self):
         'Test distribute'
         pool = Pool()

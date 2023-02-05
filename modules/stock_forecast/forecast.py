@@ -161,11 +161,27 @@ class Forecast(Workflow, ModelSQL, ModelView):
             return []
 
     def get_rec_name(self, name):
-        return self.warehouse.rec_name
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+
+        lang = Lang.get()
+        from_date = lang.strftime(self.from_date)
+        to_date = lang.strftime(self.to_date)
+        return (
+            f'{self.warehouse.rec_name} → {self.destination.rec_name} @ '
+            f'[{from_date} - {to_date}]')
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('warehouse.rec_name',) + tuple(clause[1:])]
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('warehouse.rec_name', *clause[1:]),
+            ('destination.rec_name', *clause[1:]),
+            ]
 
     @classmethod
     def validate_fields(cls, forecasts, field_names):
