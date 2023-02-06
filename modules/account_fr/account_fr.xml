@@ -4045,8 +4045,7 @@
         <record model="account.account.template" id="2976">
             <field name="name">Autres créances immobilisées</field>
             <field name="code">2976</field>
-            <field name="type" ref="immobilisations_financieres_autres"/>
-            <field name="closed" eval="True"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="297"/>
         </record>
         <record model="account.account.template" id="29761">
@@ -6017,8 +6016,7 @@
         <record model="account.account.template" id="59">
             <field name="name">Dépréciation des comptes financiers</field>
             <field name="code">59</field>
-            <field name="type" ref="actions_propres"/>
-            <field name="closed" eval="True"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="5"/>
         </record>
         <record model="account.account.template" id="590">
@@ -6319,8 +6317,7 @@
         <record model="account.account.template" id="61">
             <field name="name">Services extérieurs</field>
             <field name="code">61</field>
-            <field name="type" ref="autres_achats"/>
-            <field name="closed" eval="True"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="61_62"/>
         </record>
         <record model="account.account.template" id="611">
