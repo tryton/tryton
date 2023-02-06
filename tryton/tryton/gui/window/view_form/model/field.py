@@ -155,13 +155,13 @@ class Field(object):
         previous_value = self.get(record)
         self.set(record, value)
         if previous_value != self.get(record):
+            self.sig_changed(record)
+            record.validate(softvalidation=True)
             record.set_modified(self.name)
-            self.sig_changed(record)
-            record.validate(softvalidation=True)
         elif force_change:
-            record.set_modified()
             self.sig_changed(record)
             record.validate(softvalidation=True)
+            record.set_modified()
 
     def get_client(self, record):
         return self.get(record)
@@ -733,13 +733,13 @@ class O2MField(Field):
         modified = set(previous_ids) != set(value)
         self._set_value(record, value, modified=modified)
         if modified:
+            self.sig_changed(record)
+            record.validate(softvalidation=True)
             record.set_modified(self.name)
-            self.sig_changed(record)
-            record.validate(softvalidation=True)
         elif force_change:
-            record.set_modified()
             self.sig_changed(record)
             record.validate(softvalidation=True)
+            record.set_modified()
 
     def set_default(self, record, value):
         self.set(record, value, _default=True)
