@@ -64,11 +64,23 @@ def _get_modules(cursor):
 
 class BaseCache(object):
     _instances = {}
+    context_ignored_keys = {
+        'client', '_request', '_check_access', '_skip_warnings',
+        }
 
-    def __init__(self, name, size_limit=1024, duration=None, context=True):
+    def __init__(
+            self, name, size_limit=1024, duration=None, context=True,
+            context_ignored_keys=None):
+        assert ((context_ignored_keys is not None and context)
+            or (context_ignored_keys is None)), (
+                f"context_ignored_keys ({context_ignored_keys}) is not valid"
+                f" in regards to context ({context}).")
         self._name = name
         self.size_limit = size_limit
         self.context = context
+        self.context_ignored_keys = set()
+        if context and context_ignored_keys:
+            self.context_ignored_keys.update(context_ignored_keys)
         self.hit = self.miss = 0
         if isinstance(duration, dt.timedelta):
             self.duration = duration
@@ -93,10 +105,9 @@ class BaseCache(object):
     def _key(self, key):
         if self.context:
             context = Transaction().context.copy()
-            context.pop('client', None)
-            context.pop('_request', None)
-            context.pop('_check_access', None)
-            context.pop('_skip_warnings', None)
+            for k in (self.__class__.context_ignored_keys
+                    | self.context_ignored_keys):
+                context.pop(k, None)
             return (key, Transaction().user, freeze(context))
         return key
 

@@ -1,3 +1,4 @@
+* Add local and global list of ignore context keys
 * Add functions in transaction for check access and active record
 * Add check_access and active_records attribute to Transaction
 * Add searchable and sortable methods on Field

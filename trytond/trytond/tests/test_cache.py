@@ -15,6 +15,9 @@ from trytond.transaction import Transaction
 
 cache = MemoryCache('test.cache')
 cache_expire = MemoryCache('test.cache_expire', duration=1)
+cache_ignored_local_context = MemoryCache(
+    'test.cache.ignored.local', context_ignored_keys={'ignored'})
+cache_ignored_global_context = MemoryCache('test.cache.ignored.global')
 
 
 class CacheTestCase(unittest.TestCase):
@@ -63,6 +66,28 @@ class CacheTestCase(unittest.TestCase):
                 ]:
             with self.subTest(value=value):
                 self.assertEqual(unfreeze(value), result)
+
+    @with_transaction()
+    def test_ignored_context_key_global(self):
+        "Test global keys are ignored from context"
+        with Transaction().set_context(client='foo'):
+            cache_ignored_global_context.set('key', 0)
+
+        with Transaction().set_context(client='bar'):
+            value = cache_ignored_global_context.get('key')
+
+        self.assertEqual(value, 0)
+
+    @with_transaction()
+    def test_ignored_context_key_local(self):
+        "Test local keys are ignored from context"
+        with Transaction().set_context(ignored='foo'):
+            cache_ignored_local_context.set('key', 1)
+
+        with Transaction().set_context(ignored='bar'):
+            value = cache_ignored_local_context.get('key')
+
+        self.assertEqual(value, 1)
 
 
 class MemoryCacheTestCase(unittest.TestCase):

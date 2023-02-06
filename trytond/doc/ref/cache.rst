@@ -4,7 +4,7 @@
 Cache
 =====
 
-.. class:: Cache(name[, size_limit[, duration[, context]]])
+.. class:: Cache(name[, size_limit[, duration[, context[, context_ignored_keys]]]])
 
    Use to cache values between server requests.
 
@@ -19,6 +19,7 @@ Cache
 
    And the ``context`` parameter is used to indicate if the cache depends on
    the user context and is ``True`` by default.
+   Keys specified in ``context_ignored_keys`` are ignored.
 
    The cache is cleaned on :class:`~trytond.transaction.Transaction` starts and
    resets on :class:`~trytond.transaction.Transaction` commit or rollback.
