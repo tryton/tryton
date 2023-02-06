@@ -563,6 +563,10 @@ def AccountMixin(template=False):
                         ('id', '=', Eval('_parent_parent.%s' % type_)),
                         ()),
                     ]
+                field.states['required'] = (
+                    Eval('parent')
+                    & Eval('_parent_parent.%s' % type_)
+                    & Eval('_parent_parent.parent'))
 
                 cls.childs.domain.append(
                     If(Eval(type_) & Eval('parent'),
