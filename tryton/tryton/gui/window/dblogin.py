@@ -5,6 +5,8 @@ import configparser
 import gettext
 import logging
 import os
+import shutil
+import tempfile
 import threading
 
 from gi.repository import GLib, GObject, Gtk
@@ -482,20 +484,31 @@ class DBLogin(object):
         grid.attach(label_username, 0, 5, 1, 1)
 
         # Profile information
-        self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
+        config_dir = get_config_dir()
+        self.profile_cfg = os.path.join(config_dir, 'profiles.cfg')
         self.profiles = configparser.ConfigParser()
-        if not os.path.exists(self.profile_cfg):
+        try:
+            self.profiles.read(self.profile_cfg)
+        except configparser.Error:
+            # reset self.profiles as parsing errors may leave wrong data in
+            # the parser
+            self.profiles = configparser.ConfigParser()
+            with tempfile.NamedTemporaryFile(
+                    delete=False, prefix='profiles_', suffix='.cfg',
+                    dir=config_dir) as temp_file:
+                temp_name = temp_file.name
+            shutil.copy(self.profile_cfg, temp_name)
+            logger.error(
+                f"Failed to parse {self.profiles_cfg}. "
+                f"A backup can be found at {temp_name}",
+                exc_info=True)
+        if not self.profiles.sections():
             short_version = '.'.join(__version__.split('.', 2)[:2])
             name = 'demo%s.tryton.org' % short_version
             self.profiles.add_section(name)
             self.profiles.set(name, 'host', name)
             self.profiles.set(name, 'database', 'demo%s' % short_version)
             self.profiles.set(name, 'username', 'demo')
-        else:
-            try:
-                self.profiles.read(self.profile_cfg)
-            except configparser.ParsingError:
-                logger.error("Fail to parse profiles.cfg", exc_info=True)
         for section in self.profiles.sections():
             active = all(self.profiles.has_option(section, option)
                 for option in ('host', 'database'))

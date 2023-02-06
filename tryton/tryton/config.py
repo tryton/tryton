@@ -6,7 +6,9 @@ import locale
 import logging
 import optparse
 import os
+import shutil
 import sys
+import tempfile
 
 from gi.repository import GdkPixbuf
 
@@ -143,7 +145,19 @@ class ConfigManager(object):
 
     def load(self):
         parser = configparser.ConfigParser()
-        parser.read([self.rcfile])
+        try:
+            parser.read([self.rcfile])
+        except configparser.Error:
+            config_dir = os.path.dirname(self.rcfile)
+            with tempfile.NamedTemporaryFile(
+                    delete=False, prefix='tryton_', suffix='.conf',
+                    dir=config_dir) as temp_file:
+                temp_name = temp_file.name
+            shutil.copy(self.rcfile, temp_name)
+            logger.error(
+                f"Failed to parse {self.rcfile}. "
+                f"A backup can be found at {temp_name}", exc_info=True)
+            return
         for section in parser.sections():
             for (name, value) in parser.items(section):
                 if value.lower() == 'true':
