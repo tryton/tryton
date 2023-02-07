@@ -113,7 +113,10 @@ class FieldIntegerTestCase(unittest.TestCase):
         "Test create integer with domain invalid"
         Integer = Pool().get('test.integer_domain')
 
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaisesRegexp(
+                DomainValidationError,
+                'The value "10" for field "Integer" '
+                'in ".*" of "Integer Domain"'):
             Integer.create([{
                         'integer': 10,
                         }])

@@ -482,7 +482,10 @@ class FieldReferenceTestCase(unittest.TestCase):
         target.save()
 
         reference = Reference(reference=target)
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaisesRegexp(
+                DomainValidationError,
+                'The value "%s" for field "Reference" '
+                'in ".*" of "Reference Domain Validation"' % target.rec_name):
             reference.save()
 
     @with_transaction()

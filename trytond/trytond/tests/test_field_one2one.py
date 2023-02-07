@@ -120,7 +120,10 @@ class FieldOne2OneTestCase(unittest.TestCase):
                     'name': "invalid domain",
                     }])
 
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaisesRegexp(
+                DomainValidationError,
+                'The value "%s" for field "One2One" '
+                'in ".*" of "One2One"' % target.rec_name):
             One2One.create([{
                         'one2one': target.id,
                         }])
