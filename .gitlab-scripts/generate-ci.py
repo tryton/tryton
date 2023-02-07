@@ -6,7 +6,7 @@ from itertools import chain
 from string import Template
 
 BASE_DIR = os.path.dirname(__file__)
-TEMPLATE = Template("""
+TEMPLATE_DOC = Template("""
 check-doc-${name}:
   extends: .check-doc
   variables:
@@ -16,7 +16,9 @@ trigger-doc-build-${name}:
   extends: .trigger-doc-build
   variables:
     PACKAGE: ${package}
+""")
 
+TEMPLATE = Template("""
 test-${name}-sqlite:
   extends: .test-sqlite
   variables:
@@ -50,6 +52,8 @@ def render(file):
             'package': package,
             'tag_name': tag_name,
             }
+        if os.path.isdir(os.path.join(package, 'doc')):
+            file.write(TEMPLATE_DOC.substitute(mapping))
         file.write(TEMPLATE.substitute(mapping))
 
 

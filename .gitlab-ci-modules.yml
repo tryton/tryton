@@ -43,16 +43,6 @@ test-modules-account_asset-postgresql:
     PACKAGE: modules/account_asset
     TAG_PATTERN: '/^account_asset-.*/'
 
-check-doc-modules-account_be:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_be
-
-trigger-doc-build-modules-account_be:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_be
-
 test-modules-account_be-sqlite:
   extends: .test-sqlite
   variables:
@@ -86,16 +76,6 @@ test-modules-account_credit_limit-postgresql:
   variables:
     PACKAGE: modules/account_credit_limit
     TAG_PATTERN: '/^account_credit_limit-.*/'
-
-check-doc-modules-account_de_skr03:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_de_skr03
-
-trigger-doc-build-modules-account_de_skr03:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_de_skr03
 
 test-modules-account_de_skr03-sqlite:
   extends: .test-sqlite
@@ -351,16 +331,6 @@ test-modules-account_invoice_correction-postgresql:
     PACKAGE: modules/account_invoice_correction
     TAG_PATTERN: '/^account_invoice_correction-.*/'
 
-check-doc-modules-account_invoice_history:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_history
-
-trigger-doc-build-modules-account_invoice_history:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_history
-
 test-modules-account_invoice_history-sqlite:
   extends: .test-sqlite
   variables:
@@ -373,16 +343,6 @@ test-modules-account_invoice_history-postgresql:
     PACKAGE: modules/account_invoice_history
     TAG_PATTERN: '/^account_invoice_history-.*/'
 
-check-doc-modules-account_invoice_line_standalone:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_line_standalone
-
-trigger-doc-build-modules-account_invoice_line_standalone:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_line_standalone
-
 test-modules-account_invoice_line_standalone-sqlite:
   extends: .test-sqlite
   variables:
@@ -394,16 +354,6 @@ test-modules-account_invoice_line_standalone-postgresql:
   variables:
     PACKAGE: modules/account_invoice_line_standalone
     TAG_PATTERN: '/^account_invoice_line_standalone-.*/'
-
-check-doc-modules-account_invoice_stock:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_invoice_stock
-
-trigger-doc-build-modules-account_invoice_stock:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_invoice_stock
 
 test-modules-account_invoice_stock-sqlite:
   extends: .test-sqlite
@@ -526,16 +476,6 @@ test-modules-account_payment_stripe-postgresql:
   variables:
     PACKAGE: modules/account_payment_stripe
     TAG_PATTERN: '/^account_payment_stripe-.*/'
-
-check-doc-modules-account_product:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/account_product
-
-trigger-doc-build-modules-account_product:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/account_product
 
 test-modules-account_product-sqlite:
   extends: .test-sqlite
@@ -769,16 +709,6 @@ test-modules-account_tax_rule_country-postgresql:
     PACKAGE: modules/account_tax_rule_country
     TAG_PATTERN: '/^account_tax_rule_country-.*/'
 
-check-doc-modules-analytic_account:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_account
-
-trigger-doc-build-modules-analytic_account:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_account
-
 test-modules-analytic_account-sqlite:
   extends: .test-sqlite
   variables:
@@ -790,16 +720,6 @@ test-modules-analytic_account-postgresql:
   variables:
     PACKAGE: modules/analytic_account
     TAG_PATTERN: '/^analytic_account-.*/'
-
-check-doc-modules-analytic_invoice:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_invoice
-
-trigger-doc-build-modules-analytic_invoice:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_invoice
 
 test-modules-analytic_invoice-sqlite:
   extends: .test-sqlite
@@ -813,16 +733,6 @@ test-modules-analytic_invoice-postgresql:
     PACKAGE: modules/analytic_invoice
     TAG_PATTERN: '/^analytic_invoice-.*/'
 
-check-doc-modules-analytic_purchase:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_purchase
-
-trigger-doc-build-modules-analytic_purchase:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_purchase
-
 test-modules-analytic_purchase-sqlite:
   extends: .test-sqlite
   variables:
@@ -834,16 +744,6 @@ test-modules-analytic_purchase-postgresql:
   variables:
     PACKAGE: modules/analytic_purchase
     TAG_PATTERN: '/^analytic_purchase-.*/'
-
-check-doc-modules-analytic_sale:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/analytic_sale
-
-trigger-doc-build-modules-analytic_sale:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/analytic_sale
 
 test-modules-analytic_sale-sqlite:
   extends: .test-sqlite
@@ -1121,16 +1021,6 @@ test-modules-customs-postgresql:
     PACKAGE: modules/customs
     TAG_PATTERN: '/^customs-.*/'
 
-check-doc-modules-dashboard:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/dashboard
-
-trigger-doc-build-modules-dashboard:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/dashboard
-
 test-modules-dashboard-sqlite:
   extends: .test-sqlite
   variables:
@@ -1297,16 +1187,6 @@ test-modules-party_relationship-postgresql:
     PACKAGE: modules/party_relationship
     TAG_PATTERN: '/^party_relationship-.*/'
 
-check-doc-modules-party_siret:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/party_siret
-
-trigger-doc-build-modules-party_siret:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/party_siret
-
 test-modules-party_siret-sqlite:
   extends: .test-sqlite
   variables:
@@ -1472,16 +1352,6 @@ test-modules-product_measurements-postgresql:
   variables:
     PACKAGE: modules/product_measurements
     TAG_PATTERN: '/^product_measurements-.*/'
-
-check-doc-modules-product_price_list:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/product_price_list
-
-trigger-doc-build-modules-product_price_list:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/product_price_list
 
 test-modules-product_price_list-sqlite:
   extends: .test-sqlite
@@ -1737,16 +1607,6 @@ test-modules-project_plan-postgresql:
     PACKAGE: modules/project_plan
     TAG_PATTERN: '/^project_plan-.*/'
 
-check-doc-modules-project_revenue:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/project_revenue
-
-trigger-doc-build-modules-project_revenue:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/project_revenue
-
 test-modules-project_revenue-sqlite:
   extends: .test-sqlite
   variables:
@@ -1780,16 +1640,6 @@ test-modules-purchase-postgresql:
   variables:
     PACKAGE: modules/purchase
     TAG_PATTERN: '/^purchase-.*/'
-
-check-doc-modules-purchase_invoice_line_standalone:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/purchase_invoice_line_standalone
-
-trigger-doc-build-modules-purchase_invoice_line_standalone:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/purchase_invoice_line_standalone
 
 test-modules-purchase_invoice_line_standalone-sqlite:
   extends: .test-sqlite
@@ -2066,16 +1916,6 @@ test-modules-sale_payment-postgresql:
   variables:
     PACKAGE: modules/sale_payment
     TAG_PATTERN: '/^sale_payment-.*/'
-
-check-doc-modules-sale_price_list:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/sale_price_list
-
-trigger-doc-build-modules-sale_price_list:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/sale_price_list
 
 test-modules-sale_price_list-sqlite:
   extends: .test-sqlite
@@ -2419,16 +2259,6 @@ test-modules-stock_location_move-postgresql:
     PACKAGE: modules/stock_location_move
     TAG_PATTERN: '/^stock_location_move-.*/'
 
-check-doc-modules-stock_location_sequence:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_location_sequence
-
-trigger-doc-build-modules-stock_location_sequence:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_location_sequence
-
 test-modules-stock_location_sequence-sqlite:
   extends: .test-sqlite
   variables:
@@ -2705,16 +2535,6 @@ test-modules-stock_supply_day-postgresql:
     PACKAGE: modules/stock_supply_day
     TAG_PATTERN: '/^stock_supply_day-.*/'
 
-check-doc-modules-stock_supply_forecast:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/stock_supply_forecast
-
-trigger-doc-build-modules-stock_supply_forecast:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/stock_supply_forecast
-
 test-modules-stock_supply_forecast-sqlite:
   extends: .test-sqlite
   variables:
@@ -2770,16 +2590,6 @@ test-modules-timesheet-postgresql:
   variables:
     PACKAGE: modules/timesheet
     TAG_PATTERN: '/^timesheet-.*/'
-
-check-doc-modules-timesheet_cost:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/timesheet_cost
-
-trigger-doc-build-modules-timesheet_cost:
-  extends: .trigger-doc-build
-  variables:
-    PACKAGE: modules/timesheet_cost
 
 test-modules-timesheet_cost-sqlite:
   extends: .test-sqlite

@@ -230,11 +230,6 @@ test-trytond-postgresql:
     PACKAGE: trytond
     TAG_PATTERN: '/^trytond-.*/'
 
-check-doc-trytond-gis:
-  extends: .check-doc
-  variables:
-    PACKAGE: trytond-gis
-
 trigger-doc-build-trytond-gis:
   extends: .trigger-doc-build
   variables:
