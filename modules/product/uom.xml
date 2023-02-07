@@ -142,13 +142,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="factor" eval="1."/>
             <field name="rate" eval="1."/>
         </record>
-        <record model="product.uom" id="uom_work_day">
-            <field name="name">Work Day</field>
-            <field name="symbol">wd</field>
-            <field name="category" ref="uom_cat_time"/>
-            <field name="factor" eval="8."/>
-            <field name="rate" eval="0.125"/>
-        </record>
         <record model="product.uom" id="uom_day">
             <field name="name">Day</field>
             <field name="symbol">d</field>
