@@ -1177,9 +1177,22 @@ class ModelStorage(Model):
                                 [('id', 'in', [r.id for r in sub_relations])],
                                 domain,
                                 ])
-                    invalid_records = sub_relations - set(finds)
+                    invalid_relations = sub_relations - set(finds)
+                    if Relation == cls and field._type not in {
+                            'many2one', 'one2many', 'many2many', 'one2one',
+                            'reference'}:
+                        invalid_records = invalid_relations
+                    else:
+                        invalid_records = [
+                            r for r in records
+                            if getattr(r, field.name) in invalid_relations]
                     if invalid_records:
                         invalid_record = invalid_records.pop()
+                        if invalid_relations == invalid_records:
+                            invalid_relation = invalid_record
+                        else:
+                            invalid_relation = getattr(
+                                invalid_record, field.name)
                         domain = field.domain
                         if is_pyson(domain):
                             domain = _record_eval_pyson(records[0], domain)
@@ -1197,7 +1210,7 @@ class ModelStorage(Model):
                         else:
                             fields.add(field.name)
                         for field_name in sorted(fields):
-                            env = EvalEnvironment(invalid_record, Relation)
+                            env = EvalEnvironment(invalid_relation, Relation)
                             invalid_domain = domain_inversion(
                                 domain, field_name, env)
                             if isinstance(invalid_domain, bool):
