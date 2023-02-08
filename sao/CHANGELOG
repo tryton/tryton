@@ -1,3 +1,4 @@
+* Include events to logs
 * Support scroll time on calendar view
 * Save and Restore tree state on List Form
 * Do record (pre)validation and saving on selection change for list-form views

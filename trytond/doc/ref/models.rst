@@ -273,6 +273,10 @@ Static methods:
 
 Class methods:
 
+.. classmethod:: ModelStorage.log(records, event[, target[, user[, \**extra]]])
+
+   Log event for records.
+
 .. classmethod:: ModelStorage.create(vlist)
 
    Create records.

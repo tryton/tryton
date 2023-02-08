@@ -1,3 +1,4 @@
+* Log events for ModelStorage
 * Use IDENTITY column for id columns in the postgresql backend
 * Use no breaking space to format number and date
 * Fallback to code to format currency without symbol

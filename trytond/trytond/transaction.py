@@ -118,6 +118,7 @@ class Transaction(object):
             instance.create_records = None
             instance.delete_records = None
             instance.trigger_records = None
+            instance.log_records = None
             instance.check_warnings = None
             instance.timestamp = None
             instance.started_at = None
@@ -185,6 +186,7 @@ class Transaction(object):
             self.create_records = defaultdict(set)
             self.delete_records = defaultdict(set)
             self.trigger_records = defaultdict(set)
+            self.log_records = []
             self.check_warnings = set()
             self.timestamp = {}
             self.counter = 0
@@ -248,6 +250,7 @@ class Transaction(object):
                     self.create_records = None
                     self.delete_records = None
                     self.trigger_records = None
+                    self.log_records = None
                     self.timestamp = None
                     self._datamanagers = []
 
@@ -305,9 +308,19 @@ class Transaction(object):
             context=self.context, close=self.close, readonly=readonly,
             autocommit=autocommit, **extras)
 
+    def _store_log_records(self):
+        from trytond.pool import Pool
+        if self.log_records:
+            pool = Pool()
+            Log = pool.get('ir.model.log')
+            with without_check_access():
+                Log.save(self.log_records)
+            self.log_records = []
+
     def commit(self):
         from trytond.cache import Cache
         try:
+            self._store_log_records()
             if self._datamanagers:
                 for datamanager in self._datamanagers:
                     datamanager.tpc_begin(self)

@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 "Form"
 import csv
-import datetime
 import gettext
 import locale
 import os
@@ -14,8 +13,7 @@ from gi.repository import Gdk, GLib, Gtk
 import tryton.common as common
 from tryton import plugins
 from tryton.action import Action
-from tryton.common import (
-    RPCException, RPCExecute, message, sur, sur_3b, timezoned_date)
+from tryton.common import RPCException, RPCExecute, sur, sur_3b
 from tryton.common.common import selection as selection_
 from tryton.common.popup_menu import popup
 from tryton.common.underline import set_underline
@@ -23,6 +21,7 @@ from tryton.gui import Main
 from tryton.gui.window import Window
 from tryton.gui.window.attachment import Attachment
 from tryton.gui.window.email_ import Email
+from tryton.gui.window.log import Log
 from tryton.gui.window.note import Note
 from tryton.gui.window.revision import Revision
 from tryton.gui.window.view_form.screen import Screen
@@ -295,37 +294,8 @@ class Form(TabContent):
         if not current_record or current_record.id < 0:
             self.info_bar_add(
                 _('You have to select one record.'), Gtk.MessageType.INFO)
-            return False
-
-        fields = [
-            ('id', _('ID:')),
-            ('create_uid.rec_name', _('Created by:')),
-            ('create_date', _('Created at:')),
-            ('write_uid.rec_name', _('Edited by:')),
-            ('write_date', _('Edited at:')),
-        ]
-
-        try:
-            data = RPCExecute('model', self.model, 'read', [current_record.id],
-                [x[0] for x in fields], context=self.screen.context)[0]
-        except RPCException:
             return
-        date_format = self.screen.context.get('date_format', '%x')
-        datetime_format = date_format + ' %H:%M:%S.%f'
-        message_str = ''
-        for (key, label) in fields:
-            value = data
-            keys = key.split('.')
-            name = keys.pop(-1)
-            for key in keys:
-                value = value.get(key + '.', {})
-            value = (value or {}).get(name, '/')
-            if isinstance(value, datetime.datetime):
-                value = timezoned_date(value).strftime(datetime_format)
-            message_str += '%s %s\n' % (label, value)
-        message_str += _('Model:') + ' ' + self.model
-        message(message_str)
-        return True
+        Log(current_record)
 
     def sig_revision(self, widget=None):
         if not self.modified_save():

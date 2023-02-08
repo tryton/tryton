@@ -170,6 +170,7 @@
                     }
                 });
             var dialog = new Sao.Dialog('', 'window-form', 'lg', false);
+            this.dialog = dialog;
             this.el = dialog.modal;
             this.el.on('keydown', e => {
                 if (e.which == Sao.common.ESC_KEYCODE) {
@@ -544,7 +545,9 @@
                             }
                         } else {
                             result = true;
-                            this.callback(result);
+                            if (this.callback) {
+                                this.callback(result);
+                            }
                             this.destroy();
                         }
                     });
@@ -575,7 +578,9 @@
                 result = response_id != 'RESPONSE_CANCEL';
             }
             (cancel_prm || jQuery.when()).then(() => {
-                this.callback(result);
+                if (this.callback) {
+                    this.callback(result);
+                }
                 this.destroy();
             });
         },
@@ -737,6 +742,123 @@
                 prm.always(this.note_callback.bind(this));
             }
         }
+    });
+
+    Sao.Window.Log = Sao.class_(Sao.Window.Form, {
+        init: function(record) {
+            this.resource = record.model.name + ',' + record.id;
+            var title = record.rec_name().then(function(rec_name) {
+                return Sao.i18n.gettext("Logs (%1)", rec_name);
+            });
+            var context = jQuery.extend({}, record.get_context());
+
+            var form = jQuery('<div/>', {
+                'class': 'form',
+            });
+            var table = jQuery('<table/>', {
+                'class': 'form-container responsive responsive-noheader',
+            }).appendTo(form);
+            var body = jQuery('<tbody/>').appendTo(table);
+
+            record.model.execute(
+                'read', [[record.id],
+                    ['create_uid.rec_name', 'create_date',
+                        'write_uid.rec_name', 'write_date']], context
+            ).then(([log]) => {
+                var row, cell, label, input;
+
+                row = jQuery('<tr/>').appendTo(body);
+                cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                label = jQuery('<label/>', {
+                    'class': 'form-label',
+                    'text': Sao.i18n.gettext("Model:"),
+                }).appendTo(cell);
+                label.uniqueId();
+                cell = jQuery('<td/>').appendTo(row);
+                input = jQuery('<input/>', {
+                    'readonly': true,
+                    'class': 'form-control input-sm',
+                    'aria-labelledby': label.attr('id'),
+                }).val(record.model.name).appendTo(cell);
+                input.uniqueId();
+
+                cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                label = jQuery('<label/>', {
+                    'class': 'form-label',
+                    'text': Sao.i18n.gettext("ID:"),
+                }).appendTo(cell);
+                label.uniqueId();
+                cell = jQuery('<td/>').appendTo(row);
+                input = jQuery('<input/>', {
+                    'type': 'integer',
+                    'readonly': true,
+                    'class': 'form-control input-sm',
+                    'aria-labelledby': label.attr('id'),
+                }).val(record.id).appendTo(cell);
+                input.css('text-align', 'end');
+                input.uniqueId();
+
+                [['create_uid.', Sao.i18n.gettext("Created by:"),
+                    'create_date', Sao.i18n.gettext("Created at:")],
+                    ['write_uid.', Sao.i18n.gettext("Last Modified by:"),
+                        'write_date', Sao.i18n.gettext("Last Modified at:")],
+                ].forEach(([user, user_label, date, date_label]) => {
+
+                    row = jQuery('<tr/>').appendTo(body);
+                    cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                    label = jQuery('<label/>', {
+                        'class': 'form-label',
+                        'text': user_label,
+                    }).appendTo(cell);
+                    label.uniqueId();
+                    cell = jQuery('<td/>').appendTo(row);
+                    user = log[user];
+                    if (user) {
+                        user = user.rec_name;
+                    }
+                    input = jQuery('<input/>', {
+                        'readonly': true,
+                        'class': 'form-control input-sm',
+                        'aria-labelledby': label.attr('id'),
+                    }).val(user || '').appendTo(cell);
+                    input.css('width', '50ch');
+                    input.uniqueId();
+
+                    cell = jQuery('<td/>').css('text-align', 'end').appendTo(row);
+                    label = jQuery('<label/>', {
+                        'class': 'form-label',
+                        'text': date_label,
+                    }).appendTo(cell);
+                    label.uniqueId();
+                    cell = jQuery('<td/>').appendTo(row);
+                    date = log[date];
+                    if (date) {
+                        date = Sao.common.format_datetime(
+                            Sao.common.date_format() + ' %H:%M:%S', date);
+                    }
+                    input = jQuery('<input/>', {
+                        'readonly': true,
+                        'class': 'form-control input-sm',
+                        'aria-labelledby': label.attr('id'),
+                    }).val(date || '').appendTo(cell);
+                    input.css('width', date.length + 'ch');
+                    input.uniqueId();
+                });
+            });
+
+            var screen = new Sao.Screen('ir.model.log', {
+                domain: [['resource', '=', this.resource]],
+                mode: ['tree', 'form'],
+                context: context,
+            });
+            Sao.Window.Log._super.init.call(
+                this, screen, null, {view_type: 'tree', title: title});
+            this.switch_prm = this.switch_prm.then(function() {
+                return screen.search_filter();
+            });
+
+            this.dialog.body.prepend(form);
+        },
     });
 
     Sao.Window.Search = Sao.class_(Object, {

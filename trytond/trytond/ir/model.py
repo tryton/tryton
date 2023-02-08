@@ -28,6 +28,8 @@ from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
+from .resource import ResourceAccessMixin
+
 logger = logging.getLogger(__name__)
 
 
@@ -1417,6 +1419,84 @@ class ModelData(ModelSQL, ModelView):
                 Model.write(*values_to_write)
             if to_write:
                 cls.write(*to_write)
+
+
+class Log(ResourceAccessMixin, ModelSQL, ModelView):
+    "Log"
+    __name__ = 'ir.model.log'
+
+    user = fields.Many2One(
+        'res.user', "User",
+        states={
+            'required': Eval('event') != 'transition',
+            })
+    event = fields.Selection([
+            ('write', "Modified"),
+            ('delete', "Deleted"),
+            ('button', "Clicked on"),
+            ('wizard', "Launched"),
+            ('transition', "Transitioned to"),
+            ], "Event", required=True)
+    event_string = event.translated('event')
+    target = fields.Char(
+        "Target",
+        states={
+            'required': Eval('event').in_(
+                ['write', 'button', 'wizard', 'transition']),
+            'invisible': (
+                ~Eval('event').in_(
+                    ['write', 'button', 'wizard', 'transition'])),
+            })
+    action = fields.Function(
+        fields.Char("Action"), 'get_action', searcher='search_action')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.resource.required = False  # store deleted record
+        cls._order = [
+            ('create_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
+
+    @classmethod
+    def get_models(cls):
+        return super().get_models() + [(None, '')]  # store deleted record
+
+    def get_action(self, name):
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        Button = pool.get('ir.model.button')
+        Wizard = pool.get('ir.action.wizard')
+        if self.resource:
+            Model = self.resource.__class__
+            model = self.resource.__name__
+            if self.event == 'write':
+                fields = self.target.split(',')
+                get_name = Field.get_name
+                fields = [get_name(model, f) for f in fields]
+                return ', '.join(fields)
+            elif self.event == 'button':
+                return Button.get_view_attributes(model, self.target).get(
+                    'string', self.target)
+            elif self.event == 'wizard':
+                wiz_name, state_name = self.target.split(':')
+                wiz_name = Wizard.get_name(wiz_name, model)
+                return f'{state_name} @ {wiz_name}'
+            elif self.event == 'transition':
+                field_name, state = self.target.split(':')
+                field = getattr(Model, field_name, None)
+                field_name = Field.get_name(model, field_name)
+                if field:
+                    selection = field.get_selection(
+                        Model, field.name, self.resource)
+                    state = field.get_selection_string(selection, state)
+                return f'{field_name} : {state}'
+        return self.target
+
+    @classmethod
+    def search_action(cls, name, clause):
+        return [('target', *clause[1:])]
 
 
 class PrintModelGraphStart(ModelView):

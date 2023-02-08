@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="user"/>
+    <field name="user"/>
+    <label name="create_date" string="at"/>
+    <field name="create_date"/>
+
+    <label name="resource"/>
+    <field name="resource"/>
+    <group id="event_action" col="-1" colspan="2">
+        <field name="event"/>
+        <field name="action"/>
+    </group>
+</form>

@@ -50,6 +50,7 @@ def register():
         model.ModelButtonClick,
         model.ModelButtonReset,
         model.ModelData,
+        model.Log,
         model.PrintModelGraphStart,
         attachment.Attachment,
         note.Note,

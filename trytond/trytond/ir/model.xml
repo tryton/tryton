@@ -325,5 +325,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'ir.model.data')]"/>
         </record>
 
+        <record model="ir.ui.view" id="model_log_view_form">
+            <field name="model">ir.model.log</field>
+            <field name="type">form</field>
+            <field name="name">model_log_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="model_log_view_list">
+            <field name="model">ir.model.log</field>
+            <field name="type">tree</field>
+            <field name="name">model_log_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_model_log_form">
+            <field name="name">Logs</field>
+            <field name="res_model">ir.model.log</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_model_log_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="model_log_view_list"/>
+            <field name="act_window" ref="act_model_log_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_model_log_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="model_log_view_form"/>
+            <field name="act_window" ref="act_model_log_form"/>
+        </record>
+
+        <menuitem
+            parent="menu_model_form"
+            action="act_model_log_form"
+            sequence="50"
+            id="menu_model_log_form"/>
     </data>
 </tryton>

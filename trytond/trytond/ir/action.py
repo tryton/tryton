@@ -1123,6 +1123,18 @@ class ActionWizard(ActionMixin, ModelSQL, ModelView):
         actions = cls.search(domain)
         return {a.model for a in actions if a.model}
 
+    @classmethod
+    def get_name(cls, name, model):
+        # TODO add cache
+        actions = cls.search([
+                (cls._action_name, '=', name),
+                ('model', '=', model),
+                ], limit=1)
+        if actions:
+            action, = actions
+            return action.name
+        return name
+
 
 class ActionURL(ActionMixin, ModelSQL, ModelView):
     "Action URL"

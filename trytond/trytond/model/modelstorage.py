@@ -119,6 +119,7 @@ class ModelStorage(Model):
         searcher='search_rec_name')
     _count_cache = Cache(
         'modelstorage.count', duration=_cache_count_timeout, context=False)
+    _log = None
 
     @classmethod
     def __setup__(cls):
@@ -142,6 +143,8 @@ class ModelStorage(Model):
                     'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })
+        if cls._log is None:
+            cls._log = not cls.__name__.startswith('ir.')
 
     @classmethod
     def __post_setup__(cls):
@@ -166,6 +169,21 @@ class ModelStorage(Model):
     def default_create_date():
         "Default value for create_date field."
         return datetime.datetime.today()
+
+    @dualmethod
+    def log(cls, records, event, target=None, user=None, **extra):
+        if not cls._log:
+            return
+        pool = Pool()
+        Log = pool.get('ir.model.log')
+        transaction = Transaction()
+        if user is None:
+            user = transaction.user
+        for record in records:
+            assert record.id >= 0
+            transaction.log_records.append(Log(
+                    resource=record, event=event, target=target, user=user,
+                    **extra))
 
     @classmethod
     def create(cls, vlist):
@@ -230,6 +248,7 @@ class ModelStorage(Model):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
+        transaction = Transaction()
 
         assert not len(args) % 2
         actions = iter((records, values) + args)
@@ -239,6 +258,8 @@ class ModelStorage(Model):
             cls.check_xml_record(records, values)
             all_records += records
             all_fields.update(values.keys())
+            if transaction.check_access and values:
+                cls.log(records, 'write', ','.join(sorted(values.keys())))
 
         ModelAccess.check(cls.__name__, 'write')
         ModelFieldAccess.check(cls.__name__, all_fields, 'write')
@@ -298,14 +319,18 @@ class ModelStorage(Model):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelData = pool.get('ir.model.data')
+        transaction = Transaction()
 
         ModelAccess.check(cls.__name__, 'delete')
         cls.check_xml_record(records, None)
         if ModelData.has_model(cls.__name__):
             ModelData.clean(records)
 
+        if transaction.check_access:
+            cls.log(records, 'delete')
+
         # Increase transaction counter
-        Transaction().counter += 1
+        transaction.counter += 1
 
         # Clean local cache
         for record in records:

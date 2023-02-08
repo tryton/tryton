@@ -14,9 +14,9 @@ def register():
         field_function, field_integer, field_many2many, field_many2one,
         field_multiselection, field_numeric, field_one2many, field_one2one,
         field_reference, field_selection, field_text, field_time,
-        field_timedelta, history, import_data, mixin, model, modelsql,
-        modelstorage, modelview, mptt, multivalue, path, resource, rule, tree,
-        trigger, wizard, workflow)
+        field_timedelta, history, import_data, mixin, model, model_log,
+        modelsql, modelstorage, modelview, mptt, multivalue, path, resource,
+        rule, tree, trigger, wizard, workflow)
 
     access.register('tests')
     copy_.register('tests')
@@ -49,6 +49,7 @@ def register():
     modelsql.register('tests')
     modelstorage.register('tests')
     modelview.register('tests')
+    model_log.register('tests')
     mptt.register('tests')
     multivalue.register('tests')
     path.register('tests')

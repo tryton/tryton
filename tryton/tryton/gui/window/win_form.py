@@ -21,7 +21,7 @@ _ = gettext.gettext
 class WinForm(NoModal, InfoBar):
     "Form window"
 
-    def __init__(self, screen, callback, view_type='form',
+    def __init__(self, screen, callback=None, view_type='form',
             new=False, many=0, domain=None, context=None,
             save_current=False, title='', rec_name=None):
         tooltips = common.Tooltips()
@@ -448,7 +448,8 @@ class WinForm(NoModal, InfoBar):
             result = False
         else:
             result = response_id not in cancel_responses
-        self.callback(result)
+        if self.callback:
+            self.callback(result)
         self.destroy()
 
     def new(self):

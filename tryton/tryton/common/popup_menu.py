@@ -10,6 +10,7 @@ from tryton.common.common import selection
 from tryton.gui.window import Window
 from tryton.gui.window.attachment import Attachment
 from tryton.gui.window.email_ import Email
+from tryton.gui.window.log import Log
 from tryton.gui.window.note import Note
 from tryton.gui.window.view_form.screen import Screen
 
@@ -55,6 +56,9 @@ def populate(menu, model, record, title='', field=None, context=None):
             allow_similar = True
         with Window(hide_current=True, allow_similar=allow_similar):
             Action.execute(action, data, context=rec.get_context())
+
+    def log(menuitem):
+        Log(load(record))
 
     def attachment(menuitem):
         Attachment(load(record), None)
@@ -103,6 +107,9 @@ def populate(menu, model, record, title='', field=None, context=None):
         edit_item.connect('activate', edit)
         action_menu.append(edit_item)
         action_menu.append(Gtk.SeparatorMenuItem())
+    log_item = Gtk.MenuItem(label=_("View Logs..."))
+    action_menu.append(log_item)
+    log_item.connect('activate', log)
     attachment_item = Gtk.MenuItem(label=_('Attachments...'))
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)

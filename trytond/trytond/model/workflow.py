@@ -43,6 +43,9 @@ class Workflow(object):
                     cls.write(list(to_update), {
                             cls._transition_state: state,
                             })
+                    cls.log(
+                        records, 'transition',
+                        f'{cls._transition_state}:{state}')
                 return result
             return wrapper
         return check_transition

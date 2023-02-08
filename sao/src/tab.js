@@ -952,43 +952,7 @@
                         'info');
                 return jQuery.when();
             }
-            var fields = [
-                ['id', Sao.i18n.gettext('ID:')],
-                ['create_uid.rec_name',
-                    Sao.i18n.gettext('Created by:')],
-                ['create_date', Sao.i18n.gettext('Created at:')],
-                ['write_uid.rec_name',
-                    Sao.i18n.gettext('Edited by:')],
-                ['write_date', Sao.i18n.gettext('Edited at:')]
-                ];
-
-            return this.screen.model.execute('read', [[record.id],
-                    fields.map(function(field) {
-                        return field[0];
-                    })], this.screen.context)
-            .then(data => {
-                data = data[0];
-                var message = '';
-                for (const field of fields) {
-                    const key = field[0];
-                    const label = field[1];
-                    let value = data;
-                    const keys = key.split('.');
-                    const name = keys.splice(-1);
-                    for (const key of keys) {
-                        value = value[key + '.'] || {};
-                    }
-                    value = (value || {})[name] || '/';
-                    if (value && value.isDateTime) {
-                        value = Sao.common.format_datetime(
-                            Sao.common.date_format() + ' %H:%M:%S',
-                            value);
-                    }
-                    message += label + ' ' + value + '\n';
-                }
-                message += Sao.i18n.gettext('Model: ') + this.screen.model.name;
-                Sao.common.message.run(message);
-            });
+            new Sao.Window.Log(record);
         },
         revision: function() {
             var current_id = null;

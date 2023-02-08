@@ -713,6 +713,9 @@ class ModelView(Model):
             names = Button.get_reset(cls.__name__, func.__name__)
             if names:
                 ButtonClick.reset(cls.__name__, names, records)
+
+            if check_access and issubclass(cls, ModelStorage):
+                cls.log(records, 'button', func.__name__)
             with without_check_access():
                 return func(cls, records, *args, **kwargs)
         return wrapper

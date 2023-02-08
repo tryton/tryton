@@ -327,6 +327,8 @@ class Wizard(URLMixin, PoolBase):
                 - ``values``: a dictionary with values
                 - ``buttons``: a list of buttons
         '''
+        transaction = Transaction()
+        counter = transaction.counter
         cls.check_access()
         wizard = cls(session_id)
         for key, values in data.items():
@@ -335,7 +337,14 @@ class Wizard(URLMixin, PoolBase):
                 if field == 'id':
                     continue
                 setattr(record, field, value)
-        return wizard._execute(state_name)
+        result = wizard._execute(state_name)
+        # Log before _save increases the counter
+        if transaction.counter != counter and wizard.model:
+            wizard.model.log(
+                wizard.records, 'wizard',
+                f'{cls.__name__}:{state_name}')
+        wizard._save()
+        return result
 
     def _execute(self, state_name):
         if state_name == self.end_state:
@@ -371,7 +380,6 @@ class Wizard(URLMixin, PoolBase):
                 result = self._execute(transition())
             if do_result:
                 result.setdefault('actions', []).append(do_result)
-        self._save()
         return result
 
     def __init__(self, session_id):
