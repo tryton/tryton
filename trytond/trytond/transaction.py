@@ -315,7 +315,10 @@ class Transaction(object):
             Log = pool.get('ir.model.log')
             with without_check_access():
                 Log.save(self.log_records)
-            self.log_records = []
+        self._clear_log_records()
+
+    def _clear_log_records(self):
+        self.log_records.clear()
 
     def commit(self):
         from trytond.cache import Cache
@@ -352,6 +355,7 @@ class Transaction(object):
         for datamanager in self._datamanagers:
             datamanager.tpc_abort(self)
         Cache.rollback(self)
+        self._clear_log_records()
         self.connection.rollback()
 
     def join(self, datamanager):

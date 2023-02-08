@@ -2183,7 +2183,9 @@ class ModifyHeader(Wizard):
         Line = pool.get('purchase.line')
 
         purchase = self.get_purchase()
-        purchase.__class__.write([purchase], self.start._save_values)
+        values = self.start._save_values
+        self.model.write([purchase], values)
+        self.model.log([purchase], 'write', ','.join(sorted(values.keys())))
 
         # Call on_change after the save to ensure parent sale
         # has the modified values
