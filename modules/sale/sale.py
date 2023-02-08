@@ -1098,8 +1098,10 @@ class Sale(
 
         for invoice_state, sales in invoice_states.items():
             cls.write(sales, {'invoice_state': invoice_state})
+            cls.log(sales, 'transition', f'invoice_state:{invoice_state}')
         for shipment_state, sales in shipment_states.items():
             cls.write(sales, {'shipment_state': shipment_state})
+            cls.log(sales, 'transition', f'shipment_state:{shipment_state}')
         Line.save(lines)
 
     @classmethod

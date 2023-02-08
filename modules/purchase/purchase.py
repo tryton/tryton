@@ -1012,8 +1012,11 @@ class Purchase(
 
         for invoice_state, purchases in invoice_states.items():
             cls.write(purchases, {'invoice_state': invoice_state})
+            cls.log(purchases, 'transition', f'invoice_state:{invoice_state}')
         for shipment_state, purchases in shipment_states.items():
             cls.write(purchases, {'shipment_state': shipment_state})
+            cls.log(
+                purchases, 'transition', f'shipment_state:{shipment_state}')
         Line.save(lines)
 
     @classmethod
