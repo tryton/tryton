@@ -556,6 +556,9 @@ class CreatePurchase(Wizard):
             compute_qty(r.uom, r.quantity, unit, round=False)
             for r in requests)
 
+    def end(self):
+        return 'reload'
+
 
 class HandlePurchaseCancellationException(Wizard):
     'Handle Purchase Cancellation Exception'
