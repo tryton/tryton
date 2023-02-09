@@ -29,7 +29,7 @@ class Sale(metaclass=PoolMeta):
     def _get_grouped_shipment_planned_date(self, shipment):
         return [('planned_date', '=', shipment.planned_date)]
 
-    def _get_grouped_shipment_order(self, shipment_type):
+    def _get_grouped_shipment_order(self, Shipment):
         "Returns the order used to find shipments that should be grouped"
         return None
 
@@ -48,17 +48,16 @@ class Sale(metaclass=PoolMeta):
                     getattr(shipment, field, defaults.get(field))))
         return shipment_domain
 
-    def _get_shipment_sale(self, shipment_type, values):
+    def _get_shipment_sale(self, Shipment, values):
         transaction = Transaction()
         context = transaction.context
-        shipment = super(Sale, self)._get_shipment_sale(shipment_type, values)
+        shipment = super(Sale, self)._get_shipment_sale(Shipment, values)
         if (not context.get('skip_grouping', False)
                 and self.shipment_grouping_method):
             with transaction.set_context(skip_grouping=True):
-                shipment = self._get_shipment_sale(shipment_type, values)
-            Shipment = shipment.__class__
+                shipment = self._get_shipment_sale(Shipment, values)
             domain = self._get_grouped_shipment_domain(shipment)
-            order = self._get_grouped_shipment_order(shipment_type)
+            order = self._get_grouped_shipment_order(Shipment)
             grouped_shipments = Shipment.search(domain, order=order, limit=1)
             if grouped_shipments:
                 shipment, = grouped_shipments
